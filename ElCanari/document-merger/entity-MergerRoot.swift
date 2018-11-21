@@ -1545,26 +1545,6 @@ class MergerRoot : EBManagedObject,
     self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generatePDFProductFile")
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey:"generatedBoardArchiveFormat")
- //   self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
- //   self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
- //   self.automaticBoardSize_property.storeIn (dictionary: ioDictionary, forKey: "automaticBoardSize")
- //   self.boardManualWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardManualWidth")
- //   self.boardManualHeight_property.storeIn (dictionary: ioDictionary, forKey: "boardManualHeight")
- //   self.boardWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardWidthUnit")
- //   self.boardHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardHeightUnit")
- //   self.overlapingArrangment_property.storeIn (dictionary: ioDictionary, forKey: "overlapingArrangment")
- //   self.selectedBoardXUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardXUnit")
- //   self.selectedBoardYUnit_property.storeIn (dictionary: ioDictionary, forKey: "selectedBoardYUnit")
- //   self.boardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidth")
- //   self.boardLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "boardLimitWidthUnit")
- //   self.arrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitude")
- //   self.arrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "arrowMagnitudeUnit")
- //   self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitude")
- //   self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey: "shiftArrowMagnitudeUnit")
- //   self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
- //   self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
- //   self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
- //   self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey: "generatedBoardArchiveFormat")
   }
 
   //····················································································································

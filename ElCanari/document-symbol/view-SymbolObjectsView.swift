@@ -34,9 +34,9 @@ class SymbolObjectsView : CanariViewWithZoomAndFlip {
 
   func configurationOnInit () {
     self.setZoom (400, activateZoomPopUpButton: false)
-    let mils25 : CGFloat = 25.0 * 72.0 / 1000.0
-    self.set (arrowKeyMagnitude : mils25)
-    self.set (shiftArrowKeyMagnitude : mils25 * 4.0)
+    let mils25 : CGFloat = milsToCocoaUnit (25.0)
+    self.set (arrowKeyMagnitude: mils25)
+    self.set (shiftArrowKeyMagnitude: mils25 * 4.0)
     self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
   }
 

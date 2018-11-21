@@ -5,6 +5,29 @@ abstract graphic entity SymbolObject {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+graphic entity SymbolBezierCurve : SymbolObject {
+  property @signature Int x1 default 2_286_00 ;
+  property @signature Int y1 default 9_154_00 ;
+  property @signature Int x2 default 2_286_00 ;
+  property @signature Int y2 default 2_286_00 ;
+  property @signature Int cpx1 default 9_154_00 ;
+  property @signature Int cpy1 default 9_154_00 ;
+  property @signature Int cpx2 default 9_154_00 ;
+  property @signature Int cpy2 default 2_286_00 ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x1, self.y1, self.x2, self.y2,
+     self.cpx1, self.cpy1, self.cpx2, self.cpy2,
+     prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
+  ;
+  transient EBShape selectionDisplay dependsFrom
+    self.x1, self.y1, self.x2, self.y2,
+    self.cpx1, self.cpy1, self.cpx2, self.cpy2
+  ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity SymbolSegment : SymbolObject {
   property @signature Int x1 default 2_286_00 ;
   property @signature Int y1 default 2_286_00 ;

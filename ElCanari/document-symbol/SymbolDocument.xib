@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CanariSymbolDocument">
             <connections>
+                <outlet property="mAddBezierButton" destination="1185" id="1EV-66-PIR"/>
                 <outlet property="mAddSegmentButton" destination="1182" id="v1G-uu-83J"/>
                 <outlet property="mComposedSymbolView" destination="895" id="CVd-u2-GFS"/>
                 <outlet property="mDisplayInspectorView" destination="647" id="omw-J2-ApT"/>
@@ -130,7 +131,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Bezier Curve" imageHugsTitle="YES" id="1185" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Bezier Curve" imageHugsTitle="YES" id="1185" customClass="EBButton">
                     <rect key="frame" x="55" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="bezier-curve-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1186">

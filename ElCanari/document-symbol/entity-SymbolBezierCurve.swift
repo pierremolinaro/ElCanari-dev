@@ -6,98 +6,142 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_y : class {
-  var y : Int { get }
+protocol SymbolBezierCurve_y1 : class {
+  var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_padDiameter : class {
-  var padDiameter : Int { get }
+protocol SymbolBezierCurve_x2 : class {
+  var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModelVia_x : class {
-  var x : Int { get }
+protocol SymbolBezierCurve_y2 : class {
+  var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: BoardModelVia
+
+protocol SymbolBezierCurve_x1 : class {
+  var x1 : Int { get }
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class BoardModelVia : EBManagedObject,
-         BoardModelVia_y,
-         BoardModelVia_padDiameter,
-         BoardModelVia_x {
+protocol SymbolBezierCurve_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolBezierCurve_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: SymbolBezierCurve
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class SymbolBezierCurve : SymbolObject,
+         SymbolBezierCurve_y1,
+         SymbolBezierCurve_x2,
+         SymbolBezierCurve_y2,
+         SymbolBezierCurve_x1,
+         SymbolBezierCurve_objectDisplay,
+         SymbolBezierCurve_selectionDisplay {
 
   //····················································································································
-  //   Atomic property: y
+  //   Atomic property: y1
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y1_property = EBStoredProperty_Int (228600)
 
   //····················································································································
 
-  var y : Int {
+  var y1 : Int {
     get {
-      return self.y_property.propval
+      return self.y1_property.propval
     }
     set {
-      self.y_property.setProp (newValue)
+      self.y1_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
+  var y1_property_selection : EBSelection <Int> {
+    return self.y1_property.prop
   }
 
   //····················································································································
-  //   Atomic property: padDiameter
+  //   Atomic property: x2
   //····················································································································
 
-  var padDiameter_property = EBStoredProperty_Int (0)
+  var x2_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
-  var padDiameter : Int {
+  var x2 : Int {
     get {
-      return self.padDiameter_property.propval
+      return self.x2_property.propval
     }
     set {
-      self.padDiameter_property.setProp (newValue)
+      self.x2_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var padDiameter_property_selection : EBSelection <Int> {
-    return self.padDiameter_property.prop
+  var x2_property_selection : EBSelection <Int> {
+    return self.x2_property.prop
   }
 
   //····················································································································
-  //   Atomic property: x
+  //   Atomic property: y2
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var y2_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
-  var x : Int {
+  var y2 : Int {
     get {
-      return self.x_property.propval
+      return self.y2_property.propval
     }
     set {
-      self.x_property.setProp (newValue)
+      self.y2_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
+  var y2_property_selection : EBSelection <Int> {
+    return self.y2_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: x1
+  //····················································································································
+
+  var x1_property = EBStoredProperty_Int (228600)
+
+  //····················································································································
+
+  var x1 : Int {
+    get {
+      return self.x1_property.propval
+    }
+    set {
+      self.x1_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var x1_property_selection : EBSelection <Int> {
+    return self.x1_property.prop
   }
 
 
@@ -107,20 +151,96 @@ class BoardModelVia : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext) {
     super.init (managedObjectContext:managedObjectContext)
-  //--- Atomic property: y
-    self.y_property.undoManager = self.undoManager
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.undoManager = self.undoManager
-  //--- Atomic property: x
-    self.x_property.undoManager = self.undoManager
+  //--- Atomic property: y1
+    self.y1_property.undoManager = self.undoManager
+  //--- Atomic property: x2
+    self.x2_property.undoManager = self.undoManager
+  //--- Atomic property: y2
+    self.y2_property.undoManager = self.undoManager
+  //--- Atomic property: x1
+    self.x1_property.undoManager = self.undoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        kind &= g_Preferences!.symbolColor_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_SymbolBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.addEBObserver (self.objectDisplay_property)
+    self.y1_property.addEBObserver (self.objectDisplay_property)
+    self.x2_property.addEBObserver (self.objectDisplay_property)
+    self.y2_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SymbolBezierCurve_selectionDisplay (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.addEBObserver (self.selectionDisplay_property)
+    self.y1_property.addEBObserver (self.selectionDisplay_property)
+    self.x2_property.addEBObserver (self.selectionDisplay_property)
+    self.y2_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.x1_property.setSignatureObserver (observer:self)
+    self.x2_property.setSignatureObserver (observer:self)
+    self.y1_property.setSignatureObserver (observer:self)
+    self.y2_property.setSignatureObserver (observer:self)
   }
 
   //····················································································································
 
   deinit {
   //--- Remove observers
+    self.x1_property.removeEBObserver (self.objectDisplay_property)
+    self.y1_property.removeEBObserver (self.objectDisplay_property)
+    self.x2_property.removeEBObserver (self.objectDisplay_property)
+    self.y2_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    self.x1_property.removeEBObserver (self.selectionDisplay_property)
+    self.y1_property.removeEBObserver (self.selectionDisplay_property)
+    self.x2_property.removeEBObserver (self.selectionDisplay_property)
+    self.y2_property.removeEBObserver (self.selectionDisplay_property)
   }
 
   //····················································································································
@@ -130,30 +250,54 @@ class BoardModelVia : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      "y1",
+      idx:self.y1_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      observerExplorer:&self.y1_property.mObserverExplorer,
+      valueExplorer:&self.y1_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padDiameter",
-      idx:self.padDiameter_property.mEasyBindingsObjectIndex,
+      "x2",
+      idx:self.x2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.padDiameter_property.mObserverExplorer,
-      valueExplorer:&self.padDiameter_property.mValueExplorer
+      observerExplorer:&self.x2_property.mObserverExplorer,
+      valueExplorer:&self.x2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      "y2",
+      idx:self.y2_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      observerExplorer:&self.y2_property.mObserverExplorer,
+      valueExplorer:&self.y2_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x1",
+      idx:self.x1_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x1_property.mObserverExplorer,
+      valueExplorer:&self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "objectDisplay",
+      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -164,15 +308,18 @@ class BoardModelVia : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: y
-    self.y_property.mObserverExplorer = nil
-    self.y_property.mValueExplorer = nil
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.mObserverExplorer = nil
-    self.padDiameter_property.mValueExplorer = nil
-  //--- Atomic property: x
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
+  //--- Atomic property: y1
+    self.y1_property.mObserverExplorer = nil
+    self.y1_property.mValueExplorer = nil
+  //--- Atomic property: x2
+    self.x2_property.mObserverExplorer = nil
+    self.x2_property.mValueExplorer = nil
+  //--- Atomic property: y2
+    self.y2_property.mObserverExplorer = nil
+    self.y2_property.mValueExplorer = nil
+  //--- Atomic property: x1
+    self.x1_property.mObserverExplorer = nil
+    self.x1_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -183,12 +330,14 @@ class BoardModelVia : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.storeIn (dictionary: ioDictionary, forKey:"padDiameter")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+  //--- Atomic property: y1
+    self.y1_property.storeIn (dictionary: ioDictionary, forKey:"y1")
+  //--- Atomic property: x2
+    self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
+  //--- Atomic property: y2
+    self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+  //--- Atomic property: x1
+    self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
   }
 
   //····················································································································
@@ -198,12 +347,14 @@ class BoardModelVia : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-  //--- Atomic property: padDiameter
-    self.padDiameter_property.readFrom (dictionary: inDictionary, forKey:"padDiameter")
-  //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: y1
+    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
+  //--- Atomic property: x2
+    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
+  //--- Atomic property: y2
+    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+  //--- Atomic property: x1
+    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
 
   //····················································································································
@@ -247,14 +398,27 @@ class BoardModelVia : EBManagedObject,
   }
 
   //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.x1_property.signature ())
+    crc.accumulateUInt32 (self.x2_property.signature ())
+    crc.accumulateUInt32 (self.y1_property.signature ())
+    crc.accumulateUInt32 (self.y2_property.signature ())
+    return crc
+  }
+
+  //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_BoardModelVia
+//    ReadOnlyArrayOf_SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelVia> {
+class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolBezierCurve> {
 
   //····················································································································
 
@@ -262,175 +426,344 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   //····················································································································
 
-  var propval : [BoardModelVia] { return [] } // Abstract method
+  var propval : [SymbolBezierCurve] { return [] } // Abstract method
 
   //····················································································································
-  //   Observers of 'y' stored property
+  //   Observers of 'y1' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private var mObserversOf_y1 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    mObserversOf_y1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.y1_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    mObserversOf_y1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.removeEBObserver (inObserver)
+        managedObject.y1_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
-        managedObject.y_property.addEBObserver (observer)
+      for observer in mObserversOf_y1 {
+        managedObject.y1_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_y {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
+        managedObject.y1_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'padDiameter' stored property
+  //   Observers of 'x2' stored property
   //····················································································································
 
-  private var mObserversOf_padDiameter = EBWeakEventSet ()
+  private var mObserversOf_x2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padDiameter.insert (inObserver)
+    mObserversOf_x2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padDiameter_property.addEBObserver (inObserver)
+        managedObject.x2_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padDiameter.remove (inObserver)
+    mObserversOf_x2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padDiameter_property.removeEBObserver (inObserver)
+        managedObject.x2_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padDiameter {
-        managedObject.padDiameter_property.addEBObserver (observer)
+      for observer in mObserversOf_x2 {
+        managedObject.x2_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_padDiameter {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.padDiameter_property.removeEBObserver (observer)
+        managedObject.x2_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'x' stored property
+  //   Observers of 'y2' stored property
   //····················································································································
 
-  private var mObserversOf_x = EBWeakEventSet ()
+  private var mObserversOf_y2 = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    mObserversOf_y2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
+        managedObject.y2_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    mObserversOf_y2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.x_property.removeEBObserver (inObserver)
+        managedObject.y2_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
-        managedObject.x_property.addEBObserver (observer)
+      for observer in mObserversOf_y2 {
+        managedObject.y2_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_x {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
+        managedObject.y2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x1' stored property
+  //····················································································································
+
+  private var mObserversOf_x1 = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_x1.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x1_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_x1.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x1_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_x1 {
+        managedObject.x1_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for observer in mObserversOf_x1 {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x1_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'objectDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_objectDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_objectDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'selectionDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_selectionDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_selectionDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolBezierCurve>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -440,20 +773,20 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_BoardModelVia
+//    TransientArrayOf_SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
+class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
-  var readModelFunction : Optional<() -> EBSelection < [BoardModelVia] > >
-
-  //····················································································································
-
-   private var prop_cache : EBSelection < [BoardModelVia] >? 
+  var readModelFunction : Optional<() -> EBSelection < [SymbolBezierCurve] > >
 
   //····················································································································
 
-  override var propval : [BoardModelVia] {
+   private var prop_cache : EBSelection < [SymbolBezierCurve] >? 
+
+  //····················································································································
+
+  override var propval : [SymbolBezierCurve] {
     if let value = prop_cache {
       switch value {
       case .empty, .multiple :
@@ -474,33 +807,39 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   //····················································································································
 
-  private var mSet = Set <BoardModelVia> ()
+  private var mSet = Set <SymbolBezierCurve> ()
 
-  override var prop : EBSelection < [BoardModelVia] > {
+  override var prop : EBSelection < [SymbolBezierCurve] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelVia>
+        let newSet : Set <SymbolBezierCurve>
         switch prop_cache! {
         case .multiple, .empty :
-          newSet = Set <BoardModelVia> ()
+          newSet = Set <SymbolBezierCurve> ()
         case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
-        addEBObserversOf_x_toElementsOfSet (addedSet)
+        addEBObserversOf_y1_toElementsOfSet (addedSet)
+        addEBObserversOf_x2_toElementsOfSet (addedSet)
+        addEBObserversOf_y2_toElementsOfSet (addedSet)
+        addEBObserversOf_x1_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -530,30 +869,30 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: BoardModelVia
+//    To many relationship read write: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
+class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
  
-  func setProp (_ value :  [BoardModelVia]) { } // Abstract method
+  func setProp (_ value :  [SymbolBezierCurve]) { } // Abstract method
  
-  // var propval : [BoardModelVia] { return [] } // Abstract method
+  // var propval : [SymbolBezierCurve] { return [] } // Abstract method
  
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: BoardModelVia
+//    To many relationship: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol {
+final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolBezierCurve?) -> Void > = nil
 
   //····················································································································
 
@@ -592,8 +931,8 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
 
   //····················································································································
 
-  private var mSet = Set <BoardModelVia> ()
-  private var mValue = [BoardModelVia] () {
+  private var mSet = Set <SymbolBezierCurve> ()
+  private var mValue = [SymbolBezierCurve] () {
     didSet {
       postEvent ()
       if oldValue != mValue {
@@ -611,39 +950,45 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
-        for managedObject : BoardModelVia in addedObjectSet {
+        for managedObject : SymbolBezierCurve in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
     }
   }
 
-  override var prop : EBSelection < [BoardModelVia] > { return .single (mValue) }
+  override var prop : EBSelection < [SymbolBezierCurve] > { return .single (mValue) }
 
-  override func setProp (_ inValue : [BoardModelVia]) { mValue = inValue }
+  override func setProp (_ inValue : [SymbolBezierCurve]) { mValue = inValue }
 
-  override var propval : [BoardModelVia] { return mValue }
+  override var propval : [SymbolBezierCurve] { return mValue }
 
   //····················································································································
 
-  @objc func performUndo (_ oldValue : [BoardModelVia]) {
+  @objc func performUndo (_ oldValue : [SymbolBezierCurve]) {
     mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : BoardModelVia) {
+  func remove (_ object : SymbolBezierCurve) {
     if mSet.contains (object) {
       var array = mValue
       let idx = array.index (of: object)
@@ -654,7 +999,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   
   //····················································································································
 
-  func add (_ object : BoardModelVia) {
+  func add (_ object : SymbolBezierCurve) {
     if !mSet.contains (object) {
       var array = mValue
       array.append (object)

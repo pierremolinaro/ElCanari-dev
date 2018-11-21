@@ -324,12 +324,6 @@ class BoardModelPad : EBManagedObject,
     self.rotation_property.storeIn (dictionary: ioDictionary, forKey:"rotation")
   //--- Atomic property: x
     self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
- //   self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
- //   self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
- //   self.height_property.storeIn (dictionary: ioDictionary, forKey: "height")
- //   self.shape_property.storeIn (dictionary: ioDictionary, forKey: "shape")
- //   self.rotation_property.storeIn (dictionary: ioDictionary, forKey: "rotation")
- //   self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
   }
 
   //····················································································································

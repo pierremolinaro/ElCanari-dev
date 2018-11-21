@@ -523,9 +523,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey:"instanceRotation")
- //   self.x_property.storeIn (dictionary: ioDictionary, forKey: "x")
- //   self.y_property.storeIn (dictionary: ioDictionary, forKey: "y")
- //   self.instanceRotation_property.storeIn (dictionary: ioDictionary, forKey: "instanceRotation")
   }
 
   //····················································································································

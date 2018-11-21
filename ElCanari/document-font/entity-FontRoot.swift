@@ -581,10 +581,6 @@ class FontRoot : EBManagedObject,
       relationshipName: "characters",
       intoDictionary: ioDictionary
     )
- //   self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
- //   self.nominalSize_property.storeIn (dictionary: ioDictionary, forKey: "nominalSize")
- //   self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
- //   self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
   }
 
   //····················································································································

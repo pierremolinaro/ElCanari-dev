@@ -4114,15 +4114,6 @@ class BoardModel : EBManagedObject,
       relationshipName: "myInstances",
       intoDictionary: ioDictionary
     )
- //   self.name_property.storeIn (dictionary: ioDictionary, forKey: "name")
- //   self.modelWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelWidth")
- //   self.modelWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelWidthUnit")
- //   self.modelHeight_property.storeIn (dictionary: ioDictionary, forKey: "modelHeight")
- //   self.modelHeightUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelHeightUnit")
- //   self.zoom_property.storeIn (dictionary: ioDictionary, forKey: "zoom")
- //   self.modelLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidth")
- //   self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey: "modelLimitWidthUnit")
- //   self.artworkName_property.storeIn (dictionary: ioDictionary, forKey: "artworkName")
   }
 
   //····················································································································

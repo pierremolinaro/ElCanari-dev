@@ -360,8 +360,6 @@ class FontCharacter : EBManagedObject,
       relationshipName: "segments",
       intoDictionary: ioDictionary
     )
- //   self.codePoint_property.storeIn (dictionary: ioDictionary, forKey: "codePoint")
- //   self.advance_property.storeIn (dictionary: ioDictionary, forKey: "advance")
   }
 
   //····················································································································

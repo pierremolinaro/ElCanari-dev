@@ -42,6 +42,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddBezierButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDisplayInspectorView : NSView?
@@ -122,6 +123,17 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mAddBezierButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddBezierButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddBezierButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mAddSegmentButton {
       if !(outlet is EBButton) {
         presentErrorWindow (file: #file,
@@ -250,6 +262,8 @@ import Cocoa
   //--------------------------- Set targets / actions
     mAddSegmentButton?.target = self
     mAddSegmentButton?.action = #selector (SymbolDocument.addSegmentAction (_:))
+    mAddBezierButton?.target = self
+    mAddBezierButton?.action = #selector (SymbolDocument.addBezierAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -277,7 +291,9 @@ import Cocoa
     self.mSymbolObjectsController.unbind_model ()
   //--------------------------- Remove targets / actions
     mAddSegmentButton?.target = nil
+    mAddBezierButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddBezierButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()

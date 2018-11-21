@@ -577,17 +577,6 @@ class ArtworkRoot : EBManagedObject,
       relationshipName: "fileGenerationParameterArray",
       intoDictionary: ioDictionary
     )
- //   self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey: "selectedTab")
- //   self.comments_property.storeIn (dictionary: ioDictionary, forKey: "comments")
- //   self.minPPTPTTTWdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTWdisplayUnit")
- //   self.minPPTPTTTW_property.storeIn (dictionary: ioDictionary, forKey: "minPPTPTTTW")
- //   self.minValueForOARdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARdisplayUnit")
- //   self.minValueForOARinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForOARinEBUnit")
- //   self.minValueForPHDdisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDdisplayUnit")
- //   self.minValueForPHDinEBUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForPHDinEBUnit")
- //   self.minValueForBoardLimitWidthDisplayUnit_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidthDisplayUnit")
- //   self.minValueForBoardLimitWidth_property.storeIn (dictionary: ioDictionary, forKey: "minValueForBoardLimitWidth")
- //   self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey: "drillDataFileExtension")
   }
 
   //····················································································································

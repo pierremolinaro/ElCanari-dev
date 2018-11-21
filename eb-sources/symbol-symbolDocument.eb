@@ -26,6 +26,8 @@ document SymbolDocument root SymbolRoot {
 #--- Buttons for new elements
   action addSegmentAction ;
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
+  action addBezierAction ;
+  outlet EBButton mAddBezierButton $run self.addBezierAction ;
 
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;

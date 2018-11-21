@@ -416,12 +416,6 @@ class SymbolRoot : EBManagedObject,
     )
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
- //   self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey: "selectedInspector")
- //   self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey: "horizontalFlip")
- //   self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey: "verticalFlip")
- //   self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey: "gridStyle")
- //   self.gridStep_property.storeIn (dictionary: ioDictionary, forKey: "gridStep")
- //   self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey: "selectedPageIndex")
   }
 
   //····················································································································

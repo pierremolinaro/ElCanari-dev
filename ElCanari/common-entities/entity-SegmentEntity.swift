@@ -279,11 +279,6 @@ class SegmentEntity : EBManagedObject,
     self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
   //--- Atomic property: x1
     self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
- //   self.y1_property.storeIn (dictionary: ioDictionary, forKey: "y1")
- //   self.x2_property.storeIn (dictionary: ioDictionary, forKey: "x2")
- //   self.y2_property.storeIn (dictionary: ioDictionary, forKey: "y2")
- //   self.width_property.storeIn (dictionary: ioDictionary, forKey: "width")
- //   self.x1_property.storeIn (dictionary: ioDictionary, forKey: "x1")
   }
 
   //····················································································································
