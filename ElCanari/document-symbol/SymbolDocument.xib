@@ -9,7 +9,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CanariSymbolDocument">
             <connections>
                 <outlet property="mAddBezierButton" destination="1185" id="1EV-66-PIR"/>
+                <outlet property="mAddOvalButton" destination="1188" id="g0t-6W-5il"/>
                 <outlet property="mAddSegmentButton" destination="1182" id="v1G-uu-83J"/>
+                <outlet property="mAddSolidRectButton" destination="1192" id="5ZR-CB-CEd"/>
                 <outlet property="mComposedSymbolView" destination="895" id="CVd-u2-GFS"/>
                 <outlet property="mDisplayInspectorView" destination="647" id="omw-J2-ApT"/>
                 <outlet property="mGridStep" destination="1138" id="lGH-01-lxA"/>
@@ -139,7 +141,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Oval" imageHugsTitle="YES" id="1188" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Oval" imageHugsTitle="YES" id="1188" customClass="EBButton">
                     <rect key="frame" x="93" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
@@ -147,7 +149,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Solid Rect" imageHugsTitle="YES" id="1192" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Solid Rect" imageHugsTitle="YES" id="1192" customClass="EBButton">
                     <rect key="frame" x="131" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="solidrect-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1193">

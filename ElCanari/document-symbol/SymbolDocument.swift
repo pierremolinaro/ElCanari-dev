@@ -43,7 +43,9 @@ import Cocoa
   //····················································································································
 
   @IBOutlet var mAddBezierButton : EBButton?
+  @IBOutlet var mAddOvalButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
+  @IBOutlet var mAddSolidRectButton : EBButton?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
@@ -134,6 +136,17 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mAddBezierButton' outlet is nil") ;
     }
+    if let outlet : Any = self.mAddOvalButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddOvalButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddOvalButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mAddSegmentButton {
       if !(outlet is EBButton) {
         presentErrorWindow (file: #file,
@@ -144,6 +157,17 @@ import Cocoa
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mAddSegmentButton' outlet is nil") ;
+    }
+    if let outlet : Any = self.mAddSolidRectButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddSolidRectButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddSolidRectButton' outlet is nil") ;
     }
     if let outlet : Any = self.mComposedSymbolView {
       if !(outlet is CanariViewWithZoomAndFlip) {
@@ -264,6 +288,10 @@ import Cocoa
     mAddSegmentButton?.action = #selector (SymbolDocument.addSegmentAction (_:))
     mAddBezierButton?.target = self
     mAddBezierButton?.action = #selector (SymbolDocument.addBezierAction (_:))
+    mAddOvalButton?.target = self
+    mAddOvalButton?.action = #selector (SymbolDocument.addOvalAction (_:))
+    mAddSolidRectButton?.target = self
+    mAddSolidRectButton?.action = #selector (SymbolDocument.addSolidRectAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -292,9 +320,13 @@ import Cocoa
   //--------------------------- Remove targets / actions
     mAddSegmentButton?.target = nil
     mAddBezierButton?.target = nil
+    mAddOvalButton?.target = nil
+    mAddSolidRectButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBezierButton?.ebCleanUp ()
+    self.mAddOvalButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mAddSolidRectButton?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()

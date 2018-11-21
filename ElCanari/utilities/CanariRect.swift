@@ -1,47 +1,46 @@
 //
-//  view-SymbolObjectsView.swift
+//  CanariRect.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 19/11/2018.
+//  Created by Pierre Molinaro on 21/11/2018.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
+import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat  = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (25)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   SymbolObjectsView
+//  Struct CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolObjectsView : CanariViewWithZoomAndFlip {
+struct CanariRect {
+  var origin : CanariPoint
+  var size : CanariSize
 
   //····················································································································
-  //   INIT
+  //   init
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
-    self.configurationOnInit ()
+  init () {
+    origin = CanariPoint ()
+    size = CanariSize ()
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
-    self.configurationOnInit ()
+  init (origin inOrigin : CanariPoint, size inSize : CanariSize) {
+    origin = inOrigin
+    size = inSize
   }
 
   //····················································································································
 
-  func configurationOnInit () {
-    self.setZoom (500, activateZoomPopUpButton: false)
-    self.set (arrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT)
-    self.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT * 4.0)
-    self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
+  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint) {
+    let minX = min (inP1.x, inP2.x)
+    let maxX = max (inP1.x, inP2.x)
+    let minY = min (inP1.y, inP2.y)
+    let maxY = max (inP1.y, inP2.y)
+    origin = CanariPoint (x: minX, y: minY)
+    size = CanariSize (width: maxX - minX, height: maxY - minY)
   }
 
   //····················································································································

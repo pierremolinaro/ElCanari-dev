@@ -22,6 +22,7 @@ import Foundation
 
 let ONE_MILLIMETER_IN_CANARI_UNIT = 90_000
 let ONE_INCH_IN_CANARI_UNIT = 2_286_000
+let ONE_MIL_IN_CANARI_UNIT = 2_286
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -61,6 +62,12 @@ func milsToCocoaUnit (_ inValueInMils : CGFloat) -> CGFloat {
 
 func millimeterToCanariUnit (_ inValue : CGFloat) -> Int {
   return Int ((inValue * CGFloat (ONE_MILLIMETER_IN_CANARI_UNIT)).rounded ())
+}
+
+//······················································································································
+
+func milsToCanariUnit (_ inValue : Int) -> Int {
+  return inValue * ONE_MIL_IN_CANARI_UNIT
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

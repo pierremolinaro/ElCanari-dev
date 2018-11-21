@@ -217,6 +217,10 @@ class EBManagedObjectContext : EBObject {
       result = MergerRoot (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolObject" {
       result = SymbolObject (managedObjectContext:self)
+    }else if inEntityTypeName == "SymbolSolidRect" {
+      result = SymbolSolidRect (managedObjectContext:self)
+    }else if inEntityTypeName == "SymbolOval" {
+      result = SymbolOval (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolBezierCurve" {
       result = SymbolBezierCurve (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolSegment" {

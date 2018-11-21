@@ -28,6 +28,10 @@ document SymbolDocument root SymbolRoot {
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
   action addBezierAction ;
   outlet EBButton mAddBezierButton $run self.addBezierAction ;
+  action addOvalAction ;
+  outlet EBButton mAddOvalButton $run self.addOvalAction ;
+  action addSolidRectAction ;
+  outlet EBButton mAddSolidRectButton $run self.addSolidRectAction ;
 
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;

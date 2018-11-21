@@ -1,47 +1,35 @@
 //
-//  view-SymbolObjectsView.swift
+//  CanariPoint.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 19/11/2018.
+//  Created by Pierre Molinaro on 21/11/2018.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
+import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat  = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (25)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   SymbolObjectsView
+//  Struct CanariPoint
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolObjectsView : CanariViewWithZoomAndFlip {
+struct CanariPoint {
+  var x : Int
+  var y : Int
 
   //····················································································································
-  //   INIT
+  //   init
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
-    self.configurationOnInit ()
+  init () {
+    x = 0
+    y = 0
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
-    self.configurationOnInit ()
-  }
-
-  //····················································································································
-
-  func configurationOnInit () {
-    self.setZoom (500, activateZoomPopUpButton: false)
-    self.set (arrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT)
-    self.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT * 4.0)
-    self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
+  init (x inX : Int, y inY : Int) {
+    x = inX
+    y = inY
   }
 
   //····················································································································
