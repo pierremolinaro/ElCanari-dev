@@ -4270,15 +4270,6 @@ class BoardModel : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
-//    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
-//    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
-//    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
-//    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
-//    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
-//    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-//    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
-//    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
-//    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   }
 
   //····················································································································

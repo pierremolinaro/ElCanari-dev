@@ -381,8 +381,6 @@ class FontCharacter : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentForFontCharacter])
-//    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
-//    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
   }
 
   //····················································································································

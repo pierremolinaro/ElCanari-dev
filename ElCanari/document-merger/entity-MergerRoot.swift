@@ -1565,7 +1565,6 @@ class MergerRoot : EBManagedObject,
  //   self.generateGerberProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generateGerberProductFile")
  //   self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey: "generatePDFProductFile")
  //   self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey: "generatedBoardArchiveFormat")
- //   store (managedObject:self.artwork_property.propval, relationshipName:"artwork", intoDictionary: ioDictionary) ;
   }
 
   //····················································································································
@@ -1633,32 +1632,6 @@ class MergerRoot : EBManagedObject,
     self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
-//    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-//    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-//    self.automaticBoardSize_property.readFrom (dictionary: inDictionary, forKey:"automaticBoardSize")
-//    self.boardManualWidth_property.readFrom (dictionary: inDictionary, forKey:"boardManualWidth")
-//    self.boardManualHeight_property.readFrom (dictionary: inDictionary, forKey:"boardManualHeight")
-//    self.boardWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardWidthUnit")
-//    self.boardHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"boardHeightUnit")
-//    self.overlapingArrangment_property.readFrom (dictionary: inDictionary, forKey:"overlapingArrangment")
-//    self.selectedBoardXUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardXUnit")
-//    self.selectedBoardYUnit_property.readFrom (dictionary: inDictionary, forKey:"selectedBoardYUnit")
-//    self.boardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidth")
-//    self.boardLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"boardLimitWidthUnit")
-//    self.arrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitude")
-//    self.arrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"arrowMagnitudeUnit")
-//    self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
-//    self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
-//    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
-//    self.generateGerberProductFile_property.readFrom (dictionary: inDictionary, forKey:"generateGerberProductFile")
-//    self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
-//    self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
- /*   self.artwork_property.setProp (readEntityFromDictionary (
-        inRelationshipName: "artwork",
-        inDictionary: inDictionary,
-        managedObjectArray: &managedObjectArray
-      ) as? ArtworkRoot
-    ) */
   }
 
   //····················································································································

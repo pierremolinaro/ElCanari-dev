@@ -625,17 +625,6 @@ class ArtworkRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [ArtworkFileGenerationParameters])
-//    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
-//    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-//    self.minPPTPTTTWdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTWdisplayUnit")
-//    self.minPPTPTTTW_property.readFrom (dictionary: inDictionary, forKey:"minPPTPTTTW")
-//    self.minValueForOARdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARdisplayUnit")
-//    self.minValueForOARinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForOARinEBUnit")
-//    self.minValueForPHDdisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDdisplayUnit")
-//    self.minValueForPHDinEBUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForPHDinEBUnit")
-//    self.minValueForBoardLimitWidthDisplayUnit_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidthDisplayUnit")
-//    self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
-//    self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
   }
 
   //····················································································································

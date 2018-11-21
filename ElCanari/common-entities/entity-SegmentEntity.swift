@@ -303,11 +303,6 @@ class SegmentEntity : EBManagedObject,
     self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
-//    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
-//    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
-//    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
-//    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
-//    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
 
   //····················································································································

@@ -608,10 +608,6 @@ class FontRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [FontCharacter])
-//    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-//    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
-//    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
-//    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   }
 
   //····················································································································

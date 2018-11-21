@@ -67,13 +67,13 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //    Object Array
   //····················································································································
 
-  let objectArray_property = TransientArrayOf_SymbolSegment ()
+  let objectArray_property = TransientArrayOf_SymbolObject ()
 
   //····················································································································
   //    Model
   //····················································································································
 
-  private var mModel : ReadWriteArrayOf_SymbolSegment? = nil
+  private var mModel : ReadWriteArrayOf_SymbolObject? = nil
 
   //····················································································································
 
@@ -84,7 +84,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_SymbolSegment) {
+  func bind_model (_ inModel:ReadWriteArrayOf_SymbolObject) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
     self.objectArray_property.addEBObserver (mSelectedSet)
@@ -127,7 +127,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //   SELECTION
   //····················································································································
 
-  let selectedArray_property = TransientArrayOf_SymbolSegment ()
+  let selectedArray_property = TransientArrayOf_SymbolObject ()
 
   //····················································································································
 
@@ -135,7 +135,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  var selectedSet : Set <SymbolSegment> { return mSelectedSet.mSet }
+  var selectedSet : Set <SymbolObject> { return mSelectedSet.mSet }
 
   //····················································································································
 
@@ -153,7 +153,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  func setSelection (_ inObjects : [SymbolSegment]) {
+  func setSelection (_ inObjects : [SymbolObject]) {
     mSelectedSet.mSet = Set (inObjects)
   }
 
@@ -241,7 +241,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         case .multiple :
           return .multiple
         case .single (let v) :
-          var result = [SymbolSegment] ()
+          var result = [SymbolObject] ()
           for object in v {
             if me.mSelectedSet.mSet.contains (object) {
               result.append (object)
@@ -270,7 +270,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
        return NSIndexSet ()
     case .single (let v) :
     //--- Dictionary of object indexes
-      var objectDictionary = [SymbolSegment : Int] ()
+      var objectDictionary = [SymbolObject : Int] ()
       for (index, object) in v.enumerated () {
         objectDictionary [object] = index
       }
@@ -288,14 +288,14 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //    select
   //····················································································································
 
-  func select (object inObject: SymbolSegment) {
+  func select (object inObject: SymbolObject) {
     if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <SymbolSegment> ()
+          var newSelectedObjectSet = Set <SymbolObject> ()
           newSelectedObjectSet.insert (inObject)
           mSelectedSet.mSet = newSelectedObjectSet
         }
@@ -316,11 +316,11 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : SymbolSegment = SymbolSegment (managedObjectContext:managedObjectContext)
+        let newObject : SymbolObject = SymbolObject (managedObjectContext:managedObjectContext)
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <SymbolSegment> ()
+        var newSelectedObjectSet = Set <SymbolObject> ()
         newSelectedObjectSet.insert (newObject)
         mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
@@ -347,7 +347,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         case .single (let sortedArray_prop) :
         //------------- Find the object to be selected after selected object removing
         //--- Dictionary of object sorted indexes
-          var sortedObjectDictionary = [SymbolSegment : Int] ()
+          var sortedObjectDictionary = [SymbolObject : Int] ()
           for (index, object) in sortedArray_prop.enumerated () {
             sortedObjectDictionary [object] = index
           }
@@ -370,13 +370,13 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
               newSelectionIndex = index + 1
             }
           }
-          var newSelectedObject : SymbolSegment? = nil
+          var newSelectedObject : SymbolObject? = nil
           if (newSelectionIndex >= 0) && (newSelectionIndex < sortedArray_prop.count) {
             newSelectedObject = sortedArray_prop [newSelectionIndex]
           }
         //----------------------------------------- Remove selected object
         //--- Dictionary of object absolute indexes
-          var objectDictionary = [SymbolSegment : Int] ()
+          var objectDictionary = [SymbolObject : Int] ()
           for (index, object) in model_prop.enumerated () {
             objectDictionary [object] = index
           }
@@ -396,7 +396,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
             newObjectArray.remove (at: index)
           }
         //----------------------------------------- Set new selection
-          var newSelectionSet = Set <SymbolSegment> ()
+          var newSelectionSet = Set <SymbolObject> ()
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
@@ -609,7 +609,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   func setSelection (objectsWithIndexes inIndexes : [Int]) {
     let objects = mModel?.propval ?? []
-    var selectedObjects = [SymbolSegment] ()
+    var selectedObjects = [SymbolObject] ()
     for index in inIndexes {
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)
@@ -630,14 +630,14 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 final class SelectedSet_SymbolDocument_mSymbolObjectsController : EBAbstractProperty {
   private let mAllowsEmptySelection : Bool
   private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_SymbolSegment
+  private let mSortedArray : TransientArrayOf_SymbolObject
   private var mObserverOfSelectionLayerOfSelectedObjects = EBOutletEvent ()
  
   //····················································································································
 
   init (allowsEmptySelection : Bool,
         allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_SymbolSegment) {
+        sortedArray : TransientArrayOf_SymbolObject) {
     mAllowsMultipleSelection = allowsMultipleSelection
     mAllowsEmptySelection = allowsEmptySelection
     mSortedArray = sortedArray
@@ -652,7 +652,7 @@ final class SelectedSet_SymbolDocument_mSymbolObjectsController : EBAbstractProp
 
   //····················································································································
 
-  private var mPrivateSet = Set<SymbolSegment> () {
+  private var mPrivateSet = Set<SymbolObject> () {
     didSet {
       if mPrivateSet != oldValue {
         postEvent ()
@@ -671,7 +671,7 @@ final class SelectedSet_SymbolDocument_mSymbolObjectsController : EBAbstractProp
 
   //····················································································································
 
-  var mSet : Set<SymbolSegment> {
+  var mSet : Set<SymbolObject> {
     set {
       var newSelectedSet = newValue
       switch mSortedArray.prop {

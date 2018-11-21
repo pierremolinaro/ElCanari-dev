@@ -351,12 +351,6 @@ class BoardModelPad : EBManagedObject,
     self.rotation_property.readFrom (dictionary: inDictionary, forKey:"rotation")
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
-//    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-//    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
-//    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
-//    self.shape_property.readFrom (dictionary: inDictionary, forKey:"shape")
-//    self.rotation_property.readFrom (dictionary: inDictionary, forKey:"rotation")
-//    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   }
 
   //····················································································································

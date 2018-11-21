@@ -1,6 +1,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity SymbolSegment {
+abstract graphic entity SymbolObject {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity SymbolSegment : SymbolObject {
   property @signature Int x1 default 2_286_00 ;
   property @signature Int y1 default 2_286_00 ;
   property @signature Int x2 default 9_154_00 ;
@@ -28,7 +33,7 @@ entity SymbolRoot {
   property Int gridStep default 4 ;
 
 #--- Symbol definition
-  toMany @cascading @signature SymbolSegment symbolObjects ;
+  toMany @cascading @signature SymbolObject symbolObjects ;
 
 #--- Grid display
   transient EBShape gridDisplay dependsFrom

@@ -29,6 +29,7 @@ document SymbolDocument root SymbolRoot {
 
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;
+
   outlet CanariViewWithZoomAndFlip mComposedSymbolView
 #    $size root.boardWidth, root.boardHeight
     $horizontalFlip root.horizontalFlip

@@ -178,10 +178,10 @@ class SymbolRoot : EBManagedObject,
   //   To many property: symbolObjects
   //····················································································································
 
-  var symbolObjects_property = StoredArrayOf_SymbolSegment ()
+  var symbolObjects_property = StoredArrayOf_SymbolObject ()
 
   //····················································································································
-  var symbolObjects_property_selection : EBSelection < [SymbolSegment] > {
+  var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
       return self.symbolObjects_property.prop
   }
 
@@ -446,15 +446,9 @@ class SymbolRoot : EBManagedObject,
       inRelationshipName: "symbolObjects",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolSegment])
+    ) as! [SymbolObject])
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-//    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-//    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
-//    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
-//    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
-//    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
-//    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
   }
 
   //····················································································································

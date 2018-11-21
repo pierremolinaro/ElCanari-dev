@@ -541,9 +541,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
-//    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
-//    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-//    self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
   }
 
   //····················································································································

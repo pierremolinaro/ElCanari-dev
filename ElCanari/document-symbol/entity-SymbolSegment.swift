@@ -44,7 +44,7 @@ protocol SymbolSegment_selectionDisplay : class {
 //    Entity: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolSegment : EBGraphicManagedObject,
+class SymbolSegment : SymbolObject,
          SymbolSegment_y1,
          SymbolSegment_x2,
          SymbolSegment_y2,
@@ -359,10 +359,6 @@ class SymbolSegment : EBGraphicManagedObject,
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
-//    self.y1_property.readFrom (dictionary: inDictionary, forKey:"y1")
-//    self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
-//    self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
-//    self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
 
   //····················································································································
