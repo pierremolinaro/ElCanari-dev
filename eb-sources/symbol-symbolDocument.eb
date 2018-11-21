@@ -4,6 +4,8 @@ document SymbolDocument root SymbolRoot {
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
 
+#--- Signature
+  outlet CanariSignatureField mSignatureTextField $signature signature ;
 
 #--------- Page : Symbol
 #--- Inspector segment control

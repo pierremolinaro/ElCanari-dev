@@ -19,6 +19,7 @@
                 <outlet property="mHorizontalFlip" destination="582" id="U5c-xv-gZx"/>
                 <outlet property="mInspectorSegmentedControl" destination="1208" id="P3v-EX-3X2"/>
                 <outlet property="mPageSegmentedControl" destination="1090" id="xiJ-uP-7gb"/>
+                <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
                 <outlet property="mVerticalFlip" destination="583" id="UqB-3h-INb"/>
                 <outlet property="window" destination="5" id="830-Dz-zFq"/>
@@ -82,12 +83,27 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="1078"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="1082"/>
+                    <toolbarItem implicitItemIdentifier="DD25A5EB-B8D3-41A1-9F34-8BA19EC8628B" label="Signature" paletteLabel="Signature" id="cor-fn-9sb">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="38" height="17"/>
+                        <size key="maxSize" width="83" height="19"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="fVd-lH-sdc" customClass="CanariSignatureField">
+                            <rect key="frame" x="0.0" y="14" width="83" height="19"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="G1N-PY-k8W">
+                                <font key="font" metaFont="systemBold"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="1092"/>
                     <toolbarItem reference="1078"/>
                     <toolbarItem reference="1078"/>
                     <toolbarItem reference="1078"/>
+                    <toolbarItem reference="cor-fn-9sb"/>
                     <toolbarItem reference="1081"/>
                     <toolbarItem reference="1085"/>
                 </defaultToolbarItems>

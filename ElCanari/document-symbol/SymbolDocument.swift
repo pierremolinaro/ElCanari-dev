@@ -53,6 +53,7 @@ import Cocoa
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
   @IBOutlet var mVerticalFlip : EBSwitch?
 
@@ -246,6 +247,17 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
     }
+    if let outlet : Any = self.mSignatureTextField {
+      if !(outlet is CanariSignatureField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mSignatureTextField' outlet is nil") ;
+    }
     if let outlet : Any = self.mSymbolZoomFlipInspectorView {
       if !(outlet is NSView) {
         presentErrorWindow (file: #file,
@@ -274,6 +286,7 @@ import Cocoa
     self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
     mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
@@ -304,6 +317,7 @@ import Cocoa
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
+    mSignatureTextField?.unbind_signature ()
     mInspectorSegmentedControl?.unbind_selectedPage ()
     mHorizontalFlip?.unbind_value ()
     mVerticalFlip?.unbind_value ()
@@ -334,6 +348,7 @@ import Cocoa
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mSignatureTextField?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
   }
