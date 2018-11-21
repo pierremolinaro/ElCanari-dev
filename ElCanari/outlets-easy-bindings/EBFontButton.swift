@@ -34,17 +34,19 @@ import Cocoa
 
   func showFontManager () {
     if let font = mFont {
-      self.window?.makeFirstResponder (self)
+    //  self.window?.makeFirstResponder (self)
       let fontManager = NSFontManager.shared 
       fontManager.delegate = self
       fontManager.setSelectedFont (font, isMultiple:false)
       fontManager.orderFrontFontPanel (self)
+      fontManager.target = self
+      fontManager.action = #selector (EBFontButton.changeFont (_:))
     }
   }
 
   //····················································································································
 
-  func changeFont (_ sender : Any?) {
+  @objc func changeFont (_ sender : Any?) {
     if let valueController = mValueController, let fontManager = sender as! NSFontManager? {
       let newFont = fontManager.convert (mFont!)
       valueController.mObject.setProp (newFont)
@@ -79,6 +81,8 @@ import Cocoa
     mValueController?.unregister ()
     mValueController = nil
   }
+
+  //····················································································································
 
 }
 
@@ -127,7 +131,7 @@ import Cocoa
   //····················································································································
 
   func updateModel (sender : EBFontButton) {
-//    mObject.validateAndSetProp (mOutlet.tag, windowForSheet:sender.window)
+    _ = mObject.validateAndSetProp (mOutlet.font!, windowForSheet: sender.window)
   }
 
   //····················································································································

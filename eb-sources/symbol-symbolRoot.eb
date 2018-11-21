@@ -5,6 +5,22 @@ abstract graphic entity SymbolObject {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+graphic entity SymbolText : SymbolObject {
+  property @signature Int x default 2_286_00 ;
+  property @signature Int y default 2_286_00 ;
+  property @signature String text default "text" ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x, self.y, self.text,
+     prefs.symbolColor, prefs.pinNameFont
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.x, self.y, self.text, prefs.pinNameFont
+  ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity SymbolSolidRect : SymbolObject {
   property @signature Int x default 2_286_00 ;
   property @signature Int y default 2_286_00 ;

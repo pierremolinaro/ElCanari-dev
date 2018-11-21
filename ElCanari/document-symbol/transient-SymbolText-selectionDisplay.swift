@@ -11,27 +11,24 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSolidRect_objectDisplay (
-       _ self_x : Int,                        
-       _ self_y : Int,                        
-       _ self_width : Int,                    
-       _ self_height : Int,                   
-       _ prefs_symbolColor : NSColor,         
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int
+func transient_SymbolText_selectionDisplay (
+       _ self_x : Int,                      
+       _ self_y : Int,                      
+       _ self_text : String,                
+       _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = CGRect (
-    x: canariUnitToCocoa (self_x),
-    y: canariUnitToCocoa (self_y),
-    width: canariUnitToCocoa (self_width),
-    height: canariUnitToCocoa (self_height)
-  )
-  let bp = NSBezierPath (rect: r)
-  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (shape: EBFilledBezierPathShape ([bp], prefs_symbolColor))
-  return shape
+//    let textAttributes : [NSAttributedString.Key : Any] = [
+//      NSAttributedString.Key.font : prefs_pinNameFont
+//    ]
+//    let size = self_text.size (withAttributes: textAttributes)
+    let origin = NSPoint (
+      x: canariUnitToCocoa (self_x),
+      y: canariUnitToCocoa (self_y)
+    )
+    let shape = EBShape ()
+    shape.append (shape: EBKnobShape (at: origin, index: 0))
+    return shape
 //--- END OF USER ZONE 2
 }
 

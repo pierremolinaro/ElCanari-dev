@@ -46,6 +46,7 @@ import Cocoa
   @IBOutlet var mAddOvalButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mAddSolidRectButton : EBButton?
+  @IBOutlet var mAddTextButton : EBButton?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
@@ -169,6 +170,17 @@ import Cocoa
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mAddSolidRectButton' outlet is nil") ;
+    }
+    if let outlet : Any = self.mAddTextButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddTextButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddTextButton' outlet is nil") ;
     }
     if let outlet : Any = self.mComposedSymbolView {
       if !(outlet is CanariViewWithZoomAndFlip) {
@@ -305,6 +317,8 @@ import Cocoa
     mAddOvalButton?.action = #selector (SymbolDocument.addOvalAction (_:))
     mAddSolidRectButton?.target = self
     mAddSolidRectButton?.action = #selector (SymbolDocument.addSolidRectAction (_:))
+    mAddTextButton?.target = self
+    mAddTextButton?.action = #selector (SymbolDocument.addTextAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -336,11 +350,13 @@ import Cocoa
     mAddBezierButton?.target = nil
     mAddOvalButton?.target = nil
     mAddSolidRectButton?.target = nil
+    mAddTextButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAddSolidRectButton?.ebCleanUp ()
+    self.mAddTextButton?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()

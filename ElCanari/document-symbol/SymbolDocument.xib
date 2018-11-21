@@ -12,6 +12,7 @@
                 <outlet property="mAddOvalButton" destination="1188" id="g0t-6W-5il"/>
                 <outlet property="mAddSegmentButton" destination="1182" id="v1G-uu-83J"/>
                 <outlet property="mAddSolidRectButton" destination="1192" id="5ZR-CB-CEd"/>
+                <outlet property="mAddTextButton" destination="1195" id="YKg-hD-Y3a"/>
                 <outlet property="mComposedSymbolView" destination="895" id="CVd-u2-GFS"/>
                 <outlet property="mDisplayInspectorView" destination="647" id="omw-J2-ApT"/>
                 <outlet property="mGridStep" destination="1138" id="lGH-01-lxA"/>
@@ -173,7 +174,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Text" imageHugsTitle="YES" id="1195" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Text" imageHugsTitle="YES" id="1195" customClass="EBButton">
                     <rect key="frame" x="169" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1196">

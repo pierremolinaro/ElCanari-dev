@@ -909,6 +909,132 @@ class EBFilledBezierPathShape : EBShape {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBTextShape
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBTextShape : EBShape {
+  private let mString : String
+  private let mOrigin : CGPoint
+  private let mTextAttributes : [NSAttributedString.Key : Any]
+  private let mSize : NSSize
+  private var mCachedBoundingBox : NSRect? = nil
+
+  //····················································································································
+  //  Init
+  //····················································································································
+
+  init (_ inString: String, _ inOrigin : CGPoint, _ inTextAttributes : [NSAttributedString.Key : Any]) {
+    mString = inString
+    mOrigin = inOrigin
+    mTextAttributes = inTextAttributes
+    mSize = mString.size (withAttributes: mTextAttributes)
+    super.init ()
+  }
+
+  //····················································································································
+  //  transformedBy
+  //····················································································································
+
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+//    var paths = [NSBezierPath] ()
+//    for path in self.mPaths {
+//      let bp = inAffineTransform.transform (path)
+//      paths.append (bp)
+//    }
+//    let result = EBFilledBezierPathShape (paths, self.mColor)
+//    self.internalTransform (result, by: inAffineTransform)
+    return EBShape ()
+  }
+
+  //····················································································································
+  //  Draw Rect
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    super.draw (inDirtyRect)
+    mString.draw (at: mOrigin, withAttributes: mTextAttributes)
+  }
+
+  //····················································································································
+  // boundingBox
+  //····················································································································
+
+  override var boundingBox : NSRect {
+    if let cbb = mCachedBoundingBox {
+      return cbb
+    }else{
+      var r = super.boundingBox
+      let rText = NSRect (origin: mOrigin, size: mSize)
+      r = r.union (rText)
+      self.mCachedBoundingBox = r
+      return r
+    }
+  }
+
+  //····················································································································
+  //   Contains point
+  //····················································································································
+
+  override func contains (point inPoint : NSPoint) -> Bool {
+    var result = super.contains (point: inPoint)
+    if !result {
+      let rText = NSRect (origin: mOrigin, size: mSize)
+      result = rText.contains (inPoint)
+    }
+    return result
+  }
+
+  //····················································································································
+  //   intersects
+  //····················································································································
+
+  override func intersects (rect inRect : NSRect) -> Bool {
+    var result = super.intersects (rect: inRect)
+    if !result {
+      let rText = NSRect (origin: mOrigin, size: mSize)
+      result = rText.intersects (inRect)
+    }
+    return result
+  }
+
+  //····················································································································
+  /// The hash value.
+  ///
+  /// Hash values are not guaranteed to be equal across different executions of
+  /// your program. Do not save hash values to use during a future execution.
+  //····················································································································
+
+  override public var hashValue : Int {
+    var h = super.hashValue
+    h.rotateLeft ()
+    h ^= mString.hashValue
+    h.rotateLeft ()
+    h ^= mOrigin.x.hashValue
+    h.rotateLeft ()
+    h ^= mOrigin.y.hashValue
+    return h
+  }
+
+  //····················································································································
+  //   isEqualTo
+  //····················································································································
+
+  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+    var equal = false
+    if let operand = inOperand as? EBTextShape {
+      equal = self.mString == operand.mString
+      if equal {
+        equal = self.mOrigin == operand.mOrigin
+      }
+    }
+    return equal
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBAbstractProperty (abstract class)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

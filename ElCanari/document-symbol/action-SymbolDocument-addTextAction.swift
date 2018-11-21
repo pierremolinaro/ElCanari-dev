@@ -11,28 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSolidRect_objectDisplay (
-       _ self_x : Int,                        
-       _ self_y : Int,                        
-       _ self_width : Int,                    
-       _ self_height : Int,                   
-       _ prefs_symbolColor : NSColor,         
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int
-) -> EBShape {
+extension SymbolDocument {
+  @objc func addTextAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-  let r = CGRect (
-    x: canariUnitToCocoa (self_x),
-    y: canariUnitToCocoa (self_y),
-    width: canariUnitToCocoa (self_width),
-    height: canariUnitToCocoa (self_height)
-  )
-  let bp = NSBezierPath (rect: r)
-  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (shape: EBFilledBezierPathShape ([bp], prefs_symbolColor))
-  return shape
+    let newText = SymbolText (managedObjectContext: self.managedObjectContext())
+    self.rootObject.symbolObjects_property.add (newText)
+    self.mSymbolObjectsController.select (object: newText)
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
