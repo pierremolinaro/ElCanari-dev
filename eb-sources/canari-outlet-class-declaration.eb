@@ -78,6 +78,10 @@ binding CanariViewWithZoomAndFlip $rect : transient CanariRect ;
 binding CanariViewWithZoomAndFlip $zoom : property Int ;
 binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
 binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
+binding CanariViewWithZoomAndFlip $gridStyle : transient GridStyle ;
+binding CanariViewWithZoomAndFlip $gridStepFactor : transient Int ;
+binding CanariViewWithZoomAndFlip $gridLineColor : transient NSColor ;
+binding CanariViewWithZoomAndFlip $gridDotColor : transient NSColor ;
 
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;

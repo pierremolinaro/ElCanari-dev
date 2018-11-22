@@ -415,9 +415,9 @@ Cg
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1136">
-                    <rect key="frame" x="94" y="392" width="56" height="19"/>
+                    <rect key="frame" x="94" y="392" width="135" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="25…" id="1162">
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="left" title="25 mils" id="1162">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="1163">
                             <attributedString key="attributedStringForZero">
                                 <fragment content="0,00"/>
@@ -430,25 +430,6 @@ Cg
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1137">
-                    <rect key="frame" x="157" y="393" width="70" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="pc" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1160" id="1153">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="1154">
-                            <items>
-                                <menuItem title="in" tag="2286000" id="1157"/>
-                                <menuItem title="mil" tag="2286" id="1161"/>
-                                <menuItem title="pt" tag="31750" id="1156"/>
-                                <menuItem title="cm" tag="900000" id="1158"/>
-                                <menuItem title="mm" tag="90000" id="1155"/>
-                                <menuItem title="µm" tag="90" id="1159"/>
-                                <menuItem title="pc" state="on" tag="381000" id="1160"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <popUpButton imageHugsTitle="YES" id="1138" customClass="EBPopUpButton">
                     <rect key="frame" x="97" y="419" width="130" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

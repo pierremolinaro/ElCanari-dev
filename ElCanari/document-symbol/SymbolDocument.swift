@@ -356,7 +356,10 @@ import Cocoa
     mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
     mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
-    mComposedSymbolView?.bind_underObjectsDisplay (self.rootObject.gridDisplay_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_gridStepFactor (self.rootObject.gridStep_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
+    mComposedSymbolView?.bind_gridDotColor (g_Preferences!.dotColorOfSymbolGrid_property, file: #file, line: #line)
     mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
@@ -396,7 +399,10 @@ import Cocoa
     mGridStep?.unbind_selectedTag ()
     mComposedSymbolView?.unbind_horizontalFlip ()
     mComposedSymbolView?.unbind_verticalFlip ()
-    mComposedSymbolView?.unbind_underObjectsDisplay ()
+    mComposedSymbolView?.unbind_gridStyle ()
+    mComposedSymbolView?.unbind_gridStepFactor ()
+    mComposedSymbolView?.unbind_gridLineColor ()
+    mComposedSymbolView?.unbind_gridDotColor ()
     mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers

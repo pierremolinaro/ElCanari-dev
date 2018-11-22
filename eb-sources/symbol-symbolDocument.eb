@@ -48,8 +48,12 @@ document SymbolDocument root SymbolRoot {
 #    $size root.boardWidth, root.boardHeight
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
-    $underObjectsDisplay root.gridDisplay
+ #   $underObjectsDisplay root.gridDisplay
     $graphicController self.mSymbolObjectsController
+    $gridStyle root.gridStyle
+    $gridStepFactor root.gridStep
+    $gridLineColor prefs.lineColorOfSymbolGrid
+    $gridDotColor prefs.dotColorOfSymbolGrid
   ;
 
 #--- Page : Comments
