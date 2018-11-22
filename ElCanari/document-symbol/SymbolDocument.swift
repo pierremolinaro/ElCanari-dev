@@ -47,6 +47,7 @@ import Cocoa
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mAddSolidRectButton : EBButton?
   @IBOutlet var mAddTextButton : EBButton?
+  @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
@@ -182,6 +183,17 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mAddTextButton' outlet is nil") ;
     }
+    if let outlet : Any = self.mCommentTextView {
+      if !(outlet is EBTextView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mCommentTextView' outlet is not an instance of 'EBTextView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mCommentTextView' outlet is nil") ;
+    }
     if let outlet : Any = self.mComposedSymbolView {
       if !(outlet is CanariViewWithZoomAndFlip) {
         presentErrorWindow (file: #file,
@@ -307,6 +319,7 @@ import Cocoa
     mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     mComposedSymbolView?.bind_underObjectsDisplay (self.rootObject.gridDisplay_property, file: #file, line: #line)
+    mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
     mAddSegmentButton?.target = self
@@ -340,6 +353,7 @@ import Cocoa
     mComposedSymbolView?.unbind_horizontalFlip ()
     mComposedSymbolView?.unbind_verticalFlip ()
     mComposedSymbolView?.unbind_underObjectsDisplay ()
+    mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
     self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
@@ -357,6 +371,7 @@ import Cocoa
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAddSolidRectButton?.ebCleanUp ()
     self.mAddTextButton?.ebCleanUp ()
+    self.mCommentTextView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()

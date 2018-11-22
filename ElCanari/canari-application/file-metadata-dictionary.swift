@@ -23,7 +23,6 @@ enum StatusInMetadata : UInt8 {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-let PMSymbolVersion  = "PMSymbolVersion"
 let PMPackageVersion = "PMPackageVersion"
 let PMDeviceVersion  = "PMDeviceVersion"
 

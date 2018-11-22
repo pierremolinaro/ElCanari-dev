@@ -11,46 +11,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//struct BezierNSLayoutManager {
-//  var theBezierPath : NSBezierPath? = nil
-//
-//
-//
-//
-//    /* convert the NSString into a NSBezierPath using a specific font. */
-//
-//- (void)showPackedGlyphs:(char *)glyphs length:(unsigned)glyphLen
-//
-//        glyphRange:(NSRange)glyphRange atPoint:(NSPoint)point font:(NSFont *)font
-//
-//        color:(NSColor *)color printingAdjustment:(NSSize)printingAdjustment {
-//
-//
-//
-//        /* if there is a NSBezierPath associated with this
-//
-//        layout, then append the glyphs to it. */
-//
-//    NSBezierPath *bezier = [self theBezierPath];
-//
-//
-//
-//    if ( nil != bezier ) {
-//
-//
-//
-//            /* add the glyphs to the bezier path */
-//
-//        [bezier moveToPoint:point];
-//
-//        [bezier appendBezierPathWithPackedGlyphs: glyphs];
-//
-//    }
-//
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 extension String {
 
   //····················································································································
@@ -64,6 +24,7 @@ extension String {
   }
 
   //····················································································································
+  // https://books.google.fr/books?id=uMfFHpNpWQsC&pg=SA10-PA61&lpg=SA10-PA61&dq=SpeedometerView+cocoa&source=bl&ots=gMHeJzL9x4&sig=YYjlnoQdCFmBfQmavu8iky5OaJ8&hl=fr&sa=X&ved=2ahUKEwiLju73lObeAhVLzIUKHes2DPsQ6AEwBnoECAQQAQ#v=onepage&q=SpeedometerView%20cocoa&f=false
 
   func bezier (withFont inFont : NSFont, origin inOrigin : NSPoint) -> NSBezierPath {
     let textStorage = NSTextStorage (string: self)

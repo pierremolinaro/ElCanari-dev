@@ -912,6 +912,22 @@ class EBFilledBezierPathShape : EBShape {
 //    EBTextShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum EBTextHorizontalAlignment {
+  case left
+  case center
+  case right
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum EBTextVerticalAlignment {
+  case above
+  case center
+  case below
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 class EBTextShape : EBShape {
   private let mString : String
   private let mOrigin : CGPoint
@@ -923,11 +939,32 @@ class EBTextShape : EBShape {
   //  Init
   //····················································································································
 
-  init (_ inString: String, _ inOrigin : CGPoint, _ inTextAttributes : [NSAttributedString.Key : Any]) {
+  init (_ inString: String,
+        _ inOrigin : CGPoint,
+        _ inTextAttributes : [NSAttributedString.Key : Any],
+        _ inHorizontalAlignment : EBTextHorizontalAlignment,
+        _ inVerticalAlignment : EBTextVerticalAlignment) {
     mString = inString
-    mOrigin = inOrigin
     mTextAttributes = inTextAttributes
     mSize = mString.size (withAttributes: mTextAttributes)
+    var p = inOrigin
+    switch inHorizontalAlignment {
+    case .left :
+      ()
+    case .center :
+      p.x -= self.mSize.width / 2.0
+    case .right :
+      p.x -= self.mSize.width
+    }
+    switch inVerticalAlignment {
+    case .above :
+      ()
+    case .center :
+      p.y -= self.mSize.height / 2.0
+    case .below :
+      p.y -= self.mSize.height
+    }
+    mOrigin = p
     super.init ()
   }
 

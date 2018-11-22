@@ -12,6 +12,12 @@ protocol SymbolRoot_selectedInspector : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolRoot_comments : class {
+  var comments : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolRoot_horizontalFlip : class {
   var horizontalFlip : Bool { get }
 }
@@ -52,6 +58,7 @@ protocol SymbolRoot_gridDisplay : class {
 
 class SymbolRoot : EBManagedObject,
          SymbolRoot_selectedInspector,
+         SymbolRoot_comments,
          SymbolRoot_horizontalFlip,
          SymbolRoot_verticalFlip,
          SymbolRoot_gridStyle,
@@ -80,6 +87,29 @@ class SymbolRoot : EBManagedObject,
 
   var selectedInspector_property_selection : EBSelection <Int> {
     return self.selectedInspector_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: comments
+  //····················································································································
+
+  var comments_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var comments : String {
+    get {
+      return self.comments_property.propval
+    }
+    set {
+      self.comments_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var comments_property_selection : EBSelection <String> {
+    return self.comments_property.prop
   }
 
   //····················································································································
@@ -240,6 +270,8 @@ class SymbolRoot : EBManagedObject,
     super.init (managedObjectContext:managedObjectContext)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.undoManager = self.undoManager
+  //--- Atomic property: comments
+    self.comments_property.undoManager = self.undoManager
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.undoManager = self.undoManager
   //--- Atomic property: verticalFlip
@@ -282,6 +314,7 @@ class SymbolRoot : EBManagedObject,
     g_Preferences?.lineColorOfSymbolGrid_property.addEBObserver (self.gridDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.comments_property.setSignatureObserver (observer:self)
     self.symbolObjects_property.setSignatureObserver (observer:self)
   }
 
@@ -308,6 +341,14 @@ class SymbolRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.selectedInspector_property.mObserverExplorer,
       valueExplorer:&self.selectedInspector_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "comments",
+      idx:self.comments_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.comments_property.mObserverExplorer,
+      valueExplorer:&self.comments_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
@@ -371,6 +412,9 @@ class SymbolRoot : EBManagedObject,
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.mObserverExplorer = nil
     self.selectedInspector_property.mValueExplorer = nil
+  //--- Atomic property: comments
+    self.comments_property.mObserverExplorer = nil
+    self.comments_property.mValueExplorer = nil
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.mObserverExplorer = nil
     self.horizontalFlip_property.mValueExplorer = nil
@@ -400,6 +444,8 @@ class SymbolRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
+  //--- Atomic property: comments
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
   //--- Atomic property: verticalFlip
@@ -427,6 +473,8 @@ class SymbolRoot : EBManagedObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
+  //--- Atomic property: comments
+    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
   //--- Atomic property: verticalFlip
@@ -496,6 +544,7 @@ class SymbolRoot : EBManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.symbolObjects_property.signature ())
     return crc
   }
@@ -571,6 +620,63 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedInspector_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'comments' stored property
+  //····················································································································
+
+  private var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_comments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_comments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_comments {
+        managedObject.comments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for observer in mObserversOf_comments {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.comments_property.removeEBObserver (observer)
       }
     }
   }
@@ -972,6 +1078,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
+        removeEBObserversOf_comments_fromElementsOfSet (removedSet)
         removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
@@ -983,6 +1090,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
+        addEBObserversOf_comments_toElementsOfSet (addedSet)
         addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
         addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
         addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
@@ -1101,6 +1209,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           self.setOppositeRelationship? (nil)
         }
         removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
@@ -1114,6 +1223,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           self.setOppositeRelationship? (managedObject)
         }
         addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)

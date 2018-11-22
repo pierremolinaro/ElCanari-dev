@@ -13,6 +13,7 @@
                 <outlet property="mAddSegmentButton" destination="1182" id="v1G-uu-83J"/>
                 <outlet property="mAddSolidRectButton" destination="1192" id="5ZR-CB-CEd"/>
                 <outlet property="mAddTextButton" destination="1195" id="YKg-hD-Y3a"/>
+                <outlet property="mCommentTextView" destination="926" id="UVU-Cy-41i"/>
                 <outlet property="mComposedSymbolView" destination="895" id="CVd-u2-GFS"/>
                 <outlet property="mDisplayInspectorView" destination="647" id="omw-J2-ApT"/>
                 <outlet property="mGridStep" destination="1138" id="lGH-01-lxA"/>
@@ -308,9 +309,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="mO9-UL-Tnr">
                         <rect key="frame" x="1" y="1" width="469" height="310"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="926">
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="926" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="469" height="310"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

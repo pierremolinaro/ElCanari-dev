@@ -19,18 +19,14 @@ func transient_SymbolText_objectDisplay (
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-// https://books.google.fr/books?id=uMfFHpNpWQsC&pg=SA10-PA61&lpg=SA10-PA61&dq=SpeedometerView+cocoa&source=bl&ots=gMHeJzL9x4&sig=YYjlnoQdCFmBfQmavu8iky5OaJ8&hl=fr&sa=X&ved=2ahUKEwiLju73lObeAhVLzIUKHes2DPsQ6AEwBnoECAQQAQ#v=onepage&q=SpeedometerView%20cocoa&f=false
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
-    let size = self_text.size (withAttributes: textAttributes)
-    let origin = NSPoint (
-      x: canariUnitToCocoa (self_x) - size.width / 2.0,
-      y: canariUnitToCocoa (self_y) - size.height / 2.0
-    )
+  //  let size = self_text.size (withAttributes: textAttributes)
+    let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
     let shape = EBShape ()
-    shape.append (shape: EBTextShape (self_text, origin, textAttributes))
+    shape.append (shape: EBTextShape (self_text, origin, textAttributes, .left, .center))
     return shape
 //--- END OF USER ZONE 2
 }

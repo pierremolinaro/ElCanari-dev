@@ -47,6 +47,9 @@ document SymbolDocument root SymbolRoot {
     $underObjectsDisplay root.gridDisplay
     $graphicController self.mSymbolObjectsController
   ;
+
+#--- Page : Comments
+  outlet EBTextView mCommentTextView $value root.comments ;
 }
 
 #----------------------------------------------------------------------------*

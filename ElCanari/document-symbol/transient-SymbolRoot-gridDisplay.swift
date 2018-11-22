@@ -34,7 +34,7 @@ func transient_SymbolRoot_gridDisplay (
 //        bp.move (to: NSPoint (x: xf, y: yf))
 //        bp.line (to: NSPoint (x: xf, y: yf))
         let r = CGRect (x: xf - 0.5, y: yf - 0.5, width: 1.0, height: 1.0)
-        bp.appendOval (in: r)
+        bp.appendRect (r)
         y += self_gridStep
       }
       x += self_gridStep

@@ -98,7 +98,10 @@ entity SymbolRoot {
 
 #--- Selected inspector
   property Int selectedInspector default 0 ;
-  
+
+#--- Comment
+  property @signature String comments default "" ;
+
 #--- Grid and display inspector
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;

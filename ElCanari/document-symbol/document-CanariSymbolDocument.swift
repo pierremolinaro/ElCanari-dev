@@ -11,8 +11,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//let PMSymbolVersion = "PMSymbolVersion"
-//let PMSymbolComment = "PMSymbolComment"
+let PMSymbolVersion = "PMSymbolVersion"
+let PMSymbolComment = "PMSymbolComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -22,7 +22,7 @@ import Cocoa
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
      metadataDictionary.setObject (NSNumber (value:version), forKey:PMSymbolVersion as NSCopying)
- //    metadataDictionary.setObject (rootObject.comments, forKey:PMSymbolComment as NSCopying)
+     metadataDictionary.setObject (rootObject.comments, forKey:PMSymbolComment as NSCopying)
   }
 
   //····················································································································
