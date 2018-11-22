@@ -1169,6 +1169,15 @@ typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyClassProperty <[EBShape]>
 typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class CanariRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_CanariRect  = EBReadOnlyClassProperty <CanariRect>
+typealias EBTransientProperty_CanariRect = EBTransientClassProperty <CanariRect>
+typealias EBReadOnlyPropertyArray_CanariRect  = EBReadOnlyClassProperty <[CanariRect]>
+typealias EBTransientPropertyArray_CanariRect = EBTransientClassProperty <[CanariRect]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1240,12 +1249,6 @@ typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <Bezier
 typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[BezierPathArray]>
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CanariHorizontalRect
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariHorizontalRect  = EBReadOnlyValueProperty <CanariHorizontalRect>
-typealias EBTransientProperty_CanariHorizontalRect = EBTransientValueProperty <CanariHorizontalRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property InstanceIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

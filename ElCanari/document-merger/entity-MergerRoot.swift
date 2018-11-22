@@ -145,13 +145,13 @@ protocol MergerRoot_modelNames : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardRect : class {
-  var boardRect : CanariHorizontalRect? { get }
+  var boardRect : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_boardDisplayRect : class {
-  var boardDisplayRect : CanariHorizontalRect? { get }
+  var boardDisplayRect : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -773,17 +773,17 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardRect
   //····················································································································
 
-  var boardRect_property = EBTransientProperty_CanariHorizontalRect ()
+  var boardRect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
-  var boardRect_property_selection : EBSelection <CanariHorizontalRect> {
+  var boardRect_property_selection : EBSelection <CanariRect> {
     return self.boardRect_property.prop
   }
 
   //····················································································································
 
-    var boardRect : CanariHorizontalRect? {
+    var boardRect : CanariRect? {
     switch self.boardRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -796,17 +796,17 @@ class MergerRoot : EBManagedObject,
   //   Transient property: boardDisplayRect
   //····················································································································
 
-  var boardDisplayRect_property = EBTransientProperty_CanariHorizontalRect ()
+  var boardDisplayRect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
-  var boardDisplayRect_property_selection : EBSelection <CanariHorizontalRect> {
+  var boardDisplayRect_property_selection : EBSelection <CanariRect> {
     return self.boardDisplayRect_property.prop
   }
 
   //····················································································································
 
-    var boardDisplayRect : CanariHorizontalRect? {
+    var boardDisplayRect : CanariRect? {
     switch self.boardDisplayRect_property_selection {
     case .empty, .multiple :
       return nil

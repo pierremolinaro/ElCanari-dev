@@ -13,8 +13,8 @@ import Cocoa
 
 func transient_MergerDocument_issues (
        _ root_overlapingArrangment : Bool,
-       _ root_boardRect : CanariHorizontalRect,
-       _ root_boardDisplayRect : CanariHorizontalRect,
+       _ root_boardRect : CanariRect, 
+       _ root_boardDisplayRect : CanariRect,
        _ root_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
        _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
 ) -> InstanceIssueArray {

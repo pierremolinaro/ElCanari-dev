@@ -10,7 +10,7 @@ graphic entity MergerBoardInstance {
   property QuadrantRotation instanceRotation default rotation0 ;
 
 #--- Instance rect
-  transient CanariHorizontalRect instanceRect
+  transient CanariRect instanceRect
     dependsFrom self.x, self.y, self.myModel.one.modelWidth, self.myModel.one.modelHeight, self.instanceRotation
   ;
 

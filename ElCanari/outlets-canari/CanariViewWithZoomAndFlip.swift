@@ -21,17 +21,17 @@ class CanariViewWithZoomAndFlip : EBView {
    fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
 
   //····················································································································
-  //  Set size
+  //  Set rect
   //····················································································································
 
-  func setBoardModelSize (width : Int, height : Int) {
-    let noModel = (width == 0) || (height == 0)
+  func set (rect : CanariRect) {
+    let noModel = (rect.size.width <= 0) || (rect.size.height <= 0)
     let newRect = noModel
       ? CGRect (x:0.0, y:0.0, width:200.0, height:200.0)
-      : CGRect (x:0.0, y:0.0, width:canariUnitToCocoa (width), height:canariUnitToCocoa (height))
+      : rect.cocoaRect ()
     self.frame.size = newRect.size
     self.bounds = newRect
-    scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
+    scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
   }
 
   //····················································································································
@@ -44,8 +44,8 @@ class CanariViewWithZoomAndFlip : EBView {
     if let clipView = self.superview as? NSClipView {
       let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
       let currentScale = 1.0 / currentUnitSquareSize.width ;
-      let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != mHorizontalFlip) ? -1.0 : 1.0 ;
-      let toggleVerticalFlip   : CGFloat = (inVerticalFlip != mVerticalFlip) ? -1.0 : 1.0 ;
+      let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
+      let toggleVerticalFlip   : CGFloat = (inVerticalFlip != self.mVerticalFlip) ? -1.0 : 1.0 ;
       if (0 == inZoom) { // Fit to window
         let clipViewSize = clipView.frame.size
         let currentSize = self.frame.size
@@ -58,7 +58,7 @@ class CanariViewWithZoomAndFlip : EBView {
         clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
       }
       let zoomTitle = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
-      mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(" + zoomTitle + ")") : zoomTitle
+      self.mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(" + zoomTitle + ")") : zoomTitle
       self.setNeedsDisplay (self.frame)
     }
   }
@@ -128,7 +128,9 @@ class CanariViewWithZoomAndFlip : EBView {
         self.addPopupButtonItemForZoom (200)
         self.addPopupButtonItemForZoom (250)
         self.addPopupButtonItemForZoom (400)
+        self.addPopupButtonItemForZoom (500)
         self.addPopupButtonItemForZoom (600)
+        self.addPopupButtonItemForZoom (800)
         self.addPopupButtonItemForZoom (1000)
         self.addPopupButtonItemForZoom (1500)
         self.addPopupButtonItemForZoom (2000)
@@ -245,18 +247,18 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
-  //    size binding
+  //    rect binding
   //····················································································································
 
-  private var mSizeController : Controller_CanariViewWithZoomAndFlip_size?
+  private var mRectController : Controller_CanariViewWithZoomAndFlip_rect?
 
-  func bind_size (_ width:EBReadOnlyProperty_Int, _ height:EBReadOnlyProperty_Int, file:String, line:Int) {
-    mSizeController = Controller_CanariViewWithZoomAndFlip_size (width:width, height:height, outlet:self, file:file, line:line)
+  func bind_rect (_ rect:EBReadOnlyProperty_CanariRect, file:String, line:Int) {
+    mRectController = Controller_CanariViewWithZoomAndFlip_rect (rect:rect, outlet:self, file:file, line:line)
   }
 
-  func unbind_size () {
-    mSizeController?.unregister ()
-    mSizeController = nil
+  func unbind_rect () {
+    mRectController?.unregister ()
+    mRectController = nil
   }
 
   //····················································································································
@@ -333,48 +335,36 @@ class CanariViewWithZoomAndFlip : EBView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_size
+//   Controller_CanariViewWithZoomAndFlip_rect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariViewWithZoomAndFlip_size : EBSimpleController {
+final class Controller_CanariViewWithZoomAndFlip_rect : EBSimpleController {
 
-  private let mWidth : EBReadOnlyProperty_Int
-  private let mHeight : EBReadOnlyProperty_Int
+  private let mRect : EBReadOnlyProperty_CanariRect
   private let mOutlet : CanariViewWithZoomAndFlip
 
   //····················································································································
 
-  init (width : EBReadOnlyProperty_Int, height : EBReadOnlyProperty_Int, outlet : CanariViewWithZoomAndFlip, file : String, line : Int) {
-    mWidth = width
-    mHeight = height
+  init (rect : EBReadOnlyProperty_CanariRect, outlet : CanariViewWithZoomAndFlip, file : String, line : Int) {
+    mRect = rect
     mOutlet = outlet
-    super.init (observedObjects:[width, height], outlet:outlet)
+    super.init (observedObjects:[rect], outlet:outlet)
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
   private func updateOutlet () {
-    var newWidth = 0
-    switch mWidth.prop {
+    var rect = CanariRect ()
+    switch mRect.prop {
     case .empty :
       ()
     case .single (let v) :
-      newWidth = v
+      rect = v
     case .multiple :
       ()
     }
-    var newHeight = 0
-    switch mHeight.prop {
-    case .empty :
-      ()
-    case .single (let v) :
-      newHeight = v
-    case .multiple :
-      ()
-    }
-    //NSLog ("width \(newWidth), height \(newHeight)")
-    mOutlet.setBoardModelSize (width:newWidth, height:newHeight)
+    mOutlet.set (rect: rect)
   }
 
   //····················································································································

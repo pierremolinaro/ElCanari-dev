@@ -60,6 +60,12 @@ protocol BoardModel_artworkName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_modelRect : class {
+  var modelRect : CanariRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_frontLegendLinesSegments : class {
   var frontLegendLinesSegments : MergerSegmentArray? { get }
 }
@@ -330,6 +336,7 @@ class BoardModel : EBManagedObject,
          BoardModel_modelLimitWidth,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
+         BoardModel_modelRect,
          BoardModel_frontLegendLinesSegments,
          BoardModel_frontLegendLinesBezierPaths,
          BoardModel_backLegendLinesSegments,
@@ -799,6 +806,29 @@ class BoardModel : EBManagedObject,
   //····················································································································
   var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
       return self.myInstances_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: modelRect
+  //····················································································································
+
+  var modelRect_property = EBTransientProperty_CanariRect ()
+
+  //····················································································································
+
+  var modelRect_property_selection : EBSelection <CanariRect> {
+    return self.modelRect_property.prop
+  }
+
+  //····················································································································
+
+    var modelRect : CanariRect? {
+    switch self.modelRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -1858,6 +1888,30 @@ class BoardModel : EBManagedObject,
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }
+  //--- Atomic property: modelRect
+    self.modelRect_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.modelWidth_property_selection.kind ()
+        kind &= unwSelf.modelHeight_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.modelWidth_property_selection, unwSelf.modelHeight_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_BoardModel_modelRect (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelWidth_property.addEBObserver (self.modelRect_property)
+    self.modelHeight_property.addEBObserver (self.modelRect_property)
   //--- Atomic property: frontLegendLinesSegments
     self.frontLegendLinesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3218,6 +3272,8 @@ class BoardModel : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.modelWidth_property.removeEBObserver (self.modelRect_property)
+    self.modelHeight_property.removeEBObserver (self.modelRect_property)
     self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
@@ -3545,6 +3601,14 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.artworkName_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "modelRect",
+      idx:self.modelRect_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelRect_property.mObserverExplorer,
+      valueExplorer:&self.modelRect_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "frontLegendLinesSegments",
       idx:self.frontLegendLinesSegments_property.mEasyBindingsObjectIndex,
@@ -4930,6 +4994,62 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.artworkName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'modelRect' transient property
+  //····················································································································
+
+  private var mObserversOf_modelRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_modelRect (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_modelRect.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelRect_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_modelRect (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_modelRect.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.modelRect_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_modelRect_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_modelRect {
+        managedObject.modelRect_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_modelRect_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_modelRect {
+        managedObject.modelRect_property.removeEBObserver (observer)
       }
     }
   }
@@ -7407,6 +7527,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_modelRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedSet)
         removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedSet)
         removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedSet)
@@ -7463,6 +7584,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_modelRect_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedSet)
         addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedSet)
         addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedSet)
@@ -7625,6 +7747,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_modelRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
@@ -7683,6 +7806,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_modelRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
         addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
         addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)

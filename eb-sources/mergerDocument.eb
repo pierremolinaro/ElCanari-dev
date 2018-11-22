@@ -174,7 +174,7 @@ document MergerDocument root MergerRoot {
 
 #--- Model view
   outlet CanariViewWithZoomAndFlip mBoardModelView
-    $size mBoardModelSelection.modelWidth, mBoardModelSelection.modelHeight
+    $rect mBoardModelSelection.modelRect
     $zoom mBoardModelSelection.zoom
     $horizontalFlip prefs.mergerModelViewHorizontalFlip
     $verticalFlip prefs.mergerModelViewVerticalFlip
@@ -263,7 +263,7 @@ document MergerDocument root MergerRoot {
   arrayController mBoardInstanceController : root.boardInstances ;
   selectionController MergerBoardInstance mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
   outlet CanariViewWithZoomAndFlip mComposedBoardView
-    $size root.boardWidth, root.boardHeight
+    $rect root.boardRect # root.boardWidth, root.boardHeight
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip

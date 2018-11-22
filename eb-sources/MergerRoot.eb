@@ -44,19 +44,18 @@ entity MergerRoot {
 
 
 #--- Board rect (rect from instances (automatic mode) or from manuel sizes)
-  transient CanariHorizontalRect boardRect dependsFrom
+  transient CanariRect boardRect dependsFrom
      self.automaticBoardSize,
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
 #--- Display rect (includes manual size and or instances rect)
-  transient CanariHorizontalRect boardDisplayRect dependsFrom
+  transient CanariRect boardDisplayRect dependsFrom
      self.boardManualWidth, self.boardManualHeight,
      self.boardInstances.all.instanceRect ;
 
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
-
 #--- Artwork
   toOne @cascading ArtworkRoot artwork ;
   property String artworkName default "" ;

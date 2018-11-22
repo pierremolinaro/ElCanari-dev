@@ -12,7 +12,7 @@ import Foundation
 //  Struct CanariSize
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct CanariSize {
+struct CanariSize : Equatable, Hashable {
   var width : Int
   var height : Int
 
@@ -30,6 +30,22 @@ struct CanariSize {
   init (width inWidth : Int, height inHeight : Int) {
     width = inWidth
     height = inHeight
+  }
+
+  //····················································································································
+  //   Protocol Equatable
+  //····················································································································
+
+  public static func == (lhs: CanariSize, rhs: CanariSize) -> Bool {
+    return (lhs.width == rhs.width) && (lhs.height == rhs.height)
+  }
+
+  //····················································································································
+  //   Protocol Hashable: hashValue
+  //····················································································································
+
+  var hashValue : Int {
+    return self.width ^ self.height
   }
 
   //····················································································································

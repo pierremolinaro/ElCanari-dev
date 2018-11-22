@@ -11,24 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MergerRoot_boardRect (
-       _ self_automaticBoardSize : Bool,
-       _ self_boardManualWidth : Int,
-       _ self_boardManualHeight : Int,
-       _ self_boardInstances_instanceRect : [MergerBoardInstance_instanceRect]
+func transient_BoardModel_modelRect (
+       _ self_modelWidth : Int,      
+       _ self_modelHeight : Int
 ) -> CanariRect {
 //--- START OF USER ZONE 2
-    if self_automaticBoardSize {
-      var r = CanariRect () // Empty rect
-      for board in self_boardInstances_instanceRect {
-        if let rect = board.instanceRect {
-          r = r.union (rect)
-        }
-      }
-      return CanariRect (left:0, bottom:0, width: r.left + r.width, height: r.bottom + r.height)
-    }else{
-      return CanariRect (left:0, bottom:0, width: self_boardManualWidth, height: self_boardManualHeight)
-    }
+    return CanariRect (left: 0, bottom: 0, width: self_modelWidth, height: self_modelHeight)
 //--- END OF USER ZONE 2
 }
 

@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerRoot_overObjectsDisplay (
-       _ self_boardRect : CanariHorizontalRect,
+       _ self_boardRect : CanariRect,         
        _ self_boardLimitWidth : Int,          
        _ prefs_mergerBoardViewDisplayBoardLimits : Bool,
        _ prefs_mergerColorBoardLimits : NSColor

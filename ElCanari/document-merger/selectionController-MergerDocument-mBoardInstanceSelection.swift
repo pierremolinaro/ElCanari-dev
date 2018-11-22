@@ -28,9 +28,9 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //   Selection observable property: instanceRect
   //····················································································································
 
-  var instanceRect_property = EBTransientProperty_CanariHorizontalRect ()
+  var instanceRect_property = EBTransientProperty_CanariRect ()
 
-  var instanceRect_property_selection : EBSelection <CanariHorizontalRect> {
+  var instanceRect_property_selection : EBSelection <CanariRect> {
     get {
       return self.instanceRect_property.prop
     }
@@ -297,7 +297,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <CanariHorizontalRect> ()
+          var s = Set <CanariRect> ()
           var isMultipleSelection = false
           for baseObject in v {
 //            if let object = baseObject as? MergerBoardInstance {
