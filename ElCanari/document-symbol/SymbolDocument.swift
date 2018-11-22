@@ -55,8 +55,10 @@ import Cocoa
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
+  @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
 
   //····················································································································
@@ -271,6 +273,17 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mPageSegmentedControl' outlet is nil") ;
     }
+    if let outlet : Any = self.mResetVersionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mResetVersionButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mResetVersionButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mSignatureTextField {
       if !(outlet is CanariSignatureField) {
         presentErrorWindow (file: #file,
@@ -293,6 +306,17 @@ import Cocoa
                           line: #line,
                           errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is nil") ;
     }
+    if let outlet : Any = self.mVersionField {
+      if !(outlet is CanariVersionField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mVersionField' outlet is nil") ;
+    }
     if let outlet : Any = self.mVerticalFlip {
       if !(outlet is EBSwitch) {
         presentErrorWindow (file: #file,
@@ -311,6 +335,8 @@ import Cocoa
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
+    mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
+    mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
     mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
@@ -322,6 +348,8 @@ import Cocoa
     mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
+    mResetVersionButton?.target = self
+    mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
     mAddSegmentButton?.target = self
     mAddSegmentButton?.action = #selector (SymbolDocument.addSegmentAction (_:))
     mAddBezierButton?.target = self
@@ -345,6 +373,8 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     mPageSegmentedControl?.unbind_selectedPage ()
     mSignatureTextField?.unbind_signature ()
+    mVersionField?.unbind_version ()
+    mVersionField?.unbind_versionShouldChange ()
     mInspectorSegmentedControl?.unbind_selectedPage ()
     mHorizontalFlip?.unbind_value ()
     mVerticalFlip?.unbind_value ()
@@ -360,6 +390,7 @@ import Cocoa
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.unbind_model ()
   //--------------------------- Remove targets / actions
+    mResetVersionButton?.target = nil
     mAddSegmentButton?.target = nil
     mAddBezierButton?.target = nil
     mAddOvalButton?.target = nil
@@ -379,8 +410,10 @@ import Cocoa
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
+    self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
   }
 

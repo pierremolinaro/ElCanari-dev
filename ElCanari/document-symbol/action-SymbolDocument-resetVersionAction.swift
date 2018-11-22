@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMArtworkDocument {
-  @objc func resetVersionAndSignatureAction (_ sender : NSObject?) {
+extension SymbolDocument {
+  @objc func resetVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    self.resetVersionAndSignature ()
+    ENTER USER CODE HERE
 //--- END OF USER ZONE 2
   }
 }

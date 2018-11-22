@@ -7,6 +7,11 @@ document SymbolDocument root SymbolRoot {
 #--- Signature
   outlet CanariSignatureField mSignatureTextField $signature signature ;
 
+#--- Version
+  outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
+  action resetVersionAction ;
+  outlet EBButton mResetVersionButton $run self.resetVersionAction ;
+
 #--------- Page : Symbol
 #--- Inspector segment control
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;

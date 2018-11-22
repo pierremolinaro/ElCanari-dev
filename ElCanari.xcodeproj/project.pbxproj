@@ -507,6 +507,8 @@
 		CF61FA951B3ECA48000E0257 /* CanariFontCharacterSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61FA941B3ECA48000E0257 /* CanariFontCharacterSelectView.swift */; };
 		CF6436162104ED960020988A /* transient-BoardModel-imageForModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */; };
 		CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */; };
+		CF69ABC721A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
+		CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */; };
 		CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */; };
 		CF6A96FA1BF1FB3D00CE1911 /* EBSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6A96F91BF1FB3D00CE1911 /* EBSlider.swift */; };
 		CF6BC04B1DE1C008002D935F /* class-CanariMenuItemListClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BC04A1DE1C008002D935F /* class-CanariMenuItemListClass.swift */; };
@@ -925,6 +927,7 @@
 		CF61FA941B3ECA48000E0257 /* CanariFontCharacterSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariFontCharacterSelectView.swift; sourceTree = "<group>"; };
 		CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForModel.swift"; sourceTree = "<group>"; };
 		CF65805720EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-MergerDocument-generateProductFilesAction.swift"; sourceTree = "<group>"; };
+		CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-SymbolDocument-resetVersionAction.swift"; sourceTree = "<group>"; };
 		CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSegmentedControl.swift; sourceTree = "<group>"; };
 		CF6A96F91BF1FB3D00CE1911 /* EBSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBSlider.swift; sourceTree = "<group>"; };
 		CF6BC04A1DE1C008002D935F /* class-CanariMenuItemListClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "class-CanariMenuItemListClass.swift"; sourceTree = "<group>"; };
@@ -1547,6 +1550,7 @@
 				CF5632BC21A2C6760026B7B7 /* action-SymbolDocument-addSegmentAction.swift */,
 				CFE85A9821A5C91300991A66 /* action-SymbolDocument-addSolidRectAction.swift */,
 				CFE85AA421A5D76600991A66 /* action-SymbolDocument-addTextAction.swift */,
+				CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */,
 				CF5632BF21A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift */,
 				CF8D061421A2AD92007D12D9 /* document-CanariSymbolDocument.swift */,
 				CFE85A6D21A5B37900991A66 /* entity-SymbolBezierCurve.swift */,
@@ -2068,6 +2072,7 @@
 				CF619DFF20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift in Sources */,
 				CFDEC77720E0CD170065FBCE /* transient-BoardModel-viaShapes.swift in Sources */,
 				CF563869214BE01500792552 /* arrayController-FontRoot-selectedCharacterController.swift in Sources */,
+				CF69ABC721A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */,
 				CFE85A8921A5BDFA00991A66 /* extension-SymbolOval.swift in Sources */,
 				CFDB681A20E2AC66006D4E90 /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
@@ -2342,6 +2347,7 @@
 				CF5C4D28219F04D600EAC52A /* transient-BoardModel-instanceCount.swift in Sources */,
 				CF5C4D29219F04D600EAC52A /* transient-BoardModel-viaShapes.swift in Sources */,
 				CF5C4D2A219F04D600EAC52A /* arrayController-FontRoot-selectedCharacterController.swift in Sources */,
+				CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */,
 				CFE85A8A21A5BDFA00991A66 /* extension-SymbolOval.swift in Sources */,
 				CF5C4D2B219F04D600EAC52A /* transient-BoardModel-backComponentNameSegments.swift in Sources */,
 				CF5C4D2C219F04D600EAC52A /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */,
