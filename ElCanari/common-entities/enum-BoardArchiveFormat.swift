@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum BoardArchiveFormat : Int, ValuePropertyProtocol {
+enum BoardArchiveFormat : Int, EnumPropertyProtocol {
   case noGeneration = 0
   case binary = 1
   case xml = 2
@@ -19,6 +19,18 @@ enum BoardArchiveFormat : Int, ValuePropertyProtocol {
       case .noGeneration : return "noGeneration" // 0
       case .binary : return "binary" // 1
       case .xml : return "xml" // 2
+    }
+  }
+
+  //····················································································································
+  //  Enum generic bindings utility functions
+  //····················································································································
+
+  static func buildfromRawValue (rawValue : Int) -> BoardArchiveFormat? {
+    if let v = BoardArchiveFormat (rawValue:rawValue) {
+      return v
+    }else{
+      return nil
     }
   }
 
@@ -59,10 +71,10 @@ enum BoardArchiveFormat : Int, ValuePropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_BoardArchiveFormat = EBReadOnlyValueProperty <BoardArchiveFormat>
-typealias EBTransientProperty_BoardArchiveFormat = EBTransientValueProperty <BoardArchiveFormat>
-typealias EBReadWriteProperty_BoardArchiveFormat = EBReadWriteValueProperty <BoardArchiveFormat>
-typealias EBStoredProperty_BoardArchiveFormat = EBStoredValueProperty <BoardArchiveFormat>
-typealias EBPropertyProxy_BoardArchiveFormat = EBPropertyValueProxy <BoardArchiveFormat>
+typealias EBReadOnlyProperty_BoardArchiveFormat = EBReadOnlyEnumProperty <BoardArchiveFormat>
+typealias EBTransientProperty_BoardArchiveFormat = EBTransientEnumProperty <BoardArchiveFormat>
+typealias EBReadWriteProperty_BoardArchiveFormat = EBReadWriteEnumProperty <BoardArchiveFormat>
+typealias EBStoredProperty_BoardArchiveFormat = EBStoredEnumProperty <BoardArchiveFormat>
+typealias EBPropertyProxy_BoardArchiveFormat = EBPropertyEnumProxy <BoardArchiveFormat>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

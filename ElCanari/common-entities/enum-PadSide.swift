@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadSide : Int, ValuePropertyProtocol {
+enum PadSide : Int, EnumPropertyProtocol {
   case traversing = 0
   case front = 1
   case back = 2
@@ -19,6 +19,18 @@ enum PadSide : Int, ValuePropertyProtocol {
       case .traversing : return "traversing" // 0
       case .front : return "front" // 1
       case .back : return "back" // 2
+    }
+  }
+
+  //····················································································································
+  //  Enum generic bindings utility functions
+  //····················································································································
+
+  static func buildfromRawValue (rawValue : Int) -> PadSide? {
+    if let v = PadSide (rawValue:rawValue) {
+      return v
+    }else{
+      return nil
     }
   }
 
@@ -59,10 +71,10 @@ enum PadSide : Int, ValuePropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadSide = EBReadOnlyValueProperty <PadSide>
-typealias EBTransientProperty_PadSide = EBTransientValueProperty <PadSide>
-typealias EBReadWriteProperty_PadSide = EBReadWriteValueProperty <PadSide>
-typealias EBStoredProperty_PadSide = EBStoredValueProperty <PadSide>
-typealias EBPropertyProxy_PadSide = EBPropertyValueProxy <PadSide>
+typealias EBReadOnlyProperty_PadSide = EBReadOnlyEnumProperty <PadSide>
+typealias EBTransientProperty_PadSide = EBTransientEnumProperty <PadSide>
+typealias EBReadWriteProperty_PadSide = EBReadWriteEnumProperty <PadSide>
+typealias EBStoredProperty_PadSide = EBStoredEnumProperty <PadSide>
+typealias EBPropertyProxy_PadSide = EBPropertyEnumProxy <PadSide>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

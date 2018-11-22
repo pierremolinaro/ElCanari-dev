@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, ValuePropertyProtocol {
+enum PadShape : Int, EnumPropertyProtocol {
   case rectangular = 0
   case round = 1
 
@@ -17,6 +17,18 @@ enum PadShape : Int, ValuePropertyProtocol {
     switch self {
       case .rectangular : return "rectangular" // 0
       case .round : return "round" // 1
+    }
+  }
+
+  //····················································································································
+  //  Enum generic bindings utility functions
+  //····················································································································
+
+  static func buildfromRawValue (rawValue : Int) -> PadShape? {
+    if let v = PadShape (rawValue:rawValue) {
+      return v
+    }else{
+      return nil
     }
   }
 
@@ -57,10 +69,10 @@ enum PadShape : Int, ValuePropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_PadShape = EBReadOnlyValueProperty <PadShape>
-typealias EBTransientProperty_PadShape = EBTransientValueProperty <PadShape>
-typealias EBReadWriteProperty_PadShape = EBReadWriteValueProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBStoredValueProperty <PadShape>
-typealias EBPropertyProxy_PadShape = EBPropertyValueProxy <PadShape>
+typealias EBReadOnlyProperty_PadShape = EBReadOnlyEnumProperty <PadShape>
+typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
+typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>
+typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
+typealias EBPropertyProxy_PadShape = EBPropertyEnumProxy <PadShape>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

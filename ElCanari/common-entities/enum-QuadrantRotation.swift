@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum QuadrantRotation : Int, ValuePropertyProtocol {
+enum QuadrantRotation : Int, EnumPropertyProtocol {
   case rotation0 = 0
   case rotation90 = 1
   case rotation180 = 2
@@ -21,6 +21,18 @@ enum QuadrantRotation : Int, ValuePropertyProtocol {
       case .rotation90 : return "rotation90" // 1
       case .rotation180 : return "rotation180" // 2
       case .rotation270 : return "rotation270" // 3
+    }
+  }
+
+  //····················································································································
+  //  Enum generic bindings utility functions
+  //····················································································································
+
+  static func buildfromRawValue (rawValue : Int) -> QuadrantRotation? {
+    if let v = QuadrantRotation (rawValue:rawValue) {
+      return v
+    }else{
+      return nil
     }
   }
 
@@ -61,10 +73,10 @@ enum QuadrantRotation : Int, ValuePropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyValueProperty <QuadrantRotation>
-typealias EBTransientProperty_QuadrantRotation = EBTransientValueProperty <QuadrantRotation>
-typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteValueProperty <QuadrantRotation>
-typealias EBStoredProperty_QuadrantRotation = EBStoredValueProperty <QuadrantRotation>
-typealias EBPropertyProxy_QuadrantRotation = EBPropertyValueProxy <QuadrantRotation>
+typealias EBReadOnlyProperty_QuadrantRotation = EBReadOnlyEnumProperty <QuadrantRotation>
+typealias EBTransientProperty_QuadrantRotation = EBTransientEnumProperty <QuadrantRotation>
+typealias EBReadWriteProperty_QuadrantRotation = EBReadWriteEnumProperty <QuadrantRotation>
+typealias EBStoredProperty_QuadrantRotation = EBStoredEnumProperty <QuadrantRotation>
+typealias EBPropertyProxy_QuadrantRotation = EBPropertyEnumProxy <QuadrantRotation>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
