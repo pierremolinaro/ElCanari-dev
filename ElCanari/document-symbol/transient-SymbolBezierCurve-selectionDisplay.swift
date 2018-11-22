@@ -35,10 +35,10 @@ func transient_SymbolBezierCurve_selectionDisplay (
   bp.lineCapStyle = .round
   let shape = EBShape ()
   shape.append (shape: EBStrokeBezierPathShape ([bp], NSColor.black))
-  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_BEZIER_CURVE_ENDPOINT_1))
-  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_BEZIER_CURVE_ENDPOINT_2))
-  shape.append (shape: EBKnobShape (at: cp1, index: SYMBOL_BEZIER_CURVE_CONTROL_1))
-  shape.append (shape: EBKnobShape (at: cp2, index: SYMBOL_BEZIER_CURVE_CONTROL_2))
+  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_BEZIER_CURVE_ENDPOINT_1, .rect))
+  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_BEZIER_CURVE_ENDPOINT_2, .rect))
+  shape.append (shape: EBKnobShape (at: cp1, index: SYMBOL_BEZIER_CURVE_CONTROL_1, .rect))
+  shape.append (shape: EBKnobShape (at: cp2, index: SYMBOL_BEZIER_CURVE_CONTROL_2, .rect))
   return shape
 //--- END OF USER ZONE 2
 }

@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="mAddBezierButton" destination="1185" id="1EV-66-PIR"/>
                 <outlet property="mAddOvalButton" destination="1188" id="g0t-6W-5il"/>
+                <outlet property="mAddPinButton" destination="1198" id="JlK-my-1OT"/>
                 <outlet property="mAddSegmentButton" destination="1182" id="v1G-uu-83J"/>
                 <outlet property="mAddSolidRectButton" destination="1192" id="5ZR-CB-CEd"/>
                 <outlet property="mAddTextButton" destination="1195" id="YKg-hD-Y3a"/>
@@ -200,7 +201,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Connexion Pin" imageHugsTitle="YES" id="1198" customClass="PMDraggingSourceButton">
+                <button toolTip="Add Connexion Pin" imageHugsTitle="YES" id="1198" customClass="EBButton">
                     <rect key="frame" x="207" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pin-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1199">

@@ -21,8 +21,8 @@ func transient_SymbolSegment_selectionDisplay (
   let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
   let shape = EBShape ()
-  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_SEGMENT_ENDPOINT_1))
-  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_SEGMENT_ENDPOINT_2))
+  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_SEGMENT_ENDPOINT_1, .rect))
+  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_SEGMENT_ENDPOINT_2, .rect))
   return shape
 //--- END OF USER ZONE 2
 }

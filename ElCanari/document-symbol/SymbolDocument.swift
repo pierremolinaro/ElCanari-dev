@@ -44,6 +44,7 @@ import Cocoa
 
   @IBOutlet var mAddBezierButton : EBButton?
   @IBOutlet var mAddOvalButton : EBButton?
+  @IBOutlet var mAddPinButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mAddSolidRectButton : EBButton?
   @IBOutlet var mAddTextButton : EBButton?
@@ -151,6 +152,17 @@ import Cocoa
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mAddOvalButton' outlet is nil") ;
+    }
+    if let outlet : Any = self.mAddPinButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mAddPinButton' outlet is not an instance of 'EBButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mAddPinButton' outlet is nil") ;
     }
     if let outlet : Any = self.mAddSegmentButton {
       if !(outlet is EBButton) {
@@ -360,6 +372,8 @@ import Cocoa
     mAddSolidRectButton?.action = #selector (SymbolDocument.addSolidRectAction (_:))
     mAddTextButton?.target = self
     mAddTextButton?.action = #selector (SymbolDocument.addTextAction (_:))
+    mAddPinButton?.target = self
+    mAddPinButton?.action = #selector (SymbolDocument.addPinAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -396,9 +410,11 @@ import Cocoa
     mAddOvalButton?.target = nil
     mAddSolidRectButton?.target = nil
     mAddTextButton?.target = nil
+    mAddPinButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
+    self.mAddPinButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAddSolidRectButton?.ebCleanUp ()
     self.mAddTextButton?.ebCleanUp ()

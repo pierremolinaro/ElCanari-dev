@@ -217,6 +217,8 @@ class EBManagedObjectContext : EBObject {
       result = MergerRoot (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolObject" {
       result = SymbolObject (managedObjectContext:self)
+    }else if inEntityTypeName == "SymbolPin" {
+      result = SymbolPin (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolText" {
       result = SymbolText (managedObjectContext:self)
     }else if inEntityTypeName == "SymbolSolidRect" {

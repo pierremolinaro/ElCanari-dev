@@ -5,6 +5,34 @@ abstract graphic entity SymbolObject {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+graphic entity SymbolPin : SymbolObject {
+  property @signature Int xPin default 9_154_00 ;
+  property @signature Int yPin default 9_154_00 ;
+  property @signature Int xLabel default 9_154_00 ;
+  property @signature Int yLabel default 11_440_00 ;
+  property @signature Int xNumber default 9_154_00 ;
+  property @signature Int yNumber default 6_868_00 ;
+  property @signature String label default "?" ;
+  property @signature String number default "" ;
+  property @signature Bool pinIsVisibleInSchematics default yes ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.xPin, self.yPin, 
+     self.xLabel, self.yLabel, 
+     self.xNumber, self.yNumber, 
+     self.label, self.number,
+     prefs.symbolColor, prefs.pinNameFont
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.xPin, self.yPin, 
+     self.xLabel, self.yLabel, 
+     self.xNumber, self.yNumber
+     #self.text, prefs.pinNameFont
+  ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity SymbolText : SymbolObject {
   property @signature Int x default 2_286_00 ;
   property @signature Int y default 2_286_00 ;

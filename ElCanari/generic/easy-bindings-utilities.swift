@@ -439,18 +439,27 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 //    EBKnobShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum EBKnobKind {
+  case rect
+  case circ
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 class EBKnobShape : EBShape {
   private let mKnobSize : CGFloat = 2.0
   private let mPoint : CGPoint
   private let mIndex : Int
+  private let mKind : EBKnobKind
 
   //····················································································································
   //  Init
   //····················································································································
 
-  init (at inPoint: CGPoint, index inIndex : Int) {
+  init (at inPoint: CGPoint, index inIndex : Int, _ inKind : EBKnobKind) {
     mPoint = inPoint
     mIndex = inIndex
+    mKind = inKind
     super.init ()
   }
 
@@ -460,7 +469,7 @@ class EBKnobShape : EBShape {
 
   override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
     let p = inAffineTransform.transform (self.mPoint)
-    let result = EBKnobShape (at: p, index: self.mIndex)
+    let result = EBKnobShape (at: p, index: self.mIndex, self.mKind)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }

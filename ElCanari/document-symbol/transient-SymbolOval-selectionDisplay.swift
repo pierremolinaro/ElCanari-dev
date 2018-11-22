@@ -23,10 +23,10 @@ func transient_SymbolOval_selectionDisplay (
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
   let shape = EBShape ()
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .rect))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .rect))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .rect))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .rect))
   return shape
 //--- END OF USER ZONE 2
 }

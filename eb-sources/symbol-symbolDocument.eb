@@ -41,6 +41,8 @@ document SymbolDocument root SymbolRoot {
   outlet EBButton mAddSolidRectButton $run self.addSolidRectAction ;
   action addTextAction ;
   outlet EBButton mAddTextButton $run self.addTextAction ;
+  action addPinAction ;
+  outlet EBButton mAddPinButton $run self.addPinAction ;
 
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;

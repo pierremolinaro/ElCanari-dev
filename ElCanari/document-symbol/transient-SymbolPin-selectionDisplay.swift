@@ -11,19 +11,26 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolText_selectionDisplay (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_text : String,                
-       _ prefs_pinNameFont : NSFont
+func transient_SymbolPin_selectionDisplay (
+       _ self_xPin : Int,                  
+       _ self_yPin : Int,                  
+       _ self_xLabel : Int,                
+       _ self_yLabel : Int,                
+       _ self_xNumber : Int,               
+       _ self_yNumber : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let origin = NSPoint (
-      x: canariUnitToCocoa (self_x),
-      y: canariUnitToCocoa (self_y)
-    )
     let shape = EBShape ()
-    shape.append (shape: EBKnobShape (at: origin, index: 0, .rect))
+  //--- Label
+    let labelPoint = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
+    shape.append (shape: EBKnobShape (at: labelPoint, index: SYMBOL_PIN_LABEL, .circ))
+  //--- Number
+    let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
+    shape.append (shape: EBKnobShape (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ))
+  //--- Pin
+    let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
+    shape.append (shape: EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect))
+  //---
     return shape
 //--- END OF USER ZONE 2
 }

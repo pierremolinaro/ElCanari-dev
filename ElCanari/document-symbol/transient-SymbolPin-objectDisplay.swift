@@ -11,19 +11,38 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolText_selectionDisplay (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_text : String,                
+func transient_SymbolPin_objectDisplay (
+       _ self_xPin : Int,               
+       _ self_yPin : Int,               
+       _ self_xLabel : Int,             
+       _ self_yLabel : Int,             
+       _ self_xNumber : Int,            
+       _ self_yNumber : Int,            
+       _ self_label : String,           
+       _ self_number : String,          
+       _ prefs_symbolColor : NSColor,   
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let origin = NSPoint (
-      x: canariUnitToCocoa (self_x),
-      y: canariUnitToCocoa (self_y)
-    )
     let shape = EBShape ()
-    shape.append (shape: EBKnobShape (at: origin, index: 0, .rect))
+  //--- Pin
+    let pinRect = NSRect (
+      x: canariUnitToCocoa (self_xPin) - SYMBOL_GRID_IN_COCOA_UNIT,
+      y: canariUnitToCocoa (self_yPin) - SYMBOL_GRID_IN_COCOA_UNIT,
+      width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
+      height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
+    )
+    let filledBP = NSBezierPath (ovalIn: pinRect)
+    shape.append (shape: EBFilledBezierPathShape ([filledBP], prefs_symbolColor))
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : prefs_pinNameFont,
+      NSAttributedString.Key.foregroundColor : prefs_symbolColor
+    ]
+    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
+    shape.append (shape: EBTextShape (self_label, labelOrigin, textAttributes, .center, .center))
+    let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
+    let number = (self_number == "") ? "##" : self_number
+    shape.append (shape: EBTextShape (number, numberOrigin, textAttributes, .center, .center))
     return shape
 //--- END OF USER ZONE 2
 }
