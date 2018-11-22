@@ -14,7 +14,7 @@ import Cocoa
 extension SymbolDocument {
   @objc func resetVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+    self.resetVersionAndSignature ()
 //--- END OF USER ZONE 2
   }
 }
