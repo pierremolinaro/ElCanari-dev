@@ -47,12 +47,6 @@ protocol SymbolRoot_selectedPageIndex : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolRoot_gridDisplay : class {
-  var gridDisplay : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -63,8 +57,7 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_verticalFlip,
          SymbolRoot_gridStyle,
          SymbolRoot_gridStep,
-         SymbolRoot_selectedPageIndex,
-         SymbolRoot_gridDisplay {
+         SymbolRoot_selectedPageIndex {
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -238,29 +231,6 @@ class SymbolRoot : EBManagedObject,
     return self.selectedPageIndex_property.prop
   }
 
-  //····················································································································
-  //   Transient property: gridDisplay
-  //····················································································································
-
-  var gridDisplay_property = EBTransientProperty_EBShape ()
-
-  //····················································································································
-
-  var gridDisplay_property_selection : EBSelection <EBShape> {
-    return self.gridDisplay_property.prop
-  }
-
-  //····················································································································
-
-    var gridDisplay : EBShape? {
-    switch self.gridDisplay_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
 
   //····················································································································
   //    init
@@ -284,34 +254,6 @@ class SymbolRoot : EBManagedObject,
     self.symbolObjects_property.undoManager = self.undoManager
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
-  //--- Atomic property: gridDisplay
-    self.gridDisplay_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.gridStyle_property_selection.kind ()
-        kind &= unwSelf.gridStep_property_selection.kind ()
-        kind &= g_Preferences!.dotColorOfSymbolGrid_property_selection.kind ()
-        kind &= g_Preferences!.lineColorOfSymbolGrid_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.gridStyle_property_selection, unwSelf.gridStep_property_selection, g_Preferences!.dotColorOfSymbolGrid_property_selection, g_Preferences!.lineColorOfSymbolGrid_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolRoot_gridDisplay (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.gridStyle_property.addEBObserver (self.gridDisplay_property)
-    self.gridStep_property.addEBObserver (self.gridDisplay_property)
-    g_Preferences?.dotColorOfSymbolGrid_property.addEBObserver (self.gridDisplay_property)
-    g_Preferences?.lineColorOfSymbolGrid_property.addEBObserver (self.gridDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
@@ -322,10 +264,6 @@ class SymbolRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    self.gridStyle_property.removeEBObserver (self.gridDisplay_property)
-    self.gridStep_property.removeEBObserver (self.gridDisplay_property)
-    g_Preferences?.dotColorOfSymbolGrid_property.removeEBObserver (self.gridDisplay_property)
-    g_Preferences?.lineColorOfSymbolGrid_property.removeEBObserver (self.gridDisplay_property)
   }
 
   //····················································································································
@@ -391,14 +329,6 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.selectedPageIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "gridDisplay",
-      idx:self.gridDisplay_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gridDisplay_property.mObserverExplorer,
-      valueExplorer:&self.gridDisplay_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -967,62 +897,6 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
-  //   Observers of 'gridDisplay' transient property
-  //····················································································································
-
-  private var mObserversOf_gridDisplay = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_gridDisplay.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gridDisplay_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_gridDisplay.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gridDisplay_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gridDisplay_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_gridDisplay {
-        managedObject.gridDisplay_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_gridDisplay {
-        managedObject.gridDisplay_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -1085,7 +959,6 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
-        removeEBObserversOf_gridDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1097,7 +970,6 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         addEBObserversOf_gridStep_toElementsOfSet (addedSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
-        addEBObserversOf_gridDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1215,7 +1087,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolRoot in addedObjectSet {
@@ -1229,7 +1100,6 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

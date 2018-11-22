@@ -155,12 +155,6 @@ entity SymbolRoot {
 
 #--- Symbol definition
   toMany @cascading @signature SymbolObject symbolObjects ;
-
-#--- Grid display
-  transient EBShape gridDisplay dependsFrom
-    self.gridStyle, self.gridStep,
-    prefs.dotColorOfSymbolGrid, prefs.lineColorOfSymbolGrid
-  ;
 }
 
 
