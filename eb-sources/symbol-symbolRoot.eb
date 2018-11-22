@@ -1,6 +1,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SymbolObject {
+#  abstract transient CanariRect objectRect ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -23,12 +24,22 @@ graphic entity SymbolPin : SymbolObject {
      self.label, self.number,
      prefs.symbolColor, prefs.pinNameFont
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xLabel, self.yLabel, 
      self.xNumber, self.yNumber
      #self.text, prefs.pinNameFont
   ;
+  
+#  transient CanariRect objectRect dependsFrom
+#     self.xPin, self.yPin, 
+#     self.xLabel, self.yLabel, 
+#     self.xNumber, self.yNumber, 
+#     self.label, self.number,
+#     prefs.symbolColor, prefs.pinNameFont
+#  ;
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -42,9 +53,15 @@ graphic entity SymbolText : SymbolObject {
      self.x, self.y, self.text,
      prefs.symbolColor, prefs.pinNameFont
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.text, prefs.pinNameFont
   ;
+
+#  transient CanariRect objectRect dependsFrom
+#     self.x, self.y, self.text,
+#     prefs.symbolColor, prefs.pinNameFont
+#  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -133,7 +150,7 @@ entity SymbolRoot {
 #--- Grid and display inspector
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
-  property Int gridStyle default 2 ; # 0: No grid, 1: dots, 2: lines
+  property GridStyle gridStyle default line ;
   property Int gridStep default 4 ;
 
 #--- Symbol definition

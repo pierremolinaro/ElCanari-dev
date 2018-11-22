@@ -20,11 +20,8 @@ document SymbolDocument root SymbolRoot {
   outlet NSView mSymbolZoomFlipInspectorView ;
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
-  outlet EBPopUpButton mGridStyle $selectedTag root.gridStyle ;
+  outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
   outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
-
-#  outlet symbolHorizontalFlipButton : NSButton $value root.symbolHorizontalFlip;
-#  outlet symbolVerticalFlipButton : NSButton $value root.symbolVerticalFlip;
 
 #--- Display Inspector
   outlet NSView mDisplayInspectorView ;

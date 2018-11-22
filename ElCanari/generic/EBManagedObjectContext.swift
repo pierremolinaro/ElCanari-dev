@@ -165,7 +165,7 @@ class EBManagedObjectContext : EBObject {
     objectsToExploreArray.append (rootObject)
     rootObject.savingIndex = reachableObjectArray.count
     reachableObjectArray.append (rootObject)
-    // let start = NSDate()
+    // let start = Date()
     //   NSLog ("start")
     while (objectsToExploreArray.count > 0) {
       let objectToExplore : EBManagedObject = objectsToExploreArray.last!
@@ -181,7 +181,7 @@ class EBManagedObjectContext : EBObject {
           objectsToExploreArray.append (managedObject)
         }
       }
-    // let timeTaken = NSDate().timeIntervalSinceDate(start) * 1000
+    // let timeTaken = Date().timeIntervalSinceDate(start) * 1000
     // NSLog ("%f ms", timeTaken)
     }
     return reachableObjectArray ;

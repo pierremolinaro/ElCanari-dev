@@ -26,6 +26,7 @@ import Cocoa
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     mSelectedTagController?.updateModel (sender: self)
+    mSelectedIndexController?.updateModel (sender: self)
     return super.sendAction (action, to:to)
   }
 
@@ -48,6 +49,21 @@ import Cocoa
   func unbind_selectedTag () {
     mSelectedTagController?.unregister ()
     mSelectedTagController = nil
+  }
+
+  //····················································································································
+  //  selectedIndex binding
+  //····················································································································
+
+  private var mSelectedIndexController : Controller_EBPopUpButton_Index?
+
+  func bind_selectedIndex (_ object:EBAbstractEnumProperty, file:String, line:Int) {
+    mSelectedIndexController = Controller_EBPopUpButton_Index (object:object, outlet:self, file:file, line:line)
+  }
+
+  func unbind_selectedIndex () {
+    mSelectedIndexController?.unregister ()
+    mSelectedIndexController = nil
   }
 
 }
@@ -92,6 +108,48 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
 
   func updateModel (sender : EBPopUpButton) {
     _ = mObject.validateAndSetProp (mOutlet.selectedTag (), windowForSheet:sender.window)
+  }
+
+  //····················································································································
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_EBPopUpButton_Index
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@objc (Controller_EBPopUpButton_Index)
+final class Controller_EBPopUpButton_Index : EBSimpleController {
+
+  private let mObject : EBAbstractEnumProperty
+  private let mOutlet : EBPopUpButton
+
+  //····················································································································
+
+  init (object : EBAbstractEnumProperty, outlet : EBPopUpButton, file : String, line : Int) {
+    mObject = object
+    mOutlet = outlet
+    super.init (observedObjects:[object], outlet:outlet)
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+  }
+
+  //····················································································································
+
+  private func updateOutlet () {
+    if let v = mObject.rawValue () {
+      mOutlet.enableFromValueBinding (true)
+      mOutlet.selectItem (at: v)
+    }else{
+      mOutlet.enableFromValueBinding (false)
+    }
+  }
+
+  //····················································································································
+
+  func updateModel (sender : EBPopUpButton) {
+    mObject.setFrom(rawValue: mOutlet.indexOfSelectedItem)
+//    if let value = GridStyle (rawValue: mOutlet.indexOfSelectedItem) {
+//      _ = mObject.validateAndSetProp (value, windowForSheet:sender.window)
+//    }
   }
 
   //····················································································································

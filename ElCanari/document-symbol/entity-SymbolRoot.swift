@@ -31,7 +31,7 @@ protocol SymbolRoot_verticalFlip : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolRoot_gridStyle : class {
-  var gridStyle : Int { get }
+  var gridStyle : GridStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -162,11 +162,11 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_Int (2)
+  var gridStyle_property = EBStoredProperty_GridStyle (GridStyle.line)
 
   //····················································································································
 
-  var gridStyle : Int {
+  var gridStyle : GridStyle {
     get {
       return self.gridStyle_property.propval
     }
@@ -177,7 +177,7 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <Int> {
+  var gridStyle_property_selection : EBSelection <GridStyle> {
     return self.gridStyle_property.prop
   }
 

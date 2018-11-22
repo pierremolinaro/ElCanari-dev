@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SymbolRoot_gridDisplay (
-       _ self_gridStyle : Int,         
+       _ self_gridStyle : GridStyle,   
        _ self_gridStep : Int,          
        _ prefs_dotColorOfSymbolGrid : NSColor,
        _ prefs_lineColorOfSymbolGrid : NSColor
@@ -21,7 +21,10 @@ func transient_SymbolRoot_gridDisplay (
   let mils25 : CGFloat = 25.0 * 72.0 / 1000.0
   let N = 25
   let shape = EBShape ()
-  if self_gridStyle == 1 { // Dots
+  switch self_gridStyle {
+  case .noGrid :
+    ()
+  case .dot :
     let bp = NSBezierPath ()
     bp.lineWidth = 0.0
     bp.lineCapStyle = .round
@@ -40,7 +43,7 @@ func transient_SymbolRoot_gridDisplay (
       x += self_gridStep
     }
     shape.append (shape: EBFilledBezierPathShape ([bp], prefs_dotColorOfSymbolGrid))
-  }else if self_gridStyle == 2 { // Lines
+  case .line :
     let bp = NSBezierPath ()
     bp.lineWidth = 0.0
     bp.lineCapStyle = .round

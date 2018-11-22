@@ -11,6 +11,8 @@
 		CF06E7C320E802AD00EA47B9 /* extension-MergerDocument-model-update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-model-update.swift */; };
 		CF0A175020FF3ED800448A4C /* struct-BezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */; };
 		CF0A175220FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A175120FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift */; };
+		CF0A961521A70D85003BC3EA /* enum-GridStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A961421A70D85003BC3EA /* enum-GridStyle.swift */; };
+		CF0A961621A70D85003BC3EA /* enum-GridStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0A961421A70D85003BC3EA /* enum-GridStyle.swift */; };
 		CF0CABEC1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEA1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusImage.swift */; };
 		CF0CABED1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEB1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift */; };
 		CF0EFB331C0382BA0035FF76 /* CharacterSegmentListClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */; };
@@ -763,6 +765,7 @@
 		CF06E7C220E802AD00EA47B9 /* extension-MergerDocument-model-update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-MergerDocument-model-update.swift"; sourceTree = "<group>"; };
 		CF0A174F20FF3ED800448A4C /* struct-BezierPathArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "struct-BezierPathArray.swift"; sourceTree = "<group>"; };
 		CF0A175120FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-imageForInstances.swift"; sourceTree = "<group>"; };
+		CF0A961421A70D85003BC3EA /* enum-GridStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-GridStyle.swift"; sourceTree = "<group>"; };
 		CF0CABEA1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PMArtworkDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CF0CABEB1EB8E3B800DA81FF /* transient-PMArtworkDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PMArtworkDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CF0EFB321C0382BA0035FF76 /* CharacterSegmentListClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSegmentListClass.swift; sourceTree = "<group>"; };
@@ -1370,9 +1373,9 @@
 				CFC19AD221026BC0008C5707 /* NSView.swift */,
 				CF861AA41B3F06230006BE63 /* EBButton.swift */,
 				CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */,
-				CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */,
 				CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */,
 				CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */,
+				CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */,
 				CF5199971BF26C2600A63CF0 /* EBImageObserverView.swift */,
 				CF45B2721BFE8274004AFFC2 /* EBIntField.swift */,
 				CFF0417620DD568700FB1C5B /* EBIntObserverField.swift */,
@@ -1528,11 +1531,12 @@
 		CF76FB6F20F005F100EFD18D /* common-entities */ = {
 			isa = PBXGroup;
 			children = (
+				CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */,
 				CF87A96920F11C000011B9EC /* enum-BoardArchiveFormat.swift */,
+				CF0A961421A70D85003BC3EA /* enum-GridStyle.swift */,
 				CF87F3E020F0CE4500918586 /* enum-PadShape.swift */,
 				CF87F3E120F0CE4500918586 /* enum-PadSide.swift */,
 				CF5B06F7213EC3C9005D6B37 /* enum-QuadrantRotation.swift */,
-				CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */,
 			);
 			name = "common-entities";
 			path = "ElCanari/common-entities";
@@ -2235,6 +2239,7 @@
 				CF21589320FB34CC006B59C3 /* EBView.swift in Sources */,
 				CFDB681120E2A2C6006D4E90 /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF3C62F21DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
+				CF0A961521A70D85003BC3EA /* enum-GridStyle.swift in Sources */,
 				CFBAB0B420DE786C00476FB7 /* canari-geometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2515,6 +2520,7 @@
 				CF5C4DA7219F04D600EAC52A /* EBView.swift in Sources */,
 				CF5C4DA8219F04D600EAC52A /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF5C4DA9219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
+				CF0A961621A70D85003BC3EA /* enum-GridStyle.swift in Sources */,
 				CF5C4DAA219F04D600EAC52A /* canari-geometry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
