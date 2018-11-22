@@ -351,7 +351,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   func knobIndex (at inPoint : NSPoint) -> Int? {
-    for shape in self.mShapes {
+    for shape in self.mShapes.reversed () {
       if let idx = shape.knobIndex (at: inPoint) {
         return idx
       }
@@ -496,7 +496,13 @@ class EBKnobShape : EBShape {
 
   override func draw (_ inDirtyRect: NSRect) {
     super.draw (inDirtyRect)
-    let bp = NSBezierPath (rect: self.rect)
+    let bp : NSBezierPath
+    switch mKind {
+    case .rect :
+      bp = NSBezierPath (rect: self.rect)
+    case .circ :
+      bp = NSBezierPath (ovalIn: self.rect)
+    }
     bp.lineWidth = 0.0
     bp.lineCapStyle = .round
     NSColor.white.setFill ()

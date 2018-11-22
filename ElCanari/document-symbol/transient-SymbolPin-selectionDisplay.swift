@@ -21,15 +21,15 @@ func transient_SymbolPin_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let shape = EBShape ()
+  //--- Pin
+    let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
+    shape.append (shape: EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect))
   //--- Label
     let labelPoint = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
     shape.append (shape: EBKnobShape (at: labelPoint, index: SYMBOL_PIN_LABEL, .circ))
   //--- Number
     let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
     shape.append (shape: EBKnobShape (at: numberPoint, index: SYMBOL_PIN_NUMBER, .circ))
-  //--- Pin
-    let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
-    shape.append (shape: EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect))
   //---
     return shape
 //--- END OF USER ZONE 2

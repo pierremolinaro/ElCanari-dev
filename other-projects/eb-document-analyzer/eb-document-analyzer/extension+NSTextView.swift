@@ -52,10 +52,10 @@ extension NSTextView {
 
   func appendMessageString (_ inString : String) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.systemFont (ofSize: NSFont.systemFontSize ()),
-      NSForegroundColorAttributeName : NSColor.black
+      convertFromNSAttributedStringKey(NSAttributedString.Key.font) : NSFont.systemFont (ofSize: NSFont.systemFontSize ),
+      convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : NSColor.black
     ]
-    let str = NSAttributedString (string:inString, attributes:attributes)
+    let str = NSAttributedString (string:inString, attributes:convertToOptionalNSAttributedStringKeyDictionary(attributes))
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         ts.append (str)
@@ -68,10 +68,10 @@ extension NSTextView {
 
   func appendMessageString (_ inString : String, color:NSColor) {
     let attributes : [String : NSObject] = [
-      NSFontAttributeName : NSFont.systemFont (ofSize: NSFont.systemFontSize ()),
-      NSForegroundColorAttributeName : color
+      convertFromNSAttributedStringKey(NSAttributedString.Key.font) : NSFont.systemFont (ofSize: NSFont.systemFontSize ),
+      convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : color
     ]
-    let str = NSAttributedString (string:inString, attributes:attributes)
+    let str = NSAttributedString (string:inString, attributes:convertToOptionalNSAttributedStringKeyDictionary(attributes))
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         ts.append (str)
@@ -108,3 +108,14 @@ extension NSTextView {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
