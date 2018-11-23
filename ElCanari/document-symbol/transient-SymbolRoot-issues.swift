@@ -15,7 +15,13 @@ func transient_SymbolRoot_issues (
        _ self_symbolObjects_issues : [SymbolObject_issues]
 ) -> InstanceIssueArray {
 //--- START OF USER ZONE 2
-
+  var issues = [InstanceIssue] ()
+  for optionalIssueArray in self_symbolObjects_issues {
+    if let issueArray = optionalIssueArray.issues {
+      issues += issueArray.mIssues
+    }
+  }
+  return InstanceIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 
