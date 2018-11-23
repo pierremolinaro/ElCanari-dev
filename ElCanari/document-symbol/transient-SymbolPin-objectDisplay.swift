@@ -19,7 +19,8 @@ func transient_SymbolPin_objectDisplay (
        _ self_xNumber : Int,            
        _ self_yNumber : Int,            
        _ self_label : String,           
-       _ self_number : String,          
+       _ self_labelHorizontalAlignment : HorizontalAlignment,
+       _ self_numberHorizontalAlignment : HorizontalAlignment,
        _ prefs_symbolColor : NSColor,   
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
@@ -39,10 +40,10 @@ func transient_SymbolPin_objectDisplay (
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
-    shape.append (shape: EBTextShape (self_label, labelOrigin, textAttributes, .center, .center))
+    let label = (self_label == "") ? "?" : self_label
+    shape.append (shape: EBTextShape (label, labelOrigin, textAttributes, self_labelHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    let number = (self_number == "") ? "##" : self_number
-    shape.append (shape: EBTextShape (number, numberOrigin, textAttributes, .center, .center))
+    shape.append (shape: EBTextShape ("##", numberOrigin, textAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     return shape
 //--- END OF USER ZONE 2
 }

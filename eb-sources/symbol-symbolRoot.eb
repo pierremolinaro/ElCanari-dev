@@ -1,5 +1,10 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+enum HorizontalAlignment {
+  left, center, right
+}
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 abstract graphic entity SymbolObject {
 #  abstract transient CanariRect objectRect ;
 }
@@ -13,23 +18,26 @@ graphic entity SymbolPin : SymbolObject {
   property @signature Int yLabel default 11_440_00 ;
   property @signature Int xNumber default 9_154_00 ;
   property @signature Int yNumber default 6_868_00 ;
-  property @signature String label default "?" ;
-  property @signature String number default "" ;
-  property @signature Bool pinIsVisibleInSchematics default yes ;
+  property @signature String label default "" ;
+  property @signature HorizontalAlignment labelHorizontalAlignment default center ;
+  property @signature HorizontalAlignment numberHorizontalAlignment default center ;
+  
+  property @signature Bool pinNumberIsVisibleInSchematics default yes ;
   
   transient EBShape objectDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xLabel, self.yLabel, 
      self.xNumber, self.yNumber, 
-     self.label, self.number,
+     self.label,
+     self.labelHorizontalAlignment, self.numberHorizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
   ;
 
   transient EBShape selectionDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xLabel, self.yLabel, 
-     self.xNumber, self.yNumber
-     #self.text, prefs.pinNameFont
+     self.xNumber, self.yNumber,
+     self.labelHorizontalAlignment, self.numberHorizontalAlignment
   ;
   
 #  transient CanariRect objectRect dependsFrom
@@ -94,7 +102,7 @@ graphic entity SymbolOval : SymbolObject {
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
   transient EBShape selectionDisplay dependsFrom
-     self.x, self.y, self.width, self.height
+     self.x, self.y, self.width, self.height, prefs.symbolDrawingWidthMultipliedByTen
   ;
 }
 

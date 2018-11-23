@@ -15,18 +15,25 @@ func transient_SymbolOval_selectionDisplay (
        _ self_x : Int,                      
        _ self_y : Int,                      
        _ self_width : Int,                  
-       _ self_height : Int
+       _ self_height : Int,                 
+       _ prefs_symbolDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
+  let shape = transient_SymbolOval_objectDisplay (self_x, self_y, self_width, self_height, NSColor.cyan, prefs_symbolDrawingWidthMultipliedByTen)
   let x = canariUnitToCocoa (self_x)
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
-  let shape = EBShape ()
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .rect))
+//  let r = CGRect (x: x, y: y, width: width, height: height)
+//  let bp = NSBezierPath (ovalIn: r)
+//  bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
+//  bp.lineCapStyle = .round
+//  let shape = EBShape ()
+//  shape.append (shape: EBStrokeBezierPathShape ([bp], NSColor.cyan))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .circ))
   return shape
 //--- END OF USER ZONE 2
 }
