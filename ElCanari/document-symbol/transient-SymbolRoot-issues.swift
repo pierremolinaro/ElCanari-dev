@@ -13,15 +13,15 @@ import Cocoa
 
 func transient_SymbolRoot_issues (
        _ self_symbolObjects_issues : [SymbolObject_issues]
-) -> InstanceIssueArray {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  var issues = [InstanceIssue] ()
+  var issues = [CanariIssue] ()
   for optionalIssueArray in self_symbolObjects_issues {
     if let issueArray = optionalIssueArray.issues {
       issues += issueArray.mIssues
     }
   }
-  return InstanceIssueArray (issues: issues)
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

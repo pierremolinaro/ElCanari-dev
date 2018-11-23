@@ -16,9 +16,9 @@ func transient_SymbolOval_issues (
        _ self_y : Int,            
        _ self_width : Int,        
        _ self_height : Int
-) -> InstanceIssueArray {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  return InstanceIssueArray (issues: [])
+  return CanariIssueArray (issues: [])
 //--- END OF USER ZONE 2
 }
 

@@ -17,7 +17,7 @@ extern outlet class NSTextField : NSControl ;
 extern outlet class NSSegmentedControl ;
 
 extern outlet class MergerIssueTableView ;
-binding MergerIssueTableView $issues : transient InstanceIssueArray ;
+binding MergerIssueTableView $issues : transient CanariIssueArray ;
 
 extern outlet class CanariDimensionTextField ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;

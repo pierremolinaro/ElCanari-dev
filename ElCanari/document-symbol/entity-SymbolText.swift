@@ -37,7 +37,7 @@ protocol SymbolText_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolText_issues : class {
-  var issues : InstanceIssueArray? { get }
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

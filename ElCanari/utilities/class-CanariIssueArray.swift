@@ -1,5 +1,5 @@
 //
-//  class-InstanceIssueArray.swift
+//  class-CanariIssueArray.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 25/07/2018.
@@ -10,22 +10,22 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   InstanceIssueArray
+//   CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-struct InstanceIssueArray : Hashable {
+struct CanariIssueArray : Hashable {
 
   //····················································································································
   //   Properties
   //····················································································································
 
-  let mIssues : [InstanceIssue]
+  let mIssues : [CanariIssue]
 
   //····················································································································
   //   Init
   //····················································································································
 
-  init (issues inIssues : [InstanceIssue]) {
+  init (issues inIssues : [CanariIssue]) {
     mIssues = inIssues
   }
 
@@ -43,10 +43,10 @@ struct InstanceIssueArray : Hashable {
     var n = 0
     for issue in self.mIssues {
       switch issue.mKind {
-      case .intersecting, .outside :
+      case .error :
         n += 1
-      case .gap :
-        break
+      case .warning :
+        ()
       }
     }
     return n
@@ -60,9 +60,9 @@ struct InstanceIssueArray : Hashable {
     var n = 0
     for issue in self.mIssues {
       switch issue.mKind {
-      case .intersecting, .outside :
-        break
-      case .gap :
+      case .error :
+        ()
+      case .warning :
         n += 1
       }
     }
@@ -73,7 +73,7 @@ struct InstanceIssueArray : Hashable {
   //   Protocol Equatable
   //····················································································································
 
-  public static func == (lhs: InstanceIssueArray, rhs: InstanceIssueArray) -> Bool {
+  public static func == (lhs: CanariIssueArray, rhs: CanariIssueArray) -> Bool {
     if lhs.mIssues.count != rhs.mIssues.count {
       return false
     }else{
@@ -103,67 +103,5 @@ struct InstanceIssueArray : Hashable {
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   InstanceIssueKind
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum InstanceIssueKind : Int {
-  case intersecting
-  case outside
-  case gap
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   InstanceIssue
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct InstanceIssue : Hashable {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let mKind : InstanceIssueKind
-  let mShapes : EBShape
-  let mRefRect : CanariRect
-
-  //····················································································································
-  //   Init
-  //····················································································································
-
-  init (kind inKind : InstanceIssueKind, shapes inShapes : EBShape, refRect inRefRect : CanariRect) {
-    mKind = inKind
-    mShapes = inShapes
-    mRefRect = inRefRect
-  }
-
-  //····················································································································
-  //   Protocol Equatable
-  //····················································································································
-
-  public static func == (lhs: InstanceIssue, rhs: InstanceIssue) -> Bool {
-    return (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes) && (lhs.mRefRect == rhs.mRefRect)
-  }
-
-  //····················································································································
-  //   Protocol Hashable
-  //····················································································································
-
-  public var hashValue : Int { return self.mKind.hashValue ^ self.mShapes.hashValue ^ self.mRefRect.hashValue }
-
-  //····················································································································
-  //
-  //····················································································································
-
-  public static func displaySortingCompare (lhs: InstanceIssue, rhs: InstanceIssue) -> Bool {
-    return (lhs.mRefRect.bottom < rhs.mRefRect.bottom)
-      || ((lhs.mRefRect.bottom == rhs.mRefRect.bottom) && (lhs.mRefRect.left < rhs.mRefRect.left))
-  }
-
-  //····················································································································
-
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

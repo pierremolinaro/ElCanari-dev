@@ -19,9 +19,9 @@ func transient_SymbolPin_issues (
        _ self_xNumber : Int,     
        _ self_yNumber : Int,     
        _ self_label : String
-) -> InstanceIssueArray {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  return InstanceIssueArray (issues: [])
+  return CanariIssueArray (issues: [])
 //--- END OF USER ZONE 2
 }
 

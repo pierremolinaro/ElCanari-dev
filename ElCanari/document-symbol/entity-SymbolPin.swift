@@ -79,7 +79,7 @@ protocol SymbolPin_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolPin_issues : class {
-  var issues : InstanceIssueArray? { get }
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,7 +1,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SymbolObject {
-  abstract transient InstanceIssueArray issues ; 
+  abstract transient CanariIssueArray issues ; 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35,7 +35,7 @@ graphic entity SymbolPin : SymbolObject {
      self.labelHorizontalAlignment, self.numberHorizontalAlignment
   ;
   
-  transient InstanceIssueArray issues dependsFrom
+  transient CanariIssueArray issues dependsFrom
      self.xPin, self.yPin, 
      self.xLabel, self.yLabel, 
      self.xNumber, self.yNumber, 
@@ -60,7 +60,7 @@ graphic entity SymbolText : SymbolObject {
      self.x, self.y, self.text, prefs.pinNameFont
   ;
 
-  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.text ;
+  transient CanariIssueArray issues dependsFrom self.x, self.y, self.text ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -79,7 +79,7 @@ graphic entity SymbolSolidRect : SymbolObject {
      self.x, self.y, self.width, self.height
   ;
   
-  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -98,7 +98,7 @@ graphic entity SymbolOval : SymbolObject {
      self.x, self.y, self.width, self.height, prefs.symbolDrawingWidthMultipliedByTen
   ;
   
-  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -123,7 +123,7 @@ graphic entity SymbolBezierCurve : SymbolObject {
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
   
-  transient InstanceIssueArray issues dependsFrom
+  transient CanariIssueArray issues dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
@@ -142,7 +142,7 @@ graphic entity SymbolSegment : SymbolObject {
   ;
   transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
-  transient InstanceIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -167,7 +167,7 @@ entity SymbolRoot {
   toMany @cascading @signature SymbolObject symbolObjects ;
 
 #--- Issues
-  transient InstanceIssueArray issues dependsFrom self.symbolObjects.all.issues ;
+  transient CanariIssueArray issues dependsFrom self.symbolObjects.all.issues ;
 }
 
 

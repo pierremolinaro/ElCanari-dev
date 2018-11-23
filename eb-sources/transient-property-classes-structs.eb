@@ -7,6 +7,6 @@ transient property class MergerPadArray ;
 transient property class MergerBoardModelArray ;
 transient property class BezierPathArray ;
 
-transient property struct InstanceIssueArray ;
+transient property struct CanariIssueArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

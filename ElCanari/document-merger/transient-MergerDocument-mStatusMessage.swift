@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_mStatusMessage (
-       _ self_issues : InstanceIssueArray
+       _ self_issues : CanariIssueArray
 ) -> String {
 //--- START OF USER ZONE 2
   var s = "No error, no warning"

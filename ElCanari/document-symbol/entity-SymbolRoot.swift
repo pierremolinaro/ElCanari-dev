@@ -49,7 +49,7 @@ protocol SymbolRoot_selectedPageIndex : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolRoot_issues : class {
-  var issues : InstanceIssueArray? { get }
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -242,17 +242,17 @@ class SymbolRoot : EBManagedObject,
   //   Transient property: issues
   //····················································································································
 
-  var issues_property = EBTransientProperty_InstanceIssueArray ()
+  var issues_property = EBTransientProperty_CanariIssueArray ()
 
   //····················································································································
 
-  var issues_property_selection : EBSelection <InstanceIssueArray> {
+  var issues_property_selection : EBSelection <CanariIssueArray> {
     return self.issues_property.prop
   }
 
   //····················································································································
 
-    var issues : InstanceIssueArray? {
+    var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil

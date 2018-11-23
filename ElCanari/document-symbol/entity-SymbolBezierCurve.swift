@@ -67,7 +67,7 @@ protocol SymbolBezierCurve_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolBezierCurve_issues : class {
-  var issues : InstanceIssueArray? { get }
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

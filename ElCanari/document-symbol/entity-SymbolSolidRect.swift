@@ -43,7 +43,7 @@ protocol SymbolSolidRect_selectionDisplay : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol SymbolSolidRect_issues : class {
-  var issues : InstanceIssueArray? { get }
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -17,10 +17,10 @@ func transient_MergerDocument_issues (
        _ root_boardDisplayRect : CanariRect,
        _ root_boardInstances_instanceRect : [MergerBoardInstance_instanceRect],
        _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
-) -> InstanceIssueArray {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
       let cocoaDisplayRect = root_boardDisplayRect.cocoaRect ()
-      var array = [InstanceIssue] ()
+      var array = [CanariIssue] ()
     //-------------------- Check for instance intersection
       var idx = 0
       while idx < root_boardInstances_instanceRect.count {
@@ -42,7 +42,7 @@ func transient_MergerDocument_issues (
             let bp2 = NSBezierPath (rect: intersectionEnlarged)
             bp2.lineWidth = 2.0
             shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-            let issue = InstanceIssue (kind: .intersecting, shapes: shapes, refRect: intersection)
+            let issue = CanariIssue (kind: .error, message: "Intersection", shapes: shapes, refRect: intersection)
             array.append (issue)
           }
           idy += 1
@@ -63,14 +63,14 @@ func transient_MergerDocument_issues (
           let bp2 = NSBezierPath (rect: intersectionEnlarged)
           bp2.lineWidth = 2.0
           shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-          let issue = InstanceIssue (kind: .outside, shapes: shapes, refRect: instanceRect)
+          let issue = CanariIssue (kind: .error, message: "Outside board", shapes: shapes, refRect: instanceRect)
           array.append (issue)
         }
       }
     //-------------------- Sort issues
-      array.sort (by: InstanceIssue.displaySortingCompare)
+      array.sort (by: CanariIssue.displaySortingCompare)
     //--------------------
-      return InstanceIssueArray (issues: array)
+      return CanariIssueArray (issues: array)
 //--- END OF USER ZONE 2
 }
 

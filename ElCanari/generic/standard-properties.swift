@@ -1628,11 +1628,11 @@ typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[B
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property InstanceIssueArray
+//   Property CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyProperty_InstanceIssueArray  = EBReadOnlyValueProperty <InstanceIssueArray>
-typealias EBTransientProperty_InstanceIssueArray = EBTransientValueProperty <InstanceIssueArray>
+typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
+typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MergerDocument_mStatusImage (
-       _ self_issues : InstanceIssueArray
+       _ self_issues : CanariIssueArray
 ) -> NSImage {
 //--- START OF USER ZONE 2
   if self_issues.count == 0 {

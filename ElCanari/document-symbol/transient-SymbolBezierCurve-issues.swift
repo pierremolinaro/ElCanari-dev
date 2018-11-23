@@ -20,9 +20,9 @@ func transient_SymbolBezierCurve_issues (
        _ self_cpy1 : Int,                
        _ self_cpx2 : Int,                
        _ self_cpy2 : Int
-) -> InstanceIssueArray {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  var issues = [InstanceIssue] ()
+  var issues = [CanariIssue] ()
   if (self_x1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     let r = NSRect (
       x: canariUnitToCocoa (self_x1),
@@ -34,9 +34,9 @@ func transient_SymbolBezierCurve_issues (
     let bp2 = NSBezierPath (rect: r)
     bp2.lineWidth = 2.0
     shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-    issues.append (InstanceIssue (kind: .intersecting, shapes: shapes, refRect: CanariRect ()))
+    issues.append (CanariIssue (kind: .error, message: "Point is not aligned on 25 mils grid", shapes: shapes, refRect: CanariRect ()))
   }
-  return InstanceIssueArray (issues: issues)
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

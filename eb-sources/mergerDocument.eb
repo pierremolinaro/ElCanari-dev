@@ -14,7 +14,7 @@ document MergerDocument root MergerRoot {
     $run self.showPrefsForSettingMergerDisplayAction ;
 
 #--- Issues
-  transient InstanceIssueArray issues dependsFrom 
+  transient CanariIssueArray issues dependsFrom 
     root.overlapingArrangment, root.boardRect, root.boardDisplayRect,
     root.boardInstances.all.instanceRect, root.boardInstances.all.boardLimitWidth ;
 

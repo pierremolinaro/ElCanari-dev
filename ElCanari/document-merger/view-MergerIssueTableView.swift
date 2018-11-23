@@ -54,7 +54,7 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //    Table view data source protocol
   //····················································································································
 
-  fileprivate var mModelArray = [InstanceIssue] () {
+  fileprivate var mModelArray = [CanariIssue] () {
     didSet {
       self.reloadData ()
     }
@@ -72,20 +72,13 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     var result : Any? = nil
     if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
       switch mModelArray [row].mKind {
-      case .gap :
+      case .warning :
         result = NSImage (named: NSImage.Name ("orange20"))!
-      case .intersecting, .outside :
+      case .error :
         result = NSImage (named: NSImage.Name ("red20"))!
       }
     }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
-      switch mModelArray [row].mKind {
-      case .gap :
-        result = "Gap"
-      case .intersecting :
-        result = "Intersection"
-      case .outside :
-        result = "Outside"
-      }
+      result = mModelArray [row].mMessage
     }
     return result
   }
@@ -104,7 +97,7 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   private var mIssueController : Controller_MergerIssueTableView_issues?
 
-  func bind_issues (_ issues:EBReadOnlyProperty_InstanceIssueArray, file:String, line:Int) {
+  func bind_issues (_ issues:EBReadOnlyProperty_CanariIssueArray, file:String, line:Int) {
     mIssueController = Controller_MergerIssueTableView_issues (issues:issues, outlet:self)
   }
 
@@ -125,12 +118,12 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
 class Controller_MergerIssueTableView_issues : EBSimpleController {
 
-  private let mModels : EBReadOnlyProperty_InstanceIssueArray
+  private let mModels : EBReadOnlyProperty_CanariIssueArray
   private let mOutlet : MergerIssueTableView
 
   //····················································································································
 
-  init (issues : EBReadOnlyProperty_InstanceIssueArray, outlet : MergerIssueTableView) {
+  init (issues : EBReadOnlyProperty_CanariIssueArray, outlet : MergerIssueTableView) {
     mModels = issues
     mOutlet = outlet
     super.init (observedObjects:[issues], outlet:outlet)
