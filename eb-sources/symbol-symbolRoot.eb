@@ -6,7 +6,7 @@ enum HorizontalAlignment {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract graphic entity SymbolObject {
-#  abstract transient CanariRect objectRect ;
+  abstract transient InstanceIssueArray issues ; 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -40,13 +40,12 @@ graphic entity SymbolPin : SymbolObject {
      self.labelHorizontalAlignment, self.numberHorizontalAlignment
   ;
   
-#  transient CanariRect objectRect dependsFrom
-#     self.xPin, self.yPin, 
-#     self.xLabel, self.yLabel, 
-#     self.xNumber, self.yNumber, 
-#     self.label, self.number,
-#     prefs.symbolColor, prefs.pinNameFont
-#  ;
+  transient InstanceIssueArray issues dependsFrom
+     self.xPin, self.yPin, 
+     self.xLabel, self.yLabel, 
+     self.xNumber, self.yNumber, 
+     self.label
+  ;
 
 }
 
@@ -66,10 +65,7 @@ graphic entity SymbolText : SymbolObject {
      self.x, self.y, self.text, prefs.pinNameFont
   ;
 
-#  transient CanariRect objectRect dependsFrom
-#     self.x, self.y, self.text,
-#     prefs.symbolColor, prefs.pinNameFont
-#  ;
+  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.text ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -87,6 +83,8 @@ graphic entity SymbolSolidRect : SymbolObject {
   transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
+  
+  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -104,6 +102,8 @@ graphic entity SymbolOval : SymbolObject {
   transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height, prefs.symbolDrawingWidthMultipliedByTen
   ;
+  
+  transient InstanceIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -127,6 +127,11 @@ graphic entity SymbolBezierCurve : SymbolObject {
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
+  
+  transient InstanceIssueArray issues dependsFrom
+    self.x1, self.y1, self.x2, self.y2,
+    self.cpx1, self.cpy1, self.cpx2, self.cpy2
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -141,6 +146,8 @@ graphic entity SymbolSegment : SymbolObject {
      self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
   transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
+  transient InstanceIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -17,13 +17,42 @@ protocol SymbolObject_objectDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolObject_issues : class {
+  var issues : InstanceIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SymbolObject : EBGraphicManagedObject,
          SymbolObject_selectionDisplay,
-         SymbolObject_objectDisplay {
+         SymbolObject_objectDisplay,
+         SymbolObject_issues {
 
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_InstanceIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <InstanceIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+    var issues : InstanceIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //    init
@@ -63,6 +92,14 @@ class SymbolObject : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
       valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -266,6 +303,62 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolObject>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -429,6 +522,7 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
         }
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolObject in addedObjectSet {
@@ -437,6 +531,7 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
         }
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

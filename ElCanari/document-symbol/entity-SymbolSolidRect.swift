@@ -41,6 +41,12 @@ protocol SymbolSolidRect_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolSolidRect_issues : class {
+  var issues : InstanceIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -50,7 +56,8 @@ class SymbolSolidRect : SymbolObject,
          SymbolSolidRect_height,
          SymbolSolidRect_x,
          SymbolSolidRect_objectDisplay,
-         SymbolSolidRect_selectionDisplay {
+         SymbolSolidRect_selectionDisplay,
+         SymbolSolidRect_issues {
 
   //····················································································································
   //   Atomic property: y
@@ -144,7 +151,6 @@ class SymbolSolidRect : SymbolObject,
     return self.x_property.prop
   }
 
-
   //····················································································································
   //    init
   //····················································································································
@@ -219,6 +225,34 @@ class SymbolSolidRect : SymbolObject,
     self.y_property.addEBObserver (self.selectionDisplay_property)
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SymbolSolidRect_issues (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.addEBObserver (self.issues_property)
+    self.y_property.addEBObserver (self.issues_property)
+    self.width_property.addEBObserver (self.issues_property)
+    self.height_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.height_property.setSignatureObserver (observer:self)
@@ -241,6 +275,10 @@ class SymbolSolidRect : SymbolObject,
     self.y_property.removeEBObserver (self.selectionDisplay_property)
     self.width_property.removeEBObserver (self.selectionDisplay_property)
     self.height_property.removeEBObserver (self.selectionDisplay_property)
+    self.x_property.removeEBObserver (self.issues_property)
+    self.y_property.removeEBObserver (self.issues_property)
+    self.width_property.removeEBObserver (self.issues_property)
+    self.height_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -297,6 +335,14 @@ class SymbolSolidRect : SymbolObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -769,6 +815,62 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -830,6 +932,7 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
       //--- Remove observers of transient properties
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -840,6 +943,7 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
        //--- Add observers of transient properties
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_issues_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -956,6 +1060,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolSolidRect in addedObjectSet {
@@ -968,6 +1073,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

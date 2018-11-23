@@ -77,6 +77,12 @@ protocol SymbolPin_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPin_issues : class {
+  var issues : InstanceIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -92,7 +98,8 @@ class SymbolPin : SymbolObject,
          SymbolPin_pinNumberIsVisibleInSchematics,
          SymbolPin_xPin,
          SymbolPin_objectDisplay,
-         SymbolPin_selectionDisplay {
+         SymbolPin_selectionDisplay,
+         SymbolPin_issues {
 
   //····················································································································
   //   Atomic property: yPin
@@ -324,7 +331,6 @@ class SymbolPin : SymbolObject,
     return self.xPin_property.prop
   }
 
-
   //····················································································································
   //    init
   //····················································································································
@@ -429,6 +435,40 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.addEBObserver (self.selectionDisplay_property)
     self.labelHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.xPin_property_selection.kind ()
+        kind &= unwSelf.yPin_property_selection.kind ()
+        kind &= unwSelf.xLabel_property_selection.kind ()
+        kind &= unwSelf.yLabel_property_selection.kind ()
+        kind &= unwSelf.xNumber_property_selection.kind ()
+        kind &= unwSelf.yNumber_property_selection.kind ()
+        kind &= unwSelf.label_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.label_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5, v6))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xPin_property.addEBObserver (self.issues_property)
+    self.yPin_property.addEBObserver (self.issues_property)
+    self.xLabel_property.addEBObserver (self.issues_property)
+    self.yLabel_property.addEBObserver (self.issues_property)
+    self.xNumber_property.addEBObserver (self.issues_property)
+    self.yNumber_property.addEBObserver (self.issues_property)
+    self.label_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.label_property.setSignatureObserver (observer:self)
@@ -466,6 +506,13 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.removeEBObserver (self.selectionDisplay_property)
     self.labelHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.xPin_property.removeEBObserver (self.issues_property)
+    self.yPin_property.removeEBObserver (self.issues_property)
+    self.xLabel_property.removeEBObserver (self.issues_property)
+    self.yLabel_property.removeEBObserver (self.issues_property)
+    self.xNumber_property.removeEBObserver (self.issues_property)
+    self.yNumber_property.removeEBObserver (self.issues_property)
+    self.label_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -570,6 +617,14 @@ class SymbolPin : SymbolObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -1432,6 +1487,62 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1499,6 +1610,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
       //--- Remove observers of transient properties
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1515,6 +1627,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
        //--- Add observers of transient properties
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_issues_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1637,6 +1750,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolPin in addedObjectSet {
@@ -1655,6 +1769,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }
