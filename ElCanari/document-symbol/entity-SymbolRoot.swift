@@ -47,6 +47,12 @@ protocol SymbolRoot_selectedPageIndex : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolRoot_issues : class {
+  var issues : InstanceIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_verticalFlip,
          SymbolRoot_gridStyle,
          SymbolRoot_gridStep,
-         SymbolRoot_selectedPageIndex {
+         SymbolRoot_selectedPageIndex,
+         SymbolRoot_issues {
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -232,6 +239,29 @@ class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_InstanceIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <InstanceIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+    var issues : InstanceIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -253,6 +283,28 @@ class SymbolRoot : EBManagedObject,
     self.symbolObjects_property.undoManager = self.undoManager
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.symbolObjects_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.symbolObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolRoot_issues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
@@ -263,6 +315,7 @@ class SymbolRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
+    self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
   }
 
   //····················································································································
@@ -328,6 +381,14 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.selectedPageIndex_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -896,6 +957,62 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -958,6 +1075,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
+        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -969,6 +1087,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         addEBObserversOf_gridStep_toElementsOfSet (addedSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
+        addEBObserversOf_issues_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1086,6 +1205,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolRoot in addedObjectSet {
@@ -1099,6 +1219,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

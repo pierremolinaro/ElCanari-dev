@@ -7,13 +7,6 @@ transient property class MergerPadArray ;
 transient property class MergerBoardModelArray ;
 transient property class BezierPathArray ;
 
-#transient property struct CanariHorizontalRect ;
 transient property struct InstanceIssueArray ;
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum GridStyle {
-  noGrid, dot, line
-}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

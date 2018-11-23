@@ -1,5 +1,6 @@
 include "eb-sources/canari-outlet-class-declaration.eb" ;
 include "eb-sources/transient-property-classes-structs.eb" ;
+include "eb-sources/common-entities.eb" ;
 #include "eb-sources/outlets.ebt" ;
 #include "eb-sources/controllers.ebt" ;
 #include "eb-sources/graphic_entity_and_controller.ebt" ;
@@ -16,9 +17,6 @@ include "eb-sources/font-FontDocument.eb" ;
 #--- Artwork
 include "eb-sources/artworkDocument.eb" ;
 #--- Merger
-include "eb-sources/PadShape.eb" ;
-include "eb-sources/PadSide.eb" ;
-include "eb-sources/QuadrantRotation.eb" ;
 include "eb-sources/BoardArchiveFormat.eb" ;
 include "eb-sources/BoardModelPad.eb" ;
 include "eb-sources/CanariSegment.eb" ;
