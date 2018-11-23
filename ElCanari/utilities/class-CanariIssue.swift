@@ -31,17 +31,20 @@ struct CanariIssue : Hashable {
   let mMessage : String
   let mKind : CanariIssueKind
   let mShapes : EBShape
-  let mRefRect : CanariRect
+  fileprivate let mRefPoint : NSPoint
 
   //····················································································································
   //   Init
   //····················································································································
 
-  init (kind inKind : CanariIssueKind, message inMessage : String, shapes inShapes : EBShape, refRect inRefRect : CanariRect) {
+  init (kind inKind : CanariIssueKind,
+        message inMessage : String,
+        shapes inShapes : EBShape,
+        refPoint inRefPoint : NSPoint) {
     mMessage = inMessage
     mShapes = inShapes
     mKind = inKind
-    mRefRect = inRefRect
+    mRefPoint = inRefPoint
   }
 
   //····················································································································
@@ -49,22 +52,25 @@ struct CanariIssue : Hashable {
   //····················································································································
 
   public static func == (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
-    return (lhs.mMessage == rhs.mMessage) && (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes) && (lhs.mRefRect == rhs.mRefRect)
+    return (lhs.mMessage == rhs.mMessage) && (lhs.mKind == rhs.mKind) && (lhs.mShapes == rhs.mShapes) && (lhs.mRefPoint == rhs.mRefPoint)
   }
 
   //····················································································································
   //   Protocol Hashable
   //····················································································································
 
-  public var hashValue : Int { return self.mMessage.hashValue ^ self.mKind.hashValue ^ self.mShapes.hashValue ^ self.mRefRect.hashValue }
+  public var hashValue : Int {
+    return self.mMessage.hashValue ^ self.mKind.hashValue ^ self.mShapes.hashValue
+    ^ self.mRefPoint.x.hashValue ^ self.mRefPoint.y.hashValue
+  }
 
   //····················································································································
   //
   //····················································································································
 
   public static func displaySortingCompare (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
-    return (lhs.mRefRect.bottom < rhs.mRefRect.bottom)
-      || ((lhs.mRefRect.bottom == rhs.mRefRect.bottom) && (lhs.mRefRect.left < rhs.mRefRect.left))
+    return (lhs.mRefPoint.x < rhs.mRefPoint.x)
+      || ((lhs.mRefPoint.x == rhs.mRefPoint.x) && (lhs.mRefPoint.y < rhs.mRefPoint.y))
   }
 
   //····················································································································

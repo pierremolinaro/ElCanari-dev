@@ -42,7 +42,7 @@ func transient_MergerDocument_issues (
             let bp2 = NSBezierPath (rect: intersectionEnlarged)
             bp2.lineWidth = 2.0
             shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-            let issue = CanariIssue (kind: .error, message: "Intersection", shapes: shapes, refRect: intersection)
+            let issue = CanariIssue (kind: .error, message: "Intersection", shapes: shapes, refPoint: intersection.origin.cocoaPoint ())
             array.append (issue)
           }
           idy += 1
@@ -63,7 +63,7 @@ func transient_MergerDocument_issues (
           let bp2 = NSBezierPath (rect: intersectionEnlarged)
           bp2.lineWidth = 2.0
           shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-          let issue = CanariIssue (kind: .error, message: "Outside board", shapes: shapes, refRect: instanceRect)
+          let issue = CanariIssue (kind: .error, message: "Outside board", shapes: shapes, refPoint: instanceRect.origin.cocoaPoint ())
           array.append (issue)
         }
       }
