@@ -251,65 +251,6 @@ extension MergerDocument {
       }else{
 
       }
-
-
-
-  //  //--- Back Legend texts
-  //    var backLegendLinesEntities = [SegmentEntity] ()
-  //    let backLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-BACK", &ioErrorArray)
-  //    for str in backLegendLines {
-  //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &ioErrorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backLegendLinesEntities.append (segment)
-  //    }
-  //    boardModel.backLegendLines_property.setProp (backLegendLinesEntities)
-  //  //--- Front Legend texts
-  //    var frontLegendLinesEntities = [SegmentEntity] ()
-  //    let frontLegendLines = stringArray (fromDict: boardArchiveDict, key: "LINES-FRONT", &ioErrorArray)
-  //    for str in frontLegendLines {
-  //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &ioErrorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontLegendLinesEntities.append (segment)
-  //    }
-  //    boardModel.frontLegendLines_property.setProp (frontLegendLinesEntities)
-  //  //--- Back Legend texts
-  //    var backLegendTextEntities = [SegmentEntity] ()
-  //    let backLegendTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-BACK", &ioErrorArray)
-  //    for str in backLegendTexts {
-  //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &ioErrorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      backLegendTextEntities.append (segment)
-  //    }
-  //    boardModel.backLegendTexts_property.setProp (backLegendTextEntities)
-  //  //--- Front Legend texts
-  //    var frontLegendTextEntities = [SegmentEntity] ()
-  //    let frontTexts = stringArray (fromDict: boardArchiveDict, key: "TEXTS-LEGEND-FRONT", &ioErrorArray)
-  //    for str in frontTexts {
-  //      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
-  //      let ints = array5int (fromString: str, &ioErrorArray)
-  //      segment.x1 = ints [0]
-  //      segment.y1 = ints [1]
-  //      segment.x2 = ints [2]
-  //      segment.y2 = ints [3]
-  //      segment.width = ints [4]
-  //      frontLegendTextEntities.append (segment)
-  //    }
-  //    boardModel.frontLegendTexts_property.setProp (frontLegendTextEntities)
     }
   }
 

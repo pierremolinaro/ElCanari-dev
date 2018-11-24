@@ -408,6 +408,7 @@ class SymbolSegment : SymbolObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

@@ -3264,6 +3264,29 @@ class BoardModel : EBManagedObject,
     }
     self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Install undoers and opposite setter for relationships
+    self.frontLegendLines_property.undoManager = self.undoManager
+    self.backLegendLines_property.undoManager = self.undoManager
+    self.frontLegendTexts_property.undoManager = self.undoManager
+    self.frontLayoutTexts_property.undoManager = self.undoManager
+    self.backLegendTexts_property.undoManager = self.undoManager
+    self.backLayoutTexts_property.undoManager = self.undoManager
+    self.internalBoardsLimits_property.undoManager = self.undoManager
+    self.drills_property.undoManager = self.undoManager
+    self.vias_property.undoManager = self.undoManager
+    self.frontPads_property.undoManager = self.undoManager
+    self.backPads_property.undoManager = self.undoManager
+    self.backComponentNames_property.undoManager = self.undoManager
+    self.frontComponentNames_property.undoManager = self.undoManager
+    self.frontComponentValues_property.undoManager = self.undoManager
+    self.backComponentValues_property.undoManager = self.undoManager
+    self.backTracks_property.undoManager = self.undoManager
+    self.frontTracks_property.undoManager = self.undoManager
+    self.frontPackages_property.undoManager = self.undoManager
+    self.backPackages_property.undoManager = self.undoManager
+    self.myInstances_property.undoManager = self.undoManager
+    self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
+      inManagedObject?.myModel_property.setProp (self)
+    }
   //--- register properties for handling signature
   }
 
@@ -3953,6 +3976,146 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.instanceCount_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "frontLegendLines",
+      idx:frontLegendLines_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontLegendLines_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backLegendLines",
+      idx:backLegendLines_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backLegendLines_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontLegendTexts",
+      idx:frontLegendTexts_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontLegendTexts_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontLayoutTexts",
+      idx:frontLayoutTexts_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontLayoutTexts_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backLegendTexts",
+      idx:backLegendTexts_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backLegendTexts_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backLayoutTexts",
+      idx:backLayoutTexts_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backLayoutTexts_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "internalBoardsLimits",
+      idx:internalBoardsLimits_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&internalBoardsLimits_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "drills",
+      idx:drills_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&drills_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "vias",
+      idx:vias_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&vias_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontPads",
+      idx:frontPads_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontPads_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backPads",
+      idx:backPads_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backPads_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backComponentNames",
+      idx:backComponentNames_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backComponentNames_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontComponentNames",
+      idx:frontComponentNames_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontComponentNames_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontComponentValues",
+      idx:frontComponentValues_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontComponentValues_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backComponentValues",
+      idx:backComponentValues_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backComponentValues_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backTracks",
+      idx:backTracks_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backTracks_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontTracks",
+      idx:frontTracks_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontTracks_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "frontPackages",
+      idx:frontPackages_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&frontPackages_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "backPackages",
+      idx:backPackages_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&backPackages_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "myInstances",
+      idx:myInstances_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&myInstances_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -4331,6 +4494,123 @@ class BoardModel : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany frontLegendLines
+    do{
+      let objects = self.frontLegendLines_property.propval
+      self.frontLegendLines_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backLegendLines
+    do{
+      let objects = self.backLegendLines_property.propval
+      self.backLegendLines_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontLegendTexts
+    do{
+      let objects = self.frontLegendTexts_property.propval
+      self.frontLegendTexts_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontLayoutTexts
+    do{
+      let objects = self.frontLayoutTexts_property.propval
+      self.frontLayoutTexts_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backLegendTexts
+    do{
+      let objects = self.backLegendTexts_property.propval
+      self.backLegendTexts_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backLayoutTexts
+    do{
+      let objects = self.backLayoutTexts_property.propval
+      self.backLayoutTexts_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany internalBoardsLimits
+    do{
+      let objects = self.internalBoardsLimits_property.propval
+      self.internalBoardsLimits_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany drills
+    do{
+      let objects = self.drills_property.propval
+      self.drills_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany vias
+    do{
+      let objects = self.vias_property.propval
+      self.vias_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontPads
+    do{
+      let objects = self.frontPads_property.propval
+      self.frontPads_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backPads
+    do{
+      let objects = self.backPads_property.propval
+      self.backPads_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backComponentNames
+    do{
+      let objects = self.backComponentNames_property.propval
+      self.backComponentNames_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontComponentNames
+    do{
+      let objects = self.frontComponentNames_property.propval
+      self.frontComponentNames_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontComponentValues
+    do{
+      let objects = self.frontComponentValues_property.propval
+      self.frontComponentValues_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backComponentValues
+    do{
+      let objects = self.backComponentValues_property.propval
+      self.backComponentValues_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backTracks
+    do{
+      let objects = self.backTracks_property.propval
+      self.backTracks_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontTracks
+    do{
+      let objects = self.frontTracks_property.propval
+      self.frontTracks_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany frontPackages
+    do{
+      let objects = self.frontPackages_property.propval
+      self.frontPackages_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany backPackages
+    do{
+      let objects = self.backPackages_property.propval
+      self.backPackages_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Nullify toMany myInstances
+    self.myInstances_property.setProp ([]) // Set relationship to empty array
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

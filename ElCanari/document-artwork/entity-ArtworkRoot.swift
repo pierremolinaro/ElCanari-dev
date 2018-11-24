@@ -382,6 +382,7 @@ class ArtworkRoot : EBManagedObject,
   //--- To many property: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
+    self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
@@ -494,6 +495,13 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "fileGenerationParameterArray",
+      idx:fileGenerationParameterArray_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&fileGenerationParameterArray_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -620,6 +628,13 @@ class ArtworkRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany fileGenerationParameterArray
+    do{
+      let objects = self.fileGenerationParameterArray_property.propval
+      self.fileGenerationParameterArray_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

@@ -1136,6 +1136,11 @@ class MergerRoot : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
+    self.boardModels_property.undoManager = self.undoManager
+    self.boardInstances_property.undoManager = self.undoManager
+    self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
+      inManagedObject?.myRoot_property.setProp (self)
+    }
   //--- register properties for handling signature
   }
 
@@ -1395,6 +1400,20 @@ class MergerRoot : EBManagedObject,
       valueExplorer:&self.boardOutlineRectDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "boardModels",
+      idx:boardModels_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&boardModels_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "boardInstances",
+      idx:boardInstances_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&boardInstances_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "artwork",
@@ -1618,10 +1637,24 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany boardModels
+    do{
+      let objects = self.boardModels_property.propval
+      self.boardModels_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toMany boardInstances
+    do{
+      let objects = self.boardInstances_property.propval
+      self.boardInstances_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //--- Cascading toOne artwork
     if let object = self.artwork_property.propval {
       self.artwork_property.setProp (nil)
       self.managedObjectContext ()?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
     }
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

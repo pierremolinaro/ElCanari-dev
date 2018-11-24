@@ -14,7 +14,7 @@ import Cocoa
 extension MergerDocument {
   @objc func updateBoardModelAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    updateBoardModel ()
+    self.updateBoardModel ()
 //--- END OF USER ZONE 2
   }
 }

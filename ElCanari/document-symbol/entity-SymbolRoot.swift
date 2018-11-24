@@ -306,6 +306,7 @@ class SymbolRoot : EBManagedObject,
     }
     self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
   //--- Install undoers and opposite setter for relationships
+    self.symbolObjects_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.symbolObjects_property.setSignatureObserver (observer:self)
@@ -390,6 +391,13 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "symbolObjects",
+      idx:symbolObjects_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&symbolObjects_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -488,6 +496,13 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany symbolObjects
+    do{
+      let objects = self.symbolObjects_property.propval
+      self.symbolObjects_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

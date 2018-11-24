@@ -256,6 +256,7 @@ class FontCharacter : EBManagedObject,
     }
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Install undoers and opposite setter for relationships
+    self.segments_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.advance_property.setSignatureObserver (observer:self)
     self.codePoint_property.setSignatureObserver (observer:self)
@@ -322,6 +323,13 @@ class FontCharacter : EBManagedObject,
       valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "segments",
+      idx:segments_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&segments_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -385,6 +393,13 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany segments
+    do{
+      let objects = self.segments_property.propval
+      self.segments_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

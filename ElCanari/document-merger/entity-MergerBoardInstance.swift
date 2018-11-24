@@ -544,8 +544,11 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Nullify toOne myModel
     self.myModel_property.setProp (nil) // Set relationship to nil
+  //--- Nullify toOne myRoot
     self.myRoot_property.setProp (nil) // Set relationship to nil
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 

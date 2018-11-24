@@ -431,6 +431,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Install undoers and opposite setter for relationships
+    self.characters_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)
@@ -533,6 +534,13 @@ class FontRoot : EBManagedObject,
       valueExplorer:&self.sampleStringBezierPathDescent_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "characters",
+      idx:characters_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&characters_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -610,6 +618,13 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
+  //--- Cascading toMany characters
+    do{
+      let objects = self.characters_property.propval
+      self.characters_property.setProp ([])
+      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+    }
+  //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
