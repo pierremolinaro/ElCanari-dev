@@ -168,6 +168,7 @@ protocol EBViewControllerProtocol : class {
     for object in self.mObjectDisplayArray {
       object.draw (inDirtyRect)
     }
+    self.mOverObjectsDisplay.draw (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
     for shape in self.mSelectionShapes {
       shape.draw (inDirtyRect)

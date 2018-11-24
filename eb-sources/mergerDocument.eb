@@ -142,11 +142,22 @@ document MergerDocument root MergerRoot {
   ;
 
 #--- Model table view 
-  outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
   tableViewController mBoardModelController {allowsEmptySelection:no, allowsMultipleSelection:no} root.boardModels {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
   }
+
+  outlet EBTableView mBoardModelTableView $tableValue mBoardModelController ;
+
   selectionController BoardModel mBoardModelSelection : self.mBoardModelController.selectedArray ;
+
+#--- Model view
+  outlet CanariViewWithZoomAndFlip mBoardModelView
+    $rect mBoardModelSelection.modelRect
+    $zoom mBoardModelSelection.zoom
+    $horizontalFlip prefs.mergerModelViewHorizontalFlip
+    $verticalFlip prefs.mergerModelViewVerticalFlip
+    $overObjectsDisplay mBoardModelSelection.imageForModel
+  ;
 
 #--- Artwork model name
   outlet EBTextObserverField mArtworkNameTextField $valueObserver mBoardModelSelection.artworkName ;
@@ -170,15 +181,6 @@ document MergerDocument root MergerRoot {
   outlet EBPopUpButton mModelLimitWidthUnitPopUp $selectedTag mBoardModelSelection.modelLimitWidthUnit ;
   outlet CanariDimensionObserverTextField mModelBoardLimitTextField
      $dimensionAndUnit mBoardModelSelection.modelLimitWidth, mBoardModelSelection.modelLimitWidthUnit
-  ;
-
-#--- Model view
-  outlet CanariViewWithZoomAndFlip mBoardModelView
-    $rect mBoardModelSelection.modelRect
-    $zoom mBoardModelSelection.zoom
-    $horizontalFlip prefs.mergerModelViewHorizontalFlip
-    $verticalFlip prefs.mergerModelViewVerticalFlip
-    $overObjectsDisplay mBoardModelSelection.imageForModel
   ;
 
 #------------------------------------- Board Page
@@ -267,7 +269,7 @@ document MergerDocument root MergerRoot {
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
-    $overObjectsDisplay root.overObjectsDisplay
+    $overObjectsDisplay root.boardOutlineRectDisplay
     $graphicController self.mBoardInstanceController
     $arrowKeyMagnitude root.cocoaArrowMagnitude
     $shiftArrowKeyMagnitude root.cocoaShiftArrowMagnitude

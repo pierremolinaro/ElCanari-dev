@@ -43,6 +43,8 @@ struct CanariRect : Equatable, Hashable {
     size = CanariSize (width: maxX - minX, height: maxY - minY)
   }
 
+  //····················································································································
+
   init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
     if (inWidth > 0) && (inHeight > 0) {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
@@ -56,12 +58,15 @@ struct CanariRect : Equatable, Hashable {
   //   Accessors
   //····················································································································
 
-  var bottom  : Int { return self.origin.y }
   var left    : Int { return self.origin.x }
-  var top     : Int { return self.origin.x + self.size.height }
   var right   : Int { return self.origin.x + self.size.width }
+
+  var bottom  : Int { return self.origin.y }
+  var top     : Int { return self.origin.y + self.size.height }
+
   var height  : Int { return self.size.height }
   var width   : Int { return self.size.width }
+
   var isEmpty : Bool { return (self.size.width <= 0) || (self.size.height <= 0) }
 
   //····················································································································
@@ -108,7 +113,7 @@ struct CanariRect : Equatable, Hashable {
       let bottom = min (self.bottom, inOtherRect.bottom)
       let right = max (self.right, inOtherRect.right)
       let top = max (self.top, inOtherRect.top)
-      result = CanariRect (left:left, bottom:bottom, width:right - left, height:top - bottom)
+      result = CanariRect (left:left, bottom:bottom, width: right - left, height: top - bottom)
     }
     return result
   }

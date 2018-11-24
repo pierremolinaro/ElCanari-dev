@@ -168,8 +168,8 @@ protocol MergerRoot_boardHeight : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol MergerRoot_overObjectsDisplay : class {
-  var overObjectsDisplay : EBShape? { get }
+protocol MergerRoot_boardOutlineRectDisplay : class {
+  var boardOutlineRectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -204,7 +204,7 @@ class MergerRoot : EBManagedObject,
          MergerRoot_boardDisplayRect,
          MergerRoot_boardWidth,
          MergerRoot_boardHeight,
-         MergerRoot_overObjectsDisplay {
+         MergerRoot_boardOutlineRectDisplay {
 
   //····················································································································
   //   To many property: boardModels
@@ -862,21 +862,21 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: overObjectsDisplay
+  //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
-  var overObjectsDisplay_property = EBTransientProperty_EBShape ()
+  var boardOutlineRectDisplay_property = EBTransientProperty_EBShape ()
 
   //····················································································································
 
-  var overObjectsDisplay_property_selection : EBSelection <EBShape> {
-    return self.overObjectsDisplay_property.prop
+  var boardOutlineRectDisplay_property_selection : EBSelection <EBShape> {
+    return self.boardOutlineRectDisplay_property.prop
   }
 
   //····················································································································
 
-    var overObjectsDisplay : EBShape? {
-    switch self.overObjectsDisplay_property_selection {
+    var boardOutlineRectDisplay : EBShape? {
+    switch self.boardOutlineRectDisplay_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1107,8 +1107,8 @@ class MergerRoot : EBManagedObject,
       }
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
-  //--- Atomic property: overObjectsDisplay
-    self.overObjectsDisplay_property.readModelFunction = { [weak self] in
+  //--- Atomic property: boardOutlineRectDisplay
+    self.boardOutlineRectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardRect_property_selection.kind ()
         kind &= unwSelf.boardLimitWidth_property_selection.kind ()
@@ -1122,7 +1122,7 @@ class MergerRoot : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.boardRect_property_selection, unwSelf.boardLimitWidth_property_selection, g_Preferences!.mergerBoardViewDisplayBoardLimits_property_selection, g_Preferences!.mergerColorBoardLimits_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_MergerRoot_overObjectsDisplay (v0, v1, v2, v3))
+            return .single (transient_MergerRoot_boardOutlineRectDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -1131,10 +1131,10 @@ class MergerRoot : EBManagedObject,
         return .empty
       }
     }
-    self.boardRect_property.addEBObserver (self.overObjectsDisplay_property)
-    self.boardLimitWidth_property.addEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.overObjectsDisplay_property)
+    self.boardRect_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    self.boardLimitWidth_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }
@@ -1157,10 +1157,10 @@ class MergerRoot : EBManagedObject,
     self.boardInstances_property.removeEBObserverOf_instanceRect (self.boardDisplayRect_property)
     self.boardRect_property.removeEBObserver (self.boardWidth_property)
     self.boardRect_property.removeEBObserver (self.boardHeight_property)
-    self.boardRect_property.removeEBObserver (self.overObjectsDisplay_property)
-    self.boardLimitWidth_property.removeEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
-    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.overObjectsDisplay_property)
+    self.boardRect_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+    g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
   }
 
   //····················································································································
@@ -1387,12 +1387,12 @@ class MergerRoot : EBManagedObject,
       valueExplorer:&self.boardHeight_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "overObjectsDisplay",
-      idx:self.overObjectsDisplay_property.mEasyBindingsObjectIndex,
+      "boardOutlineRectDisplay",
+      idx:self.boardOutlineRectDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.overObjectsDisplay_property.mObserverExplorer,
-      valueExplorer:&self.overObjectsDisplay_property.mValueExplorer
+      observerExplorer:&self.boardOutlineRectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.boardOutlineRectDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -3226,57 +3226,57 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   }
 
   //····················································································································
-  //   Observers of 'overObjectsDisplay' transient property
+  //   Observers of 'boardOutlineRectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_overObjectsDisplay = EBWeakEventSet ()
+  private var mObserversOf_boardOutlineRectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+  final func addEBObserverOf_boardOutlineRectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_overObjectsDisplay.insert (inObserver)
+    mObserversOf_boardOutlineRectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.overObjectsDisplay_property.addEBObserver (inObserver)
+        managedObject.boardOutlineRectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_overObjectsDisplay (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_boardOutlineRectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_overObjectsDisplay.remove (inObserver)
+    mObserversOf_boardOutlineRectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.overObjectsDisplay_property.removeEBObserver (inObserver)
+        managedObject.boardOutlineRectDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_overObjectsDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
+  final func addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_overObjectsDisplay {
-        managedObject.overObjectsDisplay_property.addEBObserver (observer)
+      for observer in mObserversOf_boardOutlineRectDisplay {
+        managedObject.boardOutlineRectDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
+  final func removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_overObjectsDisplay {
-        managedObject.overObjectsDisplay_property.removeEBObserver (observer)
+      for observer in mObserversOf_boardOutlineRectDisplay {
+        managedObject.boardOutlineRectDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -3364,7 +3364,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedSet)
+        removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -3396,7 +3396,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardDisplayRect_toElementsOfSet (addedSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedSet)
+        addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -3534,7 +3534,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_overObjectsDisplay_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : MergerRoot in addedObjectSet {
@@ -3568,7 +3568,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
         addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_overObjectsDisplay_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

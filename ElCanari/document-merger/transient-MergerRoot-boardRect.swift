@@ -25,7 +25,7 @@ func transient_MergerRoot_boardRect (
           r = r.union (rect)
         }
       }
-      return CanariRect (left:0, bottom:0, width: r.left + r.width, height: r.bottom + r.height)
+      return CanariRect (left:0, bottom:0, width: r.right, height: r.top)
     }else{
       return CanariRect (left:0, bottom:0, width: self_boardManualWidth, height: self_boardManualHeight)
     }
