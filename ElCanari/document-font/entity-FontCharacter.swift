@@ -175,8 +175,8 @@ class FontCharacter : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
+  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
+    super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- Atomic property: codePoint
     self.codePoint_property.undoManager = self.undoManager
   //--- Atomic property: advance

@@ -14,7 +14,7 @@ import Cocoa
 extension SymbolDocument {
   @objc func addSolidRectAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let newRect = SymbolSolidRect (managedObjectContext: self.managedObjectContext)
+    let newRect = SymbolSolidRect (managedObjectContext: self.managedObjectContext, file: #file, #line)
     self.rootObject.symbolObjects_property.add (newRect)
     self.mSymbolObjectsController.select (object: newRect)
 //--- END OF USER ZONE 2

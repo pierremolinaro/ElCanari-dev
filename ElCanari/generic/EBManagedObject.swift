@@ -14,20 +14,19 @@ import Cocoa
 
   var mExplorerWindow : NSWindow?
 
+  let mFile : String
+  let mLine : Int
+
   //····················································································································
   //  init
   //····················································································································
 
-  init (managedObjectContext : EBManagedObjectContext) {
+  init (managedObjectContext : EBManagedObjectContext, file : String, _ inLine : Int) {
     mManagedObjectContext = managedObjectContext
+    mFile = file
+    mLine = inLine
     super.init ()
     managedObjectContext.insertManagedObject (self)
-  }
-
-  //····················································································································
-
-  override init () { // Used for legacy obsolete object
-    super.init ()
   }
 
   //····················································································································
@@ -63,9 +62,9 @@ import Cocoa
 
   final func showExplorerWindow () {
     if mExplorerWindow == nil {
-      createAndPopulateObjectExplorerWindow ()
+      self.createAndPopulateObjectExplorerWindow ()
     }
-    mExplorerWindow?.makeKeyAndOrderFront (nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
 
   //····················································································································
@@ -73,7 +72,7 @@ import Cocoa
   //····················································································································
 
   func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    mManagedObjectContext = nil
+    self.mManagedObjectContext = nil
   }
 
   //····················································································································
@@ -118,7 +117,7 @@ import Cocoa
   func createAndPopulateObjectExplorerWindow () {
   //-------------------------------------------------- Create Window
     let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (
+    self.mExplorerWindow = NSWindow (
       contentRect:r,
       styleMask:[.titled, .closable],
       backing:.buffered,
@@ -159,7 +158,7 @@ import Cocoa
   //····················································································································
 
   @objc func showObjectWindowFromExplorerButton (_: Any) {
-    showExplorerWindow ()
+    self.showExplorerWindow ()
   }
   
   //····················································································································
@@ -167,7 +166,7 @@ import Cocoa
   //····················································································································
 
   @objc func deleteWindowAction (_: Any) {
-    clearObjectExplorer ()
+    self.clearObjectExplorer ()
   }
 
   //····················································································································
@@ -177,8 +176,8 @@ import Cocoa
   func clearObjectExplorer () {
     let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
+    self.mExplorerWindow?.orderOut (nil)
+    self.mExplorerWindow = nil
   }
 
   //····················································································································
@@ -253,7 +252,7 @@ import Cocoa
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
   }
 
   //····················································································································
@@ -261,9 +260,9 @@ import Cocoa
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignature != nil {
-      mSignature = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignature != nil {
+      self.mSignature = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -276,10 +275,10 @@ import Cocoa
   //····················································································································
 
   final func signature () -> UInt32 {
-    if mSignature == nil {
-      mSignature = computeSignature ()
+    if self.mSignature == nil {
+      self.mSignature = computeSignature ()
     }
-    return mSignature!
+    return self.mSignature!
   }
 
   //····················································································································

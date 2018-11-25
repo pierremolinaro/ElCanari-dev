@@ -301,8 +301,8 @@ class FontRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
+  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
+    super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager
   //--- Atomic property: nominalSize

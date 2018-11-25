@@ -14,7 +14,7 @@ import Cocoa
 extension SymbolDocument {
   @objc func addPinAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let newObject = SymbolPin (managedObjectContext: self.managedObjectContext)
+    let newObject = SymbolPin (managedObjectContext: self.managedObjectContext, file: #file, #line)
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
 //--- END OF USER ZONE 2

@@ -14,7 +14,7 @@ import Cocoa
 extension SymbolDocument {
   @objc func addOvalAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let newOval = SymbolOval (managedObjectContext: self.managedObjectContext)
+    let newOval = SymbolOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
     self.rootObject.symbolObjects_property.add (newOval)
     self.mSymbolObjectsController.select (object: newOval)
 //--- END OF USER ZONE 2

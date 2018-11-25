@@ -275,8 +275,8 @@ class SymbolBezierCurve : SymbolObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
+  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
+    super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- Atomic property: y1
     self.y1_property.undoManager = self.undoManager
   //--- Atomic property: x2

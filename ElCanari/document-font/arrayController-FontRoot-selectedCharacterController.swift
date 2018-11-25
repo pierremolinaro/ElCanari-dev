@@ -206,7 +206,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : FontCharacter = FontCharacter (managedObjectContext:managedObjectContext)
+        let newObject : FontCharacter = FontCharacter (managedObjectContext: managedObjectContext, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection

@@ -114,12 +114,13 @@ func drawKicadString (str inString : String,
           let y2 = textY + CGFloat (charSegment.y2) * fontFactor
           let p1 = inAffineTransform.transform (NSPoint (x:x1, y:y1))
           let p2 = inAffineTransform.transform (NSPoint (x:x2, y:y2))
-          if let segment = clippedSegment (
+          if let segment = clippedSegmentEntity (
             p1_mm: p1,
             p2_mm: p2,
             width_mm: inThickness,
             clipRect_mm: inBoardRect,
-            moc: inMOC
+            moc: inMOC,
+            file: #file, #line
           ) {
             segments.append (segment)
           }

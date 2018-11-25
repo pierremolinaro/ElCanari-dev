@@ -316,7 +316,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : SymbolObject = SymbolObject (managedObjectContext:managedObjectContext)
+        let newObject : SymbolObject = SymbolObject (managedObjectContext: managedObjectContext, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection

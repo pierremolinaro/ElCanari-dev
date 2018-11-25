@@ -14,7 +14,7 @@ import Cocoa
 extension SymbolDocument {
   @objc func addSegmentAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let newSegment = SymbolSegment (managedObjectContext: self.managedObjectContext)
+    let newSegment = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
     self.rootObject.symbolObjects_property.add (newSegment)
     self.mSymbolObjectsController.select (object: newSegment)
 //--- END OF USER ZONE 2

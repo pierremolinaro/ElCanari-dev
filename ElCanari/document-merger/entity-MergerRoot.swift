@@ -888,8 +888,8 @@ class MergerRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
+  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
+    super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- To many property: boardModels
     self.boardModels_property.undoManager = self.undoManager
   //--- To many property: boardInstances

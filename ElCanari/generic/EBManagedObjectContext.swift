@@ -148,7 +148,7 @@ class EBManagedObjectContext : EBObject {
           if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Ignore and print
             Swift.print ("\(unreachableObjectSet.count) unreachable objects")
             for object in unreachableObjectSet {
-              Swift.print ("  \(object)")
+              Swift.print ("  \(object), \(object.mLine), \(object.mFile)")
             }
           }else if response == NSApplication.ModalResponse.alertThirdButtonReturn { // Perform correction
             self.mManagedObjectSet.subtract (unreachableObjectSet)
@@ -200,43 +200,43 @@ class EBManagedObjectContext : EBObject {
   func newInstanceOfEntityNamed (inEntityTypeName : String) throws -> EBManagedObject {
     var result : EBManagedObject
     if inEntityTypeName == "FontCharacter" {
-      result = FontCharacter (managedObjectContext:self)
+      result = FontCharacter (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SegmentForFontCharacter" {
-      result = SegmentForFontCharacter (managedObjectContext:self)
+      result = SegmentForFontCharacter (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "FontRoot" {
-      result = FontRoot (managedObjectContext:self)
+      result = FontRoot (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "ArtworkRoot" {
-      result = ArtworkRoot (managedObjectContext:self)
+      result = ArtworkRoot (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "ArtworkFileGenerationParameters" {
-      result = ArtworkFileGenerationParameters (managedObjectContext:self)
+      result = ArtworkFileGenerationParameters (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "BoardModelPad" {
-      result = BoardModelPad (managedObjectContext:self)
+      result = BoardModelPad (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SegmentEntity" {
-      result = SegmentEntity (managedObjectContext:self)
+      result = SegmentEntity (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "BoardModelVia" {
-      result = BoardModelVia (managedObjectContext:self)
+      result = BoardModelVia (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "BoardModel" {
-      result = BoardModel (managedObjectContext:self)
+      result = BoardModel (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "MergerBoardInstance" {
-      result = MergerBoardInstance (managedObjectContext:self)
+      result = MergerBoardInstance (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "MergerRoot" {
-      result = MergerRoot (managedObjectContext:self)
+      result = MergerRoot (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolObject" {
-      result = SymbolObject (managedObjectContext:self)
+      result = SymbolObject (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolPin" {
-      result = SymbolPin (managedObjectContext:self)
+      result = SymbolPin (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolText" {
-      result = SymbolText (managedObjectContext:self)
+      result = SymbolText (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolSolidRect" {
-      result = SymbolSolidRect (managedObjectContext:self)
+      result = SymbolSolidRect (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolOval" {
-      result = SymbolOval (managedObjectContext:self)
+      result = SymbolOval (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolBezierCurve" {
-      result = SymbolBezierCurve (managedObjectContext:self)
+      result = SymbolBezierCurve (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolSegment" {
-      result = SymbolSegment (managedObjectContext:self)
+      result = SymbolSegment (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolRoot" {
-      result = SymbolRoot (managedObjectContext:self)
+      result = SymbolRoot (managedObjectContext:self, file: #file, #line)
     }else{
        let dictionary : [String : Any] = [
         NSLocalizedDescriptionKey : "Cannot read document",

@@ -125,8 +125,8 @@ class SymbolText : SymbolObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext) {
-    super.init (managedObjectContext:managedObjectContext)
+  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
+    super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- Atomic property: y
     self.y_property.undoManager = self.undoManager
   //--- Atomic property: text

@@ -432,7 +432,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : ArtworkFileGenerationParameters = ArtworkFileGenerationParameters (managedObjectContext:managedObjectContext)
+        let newObject : ArtworkFileGenerationParameters = ArtworkFileGenerationParameters (managedObjectContext: managedObjectContext, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection
