@@ -106,7 +106,7 @@ extension String {
 
 class EBWeakEventSetElement : EBObject {
 
-  fileprivate weak var mObserver : EBEvent? = nil {
+  fileprivate weak var mObserver : EBEvent? = nil { // SOULD BE WEAK
     didSet {
       if mObserver == nil, let object = mObject {
         object.mDictionary [mObserverObjectIndex] = nil
@@ -114,7 +114,7 @@ class EBWeakEventSetElement : EBObject {
     }
   }
 
-  private weak var mObject : EBWeakEventSet? = nil
+  private weak var mObject : EBWeakEventSet? = nil // SOULD BE WEAK
   private var mObserverObjectIndex : Int
   private var mObserverRetainCount = 1
 

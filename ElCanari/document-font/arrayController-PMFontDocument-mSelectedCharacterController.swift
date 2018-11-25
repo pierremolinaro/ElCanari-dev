@@ -109,7 +109,7 @@ final class ArrayController_PMFontDocument_mSelectedCharacterController : EBObje
   //    Managed object context
   //····················································································································
 
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil
+  private weak var mManagedObjectContext : EBManagedObjectContext? = nil // SOULD BE WEAK
 
   func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
     self.mManagedObjectContext = inManagedObjectContext

@@ -799,7 +799,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   //····················································································································
 
-  var undoManager : EBUndoManager?
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
 
   //····················································································································
 
@@ -1814,7 +1814,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
   private var mSignatureCache : UInt32?
 
   //····················································································································

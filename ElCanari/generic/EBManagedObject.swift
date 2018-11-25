@@ -9,7 +9,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBManagedObject) class EBManagedObject : EBObject, EBSignatureObserverProtocol {
-  private weak var mManagedObjectContext : EBManagedObjectContext?
+  private weak var mManagedObjectContext : EBManagedObjectContext? // SOULD BE WEAK
   var savingIndex = 0
 
   var mExplorerWindow : NSWindow?
@@ -248,7 +248,7 @@ import Cocoa
   //   setSignatureObserver
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
 
   //····················································································································
 

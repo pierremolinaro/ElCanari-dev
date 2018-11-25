@@ -1703,9 +1703,6 @@ class MergerRoot : EBManagedObject,
     if let managedObject = self.artwork_property.propval {
       objects.append (managedObject)
     }
- /*   if let object = self.artwork_property.propval {
-      objects.append (object)
-    } */
   }
 
   //····················································································································
@@ -1720,7 +1717,7 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   //····················································································································
 
-  var undoManager : EBUndoManager?
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
 
   //····················································································································
 
@@ -3645,7 +3642,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
   private var mSignatureCache : UInt32?
 
   //····················································································································
@@ -3716,7 +3713,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     }
   }
 
-  weak var owner : MergerRoot? {
+  weak var owner : MergerRoot? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -3724,7 +3721,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     }
   }
  
-  weak private var mValue : ArtworkRoot? {
+  weak private var mValue : ArtworkRoot? { // SOULD BE WEAK
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager

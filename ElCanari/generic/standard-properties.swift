@@ -133,7 +133,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
-  weak var undoManager : UndoManager?
+  weak var undoManager : UndoManager?  // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
 
   //····················································································································
@@ -254,7 +254,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   //    SIGNATURE
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil
+  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
   final private var mSignatureCache : UInt32? = nil
 
   //····················································································································
@@ -511,7 +511,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
-  weak var undoManager : UndoManager?
+  weak var undoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
 
   //····················································································································
@@ -632,7 +632,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //    SIGNATURE
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil
+  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
   final private var mSignatureCache : UInt32? = nil
 
   //····················································································································
@@ -1119,7 +1119,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  weak var undoManager : UndoManager?
+  weak var undoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
 
   //····················································································································
@@ -1240,7 +1240,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   //    SIGNATURE
   //····················································································································
 
-  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil
+  final private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
   final private var mSignatureCache : UInt32? = nil
 
   //····················································································································

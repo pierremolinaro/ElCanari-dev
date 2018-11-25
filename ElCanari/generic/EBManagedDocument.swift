@@ -568,8 +568,8 @@ extension Data {
 
 class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
 
-  private weak var mUndoManager : EBUndoManager?
-  private weak var mSignatureObserver : EBSignatureObserverEvent?
+  private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverEvent? // SOULD BE WEAK
   private var mSignatureAtStartUp : UInt32 = 0
 
   override init () {
@@ -645,7 +645,7 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 
 class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverProtocol {
 
-  private weak var mRootObject : EBSignatureObserverProtocol?
+  private weak var mRootObject : EBSignatureObserverProtocol? // SOULD BE WEAK
 
   override init () {
     super.init ()

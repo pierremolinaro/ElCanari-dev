@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   //····················································································································
 
-  var undoManager : EBUndoManager?
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
 
   //····················································································································
 
@@ -1005,7 +1005,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
   private var mSignatureCache : UInt32?
 
   //····················································································································

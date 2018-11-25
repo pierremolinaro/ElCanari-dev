@@ -237,487 +237,663 @@ import Cocoa
   //--------------------------- Outlet checking
     if let outlet : Any = self.mAddGenerationFileButton {
       if !(outlet is EBButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mAddGenerationFileButton' outlet is not an instance of 'EBButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddGenerationFileButton' outlet is not an instance of 'EBButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mAddGenerationFileButton' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddGenerationFileButton' outlet is nil"
+      )
     }
     if let outlet : Any = self.mCommentTextView {
       if !(outlet is EBTextView) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mCommentTextView' outlet is not an instance of 'EBTextView'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mCommentTextView' outlet is not an instance of 'EBTextView'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mCommentTextView' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mCommentTextView' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDataTableView {
       if !(outlet is EBTableView) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDataTableView' outlet is not an instance of 'EBTableView'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDataTableView' outlet is not an instance of 'EBTableView'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDataTableView' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDataTableView' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDimensionForPadHoleInPDFTextField {
       if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDimensionForPadHoleInPDFTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDimensionForPadHoleInPDFTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDimensionForPadHoleInPDFTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDimensionForPadHoleInPDFTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawBoardInternalLimitsSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawBoardInternalLimitsSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawBoardLimitsSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawBoardLimitsSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawBoardLimitsSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawBoardLimitsSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawBoardLimitsSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawComponentNamesBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawComponentNamesBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawComponentNamesBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawComponentNamesBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawComponentNamesBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawComponentNamesTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawComponentNamesTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawComponentNamesTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawComponentNamesTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawComponentNamesTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawComponentValuesBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawComponentValuesBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawComponentValuesBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawComponentValuesBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawComponentValuesBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawComponentValuesTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawComponentValuesTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawComponentValuesTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawComponentValuesTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawComponentValuesTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawPackageLegendBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawPackageLegendBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawPackageLegendBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawPackageLegendBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawPackageLegendBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawPackageLegendTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawPackageLegendTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawPackageLegendTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawPackageLegendTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawPackageLegendTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawPadHolesInPDFSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawPadHolesInPDFSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawPadHolesInPDFSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawPadHolesInPDFSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawPadHolesInPDFSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawPadsBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawPadsBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawPadsBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawPadsBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawPadsBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawPadsTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawPadsTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawPadsTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawPadsTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawPadsTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTextsLayoutBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTextsLayoutBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTextsLayoutBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTextsLayoutBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTextsLayoutBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTextsLayoutTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTextsLayoutTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTextsLayoutTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTextsLayoutTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTextsLayoutTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTextsLegendBottomSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTextsLegendBottomSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTextsLegendBottomSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTextsLegendBottomSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTextsLegendBottomSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTextsLegendTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTextsLegendTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTextsLegendTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTextsLegendTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTextsLegendTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTracksBottomSidSwitche {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTracksBottomSidSwitche' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTracksBottomSidSwitche' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTracksBottomSidSwitche' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTracksBottomSidSwitche' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawTracksTopSideSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawTracksTopSideSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawTracksTopSideSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawTracksTopSideSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawTracksTopSideSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrawViasSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrawViasSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrawViasSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrawViasSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrawViasSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mDrillDataFileExtensionTextField {
       if !(outlet is EBTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is not an instance of 'EBTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is not an instance of 'EBTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mExtensionTextField {
       if !(outlet is EBTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mExtensionTextField' outlet is not an instance of 'EBTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mExtensionTextField' outlet is not an instance of 'EBTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mExtensionTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mExtensionTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mGeneratedFileCountTextField {
       if !(outlet is EBTextObserverField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mGeneratedFileCountTextField' outlet is not an instance of 'EBTextObserverField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGeneratedFileCountTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mGeneratedFileCountTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGeneratedFileCountTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mHorizontalMirrorSwitch {
       if !(outlet is EBSwitch) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mHorizontalMirrorSwitch' outlet is not an instance of 'EBSwitch'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mHorizontalMirrorSwitch' outlet is not an instance of 'EBSwitch'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mHorizontalMirrorSwitch' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mHorizontalMirrorSwitch' outlet is nil"
+      )
     }
     if let outlet : Any = self.mMeasurementUnitForPadHoleInPDFPopUp {
       if !(outlet is EBPopUpButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mMeasurementUnitForPadHoleInPDFPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMeasurementUnitForPadHoleInPDFPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mMeasurementUnitForPadHoleInPDFPopUp' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMeasurementUnitForPadHoleInPDFPopUp' outlet is nil"
+      )
     }
     if let outlet : Any = self.mMinPPTPTTTWdisplayUnitTextField {
       if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMinPPTPTTTWdisplayUnitTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mMinPPTPTTTWinEBUnitPopUp {
       if !(outlet is EBPopUpButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is nil"
+      )
     }
     if let outlet : Any = self.mOARUnitPopUp {
       if !(outlet is EBPopUpButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mOARUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOARUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mOARUnitPopUp' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOARUnitPopUp' outlet is nil"
+      )
     }
     if let outlet : Any = self.mOARValueTextField {
       if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mOARValueTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOARValueTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mOARValueTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOARValueTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mOtherSignatureTextField {
       if !(outlet is CanariSignatureField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mOtherSignatureTextField' outlet is not an instance of 'CanariSignatureField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOtherSignatureTextField' outlet is not an instance of 'CanariSignatureField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mOtherSignatureTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOtherSignatureTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mPHDUnitPopUp {
       if !(outlet is EBPopUpButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mPHDUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPHDUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mPHDUnitPopUp' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPHDUnitPopUp' outlet is nil"
+      )
     }
     if let outlet : Any = self.mPHDValueTextField {
       if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mPHDValueTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPHDValueTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mPHDValueTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPHDValueTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mPadHoleDefinitionView {
       if !(outlet is NSView) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mPadHoleDefinitionView' outlet is not an instance of 'NSView'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadHoleDefinitionView' outlet is not an instance of 'NSView'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mPadHoleDefinitionView' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadHoleDefinitionView' outlet is nil"
+      )
     }
     if let outlet : Any = self.mRemoveGenerationFileButton {
       if !(outlet is EBButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mRemoveGenerationFileButton' outlet is not an instance of 'EBButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mRemoveGenerationFileButton' outlet is not an instance of 'EBButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mRemoveGenerationFileButton' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mRemoveGenerationFileButton' outlet is nil"
+      )
     }
     if let outlet : Any = self.mSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mSegmentedControl' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentedControl' outlet is nil"
+      )
     }
     if let outlet : Any = self.mSignatureTextField {
       if !(outlet is CanariSignatureField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mSignatureTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSignatureTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mStatusImageViewInToolbar {
       if !(outlet is EBImageObserverView) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
+      )
     }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mVersionField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mVersionField' outlet is nil"
+      )
     }
     if let outlet : Any = self.mVersionFieldInToolbar {
       if !(outlet is CanariVersionField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mVersionFieldInToolbar' outlet is not an instance of 'CanariVersionField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mVersionFieldInToolbar' outlet is not an instance of 'CanariVersionField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mVersionFieldInToolbar' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mVersionFieldInToolbar' outlet is nil"
+      )
     }
     if let outlet : Any = self.minValueForBoardLimitTextField {
       if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'minValueForBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'minValueForBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'minValueForBoardLimitTextField' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'minValueForBoardLimitTextField' outlet is nil"
+      )
     }
     if let outlet : Any = self.minValueForBoardLimitUnitPopUp {
       if !(outlet is EBPopUpButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is not an instance of 'EBPopUpButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'minValueForBoardLimitUnitPopUp' outlet is nil"
+      )
     }
     if let outlet : Any = self.resetVersionAndSignatureButton {
       if !(outlet is EBButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'") ;
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'"
+        )
       }
     }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil") ;
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'resetVersionAndSignatureButton' outlet is nil"
+      )
     }
   //--- Array controller property: mDataController
     self.mDataController.setManagedObjectContext (self.managedObjectContext ())

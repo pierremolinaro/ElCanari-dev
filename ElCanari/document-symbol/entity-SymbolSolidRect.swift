@@ -469,7 +469,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  var undoManager : EBUndoManager?
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
 
   //····················································································································
 
@@ -1118,7 +1118,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
   private var mSignatureCache : UInt32?
 
   //····················································································································

@@ -647,7 +647,7 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
   //····················································································································
 
   func set (callBack : @escaping () -> Void) {
-    mObserverOfSelectionLayerOfSelectedObjects.eventCallBack = callBack
+    self.mObserverOfSelectionLayerOfSelectedObjects.eventCallBack = callBack
   }
 
   //····················································································································
@@ -658,13 +658,13 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
         postEvent ()
         let addedSet = mPrivateSet.subtracting (oldValue)
         for object in addedSet {
-          object.selectionDisplay_property.addEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+          object.selectionDisplay_property.addEBObserver (self.mObserverOfSelectionLayerOfSelectedObjects)
         }
         let removedSet = oldValue.subtracting (mPrivateSet)
         for object in removedSet {
-          object.selectionDisplay_property.removeEBObserver (mObserverOfSelectionLayerOfSelectedObjects)
+          object.selectionDisplay_property.removeEBObserver (self.mObserverOfSelectionLayerOfSelectedObjects)
         }
-        mObserverOfSelectionLayerOfSelectedObjects.postEvent ()
+        self.mObserverOfSelectionLayerOfSelectedObjects.postEvent ()
       }
     }
   }
@@ -678,13 +678,13 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
       case .empty, .multiple :
         break ;
       case .single (let sortedArray) :
-        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
+        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
           newSelectedSet = Set (arrayLiteral: sortedArray [0])
         }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
           newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
         }
       }
-      mPrivateSet = newSelectedSet
+      self.mPrivateSet = newSelectedSet
     }
     get {
       return mPrivateSet

@@ -111,7 +111,7 @@ final class ArrayController_PMArtworkDocument_mDataController : EBObject, EBTabl
   //    Managed object context
   //····················································································································
 
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil
+  private weak var mManagedObjectContext : EBManagedObjectContext? = nil // SOULD BE WEAK
 
   func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
     self.mManagedObjectContext = inManagedObjectContext

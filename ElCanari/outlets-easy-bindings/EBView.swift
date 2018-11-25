@@ -76,7 +76,7 @@ protocol EBViewControllerProtocol : class {
   //  Properties
   //····················································································································
 
-   private weak var mViewController : EBViewControllerProtocol? = nil
+   private weak var mViewController : EBViewControllerProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
   //    set controller

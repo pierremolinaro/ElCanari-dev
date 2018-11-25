@@ -592,12 +592,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
     if let managedObject = self.myRoot_property.propval {
       objects.append (managedObject)
     }
- /*   if let object = self.myModel_property.propval {
-      objects.append (object)
-    } */
- /*   if let object = self.myRoot_property.propval {
-      objects.append (object)
-    } */
   }
 
   //····················································································································
@@ -612,7 +606,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   //····················································································································
 
-  var undoManager : EBUndoManager?
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
 
   //····················································································································
 
@@ -1320,7 +1314,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol?
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
   private var mSignatureCache : UInt32?
 
   //····················································································································
@@ -1391,7 +1385,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     }
   }
 
-  weak var owner : MergerBoardInstance? {
+  weak var owner : MergerBoardInstance? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -1399,7 +1393,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     }
   }
  
-  weak private var mValue : BoardModel? {
+  weak private var mValue : BoardModel? { // SOULD BE WEAK
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager
@@ -3772,7 +3766,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     }
   }
 
-  weak var owner : MergerBoardInstance? {
+  weak var owner : MergerBoardInstance? { // SOULD BE WEAK
     didSet {
       if let unwrappedExplorer = mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
@@ -3780,7 +3774,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     }
   }
  
-  weak private var mValue : MergerRoot? {
+  weak private var mValue : MergerRoot? { // SOULD BE WEAK
     didSet {
       if let unwrappedOwner = owner, oldValue !== mValue {
       //--- Register old value in undo manager

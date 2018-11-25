@@ -341,13 +341,13 @@ final class SelectedSet_FontRoot_selectedCharacterController : EBAbstractPropert
       case .empty, .multiple :
         break ;
       case .single (let sortedArray) :
-        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
+        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
           newSelectedSet = Set (arrayLiteral: sortedArray [0])
         }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
           newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
         }
       }
-      mPrivateSet = newSelectedSet
+      self.mPrivateSet = newSelectedSet
     }
     get {
       return mPrivateSet
