@@ -53,8 +53,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //    managedObjectContext
   //····················································································································
 
-  final func managedObjectContext () -> EBManagedObjectContext {
-    return mManagedObjectContext
+  final var managedObjectContext : EBManagedObjectContext {
+    return self.mManagedObjectContext
   }
 
   //····················································································································
@@ -170,7 +170,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override func read (from data: Data, ofType typeName: String) throws {
     undoManager?.disableUndoRegistration ()
   //--- Load file
-    let (metadataStatus, metadataDictionary, possibleRootObject) = try self.managedObjectContext().loadEasyBindingFile (from: data)
+    let (metadataStatus, metadataDictionary, possibleRootObject) = try self.managedObjectContext.loadEasyBindingFile (from: data)
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary
@@ -179,7 +179,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     self.mVersion.setProp (readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
   //--- Free current root object
     if let currentRootObject = self.mRootObject {
-      self.managedObjectContext().removeManagedObject (currentRootObject)
+      self.managedObjectContext.removeManagedObject (currentRootObject)
     }
   //--- Store root object
     self.mRootObject = possibleRootObject

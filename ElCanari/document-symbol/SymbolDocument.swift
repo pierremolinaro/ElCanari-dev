@@ -417,7 +417,7 @@ import Cocoa
       )
     }
   //--- Array controller property: mSymbolObjectsController
-    self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext ())
+    self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext)
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
     self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings

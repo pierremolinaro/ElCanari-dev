@@ -1641,18 +1641,18 @@ class MergerRoot : EBManagedObject,
     do{
       let objects = self.boardModels_property.propval
       self.boardModels_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany boardInstances
     do{
       let objects = self.boardInstances_property.propval
       self.boardInstances_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toOne artwork
     if let object = self.artwork_property.propval {
       self.artwork_property.setProp (nil)
-      self.managedObjectContext ()?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

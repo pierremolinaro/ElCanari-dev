@@ -102,7 +102,7 @@ import Cocoa
         if  let boardModel = possibleBoardModel {
          // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
           let rotation = QuadrantRotation (rawValue: mDocument?.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
-          let newBoard = MergerBoardInstance (managedObjectContext: document.managedObjectContext())
+          let newBoard = MergerBoardInstance (managedObjectContext: document.managedObjectContext)
           newBoard.myModel_property.setProp (boardModel)
           newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
           newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)

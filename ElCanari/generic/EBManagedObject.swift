@@ -21,7 +21,7 @@ import Cocoa
   init (managedObjectContext : EBManagedObjectContext) {
     mManagedObjectContext = managedObjectContext
     super.init ()
-    mManagedObjectContext?.insertManagedObject (self)
+    managedObjectContext.insertManagedObject (self)
   }
 
   //····················································································································
@@ -53,7 +53,7 @@ import Cocoa
 
   //····················································································································
 
-  final func managedObjectContext () -> EBManagedObjectContext? {
+  final var managedObjectContext : EBManagedObjectContext? {
     return self.mManagedObjectContext
   }
 

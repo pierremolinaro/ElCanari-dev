@@ -48,7 +48,7 @@ extension MergerDocument {
                     possibleBoardModel = self.parseBoardModel_kicad (fromData: fileData, named: s)
                   }
 //                  if let newTemporaryBoardModel = possibleBoardModel {
-//                    let moc = self.managedObjectContext ()
+//                    let moc = self.managedObjectContext
 //                    moc.removeManagedObject (newTemporaryBoardModel)
 //                    possibleBoardModel = nil
 //                  }
@@ -62,7 +62,7 @@ extension MergerDocument {
                     updatedBoardModel.modelLimitWidthUnit = newTemporaryBoardModel.modelLimitWidthUnit
                     updatedBoardModel.zoom = newTemporaryBoardModel.zoom
 
-                    let moc = self.managedObjectContext ()
+                    let moc = self.managedObjectContext
 
 
                     var newArray = newTemporaryBoardModel.backPackages_property.propval

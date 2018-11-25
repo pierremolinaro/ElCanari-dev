@@ -314,7 +314,7 @@ class FontRoot : EBManagedObject,
   //--- To many property: characters
     self.characters_property.undoManager = self.undoManager
   //--- Array controller property: selectedCharacterController
-    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext ())
+    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext)
     self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.readModelFunction = {
@@ -622,7 +622,7 @@ class FontRoot : EBManagedObject,
     do{
       let objects = self.characters_property.propval
       self.characters_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

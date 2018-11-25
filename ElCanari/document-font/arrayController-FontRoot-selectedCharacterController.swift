@@ -212,7 +212,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
       //--- New object is the selection
         var newSelectedObjectSet = Set <FontCharacter> ()
         newSelectedObjectSet.insert (newObject)
-        mSelectedSet.mSet = newSelectedObjectSet
+        self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
       }
     }

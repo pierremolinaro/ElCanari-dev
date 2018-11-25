@@ -322,7 +322,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       //--- New object is the selection
         var newSelectedObjectSet = Set <SymbolObject> ()
         newSelectedObjectSet.insert (newObject)
-        mSelectedSet.mSet = newSelectedObjectSet
+        self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
       }
     }

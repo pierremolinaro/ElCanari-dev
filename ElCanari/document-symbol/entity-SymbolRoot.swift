@@ -500,7 +500,7 @@ class SymbolRoot : EBManagedObject,
     do{
       let objects = self.symbolObjects_property.propval
       self.symbolObjects_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

@@ -34,9 +34,9 @@ class EBManagedObjectContext : EBObject {
   //····················································································································
   
   @objc func insertManagedObject (_ object : EBManagedObject) {
-    if !mManagedObjectSet.contains(object) {
-      mManagedObjectSet.insert (object)
-      mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.removeManagedObject(_:)), object: object)
+    if !self.mManagedObjectSet.contains(object) {
+      self.mManagedObjectSet.insert (object)
+      self.mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.removeManagedObject(_:)), object: object)
     }
   }
 
@@ -46,16 +46,16 @@ class EBManagedObjectContext : EBObject {
   
   @objc func removeManagedObject (_ inObject : EBManagedObject) {
     var objectsToRemove = Set <EBManagedObject> ()
-    internalRemoveManagedObject (inObject, &objectsToRemove)
-    mManagedObjectSet.subtract (objectsToRemove)
+    self.internalRemoveManagedObject (inObject, &objectsToRemove)
+    self.mManagedObjectSet.subtract (objectsToRemove)
   }
 
   //····················································································································
 
   final func internalRemoveManagedObject (_ inObject : EBManagedObject, _ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    if inObject.managedObjectContext () != nil && !ioObjectsToRemove.contains(inObject) {
+    if (inObject.managedObjectContext != nil) && !ioObjectsToRemove.contains (inObject) {
       ioObjectsToRemove.insert (inObject)
-      mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.insertManagedObject(_:)), object:inObject)
+      self.mUndoManager?.registerUndo (withTarget: self, selector: #selector(EBManagedObjectContext.insertManagedObject(_:)), object:inObject)
       inObject.cascadeObjectRemoving (&ioObjectsToRemove)
    }
   }
@@ -67,7 +67,7 @@ class EBManagedObjectContext : EBObject {
   func removeManagedObjects (_ inObjectArray : [EBManagedObject]) {
     var objectsToRemove = Set <EBManagedObject> ()
     internalRemoveManagedObjects (inObjectArray, &objectsToRemove)
-    mManagedObjectSet.subtract (objectsToRemove)
+    self.mManagedObjectSet.subtract (objectsToRemove)
   }
   
   //····················································································································
@@ -85,16 +85,16 @@ class EBManagedObjectContext : EBObject {
   func reset () {
     mUndoManager?.removeAllActions ()
     mUndoManager = nil
-    for object in mManagedObjectSet {
+    for object in self.mManagedObjectSet {
       object.resetControllers ()
     }
-    for object in mManagedObjectSet {
+    for object in self.mManagedObjectSet {
       object.resetToManyRelationships ()
     }
-    for object in mManagedObjectSet {
+    for object in self.mManagedObjectSet {
       object.resetToOneRelationships ()
     }
-    mManagedObjectSet = Set ()
+    self.mManagedObjectSet = Set ()
   }
 
   //····················································································································
@@ -119,22 +119,22 @@ class EBManagedObjectContext : EBObject {
     let reachableObjects : Array<EBManagedObject> = reachableObjectsFromRootObject (rootObject: rootObject)
     windowForSheet.endSheet(panel)
   //--- 
-    let unreachableObjectSet = mManagedObjectSet.subtracting (reachableObjects)
-    let unregisteredObjectSet = Set <EBManagedObject> (reachableObjects).subtracting (mManagedObjectSet)
+    let unreachableObjectSet = self.mManagedObjectSet.subtracting (reachableObjects)
+    let unregisteredObjectSet = Set <EBManagedObject> (reachableObjects).subtracting (self.mManagedObjectSet)
   //---
     if (unreachableObjectSet.count + unregisteredObjectSet.count) == 0 { // Ok
       let alert = NSAlert ()
       alert.messageText = "Object Graph is consistent"
       alert.informativeText = String (format:"%lu managed object%@.",
-        mManagedObjectSet.count, (mManagedObjectSet.count > 1) ? "s" : ""
+        self.mManagedObjectSet.count, (self.mManagedObjectSet.count > 1) ? "s" : ""
       )
       alert.beginSheetModal (for: windowForSheet, completionHandler:nil)
     }else{ // Error
       let alert = NSAlert ()
       alert.messageText = "Object Graph Error"
       alert.informativeText = String (format:"%lu managed object%@, %lu unreachable object%@, %lu unregistered object%@.",
-        mManagedObjectSet.count,
-        (mManagedObjectSet.count > 1) ? "s" : "",
+        self.mManagedObjectSet.count,
+        (self.mManagedObjectSet.count > 1) ? "s" : "",
         unreachableObjectSet.count,
         (unreachableObjectSet.count > 1) ? "s" : "",
         unregisteredObjectSet.count,

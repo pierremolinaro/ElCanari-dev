@@ -397,7 +397,7 @@ class FontCharacter : EBManagedObject,
     do{
       let objects = self.segments_property.propval
       self.segments_property.setProp ([])
-      self.managedObjectContext ()?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

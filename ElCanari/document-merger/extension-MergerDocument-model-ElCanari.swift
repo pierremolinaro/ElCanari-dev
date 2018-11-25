@@ -60,7 +60,7 @@ extension MergerDocument {
   //····················································································································
 
   fileprivate func internal_parseBoardModel_ELCanariArchive (_ inBoardArchiveDict : NSDictionary, named inName : String) -> BoardModel? {
-    let boardModel = BoardModel (managedObjectContext:self.managedObjectContext())
+    let boardModel = BoardModel (managedObjectContext:self.managedObjectContext)
   //--- Populate board model from dictionary (accumulate error messages in errorArray variable)
     var errorArray = [String] ()
     boardModel.name = inName
@@ -81,7 +81,7 @@ extension MergerDocument {
     var internalBoardsLimitsEntities = [SegmentEntity] ()
     let internalBoardsLimits = optionalStringArray (fromDict: inBoardArchiveDict, key: "INTERNAL-BOARDS-LIMITS", &errorArray)
     for str in internalBoardsLimits {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -95,7 +95,7 @@ extension MergerDocument {
     var frontTrackEntities = [SegmentEntity] ()
     let frontTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-FRONT", &errorArray)
     for str in frontTracks {
-      let track = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let track = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       track.x1 = ints [0]
       track.y1 = ints [1]
@@ -109,7 +109,7 @@ extension MergerDocument {
     var backTrackEntities = [SegmentEntity] ()
     let backTracks = stringArray (fromDict: inBoardArchiveDict, key: "TRACKS-BACK", &errorArray)
     for str in backTracks {
-      let track = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let track = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       track.x1 = ints [0]
       track.y1 = ints [1]
@@ -123,7 +123,7 @@ extension MergerDocument {
     var viaEntities = [BoardModelVia] ()
     let vias = stringArray (fromDict: inBoardArchiveDict, key: "VIAS", &errorArray)
     for str in vias {
-      let via = BoardModelVia (managedObjectContext:self.managedObjectContext())
+      let via = BoardModelVia (managedObjectContext:self.managedObjectContext)
       let ints = array3int (fromString: str, &errorArray)
       via.x = ints [0]
       via.y = ints [1]
@@ -141,7 +141,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         backLegendLinesEntities.append (segment)
       }
@@ -157,7 +157,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         frontLegendLinesEntities.append (segment)
       }
@@ -167,7 +167,7 @@ extension MergerDocument {
     var frontLayoutTextEntities = [SegmentEntity] ()
     let frontLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-FRONT", &errorArray)
     for str in frontLayoutTexts {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -181,7 +181,7 @@ extension MergerDocument {
     var backLayoutTextEntities = [SegmentEntity] ()
     let backLayoutTexts = stringArray (fromDict: inBoardArchiveDict, key: "TEXTS-LAYOUT-BACK", &errorArray)
     for str in backLayoutTexts {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -201,7 +201,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         backLegendTextEntities.append (segment)
       }
@@ -217,7 +217,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         frontLegendTextEntities.append (segment)
       }
@@ -233,7 +233,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         backPackagesEntities.append (segment)
       }
@@ -249,7 +249,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         frontPackagesEntities.append (segment)
       }
@@ -265,7 +265,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         backComponentNamesEntities.append (segment)
       }
@@ -281,7 +281,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         frontComponentNamesEntities.append (segment)
       }
@@ -297,7 +297,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         frontComponentValuesEntities.append (segment)
       }
@@ -313,7 +313,7 @@ extension MergerDocument {
         p2_mm: NSPoint (x: canariUnitToMillimeter (ints [2]), y:canariUnitToMillimeter (ints [3])),
         width_mm: canariUnitToMillimeter (ints [4]),
         clipRect_mm: boardRect_mm,
-        moc: self.managedObjectContext ()
+        moc: self.managedObjectContext
       ) {
         backComponentValuesEntities.append (segment)
       }
@@ -323,7 +323,7 @@ extension MergerDocument {
     var drillEntities = [SegmentEntity] ()
     let drills = stringArray (fromDict: inBoardArchiveDict, key: "DRILLS", &errorArray)
     for str in drills {
-      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext())
+      let segment = SegmentEntity (managedObjectContext:self.managedObjectContext)
       let ints = array5int (fromString: str, &errorArray)
       segment.x1 = ints [0]
       segment.y1 = ints [1]
@@ -337,7 +337,7 @@ extension MergerDocument {
     var backPadEntities = [BoardModelPad] ()
     let backPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-BACK", &errorArray)
     for padDict in backPadDictArray {
-      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
+      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext)
       pad.x = int (fromDict: padDict, key: "X", &errorArray)
       pad.y = int (fromDict: padDict, key: "Y", &errorArray)
       pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)
@@ -358,7 +358,7 @@ extension MergerDocument {
     var frontPadEntities = [BoardModelPad] ()
     let frontPadDictArray = dictArray (fromDict: inBoardArchiveDict, key: "PADS-FRONT", &errorArray)
     for padDict in frontPadDictArray {
-      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext())
+      let pad = BoardModelPad (managedObjectContext:self.managedObjectContext)
       pad.x = int (fromDict: padDict, key: "X", &errorArray)
       pad.y = int (fromDict: padDict, key: "Y", &errorArray)
       pad.width = int (fromDict: padDict, key: "WIDTH", &errorArray)

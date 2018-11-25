@@ -31,11 +31,11 @@ let PMFontComment = "PMFontComment"
 //    var characterArray = [FontCharacter] ()
 //    for key in keys {
 //      let descriptor = font [key]!
-//      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext())
+//      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext)
 //      newCharacter.codePoint = Int (key)
 //      newCharacter.advance = descriptor.advancement
 //      for segment in descriptor.segments {
-//        let newSegment = SegmentForFontCharacter (managedObjectContext: managedObjectContext())
+//        let newSegment = SegmentForFontCharacter (managedObjectContext: managedObjectContext)
 //        newSegment.x1 = segment.x1
 //        newSegment.y1 = -segment.y1 - 1
 //        newSegment.x2 = segment.x2
@@ -85,7 +85,7 @@ let PMFontComment = "PMFontComment"
     if let currentCharacter = possibleCurrentCharacter {
       var newSegmentEntityArray = [SegmentForFontCharacter] ()
       for segment in inSegments {
-        let newSegment = SegmentForFontCharacter (managedObjectContext: self.managedObjectContext())
+        let newSegment = SegmentForFontCharacter (managedObjectContext: self.managedObjectContext)
         newSegment.x1 = segment.x1
         newSegment.y1 = segment.y1
         newSegment.x2 = segment.x2
@@ -127,7 +127,7 @@ let PMFontComment = "PMFontComment"
     //--- There is no character for this code point: create it
       if !found {
         var characterSet = self.rootObject.characters_property.propval
-        let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext())
+        let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext)
         newCharacter.codePoint = codePoint
         characterSet.append (newCharacter)
         characterSet = characterSet.sorted (by: {$0.codePoint < $1.codePoint})

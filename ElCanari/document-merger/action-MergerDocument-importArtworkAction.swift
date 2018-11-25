@@ -17,7 +17,7 @@ extension MergerDocument {
     if let currentArtwork = self.rootObject.artwork_property.propval { // Arwork already loaded, remove it
       self.rootObject.artwork_property.setProp (nil)
       self.rootObject.artworkName = ""
-      self.managedObjectContext().removeManagedObject (currentArtwork)
+      self.managedObjectContext.removeManagedObject (currentArtwork)
     }else{
       importArtwork ()
     }
