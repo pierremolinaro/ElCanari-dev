@@ -366,18 +366,16 @@ class CanariViewWithZoomAndFlip : EBView {
       while x <= endX {
         var y = startY
         while y <= endY {
-//          bp.move (to: NSPoint (x: xf, y: yf))
-//          bp.line (to: NSPoint (x: xf, y: yf))
-          let r = CGRect (x: x - 0.5, y: y - 0.5, width: 1.0, height: 1.0)
-          bp.appendRect (r)
+          bp.move (to: NSPoint (x: x - 0.5, y: y))
+          bp.line (to: NSPoint (x: x + 0.5, y: y))
+          bp.move (to: NSPoint (x: x,       y: y + 0.5))
+          bp.line (to: NSPoint (x: x,       y: y - 0.5))
           y += gridDisplayStep
         }
         x += gridDisplayStep
       }
-//      NSColor.black.setStroke ()
-//      bp.stroke ()
-      self.mGridDotColor.setFill ()
-      bp.fill ()
+      self.mGridDotColor.setStroke ()
+      bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
       bp.lineWidth = 0.0

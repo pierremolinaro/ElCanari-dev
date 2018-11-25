@@ -1910,29 +1910,6 @@ prefix func ! (operand:EBSelection<Bool>) -> EBSelection<Bool> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBReadOnlyEnumPropertyProtocol
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(EBReadOnlyEnumPropertyProtocol) protocol EBReadOnlyEnumPropertyProtocol {
-
-  func addEBObserver (_ inObserver : EBEvent)
-
-  func removeEBObserver (_ inObserver : EBEvent)
-
-  func count () -> Int
-
-  func rawValue () -> Int
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBEnumPropertyProtocol
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(EBEnumPropertyProtocol) protocol EBEnumPropertyProtocol : EBReadOnlyEnumPropertyProtocol {
-  func setFromRawValue (_ rawValue : Int)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
