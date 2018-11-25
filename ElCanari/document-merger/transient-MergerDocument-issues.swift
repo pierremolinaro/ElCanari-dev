@@ -19,7 +19,6 @@ func transient_MergerDocument_issues (
        _ root_boardInstances_boardLimitWidth : [MergerBoardInstance_boardLimitWidth]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-      let cocoaDisplayRect = root_boardDisplayRect.cocoaRect ()
       var array = [CanariIssue] ()
     //-------------------- Check for instance intersection
       var idx = 0
@@ -34,36 +33,22 @@ func transient_MergerDocument_issues (
           let intersection = instanceRect.intersection (otherInstanceRect.insetBy (dx: inset, dy: inset))
           if !intersection.isEmpty {
             let intersectionEnlarged : NSRect = intersection.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
-            let bp1 = NSBezierPath (rect: cocoaDisplayRect)
-            bp1.appendRect (intersectionEnlarged)
-            bp1.windingRule = .evenOdd
-            let shapes = EBShape ()
-            shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
-            let bp2 = NSBezierPath (rect: intersectionEnlarged)
-            bp2.lineWidth = 2.0
-            shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-            let issue = CanariIssue (kind: .error, message: "Intersection", shapes: shapes, refPoint: intersection.origin.cocoaPoint ())
+            let bp = NSBezierPath (rect: intersectionEnlarged)
+            let issue = CanariIssue (kind: .error, message: "Intersection", path: bp)
             array.append (issue)
           }
           idy += 1
         }
         idx += 1
       }
-    //-------------------- Check instance are within bounds
+    //-------------------- Check instances are within bounds
       for instance in root_boardInstances_instanceRect {
         let instanceRect = instance.instanceRect!
         let r = root_boardRect.union (instanceRect)
         if r != root_boardRect {
           let intersectionEnlarged : NSRect = instanceRect.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
-          let bp1 = NSBezierPath (rect: cocoaDisplayRect)
-          bp1.appendRect (intersectionEnlarged)
-          bp1.windingRule = .evenOdd
-          let shapes = EBShape ()
-          shapes.append (shape: EBFilledBezierPathShape ([bp1], NSColor.gray.withAlphaComponent (0.5)))
-          let bp2 = NSBezierPath (rect: intersectionEnlarged)
-          bp2.lineWidth = 2.0
-          shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-          let issue = CanariIssue (kind: .error, message: "Outside board", shapes: shapes, refPoint: instanceRect.origin.cocoaPoint ())
+          let bp = NSBezierPath (rect: intersectionEnlarged)
+          let issue = CanariIssue (kind: .error, message: "Outside board", path: bp)
           array.append (issue)
         }
       }

@@ -30,11 +30,8 @@ func transient_SymbolBezierCurve_issues (
       width: SYMBOL_GRID_IN_COCOA_UNIT,
       height: SYMBOL_GRID_IN_COCOA_UNIT
     )
-    let shapes = EBShape ()
-    let bp2 = NSBezierPath (rect: r)
-    bp2.lineWidth = 2.0
-    shapes.append (shape: EBStrokeBezierPathShape ([bp2], NSColor.red))
-    issues.append (CanariIssue (kind: .error, message: "Point is not aligned on 25 mils grid", shapes: shapes, refPoint: r.origin))
+    let bp = NSBezierPath (rect: r)
+    issues.append (CanariIssue (kind: .error, message: "Point is not aligned on 25 mils grid", path: bp))
   }
   return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2

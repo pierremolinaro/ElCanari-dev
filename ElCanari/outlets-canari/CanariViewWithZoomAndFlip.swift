@@ -333,13 +333,13 @@ class CanariViewWithZoomAndFlip : EBView {
   //    Set issue
   //····················································································································
 
-  private var mIssueShapes = EBShape ()
+  private var mIssueBezierPath : NSBezierPath? = nil
 
   //····················································································································
 
-  func setIssue (_ shapes : EBShape) {
-    if mIssueShapes != shapes {
-      mIssueShapes = shapes
+  func setIssue (_ inBezierPath : NSBezierPath?) {
+    if mIssueBezierPath != inBezierPath {
+      mIssueBezierPath = inBezierPath
       self.needsDisplay = true
     }
   }
@@ -402,7 +402,20 @@ class CanariViewWithZoomAndFlip : EBView {
   override func draw (_ inDirtyRect: NSRect) {
     self.drawGrid (inDirtyRect)
     super.draw (inDirtyRect)
-    self.mIssueShapes.draw (inDirtyRect)
+    if let issueBezierPath = self.mIssueBezierPath {
+//      let bp = NSBezierPath (rect: self.frame)
+//      bp.append (issueBezierPath)
+//      bp.windingRule = .evenOdd
+//      NSColor.gray.withAlphaComponent (0.5).setFill ()
+//      bp.fill ()
+      let bp = NSBezierPath ()
+      bp.append (issueBezierPath)
+      bp.lineWidth = 3.0
+      NSColor.white.withAlphaComponent (0.5).setFill ()
+      bp.fill ()
+      NSColor.red.setStroke ()
+      bp.stroke ()
+    }
   }
 
   //····················································································································
