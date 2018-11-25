@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="CanariSymbolDocument">
+        <customObject id="-2" userLabel="File's Owner" customClass="CustomizedSymbolDocument">
             <connections>
                 <outlet property="mAddBezierButton" destination="1185" id="1EV-66-PIR"/>
                 <outlet property="mAddOvalButton" destination="1188" id="g0t-6W-5il"/>
@@ -161,7 +161,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="250" height="314"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
-                <button toolTip="Add Segment" imageHugsTitle="YES" id="1182" customClass="EBButton">
+                <button toolTip="Add Segment" imageHugsTitle="YES" id="1182" customClass="CanariDragSourceButton">
                     <rect key="frame" x="17" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1183">

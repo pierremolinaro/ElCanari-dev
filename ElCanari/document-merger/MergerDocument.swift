@@ -263,6 +263,7 @@ import Cocoa
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mComposedBoardScrollView : CanariDraggingDestinationScrollView?
   @IBOutlet var mComposedBoardView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDeselectIssueButton : EBButton?
@@ -1081,6 +1082,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mBoardWidthUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mComposedBoardScrollView {
+      if !(outlet is CanariDraggingDestinationScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mComposedBoardScrollView' outlet is not an instance of 'CanariDraggingDestinationScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mComposedBoardScrollView' outlet is nil"
       )
     }
     if let outlet : Any = self.mComposedBoardView {
@@ -3281,6 +3297,7 @@ import Cocoa
     self.mBoardViewVerticalFlipCheckbox?.ebCleanUp ()
     self.mBoardWidthTextField?.ebCleanUp ()
     self.mBoardWidthUnitPopUp?.ebCleanUp ()
+    self.mComposedBoardScrollView?.ebCleanUp ()
     self.mComposedBoardView?.ebCleanUp ()
     self.mDangerView?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()

@@ -1,47 +1,24 @@
-//
-//  view-MergerIssueTableView.swift
-//  ElCanari
-//
-//  Created by Pierre Molinaro on 25/07/2018.
-//
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   MergerIssueTableView
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 
-@objc(MergerIssueTableView)
-class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
-
-  //····················································································································
-  //   Outlet
-  //····················································································································
-
-  @IBOutlet private weak var mBoardView : CanariViewWithZoomAndFlip? = nil
+@objc(CanariDragSourceButton) class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource, NSPasteboardItemDataProvider {
 
   //····················································································································
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
-    self.customInit ()
+    noteObjectAllocation (self)
   }
 
   //····················································································································
 
   override init (frame:NSRect) {
     super.init (frame:frame)
-    self.customInit ()
-  }
-  
-  //····················································································································
-
-  private final func customInit () {
     noteObjectAllocation (self)
-    self.dataSource = self
-    self.delegate = self
   }
   
   //····················································································································
@@ -51,101 +28,115 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   }
 
   //····················································································································
-  //    Table view data source protocol
+  //  Drag type UTI
   //····················································································································
 
-  fileprivate var mModelArray = [CanariIssue] () {
-    didSet {
-      self.reloadData ()
-    }
+  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
+
+  //····················································································································
+
+  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
+    self.mDragTypeUTI = dragTypeUTI
   }
 
   //····················································································································
+  //  NSDraggingSource protocol implementation
+  //····················································································································
 
-  func numberOfRows (in tableView: NSTableView) -> Int {
-    return mModelArray.count
+  func draggingSession (_ session: NSDraggingSession,
+                        sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+    return .generic
   }
 
   //····················································································································
+  //  NSPasteboardItemDataProvider protocol implementation
+  //····················································································································
 
-  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
-    var result : Any? = nil
-    if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
-      switch mModelArray [row].mKind {
-      case .warning :
-        result = NSImage (named: NSImage.Name ("orange20"))!
-      case .error :
-        result = NSImage (named: NSImage.Name ("red20"))!
+  func pasteboard (_ pasteboard: NSPasteboard?,
+                   item: NSPasteboardItem,
+                   provideDataForType type: NSPasteboard.PasteboardType) {
+  }
+
+  //····················································································································
+  //  Drag source on mouse down
+  //····················································································································
+
+  override func mouseDown (with inEvent : NSEvent) {
+    if self.isEnabled {
+      if let dragTypeUTI = self.mDragTypeUTI {
+        let pasteboardItem = NSPasteboardItem ()
+        pasteboardItem.setDataProvider (self, forTypes: [dragTypeUTI])
+
+        let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
+        draggingItem.setDraggingFrame (self.bounds, contents: self.image)
+
+        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+      }else{
+        __NSBeep ()
       }
-    }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
-      result = mModelArray [row].mMessage
     }
-    return result
   }
 
   //····················································································································
-  //    Table view delegate
+  //  Hilite when mouse is within button
   //····················································································································
 
-  func tableViewSelectionDidChange (_ notification: Notification) {
-    self.mBoardView?.setIssue ((self.selectedRow < 0) ? nil : self.mModelArray [self.selectedRow].mPath)
+  fileprivate var mTrackingArea :  NSTrackingArea? = nil
+
+  //····················································································································
+
+  override func updateTrackingAreas () { // This is required for reveiving mouseEntered and mouseExited
+  //--- Remove tracking area
+    if let trackingArea = mTrackingArea {
+      self.removeTrackingArea (trackingArea)
+    }
+  //--- Add Updated tracking area
+    let trackingArea = NSTrackingArea (
+      rect: self.bounds,
+      options: [.mouseEnteredAndExited, .activeInKeyWindow],
+      owner: self,
+      userInfo: nil
+    )
+    self.addTrackingArea (trackingArea)
+    self.mTrackingArea = trackingArea
+  //---
+    super.updateTrackingAreas ()
   }
 
   //····················································································································
-  //    $issues binding
+
+  private var mMouseWithin = false
+
   //····················································································································
 
-  private var mIssueController : Controller_MergerIssueTableView_issues?
+  override func mouseEntered (with inEvent : NSEvent) {
+  if self.isEnabled {
+    self.mMouseWithin = true
+    self.needsDisplay = true
+  }
+  super.mouseEntered (with: inEvent)
+}
 
-  func bind_issues (_ issues:EBReadOnlyProperty_CanariIssueArray, file:String, line:Int) {
-    self.mIssueController = Controller_MergerIssueTableView_issues (issues:issues, outlet:self)
+  //····················································································································
+
+  override func mouseExited (with inEvent : NSEvent) {
+    self.mMouseWithin = false
+    self.needsDisplay = true
+    super.mouseExited (with: inEvent)
   }
 
   //····················································································································
 
-  func unbind_issues () {
-    self.mIssueController?.unregister ()
-    self.mIssueController = nil
+  override func draw (_ inDirtyRect : NSRect) {
+    if self.mMouseWithin {
+      NSColor.lightGray.setFill ()
+      NSBezierPath.fill (inDirtyRect)
+    }
+    super.draw (inDirtyRect)
   }
 
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_MergerIssueTableView_issues
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_MergerIssueTableView_issues : EBSimpleController {
-
-  private let mModels : EBReadOnlyProperty_CanariIssueArray
-  private let mOutlet : MergerIssueTableView
-
-  //····················································································································
-
-  init (issues : EBReadOnlyProperty_CanariIssueArray, outlet : MergerIssueTableView) {
-    mModels = issues
-    mOutlet = outlet
-    super.init (observedObjects:[issues], outlet:outlet)
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModels.prop {
-    case .empty :
-      mOutlet.mModelArray = []
-    case .single (let v) :
-      mOutlet.mModelArray = v.mIssues
-    case .multiple :
-      mOutlet.mModelArray = []
-    }
-  }
-
-  //····················································································································
-
-}
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

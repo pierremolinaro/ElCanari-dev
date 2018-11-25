@@ -1,5 +1,5 @@
 //
-//  CanariMergerBoardScrollView.swift
+//  CanariDraggingDestinationScrollView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 14/07/2018.
@@ -11,11 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariMergerBoardScrollView) class CanariMergerBoardScrollView : CanariScrollViewWithPlacard {
+@objc(CanariDraggingDestinationScrollView) class CanariDraggingDestinationScrollView : CanariScrollViewWithPlacard {
 
   //····················································································································
 
-  @IBOutlet weak var mDocument : MergerDocument? = nil
+  weak var mDocument : EBManagedDocument? = nil
 
   //····················································································································
 
@@ -51,69 +51,37 @@ import Cocoa
   //····················································································································
 
   override func draggingEntered (_ sender: NSDraggingInfo) -> NSDragOperation {
-    // NSLog ("draggingEntered")
-    return .copy
+    return mDocument?.draggingEntered (sender, self) ?? .generic
   }
 
   //····················································································································
 
   override func draggingUpdated (_ sender: NSDraggingInfo) -> NSDragOperation {
-    // NSLog ("draggingUpdated")
-    return .copy
+    return mDocument?.draggingUpdated (sender, self) ?? .generic
   }
 
   //····················································································································
 
-//  override func draggingExited (_ sender: NSDraggingInfo?) {
-//    // NSLog ("draggingExited")
-//  }
+  override func draggingExited (_ sender: NSDraggingInfo?) {
+    mDocument?.draggingExited (sender, self)
+  }
 
   //····················································································································
 
   override func prepareForDragOperation (_ sender: NSDraggingInfo) -> Bool {
-    // NSLog ("prepareForDragOperation")
-    return true
+    return mDocument?.prepareForDragOperation (sender, self) ?? false
   }
 
   //····················································································································
 
   override func performDragOperation (_ sender: NSDraggingInfo) -> Bool {
-    // NSLog ("performDragOperation")
-    return true
+    return mDocument?.performDragOperation (sender, self) ?? false
   }
 
   //····················································································································
 
-  override func concludeDragOperation (_ inSender: NSDraggingInfo?) {
-    if let sender = inSender, let document = mDocument, let documentView = self.documentView {
-      let draggingLocationInWindow = sender.draggingLocation 
-      let draggingLocationInDestinationView = documentView.convert (draggingLocationInWindow, from:nil)
-      // NSLog ("concludeDragOperation at \(draggingLocationInWindow), \(documentView) \(draggingLocationInDestinationView)")
-      let pasteboard = sender.draggingPasteboard 
-      if let data = pasteboard.data (forType: NSPasteboard.PasteboardType(rawValue: kDragAndDropModelType.rawValue)), let boardModelName = String (data: data, encoding: .ascii) {
-        // NSLog ("\(boardModelName)")
-        var possibleBoardModel : BoardModel? = nil
-        for boardModel in document.rootObject.boardModels_property.propval {
-          if boardModel.name == boardModelName {
-            possibleBoardModel = boardModel
-            break
-          }
-        }
-        if  let boardModel = possibleBoardModel {
-         // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
-          let rotation = QuadrantRotation (rawValue: mDocument?.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
-          let newBoard = MergerBoardInstance (managedObjectContext: document.managedObjectContext, file: #file, #line)
-          newBoard.myModel_property.setProp (boardModel)
-          newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
-          newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)
-          newBoard.instanceRotation = rotation          
-          document.rootObject.boardInstances_property.add (newBoard)
-          document.mBoardInstanceController.setSelection ([newBoard])
-        }else{
-          NSLog ("Cannot find '\(boardModelName)' board model")
-        }
-      }
-    }
+  override func concludeDragOperation (_ sender: NSDraggingInfo?) {
+    mDocument?.concludeDragOperation (sender, self)
   }
 
   //····················································································································

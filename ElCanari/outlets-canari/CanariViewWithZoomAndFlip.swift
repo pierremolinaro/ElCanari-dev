@@ -539,6 +539,57 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+  //  Drag type UTI
+  //····················································································································
+
+  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
+
+  //····················································································································
+
+  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
+    self.mDragTypeUTI = dragTypeUTI
+    self.registerForDraggedTypes ([dragTypeUTI])
+  }
+
+  //····················································································································
+  //    Dragging destination
+  //····················································································································
+  // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
+
+  //····················································································································
+
+  let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes : NSImage.imageTypes]
+
+  //····················································································································
+
+  func shouldAllowDrag (_ draggingInfo: NSDraggingInfo) -> Bool {
+    var canAccept = false
+  //2.
+    let pasteBoard = draggingInfo.draggingPasteboard
+  //3.
+    if pasteBoard.canReadObject(forClasses: [NSURL.self], options: filteringOptions) {
+      canAccept = true
+    }
+    return canAccept
+  }
+
+  //····················································································································
+
+  fileprivate var isReceivingDrag = false {
+    didSet {
+      self.needsDisplay = true
+    }
+  }
+
+  //····················································································································
+
+  override func draggingEntered (_ sender: NSDraggingInfo) -> NSDragOperation {
+    let allow = shouldAllowDrag (sender)
+    self.isReceivingDrag = allow
+    return allow ? .copy : NSDragOperation ()
+  }
+
+  //····················································································································
 
 }
 

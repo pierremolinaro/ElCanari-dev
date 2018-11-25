@@ -16,8 +16,12 @@ extern outlet class NSTextField : NSControl ;
 
 extern outlet class NSSegmentedControl ;
 
+extern outlet class CanariDragSourceButton ;
+
 extern outlet class MergerIssueTableView ;
 binding MergerIssueTableView $issues : transient CanariIssueArray ;
+
+extern outlet class CanariDraggingDestinationScrollView ;
 
 extern outlet class CanariDimensionTextField ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;

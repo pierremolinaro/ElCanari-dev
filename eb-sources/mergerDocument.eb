@@ -265,7 +265,7 @@ document MergerDocument root MergerRoot {
   arrayController mBoardInstanceController : root.boardInstances ;
   selectionController MergerBoardInstance mBoardInstanceSelection : self.mBoardInstanceController.selectedArray ;
   outlet CanariViewWithZoomAndFlip mComposedBoardView
-    $rect root.boardRect # root.boardWidth, root.boardHeight
+    $rect root.boardRect
     $zoom root.zoom
     $horizontalFlip prefs.mergerBoardViewHorizontalFlip
     $verticalFlip prefs.mergerBoardViewVerticalFlip
@@ -274,6 +274,8 @@ document MergerDocument root MergerRoot {
     $arrowKeyMagnitude root.cocoaArrowMagnitude
     $shiftArrowKeyMagnitude root.cocoaShiftArrowMagnitude
   ;
+
+  outlet CanariDraggingDestinationScrollView mComposedBoardScrollView ;
 
   outlet EBPopUpButton mSelectedBoardXUnitPopUp $selectedTag root.selectedBoardXUnit ;
   outlet CanariDimensionTextField mSelectedBoardXTextField

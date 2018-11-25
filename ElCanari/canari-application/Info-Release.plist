@@ -52,7 +52,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>MergerDocument</string>
+			<string>CustomizedMergerDocument</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -68,7 +68,7 @@
 			<key>LSTypeIsPackage</key>
 			<integer>0</integer>
 			<key>NSDocumentClass</key>
-			<string>CanariSymbolDocument</string>
+			<string>CustomizedSymbolDocument</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

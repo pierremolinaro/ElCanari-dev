@@ -16,7 +16,7 @@ let PMSymbolComment = "PMSymbolComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariSymbolDocument) class CanariSymbolDocument : SymbolDocument {
+@objc(CustomizedSymbolDocument) class CustomizedSymbolDocument : SymbolDocument {
 
   //····················································································································
 
@@ -33,6 +33,18 @@ let PMSymbolComment = "PMSymbolComment"
       result = versionNumber.intValue
     }
     return result
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib: customization of interface
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+  //--- Drag source button: add segment
+    let dragAddSegmentUTI = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.symbol.add.segment")
+    self.mAddSegmentButton?.set (dragTypeUTI: dragAddSegmentUTI)
+    self.mComposedSymbolView?.set (dragTypeUTI: dragAddSegmentUTI)
   }
 
   //····················································································································

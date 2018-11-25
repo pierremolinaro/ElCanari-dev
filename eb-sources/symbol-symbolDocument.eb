@@ -29,7 +29,7 @@ document SymbolDocument root SymbolRoot {
 
 #--- Buttons for new elements
   action addSegmentAction ;
-  outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
+  outlet CanariDragSourceButton mAddSegmentButton ; # $run self.addSegmentAction ;
   action addBezierAction ;
   outlet EBButton mAddBezierButton $run self.addBezierAction ;
   action addOvalAction ;
@@ -45,10 +45,8 @@ document SymbolDocument root SymbolRoot {
   arrayController mSymbolObjectsController : root.symbolObjects ;
 
   outlet CanariViewWithZoomAndFlip mComposedSymbolView
-#    $size root.boardWidth, root.boardHeight
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
- #   $underObjectsDisplay root.gridDisplay
     $graphicController self.mSymbolObjectsController
     $gridStyle root.gridStyle
     $gridStepFactor root.gridStep

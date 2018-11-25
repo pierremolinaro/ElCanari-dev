@@ -45,7 +45,7 @@ import Cocoa
   @IBOutlet var mAddBezierButton : EBButton?
   @IBOutlet var mAddOvalButton : EBButton?
   @IBOutlet var mAddPinButton : EBButton?
-  @IBOutlet var mAddSegmentButton : EBButton?
+  @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
   @IBOutlet var mAddSolidRectButton : EBButton?
   @IBOutlet var mAddTextButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
@@ -177,11 +177,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mAddSegmentButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddSegmentButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -441,8 +441,6 @@ import Cocoa
   //--------------------------- Set targets / actions
     mResetVersionButton?.target = self
     mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
-    mAddSegmentButton?.target = self
-    mAddSegmentButton?.action = #selector (SymbolDocument.addSegmentAction (_:))
     mAddBezierButton?.target = self
     mAddBezierButton?.action = #selector (SymbolDocument.addBezierAction (_:))
     mAddOvalButton?.target = self
@@ -487,7 +485,6 @@ import Cocoa
     self.mSymbolObjectsController.unbind_model ()
   //--------------------------- Remove targets / actions
     mResetVersionButton?.target = nil
-    mAddSegmentButton?.target = nil
     mAddBezierButton?.target = nil
     mAddOvalButton?.target = nil
     mAddSolidRectButton?.target = nil

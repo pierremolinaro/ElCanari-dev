@@ -148,7 +148,7 @@ class EBManagedObjectContext : EBObject {
           if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Ignore and print
             Swift.print ("\(unreachableObjectSet.count) unreachable objects")
             for object in unreachableObjectSet {
-              Swift.print ("  \(object), \(object.mLine), \(object.mFile)")
+              Swift.print ("  \(object)")
             }
           }else if response == NSApplication.ModalResponse.alertThirdButtonReturn { // Perform correction
             self.mManagedObjectSet.subtract (unreachableObjectSet)
