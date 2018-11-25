@@ -277,6 +277,7 @@ extension MergerDocument {
         ioTemporaryBoardModel.mBackTrackEntities.append (segment)
       }else{
         ioErrorArray.append (("Invalid segment layer \(layer)", #line))
+        self.managedObjectContext ().removeManagedObject (segment)
       }
     }
   }
@@ -546,16 +547,22 @@ extension MergerDocument {
               packageLine.y2 = millimeterToCanariUnit (CGFloat (pointArray [0].y))
               currentPoint = pointArray [0]
               packageLine.width = millimeterToCanariUnit (widthMM)
+              var appened = false
               if layer == "F.Cu" {
                 if lineLayer == "F.SilkS" {
                   ioTemporaryBoardModel.mFrontPackagesEntities.append (packageLine)
+                  appened = true
                 }
               }else if layer == "B.Cu" {
                 if lineLayer == "B.SilkS" {
                   ioTemporaryBoardModel.mBackPackagesEntities.append (packageLine)
+                   appened = true
                 }
               }else{
                 ioErrorArray.append (("Invalid module layer: \(layer)", #line))
+              }
+              if !appened {
+                self.managedObjectContext ().removeManagedObject (packageLine)
               }
             case .curveTo :
               ioErrorArray.append (("Invalid curveToBezierPathElement", #line))

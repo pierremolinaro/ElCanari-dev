@@ -140,11 +140,17 @@ class EBManagedObjectContext : EBObject {
         unregisteredObjectSet.count,
         (unregisteredObjectSet.count > 1) ? "s" : ""
       )
-      alert.addButton (withTitle: "Ignore Error")
+      alert.addButton (withTitle: "Ignore")
+      alert.addButton (withTitle: "Ignore and Print")
       alert.addButton (withTitle: "Perform Correction")
       alert.beginSheetModal (for: windowForSheet,
         completionHandler: {(response : NSApplication.ModalResponse) in
-          if response == NSApplication.ModalResponse.alertSecondButtonReturn /* 1001 */ { // Perform correction
+          if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Ignore and print
+            Swift.print ("\(unreachableObjectSet.count) unreachable objects")
+            for object in unreachableObjectSet {
+              Swift.print ("  \(object)")
+            }
+          }else if response == NSApplication.ModalResponse.alertThirdButtonReturn { // Perform correction
             self.mManagedObjectSet.subtract (unreachableObjectSet)
             self.mManagedObjectSet.formUnion (unregisteredObjectSet)
           }
