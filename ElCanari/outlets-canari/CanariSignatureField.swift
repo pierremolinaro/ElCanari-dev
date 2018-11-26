@@ -36,63 +36,41 @@ import Cocoa
   //  signatureObserver binding
   //····················································································································
 
-  private var mController : Controller_CanariSignatureField_signature?
+  private var mController : EBReadOnlyController_Int?
 
-  func bind_signature (_ object:EBReadOnlyProperty_Int, file:String, line:Int) {
-    mController = Controller_CanariSignatureField_signature (
-      object:object,
-      outlet:self,
-      file:file,
-      line:line
-    )
+  //····················································································································
+
+  func bind_signature (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mController = EBReadOnlyController_Int (
+      models: model,
+      callBack: { [weak self] in self?.update (from: model) }
+     )
   }
+
+  //····················································································································
 
   func unbind_signature () {
-    mController?.unregister ()
-    mController = nil
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariSignatureField_signature
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(Controller_CanariSignatureField_signature)
-final class Controller_CanariSignatureField_signature : EBSimpleController {
-
-  private let mObject : EBReadOnlyProperty_Int
-  private let mOutlet : CanariSignatureField
-
-  //····················································································································
-
-  init (object : EBReadOnlyProperty_Int, outlet : CanariSignatureField, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    if mOutlet.formatter != nil {
-      presentErrorWindow (file: file, line: line, errorMessage: "the outlet has a formatter")
-    }
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
   //····················································································································
 
-  private func updateOutlet () {
-    switch mObject.prop {
+  private func update (from model : EBReadOnlyProperty_Int) {
+    switch model.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
+      self.enableFromValueBinding (true)
       let uv = UInt32 (v)
-      mOutlet.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
+      self.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
     }
   }
 
-  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

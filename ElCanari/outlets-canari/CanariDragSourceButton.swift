@@ -67,16 +67,14 @@ import Cocoa
   //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
-    if self.isEnabled {
-      if let dragType = self.mDragType {
-        let pasteboardItem = NSPasteboardItem ()
-        pasteboardItem.setDataProvider (self, forTypes: [dragType])
+    if let dragType = self.mDragType, self.isEnabled {
+      let pasteboardItem = NSPasteboardItem ()
+      pasteboardItem.setDataProvider (self, forTypes: [dragType])
 
-        let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
-        draggingItem.setDraggingFrame (self.bounds, contents: self.image)
+      let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
+      draggingItem.setDraggingFrame (self.bounds, contents: self.image)
 
-        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
-      }
+      self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
     }
   }
 
@@ -90,7 +88,7 @@ import Cocoa
 
   override func updateTrackingAreas () { // This is required for receiving mouseEntered and mouseExited events
   //--- Remove tracking area
-    if let trackingArea = mTrackingArea {
+    if let trackingArea = self.mTrackingArea {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area

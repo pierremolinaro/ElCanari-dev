@@ -125,23 +125,23 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   private var mModelsController : EBReadOnlyController_StringArray?
 
   func bind_models (_ model:EBReadOnlyProperty_StringArray, file:String, line:Int) {
-    mModelsController = EBReadOnlyController_StringArray (
+    self.mModelsController = EBReadOnlyController_StringArray (
       models:model,
-      callBack: { [weak self] in self?.updateModels (model) }
+      callBack: { [weak self] in self?.update (from: model) }
     )
   }
 
   //····················································································································
 
   func unbind_models () {
-    mModelsController?.unregister ()
-    mModelsController = nil
+    self.mModelsController?.unregister ()
+    self.mModelsController = nil
   }
 
   //····················································································································
 
-  func updateModels (_ models:EBReadOnlyProperty_StringArray) {
-    switch models.prop {
+  func update (from model : EBReadOnlyProperty_StringArray) {
+    switch model.prop {
     case .empty :
       self.mModelArray = []
     case .single (let v) :

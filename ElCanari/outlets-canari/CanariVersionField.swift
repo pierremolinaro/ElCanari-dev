@@ -36,16 +36,18 @@ import Cocoa
   //  version binding
   //····················································································································
 
-  private var mVersionController : Controller_CanariVersionField_version?
+  private var mVersionController : EBReadOnlyController_Int? = nil
 
-  func bind_version (_ object:EBReadOnlyProperty_Int, file:String, line:Int) {
-    mVersionController = Controller_CanariVersionField_version (
-      object:object,
-      outlet:self,
-      file:file,
-      line:line
+  //····················································································································
+
+  func bind_version (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mVersionController = EBReadOnlyController_Int (
+      models: model,
+      callBack: { [weak self] in self?.update (from: model) }
     )
   }
+
+  //····················································································································
 
   func unbind_version () {
     mVersionController?.unregister ()
@@ -53,101 +55,56 @@ import Cocoa
   }
 
   //····················································································································
+
+  private func update (from model : EBReadOnlyProperty_Int) {
+    switch model.prop {
+    case .empty :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    case .single (let v) :
+      self.enableFromValueBinding (true)
+      self.stringValue = String (v)
+    case .multiple :
+      self.enableFromValueBinding (false)
+      self.stringValue = "—"
+    }
+  }
+
+  //····················································································································
   //  versionShouldChange binding
   //····················································································································
 
-  private var mVersionShouldChangeController : Controller_CanariVersionField_versionShouldChange?
+  private var mVersionShouldChangeController : EBReadOnlyController_Bool? = nil
 
-  func bind_versionShouldChange (_ object:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mVersionShouldChangeController = Controller_CanariVersionField_versionShouldChange (
-      object:object,
-      outlet:self,
-      file:file,
-      line:line
-    )
+  //····················································································································
+
+  func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    mVersionShouldChangeController = EBReadOnlyController_Bool (
+      models: model,
+      callBack: { [weak self] in self?.update (from: model) }
+     )
   }
+
+  //····················································································································
 
   func unbind_versionShouldChange () {
     mVersionShouldChangeController?.unregister ()
     mVersionShouldChangeController = nil
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariVersionField_version
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(Controller_CanariVersionField_version)
-final class Controller_CanariVersionField_version : EBSimpleController {
-
-  private let mObject : EBReadOnlyProperty_Int
-  private let mOutlet : CanariVersionField
 
   //····················································································································
 
-  init (object : EBReadOnlyProperty_Int, outlet : CanariVersionField, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    if mOutlet.formatter != nil {
-      presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
-    }
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
-    case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.stringValue = String (v)
-    case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
-    }
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariVersionField_versionShouldChange
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-@objc(Controller_CanariVersionField_versionShouldChange)
-final class Controller_CanariVersionField_versionShouldChange : EBSimpleController {
-
-  private let mObject : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariVersionField
-
-  //····················································································································
-
-  init (object : EBReadOnlyProperty_Bool, outlet : CanariVersionField, file : String, line : Int) {
-    mObject = object
-    mOutlet = outlet
-    super.init (observedObjects:[object])
-    if mOutlet.formatter != nil {
-      presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
-    }
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mObject.prop {
+  private func update (from model : EBReadOnlyProperty_Bool) {
+    switch model.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      mOutlet.textColor = v ? NSColor.red : NSColor.black
+      self.textColor = v ? NSColor.red : NSColor.black
     }
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

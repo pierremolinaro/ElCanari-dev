@@ -23,15 +23,15 @@ class SymbolObjectsView : CanariViewWithZoomAndFlip {
   //   INIT
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.configurationOnInit ()
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.configurationOnInit ()
   }
 

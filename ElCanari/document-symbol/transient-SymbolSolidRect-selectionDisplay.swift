@@ -23,10 +23,10 @@ func transient_SymbolSolidRect_selectionDisplay (
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
   let shape = EBShape ()
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_RECT_BOTTOM, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_RECT_TOP, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_RIGHT, .rect))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_LEFT, .rect))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_RECT_BOTTOM, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_RECT_TOP, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_RIGHT, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_RECT_LEFT, .circ))
   return shape
 //--- END OF USER ZONE 2
 }

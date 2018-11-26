@@ -512,11 +512,18 @@ class CanariViewWithZoomAndFlip : EBView {
   //    grid line color binding
   //····················································································································
 
-  private var mGridLineColorController : Controller_CanariViewWithZoomAndFlip_gridLineColor?
+  private var mGridLineColorController : EBReadOnlyController_NSColor? = nil
+
+  //····················································································································
 
   func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    mGridLineColorController = Controller_CanariViewWithZoomAndFlip_gridLineColor (model: model, outlet:self)
+    mGridLineColorController = EBReadOnlyController_NSColor (
+      models: model,
+      callBack: { [weak self] in self?.updateLineColor (from: model) }
+    )
   }
+
+  //····················································································································
 
   func unbind_gridLineColor () {
     mGridLineColorController?.unregister ()
@@ -524,19 +531,53 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+
+  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+    switch model.prop {
+    case .empty :
+      self.setGridLineColor (.black)
+    case .single (let v) :
+      self.setGridLineColor (v)
+    case .multiple :
+      self.setGridLineColor (.black)
+    }
+  }
+
+  //····················································································································
   //    grid dot color binding
   //····················································································································
 
-  private var mGridDotColorController : Controller_CanariViewWithZoomAndFlip_gridDotColor?
+  private var mGridDotColorController : EBReadOnlyController_NSColor? = nil
+
+  //····················································································································
 
   func bind_gridDotColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    mGridDotColorController = Controller_CanariViewWithZoomAndFlip_gridDotColor (model: model, outlet:self)
+    self.mGridDotColorController = EBReadOnlyController_NSColor (
+      models: model,
+      callBack: { [weak self] in self?.updateGridColor (from: model) }
+    )
   }
 
+  //····················································································································
+
   func unbind_gridDotColor () {
-    mGridDotColorController?.unregister ()
-    mGridDotColorController = nil
+    self.mGridDotColorController?.unregister ()
+    self.mGridDotColorController = nil
   }
+
+  //····················································································································
+
+  private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
+    switch model.prop {
+    case .empty :
+      self.setGridDotColor (.black)
+    case .single (let v) :
+      self.setGridDotColor (v)
+    case .multiple :
+      self.setGridDotColor (.black)
+    }
+  }
+
 
   //····················································································································
   //  Drag type UTI
@@ -567,7 +608,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //2.
     let pasteBoard = draggingInfo.draggingPasteboard
   //3.
-    if pasteBoard.canReadObject(forClasses: [NSURL.self], options: filteringOptions) {
+    if pasteBoard.canReadObject (forClasses: [NSURL.self], options: filteringOptions) {
       canAccept = true
     }
     return canAccept
@@ -804,76 +845,6 @@ final class Controller_CanariViewWithZoomAndFlip_gridStepFactor : EBSimpleContro
       mOutlet.setGridStepFactor (v)
     case .multiple :
       mOutlet.setGridStepFactor (4)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_gridLineColor
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_gridLineColor : EBSimpleController {
-
-  private let mModel : EBReadOnlyProperty_NSColor
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (model : EBReadOnlyProperty_NSColor, outlet : CanariViewWithZoomAndFlip) {
-    mModel = model
-    mOutlet = outlet
-    super.init (observedObjects:[model])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModel.prop {
-    case .empty :
-      mOutlet.setGridLineColor (.black)
-    case .single (let v) :
-      mOutlet.setGridLineColor (v)
-    case .multiple :
-      mOutlet.setGridLineColor (.black)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_gridDotColor
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_gridDotColor : EBSimpleController {
-
-  private let mModel : EBReadOnlyProperty_NSColor
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (model : EBReadOnlyProperty_NSColor, outlet : CanariViewWithZoomAndFlip) {
-    mModel = model
-    mOutlet = outlet
-    super.init (observedObjects:[model])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModel.prop {
-    case .empty :
-      mOutlet.setGridDotColor (.black)
-    case .single (let v) :
-      mOutlet.setGridDotColor (v)
-    case .multiple :
-      mOutlet.setGridDotColor (.black)
     }
   }
 
