@@ -25,6 +25,15 @@ extension CGPoint {
 
   //····················································································································
 
+  func aligned (onGrid inGrid : CGFloat) -> CGPoint {
+    var p = self
+    p.x = (p.x / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid
+    p.y = (p.y / inGrid).rounded (.toNearestOrAwayFromZero) * inGrid
+    return p
+  }
+
+  //····················································································································
+
   static func product (_ p1 : CGPoint, _ p2 : CGPoint, _ p3 : CGPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
     let dy2 = p2.y - p1.y

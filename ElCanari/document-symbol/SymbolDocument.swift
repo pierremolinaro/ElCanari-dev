@@ -42,13 +42,14 @@ import Cocoa
   //    Outlets
   //····················································································································
 
-  @IBOutlet var mAddBezierButton : EBButton?
-  @IBOutlet var mAddOvalButton : EBButton?
-  @IBOutlet var mAddPinButton : EBButton?
+  @IBOutlet var mAddBezierButton : CanariDragSourceButton?
+  @IBOutlet var mAddOvalButton : CanariDragSourceButton?
+  @IBOutlet var mAddPinButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
-  @IBOutlet var mAddSolidRectButton : EBButton?
-  @IBOutlet var mAddTextButton : EBButton?
+  @IBOutlet var mAddSolidRectButton : CanariDragSourceButton?
+  @IBOutlet var mAddTextButton : CanariDragSourceButton?
   @IBOutlet var mCommentTextView : EBTextView?
+  @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
@@ -132,11 +133,11 @@ import Cocoa
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
     if let outlet : Any = self.mAddBezierButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddBezierButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddBezierButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -147,11 +148,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mAddOvalButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddOvalButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddOvalButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -162,11 +163,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mAddPinButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddPinButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddPinButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -192,11 +193,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mAddSolidRectButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddSolidRectButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddSolidRectButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -207,11 +208,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mAddTextButton {
-      if !(outlet is EBButton) {
+      if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mAddTextButton' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mAddTextButton' outlet is not an instance of 'CanariDragSourceButton'"
         )
       }
     }else{
@@ -234,6 +235,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mCommentTextView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mComposedSymbolScrollView {
+      if !(outlet is CanariDraggingDestinationScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mComposedSymbolScrollView' outlet is not an instance of 'CanariDraggingDestinationScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mComposedSymbolScrollView' outlet is nil"
       )
     }
     if let outlet : Any = self.mComposedSymbolView {
@@ -441,16 +457,6 @@ import Cocoa
   //--------------------------- Set targets / actions
     mResetVersionButton?.target = self
     mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
-    mAddBezierButton?.target = self
-    mAddBezierButton?.action = #selector (SymbolDocument.addBezierAction (_:))
-    mAddOvalButton?.target = self
-    mAddOvalButton?.action = #selector (SymbolDocument.addOvalAction (_:))
-    mAddSolidRectButton?.target = self
-    mAddSolidRectButton?.action = #selector (SymbolDocument.addSolidRectAction (_:))
-    mAddTextButton?.target = self
-    mAddTextButton?.action = #selector (SymbolDocument.addTextAction (_:))
-    mAddPinButton?.target = self
-    mAddPinButton?.action = #selector (SymbolDocument.addPinAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -485,11 +491,6 @@ import Cocoa
     self.mSymbolObjectsController.unbind_model ()
   //--------------------------- Remove targets / actions
     mResetVersionButton?.target = nil
-    mAddBezierButton?.target = nil
-    mAddOvalButton?.target = nil
-    mAddSolidRectButton?.target = nil
-    mAddTextButton?.target = nil
-    mAddPinButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
@@ -498,6 +499,7 @@ import Cocoa
     self.mAddSolidRectButton?.ebCleanUp ()
     self.mAddTextButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
+    self.mComposedSymbolScrollView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()

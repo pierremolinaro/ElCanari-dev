@@ -28,18 +28,12 @@ document SymbolDocument root SymbolRoot {
 #  outlet displaysShadowsCheckbox : NSButton $value root.displaysShadows ;
 
 #--- Buttons for new elements
-  action addSegmentAction ;
-  outlet CanariDragSourceButton mAddSegmentButton ; # $run self.addSegmentAction ;
-  action addBezierAction ;
-  outlet EBButton mAddBezierButton $run self.addBezierAction ;
-  action addOvalAction ;
-  outlet EBButton mAddOvalButton $run self.addOvalAction ;
-  action addSolidRectAction ;
-  outlet EBButton mAddSolidRectButton $run self.addSolidRectAction ;
-  action addTextAction ;
-  outlet EBButton mAddTextButton $run self.addTextAction ;
-  action addPinAction ;
-  outlet EBButton mAddPinButton $run self.addPinAction ;
+  outlet CanariDragSourceButton mAddSegmentButton ;
+  outlet CanariDragSourceButton mAddBezierButton ;
+  outlet CanariDragSourceButton mAddOvalButton ;
+  outlet CanariDragSourceButton mAddSolidRectButton ;
+  outlet CanariDragSourceButton mAddTextButton ;
+  outlet CanariDragSourceButton mAddPinButton ;
 
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;
@@ -53,6 +47,8 @@ document SymbolDocument root SymbolRoot {
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridDotColor prefs.dotColorOfSymbolGrid
   ;
+
+  outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;
 
 #--- Page : Comments
   outlet EBTextView mCommentTextView $value root.comments ;
