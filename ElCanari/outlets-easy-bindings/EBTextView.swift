@@ -58,7 +58,7 @@ import Cocoa
   init (object:EBReadWriteProperty_String, outlet : EBTextView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     outlet.delegate = self
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }

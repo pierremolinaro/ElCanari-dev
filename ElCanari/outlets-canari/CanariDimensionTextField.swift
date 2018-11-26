@@ -78,7 +78,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet
-    super.init (observedObjects:[dimension, unit], outlet:outlet)
+    super.init (observedObjects:[dimension, unit])
     mOutlet.target = self
     mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
     if mOutlet.formatter == nil {

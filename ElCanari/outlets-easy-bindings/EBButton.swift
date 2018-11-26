@@ -62,7 +62,7 @@ final class Controller_EBButton_title : EBSimpleController {
   init (object:EBReadOnlyProperty_String, outlet : EBButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

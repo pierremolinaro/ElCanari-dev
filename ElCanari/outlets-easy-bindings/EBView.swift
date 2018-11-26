@@ -602,7 +602,7 @@ final class Controller_EBView_arrowKeyMagnitude : EBSimpleController {
   init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
     mProperty = property
     mOutlet = outlet
-    super.init (observedObjects:[property], outlet:outlet)
+    super.init (observedObjects:[property])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -637,7 +637,7 @@ final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
   init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
     mProperty = property
     mOutlet = outlet
-    super.init (observedObjects:[property], outlet:outlet)
+    super.init (observedObjects:[property])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -672,7 +672,7 @@ class Controller_EBView_underObjectsDisplay : EBSimpleController {
   init (_ layer : EBReadOnlyProperty_EBShape, outlet : EBView) {
     mLayer = layer
     mOutlet = outlet
-    super.init (observedObjects:[layer], outlet:outlet)
+    super.init (observedObjects:[layer])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -705,7 +705,7 @@ class Controller_EBView_overObjectsDisplay : EBSimpleController {
   init (_ layer : EBReadOnlyProperty_EBShape, outlet : EBView) {
     mLayer = layer
     mOutlet = outlet
-    super.init (observedObjects:[layer], outlet:outlet)
+    super.init (observedObjects:[layer])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

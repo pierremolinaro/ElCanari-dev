@@ -607,7 +607,7 @@ final class Controller_CanariViewWithZoomAndFlip_rect : EBSimpleController {
   init (rect : EBReadOnlyProperty_CanariRect, outlet : CanariViewWithZoomAndFlip) {
     mRect = rect
     mOutlet = outlet
-    super.init (observedObjects:[rect], outlet:outlet)
+    super.init (observedObjects:[rect])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -644,7 +644,7 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   init (zoom : EBReadWriteProperty_Int, outlet : CanariViewWithZoomAndFlip) {
     mZoom = zoom
     mOutlet = outlet
-    super.init (observedObjects:[zoom], outlet:outlet)
+    super.init (observedObjects:[zoom])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -685,7 +685,7 @@ final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleContro
   init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip) {
     mFlip = flip
     mOutlet = outlet
-    super.init (observedObjects:[flip], outlet:outlet)
+    super.init (observedObjects:[flip])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -720,7 +720,7 @@ final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleControll
   init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip) {
     mFlip = flip
     mOutlet = outlet
-    super.init (observedObjects:[flip], outlet:outlet)
+    super.init (observedObjects:[flip])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -755,7 +755,7 @@ final class Controller_CanariViewWithZoomAndFlip_gridStyle : EBSimpleController 
   init (model : EBReadOnlyProperty_GridStyle, outlet : CanariViewWithZoomAndFlip) {
     mModel = model
     mOutlet = outlet
-    super.init (observedObjects:[model], outlet:outlet)
+    super.init (observedObjects:[model])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -790,7 +790,7 @@ final class Controller_CanariViewWithZoomAndFlip_gridStepFactor : EBSimpleContro
   init (model : EBReadOnlyProperty_Int, outlet : CanariViewWithZoomAndFlip) {
     mModel = model
     mOutlet = outlet
-    super.init (observedObjects:[model], outlet:outlet)
+    super.init (observedObjects:[model])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -825,7 +825,7 @@ final class Controller_CanariViewWithZoomAndFlip_gridLineColor : EBSimpleControl
   init (model : EBReadOnlyProperty_NSColor, outlet : CanariViewWithZoomAndFlip) {
     mModel = model
     mOutlet = outlet
-    super.init (observedObjects:[model], outlet:outlet)
+    super.init (observedObjects:[model])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -860,7 +860,7 @@ final class Controller_CanariViewWithZoomAndFlip_gridDotColor : EBSimpleControll
   init (model : EBReadOnlyProperty_NSColor, outlet : CanariViewWithZoomAndFlip) {
     mModel = model
     mOutlet = outlet
-    super.init (observedObjects:[model], outlet:outlet)
+    super.init (observedObjects:[model])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

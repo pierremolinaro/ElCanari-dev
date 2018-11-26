@@ -126,7 +126,7 @@ class Controller_MergerIssueTableView_issues : EBSimpleController {
   init (issues : EBReadOnlyProperty_CanariIssueArray, outlet : MergerIssueTableView) {
     mModels = issues
     mOutlet = outlet
-    super.init (observedObjects:[issues], outlet:outlet)
+    super.init (observedObjects:[issues])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

@@ -69,7 +69,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
   init (object:EBReadOnlyProperty_CharacterGerberCodeClass, tableView:CanariCharacterGerberCodeTableView) {
     mTableView = tableView
     mObject = object
-    super.init (observedObjects:[object], outlet:mTableView)
+    super.init (observedObjects:[object])
     tableView.delegate = self
     tableView.dataSource = self
     self.eventCallBack = { [weak self] in self?.updateOutlet () }

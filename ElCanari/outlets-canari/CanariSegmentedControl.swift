@@ -134,7 +134,7 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

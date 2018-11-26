@@ -73,7 +73,7 @@ final class Controller_CanariDateObserverField_dateObserver : EBSimpleController
   init (object:EBReadOnlyProperty_Date, outlet : CanariDateObserverField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

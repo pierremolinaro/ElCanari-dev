@@ -119,7 +119,7 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
   init (object : EBReadWriteProperty_Int, outlet : CanariFontCharacterSelectButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

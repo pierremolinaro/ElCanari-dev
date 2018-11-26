@@ -74,7 +74,7 @@ import Cocoa
         autoFormatter:Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     if autoFormatter {
       let formatter = NumberFormatter ()
       mOutlet.formatter = formatter

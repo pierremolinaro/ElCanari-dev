@@ -82,7 +82,7 @@ import Cocoa
   init (object:EBReadOnlyProperty_NSImage, outlet : EBImageObserverView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -120,7 +120,7 @@ import Cocoa
   init (object:EBReadOnlyProperty_String, outlet : EBImageObserverView, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

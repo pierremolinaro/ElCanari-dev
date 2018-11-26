@@ -88,7 +88,7 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
   init (object:EBReadWriteProperty_Double, outlet : EBSlider, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -133,7 +133,7 @@ final class Controller_EBSlider_intValue : EBSimpleController {
   init (object:EBReadWriteProperty_Int, outlet : EBSlider, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

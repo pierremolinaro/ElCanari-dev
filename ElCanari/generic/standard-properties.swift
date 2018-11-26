@@ -1342,6 +1342,8 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 //   Property Int
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_Int = EBReadOnlyValueController <Int>
+
 typealias EBReadOnlyProperty_Int  = EBReadOnlyValueProperty <Int>
 typealias EBTransientProperty_Int = EBTransientValueProperty <Int>
 typealias EBReadWriteProperty_Int = EBReadWriteValueProperty <Int>
@@ -1387,6 +1389,8 @@ func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int)
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Bool
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_Bool = EBReadOnlyValueController <Bool>
 
 typealias EBReadOnlyProperty_Bool  = EBReadOnlyValueProperty <Bool>
 typealias EBTransientProperty_Bool = EBTransientValueProperty <Bool>
@@ -1434,6 +1438,8 @@ func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bo
 //   Property Double
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_Double = EBReadOnlyValueController <Double>
+
 typealias EBReadOnlyProperty_Double  = EBReadOnlyValueProperty <Double>
 typealias EBTransientProperty_Double = EBTransientValueProperty <Double>
 typealias EBReadWriteProperty_Double = EBReadWriteValueProperty <Double>
@@ -1479,6 +1485,8 @@ func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyPropert
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property String
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_String = EBReadOnlyValueController <String>
 
 typealias EBReadOnlyProperty_String  = EBReadOnlyValueProperty <String>
 typealias EBTransientProperty_String = EBTransientValueProperty <String>
@@ -1526,11 +1534,15 @@ func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyPropert
 //   Property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_CGFloat = EBReadOnlyValueController <CGFloat>
+
 typealias EBReadOnlyProperty_CGFloat  = EBReadOnlyValueProperty <CGFloat>
 typealias EBTransientProperty_CGFloat = EBTransientValueProperty <CGFloat>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class NSImage
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_NSImage = EBReadOnlyClassController <NSImage>
 
 typealias EBReadOnlyProperty_NSImage  = EBReadOnlyClassProperty <NSImage>
 typealias EBTransientProperty_NSImage = EBTransientClassProperty <NSImage>
@@ -1541,6 +1553,8 @@ typealias EBTransientPropertyArray_NSImage = EBTransientClassProperty <[NSImage]
 //   Transient property class EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_EBShape = EBReadOnlyClassController <EBShape>
+
 typealias EBReadOnlyProperty_EBShape  = EBReadOnlyClassProperty <EBShape>
 typealias EBTransientProperty_EBShape = EBTransientClassProperty <EBShape>
 typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyClassProperty <[EBShape]>
@@ -1549,6 +1563,8 @@ typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_CanariRect = EBReadOnlyClassController <CanariRect>
 
 typealias EBReadOnlyProperty_CanariRect  = EBReadOnlyClassProperty <CanariRect>
 typealias EBTransientProperty_CanariRect = EBTransientClassProperty <CanariRect>
@@ -1559,6 +1575,8 @@ typealias EBTransientPropertyArray_CanariRect = EBTransientClassProperty <[Canar
 //   Transient property class NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_NSBezierPath = EBReadOnlyClassController <NSBezierPath>
+
 typealias EBReadOnlyProperty_NSBezierPath  = EBReadOnlyClassProperty <NSBezierPath>
 typealias EBTransientProperty_NSBezierPath = EBTransientClassProperty <NSBezierPath>
 typealias EBReadOnlyPropertyArray_NSBezierPath  = EBReadOnlyClassProperty <[NSBezierPath]>
@@ -1567,6 +1585,8 @@ typealias EBTransientPropertyArray_NSBezierPath = EBTransientClassProperty <[NSB
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariMenuItemListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_CanariMenuItemListClass = EBReadOnlyClassController <CanariMenuItemListClass>
 
 typealias EBReadOnlyProperty_CanariMenuItemListClass  = EBReadOnlyClassProperty <CanariMenuItemListClass>
 typealias EBTransientProperty_CanariMenuItemListClass = EBTransientClassProperty <CanariMenuItemListClass>
@@ -1577,6 +1597,8 @@ typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassPro
 //   Transient property class StringArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_StringArray = EBReadOnlyClassController <StringArray>
+
 typealias EBReadOnlyProperty_StringArray  = EBReadOnlyClassProperty <StringArray>
 typealias EBTransientProperty_StringArray = EBTransientClassProperty <StringArray>
 typealias EBReadOnlyPropertyArray_StringArray  = EBReadOnlyClassProperty <[StringArray]>
@@ -1585,6 +1607,8 @@ typealias EBTransientPropertyArray_StringArray = EBTransientClassProperty <[Stri
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_MergerViaShapeArray = EBReadOnlyClassController <MergerViaShapeArray>
 
 typealias EBReadOnlyProperty_MergerViaShapeArray  = EBReadOnlyClassProperty <MergerViaShapeArray>
 typealias EBTransientProperty_MergerViaShapeArray = EBTransientClassProperty <MergerViaShapeArray>
@@ -1595,6 +1619,8 @@ typealias EBTransientPropertyArray_MergerViaShapeArray = EBTransientClassPropert
 //   Transient property class MergerSegmentArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_MergerSegmentArray = EBReadOnlyClassController <MergerSegmentArray>
+
 typealias EBReadOnlyProperty_MergerSegmentArray  = EBReadOnlyClassProperty <MergerSegmentArray>
 typealias EBTransientProperty_MergerSegmentArray = EBTransientClassProperty <MergerSegmentArray>
 typealias EBReadOnlyPropertyArray_MergerSegmentArray  = EBReadOnlyClassProperty <[MergerSegmentArray]>
@@ -1603,6 +1629,8 @@ typealias EBTransientPropertyArray_MergerSegmentArray = EBTransientClassProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerBoardLimits
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_MergerBoardLimits = EBReadOnlyClassController <MergerBoardLimits>
 
 typealias EBReadOnlyProperty_MergerBoardLimits  = EBReadOnlyClassProperty <MergerBoardLimits>
 typealias EBTransientProperty_MergerBoardLimits = EBTransientClassProperty <MergerBoardLimits>
@@ -1613,6 +1641,8 @@ typealias EBTransientPropertyArray_MergerBoardLimits = EBTransientClassProperty 
 //   Transient property class MergerPadArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_MergerPadArray = EBReadOnlyClassController <MergerPadArray>
+
 typealias EBReadOnlyProperty_MergerPadArray  = EBReadOnlyClassProperty <MergerPadArray>
 typealias EBTransientProperty_MergerPadArray = EBTransientClassProperty <MergerPadArray>
 typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyClassProperty <[MergerPadArray]>
@@ -1621,6 +1651,8 @@ typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[M
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class BezierPathArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_BezierPathArray = EBReadOnlyClassController <BezierPathArray>
 
 typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyClassProperty <BezierPathArray>
 typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <BezierPathArray>
@@ -1631,11 +1663,15 @@ typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[
 //   Property CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <CanariIssueArray>
+
 typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
 typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_CharacterSegmentListClass = EBReadOnlyClassController <CharacterSegmentListClass>
 
 typealias EBReadOnlyProperty_CharacterSegmentListClass  = EBReadOnlyClassProperty <CharacterSegmentListClass>
 typealias EBTransientProperty_CharacterSegmentListClass = EBTransientClassProperty <CharacterSegmentListClass>
@@ -1646,6 +1682,8 @@ typealias EBTransientPropertyArray_CharacterSegmentListClass = EBTransientClassP
 //   Transient property class CharacterGerberCodeClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_CharacterGerberCodeClass = EBReadOnlyClassController <CharacterGerberCodeClass>
+
 typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty <CharacterGerberCodeClass>
 typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
 typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
@@ -1654,6 +1692,8 @@ typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassPr
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property Date
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_Date = EBReadOnlyValueController <Date>
 
 typealias EBReadOnlyProperty_Date  = EBReadOnlyValueProperty <Date>
 typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
@@ -1701,6 +1741,8 @@ func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Da
 //   Property class NSFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_NSFont = EBReadOnlyClassController <NSFont>
+
 typealias EBReadOnlyProperty_NSFont  = EBReadOnlyClassProperty <NSFont>
 typealias EBTransientProperty_NSFont = EBTransientClassProperty <NSFont>
 typealias EBReadWriteProperty_NSFont = EBReadWriteClassProperty <NSFont>
@@ -1710,6 +1752,8 @@ typealias EBStoredProperty_NSFont    = EBStoredClassProperty <NSFont>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property class NSColor
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_NSColor = EBReadOnlyClassController <NSColor>
 
 typealias EBReadOnlyProperty_NSColor  = EBReadOnlyClassProperty <NSColor>
 typealias EBTransientProperty_NSColor = EBTransientClassProperty <NSColor>

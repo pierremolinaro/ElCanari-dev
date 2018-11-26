@@ -88,7 +88,7 @@ final class Controller_CanariVersionField_version : EBSimpleController {
   init (object : EBReadOnlyProperty_Int, outlet : CanariVersionField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
     }
@@ -129,7 +129,7 @@ final class Controller_CanariVersionField_versionShouldChange : EBSimpleControll
   init (object : EBReadOnlyProperty_Bool, outlet : CanariVersionField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has a formatter")
     }

@@ -63,7 +63,7 @@ import Cocoa
     mObject = object
     mOutlet = outlet
     mSendContinously = sendContinously
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
     mOutlet.isContinuous = true

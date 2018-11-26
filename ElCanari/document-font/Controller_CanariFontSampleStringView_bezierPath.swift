@@ -23,7 +23,7 @@ final class Controller_CanariFontSampleStringView_bezierPath : EBSimpleControlle
   init (object : EBReadOnlyProperty_NSBezierPath, outlet : CanariFontSampleStringView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

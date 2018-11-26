@@ -67,7 +67,11 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //    Table view data source protocol
   //····················································································································
 
-  private var mModelArray = [String] ()
+  private var mModelArray = [String] () {
+    didSet {
+      self.reloadData ()
+    }
+  }
 
   //····················································································································
 
@@ -123,10 +127,13 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //    $models binding
   //····················································································································
 
-  private var mModelsController : Controller_CanariModelDragSourceTableView_models?
+  private var mModelsController : EBReadOnlyController_StringArray?
 
-  func bind_models (_ models:EBReadOnlyProperty_StringArray, file:String, line:Int) {
-    mModelsController = Controller_CanariModelDragSourceTableView_models (models:models, outlet:self)
+  func bind_models (_ model:EBReadOnlyProperty_StringArray, file:String, line:Int) {
+    mModelsController = EBReadOnlyController_StringArray (
+      models:model,
+      callBack: { [weak self] in self?.updateModels (model) }
+    )
   }
 
   //····················································································································
@@ -138,43 +145,14 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   //····················································································································
 
-  func updateModels (_ inArray : [String]) {
-    self.mModelArray = inArray
-    self.reloadData ()
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariBoardModelView_objectLayer
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
-
-  private let mModels : EBReadOnlyProperty_StringArray
-  private let mOutlet : CanariDragSourceTableView
-
-  //····················································································································
-
-  init (models : EBReadOnlyProperty_StringArray, outlet : CanariDragSourceTableView) {
-    mModels = models
-    mOutlet = outlet
-    super.init (observedObjects:[models], outlet:outlet)
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModels.prop {
+  func updateModels (_ models:EBReadOnlyProperty_StringArray) {
+    switch models.prop {
     case .empty :
-      mOutlet.updateModels ([])
+      self.mModelArray = []
     case .single (let v) :
-      mOutlet.updateModels (v)
+      self.mModelArray = v
     case .multiple :
-      mOutlet.updateModels ([])
+      self.mModelArray = []
     }
   }
 

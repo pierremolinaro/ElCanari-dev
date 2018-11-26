@@ -43,7 +43,7 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
   init (object : EBReadWriteProperty_BoardArchiveFormat, outlet : EBPopUpButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     mOutlet.target = self
     mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
     self.eventCallBack = { [weak self] in self?.updateOutlet () }

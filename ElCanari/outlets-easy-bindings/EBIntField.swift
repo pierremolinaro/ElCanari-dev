@@ -130,7 +130,7 @@ final class Controller_EBIntField_value : EBSimpleController {
   {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBIntField_value.action(_:))
     if autoFormatter {

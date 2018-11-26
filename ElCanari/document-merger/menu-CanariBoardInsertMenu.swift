@@ -105,7 +105,7 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
   init (names : EBReadOnlyProperty_StringArray, outlet : CanariBoardInsertMenu) {
     mNames = names
     mOutlet = outlet
-    super.init (observedObjects:[names], outlet:outlet)
+    super.init (observedObjects:[names])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

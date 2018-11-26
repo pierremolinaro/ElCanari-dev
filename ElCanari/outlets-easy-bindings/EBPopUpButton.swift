@@ -83,7 +83,7 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
   init (object : EBReadWriteProperty_Int, outlet : EBPopUpButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -128,7 +128,7 @@ final class Controller_EBPopUpButton_Index : EBSimpleController {
   init (object : EBAbstractEnumProperty, outlet : EBPopUpButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

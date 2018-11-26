@@ -1439,25 +1439,57 @@ class EBSimpleClass : EBObject {
 
 class EBSimpleController : EBOutletEvent {
   private let mPrivateObservedObjects : [EBAbstractProperty]
-  private let mPrivateOutlet : NSObject
 
   //····················································································································
 
-  init (observedObjects : [EBAbstractProperty], outlet : NSObject) {
+  init (observedObjects : [EBAbstractProperty]) {
     mPrivateObservedObjects = observedObjects
-    mPrivateOutlet = outlet
     super.init ()
     for object in observedObjects {
       object.addEBObserver (self)
     }
   }
-  
+
   //····················································································································
-  
+
   func unregister () {
     for object in mPrivateObservedObjects {
       object.removeEBObserver (self)
     }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EBReadOnlyClassController <T>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBReadOnlyClassController <T> : EBSimpleController {
+
+  //····················································································································
+
+  init (models : EBReadOnlyClassProperty <T>, callBack: @escaping () -> Void) {
+    super.init (observedObjects:[models])
+    self.eventCallBack = callBack
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   EBReadOnlyValueController <T>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBReadOnlyValueController <T> : EBSimpleController {
+
+  //····················································································································
+
+  init (models : EBReadOnlyValueProperty <T>, callBack: @escaping () -> Void) {
+    super.init (observedObjects:[models])
+    self.eventCallBack = callBack
   }
 
   //····················································································································

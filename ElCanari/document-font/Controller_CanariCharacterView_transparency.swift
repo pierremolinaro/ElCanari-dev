@@ -23,7 +23,7 @@ final class Controller_CanariCharacterView_transparency : EBSimpleController {
   init (object : EBReadOnlyProperty_Double, outlet : CanariCharacterView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

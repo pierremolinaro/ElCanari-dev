@@ -23,7 +23,7 @@ final class Controller_CanariCharacterView_displayFlow : EBSimpleController {
   init (object : EBReadOnlyProperty_Bool, outlet : CanariCharacterView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

@@ -22,7 +22,7 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
   init (object : EBReadOnlyProperty_CanariMenuItemListClass, outlet : CanariMenu) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet: outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

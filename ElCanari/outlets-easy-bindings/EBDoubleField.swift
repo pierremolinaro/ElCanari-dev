@@ -123,7 +123,7 @@ import Cocoa
         autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
     if autoFormatter {

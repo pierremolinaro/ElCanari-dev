@@ -73,7 +73,7 @@ import Cocoa
   init (object:EBReadWriteProperty_Bool, outlet : EBSwitch, file : String, line:Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object], outlet:outlet)
+    super.init (observedObjects:[object])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
