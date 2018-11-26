@@ -22,19 +22,13 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   required init? (coder: NSCoder) {
     super.init (coder:coder)
-    self.customInit ()
-  }
+    noteObjectAllocation (self)
+    self.dataSource = self  }
 
   //····················································································································
 
   override init (frame:NSRect) {
     super.init (frame:frame)
-    self.customInit ()
-  }
-  
-  //····················································································································
-
-  private final func customInit () {
     noteObjectAllocation (self)
     self.dataSource = self
   }
@@ -93,9 +87,10 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      let modelName : String = mModelArray [rowIndexes.first!]
-      let data = modelName.data (using: .ascii)
+      let cellName : String = mModelArray [rowIndexes.first!]
       pboard.declareTypes ([draggedType], owner:self)
+    //--- Associated data is cell name
+      let data = cellName.data (using: .ascii)
       pboard.setData (data, forType:draggedType)
       return true
     }else{

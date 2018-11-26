@@ -5,7 +5,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 
-@objc(CanariDragSourceButton) class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource, NSPasteboardItemDataProvider {
+@objc(CanariDragSourceButton) class CanariDragSourceButton :
+          NSButton,
+          EBUserClassNameProtocol,
+          NSPasteboardItemDataProvider,
+          NSDraggingSource {
 
   //····················································································································
 
@@ -28,15 +32,15 @@ import Cocoa
   }
 
   //····················································································································
-  //  Drag type UTI
+  //  Drag type UTI, and weak reference to document
   //····················································································································
 
-  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
+  private var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
 
   //····················································································································
 
-  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
-    self.mDragTypeUTI = dragTypeUTI
+  func register (draggedType : NSPasteboard.PasteboardType) {
+    self.mDragTypeUTI = draggedType
   }
 
   //····················································································································
@@ -55,6 +59,7 @@ import Cocoa
   func pasteboard (_ pasteboard: NSPasteboard?,
                    item: NSPasteboardItem,
                    provideDataForType type: NSPasteboard.PasteboardType) {
+
   }
 
   //····················································································································
@@ -63,9 +68,9 @@ import Cocoa
 
   override func mouseDown (with inEvent : NSEvent) {
     if self.isEnabled {
-      if let dragTypeUTI = self.mDragTypeUTI {
+      if let dragType = self.mDragTypeUTI {
         let pasteboardItem = NSPasteboardItem ()
-        pasteboardItem.setDataProvider (self, forTypes: [dragTypeUTI])
+        pasteboardItem.setDataProvider (self, forTypes: [dragType])
 
         let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
         draggingItem.setDraggingFrame (self.bounds, contents: self.image)
@@ -85,7 +90,7 @@ import Cocoa
 
   //····················································································································
 
-  override func updateTrackingAreas () { // This is required for reveiving mouseEntered and mouseExited
+  override func updateTrackingAreas () { // This is required for receiving mouseEntered and mouseExited events
   //--- Remove tracking area
     if let trackingArea = mTrackingArea {
       self.removeTrackingArea (trackingArea)
@@ -105,14 +110,13 @@ import Cocoa
 
   //····················································································································
 
-  private var mMouseWithin = false
+  private var mMouseWithin = false { didSet { self.needsDisplay = true } }
 
   //····················································································································
 
   override func mouseEntered (with inEvent : NSEvent) {
   if self.isEnabled {
     self.mMouseWithin = true
-    self.needsDisplay = true
   }
   super.mouseEntered (with: inEvent)
 }
@@ -121,7 +125,6 @@ import Cocoa
 
   override func mouseExited (with inEvent : NSEvent) {
     self.mMouseWithin = false
-    self.needsDisplay = true
     super.mouseExited (with: inEvent)
   }
 

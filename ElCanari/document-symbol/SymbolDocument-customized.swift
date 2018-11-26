@@ -51,18 +51,65 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Drag source buttons and destination scroll view
-    self.mAddSegmentButton?.set (dragTypeUTI: dragAddSegmentUTI)
-    self.mAddBezierButton?.set (dragTypeUTI: dragAddBezierUTI)
-    self.mAddOvalButton?.set (dragTypeUTI: dragAddOvalUTI)
-    self.mAddSolidRectButton?.set (dragTypeUTI: dragAddSolidRectUTI)
-    self.mAddTextButton?.set (dragTypeUTI: dragAddTextUTI)
-    self.mAddPinButton?.set (dragTypeUTI: dragAddPinUTI)
+    self.mAddSegmentButton?.register (draggedType: dragAddSegmentUTI)
+    self.mAddBezierButton?.register (draggedType: dragAddBezierUTI)
+    self.mAddOvalButton?.register (draggedType: dragAddOvalUTI)
+    self.mAddSolidRectButton?.register (draggedType: dragAddSolidRectUTI)
+    self.mAddTextButton?.register (draggedType: dragAddTextUTI)
+    self.mAddPinButton?.register (draggedType: dragAddPinUTI)
     let allTypes = [dragAddSegmentUTI, dragAddBezierUTI, dragAddOvalUTI, dragAddSolidRectUTI, dragAddTextUTI, dragAddPinUTI]
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
   }
 
   //····················································································································
+  //  Called for CanariDragSourceButton for providing a  drag image
+  //····················································································································
+
+//  override func ebProvideDraggingFrame (_ ioRect : inout NSRect, _ image : inout NSImage, _ inDragType : NSPasteboard.PasteboardType) {
+//    if inDragType == dragAddBezierUTI {
+//      let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
+//      let shape = newObject.objectDisplay!
+//      ioRect = shape.boundingBox
+//      let imageData = buildPDFimage (frame: ioRect, shapes: shape)
+//      image = NSImage (data: imageData)!
+//      self.managedObjectContext.removeManagedObject (newObject)
+//    }
+//  }
+
+  //····················································································································
   //    Drag and drop destination
+  //····················································································································
+
+  override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+//    let pboard = sender.draggingPasteboard
+//    let pboardItem = pboard.pasteboardItems!.first!
+//      let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
+//      let shape = newObject.objectDisplay!
+////      ioRect = shape.boundingBox
+//      let imageData = buildPDFimage (frame: shape.boundingBox, shapes: shape)
+//  //    let image = NSImage (data: imageData)!
+//      self.managedObjectContext.removeManagedObject (newObject)
+//      pboardItem.setData (imageData, forType: .tiff)
+  //      draggingItem.setDraggingFrame (shape.boundingBo, contents: image)
+
+
+//    NSLog ("draggingEntered")
+    return .copy
+  }
+
+  //····················································································································
+
+//  func draggingUpdated (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
+//    // NSLog ("draggingUpdated")
+//    return .copy
+//  }
+
+  //····················································································································
+
+//  override func draggingExited (_ sender: NSDraggingInfo?, _ destinationScrollView : NSScrollView) {
+//    NSLog ("draggingExited")
+//  }
+
   //····················································································································
 
   override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {

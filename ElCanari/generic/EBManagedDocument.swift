@@ -19,7 +19,12 @@ private let kLogReadFileDuration = false
 //  EBManagedDocument
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
+class EBManagedDocument : NSDocument,
+                    //      NSPasteboardItemDataProvider, // For providing image and data for drag-and-drop sources
+                          EBUserClassNameProtocol {
+
+  //····················································································································
+
   var mRootObject : EBManagedObject?
 
   private var mReadMetadataStatus : UInt8 = 0
@@ -510,6 +515,22 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
                          offset dragImageOffset: NSPointPointer) -> NSImage {
     return NSImage (named: NSImage.Name ("exclamation"))!
   }
+
+  //····················································································································
+  //  NSPasteboardItemDataProvider protocol implementation (for source drag and drop)
+  //····················································································································
+
+//  func pasteboard (_ pasteboard: NSPasteboard?,
+//                   item: NSPasteboardItem,
+//                   provideDataForType type: NSPasteboard.PasteboardType) {
+//  }
+
+  //····················································································································
+  //  Called for CanariDragSourceButton for providing a  drag image 
+  //····················································································································
+
+//  func ebProvideDraggingFrame (_ ioRect : inout NSRect, _ image : inout NSImage, _ inDragType : NSPasteboard.PasteboardType) {
+//  }
 
   //····················································································································
   //   Drag destination
