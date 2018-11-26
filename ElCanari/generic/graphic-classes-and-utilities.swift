@@ -108,6 +108,21 @@ func buildPDFimage (frame inFrame: CGRect,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Build TIFF image
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func buildTIFFimage (frame inFrame: CGRect,
+                    shapes inShapes: EBShape,
+                    backgroundColor inBackColor : NSColor? = nil) -> Data {
+  let view = EBOffscreenView (frame: inFrame)
+  view.setBackColor (inBackColor)
+  view.setPaths (inShapes)
+  let data = view.dataWithPDF (inside: inFrame)
+  let image = NSImage (data: data)!
+  return image.tiffRepresentation!
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EBOffscreenView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

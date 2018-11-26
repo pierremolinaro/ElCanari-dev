@@ -708,10 +708,6 @@ AAAAAAEGA
                                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                     </tableColumn>
                                                                 </tableColumns>
-                                                                <connections>
-                                                                    <outlet property="mBoardView" destination="nao-E9-sci" id="eG8-Gu-NFv"/>
-                                                                    <outlet property="mDefaultOrientationPopUpButton" destination="lwy-sh-Gfc" id="Kmk-1l-St9"/>
-                                                                </connections>
                                                             </tableView>
                                                         </subviews>
                                                     </clipView>

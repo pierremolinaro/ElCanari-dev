@@ -40,6 +40,8 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   }
   
   //····················································································································
+  // DEINIT
+  //····················································································································
 
   deinit {
     noteObjectDeallocation (self)
@@ -55,8 +57,8 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func register (document : EBManagedDocument, draggedType : NSPasteboard.PasteboardType) {
-    self.setDraggingSourceOperationMask (.copy, forLocal: true)
-    self.registerForDraggedTypes ([draggedType])
+ //   self.setDraggingSourceOperationMask (.copy, forLocal: true)
+ //   self.registerForDraggedTypes ([draggedType])
     self.mDraggedType = draggedType
     self.mDocument = document
   }
