@@ -139,7 +139,7 @@ protocol MergerRoot_cocoaShiftArrowMagnitude : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 protocol MergerRoot_modelNames : class {
-  var modelNames : MergerBoardModelArray? { get }
+  var modelNames : StringArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -750,17 +750,17 @@ class MergerRoot : EBManagedObject,
   //   Transient property: modelNames
   //····················································································································
 
-  var modelNames_property = EBTransientProperty_MergerBoardModelArray ()
+  var modelNames_property = EBTransientProperty_StringArray ()
 
   //····················································································································
 
-  var modelNames_property_selection : EBSelection <MergerBoardModelArray> {
+  var modelNames_property_selection : EBSelection <StringArray> {
     return self.modelNames_property.prop
   }
 
   //····················································································································
 
-    var modelNames : MergerBoardModelArray? {
+    var modelNames : StringArray? {
     switch self.modelNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -986,18 +986,16 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: modelNames
     self.modelNames_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.boardModels_property_selection.kind ()
-        kind &= unwSelf.boardModels_property_selection.kind ()
-        kind &= unwSelf.boardModels_property_selection.kind ()
+        let kind = unwSelf.boardModels_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection, unwSelf.boardModels_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_MergerRoot_modelNames (v0, v1, v2))
+          switch (unwSelf.boardModels_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_MergerRoot_modelNames (v0))
           default :
             return .empty
           }
@@ -1007,8 +1005,6 @@ class MergerRoot : EBManagedObject,
       }
     }
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
-    self.boardModels_property.addEBObserverOf_modelWidth (self.modelNames_property)
-    self.boardModels_property.addEBObserverOf_modelHeight (self.modelNames_property)
   //--- Atomic property: boardRect
     self.boardRect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1151,8 +1147,6 @@ class MergerRoot : EBManagedObject,
     self.arrowMagnitude_property.removeEBObserver (self.cocoaArrowMagnitude_property)
     self.shiftArrowMagnitude_property.removeEBObserver (self.cocoaShiftArrowMagnitude_property)
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
-    self.boardModels_property.removeEBObserverOf_modelWidth (self.modelNames_property)
-    self.boardModels_property.removeEBObserverOf_modelHeight (self.modelNames_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
     self.boardManualHeight_property.removeEBObserver (self.boardRect_property)

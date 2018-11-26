@@ -65,7 +65,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //    Table view data source protocol
   //····················································································································
 
-  private var mModelArray = [MergerBoardModelNameAndSize] ()
+  private var mModelArray = [String] ()
 
   //····················································································································
 
@@ -76,7 +76,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-    return mModelArray [row].name
+    return mModelArray [row]
   }
 
   //····················································································································
@@ -87,7 +87,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
     if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
-      let modelName : String = mModelArray [rowIndexes.first!].name
+      let modelName : String = mModelArray [rowIndexes.first!]
       let data = modelName.data (using: .ascii)
       pboard.declareTypes ([draggedType], owner:self)
       pboard.setData (data, forType:draggedType)
@@ -123,7 +123,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   private var mModelsController : Controller_CanariModelDragSourceTableView_models?
 
-  func bind_models (_ models:EBReadOnlyProperty_MergerBoardModelArray, file:String, line:Int) {
+  func bind_models (_ models:EBReadOnlyProperty_StringArray, file:String, line:Int) {
     mModelsController = Controller_CanariModelDragSourceTableView_models (models:models, outlet:self)
   }
 
@@ -136,7 +136,7 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
   //····················································································································
 
-  func updateModels (_ inArray : [MergerBoardModelNameAndSize]) {
+  func updateModels (_ inArray : [String]) {
     self.mModelArray = inArray
     self.reloadData ()
   }
@@ -151,12 +151,12 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
 
 class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
 
-  private let mModels : EBReadOnlyProperty_MergerBoardModelArray
+  private let mModels : EBReadOnlyProperty_StringArray
   private let mOutlet : CanariDragSourceTableView
 
   //····················································································································
 
-  init (models : EBReadOnlyProperty_MergerBoardModelArray, outlet : CanariDragSourceTableView) {
+  init (models : EBReadOnlyProperty_StringArray, outlet : CanariDragSourceTableView) {
     mModels = models
     mOutlet = outlet
     super.init (observedObjects:[models], outlet:outlet)
@@ -170,7 +170,7 @@ class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
     case .empty :
       mOutlet.updateModels ([])
     case .single (let v) :
-      mOutlet.updateModels (v.modelArray)
+      mOutlet.updateModels (v)
     case .multiple :
       mOutlet.updateModels ([])
     }

@@ -55,7 +55,7 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func bind_names (_ names:EBReadOnlyProperty_MergerBoardModelArray, file:String, line:Int) {
+  func bind_names (_ names:EBReadOnlyProperty_StringArray, file:String, line:Int) {
     mNamesController = Controller_CanariBoardInsertMenu_names (names:names, outlet:self)
   }
 
@@ -68,15 +68,15 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func setNames (_ inArray : [MergerBoardModelNameAndSize]) {
+  func setNames (_ inArray : [String]) {
     // NSLog ("\(inArray)")
     self.removeAllItems ()
     if inArray.count == 0 {
       self.addItem (withTitle: "No Board Model to Insert", action: nil, keyEquivalent: "")
     }else{
-      for model in inArray {
-        self.addItem (withTitle: "Insert \"\(model.name)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
-        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:model.name)
+      for modelName in inArray {
+        self.addItem (withTitle: "Insert \"\(modelName)\"", action: #selector (MergerDocument.insertBoardAction (_:)), keyEquivalent: "")
+        self.items.last?.representedObject = InsertBoardMenuRepresentedObject (boardModelName:modelName)
         self.items.last?.target = mDocument
         self.items.last?.isEnabled = true
       }
@@ -97,12 +97,12 @@ class CanariBoardInsertMenu : NSMenu, EBUserClassNameProtocol {
 
 final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
 
-  private let mNames : EBReadOnlyProperty_MergerBoardModelArray
+  private let mNames : EBReadOnlyProperty_StringArray
   private let mOutlet : CanariBoardInsertMenu
 
   //····················································································································
 
-  init (names : EBReadOnlyProperty_MergerBoardModelArray, outlet : CanariBoardInsertMenu) {
+  init (names : EBReadOnlyProperty_StringArray, outlet : CanariBoardInsertMenu) {
     mNames = names
     mOutlet = outlet
     super.init (observedObjects:[names], outlet:outlet)
@@ -116,7 +116,7 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
     case .empty :
       mOutlet.setNames ([])
     case .single (let v) :
-      mOutlet.setNames (v.modelArray)
+      mOutlet.setNames (v)
     case .multiple :
       mOutlet.setNames ([])
     }

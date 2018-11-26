@@ -33,10 +33,7 @@ entity MergerRoot {
   transient CGFloat cocoaShiftArrowMagnitude externFunc canariUnitToCocoa dependsFrom self.shiftArrowMagnitude ;
   
 #--- Board model name array
-  transient MergerBoardModelArray modelNames dependsFrom
-     self.boardModels.all.name,
-     self.boardModels.all.modelWidth,
-     self.boardModels.all.modelHeight ;
+  transient StringArray modelNames dependsFrom self.boardModels.all.name ;
 
 #--- Instance display
   transient EBShape boardOutlineRectDisplay  dependsFrom

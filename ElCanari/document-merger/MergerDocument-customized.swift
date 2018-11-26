@@ -104,14 +104,14 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
         width = height
         height = temp
       }
-    //--- By default, image is centered;
+    //--- By default, image is centered
       dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
     //--- Build image
       let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
       let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
       bp.lineWidth = 1.0
       let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
-      let pdfData = buildPDFimage (frame:r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
+      let pdfData = buildPDFimage (frame: r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
       return NSImage (data: pdfData)!
     }else{
       return NSImage (named: NSImage.Name ("exclamation"))!

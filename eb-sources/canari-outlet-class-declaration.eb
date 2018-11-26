@@ -91,12 +91,12 @@ extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
 extern outlet class CanariDragSourceTableView ;
-binding CanariDragSourceTableView $models : transient MergerBoardModelArray ;
+binding CanariDragSourceTableView $models : transient StringArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern outlet class CanariBoardInsertMenu ; 
-binding CanariBoardInsertMenu $names : transient MergerBoardModelArray ;
+binding CanariBoardInsertMenu $names : transient StringArray ;
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

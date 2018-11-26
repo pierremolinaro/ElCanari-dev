@@ -1574,6 +1574,15 @@ typealias EBReadOnlyPropertyArray_CanariMenuItemListClass  = EBReadOnlyClassProp
 typealias EBTransientPropertyArray_CanariMenuItemListClass = EBTransientClassProperty <[CanariMenuItemListClass]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Transient property class StringArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyProperty_StringArray  = EBReadOnlyClassProperty <StringArray>
+typealias EBTransientProperty_StringArray = EBTransientClassProperty <StringArray>
+typealias EBReadOnlyPropertyArray_StringArray  = EBReadOnlyClassProperty <[StringArray]>
+typealias EBTransientPropertyArray_StringArray = EBTransientClassProperty <[StringArray]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class MergerViaShapeArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1608,15 +1617,6 @@ typealias EBReadOnlyProperty_MergerPadArray  = EBReadOnlyClassProperty <MergerPa
 typealias EBTransientProperty_MergerPadArray = EBTransientClassProperty <MergerPadArray>
 typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyClassProperty <[MergerPadArray]>
 typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[MergerPadArray]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class MergerBoardModelArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_MergerBoardModelArray  = EBReadOnlyClassProperty <MergerBoardModelArray>
-typealias EBTransientProperty_MergerBoardModelArray = EBTransientClassProperty <MergerBoardModelArray>
-typealias EBReadOnlyPropertyArray_MergerBoardModelArray  = EBReadOnlyClassProperty <[MergerBoardModelArray]>
-typealias EBTransientPropertyArray_MergerBoardModelArray = EBTransientClassProperty <[MergerBoardModelArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class BezierPathArray
