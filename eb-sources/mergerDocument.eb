@@ -243,7 +243,7 @@ document MergerDocument root MergerRoot {
   outlet NSPanel boardHelpPanel ;
 
 #--- Table view, source of model drag
-  outlet CanariModelDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
+  outlet CanariDragSourceTableView mModelDragSourceTableView $models root.modelNames ;
   
 #--- Board Limit Width display
   outlet EBPopUpButton mBoardLimitWidthUnitPopUp $selectedTag root.boardLimitWidthUnit ;

@@ -292,7 +292,7 @@ import Cocoa
   @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
-  @IBOutlet var mModelDragSourceTableView : CanariModelDragSourceTableView?
+  @IBOutlet var mModelDragSourceTableView : CanariDragSourceTableView?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton?
@@ -1520,11 +1520,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mModelDragSourceTableView {
-      if !(outlet is CanariModelDragSourceTableView) {
+      if !(outlet is CanariDragSourceTableView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mModelDragSourceTableView' outlet is not an instance of 'CanariModelDragSourceTableView'"
+          errorMessage: "the 'mModelDragSourceTableView' outlet is not an instance of 'CanariDragSourceTableView'"
         )
       }
     }else{

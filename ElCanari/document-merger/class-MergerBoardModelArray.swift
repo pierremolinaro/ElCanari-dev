@@ -13,6 +13,8 @@ import Foundation
 //   MergerBoardModelArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+//typealias MergerBoardModelArray = [String]
+
 final class MergerBoardModelArray : EBSimpleClass {
 
   //····················································································································
@@ -46,16 +48,15 @@ struct MergerBoardModelNameAndSize {
   //····················································································································
 
   let name : String
-  let width : Int
-  let height : Int
+//  let width : Int
+//  let height : Int
 
   //····················································································································
 
   init (name inName : String, width inWidth : Int, height inHeight : Int) {
     name = inName
-    width = inWidth
-    height = inHeight
-//    super.init ()
+//    width = inWidth
+//    height = inHeight
   }
 
   //····················································································································

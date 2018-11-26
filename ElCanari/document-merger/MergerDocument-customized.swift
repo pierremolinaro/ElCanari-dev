@@ -10,6 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 @objc(CustomizedMergerDocument) class CustomizedMergerDocument : MergerDocument {
 
   //····················································································································
@@ -19,7 +23,8 @@ import Cocoa
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Set document to scroll view for enabling drag and drop
-    self.mComposedBoardScrollView?.mDocument = self
+    self.mComposedBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
+    self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)
   }
 
   //····················································································································
@@ -76,6 +81,42 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
+  //····················································································································
+
+  override func dragImageForRows (with dragRows: IndexSet,
+                                  tableColumns: [NSTableColumn],
+                                  event dragEvent: NSEvent,
+                                  offset dragImageOffset: NSPointPointer) -> NSImage {
+    if let boardView = self.mComposedBoardView, dragRows.count == 1 {
+    //--- Get board view scale and flip
+      let scale = boardView.actualScale ()
+      let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
+      let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
+    //--- Image size
+      var width = scale * canariUnitToCocoa (self.rootObject.boardModels_property.propval [dragRows.first!].modelWidth)
+      var height = scale * canariUnitToCocoa (self.rootObject.boardModels_property.propval [dragRows.first!].modelHeight)
+    //--- Orientation (0 -> 0°, 1 -> 90°, 2 -> 180°, 3 -> 270°)
+      let rotation = self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0
+      if (rotation == 1) || (rotation == 3) {
+        let temp = width
+        width = height
+        height = temp
+      }
+    //--- By default, image is centered;
+      dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
+    //--- Build image
+      let r = CGRect (x: 0.0, y: 0.0, width: width, height: height)
+      let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
+      bp.lineWidth = 1.0
+      let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
+      let pdfData = buildPDFimage (frame:r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
+      return NSImage (data: pdfData)!
+    }else{
+      return NSImage (named: NSImage.Name ("exclamation"))!
+    }
+  }
   //····················································································································
 
 }

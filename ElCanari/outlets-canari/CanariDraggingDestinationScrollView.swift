@@ -15,22 +15,15 @@ import Cocoa
 
   //····················································································································
 
-  weak var mDocument : EBManagedDocument? = nil
+  fileprivate weak var mDocument : EBManagedDocument? = nil
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
-    self.registerForDraggedTypes ([kDragAndDropModelType])
-  }
+  func register (document : EBManagedDocument, draggedTypes : [NSPasteboard.PasteboardType]) {
+    self.mDocument = document
+    self.registerForDraggedTypes (draggedTypes)
+ }
 
-  //····················································································································
-
-  override init (frame:NSRect) {
-    super.init (frame:frame)
-    self.registerForDraggedTypes ([kDragAndDropModelType])
-  }
-  
   //····················································································································
   //   Drag destination
   //····················································································································

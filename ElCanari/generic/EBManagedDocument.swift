@@ -501,6 +501,17 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
+  // Providing the drag image, called by a source drag table view (CanariDragSourceTableView)
+  //····················································································································
+
+  func dragImageForRows (with dragRows: IndexSet,
+                         tableColumns: [NSTableColumn],
+                         event dragEvent: NSEvent,
+                         offset dragImageOffset: NSPointPointer) -> NSImage {
+    return NSImage (named: NSImage.Name ("exclamation"))!
+  }
+
+  //····················································································································
   //   Drag destination
   //····················································································································
   //The six NSDraggingDestination methods are invoked in a distinct order:

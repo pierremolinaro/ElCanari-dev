@@ -1,5 +1,5 @@
 //
-//  CanariModelDragSourceTableView.swift
+//  CanariDragSourceTableView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 14/07/2018.
@@ -10,21 +10,14 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariModelDragSourceTableView
+//   CanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariModelDragSourceTableView)
-class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource {
+@objc(CanariDragSourceTableView)
+class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource {
 
   //····················································································································
-
-  @IBOutlet weak var mBoardView : CanariViewWithZoomAndFlip? = nil
-  @IBOutlet weak var mDefaultOrientationPopUpButton : NSPopUpButton? = nil
-
+  // INIT
   //····················································································································
 
   required init? (coder: NSCoder) {
@@ -44,14 +37,28 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
   private final func customInit () {
     noteObjectAllocation (self)
     self.dataSource = self
-    self.setDraggingSourceOperationMask (.copy, forLocal:true)
-    self.registerForDraggedTypes ([kDragAndDropModelType])
   }
   
   //····················································································································
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  //    Register dragged type
+  //····················································································································
+
+  fileprivate var mDraggedType : NSPasteboard.PasteboardType? = nil
+  fileprivate weak var mDocument : EBManagedDocument? = nil
+
+  //····················································································································
+
+  func register (document : EBManagedDocument, draggedType : NSPasteboard.PasteboardType) {
+    self.setDraggingSourceOperationMask (.copy, forLocal: true)
+    self.registerForDraggedTypes ([draggedType])
+    self.mDraggedType = draggedType
+    self.mDocument = document
   }
 
   //····················································································································
@@ -79,11 +86,11 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
   func tableView (_ aTableView: NSTableView,
                   writeRowsWith rowIndexes: IndexSet,
                   to pboard : NSPasteboard) -> Bool {
-    if rowIndexes.count == 1 {
+    if let draggedType = self.mDraggedType, rowIndexes.count == 1 {
       let modelName : String = mModelArray [rowIndexes.first!].name
       let data = modelName.data (using: .ascii)
-      pboard.declareTypes ([kDragAndDropModelType], owner:self)
-      pboard.setData (data, forType:kDragAndDropModelType)
+      pboard.declareTypes ([draggedType], owner:self)
+      pboard.setData (data, forType:draggedType)
       return true
     }else{
       return false
@@ -98,30 +105,13 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
                                   tableColumns: [NSTableColumn],
                                   event dragEvent: NSEvent,
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
-    if let boardView = mBoardView, dragRows.count == 1 {
-    //--- Get board view scale and flip
-      let scale = boardView.actualScale ()
-      let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
-      let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
-    //--- Image size
-      var width = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].width)
-      var height = scale * canariUnitToCocoa (self.mModelArray [dragRows.first!].height)
-    //--- Orientation (0 -> 0°, 1 -> 90°, 2 -> 180°, 3 -> 270°)
-      let rotation = self.mDefaultOrientationPopUpButton?.selectedTag () ?? 0
-      if (rotation == 1) || (rotation == 3) {
-        let temp = width
-        width = height
-        height = temp
-      }
-    //--- By default, image is centered;
-      dragImageOffset.pointee = NSPoint (x: horizontalFlip * width / 2.0, y: verticalFlip * height / 2.0)
-    //--- Build image
-      let r = CGRect (x:0.0, y:0.0, width : width, height:height)
-      let bp = NSBezierPath (rect: r.insetBy (dx: 0.5, dy: 0.5))
-      bp.lineWidth = 1.0
-      let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
-      let pdfData = buildPDFimage (frame:r, shapes: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
-      return NSImage (data: pdfData)!
+    if let document = self.mDocument {
+      return document.dragImageForRows (
+        with: dragRows,
+        tableColumns: tableColumns,
+        event: dragEvent,
+        offset: dragImageOffset
+      )
     }else{
       return NSImage (named: NSImage.Name ("exclamation"))!
     }
@@ -150,7 +140,7 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
     self.mModelArray = inArray
     self.reloadData ()
   }
-  
+
   //····················································································································
 
 }
@@ -162,11 +152,11 @@ class CanariModelDragSourceTableView : NSTableView, EBUserClassNameProtocol, NST
 class Controller_CanariModelDragSourceTableView_models : EBSimpleController {
 
   private let mModels : EBReadOnlyProperty_MergerBoardModelArray
-  private let mOutlet : CanariModelDragSourceTableView
+  private let mOutlet : CanariDragSourceTableView
 
   //····················································································································
 
-  init (models : EBReadOnlyProperty_MergerBoardModelArray, outlet : CanariModelDragSourceTableView) {
+  init (models : EBReadOnlyProperty_MergerBoardModelArray, outlet : CanariDragSourceTableView) {
     mModels = models
     mOutlet = outlet
     super.init (observedObjects:[models], outlet:outlet)

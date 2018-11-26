@@ -90,8 +90,8 @@ binding CanariViewWithZoomAndFlip $gridDotColor : transient NSColor ;
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 
-extern outlet class CanariModelDragSourceTableView ;
-binding CanariModelDragSourceTableView $models : transient MergerBoardModelArray ;
+extern outlet class CanariDragSourceTableView ;
+binding CanariDragSourceTableView $models : transient MergerBoardModelArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
