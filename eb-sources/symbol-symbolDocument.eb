@@ -50,6 +50,11 @@ document SymbolDocument root SymbolRoot {
 
   outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;
 
+#--- Inspector views
+  outlet NSView mSymbolInspectorView ;
+  outlet NSView mTextInspectorView ;
+  outlet NSView mPinInspectorView ;
+
 #--- Page : Comments
   outlet EBTextView mCommentTextView $value root.comments ;
 }

@@ -13,15 +13,15 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
   
@@ -35,12 +35,12 @@ import Cocoa
   //  Drag type UTI, and weak reference to document
   //····················································································································
 
-  private var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
+  private var mDragType : NSPasteboard.PasteboardType? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType) {
-    self.mDragTypeUTI = draggedType
+    self.mDragType = draggedType
   }
 
   //····················································································································
@@ -68,7 +68,7 @@ import Cocoa
 
   override func mouseDown (with inEvent : NSEvent) {
     if self.isEnabled {
-      if let dragType = self.mDragTypeUTI {
+      if let dragType = self.mDragType {
         let pasteboardItem = NSPasteboardItem ()
         pasteboardItem.setDataProvider (self, forTypes: [dragType])
 
@@ -76,8 +76,6 @@ import Cocoa
         draggingItem.setDraggingFrame (self.bounds, contents: self.image)
 
         self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
-      }else{
-        __NSBeep ()
       }
     }
   }
@@ -86,7 +84,7 @@ import Cocoa
   //  Hilite when mouse is within button
   //····················································································································
 
-  fileprivate var mTrackingArea :  NSTrackingArea? = nil
+  fileprivate var mTrackingArea : NSTrackingArea? = nil
 
   //····················································································································
 
@@ -115,11 +113,11 @@ import Cocoa
   //····················································································································
 
   override func mouseEntered (with inEvent : NSEvent) {
-  if self.isEnabled {
-    self.mMouseWithin = true
+    if self.isEnabled {
+      self.mMouseWithin = true
+    }
+    super.mouseEntered (with: inEvent)
   }
-  super.mouseEntered (with: inEvent)
-}
 
   //····················································································································
 

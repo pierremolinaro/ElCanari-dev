@@ -23,9 +23,12 @@
                 <outlet property="mHorizontalFlip" destination="582" id="U5c-xv-gZx"/>
                 <outlet property="mInspectorSegmentedControl" destination="1208" id="P3v-EX-3X2"/>
                 <outlet property="mPageSegmentedControl" destination="1090" id="xiJ-uP-7gb"/>
+                <outlet property="mPinInspectorView" destination="528" id="2HO-4m-b4p"/>
                 <outlet property="mResetVersionButton" destination="935" id="7cU-0p-YIp"/>
                 <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
+                <outlet property="mSymbolInspectorView" destination="1114" id="UBD-Ke-UZf"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
+                <outlet property="mTextInspectorView" destination="844" id="mcY-O6-cWK"/>
                 <outlet property="mVersionField" destination="YGk-5C-I8k" id="8WP-gL-c0G"/>
                 <outlet property="mVerticalFlip" destination="583" id="UqB-3h-INb"/>
                 <outlet property="window" destination="5" id="830-Dz-zFq"/>

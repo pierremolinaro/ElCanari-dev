@@ -30,8 +30,8 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   //····················································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-     metadataDictionary.setObject (NSNumber (value:version), forKey:PMSymbolVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments, forKey:PMSymbolComment as NSCopying)
+     metadataDictionary.setObject (NSNumber (value:version), forKey: PMSymbolVersion as NSCopying)
+     metadataDictionary.setObject (rootObject.comments, forKey: PMSymbolComment as NSCopying)
   }
 
   //····················································································································
@@ -59,6 +59,10 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
     self.mAddPinButton?.register (draggedType: dragAddPinUTI)
     let allTypes = [dragAddSegmentUTI, dragAddBezierUTI, dragAddOvalUTI, dragAddSolidRectUTI, dragAddTextUTI, dragAddPinUTI]
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
+  //--- Register inspector views
+    self.mSymbolObjectsController.register (inspectorView: self.mSymbolInspectorView)
+    self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
+    self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
   }
 
   //····················································································································

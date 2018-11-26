@@ -620,6 +620,20 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
 
   //····················································································································
+  //  INSPECTOR
+  //····················································································································
+
+  func register (inspectorView : NSView?) {
+    self.mSelectedSet.register (inspectorView: inspectorView)
+  }
+
+  //····················································································································
+
+  func register (inspectorView : NSView?, forClass inClassName : String) {
+    self.mSelectedSet.register (inspectorView: inspectorView, forClass: inClassName)
+  }
+
+  //····················································································································
 
 }
 
@@ -656,6 +670,7 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
     didSet {
       if mPrivateSet != oldValue {
         postEvent ()
+        self.updateInspectorViews ()
         let addedSet = mPrivateSet.subtracting (oldValue)
         for object in addedSet {
           object.selectionDisplay_property.addEBObserver (self.mObserverOfSelectionLayerOfSelectedObjects)
@@ -688,6 +703,85 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
     }
     get {
       return mPrivateSet
+    }
+  }
+
+  //····················································································································
+  //  INSPECTOR VIEW
+  //····················································································································
+
+  private func textField (_ inString : String, _ inspectorFrame : NSRect) -> NSTextField {
+    let textHeight : CGFloat = 30.0
+    let r = NSRect (
+      x: 0.0,
+      y: inspectorFrame.origin.y + (inspectorFrame.size.height - textHeight) / 2.0,
+      width: inspectorFrame.size.width,
+      height: textHeight
+    )
+    let tf = NSTextField (frame: r)
+    tf.alignment = .center
+    tf.isBezeled = false
+    tf.isBordered = false
+    tf.drawsBackground = false
+    tf.isEnabled = true
+    tf.isEditable = false
+    tf.stringValue = inString
+    tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
+    tf.textColor = NSColor.lightGray
+    return tf
+  }
+
+  //····················································································································
+
+  private var mInspectorView : NSView? = nil
+  private var mCurrentAttachedView : NSView? = nil
+  private var mInspectorDictionary = [String : NSView] ()
+
+  //····················································································································
+
+  func register (inspectorView : NSView?) {
+    self.mInspectorView = inspectorView
+    self.updateInspectorViews ()
+  }
+
+  //····················································································································
+
+  func register (inspectorView : NSView?, forClass inClassName : String) {
+    self.mInspectorDictionary [inClassName] = inspectorView
+    self.updateInspectorViews ()
+  }
+
+  //····················································································································
+
+  private func updateInspectorViews () {
+    if let inspectorView = self.mInspectorView {
+    //--- Remove current attached view
+      self.mCurrentAttachedView?.removeFromSuperview ()
+    //--- Add the new attached view
+      if self.mSet.count == 0 {
+        let tf = self.textField ("Empty Selection", inspectorView.frame)
+        inspectorView.addSubview (tf)
+        self.mCurrentAttachedView = tf
+      }else{
+        var classNames = Set <String> ()
+        for object in self.mSet {
+          let className = String (describing: type (of: object))
+          classNames.insert (className)
+        }
+        if classNames.count > 1 {
+          let tf = self.textField ("Multiple Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
+        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
+          selectionInspectorView.frame = inspectorView.frame
+          inspectorView.addSubview (selectionInspectorView)
+          self.mCurrentAttachedView = selectionInspectorView
+        }else{
+          let tf = self.textField ("No Inspector for this Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
+        }
+      }
     }
   }
 

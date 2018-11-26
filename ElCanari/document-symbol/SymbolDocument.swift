@@ -57,9 +57,12 @@ import Cocoa
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mPinInspectorView : NSView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
+  @IBOutlet var mSymbolInspectorView : NSView?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
+  @IBOutlet var mTextInspectorView : NSView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
 
@@ -357,6 +360,21 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPinInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPinInspectorView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPinInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mResetVersionButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -387,6 +405,21 @@ import Cocoa
         errorMessage: "the 'mSignatureTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolInspectorView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolZoomFlipInspectorView {
       if !(outlet is NSView) {
         presentErrorWindow (
@@ -400,6 +433,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mTextInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mTextInspectorView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mTextInspectorView' outlet is nil"
       )
     }
     if let outlet : Any = self.mVersionField {
@@ -507,9 +555,12 @@ import Cocoa
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mPinInspectorView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
+    self.mSymbolInspectorView?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
+    self.mTextInspectorView?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
   }
