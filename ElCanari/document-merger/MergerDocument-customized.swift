@@ -22,6 +22,9 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Set pages segmented control
+    let pages = [self.mModelPageView, self.mBoardPageView, self.mProductPageView]
+    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set document to scroll view for enabling drag and drop
     self.mComposedBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
     self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)

@@ -16,7 +16,7 @@ let PMArtworkComment = "PMArtworkComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariArtworkDocument) class CanariArtworkDocument : PMArtworkDocument {
+@objc(CustomizedArtworkDocument) class CustomizedArtworkDocument : ArtworkDocument {
 
   //····················································································································
 
@@ -33,6 +33,17 @@ let PMArtworkComment = "PMArtworkComment"
       result = versionNumber.intValue
     }
     return result
+  }
+
+   //····················································································································
+  //    windowControllerDidLoadNib: customization of interface
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+  //--- Set pages segmented control
+    let pages = [self.mMinimaPageView, self.mDrillPageView, self.mDataPageView, self.mInfosPageView]
+    self.mSegmentedControl?.register (masterView: self.mMasterView, pages)
   }
 
   //····················································································································

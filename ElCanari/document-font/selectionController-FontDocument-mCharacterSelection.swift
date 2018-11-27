@@ -5,11 +5,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PMFontDocument_mCharacterSelection                                                           *
+//    SelectionController_FontDocument_mCharacterSelection                                                             *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PMFontDocument_mCharacterSelection)
-final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
+@objc(SelectionController_FontDocument_mCharacterSelection)
+final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //····················································································································
   //   Selection observable property: advance
@@ -141,7 +141,7 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_PMFontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_FontDocument_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -181,7 +181,7 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_PMFontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_FontDocument_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
     mExplorerWindow!.title = windowTitle

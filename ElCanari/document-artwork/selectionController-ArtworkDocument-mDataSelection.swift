@@ -5,11 +5,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PMArtworkDocument_mDataSelection                                                             *
+//    SelectionController_ArtworkDocument_mDataSelection                                                               *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PMArtworkDocument_mDataSelection)
-final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
+@objc(SelectionController_ArtworkDocument_mDataSelection)
+final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
 
   //····················································································································
   //   Selection observable property: drawBoardLimits
@@ -467,7 +467,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_PMArtworkDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_ArtworkDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -675,7 +675,7 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_PMArtworkDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_ArtworkDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
     mExplorerWindow!.title = windowTitle

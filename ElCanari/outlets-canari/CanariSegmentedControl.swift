@@ -3,17 +3,9 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(CanariSegmentedControl) class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
-  @IBOutlet private weak var mMasterView : NSView?
-  @IBOutlet private weak var mView0 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView1 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView2 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView3 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView4 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView5 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView6 : CanariViewWithKeyView?
-  @IBOutlet private weak var mView7 : CanariViewWithKeyView?
-  private weak var mAttachedView : CanariViewWithKeyView?
 
+  //····················································································································
+  //  init
   //····················································································································
 
   required init? (coder: NSCoder) {
@@ -35,12 +27,23 @@ import Cocoa
   }
 
   //····················································································································
-  
-  override func awakeFromNib() {
+  //  properties
+  //····················································································································
+
+  private weak var mMasterView : NSView? = nil
+  private weak var mAttachedView : CanariViewWithKeyView? = nil
+  private var mPageViews = [CanariViewWithKeyView?] ()
+
+  //····················································································································
+
+  func register (masterView : NSView?, _ inPageViews : [CanariViewWithKeyView?]) {
+    self.mMasterView = masterView
+    self.mPageViews = inPageViews
     selectViewFromSelectedSegmentIndex ()
-    super.awakeFromNib ()
   }
 
+  //····················································································································
+  //  selectedSegment
   //····················································································································
 
   override var selectedSegment : Int {
@@ -52,6 +55,8 @@ import Cocoa
   }
 
   //····················································································································
+  //  sendAction
+  //····················································································································
 
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
     selectViewFromSelectedSegmentIndex ()
@@ -60,21 +65,15 @@ import Cocoa
   }
 
   //····················································································································
+  //  selectViewFromSelectedSegmentIndex
+  //····················································································································
 
   func selectViewFromSelectedSegmentIndex () {
     if let masterView = mMasterView {
     //--- View to attach
-      let possibleViewToAttach : CanariViewWithKeyView?
-      switch self.selectedSegment {
-      case 0 : possibleViewToAttach = mView0
-      case 1 : possibleViewToAttach = mView1
-      case 2 : possibleViewToAttach = mView2
-      case 3 : possibleViewToAttach = mView3
-      case 4 : possibleViewToAttach = mView4
-      case 5 : possibleViewToAttach = mView5
-      case 6 : possibleViewToAttach = mView6
-      case 7 : possibleViewToAttach = mView7
-      default : possibleViewToAttach = nil
+      var possibleViewToAttach : CanariViewWithKeyView? = nil
+      if (self.selectedSegment >= 0) && (self.selectedSegment < self.mPageViews.count) {
+        possibleViewToAttach = self.mPageViews [self.selectedSegment]
       }
     //--- Attach view
       if let viewToAttach = possibleViewToAttach {
@@ -106,14 +105,9 @@ import Cocoa
   func unbind_selectedPage () {
     mController?.unregister ()
     mController = nil
-    mView0?.saveFirstResponder ()
-    mView1?.saveFirstResponder ()
-    mView2?.saveFirstResponder ()
-    mView3?.saveFirstResponder ()
-    mView4?.saveFirstResponder ()
-    mView5?.saveFirstResponder ()
-    mView6?.saveFirstResponder ()
-    mView7?.saveFirstResponder ()
+    for view in self.mPageViews {
+      view?.saveFirstResponder ()
+    }
   }
 
   //····················································································································

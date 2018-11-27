@@ -239,6 +239,7 @@ import Cocoa
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackLayoutTextsCheckbox : EBSwitch?
@@ -291,11 +292,13 @@ import Cocoa
   @IBOutlet var mManualBoardSizeView : NSView?
   @IBOutlet var mManualBoardWidthTextField : CanariDimensionTextField?
   @IBOutlet var mManualBoardWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mMasterView : NSView?
   @IBOutlet var mModelBoardLimitTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelDragSourceTableView : CanariDragSourceTableView?
   @IBOutlet var mModelHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mModelHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mModelLimitWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mModelPageView : CanariViewWithKeyView?
   @IBOutlet var mModelViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackComponentNamesCheckbox : EBSwitch?
   @IBOutlet var mModelViewDisplayBackLayoutTextsCheckbox : EBSwitch?
@@ -329,6 +332,7 @@ import Cocoa
   @IBOutlet var mOperationAndIssueTabView : NSTabView?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mProductPageView : CanariViewWithKeyView?
   @IBOutlet var mSelectedBoardXTextField : CanariDimensionTextField?
   @IBOutlet var mSelectedBoardXUnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedBoardYTextField : CanariDimensionTextField?
@@ -722,6 +726,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mBoardModelView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBoardPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBoardPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBoardPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mBoardViewDisplayBackComponenValuesCheckbox {
@@ -1504,6 +1523,21 @@ import Cocoa
         errorMessage: "the 'mManualBoardWidthUnitPopUp' outlet is nil"
       )
     }
+    if let outlet : Any = self.mMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMasterView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMasterView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mModelBoardLimitTextField {
       if !(outlet is CanariDimensionObserverTextField) {
         presentErrorWindow (
@@ -1577,6 +1611,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mModelLimitWidthUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mModelPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mModelPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mModelPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mModelViewDisplayBackComponenValuesCheckbox {
@@ -2072,6 +2121,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mProductPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mProductPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mProductPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mSelectedBoardXTextField {
@@ -3273,6 +3337,7 @@ import Cocoa
     self.mBoardLimitWidthUnitPopUp?.ebCleanUp ()
     self.mBoardModelTableView?.ebCleanUp ()
     self.mBoardModelView?.ebCleanUp ()
+    self.mBoardPageView?.ebCleanUp ()
     self.mBoardViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackComponentNamesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackLayoutTextsCheckbox?.ebCleanUp ()
@@ -3325,11 +3390,13 @@ import Cocoa
     self.mManualBoardSizeView?.ebCleanUp ()
     self.mManualBoardWidthTextField?.ebCleanUp ()
     self.mManualBoardWidthUnitPopUp?.ebCleanUp ()
+    self.mMasterView?.ebCleanUp ()
     self.mModelBoardLimitTextField?.ebCleanUp ()
     self.mModelDragSourceTableView?.ebCleanUp ()
     self.mModelHeightTextField?.ebCleanUp ()
     self.mModelHeightUnitPopUp?.ebCleanUp ()
     self.mModelLimitWidthUnitPopUp?.ebCleanUp ()
+    self.mModelPageView?.ebCleanUp ()
     self.mModelViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackComponentNamesCheckbox?.ebCleanUp ()
     self.mModelViewDisplayBackLayoutTextsCheckbox?.ebCleanUp ()
@@ -3363,6 +3430,7 @@ import Cocoa
     self.mOperationAndIssueTabView?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mProductPageView?.ebCleanUp ()
     self.mSelectedBoardXTextField?.ebCleanUp ()
     self.mSelectedBoardXUnitPopUp?.ebCleanUp ()
     self.mSelectedBoardYTextField?.ebCleanUp ()

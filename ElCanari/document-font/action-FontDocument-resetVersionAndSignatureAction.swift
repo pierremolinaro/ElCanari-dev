@@ -11,29 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMFontDocument {
-  @objc func addCharacterAction (_ sender : NSObject?) {
+extension FontDocument {
+  @objc func resetVersionAndSignatureAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let panel = self.mNewCharacterPanel {
-    //--- Populate table view
-      var implementedCharacterSet = Set <Int> ()
-      for character in rootObject.characters_property.propval {
-        implementedCharacterSet.insert (character.codePoint)
-      }
-      self.mNewCharacterView?.setImplementedCharacterSet (implementedCharacterSet)
-    //--- Display sheet
-      window.beginSheet (panel, completionHandler: { (response : NSApplication.ModalResponse) in
-        if response == NSApplication.ModalResponse.stop, let codePoint = self.mNewCharacterView?.selectedCharacter {
-          var characterSet = self.rootObject.characters_property.propval
-          let newCharacter = FontCharacter (managedObjectContext: self.managedObjectContext, file: #file, #line)
-          newCharacter.codePoint = codePoint
-          characterSet.append (newCharacter)
-          characterSet = characterSet.sorted (by :{$0.codePoint < $1.codePoint})
-          self.rootObject.characters_property.setProp (characterSet)
-          g_Preferences?.currentCharacterCodePoint = codePoint
-        }
-      })
-    }
+    resetVersionAndSignature ()
 //--- END OF USER ZONE 2
   }
 }

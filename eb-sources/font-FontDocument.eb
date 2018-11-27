@@ -31,12 +31,20 @@ binding CanariCharacterView $displayDrawingIndexes : transient Bool ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMFontDocument root FontRoot {
+document FontDocument root FontRoot {
 #--- Toolbar
-  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedTab ;
+  outlet NSView mMasterView ;
+
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
+
+#------------ Page Font
+  outlet CanariViewWithKeyView mFontPageView ;
+
+  outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
+  outlet NSView mMasterFontPageView ;
+  outlet CanariViewWithKeyView mSelectedCharacterInspectorView ;
 
   tableViewController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
   selectionController FontCharacter mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
@@ -73,6 +81,7 @@ document PMFontDocument root FontRoot {
   action addSegmentAction ;
 
 #--- Gerber Code inspector
+  outlet CanariViewWithKeyView mSampleStringInspectorView ;
   outlet EBSwitch mShowGerberDrawingFlowCheckbox $value prefs.showGerberDrawingFlow ;
 
   outlet EBSwitch mShowGerberDrawingIndexesCheckbox $value prefs.showGerberDrawingIndexes ;
@@ -106,6 +115,8 @@ document PMFontDocument root FontRoot {
   ;
 
 #--------------- Infos Tab
+  outlet CanariViewWithKeyView mInfosPageView ;
+
 #--- Comments
   outlet EBTextView commentTextView $value root.comments ;
 #--- Reset

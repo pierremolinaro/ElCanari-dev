@@ -19,17 +19,23 @@
                 <outlet property="mCurrentCharacterTextField" destination="yqI-ko-0Pe" id="WBx-uw-nKW"/>
                 <outlet property="mFontCharacterSelectButton" destination="1357" id="kA8-J5-m7U"/>
                 <outlet property="mFontNominalSizeTextField" destination="29v-1g-72j" id="bgs-0f-2uc"/>
+                <outlet property="mFontPageView" destination="1057" id="aPd-3E-b8l"/>
                 <outlet property="mFontSampleStringView" destination="1059" id="fwW-MA-q8K"/>
                 <outlet property="mGerberCodeTableView" destination="gZS-PE-KcP" id="UHE-3j-FsM"/>
+                <outlet property="mInfosPageView" destination="1094" id="mD4-j1-ZVS"/>
                 <outlet property="mInspectorSegmentedControl" destination="1333" id="E71-Py-UYn"/>
+                <outlet property="mMasterFontPageView" destination="1303" id="a9t-xp-Ag7"/>
+                <outlet property="mMasterView" destination="1114" id="n7H-pP-JNE"/>
                 <outlet property="mNewCharacterPanel" destination="ubN-8M-HMA" id="s0a-ss-nme"/>
                 <outlet property="mNewCharacterView" destination="ggH-gl-Jr4" id="SVa-FD-IjF"/>
                 <outlet property="mPageSegmentedControl" destination="iem-62-V3i" id="Lav-hX-Ns1"/>
                 <outlet property="mSampleStringAscentTextField" destination="892" id="l4d-D9-lo6"/>
                 <outlet property="mSampleStringDescentTextField" destination="893" id="ynP-mD-FNN"/>
                 <outlet property="mSampleStringField" destination="rml-e4-VMa" id="aIs-7F-pct"/>
+                <outlet property="mSampleStringInspectorView" destination="883" id="cTd-pC-8a2"/>
                 <outlet property="mSampleStringSizeField" destination="uGr-M3-JeV" id="Klk-x9-Pt1"/>
                 <outlet property="mSampleStringWidthTextField" destination="889" id="tRI-K3-t6Q"/>
+                <outlet property="mSelectedCharacterInspectorView" destination="1253" id="eRb-tR-BKp"/>
                 <outlet property="mShowGerberDrawingFlowCheckbox" destination="9u9-51-cUf" id="JGc-uL-AwS"/>
                 <outlet property="mShowGerberDrawingIndexesCheckbox" destination="qeX-Bm-nsV" id="pvm-77-OEn"/>
                 <outlet property="mSignatureTextField" destination="6TX-1V-2Fo" id="mAi-0n-Erx"/>
@@ -68,20 +74,15 @@
                         <size key="minSize" width="67" height="23"/>
                         <size key="maxSize" width="100" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="iem-62-V3i" customClass="CanariSegmentedControl">
-                            <rect key="frame" x="0.0" y="14" width="88" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="91" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="Nfd-eJ-Wzl">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="Nfd-eJ-Wzl">
                                 <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment label="Font" width="43"/>
                                     <segment label="Infos" width="42" selected="YES" tag="1"/>
                                 </segments>
                             </segmentedCell>
-                            <connections>
-                                <outlet property="mMasterView" destination="1114" id="62Q-2t-ZAE"/>
-                                <outlet property="mView0" destination="1057" id="qZv-3l-8He"/>
-                                <outlet property="mView1" destination="1094" id="vVx-0j-JXl"/>
-                            </connections>
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="22DC9DD6-9119-4C9C-BD1A-5520B60A7C0B" label="Signature" paletteLabel="Signature" id="MRo-Zp-Dsx">
@@ -119,7 +120,7 @@
                     <toolbarItem reference="e7T-JV-7Nm"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="1097" y="-56"/>
+            <point key="canvasLocation" x="1318" y="-81"/>
         </window>
         <customView id="883" userLabel="Inspector : sample string" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -225,11 +226,6 @@
                             <segment label="📍" toolTip="Display Inspector" width="122" tag="1"/>
                         </segments>
                     </segmentedCell>
-                    <connections>
-                        <outlet property="mMasterView" destination="1303" id="TgN-km-bBs"/>
-                        <outlet property="mView0" destination="1253" id="WUk-GL-9Og"/>
-                        <outlet property="mView1" destination="883" id="W5K-9o-0Re"/>
-                    </connections>
                 </segmentedControl>
                 <customView focusRingType="exterior" id="1058" customClass="CanariCharacterView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="279" y="0.0" width="401" height="390"/>
@@ -430,7 +426,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="hL4-lW-hym">
                         <rect key="frame" x="1" y="0.0" width="244" height="265"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p8i-Zv-zRb" viewBased="YES" id="gZS-PE-KcP" customClass="CanariCharacterGerberCodeTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="244" height="242"/>
@@ -634,7 +630,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" copiesOnScroll="NO" id="Z8P-ja-716">
                             <rect key="frame" x="1" y="1" width="363" height="298"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <customView id="ggH-gl-Jr4" customClass="NewCharacterView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="202" width="163" height="96"/>

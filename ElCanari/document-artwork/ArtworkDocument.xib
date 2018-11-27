@@ -6,10 +6,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="PMArtworkDocument" customModule="ElCanari" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="CustomizedArtworkDocument">
             <connections>
                 <outlet property="mAddGenerationFileButton" destination="300" id="cQl-U5-aYG"/>
                 <outlet property="mCommentTextView" destination="326" id="6cO-PA-tSl"/>
+                <outlet property="mDataPageView" destination="276" id="xQv-4Q-dT8"/>
                 <outlet property="mDataTableView" destination="302" id="P2L-eJ-uLs"/>
                 <outlet property="mDimensionForPadHoleInPDFTextField" destination="596" id="tJZ-gI-U8u"/>
                 <outlet property="mDrawBoardInternalLimitsSwitch" destination="Esz-HZ-WuD" id="vre-e4-FcR"/>
@@ -31,12 +32,16 @@
                 <outlet property="mDrawTracksTopSideSwitch" destination="289" id="UQi-79-QmQ"/>
                 <outlet property="mDrawViasSwitch" destination="284" id="CNh-xd-EtB"/>
                 <outlet property="mDrillDataFileExtensionTextField" destination="Gtj-h4-Qq4" id="6BW-KL-d8o"/>
+                <outlet property="mDrillPageView" destination="260" id="K6I-UB-dwM"/>
                 <outlet property="mExtensionTextField" destination="297" id="kpz-tk-jB7"/>
                 <outlet property="mGeneratedFileCountTextField" destination="lrV-dp-Ndm" id="kg7-gp-Gmg"/>
                 <outlet property="mHorizontalMirrorSwitch" destination="581" id="iZc-iJ-WOF"/>
+                <outlet property="mInfosPageView" destination="323" id="klN-pT-YDA"/>
+                <outlet property="mMasterView" destination="345" id="ji4-OY-VYm"/>
                 <outlet property="mMeasurementUnitForPadHoleInPDFPopUp" destination="597" id="BQp-YG-cgo"/>
                 <outlet property="mMinPPTPTTTWdisplayUnitTextField" destination="219" id="9B9-5P-kUv"/>
                 <outlet property="mMinPPTPTTTWinEBUnitPopUp" destination="221" id="LjG-Au-1rh"/>
+                <outlet property="mMinimaPageView" destination="215" id="nF0-cT-IOj"/>
                 <outlet property="mOARUnitPopUp" destination="247" id="brv-Lf-ov8"/>
                 <outlet property="mOARValueTextField" destination="244" id="oQZ-Tu-CzW"/>
                 <outlet property="mOtherSignatureTextField" destination="qej-Pe-6zZ" id="qAa-ZM-fPL"/>
@@ -133,13 +138,6 @@
                                     <segment label="Infos" width="64" selected="YES"/>
                                 </segments>
                             </segmentedCell>
-                            <connections>
-                                <outlet property="mMasterView" destination="345" id="LOu-1U-dSl"/>
-                                <outlet property="mView0" destination="215" id="MI7-kh-Lfk"/>
-                                <outlet property="mView1" destination="260" id="3aA-ZQ-J0h"/>
-                                <outlet property="mView2" destination="276" id="n2P-r2-6af"/>
-                                <outlet property="mView3" destination="323" id="cRj-FF-P7A"/>
-                            </connections>
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="552"/>
@@ -377,7 +375,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="2419" y="46"/>
         </customView>
-        <customView id="276" userLabel="Page : Files" customClass="CanariViewWithKeyView">
+        <customView id="276" userLabel="Page : Datas" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>

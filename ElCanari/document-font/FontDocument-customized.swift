@@ -1,9 +1,8 @@
 //
-//  CanariFontDocument.swift
+//  FontDocument-customized.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 16/11/2015.
-//
+//  Created by Pierre Molinaro on 27/11/2018.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -16,7 +15,7 @@ let PMFontComment = "PMFontComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariFontDocument) class CanariFontDocument : PMFontDocument {
+@objc(CustomizedFontDocument) class CustomizedFontDocument : FontDocument {
 
   //····················································································································
   //    init
@@ -47,6 +46,27 @@ let PMFontComment = "PMFontComment"
 //    rootObject.characters_property.setProp (characterArray)
 //    rootObject.nominalSize = 21
 
+  }
+
+  //····················································································································
+  //    windowControllerDidLoadNib: customization of interface
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
+  //--- Set pages segmented control
+    let pages = [self.mFontPageView, self.mInfosPageView]
+    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //--- Set inspector segmented control
+    let inspectors = [self.mSelectedCharacterInspectorView, self.mSampleStringInspectorView]
+    self.mInspectorSegmentedControl?.register (masterView: self.mMasterFontPageView, inspectors)
+  //---
+    UserDefaults.standard.addObserver (
+      self,
+      forKeyPath: Preferences_currentCharacterCodePoint,
+      options: .new,
+      context: nil
+    )
   }
 
   //····················································································································
@@ -95,21 +115,21 @@ let PMFontComment = "PMFontComment"
       currentCharacter.segments_property.setProp (newSegmentEntityArray)
     }
   }
-  
+
   //····················································································································
   //    HANDLING CURRENT CHARACTER: windowControllerDidLoadNib
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-    super.windowControllerDidLoadNib (aController)
-    UserDefaults.standard.addObserver (
-      self,
-      forKeyPath: Preferences_currentCharacterCodePoint,
-      options: .new,
-      context: nil
-    )
-//    self.updateCurrentCharacterSelection ()
-  }
+//  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+//    super.windowControllerDidLoadNib (aController)
+//    UserDefaults.standard.addObserver (
+//      self,
+//      forKeyPath: Preferences_currentCharacterCodePoint,
+//      options: .new,
+//      context: nil
+//    )
+////    self.updateCurrentCharacterSelection ()
+//  }
 
   //····················································································································
 
@@ -161,3 +181,4 @@ let PMFontComment = "PMFontComment"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

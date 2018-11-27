@@ -25,11 +25,14 @@ entity ArtworkRoot {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-document PMArtworkDocument root ArtworkRoot {
+document ArtworkDocument root ArtworkRoot {
 #--- Selected Tab
   outlet CanariSegmentedControl mSegmentedControl $selectedPage root.selectedTab ;
+  outlet NSView mMasterView ;
 
-#--- Minimum tab
+#---------------- Minima Page
+  outlet CanariViewWithKeyView mMinimaPageView ;
+
   outlet EBPopUpButton mMinPPTPTTTWinEBUnitPopUp $selectedTag root.minPPTPTTTWdisplayUnit ;
   outlet CanariDimensionTextField mMinPPTPTTTWdisplayUnitTextField
      $dimensionAndUnit root.minPPTPTTTW, root.minPPTPTTTWdisplayUnit
@@ -51,9 +54,11 @@ document PMArtworkDocument root ArtworkRoot {
   ;
 
 #--- Drill Page
+  outlet CanariViewWithKeyView mDrillPageView ;
   outlet EBTextField mDrillDataFileExtensionTextField $value root.drillDataFileExtension {sendContinously:no} ;
 
 #--- Data Tab
+  outlet CanariViewWithKeyView mDataPageView ;
   outlet EBTableView mDataTableView $tableValue mDataController ;
   tableViewController mDataController {allowsEmptySelection:no, allowsMultipleSelection:no} root.fileGenerationParameterArray {
      column "name" sort name EBTextField $value self.name {sendContinously:no}
@@ -94,7 +99,8 @@ document PMArtworkDocument root ArtworkRoot {
   outlet EBTextObserverField mGeneratedFileCountTextField $valueObserver self.mGeneratedFileCountString ;
 
 
-#--- Info Tab
+#----------------------------------------------------- Info Tab
+  outlet CanariViewWithKeyView mInfosPageView ;
   outlet EBTextView mCommentTextView $value root.comments ;
   outlet CanariSignatureField mSignatureTextField $signature signature ;
   outlet CanariSignatureField mOtherSignatureTextField $signature signature ;

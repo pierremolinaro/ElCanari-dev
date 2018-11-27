@@ -22,15 +22,19 @@
                 <outlet property="mGridStep" destination="1138" id="lGH-01-lxA"/>
                 <outlet property="mGridStyle" destination="1139" id="brw-Y0-wE6"/>
                 <outlet property="mHorizontalFlip" destination="582" id="U5c-xv-gZx"/>
+                <outlet property="mInfosPageView" destination="923" id="4va-ZK-RgQ"/>
                 <outlet property="mInspectorSegmentedControl" destination="1208" id="P3v-EX-3X2"/>
                 <outlet property="mIssueTableView" destination="r2i-A5-R2a" id="44U-8S-0P6"/>
                 <outlet property="mIssueTextField" destination="GO1-UP-Lnd" id="fSw-JY-ap1"/>
+                <outlet property="mMasterView" destination="942" id="NtI-ob-jBg"/>
+                <outlet property="mMessagesPageView" destination="915" id="S7k-8l-OL1"/>
                 <outlet property="mPageSegmentedControl" destination="1090" id="xiJ-uP-7gb"/>
                 <outlet property="mPinInspectorView" destination="528" id="2HO-4m-b4p"/>
                 <outlet property="mResetVersionButton" destination="935" id="7cU-0p-YIp"/>
                 <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
                 <outlet property="mStatusImageViewInToolbar" destination="1083" id="AM4-dD-QSw"/>
                 <outlet property="mSymbolBaseInspectorView" destination="gB9-36-zn7" id="rYp-bL-nxk"/>
+                <outlet property="mSymbolPageView" destination="881" id="qul-5X-3Ua"/>
                 <outlet property="mSymbolPinLabelHorizontalAlignmentPopUpButton" destination="623" id="HNa-Zx-ksl"/>
                 <outlet property="mSymbolPinLabelNameTextField" destination="530" id="Zep-5h-E0b"/>
                 <outlet property="mSymbolPinNumberHorizontalAlignmentPopUpButton" destination="630" id="Cyn-Vy-2zD"/>
@@ -93,12 +97,6 @@
                                     <segment label="Infos"/>
                                 </segments>
                             </segmentedCell>
-                            <connections>
-                                <outlet property="mMasterView" destination="942" id="WC3-aQ-a1B"/>
-                                <outlet property="mView0" destination="881" id="5Pe-em-GtP"/>
-                                <outlet property="mView1" destination="915" id="km1-sd-wrb"/>
-                                <outlet property="mView2" destination="923" id="zca-LR-QAH"/>
-                            </connections>
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="1078"/>
@@ -264,7 +262,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="hTF-9b-9qW">
                         <rect key="frame" x="1" y="1" width="579" height="308"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="917">
                                 <rect key="frame" x="0.0" y="0.0" width="579" height="308"/>

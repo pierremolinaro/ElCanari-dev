@@ -1,5 +1,6 @@
 //--- START OF USER ZONE 1
 
+
 //--- END OF USER ZONE 1
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -10,39 +11,60 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PMArtworkDocument_mStatusImage (
+func transient_ArtworkDocument_mStatusMessage (
        _ root_fileGenerationParameterArray_fileExtension : [ArtworkFileGenerationParameters_fileExtension],
        _ root_fileGenerationParameterArray_name : [ArtworkFileGenerationParameters_name]
-) -> NSImage {
+) -> String {
 //--- START OF USER ZONE 2
   let n = root_fileGenerationParameterArray_fileExtension.count
-  var error = false
-  let warning = n == 0
+  var result = ""
+  var warningCount = 0
+  var errorCount = 0
+  if n == 0 {
+    result = "Warning: no data\n"
+    warningCount += 1
+  }
   var fileExtensionSet = Set <String> ()
   var nameSet = Set <String> ()
   for i in 0 ..< n {
     let fileExtension = root_fileGenerationParameterArray_fileExtension [i].fileExtension
     let name = root_fileGenerationParameterArray_name [i].name
-    if fileExtension == "" {
-      error = true
-    }else if fileExtensionSet.contains (fileExtension) {
-      error = true
-    }else{
-      fileExtensionSet.insert (fileExtension)
-    }
     if name == "" {
-      error = true
+      result += "Error: empty data name for extension '\(fileExtension)'\n"
+      errorCount += 1
     }else if nameSet.contains (name) {
-      error = true
+      result += "Error: duplicated data name '\(name)' for extension '\(fileExtension)'\n"
+      errorCount += 1
     }else{
       nameSet.insert (name)
     }
+    if fileExtension == "" {
+      result += "Error: empty file extension for data named '\(name)'\n"
+      errorCount += 1
+    }else if fileExtensionSet.contains (fileExtension) {
+      result += "Error: duplicated file extension '\(fileExtension)' for data named '\(name)'\n"
+      errorCount += 1
+    }else{
+      fileExtensionSet.insert (fileExtension)
+    }
   }
-  var result = NSImage (named: NSImage.Name ("green20"))!
-  if error {
-    result = NSImage (named: NSImage.Name ("red20"))!
-  }else if warning {
-    result = NSImage (named: NSImage.Name ("orange20"))!
+  if result == "" {
+    result = "Ok."
+  }else{
+    if warningCount == 1 {
+      result += "1 warning"
+    }else if warningCount > 1 {
+      result += "\(warningCount) warnings"
+    }
+    if (warningCount > 0) && (errorCount > 0) {
+      result += ", "
+    }
+    if errorCount == 1 {
+      result += "1 error"
+    }else if errorCount > 1 {
+      result += "\(errorCount) errors"
+    }
+    result += "."
   }
   return result
 //--- END OF USER ZONE 2

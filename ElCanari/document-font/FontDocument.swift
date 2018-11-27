@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(PMFontDocument) class PMFontDocument : EBManagedDocument {
+@objc(FontDocument) class FontDocument : EBManagedDocument {
 
   //····················································································································
   //   Array controller: mSelectedCharacterController
   //····················································································································
 
-  var mSelectedCharacterController = ArrayController_PMFontDocument_mSelectedCharacterController ()
+  var mSelectedCharacterController = ArrayController_FontDocument_mSelectedCharacterController ()
 
   //····················································································································
   //   Selection controller: mCharacterSelection
   //····················································································································
 
-  var mCharacterSelection = SelectionController_PMFontDocument_mCharacterSelection ()
+  var mCharacterSelection = SelectionController_FontDocument_mCharacterSelection ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -59,17 +59,23 @@ import Cocoa
   @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton?
   @IBOutlet var mFontNominalSizeTextField : EBIntField?
+  @IBOutlet var mFontPageView : CanariViewWithKeyView?
   @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
+  @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mMasterFontPageView : NSView?
+  @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNewCharacterPanel : NSPanel?
   @IBOutlet var mNewCharacterView : NewCharacterView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mSampleStringAscentTextField : EBTextObserverField?
   @IBOutlet var mSampleStringDescentTextField : EBTextObserverField?
   @IBOutlet var mSampleStringField : EBTextField?
+  @IBOutlet var mSampleStringInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSampleStringSizeField : EBDoubleField?
   @IBOutlet var mSampleStringWidthTextField : EBTextObserverField?
+  @IBOutlet var mSelectedCharacterInspectorView : CanariViewWithKeyView?
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch?
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
@@ -126,7 +132,7 @@ import Cocoa
   //····················································································································
 
   override var windowNibName : NSNib.Name {
-    return NSNib.Name ("PMFontDocument")
+    return NSNib.Name ("FontDocument")
   }
   
   //····················································································································
@@ -314,6 +320,21 @@ import Cocoa
         errorMessage: "the 'mFontNominalSizeTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mFontPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mFontPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mFontPageView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mFontSampleStringView {
       if !(outlet is CanariFontSampleStringView) {
         presentErrorWindow (
@@ -344,6 +365,21 @@ import Cocoa
         errorMessage: "the 'mGerberCodeTableView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mInfosPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInfosPageView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mInspectorSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
         presentErrorWindow (
@@ -357,6 +393,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mInspectorSegmentedControl' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMasterFontPageView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMasterFontPageView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMasterFontPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMasterView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMasterView' outlet is nil"
       )
     }
     if let outlet : Any = self.mNewCharacterPanel {
@@ -449,6 +515,21 @@ import Cocoa
         errorMessage: "the 'mSampleStringField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSampleStringInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSampleStringInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSampleStringInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSampleStringSizeField {
       if !(outlet is EBDoubleField) {
         presentErrorWindow (
@@ -477,6 +558,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSampleStringWidthTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSelectedCharacterInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSelectedCharacterInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSelectedCharacterInspectorView' outlet is nil"
       )
     }
     if let outlet : Any = self.mShowGerberDrawingFlowCheckbox {
@@ -590,11 +686,11 @@ import Cocoa
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)
   //--------------------------- Install regular bindings
-    mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
     mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
     mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
+    mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
     advancementTextField?.bind_value (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true, autoFormatter:true)
     advancementSlider?.bind_intValue (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true)
     transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
@@ -622,11 +718,11 @@ import Cocoa
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
     mAddCharacterButton?.target = self
-    mAddCharacterButton?.action = #selector (PMFontDocument.addCharacterAction (_:))
+    mAddCharacterButton?.action = #selector (FontDocument.addCharacterAction (_:))
     mAddSegmentButton?.target = self
-    mAddSegmentButton?.action = #selector (PMFontDocument.addSegmentAction (_:))
+    mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     resetVersionAndSignatureButton?.target = self
-    resetVersionAndSignatureButton?.action = #selector (PMFontDocument.resetVersionAndSignatureAction (_:))
+    resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -638,11 +734,11 @@ import Cocoa
 
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
-    mInspectorSegmentedControl?.unbind_selectedPage ()
     mPageSegmentedControl?.unbind_selectedPage ()
     mSignatureTextField?.unbind_signature ()
     mVersionField?.unbind_version ()
     mVersionField?.unbind_versionShouldChange ()
+    mInspectorSegmentedControl?.unbind_selectedPage ()
     advancementTextField?.unbind_value ()
     advancementSlider?.unbind_intValue ()
     transparencyTextField?.unbind_value ()
@@ -689,17 +785,23 @@ import Cocoa
     self.mCurrentCharacterTextField?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
     self.mFontNominalSizeTextField?.ebCleanUp ()
+    self.mFontPageView?.ebCleanUp ()
     self.mFontSampleStringView?.ebCleanUp ()
     self.mGerberCodeTableView?.ebCleanUp ()
+    self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mMasterFontPageView?.ebCleanUp ()
+    self.mMasterView?.ebCleanUp ()
     self.mNewCharacterPanel?.ebCleanUp ()
     self.mNewCharacterView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mSampleStringAscentTextField?.ebCleanUp ()
     self.mSampleStringDescentTextField?.ebCleanUp ()
     self.mSampleStringField?.ebCleanUp ()
+    self.mSampleStringInspectorView?.ebCleanUp ()
     self.mSampleStringSizeField?.ebCleanUp ()
     self.mSampleStringWidthTextField?.ebCleanUp ()
+    self.mSelectedCharacterInspectorView?.ebCleanUp ()
     self.mShowGerberDrawingFlowCheckbox?.ebCleanUp ()
     self.mShowGerberDrawingIndexesCheckbox?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()

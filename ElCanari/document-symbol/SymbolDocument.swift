@@ -114,15 +114,19 @@ import Cocoa
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
+  @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mIssueTextField : EBTextObserverField?
+  @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mMessagesPageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinInspectorView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolBaseInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolPinLabelNameTextField : EBTextField?
   @IBOutlet var mSymbolPinNumberHorizontalAlignmentPopUpButton : EBPopUpButton?
@@ -418,6 +422,21 @@ import Cocoa
         errorMessage: "the 'mHorizontalFlip' outlet is nil"
       )
     }
+    if let outlet : Any = self.mInfosPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInfosPageView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mInspectorSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
         presentErrorWindow (
@@ -461,6 +480,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mIssueTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMasterView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMasterView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMessagesPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMessagesPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMessagesPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mPageSegmentedControl {
@@ -551,6 +600,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSymbolBaseInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mSymbolPinLabelHorizontalAlignmentPopUpButton {
@@ -866,15 +930,19 @@ import Cocoa
     self.mGridStep?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
+    self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
+    self.mMasterView?.ebCleanUp ()
+    self.mMessagesPageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinInspectorView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolBaseInspectorView?.ebCleanUp ()
+    self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolPinLabelNameTextField?.ebCleanUp ()
     self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.ebCleanUp ()

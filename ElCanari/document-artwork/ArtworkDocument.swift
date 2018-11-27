@@ -6,19 +6,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(PMArtworkDocument) class PMArtworkDocument : EBManagedDocument {
+@objc(ArtworkDocument) class ArtworkDocument : EBManagedDocument {
 
   //····················································································································
   //   Array controller: mDataController
   //····················································································································
 
-  var mDataController = ArrayController_PMArtworkDocument_mDataController ()
+  var mDataController = ArrayController_ArtworkDocument_mDataController ()
 
   //····················································································································
   //   Selection controller: mDataSelection
   //····················································································································
 
-  var mDataSelection = SelectionController_PMArtworkDocument_mDataSelection ()
+  var mDataSelection = SelectionController_ArtworkDocument_mDataSelection ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -119,6 +119,7 @@ import Cocoa
 
   @IBOutlet var mAddGenerationFileButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
+  @IBOutlet var mDataPageView : CanariViewWithKeyView?
   @IBOutlet var mDataTableView : EBTableView?
   @IBOutlet var mDimensionForPadHoleInPDFTextField : CanariDimensionTextField?
   @IBOutlet var mDrawBoardInternalLimitsSwitch : EBSwitch?
@@ -140,12 +141,16 @@ import Cocoa
   @IBOutlet var mDrawTracksTopSideSwitch : EBSwitch?
   @IBOutlet var mDrawViasSwitch : EBSwitch?
   @IBOutlet var mDrillDataFileExtensionTextField : EBTextField?
+  @IBOutlet var mDrillPageView : CanariViewWithKeyView?
   @IBOutlet var mExtensionTextField : EBTextField?
   @IBOutlet var mGeneratedFileCountTextField : EBTextObserverField?
   @IBOutlet var mHorizontalMirrorSwitch : EBSwitch?
+  @IBOutlet var mInfosPageView : CanariViewWithKeyView?
+  @IBOutlet var mMasterView : NSView?
   @IBOutlet var mMeasurementUnitForPadHoleInPDFPopUp : EBPopUpButton?
   @IBOutlet var mMinPPTPTTTWdisplayUnitTextField : CanariDimensionTextField?
   @IBOutlet var mMinPPTPTTTWinEBUnitPopUp : EBPopUpButton?
+  @IBOutlet var mMinimaPageView : CanariViewWithKeyView?
   @IBOutlet var mOARUnitPopUp : EBPopUpButton?
   @IBOutlet var mOARValueTextField : CanariDimensionTextField?
   @IBOutlet var mOtherSignatureTextField : CanariSignatureField?
@@ -212,7 +217,7 @@ import Cocoa
   //····················································································································
 
   override var windowNibName : NSNib.Name {
-    return NSNib.Name ("PMArtworkDocument")
+    return NSNib.Name ("ArtworkDocument")
   }
   
   //····················································································································
@@ -263,6 +268,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mCommentTextView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mDataPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDataPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDataPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mDataTableView {
@@ -580,6 +600,21 @@ import Cocoa
         errorMessage: "the 'mDrillDataFileExtensionTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mDrillPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDrillPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDrillPageView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mExtensionTextField {
       if !(outlet is EBTextField) {
         presentErrorWindow (
@@ -625,6 +660,36 @@ import Cocoa
         errorMessage: "the 'mHorizontalMirrorSwitch' outlet is nil"
       )
     }
+    if let outlet : Any = self.mInfosPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInfosPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMasterView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMasterView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mMeasurementUnitForPadHoleInPDFPopUp {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
@@ -668,6 +733,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mMinPPTPTTTWinEBUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mMinimaPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mMinimaPageView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mMinimaPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mOARUnitPopUp {
@@ -912,7 +992,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.mDataController.sortedArray_property.count_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_PMArtworkDocument_mGeneratedFileCountString (v0))
+            return .single (transient_ArtworkDocument_mGeneratedFileCountString (v0))
           default :
             return .empty
           }
@@ -935,7 +1015,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PMArtworkDocument_mStatusImage (v0, v1))
+            return .single (transient_ArtworkDocument_mStatusImage (v0, v1))
           default :
             return .empty
           }
@@ -959,7 +1039,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.fileGenerationParameterArray_property_selection, unwSelf.rootObject.fileGenerationParameterArray_property_selection) {
           case (.single (let v0), .single (let v1)) :
-            return .single (transient_PMArtworkDocument_mStatusMessage (v0, v1))
+            return .single (transient_ArtworkDocument_mStatusMessage (v0, v1))
           default :
             return .empty
           }
@@ -1037,11 +1117,11 @@ import Cocoa
     }
   //--------------------------- Set targets / actions
     mAddGenerationFileButton?.target = mDataController
-    mAddGenerationFileButton?.action = #selector (ArrayController_PMArtworkDocument_mDataController.add (_:))
+    mAddGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.add (_:))
     mRemoveGenerationFileButton?.target = mDataController
-    mRemoveGenerationFileButton?.action = #selector (ArrayController_PMArtworkDocument_mDataController.remove (_:))
+    mRemoveGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.remove (_:))
     resetVersionAndSignatureButton?.target = self
-    resetVersionAndSignatureButton?.action = #selector (PMArtworkDocument.resetVersionAndSignatureAction (_:))
+    resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
     flushOutletEvents ()
@@ -1118,6 +1198,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.mAddGenerationFileButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
+    self.mDataPageView?.ebCleanUp ()
     self.mDataTableView?.ebCleanUp ()
     self.mDimensionForPadHoleInPDFTextField?.ebCleanUp ()
     self.mDrawBoardInternalLimitsSwitch?.ebCleanUp ()
@@ -1139,12 +1220,16 @@ import Cocoa
     self.mDrawTracksTopSideSwitch?.ebCleanUp ()
     self.mDrawViasSwitch?.ebCleanUp ()
     self.mDrillDataFileExtensionTextField?.ebCleanUp ()
+    self.mDrillPageView?.ebCleanUp ()
     self.mExtensionTextField?.ebCleanUp ()
     self.mGeneratedFileCountTextField?.ebCleanUp ()
     self.mHorizontalMirrorSwitch?.ebCleanUp ()
+    self.mInfosPageView?.ebCleanUp ()
+    self.mMasterView?.ebCleanUp ()
     self.mMeasurementUnitForPadHoleInPDFPopUp?.ebCleanUp ()
     self.mMinPPTPTTTWdisplayUnitTextField?.ebCleanUp ()
     self.mMinPPTPTTTWinEBUnitPopUp?.ebCleanUp ()
+    self.mMinimaPageView?.ebCleanUp ()
     self.mOARUnitPopUp?.ebCleanUp ()
     self.mOARValueTextField?.ebCleanUp ()
     self.mOtherSignatureTextField?.ebCleanUp ()

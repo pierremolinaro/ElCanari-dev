@@ -50,6 +50,9 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Set pages segmented control
+    let pages = [self.mSymbolPageView, self.mMessagesPageView, self.mInfosPageView]
+    self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (draggedType: dragAddSegmentUTI)
     self.mAddBezierButton?.register (draggedType: dragAddBezierUTI)

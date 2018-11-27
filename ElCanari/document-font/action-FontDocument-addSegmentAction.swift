@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PMFontDocument {
+extension FontDocument {
   @objc func addSegmentAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     currentCharacterView?.appendSegment ()

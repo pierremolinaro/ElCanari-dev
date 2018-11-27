@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PMArtworkDocument_mGeneratedFileCountString (
+func transient_ArtworkDocument_mGeneratedFileCountString (
        _ self_mDataController_sortedArray_count : Int
 ) -> String {
 //--- START OF USER ZONE 2
