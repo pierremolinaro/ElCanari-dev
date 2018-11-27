@@ -115,7 +115,7 @@ import Cocoa
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mIssueTableView : MergerIssueTableView?
+  @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinInspectorView : CanariViewWithKeyView?
@@ -434,11 +434,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mIssueTableView {
-      if !(outlet is MergerIssueTableView) {
+      if !(outlet is CanariIssueTableView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'MergerIssueTableView'"
+          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'"
         )
       }
     }else{

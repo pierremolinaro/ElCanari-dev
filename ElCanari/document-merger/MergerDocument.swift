@@ -283,7 +283,7 @@ import Cocoa
   @IBOutlet var mInstanceCountTextField : EBIntObserverField?
   @IBOutlet var mInstanceModelNameTextField : EBTextObserverField?
   @IBOutlet var mInstanceRotation : CanariQuadrantSegmentedControl?
-  @IBOutlet var mIssueTableView : MergerIssueTableView?
+  @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mLogTextView : NSTextView?
   @IBOutlet var mManualBoardHeightTextField : CanariDimensionTextField?
@@ -1385,11 +1385,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mIssueTableView {
-      if !(outlet is MergerIssueTableView) {
+      if !(outlet is CanariIssueTableView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'MergerIssueTableView'"
+          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'"
         )
       }
     }else{

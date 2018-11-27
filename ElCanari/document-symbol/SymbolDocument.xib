@@ -243,7 +243,7 @@
                     </connections>
                 </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="68" y="344"/>
+            <point key="canvasLocation" x="398" y="14"/>
         </customView>
         <customView id="915" userLabel="Page : messages" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="636" height="350"/>
@@ -370,7 +370,7 @@ Cg
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="r2i-A5-R2a" customClass="MergerIssueTableView">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="r2i-A5-R2a" customClass="CanariIssueTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -400,9 +400,6 @@ Cg
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                     </tableColumn>
                                 </tableColumns>
-                                <connections>
-                                    <outlet property="mBoardView" destination="895" id="De4-Y7-S0V"/>
-                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>

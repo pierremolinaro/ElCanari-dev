@@ -25,7 +25,7 @@ document MergerDocument root MergerRoot {
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 
   outlet EBButton mDeselectIssueButton ;
-  outlet MergerIssueTableView mIssueTableView $issues self.issues ;
+  outlet CanariIssueTableView mIssueTableView $issues self.issues ;
 
 #------------------------------------- Display setting panel
   outlet NSView mDisplaySettingView $hidden root.selectedPageIndex > 1  ;

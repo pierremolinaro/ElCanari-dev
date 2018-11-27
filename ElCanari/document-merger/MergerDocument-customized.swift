@@ -25,6 +25,8 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   //--- Set document to scroll view for enabling drag and drop
     self.mComposedBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
     self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)
+  //--- Set issue display view
+    self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView)
   }
 
   //····················································································································

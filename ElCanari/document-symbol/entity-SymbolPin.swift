@@ -408,15 +408,17 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.yLabel_property_selection.kind ()
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
+        kind &= unwSelf.labelHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.labelHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -431,6 +433,8 @@ class SymbolPin : SymbolObject,
     self.yLabel_property.addEBObserver (self.selectionDisplay_property)
     self.xNumber_property.addEBObserver (self.selectionDisplay_property)
     self.yNumber_property.addEBObserver (self.selectionDisplay_property)
+    self.labelHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -440,15 +444,16 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.yLabel_property_selection.kind ()
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
+        kind &= unwSelf.label_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.label_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -463,6 +468,7 @@ class SymbolPin : SymbolObject,
     self.yLabel_property.addEBObserver (self.issues_property)
     self.xNumber_property.addEBObserver (self.issues_property)
     self.yNumber_property.addEBObserver (self.issues_property)
+    self.label_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.label_property.setSignatureObserver (observer:self)
@@ -498,12 +504,15 @@ class SymbolPin : SymbolObject,
     self.yLabel_property.removeEBObserver (self.selectionDisplay_property)
     self.xNumber_property.removeEBObserver (self.selectionDisplay_property)
     self.yNumber_property.removeEBObserver (self.selectionDisplay_property)
+    self.labelHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.numberHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.xPin_property.removeEBObserver (self.issues_property)
     self.yPin_property.removeEBObserver (self.issues_property)
     self.xLabel_property.removeEBObserver (self.issues_property)
     self.yLabel_property.removeEBObserver (self.issues_property)
     self.xNumber_property.removeEBObserver (self.issues_property)
     self.yNumber_property.removeEBObserver (self.issues_property)
+    self.label_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································

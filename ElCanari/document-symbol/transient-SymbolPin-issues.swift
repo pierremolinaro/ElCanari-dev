@@ -17,10 +17,14 @@ func transient_SymbolPin_issues (
        _ self_xLabel : Int,      
        _ self_yLabel : Int,      
        _ self_xNumber : Int,     
-       _ self_yNumber : Int
+       _ self_yNumber : Int,     
+       _ self_label : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
+  if self_label == "" {
+    issues.appendSymbolEmptyPinNameIssueAt (x:self_xLabel, y: self_yLabel)
+  }
   if (self_xPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_xPin, y: self_yPin)
   }

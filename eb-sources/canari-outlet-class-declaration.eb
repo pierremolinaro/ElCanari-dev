@@ -18,8 +18,8 @@ extern outlet class NSSegmentedControl ;
 
 extern outlet class CanariDragSourceButton ;
 
-extern outlet class MergerIssueTableView ;
-binding MergerIssueTableView $issues : transient CanariIssueArray ;
+extern outlet class CanariIssueTableView ;
+binding CanariIssueTableView $issues : transient CanariIssueArray ;
 
 extern outlet class CanariDraggingDestinationScrollView ;
 

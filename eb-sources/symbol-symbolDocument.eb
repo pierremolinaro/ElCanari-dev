@@ -87,7 +87,7 @@ document SymbolDocument root SymbolRoot {
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 
   outlet EBButton mDeselectIssueButton ;
-  outlet MergerIssueTableView mIssueTableView $issues root.issues ;
+  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
 
 #--- Page : Comments
   outlet EBTextView mCommentTextView $value root.comments ;

@@ -334,18 +334,39 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   private var mIssueBezierPath : NSBezierPath? = nil
+  private var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
 
   //····················································································································
 
-  func setIssue (_ inBezierPath : NSBezierPath?) {
-    if mIssueBezierPath != inBezierPath {
-      mIssueBezierPath = inBezierPath
+  func setIssue (_ inBezierPath : NSBezierPath?, _ issueKind : CanariIssueKind) {
+    if self.mIssueBezierPath != inBezierPath {
+      self.mIssueBezierPath = inBezierPath
+      self.mIssueKind = issueKind
       self.needsDisplay = true
     }
   }
 
   //····················································································································
-  //    draw
+
+  private func drawIssue (_ inDirtyRect : NSRect) {
+    if let issueBezierPath = self.mIssueBezierPath {
+      switch self.mIssueKind {
+      case .error :
+        NSColor.red.withAlphaComponent (0.15).setFill ()
+        issueBezierPath.fill ()
+        NSColor.red.setStroke ()
+        issueBezierPath.stroke ()
+      case .warning :
+        NSColor.orange.withAlphaComponent (0.15).setFill ()
+        issueBezierPath.fill ()
+        NSColor.orange.setStroke ()
+        issueBezierPath.stroke ()
+      }
+    }
+  }
+
+  //····················································································································
+  //    draw Grid
   //····················································································································
 
   fileprivate func drawGrid (_ inDirtyRect: NSRect) {
@@ -402,14 +423,7 @@ class CanariViewWithZoomAndFlip : EBView {
   override func draw (_ inDirtyRect: NSRect) {
     self.drawGrid (inDirtyRect)
     super.draw (inDirtyRect)
-    if let issueBezierPath = self.mIssueBezierPath {
-      let bp = NSBezierPath ()
-      bp.append (issueBezierPath)
-      NSColor.white.withAlphaComponent (0.5).setFill ()
-      bp.fill ()
-      NSColor.red.setStroke ()
-      bp.stroke ()
-    }
+    self.drawIssue (inDirtyRect)
   }
 
   //····················································································································

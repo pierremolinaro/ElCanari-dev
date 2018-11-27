@@ -1,5 +1,5 @@
 //
-//  view-MergerIssueTableView.swift
+//  view-CanariIssueTableView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 25/07/2018.
@@ -10,11 +10,11 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   MergerIssueTableView
+//   CanariIssueTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(MergerIssueTableView)
-class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
+@objc(CanariIssueTableView)
+class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
   //   Outlet
