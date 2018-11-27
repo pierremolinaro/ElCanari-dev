@@ -65,6 +65,7 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
     self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView)
+    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
   }
 
   //····················································································································

@@ -17,11 +17,7 @@ import Cocoa
 class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
-  //   Outlet
-  //····················································································································
-
-  @IBOutlet weak var mBoardView : CanariViewWithZoomAndFlip? = nil
-
+  //   init
   //····················································································································
 
   required init? (coder: NSCoder) {
@@ -48,6 +44,49 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   deinit {
     noteObjectDeallocation (self)
+  }
+
+  //····················································································································
+  //    Selected issue display
+  //····················································································································
+
+  private weak var mIssueDisplayView : CanariViewWithZoomAndFlip? = nil
+
+  //····················································································································
+
+  func register (issueDisplayView : CanariViewWithZoomAndFlip?) {
+    self.mIssueDisplayView = issueDisplayView
+    self.updateIssueDisplay ()
+  }
+
+  //····················································································································
+
+  private func updateIssueDisplay () {
+    if self.selectedRow < 0 {
+      self.mIssueDisplayView?.setIssue (nil, .error)
+      self.mHideIssueButton?.isEnabled = false
+    }else{
+      let selectedIssue = self.mModelArray [self.selectedRow]
+      self.mIssueDisplayView?.setIssue (selectedIssue.mPath, selectedIssue.mKind)
+      self.mHideIssueButton?.isEnabled = true
+    }
+  }
+
+  //····················································································································
+  //    Hide issue button
+  //····················································································································
+
+  private weak var mHideIssueButton : EBButton? = nil
+
+  //····················································································································
+
+  func register (hideIssueButton : EBButton?) {
+    self.mHideIssueButton = hideIssueButton
+    if let button = self.mHideIssueButton {
+      button.target = self
+      button.action = #selector (CanariIssueTableView.deselectAll(_:))
+    }
+    self.updateIssueDisplay ()
   }
 
   //····················································································································
@@ -88,7 +127,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   func tableViewSelectionDidChange (_ notification: Notification) {
-    self.mBoardView?.setIssue ((self.selectedRow < 0) ? nil : self.mModelArray [self.selectedRow].mPath)
+    self.updateIssueDisplay ()
   }
 
   //····················································································································
@@ -124,7 +163,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     case .multiple :
       self.mModelArray = []
     }
-    self.mBoardView?.setIssue ((self.selectedRow < 0) ? nil : self.mModelArray [self.selectedRow].mPath)
+    self.updateIssueDisplay ()
   }
 
   //····················································································································

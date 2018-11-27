@@ -131,6 +131,15 @@
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F2646F6D-4473-42EE-8273-B63C1BCE6681" label="Status" paletteLabel="Status" tag="-1" id="M5O-Js-J8x">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="16" height="40"/>
+                        <size key="maxSize" width="16" height="40"/>
+                        <customView key="view" id="ibr-3Q-Ecg" customClass="CanariStatusView">
+                            <rect key="frame" x="13" y="14" width="16" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="1092"/>
@@ -141,6 +150,7 @@
                     <toolbarItem reference="dRw-sB-6K3"/>
                     <toolbarItem reference="1081"/>
                     <toolbarItem reference="1085"/>
+                    <toolbarItem reference="M5O-Js-J8x"/>
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="-187" y="-297"/>
@@ -296,7 +306,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="mO9-UL-Tnr">
                         <rect key="frame" x="1" y="1" width="469" height="335"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="926" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="469" height="335"/>
@@ -335,13 +345,17 @@ Cg
                 </scrollView>
                 <textField verticalHuggingPriority="750" id="924">
                     <rect key="frame" x="18" y="182" width="90" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Comments:" id="1060">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <customView id="aAy-8T-5Um" customClass="CanariStatusView">
+                    <rect key="frame" x="20" y="43" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </customView>
             </subviews>
             <point key="canvasLocation" x="140" y="511.5"/>
         </customView>
@@ -419,9 +433,6 @@ Cg
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="cellTitle"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="deselectAll:" target="r2i-A5-R2a" id="cLv-RT-Pg2"/>
-                    </connections>
                 </button>
             </subviews>
             <point key="canvasLocation" x="86" y="27"/>
