@@ -15,6 +15,7 @@ func transient_SymbolText_selectionDisplay (
        _ self_x : Int,                      
        _ self_y : Int,                      
        _ self_text : String,                
+       _ self_horizontalAlignment : HorizontalAlignment,
        _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2

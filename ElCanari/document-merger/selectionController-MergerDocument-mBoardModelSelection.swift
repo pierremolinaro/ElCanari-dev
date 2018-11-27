@@ -733,2718 +733,61 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_BoardModel, file:String, line:Int) {
-    mModel = model
-    bind_property_artworkName (model: model)
-    bind_property_backComponentNameSegments (model: model)
-    bind_property_backComponentNamesBezierPaths (model: model)
-    bind_property_backComponentValueSegments (model: model)
-    bind_property_backComponentValuesBezierPaths (model: model)
-    bind_property_backLayoutTextsBezierPaths (model: model)
-    bind_property_backLayoutTextsSegments (model: model)
-    bind_property_backLegendLinesBezierPaths (model: model)
-    bind_property_backLegendLinesSegments (model: model)
-    bind_property_backLegendTextsBezierPaths (model: model)
-    bind_property_backLegendTextsSegments (model: model)
-    bind_property_backPackagesBezierPaths (model: model)
-    bind_property_backPackagesSegments (model: model)
-    bind_property_backPadArray (model: model)
-    bind_property_backPadsBezierPaths (model: model)
-    bind_property_backTrackSegments (model: model)
-    bind_property_backTracksBezierPaths (model: model)
-    bind_property_boardLimits (model: model)
-    bind_property_boardLimitsBezierPaths (model: model)
-    bind_property_drillSegments (model: model)
-    bind_property_frontComponentNameSegments (model: model)
-    bind_property_frontComponentNamesBezierPaths (model: model)
-    bind_property_frontComponentValueSegments (model: model)
-    bind_property_frontComponentValuesBezierPaths (model: model)
-    bind_property_frontLayoutTextsBezierPaths (model: model)
-    bind_property_frontLayoutTextsSegments (model: model)
-    bind_property_frontLegendLinesBezierPaths (model: model)
-    bind_property_frontLegendLinesSegments (model: model)
-    bind_property_frontLegendTextsBezierPaths (model: model)
-    bind_property_frontLegendTextsSegments (model: model)
-    bind_property_frontPackagesBezierPaths (model: model)
-    bind_property_frontPackagesSegments (model: model)
-    bind_property_frontPadArray (model: model)
-    bind_property_frontPadsBezierPaths (model: model)
-    bind_property_frontTrackSegments (model: model)
-    bind_property_frontTracksBezierPaths (model: model)
-    bind_property_holesBezierPaths (model: model)
-    bind_property_imageForInstances (model: model)
-    bind_property_imageForModel (model: model)
-    bind_property_instanceCount (model: model)
-    bind_property_internalBoardsLimitsBezierPaths (model: model)
-    bind_property_internalBoardsLimitsSegments (model: model)
-    bind_property_modelHeight (model: model)
-    bind_property_modelHeightUnit (model: model)
-    bind_property_modelLimitWidth (model: model)
-    bind_property_modelLimitWidthUnit (model: model)
-    bind_property_modelRect (model: model)
-    bind_property_modelWidth (model: model)
-    bind_property_modelWidthUnit (model: model)
-    bind_property_name (model: model)
-    bind_property_viaShapes (model: model)
-    bind_property_viasBezierPaths (model: model)
-    bind_property_zoom (model: model)
+    self.mModel = model
+    self.bind_property_artworkName (model: model)
+    self.bind_property_backComponentNameSegments (model: model)
+    self.bind_property_backComponentNamesBezierPaths (model: model)
+    self.bind_property_backComponentValueSegments (model: model)
+    self.bind_property_backComponentValuesBezierPaths (model: model)
+    self.bind_property_backLayoutTextsBezierPaths (model: model)
+    self.bind_property_backLayoutTextsSegments (model: model)
+    self.bind_property_backLegendLinesBezierPaths (model: model)
+    self.bind_property_backLegendLinesSegments (model: model)
+    self.bind_property_backLegendTextsBezierPaths (model: model)
+    self.bind_property_backLegendTextsSegments (model: model)
+    self.bind_property_backPackagesBezierPaths (model: model)
+    self.bind_property_backPackagesSegments (model: model)
+    self.bind_property_backPadArray (model: model)
+    self.bind_property_backPadsBezierPaths (model: model)
+    self.bind_property_backTrackSegments (model: model)
+    self.bind_property_backTracksBezierPaths (model: model)
+    self.bind_property_boardLimits (model: model)
+    self.bind_property_boardLimitsBezierPaths (model: model)
+    self.bind_property_drillSegments (model: model)
+    self.bind_property_frontComponentNameSegments (model: model)
+    self.bind_property_frontComponentNamesBezierPaths (model: model)
+    self.bind_property_frontComponentValueSegments (model: model)
+    self.bind_property_frontComponentValuesBezierPaths (model: model)
+    self.bind_property_frontLayoutTextsBezierPaths (model: model)
+    self.bind_property_frontLayoutTextsSegments (model: model)
+    self.bind_property_frontLegendLinesBezierPaths (model: model)
+    self.bind_property_frontLegendLinesSegments (model: model)
+    self.bind_property_frontLegendTextsBezierPaths (model: model)
+    self.bind_property_frontLegendTextsSegments (model: model)
+    self.bind_property_frontPackagesBezierPaths (model: model)
+    self.bind_property_frontPackagesSegments (model: model)
+    self.bind_property_frontPadArray (model: model)
+    self.bind_property_frontPadsBezierPaths (model: model)
+    self.bind_property_frontTrackSegments (model: model)
+    self.bind_property_frontTracksBezierPaths (model: model)
+    self.bind_property_holesBezierPaths (model: model)
+    self.bind_property_imageForInstances (model: model)
+    self.bind_property_imageForModel (model: model)
+    self.bind_property_instanceCount (model: model)
+    self.bind_property_internalBoardsLimitsBezierPaths (model: model)
+    self.bind_property_internalBoardsLimitsSegments (model: model)
+    self.bind_property_modelHeight (model: model)
+    self.bind_property_modelHeightUnit (model: model)
+    self.bind_property_modelLimitWidth (model: model)
+    self.bind_property_modelLimitWidthUnit (model: model)
+    self.bind_property_modelRect (model: model)
+    self.bind_property_modelWidth (model: model)
+    self.bind_property_modelWidthUnit (model: model)
+    self.bind_property_name (model: model)
+    self.bind_property_viaShapes (model: model)
+    self.bind_property_viasBezierPaths (model: model)
+    self.bind_property_zoom (model: model)
   }
-
-  //····················································································································
-  //    Explorer
-  //····················································································································
-
-  private var mValueExplorer : NSButton?
-  private var mExplorerWindow : NSWindow?
-
-  //····················································································································
-
-  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
-    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-    let tf = NSTextField (frame:secondColumn (y))
-    tf.isEnabled = true
-    tf.isEditable = false
-    tf.stringValue = name
-    tf.font = font
-    view.addSubview (tf)
-    let valueExplorer = NSButton (frame:thirdColumn (y))
-    valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
-    valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.showObjectWindowFromExplorerButton(_:))
-    view.addSubview (valueExplorer)
-    mValueExplorer = valueExplorer
-    y += EXPLORER_ROW_HEIGHT
-  }
-  
-  //····················································································································
-
-  func buildExplorerWindow () {
-  //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
-  //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
-    var y : CGFloat = 0.0
-    createEntryForPropertyNamed (
-      "artworkName",
-      idx:self.artworkName_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.artworkName_property.mObserverExplorer,
-      valueExplorer:&self.artworkName_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelHeight",
-      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelHeight_property.mObserverExplorer,
-      valueExplorer:&self.modelHeight_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelHeightUnit",
-      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelHeightUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelLimitWidth",
-      idx:self.modelLimitWidth_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
-      valueExplorer:&self.modelLimitWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelLimitWidthUnit",
-      idx:self.modelLimitWidthUnit_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelLimitWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelWidth",
-      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelWidth_property.mObserverExplorer,
-      valueExplorer:&self.modelWidth_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "modelWidthUnit",
-      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
-      valueExplorer:&self.modelWidthUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.name_property.mObserverExplorer,
-      valueExplorer:&self.name_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.zoom_property.mObserverExplorer,
-      valueExplorer:&self.zoom_property.mValueExplorer
-    )
-  //-------------------------------------------------- Finish Window construction
-  //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    view.frame = viewFrame
-  //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
-  //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.deleteSelectionControllerWindowAction(_:))
-  //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
-    mExplorerWindow!.title = windowTitle
-  //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
-    sw.hasVerticalScroller = true
-    sw.documentView = view
-    mExplorerWindow!.contentView = sw
-  }
-
-  //····················································································································
-  //   showObjectWindowFromExplorerButton
-  //····················································································································
-
-  @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if mExplorerWindow == nil {
-      buildExplorerWindow ()
-    }
-    mExplorerWindow?.makeKeyAndOrderFront(nil)
-  }
-  
-  //····················································································································
-  //   deleteSelectionControllerWindowAction
-  //····················································································································
-
-  @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    clearObjectExplorer ()
-  }
-
-  //····················································································································
-  //   clearObjectExplorer
-  //····················································································································
-
-  func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
-  }
-
-  //···················································································································*
-
-  private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_artworkName (self.artworkName_property)
-    self.artworkName_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.artworkName_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.artworkName_property.writeModelFunction = { (inValue : String) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.artworkName_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.artworkName_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.artworkName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
-    self.backComponentNameSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backComponentNameSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentNamesBezierPaths (self.backComponentNamesBezierPaths_property)
-    self.backComponentNamesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backComponentNamesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
-    self.backComponentValueSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backComponentValueSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backComponentValuesBezierPaths (self.backComponentValuesBezierPaths_property)
-    self.backComponentValuesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backComponentValuesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLayoutTextsBezierPaths (self.backLayoutTextsBezierPaths_property)
-    self.backLayoutTextsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLayoutTextsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
-    self.backLayoutTextsSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLayoutTextsSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendLinesBezierPaths (self.backLegendLinesBezierPaths_property)
-    self.backLegendLinesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLegendLinesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendLinesSegments (self.backLegendLinesSegments_property)
-    self.backLegendLinesSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLegendLinesSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendTextsBezierPaths (self.backLegendTextsBezierPaths_property)
-    self.backLegendTextsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLegendTextsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
-    self.backLegendTextsSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backLegendTextsSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPackagesBezierPaths (self.backPackagesBezierPaths_property)
-    self.backPackagesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backPackagesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
-    self.backPackagesSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backPackagesSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPadArray (self.backPadArray_property)
-    self.backPadArray_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerPadArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backPadArray_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backPadsBezierPaths (self.backPadsBezierPaths_property)
-    self.backPadsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backPadsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property)
-    self.backTrackSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backTrackSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_backTracksBezierPaths (self.backTracksBezierPaths_property)
-    self.backTracksBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.backTracksBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_boardLimits (self.boardLimits_property)
-    self.boardLimits_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerBoardLimits> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.boardLimits_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_boardLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property)
-    self.boardLimitsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.boardLimitsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_drillSegments (self.drillSegments_property)
-    self.drillSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.drillSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
-    self.frontComponentNameSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontComponentNameSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentNamesBezierPaths (self.frontComponentNamesBezierPaths_property)
-    self.frontComponentNamesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontComponentNamesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
-    self.frontComponentValueSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontComponentValueSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontComponentValuesBezierPaths (self.frontComponentValuesBezierPaths_property)
-    self.frontComponentValuesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontComponentValuesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLayoutTextsBezierPaths (self.frontLayoutTextsBezierPaths_property)
-    self.frontLayoutTextsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLayoutTextsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
-    self.frontLayoutTextsSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLayoutTextsSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendLinesBezierPaths (self.frontLegendLinesBezierPaths_property)
-    self.frontLegendLinesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLegendLinesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendLinesSegments (self.frontLegendLinesSegments_property)
-    self.frontLegendLinesSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLegendLinesSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendTextsBezierPaths (self.frontLegendTextsBezierPaths_property)
-    self.frontLegendTextsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLegendTextsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
-    self.frontLegendTextsSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontLegendTextsSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPackagesBezierPaths (self.frontPackagesBezierPaths_property)
-    self.frontPackagesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontPackagesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
-    self.frontPackagesSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontPackagesSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPadArray (self.frontPadArray_property)
-    self.frontPadArray_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerPadArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontPadArray_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontPadsBezierPaths (self.frontPadsBezierPaths_property)
-    self.frontPadsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontPadsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
-    self.frontTrackSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontTrackSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_frontTracksBezierPaths (self.frontTracksBezierPaths_property)
-    self.frontTracksBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.frontTracksBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_holesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_holesBezierPaths (self.holesBezierPaths_property)
-    self.holesBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.holesBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_imageForInstances (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_imageForInstances (self.imageForInstances_property)
-    self.imageForInstances_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.imageForInstances_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_imageForModel (self.imageForModel_property)
-    self.imageForModel_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <EBShape> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.imageForModel_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_instanceCount (self.instanceCount_property)
-    self.instanceCount_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.instanceCount_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property)
-    self.internalBoardsLimitsBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.internalBoardsLimitsBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
-    self.internalBoardsLimitsSegments_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerSegmentArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.internalBoardsLimitsSegments_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelHeight (self.modelHeight_property)
-    self.modelHeight_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelHeight_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelHeight_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelHeight_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelHeight_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
-    self.modelHeightUnit_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelHeightUnit_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelHeightUnit_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelHeightUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelHeightUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelLimitWidth (self.modelLimitWidth_property)
-    self.modelLimitWidth_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelLimitWidth_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelLimitWidth_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelLimitWidth_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelLimitWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelLimitWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
-    self.modelLimitWidthUnit_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelLimitWidthUnit_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelLimitWidthUnit_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelLimitWidthUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelLimitWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelLimitWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelRect (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelRect (self.modelRect_property)
-    self.modelRect_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariRect> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelRect_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelWidth (self.modelWidth_property)
-    self.modelWidth_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelWidth_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelWidth_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelWidth_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
-    self.modelWidthUnit_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.modelWidthUnit_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.modelWidthUnit_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.modelWidthUnit_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.modelWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.modelWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_name (self.name_property)
-    self.name_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.name_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.name_property.writeModelFunction = { (inValue : String) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.name_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.name_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_viaShapes (self.viaShapes_property)
-    self.viaShapes_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <MergerViaShapeArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.viaShapes_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_viasBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_viasBezierPaths (self.viasBezierPaths_property)
-    self.viasBezierPaths_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <BezierPathArray> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.viasBezierPaths_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_zoom (self.zoom_property)
-    self.zoom_property.readModelFunction = {
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? BoardModel {
-              switch baseObject.zoom_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
-            }
-//          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.zoom_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.zoom_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.zoom_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.zoom_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-
 
   //····················································································································
   //   UNBIND SELECTION
@@ -3629,8 +972,2559 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     self.zoom_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_zoom (self.zoom_property)
   //---
-    mModel = nil    
+    self.mModel = nil    
   }
+
+  //····················································································································
+  //    Explorer
+  //····················································································································
+
+  private var mValueExplorer : NSButton?
+  private var mExplorerWindow : NSWindow?
+
+  //····················································································································
+
+  final func addExplorer (name : String, y : inout CGFloat, view : NSView) {
+    let font = NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    let tf = NSTextField (frame:secondColumn (y))
+    tf.isEnabled = true
+    tf.isEditable = false
+    tf.stringValue = name
+    tf.font = font
+    view.addSubview (tf)
+    let valueExplorer = NSButton (frame:thirdColumn (y))
+    valueExplorer.font = font
+    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.target = self
+    valueExplorer.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.showObjectWindowFromExplorerButton(_:))
+    view.addSubview (valueExplorer)
+    mValueExplorer = valueExplorer
+    y += EXPLORER_ROW_HEIGHT
+  }
+  
+  //····················································································································
+
+  func buildExplorerWindow () {
+  //-------------------------------------------------- Create Window
+    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+  //-------------------------------------------------- Adding properties
+    let view = NSView (frame:r)
+    var y : CGFloat = 0.0
+    createEntryForPropertyNamed (
+      "artworkName",
+      idx:self.artworkName_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.artworkName_property.mObserverExplorer,
+      valueExplorer:&self.artworkName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelHeight",
+      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelHeight_property.mObserverExplorer,
+      valueExplorer:&self.modelHeight_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelHeightUnit",
+      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelHeightUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelLimitWidth",
+      idx:self.modelLimitWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
+      valueExplorer:&self.modelLimitWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelLimitWidthUnit",
+      idx:self.modelLimitWidthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelLimitWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelWidth",
+      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelWidth_property.mObserverExplorer,
+      valueExplorer:&self.modelWidth_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "modelWidthUnit",
+      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
+      valueExplorer:&self.modelWidthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "name",
+      idx:self.name_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.name_property.mObserverExplorer,
+      valueExplorer:&self.name_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "zoom",
+      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.zoom_property.mObserverExplorer,
+      valueExplorer:&self.zoom_property.mValueExplorer
+    )
+  //-------------------------------------------------- Finish Window construction
+  //--- Resize View
+    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    view.frame = viewFrame
+  //--- Set content size
+    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+  //--- Set close button as 'remove window' button
+    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
+    closeButton?.target = self
+    closeButton?.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.deleteSelectionControllerWindowAction(_:))
+  //--- Set window title
+    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    mExplorerWindow!.title = windowTitle
+  //--- Add Scroll view
+    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let sw = NSScrollView (frame:frame)
+    sw.hasVerticalScroller = true
+    sw.documentView = view
+    mExplorerWindow!.contentView = sw
+  }
+
+  //····················································································································
+  //   showObjectWindowFromExplorerButton
+  //····················································································································
+
+  @objc func showObjectWindowFromExplorerButton (_ : Any) {
+    if mExplorerWindow == nil {
+      buildExplorerWindow ()
+    }
+    mExplorerWindow?.makeKeyAndOrderFront(nil)
+  }
+  
+  //····················································································································
+  //   deleteSelectionControllerWindowAction
+  //····················································································································
+
+  @objc func deleteSelectionControllerWindowAction (_ : Any) {
+    clearObjectExplorer ()
+  }
+
+  //····················································································································
+  //   clearObjectExplorer
+  //····················································································································
+
+  func clearObjectExplorer () {
+    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
+    closeButton!.target = nil
+    mExplorerWindow?.orderOut (nil)
+    mExplorerWindow = nil
+  }
+
+  //···················································································································*
+
+  private final func bind_property_artworkName (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_artworkName (self.artworkName_property)
+    self.artworkName_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.artworkName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.artworkName_property.writeModelFunction = { (inValue : String) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.artworkName_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.artworkName_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.artworkName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backComponentNameSegments (self.backComponentNameSegments_property)
+    self.backComponentNameSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backComponentNameSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backComponentNamesBezierPaths (self.backComponentNamesBezierPaths_property)
+    self.backComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backComponentNamesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backComponentValueSegments (self.backComponentValueSegments_property)
+    self.backComponentValueSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backComponentValueSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backComponentValuesBezierPaths (self.backComponentValuesBezierPaths_property)
+    self.backComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backComponentValuesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLayoutTextsBezierPaths (self.backLayoutTextsBezierPaths_property)
+    self.backLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLayoutTextsSegments (self.backLayoutTextsSegments_property)
+    self.backLayoutTextsSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLayoutTextsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLegendLinesBezierPaths (self.backLegendLinesBezierPaths_property)
+    self.backLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendLinesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLegendLinesSegments (self.backLegendLinesSegments_property)
+    self.backLegendLinesSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendLinesSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLegendTextsBezierPaths (self.backLegendTextsBezierPaths_property)
+    self.backLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backLegendTextsSegments (self.backLegendTextsSegments_property)
+    self.backLegendTextsSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backLegendTextsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backPackagesBezierPaths (self.backPackagesBezierPaths_property)
+    self.backPackagesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPackagesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backPackagesSegments (self.backPackagesSegments_property)
+    self.backPackagesSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPackagesSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backPadArray (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backPadArray (self.backPadArray_property)
+    self.backPadArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerPadArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPadArray_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backPadsBezierPaths (self.backPadsBezierPaths_property)
+    self.backPadsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backPadsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backTrackSegments (self.backTrackSegments_property)
+    self.backTrackSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTrackSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_backTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_backTracksBezierPaths (self.backTracksBezierPaths_property)
+    self.backTracksBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.backTracksBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_boardLimits (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_boardLimits (self.boardLimits_property)
+    self.boardLimits_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerBoardLimits> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.boardLimits_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_boardLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_boardLimitsBezierPaths (self.boardLimitsBezierPaths_property)
+    self.boardLimitsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.boardLimitsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_drillSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_drillSegments (self.drillSegments_property)
+    self.drillSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.drillSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentNameSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontComponentNameSegments (self.frontComponentNameSegments_property)
+    self.frontComponentNameSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentNameSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentNamesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontComponentNamesBezierPaths (self.frontComponentNamesBezierPaths_property)
+    self.frontComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentNamesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentValueSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontComponentValueSegments (self.frontComponentValueSegments_property)
+    self.frontComponentValueSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentValueSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontComponentValuesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontComponentValuesBezierPaths (self.frontComponentValuesBezierPaths_property)
+    self.frontComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontComponentValuesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLayoutTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLayoutTextsBezierPaths (self.frontLayoutTextsBezierPaths_property)
+    self.frontLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLayoutTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLayoutTextsSegments (self.frontLayoutTextsSegments_property)
+    self.frontLayoutTextsSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLayoutTextsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendLinesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLegendLinesBezierPaths (self.frontLegendLinesBezierPaths_property)
+    self.frontLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendLinesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendLinesSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLegendLinesSegments (self.frontLegendLinesSegments_property)
+    self.frontLegendLinesSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendLinesSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLegendTextsBezierPaths (self.frontLegendTextsBezierPaths_property)
+    self.frontLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontLegendTextsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontLegendTextsSegments (self.frontLegendTextsSegments_property)
+    self.frontLegendTextsSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontLegendTextsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPackagesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontPackagesBezierPaths (self.frontPackagesBezierPaths_property)
+    self.frontPackagesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPackagesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPackagesSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontPackagesSegments (self.frontPackagesSegments_property)
+    self.frontPackagesSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPackagesSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPadArray (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontPadArray (self.frontPadArray_property)
+    self.frontPadArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerPadArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPadArray_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontPadsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontPadsBezierPaths (self.frontPadsBezierPaths_property)
+    self.frontPadsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontPadsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTrackSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontTrackSegments (self.frontTrackSegments_property)
+    self.frontTrackSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTrackSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontTracksBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_frontTracksBezierPaths (self.frontTracksBezierPaths_property)
+    self.frontTracksBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontTracksBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_holesBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_holesBezierPaths (self.holesBezierPaths_property)
+    self.holesBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.holesBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_imageForInstances (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_imageForInstances (self.imageForInstances_property)
+    self.imageForInstances_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.imageForInstances_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_imageForModel (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_imageForModel (self.imageForModel_property)
+    self.imageForModel_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.imageForModel_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_instanceCount (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_instanceCount (self.instanceCount_property)
+    self.instanceCount_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.instanceCount_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_internalBoardsLimitsBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_internalBoardsLimitsBezierPaths (self.internalBoardsLimitsBezierPaths_property)
+    self.internalBoardsLimitsBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.internalBoardsLimitsBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_internalBoardsLimitsSegments (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_internalBoardsLimitsSegments (self.internalBoardsLimitsSegments_property)
+    self.internalBoardsLimitsSegments_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerSegmentArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.internalBoardsLimitsSegments_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelHeight (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelHeight (self.modelHeight_property)
+    self.modelHeight_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelHeight_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelHeight_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelHeight_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelHeight_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelHeight_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelHeightUnit (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelHeightUnit (self.modelHeightUnit_property)
+    self.modelHeightUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelHeightUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelHeightUnit_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelHeightUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelHeightUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelHeightUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelLimitWidth (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelLimitWidth (self.modelLimitWidth_property)
+    self.modelLimitWidth_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelLimitWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelLimitWidth_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelLimitWidth_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelLimitWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelLimitWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelLimitWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
+    self.modelLimitWidthUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelLimitWidthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelLimitWidthUnit_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelLimitWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelLimitWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelLimitWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelRect (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelRect (self.modelRect_property)
+    self.modelRect_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariRect> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelRect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelWidth (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelWidth (self.modelWidth_property)
+    self.modelWidth_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelWidth_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelWidth_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelWidth_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelWidth_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_modelWidthUnit (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_modelWidthUnit (self.modelWidthUnit_property)
+    self.modelWidthUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.modelWidthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.modelWidthUnit_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.modelWidthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.modelWidthUnit_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.modelWidthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_name (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_name (self.name_property)
+    self.name_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.name_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.name_property.writeModelFunction = { (inValue : String) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.name_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.name_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_viaShapes (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_viaShapes (self.viaShapes_property)
+    self.viaShapes_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <MergerViaShapeArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viaShapes_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_viasBezierPaths (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_viasBezierPaths (self.viasBezierPaths_property)
+    self.viasBezierPaths_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <BezierPathArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.viasBezierPaths_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_zoom (model : ReadOnlyArrayOf_BoardModel) {
+    model.addEBObserverOf_zoom (self.zoom_property)
+    self.zoom_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.zoom_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.zoom_property.writeModelFunction = { (inValue : Int) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.zoom_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.zoom_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.zoom_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+
 
   //····················································································································
 

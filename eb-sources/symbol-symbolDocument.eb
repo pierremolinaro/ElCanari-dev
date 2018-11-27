@@ -52,7 +52,16 @@ document SymbolDocument root SymbolRoot {
 
 #--- Inspector views
   outlet NSView mSymbolInspectorView ;
+
   outlet NSView mTextInspectorView ;
+  selectionController SymbolText mSymbolTextSelectionController : self.mSymbolObjectsController.selectedArray ;
+  outlet EBPopUpButton mSymbolTextHorizontalAlignmentPopUpButton 
+    $selectedIndex self.mSymbolTextSelectionController.horizontalAlignment
+  ;
+  outlet EBTextField mSymbolTextValueTextField 
+    $selectedIndex self.mSymbolTextSelectionController.text
+  ;
+  
   outlet NSView mPinInspectorView ;
 
 #--- Page : Comments

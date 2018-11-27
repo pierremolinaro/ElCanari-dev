@@ -15,6 +15,12 @@ import Cocoa
   var mSymbolObjectsController = ArrayController_SymbolDocument_mSymbolObjectsController ()
 
   //····················································································································
+  //   Selection controller: mSymbolTextSelectionController
+  //····················································································································
+
+  var mSymbolTextSelectionController = SelectionController_SymbolDocument_mSymbolTextSelectionController ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -61,6 +67,7 @@ import Cocoa
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSymbolInspectorView : NSView?
+  @IBOutlet var mSymbolTextHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
   @IBOutlet var mTextInspectorView : NSView?
   @IBOutlet var mVersionField : CanariVersionField?
@@ -103,6 +110,8 @@ import Cocoa
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.addExplorer (name: "mSymbolObjectsController", y:&y, view:view)
+  //--- Selection controller property: mSymbolTextSelectionController
+    self.mSymbolTextSelectionController.addExplorer (name: "mSymbolTextSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -420,6 +429,21 @@ import Cocoa
         errorMessage: "the 'mSymbolInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolTextHorizontalAlignmentPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolTextHorizontalAlignmentPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolTextHorizontalAlignmentPopUpButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolZoomFlipInspectorView {
       if !(outlet is NSView) {
         presentErrorWindow (
@@ -483,6 +507,8 @@ import Cocoa
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext)
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
+  //--- Selection controller property: mSymbolTextSelectionController
+    self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)
     self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -537,6 +563,8 @@ import Cocoa
     self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.unbind_model ()
+  //--- Selection controller property: mSymbolTextSelectionController
+    self.mSymbolTextSelectionController.unbind_selection ()
   //--------------------------- Remove targets / actions
     mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -559,6 +587,7 @@ import Cocoa
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mSymbolInspectorView?.ebCleanUp ()
+    self.mSymbolTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
     self.mTextInspectorView?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()

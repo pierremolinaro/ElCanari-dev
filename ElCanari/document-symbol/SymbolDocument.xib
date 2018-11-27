@@ -27,6 +27,7 @@
                 <outlet property="mResetVersionButton" destination="935" id="7cU-0p-YIp"/>
                 <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
                 <outlet property="mSymbolInspectorView" destination="1114" id="UBD-Ke-UZf"/>
+                <outlet property="mSymbolTextHorizontalAlignmentPopUpButton" destination="846" id="RiX-fQ-K4l"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
                 <outlet property="mTextInspectorView" destination="844" id="mcY-O6-cWK"/>
                 <outlet property="mVersionField" destination="YGk-5C-I8k" id="8WP-gL-c0G"/>
@@ -486,21 +487,6 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="846">
-                    <rect key="frame" x="151" y="439" width="79" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Right" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="850" id="1048">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="847">
-                            <items>
-                                <menuItem title="Left" id="848"/>
-                                <menuItem title="Right" state="on" id="850"/>
-                                <menuItem title="Center" id="849"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" id="860">
                     <rect key="frame" x="66" y="407" width="164" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -528,6 +514,21 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="846" customClass="EBPopUpButton">
+                    <rect key="frame" x="151" y="441" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Right" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="850" id="1048">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="847">
+                            <items>
+                                <menuItem title="Left" id="848"/>
+                                <menuItem title="Right" state="on" id="850"/>
+                                <menuItem title="Center" id="849"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
         </customView>
         <customView id="528" userLabel="Object inspector : pin" customClass="CanariViewWithKeyView">

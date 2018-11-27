@@ -12,7 +12,7 @@ struct EBDataScanner {
   private var mData : Data
   private var mReadIndex : Int = 0
   private var mReadOk : Bool = true
-  private var mExpectedBytes : Array <UInt8> = []
+  private var mExpectedBytes : Array<UInt8> = []
 
   //····················································································································
 

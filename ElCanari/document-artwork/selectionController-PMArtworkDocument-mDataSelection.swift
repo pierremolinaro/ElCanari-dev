@@ -293,30 +293,154 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters, file:String, line:Int) {
-    mModel = model
-    bind_property_drawBoardLimits (model: model)
-    bind_property_drawComponentNamesBottomSide (model: model)
-    bind_property_drawComponentNamesTopSide (model: model)
-    bind_property_drawComponentValuesBottomSide (model: model)
-    bind_property_drawComponentValuesTopSide (model: model)
-    bind_property_drawInternalBoardLimits (model: model)
-    bind_property_drawPackageLegendBottomSide (model: model)
-    bind_property_drawPackageLegendTopSide (model: model)
-    bind_property_drawPadHolesInPDF (model: model)
-    bind_property_drawPadsBottomSide (model: model)
-    bind_property_drawPadsTopSide (model: model)
-    bind_property_drawTextsLayoutBottomSide (model: model)
-    bind_property_drawTextsLayoutTopSide (model: model)
-    bind_property_drawTextsLegendBottomSide (model: model)
-    bind_property_drawTextsLegendTopSide (model: model)
-    bind_property_drawTracksBottomSide (model: model)
-    bind_property_drawTracksTopSide (model: model)
-    bind_property_drawVias (model: model)
-    bind_property_fileExtension (model: model)
-    bind_property_horizontalMirror (model: model)
-    bind_property_measurementUnitForPadHoleInPDF (model: model)
-    bind_property_name (model: model)
-    bind_property_padHoleDiameterInPDF (model: model)
+    self.mModel = model
+    self.bind_property_drawBoardLimits (model: model)
+    self.bind_property_drawComponentNamesBottomSide (model: model)
+    self.bind_property_drawComponentNamesTopSide (model: model)
+    self.bind_property_drawComponentValuesBottomSide (model: model)
+    self.bind_property_drawComponentValuesTopSide (model: model)
+    self.bind_property_drawInternalBoardLimits (model: model)
+    self.bind_property_drawPackageLegendBottomSide (model: model)
+    self.bind_property_drawPackageLegendTopSide (model: model)
+    self.bind_property_drawPadHolesInPDF (model: model)
+    self.bind_property_drawPadsBottomSide (model: model)
+    self.bind_property_drawPadsTopSide (model: model)
+    self.bind_property_drawTextsLayoutBottomSide (model: model)
+    self.bind_property_drawTextsLayoutTopSide (model: model)
+    self.bind_property_drawTextsLegendBottomSide (model: model)
+    self.bind_property_drawTextsLegendTopSide (model: model)
+    self.bind_property_drawTracksBottomSide (model: model)
+    self.bind_property_drawTracksTopSide (model: model)
+    self.bind_property_drawVias (model: model)
+    self.bind_property_fileExtension (model: model)
+    self.bind_property_horizontalMirror (model: model)
+    self.bind_property_measurementUnitForPadHoleInPDF (model: model)
+    self.bind_property_name (model: model)
+    self.bind_property_padHoleDiameterInPDF (model: model)
+  }
+
+  //····················································································································
+  //   UNBIND SELECTION
+  //····················································································································
+
+  func unbind_selection () {
+  //--- drawBoardLimits
+    self.drawBoardLimits_property.readModelFunction = nil 
+    self.drawBoardLimits_property.writeModelFunction = nil 
+    self.drawBoardLimits_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
+  //--- drawComponentNamesBottomSide
+    self.drawComponentNamesBottomSide_property.readModelFunction = nil 
+    self.drawComponentNamesBottomSide_property.writeModelFunction = nil 
+    self.drawComponentNamesBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
+  //--- drawComponentNamesTopSide
+    self.drawComponentNamesTopSide_property.readModelFunction = nil 
+    self.drawComponentNamesTopSide_property.writeModelFunction = nil 
+    self.drawComponentNamesTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
+  //--- drawComponentValuesBottomSide
+    self.drawComponentValuesBottomSide_property.readModelFunction = nil 
+    self.drawComponentValuesBottomSide_property.writeModelFunction = nil 
+    self.drawComponentValuesBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
+  //--- drawComponentValuesTopSide
+    self.drawComponentValuesTopSide_property.readModelFunction = nil 
+    self.drawComponentValuesTopSide_property.writeModelFunction = nil 
+    self.drawComponentValuesTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
+  //--- drawInternalBoardLimits
+    self.drawInternalBoardLimits_property.readModelFunction = nil 
+    self.drawInternalBoardLimits_property.writeModelFunction = nil 
+    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
+  //--- drawPackageLegendBottomSide
+    self.drawPackageLegendBottomSide_property.readModelFunction = nil 
+    self.drawPackageLegendBottomSide_property.writeModelFunction = nil 
+    self.drawPackageLegendBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
+  //--- drawPackageLegendTopSide
+    self.drawPackageLegendTopSide_property.readModelFunction = nil 
+    self.drawPackageLegendTopSide_property.writeModelFunction = nil 
+    self.drawPackageLegendTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
+  //--- drawPadHolesInPDF
+    self.drawPadHolesInPDF_property.readModelFunction = nil 
+    self.drawPadHolesInPDF_property.writeModelFunction = nil 
+    self.drawPadHolesInPDF_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
+  //--- drawPadsBottomSide
+    self.drawPadsBottomSide_property.readModelFunction = nil 
+    self.drawPadsBottomSide_property.writeModelFunction = nil 
+    self.drawPadsBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
+  //--- drawPadsTopSide
+    self.drawPadsTopSide_property.readModelFunction = nil 
+    self.drawPadsTopSide_property.writeModelFunction = nil 
+    self.drawPadsTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
+  //--- drawTextsLayoutBottomSide
+    self.drawTextsLayoutBottomSide_property.readModelFunction = nil 
+    self.drawTextsLayoutBottomSide_property.writeModelFunction = nil 
+    self.drawTextsLayoutBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
+  //--- drawTextsLayoutTopSide
+    self.drawTextsLayoutTopSide_property.readModelFunction = nil 
+    self.drawTextsLayoutTopSide_property.writeModelFunction = nil 
+    self.drawTextsLayoutTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
+  //--- drawTextsLegendBottomSide
+    self.drawTextsLegendBottomSide_property.readModelFunction = nil 
+    self.drawTextsLegendBottomSide_property.writeModelFunction = nil 
+    self.drawTextsLegendBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
+  //--- drawTextsLegendTopSide
+    self.drawTextsLegendTopSide_property.readModelFunction = nil 
+    self.drawTextsLegendTopSide_property.writeModelFunction = nil 
+    self.drawTextsLegendTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
+  //--- drawTracksBottomSide
+    self.drawTracksBottomSide_property.readModelFunction = nil 
+    self.drawTracksBottomSide_property.writeModelFunction = nil 
+    self.drawTracksBottomSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
+  //--- drawTracksTopSide
+    self.drawTracksTopSide_property.readModelFunction = nil 
+    self.drawTracksTopSide_property.writeModelFunction = nil 
+    self.drawTracksTopSide_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
+  //--- drawVias
+    self.drawVias_property.readModelFunction = nil 
+    self.drawVias_property.writeModelFunction = nil 
+    self.drawVias_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_drawVias (self.drawVias_property)
+  //--- fileExtension
+    self.fileExtension_property.readModelFunction = nil 
+    self.fileExtension_property.writeModelFunction = nil 
+    self.fileExtension_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_fileExtension (self.fileExtension_property)
+  //--- horizontalMirror
+    self.horizontalMirror_property.readModelFunction = nil 
+    self.horizontalMirror_property.writeModelFunction = nil 
+    self.horizontalMirror_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror_property)
+  //--- measurementUnitForPadHoleInPDF
+    self.measurementUnitForPadHoleInPDF_property.readModelFunction = nil 
+    self.measurementUnitForPadHoleInPDF_property.writeModelFunction = nil 
+    self.measurementUnitForPadHoleInPDF_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
+  //--- name
+    self.name_property.readModelFunction = nil 
+    self.name_property.writeModelFunction = nil 
+    self.name_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_name (self.name_property)
+  //--- padHoleDiameterInPDF
+    self.padHoleDiameterInPDF_property.readModelFunction = nil 
+    self.padHoleDiameterInPDF_property.writeModelFunction = nil 
+    self.padHoleDiameterInPDF_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
+  //---
+    self.mModel = nil    
   }
 
   //····················································································································
@@ -594,8 +718,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
-    self.drawBoardLimits_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawBoardLimits_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -604,18 +728,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawBoardLimits_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawBoardLimits_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -666,8 +788,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawComponentNamesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
-    self.drawComponentNamesBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawComponentNamesBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -676,18 +798,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawComponentNamesBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawComponentNamesBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -738,8 +858,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawComponentNamesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
-    self.drawComponentNamesTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawComponentNamesTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -748,18 +868,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawComponentNamesTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawComponentNamesTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -810,8 +928,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawComponentValuesBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
-    self.drawComponentValuesBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawComponentValuesBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -820,18 +938,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawComponentValuesBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawComponentValuesBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -882,8 +998,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawComponentValuesTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
-    self.drawComponentValuesTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawComponentValuesTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -892,18 +1008,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawComponentValuesTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawComponentValuesTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -954,8 +1068,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawInternalBoardLimits (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
-    self.drawInternalBoardLimits_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawInternalBoardLimits_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -964,18 +1078,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawInternalBoardLimits_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawInternalBoardLimits_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1026,8 +1138,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawPackageLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
-    self.drawPackageLegendBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawPackageLegendBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1036,18 +1148,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawPackageLegendBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawPackageLegendBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1098,8 +1208,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawPackageLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
-    self.drawPackageLegendTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawPackageLegendTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1108,18 +1218,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawPackageLegendTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawPackageLegendTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1170,8 +1278,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawPadHolesInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
-    self.drawPadHolesInPDF_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawPadHolesInPDF_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1180,18 +1288,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawPadHolesInPDF_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawPadHolesInPDF_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1242,8 +1348,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawPadsBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
-    self.drawPadsBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawPadsBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1252,18 +1358,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawPadsBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawPadsBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1314,8 +1418,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawPadsTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
-    self.drawPadsTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawPadsTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1324,18 +1428,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawPadsTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawPadsTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1386,8 +1488,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTextsLayoutBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
-    self.drawTextsLayoutBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTextsLayoutBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1396,18 +1498,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTextsLayoutBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTextsLayoutBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1458,8 +1558,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTextsLayoutTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
-    self.drawTextsLayoutTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTextsLayoutTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1468,18 +1568,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTextsLayoutTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTextsLayoutTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1530,8 +1628,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTextsLegendBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
-    self.drawTextsLegendBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTextsLegendBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1540,18 +1638,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTextsLegendBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTextsLegendBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1602,8 +1698,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTextsLegendTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
-    self.drawTextsLegendTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTextsLegendTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1612,18 +1708,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTextsLegendTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTextsLegendTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1674,8 +1768,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTracksBottomSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
-    self.drawTracksBottomSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTracksBottomSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1684,18 +1778,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTracksBottomSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTracksBottomSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1746,8 +1838,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawTracksTopSide (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
-    self.drawTracksTopSide_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawTracksTopSide_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1756,18 +1848,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawTracksTopSide_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawTracksTopSide_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1818,8 +1908,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_drawVias (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_drawVias (self.drawVias_property)
-    self.drawVias_property.readModelFunction = {
-      if let model = self.mModel {
+    self.drawVias_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1828,18 +1918,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.drawVias_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.drawVias_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1890,8 +1978,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_fileExtension (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_fileExtension (self.fileExtension_property)
-    self.fileExtension_property.readModelFunction = {
-      if let model = self.mModel {
+    self.fileExtension_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1900,18 +1988,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <String> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.fileExtension_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.fileExtension_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -1962,8 +2048,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_horizontalMirror (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_horizontalMirror (self.horizontalMirror_property)
-    self.horizontalMirror_property.readModelFunction = {
-      if let model = self.mModel {
+    self.horizontalMirror_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -1972,18 +2058,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Bool> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.horizontalMirror_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.horizontalMirror_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2034,8 +2118,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_measurementUnitForPadHoleInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
-    self.measurementUnitForPadHoleInPDF_property.readModelFunction = {
-      if let model = self.mModel {
+    self.measurementUnitForPadHoleInPDF_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -2044,18 +2128,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Int> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.measurementUnitForPadHoleInPDF_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.measurementUnitForPadHoleInPDF_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2106,8 +2188,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_name (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_name (self.name_property)
-    self.name_property.readModelFunction = {
-      if let model = self.mModel {
+    self.name_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -2116,18 +2198,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <String> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.name_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.name_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2178,8 +2258,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   private final func bind_property_padHoleDiameterInPDF (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters) {
     model.addEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
-    self.padHoleDiameterInPDF_property.readModelFunction = {
-      if let model = self.mModel {
+    self.padHoleDiameterInPDF_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -2188,18 +2268,16 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         case .single (let v) :
           var s = Set <Int> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? ArtworkFileGenerationParameters {
-              switch baseObject.padHoleDiameterInPDF_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.padHoleDiameterInPDF_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -2247,130 +2325,6 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
   }
 
 
-
-  //····················································································································
-  //   UNBIND SELECTION
-  //····················································································································
-
-  func unbind_selection () {
-  //--- drawBoardLimits
-    self.drawBoardLimits_property.readModelFunction = nil 
-    self.drawBoardLimits_property.writeModelFunction = nil 
-    self.drawBoardLimits_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawBoardLimits (self.drawBoardLimits_property)
-  //--- drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.readModelFunction = nil 
-    self.drawComponentNamesBottomSide_property.writeModelFunction = nil 
-    self.drawComponentNamesBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentNamesBottomSide (self.drawComponentNamesBottomSide_property)
-  //--- drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.readModelFunction = nil 
-    self.drawComponentNamesTopSide_property.writeModelFunction = nil 
-    self.drawComponentNamesTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentNamesTopSide (self.drawComponentNamesTopSide_property)
-  //--- drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.readModelFunction = nil 
-    self.drawComponentValuesBottomSide_property.writeModelFunction = nil 
-    self.drawComponentValuesBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentValuesBottomSide (self.drawComponentValuesBottomSide_property)
-  //--- drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.readModelFunction = nil 
-    self.drawComponentValuesTopSide_property.writeModelFunction = nil 
-    self.drawComponentValuesTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawComponentValuesTopSide (self.drawComponentValuesTopSide_property)
-  //--- drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.readModelFunction = nil 
-    self.drawInternalBoardLimits_property.writeModelFunction = nil 
-    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawInternalBoardLimits (self.drawInternalBoardLimits_property)
-  //--- drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.readModelFunction = nil 
-    self.drawPackageLegendBottomSide_property.writeModelFunction = nil 
-    self.drawPackageLegendBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPackageLegendBottomSide (self.drawPackageLegendBottomSide_property)
-  //--- drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.readModelFunction = nil 
-    self.drawPackageLegendTopSide_property.writeModelFunction = nil 
-    self.drawPackageLegendTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPackageLegendTopSide (self.drawPackageLegendTopSide_property)
-  //--- drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.readModelFunction = nil 
-    self.drawPadHolesInPDF_property.writeModelFunction = nil 
-    self.drawPadHolesInPDF_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadHolesInPDF (self.drawPadHolesInPDF_property)
-  //--- drawPadsBottomSide
-    self.drawPadsBottomSide_property.readModelFunction = nil 
-    self.drawPadsBottomSide_property.writeModelFunction = nil 
-    self.drawPadsBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadsBottomSide (self.drawPadsBottomSide_property)
-  //--- drawPadsTopSide
-    self.drawPadsTopSide_property.readModelFunction = nil 
-    self.drawPadsTopSide_property.writeModelFunction = nil 
-    self.drawPadsTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawPadsTopSide (self.drawPadsTopSide_property)
-  //--- drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.readModelFunction = nil 
-    self.drawTextsLayoutBottomSide_property.writeModelFunction = nil 
-    self.drawTextsLayoutBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLayoutBottomSide (self.drawTextsLayoutBottomSide_property)
-  //--- drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.readModelFunction = nil 
-    self.drawTextsLayoutTopSide_property.writeModelFunction = nil 
-    self.drawTextsLayoutTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLayoutTopSide (self.drawTextsLayoutTopSide_property)
-  //--- drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.readModelFunction = nil 
-    self.drawTextsLegendBottomSide_property.writeModelFunction = nil 
-    self.drawTextsLegendBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLegendBottomSide (self.drawTextsLegendBottomSide_property)
-  //--- drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.readModelFunction = nil 
-    self.drawTextsLegendTopSide_property.writeModelFunction = nil 
-    self.drawTextsLegendTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTextsLegendTopSide (self.drawTextsLegendTopSide_property)
-  //--- drawTracksBottomSide
-    self.drawTracksBottomSide_property.readModelFunction = nil 
-    self.drawTracksBottomSide_property.writeModelFunction = nil 
-    self.drawTracksBottomSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksBottomSide (self.drawTracksBottomSide_property)
-  //--- drawTracksTopSide
-    self.drawTracksTopSide_property.readModelFunction = nil 
-    self.drawTracksTopSide_property.writeModelFunction = nil 
-    self.drawTracksTopSide_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawTracksTopSide (self.drawTracksTopSide_property)
-  //--- drawVias
-    self.drawVias_property.readModelFunction = nil 
-    self.drawVias_property.writeModelFunction = nil 
-    self.drawVias_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_drawVias (self.drawVias_property)
-  //--- fileExtension
-    self.fileExtension_property.readModelFunction = nil 
-    self.fileExtension_property.writeModelFunction = nil 
-    self.fileExtension_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_fileExtension (self.fileExtension_property)
-  //--- horizontalMirror
-    self.horizontalMirror_property.readModelFunction = nil 
-    self.horizontalMirror_property.writeModelFunction = nil 
-    self.horizontalMirror_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_horizontalMirror (self.horizontalMirror_property)
-  //--- measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.readModelFunction = nil 
-    self.measurementUnitForPadHoleInPDF_property.writeModelFunction = nil 
-    self.measurementUnitForPadHoleInPDF_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_measurementUnitForPadHoleInPDF (self.measurementUnitForPadHoleInPDF_property)
-  //--- name
-    self.name_property.readModelFunction = nil 
-    self.name_property.writeModelFunction = nil 
-    self.name_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_name (self.name_property)
-  //--- padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.readModelFunction = nil 
-    self.padHoleDiameterInPDF_property.writeModelFunction = nil 
-    self.padHoleDiameterInPDF_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_padHoleDiameterInPDF (self.padHoleDiameterInPDF_property)
-  //---
-    mModel = nil    
-  }
 
   //····················································································································
 

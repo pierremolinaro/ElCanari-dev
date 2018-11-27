@@ -121,15 +121,54 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance, file:String, line:Int) {
-    mModel = model
-    bind_property_boardLimitWidth (model: model)
-    bind_property_instanceRect (model: model)
-    bind_property_instanceRotation (model: model)
-    bind_property_modelName (model: model)
-    bind_property_objectDisplay (model: model)
-    bind_property_selectionDisplay (model: model)
-    bind_property_x (model: model)
-    bind_property_y (model: model)
+    self.mModel = model
+    self.bind_property_boardLimitWidth (model: model)
+    self.bind_property_instanceRect (model: model)
+    self.bind_property_instanceRotation (model: model)
+    self.bind_property_modelName (model: model)
+    self.bind_property_objectDisplay (model: model)
+    self.bind_property_selectionDisplay (model: model)
+    self.bind_property_x (model: model)
+    self.bind_property_y (model: model)
+  }
+
+  //····················································································································
+  //   UNBIND SELECTION
+  //····················································································································
+
+  func unbind_selection () {
+  //--- boardLimitWidth
+    self.boardLimitWidth_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
+  //--- instanceRect
+    self.instanceRect_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)
+  //--- instanceRotation
+    self.instanceRotation_property.readModelFunction = nil 
+    self.instanceRotation_property.writeModelFunction = nil 
+    self.instanceRotation_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
+  //--- modelName
+    self.modelName_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
+  //--- objectDisplay
+    self.objectDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
+  //--- selectionDisplay
+    self.selectionDisplay_property.readModelFunction = nil 
+    self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- x
+    self.x_property.readModelFunction = nil 
+    self.x_property.writeModelFunction = nil 
+    self.x_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_x (self.x_property)
+  //--- y
+    self.y_property.readModelFunction = nil 
+    self.y_property.writeModelFunction = nil 
+    self.y_property.validateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_y (self.y_property)
+  //---
+    self.mModel = nil    
   }
 
   //····················································································································
@@ -247,8 +286,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_boardLimitWidth (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
-    self.boardLimitWidth_property.readModelFunction = {
-      if let model = self.mModel {
+    self.boardLimitWidth_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -257,18 +296,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <Int> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.boardLimitWidth_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.boardLimitWidth_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -289,8 +326,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_instanceRect (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_instanceRect (self.instanceRect_property)
-    self.instanceRect_property.readModelFunction = {
-      if let model = self.mModel {
+    self.instanceRect_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -299,18 +336,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <CanariRect> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.instanceRect_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.instanceRect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -331,8 +366,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_instanceRotation (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_instanceRotation (self.instanceRotation_property)
-    self.instanceRotation_property.readModelFunction = {
-      if let model = self.mModel {
+    self.instanceRotation_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -341,18 +376,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <QuadrantRotation> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.instanceRotation_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.instanceRotation_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -403,8 +436,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_modelName (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_modelName (self.modelName_property)
-    self.modelName_property.readModelFunction = {
-      if let model = self.mModel {
+    self.modelName_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -413,18 +446,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <String> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.modelName_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.modelName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -445,8 +476,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = {
-      if let model = self.mModel {
+    self.objectDisplay_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -455,18 +486,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.objectDisplay_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.objectDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -487,8 +516,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = {
-      if let model = self.mModel {
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -497,18 +526,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <EBShape> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.selectionDisplay_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -529,8 +556,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_x (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_x (self.x_property)
-    self.x_property.readModelFunction = {
-      if let model = self.mModel {
+    self.x_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -539,18 +566,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <Int> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.x_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.x_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -601,8 +626,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   private final func bind_property_y (model : ReadOnlyArrayOf_MergerBoardInstance) {
     model.addEBObserverOf_y (self.y_property)
-    self.y_property.readModelFunction = {
-      if let model = self.mModel {
+    self.y_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty :
           return .empty
@@ -611,18 +636,16 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         case .single (let v) :
           var s = Set <Int> ()
           var isMultipleSelection = false
-          for baseObject in v {
-//            if let object = baseObject as? MergerBoardInstance {
-              switch baseObject.y_property_selection {
-              case .empty :
-                return .empty
-              case .multiple :
-                isMultipleSelection = true
-              case .single (let vProp) :
-                s.insert (vProp)
-              }
+          for object in v {
+            switch object.y_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
             }
-//          }
+          }
           if isMultipleSelection {
             return .multiple
           }else if s.count == 0 {
@@ -670,45 +693,6 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   }
 
 
-
-  //····················································································································
-  //   UNBIND SELECTION
-  //····················································································································
-
-  func unbind_selection () {
-  //--- boardLimitWidth
-    self.boardLimitWidth_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_boardLimitWidth (self.boardLimitWidth_property)
-  //--- instanceRect
-    self.instanceRect_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceRect (self.instanceRect_property)
-  //--- instanceRotation
-    self.instanceRotation_property.readModelFunction = nil 
-    self.instanceRotation_property.writeModelFunction = nil 
-    self.instanceRotation_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_instanceRotation (self.instanceRotation_property)
-  //--- modelName
-    self.modelName_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_modelName (self.modelName_property)
-  //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- x
-    self.x_property.readModelFunction = nil 
-    self.x_property.writeModelFunction = nil 
-    self.x_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_x (self.x_property)
-  //--- y
-    self.y_property.readModelFunction = nil 
-    self.y_property.writeModelFunction = nil 
-    self.y_property.validateAndWriteModelFunction = nil 
-    self.mModel?.removeEBObserverOf_y (self.y_property)
-  //---
-    mModel = nil    
-  }
 
   //····················································································································
 

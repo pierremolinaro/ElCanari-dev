@@ -18,6 +18,12 @@ protocol SymbolText_text : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolText_horizontalAlignment : class {
+  var horizontalAlignment : HorizontalAlignment { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolText_x : class {
   var x : Int { get }
 }
@@ -47,6 +53,7 @@ protocol SymbolText_issues : class {
 class SymbolText : SymbolObject,
          SymbolText_y,
          SymbolText_text,
+         SymbolText_horizontalAlignment,
          SymbolText_x,
          SymbolText_objectDisplay,
          SymbolText_selectionDisplay,
@@ -99,6 +106,29 @@ class SymbolText : SymbolObject,
   }
 
   //····················································································································
+  //   Atomic property: horizontalAlignment
+  //····················································································································
+
+  var horizontalAlignment_property = EBStoredProperty_HorizontalAlignment (HorizontalAlignment.center)
+
+  //····················································································································
+
+  var horizontalAlignment : HorizontalAlignment {
+    get {
+      return self.horizontalAlignment_property.propval
+    }
+    set {
+      self.horizontalAlignment_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+    return self.horizontalAlignment_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: x
   //····················································································································
 
@@ -131,6 +161,8 @@ class SymbolText : SymbolObject,
     self.y_property.undoManager = self.undoManager
   //--- Atomic property: text
     self.text_property.undoManager = self.undoManager
+  //--- Atomic property: horizontalAlignment
+    self.horizontalAlignment_property.undoManager = self.undoManager
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -139,6 +171,7 @@ class SymbolText : SymbolObject,
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.text_property_selection.kind ()
+        kind &= unwSelf.horizontalAlignment_property_selection.kind ()
         kind &= g_Preferences!.symbolColor_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
@@ -147,9 +180,9 @@ class SymbolText : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
-            return .single (transient_SymbolText_objectDisplay (v0, v1, v2, v3, v4))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_SymbolText_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -161,6 +194,7 @@ class SymbolText : SymbolObject,
     self.x_property.addEBObserver (self.objectDisplay_property)
     self.y_property.addEBObserver (self.objectDisplay_property)
     self.text_property.addEBObserver (self.objectDisplay_property)
+    self.horizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -169,6 +203,7 @@ class SymbolText : SymbolObject,
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.text_property_selection.kind ()
+        kind &= unwSelf.horizontalAlignment_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -176,9 +211,9 @@ class SymbolText : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolText_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection, unwSelf.horizontalAlignment_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_SymbolText_selectionDisplay (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -190,6 +225,7 @@ class SymbolText : SymbolObject,
     self.x_property.addEBObserver (self.selectionDisplay_property)
     self.y_property.addEBObserver (self.selectionDisplay_property)
     self.text_property.addEBObserver (self.selectionDisplay_property)
+    self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
@@ -219,6 +255,7 @@ class SymbolText : SymbolObject,
     self.text_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.horizontalAlignment_property.setSignatureObserver (observer:self)
     self.text_property.setSignatureObserver (observer:self)
     self.x_property.setSignatureObserver (observer:self)
     self.y_property.setSignatureObserver (observer:self)
@@ -231,11 +268,13 @@ class SymbolText : SymbolObject,
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.text_property.removeEBObserver (self.objectDisplay_property)
+    self.horizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.x_property.removeEBObserver (self.selectionDisplay_property)
     self.y_property.removeEBObserver (self.selectionDisplay_property)
     self.text_property.removeEBObserver (self.selectionDisplay_property)
+    self.horizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
     self.x_property.removeEBObserver (self.issues_property)
     self.y_property.removeEBObserver (self.issues_property)
@@ -263,6 +302,14 @@ class SymbolText : SymbolObject,
       view:view,
       observerExplorer:&self.text_property.mObserverExplorer,
       valueExplorer:&self.text_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "horizontalAlignment",
+      idx:self.horizontalAlignment_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
+      valueExplorer:&self.horizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
@@ -313,6 +360,9 @@ class SymbolText : SymbolObject,
   //--- Atomic property: text
     self.text_property.mObserverExplorer = nil
     self.text_property.mValueExplorer = nil
+  //--- Atomic property: horizontalAlignment
+    self.horizontalAlignment_property.mObserverExplorer = nil
+    self.horizontalAlignment_property.mValueExplorer = nil
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
@@ -330,6 +380,8 @@ class SymbolText : SymbolObject,
     self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
   //--- Atomic property: text
     self.text_property.storeIn (dictionary: ioDictionary, forKey:"text")
+  //--- Atomic property: horizontalAlignment
+    self.horizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"horizontalAlignment")
   //--- Atomic property: x
     self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
   }
@@ -345,6 +397,8 @@ class SymbolText : SymbolObject,
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
   //--- Atomic property: text
     self.text_property.readFrom (dictionary: inDictionary, forKey:"text")
+  //--- Atomic property: horizontalAlignment
+    self.horizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"horizontalAlignment")
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   }
@@ -396,6 +450,7 @@ class SymbolText : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.horizontalAlignment_property.signature ())
     crc.accumulateUInt32 (self.text_property.signature ())
     crc.accumulateUInt32 (self.x_property.signature ())
     crc.accumulateUInt32 (self.y_property.signature ())
@@ -530,6 +585,63 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.text_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'horizontalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_horizontalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_horizontalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.horizontalAlignment_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_horizontalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.horizontalAlignment_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_horizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolText>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_horizontalAlignment {
+        managedObject.horizontalAlignment_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_horizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolText>) {
+    for observer in mObserversOf_horizontalAlignment {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.horizontalAlignment_property.removeEBObserver (observer)
       }
     }
   }
@@ -816,6 +928,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
       //--- Remove observers of stored properties
         removeEBObserversOf_y_fromElementsOfSet (removedSet)
         removeEBObserversOf_text_fromElementsOfSet (removedSet)
+        removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedSet)
         removeEBObserversOf_x_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -826,6 +939,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
        //--- Add observers of stored properties
         addEBObserversOf_y_toElementsOfSet (addedSet)
         addEBObserversOf_text_toElementsOfSet (addedSet)
+        addEBObserversOf_horizontalAlignment_toElementsOfSet (addedSet)
         addEBObserversOf_x_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -943,6 +1057,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
         }
         removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -955,6 +1070,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
         }
         addEBObserversOf_y_toElementsOfSet (addedObjectSet)
         addEBObserversOf_text_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet)
         addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
