@@ -10,7 +10,6 @@ import Cocoa
 
 @objc(SelectionController_PMFontDocument_mCharacterSelection)
 final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
-  private var mModel : ReadOnlyArrayOf_FontCharacter?
 
   //····················································································································
   //   Selection observable property: advance
@@ -78,6 +77,10 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
 
   //····················································································································
   //   BIND SELECTION
+  //····················································································································
+
+  private var mModel : ReadOnlyArrayOf_FontCharacter? = nil
+
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_FontCharacter, file:String, line:Int) {
@@ -258,8 +261,8 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         return .empty
       }
     }
-    self.advance_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.advance_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -270,8 +273,8 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         }
       }
     }
-    self.advance_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.advance_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -328,8 +331,8 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         return .empty
       }
     }
-    self.codePoint_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.codePoint_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -340,8 +343,8 @@ final class SelectionController_PMFontDocument_mCharacterSelection : EBObject {
         }
       }
     }
-    self.codePoint_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.codePoint_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false

@@ -10,7 +10,6 @@ import Cocoa
 
 @objc(SelectionController_PMArtworkDocument_mDataSelection)
 final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
-  private var mModel : ReadOnlyArrayOf_ArtworkFileGenerationParameters?
 
   //····················································································································
   //   Selection observable property: drawBoardLimits
@@ -290,6 +289,10 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
 
   //····················································································································
   //   BIND SELECTION
+  //····················································································································
+
+  private var mModel : ReadOnlyArrayOf_ArtworkFileGenerationParameters? = nil
+
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_ArtworkFileGenerationParameters, file:String, line:Int) {
@@ -752,8 +755,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawBoardLimits_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawBoardLimits_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -764,8 +767,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawBoardLimits_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawBoardLimits_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -822,8 +825,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawComponentNamesBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawComponentNamesBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -834,8 +837,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawComponentNamesBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawComponentNamesBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -892,8 +895,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawComponentNamesTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawComponentNamesTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -904,8 +907,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawComponentNamesTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawComponentNamesTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -962,8 +965,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawComponentValuesBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawComponentValuesBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -974,8 +977,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawComponentValuesBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawComponentValuesBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1032,8 +1035,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawComponentValuesTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawComponentValuesTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1044,8 +1047,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawComponentValuesTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawComponentValuesTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1102,8 +1105,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawInternalBoardLimits_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawInternalBoardLimits_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1114,8 +1117,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawInternalBoardLimits_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1172,8 +1175,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawPackageLegendBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawPackageLegendBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1184,8 +1187,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawPackageLegendBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawPackageLegendBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1242,8 +1245,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawPackageLegendTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawPackageLegendTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1254,8 +1257,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawPackageLegendTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawPackageLegendTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1312,8 +1315,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawPadHolesInPDF_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawPadHolesInPDF_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1324,8 +1327,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawPadHolesInPDF_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawPadHolesInPDF_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1382,8 +1385,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawPadsBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawPadsBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1394,8 +1397,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawPadsBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawPadsBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1452,8 +1455,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawPadsTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawPadsTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1464,8 +1467,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawPadsTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawPadsTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1522,8 +1525,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTextsLayoutBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTextsLayoutBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1534,8 +1537,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTextsLayoutBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTextsLayoutBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1592,8 +1595,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTextsLayoutTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTextsLayoutTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1604,8 +1607,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTextsLayoutTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTextsLayoutTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1662,8 +1665,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTextsLegendBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTextsLegendBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1674,8 +1677,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTextsLegendBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTextsLegendBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1732,8 +1735,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTextsLegendTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTextsLegendTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1744,8 +1747,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTextsLegendTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTextsLegendTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1802,8 +1805,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTracksBottomSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTracksBottomSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1814,8 +1817,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTracksBottomSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTracksBottomSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1872,8 +1875,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawTracksTopSide_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawTracksTopSide_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1884,8 +1887,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawTracksTopSide_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawTracksTopSide_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -1942,8 +1945,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.drawVias_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.drawVias_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -1954,8 +1957,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.drawVias_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.drawVias_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -2012,8 +2015,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.fileExtension_property.writeModelFunction = { (inValue : String) in
-      if let model = self.mModel {
+    self.fileExtension_property.writeModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -2024,8 +2027,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.fileExtension_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.fileExtension_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -2082,8 +2085,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.horizontalMirror_property.writeModelFunction = { (inValue : Bool) in
-      if let model = self.mModel {
+    self.horizontalMirror_property.writeModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -2094,8 +2097,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.horizontalMirror_property.validateAndWriteModelFunction = { (candidateValue : Bool, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.horizontalMirror_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -2152,8 +2155,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.measurementUnitForPadHoleInPDF_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.measurementUnitForPadHoleInPDF_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -2164,8 +2167,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.measurementUnitForPadHoleInPDF_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.measurementUnitForPadHoleInPDF_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -2222,8 +2225,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.name_property.writeModelFunction = { (inValue : String) in
-      if let model = self.mModel {
+    self.name_property.writeModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -2234,8 +2237,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.name_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.name_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -2292,8 +2295,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         return .empty
       }
     }
-    self.padHoleDiameterInPDF_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.padHoleDiameterInPDF_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -2304,8 +2307,8 @@ final class SelectionController_PMArtworkDocument_mDataSelection : EBObject {
         }
       }
     }
-    self.padHoleDiameterInPDF_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.padHoleDiameterInPDF_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false

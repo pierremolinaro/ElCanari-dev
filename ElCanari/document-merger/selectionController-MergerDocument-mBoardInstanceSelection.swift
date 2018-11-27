@@ -10,7 +10,6 @@ import Cocoa
 
 @objc(SelectionController_MergerDocument_mBoardInstanceSelection)
 final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObject {
-  private var mModel : ReadOnlyArrayOf_MergerBoardInstance?
 
   //····················································································································
   //   Selection observable property: boardLimitWidth
@@ -118,6 +117,10 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
 
   //····················································································································
   //   BIND SELECTION
+  //····················································································································
+
+  private var mModel : ReadOnlyArrayOf_MergerBoardInstance? = nil
+
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_MergerBoardInstance, file:String, line:Int) {
@@ -400,8 +403,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         return .empty
       }
     }
-    self.instanceRotation_property.writeModelFunction = { (inValue : QuadrantRotation) in
-      if let model = self.mModel {
+    self.instanceRotation_property.writeModelFunction = { [weak self] (inValue : QuadrantRotation) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -412,8 +415,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         }
       }
     }
-    self.instanceRotation_property.validateAndWriteModelFunction = { (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.instanceRotation_property.validateAndWriteModelFunction = { [weak self] (candidateValue : QuadrantRotation, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -590,8 +593,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         return .empty
       }
     }
-    self.x_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.x_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -602,8 +605,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         }
       }
     }
-    self.x_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.x_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false
@@ -660,8 +663,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         return .empty
       }
     }
-    self.y_property.writeModelFunction = { (inValue : Int) in
-      if let model = self.mModel {
+    self.y_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           break
@@ -672,8 +675,8 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
         }
       }
     }
-    self.y_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self.mModel {
+    self.y_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
           return false

@@ -21,6 +21,12 @@ import Cocoa
   var mSymbolTextSelectionController = SelectionController_SymbolDocument_mSymbolTextSelectionController ()
 
   //····················································································································
+  //   Selection controller: mSymbolPinSelectionController
+  //····················································································································
+
+  var mSymbolPinSelectionController = SelectionController_SymbolDocument_mSymbolPinSelectionController ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -67,7 +73,12 @@ import Cocoa
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSymbolInspectorView : NSView?
+  @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton?
+  @IBOutlet var mSymbolPinLabelNameTextField : EBTextField?
+  @IBOutlet var mSymbolPinNumberHorizontalAlignmentPopUpButton : EBPopUpButton?
+  @IBOutlet var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch?
   @IBOutlet var mSymbolTextHorizontalAlignmentPopUpButton : EBPopUpButton?
+  @IBOutlet var mSymbolTextValueTextField : EBTextField?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
   @IBOutlet var mTextInspectorView : NSView?
   @IBOutlet var mVersionField : CanariVersionField?
@@ -112,6 +123,8 @@ import Cocoa
     self.mSymbolObjectsController.addExplorer (name: "mSymbolObjectsController", y:&y, view:view)
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.addExplorer (name: "mSymbolTextSelectionController", y:&y, view:view)
+  //--- Selection controller property: mSymbolPinSelectionController
+    self.mSymbolPinSelectionController.addExplorer (name: "mSymbolPinSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -429,6 +442,66 @@ import Cocoa
         errorMessage: "the 'mSymbolInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolPinLabelHorizontalAlignmentPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolPinLabelHorizontalAlignmentPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolPinLabelHorizontalAlignmentPopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolPinLabelNameTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolPinLabelNameTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolPinLabelNameTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolPinNumberHorizontalAlignmentPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolPinNumberHorizontalAlignmentPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolPinNumberHorizontalAlignmentPopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolPinNumberIsVisibleInSchematicsSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolPinNumberIsVisibleInSchematicsSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolPinNumberIsVisibleInSchematicsSwitch' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolTextHorizontalAlignmentPopUpButton {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
@@ -442,6 +515,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSymbolTextHorizontalAlignmentPopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolTextValueTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolTextValueTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolTextValueTextField' outlet is nil"
       )
     }
     if let outlet : Any = self.mSymbolZoomFlipInspectorView {
@@ -509,6 +597,8 @@ import Cocoa
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mSymbolPinSelectionController
+    self.mSymbolPinSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)
     self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -526,6 +616,12 @@ import Cocoa
     mComposedSymbolView?.bind_gridStepFactor (self.rootObject.gridStep_property, file: #file, line: #line)
     mComposedSymbolView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     mComposedSymbolView?.bind_gridDotColor (g_Preferences!.dotColorOfSymbolGrid_property, file: #file, line: #line)
+    mSymbolTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolTextSelectionController.horizontalAlignment_property, file: #file, line: #line)
+    mSymbolTextValueTextField?.bind_value (self.mSymbolTextSelectionController.text_property, file: #file, line: #line, sendContinously:true)
+    mSymbolPinNumberHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
+    mSymbolPinLabelHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.labelHorizontalAlignment_property, file: #file, line: #line)
+    mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNumberIsVisibleInSchematics_property, file: #file, line: #line)
+    mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.label_property, file: #file, line: #line, sendContinously:true)
     mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
@@ -557,6 +653,12 @@ import Cocoa
     mComposedSymbolView?.unbind_gridStepFactor ()
     mComposedSymbolView?.unbind_gridLineColor ()
     mComposedSymbolView?.unbind_gridDotColor ()
+    mSymbolTextHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
+    mSymbolTextValueTextField?.unbind_value ()
+    mSymbolPinNumberHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
+    mSymbolPinLabelHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
+    mSymbolPinNumberIsVisibleInSchematicsSwitch?.unbind_value ()
+    mSymbolPinLabelNameTextField?.unbind_value ()
     mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
@@ -565,6 +667,8 @@ import Cocoa
     self.mSymbolObjectsController.unbind_model ()
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.unbind_selection ()
+  //--- Selection controller property: mSymbolPinSelectionController
+    self.mSymbolPinSelectionController.unbind_selection ()
   //--------------------------- Remove targets / actions
     mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -587,7 +691,12 @@ import Cocoa
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mSymbolInspectorView?.ebCleanUp ()
+    self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolPinLabelNameTextField?.ebCleanUp ()
+    self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.ebCleanUp ()
     self.mSymbolTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
+    self.mSymbolTextValueTextField?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()
     self.mTextInspectorView?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()

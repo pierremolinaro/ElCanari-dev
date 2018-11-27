@@ -10,7 +10,6 @@ import Cocoa
 
 @objc(SelectionController_SymbolDocument_mSymbolTextSelectionController)
 final class SelectionController_SymbolDocument_mSymbolTextSelectionController : EBObject {
-  private var mModel : ReadOnlyArrayOf_SymbolObject?
 
   //····················································································································
   //   Selection observable property: horizontalAlignment
@@ -100,13 +99,13 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //   BIND SELECTION
   //····················································································································
 
-  fileprivate var mActualModel = TransientArrayOf_SymbolText ()
+   private var mModel : ReadOnlyArrayOf_SymbolObject? = nil
+   private var mActualModel = TransientArrayOf_SymbolText ()
 
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file:String, line:Int) {
     self.mModel = model
-    model.addEBObserver (self.mActualModel)
     self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [SymbolText] > in
       if let model = self?.mModel {
         switch model.prop {
@@ -127,6 +126,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
+    model.addEBObserver (self.mActualModel)
     self.bind_property_horizontalAlignment (model: self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
@@ -281,7 +281,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   //····················································································································
 
   @objc func deleteSelectionControllerWindowAction (_ : Any) {
-    clearObjectExplorer ()
+    self.clearObjectExplorer ()
   }
 
   //····················································································································
@@ -291,8 +291,8 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   func clearObjectExplorer () {
     let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
+    self.mExplorerWindow?.orderOut (nil)
+    self.mExplorerWindow = nil
   }
 
   //···················································································································*
@@ -333,9 +333,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.horizontalAlignment_property.writeModelFunction = { (inValue : HorizontalAlignment) in
- //     if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.horizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -343,11 +343,11 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
             object.horizontalAlignment_property.setProp (inValue)
           }
         }
- //     }
+      }
     }
-    self.horizontalAlignment_property.validateAndWriteModelFunction = { (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
-  //    if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.horizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -359,9 +359,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
           }
           return true
         }
- //     }else{
- //       return false
- //     }
+      }else{
+        return false
+      }
     }
   }
 
@@ -523,9 +523,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.text_property.writeModelFunction = { (inValue : String) in
- //     if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.text_property.writeModelFunction = { [weak self] (inValue : String) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -533,11 +533,11 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
             object.text_property.setProp (inValue)
           }
         }
- //     }
+      }
     }
-    self.text_property.validateAndWriteModelFunction = { (candidateValue : String, windowForSheet : NSWindow?) in
-  //    if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.text_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -549,9 +549,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
           }
           return true
         }
- //     }else{
- //       return false
- //     }
+      }else{
+        return false
+      }
     }
   }
 
@@ -593,9 +593,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.x_property.writeModelFunction = { (inValue : Int) in
- //     if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.x_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -603,11 +603,11 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
             object.x_property.setProp (inValue)
           }
         }
- //     }
+      }
     }
-    self.x_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-  //    if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.x_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -619,9 +619,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
           }
           return true
         }
- //     }else{
- //       return false
- //     }
+      }else{
+        return false
+      }
     }
   }
 
@@ -663,9 +663,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.y_property.writeModelFunction = { (inValue : Int) in
- //     if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.y_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
@@ -673,11 +673,11 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
             object.y_property.setProp (inValue)
           }
         }
- //     }
+      }
     }
-    self.y_property.validateAndWriteModelFunction = { (candidateValue : Int, windowForSheet : NSWindow?) in
-  //    if let model = self.mModel {
-        switch self.mActualModel.prop {
+    self.y_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
@@ -689,9 +689,9 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
           }
           return true
         }
- //     }else{
- //       return false
- //     }
+      }else{
+        return false
+      }
     }
   }
 

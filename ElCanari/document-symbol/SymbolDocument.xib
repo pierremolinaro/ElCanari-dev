@@ -27,7 +27,12 @@
                 <outlet property="mResetVersionButton" destination="935" id="7cU-0p-YIp"/>
                 <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
                 <outlet property="mSymbolInspectorView" destination="1114" id="UBD-Ke-UZf"/>
+                <outlet property="mSymbolPinLabelHorizontalAlignmentPopUpButton" destination="623" id="HNa-Zx-ksl"/>
+                <outlet property="mSymbolPinLabelNameTextField" destination="530" id="Zep-5h-E0b"/>
+                <outlet property="mSymbolPinNumberHorizontalAlignmentPopUpButton" destination="630" id="Cyn-Vy-2zD"/>
+                <outlet property="mSymbolPinNumberIsVisibleInSchematicsSwitch" destination="531" id="Tyo-OW-RTf"/>
                 <outlet property="mSymbolTextHorizontalAlignmentPopUpButton" destination="846" id="RiX-fQ-K4l"/>
+                <outlet property="mSymbolTextValueTextField" destination="860" id="u0W-9X-ZyT"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
                 <outlet property="mTextInspectorView" destination="844" id="mcY-O6-cWK"/>
                 <outlet property="mVersionField" destination="YGk-5C-I8k" id="8WP-gL-c0G"/>
@@ -144,7 +149,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">
                         <rect key="frame" x="1" y="1" width="386" height="368"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="895" customClass="SymbolObjectsView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="104" height="67"/>
@@ -487,7 +492,7 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="860">
+                <textField verticalHuggingPriority="750" id="860" customClass="EBTextField">
                     <rect key="frame" x="66" y="407" width="164" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="name…" drawsBackground="YES" id="1050">
@@ -517,14 +522,14 @@ Cg
                 <popUpButton imageHugsTitle="YES" id="846" customClass="EBPopUpButton">
                     <rect key="frame" x="151" y="441" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Right" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="850" id="1048">
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="848" id="1048">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="847">
                             <items>
-                                <menuItem title="Left" id="848"/>
-                                <menuItem title="Right" state="on" id="850"/>
+                                <menuItem title="Left" state="on" id="848"/>
                                 <menuItem title="Center" id="849"/>
+                                <menuItem title="Right" id="850"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -548,17 +553,17 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="630">
-                    <rect key="frame" x="154" y="361" width="79" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="630" customClass="EBPopUpButton">
+                    <rect key="frame" x="154" y="361" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Right" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="634" id="1029">
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="632" id="1029">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="631">
                             <items>
                                 <menuItem title="Left" id="632"/>
-                                <menuItem title="Right" state="on" id="634"/>
                                 <menuItem title="Center" id="633"/>
+                                <menuItem title="Right" state="on" id="634"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -572,22 +577,22 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="623">
-                    <rect key="frame" x="154" y="443" width="79" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="623" customClass="EBPopUpButton">
+                    <rect key="frame" x="154" y="443" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Right" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="625" id="1027">
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="624">
                             <items>
                                 <menuItem title="Left" id="626"/>
-                                <menuItem title="Right" state="on" id="625"/>
                                 <menuItem title="Center" id="627"/>
+                                <menuItem title="Right" state="on" id="625"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <button id="531">
+                <button id="531" customClass="EBSwitch">
                     <rect key="frame" x="17" y="388" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Pin Name Is Visible In Schematics" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="1026">
@@ -595,7 +600,7 @@ Cg
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" id="530">
+                <textField verticalHuggingPriority="750" id="530" customClass="EBTextField">
                     <rect key="frame" x="83" y="412" width="147" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" title="name…" drawsBackground="YES" id="1025">

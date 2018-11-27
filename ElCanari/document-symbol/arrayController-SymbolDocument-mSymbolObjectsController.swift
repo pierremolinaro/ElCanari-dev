@@ -61,6 +61,21 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     self.mSelectedSet.addEBObserver (self.canSendToBack_property)
   //--- Set selected array compute function
     self.setSelectedArrayComputeFunction ()
+  //--- Install object array read function
+    self.objectArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          return .single (modelArray)
+        }
+      }else{
+        return .empty
+      }
+    }
   }
 
   //····················································································································

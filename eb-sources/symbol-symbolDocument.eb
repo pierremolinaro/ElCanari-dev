@@ -56,13 +56,26 @@ document SymbolDocument root SymbolRoot {
   outlet NSView mTextInspectorView ;
   selectionController SymbolText mSymbolTextSelectionController : self.mSymbolObjectsController.selectedArray ;
   outlet EBPopUpButton mSymbolTextHorizontalAlignmentPopUpButton 
-    $selectedIndex self.mSymbolTextSelectionController.horizontalAlignment
+    $selectedIndex mSymbolTextSelectionController.horizontalAlignment
   ;
-  outlet EBTextField mSymbolTextValueTextField 
-    $selectedIndex self.mSymbolTextSelectionController.text
+  outlet EBTextField mSymbolTextValueTextField
+    $value mSymbolTextSelectionController.text {sendContinously : yes}
   ;
   
   outlet NSView mPinInspectorView ;
+  selectionController SymbolPin mSymbolPinSelectionController : self.mSymbolObjectsController.selectedArray ;
+  outlet EBPopUpButton mSymbolPinNumberHorizontalAlignmentPopUpButton 
+    $selectedIndex mSymbolPinSelectionController.numberHorizontalAlignment
+  ;
+  outlet EBPopUpButton mSymbolPinLabelHorizontalAlignmentPopUpButton 
+    $selectedIndex mSymbolPinSelectionController.labelHorizontalAlignment
+  ;
+  outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
+    $value mSymbolPinSelectionController.pinNumberIsVisibleInSchematics
+  ;
+  outlet EBTextField mSymbolPinLabelNameTextField
+    $value mSymbolPinSelectionController.label {sendContinously : yes}
+  ;
 
 #--- Page : Comments
   outlet EBTextView mCommentTextView $value root.comments ;
