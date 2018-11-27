@@ -27,6 +27,52 @@ import Cocoa
   var mSymbolPinSelectionController = SelectionController_SymbolDocument_mSymbolPinSelectionController ()
 
   //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -63,24 +109,29 @@ import Cocoa
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mIssueTableView : MergerIssueTableView?
+  @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mPinInspectorView : NSView?
+  @IBOutlet var mPinInspectorView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
-  @IBOutlet var mSymbolInspectorView : NSView?
+  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
+  @IBOutlet var mSymbolBaseInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolPinLabelNameTextField : EBTextField?
   @IBOutlet var mSymbolPinNumberHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolPinNumberIsVisibleInSchematicsSwitch : EBSwitch?
+  @IBOutlet var mSymbolRootInspectorView : NSView?
   @IBOutlet var mSymbolTextHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolTextValueTextField : EBTextField?
   @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
-  @IBOutlet var mTextInspectorView : NSView?
+  @IBOutlet var mTextInspectorView : CanariViewWithKeyView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
 
@@ -292,6 +343,21 @@ import Cocoa
         errorMessage: "the 'mComposedSymbolView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mDeselectIssueButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDeselectIssueButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mDisplayInspectorView {
       if !(outlet is NSView) {
         presentErrorWindow (
@@ -367,6 +433,36 @@ import Cocoa
         errorMessage: "the 'mInspectorSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mIssueTableView {
+      if !(outlet is MergerIssueTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'MergerIssueTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTableView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPageSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
         presentErrorWindow (
@@ -383,11 +479,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mPinInspectorView {
-      if !(outlet is NSView) {
+      if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mPinInspectorView' outlet is not an instance of 'NSView'"
+          errorMessage: "the 'mPinInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
         )
       }
     }else{
@@ -427,19 +523,34 @@ import Cocoa
         errorMessage: "the 'mSignatureTextField' outlet is nil"
       )
     }
-    if let outlet : Any = self.mSymbolInspectorView {
-      if !(outlet is NSView) {
+    if let outlet : Any = self.mStatusImageViewInToolbar {
+      if !(outlet is EBImageObserverView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mSymbolInspectorView' outlet is not an instance of 'NSView'"
+          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
         )
       }
     }else{
       presentErrorWindow (
         file: #file,
         line: #line,
-        errorMessage: "the 'mSymbolInspectorView' outlet is nil"
+        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolBaseInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolBaseInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolBaseInspectorView' outlet is nil"
       )
     }
     if let outlet : Any = self.mSymbolPinLabelHorizontalAlignmentPopUpButton {
@@ -502,6 +613,21 @@ import Cocoa
         errorMessage: "the 'mSymbolPinNumberIsVisibleInSchematicsSwitch' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolRootInspectorView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolRootInspectorView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolRootInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolTextHorizontalAlignmentPopUpButton {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
@@ -548,11 +674,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mTextInspectorView {
-      if !(outlet is NSView) {
+      if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mTextInspectorView' outlet is not an instance of 'NSView'"
+          errorMessage: "the 'mTextInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
         )
       }
     }else{
@@ -599,6 +725,50 @@ import Cocoa
     self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolDocument_mStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
     self.mSymbolObjectsController.bind_ebView (self.mComposedSymbolView)
   //--------------------------- Install regular bindings
     mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -622,6 +792,10 @@ import Cocoa
     mSymbolPinLabelHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.labelHorizontalAlignment_property, file: #file, line: #line)
     mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNumberIsVisibleInSchematics_property, file: #file, line: #line)
     mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.label_property, file: #file, line: #line, sendContinously:true)
+    mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
+    mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
+    mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
@@ -659,6 +833,10 @@ import Cocoa
     mSymbolPinLabelHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
     mSymbolPinNumberIsVisibleInSchematicsSwitch?.unbind_value ()
     mSymbolPinLabelNameTextField?.unbind_value ()
+    mStatusImageViewInToolbar?.unbind_image ()
+    mStatusImageViewInToolbar?.unbind_tooltip ()
+    mIssueTextField?.unbind_valueObserver ()
+    mIssueTableView?.unbind_issues ()
     mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
@@ -669,6 +847,8 @@ import Cocoa
     self.mSymbolTextSelectionController.unbind_selection ()
   //--- Selection controller property: mSymbolPinSelectionController
     self.mSymbolPinSelectionController.unbind_selection ()
+    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
   //--------------------------- Remove targets / actions
     mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -681,20 +861,25 @@ import Cocoa
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedSymbolScrollView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
+    self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mIssueTableView?.ebCleanUp ()
+    self.mIssueTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinInspectorView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
-    self.mSymbolInspectorView?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
+    self.mSymbolBaseInspectorView?.ebCleanUp ()
     self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolPinLabelNameTextField?.ebCleanUp ()
     self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.ebCleanUp ()
+    self.mSymbolRootInspectorView?.ebCleanUp ()
     self.mSymbolTextHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolTextValueTextField?.ebCleanUp ()
     self.mSymbolZoomFlipInspectorView?.ebCleanUp ()

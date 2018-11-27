@@ -18,7 +18,20 @@ func transient_SymbolSolidRect_issues (
        _ self_height : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  return CanariIssueArray (issues: [])
+  var issues = [CanariIssue] ()
+  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
+  }
+  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
+  }
+  if (self_width % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width)
+  }
+  if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, height: self_height)
+  }
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

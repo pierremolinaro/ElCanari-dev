@@ -20,7 +20,7 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //   Outlet
   //····················································································································
 
-  @IBOutlet private weak var mBoardView : CanariViewWithZoomAndFlip? = nil
+  @IBOutlet weak var mBoardView : CanariViewWithZoomAndFlip? = nil
 
   //····················································································································
 
@@ -73,9 +73,9 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
       switch mModelArray [row].mKind {
       case .warning :
-        result = NSImage (named: NSImage.Name ("orange20"))!
+        result = NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))!
       case .error :
-        result = NSImage (named: NSImage.Name ("red20"))!
+        result = NSImage (named: NSImage.Name ("NSStatusUnavailable"))!
       }
     }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
       result = mModelArray [row].mMessage
@@ -95,10 +95,15 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //    $issues binding
   //····················································································································
 
-  private var mIssueController : Controller_MergerIssueTableView_issues?
+  private var mIssueController : EBReadOnlyController_CanariIssueArray? = nil
 
-  func bind_issues (_ issues:EBReadOnlyProperty_CanariIssueArray, file:String, line:Int) {
-    self.mIssueController = Controller_MergerIssueTableView_issues (issues:issues, outlet:self)
+  //····················································································································
+
+  func bind_issues (_ model : EBReadOnlyProperty_CanariIssueArray, file : String, line : Int) {
+    self.mIssueController = EBReadOnlyController_CanariIssueArray (
+      models: model,
+      callBack: { [weak self] in self?.update (from: model) }
+    )
   }
 
   //····················································································································
@@ -110,42 +115,20 @@ class MergerIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_MergerIssueTableView_issues
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_MergerIssueTableView_issues : EBSimpleController {
-
-  private let mModels : EBReadOnlyProperty_CanariIssueArray
-  private let mOutlet : MergerIssueTableView
-
-  //····················································································································
-
-  init (issues : EBReadOnlyProperty_CanariIssueArray, outlet : MergerIssueTableView) {
-    mModels = issues
-    mOutlet = outlet
-    super.init (observedObjects:[issues])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModels.prop {
+  private func update (from model : EBReadOnlyProperty_CanariIssueArray) {
+    switch model.prop {
     case .empty :
-      mOutlet.mModelArray = []
+      self.mModelArray = []
     case .single (let v) :
-      mOutlet.mModelArray = v.mIssues
+      self.mModelArray = v.mIssues
     case .multiple :
-      mOutlet.mModelArray = []
+      self.mModelArray = []
     }
+    self.mBoardView?.setIssue ((self.selectedRow < 0) ? nil : self.mModelArray [self.selectedRow].mPath)
   }
 
   //····················································································································
 
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

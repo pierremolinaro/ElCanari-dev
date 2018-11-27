@@ -11,27 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolOval_issues (
-       _ self_x : Int,            
-       _ self_y : Int,            
-       _ self_width : Int,        
-       _ self_height : Int
-) -> CanariIssueArray {
+func transient_SymbolDocument_mStatusImage (
+       _ root_issues : CanariIssueArray
+) -> NSImage {
 //--- START OF USER ZONE 2
-  var issues = [CanariIssue] ()
-  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
+  if root_issues.count == 0 {
+    return NSImage (named: NSImage.Name ("green20"))!
+  }else if root_issues.errorCount != 0 {
+    return NSImage (named: NSImage.Name ("red20"))!
+  }else{
+    return NSImage (named: NSImage.Name ("orange20"))!
   }
-  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
-  }
-  if (self_width % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width)
-  }
-  if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, height: self_height)
-  }
-  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

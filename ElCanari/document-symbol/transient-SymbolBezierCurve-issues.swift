@@ -24,14 +24,28 @@ func transient_SymbolBezierCurve_issues (
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
   if (self_x1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    let r = NSRect (
-      x: canariUnitToCocoa (self_x1),
-      y: canariUnitToCocoa (self_x1),
-      width: SYMBOL_GRID_IN_COCOA_UNIT,
-      height: SYMBOL_GRID_IN_COCOA_UNIT
-    )
-    let bp = NSBezierPath (rect: r)
-    issues.append (CanariIssue (kind: .error, message: "Point is not aligned on 25 mils grid", path: bp))
+    issues.appendSymbolHorizontalIssueAt (x: self_x1, y: self_y1)
+  }
+  if (self_y1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x1, y: self_y1)
+  }
+  if (self_x2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_x2, y: self_y2)
+  }
+  if (self_y2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x2, y: self_y2)
+  }
+  if (self_cpx1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_cpx1, y: self_cpy1)
+  }
+  if (self_cpy1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_cpx1, y: self_cpy1)
+  }
+  if (self_cpx2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_cpx2, y: self_cpy2)
+  }
+  if (self_cpy2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_cpx2, y: self_cpy2)
   }
   return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2

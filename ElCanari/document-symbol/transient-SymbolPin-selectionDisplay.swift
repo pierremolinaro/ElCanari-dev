@@ -17,9 +17,7 @@ func transient_SymbolPin_selectionDisplay (
        _ self_xLabel : Int,                
        _ self_yLabel : Int,                
        _ self_xNumber : Int,               
-       _ self_yNumber : Int,               
-       _ self_labelHorizontalAlignment : HorizontalAlignment,
-       _ self_numberHorizontalAlignment : HorizontalAlignment
+       _ self_yNumber : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let shape = EBShape ()

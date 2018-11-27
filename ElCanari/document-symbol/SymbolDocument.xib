@@ -17,20 +17,25 @@
                 <outlet property="mCommentTextView" destination="926" id="UVU-Cy-41i"/>
                 <outlet property="mComposedSymbolScrollView" destination="894" id="Asw-Oa-ebM"/>
                 <outlet property="mComposedSymbolView" destination="895" id="CVd-u2-GFS"/>
+                <outlet property="mDeselectIssueButton" destination="TOV-hM-ubg" id="VCp-ik-U7v"/>
                 <outlet property="mDisplayInspectorView" destination="647" id="omw-J2-ApT"/>
                 <outlet property="mGridStep" destination="1138" id="lGH-01-lxA"/>
                 <outlet property="mGridStyle" destination="1139" id="brw-Y0-wE6"/>
                 <outlet property="mHorizontalFlip" destination="582" id="U5c-xv-gZx"/>
                 <outlet property="mInspectorSegmentedControl" destination="1208" id="P3v-EX-3X2"/>
+                <outlet property="mIssueTableView" destination="r2i-A5-R2a" id="44U-8S-0P6"/>
+                <outlet property="mIssueTextField" destination="GO1-UP-Lnd" id="fSw-JY-ap1"/>
                 <outlet property="mPageSegmentedControl" destination="1090" id="xiJ-uP-7gb"/>
                 <outlet property="mPinInspectorView" destination="528" id="2HO-4m-b4p"/>
                 <outlet property="mResetVersionButton" destination="935" id="7cU-0p-YIp"/>
                 <outlet property="mSignatureTextField" destination="fVd-lH-sdc" id="jXD-gY-SHK"/>
-                <outlet property="mSymbolInspectorView" destination="1114" id="UBD-Ke-UZf"/>
+                <outlet property="mStatusImageViewInToolbar" destination="1083" id="AM4-dD-QSw"/>
+                <outlet property="mSymbolBaseInspectorView" destination="gB9-36-zn7" id="rYp-bL-nxk"/>
                 <outlet property="mSymbolPinLabelHorizontalAlignmentPopUpButton" destination="623" id="HNa-Zx-ksl"/>
                 <outlet property="mSymbolPinLabelNameTextField" destination="530" id="Zep-5h-E0b"/>
                 <outlet property="mSymbolPinNumberHorizontalAlignmentPopUpButton" destination="630" id="Cyn-Vy-2zD"/>
                 <outlet property="mSymbolPinNumberIsVisibleInSchematicsSwitch" destination="531" id="Tyo-OW-RTf"/>
+                <outlet property="mSymbolRootInspectorView" destination="1114" id="asG-EO-ZiP"/>
                 <outlet property="mSymbolTextHorizontalAlignmentPopUpButton" destination="846" id="RiX-fQ-K4l"/>
                 <outlet property="mSymbolTextValueTextField" destination="860" id="u0W-9X-ZyT"/>
                 <outlet property="mSymbolZoomFlipInspectorView" destination="580" id="SBV-hi-K1j"/>
@@ -149,7 +154,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">
                         <rect key="frame" x="1" y="1" width="386" height="368"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="895" customClass="SymbolObjectsView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="104" height="67"/>
@@ -231,8 +236,8 @@
                         </segments>
                     </segmentedCell>
                     <connections>
-                        <outlet property="mMasterView" destination="1114" id="heJ-bp-9SF"/>
-                        <outlet property="mView0" destination="1124" id="kkb-3i-c7J"/>
+                        <outlet property="mMasterView" destination="1114" id="UHn-6O-dPr"/>
+                        <outlet property="mView0" destination="gB9-36-zn7" id="uSb-k0-8eO"/>
                         <outlet property="mView1" destination="580" id="OdY-II-vY6"/>
                         <outlet property="mView2" destination="647" id="njW-T5-KM4"/>
                     </connections>
@@ -345,28 +350,84 @@ Cg
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
             <point key="canvasLocation" x="-168" y="-41"/>
         </customView>
-        <customView id="647" userLabel="Inspector : Display" customClass="CanariViewWithKeyView">
+        <customView id="647" userLabel="Inspector : Issues" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button id="664">
-                    <rect key="frame" x="17" y="442" width="215" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Display Shadows" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="1042">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
-                <textField verticalHuggingPriority="750" id="1175">
-                    <rect key="frame" x="54" y="481" width="141" height="14"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Display Inspector" id="1176">
-                        <font key="font" metaFont="smallSystemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="GO1-UP-Lnd" customClass="EBTextObserverField">
+                    <rect key="frame" x="9" y="483" width="233" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="-- issues --" id="cJh-Ry-SSf">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2cB-bw-oqd">
+                    <rect key="frame" x="23" y="13" width="207" height="434"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="J1t-eF-bDG">
+                        <rect key="frame" x="1" y="1" width="205" height="432"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="r2i-A5-R2a" customClass="MergerIssueTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <tableViewGridLines key="gridStyleMask" dashed="YES"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="image" editable="NO" width="30" minWidth="30" maxWidth="30" id="BJN-wF-gaA">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Umo-OZ-DFV"/>
+                                    </tableColumn>
+                                    <tableColumn identifier="title" editable="NO" width="169" minWidth="40" maxWidth="1000" id="aEV-pY-XWf">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="8ns-ZP-cCh">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="mBoardView" destination="895" id="De4-Y7-S0V"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="zYt-qO-5yg">
+                        <rect key="frame" x="-100" y="-100" width="223" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="dd4-5V-2jK">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <button verticalHuggingPriority="750" id="TOV-hM-ubg" customClass="EBButton">
+                    <rect key="frame" x="23" y="456" width="207" height="19"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Hide issue" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vhr-8x-Vt2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="deselectAll:" target="r2i-A5-R2a" id="cLv-RT-Pg2"/>
+                    </connections>
+                </button>
             </subviews>
+            <point key="canvasLocation" x="86" y="27"/>
         </customView>
         <customView id="580" userLabel="Inspector : Grid and Flip" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -556,14 +617,14 @@ Cg
                 <popUpButton imageHugsTitle="YES" id="630" customClass="EBPopUpButton">
                     <rect key="frame" x="154" y="361" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="632" id="1029">
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="632" id="1029">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="631">
                             <items>
-                                <menuItem title="Left" id="632"/>
+                                <menuItem title="Left" state="on" id="632"/>
                                 <menuItem title="Center" id="633"/>
-                                <menuItem title="Right" state="on" id="634"/>
+                                <menuItem title="Right" id="634"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -580,14 +641,14 @@ Cg
                 <popUpButton imageHugsTitle="YES" id="623" customClass="EBPopUpButton">
                     <rect key="frame" x="154" y="443" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
+                    <popUpButtonCell key="cell" type="roundRect" title="Left" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="626" id="1027">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="624">
                             <items>
-                                <menuItem title="Left" id="626"/>
+                                <menuItem title="Left" state="on" id="626"/>
                                 <menuItem title="Center" id="627"/>
-                                <menuItem title="Right" state="on" id="625"/>
+                                <menuItem title="Right" id="625"/>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -628,6 +689,11 @@ Cg
                     </textFieldCell>
                 </textField>
             </subviews>
+        </customView>
+        <customView id="gB9-36-zn7" userLabel="Object inspector Base View" customClass="CanariViewWithKeyView">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="213" y="367"/>
         </customView>
     </objects>
     <resources>

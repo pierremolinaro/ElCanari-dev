@@ -13,11 +13,17 @@ import Cocoa
 
 func transient_SymbolText_issues (
        _ self_x : Int,            
-       _ self_y : Int,            
-       _ self_text : String
+       _ self_y : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-    return CanariIssueArray (issues: [])
+  var issues = [CanariIssue] ()
+  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
+  }
+  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
+  }
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

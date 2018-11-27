@@ -232,16 +232,15 @@ class SymbolText : SymbolObject,
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.text_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.text_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_SymbolText_issues (v0, v1, v2))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_SymbolText_issues (v0, v1))
           default :
             return .empty
           }
@@ -252,7 +251,6 @@ class SymbolText : SymbolObject,
     }
     self.x_property.addEBObserver (self.issues_property)
     self.y_property.addEBObserver (self.issues_property)
-    self.text_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.horizontalAlignment_property.setSignatureObserver (observer:self)
@@ -278,7 +276,6 @@ class SymbolText : SymbolObject,
     g_Preferences?.pinNameFont_property.removeEBObserver (self.selectionDisplay_property)
     self.x_property.removeEBObserver (self.issues_property)
     self.y_property.removeEBObserver (self.issues_property)
-    self.text_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································

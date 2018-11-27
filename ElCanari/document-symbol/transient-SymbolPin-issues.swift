@@ -17,11 +17,29 @@ func transient_SymbolPin_issues (
        _ self_xLabel : Int,      
        _ self_yLabel : Int,      
        _ self_xNumber : Int,     
-       _ self_yNumber : Int,     
-       _ self_label : String
+       _ self_yNumber : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  return CanariIssueArray (issues: [])
+  var issues = [CanariIssue] ()
+  if (self_xPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_xPin, y: self_yPin)
+  }
+  if (self_yPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_xPin, y: self_yPin)
+  }
+  if (self_xLabel % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_xLabel, y: self_yLabel)
+  }
+  if (self_yLabel % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_xLabel, y: self_yLabel)
+  }
+  if (self_xNumber % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_xNumber, y: self_yNumber)
+  }
+  if (self_yNumber % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_xNumber, y: self_yNumber)
+  }
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

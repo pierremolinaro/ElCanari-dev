@@ -18,7 +18,20 @@ func transient_SymbolSegment_issues (
        _ self_y2 : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  return CanariIssueArray (issues: [])
+  var issues = [CanariIssue] ()
+  if (self_x1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_x1, y: self_y1)
+  }
+  if (self_y1 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x1, y: self_y1)
+  }
+  if (self_x2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_x2, y: self_y2)
+  }
+  if (self_y2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_x2, y: self_y2)
+  }
+  return CanariIssueArray (issues: issues)
 //--- END OF USER ZONE 2
 }
 

@@ -11,27 +11,32 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolOval_issues (
-       _ self_x : Int,            
-       _ self_y : Int,            
-       _ self_width : Int,        
-       _ self_height : Int
-) -> CanariIssueArray {
+func transient_SymbolDocument_mStatusMessage (
+       _ root_issues : CanariIssueArray
+) -> String {
 //--- START OF USER ZONE 2
-  var issues = [CanariIssue] ()
-  if (self_x % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHorizontalIssueAt (x: self_x, y: self_y)
+  var s = "No error, no warning"
+  if root_issues.count > 0 {
+    let errorCount = root_issues.errorCount
+    let warningCount = root_issues.warningCount
+    if errorCount == 0 {
+      s = "No error"
+    }else if errorCount == 1 {
+      s = "1 error"
+    }else {
+      s = "\(errorCount) errors"
+    }
+    s += ", "
+    if warningCount == 0 {
+      s += "no warning"
+    }else if warningCount == 1 {
+      s += "1 warning"
+    }else {
+      s += "\(warningCount) warnings"
+    }
+    s += "."
   }
-  if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
-  }
-  if (self_width % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width)
-  }
-  if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, height: self_height)
-  }
-  return CanariIssueArray (issues: issues)
+  return s
 //--- END OF USER ZONE 2
 }
 

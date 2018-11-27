@@ -403,14 +403,8 @@ class CanariViewWithZoomAndFlip : EBView {
     self.drawGrid (inDirtyRect)
     super.draw (inDirtyRect)
     if let issueBezierPath = self.mIssueBezierPath {
-//      let bp = NSBezierPath (rect: self.frame)
-//      bp.append (issueBezierPath)
-//      bp.windingRule = .evenOdd
-//      NSColor.gray.withAlphaComponent (0.5).setFill ()
-//      bp.fill ()
       let bp = NSBezierPath ()
       bp.append (issueBezierPath)
-      bp.lineWidth = 3.0
       NSColor.white.withAlphaComponent (0.5).setFill ()
       bp.fill ()
       NSColor.red.setStroke ()

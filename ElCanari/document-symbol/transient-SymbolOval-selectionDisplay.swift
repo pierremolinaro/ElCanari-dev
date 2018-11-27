@@ -15,12 +15,10 @@ func transient_SymbolOval_selectionDisplay (
        _ self_x : Int,                      
        _ self_y : Int,                      
        _ self_width : Int,                  
-       _ self_height : Int,                 
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int
+       _ self_height : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let shape = EBShape ()
-//  let shape = transient_SymbolOval_objectDisplay (self_x, self_y, self_width, self_height, NSColor.cyan.withAlphaComponent (0.25), prefs_symbolDrawingWidthMultipliedByTen)
   let x = canariUnitToCocoa (self_x)
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)

@@ -34,6 +34,7 @@ func transient_MergerDocument_issues (
           if !intersection.isEmpty {
             let intersectionEnlarged : NSRect = intersection.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
             let bp = NSBezierPath (rect: intersectionEnlarged)
+            bp.lineWidth = 3.0
             let issue = CanariIssue (kind: .error, message: "Intersection", path: bp)
             array.append (issue)
           }
@@ -48,6 +49,7 @@ func transient_MergerDocument_issues (
         if r != root_boardRect {
           let intersectionEnlarged : NSRect = instanceRect.cocoaRect ().insetBy (dx: -3.0, dy: -3.0)
           let bp = NSBezierPath (rect: intersectionEnlarged)
+          bp.lineWidth = 3.0
           let issue = CanariIssue (kind: .error, message: "Outside board", path: bp)
           array.append (issue)
         }
