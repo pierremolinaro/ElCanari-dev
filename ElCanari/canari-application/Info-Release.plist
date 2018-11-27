@@ -62,7 +62,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string>canari_symbol</string>
 			<key>CFBundleTypeName</key>
-			<string>El Canari Symvol</string>
+			<string>El Canari Symbol</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
