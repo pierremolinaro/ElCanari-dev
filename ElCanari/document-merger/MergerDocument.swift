@@ -236,9 +236,13 @@ import Cocoa
   @IBOutlet var mBoardHeightTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardInsertMenu : CanariBoardInsertMenu?
+  @IBOutlet var mBoardInspectorMasterView : NSView?
+  @IBOutlet var mBoardInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
   @IBOutlet var mBoardModelView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
   @IBOutlet var mBoardViewDisplayBackComponentNamesCheckbox : EBSwitch?
@@ -329,7 +333,6 @@ import Cocoa
   @IBOutlet var mMoveUpButton : EBButton?
   @IBOutlet var mNoArtworkMessage : EBTextField?
   @IBOutlet var mNoModelMessage : EBTextField?
-  @IBOutlet var mOperationAndIssueTabView : NSTabView?
   @IBOutlet var mOverlapSwitch : EBSwitch?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
@@ -683,6 +686,51 @@ import Cocoa
         errorMessage: "the 'mBoardInsertMenu' outlet is nil"
       )
     }
+    if let outlet : Any = self.mBoardInspectorMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBoardInspectorMasterView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBoardInspectorMasterView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBoardInspectorSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBoardInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBoardInspectorSegmentedControl' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBoardIssueInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBoardIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBoardIssueInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mBoardLimitWidthUnitPopUp {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
@@ -726,6 +774,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mBoardModelView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBoardOperationInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBoardOperationInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBoardOperationInspectorView' outlet is nil"
       )
     }
     if let outlet : Any = self.mBoardPageView {
@@ -2078,21 +2141,6 @@ import Cocoa
         errorMessage: "the 'mNoModelMessage' outlet is nil"
       )
     }
-    if let outlet : Any = self.mOperationAndIssueTabView {
-      if !(outlet is NSTabView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mOperationAndIssueTabView' outlet is not an instance of 'NSTabView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mOperationAndIssueTabView' outlet is nil"
-      )
-    }
     if let outlet : Any = self.mOverlapSwitch {
       if !(outlet is EBSwitch) {
         presentErrorWindow (
@@ -3334,9 +3382,13 @@ import Cocoa
     self.mBoardHeightTextField?.ebCleanUp ()
     self.mBoardHeightUnitPopUp?.ebCleanUp ()
     self.mBoardInsertMenu?.ebCleanUp ()
+    self.mBoardInspectorMasterView?.ebCleanUp ()
+    self.mBoardInspectorSegmentedControl?.ebCleanUp ()
+    self.mBoardIssueInspectorView?.ebCleanUp ()
     self.mBoardLimitWidthUnitPopUp?.ebCleanUp ()
     self.mBoardModelTableView?.ebCleanUp ()
     self.mBoardModelView?.ebCleanUp ()
+    self.mBoardOperationInspectorView?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mBoardViewDisplayBackComponenValuesCheckbox?.ebCleanUp ()
     self.mBoardViewDisplayBackComponentNamesCheckbox?.ebCleanUp ()
@@ -3427,7 +3479,6 @@ import Cocoa
     self.mMoveUpButton?.ebCleanUp ()
     self.mNoArtworkMessage?.ebCleanUp ()
     self.mNoModelMessage?.ebCleanUp ()
-    self.mOperationAndIssueTabView?.ebCleanUp ()
     self.mOverlapSwitch?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()

@@ -41,7 +41,7 @@ extension MergerDocument {
                 displaySettingView.removeFromSuperview ()
               }
             //--- Select issue in tabview
-              self.mOperationAndIssueTabView?.selectTabViewItem (at: 1)
+              self.mBoardInspectorSegmentedControl?.selectedSegment = 1
             //--- Select first issue
               self.mIssueTableView?.selectRowIndexes (IndexSet (integer: 0), byExtendingSelection:false)
             }

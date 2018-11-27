@@ -25,6 +25,9 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   //--- Set pages segmented control
     let pages = [self.mModelPageView, self.mBoardPageView, self.mProductPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //--- Set board inspector segmented control
+    let boardInspectors = [self.mBoardOperationInspectorView, self.mBoardIssueInspectorView]
+    self.mBoardInspectorSegmentedControl?.register (masterView: self.mBoardInspectorMasterView, boardInspectors)
   //--- Set document to scroll view for enabling drag and drop
     self.mComposedBoardScrollView?.register (document: self, draggedTypes: [kDragAndDropModelType])
     self.mModelDragSourceTableView?.register (document: self, draggedType: kDragAndDropModelType)
