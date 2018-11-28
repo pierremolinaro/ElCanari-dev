@@ -47,6 +47,21 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   }
 
   //····················································································································
+  //    Segment control item display
+  //····················································································································
+
+  private weak var mSegmentedControl : NSSegmentedControl? = nil
+  private var mSegmentedControlSegment = 0 // Not used if mSegmentedControl is nil
+
+  //····················································································································
+
+  func register (segmentedControl : NSSegmentedControl?, segment : Int) {
+    self.mSegmentedControl = segmentedControl
+    self.mSegmentedControlSegment = segment
+    self.updateIssueDisplay ()
+ }
+
+  //····················································································································
   //    Selected issue display
   //····················································································································
 
@@ -70,6 +85,19 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
       self.mIssueDisplayView?.setIssue (selectedIssue.mPath, selectedIssue.mKind)
       self.mHideIssueButton?.isEnabled = true
     }
+    var image = NSImage (named: NSImage.Name ("NSStatusAvailable"))
+    if self.mModelArray.count > 0 {
+      image = NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))
+      var hasError = false
+      for issue in self.mModelArray {
+         hasError = issue.mKind == .error
+         if hasError {
+           image = NSImage (named: NSImage.Name ("NSStatusUnavailable"))
+           break
+         }
+      }
+    }
+    self.mSegmentedControl?.setImage (image, forSegment: self.mSegmentedControlSegment)
   }
 
   //····················································································································

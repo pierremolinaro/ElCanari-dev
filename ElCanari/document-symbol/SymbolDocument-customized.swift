@@ -53,6 +53,9 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   //--- Set pages segmented control
     let pages = [self.mSymbolPageView, self.mMessagesPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //--- Set inspector segmented control
+    let inspectors = [self.mSymbolBaseInspectorView, self.mSymbolZoomFlipInspectorView, self.mSymbolIssueInspectorView]
+    self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (draggedType: dragAddSegmentUTI)
     self.mAddBezierButton?.register (draggedType: dragAddBezierUTI)
@@ -69,6 +72,7 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
+    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 2)
   }
 
   //····················································································································

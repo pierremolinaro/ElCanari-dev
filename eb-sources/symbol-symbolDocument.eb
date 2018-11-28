@@ -20,15 +20,14 @@ document SymbolDocument root SymbolRoot {
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
 
 #--- Zoom and Flip Inspector
-  outlet NSView mSymbolZoomFlipInspectorView ;
+  outlet CanariViewWithKeyView mSymbolZoomFlipInspectorView ;
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
   outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
 
 #--- Display Inspector
-  outlet NSView mDisplayInspectorView ;
-#  outlet displaysShadowsCheckbox : NSButton $value root.displaysShadows ;
+ # outlet CanariViewWithKeyView mDisplayInspectorView ;
 
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
@@ -83,6 +82,8 @@ document SymbolDocument root SymbolRoot {
   ;
 
 #--- Issues
+  outlet CanariViewWithKeyView mSymbolIssueInspectorView ;
+
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;

@@ -110,7 +110,6 @@ import Cocoa
   @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
   @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
   @IBOutlet var mDeselectIssueButton : EBButton?
-  @IBOutlet var mDisplayInspectorView : NSView?
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
@@ -126,6 +125,7 @@ import Cocoa
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolBaseInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSymbolIssueInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolPinLabelNameTextField : EBTextField?
@@ -134,7 +134,7 @@ import Cocoa
   @IBOutlet var mSymbolRootInspectorView : NSView?
   @IBOutlet var mSymbolTextHorizontalAlignmentPopUpButton : EBPopUpButton?
   @IBOutlet var mSymbolTextValueTextField : EBTextField?
-  @IBOutlet var mSymbolZoomFlipInspectorView : NSView?
+  @IBOutlet var mSymbolZoomFlipInspectorView : CanariViewWithKeyView?
   @IBOutlet var mTextInspectorView : CanariViewWithKeyView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
@@ -362,21 +362,6 @@ import Cocoa
         errorMessage: "the 'mDeselectIssueButton' outlet is nil"
       )
     }
-    if let outlet : Any = self.mDisplayInspectorView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mDisplayInspectorView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mDisplayInspectorView' outlet is nil"
-      )
-    }
     if let outlet : Any = self.mGridStep {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
@@ -602,6 +587,21 @@ import Cocoa
         errorMessage: "the 'mSymbolBaseInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolIssueInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolIssueInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -723,11 +723,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mSymbolZoomFlipInspectorView {
-      if !(outlet is NSView) {
+      if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is not an instance of 'NSView'"
+          errorMessage: "the 'mSymbolZoomFlipInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
         )
       }
     }else{
@@ -926,7 +926,6 @@ import Cocoa
     self.mComposedSymbolScrollView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
-    self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
@@ -942,6 +941,7 @@ import Cocoa
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolBaseInspectorView?.ebCleanUp ()
+    self.mSymbolIssueInspectorView?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()
     self.mSymbolPinLabelNameTextField?.ebCleanUp ()

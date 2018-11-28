@@ -34,6 +34,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
+    self.mIssueTableView?.register (segmentedControl: self.mBoardInspectorSegmentedControl, segment: 1)
   }
 
   //····················································································································
