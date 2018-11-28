@@ -168,10 +168,11 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addSegment (at inCocoaPoint : NSPoint) {
     let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.x1 = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.y1 = cocoaToCanariUnit (inCocoaPoint.y)
-    newObject.x2 = newObject.x1 + 6_868_00
-    newObject.y2 = newObject.y1 + 6_868_00
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x1 = p.x
+    newObject.y1 = p.y
+    newObject.x2 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.y2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }
@@ -180,14 +181,15 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addBezier (at inCocoaPoint : NSPoint) {
     let newObject = SymbolBezierCurve (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.x1 = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.y1 = cocoaToCanariUnit (inCocoaPoint.y)
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x1 = p.x
+    newObject.y1 = p.y
     newObject.x2 = newObject.x1
-    newObject.y2 = newObject.y1 + 6_868_00
-    newObject.cpx1 = newObject.x1 + 6_868_00
+    newObject.y2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.cpx1 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
     newObject.cpy1 = newObject.y1
-    newObject.cpx2 = newObject.x1 + 6_868_00
-    newObject.cpy2 = newObject.y1 + 6_868_00
+    newObject.cpx2 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.cpy2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }
@@ -196,10 +198,11 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addOval (at inCocoaPoint : NSPoint) {
     let newObject = SymbolOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.x = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.y = cocoaToCanariUnit (inCocoaPoint.y)
-    newObject.width = 6_868_00
-    newObject.height = 6_868_00
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x = p.x
+    newObject.y = p.y
+    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }
@@ -208,10 +211,11 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addSolidRect (at inCocoaPoint : NSPoint) {
     let newObject = SymbolSolidRect (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.x = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.y = cocoaToCanariUnit (inCocoaPoint.y)
-    newObject.width = 6_868_00
-    newObject.height = 6_868_00
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x = p.x
+    newObject.y = p.y
+    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }
@@ -220,8 +224,9 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addText (at inCocoaPoint : NSPoint) {
     let newObject = SymbolText (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.x = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.y = cocoaToCanariUnit (inCocoaPoint.y)
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x = p.x
+    newObject.y = p.y
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }
@@ -230,12 +235,13 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addPin (at inCocoaPoint : NSPoint) {
     let newObject = SymbolPin (managedObjectContext: self.managedObjectContext, file: #file, #line)
-    newObject.xPin = cocoaToCanariUnit (inCocoaPoint.x)
-    newObject.yPin = cocoaToCanariUnit (inCocoaPoint.y)
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.xPin = p.x
+    newObject.yPin = p.y
     newObject.xName = newObject.xPin
-    newObject.yName = newObject.yPin + 2_286_00
+    newObject.yName = newObject.yPin + SYMBOL_GRID_IN_CANARI_UNIT * 4
     newObject.xNumber = newObject.xPin
-    newObject.yNumber = newObject.yPin - 2_286_00
+    newObject.yNumber = newObject.yPin - SYMBOL_GRID_IN_CANARI_UNIT * 4
     self.rootObject.symbolObjects_property.add (newObject)
     self.mSymbolObjectsController.select (object: newObject)
   }

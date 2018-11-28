@@ -26,10 +26,10 @@ func transient_SymbolOval_issues (
     issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
   }
   if (self_width % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width)
+    issues.appendSymbolWidthIssueAt (x: self_x, y: self_y, width: self_width, height: self_height)
   }
   if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, height: self_height)
+    issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, width: self_width, height: self_height)
   }
   return issues
 //--- END OF USER ZONE 2

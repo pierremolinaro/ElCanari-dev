@@ -1619,6 +1619,7 @@
 			children = (
 				CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */,
 				CF5632BF21A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift */,
+				CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */,
 				CFE85A6D21A5B37900991A66 /* entity-SymbolBezierCurve.swift */,
 				CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */,
 				CFE85A7D21A5BBE600991A66 /* entity-SymbolOval.swift */,
@@ -1661,7 +1662,6 @@
 				CFE85AA521A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift */,
 				CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */,
 				CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */,
-				CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */,
 			);
 			name = "document-symbol";
 			path = "ElCanari/document-symbol";

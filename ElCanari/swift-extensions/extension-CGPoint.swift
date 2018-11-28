@@ -34,6 +34,16 @@ extension CGPoint {
 
   //····················································································································
 
+  func canariPointAligned (onCanariGrid inCanariGrid : Int) -> CanariPoint {
+    let p = CanariPoint (
+     x: ((cocoaToCanariUnit (self.x) + inCanariGrid / 2) / inCanariGrid) * inCanariGrid,
+     y:  ((cocoaToCanariUnit (self.y) + inCanariGrid / 2) / inCanariGrid) * inCanariGrid
+    )
+    return p
+  }
+
+  //····················································································································
+
   static func product (_ p1 : CGPoint, _ p2 : CGPoint, _ p3 : CGPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
     let dy2 = p2.y - p1.y

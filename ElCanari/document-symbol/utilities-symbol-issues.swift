@@ -61,10 +61,10 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
-  mutating func appendSymbolWidthIssueAt (x: Int, y: Int, width : Int) {
+  mutating func appendSymbolWidthIssueAt (x: Int, y: Int, width : Int, height : Int) {
     let r = NSRect (
       x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y + height / 2) - HILITE_SIZE / 2.0,
       width: canariUnitToCocoa (width) + HILITE_SIZE,
       height: HILITE_SIZE
     )
@@ -75,9 +75,9 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
-  mutating func appendSymbolHeightIssueAt (x: Int, y: Int, height : Int) {
+  mutating func appendSymbolHeightIssueAt (x: Int, y: Int, width : Int, height : Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      x: canariUnitToCocoa (x + width / 2) - HILITE_SIZE / 2.0,
       y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
       width: HILITE_SIZE,
       height: canariUnitToCocoa (height) + HILITE_SIZE
