@@ -72,14 +72,14 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1080"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1081"/>
-                    <toolbarItem implicitItemIdentifier="D78292ED-FD6E-483A-B713-D0CEA5FA1ECC" label="Status" paletteLabel="Status" image="red20" id="1085">
+                    <toolbarItem implicitItemIdentifier="D78292ED-FD6E-483A-B713-D0CEA5FA1ECC" label="Status" paletteLabel="Status" image="canariErrorStatus" id="1085">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
                         <imageView key="view" id="1083" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="1084"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="canariErrorStatus" id="1084"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="83952EAE-7FA7-4C87-B947-5CC3E49F03EC" label="Page" paletteLabel="Page" id="1092">
@@ -129,15 +129,6 @@
                             </textFieldCell>
                         </textField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="F2646F6D-4473-42EE-8273-B63C1BCE6681" label="Status" paletteLabel="Status" tag="-1" id="M5O-Js-J8x">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="16" height="40"/>
-                        <size key="maxSize" width="16" height="40"/>
-                        <customView key="view" id="ibr-3Q-Ecg" customClass="CanariStatusView">
-                            <rect key="frame" x="13" y="14" width="16" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </customView>
-                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="1092"/>
@@ -148,7 +139,6 @@
                     <toolbarItem reference="dRw-sB-6K3"/>
                     <toolbarItem reference="1081"/>
                     <toolbarItem reference="1085"/>
-                    <toolbarItem reference="M5O-Js-J8x"/>
                 </defaultToolbarItems>
             </toolbar>
             <point key="canvasLocation" x="-187" y="-297"/>
@@ -298,7 +288,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="mO9-UL-Tnr">
                         <rect key="frame" x="1" y="1" width="469" height="335"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="926" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="469" height="335"/>
@@ -344,10 +334,6 @@ Cg
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView id="aAy-8T-5Um" customClass="CanariStatusView">
-                    <rect key="frame" x="20" y="43" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </customView>
             </subviews>
             <point key="canvasLocation" x="140" y="511.5"/>
         </customView>
@@ -698,12 +684,12 @@ Cg
     </objects>
     <resources>
         <image name="bezier-curve-in-symbol" width="64" height="64"/>
+        <image name="canariErrorStatus" width="40" height="100"/>
         <image name="circle-in-symbol" width="64" height="64"/>
         <image name="display" width="64" height="64"/>
         <image name="line-in-symbol" width="64" height="64"/>
         <image name="loupe" width="64" height="64"/>
         <image name="pin-in-symbol" width="64" height="64"/>
-        <image name="red20" width="20" height="20"/>
         <image name="selected-object" width="64" height="64"/>
         <image name="solidrect-in-symbol" width="64" height="64"/>
         <image name="text-in-symbol" width="64" height="64"/>

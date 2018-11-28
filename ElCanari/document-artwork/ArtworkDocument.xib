@@ -84,14 +84,14 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="551"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="553"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="554"/>
-                    <toolbarItem implicitItemIdentifier="31A641FE-27C6-4A4A-A007-121B041D6BB6" label="Status" paletteLabel="Status" image="red20" id="X1d-O0-5kQ">
+                    <toolbarItem implicitItemIdentifier="31A641FE-27C6-4A4A-A007-121B041D6BB6" label="Status" paletteLabel="Status" image="canariErrorStatus" id="X1d-O0-5kQ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="48" height="48"/>
                         <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hy4-bz-6Bw" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red20" id="hPr-1n-KCO"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="canariErrorStatus" id="hPr-1n-KCO"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="60F57C98-B3B7-4131-9DDA-BCDB6EE558F3" label="Signature" paletteLabel="Signature" id="rBJ-XG-abp">
@@ -408,7 +408,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="HKz-u1-s5U">
                                         <rect key="frame" x="1" y="0.0" width="193" height="397"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView identifier="name" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="544" viewBased="YES" id="302" customClass="EBTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="193" height="380"/>
@@ -432,11 +432,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                         <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="name"/>
                                                         <prototypeCellViews>
                                                             <tableCellView id="NGB-2l-etK" customClass="EBTextField_TableViewCell">
-                                                                <rect key="frame" x="1" y="1" width="190" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="189.5" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="bCT-Re-Cge" customClass="EBTextField">
-                                                                        <rect key="frame" x="0.0" y="3" width="190" height="14"/>
+                                                                        <rect key="frame" x="0.0" y="3" width="189.5" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Sgz-AZ-LtX">
                                                                             <font key="font" metaFont="smallSystem"/>
@@ -851,6 +851,6 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
     </objects>
     <resources>
         <image name="artwork" width="278" height="146"/>
-        <image name="red20" width="20" height="20"/>
+        <image name="canariErrorStatus" width="40" height="100"/>
     </resources>
 </document>

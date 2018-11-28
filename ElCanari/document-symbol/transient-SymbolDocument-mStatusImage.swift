@@ -16,11 +16,11 @@ func transient_SymbolDocument_mStatusImage (
 ) -> NSImage {
 //--- START OF USER ZONE 2
   if root_issues.count == 0 {
-    return NSImage (named: NSImage.Name ("green20"))!
+    return NSImage (named: okStatusImageName)!
   }else if root_issues.errorCount != 0 {
-    return NSImage (named: NSImage.Name ("red20"))!
+    return NSImage (named: errorStatusImageName)!
   }else{
-    return NSImage (named: NSImage.Name ("orange20"))!
+    return NSImage (named: warningStatusImageName)!
   }
 //--- END OF USER ZONE 2
 }

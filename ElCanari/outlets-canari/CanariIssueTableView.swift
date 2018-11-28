@@ -85,14 +85,14 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
       self.mIssueDisplayView?.setIssue (selectedIssue.mPath, selectedIssue.mKind)
       self.mHideIssueButton?.isEnabled = true
     }
-    var image = NSImage (named: NSImage.Name ("NSStatusAvailable"))
+    var image = NSImage (named: okStatusImageName)
     if self.mModelArray.count > 0 {
-      image = NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))
+      image = NSImage (named: warningStatusImageName)
       var hasError = false
       for issue in self.mModelArray {
          hasError = issue.mKind == .error
          if hasError {
-           image = NSImage (named: NSImage.Name ("NSStatusUnavailable"))
+           image = NSImage (named: errorStatusImageName)
            break
          }
       }
@@ -140,9 +140,9 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
       switch mModelArray [row].mKind {
       case .warning :
-        result = NSImage (named: NSImage.Name ("NSStatusPartiallyAvailable"))!
+        result = NSImage (named: warningStatusImageName)!
       case .error :
-        result = NSImage (named: NSImage.Name ("NSStatusUnavailable"))!
+        result = NSImage (named: errorStatusImageName)!
       }
     }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
       result = mModelArray [row].mMessage

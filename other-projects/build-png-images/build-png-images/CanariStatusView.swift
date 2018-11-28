@@ -11,31 +11,15 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://stackoverflow.com/questions/5008213/adding-a-custom-view-to-toolbar
 
-@objc(CanariStatusView) class CanariStatusView : NSButton, EBUserClassNameProtocol {
-
-  //····················································································································
-
-  required init? (coder : NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  override init (frame : NSRect) {
-    super.init (frame: frame)
-    noteObjectAllocation (self)
-  }
-
-  //····················································································································
-
-  deinit {
-    noteObjectDeallocation (self)
-  }
+@objc(CanariStatusView) class CanariStatusView : NSView {
 
   //····················································································································
 
   override var isFlipped: Bool { return false }
+
+  var mDrawGreen = false
+  var mDrawOrange = false
+  var mDrawRed = false
 
   //····················································································································
   //  Draw
@@ -56,35 +40,41 @@ import Cocoa
     NSColor.gridColor.setFill ()
     bp.fill ()
   //--- Green
-    r = NSRect (
-      x: centerX - s,
-      y: s,
-      width: 2.0 * s,
-      height: 2.0 * s
-    )
-    bp = NSBezierPath (ovalIn: r)
-    NSColor.green.setFill ()
-    bp.fill ()
+    if self.mDrawGreen {
+      r = NSRect (
+        x: centerX - s,
+        y: s,
+        width: 2.0 * s,
+        height: 2.0 * s
+      )
+      bp = NSBezierPath (ovalIn: r)
+      NSColor.green.setFill ()
+      bp.fill ()
+    }
   //--- Orange
-    r = NSRect (
-      x: centerX - s,
-      y: 4.0 * s,
-      width: 2.0 * s,
-      height: 2.0 * s
-    )
-    bp = NSBezierPath (ovalIn: r)
-    NSColor.orange.setFill ()
-    bp.fill ()
-  //--- Green
-    r = NSRect (
-      x: centerX - s,
-      y: 7.0 * s,
-      width: 2.0 * s,
-      height: 2.0 * s
-    )
-    bp = NSBezierPath (ovalIn: r)
-    NSColor.red.setFill ()
-    bp.fill ()
+    if self.mDrawOrange {
+      r = NSRect (
+        x: centerX - s,
+        y: 4.0 * s,
+        width: 2.0 * s,
+        height: 2.0 * s
+      )
+      bp = NSBezierPath (ovalIn: r)
+      NSColor.orange.setFill ()
+      bp.fill ()
+    }
+  //--- Red
+    if self.mDrawRed {
+      r = NSRect (
+        x: centerX - s,
+        y: 7.0 * s,
+        width: 2.0 * s,
+        height: 2.0 * s
+      )
+      bp = NSBezierPath (ovalIn: r)
+      NSColor.red.setFill ()
+      bp.fill ()
+    }
   }
 
   //····················································································································
