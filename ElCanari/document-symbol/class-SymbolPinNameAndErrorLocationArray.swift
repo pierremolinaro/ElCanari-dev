@@ -1,5 +1,5 @@
 //
-//  class-SymbolPinErrorArray.swift
+//  class-SymbolPinNameAndErrorLocationArray.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 28/11/2018.
@@ -10,6 +10,6 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias SymbolPinErrorArray = [(String, NSRect)]
+typealias SymbolPinNameAndErrorLocationArray = [(String, NSRect)] // Pin name, Issue display rect
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
