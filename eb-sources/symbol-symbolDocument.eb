@@ -72,13 +72,13 @@ document SymbolDocument root SymbolRoot {
     $selectedIndex mSymbolPinSelectionController.numberHorizontalAlignment
   ;
   outlet EBPopUpButton mSymbolPinLabelHorizontalAlignmentPopUpButton 
-    $selectedIndex mSymbolPinSelectionController.labelHorizontalAlignment
+    $selectedIndex mSymbolPinSelectionController.nameHorizontalAlignment
   ;
   outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
     $value mSymbolPinSelectionController.pinNumberIsVisibleInSchematics
   ;
   outlet EBTextField mSymbolPinLabelNameTextField
-    $value mSymbolPinSelectionController.label {sendContinously : yes}
+    $value mSymbolPinSelectionController.name {sendContinously : yes}
   ;
 
 #--- Issues

@@ -232,8 +232,8 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
     let newObject = SymbolPin (managedObjectContext: self.managedObjectContext, file: #file, #line)
     newObject.xPin = cocoaToCanariUnit (inCocoaPoint.x)
     newObject.yPin = cocoaToCanariUnit (inCocoaPoint.y)
-    newObject.xLabel = newObject.xPin
-    newObject.yLabel = newObject.yPin + 2_286_00
+    newObject.xName = newObject.xPin
+    newObject.yName = newObject.yPin + 2_286_00
     newObject.xNumber = newObject.xPin
     newObject.yNumber = newObject.yPin - 2_286_00
     self.rootObject.symbolObjects_property.add (newObject)

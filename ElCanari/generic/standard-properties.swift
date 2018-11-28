@@ -1668,6 +1668,14 @@ typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <Can
 typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
 typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property SymbolPinNameAndErrorLocationArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyValueController <SymbolPinNameAndErrorLocationArray>
+
+typealias EBReadOnlyProperty_SymbolPinNameAndErrorLocationArray  = EBReadOnlyValueProperty <SymbolPinNameAndErrorLocationArray>
+typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientValueProperty <SymbolPinNameAndErrorLocationArray>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

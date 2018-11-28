@@ -9,37 +9,37 @@ abstract graphic entity SymbolObject {
 graphic entity SymbolPin : SymbolObject {
   property @signature Int xPin default 9_154_00 ;
   property @signature Int yPin default 9_154_00 ;
-  property @signature Int xLabel default 9_154_00 ;
-  property @signature Int yLabel default 11_440_00 ;
+  property @signature Int xName default 9_154_00 ;
+  property @signature Int yName default 11_440_00 ;
   property @signature Int xNumber default 9_154_00 ;
   property @signature Int yNumber default 6_868_00 ;
-  property @signature String label default "" ;
-  property @signature HorizontalAlignment labelHorizontalAlignment default center ;
+  property @signature String name default "" ;
+  property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
   
   property @signature Bool pinNumberIsVisibleInSchematics default yes ;
   
   transient EBShape objectDisplay dependsFrom
      self.xPin, self.yPin, 
-     self.xLabel, self.yLabel, 
+     self.xName, self.yName, 
      self.xNumber, self.yNumber, 
-     self.label,
-     self.labelHorizontalAlignment, self.numberHorizontalAlignment,
+     self.name,
+     self.nameHorizontalAlignment, self.numberHorizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
   ;
 
   transient EBShape selectionDisplay dependsFrom
      self.xPin, self.yPin, 
-     self.xLabel, self.yLabel, 
+     self.xName, self.yName, 
      self.xNumber, self.yNumber,
-     self.labelHorizontalAlignment, self.numberHorizontalAlignment
+     self.nameHorizontalAlignment, self.numberHorizontalAlignment
   ;
   
   transient CanariIssueArray issues dependsFrom
      self.xPin, self.yPin, 
-     self.xLabel, self.yLabel, 
+     self.xName, self.yName, 
      self.xNumber, self.yNumber, 
-     self.label
+     self.name
   ;
 
 }

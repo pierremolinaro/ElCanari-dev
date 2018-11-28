@@ -14,11 +14,11 @@ import Cocoa
 func transient_SymbolPin_selectionDisplay (
        _ self_xPin : Int,                  
        _ self_yPin : Int,                  
-       _ self_xLabel : Int,                
-       _ self_yLabel : Int,                
+       _ self_xName : Int,                 
+       _ self_yName : Int,                 
        _ self_xNumber : Int,               
        _ self_yNumber : Int,               
-       _ self_labelHorizontalAlignment : HorizontalAlignment,
+       _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ self_numberHorizontalAlignment : HorizontalAlignment
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -27,7 +27,7 @@ func transient_SymbolPin_selectionDisplay (
     let pinPoint = NSPoint (x: canariUnitToCocoa (self_xPin), y: canariUnitToCocoa (self_yPin))
     shape.append (shape: EBKnobShape (at: pinPoint, index: SYMBOL_PIN_ENDPOINT, .rect))
   //--- Label
-    let labelPoint = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
+    let labelPoint = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     shape.append (shape: EBKnobShape (at: labelPoint, index: SYMBOL_PIN_LABEL, .circ))
   //--- Number
     let numberPoint = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))

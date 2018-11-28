@@ -14,12 +14,12 @@ import Cocoa
 func transient_SymbolPin_objectDisplay (
        _ self_xPin : Int,               
        _ self_yPin : Int,               
-       _ self_xLabel : Int,             
-       _ self_yLabel : Int,             
+       _ self_xName : Int,              
+       _ self_yName : Int,              
        _ self_xNumber : Int,            
        _ self_yNumber : Int,            
-       _ self_label : String,           
-       _ self_labelHorizontalAlignment : HorizontalAlignment,
+       _ self_name : String,            
+       _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ self_numberHorizontalAlignment : HorizontalAlignment,
        _ prefs_symbolColor : NSColor,   
        _ prefs_pinNameFont : NSFont
@@ -39,9 +39,9 @@ func transient_SymbolPin_objectDisplay (
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
-    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xLabel), y: canariUnitToCocoa (self_yLabel))
-    let label = (self_label == "") ? "?" : self_label
-    shape.append (shape: EBTextShape (label, labelOrigin, textAttributes, self_labelHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
+    let label = (self_name == "") ? "?" : self_name
+    shape.append (shape: EBTextShape (label, labelOrigin, textAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
     shape.append (shape: EBTextShape ("##", numberOrigin, textAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     return shape

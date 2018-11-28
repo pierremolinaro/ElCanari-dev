@@ -9,5 +9,6 @@ transient property class MergerPadArray ;
 transient property class BezierPathArray ;
 
 transient property struct CanariIssueArray ;
+transient property struct SymbolPinNameAndErrorLocationArray ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

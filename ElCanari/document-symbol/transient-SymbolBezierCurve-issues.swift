@@ -47,7 +47,7 @@ func transient_SymbolBezierCurve_issues (
   if (self_cpy2 % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_cpx2, y: self_cpy2)
   }
-  return CanariIssueArray (issues: issues)
+  return issues
 //--- END OF USER ZONE 2
 }
 

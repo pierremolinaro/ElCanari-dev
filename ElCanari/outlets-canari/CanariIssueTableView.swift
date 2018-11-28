@@ -187,7 +187,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     case .empty :
       self.mModelArray = []
     case .single (let v) :
-      self.mModelArray = v.mIssues
+      self.mModelArray = v
     case .multiple :
       self.mModelArray = []
     }

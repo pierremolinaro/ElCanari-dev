@@ -57,7 +57,7 @@ func transient_MergerDocument_issues (
     //-------------------- Sort issues
       array.sort (by: CanariIssue.displaySortingCompare)
     //--------------------
-      return CanariIssueArray (issues: array)
+      return array
 //--- END OF USER ZONE 2
 }
 

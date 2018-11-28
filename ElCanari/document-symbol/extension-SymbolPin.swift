@@ -27,13 +27,13 @@ extension SymbolPin {
       }
     }
     do{
-      let newX = canariUnitToCocoa (self.xLabel) + acceptedTranslation.x
+      let newX = canariUnitToCocoa (self.xName) + acceptedTranslation.x
       if newX < 0.0 {
-        acceptedTranslation.x = -canariUnitToCocoa (self.xLabel)
+        acceptedTranslation.x = -canariUnitToCocoa (self.xName)
       }
-      let newY = canariUnitToCocoa (self.yLabel) + acceptedTranslation.y
+      let newY = canariUnitToCocoa (self.yName) + acceptedTranslation.y
       if newY < 0.0 {
-        acceptedTranslation.y = -canariUnitToCocoa (self.yLabel)
+        acceptedTranslation.y = -canariUnitToCocoa (self.yName)
       }
     }
     do{
@@ -54,8 +54,8 @@ extension SymbolPin {
   override func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
     let newX = self.xPin + cocoaToCanariUnit (inDx)
     let newY = self.yPin + cocoaToCanariUnit (inDy)
-    let newXLabel = self.xLabel + cocoaToCanariUnit (inDx)
-    let newYLabel = self.yLabel + cocoaToCanariUnit (inDy)
+    let newXLabel = self.xName + cocoaToCanariUnit (inDx)
+    let newYLabel = self.yName + cocoaToCanariUnit (inDy)
     let newXNumber = self.xNumber + cocoaToCanariUnit (inDx)
     let newYNumber = self.yNumber + cocoaToCanariUnit (inDy)
     return (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
@@ -66,8 +66,8 @@ extension SymbolPin {
   override func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
     self.xPin += cocoaToCanariUnit (inDx)
     self.yPin += cocoaToCanariUnit (inDy)
-    self.xLabel += cocoaToCanariUnit (inDx)
-    self.yLabel += cocoaToCanariUnit (inDy)
+    self.xName += cocoaToCanariUnit (inDx)
+    self.yName += cocoaToCanariUnit (inDy)
     self.xNumber += cocoaToCanariUnit (inDx)
     self.yNumber += cocoaToCanariUnit (inDy)
   }
@@ -82,14 +82,14 @@ extension SymbolPin {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
       let newX = self.xPin + cocoaToCanariUnit (inValue.x)
       let newY = self.yPin + cocoaToCanariUnit (inValue.y)
-      let newXLabel = self.xLabel + cocoaToCanariUnit (inValue.x)
-      let newYLabel = self.yLabel + cocoaToCanariUnit (inValue.y)
+      let newXLabel = self.xName + cocoaToCanariUnit (inValue.x)
+      let newYLabel = self.yName + cocoaToCanariUnit (inValue.y)
       let newXNumber = self.xNumber + cocoaToCanariUnit (inValue.x)
       let newYNumber = self.yNumber + cocoaToCanariUnit (inValue.y)
       accept = (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      let newX = self.xLabel + cocoaToCanariUnit (inValue.x)
-      let newY = self.yLabel + cocoaToCanariUnit (inValue.y)
+      let newX = self.xName + cocoaToCanariUnit (inValue.x)
+      let newY = self.yName + cocoaToCanariUnit (inValue.y)
       accept = (newX >= 0) && (newY >= 0)
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
       let newX = self.xNumber + cocoaToCanariUnit (inValue.x)
@@ -105,13 +105,13 @@ extension SymbolPin {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
       self.xPin += cocoaToCanariUnit (inTranslation.x)
       self.yPin += cocoaToCanariUnit (inTranslation.y)
-      self.xLabel += cocoaToCanariUnit (inTranslation.x)
-      self.yLabel += cocoaToCanariUnit (inTranslation.y)
+      self.xName += cocoaToCanariUnit (inTranslation.x)
+      self.yName += cocoaToCanariUnit (inTranslation.y)
       self.xNumber += cocoaToCanariUnit (inTranslation.x)
       self.yNumber += cocoaToCanariUnit (inTranslation.y)
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      self.xLabel += cocoaToCanariUnit (inTranslation.x)
-      self.yLabel += cocoaToCanariUnit (inTranslation.y)
+      self.xName += cocoaToCanariUnit (inTranslation.x)
+      self.yName += cocoaToCanariUnit (inTranslation.y)
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
       self.xNumber += cocoaToCanariUnit (inTranslation.x)
       self.yNumber += cocoaToCanariUnit (inTranslation.y)

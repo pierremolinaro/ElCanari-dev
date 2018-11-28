@@ -24,26 +24,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
-  //   Selection observable property: label
+  //   Selection observable property: name
   //····················································································································
 
-  var label_property = EBPropertyProxy_String ()
+  var name_property = EBPropertyProxy_String ()
 
-  var label_property_selection : EBSelection <String> {
+  var name_property_selection : EBSelection <String> {
     get {
-      return self.label_property.prop
+      return self.name_property.prop
     }
   }
 
   //····················································································································
-  //   Selection observable property: labelHorizontalAlignment
+  //   Selection observable property: nameHorizontalAlignment
   //····················································································································
 
-  var labelHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
+  var nameHorizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
-  var labelHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+  var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
     get {
-      return self.labelHorizontalAlignment_property.prop
+      return self.nameHorizontalAlignment_property.prop
     }
   }
 
@@ -96,14 +96,14 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
-  //   Selection observable property: xLabel
+  //   Selection observable property: xName
   //····················································································································
 
-  var xLabel_property = EBPropertyProxy_Int ()
+  var xName_property = EBPropertyProxy_Int ()
 
-  var xLabel_property_selection : EBSelection <Int> {
+  var xName_property_selection : EBSelection <Int> {
     get {
-      return self.xLabel_property.prop
+      return self.xName_property.prop
     }
   }
 
@@ -132,14 +132,14 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
-  //   Selection observable property: yLabel
+  //   Selection observable property: yName
   //····················································································································
 
-  var yLabel_property = EBPropertyProxy_Int ()
+  var yName_property = EBPropertyProxy_Int ()
 
-  var yLabel_property_selection : EBSelection <Int> {
+  var yName_property_selection : EBSelection <Int> {
     get {
-      return self.yLabel_property.prop
+      return self.yName_property.prop
     }
   }
 
@@ -200,16 +200,16 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     }
     model.addEBObserver (self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_label (model: self.mActualModel)
-    self.bind_property_labelHorizontalAlignment (model: self.mActualModel)
+    self.bind_property_name (model: self.mActualModel)
+    self.bind_property_nameHorizontalAlignment (model: self.mActualModel)
     self.bind_property_numberHorizontalAlignment (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_pinNumberIsVisibleInSchematics (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_xLabel (model: self.mActualModel)
+    self.bind_property_xName (model: self.mActualModel)
     self.bind_property_xNumber (model: self.mActualModel)
     self.bind_property_xPin (model: self.mActualModel)
-    self.bind_property_yLabel (model: self.mActualModel)
+    self.bind_property_yName (model: self.mActualModel)
     self.bind_property_yNumber (model: self.mActualModel)
     self.bind_property_yPin (model: self.mActualModel)
   }
@@ -224,16 +224,16 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //--- issues
     self.issues_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
-  //--- label
-    self.label_property.readModelFunction = nil 
-    self.label_property.writeModelFunction = nil 
-    self.label_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_label (self.label_property)
-  //--- labelHorizontalAlignment
-    self.labelHorizontalAlignment_property.readModelFunction = nil 
-    self.labelHorizontalAlignment_property.writeModelFunction = nil 
-    self.labelHorizontalAlignment_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_labelHorizontalAlignment (self.labelHorizontalAlignment_property)
+  //--- name
+    self.name_property.readModelFunction = nil 
+    self.name_property.writeModelFunction = nil 
+    self.name_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_name (self.name_property)
+  //--- nameHorizontalAlignment
+    self.nameHorizontalAlignment_property.readModelFunction = nil 
+    self.nameHorizontalAlignment_property.writeModelFunction = nil 
+    self.nameHorizontalAlignment_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.readModelFunction = nil 
     self.numberHorizontalAlignment_property.writeModelFunction = nil 
@@ -250,11 +250,11 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- xLabel
-    self.xLabel_property.readModelFunction = nil 
-    self.xLabel_property.writeModelFunction = nil 
-    self.xLabel_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_xLabel (self.xLabel_property)
+  //--- xName
+    self.xName_property.readModelFunction = nil 
+    self.xName_property.writeModelFunction = nil 
+    self.xName_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xName (self.xName_property)
   //--- xNumber
     self.xNumber_property.readModelFunction = nil 
     self.xNumber_property.writeModelFunction = nil 
@@ -265,11 +265,11 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.xPin_property.writeModelFunction = nil 
     self.xPin_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xPin (self.xPin_property)
-  //--- yLabel
-    self.yLabel_property.readModelFunction = nil 
-    self.yLabel_property.writeModelFunction = nil 
-    self.yLabel_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_yLabel (self.yLabel_property)
+  //--- yName
+    self.yName_property.readModelFunction = nil 
+    self.yName_property.writeModelFunction = nil 
+    self.yName_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yName (self.yName_property)
   //--- yNumber
     self.yNumber_property.readModelFunction = nil 
     self.yNumber_property.writeModelFunction = nil 
@@ -321,20 +321,20 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
-      "label",
-      idx:self.label_property.mEasyBindingsObjectIndex,
+      "name",
+      idx:self.name_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.label_property.mObserverExplorer,
-      valueExplorer:&self.label_property.mValueExplorer
+      observerExplorer:&self.name_property.mObserverExplorer,
+      valueExplorer:&self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "labelHorizontalAlignment",
-      idx:self.labelHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      "nameHorizontalAlignment",
+      idx:self.nameHorizontalAlignment_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.labelHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.labelHorizontalAlignment_property.mValueExplorer
+      observerExplorer:&self.nameHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer:&self.nameHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "numberHorizontalAlignment",
@@ -353,12 +353,12 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       valueExplorer:&self.pinNumberIsVisibleInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "xLabel",
-      idx:self.xLabel_property.mEasyBindingsObjectIndex,
+      "xName",
+      idx:self.xName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.xLabel_property.mObserverExplorer,
-      valueExplorer:&self.xLabel_property.mValueExplorer
+      observerExplorer:&self.xName_property.mObserverExplorer,
+      valueExplorer:&self.xName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xNumber",
@@ -377,12 +377,12 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       valueExplorer:&self.xPin_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "yLabel",
-      idx:self.yLabel_property.mEasyBindingsObjectIndex,
+      "yName",
+      idx:self.yName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.yLabel_property.mObserverExplorer,
-      valueExplorer:&self.yLabel_property.mValueExplorer
+      observerExplorer:&self.yName_property.mObserverExplorer,
+      valueExplorer:&self.yName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yNumber",
@@ -493,9 +493,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //···················································································································*
 
-  private final func bind_property_label (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_label (self.label_property)
-    self.label_property.readModelFunction = { [weak self] in
+  private final func bind_property_name (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_name (self.name_property)
+    self.name_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -506,7 +506,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
           var s = Set <String> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.label_property_selection {
+            switch object.name_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -529,26 +529,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.label_property.writeModelFunction = { [weak self] (inValue : String) in
+    self.name_property.writeModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.label_property.setProp (inValue)
+            object.name_property.setProp (inValue)
           }
         }
       }
     }
-    self.label_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+    self.name_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.label_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.name_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -563,9 +563,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //···················································································································*
 
-  private final func bind_property_labelHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_labelHorizontalAlignment (self.labelHorizontalAlignment_property)
-    self.labelHorizontalAlignment_property.readModelFunction = { [weak self] in
+  private final func bind_property_nameHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+    self.nameHorizontalAlignment_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -576,7 +576,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
           var s = Set <HorizontalAlignment> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.labelHorizontalAlignment_property_selection {
+            switch object.nameHorizontalAlignment_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -599,26 +599,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.labelHorizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+    self.nameHorizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.labelHorizontalAlignment_property.setProp (inValue)
+            object.nameHorizontalAlignment_property.setProp (inValue)
           }
         }
       }
     }
-    self.labelHorizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+    self.nameHorizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.labelHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.nameHorizontalAlignment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -853,9 +853,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //···················································································································*
 
-  private final func bind_property_xLabel (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_xLabel (self.xLabel_property)
-    self.xLabel_property.readModelFunction = { [weak self] in
+  private final func bind_property_xName (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_xName (self.xName_property)
+    self.xName_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -866,7 +866,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.xLabel_property_selection {
+            switch object.xName_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -889,26 +889,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.xLabel_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xName_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.xLabel_property.setProp (inValue)
+            object.xName_property.setProp (inValue)
           }
         }
       }
     }
-    self.xLabel_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.xLabel_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.xName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1063,9 +1063,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //···················································································································*
 
-  private final func bind_property_yLabel (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_yLabel (self.yLabel_property)
-    self.yLabel_property.readModelFunction = { [weak self] in
+  private final func bind_property_yName (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_yName (self.yName_property)
+    self.yName_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1076,7 +1076,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.yLabel_property_selection {
+            switch object.yName_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1099,26 +1099,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.yLabel_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yName_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.yLabel_property.setProp (inValue)
+            object.yName_property.setProp (inValue)
           }
         }
       }
     }
-    self.yLabel_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.yLabel_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

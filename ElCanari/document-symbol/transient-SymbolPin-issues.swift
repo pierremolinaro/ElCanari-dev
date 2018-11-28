@@ -14,16 +14,16 @@ import Cocoa
 func transient_SymbolPin_issues (
        _ self_xPin : Int,        
        _ self_yPin : Int,        
-       _ self_xLabel : Int,      
-       _ self_yLabel : Int,      
+       _ self_xName : Int,       
+       _ self_yName : Int,       
        _ self_xNumber : Int,     
        _ self_yNumber : Int,     
-       _ self_label : String
+       _ self_name : String
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  if self_label == "" {
-    issues.appendSymbolEmptyPinNameIssueAt (x:self_xLabel, y: self_yLabel)
+  if self_name == "" {
+    issues.appendSymbolEmptyPinNameIssueAt (x:self_xName, y: self_yName)
   }
   if (self_xPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_xPin, y: self_yPin)
@@ -31,11 +31,11 @@ func transient_SymbolPin_issues (
   if (self_yPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_xPin, y: self_yPin)
   }
-  if (self_xLabel % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolHorizontalIssueAt (x: self_xLabel, y: self_yLabel)
+  if (self_xName % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolHorizontalIssueAt (x: self_xName, y: self_yName)
   }
-  if (self_yLabel % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
-    issues.appendSymbolVerticalIssueAt (x: self_xLabel, y: self_yLabel)
+  if (self_yName % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
+    issues.appendSymbolVerticalIssueAt (x: self_xName, y: self_yName)
   }
   if (self_xNumber % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_xNumber, y: self_yNumber)
@@ -43,7 +43,7 @@ func transient_SymbolPin_issues (
   if (self_yNumber % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_xNumber, y: self_yNumber)
   }
-  return CanariIssueArray (issues: issues)
+  return issues
 //--- END OF USER ZONE 2
 }
 

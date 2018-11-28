@@ -31,7 +31,7 @@ func transient_SymbolOval_issues (
   if (self_height % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolHeightIssueAt (x: self_x, y: self_y, height: self_height)
   }
-  return CanariIssueArray (issues: issues)
+  return issues
 //--- END OF USER ZONE 2
 }
 

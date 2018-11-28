@@ -12,14 +12,14 @@ protocol SymbolPin_yPin : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_xLabel : class {
-  var xLabel : Int { get }
+protocol SymbolPin_xName : class {
+  var xName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_yLabel : class {
-  var yLabel : Int { get }
+protocol SymbolPin_yName : class {
+  var yName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,14 +36,14 @@ protocol SymbolPin_yNumber : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_label : class {
-  var label : String { get }
+protocol SymbolPin_name : class {
+  var name : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_labelHorizontalAlignment : class {
-  var labelHorizontalAlignment : HorizontalAlignment { get }
+protocol SymbolPin_nameHorizontalAlignment : class {
+  var nameHorizontalAlignment : HorizontalAlignment { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -88,12 +88,12 @@ protocol SymbolPin_issues : class {
 
 class SymbolPin : SymbolObject,
          SymbolPin_yPin,
-         SymbolPin_xLabel,
-         SymbolPin_yLabel,
+         SymbolPin_xName,
+         SymbolPin_yName,
          SymbolPin_xNumber,
          SymbolPin_yNumber,
-         SymbolPin_label,
-         SymbolPin_labelHorizontalAlignment,
+         SymbolPin_name,
+         SymbolPin_nameHorizontalAlignment,
          SymbolPin_numberHorizontalAlignment,
          SymbolPin_pinNumberIsVisibleInSchematics,
          SymbolPin_xPin,
@@ -125,49 +125,49 @@ class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-  //   Atomic property: xLabel
+  //   Atomic property: xName
   //····················································································································
 
-  var xLabel_property = EBStoredProperty_Int (915400)
+  var xName_property = EBStoredProperty_Int (915400)
 
   //····················································································································
 
-  var xLabel : Int {
+  var xName : Int {
     get {
-      return self.xLabel_property.propval
+      return self.xName_property.propval
     }
     set {
-      self.xLabel_property.setProp (newValue)
+      self.xName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var xLabel_property_selection : EBSelection <Int> {
-    return self.xLabel_property.prop
+  var xName_property_selection : EBSelection <Int> {
+    return self.xName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: yLabel
+  //   Atomic property: yName
   //····················································································································
 
-  var yLabel_property = EBStoredProperty_Int (1144000)
+  var yName_property = EBStoredProperty_Int (1144000)
 
   //····················································································································
 
-  var yLabel : Int {
+  var yName : Int {
     get {
-      return self.yLabel_property.propval
+      return self.yName_property.propval
     }
     set {
-      self.yLabel_property.setProp (newValue)
+      self.yName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var yLabel_property_selection : EBSelection <Int> {
-    return self.yLabel_property.prop
+  var yName_property_selection : EBSelection <Int> {
+    return self.yName_property.prop
   }
 
   //····················································································································
@@ -217,49 +217,49 @@ class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-  //   Atomic property: label
+  //   Atomic property: name
   //····················································································································
 
-  var label_property = EBStoredProperty_String ("")
+  var name_property = EBStoredProperty_String ("")
 
   //····················································································································
 
-  var label : String {
+  var name : String {
     get {
-      return self.label_property.propval
+      return self.name_property.propval
     }
     set {
-      self.label_property.setProp (newValue)
+      self.name_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var label_property_selection : EBSelection <String> {
-    return self.label_property.prop
+  var name_property_selection : EBSelection <String> {
+    return self.name_property.prop
   }
 
   //····················································································································
-  //   Atomic property: labelHorizontalAlignment
+  //   Atomic property: nameHorizontalAlignment
   //····················································································································
 
-  var labelHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (HorizontalAlignment.center)
+  var nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (HorizontalAlignment.center)
 
   //····················································································································
 
-  var labelHorizontalAlignment : HorizontalAlignment {
+  var nameHorizontalAlignment : HorizontalAlignment {
     get {
-      return self.labelHorizontalAlignment_property.propval
+      return self.nameHorizontalAlignment_property.propval
     }
     set {
-      self.labelHorizontalAlignment_property.setProp (newValue)
+      self.nameHorizontalAlignment_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var labelHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    return self.labelHorizontalAlignment_property.prop
+  var nameHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+    return self.nameHorizontalAlignment_property.prop
   }
 
   //····················································································································
@@ -339,18 +339,18 @@ class SymbolPin : SymbolObject,
     super.init (managedObjectContext:managedObjectContext, file: file, line)
   //--- Atomic property: yPin
     self.yPin_property.undoManager = self.undoManager
-  //--- Atomic property: xLabel
-    self.xLabel_property.undoManager = self.undoManager
-  //--- Atomic property: yLabel
-    self.yLabel_property.undoManager = self.undoManager
+  //--- Atomic property: xName
+    self.xName_property.undoManager = self.undoManager
+  //--- Atomic property: yName
+    self.yName_property.undoManager = self.undoManager
   //--- Atomic property: xNumber
     self.xNumber_property.undoManager = self.undoManager
   //--- Atomic property: yNumber
     self.yNumber_property.undoManager = self.undoManager
-  //--- Atomic property: label
-    self.label_property.undoManager = self.undoManager
-  //--- Atomic property: labelHorizontalAlignment
-    self.labelHorizontalAlignment_property.undoManager = self.undoManager
+  //--- Atomic property: name
+    self.name_property.undoManager = self.undoManager
+  //--- Atomic property: nameHorizontalAlignment
+    self.nameHorizontalAlignment_property.undoManager = self.undoManager
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.undoManager = self.undoManager
   //--- Atomic property: pinNumberIsVisibleInSchematics
@@ -362,12 +362,12 @@ class SymbolPin : SymbolObject,
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xLabel_property_selection.kind ()
-        kind &= unwSelf.yLabel_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.label_property_selection.kind ()
-        kind &= unwSelf.labelHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.name_property_selection.kind ()
+        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
         kind &= g_Preferences!.symbolColor_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
@@ -377,7 +377,7 @@ class SymbolPin : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.label_property_selection, unwSelf.labelHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
             return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
@@ -390,12 +390,12 @@ class SymbolPin : SymbolObject,
     }
     self.xPin_property.addEBObserver (self.objectDisplay_property)
     self.yPin_property.addEBObserver (self.objectDisplay_property)
-    self.xLabel_property.addEBObserver (self.objectDisplay_property)
-    self.yLabel_property.addEBObserver (self.objectDisplay_property)
+    self.xName_property.addEBObserver (self.objectDisplay_property)
+    self.yName_property.addEBObserver (self.objectDisplay_property)
     self.xNumber_property.addEBObserver (self.objectDisplay_property)
     self.yNumber_property.addEBObserver (self.objectDisplay_property)
-    self.label_property.addEBObserver (self.objectDisplay_property)
-    self.labelHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
+    self.name_property.addEBObserver (self.objectDisplay_property)
+    self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
@@ -404,11 +404,11 @@ class SymbolPin : SymbolObject,
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xLabel_property_selection.kind ()
-        kind &= unwSelf.yLabel_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.labelHorizontalAlignment_property_selection.kind ()
+        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -416,7 +416,7 @@ class SymbolPin : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.labelHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection) {
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_SymbolPin_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -429,29 +429,29 @@ class SymbolPin : SymbolObject,
     }
     self.xPin_property.addEBObserver (self.selectionDisplay_property)
     self.yPin_property.addEBObserver (self.selectionDisplay_property)
-    self.xLabel_property.addEBObserver (self.selectionDisplay_property)
-    self.yLabel_property.addEBObserver (self.selectionDisplay_property)
+    self.xName_property.addEBObserver (self.selectionDisplay_property)
+    self.yName_property.addEBObserver (self.selectionDisplay_property)
     self.xNumber_property.addEBObserver (self.selectionDisplay_property)
     self.yNumber_property.addEBObserver (self.selectionDisplay_property)
-    self.labelHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
+    self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
-        kind &= unwSelf.xLabel_property_selection.kind ()
-        kind &= unwSelf.yLabel_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
-        kind &= unwSelf.label_property_selection.kind ()
+        kind &= unwSelf.name_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xLabel_property_selection, unwSelf.yLabel_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.label_property_selection) {
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
             return .single (transient_SymbolPin_issues (v0, v1, v2, v3, v4, v5, v6))
           default :
@@ -464,21 +464,21 @@ class SymbolPin : SymbolObject,
     }
     self.xPin_property.addEBObserver (self.issues_property)
     self.yPin_property.addEBObserver (self.issues_property)
-    self.xLabel_property.addEBObserver (self.issues_property)
-    self.yLabel_property.addEBObserver (self.issues_property)
+    self.xName_property.addEBObserver (self.issues_property)
+    self.yName_property.addEBObserver (self.issues_property)
     self.xNumber_property.addEBObserver (self.issues_property)
     self.yNumber_property.addEBObserver (self.issues_property)
-    self.label_property.addEBObserver (self.issues_property)
+    self.name_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.label_property.setSignatureObserver (observer:self)
-    self.labelHorizontalAlignment_property.setSignatureObserver (observer:self)
+    self.name_property.setSignatureObserver (observer:self)
+    self.nameHorizontalAlignment_property.setSignatureObserver (observer:self)
     self.numberHorizontalAlignment_property.setSignatureObserver (observer:self)
     self.pinNumberIsVisibleInSchematics_property.setSignatureObserver (observer:self)
-    self.xLabel_property.setSignatureObserver (observer:self)
+    self.xName_property.setSignatureObserver (observer:self)
     self.xNumber_property.setSignatureObserver (observer:self)
     self.xPin_property.setSignatureObserver (observer:self)
-    self.yLabel_property.setSignatureObserver (observer:self)
+    self.yName_property.setSignatureObserver (observer:self)
     self.yNumber_property.setSignatureObserver (observer:self)
     self.yPin_property.setSignatureObserver (observer:self)
   }
@@ -489,30 +489,30 @@ class SymbolPin : SymbolObject,
   //--- Remove observers
     self.xPin_property.removeEBObserver (self.objectDisplay_property)
     self.yPin_property.removeEBObserver (self.objectDisplay_property)
-    self.xLabel_property.removeEBObserver (self.objectDisplay_property)
-    self.yLabel_property.removeEBObserver (self.objectDisplay_property)
+    self.xName_property.removeEBObserver (self.objectDisplay_property)
+    self.yName_property.removeEBObserver (self.objectDisplay_property)
     self.xNumber_property.removeEBObserver (self.objectDisplay_property)
     self.yNumber_property.removeEBObserver (self.objectDisplay_property)
-    self.label_property.removeEBObserver (self.objectDisplay_property)
-    self.labelHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
+    self.name_property.removeEBObserver (self.objectDisplay_property)
+    self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.objectDisplay_property)
     self.xPin_property.removeEBObserver (self.selectionDisplay_property)
     self.yPin_property.removeEBObserver (self.selectionDisplay_property)
-    self.xLabel_property.removeEBObserver (self.selectionDisplay_property)
-    self.yLabel_property.removeEBObserver (self.selectionDisplay_property)
+    self.xName_property.removeEBObserver (self.selectionDisplay_property)
+    self.yName_property.removeEBObserver (self.selectionDisplay_property)
     self.xNumber_property.removeEBObserver (self.selectionDisplay_property)
     self.yNumber_property.removeEBObserver (self.selectionDisplay_property)
-    self.labelHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
+    self.nameHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.removeEBObserver (self.selectionDisplay_property)
     self.xPin_property.removeEBObserver (self.issues_property)
     self.yPin_property.removeEBObserver (self.issues_property)
-    self.xLabel_property.removeEBObserver (self.issues_property)
-    self.yLabel_property.removeEBObserver (self.issues_property)
+    self.xName_property.removeEBObserver (self.issues_property)
+    self.yName_property.removeEBObserver (self.issues_property)
     self.xNumber_property.removeEBObserver (self.issues_property)
     self.yNumber_property.removeEBObserver (self.issues_property)
-    self.label_property.removeEBObserver (self.issues_property)
+    self.name_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -530,20 +530,20 @@ class SymbolPin : SymbolObject,
       valueExplorer:&self.yPin_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "xLabel",
-      idx:self.xLabel_property.mEasyBindingsObjectIndex,
+      "xName",
+      idx:self.xName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.xLabel_property.mObserverExplorer,
-      valueExplorer:&self.xLabel_property.mValueExplorer
+      observerExplorer:&self.xName_property.mObserverExplorer,
+      valueExplorer:&self.xName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "yLabel",
-      idx:self.yLabel_property.mEasyBindingsObjectIndex,
+      "yName",
+      idx:self.yName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.yLabel_property.mObserverExplorer,
-      valueExplorer:&self.yLabel_property.mValueExplorer
+      observerExplorer:&self.yName_property.mObserverExplorer,
+      valueExplorer:&self.yName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xNumber",
@@ -562,20 +562,20 @@ class SymbolPin : SymbolObject,
       valueExplorer:&self.yNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "label",
-      idx:self.label_property.mEasyBindingsObjectIndex,
+      "name",
+      idx:self.name_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.label_property.mObserverExplorer,
-      valueExplorer:&self.label_property.mValueExplorer
+      observerExplorer:&self.name_property.mObserverExplorer,
+      valueExplorer:&self.name_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "labelHorizontalAlignment",
-      idx:self.labelHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      "nameHorizontalAlignment",
+      idx:self.nameHorizontalAlignment_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.labelHorizontalAlignment_property.mObserverExplorer,
-      valueExplorer:&self.labelHorizontalAlignment_property.mValueExplorer
+      observerExplorer:&self.nameHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer:&self.nameHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "numberHorizontalAlignment",
@@ -639,24 +639,24 @@ class SymbolPin : SymbolObject,
   //--- Atomic property: yPin
     self.yPin_property.mObserverExplorer = nil
     self.yPin_property.mValueExplorer = nil
-  //--- Atomic property: xLabel
-    self.xLabel_property.mObserverExplorer = nil
-    self.xLabel_property.mValueExplorer = nil
-  //--- Atomic property: yLabel
-    self.yLabel_property.mObserverExplorer = nil
-    self.yLabel_property.mValueExplorer = nil
+  //--- Atomic property: xName
+    self.xName_property.mObserverExplorer = nil
+    self.xName_property.mValueExplorer = nil
+  //--- Atomic property: yName
+    self.yName_property.mObserverExplorer = nil
+    self.yName_property.mValueExplorer = nil
   //--- Atomic property: xNumber
     self.xNumber_property.mObserverExplorer = nil
     self.xNumber_property.mValueExplorer = nil
   //--- Atomic property: yNumber
     self.yNumber_property.mObserverExplorer = nil
     self.yNumber_property.mValueExplorer = nil
-  //--- Atomic property: label
-    self.label_property.mObserverExplorer = nil
-    self.label_property.mValueExplorer = nil
-  //--- Atomic property: labelHorizontalAlignment
-    self.labelHorizontalAlignment_property.mObserverExplorer = nil
-    self.labelHorizontalAlignment_property.mValueExplorer = nil
+  //--- Atomic property: name
+    self.name_property.mObserverExplorer = nil
+    self.name_property.mValueExplorer = nil
+  //--- Atomic property: nameHorizontalAlignment
+    self.nameHorizontalAlignment_property.mObserverExplorer = nil
+    self.nameHorizontalAlignment_property.mValueExplorer = nil
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mObserverExplorer = nil
     self.numberHorizontalAlignment_property.mValueExplorer = nil
@@ -678,18 +678,18 @@ class SymbolPin : SymbolObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: yPin
     self.yPin_property.storeIn (dictionary: ioDictionary, forKey:"yPin")
-  //--- Atomic property: xLabel
-    self.xLabel_property.storeIn (dictionary: ioDictionary, forKey:"xLabel")
-  //--- Atomic property: yLabel
-    self.yLabel_property.storeIn (dictionary: ioDictionary, forKey:"yLabel")
+  //--- Atomic property: xName
+    self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
+  //--- Atomic property: yName
+    self.yName_property.storeIn (dictionary: ioDictionary, forKey:"yName")
   //--- Atomic property: xNumber
     self.xNumber_property.storeIn (dictionary: ioDictionary, forKey:"xNumber")
   //--- Atomic property: yNumber
     self.yNumber_property.storeIn (dictionary: ioDictionary, forKey:"yNumber")
-  //--- Atomic property: label
-    self.label_property.storeIn (dictionary: ioDictionary, forKey:"label")
-  //--- Atomic property: labelHorizontalAlignment
-    self.labelHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"labelHorizontalAlignment")
+  //--- Atomic property: name
+    self.name_property.storeIn (dictionary: ioDictionary, forKey:"name")
+  //--- Atomic property: nameHorizontalAlignment
+    self.nameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"numberHorizontalAlignment")
   //--- Atomic property: pinNumberIsVisibleInSchematics
@@ -707,18 +707,18 @@ class SymbolPin : SymbolObject,
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
   //--- Atomic property: yPin
     self.yPin_property.readFrom (dictionary: inDictionary, forKey:"yPin")
-  //--- Atomic property: xLabel
-    self.xLabel_property.readFrom (dictionary: inDictionary, forKey:"xLabel")
-  //--- Atomic property: yLabel
-    self.yLabel_property.readFrom (dictionary: inDictionary, forKey:"yLabel")
+  //--- Atomic property: xName
+    self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
+  //--- Atomic property: yName
+    self.yName_property.readFrom (dictionary: inDictionary, forKey:"yName")
   //--- Atomic property: xNumber
     self.xNumber_property.readFrom (dictionary: inDictionary, forKey:"xNumber")
   //--- Atomic property: yNumber
     self.yNumber_property.readFrom (dictionary: inDictionary, forKey:"yNumber")
-  //--- Atomic property: label
-    self.label_property.readFrom (dictionary: inDictionary, forKey:"label")
-  //--- Atomic property: labelHorizontalAlignment
-    self.labelHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"labelHorizontalAlignment")
+  //--- Atomic property: name
+    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+  //--- Atomic property: nameHorizontalAlignment
+    self.nameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"numberHorizontalAlignment")
   //--- Atomic property: pinNumberIsVisibleInSchematics
@@ -774,14 +774,14 @@ class SymbolPin : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.label_property.signature ())
-    crc.accumulateUInt32 (self.labelHorizontalAlignment_property.signature ())
+    crc.accumulateUInt32 (self.name_property.signature ())
+    crc.accumulateUInt32 (self.nameHorizontalAlignment_property.signature ())
     crc.accumulateUInt32 (self.numberHorizontalAlignment_property.signature ())
     crc.accumulateUInt32 (self.pinNumberIsVisibleInSchematics_property.signature ())
-    crc.accumulateUInt32 (self.xLabel_property.signature ())
+    crc.accumulateUInt32 (self.xName_property.signature ())
     crc.accumulateUInt32 (self.xNumber_property.signature ())
     crc.accumulateUInt32 (self.xPin_property.signature ())
-    crc.accumulateUInt32 (self.yLabel_property.signature ())
+    crc.accumulateUInt32 (self.yName_property.signature ())
     crc.accumulateUInt32 (self.yNumber_property.signature ())
     crc.accumulateUInt32 (self.yPin_property.signature ())
     return crc
@@ -863,115 +863,115 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
-  //   Observers of 'xLabel' stored property
+  //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_xLabel = EBWeakEventSet ()
+  private var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_xLabel (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_xLabel.insert (inObserver)
+    mObserversOf_xName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xLabel_property.addEBObserver (inObserver)
+        managedObject.xName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xLabel (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_xName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_xLabel.remove (inObserver)
+    mObserversOf_xName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xLabel_property.removeEBObserver (inObserver)
+        managedObject.xName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_xLabel_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+  final func addEBObserversOf_xName_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_xLabel {
-        managedObject.xLabel_property.addEBObserver (observer)
+      for observer in mObserversOf_xName {
+        managedObject.xName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_xLabel_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_xLabel {
+  final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for observer in mObserversOf_xName {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.xLabel_property.removeEBObserver (observer)
+        managedObject.xName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'yLabel' stored property
+  //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_yLabel = EBWeakEventSet ()
+  private var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_yLabel (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yLabel.insert (inObserver)
+    mObserversOf_yName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yLabel_property.addEBObserver (inObserver)
+        managedObject.yName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yLabel (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_yName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yLabel.remove (inObserver)
+    mObserversOf_yName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yLabel_property.removeEBObserver (inObserver)
+        managedObject.yName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_yLabel_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+  final func addEBObserversOf_yName_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yLabel {
-        managedObject.yLabel_property.addEBObserver (observer)
+      for observer in mObserversOf_yName {
+        managedObject.yName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_yLabel_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_yLabel {
+  final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for observer in mObserversOf_yName {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.yLabel_property.removeEBObserver (observer)
+        managedObject.yName_property.removeEBObserver (observer)
       }
     }
   }
@@ -1091,115 +1091,115 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
-  //   Observers of 'label' stored property
+  //   Observers of 'name' stored property
   //····················································································································
 
-  private var mObserversOf_label = EBWeakEventSet ()
+  private var mObserversOf_name = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_label (_ inObserver : EBEvent) {
+  final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_label.insert (inObserver)
+    mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.label_property.addEBObserver (inObserver)
+        managedObject.name_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_label (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_label.remove (inObserver)
+    mObserversOf_name.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.label_property.removeEBObserver (inObserver)
+        managedObject.name_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_label_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+  final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_label {
-        managedObject.label_property.addEBObserver (observer)
+      for observer in mObserversOf_name {
+        managedObject.name_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_label_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_label {
+  final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for observer in mObserversOf_name {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.label_property.removeEBObserver (observer)
+        managedObject.name_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'labelHorizontalAlignment' stored property
+  //   Observers of 'nameHorizontalAlignment' stored property
   //····················································································································
 
-  private var mObserversOf_labelHorizontalAlignment = EBWeakEventSet ()
+  private var mObserversOf_nameHorizontalAlignment = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_labelHorizontalAlignment (_ inObserver : EBEvent) {
+  final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_labelHorizontalAlignment.insert (inObserver)
+    mObserversOf_nameHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.labelHorizontalAlignment_property.addEBObserver (inObserver)
+        managedObject.nameHorizontalAlignment_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_labelHorizontalAlignment (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_labelHorizontalAlignment.remove (inObserver)
+    mObserversOf_nameHorizontalAlignment.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.labelHorizontalAlignment_property.removeEBObserver (inObserver)
+        managedObject.nameHorizontalAlignment_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_labelHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+  final func addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_labelHorizontalAlignment {
-        managedObject.labelHorizontalAlignment_property.addEBObserver (observer)
+      for observer in mObserversOf_nameHorizontalAlignment {
+        managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_labelHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_labelHorizontalAlignment {
+  final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for observer in mObserversOf_nameHorizontalAlignment {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.labelHorizontalAlignment_property.removeEBObserver (observer)
+        managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
       }
     }
   }
@@ -1599,12 +1599,12 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         let removedSet = mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_yPin_fromElementsOfSet (removedSet)
-        removeEBObserversOf_xLabel_fromElementsOfSet (removedSet)
-        removeEBObserversOf_yLabel_fromElementsOfSet (removedSet)
+        removeEBObserversOf_xName_fromElementsOfSet (removedSet)
+        removeEBObserversOf_yName_fromElementsOfSet (removedSet)
         removeEBObserversOf_xNumber_fromElementsOfSet (removedSet)
         removeEBObserversOf_yNumber_fromElementsOfSet (removedSet)
-        removeEBObserversOf_label_fromElementsOfSet (removedSet)
-        removeEBObserversOf_labelHorizontalAlignment_fromElementsOfSet (removedSet)
+        removeEBObserversOf_name_fromElementsOfSet (removedSet)
+        removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedSet)
         removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedSet)
         removeEBObserversOf_pinNumberIsVisibleInSchematics_fromElementsOfSet (removedSet)
         removeEBObserversOf_xPin_fromElementsOfSet (removedSet)
@@ -1616,12 +1616,12 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
         addEBObserversOf_yPin_toElementsOfSet (addedSet)
-        addEBObserversOf_xLabel_toElementsOfSet (addedSet)
-        addEBObserversOf_yLabel_toElementsOfSet (addedSet)
+        addEBObserversOf_xName_toElementsOfSet (addedSet)
+        addEBObserversOf_yName_toElementsOfSet (addedSet)
         addEBObserversOf_xNumber_toElementsOfSet (addedSet)
         addEBObserversOf_yNumber_toElementsOfSet (addedSet)
-        addEBObserversOf_label_toElementsOfSet (addedSet)
-        addEBObserversOf_labelHorizontalAlignment_toElementsOfSet (addedSet)
+        addEBObserversOf_name_toElementsOfSet (addedSet)
+        addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedSet)
         addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedSet)
         addEBObserversOf_pinNumberIsVisibleInSchematics_toElementsOfSet (addedSet)
         addEBObserversOf_xPin_toElementsOfSet (addedSet)
@@ -1740,12 +1740,12 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           self.setOppositeRelationship? (nil)
         }
         removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_xLabel_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_yLabel_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_label_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_labelHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_pinNumberIsVisibleInSchematics_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
@@ -1759,12 +1759,12 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           self.setOppositeRelationship? (managedObject)
         }
         addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_xLabel_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_yLabel_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
         addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
         addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_label_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_labelHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
         addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
         addEBObserversOf_pinNumberIsVisibleInSchematics_toElementsOfSet (addedObjectSet)
         addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
