@@ -39,6 +39,9 @@ func transient_SymbolRoot_issues (
         }
         idx += 1
       }
+      if self_symbolPins_name.count == 0 {
+        issues.appendSymbolNoPinNameIssue ()
+      }
       for optionalIssueArray in self_symbolObjects_issues {
         if let issueArray = optionalIssueArray.issues {
           issues += issueArray

@@ -55,6 +55,12 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
+  mutating func appendSymbolNoPinNameIssue () {
+    self.append (CanariIssue (kind: .warning, message: "No Pin", path: NSBezierPath ()))
+  }
+
+  //····················································································································
+
   mutating func appendSymbolHorizontalIssueAt (x: Int, y: Int) {
     let r = NSRect (
       x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,

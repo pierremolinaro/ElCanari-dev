@@ -1632,7 +1632,6 @@
 		CFCD1F5E21A1CBB200A8297B /* document-symbol */ = {
 			isa = PBXGroup;
 			children = (
-				CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */,
 				CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */,
 				CF5632BF21A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift */,
 				CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */,
@@ -1664,6 +1663,7 @@
 				CFE85A7F21A5BBE600991A66 /* transient-SymbolOval-objectDisplay.swift */,
 				CFE85A7C21A5BBE600991A66 /* transient-SymbolOval-selectionDisplay.swift */,
 				CF05C9B121A809AC0021652C /* transient-SymbolPin-issues.swift */,
+				CFD3B2BB21B04977007D3361 /* transient-SymbolPin-nameRect.swift */,
 				CF69ABCB21A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift */,
 				CF69ABCA21A6C08000F5E49A /* transient-SymbolPin-selectionDisplay.swift */,
 				CFE9B7E721A81533005990D1 /* transient-SymbolRoot-issues.swift */,
