@@ -61,12 +61,24 @@ struct CanariIssue : Hashable {
   }
 
   //····················································································································
-  //
+  // Bezier path center point
+  //····················································································································
+
+  var center : NSPoint {
+    if self.mPath.elementCount == 0 {
+      return NSPoint ()
+    }else{
+      return NSPoint (x: self.mPath.bounds.midX, y: self.mPath.bounds.midY)
+    }
+  }
+
+  //····················································································································
+  // Sorting
   //····················································································································
 
   public static func displaySortingCompare (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
-    let lP = NSPoint (x: lhs.mPath.bounds.midX, y: lhs.mPath.bounds.midY)
-    let rP = NSPoint (x: rhs.mPath.bounds.midX, y: rhs.mPath.bounds.midY)
+    let lP = lhs.center
+    let rP = rhs.center
     return (lP.x < rP.x) || ((lP.x == rP.x) && (lP.y < rP.y))
   }
 

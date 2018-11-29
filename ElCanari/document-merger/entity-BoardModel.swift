@@ -526,6 +526,7 @@ class BoardModel : EBManagedObject,
   var frontLegendLines_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontLegendLines_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontLegendLines_property.prop
   }
@@ -537,6 +538,7 @@ class BoardModel : EBManagedObject,
   var backLegendLines_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backLegendLines_property_selection : EBSelection < [SegmentEntity] > {
       return self.backLegendLines_property.prop
   }
@@ -548,6 +550,7 @@ class BoardModel : EBManagedObject,
   var frontLegendTexts_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontLegendTexts_property.prop
   }
@@ -559,6 +562,7 @@ class BoardModel : EBManagedObject,
   var frontLayoutTexts_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontLayoutTexts_property.prop
   }
@@ -570,6 +574,7 @@ class BoardModel : EBManagedObject,
   var backLegendTexts_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backLegendTexts_property_selection : EBSelection < [SegmentEntity] > {
       return self.backLegendTexts_property.prop
   }
@@ -581,6 +586,7 @@ class BoardModel : EBManagedObject,
   var backLayoutTexts_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backLayoutTexts_property_selection : EBSelection < [SegmentEntity] > {
       return self.backLayoutTexts_property.prop
   }
@@ -592,6 +598,7 @@ class BoardModel : EBManagedObject,
   var internalBoardsLimits_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var internalBoardsLimits_property_selection : EBSelection < [SegmentEntity] > {
       return self.internalBoardsLimits_property.prop
   }
@@ -603,6 +610,7 @@ class BoardModel : EBManagedObject,
   var drills_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var drills_property_selection : EBSelection < [SegmentEntity] > {
       return self.drills_property.prop
   }
@@ -614,6 +622,7 @@ class BoardModel : EBManagedObject,
   var vias_property = StoredArrayOf_BoardModelVia ()
 
   //····················································································································
+
   var vias_property_selection : EBSelection < [BoardModelVia] > {
       return self.vias_property.prop
   }
@@ -625,6 +634,7 @@ class BoardModel : EBManagedObject,
   var frontPads_property = StoredArrayOf_BoardModelPad ()
 
   //····················································································································
+
   var frontPads_property_selection : EBSelection < [BoardModelPad] > {
       return self.frontPads_property.prop
   }
@@ -636,6 +646,7 @@ class BoardModel : EBManagedObject,
   var backPads_property = StoredArrayOf_BoardModelPad ()
 
   //····················································································································
+
   var backPads_property_selection : EBSelection < [BoardModelPad] > {
       return self.backPads_property.prop
   }
@@ -693,6 +704,7 @@ class BoardModel : EBManagedObject,
   var backComponentNames_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backComponentNames_property_selection : EBSelection < [SegmentEntity] > {
       return self.backComponentNames_property.prop
   }
@@ -704,6 +716,7 @@ class BoardModel : EBManagedObject,
   var frontComponentNames_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontComponentNames_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontComponentNames_property.prop
   }
@@ -715,6 +728,7 @@ class BoardModel : EBManagedObject,
   var frontComponentValues_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontComponentValues_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontComponentValues_property.prop
   }
@@ -726,6 +740,7 @@ class BoardModel : EBManagedObject,
   var backComponentValues_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backComponentValues_property_selection : EBSelection < [SegmentEntity] > {
       return self.backComponentValues_property.prop
   }
@@ -737,6 +752,7 @@ class BoardModel : EBManagedObject,
   var backTracks_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backTracks_property_selection : EBSelection < [SegmentEntity] > {
       return self.backTracks_property.prop
   }
@@ -748,6 +764,7 @@ class BoardModel : EBManagedObject,
   var frontTracks_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontTracks_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontTracks_property.prop
   }
@@ -759,6 +776,7 @@ class BoardModel : EBManagedObject,
   var frontPackages_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var frontPackages_property_selection : EBSelection < [SegmentEntity] > {
       return self.frontPackages_property.prop
   }
@@ -770,6 +788,7 @@ class BoardModel : EBManagedObject,
   var backPackages_property = StoredArrayOf_SegmentEntity ()
 
   //····················································································································
+
   var backPackages_property_selection : EBSelection < [SegmentEntity] > {
       return self.backPackages_property.prop
   }
@@ -804,6 +823,7 @@ class BoardModel : EBManagedObject,
   var myInstances_property = StoredArrayOf_MergerBoardInstance ()
 
   //····················································································································
+
   var myInstances_property_selection : EBSelection < [MergerBoardInstance] > {
       return self.myInstances_property.prop
   }
@@ -4628,25 +4648,45 @@ class BoardModel : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: frontLegendLines
     self.frontLegendLines_property.setProp ([])
+  //--- To many property: backLegendLines
     self.backLegendLines_property.setProp ([])
+  //--- To many property: frontLegendTexts
     self.frontLegendTexts_property.setProp ([])
+  //--- To many property: frontLayoutTexts
     self.frontLayoutTexts_property.setProp ([])
+  //--- To many property: backLegendTexts
     self.backLegendTexts_property.setProp ([])
+  //--- To many property: backLayoutTexts
     self.backLayoutTexts_property.setProp ([])
+  //--- To many property: internalBoardsLimits
     self.internalBoardsLimits_property.setProp ([])
+  //--- To many property: drills
     self.drills_property.setProp ([])
+  //--- To many property: vias
     self.vias_property.setProp ([])
+  //--- To many property: frontPads
     self.frontPads_property.setProp ([])
+  //--- To many property: backPads
     self.backPads_property.setProp ([])
+  //--- To many property: backComponentNames
     self.backComponentNames_property.setProp ([])
+  //--- To many property: frontComponentNames
     self.frontComponentNames_property.setProp ([])
+  //--- To many property: frontComponentValues
     self.frontComponentValues_property.setProp ([])
+  //--- To many property: backComponentValues
     self.backComponentValues_property.setProp ([])
+  //--- To many property: backTracks
     self.backTracks_property.setProp ([])
+  //--- To many property: frontTracks
     self.frontTracks_property.setProp ([])
+  //--- To many property: frontPackages
     self.frontPackages_property.setProp ([])
+  //--- To many property: backPackages
     self.backPackages_property.setProp ([])
+  //--- To many property: myInstances
     self.myInstances_property.setProp ([])
   }
 

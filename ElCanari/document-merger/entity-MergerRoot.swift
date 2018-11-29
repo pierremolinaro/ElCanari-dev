@@ -213,6 +213,7 @@ class MergerRoot : EBManagedObject,
   var boardModels_property = StoredArrayOf_BoardModel ()
 
   //····················································································································
+
   var boardModels_property_selection : EBSelection < [BoardModel] > {
       return self.boardModels_property.prop
   }
@@ -224,6 +225,7 @@ class MergerRoot : EBManagedObject,
   var boardInstances_property = StoredArrayOf_MergerBoardInstance ()
 
   //····················································································································
+
   var boardInstances_property_selection : EBSelection < [MergerBoardInstance] > {
       return self.boardInstances_property.prop
   }
@@ -1666,7 +1668,9 @@ class MergerRoot : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: boardModels
     self.boardModels_property.setProp ([])
+  //--- To many property: boardInstances
     self.boardInstances_property.setProp ([])
   }
 

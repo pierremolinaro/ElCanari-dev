@@ -176,7 +176,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //····················································································································
 
-  func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file:String, line:Int) {
+  func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
     self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
       if let model = self?.mModel {
@@ -307,7 +307,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
-    mValueExplorer = valueExplorer
+    self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
   }
   
@@ -316,7 +316,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   func buildExplorerWindow () {
   //-------------------------------------------------- Create Window
     let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
+    self.mExplorerWindow = NSWindow (contentRect: r, styleMask: [.titled, .closable], backing: .buffered, defer: true, screen: nil)
   //-------------------------------------------------- Adding properties
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
@@ -405,20 +405,20 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
     view.frame = viewFrame
   //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
   //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
+    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
-    mExplorerWindow!.title = windowTitle
+    self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
     let sw = NSScrollView (frame:frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
-    mExplorerWindow!.contentView = sw
+    self.mExplorerWindow!.contentView = sw
   }
 
   //····················································································································
@@ -426,10 +426,10 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   @objc func showObjectWindowFromExplorerButton (_ : Any) {
-    if mExplorerWindow == nil {
-      buildExplorerWindow ()
+    if self.mExplorerWindow == nil {
+      self.buildExplorerWindow ()
     }
-    mExplorerWindow?.makeKeyAndOrderFront(nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront(nil)
   }
   
   //····················································································································
@@ -445,8 +445,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //····················································································································
 
   func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton!.target = nil
+    if let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton) {
+      closeButton.target = nil
+    }
     self.mExplorerWindow?.orderOut (nil)
     self.mExplorerWindow = nil
   }

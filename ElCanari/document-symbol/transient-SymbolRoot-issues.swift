@@ -12,10 +12,14 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SymbolRoot_issues (
-       _ self_symbolObjects_issues : [SymbolObject_issues]
+       _ self_symbolObjects_issues : [SymbolObject_issues],
+       _ self_symbolPins_name : [SymbolPin_name]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
       var issues = [CanariIssue] ()
+      for name in self_symbolPins_name {
+        issues.append (CanariIssue (kind: .warning, message: "Pin Name: " + name.name, path: NSBezierPath ()))
+      }
       for optionalIssueArray in self_symbolObjects_issues {
         if let issueArray = optionalIssueArray.issues {
           issues += issueArray

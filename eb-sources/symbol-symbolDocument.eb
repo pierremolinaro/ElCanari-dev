@@ -1,6 +1,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 document SymbolDocument root SymbolRoot {
+#--- pin names and location
+#  transient CanariIssueArray pinNameAndErrorLocationArray dependsFrom root.symbolObjects.all.SymbolPin.name ;
+
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;

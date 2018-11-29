@@ -98,6 +98,7 @@ class FontCharacter : EBManagedObject,
   var segments_property = StoredArrayOf_SegmentForFontCharacter ()
 
   //····················································································································
+
   var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
       return self.segments_property.prop
   }
@@ -417,6 +418,7 @@ class FontCharacter : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: segments
     self.segments_property.setProp ([])
   }
 

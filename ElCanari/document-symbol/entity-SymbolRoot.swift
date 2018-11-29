@@ -211,8 +211,21 @@ class SymbolRoot : EBManagedObject,
   var symbolObjects_property = StoredArrayOf_SymbolObject ()
 
   //····················································································································
+
   var symbolObjects_property_selection : EBSelection < [SymbolObject] > {
       return self.symbolObjects_property.prop
+  }
+
+  //····················································································································
+  //   To many property: symbolPins
+  //····················································································································
+
+  var symbolPins_property = TransientArrayOf_SymbolPin ()
+
+  //····················································································································
+
+  var symbolPins_property_selection : EBSelection < [SymbolPin] > {
+      return self.symbolPins_property.prop
   }
 
   //····················································································································
@@ -281,21 +294,24 @@ class SymbolRoot : EBManagedObject,
     self.gridStep_property.undoManager = self.undoManager
   //--- To many property: symbolObjects
     self.symbolObjects_property.undoManager = self.undoManager
+  //--- To many property: symbolPins
+    self.symbolPins_property.undoManager = self.undoManager
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.symbolObjects_property_selection.kind ()
+        var kind = unwSelf.symbolObjects_property_selection.kind ()
+        kind &= unwSelf.symbolPins_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolObjects_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_SymbolRoot_issues (v0))
+          switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_SymbolRoot_issues (v0, v1))
           default :
             return .empty
           }
@@ -305,8 +321,31 @@ class SymbolRoot : EBManagedObject,
       }
     }
     self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
+    self.symbolPins_property.addEBObserverOf_name (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.symbolObjects_property.undoManager = self.undoManager
+    self.symbolPins_property.undoManager = self.undoManager
+    self.symbolObjects_property.addEBObserver (self.symbolPins_property)
+    self.symbolPins_property.readModelFunction =  { [weak self] in
+      if let model = self?.symbolObjects_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          var array = [SymbolPin] ()
+          for baseObject in modelArray {
+            if let object = baseObject as? SymbolPin {
+              array.append (object)
+            }
+          }
+          return .single (array)
+        }
+      }else{
+        return .empty
+      }
+    }
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.symbolObjects_property.setSignatureObserver (observer:self)
@@ -316,7 +355,10 @@ class SymbolRoot : EBManagedObject,
 
   deinit {
   //--- Remove observers
+  //--- To many property: symbolPins
+    self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
     self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
+    self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
   }
 
   //····················································································································
@@ -458,6 +500,12 @@ class SymbolRoot : EBManagedObject,
       relationshipName: "symbolObjects",
       intoDictionary: ioDictionary
     )
+  //--- To many property: symbolPins
+    self.store (
+      managedObjectArray: symbolPins_property.propval as NSArray,
+      relationshipName: "symbolPins",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
   }
@@ -520,6 +568,7 @@ class SymbolRoot : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: symbolObjects
     self.symbolObjects_property.setProp ([])
   }
 
@@ -539,6 +588,10 @@ class SymbolRoot : EBManagedObject,
     super.accessibleObjects (objects: &objects)
   //--- To many property: symbolObjects
     for managedObject : EBManagedObject in self.symbolObjects_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: symbolPins
+    for managedObject : EBManagedObject in self.symbolPins_property.propval {
       objects.append (managedObject)
     }
   }

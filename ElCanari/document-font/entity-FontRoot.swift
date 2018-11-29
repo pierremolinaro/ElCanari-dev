@@ -172,6 +172,7 @@ class FontRoot : EBManagedObject,
   var characters_property = StoredArrayOf_FontCharacter ()
 
   //····················································································································
+
   var characters_property_selection : EBSelection < [FontCharacter] > {
       return self.characters_property.prop
   }
@@ -642,6 +643,7 @@ class FontRoot : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: characters
     self.characters_property.setProp ([])
   }
 

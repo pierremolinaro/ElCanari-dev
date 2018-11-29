@@ -347,6 +347,7 @@ class ArtworkRoot : EBManagedObject,
   var fileGenerationParameterArray_property = StoredArrayOf_ArtworkFileGenerationParameters ()
 
   //····················································································································
+
   var fileGenerationParameterArray_property_selection : EBSelection < [ArtworkFileGenerationParameters] > {
       return self.fileGenerationParameterArray_property.prop
   }
@@ -652,6 +653,7 @@ class ArtworkRoot : EBManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
+  //--- To many property: fileGenerationParameterArray
     self.fileGenerationParameterArray_property.setProp ([])
   }
 
