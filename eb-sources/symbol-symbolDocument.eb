@@ -29,9 +29,6 @@ document SymbolDocument root SymbolRoot {
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
   outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
 
-#--- Display Inspector
- # outlet CanariViewWithKeyView mDisplayInspectorView ;
-
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
   outlet CanariDragSourceButton mAddBezierButton ;
@@ -95,9 +92,6 @@ document SymbolDocument root SymbolRoot {
 
   outlet EBButton mDeselectIssueButton ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;
-
-#-------------------------- Page : Messages
-  outlet CanariViewWithKeyView mMessagesPageView ;
 
 #-------------------------- Page : Infos
   outlet CanariViewWithKeyView mInfosPageView ;

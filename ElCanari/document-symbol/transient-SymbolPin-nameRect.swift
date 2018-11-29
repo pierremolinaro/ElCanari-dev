@@ -11,43 +11,30 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolRoot_issues (
-       _ self_symbolObjects_issues : [SymbolObject_issues],
-       _ self_symbolPins_name : [SymbolPin_name],
-       _ self_symbolPins_nameRect : [SymbolPin_nameRect]
-) -> CanariIssueArray {
+func transient_SymbolPin_nameRect (
+       _ self_xName : Int,         
+       _ self_yName : Int,         
+       _ self_name : String,       
+       _ self_nameHorizontalAlignment : HorizontalAlignment,
+       _ prefs_pinNameFont : NSFont
+) -> NSRect {
 //--- START OF USER ZONE 2
-    //--- Inventory of all non empty names, with thier occurrence count
-      var dict = [String : Int] ()
-      for pin in self_symbolPins_name {
-        let name = pin.name
-        if name != "" {
-          if let n = dict [name] {
-            dict [name] = n + 1
-          }else{
-            dict [name] = 1
-          }
-        }
-      }
-    //--- Detect duplicated pin names
-      var issues = [CanariIssue] ()
-      var idx = 0
-      while idx < self_symbolPins_name.count {
-        let name = self_symbolPins_name [idx].name
-        if let n = dict [name], n > 1, let rect = self_symbolPins_nameRect [idx].nameRect {
-          issues.appendSymbolDuplicatedPinNameIssueAt (rect: rect)
-        }
-        idx += 1
-      }
-      for optionalIssueArray in self_symbolObjects_issues {
-        if let issueArray = optionalIssueArray.issues {
-          issues += issueArray
-        }
-      }
-    //-------------------- Sort issues
-      issues.sort (by: CanariIssue.displaySortingCompare)
-    //---
-      return issues
+    var nameOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
+    let displayName = (self_name == "") ? "?" : self_name
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : prefs_pinNameFont
+    ]
+    let s = displayName.size (withAttributes: textAttributes)
+    nameOrigin.y -= s.height / 2.0
+    switch self_nameHorizontalAlignment {
+    case .right :
+      ()
+    case .center :
+      nameOrigin.x -= s.width / 2.0
+    case .left :
+      nameOrigin.x -= s.width
+    }
+    return NSRect (origin: nameOrigin, size: s)
 //--- END OF USER ZONE 2
 }
 

@@ -83,6 +83,12 @@ protocol SymbolPin_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPin_nameRect : class {
+  var nameRect : NSRect? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -99,7 +105,8 @@ class SymbolPin : SymbolObject,
          SymbolPin_xPin,
          SymbolPin_objectDisplay,
          SymbolPin_selectionDisplay,
-         SymbolPin_issues {
+         SymbolPin_issues,
+         SymbolPin_nameRect {
 
   //····················································································································
   //   Atomic property: yPin
@@ -332,6 +339,29 @@ class SymbolPin : SymbolObject,
   }
 
   //····················································································································
+  //   Transient property: nameRect
+  //····················································································································
+
+  var nameRect_property = EBTransientProperty_NSRect ()
+
+  //····················································································································
+
+  var nameRect_property_selection : EBSelection <NSRect> {
+    return self.nameRect_property.prop
+  }
+
+  //····················································································································
+
+    var nameRect : NSRect? {
+    switch self.nameRect_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -469,6 +499,36 @@ class SymbolPin : SymbolObject,
     self.xNumber_property.addEBObserver (self.issues_property)
     self.yNumber_property.addEBObserver (self.issues_property)
     self.name_property.addEBObserver (self.issues_property)
+  //--- Atomic property: nameRect
+    self.nameRect_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
+        kind &= unwSelf.name_property_selection.kind ()
+        kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
+        kind &= g_Preferences!.pinNameFont_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_SymbolPin_nameRect (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xName_property.addEBObserver (self.nameRect_property)
+    self.yName_property.addEBObserver (self.nameRect_property)
+    self.name_property.addEBObserver (self.nameRect_property)
+    self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.name_property.setSignatureObserver (observer:self)
@@ -513,6 +573,11 @@ class SymbolPin : SymbolObject,
     self.xNumber_property.removeEBObserver (self.issues_property)
     self.yNumber_property.removeEBObserver (self.issues_property)
     self.name_property.removeEBObserver (self.issues_property)
+    self.xName_property.removeEBObserver (self.nameRect_property)
+    self.yName_property.removeEBObserver (self.nameRect_property)
+    self.name_property.removeEBObserver (self.nameRect_property)
+    self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
   }
 
   //····················································································································
@@ -625,6 +690,14 @@ class SymbolPin : SymbolObject,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "nameRect",
+      idx:self.nameRect_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.nameRect_property.mObserverExplorer,
+      valueExplorer:&self.nameRect_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -1544,6 +1617,62 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
+  //   Observers of 'nameRect' transient property
+  //····················································································································
+
+  private var mObserversOf_nameRect = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_nameRect (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_nameRect.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nameRect_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_nameRect (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_nameRect.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nameRect_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_nameRect {
+        managedObject.nameRect_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_nameRect {
+        managedObject.nameRect_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1612,6 +1741,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
         removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+        removeEBObserversOf_nameRect_fromElementsOfSet (removedSet)
       //--- Added object set
         let addedSet = newSet.subtracting (mSet)
        //--- Add observers of stored properties
@@ -1629,6 +1759,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
         addEBObserversOf_issues_toElementsOfSet (addedSet)
+        addEBObserversOf_nameRect_toElementsOfSet (addedSet)
       //--- Update object set
         mSet = newSet
       }
@@ -1752,6 +1883,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = mSet.subtracting (oldSet)
         for managedObject : SymbolPin in addedObjectSet {
@@ -1771,6 +1903,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         clearSignatureCache ()
       }

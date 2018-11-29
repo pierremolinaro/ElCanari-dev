@@ -48,6 +48,18 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
+  //   Selection observable property: nameRect
+  //····················································································································
+
+  var nameRect_property = EBTransientProperty_NSRect ()
+
+  var nameRect_property_selection : EBSelection <NSRect> {
+    get {
+      return self.nameRect_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: numberHorizontalAlignment
   //····················································································································
 
@@ -202,6 +214,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.bind_property_issues (model: self.mActualModel)
     self.bind_property_name (model: self.mActualModel)
     self.bind_property_nameHorizontalAlignment (model: self.mActualModel)
+    self.bind_property_nameRect (model: self.mActualModel)
     self.bind_property_numberHorizontalAlignment (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_pinNumberIsVisibleInSchematics (model: self.mActualModel)
@@ -234,6 +247,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.nameHorizontalAlignment_property.writeModelFunction = nil 
     self.nameHorizontalAlignment_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
+  //--- nameRect
+    self.nameRect_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_nameRect (self.nameRect_property)
   //--- numberHorizontalAlignment
     self.numberHorizontalAlignment_property.readModelFunction = nil 
     self.numberHorizontalAlignment_property.writeModelFunction = nil 
@@ -628,6 +644,46 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_nameRect (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_nameRect (self.nameRect_property)
+    self.nameRect_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSRect> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.nameRect_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

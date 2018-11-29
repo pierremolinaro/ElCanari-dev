@@ -24,6 +24,9 @@ func transient_SymbolText_issues (
   if (self_y % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolVerticalIssueAt (x: self_x, y: self_y)
   }
+  if self_text == "" {
+    issues.appendSymbolEmptyTextIssueAt (x: self_x, y: self_y)
+  }
   return issues
 //--- END OF USER ZONE 2
 }

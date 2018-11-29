@@ -51,7 +51,7 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Set pages segmented control
-    let pages = [self.mSymbolPageView, self.mMessagesPageView, self.mInfosPageView]
+    let pages = [self.mSymbolPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
     let inspectors = [self.mSymbolBaseInspectorView, self.mSymbolZoomFlipInspectorView, self.mSymbolIssueInspectorView]

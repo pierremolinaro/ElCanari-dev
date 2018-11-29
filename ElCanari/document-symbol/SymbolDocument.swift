@@ -118,7 +118,6 @@ import Cocoa
   @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mMasterView : NSView?
-  @IBOutlet var mMessagesPageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinInspectorView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
@@ -480,21 +479,6 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mMasterView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMessagesPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMessagesPageView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMessagesPageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mPageSegmentedControl {
@@ -934,7 +918,6 @@ import Cocoa
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
-    self.mMessagesPageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinInspectorView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()

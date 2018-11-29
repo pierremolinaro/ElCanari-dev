@@ -1676,6 +1676,14 @@ typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyVa
 typealias EBReadOnlyProperty_SymbolPinNameAndErrorLocationArray  = EBReadOnlyValueProperty <SymbolPinNameAndErrorLocationArray>
 typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientValueProperty <SymbolPinNameAndErrorLocationArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property NSRect
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_NSRect = EBReadOnlyValueController <NSRect>
+
+typealias EBReadOnlyProperty_NSRect  = EBReadOnlyValueProperty <NSRect>
+typealias EBTransientProperty_NSRect = EBTransientValueProperty <NSRect>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
