@@ -376,6 +376,7 @@ class CanariViewWithZoomAndFlip : EBView {
     let endX = r.maxX
     let startY = (r.origin.y / gridDisplayStep).rounded (.down) * gridDisplayStep
     let endY = r.maxY
+    let displayOffset = 0.5 / self.actualScale ()
     switch self.mGridStyle {
     case .noGrid :
       ()
@@ -387,10 +388,10 @@ class CanariViewWithZoomAndFlip : EBView {
       while x <= endX {
         var y = startY
         while y <= endY {
-          bp.move (to: NSPoint (x: x - 0.5, y: y))
-          bp.line (to: NSPoint (x: x + 0.5, y: y))
-          bp.move (to: NSPoint (x: x,       y: y + 0.5))
-          bp.line (to: NSPoint (x: x,       y: y - 0.5))
+          bp.move (to: NSPoint (x: x - 0.5 + displayOffset, y: y + displayOffset))
+          bp.line (to: NSPoint (x: x + 0.5 + displayOffset, y: y + displayOffset))
+          bp.move (to: NSPoint (x: x + displayOffset,       y: y + 0.5 + displayOffset))
+          bp.line (to: NSPoint (x: x + displayOffset,       y: y - 0.5 + displayOffset))
           y += gridDisplayStep
         }
         x += gridDisplayStep
@@ -399,18 +400,18 @@ class CanariViewWithZoomAndFlip : EBView {
       bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
-      bp.lineWidth = 0.0
+      bp.lineWidth = 0.0 // 1.0 / self.actualScale ()
       bp.lineCapStyle = .round
       var x = startX
       while x <= r.maxX {
-        bp.move (to: NSPoint (x: x, y: startY))
-        bp.line (to: NSPoint (x: x, y: endY))
+        bp.move (to: NSPoint (x: x + displayOffset, y: startY + displayOffset))
+        bp.line (to: NSPoint (x: x + displayOffset, y: endY + displayOffset))
         x += gridDisplayStep
       }
       var y = startY
       while y <= endY {
-        bp.move (to: NSPoint (x: startX, y: y))
-        bp.line (to: NSPoint (x: endX,   y: y))
+        bp.move (to: NSPoint (x: startX + displayOffset, y: y + displayOffset))
+        bp.line (to: NSPoint (x: endX   + displayOffset, y: y + displayOffset))
         y += gridDisplayStep
       }
       self.mGridLineColor.setStroke ()
@@ -591,14 +592,14 @@ class CanariViewWithZoomAndFlip : EBView {
   //  Drag type UTI
   //····················································································································
 
-  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
-
-  //····················································································································
-
-  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
-    self.mDragTypeUTI = dragTypeUTI
-    self.registerForDraggedTypes ([dragTypeUTI])
-  }
+//  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
+//
+//  //····················································································································
+//
+//  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
+//    self.mDragTypeUTI = dragTypeUTI
+//    self.registerForDraggedTypes ([dragTypeUTI])
+//  }
 
   //····················································································································
   //    Dragging destination
@@ -612,14 +613,8 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   func shouldAllowDrag (_ draggingInfo: NSDraggingInfo) -> Bool {
-    var canAccept = false
-  //2.
     let pasteBoard = draggingInfo.draggingPasteboard
-  //3.
-    if pasteBoard.canReadObject (forClasses: [NSURL.self], options: filteringOptions) {
-      canAccept = true
-    }
-    return canAccept
+    return pasteBoard.canReadObject (forClasses: [NSURL.self], options: filteringOptions)
   }
 
   //····················································································································

@@ -105,16 +105,31 @@ protocol EBViewControllerProtocol : class {
   //    $underObjectsDisplay binding
   //····················································································································
 
-  private var mUnderObjectsDisplayController : Controller_EBView_underObjectsDisplay?
+  private var mUnderObjectsDisplayController : EBReadOnlyController_EBShape?
 
-  func bind_underObjectsDisplay (_ objects:EBReadOnlyProperty_EBShape, file:String, line:Int) {
-    mUnderObjectsDisplayController = Controller_EBView_underObjectsDisplay (objects, outlet:self)
+  func bind_underObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file : String, line : Int) {
+    self.mUnderObjectsDisplayController = EBReadOnlyController_EBShape (
+      models: model,
+      callBack: { [weak self] in self?.updateUnderObjectsDisplay (from: model) }
+    )
   }
 
   func unbind_underObjectsDisplay () {
     mUnderObjectsDisplayController?.unregister ()
     mUnderObjectsDisplayController = nil
   }
+
+  //····················································································································
+
+  private func updateUnderObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
+    switch model.prop {
+    case .empty, .multiple :
+      self.setUnderObjectsDisplay (EBShape ())
+    case .single (let v) :
+      self.setUnderObjectsDisplay (v)
+    }
+  }
+
 
   //····················································································································
 
@@ -134,16 +149,31 @@ protocol EBViewControllerProtocol : class {
   //    $overObjectsDisplay binding
   //····················································································································
 
-  private var mOverObjectsDisplayController : Controller_EBView_overObjectsDisplay?
+  private var mOverObjectsDisplayController : EBReadOnlyController_EBShape?
 
-  func bind_overObjectsDisplay (_ objects:EBReadOnlyProperty_EBShape, file:String, line:Int) {
-    mOverObjectsDisplayController = Controller_EBView_overObjectsDisplay (objects, outlet:self)
+  func bind_overObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file:String, line:Int) {
+    self.mOverObjectsDisplayController = EBReadOnlyController_EBShape (
+      models: model,
+      callBack: { [weak self] in self?.updateOverObjectsDisplay (from: model) }
+    )
   }
 
   func unbind_overObjectsDisplay () {
     mOverObjectsDisplayController?.unregister ()
     mOverObjectsDisplayController = nil
   }
+
+  //····················································································································
+
+  private func updateOverObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
+    switch model.prop {
+    case .empty, .multiple :
+      self.setOverObjectsDisplay (EBShape ())
+    case .single (let v) :
+      self.setOverObjectsDisplay (v)
+    }
+  }
+
 
   //····················································································································
 
@@ -205,15 +235,18 @@ protocol EBViewControllerProtocol : class {
 
 
   private var arrowKeyMagnitude : CGFloat = 10.0
-  private var mArrowKeyMagnitudeController : Controller_EBView_arrowKeyMagnitude? = nil
+  private var mArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
 
-  func bind_arrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
-    mArrowKeyMagnitudeController = Controller_EBView_arrowKeyMagnitude (property, outlet:self)
+  func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file : String, line : Int) {
+    self.mArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
+      models: model,
+      callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
+    )
   }
 
   func unbind_arrowKeyMagnitude () {
-    mArrowKeyMagnitudeController?.unregister ()
-    mArrowKeyMagnitudeController = nil
+    self.mArrowKeyMagnitudeController?.unregister ()
+    self.mArrowKeyMagnitudeController = nil
   }
 
   //····················································································································
@@ -223,14 +256,30 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
+
+  private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
+    switch model.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      self.set (arrowKeyMagnitude:v)
+    case .multiple :
+      break
+    }
+  }
+
+  //····················································································································
   //    Shift Arrow Key Magnitude
   //····················································································································
 
   private var shiftArrowKeyMagnitude : CGFloat = 10.0
-  private var mShiftArrowKeyMagnitudeController : Controller_EBView_shiftArrowKeyMagnitude? = nil
+  private var mShiftArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
 
-  func bind_shiftArrowKeyMagnitude (_ property:EBReadOnlyProperty_CGFloat, file:String, line:Int) {
-    mShiftArrowKeyMagnitudeController = Controller_EBView_shiftArrowKeyMagnitude (property, outlet:self)
+  func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    self.mShiftArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
+      models: model,
+      callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
+    )
   }
 
   func unbind_shiftArrowKeyMagnitude () {
@@ -239,6 +288,19 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
+
+  private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
+    switch model.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      self.set (shiftArrowKeyMagnitude: v)
+    case .multiple :
+      break
+    }
+  }
+
+ //····················································································································
 
   func set (shiftArrowKeyMagnitude : CGFloat) {
     self.shiftArrowKeyMagnitude = shiftArrowKeyMagnitude
@@ -582,142 +644,6 @@ protocol EBViewControllerProtocol : class {
       self.setNeedsDisplay (shape.boundingBox)
     }
     self.mSelectionShapes = inShapes
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_arrowKeyMagnitude
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBView_arrowKeyMagnitude : EBSimpleController {
-
-  private let mProperty : EBReadOnlyProperty_CGFloat
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
-    mProperty = property
-    mOutlet = outlet
-    super.init (observedObjects:[property])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mProperty.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      mOutlet.set (arrowKeyMagnitude:v)
-    case .multiple :
-      break
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_shiftArrowKeyMagnitude
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_EBView_shiftArrowKeyMagnitude : EBSimpleController {
-
-  private let mProperty : EBReadOnlyProperty_CGFloat
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (_ property : EBReadOnlyProperty_CGFloat, outlet : EBView) {
-    mProperty = property
-    mOutlet = outlet
-    super.init (observedObjects:[property])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mProperty.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      mOutlet.set (shiftArrowKeyMagnitude:v)
-    case .multiple :
-      break
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_underObjectsDisplay
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_EBView_underObjectsDisplay : EBSimpleController {
-
-  private let mLayer : EBReadOnlyProperty_EBShape
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (_ layer : EBReadOnlyProperty_EBShape, outlet : EBView) {
-    mLayer = layer
-    mOutlet = outlet
-    super.init (observedObjects:[layer])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mLayer.prop {
-    case .empty, .multiple :
-      mOutlet.setUnderObjectsDisplay (EBShape ())
-    case .single (let v) :
-      mOutlet.setUnderObjectsDisplay (v)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_EBView_overObjectsDisplay
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class Controller_EBView_overObjectsDisplay : EBSimpleController {
-
-  private let mLayer : EBReadOnlyProperty_EBShape
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (_ layer : EBReadOnlyProperty_EBShape, outlet : EBView) {
-    mLayer = layer
-    mOutlet = outlet
-    super.init (observedObjects:[layer])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mLayer.prop {
-    case .empty, .multiple :
-      mOutlet.setOverObjectsDisplay (EBShape ())
-    case .single (let v) :
-      mOutlet.setOverObjectsDisplay (v)
-    }
   }
 
   //····················································································································
