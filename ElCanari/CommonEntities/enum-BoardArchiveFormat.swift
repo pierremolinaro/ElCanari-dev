@@ -71,6 +71,8 @@ enum BoardArchiveFormat : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_BoardArchiveFormat = EBReadOnlyEnumController <BoardArchiveFormat>
+
 typealias EBReadOnlyProperty_BoardArchiveFormat = EBReadOnlyEnumProperty <BoardArchiveFormat>
 typealias EBTransientProperty_BoardArchiveFormat = EBTransientEnumProperty <BoardArchiveFormat>
 typealias EBReadWriteProperty_BoardArchiveFormat = EBReadWriteEnumProperty <BoardArchiveFormat>

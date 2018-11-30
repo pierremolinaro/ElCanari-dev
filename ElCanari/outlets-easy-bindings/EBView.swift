@@ -109,7 +109,7 @@ protocol EBViewControllerProtocol : class {
 
   func bind_underObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file : String, line : Int) {
     self.mUnderObjectsDisplayController = EBReadOnlyController_EBShape (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateUnderObjectsDisplay (from: model) }
     )
   }
@@ -153,7 +153,7 @@ protocol EBViewControllerProtocol : class {
 
   func bind_overObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file:String, line:Int) {
     self.mOverObjectsDisplayController = EBReadOnlyController_EBShape (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateOverObjectsDisplay (from: model) }
     )
   }
@@ -239,7 +239,7 @@ protocol EBViewControllerProtocol : class {
 
   func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file : String, line : Int) {
     self.mArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
     )
   }
@@ -277,7 +277,7 @@ protocol EBViewControllerProtocol : class {
 
   func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file:String, line:Int) {
     self.mShiftArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
     )
   }

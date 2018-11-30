@@ -71,6 +71,8 @@ enum GridStyle : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+typealias EBReadOnlyController_GridStyle = EBReadOnlyEnumController <GridStyle>
+
 typealias EBReadOnlyProperty_GridStyle = EBReadOnlyEnumProperty <GridStyle>
 typealias EBTransientProperty_GridStyle = EBTransientEnumProperty <GridStyle>
 typealias EBReadWriteProperty_GridStyle = EBReadWriteEnumProperty <GridStyle>

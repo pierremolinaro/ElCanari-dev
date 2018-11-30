@@ -24,14 +24,14 @@ class CanariViewWithZoomAndFlip : EBView {
   //  Set rect
   //····················································································································
 
-  fileprivate var mConstrainedRect = CGRect (x:0.0, y:0.0, width:500.0, height:500.0)
+  fileprivate var mMinimumBounds : NSRect? = nil
 
-  func set (rect : CanariRect) {
-    let emptyModel = (rect.size.width <= 0) || (rect.size.height <= 0)
+  private func set (canariBounds : CanariRect) {
+    let emptyModel = (canariBounds.size.width <= 0) || (canariBounds.size.height <= 0)
     if emptyModel {
-      self.mConstrainedRect = CGRect (x:0.0, y:0.0, width:500.0, height:500.0)
+      self.mMinimumBounds = nil
     }else{
-      self.mConstrainedRect = rect.cocoaRect ()
+      self.mMinimumBounds = canariBounds.cocoaRect ()
     }
     self.updateViewFrameAndBounds ()
   }
@@ -39,10 +39,21 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   func updateViewFrameAndBounds () {
-    let newRect = self.mConstrainedRect.union (self.objectBoundingBox ())
-    self.frame.size = newRect.size
-    self.bounds = newRect
-    scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
+    var newRect = self.objectBoundingBox ()
+    if let minimumBounds = self.mMinimumBounds {
+      newRect = newRect.union (minimumBounds)
+    }
+//    if let view = self.superview as? NSClipView {
+//    //  newRect = newRect.union (view.documentVisibleRect)
+//      let r = view.convert (view.documentRect, from: self)
+//      newRect = newRect.union (r)
+////      NSLog ("\(r)")
+//    }
+    if self.bounds != newRect {
+      self.frame.size = newRect.size
+      self.bounds = newRect
+      scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
+    }
   }
 
   //····················································································································
@@ -50,6 +61,17 @@ class CanariViewWithZoomAndFlip : EBView {
   override func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
     super.updateObjectDisplay (inObjectDisplayArray)
     self.updateViewFrameAndBounds ()
+  }
+
+  //····················································································································
+
+  override func objectBoundingBox () -> NSRect {
+    var r = super.objectBoundingBox ()
+    if let issueBezierPath = self.mIssueBezierPath {
+      let e = -issueBezierPath.lineWidth / 2.0
+      r = r.union (issueBezierPath.bounds.insetBy(dx: e, dy: e))
+    }
+    return r
   }
 
   //····················································································································
@@ -342,6 +364,7 @@ class CanariViewWithZoomAndFlip : EBView {
     if self.mIssueBezierPath != inBezierPath {
       self.mIssueBezierPath = inBezierPath
       self.mIssueKind = issueKind
+      self.updateViewFrameAndBounds ()
       self.needsDisplay = true
     }
   }
@@ -431,16 +454,35 @@ class CanariViewWithZoomAndFlip : EBView {
   //    rect binding
   //····················································································································
 
-  private var mRectController : Controller_CanariViewWithZoomAndFlip_rect?
+  private var mCanariRectController : EBReadOnlyController_CanariRect? = nil
 
-  func bind_rect (_ rect:EBReadOnlyProperty_CanariRect, file:String, line:Int) {
-    mRectController = Controller_CanariViewWithZoomAndFlip_rect (rect:rect, outlet:self)
+  func bind_canariRect (_ model : EBReadOnlyProperty_CanariRect, file : String, line : Int) {
+   self.mCanariRectController = EBReadOnlyController_CanariRect (
+      model: model,
+      callBack: { [weak self] in self?.updateRect (from: model) }
+    )
   }
 
-  func unbind_rect () {
-    mRectController?.unregister ()
-    mRectController = nil
+  func unbind_canariRect () {
+    self.mCanariRectController?.unregister ()
+    self.mCanariRectController = nil
   }
+
+  //····················································································································
+
+  private func updateRect (from model : EBReadOnlyProperty_CanariRect) {
+    var rect = CanariRect ()
+    switch model.prop {
+    case .empty :
+      ()
+    case .single (let v) :
+      rect = v
+    case .multiple :
+      ()
+    }
+    self.set (canariBounds: rect)
+  }
+
 
   //····················································································································
   //    zoom binding
@@ -461,40 +503,76 @@ class CanariViewWithZoomAndFlip : EBView {
   //    horizontal flip binding
   //····················································································································
 
-  private var mHorizontalFlipController : Controller_CanariViewWithZoomAndFlip_horizontalFlip?
+  private var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
 
-  func bind_horizontalFlip (_ flip:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mHorizontalFlipController = Controller_CanariViewWithZoomAndFlip_horizontalFlip (flip:flip, outlet:self)
+  func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    self.mHorizontalFlipController = EBReadOnlyController_Bool (
+      model: model,
+      callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
+    )
   }
 
   func unbind_horizontalFlip () {
-    mHorizontalFlipController?.unregister ()
-    mHorizontalFlipController = nil
+    self.mHorizontalFlipController?.unregister ()
+    self.mHorizontalFlipController = nil
   }
+
+  //····················································································································
+
+  private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
+    switch model.prop {
+    case .empty :
+      self.setHorizontalFlipFromController (false)
+    case .single (let v) :
+      self.setHorizontalFlipFromController (v)
+    case .multiple :
+      self.setHorizontalFlipFromController (false)
+    }
+  }
+
 
   //····················································································································
   //    vertical flip binding
   //····················································································································
 
-  private var mVerticalFlipController : Controller_CanariViewWithZoomAndFlip_verticalFlip?
+  private var mVerticalFlipController : EBReadOnlyController_Bool? = nil
 
-  func bind_verticalFlip (_ flip:EBReadOnlyProperty_Bool, file:String, line:Int) {
-    mVerticalFlipController = Controller_CanariViewWithZoomAndFlip_verticalFlip (flip:flip, outlet:self)
+  func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    self.mVerticalFlipController = EBReadOnlyController_Bool (
+      model: model,
+      callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
+    )
   }
 
   func unbind_verticalFlip () {
-    mVerticalFlipController?.unregister ()
-    mVerticalFlipController = nil
+    self.mVerticalFlipController?.unregister ()
+    self.mVerticalFlipController = nil
+  }
+
+  //····················································································································
+
+  private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
+    switch model.prop {
+    case .empty :
+      self.setVerticalFlipFromController (false)
+    case .single (let v) :
+      self.setVerticalFlipFromController (v)
+    case .multiple :
+      self.setVerticalFlipFromController (false)
+    }
   }
 
   //····················································································································
   //    grid binding
   //····················································································································
 
-  private var mGridStyleController : Controller_CanariViewWithZoomAndFlip_gridStyle?
+  private var mGridStyleController : EBReadOnlyController_GridStyle? = nil
 
-  func bind_gridStyle (_ model: EBReadOnlyProperty_GridStyle, file:String, line:Int) {
-    mGridStyleController = Controller_CanariViewWithZoomAndFlip_gridStyle (model: model, outlet:self)
+  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file:String, line:Int) {
+    self.mGridStyleController = EBReadOnlyController_GridStyle (
+      model: model,
+      callBack: { [weak self] in self?.updateGridStyle (from: model) }
+    )
   }
 
   func unbind_gridStyle () {
@@ -503,18 +581,48 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+
+  private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
+    switch model.prop {
+    case .empty :
+      self.setGridStyle (.noGrid)
+    case .single (let v) :
+      self.setGridStyle (v)
+    case .multiple :
+      self.setGridStyle (.noGrid)
+    }
+  }
+
+
+  //····················································································································
   //    step binding
   //····················································································································
 
-  private var mGridStepFactorController : Controller_CanariViewWithZoomAndFlip_gridStepFactor?
+  private var mGridStepFactorController : EBReadOnlyController_Int? = nil
 
-  func bind_gridStepFactor (_ model: EBReadOnlyProperty_Int, file:String, line:Int) {
-    self.mGridStepFactorController = Controller_CanariViewWithZoomAndFlip_gridStepFactor (model: model, outlet:self)
+  func bind_gridStepFactor (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mGridStepFactorController = EBReadOnlyController_Int (
+      model: model,
+      callBack: { [weak self] in self?.updateGridStepFactor (from: model) }
+    )
   }
 
   func unbind_gridStepFactor () {
     self.mGridStepFactorController?.unregister ()
     self.mGridStepFactorController = nil
+  }
+
+  //····················································································································
+
+  private func updateGridStepFactor (from model : EBReadOnlyProperty_Int) {
+    switch model.prop {
+    case .empty :
+      self.setGridStepFactor (4)
+    case .single (let v) :
+      self.setGridStepFactor (v)
+    case .multiple :
+      self.setGridStepFactor (4)
+    }
   }
 
   //····················································································································
@@ -527,7 +635,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
     mGridLineColorController = EBReadOnlyController_NSColor (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateLineColor (from: model) }
     )
   }
@@ -562,7 +670,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   func bind_gridDotColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
     self.mGridDotColorController = EBReadOnlyController_NSColor (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.updateGridColor (from: model) }
     )
   }
@@ -586,20 +694,6 @@ class CanariViewWithZoomAndFlip : EBView {
       self.setGridDotColor (.black)
     }
   }
-
-
-  //····················································································································
-  //  Drag type UTI
-  //····················································································································
-
-//  var mDragTypeUTI : NSPasteboard.PasteboardType? = nil
-//
-//  //····················································································································
-//
-//  func set (dragTypeUTI : NSPasteboard.PasteboardType) {
-//    self.mDragTypeUTI = dragTypeUTI
-//    self.registerForDraggedTypes ([dragTypeUTI])
-//  }
 
   //····················································································································
   //    Dragging destination
@@ -631,43 +725,6 @@ class CanariViewWithZoomAndFlip : EBView {
     let allow = shouldAllowDrag (sender)
     self.isReceivingDrag = allow
     return allow ? .copy : NSDragOperation ()
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_rect
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_rect : EBSimpleController {
-
-  private let mRect : EBReadOnlyProperty_CanariRect
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (rect : EBReadOnlyProperty_CanariRect, outlet : CanariViewWithZoomAndFlip) {
-    mRect = rect
-    mOutlet = outlet
-    super.init (observedObjects:[rect])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    var rect = CanariRect ()
-    switch mRect.prop {
-    case .empty :
-      ()
-    case .single (let v) :
-      rect = v
-    case .multiple :
-      ()
-    }
-    mOutlet.set (rect: rect)
   }
 
   //····················································································································
@@ -709,146 +766,6 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
 
   func updateModel (_ sender : CanariViewWithZoomAndFlip) {
     _ = mZoom.validateAndSetProp (mOutlet.mZoom, windowForSheet:sender.window)
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_horizontalFlip
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_horizontalFlip : EBSimpleController {
-
-  private let mFlip : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip) {
-    mFlip = flip
-    mOutlet = outlet
-    super.init (observedObjects:[flip])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mFlip.prop {
-    case .empty :
-      mOutlet.setHorizontalFlipFromController (false)
-    case .single (let v) :
-      mOutlet.setHorizontalFlipFromController (v)
-    case .multiple :
-      mOutlet.setHorizontalFlipFromController (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_verticalFlip
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_verticalFlip : EBSimpleController {
-
-  private let mFlip : EBReadOnlyProperty_Bool
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (flip : EBReadOnlyProperty_Bool, outlet : CanariViewWithZoomAndFlip) {
-    mFlip = flip
-    mOutlet = outlet
-    super.init (observedObjects:[flip])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mFlip.prop {
-    case .empty :
-      mOutlet.setVerticalFlipFromController (false)
-    case .single (let v) :
-      mOutlet.setVerticalFlipFromController (v)
-    case .multiple :
-      mOutlet.setVerticalFlipFromController (false)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_gridStyle
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_gridStyle : EBSimpleController {
-
-  private let mModel : EBReadOnlyProperty_GridStyle
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (model : EBReadOnlyProperty_GridStyle, outlet : CanariViewWithZoomAndFlip) {
-    mModel = model
-    mOutlet = outlet
-    super.init (observedObjects:[model])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModel.prop {
-    case .empty :
-      mOutlet.setGridStyle (.noGrid)
-    case .single (let v) :
-      mOutlet.setGridStyle (v)
-    case .multiple :
-      mOutlet.setGridStyle (.noGrid)
-    }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_gridStepFactor
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_gridStepFactor : EBSimpleController {
-
-  private let mModel : EBReadOnlyProperty_Int
-  private let mOutlet : CanariViewWithZoomAndFlip
-
-  //····················································································································
-
-  init (model : EBReadOnlyProperty_Int, outlet : CanariViewWithZoomAndFlip) {
-    mModel = model
-    mOutlet = outlet
-    super.init (observedObjects:[model])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mModel.prop {
-    case .empty :
-      mOutlet.setGridStepFactor (4)
-    case .single (let v) :
-      mOutlet.setGridStepFactor (v)
-    case .multiple :
-      mOutlet.setGridStepFactor (4)
-    }
   }
 
   //····················································································································

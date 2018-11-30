@@ -1470,8 +1470,8 @@ class EBReadOnlyClassController <T> : EBSimpleController {
 
   //····················································································································
 
-  init (models : EBReadOnlyClassProperty <T>, callBack: @escaping () -> Void) {
-    super.init (observedObjects:[models])
+  init (model : EBReadOnlyClassProperty <T>, callBack: @escaping () -> Void) {
+    super.init (observedObjects:[model])
     self.eventCallBack = callBack
   }
 
@@ -1487,8 +1487,8 @@ class EBReadOnlyValueController <T> : EBSimpleController {
 
   //····················································································································
 
-  init (models : EBReadOnlyValueProperty <T>, callBack: @escaping () -> Void) {
-    super.init (observedObjects:[models])
+  init (model : EBReadOnlyValueProperty <T>, callBack: @escaping () -> Void) {
+    super.init (observedObjects:[model])
     self.eventCallBack = callBack
   }
 

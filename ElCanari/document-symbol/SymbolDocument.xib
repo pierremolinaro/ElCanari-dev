@@ -148,12 +148,12 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="894" customClass="CanariDraggingDestinationScrollView">
                     <rect key="frame" x="253" y="-1" width="403" height="385"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="xCD-Dw-CrS">
+                    <clipView key="contentView" id="xCD-Dw-CrS" customClass="CanariClipView" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="1" y="1" width="386" height="368"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="895" customClass="SymbolObjectsView" customModule="ElCanari" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="104" height="67"/>
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                         </subviews>

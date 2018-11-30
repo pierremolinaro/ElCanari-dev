@@ -42,7 +42,7 @@ import Cocoa
 
   func bind_version (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mVersionController = EBReadOnlyController_Int (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.update (from: model) }
     )
   }
@@ -80,7 +80,7 @@ import Cocoa
 
   func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     mVersionShouldChangeController = EBReadOnlyController_Bool (
-      models: model,
+      model: model,
       callBack: { [weak self] in self?.update (from: model) }
      )
   }
