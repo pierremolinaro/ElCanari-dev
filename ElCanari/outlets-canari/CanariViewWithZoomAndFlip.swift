@@ -493,12 +493,12 @@ class CanariViewWithZoomAndFlip : EBView {
   private var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
 
   func bind_zoom (_ zoom:EBReadWriteProperty_Int, file:String, line:Int) {
-    mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom:zoom, outlet:self)
+    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom:zoom, outlet:self)
   }
 
   func unbind_zoom () {
-    mZoomController?.unregister ()
-    mZoomController = nil
+    self.mZoomController?.unregister ()
+    self.mZoomController = nil
   }
 
   //····················································································································

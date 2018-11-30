@@ -19,7 +19,7 @@ func transient_SymbolPin_objectDisplay (
        _ self_xNumber : Int,            
        _ self_yNumber : Int,            
        _ self_name : String,            
-       _ self_pinNameIsVisibleInSchematics : Bool,
+       _ self_pinNameIsDisplayedInSchematics : Bool,
        _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ self_numberHorizontalAlignment : HorizontalAlignment,
        _ prefs_symbolColor : NSColor,   
@@ -39,7 +39,7 @@ func transient_SymbolPin_objectDisplay (
   //--- Name
     let nameTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
-      NSAttributedString.Key.foregroundColor : self_pinNameIsVisibleInSchematics ? NSColor.black : NSColor.lightGray
+      NSAttributedString.Key.foregroundColor : self_pinNameIsDisplayedInSchematics ? NSColor.black : NSColor.lightGray
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let label = (self_name == "") ? "?" : self_name

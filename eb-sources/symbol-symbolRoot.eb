@@ -17,13 +17,13 @@ graphic entity SymbolPin : SymbolObject {
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
   
-  property @signature Bool pinNameIsVisibleInSchematics default yes ;
+  property @signature Bool pinNameIsDisplayedInSchematics default yes ;
   
   transient EBShape objectDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xName, self.yName, 
      self.xNumber, self.yNumber, 
-     self.name, self.pinNameIsVisibleInSchematics,
+     self.name, self.pinNameIsDisplayedInSchematics,
      self.nameHorizontalAlignment, self.numberHorizontalAlignment,
      prefs.symbolColor, prefs.pinNameFont
   ;

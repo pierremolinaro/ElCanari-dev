@@ -839,7 +839,7 @@ import Cocoa
     self.mSymbolTextValueTextField?.bind_value (self.mSymbolTextSelectionController.text_property, file: #file, line: #line, sendContinously:true)
     self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
     self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.nameHorizontalAlignment_property, file: #file, line: #line)
-    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNameIsVisibleInSchematics_property, file: #file, line: #line)
+    self.mSymbolPinNumberIsVisibleInSchematicsSwitch?.bind_value (self.mSymbolPinSelectionController.pinNameIsDisplayedInSchematics_property, file: #file, line: #line)
     self.mSymbolPinLabelNameTextField?.bind_value (self.mSymbolPinSelectionController.name_property, file: #file, line: #line, sendContinously:true)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)

@@ -76,7 +76,7 @@ document SymbolDocument root SymbolRoot {
     $selectedIndex mSymbolPinSelectionController.nameHorizontalAlignment
   ;
   outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
-    $value mSymbolPinSelectionController.pinNameIsVisibleInSchematics
+    $value mSymbolPinSelectionController.pinNameIsDisplayedInSchematics
   ;
   outlet EBTextField mSymbolPinLabelNameTextField
     $value mSymbolPinSelectionController.name {sendContinously : yes}

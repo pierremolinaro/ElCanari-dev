@@ -110,7 +110,7 @@
                                         <menuItem title="New Symbol" keyEquivalent="n" id="862">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
-                                                <action selector="actionNewSymbolDocument:" target="-1" id="g9R-MD-qau"/>
+                                                <action selector="actionNewSymbolDocument:" target="212" id="yqH-Kb-rLp"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="New Package" id="863"/>
@@ -139,28 +139,17 @@
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="124">
-                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="125">
+                                <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="eeq-oj-NsP">
                                     <items>
-                                        <menuItem title="Clear Menu" id="126">
+                                        <menuItem title="Clear Menu" id="9Mv-bM-WCa">
                                             <connections>
-                                                <action selector="clearRecentDocuments:" target="-1" id="127"/>
+                                                <action selector="clearRecentDocuments:" target="-1" id="OfR-uK-EjZ"/>
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="szZ-jo-9K7"/>
-                            <menuItem title="Open In Library" id="1317">
-                                <menu key="submenu" title="Open In Library" id="1318">
-                                    <items>
-                                        <menuItem title="Symbol…" id="1319"/>
-                                        <menuItem title="Package…" id="1321"/>
-                                        <menuItem title="Device…" id="1323"/>
-                                        <menuItem title="Font…" id="1325"/>
-                                        <menuItem title="Artwork…" id="1327"/>
-                                    </items>
-                                </menu>
-                            </menuItem>
                             <menuItem title="Reveal in Finder" id="1449">
                                 <menu key="submenu" title="Reveal in Finder" id="1450">
                                     <items>
@@ -199,6 +188,30 @@
                                                 </items>
                                             </menu>
                                         </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Open All" id="wv0-hk-eAk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Open All" id="FTD-AU-pFJ">
+                                    <items>
+                                        <menuItem title="Symbols in Directory…" id="9kV-vA-ffK">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionOpenAllSymbolsInDirectory:" target="212" id="SIt-VH-tF4"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Open In Library" id="1317">
+                                <menu key="submenu" title="Open In Library" id="1318">
+                                    <items>
+                                        <menuItem title="Symbol…" id="1319"/>
+                                        <menuItem title="Package…" id="1321"/>
+                                        <menuItem title="Device…" id="1323"/>
+                                        <menuItem title="Font…" id="1325"/>
+                                        <menuItem title="Artwork…" id="1327"/>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -437,7 +450,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="95" y="-328"/>
+            <point key="canvasLocation" x="4" y="-673"/>
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
