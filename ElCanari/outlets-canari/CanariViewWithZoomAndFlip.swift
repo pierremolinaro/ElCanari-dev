@@ -172,7 +172,9 @@ class CanariViewWithZoomAndFlip : EBView {
         self.addPopupButtonItemForZoom (600)
         self.addPopupButtonItemForZoom (800)
         self.addPopupButtonItemForZoom (1000)
+        self.addPopupButtonItemForZoom (1200)
         self.addPopupButtonItemForZoom (1500)
+        self.addPopupButtonItemForZoom (1700)
         self.addPopupButtonItemForZoom (2000)
         zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (CanariViewWithZoomAndFlip.setZoomFromPopUpButton(_:)), keyEquivalent:"")
         zoomPopUpButton.lastItem?.target = self
