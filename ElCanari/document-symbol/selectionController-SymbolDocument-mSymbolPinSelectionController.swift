@@ -84,14 +84,14 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   }
 
   //····················································································································
-  //   Selection observable property: pinNumberIsVisibleInSchematics
+  //   Selection observable property: pinNameIsVisibleInSchematics
   //····················································································································
 
-  var pinNumberIsVisibleInSchematics_property = EBPropertyProxy_Bool ()
+  var pinNameIsVisibleInSchematics_property = EBPropertyProxy_Bool ()
 
-  var pinNumberIsVisibleInSchematics_property_selection : EBSelection <Bool> {
+  var pinNameIsVisibleInSchematics_property_selection : EBSelection <Bool> {
     get {
-      return self.pinNumberIsVisibleInSchematics_property.prop
+      return self.pinNameIsVisibleInSchematics_property.prop
     }
   }
 
@@ -217,7 +217,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     self.bind_property_nameRect (model: self.mActualModel)
     self.bind_property_numberHorizontalAlignment (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
-    self.bind_property_pinNumberIsVisibleInSchematics (model: self.mActualModel)
+    self.bind_property_pinNameIsVisibleInSchematics (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
     self.bind_property_xName (model: self.mActualModel)
     self.bind_property_xNumber (model: self.mActualModel)
@@ -258,11 +258,11 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   //--- objectDisplay
     self.objectDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
-  //--- pinNumberIsVisibleInSchematics
-    self.pinNumberIsVisibleInSchematics_property.readModelFunction = nil 
-    self.pinNumberIsVisibleInSchematics_property.writeModelFunction = nil 
-    self.pinNumberIsVisibleInSchematics_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_pinNumberIsVisibleInSchematics (self.pinNumberIsVisibleInSchematics_property)
+  //--- pinNameIsVisibleInSchematics
+    self.pinNameIsVisibleInSchematics_property.readModelFunction = nil 
+    self.pinNameIsVisibleInSchematics_property.writeModelFunction = nil 
+    self.pinNameIsVisibleInSchematics_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_pinNameIsVisibleInSchematics (self.pinNameIsVisibleInSchematics_property)
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
@@ -361,12 +361,12 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       valueExplorer:&self.numberHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "pinNumberIsVisibleInSchematics",
-      idx:self.pinNumberIsVisibleInSchematics_property.mEasyBindingsObjectIndex,
+      "pinNameIsVisibleInSchematics",
+      idx:self.pinNameIsVisibleInSchematics_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.pinNumberIsVisibleInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.pinNumberIsVisibleInSchematics_property.mValueExplorer
+      observerExplorer:&self.pinNameIsVisibleInSchematics_property.mObserverExplorer,
+      valueExplorer:&self.pinNameIsVisibleInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xName",
@@ -800,9 +800,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   //···················································································································*
 
-  private final func bind_property_pinNumberIsVisibleInSchematics (model : ReadOnlyArrayOf_SymbolPin) {
-    model.addEBObserverOf_pinNumberIsVisibleInSchematics (self.pinNumberIsVisibleInSchematics_property)
-    self.pinNumberIsVisibleInSchematics_property.readModelFunction = { [weak self] in
+  private final func bind_property_pinNameIsVisibleInSchematics (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_pinNameIsVisibleInSchematics (self.pinNameIsVisibleInSchematics_property)
+    self.pinNameIsVisibleInSchematics_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -813,7 +813,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
           var s = Set <Bool> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.pinNumberIsVisibleInSchematics_property_selection {
+            switch object.pinNameIsVisibleInSchematics_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -836,26 +836,26 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.pinNumberIsVisibleInSchematics_property.writeModelFunction = { [weak self] (inValue : Bool) in
+    self.pinNameIsVisibleInSchematics_property.writeModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.pinNumberIsVisibleInSchematics_property.setProp (inValue)
+            object.pinNameIsVisibleInSchematics_property.setProp (inValue)
           }
         }
       }
     }
-    self.pinNumberIsVisibleInSchematics_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.pinNameIsVisibleInSchematics_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.pinNumberIsVisibleInSchematics_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.pinNameIsVisibleInSchematics_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

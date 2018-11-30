@@ -19,6 +19,7 @@ func transient_SymbolPin_objectDisplay (
        _ self_xNumber : Int,            
        _ self_yNumber : Int,            
        _ self_name : String,            
+       _ self_pinNameIsVisibleInSchematics : Bool,
        _ self_nameHorizontalAlignment : HorizontalAlignment,
        _ self_numberHorizontalAlignment : HorizontalAlignment,
        _ prefs_symbolColor : NSColor,   
@@ -35,15 +36,21 @@ func transient_SymbolPin_objectDisplay (
     )
     let filledBP = NSBezierPath (ovalIn: pinRect)
     shape.append (shape: EBFilledBezierPathShape ([filledBP], prefs_symbolColor))
-    let textAttributes : [NSAttributedString.Key : Any] = [
+  //--- Name
+    let nameTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
-      NSAttributedString.Key.foregroundColor : prefs_symbolColor
+      NSAttributedString.Key.foregroundColor : self_pinNameIsVisibleInSchematics ? NSColor.black : NSColor.lightGray
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let label = (self_name == "") ? "?" : self_name
-    shape.append (shape: EBTextShape (label, labelOrigin, textAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    shape.append (shape: EBTextShape (label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+  //--- Number
+    let numberTextAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : prefs_pinNameFont,
+      NSAttributedString.Key.foregroundColor : NSColor.black
+    ]
     let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    shape.append (shape: EBTextShape ("##", numberOrigin, textAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    shape.append (shape: EBTextShape ("##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     return shape
 //--- END OF USER ZONE 2
 }

@@ -54,8 +54,8 @@ protocol SymbolPin_numberHorizontalAlignment : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPin_pinNumberIsVisibleInSchematics : class {
-  var pinNumberIsVisibleInSchematics : Bool { get }
+protocol SymbolPin_pinNameIsVisibleInSchematics : class {
+  var pinNameIsVisibleInSchematics : Bool { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -101,7 +101,7 @@ class SymbolPin : SymbolObject,
          SymbolPin_name,
          SymbolPin_nameHorizontalAlignment,
          SymbolPin_numberHorizontalAlignment,
-         SymbolPin_pinNumberIsVisibleInSchematics,
+         SymbolPin_pinNameIsVisibleInSchematics,
          SymbolPin_xPin,
          SymbolPin_objectDisplay,
          SymbolPin_selectionDisplay,
@@ -293,26 +293,26 @@ class SymbolPin : SymbolObject,
   }
 
   //····················································································································
-  //   Atomic property: pinNumberIsVisibleInSchematics
+  //   Atomic property: pinNameIsVisibleInSchematics
   //····················································································································
 
-  var pinNumberIsVisibleInSchematics_property = EBStoredProperty_Bool (true)
+  var pinNameIsVisibleInSchematics_property = EBStoredProperty_Bool (true)
 
   //····················································································································
 
-  var pinNumberIsVisibleInSchematics : Bool {
+  var pinNameIsVisibleInSchematics : Bool {
     get {
-      return self.pinNumberIsVisibleInSchematics_property.propval
+      return self.pinNameIsVisibleInSchematics_property.propval
     }
     set {
-      self.pinNumberIsVisibleInSchematics_property.setProp (newValue)
+      self.pinNameIsVisibleInSchematics_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var pinNumberIsVisibleInSchematics_property_selection : EBSelection <Bool> {
-    return self.pinNumberIsVisibleInSchematics_property.prop
+  var pinNameIsVisibleInSchematics_property_selection : EBSelection <Bool> {
+    return self.pinNameIsVisibleInSchematics_property.prop
   }
 
   //····················································································································
@@ -383,8 +383,8 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.undoManager = self.undoManager
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.undoManager = self.undoManager
-  //--- Atomic property: pinNumberIsVisibleInSchematics
-    self.pinNumberIsVisibleInSchematics_property.undoManager = self.undoManager
+  //--- Atomic property: pinNameIsVisibleInSchematics
+    self.pinNameIsVisibleInSchematics_property.undoManager = self.undoManager
   //--- Atomic property: xPin
     self.xPin_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -397,6 +397,7 @@ class SymbolPin : SymbolObject,
         kind &= unwSelf.xNumber_property_selection.kind ()
         kind &= unwSelf.yNumber_property_selection.kind ()
         kind &= unwSelf.name_property_selection.kind ()
+        kind &= unwSelf.pinNameIsVisibleInSchematics_property_selection.kind ()
         kind &= unwSelf.nameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.numberHorizontalAlignment_property_selection.kind ()
         kind &= g_Preferences!.symbolColor_property_selection.kind ()
@@ -407,9 +408,9 @@ class SymbolPin : SymbolObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.xNumber_property_selection, unwSelf.yNumber_property_selection, unwSelf.name_property_selection, unwSelf.pinNameIsVisibleInSchematics_property_selection, unwSelf.nameHorizontalAlignment_property_selection, unwSelf.numberHorizontalAlignment_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_SymbolPin_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -425,6 +426,7 @@ class SymbolPin : SymbolObject,
     self.xNumber_property.addEBObserver (self.objectDisplay_property)
     self.yNumber_property.addEBObserver (self.objectDisplay_property)
     self.name_property.addEBObserver (self.objectDisplay_property)
+    self.pinNameIsVisibleInSchematics_property.addEBObserver (self.objectDisplay_property)
     self.nameHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
@@ -534,7 +536,7 @@ class SymbolPin : SymbolObject,
     self.name_property.setSignatureObserver (observer:self)
     self.nameHorizontalAlignment_property.setSignatureObserver (observer:self)
     self.numberHorizontalAlignment_property.setSignatureObserver (observer:self)
-    self.pinNumberIsVisibleInSchematics_property.setSignatureObserver (observer:self)
+    self.pinNameIsVisibleInSchematics_property.setSignatureObserver (observer:self)
     self.xName_property.setSignatureObserver (observer:self)
     self.xNumber_property.setSignatureObserver (observer:self)
     self.xPin_property.setSignatureObserver (observer:self)
@@ -554,6 +556,7 @@ class SymbolPin : SymbolObject,
     self.xNumber_property.removeEBObserver (self.objectDisplay_property)
     self.yNumber_property.removeEBObserver (self.objectDisplay_property)
     self.name_property.removeEBObserver (self.objectDisplay_property)
+    self.pinNameIsVisibleInSchematics_property.removeEBObserver (self.objectDisplay_property)
     self.nameHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     self.numberHorizontalAlignment_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
@@ -651,12 +654,12 @@ class SymbolPin : SymbolObject,
       valueExplorer:&self.numberHorizontalAlignment_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "pinNumberIsVisibleInSchematics",
-      idx:self.pinNumberIsVisibleInSchematics_property.mEasyBindingsObjectIndex,
+      "pinNameIsVisibleInSchematics",
+      idx:self.pinNameIsVisibleInSchematics_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.pinNumberIsVisibleInSchematics_property.mObserverExplorer,
-      valueExplorer:&self.pinNumberIsVisibleInSchematics_property.mValueExplorer
+      observerExplorer:&self.pinNameIsVisibleInSchematics_property.mObserverExplorer,
+      valueExplorer:&self.pinNameIsVisibleInSchematics_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xPin",
@@ -733,9 +736,9 @@ class SymbolPin : SymbolObject,
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.mObserverExplorer = nil
     self.numberHorizontalAlignment_property.mValueExplorer = nil
-  //--- Atomic property: pinNumberIsVisibleInSchematics
-    self.pinNumberIsVisibleInSchematics_property.mObserverExplorer = nil
-    self.pinNumberIsVisibleInSchematics_property.mValueExplorer = nil
+  //--- Atomic property: pinNameIsVisibleInSchematics
+    self.pinNameIsVisibleInSchematics_property.mObserverExplorer = nil
+    self.pinNameIsVisibleInSchematics_property.mValueExplorer = nil
   //--- Atomic property: xPin
     self.xPin_property.mObserverExplorer = nil
     self.xPin_property.mValueExplorer = nil
@@ -765,8 +768,8 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"numberHorizontalAlignment")
-  //--- Atomic property: pinNumberIsVisibleInSchematics
-    self.pinNumberIsVisibleInSchematics_property.storeIn (dictionary: ioDictionary, forKey:"pinNumberIsVisibleInSchematics")
+  //--- Atomic property: pinNameIsVisibleInSchematics
+    self.pinNameIsVisibleInSchematics_property.storeIn (dictionary: ioDictionary, forKey:"pinNameIsVisibleInSchematics")
   //--- Atomic property: xPin
     self.xPin_property.storeIn (dictionary: ioDictionary, forKey:"xPin")
   }
@@ -794,8 +797,8 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"nameHorizontalAlignment")
   //--- Atomic property: numberHorizontalAlignment
     self.numberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"numberHorizontalAlignment")
-  //--- Atomic property: pinNumberIsVisibleInSchematics
-    self.pinNumberIsVisibleInSchematics_property.readFrom (dictionary: inDictionary, forKey:"pinNumberIsVisibleInSchematics")
+  //--- Atomic property: pinNameIsVisibleInSchematics
+    self.pinNameIsVisibleInSchematics_property.readFrom (dictionary: inDictionary, forKey:"pinNameIsVisibleInSchematics")
   //--- Atomic property: xPin
     self.xPin_property.readFrom (dictionary: inDictionary, forKey:"xPin")
   }
@@ -850,7 +853,7 @@ class SymbolPin : SymbolObject,
     crc.accumulateUInt32 (self.name_property.signature ())
     crc.accumulateUInt32 (self.nameHorizontalAlignment_property.signature ())
     crc.accumulateUInt32 (self.numberHorizontalAlignment_property.signature ())
-    crc.accumulateUInt32 (self.pinNumberIsVisibleInSchematics_property.signature ())
+    crc.accumulateUInt32 (self.pinNameIsVisibleInSchematics_property.signature ())
     crc.accumulateUInt32 (self.xName_property.signature ())
     crc.accumulateUInt32 (self.xNumber_property.signature ())
     crc.accumulateUInt32 (self.xPin_property.signature ())
@@ -1335,58 +1338,58 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
-  //   Observers of 'pinNumberIsVisibleInSchematics' stored property
+  //   Observers of 'pinNameIsVisibleInSchematics' stored property
   //····················································································································
 
-  private var mObserversOf_pinNumberIsVisibleInSchematics = EBWeakEventSet ()
+  private var mObserversOf_pinNameIsVisibleInSchematics = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_pinNumberIsVisibleInSchematics (_ inObserver : EBEvent) {
+  final func addEBObserverOf_pinNameIsVisibleInSchematics (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_pinNumberIsVisibleInSchematics.insert (inObserver)
+    mObserversOf_pinNameIsVisibleInSchematics.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinNumberIsVisibleInSchematics_property.addEBObserver (inObserver)
+        managedObject.pinNameIsVisibleInSchematics_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_pinNumberIsVisibleInSchematics (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_pinNameIsVisibleInSchematics (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_pinNumberIsVisibleInSchematics.remove (inObserver)
+    mObserversOf_pinNameIsVisibleInSchematics.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.pinNumberIsVisibleInSchematics_property.removeEBObserver (inObserver)
+        managedObject.pinNameIsVisibleInSchematics_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_pinNumberIsVisibleInSchematics_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+  final func addEBObserversOf_pinNameIsVisibleInSchematics_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_pinNumberIsVisibleInSchematics {
-        managedObject.pinNumberIsVisibleInSchematics_property.addEBObserver (observer)
+      for observer in mObserversOf_pinNameIsVisibleInSchematics {
+        managedObject.pinNameIsVisibleInSchematics_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_pinNumberIsVisibleInSchematics_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_pinNumberIsVisibleInSchematics {
+  final func removeEBObserversOf_pinNameIsVisibleInSchematics_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for observer in mObserversOf_pinNameIsVisibleInSchematics {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.pinNumberIsVisibleInSchematics_property.removeEBObserver (observer)
+        managedObject.pinNameIsVisibleInSchematics_property.removeEBObserver (observer)
       }
     }
   }
@@ -1735,7 +1738,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedSet)
         removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedSet)
-        removeEBObserversOf_pinNumberIsVisibleInSchematics_fromElementsOfSet (removedSet)
+        removeEBObserversOf_pinNameIsVisibleInSchematics_fromElementsOfSet (removedSet)
         removeEBObserversOf_xPin_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -1753,7 +1756,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedSet)
         addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedSet)
-        addEBObserversOf_pinNumberIsVisibleInSchematics_toElementsOfSet (addedSet)
+        addEBObserversOf_pinNameIsVisibleInSchematics_toElementsOfSet (addedSet)
         addEBObserversOf_xPin_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -1878,7 +1881,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_pinNumberIsVisibleInSchematics_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_pinNameIsVisibleInSchematics_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -1898,7 +1901,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
         addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_pinNumberIsVisibleInSchematics_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_pinNameIsVisibleInSchematics_toElementsOfSet (addedObjectSet)
         addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
         addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

@@ -892,9 +892,9 @@ class MergerRoot : EBManagedObject,
 
   override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
     super.init (managedObjectContext:managedObjectContext, file: file, line)
-  //--- To many property: boardModels
+  //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = self.undoManager
-  //--- To many property: boardInstances
+  //--- To many property: boardInstances (has opposite relationship)
     self.boardInstances_property.undoManager = self.undoManager
     self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
       inManagedObject?.myRoot_property.setProp (self)
@@ -1134,8 +1134,8 @@ class MergerRoot : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.addEBObserver (self.boardOutlineRectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-    self.boardModels_property.undoManager = self.undoManager
-    self.boardInstances_property.undoManager = self.undoManager
+ //   self.boardModels_property.undoManager = self.undoManager
+ //   self.boardInstances_property.undoManager = self.undoManager
     self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myRoot_property.setProp (self)
     }

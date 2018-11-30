@@ -182,7 +182,7 @@ class FontCharacter : EBManagedObject,
     self.codePoint_property.undoManager = self.undoManager
   //--- Atomic property: advance
     self.advance_property.undoManager = self.undoManager
-  //--- To many property: segments
+  //--- To many property: segments (no option)
     self.segments_property.undoManager = self.undoManager
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
@@ -257,7 +257,7 @@ class FontCharacter : EBManagedObject,
     }
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Install undoers and opposite setter for relationships
-    self.segments_property.undoManager = self.undoManager
+ //   self.segments_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.advance_property.setSignatureObserver (observer:self)
     self.codePoint_property.setSignatureObserver (observer:self)

@@ -312,7 +312,7 @@ class FontRoot : EBManagedObject,
     self.selectedTab_property.undoManager = self.undoManager
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.undoManager = self.undoManager
-  //--- To many property: characters
+  //--- To many property: characters (no option)
     self.characters_property.undoManager = self.undoManager
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext)
@@ -432,7 +432,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Install undoers and opposite setter for relationships
-    self.characters_property.undoManager = self.undoManager
+ //   self.characters_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)

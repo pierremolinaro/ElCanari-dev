@@ -1858,51 +1858,51 @@ class BoardModel : EBManagedObject,
     self.modelHeightUnit_property.undoManager = self.undoManager
   //--- Atomic property: zoom
     self.zoom_property.undoManager = self.undoManager
-  //--- To many property: frontLegendLines
+  //--- To many property: frontLegendLines (no option)
     self.frontLegendLines_property.undoManager = self.undoManager
-  //--- To many property: backLegendLines
+  //--- To many property: backLegendLines (no option)
     self.backLegendLines_property.undoManager = self.undoManager
-  //--- To many property: frontLegendTexts
+  //--- To many property: frontLegendTexts (no option)
     self.frontLegendTexts_property.undoManager = self.undoManager
-  //--- To many property: frontLayoutTexts
+  //--- To many property: frontLayoutTexts (no option)
     self.frontLayoutTexts_property.undoManager = self.undoManager
-  //--- To many property: backLegendTexts
+  //--- To many property: backLegendTexts (no option)
     self.backLegendTexts_property.undoManager = self.undoManager
-  //--- To many property: backLayoutTexts
+  //--- To many property: backLayoutTexts (no option)
     self.backLayoutTexts_property.undoManager = self.undoManager
-  //--- To many property: internalBoardsLimits
+  //--- To many property: internalBoardsLimits (no option)
     self.internalBoardsLimits_property.undoManager = self.undoManager
-  //--- To many property: drills
+  //--- To many property: drills (no option)
     self.drills_property.undoManager = self.undoManager
-  //--- To many property: vias
+  //--- To many property: vias (no option)
     self.vias_property.undoManager = self.undoManager
-  //--- To many property: frontPads
+  //--- To many property: frontPads (no option)
     self.frontPads_property.undoManager = self.undoManager
-  //--- To many property: backPads
+  //--- To many property: backPads (no option)
     self.backPads_property.undoManager = self.undoManager
   //--- Atomic property: modelLimitWidth
     self.modelLimitWidth_property.undoManager = self.undoManager
   //--- Atomic property: modelLimitWidthUnit
     self.modelLimitWidthUnit_property.undoManager = self.undoManager
-  //--- To many property: backComponentNames
+  //--- To many property: backComponentNames (no option)
     self.backComponentNames_property.undoManager = self.undoManager
-  //--- To many property: frontComponentNames
+  //--- To many property: frontComponentNames (no option)
     self.frontComponentNames_property.undoManager = self.undoManager
-  //--- To many property: frontComponentValues
+  //--- To many property: frontComponentValues (no option)
     self.frontComponentValues_property.undoManager = self.undoManager
-  //--- To many property: backComponentValues
+  //--- To many property: backComponentValues (no option)
     self.backComponentValues_property.undoManager = self.undoManager
-  //--- To many property: backTracks
+  //--- To many property: backTracks (no option)
     self.backTracks_property.undoManager = self.undoManager
-  //--- To many property: frontTracks
+  //--- To many property: frontTracks (no option)
     self.frontTracks_property.undoManager = self.undoManager
-  //--- To many property: frontPackages
+  //--- To many property: frontPackages (no option)
     self.frontPackages_property.undoManager = self.undoManager
-  //--- To many property: backPackages
+  //--- To many property: backPackages (no option)
     self.backPackages_property.undoManager = self.undoManager
   //--- Atomic property: artworkName
     self.artworkName_property.undoManager = self.undoManager
-  //--- To many property: myInstances
+  //--- To many property: myInstances (has opposite relationship)
     self.myInstances_property.undoManager = self.undoManager
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
@@ -3284,26 +3284,26 @@ class BoardModel : EBManagedObject,
     }
     self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Install undoers and opposite setter for relationships
-    self.frontLegendLines_property.undoManager = self.undoManager
-    self.backLegendLines_property.undoManager = self.undoManager
-    self.frontLegendTexts_property.undoManager = self.undoManager
-    self.frontLayoutTexts_property.undoManager = self.undoManager
-    self.backLegendTexts_property.undoManager = self.undoManager
-    self.backLayoutTexts_property.undoManager = self.undoManager
-    self.internalBoardsLimits_property.undoManager = self.undoManager
-    self.drills_property.undoManager = self.undoManager
-    self.vias_property.undoManager = self.undoManager
-    self.frontPads_property.undoManager = self.undoManager
-    self.backPads_property.undoManager = self.undoManager
-    self.backComponentNames_property.undoManager = self.undoManager
-    self.frontComponentNames_property.undoManager = self.undoManager
-    self.frontComponentValues_property.undoManager = self.undoManager
-    self.backComponentValues_property.undoManager = self.undoManager
-    self.backTracks_property.undoManager = self.undoManager
-    self.frontTracks_property.undoManager = self.undoManager
-    self.frontPackages_property.undoManager = self.undoManager
-    self.backPackages_property.undoManager = self.undoManager
-    self.myInstances_property.undoManager = self.undoManager
+ //   self.frontLegendLines_property.undoManager = self.undoManager
+ //   self.backLegendLines_property.undoManager = self.undoManager
+ //   self.frontLegendTexts_property.undoManager = self.undoManager
+ //   self.frontLayoutTexts_property.undoManager = self.undoManager
+ //   self.backLegendTexts_property.undoManager = self.undoManager
+ //   self.backLayoutTexts_property.undoManager = self.undoManager
+ //   self.internalBoardsLimits_property.undoManager = self.undoManager
+ //   self.drills_property.undoManager = self.undoManager
+ //   self.vias_property.undoManager = self.undoManager
+ //   self.frontPads_property.undoManager = self.undoManager
+ //   self.backPads_property.undoManager = self.undoManager
+ //   self.backComponentNames_property.undoManager = self.undoManager
+ //   self.frontComponentNames_property.undoManager = self.undoManager
+ //   self.frontComponentValues_property.undoManager = self.undoManager
+ //   self.backComponentValues_property.undoManager = self.undoManager
+ //   self.backTracks_property.undoManager = self.undoManager
+ //   self.frontTracks_property.undoManager = self.undoManager
+ //   self.frontPackages_property.undoManager = self.undoManager
+ //   self.backPackages_property.undoManager = self.undoManager
+ //   self.myInstances_property.undoManager = self.undoManager
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }

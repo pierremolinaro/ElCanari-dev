@@ -42,6 +42,12 @@ protocol SymbolRoot_gridStep : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolRoot_zoom : class {
+  var zoom : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolRoot_selectedPageIndex : class {
   var selectedPageIndex : Int { get }
 }
@@ -63,6 +69,7 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_verticalFlip,
          SymbolRoot_gridStyle,
          SymbolRoot_gridStep,
+         SymbolRoot_zoom,
          SymbolRoot_selectedPageIndex,
          SymbolRoot_issues {
 
@@ -205,6 +212,29 @@ class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: zoom
+  //····················································································································
+
+  var zoom_property = EBStoredProperty_Int (400)
+
+  //····················································································································
+
+  var zoom : Int {
+    get {
+      return self.zoom_property.propval
+    }
+    set {
+      self.zoom_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var zoom_property_selection : EBSelection <Int> {
+    return self.zoom_property.prop
+  }
+
+  //····················································································································
   //   To many property: symbolObjects
   //····················································································································
 
@@ -292,10 +322,10 @@ class SymbolRoot : EBManagedObject,
     self.gridStyle_property.undoManager = self.undoManager
   //--- Atomic property: gridStep
     self.gridStep_property.undoManager = self.undoManager
-  //--- To many property: symbolObjects
+  //--- Atomic property: zoom
+    self.zoom_property.undoManager = self.undoManager
+  //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.undoManager = self.undoManager
-  //--- To many property: symbolPins
-    self.symbolPins_property.undoManager = self.undoManager
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
   //--- Atomic property: issues
@@ -325,8 +355,7 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_name (self.issues_property)
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-    self.symbolObjects_property.undoManager = self.undoManager
-    self.symbolPins_property.undoManager = self.undoManager
+ //   self.symbolObjects_property.undoManager = self.undoManager
     self.symbolObjects_property.addEBObserver (self.symbolPins_property)
     self.symbolPins_property.readModelFunction =  { [weak self] in
       if let model = self?.symbolObjects_property {
@@ -419,6 +448,14 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.gridStep_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "zoom",
+      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.zoom_property.mObserverExplorer,
+      valueExplorer:&self.zoom_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "selectedPageIndex",
       idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -470,6 +507,9 @@ class SymbolRoot : EBManagedObject,
   //--- Atomic property: gridStep
     self.gridStep_property.mObserverExplorer = nil
     self.gridStep_property.mValueExplorer = nil
+  //--- Atomic property: zoom
+    self.zoom_property.mObserverExplorer = nil
+    self.zoom_property.mValueExplorer = nil
   //--- To many property: symbolObjects
     self.symbolObjects_property.mValueExplorer = nil
   //--- Atomic property: selectedPageIndex
@@ -497,16 +537,12 @@ class SymbolRoot : EBManagedObject,
     self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
   //--- Atomic property: gridStep
     self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
+  //--- Atomic property: zoom
+    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
   //--- To many property: symbolObjects
     self.store (
       managedObjectArray: symbolObjects_property.propval as NSArray,
       relationshipName: "symbolObjects",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: symbolPins
-    self.store (
-      managedObjectArray: symbolPins_property.propval as NSArray,
-      relationshipName: "symbolPins",
       intoDictionary: ioDictionary
     )
   //--- Atomic property: selectedPageIndex
@@ -532,6 +568,8 @@ class SymbolRoot : EBManagedObject,
     self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
   //--- Atomic property: gridStep
     self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
+  //--- Atomic property: zoom
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
   //--- To many property: symbolObjects
     self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "symbolObjects",
@@ -971,6 +1009,63 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
+  //   Observers of 'zoom' stored property
+  //····················································································································
+
+  private var mObserversOf_zoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_zoom.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoom_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_zoom.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoom_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_zoom {
+        managedObject.zoom_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for observer in mObserversOf_zoom {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.zoom_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
@@ -1144,6 +1239,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -1156,6 +1252,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
         addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1275,6 +1372,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -1289,6 +1387,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers

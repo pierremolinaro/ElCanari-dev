@@ -48,6 +48,7 @@ document SymbolDocument root SymbolRoot {
     $gridStepFactor root.gridStep
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridDotColor prefs.dotColorOfSymbolGrid
+    $zoom root.zoom
   ;
 
   outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;
@@ -75,7 +76,7 @@ document SymbolDocument root SymbolRoot {
     $selectedIndex mSymbolPinSelectionController.nameHorizontalAlignment
   ;
   outlet EBSwitch mSymbolPinNumberIsVisibleInSchematicsSwitch
-    $value mSymbolPinSelectionController.pinNumberIsVisibleInSchematics
+    $value mSymbolPinSelectionController.pinNameIsVisibleInSchematics
   ;
   outlet EBTextField mSymbolPinLabelNameTextField
     $value mSymbolPinSelectionController.name {sendContinously : yes}

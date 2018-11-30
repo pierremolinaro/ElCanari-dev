@@ -18,7 +18,7 @@ import Cocoa
 
 let okStatusImageName = NSImage.Name ("NSStatusAvailable")
 let warningStatusImageName = NSImage.Name ("NSStatusPartiallyAvailable")
-//let errorStatusImageName = NSImage.Name ("NSStatusUnavailable")
-let errorStatusImageName = NSImage.Name ("exclamation")
+let errorStatusImageName = NSImage.Name ("NSStatusUnavailable")
+//let errorStatusImageName = NSImage.Name ("exclamation")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -380,10 +380,10 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.undoManager = self.undoManager
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.undoManager = self.undoManager
-  //--- To many property: fileGenerationParameterArray
+  //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
-    self.fileGenerationParameterArray_property.undoManager = self.undoManager
+ //   self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
