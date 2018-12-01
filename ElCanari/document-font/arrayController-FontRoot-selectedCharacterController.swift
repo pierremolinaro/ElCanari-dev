@@ -403,6 +403,7 @@ final class SelectedSet_FontRoot_selectedCharacterController : EBAbstractPropert
     tf.drawsBackground = false
     tf.isEnabled = true
     tf.isEditable = false
+    tf.autoresizingMask = [.width, .minYMargin, .maxYMargin]
     tf.stringValue = inString
     tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
     tf.textColor = NSColor.lightGray

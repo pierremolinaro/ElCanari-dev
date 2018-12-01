@@ -148,7 +148,7 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="894" customClass="CanariDraggingDestinationScrollView">
                     <rect key="frame" x="253" y="-1" width="403" height="385"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="xCD-Dw-CrS" customClass="CanariClipView" customModule="ElCanari" customModuleProvider="target">
+                    <clipView key="contentView" id="xCD-Dw-CrS">
                         <rect key="frame" x="1" y="1" width="386" height="368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

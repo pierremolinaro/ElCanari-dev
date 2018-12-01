@@ -35,7 +35,7 @@ extension ApplicationDelegate {
               display: true,
               completionHandler: { (document : NSDocument?, display : Bool, error : Error?) in }
             )
-            RunLoop.main.run (mode: .default, before: Date (timeIntervalSinceNow: 0.1))
+            RunLoop.main.run (mode: .default, before: Date ())
           }
         }
       }catch (let error) {

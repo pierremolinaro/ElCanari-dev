@@ -15,45 +15,10 @@ import Cocoa
 
 class CanariViewWithZoomAndFlip : EBView {
 
-   fileprivate var mHorizontalFlip = false
-   fileprivate var mVerticalFlip = false
-   fileprivate var mZoom = 100
-   fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
-
-  //····················································································································
-  //  Set rect
-  //····················································································································
-
-  fileprivate var mMinimumBounds : NSRect? = nil
-
-  private func set (canariBounds : CanariRect) {
-    let emptyModel = (canariBounds.size.width <= 0) || (canariBounds.size.height <= 0)
-    if emptyModel {
-      self.mMinimumBounds = nil
-    }else{
-      self.mMinimumBounds = canariBounds.cocoaRect ()
-    }
-    self.updateViewFrameAndBounds ()
-  }
-
   //····················································································································
 
   func updateViewFrameAndBounds () {
-    var newRect = self.objectBoundingBox ()
-    if let minimumBounds = self.mMinimumBounds {
-      newRect = newRect.union (minimumBounds)
-    }
-//    if let view = self.superview as? NSClipView {
-//    //  newRect = newRect.union (view.documentVisibleRect)
-//      let r = view.convert (view.documentRect, from: self)
-//      newRect = newRect.union (r)
-////      NSLog ("\(r)")
-//    }
-    if self.bounds != newRect {
-      self.frame.size = newRect.size
-      self.bounds = newRect
-      scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
-    }
+    scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
   }
 
   //····················································································································
@@ -67,7 +32,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   override func objectBoundingBox () -> NSRect {
     var r = super.objectBoundingBox ()
-    if let issueBezierPath = self.mIssueBezierPath {
+    if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
       let e = -issueBezierPath.lineWidth / 2.0
       r = r.union (issueBezierPath.bounds.insetBy(dx: e, dy: e))
     }
@@ -75,13 +40,70 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+  //  Computing bounds on live resize
+  //····················································································································
+
+  override func viewDidMoveToWindow () {
+    super.viewDidMoveToWindow ()
+    self.updateViewFrameAndBounds ()
+  }
+ // override var preservesContentDuringLiveResize : Bool { return true }
+
+//  override func viewWillStartLiveResize () {
+//    super.viewWillStartLiveResize ()
+// //   self.updateViewFrameAndBounds ()
+//    NSLog ("viewWillStartLiveResize")
+//  }
+
+//  override func getRectsExposedDuringLiveResize (_ exposedRects: UnsafeMutablePointer<NSRect>,
+//                                                 count: UnsafeMutablePointer<Int>) {
+//    NSLog ("getRectsExposedDuringLiveResize")
+//    return super.getRectsExposedDuringLiveResize (exposedRects, count: count)
+//  }
+
+  //····················································································································
+  //  Computing bounds on live resize
+  //····················································································································
+
+//  override func viewDidMoveToSuperview () {
+//    super.viewDidMoveToSuperview ()
+//    NSLog ("viewDidMoveToSuperview")
+//  }
+
+
+  override func viewDidEndLiveResize () {
+    super.viewDidEndLiveResize ()
+    self.updateViewFrameAndBounds ()
+//    NSLog ("viewDidEndLiveResize")
+  }
+
+  //····················································································································
   //  scaleToZoom
   //····················································································································
+
+  fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
+  fileprivate var mZoom = 100
 
   fileprivate func scaleToZoom (_ inZoom : Int,
                                 _ inHorizontalFlip : Bool,
                                 _ inVerticalFlip : Bool) { // 0 -> fit to window
     if let clipView = self.superview as? NSClipView {
+      var newRect = self.objectBoundingBox ()
+      if let minimumBounds = self.mMinimumRect {
+        newRect = newRect.union (minimumBounds)
+      }
+      let r = clipView.convert (clipView.documentVisibleRect, from: self)
+//      let factor = CGFloat (inZoom) / CGFloat (self.mZoom)
+//      r.origin.x /= self.actualScale ()
+//      r.origin.y /= self.actualScale ()
+//      r.size.width *= factor
+//      r.size.height *= factor
+      newRect = newRect.union (r)
+//      NSLog ("\(self.actualScale ()), \(r)")
+      if self.bounds != newRect {
+        self.frame.size = newRect.size
+        self.bounds = newRect
+      }
       let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
       let currentScale = 1.0 / currentUnitSquareSize.width ;
       let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
@@ -129,23 +151,24 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   @objc func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
-    scaleToZoom (inSender.tag, mHorizontalFlip, mVerticalFlip)
-    mZoom = inSender.tag
-    mZoomController?.updateModel (self)
+    scaleToZoom (inSender.tag, self.mHorizontalFlip, self.mVerticalFlip)
+    self.mZoom = inSender.tag
+    self.mZoomController?.updateModel (self)
   }
 
   //····················································································································
 
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
+//    self.updateViewFrameAndBounds ()
     if mZoomPopUpButton == nil, let clipView = self.superview as? NSClipView {
-      clipView.postsFrameChangedNotifications = true
-      NotificationCenter.default.addObserver (
-        self,
-        selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
-        name: NSView.frameDidChangeNotification,
-        object: clipView
-      )
+ //     clipView.postsFrameChangedNotifications = true
+//      NotificationCenter.default.addObserver (
+//        self,
+//        selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
+//        name: NSView.frameDidChangeNotification,
+//        object: clipView
+//      )
       if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
         let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
         let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
@@ -185,24 +208,31 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+  //  Super view has been resized
+  //····················································································································
+
+//  @objc func updateAfterSuperviewResising (_ inSender: Any?) {
+//    if mZoom == 0 {
+//      scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
+//    }
+//  }
+
+  //····················································································································
 
   override func viewWillMove (toSuperview inSuperview : NSView?) {
      super.viewWillMove (toSuperview:inSuperview)
   //--- Remove from superview ?
-    if nil == inSuperview {
-      if let clipView = self.superview as? NSClipView {
-        if let zoomPopUpButton = mZoomPopUpButton {
-          if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
-            scrollView.removePlacard (zoomPopUpButton)
-            mZoomPopUpButton = nil ;
-            NotificationCenter.default.removeObserver (
-              self,
-              name: NSView.frameDidChangeNotification,
-              object: clipView
-            )
-          }
-        }
-      }
+    if nil == inSuperview,
+       let clipView = self.superview as? NSClipView,
+       let zoomPopUpButton = mZoomPopUpButton,
+       let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
+     scrollView.removePlacard (zoomPopUpButton)
+     mZoomPopUpButton = nil ;
+//            NotificationCenter.default.removeObserver (
+//              self,
+//              name: NSView.frameDidChangeNotification,
+//              object: clipView
+//            )
     }
   }
 
@@ -217,43 +247,11 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
-  //  Super view has been resized
-  //····················································································································
-
-  @objc func updateAfterSuperviewResising (_ inSender: Any?) {
-    if mZoom == 0 {
-      scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
-    }
-  }
-
-  //····················································································································
   //  Horizontal flip
   //····················································································································
 
   func horizontalFlip () -> Bool {
     return mHorizontalFlip
-  }
-
-  //····················································································································
-
-  func setHorizontalFlipFromController (_ inFlip : Bool) {
-    scaleToZoom (mZoom, inFlip, mVerticalFlip)
-    mHorizontalFlip = inFlip
-  }
-
-  //····················································································································
-  //  Vertical flip
-  //····················································································································
-
-  func verticalFlip () -> Bool {
-    return mVerticalFlip
-  }
-
-  //····················································································································
-
-  func setVerticalFlipFromController (_ inFlip : Bool) {
-    scaleToZoom (mZoom, mHorizontalFlip, inFlip)
-    mVerticalFlip = inFlip
   }
 
   //····················································································································
@@ -374,7 +372,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   private func drawIssue (_ inDirtyRect : NSRect) {
-    if let issueBezierPath = self.mIssueBezierPath {
+    if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
       switch self.mIssueKind {
       case .error :
         NSColor.red.withAlphaComponent (0.15).setFill ()
@@ -482,9 +480,22 @@ class CanariViewWithZoomAndFlip : EBView {
     case .multiple :
       ()
     }
-    self.set (canariBounds: rect)
+    self.setMinimumRect (rect)
   }
 
+  //····················································································································
+
+  fileprivate var mMinimumRect : NSRect? = nil
+
+  private func setMinimumRect (_ inCanariRect : CanariRect) {
+    let emptyModel = (inCanariRect.size.width <= 0) || (inCanariRect.size.height <= 0)
+    if emptyModel {
+      self.mMinimumRect = nil
+    }else{
+      self.mMinimumRect = inCanariRect.cocoaRect ()
+    }
+    self.updateViewFrameAndBounds ()
+  }
 
   //····················································································································
   //    zoom binding
@@ -505,7 +516,10 @@ class CanariViewWithZoomAndFlip : EBView {
   //    horizontal flip binding
   //····················································································································
 
+  private var mHorizontalFlip = false
   private var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
+
+  //····················································································································
 
   func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     self.mHorizontalFlipController = EBReadOnlyController_Bool (
@@ -513,6 +527,8 @@ class CanariViewWithZoomAndFlip : EBView {
       callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
     )
   }
+
+  //····················································································································
 
   func unbind_horizontalFlip () {
     self.mHorizontalFlipController?.unregister ()
@@ -522,22 +538,31 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
+    var horizontalFlip = false
     switch model.prop {
-    case .empty :
-      self.setHorizontalFlipFromController (false)
+    case .empty, .multiple :
+      ()
     case .single (let v) :
-      self.setHorizontalFlipFromController (v)
-    case .multiple :
-      self.setHorizontalFlipFromController (false)
+      horizontalFlip = v
     }
+    self.setHorizontalFlip (horizontalFlip)
   }
 
+  //····················································································································
+
+  func setHorizontalFlip (_ inFlip : Bool) {
+    scaleToZoom (self.mZoom, inFlip, self.mVerticalFlip)
+    self.mHorizontalFlip = inFlip
+  }
 
   //····················································································································
   //    vertical flip binding
   //····················································································································
 
+  private var mVerticalFlip = false
   private var mVerticalFlipController : EBReadOnlyController_Bool? = nil
+
+  //····················································································································
 
   func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
     self.mVerticalFlipController = EBReadOnlyController_Bool (
@@ -545,6 +570,8 @@ class CanariViewWithZoomAndFlip : EBView {
       callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
     )
   }
+
+  //····················································································································
 
   func unbind_verticalFlip () {
     self.mVerticalFlipController?.unregister ()
@@ -556,12 +583,25 @@ class CanariViewWithZoomAndFlip : EBView {
   private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
     switch model.prop {
     case .empty :
-      self.setVerticalFlipFromController (false)
+      self.setVerticalFlip (false)
     case .single (let v) :
-      self.setVerticalFlipFromController (v)
+      self.setVerticalFlip (v)
     case .multiple :
-      self.setVerticalFlipFromController (false)
+      self.setVerticalFlip (false)
     }
+  }
+
+  //····················································································································
+
+  func setVerticalFlip (_ inFlip : Bool) {
+    scaleToZoom (self.mZoom, self.mHorizontalFlip, inFlip)
+    self.mVerticalFlip = inFlip
+  }
+
+  //····················································································································
+
+  func verticalFlip () -> Bool {
+    return self.mVerticalFlip
   }
 
   //····················································································································
