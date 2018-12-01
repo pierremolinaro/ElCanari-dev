@@ -18,18 +18,17 @@ extension Preferences {
     op.allowsMultipleSelection = false
     op.canChooseDirectories = true
     op.canChooseFiles = false
-    op.beginSheetModal (for: (sender as! NSButton).window!,
+    op.beginSheetModal (
+      for: (sender as! NSButton).window!,
       completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
         if inReturnCode == NSApplication.ModalResponse.OK {
           let URLToAdd : URL = op.urls [0]
-          let pathToAdd : String? = URLToAdd.path
-          if let unwPathToAdd = pathToAdd {
-            let newEntry = CanariLibraryEntry ()
-            newEntry.mPath = unwPathToAdd
-            var array = self.additionnalLibraryArray_property.propval
-            array.append (newEntry)
-            self.additionnalLibraryArray_property.setProp (array)
-          }
+          let pathToAdd = URLToAdd.path
+          let newEntry = CanariLibraryEntry ()
+          newEntry.mPath = pathToAdd
+          var array = self.additionnalLibraryArray_property.propval
+          array.append (newEntry)
+          self.additionnalLibraryArray_property.setProp (array)
         }
       }
     )

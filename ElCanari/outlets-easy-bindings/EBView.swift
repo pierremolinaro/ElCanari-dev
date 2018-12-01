@@ -193,16 +193,32 @@ protocol EBViewControllerProtocol : class {
   //  Draw Dirty rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
+  func drawUnderObjects (_ inDirtyRect: NSRect) {
     self.mUnderObjectsDisplay.draw (inDirtyRect)
-    for object in self.mObjectDisplayArray {
-      object.draw (inDirtyRect)
-    }
+  }
+
+  //····················································································································
+
+  func drawOverObjects (_ inDirtyRect: NSRect) {
     self.mOverObjectsDisplay.draw (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
     for shape in self.mSelectionShapes {
       shape.draw (inDirtyRect)
     }
+  }
+
+  //····················································································································
+
+  override func draw (_ inDirtyRect: NSRect) {
+    if let backColor = self.mBackColor {
+      backColor.setFill ()
+      __NSRectFill (inDirtyRect)
+    }
+    self.drawUnderObjects (inDirtyRect)
+    for object in self.mObjectDisplayArray {
+      object.draw (inDirtyRect)
+    }
+    self.drawOverObjects (inDirtyRect)
   }
 
   //····················································································································
@@ -304,6 +320,45 @@ protocol EBViewControllerProtocol : class {
 
   func set (shiftArrowKeyMagnitude : CGFloat) {
     self.shiftArrowKeyMagnitude = shiftArrowKeyMagnitude
+  }
+
+  //····················································································································
+  //    Back color
+  //····················································································································
+
+  private var mBackColor : NSColor? = nil
+  private var mBackColorController : EBReadOnlyController_NSColor? = nil
+
+  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
+    self.mBackColorController = EBReadOnlyController_NSColor (
+      model: model,
+      callBack: { [weak self] in self?.updateBackColor (from: model) }
+    )
+  }
+
+  func unbind_backColor () {
+    mBackColorController?.unregister ()
+    mBackColorController = nil
+  }
+
+  //····················································································································
+
+  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
+    switch model.prop {
+    case .empty :
+      break
+    case .single (let v) :
+      self.set (backColor: v)
+    case .multiple :
+      break
+    }
+  }
+
+ //····················································································································
+
+  func set (backColor : NSColor) {
+    self.mBackColor = backColor
+    self.needsDisplay = true
   }
 
   //····················································································································

@@ -443,10 +443,18 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+  // Draw dirty rect
+  //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
+  override func drawUnderObjects (_ inDirtyRect: NSRect) {
     self.drawGrid (inDirtyRect)
-    super.draw (inDirtyRect)
+    super.drawUnderObjects (inDirtyRect)
+  }
+
+  //····················································································································
+
+  override func drawOverObjects (_ inDirtyRect: NSRect) {
+    super.drawOverObjects (inDirtyRect)
     self.drawIssue (inDirtyRect)
   }
 

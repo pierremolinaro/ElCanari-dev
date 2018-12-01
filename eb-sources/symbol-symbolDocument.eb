@@ -49,6 +49,7 @@ document SymbolDocument root SymbolRoot {
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridDotColor prefs.dotColorOfSymbolGrid
     $zoom root.zoom
+    $backColor prefs.symbolBackgroundColor
   ;
 
   outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;

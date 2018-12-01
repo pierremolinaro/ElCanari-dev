@@ -33,9 +33,12 @@ extension ApplicationDelegate {
             dc.openDocument (
               withContentsOf: URL (fileURLWithPath: fullpath),
               display: true,
-              completionHandler: { (document : NSDocument?, display : Bool, error : Error?) in }
+              completionHandler: { (document : NSDocument?, display : Bool, error : Error?) in
+                document?.windowForSheet?.makeKeyAndOrderFront (nil)
+                _ = RunLoop.main.run (mode: .default, before: Date ())
+        //        _ = RunLoop.main.run (mode: .default, before: Date (timeIntervalSinceNow: 0.1))
+              }
             )
-            RunLoop.main.run (mode: .default, before: Date ())
           }
         }
       }catch (let error) {
