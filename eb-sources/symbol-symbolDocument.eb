@@ -32,6 +32,7 @@ document SymbolDocument root SymbolRoot {
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
   outlet CanariDragSourceButton mAddBezierButton ;
+  outlet CanariDragSourceButton mAddSolidOvalButton ;
   outlet CanariDragSourceButton mAddOvalButton ;
   outlet CanariDragSourceButton mAddSolidRectButton ;
   outlet CanariDragSourceButton mAddTextButton ;

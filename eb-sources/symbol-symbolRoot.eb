@@ -110,6 +110,25 @@ graphic entity SymbolOval : SymbolObject {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+graphic entity SymbolSolidOval : SymbolObject {
+  property @signature Int x default 2_286_00 ;
+  property @signature Int y default 2_286_00 ;
+  property @signature Int width default 9_154_00 ;
+  property @signature Int height default 9_154_00 ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x, self.y, self.width, self.height,
+     prefs.symbolColor
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.x, self.y, self.width, self.height
+  ;
+  
+  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 graphic entity SymbolBezierCurve : SymbolObject {
   property @signature Int x1 default 2_286_00 ;
   property @signature Int y1 default 9_154_00 ;

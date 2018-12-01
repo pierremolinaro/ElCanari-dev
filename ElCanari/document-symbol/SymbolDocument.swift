@@ -104,6 +104,7 @@ import Cocoa
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddPinButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
+  @IBOutlet var mAddSolidOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddSolidRectButton : CanariDragSourceButton?
   @IBOutlet var mAddTextButton : CanariDragSourceButton?
   @IBOutlet var mCommentTextView : EBTextView?
@@ -269,6 +270,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddSegmentButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddSolidOvalButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddSolidOvalButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddSolidOvalButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAddSolidRectButton {
@@ -908,6 +924,7 @@ import Cocoa
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddPinButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mAddSolidOvalButton?.ebCleanUp ()
     self.mAddSolidRectButton?.ebCleanUp ()
     self.mAddTextButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()

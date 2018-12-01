@@ -231,6 +231,8 @@ class EBManagedObjectContext : EBObject {
       result = SymbolSolidRect (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolOval" {
       result = SymbolOval (managedObjectContext:self, file: #file, #line)
+    }else if inEntityTypeName == "SymbolSolidOval" {
+      result = SymbolSolidOval (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolBezierCurve" {
       result = SymbolBezierCurve (managedObjectContext:self, file: #file, #line)
     }else if inEntityTypeName == "SymbolSegment" {

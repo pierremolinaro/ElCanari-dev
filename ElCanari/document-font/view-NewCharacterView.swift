@@ -119,7 +119,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
   //--- Draw background
     NSColor.white.setFill ()
-    __NSRectFill (inDirtyRect)
+    NSBezierPath.fill (inDirtyRect)
   //--- Draw lines
     var line = Int ((PLACEMENT_GRID * CGFloat (LINE_COUNT) - inDirtyRect.maxY) / PLACEMENT_GRID)
     var y = PLACEMENT_GRID * CGFloat (LINE_COUNT - line)
@@ -140,10 +140,10 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
         let rChar = CGRect (x:x, y:y, width: PLACEMENT_GRID, height: PLACEMENT_GRID)
         if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
           NSColor.lightGray.setFill ()
-          __NSRectFill (rChar)
+          NSBezierPath.fill (rChar)
         }else if mImplementedCharacterSet.contains (code) {
           NSColor.yellow.setFill ()
-          __NSRectFill (rChar)
+          NSBezierPath.fill (rChar)
         }
         let title = String (format: "%C", code)
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]

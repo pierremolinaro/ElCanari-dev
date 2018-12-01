@@ -59,7 +59,7 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
 
   override func draw (_ inDirtyRect: NSRect) {
     NSColor.white.setFill ()
-    __NSRectFill (inDirtyRect)
+    NSBezierPath.fill (inDirtyRect)
     NSColor.black.setStroke ()
     var bp = NSBezierPath (rect:self.bounds.insetBy(dx: 0.5, dy: 0.5))
     bp.lineWidth = 1.0

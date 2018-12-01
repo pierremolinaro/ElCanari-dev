@@ -87,7 +87,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func drawFocusRingMask () {
-    __NSRectFill (self.bounds)
+    NSBezierPath.fill (self.bounds)
   }
 
   //····················································································································
@@ -111,7 +111,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
   //--- Background
     NSColor.white.setFill ()
-    __NSRectFill (inDirtyRect)
+    NSBezierPath.fill (inDirtyRect)
   //--- Border
     let r = self.bounds.insetBy (dx: 0.5, dy: 0.5)
     var bp = NSBezierPath (rect: r)

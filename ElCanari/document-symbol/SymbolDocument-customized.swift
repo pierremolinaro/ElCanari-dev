@@ -16,12 +16,13 @@ let PMSymbolComment = "PMSymbolComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let dragAddSegmentUTI   = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.segment")
-fileprivate let dragAddBezierUTI    = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.bezier")
-fileprivate let dragAddOvalUTI      = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.oval")
-fileprivate let dragAddSolidRectUTI = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.solid.rect")
-fileprivate let dragAddTextUTI      = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.text")
-fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.pin")
+fileprivate let dragAddSegment    = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.segment")
+fileprivate let dragAddBezier     = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.bezier")
+fileprivate let dragAddFramedOval = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.framed.oval")
+fileprivate let dragAddSolidOval  = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.solid.oval")
+fileprivate let dragAddSolidRect  = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.solid.rect")
+fileprivate let dragAddText       = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.text")
+fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.pin")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,13 +58,14 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
     let inspectors = [self.mSymbolBaseInspectorView, self.mSymbolZoomFlipInspectorView, self.mSymbolIssueInspectorView]
     self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
-    self.mAddSegmentButton?.register (draggedType: dragAddSegmentUTI)
-    self.mAddBezierButton?.register (draggedType: dragAddBezierUTI)
-    self.mAddOvalButton?.register (draggedType: dragAddOvalUTI)
-    self.mAddSolidRectButton?.register (draggedType: dragAddSolidRectUTI)
-    self.mAddTextButton?.register (draggedType: dragAddTextUTI)
-    self.mAddPinButton?.register (draggedType: dragAddPinUTI)
-    let allTypes = [dragAddSegmentUTI, dragAddBezierUTI, dragAddOvalUTI, dragAddSolidRectUTI, dragAddTextUTI, dragAddPinUTI]
+    self.mAddSegmentButton?.register (draggedType: dragAddSegment)
+    self.mAddBezierButton?.register (draggedType: dragAddBezier)
+    self.mAddSolidOvalButton?.register (draggedType: dragAddSolidOval)
+    self.mAddOvalButton?.register (draggedType: dragAddFramedOval)
+    self.mAddSolidRectButton?.register (draggedType: dragAddSolidRect)
+    self.mAddTextButton?.register (draggedType: dragAddText)
+    self.mAddPinButton?.register (draggedType: dragAddPin)
+    let allTypes = [dragAddSegment, dragAddBezier, dragAddSolidOval, dragAddFramedOval, dragAddSolidRect, dragAddText, dragAddPin]
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
@@ -80,7 +82,7 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
   //····················································································································
 
 //  override func ebProvideDraggingFrame (_ ioRect : inout NSRect, _ image : inout NSImage, _ inDragType : NSPasteboard.PasteboardType) {
-//    if inDragType == dragAddBezierUTI {
+//    if inDragType == dragAddBezier {
 //      let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
 //      let shape = newObject.objectDisplay!
 //      ioRect = shape.boundingBox
@@ -138,25 +140,28 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
       let pointInWindow = sender.draggingLocation
       let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
       let pasteboard = sender.draggingPasteboard
-      if pasteboard.availableType (from: [dragAddSegmentUTI]) != nil {
+      if pasteboard.availableType (from: [dragAddSegment]) != nil {
         self.addSegment (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddBezierUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddBezier]) != nil {
         self.addBezier (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddOvalUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddFramedOval]) != nil {
         self.addOval (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddSolidRectUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddSolidOval]) != nil {
+        self.addSolidOval (at: pointInDestinationView)
+        ok = true
+      }else if pasteboard.availableType (from: [dragAddSolidRect]) != nil {
         self.addSolidRect (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddTextUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddText]) != nil {
         self.addText (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddTextUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddText]) != nil {
         self.addText (at: pointInDestinationView)
         ok = true
-      }else if pasteboard.availableType (from: [dragAddPinUTI]) != nil {
+      }else if pasteboard.availableType (from: [dragAddPin]) != nil {
         self.addPin (at: pointInDestinationView)
         ok = true
       }
@@ -198,6 +203,19 @@ fileprivate let dragAddPinUTI       = NSPasteboard.PasteboardType (rawValue: "dr
 
   private func addOval (at inCocoaPoint : NSPoint) {
     let newObject = SymbolOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    newObject.x = p.x
+    newObject.y = p.y
+    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
+    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
+    self.rootObject.symbolObjects_property.add (newObject)
+    self.mSymbolObjectsController.select (object: newObject)
+  }
+
+ //····················································································································
+
+  private func addSolidOval (at inCocoaPoint : NSPoint) {
+    let newObject = SymbolSolidOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x = p.x
     newObject.y = p.y
