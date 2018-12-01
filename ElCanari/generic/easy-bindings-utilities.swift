@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Extension NSBezierPath
+// MARK: Extension NSBezierPath
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension NSBezierPath {
@@ -588,7 +588,6 @@ class EBKnobShape : EBShape {
 
 class EBStrokeBezierPathShape : EBShape {
   private var mPaths : [NSBezierPath]
-  private var mCGPaths : [CGPath?] // Computed lazily by contains (point:)
   private let mColor : NSColor
   private var mCachedBoundingBox : NSRect?
 
@@ -598,7 +597,6 @@ class EBStrokeBezierPathShape : EBShape {
 
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
     mPaths = inPaths
-    mCGPaths = [CGPath?](repeating: nil, count: inPaths.count)
     mColor = inColor
     super.init ()
   }
@@ -609,7 +607,6 @@ class EBStrokeBezierPathShape : EBShape {
 
   func append (path inBezierPath : NSBezierPath) {
     self.mPaths.append (inBezierPath)
-    self.mCGPaths.append (nil)
     self.mCachedBoundingBox = nil
   }
 
@@ -666,14 +663,7 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.contains (point: inPoint)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      let cgPath : CGPath
-      if let p = self.mCGPaths [idx] {
-        cgPath = p
-      }else{
-        cgPath = self.mPaths [idx].pathByStroking
-        self.mCGPaths [idx] = cgPath
-      }
-      result = cgPath.contains (inPoint, using: .winding)
+      result = self.mPaths [idx].contains (inPoint) // , using: .winding)
       idx += 1
     }
     return result
@@ -687,25 +677,10 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.intersects (rect: inRect)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      let cgPath : CGPath
-      if let p = self.mCGPaths [idx] {
-        cgPath = p
-      }else{
-        cgPath = self.mPaths [idx].pathByStroking
-        self.mCGPaths [idx] = cgPath
+      if self.mPaths [idx].bounds.intersects (inRect) {
+        result = true
       }
       idx += 1
-      result = cgPath.boundingBoxOfPath.intersects (inRect)
-//      let r = cgPath.boundingBoxOfPath.intersection (inRect)
-//      var p = CGPoint (x:r.minX, y:0.0)
-//      while (p.x <= r.maxX) && !result {
-//        p.y = r.minY
-//        while (p.y <= r.maxY) && !result {
-//          result = cgPath.contains (p)
-//          p.y += 1.0
-//        }
-//        p.x += 1.0
-//      }
     }
     return result
   }
@@ -753,12 +728,11 @@ class EBStrokeBezierPathShape : EBShape {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBFilledBezierPathShape
+// EBFilledBezierPathShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBFilledBezierPathShape : EBShape {
-  private var mPaths : [NSBezierPath]
-  private var mCGPaths : [CGPath?] // Computed lazily by contains (point:)
+  private var mFilledPaths : [NSBezierPath]
   private let mColor : NSColor
   private var mCachedBoundingBox : NSRect?
 
@@ -767,9 +741,8 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mPaths = inPaths
+    mFilledPaths = inPaths
     mColor = inColor
-    mCGPaths = [CGPath?] (repeating: nil, count: inPaths.count)
     super.init ()
   }
 
@@ -778,8 +751,7 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   func append (_ inBezierPath : NSBezierPath) {
-    self.mPaths.append (inBezierPath)
-    self.mCGPaths.append (nil)
+    self.mFilledPaths.append (inBezierPath)
     self.mCachedBoundingBox = nil
   }
 
@@ -789,7 +761,7 @@ class EBFilledBezierPathShape : EBShape {
 
   override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
     var paths = [NSBezierPath] ()
-    for path in self.mPaths {
+    for path in self.mFilledPaths {
       let bp = inAffineTransform.transform (path)
       paths.append (bp)
     }
@@ -805,7 +777,7 @@ class EBFilledBezierPathShape : EBShape {
   override func draw (_ inDirtyRect: NSRect) {
     super.draw (inDirtyRect)
     self.mColor.setFill ()
-    for bp in self.mPaths {
+    for bp in self.mFilledPaths {
       bp.fill ()
     }
   }
@@ -819,7 +791,7 @@ class EBFilledBezierPathShape : EBShape {
       return cbb
     }else{
       var r = super.boundingBox
-      for bp in self.mPaths {
+      for bp in self.mFilledPaths {
         r = r.union (bp.bounds)
       }
       self.mCachedBoundingBox = r
@@ -834,16 +806,8 @@ class EBFilledBezierPathShape : EBShape {
   override func contains (point inPoint : NSPoint) -> Bool {
     var result = super.contains (point: inPoint)
     var idx = 0
-    while (idx < self.mPaths.count) && !result {
-      let cgPath : CGPath
-      if let p = self.mCGPaths [idx] {
-        cgPath = p
-      }else{
-        let bp = self.mPaths [idx]
-        cgPath = bp.cgPath
-        self.mCGPaths [idx] = cgPath
-      }
-      result = cgPath.contains (inPoint, using: .winding) // §§§ .winding à revoir
+    while (idx < self.mFilledPaths.count) && !result {
+      result = self.mFilledPaths [idx].contains (inPoint)
       idx += 1
     }
     return result
@@ -856,27 +820,11 @@ class EBFilledBezierPathShape : EBShape {
   override func intersects (rect inRect : NSRect) -> Bool {
     var result = super.intersects (rect: inRect)
     var idx = 0
-    while (idx < self.mPaths.count) && !result {
-      let cgPath : CGPath
-      if let p = self.mCGPaths [idx] {
-        cgPath = p
-      }else{
-        let bp = self.mPaths [idx]
-        cgPath = bp.cgPath
-        self.mCGPaths [idx] = cgPath
+    while (idx < self.mFilledPaths.count) && !result {
+      if self.mFilledPaths [idx].bounds.intersects (inRect) {
+        result = true
       }
       idx += 1
-      result = cgPath.boundingBoxOfPath.intersects (inRect)
-//      let r = cgPath.boundingBoxOfPath.intersection (inRect)
-//      var p = CGPoint (x:r.minX, y:0.0)
-//      while (p.x <= r.maxX) && !result {
-//        p.y = r.minY
-//        while (p.y <= r.maxY) && !result {
-//          result = cgPath.contains (p)
-//          p.y += 1.0
-//        }
-//        p.x += 1.0
-//      }
     }
     return result
   }
@@ -892,7 +840,7 @@ class EBFilledBezierPathShape : EBShape {
     var h = super.hashValue
     h.rotateLeft ()
     h ^= mColor.hashValue
-    for path in self.mPaths {
+    for path in self.mFilledPaths {
       h.rotateLeft ()
       h ^= path.hashValue
     }
@@ -906,13 +854,13 @@ class EBFilledBezierPathShape : EBShape {
   override func isEqualTo (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBFilledBezierPathShape {
-      equal = self.mPaths.count == operand.mPaths.count
+      equal = self.mFilledPaths.count == operand.mFilledPaths.count
       if equal {
         equal = super.isEqualTo (inOperand)
       }
       var idx = 0
-      while (idx < self.mPaths.count) && equal {
-        equal = self.mPaths [idx] == operand.mPaths [idx]
+      while (idx < self.mFilledPaths.count) && equal {
+        equal = self.mFilledPaths [idx] == operand.mFilledPaths [idx]
         idx += 1
       }
     }
