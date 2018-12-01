@@ -19,7 +19,16 @@ func transient_SymbolSolidOval_objectDisplay (
        _ prefs_symbolColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+  let r = CGRect (
+    x: canariUnitToCocoa (self_x),
+    y: canariUnitToCocoa (self_y),
+    width: canariUnitToCocoa (self_width),
+    height: canariUnitToCocoa (self_height)
+  )
+  let bp = NSBezierPath (ovalIn: r)
+  let shape = EBShape ()
+  shape.append (shape: EBFilledBezierPathShape ([bp], prefs_symbolColor))
+  return shape
 //--- END OF USER ZONE 2
 }
 

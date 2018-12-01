@@ -173,7 +173,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="250" height="314"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
-                <button toolTip="Add Segment" imageHugsTitle="YES" id="1182" customClass="CanariDragSourceButton">
+                <button toolTip="Add Segment" id="1182" customClass="CanariDragSourceButton">
                     <rect key="frame" x="17" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1183">
@@ -181,7 +181,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Bezier Curve" imageHugsTitle="YES" id="1185" customClass="CanariDragSourceButton">
+                <button toolTip="Add Bezier Curve" id="1185" customClass="CanariDragSourceButton">
                     <rect key="frame" x="48" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="bezier-curve-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1186">
@@ -189,7 +189,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Oval" imageHugsTitle="YES" id="1188" customClass="CanariDragSourceButton">
+                <button toolTip="Add Oval" id="1188" customClass="CanariDragSourceButton">
                     <rect key="frame" x="111" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
@@ -197,7 +197,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Solid Rect" imageHugsTitle="YES" id="1192" customClass="CanariDragSourceButton">
+                <button toolTip="Add Solid Rect" id="1192" customClass="CanariDragSourceButton">
                     <rect key="frame" x="143" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="solidrect-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1193">
@@ -205,7 +205,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Text" imageHugsTitle="YES" id="1195" customClass="CanariDragSourceButton">
+                <button toolTip="Add Text" id="1195" customClass="CanariDragSourceButton">
                     <rect key="frame" x="176" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1196">
@@ -213,7 +213,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Connexion Pin" imageHugsTitle="YES" id="1198" customClass="CanariDragSourceButton">
+                <button toolTip="Add Connexion Pin" id="1198" customClass="CanariDragSourceButton">
                     <rect key="frame" x="207" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pin-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1199">
@@ -233,7 +233,7 @@
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
-                <button toolTip="Add Oval" imageHugsTitle="YES" id="PeS-G6-Otd" customClass="CanariDragSourceButton">
+                <button toolTip="Add Solid Oval" id="PeS-G6-Otd" customClass="CanariDragSourceButton">
                     <rect key="frame" x="80" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="Tbc-V6-l1x">

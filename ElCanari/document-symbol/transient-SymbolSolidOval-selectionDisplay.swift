@@ -18,6 +18,16 @@ func transient_SymbolSolidOval_selectionDisplay (
        _ self_height : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
+  let shape = EBShape ()
+  let x = canariUnitToCocoa (self_x)
+  let y = canariUnitToCocoa (self_y)
+  let width = canariUnitToCocoa (self_width)
+  let height = canariUnitToCocoa (self_height)
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_SOLID_OVAL_BOTTOM, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_SOLID_OVAL_TOP, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_RIGHT, .circ))
+  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_SOLID_OVAL_LEFT, .circ))
+  return shape
 
 //--- END OF USER ZONE 2
 }

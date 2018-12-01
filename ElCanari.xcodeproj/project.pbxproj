@@ -1647,10 +1647,6 @@
 		CFCD1F5E21A1CBB200A8297B /* document-symbol */ = {
 			isa = PBXGroup;
 			children = (
-				CFF2A1F021B2D18E00945D01 /* entity-SymbolSolidOval.swift */,
-				CFF2A1ED21B2D18D00945D01 /* transient-SymbolSolidOval-issues.swift */,
-				CFF2A1EE21B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift */,
-				CFF2A1EF21B2D18E00945D01 /* transient-SymbolSolidOval-selectionDisplay.swift */,
 				CF69ABC621A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift */,
 				CF5632BF21A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift */,
 				CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */,
@@ -1660,12 +1656,14 @@
 				CF69ABCC21A6C08100F5E49A /* entity-SymbolPin.swift */,
 				CFCD1F5F21A1CBFF00A8297B /* entity-SymbolRoot.swift */,
 				CF5632B321A2BFBF0026B7B7 /* entity-SymbolSegment.swift */,
+				CFF2A1F021B2D18E00945D01 /* entity-SymbolSolidOval.swift */,
 				CFE85A9521A5C91200991A66 /* entity-SymbolSolidRect.swift */,
 				CFE85AA621A5D76600991A66 /* entity-SymbolText.swift */,
 				CFE85A7921A5B47A00991A66 /* extension-SymbolBezierCurve.swift */,
 				CFE85A8821A5BDFA00991A66 /* extension-SymbolOval.swift */,
 				CF69ABD521A6D91B00F5E49A /* extension-SymbolPin.swift */,
 				CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */,
+				CFF2A1F921B2D24A00945D01 /* extension-SymbolSolidOval.swift */,
 				CFE85A9421A5C91200991A66 /* extension-SymbolSolidRect.swift */,
 				CFE85AAF21A6014F00991A66 /* extension-SymbolText.swift */,
 				CF58DF9921AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift */,
@@ -1689,6 +1687,9 @@
 				CF05C9AE21A809AC0021652C /* transient-SymbolSegment-issues.swift */,
 				CF5632B721A2C2550026B7B7 /* transient-SymbolSegment-objectDisplay.swift */,
 				CF5632B621A2C2550026B7B7 /* transient-SymbolSegment-selectionDisplay.swift */,
+				CFF2A1ED21B2D18D00945D01 /* transient-SymbolSolidOval-issues.swift */,
+				CFF2A1EE21B2D18E00945D01 /* transient-SymbolSolidOval-objectDisplay.swift */,
+				CFF2A1EF21B2D18E00945D01 /* transient-SymbolSolidOval-selectionDisplay.swift */,
 				CF05C9B221A809AC0021652C /* transient-SymbolSolidRect-issues.swift */,
 				CFE85A9621A5C91200991A66 /* transient-SymbolSolidRect-objectDisplay.swift */,
 				CFE85A9721A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift */,
@@ -1697,7 +1698,6 @@
 				CFE85AA521A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift */,
 				CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */,
 				CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */,
-				CFF2A1F921B2D24A00945D01 /* extension-SymbolSolidOval.swift */,
 			);
 			name = "document-symbol";
 			path = "ElCanari/document-symbol";
