@@ -91,78 +91,73 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Build PDF image
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func buildPDFimage (frame inFrame: CGRect,
-                    shapes inShapes: EBShape,
-                    backgroundColor inBackColor : NSColor? = nil) -> Data {
-  let view = EBOffscreenView (frame: inFrame)
-  view.setBackColor (inBackColor)
-  view.setPaths (inShapes)
-  return view.dataWithPDF (inside: inFrame)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBOffscreenView
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
-
-  private var mShape = EBShape ()
-  private var mBackColor : NSColor? = nil
-
+  //  Snap to grid
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  override init (frame frameRect: NSRect) {
-    super.init (frame: frameRect)
-    noteObjectAllocation (self)
+  @objc func snapToGrid () {
   }
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder: coder)
-    noteObjectAllocation (self)
+  @objc func canSnapToGrid () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  HORIZONTAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //····················································································································
+
+  @objc func flipHorizontally () {
   }
 
   //····················································································································
 
-  deinit {
-    noteObjectDeallocation (self)
+  @objc func canFlipHorizontally () -> Bool {
+    return false
   }
 
   //····················································································································
-  //  Set paths
+  //  VERTICAL FLIP
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  func setPaths (_ inShapes : EBShape) {
-    self.mShape = inShapes
+  @objc func flipVertically () {
   }
 
   //····················································································································
-  //  Set back color
-  //····················································································································
 
-  func setBackColor (_ inColor : NSColor?) {
-    self.mBackColor = inColor
+  @objc func canFlipVertically () -> Bool {
+    return false
   }
 
   //····················································································································
-  //  Draw Rect
+  //  ROTATE 90 CLOCKWISE
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    if let backColor = mBackColor {
-      backColor.setFill ()
-      NSBezierPath.fill (inDirtyRect)
-    }
-  //--- Bezier paths
-    self.mShape.draw (inDirtyRect)
+  @objc func rotate90Clockwise () {
+  }
+
+  //····················································································································
+
+  @objc func canRotate90Clockwise () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  ROTATE 90 COUNTER CLOCKWISE
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //····················································································································
+
+  @objc func rotate90CounterClockwise () {
+  }
+
+  //····················································································································
+
+  @objc func canRotate90CounterClockwise () -> Bool {
+    return false
   }
 
   //····················································································································

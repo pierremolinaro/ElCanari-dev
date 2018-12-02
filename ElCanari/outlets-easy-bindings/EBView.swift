@@ -37,6 +37,27 @@ protocol EBViewControllerProtocol : class {
   var canSendToBack : Bool { get }
   func sendToBack ()
 
+  var canSnapToGrid : Bool { get }
+  func snapToGrid ()
+
+  var canFlipHorizontally : Bool { get }
+  func flipHorizontally ()
+
+  var canFlipVertically : Bool { get }
+  func flipVertically ()
+
+  var canRotate90Clockwise : Bool { get }
+  func rotate90Clockwise ()
+
+  var canRotate90CounterClockwise : Bool { get }
+  func rotate90CounterClockwise ()
+
+//  var canGroup : Bool { get }
+//  func group ()
+//
+//  var canUngroup : Bool { get }
+//  func ungroup ()
+
   func setSelection (objectsWithIndexes inIndexes : [Int])
 
   func addToSelection (objectsWithIndex inIndexes : [Int])
@@ -639,6 +660,16 @@ protocol EBViewControllerProtocol : class {
       validate = mViewController?.canSendToBack ?? false
     }else if action == #selector (EBView.sendBackward(_:)) {
       validate = mViewController?.canSendBackward ?? false
+    }else if action == #selector (EBView.snapToGrid(_:)) {
+      validate = mViewController?.canSnapToGrid ?? false
+    }else if action == #selector (EBView.flipHorizontally(_:)) {
+      validate = mViewController?.canFlipHorizontally ?? false
+    }else if action == #selector (EBView.flipVertically(_:)) {
+      validate = mViewController?.canFlipVertically ?? false
+    }else if action == #selector (EBView.rotate90Clockwise(_:)) {
+      validate = mViewController?.canRotate90Clockwise ?? false
+    }else if action == #selector (EBView.rotate90CounterClockwise(_:)) {
+      validate = mViewController?.canRotate90CounterClockwise ?? false
     }else{
       validate = false
     }
@@ -679,6 +710,36 @@ protocol EBViewControllerProtocol : class {
 
   @objc func sendBackward (_ : Any?) {
     mViewController?.sendBackward ()
+  }
+
+  //····················································································································
+
+  @objc func snapToGrid (_ : Any?) {
+    mViewController?.snapToGrid ()
+  }
+
+  //····················································································································
+
+  @objc func flipHorizontally (_ : Any?) {
+    mViewController?.flipHorizontally ()
+  }
+
+  //····················································································································
+
+  @objc func flipVertically (_ : Any?) {
+    mViewController?.flipVertically ()
+  }
+
+  //····················································································································
+
+  @objc func rotate90Clockwise (_ : Any?) {
+    mViewController?.rotate90Clockwise ()
+  }
+
+  //····················································································································
+
+  @objc func rotate90CounterClockwise (_ : Any?) {
+    mViewController?.rotate90CounterClockwise ()
   }
 
   //····················································································································

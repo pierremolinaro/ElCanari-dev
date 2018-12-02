@@ -178,7 +178,7 @@ extension NSRect {
           let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
           intersect = possibleResultSegment != nil
           currentPoint = p
-        case .curveTo, .closePath: // Flattened path has no element of type type
+        case .curveTo, .closePath: // Flattened path has no element of theses types
           ()
         }
       }

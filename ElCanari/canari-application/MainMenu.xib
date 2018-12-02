@@ -352,13 +352,13 @@
                             <menuItem title="Horizontal Flip" keyEquivalent="" id="414">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="horizontalFlipSelectedObjects:" target="-1" id="440"/>
+                                    <action selector="flipHorizontally:" target="-1" id="5hc-Ix-GF8"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Vertical Flip" keyEquivalent="" id="421">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="verticalFlipSelectedObjects:" target="-1" id="441"/>
+                                    <action selector="flipVertically:" target="-1" id="3ST-Xq-4T1"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="418">
@@ -367,13 +367,13 @@
                             <menuItem title="Rotate +90°" keyEquivalent="" id="424">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="rotateCounterclockwiseSelectedObjects:" target="-1" id="442"/>
+                                    <action selector="rotate90Clockwise:" target="-1" id="CQE-Hb-1Xc"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Rotate - 90°" keyEquivalent="" id="426">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="rotateClockwiseSelectedObjects:" target="-1" id="443"/>
+                                    <action selector="rotate90CounterClockwise:" target="-1" id="o9I-Yv-utW"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="413">
@@ -381,15 +381,9 @@
                             </menuItem>
                             <menuItem title="Group" keyEquivalent="g" id="416">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="groupSelectedObjects:" target="-1" id="444"/>
-                                </connections>
                             </menuItem>
                             <menuItem title="Ungroup" keyEquivalent="G" id="420">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="ungroupSelectedObjects:" target="-1" id="445"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="415">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
@@ -397,7 +391,7 @@
                             <menuItem title="Snap To Grid" keyEquivalent="s" id="419">
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
-                                    <action selector="snapToGridSelectedObjects:" target="-1" id="446"/>
+                                    <action selector="snapToGrid:" target="-1" id="pjS-27-iCS"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -450,7 +444,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-369" y="-1142"/>
+            <point key="canvasLocation" x="-296" y="-1304"/>
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
