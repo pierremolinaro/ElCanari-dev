@@ -450,7 +450,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="4" y="-673"/>
+            <point key="canvasLocation" x="-369" y="-1142"/>
         </menu>
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>

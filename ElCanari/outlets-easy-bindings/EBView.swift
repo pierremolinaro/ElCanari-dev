@@ -222,30 +222,6 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  // Menu Events
-  //····················································································································
-
-  func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
-    let validate : Bool
-    let action = inMenuItem.action
-    if action == #selector (EBView.selectAll(_:)) {
-      validate = (mViewController?.objectCount ?? 0) > 0
-    }else if action == #selector (EBView.bringToFront(_:)) {
-      validate = mViewController?.canBringToFront ?? false
-    }else if action == #selector (EBView.bringForward(_:)) {
-      validate = mViewController?.canBringForward ?? false
-    }else if action == #selector (EBView.sendToBack(_:)) {
-      validate = mViewController?.canSendToBack ?? false
-    }else if action == #selector (EBView.sendBackward(_:)) {
-      validate = mViewController?.canSendBackward ?? false
-    }else{
-      validate = false
-    }
-    // NSLog ("VALIDATE \(action) -> \(validate)")
-    return validate
-  }
-
-  //····················································································································
   //    Arrow Key Magnitude
   //····················································································································
 
@@ -647,6 +623,28 @@ protocol EBViewControllerProtocol : class {
 
   //····················································································································
   //   Menu actions
+  // MARK: -
+  //····················································································································
+
+  @objc func validateMenuItem (_ inMenuItem : NSMenuItem) -> Bool {
+    let validate : Bool
+    let action = inMenuItem.action
+    if action == #selector (EBView.selectAll(_:)) {
+      validate = (mViewController?.objectCount ?? 0) > 0
+    }else if action == #selector (EBView.bringToFront(_:)) {
+      validate = mViewController?.canBringToFront ?? false
+    }else if action == #selector (EBView.bringForward(_:)) {
+      validate = mViewController?.canBringForward ?? false
+    }else if action == #selector (EBView.sendToBack(_:)) {
+      validate = mViewController?.canSendToBack ?? false
+    }else if action == #selector (EBView.sendBackward(_:)) {
+      validate = mViewController?.canSendBackward ?? false
+    }else{
+      validate = false
+    }
+    return validate
+  }
+
   //····················································································································
 
   override func selectAll (_ : Any?) {
