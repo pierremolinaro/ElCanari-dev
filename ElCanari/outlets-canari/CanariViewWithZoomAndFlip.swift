@@ -34,7 +34,7 @@ class CanariViewWithZoomAndFlip : EBView {
     var r = super.objectBoundingBox ()
     if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
       let e = -issueBezierPath.lineWidth / 2.0
-      r = r.union (issueBezierPath.bounds.insetBy(dx: e, dy: e))
+      r = r.union (issueBezierPath.bounds.insetBy (dx: e, dy: e))
     }
     return r
   }
@@ -47,38 +47,19 @@ class CanariViewWithZoomAndFlip : EBView {
     super.viewDidMoveToWindow ()
     self.updateViewFrameAndBounds ()
   }
- // override var preservesContentDuringLiveResize : Bool { return true }
-
-//  override func viewWillStartLiveResize () {
-//    super.viewWillStartLiveResize ()
-// //   self.updateViewFrameAndBounds ()
-//    NSLog ("viewWillStartLiveResize")
-//  }
-
-//  override func getRectsExposedDuringLiveResize (_ exposedRects: UnsafeMutablePointer<NSRect>,
-//                                                 count: UnsafeMutablePointer<Int>) {
-//    NSLog ("getRectsExposedDuringLiveResize")
-//    return super.getRectsExposedDuringLiveResize (exposedRects, count: count)
-//  }
 
   //····················································································································
   //  Computing bounds on live resize
   //····················································································································
 
-//  override func viewDidMoveToSuperview () {
-//    super.viewDidMoveToSuperview ()
-//    NSLog ("viewDidMoveToSuperview")
-//  }
-
-
   override func viewDidEndLiveResize () {
     super.viewDidEndLiveResize ()
     self.updateViewFrameAndBounds ()
-//    NSLog ("viewDidEndLiveResize")
   }
 
   //····················································································································
   //  scaleToZoom
+  //  MARK: -
   //····················································································································
 
   fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
@@ -93,19 +74,13 @@ class CanariViewWithZoomAndFlip : EBView {
         newRect = newRect.union (minimumBounds)
       }
       let r = clipView.convert (clipView.documentVisibleRect, from: self)
-//      let factor = CGFloat (inZoom) / CGFloat (self.mZoom)
-//      r.origin.x /= self.actualScale ()
-//      r.origin.y /= self.actualScale ()
-//      r.size.width *= factor
-//      r.size.height *= factor
       newRect = newRect.union (r)
-//      NSLog ("\(self.actualScale ()), \(r)")
       if self.bounds != newRect {
         self.frame.size = newRect.size
         self.bounds = newRect
       }
       let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
-      let currentScale = 1.0 / currentUnitSquareSize.width ;
+      let currentScale = 1.0 / currentUnitSquareSize.width
       let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
       let toggleVerticalFlip   : CGFloat = (inVerticalFlip != self.mVerticalFlip) ? -1.0 : 1.0 ;
       if (0 == inZoom) { // Fit to window
@@ -120,7 +95,7 @@ class CanariViewWithZoomAndFlip : EBView {
         clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
       }
       let zoomTitle = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
-      self.mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(" + zoomTitle + ")") : zoomTitle
+      self.mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(\(zoomTitle))") : zoomTitle
       self.setNeedsDisplay (self.frame)
     }
   }
@@ -130,7 +105,7 @@ class CanariViewWithZoomAndFlip : EBView {
   func actualScale () -> CGFloat {
     var result : CGFloat = 1.0
     if let clipView = self.superview as? NSClipView {
-      let currentScale : NSSize = clipView.convert (NSSize (width:1.0, height:1.0), from:nil)
+      let currentScale : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
       result = 1.0 / currentScale.width
     }
     return result
@@ -160,50 +135,41 @@ class CanariViewWithZoomAndFlip : EBView {
 
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
-//    self.updateViewFrameAndBounds ()
-    if mZoomPopUpButton == nil, let clipView = self.superview as? NSClipView {
- //     clipView.postsFrameChangedNotifications = true
-//      NotificationCenter.default.addObserver (
-//        self,
-//        selector: #selector (CanariViewWithZoomAndFlip.updateAfterSuperviewResising(_:)),
-//        name: NSView.frameDidChangeNotification,
-//        object: clipView
-//      )
-      if let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
-        let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
-        let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
-        mZoomPopUpButton = zoomPopUpButton
-        zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
-        zoomPopUpButton.autoenablesItems = false
-        zoomPopUpButton.bezelStyle = .shadowlessSquare
-        if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
-          popUpButtonCell.arrowPosition = .arrowAtBottom
-        }
-        zoomPopUpButton.isBordered = false
-        zoomPopUpButton.menu?.addItem (
-          withTitle:"\(Int (self.actualScale () * 100.0)) %",
-          action:nil,
-          keyEquivalent:""
-        )
-        self.addPopupButtonItemForZoom (50)
-        self.addPopupButtonItemForZoom (100)
-        self.addPopupButtonItemForZoom (150)
-        self.addPopupButtonItemForZoom (200)
-        self.addPopupButtonItemForZoom (250)
-        self.addPopupButtonItemForZoom (400)
-        self.addPopupButtonItemForZoom (500)
-        self.addPopupButtonItemForZoom (600)
-        self.addPopupButtonItemForZoom (800)
-        self.addPopupButtonItemForZoom (1000)
-        self.addPopupButtonItemForZoom (1200)
-        self.addPopupButtonItemForZoom (1500)
-        self.addPopupButtonItemForZoom (1700)
-        self.addPopupButtonItemForZoom (2000)
-        zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (CanariViewWithZoomAndFlip.setZoomFromPopUpButton(_:)), keyEquivalent:"")
-        zoomPopUpButton.lastItem?.target = self
-        zoomPopUpButton.lastItem?.tag = 0
-        scrollView.addPlacard (zoomPopUpButton)
+    if self.mZoomPopUpButton == nil,
+       let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
+      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
+      let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
+      self.mZoomPopUpButton = zoomPopUpButton
+      zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      zoomPopUpButton.autoenablesItems = false
+      zoomPopUpButton.bezelStyle = .shadowlessSquare
+      if let popUpButtonCell = zoomPopUpButton.cell as? NSPopUpButtonCell {
+        popUpButtonCell.arrowPosition = .arrowAtBottom
       }
+      zoomPopUpButton.isBordered = false
+      zoomPopUpButton.menu?.addItem (
+        withTitle:"\(Int (self.actualScale () * 100.0)) %",
+        action:nil,
+        keyEquivalent:""
+      )
+      self.addPopupButtonItemForZoom (50)
+      self.addPopupButtonItemForZoom (100)
+      self.addPopupButtonItemForZoom (150)
+      self.addPopupButtonItemForZoom (200)
+      self.addPopupButtonItemForZoom (250)
+      self.addPopupButtonItemForZoom (400)
+      self.addPopupButtonItemForZoom (500)
+      self.addPopupButtonItemForZoom (600)
+      self.addPopupButtonItemForZoom (800)
+      self.addPopupButtonItemForZoom (1000)
+      self.addPopupButtonItemForZoom (1200)
+      self.addPopupButtonItemForZoom (1500)
+      self.addPopupButtonItemForZoom (1700)
+      self.addPopupButtonItemForZoom (2000)
+      zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (CanariViewWithZoomAndFlip.setZoomFromPopUpButton(_:)), keyEquivalent:"")
+      zoomPopUpButton.lastItem?.target = self
+      zoomPopUpButton.lastItem?.tag = 0
+      scrollView.addPlacard (zoomPopUpButton)
     }
   }
 
@@ -211,28 +177,14 @@ class CanariViewWithZoomAndFlip : EBView {
   //  Super view has been resized
   //····················································································································
 
-//  @objc func updateAfterSuperviewResising (_ inSender: Any?) {
-//    if mZoom == 0 {
-//      scaleToZoom (mZoom, mHorizontalFlip, mVerticalFlip)
-//    }
-//  }
-
-  //····················································································································
-
   override func viewWillMove (toSuperview inSuperview : NSView?) {
-     super.viewWillMove (toSuperview:inSuperview)
+     super.viewWillMove (toSuperview: inSuperview)
   //--- Remove from superview ?
     if nil == inSuperview,
-       let clipView = self.superview as? NSClipView,
-       let zoomPopUpButton = mZoomPopUpButton,
-       let scrollView = clipView.superview as? CanariScrollViewWithPlacard {
+       let scrollView = self.superview?.superview as? CanariScrollViewWithPlacard,
+       let zoomPopUpButton = self.mZoomPopUpButton {
      scrollView.removePlacard (zoomPopUpButton)
-     mZoomPopUpButton = nil ;
-//            NotificationCenter.default.removeObserver (
-//              self,
-//              name: NSView.frameDidChangeNotification,
-//              object: clipView
-//            )
+     self.mZoomPopUpButton = nil ;
     }
   }
 
@@ -288,6 +240,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    Grid Style
+  // MARK: -
   //····················································································································
 
   fileprivate var mGridStyle : GridStyle = .noGrid
@@ -353,6 +306,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    Set issue
+  // MARK: -
   //····················································································································
 
   private var mIssueBezierPath : NSBezierPath? = nil

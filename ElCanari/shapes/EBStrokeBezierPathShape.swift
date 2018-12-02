@@ -85,7 +85,13 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.contains (point: inPoint)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      result = self.mPaths [idx].contains (inPoint) // , using: .winding)
+      let p = self.mPaths [idx].cgPath.copy (
+        strokingWithWidth: self.mPaths [idx].lineWidth,
+        lineCap: .round,
+        lineJoin: .round,
+        miterLimit: 1.0)
+      result = p.contains (inPoint) // , using: .winding)
+//      result = self.mPaths [idx].contains (inPoint) )
       idx += 1
     }
     return result
