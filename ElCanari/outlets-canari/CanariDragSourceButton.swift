@@ -125,13 +125,32 @@ import Cocoa
   }
 
   //····················································································································
+  //   Draw function call back
+  //····················································································································
+
+  private var mDrawFunctionCallBack : ((_ rect : NSRect) -> Void)? = nil
+  override var isFlipped : Bool { return true }
+
+  //····················································································································
+
+  func set (callBack : @escaping (_ rect : NSRect) -> Void) {
+    self.mDrawFunctionCallBack = callBack
+  }
+
+  //····················································································································
+  //   DRAW
+  //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
     if self.mMouseWithin {
       NSColor.lightGray.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
-    super.draw (inDirtyRect)
+    if let drawFunctionCallBack = self.mDrawFunctionCallBack {
+      drawFunctionCallBack (self.bounds)
+    }else{
+      super.draw (inDirtyRect)
+    }
   }
 
   //····················································································································

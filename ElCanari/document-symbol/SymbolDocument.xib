@@ -192,7 +192,7 @@
                 <button toolTip="Add Oval" id="1188" customClass="CanariDragSourceButton">
                     <rect key="frame" x="111" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -206,7 +206,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Text" id="1195" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="176" y="352" width="28" height="28"/>
+                    <rect key="frame" x="175" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1196">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

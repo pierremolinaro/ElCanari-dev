@@ -159,7 +159,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect: NSRect) {
     if let backColor = mBackColor {
       backColor.setFill ()
-      __NSRectFill (inDirtyRect)
+      NSBezierPath.fill (inDirtyRect)
     }
   //--- Bezier paths
     self.mShape.draw (inDirtyRect)

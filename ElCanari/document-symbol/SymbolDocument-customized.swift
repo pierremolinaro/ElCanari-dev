@@ -59,12 +59,83 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
     self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (draggedType: dragAddSegment)
+    self.mAddSegmentButton?.set (callBack : {(_ rect : NSRect) in
+      let r = rect.insetBy (dx: 5.0, dy: 5.0)
+      NSColor.brown.setStroke ()
+      let bp = NSBezierPath ()
+      bp.move (to: r.origin)
+      bp.line (to: NSPoint (x: r.maxX, y: r.maxY))
+      bp.lineWidth = 2.0
+      bp.lineCapStyle = .round
+      bp.stroke ()
+    })
     self.mAddBezierButton?.register (draggedType: dragAddBezier)
+    self.mAddBezierButton?.set (callBack : {(_ rect : NSRect) in
+      let r = rect.insetBy (dx: 5.0, dy: 5.0)
+      NSColor.brown.setStroke ()
+      let bp = NSBezierPath ()
+      bp.move (to: r.origin)
+      bp.curve (
+        to: NSPoint (x: r.minX, y: r.maxY),
+        controlPoint1: NSPoint (x: r.maxX, y: r.minY),
+        controlPoint2: NSPoint (x: r.maxX, y: r.maxY)
+      )
+      bp.lineWidth = 2.0
+      bp.lineCapStyle = .round
+      bp.stroke ()
+    })
     self.mAddSolidOvalButton?.register (draggedType: dragAddSolidOval)
+    self.mAddSolidOvalButton?.set (callBack : {(_ rect : NSRect) in
+        let r = rect.insetBy (dx: 3.0, dy: 3.0)
+        NSColor.brown.setFill ()
+        let bp = NSBezierPath (ovalIn: r)
+        bp.fill ()
+    })
     self.mAddOvalButton?.register (draggedType: dragAddFramedOval)
+    self.mAddOvalButton?.set (callBack : {(_ rect : NSRect) in
+      let r = rect.insetBy (dx: 5.0, dy: 5.0)
+      NSColor.brown.setStroke ()
+      let bp = NSBezierPath (ovalIn: r)
+      bp.lineWidth = 2.0
+      bp.stroke ()
+    })
     self.mAddSolidRectButton?.register (draggedType: dragAddSolidRect)
+    self.mAddSolidRectButton?.set (callBack : {(_ rect : NSRect) in
+        let r = rect.insetBy (dx: 3.0, dy: 3.0)
+        NSColor.brown.setFill ()
+        let bp = NSBezierPath (rect: r)
+        bp.fill ()
+    })
     self.mAddTextButton?.register (draggedType: dragAddText)
+    self.mAddTextButton?.set (callBack : {(_ rect : NSRect) in
+        let r = rect.insetBy (dx: 3.0, dy: 3.0)
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont (name: "Cambria", size: 26.0)!,
+          NSAttributedString.Key.foregroundColor : NSColor.brown
+        ]
+        let size = "T".size (withAttributes: textAttributes)
+        "T".draw (at: NSPoint (x: r.midX - size.width / 2.0, y: r.midY - size.height / 2.0 - 3.0), withAttributes: textAttributes)
+    })
     self.mAddPinButton?.register (draggedType: dragAddPin)
+    self.mAddPinButton?.set (callBack : {(_ rect : NSRect) in
+        let r = rect.insetBy (dx: 3.0, dy: 3.0)
+        NSColor.brown.setFill ()
+        let circleDiameter : CGFloat = 10.0
+        let circle = NSRect (
+          x: r.maxX - circleDiameter,
+          y: r.midY - circleDiameter / 2.0,
+          width: circleDiameter,
+          height: circleDiameter
+        )
+        let bp = NSBezierPath (ovalIn: circle)
+        bp.fill ()
+        let textAttributes : [NSAttributedString.Key : Any] = [
+          NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 18.0)!,
+          NSAttributedString.Key.foregroundColor : NSColor.brown
+        ]
+        let size = "#".size (withAttributes: textAttributes)
+        "#".draw (at: NSPoint (x: r.minX, y: r.midY - size.height / 2.0), withAttributes: textAttributes)
+    })
     let allTypes = [dragAddSegment, dragAddBezier, dragAddSolidOval, dragAddFramedOval, dragAddSolidRect, dragAddText, dragAddPin]
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
   //--- Register inspector views
