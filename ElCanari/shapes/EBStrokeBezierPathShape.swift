@@ -89,9 +89,9 @@ class EBStrokeBezierPathShape : EBShape {
         strokingWithWidth: self.mPaths [idx].lineWidth,
         lineCap: .round,
         lineJoin: .round,
-        miterLimit: 1.0)
-      result = p.contains (inPoint) // , using: .winding)
-//      result = self.mPaths [idx].contains (inPoint) )
+        miterLimit: 1.0
+      )
+      result = p.contains (inPoint)
       idx += 1
     }
     return result
@@ -105,9 +105,7 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.intersects (rect: inRect)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      if self.mPaths [idx].bounds.intersects (inRect) {
-        result = true
-      }
+      result = inRect.intersectsStrokeBezizerPath (self.mPaths [idx])
       idx += 1
     }
     return result
@@ -149,6 +147,43 @@ class EBStrokeBezierPathShape : EBShape {
       h ^= path.hashValue
     }
     return h
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSRect {
+
+  //····················································································································
+
+  func intersectsStrokeBezizerPath (_ inPath: NSBezierPath) -> Bool {
+    var intersect = self.intersects (inPath.bounds)
+    if intersect {
+      intersect = false
+      var points = [NSPoint] (repeating: .zero, count: 3)
+      var currentPoint = NSPoint ()
+      let flattenedPath = inPath.flattened
+      var idx = 0
+      while (idx < flattenedPath.elementCount) && !intersect {
+        let type = flattenedPath.element (at: idx, associatedPoints: &points)
+        idx += 1
+        switch type {
+        case .moveTo:
+          currentPoint = points [0]
+        case .lineTo:
+          let p = points [0]
+          let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
+          intersect = possibleResultSegment != nil
+          currentPoint = p
+        case .curveTo, .closePath: // Flattened path has no element of type type
+          ()
+        }
+      }
+    }
+    return intersect
   }
 
   //····················································································································

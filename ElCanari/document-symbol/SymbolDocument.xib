@@ -140,7 +140,7 @@
                     <toolbarItem reference="1085"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="-187" y="-297"/>
+            <point key="canvasLocation" x="-349" y="-295"/>
         </window>
         <customView id="881" userLabel="Page : symbol" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>

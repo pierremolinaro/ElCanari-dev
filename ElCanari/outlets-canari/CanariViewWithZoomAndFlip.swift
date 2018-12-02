@@ -65,11 +65,14 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
   fileprivate var mZoom = 100
 
-  fileprivate func scaleToZoom (_ inZoom : Int,
+  fileprivate func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
                                 _ inHorizontalFlip : Bool,
-                                _ inVerticalFlip : Bool) { // 0 -> fit to window
+                                _ inVerticalFlip : Bool) {
     if let clipView = self.superview as? NSClipView {
       var newRect = self.objectBoundingBox ()
+      if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
+        newRect = newRect.union (issueBezierPath.bounds)
+      }
       if let minimumBounds = self.mMinimumRect {
         newRect = newRect.union (minimumBounds)
       }
@@ -194,16 +197,8 @@ class CanariViewWithZoomAndFlip : EBView {
 
   override func magnify (with inEvent : NSEvent) {
     let newZoom = Int ((actualScale () * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
-    scaleToZoom (newZoom, mHorizontalFlip, mVerticalFlip)
-    mZoom = newZoom
-  }
-
-  //····················································································································
-  //  Horizontal flip
-  //····················································································································
-
-  func horizontalFlip () -> Bool {
-    return mHorizontalFlip
+    scaleToZoom (newZoom, self.mHorizontalFlip, self.mVerticalFlip)
+    self.mZoom = newZoom
   }
 
   //····················································································································
@@ -211,13 +206,14 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   func setZoom (_ inZoom : Int, activateZoomPopUpButton inActivate : Bool) {
-    scaleToZoom (inZoom, mHorizontalFlip, mVerticalFlip)
-    mZoom = inZoom
-    mZoomPopUpButton?.isEnabled = inActivate
+    scaleToZoom (inZoom, self.mHorizontalFlip, self.mVerticalFlip)
+    self.mZoom = inZoom
+    self.mZoomPopUpButton?.isEnabled = inActivate
   }
 
   //····················································································································
   //  Responder chain
+  // MARK: -
   //····················································································································
 
   override var acceptsFirstResponder : Bool { return true }
@@ -246,8 +242,8 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mGridStyle : GridStyle = .noGrid
 
   func setGridStyle (_ inGrid : GridStyle) {
-    if mGridStyle != inGrid {
-      mGridStyle = inGrid
+    if self.mGridStyle != inGrid {
+      self.mGridStyle = inGrid
       self.needsDisplay = true
     }
   }
@@ -259,8 +255,8 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mGridStepFactor : Int = 4
 
   func setGridStepFactor (_ inGridStepFactor : Int) {
-    if mGridStepFactor != inGridStepFactor {
-      mGridStepFactor = inGridStepFactor
+    if self.mGridStepFactor != inGridStepFactor {
+      self.mGridStepFactor = inGridStepFactor
       self.needsDisplay = true
     }
   }
@@ -272,8 +268,8 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mGridStep : CGFloat = milsToCocoaUnit (25.0)
 
   func setGridStep (_ inGridStep : CGFloat) {
-    if mGridStep != inGridStep {
-      mGridStep = inGridStep
+    if self.mGridStep != inGridStep {
+      self.mGridStep = inGridStep
       self.needsDisplay = true
     }
   }
@@ -285,8 +281,8 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mGridDotColor : NSColor = .black
 
   func setGridDotColor (_ inColor : NSColor) {
-    if mGridDotColor != inColor {
-      mGridDotColor = inColor
+    if self.mGridDotColor != inColor {
+      self.mGridDotColor = inColor
       self.needsDisplay = true
     }
   }
@@ -298,8 +294,8 @@ class CanariViewWithZoomAndFlip : EBView {
   fileprivate var mGridLineColor : NSColor = .black
 
   func setGridLineColor (_ inColor : NSColor) {
-    if mGridLineColor != inColor {
-      mGridLineColor = inColor
+    if self.mGridLineColor != inColor {
+      self.mGridLineColor = inColor
       self.needsDisplay = true
     }
   }
@@ -319,7 +315,6 @@ class CanariViewWithZoomAndFlip : EBView {
       self.mIssueBezierPath = inBezierPath
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
-      self.needsDisplay = true
     }
   }
 
@@ -344,6 +339,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    draw Grid
+  // MARK: -
   //····················································································································
 
   fileprivate func drawGrid (_ inDirtyRect: NSRect) {
@@ -398,6 +394,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   // Draw dirty rect
+  // MARK: -
   //····················································································································
 
   override func drawUnderObjects (_ inDirtyRect: NSRect) {
@@ -414,6 +411,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    rect binding
+  // MARK: -
   //····················································································································
 
   private var mCanariRectController : EBReadOnlyController_CanariRect? = nil
@@ -461,6 +459,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    zoom binding
+  // MARK: -
   //····················································································································
 
   private var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
@@ -476,6 +475,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    horizontal flip binding
+  // MARK: -
   //····················································································································
 
   private var mHorizontalFlip = false
@@ -518,7 +518,14 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
+
+  func horizontalFlip () -> Bool {
+    return self.mHorizontalFlip
+  }
+
+  //····················································································································
   //    vertical flip binding
+  // MARK: -
   //····················································································································
 
   private var mVerticalFlip = false
@@ -568,6 +575,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    grid binding
+  // MARK: -
   //····················································································································
 
   private var mGridStyleController : EBReadOnlyController_GridStyle? = nil
@@ -600,6 +608,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    step binding
+  // MARK: -
   //····················································································································
 
   private var mGridStepFactorController : EBReadOnlyController_Int? = nil
@@ -631,6 +640,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    grid line color binding
+  // MARK: -
   //····················································································································
 
   private var mGridLineColorController : EBReadOnlyController_NSColor? = nil
@@ -666,6 +676,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    grid dot color binding
+  // MARK: -
   //····················································································································
 
   private var mGridDotColorController : EBReadOnlyController_NSColor? = nil
@@ -701,6 +712,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //    Dragging destination
+  // MARK: -
   //····················································································································
   // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 

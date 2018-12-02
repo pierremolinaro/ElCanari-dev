@@ -101,8 +101,7 @@ class EBFilledBezierPathShape : EBShape {
     var idx = 0
     while (idx < self.mFilledPaths.count) && !result {
       if self.mFilledPaths [idx].bounds.intersects (inRect) {
-        // result = pathIntersectRect (self.mFilledPaths [idx], inRect)
-        result = true
+        result =  inRect.intersectsFilledBezizerPath (self.mFilledPaths [idx])
       }
       idx += 1
     }
@@ -153,100 +152,46 @@ class EBFilledBezierPathShape : EBShape {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// MFBezierPathCollider.m
-
-fileprivate func create16BitsGrayContextOfSize (_ inRect : NSRect) -> CGContext? {
-  let w = Int (inRect.size.width)
-  let h = Int (inRect.size.height)
-  let nComps : Int = 1
-  let bits   : Int = 16
-  let bitsPerPix  = bits * nComps
-  let bytesPerRow = bitsPerPix * w
-  let cs = CGColorSpaceCreateDeviceGray ()
-  let context = CGContext (data: nil, width: w, height: h, bitsPerComponent: bits, bytesPerRow: bytesPerRow, space: cs, bitmapInfo: 0)
-  context?.translateBy (x: -inRect.origin.x, y: -inRect.origin.y)
-  context?.setFillColorSpace (cs)
-  context?.setStrokeColorSpace (cs)
-  return context
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func drawPath (_ inPath : CGPath, withClip inClip : CGRect, context inContext : CGContext) {
-    inContext.saveGState ()
-    inContext.clear (inClip)
-    let clippedColor : [CGFloat] = [1.0, 1.0 , 1.0, 1.0] // Full white
-    inContext.setFillColor (clippedColor)
-    inContext.addPath (inPath)
-    inContext.clip ()
-    inContext.addRect (inClip)
-    inContext.fillPath ()
-    inContext.restoreGState ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func pathIntersectRect (_ testPath : NSBezierPath, _ inRect : NSRect) -> Bool {
-  var intersect = false
-  if inRect.intersects (testPath.bounds) {
-    var r = inRect
-    r.origin.x *= 10.0
-    r.origin.y *= 10.0
-    r.size.width *= 10.0
-    r.size.height *= 10.0
-    if let computeContext = create16BitsGrayContextOfSize (r) {
-      drawPath (testPath.cgPathScaledBy (10.0), withClip: r, context: computeContext)
-      let clippedPathsImage : CGImage = computeContext.makeImage ()!
-      let onePixSquare = CGRect (x: 0, y: 0, width: 1, height: 1)
-      let testContext = create16BitsGrayContextOfSize (onePixSquare)!
-      testContext.clear (onePixSquare)
-      testContext.draw (clippedPathsImage, in: onePixSquare)
-      let data : UnsafeMutableRawPointer? = testContext.data
-      let value = data?.load (as: Int32.self) ?? 0
-      intersect = value != 0
-    }
-  }
-  return intersect
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSBezierPath {
+extension NSRect {
 
   //····················································································································
 
-  public func cgPathScaledBy (_ inFactor : CGFloat) -> CGPath {
-    let path = CGMutablePath ()
-    var points = [CGPoint] (repeating: .zero, count: 3)
-    for idx in 0 ..< self.elementCount {
-      let type = self.element (at: idx, associatedPoints: &points)
-      switch type {
-      case .moveTo:
-        var p = points [0]
-        p.x *= inFactor
-        p.y *= inFactor
-        path.move (to: p)
-      case .lineTo:
-        var p = points [0]
-        p.x *= inFactor
-        p.y *= inFactor
-        path.addLine (to: p)
-      case .curveTo:
-        var p0 = points [0]
-        p0.x *= inFactor
-        p0.y *= inFactor
-        var p1 = points [1]
-        p1.x *= inFactor
-        p1.y *= inFactor
-        var p2 = points [2]
-        p2.x *= inFactor
-        p2.y *= inFactor
-        path.addCurve (to: p2, control1: p0, control2: p1)
-      case .closePath:
-        path.closeSubpath ()
+  func intersectsFilledBezizerPath (_ inPath: NSBezierPath) -> Bool {
+    var intersect = self.intersects (inPath.bounds)
+    if intersect {
+      intersect = inPath.contains (self.origin) // Bottom left
+      if !intersect {
+        intersect = inPath.contains (NSPoint (x: self.minX, y: self.maxY)) // Top left
+      }
+      if !intersect {
+        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.maxY)) // Top right
+      }
+      if !intersect {
+        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.minY)) // Bottom right
+      }
+      if !intersect {
+        var points = [NSPoint] (repeating: .zero, count: 3)
+        var currentPoint = NSPoint ()
+        let flattenedPath = inPath.flattened
+        var idx = 0
+        while (idx < flattenedPath.elementCount) && !intersect {
+          let type = flattenedPath.element (at: idx, associatedPoints: &points)
+          idx += 1
+          switch type {
+          case .moveTo:
+            currentPoint = points [0]
+          case .lineTo:
+            let p = points [0]
+            let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
+            intersect = possibleResultSegment != nil
+            currentPoint = p
+          case .curveTo, .closePath: // Flattened path has no element of type type
+            ()
+          }
+        }
       }
     }
-    return path
+    return intersect
   }
 
   //····················································································································
