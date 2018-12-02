@@ -59,7 +59,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
     self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
     self.mAddSegmentButton?.register (draggedType: dragAddSegment)
-    self.mAddSegmentButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddSegmentButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
       let bp = NSBezierPath ()
@@ -69,8 +69,24 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       bp.lineCapStyle = .round
       bp.stroke ()
     })
+    self.mAddSegmentButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let bp = NSBezierPath ()
+      bp.move (to: NSPoint ())
+      bp.line (to: NSPoint (x: s, y: s))
+      bp.lineWidth = lineWidth
+      bp.lineCapStyle = .round
+      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
+      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddBezierButton?.register (draggedType: dragAddBezier)
-    self.mAddBezierButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddBezierButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
       let bp = NSBezierPath ()
@@ -84,40 +100,117 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       bp.lineCapStyle = .round
       bp.stroke ()
     })
+    self.mAddBezierButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let bp = NSBezierPath ()
+      bp.move (to: NSPoint ())
+      bp.curve (to: NSPoint (x: 0.0, y: s), controlPoint1: NSPoint (x: s, y: 0.0), controlPoint2: NSPoint (x: s, y: s))
+      bp.lineWidth = lineWidth
+      bp.lineCapStyle = .round
+      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
+      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddSolidOvalButton?.register (draggedType: dragAddSolidOval)
-    self.mAddSolidOvalButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddSolidOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
         let bp = NSBezierPath (ovalIn: r)
         bp.fill ()
     })
+    self.mAddSolidOvalButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let bp = NSBezierPath (ovalIn: NSRect (x: 0.0, y: 0.0, width: s, height: s))
+      let shape = EBFilledBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
+      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddOvalButton?.register (draggedType: dragAddFramedOval)
-    self.mAddOvalButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
       let bp = NSBezierPath (ovalIn: r)
       bp.lineWidth = 2.0
       bp.stroke ()
     })
+    self.mAddOvalButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let bp = NSBezierPath (ovalIn: NSRect (x: 0.0, y: 0.0, width: s, height: s))
+      bp.lineWidth = lineWidth
+      bp.lineCapStyle = .round
+      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
+      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddSolidRectButton?.register (draggedType: dragAddSolidRect)
-    self.mAddSolidRectButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddSolidRectButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
         let bp = NSBezierPath (rect: r)
         bp.fill ()
     })
+    self.mAddSolidRectButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let bp = NSBezierPath (rect: NSRect (x: 0.0, y: 0.0, width: s, height: s))
+      let shape = EBFilledBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
+      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddTextButton?.register (draggedType: dragAddText)
-    self.mAddTextButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddTextButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont (name: "Cambria", size: 26.0)!,
           NSAttributedString.Key.foregroundColor : NSColor.brown
         ]
         let size = "T".size (withAttributes: textAttributes)
-        "T".draw (at: NSPoint (x: r.midX - size.width / 2.0, y: r.midY - size.height / 2.0 - 3.0), withAttributes: textAttributes)
+        "T".draw (at: NSPoint (x: r.midX - size.width / 2.0, y: r.midY - size.height / 2.0 + 3.0), withAttributes: textAttributes)
     })
+    self.mAddTextButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
+      let font = (g_Preferences?.pinNameFont)!
+      let fontForDraggedImage = NSFont (name: font.fontName, size: font.pointSize * scale)!
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : fontForDraggedImage,
+        NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
+      ]
+      let text = "text"
+      let shape = EBTextShape (text, NSPoint (), textAttributes, .center, .center)
+      let textSize = text.size (withAttributes: textAttributes)
+      let r = NSRect (
+        x: -lineWidth - textSize.width / 2.0,
+        y: -lineWidth - textSize.height / 2.0,
+        width: textSize.width + lineWidth * 2.0,
+        height: textSize.height + lineWidth * 2.0
+      )
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     self.mAddPinButton?.register (draggedType: dragAddPin)
-    self.mAddPinButton?.set (callBack : {(_ rect : NSRect) in
+    self.mAddPinButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
         let circleDiameter : CGFloat = 10.0
@@ -131,11 +224,53 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
         bp.fill ()
         let textAttributes : [NSAttributedString.Key : Any] = [
           NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 18.0)!,
-          NSAttributedString.Key.foregroundColor : NSColor.brown
+          NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
         ]
         let size = "#".size (withAttributes: textAttributes)
         "#".draw (at: NSPoint (x: r.minX, y: r.midY - size.height / 2.0), withAttributes: textAttributes)
     })
+    self.mAddPinButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
+      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
+      let gridSize = SYMBOL_GRID_IN_COCOA_UNIT * scale
+      let shape = EBShape ()
+      let color = g_Preferences?.symbolColor ?? NSColor.black
+    //--- Pin
+      let pinRect = NSRect (
+        x: -gridSize,
+        y: -gridSize,
+        width: gridSize * 2.0,
+        height: gridSize * 2.0
+      )
+      let filledBP = NSBezierPath (ovalIn: pinRect)
+      shape.append (shape: EBFilledBezierPathShape ([filledBP], color))
+    //--- Name
+      let font = (g_Preferences?.pinNameFont)!
+      let fontForDraggedImage = NSFont (name: font.fontName, size: font.pointSize * scale)!
+      let nameTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : fontForDraggedImage,
+        NSAttributedString.Key.foregroundColor : NSColor.black
+      ]
+      let label = "?"
+      let labelSize = label.size (withAttributes: nameTextAttributes)
+      let labelOrigin = NSPoint (x: 0.0, y: gridSize * 4.0)
+      shape.append (shape: EBTextShape (label, labelOrigin, nameTextAttributes, .center, .center))
+    //--- Number
+      let number = "##"
+      let numberSize = number.size (withAttributes: nameTextAttributes)
+      let numberOrigin = NSPoint (x: 0.0, y: -gridSize * 4.0)
+      shape.append (shape: EBTextShape (number, numberOrigin, nameTextAttributes, .center, .center))
+    //--- Build image
+      let r = NSRect (
+        x: -gridSize,
+        y: -gridSize - gridSize * 4.0 - numberSize.height / 2.0,
+        width: gridSize * 2.0,
+        height: gridSize * 2.0 + (gridSize * 4.0 + labelSize.height / 2.0) + (gridSize * 4.0 + numberSize.height / 2.0)
+      )
+      let imageData = buildPDFimage (frame: r, shapes: shape)
+      let possibleImage = NSImage (data: imageData)
+      return (possibleImage, r)
+    })
+
     let allTypes = [dragAddSegment, dragAddBezier, dragAddSolidOval, dragAddFramedOval, dragAddSolidRect, dragAddText, dragAddPin]
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
   //--- Register inspector views
@@ -149,53 +284,12 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   }
 
   //····················································································································
-  //  Called for CanariDragSourceButton for providing a  drag image
-  //····················································································································
-
-//  override func ebProvideDraggingFrame (_ ioRect : inout NSRect, _ image : inout NSImage, _ inDragType : NSPasteboard.PasteboardType) {
-//    if inDragType == dragAddBezier {
-//      let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
-//      let shape = newObject.objectDisplay!
-//      ioRect = shape.boundingBox
-//      let imageData = buildPDFimage (frame: ioRect, shapes: shape)
-//      image = NSImage (data: imageData)!
-//      self.managedObjectContext.removeManagedObject (newObject)
-//    }
-//  }
-
-  //····················································································································
   //    Drag and drop destination
   //····················································································································
 
   override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
-//    let pboard = sender.draggingPasteboard
-//    let pboardItem = pboard.pasteboardItems!.first!
-//      let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
-//      let shape = newObject.objectDisplay!
-////      ioRect = shape.boundingBox
-//      let imageData = buildPDFimage (frame: shape.boundingBox, shapes: shape)
-//  //    let image = NSImage (data: imageData)!
-//      self.managedObjectContext.removeManagedObject (newObject)
-//      pboardItem.setData (imageData, forType: .tiff)
-  //      draggingItem.setDraggingFrame (shape.boundingBo, contents: image)
-
-
-//    NSLog ("draggingEntered")
     return .copy
   }
-
-  //····················································································································
-
-//  func draggingUpdated (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
-//    // NSLog ("draggingUpdated")
-//    return .copy
-//  }
-
-  //····················································································································
-
-//  override func draggingExited (_ sender: NSDraggingInfo?, _ destinationScrollView : NSScrollView) {
-//    NSLog ("draggingExited")
-//  }
 
   //····················································································································
 

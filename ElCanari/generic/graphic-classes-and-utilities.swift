@@ -104,7 +104,8 @@ func buildPDFimage (frame inFrame: CGRect,
   let view = EBOffscreenView (frame: inFrame)
   view.setBackColor (inBackColor)
   view.setPaths (inShapes)
-  return view.dataWithPDF (inside: inFrame)
+  let data = view.dataWithPDF (inside: inFrame)
+  return data
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

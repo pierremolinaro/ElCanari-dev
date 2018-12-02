@@ -13,6 +13,10 @@ import Cocoa
 
   //····················································································································
 
+  override var isFlipped : Bool { return false }
+
+  //····················································································································
+
   required init? (coder : NSCoder) {
     super.init (coder: coder)
     noteObjectAllocation (self)
@@ -66,14 +70,31 @@ import Cocoa
   //  Drag source on mouse down
   //····················································································································
 
+  private var mDraggedImageFunctionCallBack : Optional <() -> (NSImage?, NSRect) > = nil
+
+  //····················································································································
+
+  func register (draggedImageCallBack : @escaping () -> (NSImage?, NSRect)) {
+    self.mDraggedImageFunctionCallBack = draggedImageCallBack
+  }
+
+  //····················································································································
+
   override func mouseDown (with inEvent : NSEvent) {
     if let dragType = self.mDragType, self.isEnabled {
       let pasteboardItem = NSPasteboardItem ()
       pasteboardItem.setDataProvider (self, forTypes: [dragType])
-
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
-      draggingItem.setDraggingFrame (self.bounds, contents: self.image)
-
+    //--- Get dragged image
+      let (possibleImage, rect) = self.mDraggedImageFunctionCallBack? () ?? (self.image, self.bounds)
+    //--- Move image rect origin to mouse click location
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      var r = rect
+      r.origin.x += mouseDownLocation.x
+      r.origin.y += mouseDownLocation.y
+    //--- Set dragged image
+      draggingItem.setDraggingFrame (r, contents: possibleImage)
+    //--- Begin
       self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
     }
   }
@@ -128,13 +149,12 @@ import Cocoa
   //   Draw function call back
   //····················································································································
 
-  private var mDrawFunctionCallBack : ((_ rect : NSRect) -> Void)? = nil
-  override var isFlipped : Bool { return true }
+  private var mDrawFunctionCallBack : Optional <(_ rect : NSRect) -> Void > = nil
 
   //····················································································································
 
-  func set (callBack : @escaping (_ rect : NSRect) -> Void) {
-    self.mDrawFunctionCallBack = callBack
+  func register (drawImageCallBack : @escaping (_ rect : NSRect) -> Void) {
+    self.mDrawFunctionCallBack = drawImageCallBack
   }
 
   //····················································································································
