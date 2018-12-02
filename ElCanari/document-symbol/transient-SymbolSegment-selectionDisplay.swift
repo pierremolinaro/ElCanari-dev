@@ -20,9 +20,15 @@ func transient_SymbolSegment_selectionDisplay (
 //--- START OF USER ZONE 2
   let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
+  let bp = NSBezierPath ()
+  bp.move (to: p1)
+  bp.line (to: p2)
+  bp.lineWidth = 0.25
+  bp.lineCapStyle = .round
   let shape = EBShape ()
-  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_SEGMENT_ENDPOINT_1, .circ))
-  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_SEGMENT_ENDPOINT_2, .circ))
+  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+  shape.append (EBKnobShape (at: p1, index: SYMBOL_SEGMENT_ENDPOINT_1, .circ))
+  shape.append (EBKnobShape (at: p2, index: SYMBOL_SEGMENT_ENDPOINT_2, .circ))
   return shape
 //--- END OF USER ZONE 2
 }

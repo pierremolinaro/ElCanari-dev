@@ -242,7 +242,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
         height: gridSize * 2.0
       )
       let filledBP = NSBezierPath (ovalIn: pinRect)
-      shape.append (shape: EBFilledBezierPathShape ([filledBP], color))
+      shape.append (EBFilledBezierPathShape ([filledBP], color))
     //--- Name
       let font = (g_Preferences?.pinNameFont)!
       let fontForDraggedImage = NSFont (name: font.fontName, size: font.pointSize * scale)!
@@ -253,12 +253,12 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       let label = "?"
       let labelSize = label.size (withAttributes: nameTextAttributes)
       let labelOrigin = NSPoint (x: 0.0, y: gridSize * 4.0)
-      shape.append (shape: EBTextShape (label, labelOrigin, nameTextAttributes, .center, .center))
+      shape.append (EBTextShape (label, labelOrigin, nameTextAttributes, .center, .center))
     //--- Number
       let number = "##"
       let numberSize = number.size (withAttributes: nameTextAttributes)
       let numberOrigin = NSPoint (x: 0.0, y: -gridSize * 4.0)
-      shape.append (shape: EBTextShape (number, numberOrigin, nameTextAttributes, .center, .center))
+      shape.append (EBTextShape (number, numberOrigin, nameTextAttributes, .center, .center))
     //--- Build image
       let r = NSRect (
         x: -gridSize,

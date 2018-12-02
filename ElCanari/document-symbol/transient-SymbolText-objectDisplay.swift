@@ -24,10 +24,8 @@ func transient_SymbolText_objectDisplay (
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : prefs_symbolColor
     ]
-  //  let size = self_text.size (withAttributes: textAttributes)
     let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
-    let shape = EBShape ()
-    shape.append (shape: EBTextShape (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center))
+    let shape = EBTextShape (self_text, origin, textAttributes, self_horizontalAlignment.ebTextShapeHorizontalAlignment(), .center)
     return shape
 //--- END OF USER ZONE 2
 }

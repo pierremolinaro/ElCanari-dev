@@ -24,10 +24,13 @@ func transient_SymbolOval_selectionDisplay (
   let y = canariUnitToCocoa (self_y)
   let width = canariUnitToCocoa (self_width)
   let height = canariUnitToCocoa (self_height)
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .circ))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .circ))
-  shape.append (shape: EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .circ))
+  let bp = NSBezierPath (rect: NSRect (x: x, y:y, width: width, height: height))
+  bp.lineWidth = 0.25
+  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .circ))
   return shape
 //--- END OF USER ZONE 2
 }

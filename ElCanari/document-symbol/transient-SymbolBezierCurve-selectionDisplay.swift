@@ -28,17 +28,19 @@ func transient_SymbolBezierCurve_selectionDisplay (
   let cp2 = CGPoint (x: canariUnitToCocoa (self_cpx2), y: canariUnitToCocoa (self_cpy2))
   let bp = NSBezierPath ()
   bp.move (to: p1)
+  bp.curve (to: p2, controlPoint1: cp1, controlPoint2: cp2)
+  bp.move (to: p1)
   bp.line (to: cp1)
   bp.move (to: p2)
   bp.line (to: cp2)
-  bp.lineWidth = 0.0
+  bp.lineWidth = 0.25
   bp.lineCapStyle = .round
   let shape = EBShape ()
-  shape.append (shape: EBStrokeBezierPathShape ([bp], NSColor.black))
-  shape.append (shape: EBKnobShape (at: p1, index: SYMBOL_BEZIER_CURVE_ENDPOINT_1, .circ))
-  shape.append (shape: EBKnobShape (at: p2, index: SYMBOL_BEZIER_CURVE_ENDPOINT_2, .circ))
-  shape.append (shape: EBKnobShape (at: cp1, index: SYMBOL_BEZIER_CURVE_CONTROL_1, .circ))
-  shape.append (shape: EBKnobShape (at: cp2, index: SYMBOL_BEZIER_CURVE_CONTROL_2, .circ))
+  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+  shape.append (EBKnobShape (at: p1, index: SYMBOL_BEZIER_CURVE_ENDPOINT_1, .circ))
+  shape.append (EBKnobShape (at: p2, index: SYMBOL_BEZIER_CURVE_ENDPOINT_2, .circ))
+  shape.append (EBKnobShape (at: cp1, index: SYMBOL_BEZIER_CURVE_CONTROL_1, .circ))
+  shape.append (EBKnobShape (at: cp2, index: SYMBOL_BEZIER_CURVE_CONTROL_2, .circ))
   return shape
 //--- END OF USER ZONE 2
 }

@@ -55,7 +55,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //  append
   //····················································································································
 
-  func append (shape inShape : EBShape) {
+  func append (_ inShape : EBShape) {
     self.mShapes.append (inShape)
     self.mCachedBoundingBox = nil
   }
@@ -81,7 +81,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   final func internalTransform (_ result : EBShape, by inAffineTransform : NSAffineTransform) {
     for shape in self.mShapes {
-      result.append (shape: shape.transformedBy (inAffineTransform))
+      result.append (shape.transformedBy (inAffineTransform))
     }
   }
 
@@ -103,7 +103,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
     if let cbb = mCachedBoundingBox {
       return cbb
     }else{
-      var r = NSZeroRect
+      var r = NSRect.null
       for shape in self.mShapes {
         r = r.union (shape.boundingBox)
       }

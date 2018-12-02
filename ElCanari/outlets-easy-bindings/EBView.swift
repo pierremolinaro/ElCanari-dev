@@ -371,7 +371,7 @@ protocol EBViewControllerProtocol : class {
 
   func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
   //--- Find invalid rectangle
-    var invalidRect = NSZeroRect
+    var invalidRect = NSRect.null
     let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
     var idx = 0
     while idx < minCount {
@@ -397,7 +397,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   func objectBoundingBox () -> NSRect {
-    var r = NSRect ()
+    var r = NSRect.null
     for shape in mObjectDisplayArray {
       r = r.union (shape.boundingBox)
     }

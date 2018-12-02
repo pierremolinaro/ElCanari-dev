@@ -30,7 +30,7 @@ func transient_SymbolOval_objectDisplay (
   bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   let shape = EBShape ()
-  shape.append (shape: EBStrokeBezierPathShape ([bp], prefs_symbolColor))
+  shape.append (EBStrokeBezierPathShape ([bp], prefs_symbolColor))
   return shape
 //--- END OF USER ZONE 2
 }

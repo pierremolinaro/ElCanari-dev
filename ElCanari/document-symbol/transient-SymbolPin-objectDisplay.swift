@@ -35,7 +35,7 @@ func transient_SymbolPin_objectDisplay (
       height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
     )
     let filledBP = NSBezierPath (ovalIn: pinRect)
-    shape.append (shape: EBFilledBezierPathShape ([filledBP], prefs_symbolColor))
+    shape.append (EBFilledBezierPathShape ([filledBP], prefs_symbolColor))
   //--- Name
     let nameTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
@@ -43,14 +43,14 @@ func transient_SymbolPin_objectDisplay (
     ]
     let labelOrigin = NSPoint (x: canariUnitToCocoa (self_xName), y: canariUnitToCocoa (self_yName))
     let label = (self_name == "") ? "?" : self_name
-    shape.append (shape: EBTextShape (label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    shape.append (EBTextShape (label, labelOrigin, nameTextAttributes, self_nameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
   //--- Number
     let numberTextAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont,
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
     let numberOrigin = NSPoint (x: canariUnitToCocoa (self_xNumber), y: canariUnitToCocoa (self_yNumber))
-    shape.append (shape: EBTextShape ("##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
+    shape.append (EBTextShape ("##", numberOrigin, numberTextAttributes, self_numberHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
     return shape
 //--- END OF USER ZONE 2
 }

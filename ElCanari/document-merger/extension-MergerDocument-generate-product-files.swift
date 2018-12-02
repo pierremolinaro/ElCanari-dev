@@ -443,9 +443,9 @@ extension MergerDocument {
           }
         }
         let shapes = EBShape ()
-        shapes.append (shape: EBStrokeBezierPathShape (strokeBezierPaths, .black))
-        shapes.append (shape: EBFilledBezierPathShape (filledBezierPaths, .black))
-        shapes.append (shape: EBStrokeBezierPathShape (drillBezierPaths, .white))
+        shapes.append (EBStrokeBezierPathShape (strokeBezierPaths, .black))
+        shapes.append (EBFilledBezierPathShape (filledBezierPaths, .black))
+        shapes.append (EBStrokeBezierPathShape (drillBezierPaths, .white))
         let pdfData = buildPDFimage (frame:cocoaBoardRect, shapes: shapes, backgroundColor:NSColor.white)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
         mLogTextView?.appendSuccessString (" Ok\n")

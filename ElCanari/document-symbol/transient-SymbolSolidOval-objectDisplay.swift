@@ -27,7 +27,7 @@ func transient_SymbolSolidOval_objectDisplay (
   )
   let bp = NSBezierPath (ovalIn: r)
   let shape = EBShape ()
-  shape.append (shape: EBFilledBezierPathShape ([bp], prefs_symbolColor))
+  shape.append (EBFilledBezierPathShape ([bp], prefs_symbolColor))
   return shape
 //--- END OF USER ZONE 2
 }
