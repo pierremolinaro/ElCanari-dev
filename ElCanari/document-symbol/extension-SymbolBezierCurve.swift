@@ -8,7 +8,7 @@ let SYMBOL_BEZIER_CURVE_CONTROL_1  = 3
 let SYMBOL_BEZIER_CURVE_CONTROL_2  = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION SymbolSegment
+//   EXTENSION SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension SymbolBezierCurve {
@@ -90,7 +90,6 @@ extension SymbolBezierCurve {
 
   //····················································································································
   //  Knob
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, by inValue: CGPoint) -> Bool {
@@ -131,6 +130,102 @@ extension SymbolBezierCurve {
       self.cpx2 += cocoaToCanariUnit (inTranslation.x)
       self.cpy2 += cocoaToCanariUnit (inTranslation.y)
     }
+  }
+
+  //····················································································································
+  //  Flip horizontally
+  //····················································································································
+
+  override func canFlipHorizontally () -> Bool {
+    return min (self.x1, self.x2, self.cpx1, self.cpx2) != max (self.x1, self.x2, self.cpx1, self.cpx2)
+  }
+
+  //····················································································································
+
+  override func flipHorizontally () {
+    let v = min (self.x1, self.x2, self.cpx1, self.cpx2) + max (self.x1, self.x2, self.cpx1, self.cpx2)
+    self.x1 = v - self.x1
+    self.x2 = v - self.x2
+    self.cpx1 = v - self.cpx1
+    self.cpx2 = v - self.cpx2
+  }
+
+  //····················································································································
+  //  Flip vertically
+  //····················································································································
+
+  override func canFlipVertically () -> Bool {
+    return min (self.y1, self.y2, self.cpy1, self.cpy2) != max (self.y1, self.y2, self.cpy1, self.cpy2)
+  }
+
+  //····················································································································
+
+  override func flipVertically () {
+    let v = min (self.y1, self.y2, self.cpy1, self.cpy2) + max (self.y1, self.y2, self.cpy1, self.cpy2)
+    self.y1 = v - self.y1
+    self.y2 = v - self.y2
+    self.cpy1 = v - self.cpy1
+    self.cpy2 = v - self.cpy2
+  }
+
+  //····················································································································
+  //  Rotate clockwise
+  //····················································································································
+
+  override func canRotate90Clockwise () -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90Clockwise () {
+    var p1  = CanariPoint (x: self.x1, y: self.y1)
+    var p2  = CanariPoint (x: self.x2, y: self.y2)
+    var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
+    var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
+    let r = CanariRect (p1: p1, p2: p2, p3: cp1, p4: cp2)
+    p1 = r.rotated90Clockwise (p1)
+    p2 = r.rotated90Clockwise (p2)
+    cp1 = r.rotated90Clockwise (cp1)
+    cp2 = r.rotated90Clockwise (cp2)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.cpx1 = cp1.x
+    self.cpy1 = cp1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+    self.cpx2 = cp2.x
+    self.cpy2 = cp2.y
+  }
+
+  //····················································································································
+  //  Rotate counter clockwise
+  //····················································································································
+
+  override func canRotate90CounterClockwise () -> Bool {
+    return true
+  }
+
+  //····················································································································
+
+  override func rotate90CounterClockwise () {
+    var p1  = CanariPoint (x: self.x1, y: self.y1)
+    var p2  = CanariPoint (x: self.x2, y: self.y2)
+    var cp1 = CanariPoint (x: self.cpx1, y: self.cpy1)
+    var cp2 = CanariPoint (x: self.cpx2, y: cpy2)
+    let r = CanariRect (p1: p1, p2: p2, p3: cp1, p4: cp2)
+    p1 = r.rotated90CounterClockwise (p1)
+    p2 = r.rotated90CounterClockwise (p2)
+    cp1 = r.rotated90CounterClockwise (cp1)
+    cp2 = r.rotated90CounterClockwise (cp2)
+    self.x1 = p1.x
+    self.y1 = p1.y
+    self.cpx1 = cp1.x
+    self.cpy1 = cp1.y
+    self.x2 = p2.x
+    self.y2 = p2.y
+    self.cpx2 = cp2.x
+    self.cpy2 = cp2.y
   }
 
   //····················································································································

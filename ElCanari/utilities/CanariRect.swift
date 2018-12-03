@@ -45,6 +45,17 @@ struct CanariRect : Equatable, Hashable {
 
   //····················································································································
 
+  init (p1 inP1 : CanariPoint, p2 inP2 : CanariPoint, p3 inP3 : CanariPoint, p4 inP4 : CanariPoint) {
+    let minX = min (inP1.x, inP2.x, inP3.x, inP4.x)
+    let maxX = max (inP1.x, inP2.x, inP3.x, inP4.x)
+    let minY = min (inP1.y, inP2.y, inP3.y, inP4.y)
+    let maxY = max (inP1.y, inP2.y, inP3.y, inP4.y)
+    origin = CanariPoint (x: minX, y: minY)
+    size = CanariSize (width: maxX - minX, height: maxY - minY)
+  }
+
+  //····················································································································
+
   init (left inLeft : Int, bottom inBottom: Int, width inWidth : Int, height inHeight : Int) {
     if (inWidth > 0) && (inHeight > 0) {
       self.origin = CanariPoint (x: inLeft, y: inBottom)
@@ -68,6 +79,24 @@ struct CanariRect : Equatable, Hashable {
   var width   : Int { return self.size.width }
 
   var isEmpty : Bool { return (self.size.width <= 0) || (self.size.height <= 0) }
+
+  //····················································································································
+  //   Rotation around rectangle center
+  //····················································································································
+
+  func rotated90Clockwise (_ inP : CanariPoint) -> CanariPoint {
+    let x = self.origin.x + self.origin.y + self.size.height - inP.y
+    let y = self.origin.x + self.origin.y + self.size.width  - inP.x
+    return CanariPoint (x: x, y: y)
+  }
+
+  //····················································································································
+
+  func rotated90CounterClockwise (_ inP : CanariPoint) -> CanariPoint {
+    let x = self.origin.x + inP.y - self.origin.y
+    let y = self.origin.x + self.origin.y + self.size.width - inP.x
+    return CanariPoint (x: x, y: y)
+  }
 
   //····················································································································
   //   Protocol Equatable
@@ -180,6 +209,7 @@ struct CanariRect : Equatable, Hashable {
     }
     return result
   }
+
   //····················································································································
 
 }

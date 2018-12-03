@@ -515,7 +515,7 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   fileprivate func drawGrid (_ inDirtyRect: NSRect) {
-    let r = self.bounds
+    let r = inDirtyRect // self.bounds
     let gridDisplayStep = self.mGridStep * CGFloat (self.mGridStepFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
     let endX = r.maxX
@@ -545,12 +545,14 @@ class CanariViewWithZoomAndFlip : EBView {
       bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
-      bp.lineWidth = 0.0 // 1.0 / self.actualScale ()
+      bp.lineWidth = 0.0
       bp.lineCapStyle = .round
       var x = startX
       while x <= r.maxX {
-        bp.move (to: NSPoint (x: x + displayOffset, y: startY + displayOffset))
-        bp.line (to: NSPoint (x: x + displayOffset, y: endY + displayOffset))
+        let p1 = NSPoint (x: x + displayOffset, y: startY + displayOffset)
+        let p2 = NSPoint (x: x + displayOffset, y: endY + displayOffset)
+        bp.move (to: p1)
+        bp.line (to: p2)
         x += gridDisplayStep
       }
       var y = startY

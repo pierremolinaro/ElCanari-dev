@@ -95,12 +95,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc func snapToGrid () {
+  @objc dynamic func snapToGrid () {
   }
 
   //····················································································································
 
-  @objc func canSnapToGrid () -> Bool {
+  @objc dynamic func canSnapToGrid () -> Bool {
     return false
   }
 
@@ -109,12 +109,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc func flipHorizontally () {
+  @objc dynamic func flipHorizontally () {
   }
 
   //····················································································································
 
-  @objc func canFlipHorizontally () -> Bool {
+  @objc dynamic func canFlipHorizontally () -> Bool {
     return false
   }
 
@@ -123,12 +123,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc func flipVertically () {
+  @objc dynamic func flipVertically () {
   }
 
   //····················································································································
 
-  @objc func canFlipVertically () -> Bool {
+  @objc dynamic func canFlipVertically () -> Bool {
     return false
   }
 
@@ -137,12 +137,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc func rotate90Clockwise () {
+  @objc dynamic func rotate90Clockwise () {
   }
 
   //····················································································································
 
-  @objc func canRotate90Clockwise () -> Bool {
+  @objc dynamic func canRotate90Clockwise () -> Bool {
     return false
   }
 
@@ -151,12 +151,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc func rotate90CounterClockwise () {
+  @objc dynamic func rotate90CounterClockwise () {
   }
 
   //····················································································································
 
-  @objc func canRotate90CounterClockwise () -> Bool {
+  @objc dynamic func canRotate90CounterClockwise () -> Bool {
     return false
   }
 

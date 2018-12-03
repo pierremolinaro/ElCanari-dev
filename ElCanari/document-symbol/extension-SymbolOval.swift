@@ -47,7 +47,6 @@ extension SymbolOval {
 
   //····················································································································
   //  Knob
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, by inTranslation: CGPoint) -> Bool {

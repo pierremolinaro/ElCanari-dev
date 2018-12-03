@@ -8,7 +8,7 @@ let SYMBOL_SOLID_OVAL_LEFT   = 3
 let SYMBOL_SOLID_OVAL_TOP    = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION SymbolOval
+//   EXTENSION SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension SymbolSolidOval {
@@ -47,7 +47,6 @@ extension SymbolSolidOval {
 
   //····················································································································
   //  Knob
-  //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, by inTranslation: CGPoint) -> Bool {
