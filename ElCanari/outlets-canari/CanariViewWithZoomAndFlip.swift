@@ -40,21 +40,30 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
-  //  Computing bounds on live resize
+  //  NSView overriden methods
+  //  MARK: -
   //····················································································································
 
-  override func viewDidMoveToWindow () {
-    super.viewDidMoveToWindow ()
-    self.updateViewFrameAndBounds ()
-  }
+//  override func viewDidMoveToWindow () {
+//    super.viewDidMoveToWindow ()
+// //   self.updateViewFrameAndBounds ()
+//  }
 
   //····················································································································
-  //  Computing bounds on live resize
+
+//  override func viewDidEndLiveResize () {
+//    super.viewDidEndLiveResize ()
+// //   self.updateViewFrameAndBounds ()
+//  }
+
   //····················································································································
 
-  override func viewDidEndLiveResize () {
-    super.viewDidEndLiveResize ()
-    self.updateViewFrameAndBounds ()
+  override func viewDidMoveToSuperview () {
+    super.viewDidMoveToSuperview ()
+    if let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
+      self.installZoomPopUpButton (scrollView)
+      self.installXYplacards (scrollView)
+    }
   }
 
   //····················································································································
@@ -62,8 +71,9 @@ class CanariViewWithZoomAndFlip : EBView {
   //  MARK: -
   //····················································································································
 
-  fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
   fileprivate var mZoom = 100
+
+  //····················································································································
 
   fileprivate func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
                                 _ inHorizontalFlip : Bool,
@@ -116,10 +126,15 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
   //  Managing zoom popup button
+  //  MARK: -
+  //····················································································································
+
+  fileprivate var mZoomPopUpButton : NSPopUpButton? = nil
+
   //····················································································································
 
   fileprivate func addPopupButtonItemForZoom (_ inZoom : Int) {
-    if let zoomPopUpButton = mZoomPopUpButton {
+    if let zoomPopUpButton = self.mZoomPopUpButton {
       zoomPopUpButton.menu?.addItem (withTitle: ("\(inZoom) %"), action:#selector (CanariViewWithZoomAndFlip.setZoomFromPopUpButton(_:)), keyEquivalent: "")
       zoomPopUpButton.lastItem?.target = self
       zoomPopUpButton.lastItem?.tag = inZoom
@@ -136,10 +151,8 @@ class CanariViewWithZoomAndFlip : EBView {
 
   //····················································································································
 
-  override func viewDidMoveToSuperview () {
-    super.viewDidMoveToSuperview ()
-    if self.mZoomPopUpButton == nil,
-       let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
+  private func installZoomPopUpButton (_ inScrollView : CanariScrollViewWithPlacard) {
+    if self.mZoomPopUpButton == nil {
       let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
       self.mZoomPopUpButton = zoomPopUpButton
@@ -172,12 +185,100 @@ class CanariViewWithZoomAndFlip : EBView {
       zoomPopUpButton.menu?.addItem (withTitle:"Fit to Window", action:#selector (CanariViewWithZoomAndFlip.setZoomFromPopUpButton(_:)), keyEquivalent:"")
       zoomPopUpButton.lastItem?.target = self
       zoomPopUpButton.lastItem?.tag = 0
-      scrollView.addPlacard (zoomPopUpButton)
+      inScrollView.addPlacard (zoomPopUpButton)
     }
   }
 
   //····················································································································
+  //  Managing mouse location
+  //  MARK: -
+  //····················································································································
+
+  private var mXPlacard : NSTextField? = nil
+  private var mYPlacard : NSTextField? = nil
+
+  //····················································································································
+
+  private func installXYplacards (_ inScrollView : CanariScrollViewWithPlacard) {
+    if self.mXPlacard == nil {
+      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
+      let xPlacard = NSTextField (frame:r)
+      self.mXPlacard = xPlacard
+      xPlacard.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      xPlacard.isBordered = false
+      inScrollView.addPlacard (xPlacard)
+    }
+    if self.mYPlacard == nil {
+      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
+      let yPlacard = NSTextField (frame:r)
+      self.mYPlacard = yPlacard
+      yPlacard.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      yPlacard.isBordered = false
+      inScrollView.addPlacard (yPlacard)
+    }
+  }
+
+  //····················································································································
+
+  private func updateXYplacards (_ inLocationInWindow : NSPoint) {
+    let p = self.convert (inLocationInWindow, from: nil)
+    self.mXPlacard?.stringValue = "X = \(Int (p.x))"
+    self.mYPlacard?.stringValue = "Y = \(Int (p.y))"
+  }
+
+  //····················································································································
+
+  private func clearXYplacards () {
+    self.mXPlacard?.stringValue = ""
+    self.mYPlacard?.stringValue = ""
+  }
+
+  //····················································································································
+  //  Mouse moved and tracking area
+  //  MARK: -
+  //····················································································································
+
+  fileprivate var mTrackingArea : NSTrackingArea? = nil
+
+  //····················································································································
+
+  override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
+  //---
+    self.updateViewFrameAndBounds ()
+  //--- Remove tracking area
+    if let trackingArea = self.mTrackingArea {
+      self.removeTrackingArea (trackingArea)
+    }
+  //--- Add Updated tracking area
+    let trackingArea = NSTrackingArea (
+      rect: self.bounds,
+      options: [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow],
+      owner: self,
+      userInfo: nil
+    )
+    self.addTrackingArea (trackingArea)
+    self.mTrackingArea = trackingArea
+  //---
+    super.updateTrackingAreas ()
+  }
+
+  //····················································································································
+
+  override func mouseMoved (with inEvent : NSEvent) {
+    super.mouseUp (with: inEvent)
+    self.updateXYplacards (inEvent.locationInWindow)
+  }
+
+  //····················································································································
+
+  override func mouseExited (with inEvent : NSEvent) {
+    self.clearXYplacards ()
+    super.mouseExited (with: inEvent)
+  }
+
+  //····················································································································
   //  Super view has been resized
+  //  MARK: -
   //····················································································································
 
   override func viewWillMove (toSuperview inSuperview : NSView?) {
