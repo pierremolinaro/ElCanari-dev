@@ -59,14 +59,11 @@ import Cocoa
   private func update (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty :
-      self.enableFromValueBinding (false)
       self.stringValue = "—"
     case .single (let v) :
-      self.enableFromValueBinding (true)
       let uv = UInt32 (v)
       self.stringValue = String (format: "%04X:%04X", arguments: [uv >> 16, uv & 0xFFFF])
     case .multiple :
-      self.enableFromValueBinding (false)
       self.stringValue = "—"
     }
   }

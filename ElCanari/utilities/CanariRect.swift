@@ -65,6 +65,7 @@ struct CanariRect : Equatable, Hashable {
       self.size = CanariSize ()
     }
   }
+
   //····················································································································
   //   Accessors
   //····················································································································
@@ -178,7 +179,7 @@ struct CanariRect : Equatable, Hashable {
       let bottom = self.bottom + inDy
       let left = self.left + self.width - inDx
       let top = self.bottom + self.height - inDy
-      result = CanariRect (left:right, bottom:bottom, width:left - right, height:top - bottom)
+      result = CanariRect (left: right, bottom: bottom, width: left - right, height: top - bottom)
     }
     return result
   }
@@ -192,7 +193,7 @@ struct CanariRect : Equatable, Hashable {
   }
 
   //····················································································································
-  //   Contains point
+  //   CohenSutherlandOutcode
   //····················································································································
 
   func CohenSutherlandOutcode (x inX : Int, y inY : Int) -> UInt8 {
