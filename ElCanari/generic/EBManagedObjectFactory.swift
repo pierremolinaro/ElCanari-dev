@@ -184,40 +184,6 @@ import Cocoa
     )
   }
 
- //····················································································································
-  //  R E A C H A B L E   O B J E C T S    F R O M    O B J E C T
-  //····················································································································
-
-  func reachableObjectsFromRootObject (rootObject : EBManagedObject) -> Array<EBManagedObject> {
-    var reachableObjectArray = Array<EBManagedObject> ()
-    var reachableObjectSet = Set <EBManagedObject> ()
-    reachableObjectSet.insert (rootObject)
-    var objectsToExploreArray = Array<EBManagedObject> ()
-    objectsToExploreArray.append (rootObject)
-    rootObject.savingIndex = reachableObjectArray.count
-    reachableObjectArray.append (rootObject)
-    // let start = Date()
-    //   NSLog ("start")
-    while (objectsToExploreArray.count > 0) {
-      let objectToExplore : EBManagedObject = objectsToExploreArray.last!
-      objectsToExploreArray.removeLast ()
-      var accessible = Array<EBManagedObject> ()
-      objectToExplore.accessibleObjects (objects: &accessible)
-      for object : Any in accessible {
-        let managedObject = object as! EBManagedObject
-        if !reachableObjectSet.contains (managedObject) {
-          reachableObjectSet.insert (managedObject)
-          managedObject.savingIndex = reachableObjectArray.count
-          reachableObjectArray.append (managedObject)
-          objectsToExploreArray.append (managedObject)
-        }
-      }
-    // let timeTaken = Date().timeIntervalSinceDate(start) * 1000
-    // NSLog ("%f ms", timeTaken)
-    }
-    return reachableObjectArray ;
-  }
-
   //····················································································································
 
 

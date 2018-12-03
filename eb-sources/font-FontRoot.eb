@@ -1,7 +1,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity FontRoot {
-  toMany @cascading @signature FontCharacter characters ;
+  toMany @signature FontCharacter characters ;
   property @signature String comments default "" ;
   property Int nominalSize default 14 ;
   property Int selectedTab default 0 ;

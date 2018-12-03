@@ -1633,23 +1633,12 @@ class MergerRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Cascading toMany boardModels
-    do{
- //     let objects = self.boardModels_property.propval
-      self.boardModels_property.setProp ([])
-//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-  //--- Cascading toMany boardInstances
-    do{
- //     let objects = self.boardInstances_property.propval
-      self.boardInstances_property.setProp ([])
-//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
-  //--- Cascading toOne artwork
-  //  if let object = self.artwork_property.propval {
-      self.artwork_property.setProp (nil)
-//      self.managedObjectContext?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
- //   }
+  //--- Nullify toMany boardModels
+    self.boardModels_property.setProp ([]) // Set relationship to empty array
+  //--- Nullify toMany boardInstances
+    self.boardInstances_property.setProp ([]) // Set relationship to empty array
+  //--- Nullify toOne artwork
+    self.artwork_property.setProp (nil) // Set relationship to nil
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }

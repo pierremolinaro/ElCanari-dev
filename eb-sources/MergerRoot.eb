@@ -1,8 +1,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity MergerRoot {
-  toMany @cascading BoardModel boardModels ;
-  toMany @cascading MergerBoardInstance boardInstances inverse toOne myRoot ;
+  toMany BoardModel boardModels ;
+  toMany MergerBoardInstance boardInstances inverse toOne myRoot ;
 
   property Int selectedPageIndex default 0 ;
   property Int zoom default 100 ;
@@ -54,7 +54,7 @@ entity MergerRoot {
   transient Int boardWidth dependsFrom self.boardRect ;
   transient Int boardHeight dependsFrom self.boardRect ;
 #--- Artwork
-  toOne @cascading ArtworkRoot artwork ;
+  toOne ArtworkRoot artwork ;
   property String artworkName default "" ;
   property Bool generateGerberProductFile default yes ;
   property Bool generatePDFProductFile default yes ;

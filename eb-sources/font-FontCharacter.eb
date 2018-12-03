@@ -1,6 +1,6 @@
 
 entity FontCharacter {
-  toMany @cascading @signature SegmentForFontCharacter segments ;
+  toMany @signature SegmentForFontCharacter segments ;
   
   property @signature Int codePoint default 0 ; # Unicode point code
   

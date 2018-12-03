@@ -618,12 +618,8 @@ class FontRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Cascading toMany characters
-    do{
- //     let objects = self.characters_property.propval
-      self.characters_property.setProp ([])
-//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
+  //--- Nullify toMany characters
+    self.characters_property.setProp ([]) // Set relationship to empty array
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }

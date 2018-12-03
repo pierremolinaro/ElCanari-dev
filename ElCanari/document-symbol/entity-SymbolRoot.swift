@@ -681,12 +681,8 @@ class SymbolRoot : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Cascading toMany symbolObjects
-    do{
- //     let objects = self.symbolObjects_property.propval
-      self.symbolObjects_property.setProp ([])
-//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
+  //--- Nullify toMany symbolObjects
+    self.symbolObjects_property.setProp ([]) // Set relationship to empty array
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }

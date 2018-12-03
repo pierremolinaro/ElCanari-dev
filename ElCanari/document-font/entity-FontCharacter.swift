@@ -394,12 +394,8 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Cascading toMany segments
-    do{
- //     let objects = self.segments_property.propval
-      self.segments_property.setProp ([])
-//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
-    }
+  //--- Nullify toMany segments
+    self.segments_property.setProp ([]) // Set relationship to empty array
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }

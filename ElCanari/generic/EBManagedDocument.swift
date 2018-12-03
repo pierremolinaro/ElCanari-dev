@@ -33,6 +33,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override init () {
     super.init ()
     noteObjectAllocation (self)
+    self.undoManager = self.mUndoManager
     self.mUndoManager.disableUndoRegistration ()
     mRootObject = try! newInstanceOfEntityNamed (self.mUndoManager, inEntityTypeName: rootEntityClassName ())
     self.mUndoManager.enableUndoRegistration ()
@@ -47,7 +48,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //    undoManager
+  //    ebUndoManager
   //····················································································································
 
   final var ebUndoManager : EBUndoManager {
@@ -138,9 +139,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func dataForSavingFromRootObject () throws -> Data {
-    let objectsToSaveArray : [EBManagedObject] = reachableObjectsFromRootObject (rootObject: self.mRootObject!)
+    let objectsToSaveArray : [EBManagedObject] = self.reachableObjectsFromRootObject (rootObject: self.mRootObject!)
   //--- Set savingIndex for each object
-    var idx = 0 ;
+    var idx = 0
     for object in objectsToSaveArray {
       object.savingIndex = idx
       idx += 1
@@ -148,9 +149,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //---
     var saveDataArray : [NSDictionary] = []
     for object in objectsToSaveArray {
-      let d : NSMutableDictionary = [
-        kEntityKey : object.className.pathExtension
-      ]
+      let d : NSMutableDictionary = [kEntityKey : object.className.pathExtension]
       object.saveIntoDictionary (d)
       saveDataArray.append (d)
     }
@@ -158,6 +157,40 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       format:PropertyListSerialization.PropertyListFormat.binary,
       options:0
     )
+  }
+
+  //····················································································································
+  //  R E A C H A B L E   O B J E C T S    F R O M    O B J E C T
+  //····················································································································
+
+  private func reachableObjectsFromRootObject (rootObject : EBManagedObject) -> [EBManagedObject] {
+    var reachableObjectArray = [EBManagedObject] ()
+    var reachableObjectSet = Set <EBManagedObject> ()
+    reachableObjectSet.insert (rootObject)
+    var objectsToExploreArray = Array<EBManagedObject> ()
+    objectsToExploreArray.append (rootObject)
+    rootObject.savingIndex = reachableObjectArray.count
+    reachableObjectArray.append (rootObject)
+    // let start = Date()
+    //   NSLog ("start")
+    while (objectsToExploreArray.count > 0) {
+      let objectToExplore : EBManagedObject = objectsToExploreArray.last!
+      objectsToExploreArray.removeLast ()
+      var accessible = [EBManagedObject] ()
+      objectToExplore.accessibleObjects (objects: &accessible)
+      for object : Any in accessible {
+        let managedObject = object as! EBManagedObject
+        if !reachableObjectSet.contains (managedObject) {
+          reachableObjectSet.insert (managedObject)
+          managedObject.savingIndex = reachableObjectArray.count
+          reachableObjectArray.append (managedObject)
+          objectsToExploreArray.append (managedObject)
+        }
+      }
+    // let timeTaken = Date().timeIntervalSinceDate(start) * 1000
+    // NSLog ("\%f ms", timeTaken)
+    }
+    return reachableObjectArray
   }
 
   //····················································································································

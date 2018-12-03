@@ -17,7 +17,7 @@ entity BoardModel {
   transient Int instanceCount dependsFrom self.myInstances.count ;
 
 #--- Front Legend Lines
-  toMany @cascading SegmentEntity frontLegendLines ;
+  toMany SegmentEntity frontLegendLines ;
 
   transient MergerSegmentArray frontLegendLinesSegments dependsFrom
     self.frontLegendLines.all.x1, self.frontLegendLines.all.y1,
@@ -28,7 +28,7 @@ entity BoardModel {
   transient BezierPathArray frontLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendLinesSegments ;
 
 #--- Back Legend Lines
-  toMany @cascading SegmentEntity backLegendLines ;
+  toMany SegmentEntity backLegendLines ;
 
   transient MergerSegmentArray backLegendLinesSegments dependsFrom
     self.backLegendLines.all.x1, self.backLegendLines.all.y1,
@@ -39,7 +39,7 @@ entity BoardModel {
   transient BezierPathArray backLegendLinesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendLinesSegments ;
 
 #--- Front Legend Texts
-  toMany @cascading SegmentEntity frontLegendTexts ;
+  toMany SegmentEntity frontLegendTexts ;
 
   transient MergerSegmentArray frontLegendTextsSegments dependsFrom
     self.frontLegendTexts.all.x1, self.frontLegendTexts.all.y1,
@@ -50,7 +50,7 @@ entity BoardModel {
   transient BezierPathArray frontLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLegendTextsSegments ;
 
 #--- Front Layout Texts
-  toMany @cascading SegmentEntity frontLayoutTexts ;
+  toMany SegmentEntity frontLayoutTexts ;
 
   transient MergerSegmentArray frontLayoutTextsSegments dependsFrom
     self.frontLayoutTexts.all.x1, self.frontLayoutTexts.all.y1,
@@ -61,7 +61,7 @@ entity BoardModel {
   transient BezierPathArray frontLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontLayoutTextsSegments ;
 
 #--- Back Legend Texts
-  toMany @cascading SegmentEntity backLegendTexts ;
+  toMany SegmentEntity backLegendTexts ;
 
   transient MergerSegmentArray backLegendTextsSegments dependsFrom
     self.backLegendTexts.all.x1, self.backLegendTexts.all.y1,
@@ -72,7 +72,7 @@ entity BoardModel {
   transient BezierPathArray backLegendTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLegendTextsSegments ;
 
 #--- Back Layout Texts
-  toMany @cascading SegmentEntity backLayoutTexts ;
+  toMany SegmentEntity backLayoutTexts ;
 
   transient MergerSegmentArray backLayoutTextsSegments dependsFrom
     self.backLayoutTexts.all.x1, self.backLayoutTexts.all.y1,
@@ -83,7 +83,7 @@ entity BoardModel {
   transient BezierPathArray backLayoutTextsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backLayoutTextsSegments ;
 
 #--- Internal board limits
-  toMany @cascading SegmentEntity internalBoardsLimits ;
+  toMany SegmentEntity internalBoardsLimits ;
 
   transient MergerSegmentArray internalBoardsLimitsSegments dependsFrom
     self.internalBoardsLimits.all.x1, self.internalBoardsLimits.all.y1,
@@ -94,7 +94,7 @@ entity BoardModel {
   transient BezierPathArray internalBoardsLimitsBezierPaths externFunc segmentsToBezierPaths dependsFrom self.internalBoardsLimitsSegments ;
 
 #--- Drills
-  toMany @cascading SegmentEntity drills ;
+  toMany SegmentEntity drills ;
  
   transient MergerSegmentArray drillSegments
     dependsFrom self.drills.all.x1, self.drills.all.y1, self.drills.all.x2, self.drills.all.y2, self.drills.all.width ;
@@ -102,7 +102,7 @@ entity BoardModel {
   transient BezierPathArray holesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.drillSegments ;
 
 #--- Vias 
-  toMany @cascading BoardModelVia vias ;
+  toMany BoardModelVia vias ;
   
   transient MergerViaShapeArray viaShapes
     dependsFrom self.vias.all.x, self.vias.all.y, self.vias.all.padDiameter ;
@@ -110,7 +110,7 @@ entity BoardModel {
   transient BezierPathArray viasBezierPaths dependsFrom self.viaShapes ;
 
 #--- Front pads
-  toMany @cascading BoardModelPad frontPads ;
+  toMany BoardModelPad frontPads ;
 
   transient MergerPadArray frontPadArray
     dependsFrom self.frontPads.all.x, self.frontPads.all.y, self.frontPads.all.width, self.frontPads.all.height,
@@ -119,7 +119,7 @@ entity BoardModel {
   transient BezierPathArray frontPadsBezierPaths dependsFrom self.frontPadArray ;
 
 #--- Back pads
-  toMany @cascading BoardModelPad backPads ;
+  toMany BoardModelPad backPads ;
 
   transient MergerPadArray backPadArray
     dependsFrom self.backPads.all.x, self.backPads.all.y, self.backPads.all.width, self.backPads.all.height,
@@ -138,7 +138,7 @@ entity BoardModel {
   transient BezierPathArray boardLimitsBezierPaths dependsFrom self.modelWidth, self.modelHeight, self.modelLimitWidth ;
  
 #--- Back component names
-  toMany @cascading SegmentEntity backComponentNames ;
+  toMany SegmentEntity backComponentNames ;
 
   transient MergerSegmentArray backComponentNameSegments dependsFrom
     self.backComponentNames.all.x1, self.backComponentNames.all.y1,
@@ -149,7 +149,7 @@ entity BoardModel {
   transient BezierPathArray backComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentNameSegments ;
 
 #--- Front component names
-  toMany @cascading SegmentEntity frontComponentNames ;
+  toMany SegmentEntity frontComponentNames ;
 
   transient MergerSegmentArray frontComponentNameSegments dependsFrom
     self.frontComponentNames.all.x1, self.frontComponentNames.all.y1,
@@ -160,7 +160,7 @@ entity BoardModel {
   transient BezierPathArray frontComponentNamesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentNameSegments ;
 
 #--- Front component values
-  toMany @cascading SegmentEntity frontComponentValues ;
+  toMany SegmentEntity frontComponentValues ;
 
   transient MergerSegmentArray frontComponentValueSegments dependsFrom
     self.frontComponentValues.all.x1, self.frontComponentValues.all.y1,
@@ -171,7 +171,7 @@ entity BoardModel {
   transient BezierPathArray frontComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontComponentValueSegments ;
 
 #--- Back component values
-  toMany @cascading SegmentEntity backComponentValues ;
+  toMany SegmentEntity backComponentValues ;
 
   transient MergerSegmentArray backComponentValueSegments dependsFrom
     self.backComponentValues.all.x1, self.backComponentValues.all.y1,
@@ -182,7 +182,7 @@ entity BoardModel {
   transient BezierPathArray backComponentValuesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backComponentValueSegments ;
 
 #--- Back tracks
-  toMany @cascading SegmentEntity backTracks ;
+  toMany SegmentEntity backTracks ;
 
   transient MergerSegmentArray backTrackSegments dependsFrom
     self.backTracks.all.x1, self.backTracks.all.y1,
@@ -193,7 +193,7 @@ entity BoardModel {
   transient BezierPathArray backTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.backTrackSegments ;
 
 #--- Front tracks
-  toMany @cascading SegmentEntity frontTracks ;
+  toMany SegmentEntity frontTracks ;
 
   transient MergerSegmentArray frontTrackSegments dependsFrom
     self.frontTracks.all.x1, self.frontTracks.all.y1,
@@ -204,7 +204,7 @@ entity BoardModel {
   transient BezierPathArray frontTracksBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontTrackSegments ;
 
 #--- Front packages
-  toMany @cascading SegmentEntity frontPackages ;
+  toMany SegmentEntity frontPackages ;
 
   transient MergerSegmentArray frontPackagesSegments dependsFrom
     self.frontPackages.all.x1, self.frontPackages.all.y1,
@@ -215,7 +215,7 @@ entity BoardModel {
   transient BezierPathArray frontPackagesBezierPaths externFunc segmentsToBezierPaths dependsFrom self.frontPackagesSegments ;
 
 #--- Back packages
-  toMany @cascading SegmentEntity backPackages ;
+  toMany SegmentEntity backPackages ;
 
   transient MergerSegmentArray backPackagesSegments dependsFrom
     self.backPackages.all.x1, self.backPackages.all.y1,

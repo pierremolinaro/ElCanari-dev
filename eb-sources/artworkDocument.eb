@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ArtworkRoot {
-  toMany @cascading @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
+  toMany @signature ArtworkFileGenerationParameters fileGenerationParameterArray ;
   property Int selectedTab default 0 ;
   property @signature String comments default "" ;
 
