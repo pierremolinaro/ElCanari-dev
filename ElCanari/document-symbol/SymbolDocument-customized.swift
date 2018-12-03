@@ -337,7 +337,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addSegment (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSegment (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolSegment (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x1 = p.x
     newObject.y1 = p.y
@@ -350,7 +350,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addBezier (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolBezierCurve (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolBezierCurve (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x1 = p.x
     newObject.y1 = p.y
@@ -367,7 +367,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addOval (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolOval (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x = p.x
     newObject.y = p.y
@@ -380,7 +380,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
  //····················································································································
 
   private func addSolidOval (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSolidOval (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolSolidOval (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x = p.x
     newObject.y = p.y
@@ -393,7 +393,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addSolidRect (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSolidRect (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolSolidRect (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x = p.x
     newObject.y = p.y
@@ -406,7 +406,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addText (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolText (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolText (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.x = p.x
     newObject.y = p.y
@@ -417,7 +417,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
   //····················································································································
 
   private func addPin (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolPin (managedObjectContext: self.managedObjectContext, file: #file, #line)
+    let newObject = SymbolPin (self.ebUndoManager, file: #file, #line)
     let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
     newObject.xPin = p.x
     newObject.yPin = p.y

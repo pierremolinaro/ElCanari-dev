@@ -368,8 +368,8 @@ class SymbolRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.undoManager = self.undoManager
   //--- Atomic property: comments
@@ -683,9 +683,9 @@ class SymbolRoot : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany symbolObjects
     do{
-      let objects = self.symbolObjects_property.propval
+ //     let objects = self.symbolObjects_property.propval
       self.symbolObjects_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

@@ -302,8 +302,8 @@ class FontRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager
   //--- Atomic property: nominalSize
@@ -315,7 +315,6 @@ class FontRoot : EBManagedObject,
   //--- To many property: characters (no option)
     self.characters_property.undoManager = self.undoManager
   //--- Array controller property: selectedCharacterController
-    self.selectedCharacterController.setManagedObjectContext (self.managedObjectContext)
     self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.readModelFunction = {
@@ -621,9 +620,9 @@ class FontRoot : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany characters
     do{
-      let objects = self.characters_property.propval
+ //     let objects = self.characters_property.propval
       self.characters_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

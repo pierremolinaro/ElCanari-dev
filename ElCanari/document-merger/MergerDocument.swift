@@ -2667,12 +2667,10 @@ import Cocoa
       )
     }
   //--- Array controller property: mBoardModelController
-    self.mBoardModelController.setManagedObjectContext (self.managedObjectContext)
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property)
   //--- Selection controller property: mBoardModelSelection
     self.mBoardModelSelection.bind_selection (model: self.mBoardModelController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: mBoardInstanceController
-    self.mBoardInstanceController.setManagedObjectContext (self.managedObjectContext)
     self.mBoardInstanceController.bind_model (self.rootObject.boardInstances_property)
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property, file: #file, line: #line)

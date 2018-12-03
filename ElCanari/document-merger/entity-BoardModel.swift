@@ -1844,8 +1844,8 @@ class BoardModel : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: name
     self.name_property.undoManager = self.undoManager
   //--- Atomic property: modelWidth
@@ -4516,117 +4516,117 @@ class BoardModel : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany frontLegendLines
     do{
-      let objects = self.frontLegendLines_property.propval
+ //     let objects = self.frontLegendLines_property.propval
       self.frontLegendLines_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backLegendLines
     do{
-      let objects = self.backLegendLines_property.propval
+ //     let objects = self.backLegendLines_property.propval
       self.backLegendLines_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontLegendTexts
     do{
-      let objects = self.frontLegendTexts_property.propval
+ //     let objects = self.frontLegendTexts_property.propval
       self.frontLegendTexts_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontLayoutTexts
     do{
-      let objects = self.frontLayoutTexts_property.propval
+ //     let objects = self.frontLayoutTexts_property.propval
       self.frontLayoutTexts_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backLegendTexts
     do{
-      let objects = self.backLegendTexts_property.propval
+ //     let objects = self.backLegendTexts_property.propval
       self.backLegendTexts_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backLayoutTexts
     do{
-      let objects = self.backLayoutTexts_property.propval
+ //     let objects = self.backLayoutTexts_property.propval
       self.backLayoutTexts_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany internalBoardsLimits
     do{
-      let objects = self.internalBoardsLimits_property.propval
+ //     let objects = self.internalBoardsLimits_property.propval
       self.internalBoardsLimits_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany drills
     do{
-      let objects = self.drills_property.propval
+ //     let objects = self.drills_property.propval
       self.drills_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany vias
     do{
-      let objects = self.vias_property.propval
+ //     let objects = self.vias_property.propval
       self.vias_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontPads
     do{
-      let objects = self.frontPads_property.propval
+ //     let objects = self.frontPads_property.propval
       self.frontPads_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backPads
     do{
-      let objects = self.backPads_property.propval
+ //     let objects = self.backPads_property.propval
       self.backPads_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backComponentNames
     do{
-      let objects = self.backComponentNames_property.propval
+ //     let objects = self.backComponentNames_property.propval
       self.backComponentNames_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontComponentNames
     do{
-      let objects = self.frontComponentNames_property.propval
+ //     let objects = self.frontComponentNames_property.propval
       self.frontComponentNames_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontComponentValues
     do{
-      let objects = self.frontComponentValues_property.propval
+ //     let objects = self.frontComponentValues_property.propval
       self.frontComponentValues_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backComponentValues
     do{
-      let objects = self.backComponentValues_property.propval
+ //     let objects = self.backComponentValues_property.propval
       self.backComponentValues_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backTracks
     do{
-      let objects = self.backTracks_property.propval
+ //     let objects = self.backTracks_property.propval
       self.backTracks_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontTracks
     do{
-      let objects = self.frontTracks_property.propval
+ //     let objects = self.frontTracks_property.propval
       self.frontTracks_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany frontPackages
     do{
-      let objects = self.frontPackages_property.propval
+ //     let objects = self.frontPackages_property.propval
       self.frontPackages_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany backPackages
     do{
-      let objects = self.backPackages_property.propval
+ //     let objects = self.backPackages_property.propval
       self.backPackages_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Nullify toMany myInstances
     self.myInstances_property.setProp ([]) // Set relationship to empty array

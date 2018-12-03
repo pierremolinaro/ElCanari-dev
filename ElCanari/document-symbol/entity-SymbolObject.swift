@@ -58,8 +58,8 @@ class SymbolObject : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   }

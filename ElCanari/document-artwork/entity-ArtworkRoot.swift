@@ -356,8 +356,8 @@ class ArtworkRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: selectedTab
     self.selectedTab_property.undoManager = self.undoManager
   //--- Atomic property: comments
@@ -631,9 +631,9 @@ class ArtworkRoot : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany fileGenerationParameterArray
     do{
-      let objects = self.fileGenerationParameterArray_property.propval
+ //     let objects = self.fileGenerationParameterArray_property.propval
       self.fileGenerationParameterArray_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

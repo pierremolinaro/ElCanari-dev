@@ -176,8 +176,8 @@ class FontCharacter : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: codePoint
     self.codePoint_property.undoManager = self.undoManager
   //--- Atomic property: advance
@@ -396,9 +396,9 @@ class FontCharacter : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany segments
     do{
-      let objects = self.segments_property.propval
+ //     let objects = self.segments_property.propval
       self.segments_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)

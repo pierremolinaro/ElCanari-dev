@@ -57,7 +57,7 @@ extension MergerDocument {
             for _ in 0 ..< yCount {
               var x = inX
               for _ in 0 ..< xCount {
-                let newBoard = MergerBoardInstance (managedObjectContext: self.managedObjectContext, file: #file, #line)
+                let newBoard = MergerBoardInstance (self.ebUndoManager, file: #file, #line)
                 newBoard.myModel_property.setProp (boardModel)
                 newBoard.instanceRotation = rotation
                 newBoard.x = x

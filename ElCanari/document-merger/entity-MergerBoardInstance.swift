@@ -232,8 +232,8 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- To one property: myModel
     self.myModel_property.owner = self
   //--- Atomic property: x

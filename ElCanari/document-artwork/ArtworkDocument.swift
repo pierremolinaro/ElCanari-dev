@@ -976,7 +976,6 @@ import Cocoa
       )
     }
   //--- Array controller property: mDataController
-    self.mDataController.setManagedObjectContext (self.managedObjectContext)
     self.mDataController.bind_model (self.rootObject.fileGenerationParameterArray_property)
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)

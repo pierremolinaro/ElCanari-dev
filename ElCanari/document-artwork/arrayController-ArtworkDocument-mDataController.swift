@@ -108,16 +108,6 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
  }
 
   //····················································································································
-  //    Managed object context
-  //····················································································································
-
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil // SOULD BE WEAK
-
-  func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
-    self.mManagedObjectContext = inManagedObjectContext
-  }
-  
-  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -427,12 +417,12 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : ArtworkFileGenerationParameters = ArtworkFileGenerationParameters (managedObjectContext: managedObjectContext, file: #file, #line)
+        let newObject = ArtworkFileGenerationParameters (self.undoManager, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -452,7 +442,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -469,7 +459,6 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
           }
           var indexArrayOfSelectedObjects = [Int] ()
           for object in mSelectedSet.mSet {
-            managedObjectContext.removeManagedObject (object)
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)

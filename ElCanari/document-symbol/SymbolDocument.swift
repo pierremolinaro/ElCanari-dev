@@ -815,7 +815,6 @@ import Cocoa
       )
     }
   //--- Array controller property: mSymbolObjectsController
-    self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext)
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
   //--- Selection controller property: mSymbolTextSelectionController
     self.mSymbolTextSelectionController.bind_selection (model: self.mSymbolObjectsController.selectedArray_property, file: #file, line: #line)

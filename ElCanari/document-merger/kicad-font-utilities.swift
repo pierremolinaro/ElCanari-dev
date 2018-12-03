@@ -71,7 +71,7 @@ func drawKicadString (str inString : String,
                       leftMM inModelLeftMM  : CGFloat,
                       bottomMM inModelBottomMM : CGFloat,
                       boardRect inBoardRect : NSRect,
-                      moc inMOC : EBManagedObjectContext) -> [SegmentEntity] {
+                      _ inUndoManager : EBUndoManager) -> [SegmentEntity] {
   let mirror : CGFloat = inMirror ? -1.0 : 1.0
   let fontFactor = inFontSize * KICAD_STROKE_FONT_SCALE
 //--- Compute string metrics
@@ -119,7 +119,7 @@ func drawKicadString (str inString : String,
             p2_mm: p2,
             width_mm: inThickness,
             clipRect_mm: inBoardRect,
-            moc: inMOC,
+            inUndoManager,
             file: #file, #line
           ) {
             segments.append (segment)

@@ -121,7 +121,7 @@ extension MergerDocument {
     //--- Get first level items
       if let contents = possibleContents, contents.key == "kicad_pcb" {
         let font : [UInt32 : KicadChar] = kicadFont ()
-        let boardModel = BoardModel (managedObjectContext: self.managedObjectContext, file: #file, #line)
+        let boardModel = BoardModel (self.ebUndoManager, file: #file, #line)
         boardModel.name = inName
         var errorArray = [(String, Int)] ()
         self.extractContents (contents.items, boardModel, font, &errorArray)
@@ -265,7 +265,7 @@ extension MergerDocument {
        let endY = inKicadItem.getFloat (["segment", "end"], 1, &ioErrorArray, #line),
        let width = inKicadItem.getFloat (["segment", "width"], 0, &ioErrorArray, #line),
        let layer = inKicadItem.getString (["segment", "layer"], 0, &ioErrorArray, #line) {
-      let segment = SegmentEntity (managedObjectContext: self.managedObjectContext, file: #file, #line)
+      let segment = SegmentEntity (self.ebUndoManager, file: #file, #line)
       segment.x1 = millimeterToCanariUnit (startX - ioTemporaryBoardModel.mLeftMM)
       segment.y1 = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - startY)
       segment.x2 = millimeterToCanariUnit (endX - ioTemporaryBoardModel.mLeftMM)
@@ -277,7 +277,6 @@ extension MergerDocument {
         ioTemporaryBoardModel.mBackTrackEntities.append (segment)
       }else{
         ioErrorArray.append (("Invalid segment layer \(layer)", #line))
-        self.managedObjectContext.removeManagedObject (segment)
       }
     }
   }
@@ -332,14 +331,14 @@ extension MergerDocument {
        let diameter = inKicadItem.getFloat (["via", "size"], 0, &ioErrorArray, #line),
        let netIndex = inKicadItem.getInt (["via", "net"], 0, &ioErrorArray, #line) {
     //--- Add via
-      let via = BoardModelVia (managedObjectContext: self.managedObjectContext, file: #file, #line)
+      let via = BoardModelVia (self.ebUndoManager, file: #file, #line)
       via.x = millimeterToCanariUnit (x - ioTemporaryBoardModel.mLeftMM)
       via.y = millimeterToCanariUnit (ioTemporaryBoardModel.mBottomMM - y)
       via.padDiameter = millimeterToCanariUnit (diameter)
       let netClass = inNetArray [netIndex]
       ioTemporaryBoardModel.mViaEntities.append (via)
     //--- Add drill
-      let segment = SegmentEntity (managedObjectContext: self.managedObjectContext, file: #file, #line)
+      let segment = SegmentEntity (self.ebUndoManager, file: #file, #line)
       segment.x1 = via.x
       segment.y1 = via.y
       segment.x2 = via.x
@@ -394,14 +393,12 @@ extension MergerDocument {
         leftMM: ioTemporaryBoardModel.mLeftMM,
         bottomMM: ioTemporaryBoardModel.mBottomMM,
         boardRect: ioTemporaryBoardModel.mBoardRect_mm,
-        moc: self.managedObjectContext
+        self.ebUndoManager
       )
       if textLayer == "F.Cu" {
         ioTemporaryBoardModel.mFrontLayoutTextEntities += segments
       }else if textLayer == "B.Cu" {
         ioTemporaryBoardModel.mBackLayoutTextEntities += segments
-      }else{
-        self.managedObjectContext.removeManagedObjects (segments)
       }
     }
   }
@@ -470,7 +467,7 @@ extension MergerDocument {
             leftMM: ioTemporaryBoardModel.mLeftMM,
             bottomMM: ioTemporaryBoardModel.mBottomMM,
             boardRect: ioTemporaryBoardModel.mBoardRect_mm,
-            moc: self.managedObjectContext
+            self.ebUndoManager
           )
           if (kind == "reference") && (textLayer == "F.SilkS") {
             ioTemporaryBoardModel.mFrontComponentNamesEntities += segments
@@ -480,8 +477,6 @@ extension MergerDocument {
             ioTemporaryBoardModel.mFrontComponentValuesEntities += segments
           }else if (kind == "value") && (textLayer == "B.Fab") {
             ioTemporaryBoardModel.mBackComponentValuesEntities += segments
-          }else{
-            self.managedObjectContext.removeManagedObjects (segments)
           }
         }else if item.key == "fp_line",
               let startX = item.getFloat (["fp_line", "start"], 0, &ioErrorArray, #line),
@@ -497,25 +492,19 @@ extension MergerDocument {
             p2_mm: CGPoint (x: end.x, y: end.y),
             width_mm: widthMM,
             clipRect_mm: ioTemporaryBoardModel.mBoardRect_mm,
-            moc: self.managedObjectContext,
+            self.ebUndoManager,
             file: #file, #line
           ) {
-            var packageLineAppened = false
             if layer == "F.Cu" {
               if lineLayer == "F.SilkS" {
                 ioTemporaryBoardModel.mFrontPackagesEntities.append (packageLine)
-                packageLineAppened = true
               }
             }else if layer == "B.Cu" {
               if lineLayer == "B.SilkS" {
                 ioTemporaryBoardModel.mBackPackagesEntities.append (packageLine)
-                packageLineAppened = true
               }
             }else{
               ioErrorArray.append (("Invalid module layer: \(layer)", #line))
-            }
-            if !packageLineAppened {
-              self.managedObjectContext.removeManagedObject (packageLine)
             }
           }
         }else if item.key == "fp_arc",
@@ -551,29 +540,23 @@ extension MergerDocument {
             case .moveTo :
               currentPoint = pointArray [0]
             case .lineTo :
-              let packageLine = SegmentEntity (managedObjectContext: self.managedObjectContext, file: #file, #line)
+              let packageLine = SegmentEntity (self.ebUndoManager, file: #file, #line)
               packageLine.x1 = millimeterToCanariUnit (CGFloat (currentPoint.x))
               packageLine.y1 = millimeterToCanariUnit (CGFloat (currentPoint.y))
               packageLine.x2 = millimeterToCanariUnit (CGFloat (pointArray [0].x))
               packageLine.y2 = millimeterToCanariUnit (CGFloat (pointArray [0].y))
               currentPoint = pointArray [0]
               packageLine.width = millimeterToCanariUnit (widthMM)
-              var appened = false
               if layer == "F.Cu" {
                 if lineLayer == "F.SilkS" {
                   ioTemporaryBoardModel.mFrontPackagesEntities.append (packageLine)
-                  appened = true
                 }
               }else if layer == "B.Cu" {
                 if lineLayer == "B.SilkS" {
                   ioTemporaryBoardModel.mBackPackagesEntities.append (packageLine)
-                   appened = true
                 }
               }else{
                 ioErrorArray.append (("Invalid module layer: \(layer)", #line))
-              }
-              if !appened {
-                self.managedObjectContext.removeManagedObject (packageLine)
               }
             case .curveTo :
               ioErrorArray.append (("Invalid curveToBezierPathElement", #line))
@@ -588,7 +571,7 @@ extension MergerDocument {
               let atY = item.getFloat (["pad", "at"], 1, &ioErrorArray, #line),
               let widthMM = item.getFloat (["pad", "size"], 0, &ioErrorArray, #line),
               let heightMM = item.getFloat (["pad", "size"], 1, &ioErrorArray, #line) {
-          let pad = BoardModelPad (managedObjectContext: self.managedObjectContext, file: #file, #line)
+          let pad = BoardModelPad (self.ebUndoManager, file: #file, #line)
           let padXY = moduleTransform.transform (NSPoint (x: atX, y: atY))
           pad.x = millimeterToCanariUnit (CGFloat (padXY.x))
           pad.y = millimeterToCanariUnit (CGFloat (padXY.y))
@@ -616,7 +599,7 @@ extension MergerDocument {
                 let drillDiameter = millimeterToCanariUnit (CGFloat (holeDiameter))
                 let x1 = pad.x
                 let y1 = pad.y
-                let drill = SegmentEntity (managedObjectContext: self.managedObjectContext, file: #file, #line)
+                let drill = SegmentEntity (self.ebUndoManager, file: #file, #line)
                 drill.x1 = x1
                 drill.y1 = y1
                 drill.x2 = x1
@@ -633,7 +616,7 @@ extension MergerDocument {
                   let p = padTransform.transform (NSPoint (x: (ovalMM - drillDiameterMM) / 2.0, y:0))
                   let dx = millimeterToCanariUnit (CGFloat (p.x))
                   let dy = millimeterToCanariUnit (CGFloat (p.y))
-                  let drill = SegmentEntity (managedObjectContext: self.managedObjectContext, file: #file, #line)
+                  let drill = SegmentEntity (self.ebUndoManager, file: #file, #line)
                   drill.x1 = pad.x - dx
                   drill.y1 = pad.y - dy
                   drill.x2 = pad.x + dx
@@ -729,12 +712,12 @@ func clippedSegmentEntity (p1_mm inP1 : NSPoint,
                            p2_mm inP2 : NSPoint,
                            width_mm inWith : CGFloat,
                            clipRect_mm inClipRect: NSRect,
-                           moc inMOC: EBManagedObjectContext,
+                           _ inUndoManager : EBUndoManager?,
                            file : String,
                            _ inLine : Int) -> SegmentEntity? {
   let r : CGRect = inClipRect.insetBy (dx: inWith / 2.0, dy: inWith / 2.0)
   if let (p1, p2) = r.clippedSegment (p1: inP1, p2: inP2) {
-    let segment = SegmentEntity (managedObjectContext: inMOC, file: file, inLine)
+    let segment = SegmentEntity (inUndoManager, file: file, inLine)
     segment.x1 = millimeterToCanariUnit (p1.x)
     segment.y1 = millimeterToCanariUnit (p1.y)
     segment.x2 = millimeterToCanariUnit (p2.x)

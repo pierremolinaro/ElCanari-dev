@@ -681,7 +681,6 @@ import Cocoa
       )
     }
   //--- Array controller property: mSelectedCharacterController
-    self.mSelectedCharacterController.setManagedObjectContext (self.managedObjectContext)
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)

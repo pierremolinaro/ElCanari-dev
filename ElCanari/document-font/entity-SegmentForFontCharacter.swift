@@ -148,8 +148,8 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: y1

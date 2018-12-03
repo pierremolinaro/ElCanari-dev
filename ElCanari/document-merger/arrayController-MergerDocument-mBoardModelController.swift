@@ -108,16 +108,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
  }
 
   //····················································································································
-  //    Managed object context
-  //····················································································································
-
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil // SOULD BE WEAK
-
-  func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
-    self.mManagedObjectContext = inManagedObjectContext
-  }
-  
-  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -427,12 +417,12 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : BoardModel = BoardModel (managedObjectContext: managedObjectContext, file: #file, #line)
+        let newObject = BoardModel (self.undoManager, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -452,7 +442,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -469,7 +459,6 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
           }
           var indexArrayOfSelectedObjects = [Int] ()
           for object in mSelectedSet.mSet {
-            managedObjectContext.removeManagedObject (object)
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)

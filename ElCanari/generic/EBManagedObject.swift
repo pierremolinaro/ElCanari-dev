@@ -9,7 +9,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBManagedObject) class EBManagedObject : EBObject, EBSignatureObserverProtocol {
-  private weak var mManagedObjectContext : EBManagedObjectContext? // SOULD BE WEAK
+  private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
   var savingIndex = 0
 
   var mExplorerWindow : NSWindow?
@@ -21,12 +21,11 @@ import Cocoa
   //  init
   //····················································································································
 
-  init (managedObjectContext : EBManagedObjectContext, file : String, _ inLine : Int) {
-    mManagedObjectContext = managedObjectContext
+  init (_ undoManager : EBUndoManager?, file : String, _ inLine : Int) {
+    mUndoManager = undoManager
     mFile = file
     mLine = inLine
     super.init ()
-    managedObjectContext.insertManagedObject (self)
   }
 
   //····················································································································
@@ -47,13 +46,7 @@ import Cocoa
   //····················································································································
 
   final var undoManager : EBUndoManager? {
-    return self.mManagedObjectContext?.undoManager ()
-  }
-
-  //····················································································································
-
-  final var managedObjectContext : EBManagedObjectContext? {
-    return self.mManagedObjectContext
+    return self.mUndoManager
   }
 
   //····················································································································
@@ -72,7 +65,6 @@ import Cocoa
   //····················································································································
 
   func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-    self.mManagedObjectContext = nil
   }
 
   //····················································································································

@@ -890,8 +890,8 @@ class MergerRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (managedObjectContext : EBManagedObjectContext, file: String, _ line : Int) {
-    super.init (managedObjectContext:managedObjectContext, file: file, line)
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = self.undoManager
   //--- To many property: boardInstances (has opposite relationship)
@@ -1635,21 +1635,21 @@ class MergerRoot : EBManagedObject,
   override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   //--- Cascading toMany boardModels
     do{
-      let objects = self.boardModels_property.propval
+ //     let objects = self.boardModels_property.propval
       self.boardModels_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toMany boardInstances
     do{
-      let objects = self.boardInstances_property.propval
+ //     let objects = self.boardInstances_property.propval
       self.boardInstances_property.setProp ([])
-      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
+//      self.managedObjectContext?.internalRemoveManagedObjects (objects, &ioObjectsToRemove) // Cascade removing from moc
     }
   //--- Cascading toOne artwork
-    if let object = self.artwork_property.propval {
+  //  if let object = self.artwork_property.propval {
       self.artwork_property.setProp (nil)
-      self.managedObjectContext?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
-    }
+//      self.managedObjectContext?.internalRemoveManagedObject (object, &ioObjectsToRemove) // Cascade removing from moc
+ //   }
   //---
     super.cascadeObjectRemoving (&ioObjectsToRemove)
   }

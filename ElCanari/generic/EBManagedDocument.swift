@@ -24,21 +24,18 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   private var mReadMetadataStatus : UInt8 = 0
   private var mMetadataDictionary : NSMutableDictionary = [:]
-  private var mManagedObjectContext : EBManagedObjectContext
+  private var mUndoManager = EBUndoManager ()
 
   //····················································································································
   //    init
   //····················································································································
 
   override init () {
-    let theUndoManager = EBUndoManager ()
-    mManagedObjectContext = EBManagedObjectContext (undoManager:theUndoManager)
     super.init ()
     noteObjectAllocation (self)
-    undoManager = theUndoManager
-    theUndoManager.disableUndoRegistration ()
-    mRootObject = try! mManagedObjectContext.newInstanceOfEntityNamed (inEntityTypeName: rootEntityClassName ())
-    theUndoManager.enableUndoRegistration ()
+    self.mUndoManager.disableUndoRegistration ()
+    mRootObject = try! newInstanceOfEntityNamed (self.mUndoManager, inEntityTypeName: rootEntityClassName ())
+    self.mUndoManager.enableUndoRegistration ()
   }
 
   //····················································································································
@@ -50,11 +47,11 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //    managedObjectContext
+  //    undoManager
   //····················································································································
 
-  final var managedObjectContext : EBManagedObjectContext {
-    return self.mManagedObjectContext
+  final var ebUndoManager : EBUndoManager {
+    return self.mUndoManager
   }
 
   //····················································································································
@@ -141,7 +138,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func dataForSavingFromRootObject () throws -> Data {
-    let objectsToSaveArray : [EBManagedObject] = mManagedObjectContext.reachableObjectsFromRootObject (rootObject: mRootObject!)
+    let objectsToSaveArray : [EBManagedObject] = reachableObjectsFromRootObject (rootObject: self.mRootObject!)
   //--- Set savingIndex for each object
     var idx = 0 ;
     for object in objectsToSaveArray {
@@ -168,19 +165,15 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   override func read (from data: Data, ofType typeName: String) throws {
-    undoManager?.disableUndoRegistration ()
+    self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
-    let (metadataStatus, metadataDictionary, possibleRootObject) = try self.managedObjectContext.loadEasyBindingFile (from: data)
+    let (metadataStatus, metadataDictionary, possibleRootObject) = try loadEasyBindingFile (self.ebUndoManager, from: data)
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary
     self.mMetadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
   //--- Read version from file
     self.mVersion.setProp (readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
-  //--- Free current root object
-    if let currentRootObject = self.mRootObject {
-      self.managedObjectContext.removeManagedObject (currentRootObject)
-    }
   //--- Store root object
     self.mRootObject = possibleRootObject
   //---
@@ -196,7 +189,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       )
     }
   //---
-    undoManager?.enableUndoRegistration ()
+    self.ebUndoManager.enableUndoRegistration ()
   }
 
   //····················································································································
@@ -226,16 +219,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
           unwrappedWindowForSheet.setFrame (windowFrame, display:true)
         }
       }
-    }
-  }
-
-  //····················································································································
-  //   C H E C K    E N T I T Y   R E A C H A B I L I T Y
-  //····················································································································
-
-  @IBAction func checkEntityReachability (_: AnyObject) {
-    if let rootObject = mRootObject, let window = windowForSheet {
-      mManagedObjectContext.checkEntityReachabilityFromObject (rootObject: rootObject, windowForSheet:window)
     }
   }
 
@@ -347,12 +330,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     mRootObject?.setSignatureObserver (observer: mSignatureObserver)
     mSignatureObserver.setRootObject (mRootObject!)
   //--- Version did change observer
-    mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (mSignatureObserver, self.mManagedObjectContext.undoManager())
+    mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (mSignatureObserver, self.ebUndoManager)
     mSignatureObserver.addEBObserver (mVersionShouldChangeObserver)
   //--- Add Debug menu items ?
     if !gDebugMenuItemsAdded {
       gDebugMenuItemsAdded = true
-      var menuItem = NSMenuItem (
+      let menuItem = NSMenuItem (
         title:"Explore document",
         action:#selector(EBManagedDocument.showObjectExplorerWindow(_:)),
         keyEquivalent:""
@@ -364,12 +347,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
         keyEquivalent:""
       )
       addItemToDebugMenu (menuItem) */
-      menuItem = NSMenuItem (
+/*      menuItem = NSMenuItem (
         title:"Check All Objects are Reachable",
         action:#selector(EBManagedDocument.checkEntityReachability(_:)),
         keyEquivalent:""
       )
-      addItemToDebugMenu (menuItem)
+      addItemToDebugMenu (menuItem) */
     }
   //-------------- Check relationships
 /*      NSUserDefaultsController * sudc = [NSUserDefaultsController sharedUserDefaultsController] ;
@@ -386,7 +369,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   func removeUserInterface () {
     mSignatureObserver.removeEBObserver (mVersionShouldChangeObserver)
-    mManagedObjectContext.reset ()
   }
 
   //····················································································································
@@ -449,26 +431,24 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func resetVersionAndSignature () {
-    let undoManager = self.mManagedObjectContext.undoManager ()
-    undoManager?.registerUndo (
+    self.ebUndoManager.registerUndo (
       withTarget: self,
       selector: #selector (performUndoVersionNumber(_:)),
-      object: NSNumber (value: mVersion.propval)
+      object: NSNumber (value: self.mVersion.propval)
     )
-    mVersion.setProp (0)
-    mVersionShouldChangeObserver.clearStartUpSignature ()
+    self.mVersion.setProp (0)
+    self.mVersionShouldChangeObserver.clearStartUpSignature ()
   }
   
   //····················································································································
 
   @objc func performUndoVersionNumber (_ oldValue : NSNumber) {
-    let undoManager = self.mManagedObjectContext.undoManager()
-    undoManager?.registerUndo (
+    self.ebUndoManager.registerUndo (
       withTarget: self,
       selector: #selector (performUndoVersionNumber(_:)),
-      object: NSNumber (value: mVersion.propval)
+      object: NSNumber (value: self.mVersion.propval)
     )
-    mVersion.setProp (oldValue.intValue)
+    self.mVersion.setProp (oldValue.intValue)
   }
 
   //····················································································································
@@ -653,24 +633,24 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
   //····················································································································
 
   final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ undoManager : EBUndoManager?) {
-    mUndoManager = undoManager
-    mSignatureObserver = signatureObserver
-    mSignatureAtStartUp = signatureObserver.signature ()
+    self.mUndoManager = undoManager
+    self.mSignatureObserver = signatureObserver
+    self.mSignatureAtStartUp = signatureObserver.signature ()
   }
 
   //····················································································································
 
   final func updateStartUpSignature () {
-    if let signatureObserver = mSignatureObserver {
-      mSignatureAtStartUp = signatureObserver.signature ()
-      postEvent ()
+    if let signatureObserver = self.mSignatureObserver {
+      self.mSignatureAtStartUp = signatureObserver.signature ()
+      self.postEvent ()
     }
   }
 
   //····················································································································
 
   func signature () -> UInt32 {
-    if let signatureObserver = mSignatureObserver {
+    if let signatureObserver = self.mSignatureObserver {
       return signatureObserver.signature ()
     }else{
       return 0
@@ -688,17 +668,17 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
   //····················································································································
   
   func clearStartUpSignature () {
-    mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
-    mSignatureAtStartUp = 0
-    postEvent ()
+    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
+    self.mSignatureAtStartUp = 0
+    self.postEvent ()
   }
 
   //····················································································································
 
   @objc func performUndo (_ oldValue : NSNumber) {
-    mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
-    mSignatureAtStartUp = oldValue.uint32Value
-    postEvent ()
+    self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
+    self.mSignatureAtStartUp = oldValue.uint32Value
+    self.postEvent ()
   }
 
   //····················································································································
@@ -728,7 +708,7 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
   //····················································································································
 
   final func setRootObject (_ rootObject : EBSignatureObserverProtocol) {
-    mRootObject = rootObject
+    self.mRootObject = rootObject
   }
 
   //····················································································································
@@ -744,7 +724,7 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
   //····················································································································
 
   func clearSignatureCache () {
-    postEvent ()
+    self.postEvent ()
   }
 
   //····················································································································

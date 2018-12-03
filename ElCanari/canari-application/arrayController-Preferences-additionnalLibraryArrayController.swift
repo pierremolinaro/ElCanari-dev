@@ -106,16 +106,6 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
  }
 
   //····················································································································
-  //    Managed object context
-  //····················································································································
-
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil // SOULD BE WEAK
-
-  func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
-    self.mManagedObjectContext = inManagedObjectContext
-  }
-  
-  //····················································································································
   //    Undo manager
   //····················································································································
 

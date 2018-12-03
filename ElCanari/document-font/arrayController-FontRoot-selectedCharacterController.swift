@@ -84,16 +84,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
  }
 
   //····················································································································
-  //    Managed object context
-  //····················································································································
-
-  private weak var mManagedObjectContext : EBManagedObjectContext? = nil
-
-  func setManagedObjectContext (_ inManagedObjectContext : EBManagedObjectContext?) {
-    self.mManagedObjectContext = inManagedObjectContext
-  }
-  
-  //····················································································································
   //    Undo manager
   //····················································································································
 
@@ -216,12 +206,12 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : FontCharacter = FontCharacter (managedObjectContext: managedObjectContext, file: #file, #line)
+        let newObject = FontCharacter (self.undoManager, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -241,7 +231,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel, let managedObjectContext = self.mManagedObjectContext {
+    if let model = mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -258,7 +248,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
           }
           var indexArrayOfSelectedObjects = [Int] ()
           for object in mSelectedSet.mSet {
-            managedObjectContext.removeManagedObject (object)
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
