@@ -28,6 +28,8 @@ document SymbolDocument root SymbolRoot {
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
   outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
+  outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
+  outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
 
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
@@ -51,6 +53,8 @@ document SymbolDocument root SymbolRoot {
     $gridDotColor prefs.dotColorOfSymbolGrid
     $zoom root.zoom
     $backColor prefs.symbolBackgroundColor
+    $xPlacardUnit root.xPlacardUnit
+    $yPlacardUnit root.yPlacardUnit
   ;
 
   outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;

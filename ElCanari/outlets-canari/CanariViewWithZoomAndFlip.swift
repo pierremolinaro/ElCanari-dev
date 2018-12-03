@@ -153,7 +153,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
   private func installZoomPopUpButton (_ inScrollView : CanariScrollViewWithPlacard) {
     if self.mZoomPopUpButton == nil {
-      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
+      let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
       self.mZoomPopUpButton = zoomPopUpButton
       zoomPopUpButton.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
@@ -201,18 +201,18 @@ class CanariViewWithZoomAndFlip : EBView {
 
   private func installXYplacards (_ inScrollView : CanariScrollViewWithPlacard) {
     if self.mXPlacard == nil {
-      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
-      let xPlacard = NSTextField (frame:r)
+      let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
+      let xPlacard = NSTextField (frame: r)
       self.mXPlacard = xPlacard
-      xPlacard.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       xPlacard.isBordered = false
       inScrollView.addPlacard (xPlacard)
     }
     if self.mYPlacard == nil {
-      let r = NSRect (x:0.0, y:0.0, width:70.0, height:20.0)
-      let yPlacard = NSTextField (frame:r)
+      let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
+      let yPlacard = NSTextField (frame: r)
       self.mYPlacard = yPlacard
-      yPlacard.font = NSFont.systemFont (ofSize:NSFont.smallSystemFontSize)
+      yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       yPlacard.isBordered = false
       inScrollView.addPlacard (yPlacard)
     }
@@ -222,8 +222,10 @@ class CanariViewWithZoomAndFlip : EBView {
 
   private func updateXYplacards (_ inLocationInWindow : NSPoint) {
     let p = self.convert (inLocationInWindow, from: nil)
-    self.mXPlacard?.stringValue = "X = \(Int (p.x))"
-    self.mYPlacard?.stringValue = "Y = \(Int (p.y))"
+    let x = stringFrom (valueInCocoaUnit: p.x, displayUnit: self.mXPlacardUnit)
+    let y = stringFrom (valueInCocoaUnit: p.y, displayUnit: self.mYPlacardUnit)
+    self.mXPlacard?.stringValue = "X = " + x
+    self.mYPlacard?.stringValue = "Y = " + y
   }
 
   //····················································································································
@@ -265,15 +267,84 @@ class CanariViewWithZoomAndFlip : EBView {
   //····················································································································
 
   override func mouseMoved (with inEvent : NSEvent) {
-    super.mouseUp (with: inEvent)
+    super.mouseMoved (with: inEvent)
+    self.updateXYplacards (inEvent.locationInWindow)
+  }
+
+  //····················································································································
+
+  override func mouseDragged (with inEvent : NSEvent) {
+    super.mouseDragged (with: inEvent)
     self.updateXYplacards (inEvent.locationInWindow)
   }
 
   //····················································································································
 
   override func mouseExited (with inEvent : NSEvent) {
-    self.clearXYplacards ()
     super.mouseExited (with: inEvent)
+    self.clearXYplacards ()
+  }
+
+  //····················································································································
+  // X placard unit binding
+  // MARK: -
+  //····················································································································
+
+  private var mXPlacardUnitController : EBReadOnlyController_Int? = nil
+  private var mXPlacardUnit = 2286 // mils
+
+  func bind_xPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mXPlacardUnitController = EBReadOnlyController_Int (
+      model: model,
+      callBack: { [weak self] in self?.updateXPlacardUnit (from: model) }
+    )
+  }
+
+  func unbind_xPlacardUnit () {
+    self.mXPlacardUnitController?.unregister ()
+    self.mXPlacardUnitController = nil
+  }
+
+  //····················································································································
+
+  private func updateXPlacardUnit (from model : EBReadOnlyProperty_Int) {
+    switch model.prop {
+    case .empty, .multiple :
+      self.mXPlacardUnit = 2286 // mils
+    case .single (let v) :
+      self.mXPlacardUnit = v
+    }
+  }
+
+  //····················································································································
+  // Y placard unit binding
+  // MARK: -
+  //····················································································································
+
+  private var mYPlacardUnitController : EBReadOnlyController_Int? = nil
+  private var mYPlacardUnit = 2286 // mils
+
+  func bind_yPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mYPlacardUnitController = EBReadOnlyController_Int (
+      model: model,
+      callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
+    )
+  }
+
+  func unbind_yPlacardUnit () {
+    self.mYPlacardUnitController?.unregister ()
+    self.mYPlacardUnitController = nil
+  }
+
+  //····················································································································
+
+  private func updateYPlacardUnit (from model : EBReadOnlyProperty_Int) {
+    switch model.prop {
+    case .empty, .multiple :
+      self.mYPlacardUnit = 2286 // mils
+    case .single (let v) :
+      self.mYPlacardUnit = v
+    }
   }
 
   //····················································································································
@@ -454,7 +525,7 @@ class CanariViewWithZoomAndFlip : EBView {
     switch self.mGridStyle {
     case .noGrid :
       ()
-    case .dot :
+    case .cross :
       let bp = NSBezierPath ()
       bp.lineWidth = 0.0
       bp.lineCapStyle = .round
@@ -708,7 +779,7 @@ class CanariViewWithZoomAndFlip : EBView {
 
 
   //····················································································································
-  //    step binding
+  // step binding
   // MARK: -
   //····················································································································
 

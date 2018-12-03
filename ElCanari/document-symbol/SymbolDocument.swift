@@ -138,6 +138,8 @@ import Cocoa
   @IBOutlet var mTextInspectorView : CanariViewWithKeyView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
+  @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton?
+  @IBOutlet var mYPlacardUnitPopUpButton : EBPopUpButton?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -782,6 +784,36 @@ import Cocoa
         errorMessage: "the 'mVerticalFlip' outlet is nil"
       )
     }
+    if let outlet : Any = self.mXPlacardUnitPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mXPlacardUnitPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mXPlacardUnitPopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mYPlacardUnitPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mYPlacardUnitPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mYPlacardUnitPopUpButton' outlet is nil"
+      )
+    }
   //--- Array controller property: mSymbolObjectsController
     self.mSymbolObjectsController.setManagedObjectContext (self.managedObjectContext)
     self.mSymbolObjectsController.bind_model (self.rootObject.symbolObjects_property)
@@ -844,6 +876,8 @@ import Cocoa
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
     self.mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
+    self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
@@ -852,6 +886,8 @@ import Cocoa
     self.mComposedSymbolView?.bind_gridDotColor (g_Preferences!.dotColorOfSymbolGrid_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_backColor (g_Preferences!.symbolBackgroundColor_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_xPlacardUnit (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_yPlacardUnit (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mSymbolTextHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolTextSelectionController.horizontalAlignment_property, file: #file, line: #line)
     self.mSymbolTextValueTextField?.bind_value (self.mSymbolTextSelectionController.text_property, file: #file, line: #line, sendContinously:true)
     self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.bind_selectedIndex (self.mSymbolPinSelectionController.numberHorizontalAlignment_property, file: #file, line: #line)
@@ -887,6 +923,8 @@ import Cocoa
     self.mVerticalFlip?.unbind_value ()
     self.mGridStyle?.unbind_selectedIndex ()
     self.mGridStep?.unbind_selectedTag ()
+    self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mComposedSymbolView?.unbind_horizontalFlip ()
     self.mComposedSymbolView?.unbind_verticalFlip ()
     self.mComposedSymbolView?.unbind_gridStyle ()
@@ -895,6 +933,8 @@ import Cocoa
     self.mComposedSymbolView?.unbind_gridDotColor ()
     self.mComposedSymbolView?.unbind_zoom ()
     self.mComposedSymbolView?.unbind_backColor ()
+    self.mComposedSymbolView?.unbind_xPlacardUnit ()
+    self.mComposedSymbolView?.unbind_yPlacardUnit ()
     self.mSymbolTextHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
     self.mSymbolTextValueTextField?.unbind_value ()
     self.mSymbolPinNumberHorizontalAlignmentPopUpButton?.unbind_selectedIndex ()
@@ -958,6 +998,8 @@ import Cocoa
     self.mTextInspectorView?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
+    self.mXPlacardUnitPopUpButton?.ebCleanUp ()
+    self.mYPlacardUnitPopUpButton?.ebCleanUp ()
   }
 
   //····················································································································

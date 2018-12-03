@@ -48,6 +48,18 @@ protocol SymbolRoot_zoom : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolRoot_xPlacardUnit : class {
+  var xPlacardUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolRoot_yPlacardUnit : class {
+  var yPlacardUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolRoot_selectedPageIndex : class {
   var selectedPageIndex : Int { get }
 }
@@ -70,6 +82,8 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_gridStyle,
          SymbolRoot_gridStep,
          SymbolRoot_zoom,
+         SymbolRoot_xPlacardUnit,
+         SymbolRoot_yPlacardUnit,
          SymbolRoot_selectedPageIndex,
          SymbolRoot_issues {
 
@@ -235,6 +249,52 @@ class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: xPlacardUnit
+  //····················································································································
+
+  var xPlacardUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var xPlacardUnit : Int {
+    get {
+      return self.xPlacardUnit_property.propval
+    }
+    set {
+      self.xPlacardUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var xPlacardUnit_property_selection : EBSelection <Int> {
+    return self.xPlacardUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: yPlacardUnit
+  //····················································································································
+
+  var yPlacardUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var yPlacardUnit : Int {
+    get {
+      return self.yPlacardUnit_property.propval
+    }
+    set {
+      self.yPlacardUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var yPlacardUnit_property_selection : EBSelection <Int> {
+    return self.yPlacardUnit_property.prop
+  }
+
+  //····················································································································
   //   To many property: symbolObjects
   //····················································································································
 
@@ -324,6 +384,10 @@ class SymbolRoot : EBManagedObject,
     self.gridStep_property.undoManager = self.undoManager
   //--- Atomic property: zoom
     self.zoom_property.undoManager = self.undoManager
+  //--- Atomic property: xPlacardUnit
+    self.xPlacardUnit_property.undoManager = self.undoManager
+  //--- Atomic property: yPlacardUnit
+    self.yPlacardUnit_property.undoManager = self.undoManager
   //--- To many property: symbolObjects (no option)
     self.symbolObjects_property.undoManager = self.undoManager
   //--- Atomic property: selectedPageIndex
@@ -380,6 +444,8 @@ class SymbolRoot : EBManagedObject,
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.symbolObjects_property.setSignatureObserver (observer:self)
+    self.xPlacardUnit_property.setSignatureObserver (observer:self)
+    self.yPlacardUnit_property.setSignatureObserver (observer:self)
   }
 
   //····················································································································
@@ -456,6 +522,22 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "xPlacardUnit",
+      idx:self.xPlacardUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xPlacardUnit_property.mObserverExplorer,
+      valueExplorer:&self.xPlacardUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yPlacardUnit",
+      idx:self.yPlacardUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yPlacardUnit_property.mObserverExplorer,
+      valueExplorer:&self.yPlacardUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "selectedPageIndex",
       idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -510,6 +592,12 @@ class SymbolRoot : EBManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: xPlacardUnit
+    self.xPlacardUnit_property.mObserverExplorer = nil
+    self.xPlacardUnit_property.mValueExplorer = nil
+  //--- Atomic property: yPlacardUnit
+    self.yPlacardUnit_property.mObserverExplorer = nil
+    self.yPlacardUnit_property.mValueExplorer = nil
   //--- To many property: symbolObjects
     self.symbolObjects_property.mValueExplorer = nil
   //--- Atomic property: selectedPageIndex
@@ -539,6 +627,10 @@ class SymbolRoot : EBManagedObject,
     self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- Atomic property: xPlacardUnit
+    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
+  //--- Atomic property: yPlacardUnit
+    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
       managedObjectArray: symbolObjects_property.propval as NSArray,
@@ -570,6 +662,10 @@ class SymbolRoot : EBManagedObject,
     self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: xPlacardUnit
+    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
+  //--- Atomic property: yPlacardUnit
+    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"yPlacardUnit")
   //--- To many property: symbolObjects
     self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "symbolObjects",
@@ -645,6 +741,8 @@ class SymbolRoot : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.symbolObjects_property.signature ())
+    crc.accumulateUInt32 (self.xPlacardUnit_property.signature ())
+    crc.accumulateUInt32 (self.yPlacardUnit_property.signature ())
     return crc
   }
 
@@ -1066,6 +1164,120 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
+  //   Observers of 'xPlacardUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xPlacardUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_xPlacardUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xPlacardUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_xPlacardUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xPlacardUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_xPlacardUnit {
+        managedObject.xPlacardUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for observer in mObserversOf_xPlacardUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xPlacardUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yPlacardUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yPlacardUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_yPlacardUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yPlacardUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_yPlacardUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yPlacardUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_yPlacardUnit {
+        managedObject.yPlacardUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for observer in mObserversOf_yPlacardUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yPlacardUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
@@ -1240,6 +1452,8 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+        removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
+        removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       //--- Remove observers of transient properties
         removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -1253,6 +1467,8 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
         addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
+        addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
+        addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
        //--- Add observers of transient properties
         addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1373,6 +1589,8 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
+        removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -1388,6 +1606,8 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
         addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
         addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
+        addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers

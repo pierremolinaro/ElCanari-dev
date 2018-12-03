@@ -86,6 +86,8 @@ binding CanariViewWithZoomAndFlip $gridStyle : transient GridStyle ;
 binding CanariViewWithZoomAndFlip $gridStepFactor : transient Int ;
 binding CanariViewWithZoomAndFlip $gridLineColor : transient NSColor ;
 binding CanariViewWithZoomAndFlip $gridDotColor : transient NSColor ;
+binding CanariViewWithZoomAndFlip $xPlacardUnit : transient Int ;
+binding CanariViewWithZoomAndFlip $yPlacardUnit : transient Int ;
 
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;

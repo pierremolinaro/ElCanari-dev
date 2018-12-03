@@ -8,7 +8,7 @@ import Cocoa
 
 enum GridStyle : Int, EnumPropertyProtocol {
   case noGrid = 0
-  case dot = 1
+  case cross = 1
   case line = 2
 
 
@@ -17,7 +17,7 @@ enum GridStyle : Int, EnumPropertyProtocol {
   func descriptionForExplorer () -> String {
     switch self {
       case .noGrid : return "noGrid" // 0
-      case .dot : return "dot" // 1
+      case .cross : return "cross" // 1
       case .line : return "line" // 2
     }
   }

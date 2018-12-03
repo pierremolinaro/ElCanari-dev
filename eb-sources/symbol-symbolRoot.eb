@@ -190,6 +190,9 @@ entity SymbolRoot {
   property Int gridStep default 4 ;
   property Int zoom default 400 ;
 
+#--- XY placard unit
+  property @signature Int xPlacardUnit default 2_286 ;
+  property @signature Int yPlacardUnit default 2_286 ;
 
 #--- Symbol definition
   toMany @cascading @signature SymbolObject symbolObjects ;
