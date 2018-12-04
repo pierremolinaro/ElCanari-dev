@@ -25,10 +25,12 @@ enum EBTextVerticalAlignment {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTextShape : EBShape {
-  private let mString : String
-  private let mOrigin : CGPoint
-  private let mTextAttributes : [NSAttributedString.Key : Any]
-  private let mSize : NSSize
+//  private let mString : String
+//  private let mOrigin : CGPoint
+//  private let mTextAttributes : [NSAttributedString.Key : Any]
+//  private let mSize : NSSize
+  private let mFilledBezierPath : NSBezierPath
+  private let mForeColor : NSColor
   private var mCachedBoundingBox : NSRect? = nil
 
   //····················································································································
@@ -40,27 +42,46 @@ class EBTextShape : EBShape {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
-    mString = inString
-    mTextAttributes = inTextAttributes
-    mSize = mString.size (withAttributes: mTextAttributes)
+//    mString = "" // inString
+//    mTextAttributes = inTextAttributes
+//    mSize = inString.size (withAttributes: mTextAttributes)
+    let size = inString.size (withAttributes: inTextAttributes)
     var p = inOrigin
     switch inHorizontalAlignment {
     case .left :
       ()
     case .center :
-      p.x -= self.mSize.width / 2.0
+      p.x -= size.width / 2.0
     case .right :
-      p.x -= self.mSize.width
+      p.x -= size.width
     }
     switch inVerticalAlignment {
     case .above :
       ()
     case .center :
-      p.y -= self.mSize.height / 2.0
+      p.y -= size.height / 2.0
     case .below :
-      p.y -= self.mSize.height
+      p.y -= size.height
     }
-    mOrigin = p
+//    mOrigin = p
+  //--- Bezier path
+    mFilledBezierPath = inString.bezierPath (at: p, attributes: inTextAttributes)
+  //--- Color
+    if let c = inTextAttributes [NSAttributedString.Key.foregroundColor] as? NSColor {
+      mForeColor = c
+    }else{
+      mForeColor = NSColor.black
+    }
+    super.init ()
+//    self.append (EBFilledBezierPathShape ([bp], color))
+  }
+
+  //····················································································································
+
+  init (_ inBezierPath : NSBezierPath,
+        _ inColor : NSColor) {
+    mFilledBezierPath = inBezierPath
+    mForeColor = inColor
     super.init ()
   }
 
@@ -69,14 +90,9 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
-//    var paths = [NSBezierPath] ()
-//    for path in self.mPaths {
-//      let bp = inAffineTransform.transform (path)
-//      paths.append (bp)
-//    }
-//    let result = EBFilledBezierPathShape (paths, self.mColor)
-//    self.internalTransform (result, by: inAffineTransform)
-    return EBShape ()
+    let result = EBTextShape (inAffineTransform.transform (self.mFilledBezierPath), self.mForeColor)
+    self.internalTransform (result, by: inAffineTransform)
+    return result
   }
 
   //····················································································································
@@ -85,7 +101,9 @@ class EBTextShape : EBShape {
 
   override func draw (_ inDirtyRect: NSRect) {
     super.draw (inDirtyRect)
-    mString.draw (at: mOrigin, withAttributes: mTextAttributes)
+    self.mForeColor.setFill ()
+    self.mFilledBezierPath.fill ()
+ //   mString.draw (at: mOrigin, withAttributes: mTextAttributes)
   }
 
   //····················································································································
@@ -97,8 +115,8 @@ class EBTextShape : EBShape {
       return cbb
     }else{
       var r = super.boundingBox
-      let rText = NSRect (origin: mOrigin, size: mSize)
-      r = r.union (rText)
+//      let rText = NSRect (origin: mOrigin, size: mSize)
+      r = r.union (self.mFilledBezierPath.bounds)
       self.mCachedBoundingBox = r
       return r
     }
@@ -111,8 +129,8 @@ class EBTextShape : EBShape {
   override func contains (point inPoint : NSPoint) -> Bool {
     var result = super.contains (point: inPoint)
     if !result {
-      let rText = NSRect (origin: mOrigin, size: mSize)
-      result = rText.contains (inPoint)
+//      let rText = NSRect (origin: mOrigin, size: mSize)
+      result = self.mFilledBezierPath.bounds.contains (inPoint)
     }
     return result
   }
@@ -124,8 +142,8 @@ class EBTextShape : EBShape {
   override func intersects (rect inRect : NSRect) -> Bool {
     var result = super.intersects (rect: inRect)
     if !result {
-      let rText = NSRect (origin: mOrigin, size: mSize)
-      result = rText.intersects (inRect)
+//      let rText = NSRect (origin: mOrigin, size: mSize)
+      result = self.mFilledBezierPath.bounds.intersects (inRect)
     }
     return result
   }
@@ -140,11 +158,11 @@ class EBTextShape : EBShape {
   override public var hashValue : Int {
     var h = super.hashValue
     h.rotateLeft ()
-    h ^= mString.hashValue
+    h ^= self.mFilledBezierPath.hashValue
     h.rotateLeft ()
-    h ^= mOrigin.x.hashValue
-    h.rotateLeft ()
-    h ^= mOrigin.y.hashValue
+    h ^= self.mForeColor.hashValue
+//    h.rotateLeft ()
+//    h ^= mOrigin.y.hashValue
     return h
   }
 
@@ -155,12 +173,59 @@ class EBTextShape : EBShape {
   override func isEqualTo (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBTextShape {
-      equal = self.mString == operand.mString
+      equal = self.mFilledBezierPath == operand.mFilledBezierPath
       if equal {
-        equal = self.mOrigin == operand.mOrigin
+        equal = self.mForeColor == operand.mForeColor
       }
     }
     return equal
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension String {
+
+  //····················································································································
+
+  func bezierPath (at inOrigin : NSPoint,
+                   attributes inTextAttributes : [NSAttributedString.Key : Any]) -> NSBezierPath {
+  //--- Font
+    let font : NSFont
+    if let f = inTextAttributes [NSAttributedString.Key.font] as? NSFont {
+      font = f
+    }else{
+      font = NSFont ()
+    }
+  //--- Build text infrastructure
+    let textStore = NSTextStorage (string: self, attributes: inTextAttributes)
+    let textContainer = NSTextContainer ()
+    let myLayout = NSLayoutManager ()
+    myLayout.addTextContainer (textContainer)
+    textStore.addLayoutManager (myLayout)
+  //--- Get CCGlyph array
+    let glyphRange : NSRange = myLayout.glyphRange (for: textContainer)
+    var cgGlyphArray = [CGGlyph] (repeating: CGGlyph (), count:glyphRange.length)
+    _ = myLayout.getGlyphs (in: glyphRange, glyphs: &cgGlyphArray, properties: nil, characterIndexes: nil, bidiLevels: nil)
+  //--- Transform in NSGlyph array
+    var nsGlyphArray = [NSGlyph] ()
+    for cgGlyph in cgGlyphArray {
+      nsGlyphArray.append (NSGlyph (cgGlyph))
+    }
+
+ //   let s = self.size (withAttributes: inTextAttributes)
+//    NSLog ("as \(font.ascender), de \(font.descender), le \(font.leading), xh \(font.xHeight), cp \(font.capHeight), ps \(font.pointSize)")
+//    NSLog ("\(font.boundingRectForFont)")
+//    NSLog ("\(myLayout.usedRect(for: textContainer))")
+  //--- Enter in Bezier path
+    let bezier = NSBezierPath ()
+    bezier.move (to: NSPoint (x: inOrigin.x, y: inOrigin.y - 2.0 * font.descender))
+    bezier.appendGlyphs (&nsGlyphArray, count: glyphRange.length, in: font)
+//    NSLog ("bounds \(bezier.bounds)")
+    return bezier
   }
 
   //····················································································································

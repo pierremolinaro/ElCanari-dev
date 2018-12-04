@@ -20,10 +20,7 @@ func transient_SymbolText_selectionDisplay (
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let shape = EBShape ()
-    let origin = NSPoint (
-      x: canariUnitToCocoa (self_x),
-      y: canariUnitToCocoa (self_y)
-    )
+    let origin = NSPoint (x: canariUnitToCocoa (self_x), y: canariUnitToCocoa (self_y))
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : prefs_pinNameFont
     ]
