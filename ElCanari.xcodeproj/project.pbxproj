@@ -1445,18 +1445,18 @@
 		CF61725D1B3C4B8A00F3CA82 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
 				CF61725E1B3C4BA900F3CA82 /* application.swift */,
+				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
 				CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
+				CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */,
 				CFEDE5B21B4677C500036ACF /* EBManagedDocument.swift */,
 				CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */,
+				CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */,
 				CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */,
 				CF6172601B3C4BA900F3CA82 /* generic-bindings.swift */,
-				CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */,
 				CF6172611B3C4BA900F3CA82 /* main.swift */,
 				CF6172621B3C4BA900F3CA82 /* standard-properties.swift */,
-				CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */,
 			);
 			name = Generic;
 			path = ElCanari/generic;

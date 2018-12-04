@@ -36,15 +36,17 @@ import Cocoa
   }
 
   //····················································································································
-  //  Drag type UTI, and weak reference to document
+  //  Drag type and object type name
   //····················································································································
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
+  private var mDraggedObjectTypeName = "" // Any value if mDragType is null
 
   //····················································································································
 
-  func register (draggedType : NSPasteboard.PasteboardType) {
+  func register (draggedType : NSPasteboard.PasteboardType, entityName : String) {
     self.mDragType = draggedType
+    self.mDraggedObjectTypeName = entityName
   }
 
   //····················································································································
@@ -63,19 +65,7 @@ import Cocoa
   func pasteboard (_ pasteboard: NSPasteboard?,
                    item: NSPasteboardItem,
                    provideDataForType type: NSPasteboard.PasteboardType) {
-
-  }
-
-  //····················································································································
-  //  Drag source on mouse down
-  //····················································································································
-
-  private var mDraggedImageFunctionCallBack : Optional <() -> (NSImage?, NSRect) > = nil
-
-  //····················································································································
-
-  func register (draggedImageCallBack : @escaping () -> (NSImage?, NSRect)) {
-    self.mDraggedImageFunctionCallBack = draggedImageCallBack
+    NSLog ("pasteboard")
   }
 
   //····················································································································
@@ -86,16 +76,29 @@ import Cocoa
       pasteboardItem.setDataProvider (self, forTypes: [dragType])
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      let (possibleImage, rect) = self.mDraggedImageFunctionCallBack? () ?? (self.image, self.bounds)
-    //--- Move image rect origin to mouse click location
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      var r = rect
-      r.origin.x += mouseDownLocation.x
-      r.origin.y += mouseDownLocation.y
-    //--- Set dragged image
-      draggingItem.setDraggingFrame (r, contents: possibleImage)
-    //--- Begin
-      self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+      do{
+        let temporaryObject = try newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as! EBGraphicManagedObject
+        let displayShape = temporaryObject.objectDisplay!
+        let rect = displayShape.boundingBox
+        let imagePDFData = buildPDFimage (frame: rect, shape: displayShape)
+        let image = NSImage (data: imagePDFData)!
+      //--- Move image rect origin to mouse click location
+        let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+        var r = rect
+        r.origin.x += mouseDownLocation.x
+        r.origin.y += mouseDownLocation.y
+      //--- Associated data
+        let d = NSMutableDictionary ()
+        temporaryObject.saveIntoDictionary (d)
+        pasteboardItem.setPropertyList (d, forType: dragType)
+      //--- Set dragged image
+        draggingItem.setDraggingFrame (r, contents: image)
+      //--- Begin
+        self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
+      }catch let error {
+        let alert = NSAlert (error: error)
+        alert.beginSheetModal (for: self.window!, completionHandler: nil)
+      }
     }
   }
 

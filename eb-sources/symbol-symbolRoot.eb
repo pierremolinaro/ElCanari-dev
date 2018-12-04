@@ -7,12 +7,12 @@ abstract graphic entity SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolPin : SymbolObject {
-  property @signature Int xPin default 9_154_00 ;
-  property @signature Int yPin default 9_154_00 ;
-  property @signature Int xName default 9_154_00 ;
-  property @signature Int yName default 11_440_00 ;
-  property @signature Int xNumber default 9_154_00 ;
-  property @signature Int yNumber default 6_868_00 ;
+  property @signature Int xPin default 0 ;
+  property @signature Int yPin default 0 ;
+  property @signature Int xName default 0 ;
+  property @signature Int yName default 2_286_00 ;
+  property @signature Int xNumber default 0 ;
+  property @signature Int yNumber default 0 ; # -2_286_00 ;
   property @signature String name default "" ;
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
@@ -53,8 +53,8 @@ graphic entity SymbolPin : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolText : SymbolObject {
-  property @signature Int x default 2_286_00 ;
-  property @signature Int y default 2_286_00 ;
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
   property @signature String text default "text" ;
   property @signature HorizontalAlignment horizontalAlignment default center ;
   
@@ -73,10 +73,10 @@ graphic entity SymbolText : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidRect : SymbolObject {
-  property @signature Int x default 2_286_00 ;
-  property @signature Int y default 2_286_00 ;
-  property @signature Int width default 9_154_00 ;
-  property @signature Int height default 9_154_00 ;
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
+  property @signature Int width default 6_868_00 ;
+  property @signature Int height default 6_868_00 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
@@ -92,10 +92,10 @@ graphic entity SymbolSolidRect : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolOval : SymbolObject {
-  property @signature Int x default 2_286_00 ;
-  property @signature Int y default 2_286_00 ;
-  property @signature Int width default 9_154_00 ;
-  property @signature Int height default 9_154_00 ;
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
+  property @signature Int width default 6_868_00 ;
+  property @signature Int height default 6_868_00 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
@@ -111,10 +111,10 @@ graphic entity SymbolOval : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSolidOval : SymbolObject {
-  property @signature Int x default 2_286_00 ;
-  property @signature Int y default 2_286_00 ;
-  property @signature Int width default 9_154_00 ;
-  property @signature Int height default 9_154_00 ;
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
+  property @signature Int width default 6_868_00 ;
+  property @signature Int height default 6_868_00 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
@@ -130,14 +130,14 @@ graphic entity SymbolSolidOval : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolBezierCurve : SymbolObject {
-  property @signature Int x1 default 2_286_00 ;
-  property @signature Int y1 default 9_154_00 ;
-  property @signature Int x2 default 2_286_00 ;
-  property @signature Int y2 default 2_286_00 ;
-  property @signature Int cpx1 default 9_154_00 ;
-  property @signature Int cpy1 default 9_154_00 ;
-  property @signature Int cpx2 default 9_154_00 ;
-  property @signature Int cpy2 default 2_286_00 ;
+  property @signature Int x1 default 0 ;
+  property @signature Int y1 default 6_868_00 ;
+  property @signature Int x2 default 0 ;
+  property @signature Int y2 default 0 ;
+  property @signature Int cpx1 default 6_868_00 ;
+  property @signature Int cpy1 default 6_868_00 ;
+  property @signature Int cpx2 default 6_868_00 ;
+  property @signature Int cpy2 default 0 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
@@ -158,8 +158,8 @@ graphic entity SymbolBezierCurve : SymbolObject {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity SymbolSegment : SymbolObject {
-  property @signature Int x1 default 2_286_00 ;
-  property @signature Int y1 default 2_286_00 ;
+  property @signature Int x1 default 0 ;
+  property @signature Int y1 default 0 ;
   property @signature Int x2 default 9_154_00 ;
   property @signature Int y2 default 9_154_00 ;
   

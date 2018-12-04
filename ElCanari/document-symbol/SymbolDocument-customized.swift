@@ -16,13 +16,7 @@ let PMSymbolComment = "PMSymbolComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let dragAddSegment    = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.segment")
-fileprivate let dragAddBezier     = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.bezier")
-fileprivate let dragAddFramedOval = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.framed.oval")
-fileprivate let dragAddSolidOval  = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.solid.oval")
-fileprivate let dragAddSolidRect  = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.solid.rect")
-fileprivate let dragAddText       = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.text")
-fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.add.pin")
+fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pierre.pasteboard.symbol")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -58,7 +52,7 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
     let inspectors = [self.mSymbolBaseInspectorView, self.mSymbolZoomFlipInspectorView, self.mSymbolIssueInspectorView]
     self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
-    self.mAddSegmentButton?.register (draggedType: dragAddSegment)
+    self.mAddSegmentButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSegment")
     self.mAddSegmentButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
@@ -69,23 +63,8 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       bp.lineCapStyle = .round
       bp.stroke ()
     })
-    self.mAddSegmentButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let bp = NSBezierPath ()
-      bp.move (to: NSPoint ())
-      bp.line (to: NSPoint (x: s, y: s))
-      bp.lineWidth = lineWidth
-      bp.lineCapStyle = .round
-      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
-      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddBezierButton?.register (draggedType: dragAddBezier)
+    self.mAddBezierButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolBezierCurve")
     self.mAddBezierButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
@@ -100,42 +79,16 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       bp.lineCapStyle = .round
       bp.stroke ()
     })
-    self.mAddBezierButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let bp = NSBezierPath ()
-      bp.move (to: NSPoint ())
-      bp.curve (to: NSPoint (x: 0.0, y: s), controlPoint1: NSPoint (x: s, y: 0.0), controlPoint2: NSPoint (x: s, y: s))
-      bp.lineWidth = lineWidth
-      bp.lineCapStyle = .round
-      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
-      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddSolidOvalButton?.register (draggedType: dragAddSolidOval)
+    self.mAddSolidOvalButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSolidOval")
     self.mAddSolidOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
         let bp = NSBezierPath (ovalIn: r)
         bp.fill ()
     })
-    self.mAddSolidOvalButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let bp = NSBezierPath (ovalIn: NSRect (x: 0.0, y: 0.0, width: s, height: s))
-      let shape = EBFilledBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
-      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddOvalButton?.register (draggedType: dragAddFramedOval)
+    self.mAddOvalButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolOval")
     self.mAddOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
       let r = rect.insetBy (dx: 5.0, dy: 5.0)
       NSColor.brown.setStroke ()
@@ -143,40 +96,16 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       bp.lineWidth = 2.0
       bp.stroke ()
     })
-    self.mAddOvalButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let bp = NSBezierPath (ovalIn: NSRect (x: 0.0, y: 0.0, width: s, height: s))
-      bp.lineWidth = lineWidth
-      bp.lineCapStyle = .round
-      let shape = EBStrokeBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
-      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddSolidRectButton?.register (draggedType: dragAddSolidRect)
+    self.mAddSolidRectButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSolidRect")
     self.mAddSolidRectButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
         let bp = NSBezierPath (rect: r)
         bp.fill ()
     })
-    self.mAddSolidRectButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let s = SYMBOL_GRID_IN_COCOA_UNIT * 8.0 * scale
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let bp = NSBezierPath (rect: NSRect (x: 0.0, y: 0.0, width: s, height: s))
-      let shape = EBFilledBezierPathShape ([bp], g_Preferences?.symbolColor ?? NSColor.black)
-      let r = NSRect (x: -lineWidth, y: -lineWidth, width: s + lineWidth * 2.0, height: s + lineWidth * 2.0)
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddTextButton?.register (draggedType: dragAddText)
+    self.mAddTextButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolText")
     self.mAddTextButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         let textAttributes : [NSAttributedString.Key : Any] = [
@@ -186,30 +115,8 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
         let size = "T".size (withAttributes: textAttributes)
         "T".draw (at: NSPoint (x: r.midX - size.width / 2.0, y: r.midY - size.height / 2.0 + 3.0), withAttributes: textAttributes)
     })
-    self.mAddTextButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let lineWidth = CGFloat (g_Preferences?.symbolDrawingWidthMultipliedByTen ?? 10) * scale / 10.0
-      let font = (g_Preferences?.pinNameFont)!
-      let fontForDraggedImage = NSFont (name: font.fontName, size: font.pointSize * scale)!
-      let textAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : fontForDraggedImage,
-        NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
-      ]
-      let text = "text"
-      let shape = EBTextShape (text, NSPoint (), textAttributes, .center, .center)
-      let textSize = text.size (withAttributes: textAttributes)
-      let r = NSRect (
-        x: -lineWidth - textSize.width / 2.0,
-        y: -lineWidth - textSize.height / 2.0,
-        width: textSize.width + lineWidth * 2.0,
-        height: textSize.height + lineWidth * 2.0
-      )
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    self.mAddPinButton?.register (draggedType: dragAddPin)
+    self.mAddPinButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolPin")
     self.mAddPinButton?.register (drawImageCallBack : {(_ rect : NSRect) in
         let r = rect.insetBy (dx: 3.0, dy: 3.0)
         NSColor.brown.setFill ()
@@ -229,50 +136,8 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
         let size = "#".size (withAttributes: textAttributes)
         "#".draw (at: NSPoint (x: r.minX, y: r.midY - size.height / 2.0), withAttributes: textAttributes)
     })
-    self.mAddPinButton?.register (draggedImageCallBack : { [weak self] () -> (NSImage?, NSRect) in
-      let scale = self?.mComposedSymbolView?.actualScale () ?? 1.0
-      let gridSize = SYMBOL_GRID_IN_COCOA_UNIT * scale
-      let shape = EBShape ()
-      let color = g_Preferences?.symbolColor ?? NSColor.black
-    //--- Pin
-      let pinRect = NSRect (
-        x: -gridSize,
-        y: -gridSize,
-        width: gridSize * 2.0,
-        height: gridSize * 2.0
-      )
-      let filledBP = NSBezierPath (ovalIn: pinRect)
-      shape.append (EBFilledBezierPathShape ([filledBP], color))
-    //--- Name
-      let font = (g_Preferences?.pinNameFont)!
-      let fontForDraggedImage = NSFont (name: font.fontName, size: font.pointSize * scale)!
-      let nameTextAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : fontForDraggedImage,
-        NSAttributedString.Key.foregroundColor : NSColor.black
-      ]
-      let label = "?"
-      let labelSize = label.size (withAttributes: nameTextAttributes)
-      let labelOrigin = NSPoint (x: 0.0, y: gridSize * 4.0)
-      shape.append (EBTextShape (label, labelOrigin, nameTextAttributes, .center, .center))
-    //--- Number
-      let number = "##"
-      let numberSize = number.size (withAttributes: nameTextAttributes)
-      let numberOrigin = NSPoint (x: 0.0, y: -gridSize * 4.0)
-      shape.append (EBTextShape (number, numberOrigin, nameTextAttributes, .center, .center))
-    //--- Build image
-      let r = NSRect (
-        x: -gridSize,
-        y: -gridSize - gridSize * 4.0 - numberSize.height / 2.0,
-        width: gridSize * 2.0,
-        height: gridSize * 2.0 + (gridSize * 4.0 + labelSize.height / 2.0) + (gridSize * 4.0 + numberSize.height / 2.0)
-      )
-      let imageData = buildPDFimage (frame: r, shapes: shape)
-      let possibleImage = NSImage (data: imageData)
-      return (possibleImage, r)
-    })
 
-    let allTypes = [dragAddSegment, dragAddBezier, dragAddSolidOval, dragAddFramedOval, dragAddSolidRect, dragAddText, dragAddPin]
-    self.mComposedSymbolScrollView?.register (document: self, draggedTypes: allTypes)
+    self.mComposedSymbolScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
@@ -305,128 +170,24 @@ fileprivate let dragAddPin        = NSPasteboard.PasteboardType (rawValue: "drag
       let pointInWindow = sender.draggingLocation
       let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
       let pasteboard = sender.draggingPasteboard
-      if pasteboard.availableType (from: [dragAddSegment]) != nil {
-        self.addSegment (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddBezier]) != nil {
-        self.addBezier (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddFramedOval]) != nil {
-        self.addOval (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddSolidOval]) != nil {
-        self.addSolidOval (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddSolidRect]) != nil {
-        self.addSolidRect (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddText]) != nil {
-        self.addText (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddText]) != nil {
-        self.addText (at: pointInDestinationView)
-        ok = true
-      }else if pasteboard.availableType (from: [dragAddPin]) != nil {
-        self.addPin (at: pointInDestinationView)
-        ok = true
+      if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
+        if let dictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary {
+          do{
+            let newObject = try makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as! SymbolObject
+            self.ebUndoManager.disableUndoRegistration ()
+            newObject.translate (xBy: pointInDestinationView.x, yBy: pointInDestinationView.y)
+            self.ebUndoManager.enableUndoRegistration ()
+            self.rootObject.symbolObjects_property.add (newObject)
+            self.mSymbolObjectsController.select (object: newObject)
+            ok = true
+          }catch let error {
+            let alert = NSAlert (error: error)
+            alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
+          }
+        }
       }
     }
     return ok
-  }
-
-  //····················································································································
-
-  private func addSegment (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSegment (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x1 = p.x
-    newObject.y1 = p.y
-    newObject.x2 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.y2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
-  //····················································································································
-
-  private func addBezier (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolBezierCurve (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x1 = p.x
-    newObject.y1 = p.y
-    newObject.x2 = newObject.x1
-    newObject.y2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.cpx1 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.cpy1 = newObject.y1
-    newObject.cpx2 = newObject.x1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.cpy2 = newObject.y1 + SYMBOL_GRID_IN_CANARI_UNIT * 8
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
-  //····················································································································
-
-  private func addOval (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolOval (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x = p.x
-    newObject.y = p.y
-    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
- //····················································································································
-
-  private func addSolidOval (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSolidOval (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x = p.x
-    newObject.y = p.y
-    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
-  //····················································································································
-
-  private func addSolidRect (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolSolidRect (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x = p.x
-    newObject.y = p.y
-    newObject.width = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    newObject.height = SYMBOL_GRID_IN_CANARI_UNIT * 8
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
-  //····················································································································
-
-  private func addText (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolText (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.x = p.x
-    newObject.y = p.y
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
-  }
-
-  //····················································································································
-
-  private func addPin (at inCocoaPoint : NSPoint) {
-    let newObject = SymbolPin (self.ebUndoManager, file: #file, #line)
-    let p = inCocoaPoint.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
-    newObject.xPin = p.x
-    newObject.yPin = p.y
-    newObject.xName = newObject.xPin
-    newObject.yName = newObject.yPin + SYMBOL_GRID_IN_CANARI_UNIT * 4
-    newObject.xNumber = newObject.xPin
-    newObject.yNumber = newObject.yPin - SYMBOL_GRID_IN_CANARI_UNIT * 4
-    self.rootObject.symbolObjects_property.add (newObject)
-    self.mSymbolObjectsController.select (object: newObject)
   }
 
   //····················································································································

@@ -35,7 +35,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.undoManager = self.mUndoManager
     self.mUndoManager.disableUndoRegistration ()
-    mRootObject = try! newInstanceOfEntityNamed (self.mUndoManager, inEntityTypeName: rootEntityClassName ())
+    mRootObject = try! newInstanceOfEntityNamed (self.mUndoManager, rootEntityClassName ())
     self.mUndoManager.enableUndoRegistration ()
   }
 

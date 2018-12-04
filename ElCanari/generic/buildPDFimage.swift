@@ -8,12 +8,12 @@ import Cocoa
 //   Build PDF image
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func buildPDFimage (frame inFrame: CGRect,
-                    shapes inShapes: EBShape,
+func buildPDFimage (frame inFrame : CGRect,
+                    shape inShape : EBShape,
                     backgroundColor inBackColor : NSColor? = nil) -> Data {
   let view = EBOffscreenView (frame: inFrame)
   view.setBackColor (inBackColor)
-  view.setPaths (inShapes)
+  view.setShape (inShape)
   return view.dataWithPDF (inside: inFrame)
 }
 
@@ -50,8 +50,8 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   //  Set paths
   //····················································································································
 
-  func setPaths (_ inShapes : EBShape) {
-    self.mShape = inShapes
+  func setShape (_ inShape : EBShape) {
+    self.mShape = inShape
   }
 
   //····················································································································
