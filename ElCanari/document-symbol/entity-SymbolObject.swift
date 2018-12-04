@@ -133,12 +133,11 @@ class SymbolObject : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   cascadeObjectRemoving
+  //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 
   //····················································································································

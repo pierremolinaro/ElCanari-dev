@@ -594,6 +594,20 @@ class ArtworkRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: fileGenerationParameterArray
+    self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "fileGenerationParameterArray",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ArtworkFileGenerationParameters])
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedTab
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
   //--- Atomic property: comments
@@ -616,23 +630,6 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"minValueForBoardLimitWidth")
   //--- Atomic property: drillDataFileExtension
     self.drillDataFileExtension_property.readFrom (dictionary: inDictionary, forKey:"drillDataFileExtension")
-  //--- To many property: fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "fileGenerationParameterArray",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ArtworkFileGenerationParameters])
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany fileGenerationParameterArray
-    self.fileGenerationParameterArray_property.setProp ([]) // Set relationship to empty array
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

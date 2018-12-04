@@ -340,6 +340,14 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   //--- Atomic property: y1
@@ -348,15 +356,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
   //--- Atomic property: y2
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

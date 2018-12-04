@@ -781,6 +781,14 @@ class SymbolPin : SymbolObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: yPin
     self.yPin_property.readFrom (dictionary: inDictionary, forKey:"yPin")
   //--- Atomic property: xName
@@ -801,15 +809,6 @@ class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey:"pinNameIsDisplayedInSchematics")
   //--- Atomic property: xPin
     self.xPin_property.readFrom (dictionary: inDictionary, forKey:"xPin")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

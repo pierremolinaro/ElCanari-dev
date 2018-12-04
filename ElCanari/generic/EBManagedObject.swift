@@ -8,7 +8,7 @@ import Cocoa
 //  EBManagedObject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(EBManagedObject) class EBManagedObject : EBObject, EBSignatureObserverProtocol {
+class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
   var savingIndex = 0
 
@@ -29,16 +29,25 @@ import Cocoa
   }
 
   //····················································································································
-  //  setup and save
+  //  Setup
   //····················································································································
 
   func setUpWithDictionary (_ inDictionary : NSDictionary,
                             managedObjectArray : inout [EBManagedObject]) {
+    self.setUpAtomicPropertiesWithDictionary (inDictionary)
   }
 
   //····················································································································
 
+  func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+  }
+
+  //····················································································································
+  //  Save
+  //····················································································································
+
   func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    ioDictionary.setValue (self.className.pathExtension, forKey: kEntityKey)
   }
 
   //····················································································································
@@ -58,13 +67,6 @@ import Cocoa
       self.createAndPopulateObjectExplorerWindow ()
     }
     self.mExplorerWindow?.makeKeyAndOrderFront (nil)
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
   }
 
   //····················································································································
@@ -218,14 +220,14 @@ import Cocoa
   }
 
   //····················································································································
-  //   readEntityArrayFromDictionary                                                                                   *
+  //   readEntityArrayFromDictionary
   //····················································································································
 
   final func readEntityArrayFromDictionary (inRelationshipName: String,
                                             inDictionary : NSDictionary,
-                                            managedObjectArray : inout Array<EBManagedObject>) -> Array<EBManagedObject> {
+                                            managedObjectArray : inout [EBManagedObject]) -> Array<EBManagedObject> {
     let opIndexArray : Array<Int>? = inDictionary.value (forKey: inRelationshipName) as? Array<Int>
-    var result = Array<EBManagedObject> ()
+    var result = [EBManagedObject] ()
     if let indexArray = opIndexArray {
       for number : Int in indexArray {
         let managedObject = managedObjectArray [number]

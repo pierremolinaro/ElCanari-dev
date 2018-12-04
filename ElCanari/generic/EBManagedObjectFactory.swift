@@ -149,7 +149,7 @@ import Cocoa
         var idx = 0
         for d in dictionaryArray {
           let object : EBManagedObject = objectArray [idx]
-          object.setUpWithDictionary (d, managedObjectArray:&objectArray)
+          object.setUpWithDictionary (d, managedObjectArray: &objectArray)
           idx += 1
         }
       //--- Set root object

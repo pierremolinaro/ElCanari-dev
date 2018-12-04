@@ -648,6 +648,20 @@ class SymbolRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: symbolObjects
+    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "symbolObjects",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SymbolObject])
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   //--- Atomic property: comments
@@ -666,25 +680,8 @@ class SymbolRoot : EBManagedObject,
     self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
   //--- Atomic property: yPlacardUnit
     self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"yPlacardUnit")
-  //--- To many property: symbolObjects
-    self.symbolObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "symbolObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SymbolObject])
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany symbolObjects
-    self.symbolObjects_property.setProp ([]) // Set relationship to empty array
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

@@ -377,10 +377,6 @@ class FontCharacter : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- Atomic property: codePoint
-    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
-  //--- Atomic property: advance
-    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
   //--- To many property: segments
     self.segments_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "segments",
@@ -390,14 +386,15 @@ class FontCharacter : EBManagedObject,
   }
 
   //····················································································································
-  //   cascadeObjectRemoving
+  //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany segments
-    self.segments_property.setProp ([]) // Set relationship to empty array
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: codePoint
+    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
+  //--- Atomic property: advance
+    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
   }
 
   //····················································································································

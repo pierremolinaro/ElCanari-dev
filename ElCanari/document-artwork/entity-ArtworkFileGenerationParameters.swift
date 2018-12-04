@@ -1120,6 +1120,14 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.readFrom (dictionary: inDictionary, forKey:"drawBoardLimits")
   //--- Atomic property: drawInternalBoardLimits
@@ -1166,15 +1174,6 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.measurementUnitForPadHoleInPDF_property.readFrom (dictionary: inDictionary, forKey:"measurementUnitForPadHoleInPDF")
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.readFrom (dictionary: inDictionary, forKey:"padHoleDiameterInPDF")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

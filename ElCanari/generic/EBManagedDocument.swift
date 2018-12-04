@@ -149,7 +149,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //---
     var saveDataArray : [NSDictionary] = []
     for object in objectsToSaveArray {
-      let d : NSMutableDictionary = [kEntityKey : object.className.pathExtension]
+      let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       saveDataArray.append (d)
     }

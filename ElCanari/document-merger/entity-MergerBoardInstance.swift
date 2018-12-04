@@ -531,25 +531,20 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   //--- Atomic property: y
     self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
   //--- Atomic property: instanceRotation
     self.instanceRotation_property.readFrom (dictionary: inDictionary, forKey:"instanceRotation")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toOne myModel
-    self.myModel_property.setProp (nil) // Set relationship to nil
-  //--- Nullify toOne myRoot
-    self.myRoot_property.setProp (nil) // Set relationship to nil
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

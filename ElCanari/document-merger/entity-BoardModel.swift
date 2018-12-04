@@ -4369,18 +4369,6 @@ class BoardModel : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- Atomic property: name
-    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
-  //--- Atomic property: modelWidth
-    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
-  //--- Atomic property: modelWidthUnit
-    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
-  //--- Atomic property: modelHeight
-    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
-  //--- Atomic property: modelHeightUnit
-    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
-  //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
   //--- To many property: frontLegendLines
     self.frontLegendLines_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "frontLegendLines",
@@ -4447,10 +4435,6 @@ class BoardModel : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [BoardModelPad])
-  //--- Atomic property: modelLimitWidth
-    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
-  //--- Atomic property: modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.backComponentNames_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "backComponentNames",
@@ -4499,8 +4483,6 @@ class BoardModel : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SegmentEntity])
-  //--- Atomic property: artworkName
-    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   //--- To many property: myInstances
     self.myInstances_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "myInstances",
@@ -4510,52 +4492,29 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
-  //   cascadeObjectRemoving
+  //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany frontLegendLines
-    self.frontLegendLines_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backLegendLines
-    self.backLegendLines_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontLegendTexts
-    self.frontLegendTexts_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontLayoutTexts
-    self.frontLayoutTexts_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backLegendTexts
-    self.backLegendTexts_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backLayoutTexts
-    self.backLayoutTexts_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany internalBoardsLimits
-    self.internalBoardsLimits_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany drills
-    self.drills_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany vias
-    self.vias_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontPads
-    self.frontPads_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backPads
-    self.backPads_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backComponentNames
-    self.backComponentNames_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontComponentNames
-    self.frontComponentNames_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontComponentValues
-    self.frontComponentValues_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backComponentValues
-    self.backComponentValues_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backTracks
-    self.backTracks_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontTracks
-    self.frontTracks_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany frontPackages
-    self.frontPackages_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany backPackages
-    self.backPackages_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany myInstances
-    self.myInstances_property.setProp ([]) // Set relationship to empty array
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: name
+    self.name_property.readFrom (dictionary: inDictionary, forKey:"name")
+  //--- Atomic property: modelWidth
+    self.modelWidth_property.readFrom (dictionary: inDictionary, forKey:"modelWidth")
+  //--- Atomic property: modelWidthUnit
+    self.modelWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelWidthUnit")
+  //--- Atomic property: modelHeight
+    self.modelHeight_property.readFrom (dictionary: inDictionary, forKey:"modelHeight")
+  //--- Atomic property: modelHeightUnit
+    self.modelHeightUnit_property.readFrom (dictionary: inDictionary, forKey:"modelHeightUnit")
+  //--- Atomic property: zoom
+    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: modelLimitWidth
+    self.modelLimitWidth_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidth")
+  //--- Atomic property: modelLimitWidthUnit
+    self.modelLimitWidthUnit_property.readFrom (dictionary: inDictionary, forKey:"modelLimitWidthUnit")
+  //--- Atomic property: artworkName
+    self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   }
 
   //····················································································································

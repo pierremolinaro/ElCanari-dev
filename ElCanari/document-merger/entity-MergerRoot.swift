@@ -1580,6 +1580,20 @@ class MergerRoot : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
+  //--- To one property: artwork
+    self.artwork_property.setProp (readEntityFromDictionary (
+      inRelationshipName: "artwork",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as? ArtworkRoot)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
   //--- Atomic property: zoom
@@ -1612,12 +1626,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.readFrom (dictionary: inDictionary, forKey:"shiftArrowMagnitudeUnit")
-  //--- To one property: artwork
-    self.artwork_property.setProp (readEntityFromDictionary (
-      inRelationshipName: "artwork",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as? ArtworkRoot)
   //--- Atomic property: artworkName
     self.artworkName_property.readFrom (dictionary: inDictionary, forKey:"artworkName")
   //--- Atomic property: generateGerberProductFile
@@ -1626,21 +1634,6 @@ class MergerRoot : EBManagedObject,
     self.generatePDFProductFile_property.readFrom (dictionary: inDictionary, forKey:"generatePDFProductFile")
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.readFrom (dictionary: inDictionary, forKey:"generatedBoardArchiveFormat")
-  }
-
-  //····················································································································
-  //   cascadeObjectRemoving
-  //····················································································································
-
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany boardModels
-    self.boardModels_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toMany boardInstances
-    self.boardInstances_property.setProp ([]) // Set relationship to empty array
-  //--- Nullify toOne artwork
-    self.artwork_property.setProp (nil) // Set relationship to nil
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
   }
 
   //····················································································································

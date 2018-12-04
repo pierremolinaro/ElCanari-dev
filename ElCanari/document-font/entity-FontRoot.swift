@@ -597,14 +597,6 @@ class FontRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-  //--- Atomic property: nominalSize
-    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
-  //--- Atomic property: selectedTab
-    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   //--- To many property: characters
     self.characters_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "characters",
@@ -614,14 +606,19 @@ class FontRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   cascadeObjectRemoving
+  //    setUpAtomicPropertiesWithDictionary
   //····················································································································
 
-  override func cascadeObjectRemoving (_ ioObjectsToRemove : inout Set <EBManagedObject>) {
-  //--- Nullify toMany characters
-    self.characters_property.setProp ([]) // Set relationship to empty array
-  //---
-    super.cascadeObjectRemoving (&ioObjectsToRemove)
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: comments
+    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+  //--- Atomic property: nominalSize
+    self.nominalSize_property.readFrom (dictionary: inDictionary, forKey:"nominalSize")
+  //--- Atomic property: selectedTab
+    self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
+  //--- Atomic property: selectedInspector
+    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   }
 
   //····················································································································
