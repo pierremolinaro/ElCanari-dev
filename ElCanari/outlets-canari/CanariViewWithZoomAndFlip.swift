@@ -40,23 +40,6 @@ class CanariViewWithZoomAndFlip : EBView {
   }
 
   //····················································································································
-  //  NSView overriden methods
-  //  MARK: -
-  //····················································································································
-
-//  override func viewDidMoveToWindow () {
-//    super.viewDidMoveToWindow ()
-// //   self.updateViewFrameAndBounds ()
-//  }
-
-  //····················································································································
-
-//  override func viewDidEndLiveResize () {
-//    super.viewDidEndLiveResize ()
-// //   self.updateViewFrameAndBounds ()
-//  }
-
-  //····················································································································
 
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
@@ -86,8 +69,10 @@ class CanariViewWithZoomAndFlip : EBView {
       if let minimumBounds = self.mMinimumRect {
         newRect = newRect.union (minimumBounds)
       }
-      let r = clipView.convert (clipView.documentVisibleRect, from: self)
-      newRect = newRect.union (r)
+      if (inZoom != 0) || newRect.isNull {
+        let r = clipView.convert (clipView.documentVisibleRect, from: self)
+        newRect = newRect.union (r)
+      }
       if self.bounds != newRect {
         self.frame.size = newRect.size
         self.bounds = newRect
@@ -96,7 +81,7 @@ class CanariViewWithZoomAndFlip : EBView {
       let currentScale = 1.0 / currentUnitSquareSize.width
       let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
       let toggleVerticalFlip   : CGFloat = (inVerticalFlip != self.mVerticalFlip) ? -1.0 : 1.0 ;
-      if (0 == inZoom) { // Fit to window
+      if 0 == inZoom { // Fit to window
         let clipViewSize = clipView.frame.size
         let currentSize = self.frame.size
         let sx = clipViewSize.width / currentSize.width
