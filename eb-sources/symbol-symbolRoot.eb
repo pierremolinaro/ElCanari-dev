@@ -12,7 +12,7 @@ graphic entity SymbolPin : SymbolObject {
   property @signature Int xName default 0 ;
   property @signature Int yName default 2_286_00 ;
   property @signature Int xNumber default 0 ;
-  property @signature Int yNumber default 0 ; # -2_286_00 ;
+  property @signature Int yNumber default -2_286_00 ;
   property @signature String name default "" ;
   property @signature HorizontalAlignment nameHorizontalAlignment default center ;
   property @signature HorizontalAlignment numberHorizontalAlignment default center ;
@@ -160,8 +160,8 @@ graphic entity SymbolBezierCurve : SymbolObject {
 graphic entity SymbolSegment : SymbolObject {
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 0 ;
-  property @signature Int x2 default 9_154_00 ;
-  property @signature Int y2 default 9_154_00 ;
+  property @signature Int x2 default 6_868_00 ;
+  property @signature Int y2 default 6_868_00 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen

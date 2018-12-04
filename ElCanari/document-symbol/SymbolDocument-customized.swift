@@ -52,90 +52,56 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let inspectors = [self.mSymbolBaseInspectorView, self.mSymbolZoomFlipInspectorView, self.mSymbolIssueInspectorView]
     self.mInspectorSegmentedControl?.register (masterView: self.mSymbolRootInspectorView, inspectors)
   //--- Drag source buttons and destination scroll view
-    self.mAddSegmentButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSegment")
-    self.mAddSegmentButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-      let r = rect.insetBy (dx: 5.0, dy: 5.0)
-      NSColor.brown.setStroke ()
-      let bp = NSBezierPath ()
-      bp.move (to: r.origin)
-      bp.line (to: NSPoint (x: r.maxX, y: r.maxY))
-      bp.lineWidth = 2.0
-      bp.lineCapStyle = .round
-      bp.stroke ()
-    })
+    self.mAddSegmentButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolSegment",
+      provideImageFromEntity: true,
+      scaleProvider: self.mComposedSymbolView
+    )
 
-    self.mAddBezierButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolBezierCurve")
-    self.mAddBezierButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-      let r = rect.insetBy (dx: 5.0, dy: 5.0)
-      NSColor.brown.setStroke ()
-      let bp = NSBezierPath ()
-      bp.move (to: r.origin)
-      bp.curve (
-        to: NSPoint (x: r.minX, y: r.maxY),
-        controlPoint1: NSPoint (x: r.maxX, y: r.minY),
-        controlPoint2: NSPoint (x: r.maxX, y: r.maxY)
-      )
-      bp.lineWidth = 2.0
-      bp.lineCapStyle = .round
-      bp.stroke ()
-    })
+    self.mAddBezierButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolBezierCurve",
+      provideImageFromEntity: true,
+      scaleProvider: self.mComposedSymbolView
+    )
 
-    self.mAddSolidOvalButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSolidOval")
-    self.mAddSolidOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-        let r = rect.insetBy (dx: 3.0, dy: 3.0)
-        NSColor.brown.setFill ()
-        let bp = NSBezierPath (ovalIn: r)
-        bp.fill ()
-    })
+    self.mAddSolidOvalButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolSolidOval",
+      provideImageFromEntity: true,
+      scaleProvider: self.mComposedSymbolView
+    )
 
-    self.mAddOvalButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolOval")
-    self.mAddOvalButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-      let r = rect.insetBy (dx: 5.0, dy: 5.0)
-      NSColor.brown.setStroke ()
-      let bp = NSBezierPath (ovalIn: r)
-      bp.lineWidth = 2.0
-      bp.stroke ()
-    })
+    self.mAddOvalButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolOval",
+      provideImageFromEntity: true,
+      scaleProvider: self.mComposedSymbolView
+    )
 
-    self.mAddSolidRectButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolSolidRect")
-    self.mAddSolidRectButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-        let r = rect.insetBy (dx: 3.0, dy: 3.0)
-        NSColor.brown.setFill ()
-        let bp = NSBezierPath (rect: r)
-        bp.fill ()
-    })
+    self.mAddSolidRectButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolSolidRect",
+      provideImageFromEntity: true,
+      scaleProvider: self.mComposedSymbolView
+    )
 
-    self.mAddTextButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolText")
-    self.mAddTextButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-        let r = rect.insetBy (dx: 3.0, dy: 3.0)
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont (name: "Cambria", size: 26.0)!,
-          NSAttributedString.Key.foregroundColor : NSColor.brown
-        ]
-        let size = "T".size (withAttributes: textAttributes)
-        "T".draw (at: NSPoint (x: r.midX - size.width / 2.0, y: r.midY - size.height / 2.0 + 3.0), withAttributes: textAttributes)
-    })
+    self.mAddTextButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolText",
+      provideImageFromEntity: false,
+      scaleProvider: self.mComposedSymbolView
+    )
+    self.mAddTextButton?.image = self.imageForAddTextButton ()
 
-    self.mAddPinButton?.register (draggedType: symbolPasteboardType, entityName: "SymbolPin")
-    self.mAddPinButton?.register (drawImageCallBack : {(_ rect : NSRect) in
-        let r = rect.insetBy (dx: 3.0, dy: 3.0)
-        NSColor.brown.setFill ()
-        let circleDiameter : CGFloat = 10.0
-        let circle = NSRect (
-          x: r.maxX - circleDiameter,
-          y: r.midY - circleDiameter / 2.0,
-          width: circleDiameter,
-          height: circleDiameter
-        )
-        let bp = NSBezierPath (ovalIn: circle)
-        bp.fill ()
-        let textAttributes : [NSAttributedString.Key : Any] = [
-          NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 18.0)!,
-          NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
-        ]
-        let size = "#".size (withAttributes: textAttributes)
-        "#".draw (at: NSPoint (x: r.minX, y: r.midY - size.height / 2.0), withAttributes: textAttributes)
-    })
+    self.mAddPinButton?.register (
+      draggedType: symbolPasteboardType,
+      entityName: "SymbolPin",
+      provideImageFromEntity: false,
+      scaleProvider: self.mComposedSymbolView
+    )
+    self.mAddPinButton?.image = self.imageForAddPinButton ()
 
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
   //--- Register inspector views
@@ -171,19 +137,14 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
-        if let dictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary {
-          do{
-            let newObject = try makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as! SymbolObject
-            self.ebUndoManager.disableUndoRegistration ()
-            newObject.translate (xBy: pointInDestinationView.x, yBy: pointInDestinationView.y)
-            self.ebUndoManager.enableUndoRegistration ()
-            self.rootObject.symbolObjects_property.add (newObject)
-            self.mSymbolObjectsController.select (object: newObject)
-            ok = true
-          }catch let error {
-            let alert = NSAlert (error: error)
-            alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-          }
+        if let dictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary,
+           let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
+          self.ebUndoManager.disableUndoRegistration ()
+          newObject.translate (xBy: pointInDestinationView.x, yBy: pointInDestinationView.y)
+          self.ebUndoManager.enableUndoRegistration ()
+          self.rootObject.symbolObjects_property.add (newObject)
+          self.mSymbolObjectsController.select (object: newObject)
+          ok = true
         }
       }
     }
@@ -191,6 +152,39 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   }
 
   //····················································································································
+
+  fileprivate func imageForAddTextButton () ->  NSImage? {
+    let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont (name: "Cambria", size: 20.0)!,
+      NSAttributedString.Key.foregroundColor : NSColor.brown
+    ]
+    let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY + 3.0), textAttributes, .center, .center)
+    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    return NSImage (data: imagePDFData)
+  }
+
+  //····················································································································
+
+  fileprivate func imageForAddPinButton () ->  NSImage? {
+    let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+    let circleDiameter : CGFloat = 8.0
+    let circle = NSRect (
+      x: r.maxX - circleDiameter - 2.0,
+      y: r.midY - circleDiameter / 2.0,
+      width: circleDiameter,
+      height: circleDiameter
+    )
+    let shape = EBShape ()
+    shape.append (EBFilledBezierPathShape ([NSBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 12.0)!,
+      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
+    ]
+    shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY + 3.0), textAttributes, .left, .center))
+    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    return NSImage (data: imagePDFData)
+  }
 
 }
 

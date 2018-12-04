@@ -118,7 +118,6 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
       let shape = EBStrokeBezierPathShape ([bp], NSColor.gray)
       let data = buildPDFimage (frame: r, shape: shape, backgroundColor:NSColor.gray.withAlphaComponent (0.25))
       let image = NSImage (data: data)!
- //     image.size = r.size
       return image
     }else{
       return NSImage (named: NSImage.Name ("exclamation"))!

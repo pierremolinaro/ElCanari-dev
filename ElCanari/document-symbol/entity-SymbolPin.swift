@@ -204,7 +204,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yNumber
   //····················································································································
 
-  var yNumber_property = EBStoredProperty_Int (0)
+  var yNumber_property = EBStoredProperty_Int (-228600)
 
   //····················································································································
 

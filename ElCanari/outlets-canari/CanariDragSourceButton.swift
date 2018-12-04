@@ -41,12 +41,30 @@ import Cocoa
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectTypeName = "" // Any value if mDragType is null
+  private var mScaleProvider : CanariViewScaleProvider? = nil
 
   //····················································································································
 
-  func register (draggedType : NSPasteboard.PasteboardType, entityName : String) {
+  func register (draggedType : NSPasteboard.PasteboardType,
+                 entityName : String,
+                 provideImageFromEntity : Bool,
+                 scaleProvider : CanariViewScaleProvider?) {
     self.mDragType = draggedType
     self.mDraggedObjectTypeName = entityName
+    self.mScaleProvider = scaleProvider
+    if provideImageFromEntity {
+      do {
+        let temporaryObject = try newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as! EBGraphicManagedObject
+        let displayShape = temporaryObject.objectDisplay!
+        let rect = displayShape.boundingBox
+        let imagePDFData = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
+        let image = NSImage (data: imagePDFData)
+        self.image = image
+      }catch let error {
+        let alert = NSAlert (error: error)
+        alert.beginSheetModal (for: self.window!, completionHandler: nil)
+      }
+    }
   }
 
   //····················································································································
@@ -65,7 +83,6 @@ import Cocoa
   func pasteboard (_ pasteboard: NSPasteboard?,
                    item: NSPasteboardItem,
                    provideDataForType type: NSPasteboard.PasteboardType) {
-    NSLog ("pasteboard")
   }
 
   //····················································································································
@@ -78,7 +95,9 @@ import Cocoa
     //--- Get dragged image
       do{
         let temporaryObject = try newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as! EBGraphicManagedObject
-        let displayShape = temporaryObject.objectDisplay!
+        let transform = NSAffineTransform ()
+        transform.scale (by: self.mScaleProvider?.actualScale() ?? 1.0)
+        let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
         let rect = displayShape.boundingBox
         let imagePDFData = buildPDFimage (frame: rect, shape: displayShape)
         let image = NSImage (data: imagePDFData)!
@@ -149,18 +168,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Draw function call back
-  //····················································································································
-
-  private var mDrawFunctionCallBack : Optional <(_ rect : NSRect) -> Void > = nil
-
-  //····················································································································
-
-  func register (drawImageCallBack : @escaping (_ rect : NSRect) -> Void) {
-    self.mDrawFunctionCallBack = drawImageCallBack
-  }
-
-  //····················································································································
   //   DRAW
   //····················································································································
 
@@ -169,11 +176,7 @@ import Cocoa
       NSColor.lightGray.setFill ()
       NSBezierPath.fill (inDirtyRect)
     }
-    if let drawFunctionCallBack = self.mDrawFunctionCallBack {
-      drawFunctionCallBack (self.bounds)
-    }else{
-      super.draw (inDirtyRect)
-    }
+    super.draw (inDirtyRect)
   }
 
   //····················································································································
