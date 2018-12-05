@@ -1401,7 +1401,6 @@
 		CF61725C1B3C4B5000F3CA82 /* Canari Application */ = {
 			isa = PBXGroup;
 			children = (
-				CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */,
 				CFCC4AF21BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift */,
 				CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */,
 				CFB6AF571B43004500FC1B14 /* action-Preferences-checkLibraryAction.swift */,
@@ -1420,6 +1419,7 @@
 				CFE533BF1B4307BA00F2E13A /* check-libraries.swift */,
 				CF6BC04A1DE1C008002D935F /* class-CanariMenuItemListClass.swift */,
 				CF6BC04E1DE1C43F002D935F /* controller-CanariMenu-CanariMenuItemListClass.swift */,
+				CF5182D921B8486C0035533A /* entity-CanariLibraryEntry.swift */,
 				CFC129221B44887700B1866D /* file-metadata-dictionary.swift */,
 				CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */,
 				CFA085E921A17A6B00DFD00B /* Info-Release.plist */,

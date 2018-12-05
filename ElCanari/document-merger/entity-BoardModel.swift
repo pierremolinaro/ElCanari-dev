@@ -7689,7 +7689,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   //····················································································································
 
   override var propval : [BoardModel] {
-    if let value = prop_cache {
+    if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
         return []
@@ -7713,17 +7713,17 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   override var prop : EBSelection < [BoardModel] > {
     get {
-      if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unwrappedComputeFunction ()
+      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+        self.prop_cache = unwrappedComputeFunction ()
         let newSet : Set <BoardModel>
-        switch prop_cache! {
+        switch self.prop_cache! {
         case .multiple, .empty :
           newSet = Set <BoardModel> ()
         case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
-        let removedSet = mSet.subtracting (newSet)
+        let removedSet = self.mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_name_fromElementsOfSet (removedSet)
         removeEBObserversOf_modelWidth_fromElementsOfSet (removedSet)
@@ -7780,7 +7780,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
         removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
       //--- Added object set
-        let addedSet = newSet.subtracting (mSet)
+        let addedSet = newSet.subtracting (self.mSet)
        //--- Add observers of stored properties
         addEBObserversOf_name_toElementsOfSet (addedSet)
         addEBObserversOf_modelWidth_toElementsOfSet (addedSet)
@@ -7837,20 +7837,20 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
         addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
         addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
       //--- Update object set
-        mSet = newSet
+        self.mSet = newSet
       }
-      if prop_cache == nil {
-        prop_cache = .empty
+      if self.prop_cache == nil {
+        self.prop_cache = .empty
       }
-      return prop_cache!
+      return self.prop_cache!
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if prop_cache != nil {
-      prop_cache = nil
+    if self.prop_cache != nil {
+      self.prop_cache = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
       }
@@ -7893,12 +7893,12 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
-      if let unwrappedExplorer = mValueExplorer {
+      if let unwrappedExplorer = self.mValueExplorer {
         switch prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :
-          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
     }
@@ -7932,12 +7932,9 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [BoardModel] ()
       for dictionary in array {
-        do{
-          if let object = try newInstanceOfEntityNamed (self.undoManager, "BoardModel") as? BoardModel {
-            object.setUpAtomicPropertiesWithDictionary (dictionary)
-            objectArray.append (object)
-          }
-        }catch _ {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "BoardModel") as? BoardModel {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
         }
       }
       self.setProp (objectArray)
@@ -7950,17 +7947,17 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   private var mValue = [BoardModel] () {
     didSet {
       self.postEvent ()
-      if oldValue != mValue {
+      if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
-        if let valueExplorer = mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        if let valueExplorer = self.mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (mSet)
+        let removedObjectSet = oldSet.subtracting (self.mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
@@ -8096,36 +8093,36 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [BoardModel] > { return .single (mValue) }
+  override var prop : EBSelection < [BoardModel] > { return .single (self.mValue) }
 
-  override func setProp (_ inValue : [BoardModel]) { mValue = inValue }
+  override func setProp (_ inValue : [BoardModel]) { self.mValue = inValue }
 
-  override var propval : [BoardModel] { return mValue }
+  override var propval : [BoardModel] { return self.mValue }
 
   //····················································································································
 
   @objc func performUndo (_ oldValue : [BoardModel]) {
-    mValue = oldValue
+    self.mValue = oldValue
   }
 
   //····················································································································
 
   func remove (_ object : BoardModel) {
-    if mSet.contains (object) {
-      var array = mValue
+    if self.mSet.contains (object) {
+      var array = self.mValue
       let idx = array.index (of: object)
       array.remove (at: idx!)
-      mValue = array
+      self.mValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : BoardModel) {
-    if !mSet.contains (object) {
-      var array = mValue
+    if !self.mSet.contains (object) {
+      var array = self.mValue
       array.append (object)
-      mValue = array
+      self.mValue = array
     }
   }
   
@@ -8140,7 +8137,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     mSignatureObserver = observer
-    for object in mValue {
+    for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
   }
@@ -8162,7 +8159,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in mValue {
+    for object in self.mValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc

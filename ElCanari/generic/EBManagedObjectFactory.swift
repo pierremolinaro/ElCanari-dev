@@ -8,8 +8,8 @@ import Cocoa
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) throws -> EBManagedObject {
-  var result : EBManagedObject
+func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
+  var result : EBManagedObject? = nil
   if inEntityTypeName == "CanariLibraryEntry" {
     result = CanariLibraryEntry (undoManager, file: #file, #line)
   }else if inEntityTypeName == "FontCharacter" {
@@ -52,16 +52,6 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
     result = SymbolSegment (undoManager, file: #file, #line)
   }else if inEntityTypeName == "SymbolRoot" {
     result = SymbolRoot (undoManager, file: #file, #line)
-  }else{
-       let dictionary : [String : Any] = [
-      NSLocalizedDescriptionKey : "Cannot read document",
-      NSLocalizedRecoverySuggestionErrorKey : "Cannot create object of \(inEntityTypeName) class",
-    ]
-    throw NSError (
-      domain:Bundle.main.bundleIdentifier!,
-      code:1,
-      userInfo:dictionary
-    )
   }
   return result
 }
@@ -71,14 +61,11 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDictionary : NSDictionary) -> EBManagedObject? {
-  do{
-    let entityName = inDictionary.value (forKey: kEntityKey) as! String
-    let object = try newInstanceOfEntityNamed (inUndoManager, entityName)
-  //  inUndoManager?.disableUndoRegistration ()
+  let entityName = inDictionary.value (forKey: kEntityKey) as! String
+  if let object = newInstanceOfEntityNamed (inUndoManager, entityName) {
     object.setUpAtomicPropertiesWithDictionary (inDictionary) 
-  //  inUndoManager?.enableUndoRegistration ()
     return object
-  }catch (_) {
+  }else{
     return nil
   }
 }
@@ -162,8 +149,19 @@ fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager, in
       var objectArray = [EBManagedObject] ()
       for d in dictionaryArray {
         let className = d.object (forKey: kEntityKey) as! String
-        let object = try newInstanceOfEntityNamed (inUndoManager, className)
-        objectArray.append (object)
+        if let object = newInstanceOfEntityNamed (inUndoManager, className) {
+          objectArray.append (object)
+        }else{
+          let dictionary = [
+            "Cannot Open Document" :  NSLocalizedDescriptionKey,
+            "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+          ]
+          throw NSError (
+            domain:Bundle.main.bundleIdentifier!,
+            code:1,
+            userInfo:dictionary
+          )     
+        }
       }
       var idx = 0
       for d in dictionaryArray {

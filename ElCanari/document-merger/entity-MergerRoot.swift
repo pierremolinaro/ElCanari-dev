@@ -3316,7 +3316,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   //····················································································································
 
   override var propval : [MergerRoot] {
-    if let value = prop_cache {
+    if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
         return []
@@ -3340,17 +3340,17 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   override var prop : EBSelection < [MergerRoot] > {
     get {
-      if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unwrappedComputeFunction ()
+      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+        self.prop_cache = unwrappedComputeFunction ()
         let newSet : Set <MergerRoot>
-        switch prop_cache! {
+        switch self.prop_cache! {
         case .multiple, .empty :
           newSet = Set <MergerRoot> ()
         case .single (let array) :
           newSet = Set (array)
         }
      //--- Removed object set
-        let removedSet = mSet.subtracting (newSet)
+        let removedSet = self.mSet.subtracting (newSet)
       //--- Remove observers of stored properties
         removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
         removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
@@ -3382,7 +3382,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
         removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedSet)
       //--- Added object set
-        let addedSet = newSet.subtracting (mSet)
+        let addedSet = newSet.subtracting (self.mSet)
        //--- Add observers of stored properties
         addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
         addEBObserversOf_zoom_toElementsOfSet (addedSet)
@@ -3414,20 +3414,20 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
         addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
         addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedSet)
       //--- Update object set
-        mSet = newSet
+        self.mSet = newSet
       }
-      if prop_cache == nil {
-        prop_cache = .empty
+      if self.prop_cache == nil {
+        self.prop_cache = .empty
       }
-      return prop_cache!
+      return self.prop_cache!
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if prop_cache != nil {
-      prop_cache = nil
+    if self.prop_cache != nil {
+      self.prop_cache = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
       }
@@ -3470,12 +3470,12 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   var mValueExplorer : NSPopUpButton? {
     didSet {
-      if let unwrappedExplorer = mValueExplorer {
+      if let unwrappedExplorer = self.mValueExplorer {
         switch prop {
         case .empty, .multiple :
           break ;
         case .single (let v) :
-          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton: unwrappedExplorer)
         }
       }
     }
@@ -3509,12 +3509,9 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [MergerRoot] ()
       for dictionary in array {
-        do{
-          if let object = try newInstanceOfEntityNamed (self.undoManager, "MergerRoot") as? MergerRoot {
-            object.setUpAtomicPropertiesWithDictionary (dictionary)
-            objectArray.append (object)
-          }
-        }catch _ {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "MergerRoot") as? MergerRoot {
+          object.setUpAtomicPropertiesWithDictionary (dictionary)
+          objectArray.append (object)
         }
       }
       self.setProp (objectArray)
@@ -3527,17 +3524,17 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   private var mValue = [MergerRoot] () {
     didSet {
       self.postEvent ()
-      if oldValue != mValue {
+      if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
-        if let valueExplorer = mValueExplorer {
-          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        if let valueExplorer = self.mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
         }
       //--- Removed object set
-        let removedObjectSet = oldSet.subtracting (mSet)
+        let removedObjectSet = oldSet.subtracting (self.mSet)
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
@@ -3623,36 +3620,36 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [MergerRoot] > { return .single (mValue) }
+  override var prop : EBSelection < [MergerRoot] > { return .single (self.mValue) }
 
-  override func setProp (_ inValue : [MergerRoot]) { mValue = inValue }
+  override func setProp (_ inValue : [MergerRoot]) { self.mValue = inValue }
 
-  override var propval : [MergerRoot] { return mValue }
+  override var propval : [MergerRoot] { return self.mValue }
 
   //····················································································································
 
   @objc func performUndo (_ oldValue : [MergerRoot]) {
-    mValue = oldValue
+    self.mValue = oldValue
   }
 
   //····················································································································
 
   func remove (_ object : MergerRoot) {
-    if mSet.contains (object) {
-      var array = mValue
+    if self.mSet.contains (object) {
+      var array = self.mValue
       let idx = array.index (of: object)
       array.remove (at: idx!)
-      mValue = array
+      self.mValue = array
     }
   }
   
   //····················································································································
 
   func add (_ object : MergerRoot) {
-    if !mSet.contains (object) {
-      var array = mValue
+    if !self.mSet.contains (object) {
+      var array = self.mValue
       array.append (object)
-      mValue = array
+      self.mValue = array
     }
   }
   
@@ -3667,7 +3664,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     mSignatureObserver = observer
-    for object in mValue {
+    for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
   }
@@ -3689,7 +3686,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   final func computeSignature () -> UInt32 {
     var crc : UInt32 = 0
-    for object in mValue {
+    for object in self.mValue {
       crc.accumulateUInt32 (object.signature ())
     }
     return crc
@@ -3720,7 +3717,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
 
   var mValueExplorer : NSButton? {
     didSet {
-      if let unwrappedExplorer = mValueExplorer {
+      if let unwrappedExplorer = self.mValueExplorer {
         switch prop {
         case .empty, .multiple :
           break ;
@@ -3731,22 +3728,26 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     }
   }
 
+  //····················································································································
+
   weak var owner : MergerRoot? { // SOULD BE WEAK
     didSet {
-      if let unwrappedExplorer = mValueExplorer {
+      if let unwrappedExplorer = self.mValueExplorer {
         updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
       }
     }
   }
  
+  //····················································································································
+
   weak private var mValue : ArtworkRoot? { // SOULD BE WEAK
     didSet {
-      if let unwrappedOwner = owner, oldValue !== mValue {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
         unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
-        if let unwrappedExplorer = mValueExplorer {
-          updateManagedObjectToOneRelationshipDisplay (object: mValue, button:unwrappedExplorer)
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (mObserversOf_comments)
@@ -3761,47 +3762,49 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
         oldValue?.minValueForPHDinEBUnit_property.removeEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
         oldValue?.selectedTab_property.removeEBObserversFrom (mObserversOf_selectedTab)
       //--- Add property observers to new object
-        mValue?.comments_property.addEBObserversFrom (mObserversOf_comments)
-        mValue?.drillDataFileExtension_property.addEBObserversFrom (mObserversOf_drillDataFileExtension)
-        mValue?.minPPTPTTTW_property.addEBObserversFrom (mObserversOf_minPPTPTTTW)
-        mValue?.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (mObserversOf_minPPTPTTTWdisplayUnit)
-        mValue?.minValueForBoardLimitWidth_property.addEBObserversFrom (mObserversOf_minValueForBoardLimitWidth)
-        mValue?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForBoardLimitWidthDisplayUnit)
-        mValue?.minValueForOARdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForOARdisplayUnit)
-        mValue?.minValueForOARinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForOARinEBUnit)
-        mValue?.minValueForPHDdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDdisplayUnit)
-        mValue?.minValueForPHDinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
-        mValue?.selectedTab_property.addEBObserversFrom (mObserversOf_selectedTab)
+        self.mValue?.comments_property.addEBObserversFrom (mObserversOf_comments)
+        self.mValue?.drillDataFileExtension_property.addEBObserversFrom (mObserversOf_drillDataFileExtension)
+        self.mValue?.minPPTPTTTW_property.addEBObserversFrom (mObserversOf_minPPTPTTTW)
+        self.mValue?.minPPTPTTTWdisplayUnit_property.addEBObserversFrom (mObserversOf_minPPTPTTTWdisplayUnit)
+        self.mValue?.minValueForBoardLimitWidth_property.addEBObserversFrom (mObserversOf_minValueForBoardLimitWidth)
+        self.mValue?.minValueForBoardLimitWidthDisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForBoardLimitWidthDisplayUnit)
+        self.mValue?.minValueForOARdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForOARdisplayUnit)
+        self.mValue?.minValueForOARinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForOARinEBUnit)
+        self.mValue?.minValueForPHDdisplayUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDdisplayUnit)
+        self.mValue?.minValueForPHDinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
+        self.mValue?.selectedTab_property.addEBObserversFrom (mObserversOf_selectedTab)
        //--- Notify observers
         postEvent ()
       }
     }
   }
 
-  var propval : ArtworkRoot? { get { return mValue } }
+  //····················································································································
 
-  var prop : EBSelection <ArtworkRoot?> { get { return .single (mValue) } }
+  var propval : ArtworkRoot? { get { return self.mValue } }
 
-  func setProp (_ value : ArtworkRoot?) { mValue = value }
+  var prop : EBSelection <ArtworkRoot?> { get { return .single (self.mValue) } }
+
+  func setProp (_ value : ArtworkRoot?) { self.mValue = value }
 
   //····················································································································
 
   @objc func performUndo (_ oldValue : ArtworkRoot?) {
-    mValue = oldValue
+    self.mValue = oldValue
   }
 
   //····················································································································
 
   func remove (_ object : ArtworkRoot) {
-    if mValue === object {
-      mValue = nil
+    if self.mValue === object {
+      self.mValue = nil
     }
   }
   
   //····················································································································
 
   func add (_ object : ArtworkRoot) {
-    mValue = object
+    self.mValue = object
   }
 
   //····················································································································

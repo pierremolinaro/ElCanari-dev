@@ -53,16 +53,12 @@ import Cocoa
     self.mDraggedObjectTypeName = entityName
     self.mScaleProvider = scaleProvider
     if provideImageFromEntity {
-      do {
-        let temporaryObject = try newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as! EBGraphicManagedObject
+      if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
         let displayShape = temporaryObject.objectDisplay!
         let rect = displayShape.boundingBox
         let imagePDFData = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
         let image = NSImage (data: imagePDFData)
         self.image = image
-      }catch let error {
-        let alert = NSAlert (error: error)
-        alert.beginSheetModal (for: self.window!, completionHandler: nil)
       }
     }
   }
@@ -93,8 +89,7 @@ import Cocoa
       pasteboardItem.setDataProvider (self, forTypes: [dragType])
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
-      do{
-        let temporaryObject = try newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as! EBGraphicManagedObject
+      if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
         let transform = NSAffineTransform ()
         transform.scale (by: self.mScaleProvider?.actualScale() ?? 1.0)
         let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
@@ -114,9 +109,6 @@ import Cocoa
         draggingItem.setDraggingFrame (r, contents: image)
       //--- Begin
         self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
-      }catch let error {
-        let alert = NSAlert (error: error)
-        alert.beginSheetModal (for: self.window!, completionHandler: nil)
       }
     }
   }
