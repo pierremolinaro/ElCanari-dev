@@ -90,6 +90,33 @@ extension SymbolOval {
   }
 
   //····················································································································
+  //  SNAP TO GRID
+  //····················································································································
+
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    var result = (self.x % inGrid) != 0
+    if !result {
+      result = (self.y % inGrid) != 0
+    }
+    if !result {
+      result = (self.width % inGrid) != 0
+    }
+    if !result {
+      result = (self.height % inGrid) != 0
+    }
+    return result
+  }
+
+  //····················································································································
+
+  override func snapToGrid (_ inGrid : Int) {
+    self.x = ((self.x + inGrid / 2) / inGrid) * inGrid
+    self.y = ((self.y + inGrid / 2) / inGrid) * inGrid
+    self.width = ((self.width + inGrid / 2) / inGrid) * inGrid
+    self.height = ((self.height + inGrid / 2) / inGrid) * inGrid
+  }
+
+  //····················································································································
 
 }
 

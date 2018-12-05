@@ -237,6 +237,49 @@ extension SymbolBezierCurve {
   }
 
   //····················································································································
+  //  SNAP TO GRID
+  //····················································································································
+
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    var result = (self.x1 % inGrid) != 0
+    if !result {
+      result = (self.y1 % inGrid) != 0
+    }
+    if !result {
+      result = (self.x2 % inGrid) != 0
+    }
+    if !result {
+      result = (self.y2 % inGrid) != 0
+    }
+    if !result {
+      result = (self.cpx2 % inGrid) != 0
+    }
+    if !result {
+      result = (self.cpy2 % inGrid) != 0
+    }
+    if !result {
+      result = (self.cpx1 % inGrid) != 0
+    }
+    if !result {
+      result = (self.cpy1 % inGrid) != 0
+    }
+    return result
+  }
+
+  //····················································································································
+
+  override func snapToGrid (_ inGrid : Int) {
+    self.x1 = ((self.x1 + inGrid / 2) / inGrid) * inGrid
+    self.y1 = ((self.y1 + inGrid / 2) / inGrid) * inGrid
+    self.x2 = ((self.x2 + inGrid / 2) / inGrid) * inGrid
+    self.y2 = ((self.y2 + inGrid / 2) / inGrid) * inGrid
+    self.cpx1 = ((self.cpx1 + inGrid / 2) / inGrid) * inGrid
+    self.cpy1 = ((self.cpy1 + inGrid / 2) / inGrid) * inGrid
+    self.cpx2 = ((self.cpx2 + inGrid / 2) / inGrid) * inGrid
+    self.cpy2 = ((self.cpy2 + inGrid / 2) / inGrid) * inGrid
+  }
+
+  //····················································································································
 
 }
 

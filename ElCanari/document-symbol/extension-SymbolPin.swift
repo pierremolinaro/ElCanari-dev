@@ -126,6 +126,41 @@ extension SymbolPin {
   }
 
   //····················································································································
+  //  SNAP TO GRID
+  //····················································································································
+
+  override func canSnapToGrid (_ inGrid : Int) -> Bool {
+    var result = (self.xPin % inGrid) != 0
+    if !result {
+      result = (self.yPin % inGrid) != 0
+    }
+    if !result {
+      result = (self.xName % inGrid) != 0
+    }
+    if !result {
+      result = (self.yName % inGrid) != 0
+    }
+    if !result {
+      result = (self.xNumber % inGrid) != 0
+    }
+    if !result {
+      result = (self.yNumber % inGrid) != 0
+    }
+    return result
+  }
+
+  //····················································································································
+
+  override func snapToGrid (_ inGrid : Int) {
+    self.xPin = ((self.xPin + inGrid / 2) / inGrid) * inGrid
+    self.yPin = ((self.yPin + inGrid / 2) / inGrid) * inGrid
+    self.xName = ((self.xName + inGrid / 2) / inGrid) * inGrid
+    self.yName = ((self.yName + inGrid / 2) / inGrid) * inGrid
+    self.xNumber = ((self.xNumber + inGrid / 2) / inGrid) * inGrid
+    self.yNumber = ((self.yNumber + inGrid / 2) / inGrid) * inGrid
+  }
+
+  //····················································································································
 
 }
 

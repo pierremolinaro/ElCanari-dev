@@ -95,12 +95,12 @@ class EBGraphicManagedObject : EBManagedObject {
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
-  @objc dynamic func snapToGrid () {
+  @objc dynamic func snapToGrid (_ inGrid : Int) {
   }
 
   //····················································································································
 
-  @objc dynamic func canSnapToGrid () -> Bool {
+  @objc dynamic func canSnapToGrid (_ inGrid : Int) -> Bool {
     return false
   }
 

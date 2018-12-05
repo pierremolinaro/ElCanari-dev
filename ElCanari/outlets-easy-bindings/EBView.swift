@@ -47,8 +47,8 @@ protocol EBViewControllerProtocol : class {
   var canSendToBack : Bool { get }
   func sendToBack ()
 
-  var canSnapToGrid : Bool { get }
-  func snapToGrid ()
+  func canSnapToGrid (_ inGrid : Int) -> Bool
+  func snapToGrid (_ inGrid : Int)
 
   var canFlipHorizontally : Bool { get }
   func flipHorizontally ()
@@ -692,7 +692,7 @@ protocol EBViewControllerProtocol : class {
     }else if action == #selector (EBView.sendBackward(_:)) {
       validate = self.mViewController?.canSendBackward ?? false
     }else if action == #selector (EBView.snapToGrid(_:)) {
-      validate = self.mViewController?.canSnapToGrid ?? false
+      validate = self.mViewController?.canSnapToGrid (cocoaToCanariUnit (self.arrowKeyMagnitude)) ?? false
     }else if action == #selector (EBView.flipHorizontally(_:)) {
       validate = self.mViewController?.canFlipHorizontally ?? false
     }else if action == #selector (EBView.flipVertically(_:)) {
@@ -770,7 +770,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   @objc func snapToGrid (_ : Any?) {
-    mViewController?.snapToGrid ()
+    mViewController?.snapToGrid (cocoaToCanariUnit (self.arrowKeyMagnitude))
   }
 
   //····················································································································

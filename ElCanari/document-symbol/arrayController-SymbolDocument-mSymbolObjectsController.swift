@@ -63,14 +63,14 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     }
     self.mSelectedSet.addEBObserver (self.canSendToBack_property)
   //---
-    self.canSnapToGrid_property.readModelFunction = { [weak self] in
+/*    self.canSnapToGrid_property.readModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canSnapToGrid)
       }else{
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canSnapToGrid_property)
+    self.mSelectedSet.addEBObserver (self.canSnapToGrid_property) */
   //---
     self.canFlipHorizontally_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -748,26 +748,27 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   // MARK: -
   //····················································································································
 
-  var canSnapToGrid_property = EBTransientProperty_Bool ()
+ // var canSnapToGrid_property = EBTransientProperty_Bool ()
 
   //····················································································································
 
-  func snapToGrid () {
+  func snapToGrid (_ inGrid : Int) {
     for object in self.mSelectedSet.mSet {
-      object.snapToGrid ()
+      object.snapToGrid (inGrid)
     }
   }
 
   //····················································································································
 
-  var canSnapToGrid : Bool {
+  func canSnapToGrid (_ inGrid : Int) -> Bool {
     for object in self.mSelectedSet.mSet {
-      if object.canSnapToGrid () {
+      if object.canSnapToGrid (inGrid) {
         return true
       }
     }
     return false
   }
+
 
  //····················································································································
   // HORIZONTAL FLIP
