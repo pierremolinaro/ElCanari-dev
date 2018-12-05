@@ -3340,15 +3340,15 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Property array: additionnalLibraryArray
+  //   To many property: additionnalLibraryArray
   //····················································································································
 
-  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry(Preferences_additionnalLibraryArray)
+  var additionnalLibraryArray_property = StoredArrayOf_CanariLibraryEntry (prefKey: Preferences_additionnalLibraryArray)
 
   //····················································································································
 
   var additionnalLibraryArray_property_selection : EBSelection < [CanariLibraryEntry] > {
-    return self.additionnalLibraryArray_property.prop
+      return self.additionnalLibraryArray_property.prop
   }
 
   //····················································································································
@@ -3710,8 +3710,12 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //    Undo Manager
   //····················································································································
 
-  private var undoManager = EBUndoManager ()
+  private var mUndoManager = EBUndoManager ()
 
+  //····················································································································
+
+  var undoManager : EBUndoManager { return self.mUndoManager }
+ 
   //····················································································································
   // The preferences window should register this object as delegate (do it in Interface Builder)
 
@@ -4004,7 +4008,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.hiliteWidthMultipliedByTen_property.undoManager = self.undoManager
   //--- Atomic property: usesUserLibrary
     self.usesUserLibrary_property.undoManager = self.undoManager
-  //--- Property array: additionnalLibraryArray
+  //--- To many property: additionnalLibraryArray (no option)
     self.additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Atomic property: pinNameFont
     self.pinNameFont_property.undoManager = self.undoManager

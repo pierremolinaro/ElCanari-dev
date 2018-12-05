@@ -220,6 +220,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.setSignatureObserver (observer:self)
     self.y1_property.setSignatureObserver (observer:self)
     self.y2_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -235,6 +236,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.removeEBObserver (self.objectDisplay_property)
     self.y2_property.removeEBObserver (self.objectDisplay_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -870,9 +876,7 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
   //····················································································································
  
   func setProp (_ value :  [SegmentForFontCharacter]) { } // Abstract method
- 
-  // var propval : [SegmentForFontCharacter] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -886,6 +890,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : SegmentForFontCharacter?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -924,13 +929,33 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SegmentForFontCharacter] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "SegmentForFontCharacter") as? SegmentForFontCharacter {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <SegmentForFontCharacter> ()
   private var mValue = [SegmentForFontCharacter] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -943,29 +968,42 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SegmentForFontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [SegmentForFontCharacter] > { return .single (mValue) }
 

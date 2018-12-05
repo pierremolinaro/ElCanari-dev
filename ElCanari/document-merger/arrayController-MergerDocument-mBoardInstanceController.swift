@@ -63,15 +63,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.mSelectedSet.addEBObserver (self.canSendToBack_property)
   //---
-/*    self.canSnapToGrid_property.readModelFunction = { [weak self] in
-      if let me = self {
-        return .single (me.canSnapToGrid)
-      }else{
-        return .empty
-      }
-    }
-    self.mSelectedSet.addEBObserver (self.canSnapToGrid_property) */
-  //---
     self.canFlipHorizontally_property.readModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canFlipHorizontally)
@@ -746,10 +737,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
   // SNAP TO GRID
   // MARK: -
-  //····················································································································
-
- // var canSnapToGrid_property = EBTransientProperty_Bool ()
-
   //····················································································································
 
   func snapToGrid (_ inGrid : Int) {

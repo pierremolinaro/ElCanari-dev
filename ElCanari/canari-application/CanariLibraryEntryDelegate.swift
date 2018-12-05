@@ -17,7 +17,7 @@ private let DEBUG = false
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariLibraryEntryDelegate) final class CanariLibraryEntryDelegate : EBEvent {
+final class CanariLibraryEntryDelegate : EBEvent {
   
   private weak var mObject : CanariLibraryEntry?
   private var mStream : FSEventStreamRef?

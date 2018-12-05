@@ -259,6 +259,7 @@ class SymbolSolidRect : SymbolObject,
     self.width_property.setSignatureObserver (observer:self)
     self.x_property.setSignatureObserver (observer:self)
     self.y_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -280,6 +281,11 @@ class SymbolSolidRect : SymbolObject,
     self.width_property.removeEBObserver (self.issues_property)
     self.height_property.removeEBObserver (self.issues_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -981,9 +987,7 @@ class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
   //····················································································································
  
   func setProp (_ value :  [SymbolSolidRect]) { } // Abstract method
- 
-  // var propval : [SymbolSolidRect] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -997,6 +1001,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1035,13 +1040,33 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolSolidRect] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "SymbolSolidRect") as? SymbolSolidRect {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <SymbolSolidRect> ()
   private var mValue = [SymbolSolidRect] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1054,31 +1079,44 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SymbolSolidRect in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [SymbolSolidRect] > { return .single (mValue) }
 

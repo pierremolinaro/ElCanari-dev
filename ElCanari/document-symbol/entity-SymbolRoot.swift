@@ -446,6 +446,7 @@ class SymbolRoot : EBManagedObject,
     self.symbolObjects_property.setSignatureObserver (observer:self)
     self.xPlacardUnit_property.setSignatureObserver (observer:self)
     self.yPlacardUnit_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -458,6 +459,11 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -1502,9 +1508,7 @@ class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
   //····················································································································
  
   func setProp (_ value :  [SymbolRoot]) { } // Abstract method
- 
-  // var propval : [SymbolRoot] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -1518,6 +1522,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolRoot?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1556,13 +1561,33 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolRoot] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "SymbolRoot") as? SymbolRoot {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <SymbolRoot> ()
   private var mValue = [SymbolRoot] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1575,39 +1600,52 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SymbolRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [SymbolRoot] > { return .single (mValue) }
 

@@ -777,6 +777,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
     self.measurementUnitForPadHoleInPDF_property.setSignatureObserver (observer:self)
     self.name_property.setSignatureObserver (observer:self)
     self.padHoleDiameterInPDF_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -784,6 +785,11 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   deinit {
   //--- Remove observers
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -2712,9 +2718,7 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
   //····················································································································
  
   func setProp (_ value :  [ArtworkFileGenerationParameters]) { } // Abstract method
- 
-  // var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -2728,6 +2732,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkFileGenerationParameters?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -2766,13 +2771,33 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ArtworkFileGenerationParameters] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "ArtworkFileGenerationParameters") as? ArtworkFileGenerationParameters {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <ArtworkFileGenerationParameters> ()
   private var mValue = [ArtworkFileGenerationParameters] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -2785,63 +2810,76 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drawVias_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_fileExtension_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drawVias_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_fileExtension_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : ArtworkFileGenerationParameters in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drawVias_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_fileExtension_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_horizontalMirror_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drawVias_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_fileExtension_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_horizontalMirror_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [ArtworkFileGenerationParameters] > { return .single (mValue) }
 

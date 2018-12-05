@@ -5,23 +5,31 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Class: CanariLibraryEntry
+
+protocol CanariLibraryEntry_mPath : class {
+  var mPath : String { get }
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariLibraryEntry : EBSimpleClass,
-  CanariLibraryEntry_mPath,
-  CanariLibraryEntry_mUses {
+protocol CanariLibraryEntry_mUses : class {
+  var mUses : Bool { get }
+}
 
-  //····················································································································
-  //  Undo manager
-  //····················································································································
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  var undoManager : EBUndoManager? = nil {
-    didSet {
-      self.mPath_property.undoManager = self.undoManager
-      self.mUses_property.undoManager = self.undoManager
-    }
-  }
+protocol CanariLibraryEntry_mStatusImage : class {
+  var mStatusImage : NSImage? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: CanariLibraryEntry
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class CanariLibraryEntry : EBManagedObject,
+         CanariLibraryEntry_mPath,
+         CanariLibraryEntry_mUses,
+         CanariLibraryEntry_mStatusImage {
 
   //····················································································································
   //   Atomic property: mPath
@@ -92,19 +100,12 @@ class CanariLibraryEntry : EBSimpleClass,
     }
   }
 
-
-  //····················································································································
-  //    Extern delegates
-  //····················································································································
-
-  var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
-
   //····················································································································
   //    init
   //····················································································································
 
-  override init () {
-    super.init ()
+  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+    super.init (undoManager, file: file, line)
   //--- Atomic property: mPath
     self.mPath_property.undoManager = self.undoManager
   //--- Atomic property: mUses
@@ -131,10 +132,24 @@ class CanariLibraryEntry : EBSimpleClass,
       }
     }
     self.mPath_property.addEBObserver (self.mStatusImage_property)
-  //--- Extern functions
+  //--- Install undoers and opposite setter for relationships
+  //--- register properties for handling signature
   //--- Extern delegates
-    mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
+    self.mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
   }
+
+  //····················································································································
+
+  deinit {
+  //--- Remove observers
+    self.mPath_property.removeEBObserver (self.mStatusImage_property)
+  }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
+  var mExternDelegate0 : CanariLibraryEntryDelegate? = nil
 
   //····················································································································
   //    populateExplorerWindow
@@ -158,6 +173,18 @@ class CanariLibraryEntry : EBSimpleClass,
       observerExplorer:&self.mUses_property.mObserverExplorer,
       valueExplorer:&self.mUses_property.mValueExplorer
     )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "mStatusImage",
+      idx:self.mStatusImage_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mStatusImage_property.mObserverExplorer,
+      valueExplorer:&self.mStatusImage_property.mValueExplorer
+    )
+    createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
   //····················································································································
@@ -165,10 +192,13 @@ class CanariLibraryEntry : EBSimpleClass,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mPath
     self.mPath_property.mObserverExplorer = nil
     self.mPath_property.mValueExplorer = nil
+  //--- Atomic property: mUses
     self.mUses_property.mObserverExplorer = nil
     self.mUses_property.mValueExplorer = nil
+  //---
     super.clearObjectExplorer ()
   }
 
@@ -176,32 +206,70 @@ class CanariLibraryEntry : EBSimpleClass,
   //    saveIntoDictionary
   //····················································································································
 
-  override func saveInto (dictionary : NSMutableDictionary) {
-    super.saveInto (dictionary: dictionary)
-    self.mPath_property.storeIn (dictionary: dictionary, forKey: "mPath")
-    self.mUses_property.storeIn (dictionary: dictionary, forKey: "mUses")
+  override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
+    super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mPath
+    self.mPath_property.storeIn (dictionary: ioDictionary, forKey:"mPath")
+  //--- Atomic property: mUses
+    self.mUses_property.storeIn (dictionary: ioDictionary, forKey:"mUses")
   }
 
   //····················································································································
   //    setUpWithDictionary
   //····················································································································
 
-  override func setUp (withDictionary dictionary : NSDictionary) {
-    super.setUp (withDictionary: dictionary)
-    self.mPath_property.readFrom (dictionary: dictionary, forKey:"mPath")
-    self.mUses_property.readFrom (dictionary: dictionary, forKey:"mUses")
+  override func setUpWithDictionary (_ inDictionary : NSDictionary,
+                                     managedObjectArray : inout [EBManagedObject]) {
+    super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  }
+
+  //····················································································································
+  //    setUpAtomicPropertiesWithDictionary
+  //····················································································································
+
+  override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
+    super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mPath
+    self.mPath_property.readFrom (dictionary: inDictionary, forKey:"mPath")
+  //--- Atomic property: mUses
+    self.mUses_property.readFrom (dictionary: inDictionary, forKey:"mUses")
+  }
+
+  //····················································································································
+  //   resetControllers
+  //····················································································································
+
+  override func resetControllers () {
+    super.resetControllers ()
+  }
+
+  //····················································································································
+  //   resetToManyRelationships
+  //····················································································································
+
+  override func resetToManyRelationships () {
+    super.resetToManyRelationships ()
+  }
+
+  //····················································································································
+  //   resetToOneRelationships
+  //····················································································································
+
+  override func resetToOneRelationships () {
+    super.resetToOneRelationships ()
+  }
+
+  //····················································································································
+  //   accessibleObjects
+  //····················································································································
+
+  override func accessibleObjects (objects : inout [EBManagedObject]) {
+    super.accessibleObjects (objects: &objects)
   }
 
   //····················································································································
 
 }
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Class as transient property
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyProperty_CanariLibraryEntry = EBReadOnlyClassProperty <CanariLibraryEntry>
-typealias EBTransientProperty_CanariLibraryEntry = EBTransientClassProperty <CanariLibraryEntry>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ReadOnlyArrayOf_CanariLibraryEntry
@@ -210,12 +278,23 @@ typealias EBTransientProperty_CanariLibraryEntry = EBTransientClassProperty <Can
 class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
 
   //····················································································································
-  // Stored property 'mPath'
+
+  weak var undoManager : EBUndoManager? // SOULD BE WEAK
+
+  //····················································································································
+
+  var propval : [CanariLibraryEntry] { return [] } // Abstract method
+
+  //····················································································································
+  //   Observers of 'mPath' stored property
   //····················································································································
 
   private var mObserversOf_mPath = EBWeakEventSet ()
 
+  //····················································································································
+
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     mObserversOf_mPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -227,7 +306,10 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
     mObserversOf_mPath.remove (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -239,6 +321,8 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mPath {
@@ -246,6 +330,8 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       }
     }
   }
+
+  //····················································································································
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for observer in mObserversOf_mPath {
@@ -257,12 +343,15 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   }
 
   //····················································································································
-  // Stored property 'mUses'
+  //   Observers of 'mUses' stored property
   //····················································································································
 
   private var mObserversOf_mUses = EBWeakEventSet ()
 
+  //····················································································································
+
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     mObserversOf_mUses.insert (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -274,7 +363,10 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
     mObserversOf_mUses.remove (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -286,6 +378,8 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mUses {
@@ -293,6 +387,8 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       }
     }
   }
+
+  //····················································································································
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for observer in mObserversOf_mUses {
@@ -304,12 +400,15 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   }
 
   //····················································································································
-  // Transient property 'mStatusImage'
+  //   Observers of 'mStatusImage' transient property
   //····················································································································
 
   private var mObserversOf_mStatusImage = EBWeakEventSet ()
 
+  //····················································································································
+
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
     mObserversOf_mStatusImage.insert (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -321,7 +420,10 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
     mObserversOf_mStatusImage.remove (inObserver)
     switch prop {
     case .empty, .multiple :
@@ -333,16 +435,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
-  final func postEventTo_mStatusImage () {
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.mStatusImage_property.postEvent ()
-      }
-    }
-  }
+  //····················································································································
 
   final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
@@ -352,6 +445,8 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
     }
   }
 
+  //····················································································································
+
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
       for observer in mObserversOf_mStatusImage {
@@ -359,7 +454,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
       }
     }
   }
-  
+
   //····················································································································
 
 }
@@ -371,8 +466,25 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   var readModelFunction : Optional<() -> EBSelection < [CanariLibraryEntry] > >
- 
-  private var prop_cache : EBSelection < [CanariLibraryEntry] >? 
+
+  //····················································································································
+
+   private var prop_cache : EBSelection < [CanariLibraryEntry] >? 
+
+  //····················································································································
+
+  override var propval : [CanariLibraryEntry] {
+    if let value = prop_cache {
+      switch value {
+      case .empty, .multiple :
+        return []
+      case .single (let v) :
+        return v
+      }
+    }else{
+      return []
+    }
+  }
 
   //····················································································································
 
@@ -382,10 +494,35 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
+  private var mSet = Set <CanariLibraryEntry> ()
+
   override var prop : EBSelection < [CanariLibraryEntry] > {
     get {
       if let unwrappedComputeFunction = readModelFunction, prop_cache == nil {
         prop_cache = unwrappedComputeFunction ()
+        let newSet : Set <CanariLibraryEntry>
+        switch prop_cache! {
+        case .multiple, .empty :
+          newSet = Set <CanariLibraryEntry> ()
+        case .single (let array) :
+          newSet = Set (array)
+        }
+     //--- Removed object set
+        let removedSet = mSet.subtracting (newSet)
+      //--- Remove observers of stored properties
+        removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
+        removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
+      //--- Remove observers of transient properties
+        removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
+      //--- Added object set
+        let addedSet = newSet.subtracting (mSet)
+       //--- Add observers of stored properties
+        addEBObserversOf_mPath_toElementsOfSet (addedSet)
+        addEBObserversOf_mUses_toElementsOfSet (addedSet)
+       //--- Add observers of transient properties
+        addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
+      //--- Update object set
+        mSet = newSet
       }
       if prop_cache == nil {
         prop_cache = .empty
@@ -413,124 +550,142 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol CanariLibraryEntry_mPath : class {
-  var mPath : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol CanariLibraryEntry_mUses : class {
-  var mUses : Bool { get }
-}
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Read write array of class: CanariLibraryEntry
+//    To many relationship read write: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
-  //  Undo manager
+ 
+  func setProp (_ value :  [CanariLibraryEntry]) { } // Abstract method
+  
   //····················································································································
 
-  var undoManager : EBUndoManager? = nil {
-    didSet {
-      for object in self.propval {
-        object.undoManager = self.undoManager
-      }
-    }
-  }
-
-  //····················································································································
-  //  Abstract methods
-  //····················································································································
-
-  func setProp (_ value:  [CanariLibraryEntry]) { }
-
-  //····················································································································
-
-  var propval : [CanariLibraryEntry] { get { return [] } }
-
-  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Stored array of class: CanariLibraryEntry
+//    To many relationship: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
+final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
 
   //····················································································································
-  //  Preferences Key
+
+  var setOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry?) -> Void > = nil
+  private var mPrefKey : String? = nil
+
   //····················································································································
 
-  private let mPreferencesKey : String
-  
-  //····················································································································
-  //  Init
-  //····················································································································
-
-  init (_ inPreferencesKey : String) {
-    mPreferencesKey = inPreferencesKey
-    super.init ()
-  //--- Read from user defaults
-    let ud = UserDefaults.standard
-    let value : Any? = ud.object (forKey: self.mPreferencesKey)
-    if let unwValue : Any = value {
-      if let array : [NSDictionary] = unwValue as? [NSDictionary] {
-        for dict in array {
-          let object = CanariLibraryEntry ()
-          object.setUp (withDictionary: dict)
-          mValue.append (object)
+  var mValueExplorer : NSPopUpButton? {
+    didSet {
+      if let unwrappedExplorer = mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToManyRelationshipDisplay (objectArray: v, popUpButton:unwrappedExplorer)
         }
       }
     }
   }
-  
+
   //····················································································································
 
-  private var mSet = Set<CanariLibraryEntry> ()
+  override init () {
+    super.init ()
+    self.count_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        switch unwSelf.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v.count)
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //····················································································································
+
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [CanariLibraryEntry] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
+  private var mSet = Set <CanariLibraryEntry> ()
   private var mValue = [CanariLibraryEntry] () {
     didSet {
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let valueExplorer = mValueExplorer {
+          updateManagedObjectToManyRelationshipDisplay (objectArray: mValue, popUpButton: valueExplorer)
+        }
       //--- Removed object set
-        let removedSet = oldSet.subtracting (mSet)
-        removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
-        removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
-        removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
-        for object in removedSet {
-          object.undoManager = nil
+        let removedObjectSet = oldSet.subtracting (mSet)
+        for managedObject in removedObjectSet {
+          managedObject.setSignatureObserver (observer: nil)
+          self.setOppositeRelationship? (nil)
         }
+        self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedSet = mSet.subtracting (oldSet)
-        addEBObserversOf_mPath_toElementsOfSet (addedSet)
-        addEBObserversOf_mUses_toElementsOfSet (addedSet)
-        addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
-        for object in addedSet {
-          object.undoManager = self.undoManager
+        let addedObjectSet = self.mSet.subtracting (oldSet)
+        for managedObject : CanariLibraryEntry in addedObjectSet {
+          managedObject.setSignatureObserver (observer: self)
+          self.setOppositeRelationship? (managedObject)
         }
-      //--- Notify observers object count did change
-        postEvent ()
-      //--- Store in user defaults (undo manager is nil during setup)
-        if self.undoManager != nil {
-          let ud = UserDefaults.standard
-          var array = [NSDictionary] ()
-          for object in mValue {
-            let dict = NSMutableDictionary ()
-            object.saveInto (dictionary: dict)
-            array.append (dict)
+        self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
+      //--- Notify observers
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
           }
-          ud.set (array, forKey: self.mPreferencesKey)
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
         }
       }
     }
   }
+
+  //····················································································································
+
+  override var prop : EBSelection < [CanariLibraryEntry] > { return .single (mValue) }
+
+  override func setProp (_ inValue : [CanariLibraryEntry]) { mValue = inValue }
+
+  override var propval : [CanariLibraryEntry] { return mValue }
 
   //····················································································································
 
@@ -540,22 +695,75 @@ class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  override var prop : EBSelection < [CanariLibraryEntry] > {
-    get {
-      return .single (mValue)
+  func remove (_ object : CanariLibraryEntry) {
+    if mSet.contains (object) {
+      var array = mValue
+      let idx = array.index (of: object)
+      array.remove (at: idx!)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+
+  func add (_ object : CanariLibraryEntry) {
+    if !mSet.contains (object) {
+      var array = mValue
+      array.append (object)
+      mValue = array
+    }
+  }
+  
+  //····················································································································
+  //   signature
+  //····················································································································
+
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
+    mSignatureObserver = observer
+    for object in mValue {
+      object.setSignatureObserver (observer: self)
     }
   }
 
   //····················································································································
 
-  override func setProp (_ value:  [CanariLibraryEntry]) { mValue = value }
+  final func signature () -> UInt32 {
+    let computedSignature : UInt32
+    if let s = mSignatureCache {
+      computedSignature = s
+    }else{
+      computedSignature = computeSignature ()
+      mSignatureCache = computedSignature
+    }
+    return computedSignature
+  }
+  
+  //····················································································································
+
+  final func computeSignature () -> UInt32 {
+    var crc : UInt32 = 0
+    for object in mValue {
+      crc.accumulateUInt32 (object.signature ())
+    }
+    return crc
+  }
 
   //····················································································································
 
-  override var propval : [CanariLibraryEntry] { get { return mValue } }
+  final func clearSignatureCache () {
+    if mSignatureCache != nil {
+      mSignatureCache = nil
+      mSignatureObserver?.clearSignatureCache ()
+    }
+  }
 
   //····················································································································
-
+ 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

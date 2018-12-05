@@ -10,7 +10,9 @@ import Cocoa
 
 func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) throws -> EBManagedObject {
   var result : EBManagedObject
-  if inEntityTypeName == "FontCharacter" {
+  if inEntityTypeName == "CanariLibraryEntry" {
+    result = CanariLibraryEntry (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "FontCharacter" {
     result = FontCharacter (undoManager, file: #file, #line)
   }else if inEntityTypeName == "SegmentForFontCharacter" {
     result = SegmentForFontCharacter (undoManager, file: #file, #line)

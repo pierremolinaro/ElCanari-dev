@@ -259,6 +259,7 @@ class SymbolText : SymbolObject,
     self.text_property.setSignatureObserver (observer:self)
     self.x_property.setSignatureObserver (observer:self)
     self.y_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -280,6 +281,11 @@ class SymbolText : SymbolObject,
     self.y_property.removeEBObserver (self.issues_property)
     self.text_property.removeEBObserver (self.issues_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -981,9 +987,7 @@ class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
   //····················································································································
  
   func setProp (_ value :  [SymbolText]) { } // Abstract method
- 
-  // var propval : [SymbolText] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -997,6 +1001,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolText?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1035,13 +1040,33 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolText] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "SymbolText") as? SymbolText {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <SymbolText> ()
   private var mValue = [SymbolText] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1054,31 +1079,44 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_text_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SymbolText in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_text_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_text_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_horizontalAlignment_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [SymbolText] > { return .single (mValue) }
 

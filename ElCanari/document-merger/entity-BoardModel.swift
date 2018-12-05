@@ -3308,6 +3308,7 @@ class BoardModel : EBManagedObject,
       inManagedObject?.myModel_property.setProp (self)
     }
   //--- register properties for handling signature
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -3563,6 +3564,11 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
     self.myInstances_property.removeEBObserver (self.instanceCount_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -7867,9 +7873,7 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   //····················································································································
  
   func setProp (_ value :  [BoardModel]) { } // Abstract method
- 
-  // var propval : [BoardModel] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -7883,6 +7887,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -7921,13 +7926,33 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [BoardModel] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "BoardModel") as? BoardModel {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <BoardModel> ()
   private var mValue = [BoardModel] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -7940,123 +7965,136 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelWidthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelHeight_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelHeightUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelLimitWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelRect_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drillSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_holesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_viaShapes_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_viasBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontPadArray_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backPadArray_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardLimits_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backTrackSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontTrackSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : BoardModel in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelWidthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelHeight_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelHeightUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelLimitWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelRect_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLegendTextsSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drillSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_holesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_viaShapes_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_viasBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontPadArray_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backPadArray_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backPadsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardLimits_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backComponentNameSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontComponentNameSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontComponentValueSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backComponentValueSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backTrackSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backTracksBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontTrackSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontPackagesSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [BoardModel] > { return .single (mValue) }
 

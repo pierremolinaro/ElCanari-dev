@@ -435,6 +435,7 @@ class FontRoot : EBManagedObject,
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -453,6 +454,11 @@ class FontRoot : EBManagedObject,
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -1311,9 +1317,7 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
   //····················································································································
  
   func setProp (_ value :  [FontRoot]) { } // Abstract method
- 
-  // var propval : [FontRoot] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -1327,6 +1331,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : FontRoot?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1365,13 +1370,33 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [FontRoot] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "FontRoot") as? FontRoot {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <FontRoot> ()
   private var mValue = [FontRoot] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1384,35 +1409,48 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : FontRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [FontRoot] > { return .single (mValue) }
 

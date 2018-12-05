@@ -409,7 +409,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     } 
   }
  
- //····················································································································
+  //····················································································································
   //    select
   //····················································································································
 
@@ -427,7 +427,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       }
     }
   }
- 
+
   //····················································································································
   //    add
   //····················································································································
@@ -441,7 +441,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject : CanariLibraryEntry = CanariLibraryEntry ()
+        let newObject = CanariLibraryEntry (self.undoManager, file: #file, #line)
         var array = v
         array.append (newObject)
       //--- New object is the selection

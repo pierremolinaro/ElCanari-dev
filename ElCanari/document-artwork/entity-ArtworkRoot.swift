@@ -392,6 +392,7 @@ class ArtworkRoot : EBManagedObject,
     self.minValueForBoardLimitWidth_property.setSignatureObserver (observer:self)
     self.minValueForOARinEBUnit_property.setSignatureObserver (observer:self)
     self.minValueForPHDinEBUnit_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -399,6 +400,11 @@ class ArtworkRoot : EBManagedObject,
   deinit {
   //--- Remove observers
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -1450,9 +1456,7 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   //····················································································································
  
   func setProp (_ value :  [ArtworkRoot]) { } // Abstract method
- 
-  // var propval : [ArtworkRoot] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -1466,6 +1470,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1504,13 +1509,33 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [ArtworkRoot] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "ArtworkRoot") as? ArtworkRoot {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <ArtworkRoot> ()
   private var mValue = [ArtworkRoot] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1523,39 +1548,52 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : ArtworkRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [ArtworkRoot] > { return .single (mValue) }
 

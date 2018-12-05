@@ -543,6 +543,7 @@ class SymbolPin : SymbolObject,
     self.yName_property.setSignatureObserver (observer:self)
     self.yNumber_property.setSignatureObserver (observer:self)
     self.yPin_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -582,6 +583,11 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -1799,9 +1805,7 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //····················································································································
  
   func setProp (_ value :  [SymbolPin]) { } // Abstract method
- 
-  // var propval : [SymbolPin] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -1815,6 +1819,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPin?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -1853,13 +1858,33 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [SymbolPin] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "SymbolPin") as? SymbolPin {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <SymbolPin> ()
   private var mValue = [SymbolPin] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -1872,45 +1897,58 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SymbolPin in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [SymbolPin] > { return .single (mValue) }
 

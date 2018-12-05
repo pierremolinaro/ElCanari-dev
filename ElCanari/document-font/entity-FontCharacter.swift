@@ -262,6 +262,7 @@ class FontCharacter : EBManagedObject,
     self.advance_property.setSignatureObserver (observer:self)
     self.codePoint_property.setSignatureObserver (observer:self)
     self.segments_property.setSignatureObserver (observer:self)
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -275,6 +276,11 @@ class FontCharacter : EBManagedObject,
     self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
     self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -854,9 +860,7 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   //····················································································································
  
   func setProp (_ value :  [FontCharacter]) { } // Abstract method
- 
-  // var propval : [FontCharacter] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -870,6 +874,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -908,13 +913,33 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [FontCharacter] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "FontCharacter") as? FontCharacter {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <FontCharacter> ()
   private var mValue = [FontCharacter] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -927,27 +952,40 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : FontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [FontCharacter] > { return .single (mValue) }
 

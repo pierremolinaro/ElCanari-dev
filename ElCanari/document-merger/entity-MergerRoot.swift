@@ -1140,6 +1140,7 @@ class MergerRoot : EBManagedObject,
       inManagedObject?.myRoot_property.setProp (self)
     }
   //--- register properties for handling signature
+  //--- Extern delegates
   }
 
   //····················································································································
@@ -1163,6 +1164,11 @@ class MergerRoot : EBManagedObject,
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
   }
+
+  //····················································································································
+  //    Extern delegates
+  //····················································································································
+
 
   //····················································································································
   //    populateExplorerWindow
@@ -3444,9 +3450,7 @@ class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   //····················································································································
  
   func setProp (_ value :  [MergerRoot]) { } // Abstract method
- 
-  // var propval : [MergerRoot] { return [] } // Abstract method
- 
+  
   //····················································································································
 
 }
@@ -3460,6 +3464,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //····················································································································
 
   var setOppositeRelationship : Optional < (_ inManagedObject : MergerRoot?) -> Void > = nil
+  private var mPrefKey : String? = nil
 
   //····················································································································
 
@@ -3498,13 +3503,33 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   //····················································································································
 
+  convenience init (prefKey : String) {
+    self.init ()
+    self.mPrefKey = prefKey
+    if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
+      var objectArray = [MergerRoot] ()
+      for dictionary in array {
+        do{
+          if let object = try newInstanceOfEntityNamed (self.undoManager, "MergerRoot") as? MergerRoot {
+            object.setUpAtomicPropertiesWithDictionary (dictionary)
+            objectArray.append (object)
+          }
+        }catch _ {
+        }
+      }
+      self.setProp (objectArray)
+    }
+  }
+
+ //····················································································································
+
   private var mSet = Set <MergerRoot> ()
   private var mValue = [MergerRoot] () {
     didSet {
-      postEvent ()
+      self.postEvent ()
       if oldValue != mValue {
-        let oldSet = mSet
-        mSet = Set (mValue)
+        let oldSet = self.mSet
+        self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
         self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
@@ -3517,73 +3542,86 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-        removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_cocoaArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_cocoaShiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
-        let addedObjectSet = mSet.subtracting (oldSet)
+        let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : MergerRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_cocoaArrowMagnitude_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_cocoaShiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
-        clearSignatureCache ()
+        self.clearSignatureCache ()
+      //--- Write in preferences ?
+        if let prefKey = self.mPrefKey {
+          var dictionaryArray = [NSDictionary] ()
+          for object in self.mValue {
+            let d = NSMutableDictionary ()
+            object.saveIntoDictionary (d)
+            d [kEntityKey] = nil // Remove entity key, not used in preferences
+            dictionaryArray.append (d)
+          }
+          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
+        }
       }
     }
   }
+
+  //····················································································································
 
   override var prop : EBSelection < [MergerRoot] > { return .single (mValue) }
 
