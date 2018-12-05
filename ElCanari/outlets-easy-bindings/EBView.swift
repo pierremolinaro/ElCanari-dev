@@ -21,18 +21,19 @@ protocol EBViewControllerProtocol : class {
 
   var selectedIndexesSet : Set <Int> { get }
 
-  func deleteSelectedObjects ()
-
   func selectAllObjects ()
 
   func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
 
   func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
   func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
 
   func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
+  func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
 
   func canDelete () -> Bool
+  func deleteSelectedObjects ()
 
   var canBringForward : Bool { get }
   func bringForward ()
@@ -709,6 +710,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   @objc func cut (_ : Any?) {
+    self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType)
   }
 
   //····················································································································
@@ -720,6 +722,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   @objc func paste (_ : Any?) {
+    self.mViewController?.pasteFromPasteboard (self.mPasteboardType)
   }
 
   //····················································································································

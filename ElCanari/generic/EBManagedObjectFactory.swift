@@ -68,13 +68,13 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
 //   makeManagedObjectFromDictionary
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager, _ inDictionary : NSDictionary) -> EBManagedObject? {
+func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDictionary : NSDictionary) -> EBManagedObject? {
   do{
     let entityName = inDictionary.value (forKey: kEntityKey) as! String
     let object = try newInstanceOfEntityNamed (inUndoManager, entityName)
-    inUndoManager.disableUndoRegistration ()
+  //  inUndoManager?.disableUndoRegistration ()
     object.setUpAtomicPropertiesWithDictionary (inDictionary) 
-    inUndoManager.enableUndoRegistration ()
+  //  inUndoManager?.enableUndoRegistration ()
     return object
   }catch (_) {
     return nil

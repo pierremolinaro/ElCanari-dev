@@ -492,23 +492,42 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   }
 
   //····················································································································
+  // MARK: -
+  //····················································································································
+
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+    self.copySelectedObjectsIntoPasteboard (inPasteboardType)
+    self.deleteSelectedObjects ()
+  }
+
+  //····················································································································
 
   func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
     return self.canCut (inPasteboardType)
   }
 
-   func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+    func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
     if let pasteboardType = inPasteboardType {
- //--- Declare pasteboard types
+    //--- Declare pasteboard types
       let pb = NSPasteboard.general
-//  NSMutableArray * ta = [NSMutableArray arrayWithCapacity:0] ;
-//  [ta addObject:NSPDFPboardType HERE] ;
-//  [ta addObject:NSTIFFPboardType HERE] ;
-//  [ta addObject:mGeneralPasteboardPrivateObjectType] ;
-      pb.declareTypes ([pasteboardType], owner:self)
-    //--- Build private representation
+      pb.declareTypes ([pasteboardType, .pdf], owner:self)
+    //--- Build PDF representation
       let indexArray = self.sortedIndexArrayOfSelectedObjects ()
       let objects = mModel?.propval ?? []
+      let shape = EBShape ()
+      for idx in indexArray {
+        let object = objects [idx]
+        if let s = object.objectDisplay {
+          shape.append (s)
+        }
+      }
+      let pdfData = buildPDFimage (frame: shape.boundingBox, shape: shape)
+      pb.setData (pdfData, forType: .pdf)
+   //--- Build private representation
       var objectDictionaryArray = [NSDictionary] ()
       for idx in indexArray {
         let object = objects [idx]
@@ -521,12 +540,43 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       pb.setData (data, forType: pasteboardType)
     }
   }
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
-    return false
+    if let pasteboardType = inPasteboardType {
+      let pb = NSPasteboard.general
+      return pb.availableType (from: [pasteboardType]) != nil
+    }else{
+      return false
+    }
   }
 
+  //····················································································································
+
+  func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+    let pb = NSPasteboard.general
+    if let pasteboardType = inPasteboardType,
+       pb.availableType (from: [pasteboardType]) != nil,
+       let data = pb.data(forType: pasteboardType),
+       let array = NSUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
+      var newObjects = [MergerBoardInstance] ()
+      for dictionary in array {
+        if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? MergerBoardInstance {
+          newObjects.append (object)
+        }
+      }
+      var objects = self.mModel?.propval ?? []
+      objects += newObjects
+      self.mModel?.setProp (objects)
+      mSelectedSet.mSet = Set (newObjects)
+    }
+  }
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   func canDelete () -> Bool {
@@ -546,6 +596,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     mSelectedSet.mSet = Set ()
   }
 
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   func selectAllObjects () {
