@@ -600,7 +600,6 @@ protocol EBViewControllerProtocol : class {
     self.mPossibleKnob = nil
   }
 
-
   //····················································································································
   // key Events
   //····················································································································
@@ -611,27 +610,21 @@ protocol EBViewControllerProtocol : class {
       : self.arrowKeyMagnitude
     ;
     for character in (inEvent.characters ?? "").unicodeScalars {
-      switch (Int (character.value)) {
-      case NSEvent.SpecialKey.upArrow.rawValue :
+      switch (character) {
+      case NSEvent.SpecialKey.upArrow.unicodeScalar :
         _ = wantsToTranslateSelection (byX: 0.0, byY:amount)
-      case NSEvent.SpecialKey.downArrow.rawValue :
+      case NSEvent.SpecialKey.downArrow.unicodeScalar :
         _ = wantsToTranslateSelection (byX: 0.0, byY:-amount)
-      case NSEvent.SpecialKey.leftArrow.rawValue :
+      case NSEvent.SpecialKey.leftArrow.unicodeScalar :
         _ = wantsToTranslateSelection (byX: -amount, byY:0.0)
-      case NSEvent.SpecialKey.rightArrow.rawValue :
+      case NSEvent.SpecialKey.rightArrow.unicodeScalar :
         _ = wantsToTranslateSelection (byX: amount, byY:0.0)
-      case 0x7F, NSEvent.SpecialKey.deleteForward.rawValue :
-        deleteSelection ()
+      case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
+        self.deleteSelection ()
       default :
         break
       }
     }
-  }
-
-  //····················································································································
-
-  private func deleteSelection () {
-    mViewController?.deleteSelectedObjects ()
   }
 
   //····················································································································
@@ -664,6 +657,10 @@ protocol EBViewControllerProtocol : class {
   func register (pasteboardType inPasteboardType : NSPasteboard.PasteboardType?) {
     self.mPasteboardType = inPasteboardType
   }
+
+  //····················································································································
+
+  var pasteboardType : NSPasteboard.PasteboardType? { return self.mPasteboardType }
 
   //····················································································································
   // Menu actions
@@ -729,6 +726,12 @@ protocol EBViewControllerProtocol : class {
 
   @objc func delete (_ : Any?) {
     self.deleteSelection ()
+  }
+
+  //····················································································································
+
+  private func deleteSelection () {
+    mViewController?.deleteSelectedObjects ()
   }
 
   //····················································································································

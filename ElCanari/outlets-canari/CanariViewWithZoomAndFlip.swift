@@ -21,7 +21,7 @@ protocol CanariViewScaleProvider : class {
 //   CanariViewWithZoomAndFlip
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider {
+class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardItemDataProvider {
 
   //····················································································································
 
@@ -878,36 +878,29 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider {
   }
 
   //····················································································································
-  //    Dragging destination
+  //    Dragging source
   // MARK: -
   //····················································································································
   // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 
-  //····················································································································
-
-  let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes : NSImage.imageTypes]
-
-  //····················································································································
-
-  func shouldAllowDrag (_ draggingInfo: NSDraggingInfo) -> Bool {
-    let pasteBoard = draggingInfo.draggingPasteboard
-    return pasteBoard.canReadObject (forClasses: [NSURL.self], options: filteringOptions)
+  func pasteboard (_ pasteboard: NSPasteboard?,
+                   item: NSPasteboardItem,
+                   provideDataForType type: NSPasteboard.PasteboardType) {
   }
 
   //····················································································································
 
-  fileprivate var isReceivingDrag = false {
-    didSet {
-      self.needsDisplay = true
+  override func mouseDown (with inEvent : NSEvent) {
+    let isStartDraggingSourceEvent = inEvent.modifierFlags.contains (.option)
+    if let pbType = self.pasteboardType, isStartDraggingSourceEvent {
+   //--- Get Pasteboard
+      let pasteboardItem = NSPasteboardItem ()
+      pasteboardItem.setDataProvider (self, forTypes: [pbType])
+      let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
+
+    }else{
+      super.mouseDown (with: inEvent)
     }
-  }
-
-  //····················································································································
-
-  override func draggingEntered (_ sender: NSDraggingInfo) -> NSDragOperation {
-    let allow = shouldAllowDrag (sender)
-    self.isReceivingDrag = allow
-    return allow ? .copy : NSDragOperation ()
   }
 
   //····················································································································
@@ -916,6 +909,7 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Controller_CanariViewWithZoomAndFlip_zoom
+//   MARK: -
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
