@@ -104,6 +104,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mAddPinButton?.image = self.imageForAddPinButton ()
 
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
+    self.mComposedSymbolView?.register (pasteboardType: symbolPasteboardType)
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")

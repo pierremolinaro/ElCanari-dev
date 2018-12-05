@@ -57,7 +57,7 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
-  //   Translation
+  //  Translation
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //····················································································································
 
@@ -157,6 +157,15 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
 
   @objc dynamic func canRotate90CounterClockwise () -> Bool {
+    return false
+  }
+
+  //····················································································································
+  //  COPY AND PASTE
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //····················································································································
+
+  @objc dynamic func canCopyAndPaste () -> Bool {
     return false
   }
 

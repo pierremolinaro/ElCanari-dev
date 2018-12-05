@@ -21,9 +21,18 @@ protocol EBViewControllerProtocol : class {
 
   var selectedIndexesSet : Set <Int> { get }
 
-  func deleteSelectionAndRemoveDeletedObjectsFromManagedObjectContext ()
+  func deleteSelectedObjects ()
 
   func selectAllObjects ()
+
+  func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
+
+  func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
+  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
+
+  func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
+
+  func canDelete () -> Bool
 
   var canBringForward : Bool { get }
   func bringForward ()
@@ -621,7 +630,7 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   private func deleteSelection () {
-    mViewController?.deleteSelectionAndRemoveDeletedObjectsFromManagedObjectContext ()
+    mViewController?.deleteSelectedObjects ()
   }
 
   //····················································································································
@@ -643,7 +652,20 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  //   Menu actions
+  // Paste board type
+  // MARK: -
+  //····················································································································
+
+  private var mPasteboardType : NSPasteboard.PasteboardType? = nil
+
+  //····················································································································
+
+  func register (pasteboardType inPasteboardType : NSPasteboard.PasteboardType?) {
+    self.mPasteboardType = inPasteboardType
+  }
+
+  //····················································································································
+  // Menu actions
   // MARK: -
   //····················································································································
 
@@ -651,25 +673,33 @@ protocol EBViewControllerProtocol : class {
     let validate : Bool
     let action = inMenuItem.action
     if action == #selector (EBView.selectAll(_:)) {
-      validate = (mViewController?.objectCount ?? 0) > 0
+      validate = (self.mViewController?.objectCount ?? 0) > 0
+    }else if action == #selector (EBView.cut(_:)) {
+      validate = self.mViewController?.canCut (self.mPasteboardType) ?? false
+    }else if action == #selector (EBView.copy(_:)) {
+      validate = self.mViewController?.canCopy (self.mPasteboardType) ?? false
+    }else if action == #selector (EBView.paste(_:)) {
+      validate = self.mViewController?.canPaste (self.mPasteboardType) ?? false
+    }else if action == #selector (EBView.delete(_:)) {
+      validate = self.mViewController?.canDelete () ?? false
     }else if action == #selector (EBView.bringToFront(_:)) {
-      validate = mViewController?.canBringToFront ?? false
+      validate = self.mViewController?.canBringToFront ?? false
     }else if action == #selector (EBView.bringForward(_:)) {
-      validate = mViewController?.canBringForward ?? false
+      validate = self.mViewController?.canBringForward ?? false
     }else if action == #selector (EBView.sendToBack(_:)) {
-      validate = mViewController?.canSendToBack ?? false
+      validate = self.mViewController?.canSendToBack ?? false
     }else if action == #selector (EBView.sendBackward(_:)) {
-      validate = mViewController?.canSendBackward ?? false
+      validate = self.mViewController?.canSendBackward ?? false
     }else if action == #selector (EBView.snapToGrid(_:)) {
-      validate = mViewController?.canSnapToGrid ?? false
+      validate = self.mViewController?.canSnapToGrid ?? false
     }else if action == #selector (EBView.flipHorizontally(_:)) {
-      validate = mViewController?.canFlipHorizontally ?? false
+      validate = self.mViewController?.canFlipHorizontally ?? false
     }else if action == #selector (EBView.flipVertically(_:)) {
-      validate = mViewController?.canFlipVertically ?? false
+      validate = self.mViewController?.canFlipVertically ?? false
     }else if action == #selector (EBView.rotate90Clockwise(_:)) {
-      validate = mViewController?.canRotate90Clockwise ?? false
+      validate = self.mViewController?.canRotate90Clockwise ?? false
     }else if action == #selector (EBView.rotate90CounterClockwise(_:)) {
-      validate = mViewController?.canRotate90CounterClockwise ?? false
+      validate = self.mViewController?.canRotate90CounterClockwise ?? false
     }else{
       validate = false
     }
@@ -678,8 +708,30 @@ protocol EBViewControllerProtocol : class {
 
   //····················································································································
 
+  @objc func cut (_ : Any?) {
+  }
+
+  //····················································································································
+
+  @objc func copy (_ : Any?) {
+    self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType)
+  }
+
+  //····················································································································
+
+  @objc func paste (_ : Any?) {
+  }
+
+  //····················································································································
+
+  @objc func delete (_ : Any?) {
+    self.deleteSelection ()
+  }
+
+  //····················································································································
+
   override func selectAll (_ : Any?) {
-    mViewController?.selectAllObjects ()
+    self.mViewController?.selectAllObjects ()
   }
 
   //····················································································································
@@ -743,7 +795,8 @@ protocol EBViewControllerProtocol : class {
   }
 
   //····················································································································
-  //    Selection Layer
+  //   MARK: -
+  //   Selection Layer
   //····················································································································
 
   private var mSelectionShapes = [EBShape] ()

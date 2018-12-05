@@ -5,7 +5,7 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBTextShape
+//    EBTextShape alignments
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum EBTextHorizontalAlignment {
@@ -22,6 +22,8 @@ enum EBTextVerticalAlignment {
   case below
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBTextShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTextShape : EBShape {
@@ -65,7 +67,7 @@ class EBTextShape : EBShape {
     }
 //    mOrigin = p
   //--- Bezier path
-    mFilledBezierPath = inString.bezierPath (at: p, attributes: inTextAttributes)
+    mFilledBezierPath = inString.bezierPath (at: p, withAttributes: inTextAttributes)
   //--- Color
     if let c = inTextAttributes [NSAttributedString.Key.foregroundColor] as? NSColor {
       mForeColor = c
@@ -78,8 +80,7 @@ class EBTextShape : EBShape {
 
   //····················································································································
 
-  init (_ inBezierPath : NSBezierPath,
-        _ inColor : NSColor) {
+  private init (_ inBezierPath : NSBezierPath, _ inColor : NSColor) {
     mFilledBezierPath = inBezierPath
     mForeColor = inColor
     super.init ()
@@ -192,7 +193,7 @@ extension String {
   //····················································································································
 
   func bezierPath (at inOrigin : NSPoint,
-                   attributes inTextAttributes : [NSAttributedString.Key : Any]) -> NSBezierPath {
+                   withAttributes inTextAttributes : [NSAttributedString.Key : Any]) -> NSBezierPath {
   //--- Font
     let font : NSFont
     if let f = inTextAttributes [NSAttributedString.Key.font] as? NSFont {

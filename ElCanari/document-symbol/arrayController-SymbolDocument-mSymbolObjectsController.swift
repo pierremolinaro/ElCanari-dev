@@ -475,8 +475,67 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   }
 
   //····················································································································
+  // MARK: -
+  //····················································································································
 
-   func deleteSelectionAndRemoveDeletedObjectsFromManagedObjectContext () {
+  func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
+    if (inPasteboardType == nil) || (self.mSelectedSet.mSet.count == 0) {
+      return false
+    }else{
+      for object in self.mSelectedSet.mSet {
+        if !object.canCopyAndPaste () {
+          return false
+        }
+      }
+      return true
+    }
+  }
+
+  //····················································································································
+
+  func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
+    return self.canCut (inPasteboardType)
+  }
+
+   func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+    if let pasteboardType = inPasteboardType {
+ //--- Declare pasteboard types
+      let pb = NSPasteboard.general
+//  NSMutableArray * ta = [NSMutableArray arrayWithCapacity:0] ;
+//  [ta addObject:NSPDFPboardType HERE] ;
+//  [ta addObject:NSTIFFPboardType HERE] ;
+//  [ta addObject:mGeneralPasteboardPrivateObjectType] ;
+      pb.declareTypes ([pasteboardType], owner:self)
+    //--- Build private representation
+      let indexArray = self.sortedIndexArrayOfSelectedObjects ()
+      let objects = mModel?.propval ?? []
+      var objectDictionaryArray = [NSDictionary] ()
+      for idx in indexArray {
+        let object = objects [idx]
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        objectDictionaryArray.append (d)
+      }
+    //--- Copy private representation(s)
+      let data = NSArchiver.archivedData (withRootObject: objectDictionaryArray)
+      pb.setData (data, forType: pasteboardType)
+    }
+  }
+  //····················································································································
+
+  func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
+    return false
+  }
+
+  //····················································································································
+
+  func canDelete () -> Bool {
+    return mSelectedSet.mSet.count > 0
+  }
+
+  //····················································································································
+
+   func deleteSelectedObjects () {
     var objects = mModel?.propval ?? []
     for object in mSelectedSet.mSet {
       if let idx = objects.index (of: object) {
