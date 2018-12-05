@@ -1,6 +1,4 @@
 
-extern outlet class CanariToolbar ;
-
 prefs {
   outlet EBWindow mPrefsWindow ;
   outlet CanariToolbar mToolbar ;
