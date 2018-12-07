@@ -573,7 +573,7 @@ Cg
         </customView>
         <customView id="844" userLabel="Object Inspector : Text" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" id="858">
                     <rect key="frame" x="20" y="432" width="210" height="5"/>
@@ -634,7 +634,7 @@ Cg
         </customView>
         <customView id="528" userLabel="Object inspector : pin" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" id="637">
                     <rect key="frame" x="20" y="437" width="210" height="5"/>
@@ -727,7 +727,7 @@ Cg
         </customView>
         <customView id="gB9-36-zn7" userLabel="Object inspector Base View" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <point key="canvasLocation" x="213" y="367"/>
         </customView>
     </objects>

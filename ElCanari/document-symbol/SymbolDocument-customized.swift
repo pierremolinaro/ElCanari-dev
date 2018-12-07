@@ -138,13 +138,17 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
       let pasteboard = sender.draggingPasteboard
       if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
-        if let dictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary,
-           let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
-          self.ebUndoManager.disableUndoRegistration ()
-          newObject.translate (xBy: pointInDestinationView.x, yBy: pointInDestinationView.y)
-          self.ebUndoManager.enableUndoRegistration ()
-          self.rootObject.symbolObjects_property.add (newObject)
-          self.mSymbolObjectsController.select (object: newObject)
+        if let dataDictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary,
+           let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
+           let str = dataDictionary ["START"] as? String {
+          let startPoint = NSPointFromString (str)
+          for dictionary in dictionaryArray {
+            if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
+              newObject.translate (xBy: pointInDestinationView.x - startPoint.x, yBy: pointInDestinationView.y - startPoint.y)
+              self.rootObject.symbolObjects_property.add (newObject)
+              self.mSymbolObjectsController.select (object: newObject)
+            }
+          }
           ok = true
         }
       }

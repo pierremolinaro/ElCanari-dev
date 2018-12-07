@@ -46,10 +46,10 @@ import Cocoa
 
   //····················································································································
 
-  func removePlacard (_ inView : NSView) {
-    if mPlacardArray.contains (inView) {
-      inView.removeFromSuperview ()
-      if let index = mPlacardArray.index (of: inView) {
+  func removePlacard (_ inView : NSView?) {
+    if let view = inView, mPlacardArray.contains (view) {
+      view.removeFromSuperview ()
+      if let index = mPlacardArray.index (of: view) {
         mPlacardArray.remove (at: index)
       }
     }

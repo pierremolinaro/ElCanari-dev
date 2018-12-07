@@ -16,12 +16,19 @@ protocol CanariViewScaleProvider : class {
   func actualScale () -> CGFloat
 }
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariViewWithZoomAndFlip
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardItemDataProvider {
+class CanariViewWithZoomAndFlip :
+           EBView,
+           CanariViewScaleProvider,
+//           NSPasteboardItemDataProvider,
+           NSDraggingSource {
+
+  //····················································································································
+
+  override var isFlipped : Bool { return false }
 
   //····················································································································
 
@@ -62,13 +69,13 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardI
   //  MARK: -
   //····················································································································
 
-  fileprivate var mZoom = 100
+  internal var mZoom = 100
 
   //····················································································································
 
-  fileprivate func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
-                                _ inHorizontalFlip : Bool,
-                                _ inVerticalFlip : Bool) {
+  internal func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
+                             _ inHorizontalFlip : Bool,
+                             _ inVerticalFlip : Bool) {
     if let clipView = self.superview as? NSClipView {
       var newRect = self.objectBoundingBox ()
       if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
@@ -348,22 +355,13 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardI
   override func viewWillMove (toSuperview inSuperview : NSView?) {
      super.viewWillMove (toSuperview: inSuperview)
   //--- Remove from superview ?
-    if nil == inSuperview,
-       let scrollView = self.superview?.superview as? CanariScrollViewWithPlacard,
-       let zoomPopUpButton = self.mZoomPopUpButton {
-     scrollView.removePlacard (zoomPopUpButton)
-     self.mZoomPopUpButton = nil ;
+    if nil == inSuperview, let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
+     scrollView.removePlacard (self.mZoomPopUpButton)
+     scrollView.removePlacard (self.mXPlacard)
+     self.mXPlacard = nil ;
+     scrollView.removePlacard (self.mYPlacard)
+     self.mYPlacard = nil ;
     }
-  }
-
-  //····················································································································
-  //  magnifyWithEvent
-  //····················································································································
-
-  override func magnify (with inEvent : NSEvent) {
-    let newZoom = Int ((actualScale () * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
-    scaleToZoom (newZoom, self.mHorizontalFlip, self.mVerticalFlip)
-    self.mZoom = newZoom
   }
 
   //····················································································································
@@ -375,6 +373,28 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardI
     self.mZoom = inZoom
     self.mZoomPopUpButton?.isEnabled = inActivate
   }
+
+  //····················································································································
+
+//  override func magnify (with inEvent : NSEvent) {
+//    if let clipView = self.superview as? NSClipView {
+//      let currentScale = self.actualScale ()
+//      let newZoom = Int ((currentScale * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
+//      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+//      let q = clipView.convert (mouseDownLocation, from:self)
+//      self.scaleToZoom (newZoom, self.horizontalFlip (), self.verticalFlip ())
+////      let sf = CGFloat (newZoom) / CGFloat (self.mZoom)
+////      self.mZoom = newZoom
+////    let scaleFactor = self.actualScale () / currentScale
+//  //  Swift.print ("\(inEvent.magnification), \(self.actualScale ()), \(currentScale), \(scaleFactor), \(sf)")
+//
+// //   let p = NSPoint (x: mouseDownLocation.x * (1.0 + inEvent.magnification), y: mouseDownLocation.y * (1.0 + inEvent.magnification))
+// //   let p = NSPoint (x: -mouseDownLocation.x * (0.0 + inEvent.magnification), y: -mouseDownLocation.y * (0.0 + inEvent.magnification))
+//      let p = NSPoint (x: -q.x * (0.0 + inEvent.magnification), y: -q.y * (0.0 + inEvent.magnification))
+////let p = NSPoint ()
+//      clipView.scroll (to: p)
+//    }
+//  }
 
   //····················································································································
   //  Responder chain
@@ -646,6 +666,7 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardI
   //····················································································································
 
   private var mHorizontalFlip = false
+
   private var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
 
   //····················································································································
@@ -878,26 +899,64 @@ class CanariViewWithZoomAndFlip : EBView, CanariViewScaleProvider, NSPasteboardI
   }
 
   //····················································································································
-  //    Dragging source
-  // MARK: -
+  // Required by NSDraggingSource protocol
   //····················································································································
-  // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 
-  func pasteboard (_ pasteboard: NSPasteboard?,
-                   item: NSPasteboardItem,
-                   provideDataForType type: NSPasteboard.PasteboardType) {
+  func draggingSession (_ session: NSDraggingSession,
+                        sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation {
+    return .generic
   }
 
   //····················································································································
 
-  override func mouseDown (with inEvent : NSEvent) {
+   override func mouseDown (with inEvent : NSEvent) {
+    let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
     let isStartDraggingSourceEvent = inEvent.modifierFlags.contains (.option)
-    if let pbType = self.pasteboardType, isStartDraggingSourceEvent {
-   //--- Get Pasteboard
+    if selectedObjectSet.count > 0, let pbType = self.pasteboardType, isStartDraggingSourceEvent {
+   //--- Build dragging item
       let pasteboardItem = NSPasteboardItem ()
-      pasteboardItem.setDataProvider (self, forTypes: [pbType])
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
-
+    //--- Buils image ans data
+      let objectArray = self.viewController?.objectArray ?? []
+      let displayShape = EBShape ()
+      var objectDictionaryArray = [NSDictionary] ()
+      for object in objectArray {
+        if selectedObjectSet.contains (object), let objectShape = object.objectDisplay {
+          displayShape.append (objectShape)
+          let d = NSMutableDictionary ()
+          object.saveIntoDictionary (d)
+          objectDictionaryArray.append (d)
+        }
+      }
+    //--- Transform image by scaling and translating
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
+      let transform = NSAffineTransform ()
+      transform.scale (by: self.actualScale ())
+      transform.translateX (by: -displayShape.boundingBox.origin.x, yBy: -displayShape.boundingBox.origin.y)
+      let finalShape = displayShape.transformedBy (transform)
+    //--- Build image
+      let rect = finalShape.boundingBox
+      let imagePDFData = buildPDFimage (frame: rect, shape: finalShape)
+      let image = NSImage (data: imagePDFData)
+    //--- Move image rect origin to mouse click location
+      Swift.print ("\(mouseDownLocation) | \(displayShape.boundingBox)")
+      var p = mouseDownLocation
+  //    var p = displayShape.boundingBox.origin //
+//      p.x -= displayShape.boundingBox.origin.x
+//      p.y -= displayShape.boundingBox.origin.y
+      p.x -= displayShape.boundingBox.size.width  / 2.0
+      p.y -= displayShape.boundingBox.size.height / 2.0
+      let draggingFrame = NSRect (origin: p, size: rect.size)
+    //--- Associated data
+      let dataDictionary : NSDictionary = [
+        "OBJECTS" : objectDictionaryArray,
+        "START" : NSStringFromPoint (mouseDownLocation)
+      ]
+      pasteboardItem.setPropertyList (dataDictionary, forType: pbType)
+    //--- Set dragged image
+      draggingItem.setDraggingFrame (draggingFrame, contents: image)
+    //--- Begin
+      self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
     }else{
       super.mouseDown (with: inEvent)
     }

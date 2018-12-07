@@ -8,7 +8,6 @@ import Cocoa
 @objc(CanariDragSourceButton) class CanariDragSourceButton :
           NSButton,
           EBUserClassNameProtocol,
-          NSPasteboardItemDataProvider,
           NSDraggingSource {
 
   //····················································································································
@@ -73,20 +72,10 @@ import Cocoa
   }
 
   //····················································································································
-  //  NSPasteboardItemDataProvider protocol implementation
-  //····················································································································
-
-  func pasteboard (_ pasteboard: NSPasteboard?,
-                   item: NSPasteboardItem,
-                   provideDataForType type: NSPasteboard.PasteboardType) {
-  }
-
-  //····················································································································
 
   override func mouseDown (with inEvent : NSEvent) {
     if let dragType = self.mDragType, self.isEnabled {
       let pasteboardItem = NSPasteboardItem ()
-      pasteboardItem.setDataProvider (self, forTypes: [dragType])
       let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
     //--- Get dragged image
       if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
@@ -95,7 +84,7 @@ import Cocoa
         let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
         let rect = displayShape.boundingBox
         let imagePDFData = buildPDFimage (frame: rect, shape: displayShape)
-        let image = NSImage (data: imagePDFData)!
+        let image = NSImage (data: imagePDFData)
       //--- Move image rect origin to mouse click location
         let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
         var r = rect
@@ -104,7 +93,8 @@ import Cocoa
       //--- Associated data
         let d = NSMutableDictionary ()
         temporaryObject.saveIntoDictionary (d)
-        pasteboardItem.setPropertyList (d, forType: dragType)
+        let dataDictionary : NSDictionary = ["OBJECTS" : [d], "START" : NSStringFromPoint (NSPoint ())]
+        pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
       //--- Set dragged image
         draggingItem.setDraggingFrame (r, contents: image)
       //--- Begin

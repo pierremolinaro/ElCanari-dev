@@ -486,8 +486,8 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   // MARK: -
   //····················································································································
 
-  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
-    self.copySelectedObjectsIntoPasteboard (inPasteboardType)
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint) {
+    self.copySelectedObjectsIntoPasteboard (inPasteboardType, pasteOffset: pasteOffset)
     self.deleteSelectedObjects ()
   }
 
@@ -501,7 +501,8 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   // MARK: -
   //····················································································································
 
-    func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?,
+                                          pasteOffset : NSPoint) {
     if let pasteboardType = inPasteboardType {
     //--- Declare pasteboard types
       let pb = NSPasteboard.general
@@ -527,8 +528,11 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         objectDictionaryArray.append (d)
       }
     //--- Copy private representation(s)
-      let data = NSArchiver.archivedData (withRootObject: objectDictionaryArray)
-      pb.setData (data, forType: pasteboardType)
+      let dataDictionary : NSDictionary = [
+        "OBJECTS" : objectDictionaryArray,
+        "START" : NSStringFromPoint (pasteOffset)
+      ]
+      pb.setPropertyList (dataDictionary, forType: pasteboardType)
     }
   }
 
@@ -551,11 +555,14 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     let pb = NSPasteboard.general
     if let pasteboardType = inPasteboardType,
        pb.availableType (from: [pasteboardType]) != nil,
-       let data = pb.data(forType: pasteboardType),
-       let array = NSUnarchiver.unarchiveObject(with: data) as? [NSDictionary] {
+       let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
+       let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
+       let str = dataDictionary ["START"] as? String {
+      let translation = NSPointFromString(str)
       var newObjects = [SymbolObject] ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
+          object.translate (xBy: translation.x, yBy: translation.y)
           newObjects.append (object)
         }
       }

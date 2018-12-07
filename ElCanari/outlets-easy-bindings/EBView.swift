@@ -24,10 +24,10 @@ protocol EBViewControllerProtocol : class {
   func selectAllObjects ()
 
   func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
-  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint)
 
   func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
-  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
+  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint)
 
   func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
   func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)
@@ -108,6 +108,10 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
    private weak var mViewController : EBViewControllerProtocol? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+   var viewController : EBViewControllerProtocol? { return self.mViewController }
 
   //····················································································································
   //    set controller
@@ -707,13 +711,15 @@ protocol EBViewControllerProtocol : class {
   //····················································································································
 
   @objc func cut (_ : Any?) {
-    self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType)
+    let translation = NSPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
+    self.mViewController?.cutSelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
   //····················································································································
 
   @objc func copy (_ : Any?) {
-    self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType)
+    let translation = NSPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
+    self.mViewController?.copySelectedObjectsIntoPasteboard (self.mPasteboardType, pasteOffset: translation)
   }
 
   //····················································································································
