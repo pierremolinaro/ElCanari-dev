@@ -1,47 +1,36 @@
-//
-//  view-SymbolObjectsView.swift
-//  ElCanari
-//
-//  Created by Pierre Molinaro on 19/11/2018.
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let SYMBOL_GRID_IN_COCOA_UNIT : CGFloat  = milsToCocoaUnit (25.0)
-let SYMBOL_GRID_IN_CANARI_UNIT : Int  = milsToCanariUnit (25)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   SymbolObjectsView
+//   EBView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolObjectsView : EBView {
+extension EBView {
 
   //····················································································································
-  //   INIT
+  // https://stackoverflow.com/questions/34124676/magnify-nsscrollview-at-cursor-location
   //····················································································································
 
-  required init? (coder : NSCoder) {
-    super.init (coder: coder)
-    self.configurationOnInit ()
-  }
+  override func magnify (with inEvent : NSEvent) {
+ //   if let clipView = self.superview as? NSClipView {
+      let currentScale = self.actualScale ()
+      let newZoom = Int ((currentScale * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
+//      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+//      let q = clipView.convert (mouseDownLocation, from:self)
+//      let currentOrigin = self.visibleRect.origin
+      self.scaleToZoom (newZoom, self.horizontalFlip (), self.verticalFlip ())
+//      let sf = CGFloat (newZoom) / CGFloat (self.mZoom)
+      self.mZoom = newZoom
+//    let scaleFactor = self.actualScale () / currentScale
+  //  Swift.print ("\(inEvent.magnification), \(self.actualScale ()), \(currentScale), \(scaleFactor), \(sf)")
 
-  //····················································································································
-
-  override init (frame : NSRect) {
-    super.init (frame: frame)
-    self.configurationOnInit ()
-  }
-
-  //····················································································································
-
-  func configurationOnInit () {
-    self.setZoom (500, activateZoomPopUpButton: true)
-    self.set (arrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT)
-    self.set (shiftArrowKeyMagnitude: SYMBOL_GRID_IN_COCOA_UNIT * 4.0)
-    self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude = true
+ //   let p = NSPoint (x: mouseDownLocation.x * (1.0 + inEvent.magnification), y: mouseDownLocation.y * (1.0 + inEvent.magnification))
+ //   let p = NSPoint (x: -mouseDownLocation.x * (0.0 + inEvent.magnification), y: -mouseDownLocation.y * (0.0 + inEvent.magnification))
+//      let p = NSPoint (x: -q.x * (0.0 + inEvent.magnification), y: -q.y * (0.0 + inEvent.magnification))
+//let p = NSPoint ()
+//      clipView.scroll (to: p)
+//    }
   }
 
   //····················································································································

@@ -40,14 +40,14 @@ import Cocoa
 
   private var mDragType : NSPasteboard.PasteboardType? = nil
   private var mDraggedObjectTypeName = "" // Any value if mDragType is null
-  private var mScaleProvider : CanariViewScaleProvider? = nil
+  private var mScaleProvider : EBViewScaleProvider? = nil
 
   //····················································································································
 
   func register (draggedType : NSPasteboard.PasteboardType,
                  entityName : String,
                  provideImageFromEntity : Bool,
-                 scaleProvider : CanariViewScaleProvider?) {
+                 scaleProvider : EBViewScaleProvider?) {
     self.mDragType = draggedType
     self.mDraggedObjectTypeName = entityName
     self.mScaleProvider = scaleProvider

@@ -79,18 +79,6 @@ transient property class CanariMenuItemListClass ; # Used for populating « Open
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extern outlet class CanariViewWithZoomAndFlip : EBView ;
-binding CanariViewWithZoomAndFlip $canariRect : transient CanariRect ;
-binding CanariViewWithZoomAndFlip $zoom : property Int ;
-binding CanariViewWithZoomAndFlip $horizontalFlip : transient Bool ;
-binding CanariViewWithZoomAndFlip $verticalFlip : transient Bool ;
-binding CanariViewWithZoomAndFlip $gridStyle : transient GridStyle ;
-binding CanariViewWithZoomAndFlip $gridStepFactor : transient Int ;
-binding CanariViewWithZoomAndFlip $gridLineColor : transient NSColor ;
-binding CanariViewWithZoomAndFlip $gridDotColor : transient NSColor ;
-binding CanariViewWithZoomAndFlip $xPlacardUnit : transient Int ;
-binding CanariViewWithZoomAndFlip $yPlacardUnit : transient Int ;
-
 extern outlet class CanariBoardBoardArchivePopUpButton ;
 binding CanariBoardBoardArchivePopUpButton $format : property BoardArchiveFormat ;
 

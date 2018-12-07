@@ -241,7 +241,7 @@ import Cocoa
   @IBOutlet var mBoardIssueInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardLimitWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mBoardModelTableView : EBTableView?
-  @IBOutlet var mBoardModelView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mBoardModelView : EBView?
   @IBOutlet var mBoardOperationInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mBoardViewDisplayBackComponenValuesCheckbox : EBSwitch?
@@ -269,7 +269,7 @@ import Cocoa
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
   @IBOutlet var mComposedBoardScrollView : CanariDraggingDestinationScrollView?
-  @IBOutlet var mComposedBoardView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mComposedBoardView : EBView?
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplaySettingView : NSView?
@@ -762,11 +762,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mBoardModelView {
-      if !(outlet is CanariViewWithZoomAndFlip) {
+      if !(outlet is EBView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mBoardModelView' outlet is not an instance of 'CanariViewWithZoomAndFlip'"
+          errorMessage: "the 'mBoardModelView' outlet is not an instance of 'EBView'"
         )
       }
     }else{
@@ -1182,11 +1182,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mComposedBoardView {
-      if !(outlet is CanariViewWithZoomAndFlip) {
+      if !(outlet is EBView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'CanariViewWithZoomAndFlip'"
+          errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'EBView'"
         )
       }
     }else{

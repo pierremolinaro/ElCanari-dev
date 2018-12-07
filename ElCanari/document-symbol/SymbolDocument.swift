@@ -109,7 +109,7 @@ import Cocoa
   @IBOutlet var mAddTextButton : CanariDragSourceButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
-  @IBOutlet var mComposedSymbolView : CanariViewWithZoomAndFlip?
+  @IBOutlet var mComposedSymbolView : EBView?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
@@ -350,11 +350,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mComposedSymbolView {
-      if !(outlet is CanariViewWithZoomAndFlip) {
+      if !(outlet is EBView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mComposedSymbolView' outlet is not an instance of 'CanariViewWithZoomAndFlip'"
+          errorMessage: "the 'mComposedSymbolView' outlet is not an instance of 'EBView'"
         )
       }
     }else{

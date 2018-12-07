@@ -261,7 +261,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oAS-F8-HR9">
                         <rect key="frame" x="1" y="0.0" width="210" height="310"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="jkD-hJ-5td" viewBased="YES" id="xkX-ID-Qcd" customClass="EBTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="210" height="287"/>
@@ -327,9 +327,9 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" id="PpI-BL-fb0">
                         <rect key="frame" x="1" y="1" width="423" height="483"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
+                            <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="EBView">
                                 <rect key="frame" x="0.0" y="387" width="163" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
@@ -537,7 +537,7 @@ AAAAAAEGA
                         <rect key="frame" x="1" y="1" width="423" height="650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <customView wantsLayer="YES" focusRingType="none" id="nao-E9-sci" customClass="CanariViewWithZoomAndFlip" customModule="ElCanari" customModuleProvider="target">
+                            <customView wantsLayer="YES" focusRingType="none" id="nao-E9-sci" customClass="EBView">
                                 <rect key="frame" x="0.0" y="554" width="452" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
@@ -547,7 +547,7 @@ AAAAAAEGA
                         </subviews>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="kxP-eD-0bt">
+                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.021961588783569665" horizontal="YES" id="kxP-eD-0bt">
                         <rect key="frame" x="1" y="651" width="423" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>

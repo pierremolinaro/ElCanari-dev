@@ -43,7 +43,7 @@ document SymbolDocument root SymbolRoot {
 #--- Symbol display
   arrayController mSymbolObjectsController : root.symbolObjects ;
 
-  outlet CanariViewWithZoomAndFlip mComposedSymbolView
+  outlet EBView mComposedSymbolView
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController self.mSymbolObjectsController
