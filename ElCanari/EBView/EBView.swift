@@ -158,6 +158,10 @@ import Cocoa
       shape.draw (inDirtyRect)
     }
     self.drawIssue (inDirtyRect)
+    if !self.mIsFirstResponder {
+      NSColor.white.withAlphaComponent (0.1).setFill ()
+      NSBezierPath.fill (inDirtyRect)
+    }
   }
 
   //····················································································································
@@ -174,36 +178,7 @@ import Cocoa
 
   //····················································································································
 
-  private var mArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
-
-  //····················································································································
-
-  func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file : String, line : Int) {
-    self.mArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
-      model: model,
-      callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_arrowKeyMagnitude () {
-    self.mArrowKeyMagnitudeController?.unregister ()
-    self.mArrowKeyMagnitudeController = nil
-  }
-
-  //····················································································································
-
-  private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.set (arrowKeyMagnitude: v)
-    case .multiple :
-      break
-    }
-  }
+  internal var mArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
 
   //····················································································································
   //    Shift Arrow Key Magnitude
@@ -219,36 +194,7 @@ import Cocoa
 
  //····················································································································
 
-  private var mShiftArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
-
- //····················································································································
-
-  func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file:String, line:Int) {
-    self.mShiftArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
-      model: model,
-      callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
-    )
-  }
-
- //····················································································································
-
-  func unbind_shiftArrowKeyMagnitude () {
-    mShiftArrowKeyMagnitudeController?.unregister ()
-    mShiftArrowKeyMagnitudeController = nil
-  }
-
-  //····················································································································
-
-  private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.set (shiftArrowKeyMagnitude: v)
-    case .multiple :
-      break
-    }
-  }
+  internal var mShiftArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
 
   //····················································································································
   //    Back color
@@ -265,36 +211,7 @@ import Cocoa
 
   //····················································································································
 
-  private var mBackColorController : EBReadOnlyController_NSColor? = nil
-
-  //····················································································································
-
-  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mBackColorController = EBReadOnlyController_NSColor (
-      model: model,
-      callBack: { [weak self] in self?.updateBackColor (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_backColor () {
-    mBackColorController?.unregister ()
-    mBackColorController = nil
-  }
-
-  //····················································································································
-
-  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.set (backColor: v)
-    case .multiple :
-      break
-    }
-  }
+  internal var mBackColorController : EBReadOnlyController_NSColor? = nil
 
   //····················································································································
   // Object display array
@@ -950,62 +867,34 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  private var mXPlacardUnitController : EBReadOnlyController_Int? = nil
   private var mXPlacardUnit = 2286 // mils
 
-  func bind_xPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mXPlacardUnitController = EBReadOnlyController_Int (
-      model: model,
-      callBack: { [weak self] in self?.updateXPlacardUnit (from: model) }
-    )
-  }
+  //····················································································································
 
-  func unbind_xPlacardUnit () {
-    self.mXPlacardUnitController?.unregister ()
-    self.mXPlacardUnitController = nil
+  func set (XPlacardUnit inUnit : Int) {
+     self.mXPlacardUnit = inUnit
   }
 
   //····················································································································
 
-  private func updateXPlacardUnit (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
-    case .empty, .multiple :
-      self.mXPlacardUnit = 2286 // mils
-    case .single (let v) :
-      self.mXPlacardUnit = v
-    }
-  }
+  internal var mXPlacardUnitController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   // Y placard unit binding
   // MARK: -
   //····················································································································
 
-  private var mYPlacardUnitController : EBReadOnlyController_Int? = nil
   private var mYPlacardUnit = 2286 // mils
 
-  func bind_yPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mYPlacardUnitController = EBReadOnlyController_Int (
-      model: model,
-      callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
-    )
-  }
+  //····················································································································
 
-  func unbind_yPlacardUnit () {
-    self.mYPlacardUnitController?.unregister ()
-    self.mYPlacardUnitController = nil
+  func set (YPlacardUnit inUnit : Int) {
+     self.mYPlacardUnit = inUnit
   }
 
   //····················································································································
 
-  private func updateYPlacardUnit (from model : EBReadOnlyProperty_Int) {
-    switch model.prop {
-    case .empty, .multiple :
-      self.mYPlacardUnit = 2286 // mils
-    case .single (let v) :
-      self.mYPlacardUnit = v
-    }
-  }
+  internal var mYPlacardUnitController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   //  Super view has been resized
@@ -1025,47 +914,31 @@ import Cocoa
   }
 
   //····················································································································
-  //  Zoom pop up button activation
-  //····················································································································
-
-  func setZoom (_ inZoom : Int, activateZoomPopUpButton inActivate : Bool) {
-    scaleToZoom (inZoom, self.mHorizontalFlip, self.mVerticalFlip)
-    self.mZoom = inZoom
-    self.mZoomPopUpButton?.isEnabled = inActivate
-  }
-
-  //····················································································································
-
-//  override func magnify (with inEvent : NSEvent) {
-//    if let clipView = self.superview as? NSClipView {
-//      let currentScale = self.actualScale ()
-//      let newZoom = Int ((currentScale * 100.0 * (inEvent.magnification + 1.0)).rounded (.toNearestOrEven))
-//      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-//      let q = clipView.convert (mouseDownLocation, from:self)
-//      self.scaleToZoom (newZoom, self.horizontalFlip (), self.verticalFlip ())
-////      let sf = CGFloat (newZoom) / CGFloat (self.mZoom)
-////      self.mZoom = newZoom
-////    let scaleFactor = self.actualScale () / currentScale
-//  //  Swift.print ("\(inEvent.magnification), \(self.actualScale ()), \(currentScale), \(scaleFactor), \(sf)")
-//
-// //   let p = NSPoint (x: mouseDownLocation.x * (1.0 + inEvent.magnification), y: mouseDownLocation.y * (1.0 + inEvent.magnification))
-// //   let p = NSPoint (x: -mouseDownLocation.x * (0.0 + inEvent.magnification), y: -mouseDownLocation.y * (0.0 + inEvent.magnification))
-//      let p = NSPoint (x: -q.x * (0.0 + inEvent.magnification), y: -q.y * (0.0 + inEvent.magnification))
-////let p = NSPoint ()
-//      clipView.scroll (to: p)
-//    }
-//  }
-
-  //····················································································································
   //  Responder chain
   // MARK: -
   //····················································································································
 
+  private var mIsFirstResponder = false
+
+  //····················································································································
+
   override var acceptsFirstResponder : Bool { return true }
 
-  override func becomeFirstResponder () -> Bool { return true }
+  //····················································································································
 
-  override func resignFirstResponder () -> Bool { return true }
+  override func becomeFirstResponder () -> Bool {
+    self.mIsFirstResponder = true
+    self.needsDisplay = true
+    return true
+  }
+
+  //····················································································································
+
+  override func resignFirstResponder () -> Bool {
+    self.mIsFirstResponder = false
+    self.needsDisplay = true
+    return true
+  }
 
   //····················································································································
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
@@ -1080,73 +953,6 @@ import Cocoa
   }
 
   //····················································································································
-  //    Grid Style
-  // MARK: -
-  //····················································································································
-
-  fileprivate var mGridStyle : GridStyle = .noGrid
-
-  func setGridStyle (_ inGrid : GridStyle) {
-    if self.mGridStyle != inGrid {
-      self.mGridStyle = inGrid
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-  //    Grid Step Factor
-  //····················································································································
-
-  fileprivate var mGridStepFactor : Int = 4
-
-  func setGridStepFactor (_ inGridStepFactor : Int) {
-    if self.mGridStepFactor != inGridStepFactor {
-      self.mGridStepFactor = inGridStepFactor
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-  //    Grid Step
-  //····················································································································
-
-  fileprivate var mGridStep : CGFloat = milsToCocoaUnit (25.0)
-
-  func setGridStep (_ inGridStep : CGFloat) {
-    if self.mGridStep != inGridStep {
-      self.mGridStep = inGridStep
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-  //    Grid Dot color
-  //····················································································································
-
-  fileprivate var mGridDotColor : NSColor = .black
-
-  func setGridDotColor (_ inColor : NSColor) {
-    if self.mGridDotColor != inColor {
-      self.mGridDotColor = inColor
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-  //    Grid Line color
-  //····················································································································
-
-  fileprivate var mGridLineColor : NSColor = .black
-
-  func setGridLineColor (_ inColor : NSColor) {
-    if self.mGridLineColor != inColor {
-      self.mGridLineColor = inColor
-      self.needsDisplay = true
-    }
-  }
-
-  //····················································································································
-  //    Set issue
   // MARK: -
   //····················································································································
 
@@ -1214,7 +1020,7 @@ import Cocoa
         }
         x += gridDisplayStep
       }
-      self.mGridDotColor.setStroke ()
+      self.mGridCrossColor.setStroke ()
       bp.stroke ()
     case .line :
       let bp = NSBezierPath ()
@@ -1240,11 +1046,12 @@ import Cocoa
   }
 
   //····················································································································
-  //    rect binding
   // MARK: -
   //····················································································································
 
   private var mCanariRectController : EBReadOnlyController_CanariRect? = nil
+
+  //····················································································································
 
   func bind_canariRect (_ model : EBReadOnlyProperty_CanariRect, file : String, line : Int) {
    self.mCanariRectController = EBReadOnlyController_CanariRect (
@@ -1252,6 +1059,8 @@ import Cocoa
       callBack: { [weak self] in self?.updateRect (from: model) }
     )
   }
+
+  //····················································································································
 
   func unbind_canariRect () {
     self.mCanariRectController?.unregister ()
@@ -1288,177 +1097,144 @@ import Cocoa
   }
 
   //····················································································································
-  //    zoom binding
   // MARK: -
   //····················································································································
 
-  private var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
+  internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
 
-  func bind_zoom (_ zoom:EBReadWriteProperty_Int, file:String, line:Int) {
-    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom:zoom, outlet:self)
-  }
+  //····················································································································
 
-  func unbind_zoom () {
-    self.mZoomController?.unregister ()
-    self.mZoomController = nil
+  func setZoom (_ inZoom : Int, activateZoomPopUpButton inActivate : Bool) {
+    scaleToZoom (inZoom, self.mHorizontalFlip, self.mVerticalFlip)
+    self.mZoom = inZoom
+    self.mZoomPopUpButton?.isEnabled = inActivate
   }
 
   //····················································································································
-  //    horizontal flip binding
   // MARK: -
   //····················································································································
 
   private var mHorizontalFlip = false
 
-  private var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
-
   //····················································································································
 
-  func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    self.mHorizontalFlipController = EBReadOnlyController_Bool (
-      model: model,
-      callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_horizontalFlip () {
-    self.mHorizontalFlipController?.unregister ()
-    self.mHorizontalFlipController = nil
-  }
-
-  //····················································································································
-
-  private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
-    var horizontalFlip = false
-    switch model.prop {
-    case .empty, .multiple :
-      ()
-    case .single (let v) :
-      horizontalFlip = v
-    }
-    self.setHorizontalFlip (horizontalFlip)
-  }
-
-  //····················································································································
-
-  func setHorizontalFlip (_ inFlip : Bool) {
+  final func set (horizontalFlip inFlip : Bool) {
     scaleToZoom (self.mZoom, inFlip, self.mVerticalFlip)
     self.mHorizontalFlip = inFlip
   }
 
   //····················································································································
 
-  func horizontalFlip () -> Bool {
+  final var horizontalFlip : Bool {
     return self.mHorizontalFlip
   }
 
   //····················································································································
-  //    vertical flip binding
+
+  internal var mHorizontalFlipController : EBReadOnlyController_Bool? = nil
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mVerticalFlip = false
-  private var mVerticalFlipController : EBReadOnlyController_Bool? = nil
+  final private var mVerticalFlip = false
 
   //····················································································································
 
-  func bind_verticalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    self.mVerticalFlipController = EBReadOnlyController_Bool (
-      model: model,
-      callBack: { [weak self] in self?.updateVerticalFlip (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_verticalFlip () {
-    self.mVerticalFlipController?.unregister ()
-    self.mVerticalFlipController = nil
-  }
-
-  //····················································································································
-
-  private func updateVerticalFlip (from model : EBReadOnlyProperty_Bool) {
-    switch model.prop {
-    case .empty :
-      self.setVerticalFlip (false)
-    case .single (let v) :
-      self.setVerticalFlip (v)
-    case .multiple :
-      self.setVerticalFlip (false)
-    }
-  }
-
-  //····················································································································
-
-  func setVerticalFlip (_ inFlip : Bool) {
+  final func setVerticalFlip (_ inFlip : Bool) {
     scaleToZoom (self.mZoom, self.mHorizontalFlip, inFlip)
     self.mVerticalFlip = inFlip
   }
 
   //····················································································································
 
-  func verticalFlip () -> Bool {
+  final var verticalFlip : Bool {
     return self.mVerticalFlip
   }
 
   //····················································································································
-  //    grid binding
+
+  final internal var mVerticalFlipController : EBReadOnlyController_Bool? = nil
+
+  //····················································································································
+  // Grid Style
   // MARK: -
   //····················································································································
 
-  private var mGridStyleController : EBReadOnlyController_GridStyle? = nil
-
-  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file:String, line:Int) {
-    self.mGridStyleController = EBReadOnlyController_GridStyle (
-      model: model,
-      callBack: { [weak self] in self?.updateGridStyle (from: model) }
-    )
-  }
-
-  func unbind_gridStyle () {
-    mGridStyleController?.unregister ()
-    mGridStyleController = nil
-  }
-
-  //····················································································································
-
-  private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
-    switch model.prop {
-    case .empty :
-      self.setGridStyle (.noGrid)
-    case .single (let v) :
-      self.setGridStyle (v)
-    case .multiple :
-      self.setGridStyle (.noGrid)
+  final var mGridStyle : GridStyle = .noGrid {
+    didSet {
+      if self.mGridStyle != oldValue {
+        self.needsDisplay = true
+      }
     }
   }
 
+  //····················································································································
+
+  final internal var mGridStyleController : EBReadOnlyController_GridStyle? = nil
 
   //····················································································································
-  // step binding
   // MARK: -
   //····················································································································
 
-  internal var mGridStepFactorController : EBReadOnlyController_Int? = nil
+  final var mGridStep : CGFloat = milsToCocoaUnit (25.0) {
+    didSet {
+      if (self.mGridStep != oldValue) && (self.mGridStyle != .noGrid)  {
+        self.needsDisplay = true
+      }
+    }
+  }
 
   //····················································································································
-  //    grid line color binding
   // MARK: -
   //····················································································································
 
-  internal var mGridLineColorController : EBReadOnlyController_NSColor? = nil
+  final var mGridStepFactor : Int = 4 {
+    didSet {
+      if (self.mGridStepFactor != oldValue) && (self.mGridStyle != .noGrid)  {
+        self.needsDisplay = true
+      }
+    }
+  }
 
   //····················································································································
-  //    grid dot color binding
+
+  final internal var mGridStepFactorController : EBReadOnlyController_Int? = nil
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
-  internal var mGridDotColorController : EBReadOnlyController_NSColor? = nil
+  final var mGridLineColor : NSColor = .black {
+    didSet {
+      if (self.mGridLineColor != oldValue) && (self.mGridStyle == .line)  {
+        self.needsDisplay = true
+      }
+    }
+  }
 
   //····················································································································
+
+  final internal var mGridLineColorController : EBReadOnlyController_NSColor? = nil
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  var mGridCrossColor : NSColor = .black {
+    didSet {
+      if (self.mGridCrossColor != oldValue) && (self.mGridStyle == .cross)  {
+        self.needsDisplay = true
+      }
+    }
+  }
+
+  //····················································································································
+
+  internal var mGridCrossColorController : EBReadOnlyController_NSColor? = nil
+
+  //····················································································································
+  // MARK: -
   // Required by NSDraggingSource protocol
   //····················································································································
 
@@ -1553,48 +1329,6 @@ import Cocoa
     }else{
       super.mouseDown (with: inEvent)
     }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller_CanariViewWithZoomAndFlip_zoom
-//   MARK: -
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
-
-  private let mZoom : EBReadWriteProperty_Int
-  private let mOutlet : EBView
-
-  //····················································································································
-
-  init (zoom : EBReadWriteProperty_Int, outlet : EBView) {
-    mZoom = zoom
-    mOutlet = outlet
-    super.init (observedObjects:[zoom])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
-  }
-
-  //····················································································································
-
-  private func updateOutlet () {
-    switch mZoom.prop {
-    case .empty :
-      mOutlet.setZoom (100, activateZoomPopUpButton: false)
-    case .single (let v) :
-      mOutlet.setZoom (v, activateZoomPopUpButton: true)
-    case .multiple :
-      mOutlet.setZoom (100, activateZoomPopUpButton: false)
-    }
-  }
-
-  //····················································································································
-
-  func updateModel (_ sender : EBView) {
-    _ = mZoom.validateAndSetProp (mOutlet.mZoom, windowForSheet:sender.window)
   }
 
   //····················································································································

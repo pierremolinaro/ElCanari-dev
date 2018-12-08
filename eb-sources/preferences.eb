@@ -97,8 +97,8 @@ prefs {
   property NSColor symbolColor default brown;
   outlet EBColorWell mSymbolColorColorWell $color self.symbolColor {sendContinously:no} ;
 #--- Symbol Grid Colors
-  property NSColor dotColorOfSymbolGrid   default black;
-  outlet EBColorWell mDotColorOfSymbolGridColorWell $color self.dotColorOfSymbolGrid {sendContinously:no} ;
+  property NSColor crossColorOfSymbolGrid   default black;
+  outlet EBColorWell mDotColorOfSymbolGridColorWell $color self.crossColorOfSymbolGrid {sendContinously:no} ;
   property NSColor lineColorOfSymbolGrid  default gray;
   outlet EBColorWell mLineColorOfSymbolGridColorWell $color self.lineColorOfSymbolGrid {sendContinously:no} ;
 #--- Symbol Background Color

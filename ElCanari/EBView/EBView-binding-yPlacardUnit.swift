@@ -12,28 +12,26 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_yPlacardUnit (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mYPlacardUnitController = EBReadOnlyController_Int (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateYPlacardUnit (from: model) }
     )
   }
 
-  //····················································································································
-
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_yPlacardUnit () {
+    self.mYPlacardUnitController?.unregister ()
+    self.mYPlacardUnitController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateYPlacardUnit (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty, .multiple :
-      self.mGridLineColor = .black
+      self.set (YPlacardUnit: 2286) // mils
     case .single (let v) :
-      self.mGridLineColor = v
+      self.set (YPlacardUnit: v)
     }
   }
 

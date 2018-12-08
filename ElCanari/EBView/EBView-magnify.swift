@@ -19,7 +19,7 @@ extension EBView {
 //      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
 //      let q = clipView.convert (mouseDownLocation, from:self)
 //      let currentOrigin = self.visibleRect.origin
-      self.scaleToZoom (newZoom, self.horizontalFlip (), self.verticalFlip ())
+      self.scaleToZoom (newZoom, self.horizontalFlip, self.verticalFlip)
 //      let sf = CGFloat (newZoom) / CGFloat (self.mZoom)
       self.mZoom = newZoom
 //    let scaleFactor = self.actualScale () / currentScale

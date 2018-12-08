@@ -12,28 +12,30 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file : String, line : Int) {
+    self.mArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateArrowKeyMagnitude (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_arrowKeyMagnitude () {
+    self.mArrowKeyMagnitudeController?.unregister ()
+    self.mArrowKeyMagnitudeController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
     switch model.prop {
-    case .empty, .multiple :
-      self.mGridLineColor = .black
+    case .empty :
+      break
     case .single (let v) :
-      self.mGridLineColor = v
+      self.set (arrowKeyMagnitude: v)
+    case .multiple :
+      break
     }
   }
 

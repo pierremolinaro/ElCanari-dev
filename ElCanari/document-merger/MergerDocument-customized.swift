@@ -94,8 +94,8 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
     //--- Get board view scale and flip
       let scale : CGFloat = boardView.actualScale ()
      // Swift.print ("Scale \(scale)")
-      let horizontalFlip : CGFloat = boardView.horizontalFlip () ? -1.0 : 1.0
-      let verticalFlip   : CGFloat = boardView.verticalFlip ()   ? -1.0 : 1.0
+      let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
+      let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0
     //--- Image size
       let boardModel = self.rootObject.boardModels_property.propval [idx]
    //   Swift.print ("Model size: \(canariUnitToCocoa (boardModel.modelWidth)), \(canariUnitToCocoa (boardModel.modelHeight))")

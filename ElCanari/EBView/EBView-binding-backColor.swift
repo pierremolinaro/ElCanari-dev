@@ -8,38 +8,38 @@ import Cocoa
 //   EBView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension  EBView {
+extension EBView {
 
   //····················································································································
 
-  func bind_gridDotColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridDotColorController = EBReadOnlyController_NSColor (
+  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
+    self.mBackColorController = EBReadOnlyController_NSColor (
       model: model,
-      callBack: { [weak self] in self?.updateGridColor (from: model) }
+      callBack: { [weak self] in self?.updateBackColor (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridDotColor () {
-    self.mGridDotColorController?.unregister ()
-    self.mGridDotColorController = nil
+  func unbind_backColor () {
+    mBackColorController?.unregister ()
+    mBackColorController = nil
   }
 
   //····················································································································
 
-  private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
     switch model.prop {
     case .empty :
-      self.setGridDotColor (.black)
+      break
     case .single (let v) :
-      self.setGridDotColor (v)
+      self.set (backColor: v)
     case .multiple :
-      self.setGridDotColor (.black)
+      break
     }
   }
 
-  //····················································································································  //····················································································································
+  //····················································································································
 
 }
 

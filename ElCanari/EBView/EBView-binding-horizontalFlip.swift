@@ -12,29 +12,31 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_horizontalFlip (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
+    self.mHorizontalFlipController = EBReadOnlyController_Bool (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateHorizontalFlip (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_horizontalFlip () {
+    self.mHorizontalFlipController?.unregister ()
+    self.mHorizontalFlipController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateHorizontalFlip (from model : EBReadOnlyProperty_Bool) {
+    var horizontalFlip = false
     switch model.prop {
     case .empty, .multiple :
-      self.mGridLineColor = .black
+      ()
     case .single (let v) :
-      self.mGridLineColor = v
+      horizontalFlip = v
     }
+    self.set (horizontalFlip: horizontalFlip)
   }
 
   //····················································································································

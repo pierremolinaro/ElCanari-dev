@@ -50,7 +50,7 @@ document SymbolDocument root SymbolRoot {
     $gridStyle root.gridStyle
     $gridStepFactor root.gridStep
     $gridLineColor prefs.lineColorOfSymbolGrid
-    $gridDotColor prefs.dotColorOfSymbolGrid
+    $gridCrossColor prefs.crossColorOfSymbolGrid
     $zoom root.zoom
     $backColor prefs.symbolBackgroundColor
     $xPlacardUnit root.xPlacardUnit

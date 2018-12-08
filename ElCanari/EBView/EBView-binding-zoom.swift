@@ -12,29 +12,58 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
-      model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
-    )
+  func bind_zoom (_ zoom : EBReadWriteProperty_Int, file : String, line : Int) {
+    self.mZoomController = Controller_CanariViewWithZoomAndFlip_zoom (zoom:zoom, outlet:self)
   }
 
   //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_zoom () {
+    self.mZoomController?.unregister ()
+    self.mZoomController = nil
+  }
+
+  //····················································································································
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Controller_CanariViewWithZoomAndFlip_zoom
+//   MARK: -
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
+
+  private let mZoom : EBReadWriteProperty_Int
+  private let mOutlet : EBView
+
+  //····················································································································
+
+  init (zoom : EBReadWriteProperty_Int, outlet : EBView) {
+    mZoom = zoom
+    mOutlet = outlet
+    super.init (observedObjects:[zoom])
+    self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
-    case .empty, .multiple :
-      self.mGridLineColor = .black
+  private func updateOutlet () {
+    switch mZoom.prop {
+    case .empty :
+      mOutlet.setZoom (100, activateZoomPopUpButton: false)
     case .single (let v) :
-      self.mGridLineColor = v
+      mOutlet.setZoom (v, activateZoomPopUpButton: true)
+    case .multiple :
+      mOutlet.setZoom (100, activateZoomPopUpButton: false)
     }
+  }
+
+  //····················································································································
+
+  func updateModel (_ sender : EBView) {
+    _ = mZoom.validateAndSetProp (mOutlet.mZoom, windowForSheet:sender.window)
   }
 
   //····················································································································

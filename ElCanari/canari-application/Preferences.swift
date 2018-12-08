@@ -14,7 +14,7 @@ let Preferences_warningMessageColor = "Preferences:warningMessageColor"
 let Preferences_successMessageColor = "Preferences:successMessageColor"
 let Preferences_selectionHiliteColor = "Preferences:selectionHiliteColor"
 let Preferences_symbolColor = "Preferences:symbolColor"
-let Preferences_dotColorOfSymbolGrid = "Preferences:dotColorOfSymbolGrid"
+let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
 let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
 let Preferences_symbolBackgroundColor = "Preferences:symbolBackgroundColor"
 let Preferences_symbolDrawingWidthMultipliedByTen = "Preferences:symbolDrawingWidthMultipliedByTen"
@@ -252,26 +252,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: dotColorOfSymbolGrid
+  //   Atomic property: crossColorOfSymbolGrid
   //····················································································································
 
-  var dotColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_dotColorOfSymbolGrid)
+  var crossColorOfSymbolGrid_property = EBStoredProperty_NSColor (NSColor.black, prefKey: Preferences_crossColorOfSymbolGrid)
 
   //····················································································································
 
-  var dotColorOfSymbolGrid : NSColor {
+  var crossColorOfSymbolGrid : NSColor {
     get {
-      return self.dotColorOfSymbolGrid_property.propval
+      return self.crossColorOfSymbolGrid_property.propval
     }
     set {
-      self.dotColorOfSymbolGrid_property.setProp (newValue)
+      self.crossColorOfSymbolGrid_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var dotColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
-    return self.dotColorOfSymbolGrid_property.prop
+  var crossColorOfSymbolGrid_property_selection : EBSelection <NSColor> {
+    return self.crossColorOfSymbolGrid_property.prop
   }
 
   //····················································································································
@@ -3739,8 +3739,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.selectionHiliteColor_property.undoManager = self.undoManager
   //--- Atomic property: symbolColor
     self.symbolColor_property.undoManager = self.undoManager
-  //--- Atomic property: dotColorOfSymbolGrid
-    self.dotColorOfSymbolGrid_property.undoManager = self.undoManager
+  //--- Atomic property: crossColorOfSymbolGrid
+    self.crossColorOfSymbolGrid_property.undoManager = self.undoManager
   //--- Atomic property: lineColorOfSymbolGrid
     self.lineColorOfSymbolGrid_property.undoManager = self.undoManager
   //--- Atomic property: symbolBackgroundColor
@@ -5333,7 +5333,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (self.mValueRevealInFinder_fonts_property, file: #file, line: #line)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (self.mValueRevealInFinder_artworks_property, file: #file, line: #line)
     mSymbolColorColorWell?.bind_color (self.symbolColor_property, file: #file, line: #line, sendContinously:false)
-    mDotColorOfSymbolGridColorWell?.bind_color (self.dotColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    mDotColorOfSymbolGridColorWell?.bind_color (self.crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
     mLineColorOfSymbolGridColorWell?.bind_color (self.lineColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
     mSymbolBackgroundColorColorWell?.bind_color (self.symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)

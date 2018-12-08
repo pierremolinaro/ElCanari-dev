@@ -19,6 +19,8 @@ extension EBView {
     )
   }
 
+  //····················································································································
+
   func unbind_gridStepFactor () {
     self.mGridStepFactorController?.unregister ()
     self.mGridStepFactorController = nil
@@ -28,12 +30,10 @@ extension EBView {
 
   private func updateGridStepFactor (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
-    case .empty :
-      self.setGridStepFactor (4)
+    case .empty, .multiple :
+      self.mGridStepFactor = 4
     case .single (let v) :
-      self.setGridStepFactor (v)
-    case .multiple :
-      self.setGridStepFactor (4)
+      self.mGridStepFactor = v
     }
   }
 

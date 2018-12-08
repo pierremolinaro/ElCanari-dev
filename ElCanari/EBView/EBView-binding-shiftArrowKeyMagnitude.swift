@@ -10,30 +10,32 @@ import Cocoa
 
 extension EBView {
 
-  //····················································································································
+ //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_shiftArrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file:String, line:Int) {
+    self.mShiftArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateShiftArrowKeyMagnitude (from: model) }
     )
   }
 
-  //····················································································································
+ //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_shiftArrowKeyMagnitude () {
+    mShiftArrowKeyMagnitudeController?.unregister ()
+    mShiftArrowKeyMagnitudeController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateShiftArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
     switch model.prop {
-    case .empty, .multiple :
-      self.mGridLineColor = .black
+    case .empty :
+      break
     case .single (let v) :
-      self.mGridLineColor = v
+      self.set (shiftArrowKeyMagnitude: v)
+    case .multiple :
+      break
     }
   }
 

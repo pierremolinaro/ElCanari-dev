@@ -8,36 +8,36 @@ import Cocoa
 //   EBView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension EBView {
+extension  EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_gridCrossColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
+    self.mGridCrossColorController = EBReadOnlyController_NSColor (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateGridColor (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_gridCrossColor () {
+    self.mGridCrossColorController?.unregister ()
+    self.mGridCrossColorController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateGridColor (from model : EBReadOnlyProperty_NSColor) {
     switch model.prop {
-    case .empty, .multiple :
-      self.mGridLineColor = .black
+    case .empty, .multiple  :
+      self.mGridCrossColor = .black
     case .single (let v) :
-      self.mGridLineColor = v
+      self.mGridCrossColor = v
     }
   }
 
-  //····················································································································
+  //····················································································································  //····················································································································
 
 }
 

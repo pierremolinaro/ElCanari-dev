@@ -12,28 +12,28 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridLineColor (_ model: EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mGridLineColorController = EBReadOnlyController_NSColor (
+  func bind_gridStyle (_ model : EBReadOnlyProperty_GridStyle, file:String, line:Int) {
+    self.mGridStyleController = EBReadOnlyController_GridStyle (
       model: model,
-      callBack: { [weak self] in self?.updateLineColor (from: model) }
+      callBack: { [weak self] in self?.updateGridStyle (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridLineColor () {
-    self.mGridLineColorController?.unregister ()
-    self.mGridLineColorController = nil
+  func unbind_gridStyle () {
+    mGridStyleController?.unregister ()
+    mGridStyleController = nil
   }
 
   //····················································································································
 
-  private func updateLineColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateGridStyle (from model : EBReadOnlyProperty_GridStyle) {
     switch model.prop {
     case .empty, .multiple :
-      self.mGridLineColor = .black
+      self.mGridStyle = .noGrid
     case .single (let v) :
-      self.mGridLineColor = v
+      self.mGridStyle = v
     }
   }
 
