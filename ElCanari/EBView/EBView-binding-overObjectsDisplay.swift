@@ -12,30 +12,28 @@ extension EBView {
 
   //····················································································································
 
-  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mBackColorController = EBReadOnlyController_NSColor (
+  func bind_overObjectsDisplay (_ model : EBReadOnlyProperty_EBShape, file:String, line:Int) {
+    self.mOverObjectsDisplayController = EBReadOnlyController_EBShape (
       model: model,
-      callBack: { [weak self] in self?.updateBackColor (from: model) }
+      callBack: { [weak self] in self?.updateOverObjectsDisplay (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_backColor () {
-    mBackColorController?.unregister ()
-    mBackColorController = nil
+  func unbind_overObjectsDisplay () {
+    self.mOverObjectsDisplayController?.unregister ()
+    self.mOverObjectsDisplayController = nil
   }
 
   //····················································································································
 
-  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
+  private func updateOverObjectsDisplay (from model : EBReadOnlyProperty_EBShape) {
     switch model.prop {
-    case .empty :
-      break
+    case .empty, .multiple :
+      self.mOverObjectsDisplay = EBShape ()
     case .single (let v) :
-      self.mBackColor = v
-    case .multiple :
-      break
+      self.mOverObjectsDisplay =  v
     }
   }
 

@@ -5,38 +5,50 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBView
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension EBView {
 
   //····················································································································
 
-  func bind_backColor (_ model : EBReadOnlyProperty_NSColor, file:String, line:Int) {
-    self.mBackColorController = EBReadOnlyController_NSColor (
-      model: model,
-      callBack: { [weak self] in self?.updateBackColor (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_backColor () {
-    mBackColorController?.unregister ()
-    mBackColorController = nil
-  }
-
-  //····················································································································
-
-  private func updateBackColor (from model : EBReadOnlyProperty_NSColor) {
-    switch model.prop {
-    case .empty :
-      break
-    case .single (let v) :
-      self.mBackColor = v
-    case .multiple :
-      break
+  override func keyDown (with inEvent: NSEvent) {
+    let amount : CGFloat = inEvent.modifierFlags.contains (.shift)
+      ? self.shiftArrowKeyMagnitude
+      : self.arrowKeyMagnitude
+    ;
+    for character in (inEvent.characters ?? "").unicodeScalars {
+      switch (character) {
+      case NSEvent.SpecialKey.upArrow.unicodeScalar :
+        _ = self.wantsToTranslateSelection (byX: 0.0, byY:amount)
+      case NSEvent.SpecialKey.downArrow.unicodeScalar :
+        _ = self.wantsToTranslateSelection (byX: 0.0, byY:-amount)
+      case NSEvent.SpecialKey.leftArrow.unicodeScalar :
+        _ = self.wantsToTranslateSelection (byX: -amount, byY:0.0)
+      case NSEvent.SpecialKey.rightArrow.unicodeScalar :
+        _ = self.wantsToTranslateSelection (byX: amount, byY:0.0)
+      case NSEvent.SpecialKey.deleteForward.unicodeScalar, NSEvent.SpecialKey.delete.unicodeScalar :
+        self.deleteSelection ()
+      default :
+        break
+      }
     }
+  }
+
+  //····················································································································
+
+  private func wantsToTranslateSelection (byX inDx: CGFloat, byY inDy: CGFloat) -> Bool {
+    var accepted = true
+    for object in self.viewController?.selectedGraphicObjectSet ?? [] {
+      if !object.acceptToTranslate (xBy: inDx, yBy:inDy) {
+        accepted = false
+        break
+      }
+    }
+    if accepted {
+      for object in self.viewController?.selectedGraphicObjectSet ?? [] {
+        object.translate (xBy: inDx, yBy:inDy)
+      }
+    }
+    return accepted
   }
 
   //····················································································································
