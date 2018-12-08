@@ -61,6 +61,34 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
+  mutating func appendSymbolPinHorizontalIssueAt (x: Int, y: Int) {
+    let r = NSRect (
+      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Pin Horizontal Alignment", path: bp))
+  }
+
+  //····················································································································
+
+  mutating func appendSymbolPinVerticalIssueAt (x: Int, y: Int) {
+    let r = NSRect (
+      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Pin Vertical Alignment", path: bp))
+  }
+
+  //····················································································································
+
   mutating func appendSymbolHorizontalIssueAt (x: Int, y: Int) {
     let r = NSRect (
       x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,

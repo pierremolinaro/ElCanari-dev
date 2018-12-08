@@ -56,6 +56,14 @@ struct CanariPoint : Equatable, Hashable {
     return NSPoint (x: canariUnitToCocoa (self.x), y: canariUnitToCocoa (self.y))
   }
 
+  //····················································································································
+  //   Aligned Point
+  //····················································································································
+
+  func point (alignedOnGrid inGrid: Int) -> CanariPoint {
+    return CanariPoint (x: ((self.x + inGrid / 2) / inGrid) * inGrid, y: ((self.y + inGrid / 2) / inGrid) * inGrid)
+  }
+
  //····················································································································
 
 }

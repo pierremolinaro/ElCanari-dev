@@ -486,7 +486,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   // MARK: -
   //····················································································································
 
-  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint) {
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : CanariPoint) {
     self.copySelectedObjectsIntoPasteboard (inPasteboardType, pasteOffset: pasteOffset)
     self.deleteSelectedObjects ()
   }
@@ -502,7 +502,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?,
-                                          pasteOffset : NSPoint) {
+                                          pasteOffset : CanariPoint) {
     if let pasteboardType = inPasteboardType {
     //--- Declare pasteboard types
       let pb = NSPasteboard.general
@@ -530,7 +530,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     //--- Copy private representation(s)
       let dataDictionary : NSDictionary = [
         "OBJECTS" : objectDictionaryArray,
-        "START" : NSStringFromPoint (pasteOffset)
+        "X" : pasteOffset.x,
+        "Y" : pasteOffset.y
       ]
       pb.setPropertyList (dataDictionary, forType: pasteboardType)
     }
@@ -551,18 +552,18 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
+   func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?) {
     let pb = NSPasteboard.general
     if let pasteboardType = inPasteboardType,
        pb.availableType (from: [pasteboardType]) != nil,
        let dataDictionary = pb.propertyList (forType: pasteboardType) as? NSDictionary,
        let array = dataDictionary ["OBJECTS"] as? [NSDictionary],
-       let str = dataDictionary ["START"] as? String {
-      let translation = NSPointFromString(str)
+       let X = dataDictionary ["X"] as? Int,
+       let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [MergerBoardInstance] ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? MergerBoardInstance {
-          object.translate (xBy: translation.x, yBy: translation.y)
+          object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
         }
       }

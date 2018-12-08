@@ -12,7 +12,9 @@ extension EBView {
 
   override func mouseMoved (with inEvent : NSEvent) {
     super.mouseMoved (with: inEvent)
-    self.updateXYplacards (inEvent.locationInWindow)
+    let locationInView = self.convert (inEvent.locationInWindow, from: nil)
+    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+    self.updateXYplacards (locationOnGridInView)
   }
 
   //····················································································································
@@ -27,7 +29,7 @@ extension EBView {
    override func mouseDown (with inEvent : NSEvent) {
     let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    mLastMouseDraggedLocation = mouseDownLocation
+    self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.arrowKeyMagnitude)
     if let viewController = self.viewController {
     //--- Find index of object under mouse down
       let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: mouseDownLocation)
@@ -49,14 +51,14 @@ extension EBView {
           }
         }else if let objectIndex = possibleObjectIndex {
           if let knobIndex = possibleKnobIndex {
-            mPossibleKnob = (objectIndex, knobIndex)
+            self.mPossibleKnob = (objectIndex, knobIndex)
           }
           if !viewController.selectedIndexesSet.contains (objectIndex) {
             viewController.setSelection (objectsWithIndexes: [objectIndex])
           }
         }else{ // Click outside an object : clear selection
           viewController.clearSelection ()
-          mSelectionRectangleOrigin = mLastMouseDraggedLocation
+          self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint ()
         }
       }
     }else if selectedObjectSet.count > 0, let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
@@ -70,23 +72,23 @@ extension EBView {
 
   override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
-    self.updateXYplacards (inEvent.locationInWindow)
-    let mouseDraggedLocation = self.convert (inEvent.locationInWindow, from:nil)
-    if let selectionRectangleOrigin = mSelectionRectangleOrigin {
-      self.handleSelectionRectangle (from: selectionRectangleOrigin, to: mouseDraggedLocation)
-    }else if let lastMouseDraggedLocation = mLastMouseDraggedLocation {
-      var proposedTranslation = CGPoint (
-        x: mouseDraggedLocation.x - lastMouseDraggedLocation.x,
-        y:mouseDraggedLocation.y - lastMouseDraggedLocation.y
+    let locationInView = self.convert (inEvent.locationInWindow, from: nil)
+    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+    self.updateXYplacards (locationOnGridInView)
+    let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
+    if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
+      self.handleSelectionRectangle (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
+    }else if let lastMouseDraggedLocation = self.mLastMouseDraggedLocation {
+      let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPoint ()
+      var proposedTranslation = CanariPoint (
+        x: mouseDraggedCanariLocation.x - lastMouseDraggedLocation.x,
+        y: mouseDraggedCanariLocation.y - lastMouseDraggedLocation.y
       )
-      if mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
-        let stepX = proposedTranslation.x / self.arrowKeyMagnitude
-        proposedTranslation.x = stepX.rounded (.towardZero) * self.arrowKeyMagnitude ;
-        let stepY = proposedTranslation.y / self.arrowKeyMagnitude
-        proposedTranslation.y = stepY.rounded (.towardZero) * self.arrowKeyMagnitude ;
+      if self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
+        proposedTranslation = proposedTranslation.point (alignedOnGrid: self.arrowKeyMagnitude)
       }
       if let (objectIndex, knobIndex) = self.mPossibleKnob {
-        self.drag (knob: knobIndex, objectIndex: objectIndex,proposedTranslation, lastMouseDraggedLocation)
+        self.drag (knob: knobIndex, objectIndex: objectIndex, proposedTranslation, lastMouseDraggedLocation)
       }else{
         self.dragSelection (proposedTranslation, lastMouseDraggedLocation)
       }
@@ -116,16 +118,16 @@ extension EBView {
 
   fileprivate func drag (knob knobIndex : Int,
                          objectIndex : Int,
-                         _ inProposedTranslation: CGPoint,
-                         _ inLastMouseDraggedLocation : CGPoint) {
+                         _ inProposedTranslation: CanariPoint,
+                         _ inLastMouseDraggedLocation : CanariPoint) {
     let objects = self.viewController?.objectArray ?? []
-    if objects [objectIndex].canMove (knob: knobIndex, by: inProposedTranslation) {
+    if objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.undoManager?.beginUndoGrouping ()
       }
-      objects [objectIndex].move (knob: knobIndex, by: inProposedTranslation)
-      let mouseDraggedLocation = CGPoint (
+      objects [objectIndex].move (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
+      let mouseDraggedLocation = CanariPoint (
         x: inProposedTranslation.x + inLastMouseDraggedLocation.x,
         y: inProposedTranslation.y + inLastMouseDraggedLocation.y
       )
@@ -135,21 +137,22 @@ extension EBView {
 
   //····················································································································
 
-  fileprivate func dragSelection (_ proposedTranslation: CGPoint, _ lastMouseDraggedLocation : CGPoint) {
-    var translation = proposedTranslation
+  fileprivate func dragSelection (_ proposedTranslation: CanariPoint, _ lastMouseDraggedLocation : CanariPoint) {
+    var dx = proposedTranslation.x
+    var dy = proposedTranslation.y
     for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-      let p = object.acceptedTranslation (by: translation)
-      translation = p
+      dx = object.acceptedXTranslation (by: dx)
+      dy = object.acceptedYTranslation (by: dy)
     }
-    if (translation.x != 0.0) || (translation.y != 0.0) {
+    if (dx != 0) || (dy != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.undoManager?.beginUndoGrouping ()
       }
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-        object.translate (xBy: translation.x, yBy:translation.y)
+        object.translate (xBy: dx, yBy: dy)
       }
-      let mouseDraggedLocation = CGPoint (x: translation.x + lastMouseDraggedLocation.x, y: translation.y + lastMouseDraggedLocation.y)
+      let mouseDraggedLocation = CanariPoint (x: dx + lastMouseDraggedLocation.x, y: dy + lastMouseDraggedLocation.y)
       mLastMouseDraggedLocation = mouseDraggedLocation
     }
   }

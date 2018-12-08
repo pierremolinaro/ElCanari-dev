@@ -34,7 +34,7 @@ extension EBView {
     }else if action == #selector (EBView.sendBackward(_:)) {
       validate = self.viewController?.canSendBackward ?? false
     }else if action == #selector (EBView.snapToGrid(_:)) {
-      validate = self.viewController?.canSnapToGrid (cocoaToCanariUnit (self.arrowKeyMagnitude)) ?? false
+      validate = self.viewController?.canSnapToGrid (self.arrowKeyMagnitude) ?? false
     }else if action == #selector (EBView.flipHorizontally(_:)) {
       validate = self.viewController?.canFlipHorizontally ?? false
     }else if action == #selector (EBView.flipVertically(_:)) {
@@ -52,14 +52,14 @@ extension EBView {
   //····················································································································
 
   @objc func cut (_ : Any?) {
-    let translation = NSPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
+    let translation = CanariPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
     self.viewController?.cutSelectedObjectsIntoPasteboard (self.pasteboardType, pasteOffset: translation)
   }
 
   //····················································································································
 
   @objc func copy (_ : Any?) {
-    let translation = NSPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
+    let translation = CanariPoint (x: self.shiftArrowKeyMagnitude, y: self.shiftArrowKeyMagnitude)
     self.viewController?.copySelectedObjectsIntoPasteboard (self.pasteboardType, pasteOffset: translation)
   }
 
@@ -120,7 +120,7 @@ extension EBView {
   //····················································································································
 
   @objc func snapToGrid (_ : Any?) {
-    self.viewController?.snapToGrid (cocoaToCanariUnit (self.arrowKeyMagnitude))
+    self.viewController?.snapToGrid (self.arrowKeyMagnitude)
   }
 
   //····················································································································

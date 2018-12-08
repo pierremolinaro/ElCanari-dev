@@ -59,40 +59,49 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  Translation
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func acceptedTranslation (by inValue: CGPoint) -> CGPoint {
-    return inValue
+  @objc dynamic func acceptedXTranslation (by inDx: Int) -> Int {
+    return inDx
   }
 
   //····················································································································
 
-  @objc dynamic func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
+  @objc dynamic func acceptedYTranslation (by inDy: Int) -> Int {
+    return inDy
+  }
+
+  //····················································································································
+
+  @objc dynamic func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return false
   }
 
   //····················································································································
 
-  @objc dynamic func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
+  @objc dynamic func translate (xBy inDx: Int, yBy inDy: Int) {
   }
 
   //····················································································································
   //  Knob
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func canMove (knob inKnobIndex : Int, by inValue: CGPoint) -> Bool {
+  @objc dynamic func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }
 
   //····················································································································
 
-  @objc dynamic func move (knob inKnobIndex : Int, by inTranslation: CGPoint) {
+  @objc dynamic func move (knob inKnobIndex: Int, xBy inDx: Int, yBy inDy: Int) {
   }
 
   //····················································································································
   //  Snap to grid
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func snapToGrid (_ inGrid : Int) {
@@ -107,6 +116,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  HORIZONTAL FLIP
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func flipHorizontally () {
@@ -121,6 +131,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  VERTICAL FLIP
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func flipVertically () {
@@ -135,6 +146,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  ROTATE 90 CLOCKWISE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only type that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func rotate90Clockwise () {
@@ -149,6 +161,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  ROTATE 90 COUNTER CLOCKWISE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only type that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func rotate90CounterClockwise () {
@@ -163,6 +176,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  COPY AND PASTE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only type that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func canCopyAndPaste () -> Bool {

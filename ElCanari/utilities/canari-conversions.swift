@@ -118,7 +118,7 @@ func angleInDegreesBetweenNSPoints (_ inP1 : NSPoint, _ inP2 : NSPoint) -> CGFlo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func stringFrom (valueInCocoaUnit : CGFloat, displayUnit : Int) -> String {
-  let value = CGFloat (cocoaToCanariUnit(valueInCocoaUnit))
+  let value = CGFloat (cocoaToCanariUnit (valueInCocoaUnit))
   if displayUnit == 90 {
     return "\(Int (value / 90.0)) µm"
   }else if displayUnit == 90_000 {

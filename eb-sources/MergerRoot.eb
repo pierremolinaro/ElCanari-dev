@@ -28,9 +28,6 @@ entity MergerRoot {
 
   property Int shiftArrowMagnitude default 3_600_000 ; # 40mm
   property Int shiftArrowMagnitudeUnit default 90_000 ; # 1mm
-
-  transient CGFloat cocoaArrowMagnitude externFunc canariUnitToCocoa dependsFrom self.arrowMagnitude ;
-  transient CGFloat cocoaShiftArrowMagnitude externFunc canariUnitToCocoa dependsFrom self.shiftArrowMagnitude ;
   
 #--- Board model name array
   transient StringArray modelNames dependsFrom self.boardModels.all.name ;

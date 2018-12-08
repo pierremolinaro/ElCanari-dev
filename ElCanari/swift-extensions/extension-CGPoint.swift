@@ -44,6 +44,12 @@ extension CGPoint {
 
   //····················································································································
 
+  func canariPoint () -> CanariPoint {
+    return CanariPoint (x: cocoaToCanariUnit (self.x), y: cocoaToCanariUnit (self.y))
+  }
+
+  //····················································································································
+
   static func product (_ p1 : CGPoint, _ p2 : CGPoint, _ p3 : CGPoint) -> CGFloat {
     let dx2 = p2.x - p1.x
     let dy2 = p2.y - p1.y

@@ -205,41 +205,41 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  private var mArrowKeyMagnitude : CGFloat = 10.0
+  private var mArrowKeyMagnitude : Int = milsToCanariUnit (25)
 
   //····················································································································
 
-  var arrowKeyMagnitude : CGFloat { return self.mArrowKeyMagnitude }
+  var arrowKeyMagnitude : Int { return self.mArrowKeyMagnitude }
 
   //····················································································································
 
-  func set (arrowKeyMagnitude : CGFloat) {
+  func set (arrowKeyMagnitude : Int) {
     self.mArrowKeyMagnitude = arrowKeyMagnitude
   }
 
   //····················································································································
 
-  internal var mArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
+  internal var mArrowKeyMagnitudeController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  private var mShiftArrowKeyMagnitude : CGFloat = 10.0
+  private var mShiftArrowKeyMagnitude : Int = milsToCanariUnit (100)
 
   //····················································································································
 
-  var shiftArrowKeyMagnitude : CGFloat { return self.mShiftArrowKeyMagnitude }
+  var shiftArrowKeyMagnitude : Int { return self.mShiftArrowKeyMagnitude }
 
  //····················································································································
 
-  func set (shiftArrowKeyMagnitude : CGFloat) {
+  func set (shiftArrowKeyMagnitude : Int) {
     self.mShiftArrowKeyMagnitude = shiftArrowKeyMagnitude
   }
 
  //····················································································································
 
-  internal var mShiftArrowKeyMagnitudeController : EBReadOnlyController_CGFloat? = nil
+  internal var mShiftArrowKeyMagnitudeController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   // MARK: -
@@ -307,7 +307,7 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  internal var mLastMouseDraggedLocation : NSPoint? = nil
+  internal var mLastMouseDraggedLocation : CanariPoint? = nil
   internal var mSelectionRectangleOrigin : NSPoint? = nil
   internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
   internal var mPerformEndUndoGroupingOnMouseUp = false

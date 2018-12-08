@@ -14,36 +14,24 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func acceptedTranslation (by inTranslation : CGPoint) -> CGPoint {
-    var acceptedTranslation = inTranslation
+  override func acceptedXTranslation (by inDx : Int) -> Int {
+    var acceptedTranslation = inDx
     do{
-      let newX = canariUnitToCocoa (self.xPin) + acceptedTranslation.x
-      if newX < 0.0 {
-        acceptedTranslation.x = -canariUnitToCocoa (self.xPin)
-      }
-      let newY = canariUnitToCocoa (self.yPin) + acceptedTranslation.y
-      if newY < 0.0 {
-        acceptedTranslation.y = -canariUnitToCocoa (self.yPin)
+      let newX = self.xPin + acceptedTranslation
+      if newX < 0 {
+        acceptedTranslation = -self.xPin
       }
     }
     do{
-      let newX = canariUnitToCocoa (self.xName) + acceptedTranslation.x
-      if newX < 0.0 {
-        acceptedTranslation.x = -canariUnitToCocoa (self.xName)
-      }
-      let newY = canariUnitToCocoa (self.yName) + acceptedTranslation.y
-      if newY < 0.0 {
-        acceptedTranslation.y = -canariUnitToCocoa (self.yName)
+      let newX = self.xName + acceptedTranslation
+      if newX < 0 {
+        acceptedTranslation = -self.xName
       }
     }
     do{
-      let newX = canariUnitToCocoa (self.xNumber) + acceptedTranslation.x
-      if newX < 0.0 {
-        acceptedTranslation.x = -canariUnitToCocoa (self.xNumber)
-      }
-      let newY = canariUnitToCocoa (self.yNumber) + acceptedTranslation.y
-      if newY < 0.0 {
-        acceptedTranslation.y = -canariUnitToCocoa (self.yNumber)
+      let newX = self.xNumber + acceptedTranslation
+      if newX < 0 {
+        acceptedTranslation = -self.xNumber
       }
     }
     return acceptedTranslation
@@ -51,48 +39,73 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
-    let newX = self.xPin + cocoaToCanariUnit (inDx)
-    let newY = self.yPin + cocoaToCanariUnit (inDy)
-    let newXLabel = self.xName + cocoaToCanariUnit (inDx)
-    let newYLabel = self.yName + cocoaToCanariUnit (inDy)
-    let newXNumber = self.xNumber + cocoaToCanariUnit (inDx)
-    let newYNumber = self.yNumber + cocoaToCanariUnit (inDy)
+  override func acceptedYTranslation (by inDy : Int) -> Int {
+    var acceptedTranslation = inDy
+    do{
+      let newY = self.yPin + acceptedTranslation
+      if newY < 0 {
+        acceptedTranslation = -self.yPin
+      }
+    }
+    do{
+      let newY = self.yName + acceptedTranslation
+      if newY < 0 {
+        acceptedTranslation = -self.yName
+      }
+    }
+    do{
+      let newY = self.yNumber + acceptedTranslation
+      if newY < 0 {
+        acceptedTranslation = -self.yNumber
+      }
+    }
+    return acceptedTranslation
+  }
+
+  //····················································································································
+
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    let newX = self.xPin + inDx
+    let newY = self.yPin + inDy
+    let newXLabel = self.xName + inDx
+    let newYLabel = self.yName + inDy
+    let newXNumber = self.xNumber + inDx
+    let newYNumber = self.yNumber + inDy
     return (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
   }
 
   //····················································································································
 
-  override func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
-    self.xPin += cocoaToCanariUnit (inDx)
-    self.yPin += cocoaToCanariUnit (inDy)
-    self.xName += cocoaToCanariUnit (inDx)
-    self.yName += cocoaToCanariUnit (inDy)
-    self.xNumber += cocoaToCanariUnit (inDx)
-    self.yNumber += cocoaToCanariUnit (inDy)
+  override func translate (xBy inDx: Int, yBy inDy: Int) {
+    self.xPin += inDx
+    self.yPin += inDy
+    self.xName += inDx
+    self.yName += inDy
+    self.xNumber += inDx
+    self.yNumber += inDy
   }
 
   //····················································································································
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, by inValue: CGPoint) -> Bool {
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
     var accept = false
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      let newX = self.xPin + cocoaToCanariUnit (inValue.x)
-      let newY = self.yPin + cocoaToCanariUnit (inValue.y)
-      let newXLabel = self.xName + cocoaToCanariUnit (inValue.x)
-      let newYLabel = self.yName + cocoaToCanariUnit (inValue.y)
-      let newXNumber = self.xNumber + cocoaToCanariUnit (inValue.x)
-      let newYNumber = self.yNumber + cocoaToCanariUnit (inValue.y)
+      let newX = self.xPin + inDx
+      let newY = self.yPin + inDy
+      let newXLabel = self.xName + inDx
+      let newYLabel = self.yName + inDy
+      let newXNumber = self.xNumber + inDx
+      let newYNumber = self.yNumber + inDy
       accept = (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      let newX = self.xName + cocoaToCanariUnit (inValue.x)
-      let newY = self.yName + cocoaToCanariUnit (inValue.y)
+      let newX = self.xName + inDx
+      let newY = self.yName + inDy
       accept = (newX >= 0) && (newY >= 0)
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      let newX = self.xNumber + cocoaToCanariUnit (inValue.x)
-      let newY = self.yNumber + cocoaToCanariUnit (inValue.y)
+      let newX = self.xNumber + inDx
+      let newY = self.yNumber + inDy
       accept = (newX >= 0) && (newY >= 0)
     }
     return accept
@@ -100,20 +113,20 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, by inTranslation: CGPoint) {
+  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      self.xPin += cocoaToCanariUnit (inTranslation.x)
-      self.yPin += cocoaToCanariUnit (inTranslation.y)
-      self.xName += cocoaToCanariUnit (inTranslation.x)
-      self.yName += cocoaToCanariUnit (inTranslation.y)
-      self.xNumber += cocoaToCanariUnit (inTranslation.x)
-      self.yNumber += cocoaToCanariUnit (inTranslation.y)
+      self.xPin += inDx
+      self.yPin += inDy
+      self.xName += inDx
+      self.yName += inDy
+      self.xNumber += inDx
+      self.yNumber += inDy
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      self.xName += cocoaToCanariUnit (inTranslation.x)
-      self.yName += cocoaToCanariUnit (inTranslation.y)
+      self.xName += inDx
+      self.yName += inDy
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      self.xNumber += cocoaToCanariUnit (inTranslation.x)
-      self.yNumber += cocoaToCanariUnit (inTranslation.y)
+      self.xNumber += inDx
+      self.yNumber += inDy
     }
   }
 

@@ -98,10 +98,9 @@ extension EBView {
 
   //····················································································································
 
-  internal func updateXYplacards (_ inLocationInWindow : NSPoint) {
-    let p = self.convert (inLocationInWindow, from: nil)
-    let x = stringFrom (valueInCocoaUnit: p.x, displayUnit: self.mXPlacardUnit)
-    let y = stringFrom (valueInCocoaUnit: p.y, displayUnit: self.mYPlacardUnit)
+  internal func updateXYplacards (_ inLocationInView : NSPoint) {
+    let x = stringFrom (valueInCocoaUnit: inLocationInView.x, displayUnit: self.mXPlacardUnit)
+    let y = stringFrom (valueInCocoaUnit: inLocationInView.y, displayUnit: self.mYPlacardUnit)
     self.mXPlacard?.stringValue = "X = " + x
     self.mYPlacard?.stringValue = "Y = " + y
   }

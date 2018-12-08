@@ -12,8 +12,8 @@ extension EBView {
 
   //····················································································································
 
-  func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_CGFloat, file : String, line : Int) {
-    self.mArrowKeyMagnitudeController = EBReadOnlyController_CGFloat (
+  func bind_arrowKeyMagnitude (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mArrowKeyMagnitudeController = EBReadOnlyController_Int (
       model: model,
       callBack: { [weak self] in self?.updateArrowKeyMagnitude (from: model) }
     )
@@ -28,7 +28,7 @@ extension EBView {
 
   //····················································································································
 
-  private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_CGFloat) {
+  private func updateArrowKeyMagnitude (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty :
       break

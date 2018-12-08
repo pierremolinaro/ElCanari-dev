@@ -24,10 +24,10 @@ protocol EBViewControllerProtocol : class {
   func selectAllObjects ()
 
   func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
-  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint)
+  func cutSelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : CanariPoint)
 
   func canCopy (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
-  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : NSPoint)
+  func copySelectedObjectsIntoPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?, pasteOffset : CanariPoint)
 
   func canPaste (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool
   func pasteFromPasteboard (_ inPasteboardType : NSPasteboard.PasteboardType?)

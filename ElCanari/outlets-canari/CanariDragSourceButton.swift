@@ -93,7 +93,7 @@ import Cocoa
       //--- Associated data
         let d = NSMutableDictionary ()
         temporaryObject.saveIntoDictionary (d)
-        let dataDictionary : NSDictionary = ["OBJECTS" : [d], "START" : NSStringFromPoint (NSPoint ())]
+        let dataDictionary : NSDictionary = ["OBJECTS" : [d], "X" : 0, "Y" : 0]
         pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
       //--- Set dragged image
         draggingItem.setDraggingFrame (r, contents: image)

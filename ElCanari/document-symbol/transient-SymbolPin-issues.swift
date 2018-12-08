@@ -26,10 +26,10 @@ func transient_SymbolPin_issues (
     issues.appendSymbolEmptyPinNameIssueAt (x:self_xName, y: self_yName)
   }
   if (self_xPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
-    issues.appendSymbolHorizontalIssueAt (x: self_xPin, y: self_yPin)
+    issues.appendSymbolPinHorizontalIssueAt (x: self_xPin, y: self_yPin)
   }
   if (self_yPin % (SYMBOL_GRID_IN_CANARI_UNIT * 4)) != 0 {
-    issues.appendSymbolVerticalIssueAt (x: self_xPin, y: self_yPin)
+    issues.appendSymbolPinVerticalIssueAt (x: self_xPin, y: self_yPin)
   }
   if (self_xName % SYMBOL_GRID_IN_CANARI_UNIT) != 0 {
     issues.appendSymbolHorizontalIssueAt (x: self_xName, y: self_yName)

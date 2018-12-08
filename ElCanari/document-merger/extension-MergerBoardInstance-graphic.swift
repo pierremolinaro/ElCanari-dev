@@ -17,32 +17,39 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func acceptedTranslation (by inTranslation : CGPoint) -> CGPoint {
-    var acceptedTranslation = inTranslation
-    let newX = canariUnitToCocoa (self.x) + acceptedTranslation.x
-    if newX < 0.0 {
-      acceptedTranslation.x = -canariUnitToCocoa (self.x)
-    }
-    let newY = canariUnitToCocoa (self.y) + acceptedTranslation.y
-    if newY < 0.0 {
-      acceptedTranslation.y = -canariUnitToCocoa (self.y)
+  override func acceptedXTranslation (by inDx : Int) -> Int {
+    var acceptedTranslation = inDx
+    let newX = self.x + acceptedTranslation
+    if newX < 0 {
+      acceptedTranslation = -self.x
     }
     return acceptedTranslation
   }
 
   //····················································································································
 
-  override func acceptToTranslate (xBy inDx: CGFloat, yBy inDy: CGFloat) -> Bool {
-    let newX = self.x + cocoaToCanariUnit (inDx)
-    let newY = self.y + cocoaToCanariUnit (inDy)
+  override func acceptedYTranslation (by inDy : Int) -> Int {
+    var acceptedTranslation = inDy
+    let newY = self.y + acceptedTranslation
+    if newY < 0 {
+      acceptedTranslation = -self.y
+    }
+    return acceptedTranslation
+  }
+
+  //····················································································································
+
+  override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
+    let newX = self.x + inDx
+    let newY = self.y + inDy
     return (newX >= 0) && (newY >= 0)
   }
 
   //····················································································································
 
-  override func translate (xBy inDx: CGFloat, yBy inDy: CGFloat) {
-    self.x += cocoaToCanariUnit (inDx)
-    self.y += cocoaToCanariUnit (inDy)
+  override func translate (xBy inDx: Int, yBy inDy: Int) {
+    self.x += inDx
+    self.y += inDy
   }
 
   //····················································································································

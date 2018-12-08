@@ -275,8 +275,8 @@ document MergerDocument root MergerRoot {
     $verticalFlip prefs.mergerBoardViewVerticalFlip
     $overObjectsDisplay root.boardOutlineRectDisplay
     $graphicController self.mBoardInstanceController
-    $arrowKeyMagnitude root.cocoaArrowMagnitude
-    $shiftArrowKeyMagnitude root.cocoaShiftArrowMagnitude
+    $arrowKeyMagnitude root.arrowMagnitude
+    $shiftArrowKeyMagnitude root.shiftArrowMagnitude
   ;
 
   outlet CanariDraggingDestinationScrollView mComposedBoardScrollView ;
