@@ -1,5 +1,5 @@
 //
-//  CanariScrollViewWithPlacard.swift
+//  EBScrollViewWithPlacards.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 24/06/2018.
@@ -11,10 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariScrollViewWithPlacard) class CanariScrollViewWithPlacard : NSScrollView, EBUserClassNameProtocol {
+@objc(EBScrollViewWithPlacards) class EBScrollViewWithPlacards : NSScrollView, EBUserClassNameProtocol {
 
   fileprivate var mPlacardArray = [NSView] ()
 
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   required init? (coder: NSCoder) {
@@ -36,18 +38,20 @@ import Cocoa
   }
 
   //····················································································································
+  // MARK: -
+  //····················································································································
 
-  func addPlacard (_ inView : NSView) {
-    if !mPlacardArray.contains (inView) {
-      mPlacardArray.append (inView)
-      self.addSubview (inView)
+  func addPlacard (_ inPlacardView : NSView) {
+    if !mPlacardArray.contains (inPlacardView) {
+      mPlacardArray.append (inPlacardView)
+      self.addSubview (inPlacardView)
     }
   }
 
   //····················································································································
 
-  func removePlacard (_ inView : NSView?) {
-    if let view = inView, mPlacardArray.contains (view) {
+  func removePlacard (_ inPlacardView : NSView?) {
+    if let view = inPlacardView, mPlacardArray.contains (view) {
       view.removeFromSuperview ()
       if let index = mPlacardArray.index (of: view) {
         mPlacardArray.remove (at: index)
@@ -56,9 +60,20 @@ import Cocoa
   }
 
   //····················································································································
+  // MARK: -
+  //····················································································································
 
   override func tile () {
     super.tile ()
+    self.updatePlacardsLocation ()
+//    if let contentView = self.documentView as? EBView {
+//      contentView.updateViewFrameAndBounds ()
+//    }
+  }
+
+  //····················································································································
+
+  private final func updatePlacardsLocation () {
     if let horizScroller = self.horizontalScroller, mPlacardArray.count > 0 {
       var horizScrollerFrame : NSRect = horizScroller.frame
       for placard in mPlacardArray {
@@ -70,7 +85,7 @@ import Cocoa
 
       // Put placard where the horizontal scroller is
         placardFrame.origin.x = NSMinX (horizScrollerFrame);
-        
+
       // Move horizontal scroller over to the right of the placard
         horizScrollerFrame.origin.x = NSMaxX(placardFrame);
         horizScroller.setFrameOrigin (horizScrollerFrame.origin)
@@ -78,7 +93,7 @@ import Cocoa
       // Adjust height of placard
         placardFrame.size.height = horizScrollerFrame.size.height + 1.0
         placardFrame.origin.y = self.bounds.size.height - placardFrame.size.height
-      
+
       // Move the placard into place
         placard.frame = placardFrame
       }
@@ -86,6 +101,7 @@ import Cocoa
   }
 
   //····················································································································
+  // MARK: -
   //  Mouse down
   //  Strangely, an NSScrollView does not respond to ctrl-click for displaying a contextual menu
   //····················································································································

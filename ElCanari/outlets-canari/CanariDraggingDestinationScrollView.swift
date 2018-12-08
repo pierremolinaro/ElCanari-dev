@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDraggingDestinationScrollView) class CanariDraggingDestinationScrollView : CanariScrollViewWithPlacard {
+@objc(CanariDraggingDestinationScrollView) class CanariDraggingDestinationScrollView : EBScrollViewWithPlacards {
 
   //····················································································································
 

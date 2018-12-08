@@ -28,14 +28,16 @@ extension EBView {
 
   //····················································································································
 
-  internal func installPlacards (_ inScrollView : CanariScrollViewWithPlacard) {
-    self.installZoomPopUpButton (inScrollView)
-    self.installXYplacards (inScrollView)
+  internal func installPlacards () {
+    if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
+      self.installZoomPopUpButton (scrollView)
+      self.installXYplacards (scrollView)
+    }
   }
 
   //····················································································································
 
-  internal func installZoomPopUpButton (_ inScrollView : CanariScrollViewWithPlacard) {
+  internal func installZoomPopUpButton (_ inScrollView : EBScrollViewWithPlacards) {
     if self.mZoomPopUpButton == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
@@ -75,7 +77,7 @@ extension EBView {
 
   //····················································································································
 
-  private func installXYplacards (_ inScrollView : CanariScrollViewWithPlacard) {
+  private func installXYplacards (_ inScrollView : EBScrollViewWithPlacards) {
     if self.mXPlacard == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
       let xPlacard = NSTextField (frame: r)
@@ -113,13 +115,15 @@ extension EBView {
 
   //····················································································································
 
-  internal func removePlacards (_ inScrollView : CanariScrollViewWithPlacard) {
-    inScrollView.removePlacard (self.mZoomPopUpButton)
-    self.mZoomPopUpButton = nil
-    inScrollView.removePlacard (self.mXPlacard)
-    self.mXPlacard = nil ;
-    inScrollView.removePlacard (self.mYPlacard)
-    self.mYPlacard = nil ;
+  internal func removePlacards () {
+    if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
+      scrollView.removePlacard (self.mZoomPopUpButton)
+      self.mZoomPopUpButton = nil
+      scrollView.removePlacard (self.mXPlacard)
+      self.mXPlacard = nil ;
+      scrollView.removePlacard (self.mYPlacard)
+      self.mYPlacard = nil
+    }
   }
 
   //····················································································································

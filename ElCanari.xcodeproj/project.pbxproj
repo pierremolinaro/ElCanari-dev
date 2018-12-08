@@ -407,7 +407,6 @@
 		CF5C4D83219F04D600EAC52A /* entity-BoardModelVia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */; };
 		CF5C4D84219F04D600EAC52A /* transient-ArtworkDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0CABEA1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift */; };
 		CF5C4D85219F04D600EAC52A /* GeometricOblong.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC3EDBA1DE0C10900445A35 /* GeometricOblong.swift */; };
-		CF5C4D86219F04D600EAC52A /* CanariScrollViewWithPlacard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */; };
 		CF5C4D87219F04D600EAC52A /* transient-BoardModel-backTrackSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF323C2820E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift */; };
 		CF5C4D88219F04D600EAC52A /* EBUndoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEDE5B51B4677C500036ACF /* EBUndoManager.swift */; };
 		CF5C4D89219F04D600EAC52A /* EBFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */; };
@@ -447,6 +446,8 @@
 		CF5CF73A1B46D53D0052AC7A /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */; };
 		CF60436121A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */; };
 		CF60436221A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */; };
+		CF604DC721BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */; };
+		CF604DC821BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */; };
 		CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
 		CF6172631B3C4BA900F3CA82 /* application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725E1B3C4BA900F3CA82 /* application.swift */; };
 		CF6172641B3C4BA900F3CA82 /* easy-bindings-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */; };
@@ -564,7 +565,6 @@
 		CF747FC71B3C419D00140C49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF747FC61B3C419D00140C49 /* WebKit.framework */; };
 		CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
 		CF7542D421B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
-		CF75947D20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */; };
 		CF7C5A5D1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */; };
 		CF7C5A5F1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5E1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift */; };
 		CF7FFAE920E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */; };
@@ -967,6 +967,7 @@
 		CF5C4DB4219F04D600EAC52A /* ElCanari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElCanari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
 		CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-modelRect.swift"; sourceTree = "<group>"; };
+		CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBScrollViewWithPlacards.swift; sourceTree = "<group>"; };
 		CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		CF6172591B3C4B4300F3CA82 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		CF61725E1B3C4BA900F3CA82 /* application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = application.swift; sourceTree = "<group>"; };
@@ -1080,7 +1081,6 @@
 		CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF747FC61B3C419D00140C49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildPDFimage.swift; sourceTree = "<group>"; };
-		CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariScrollViewWithPlacard.swift; sourceTree = "<group>"; };
 		CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ArtworkDocument-mDataSelection.swift"; sourceTree = "<group>"; };
 		CF7C5A5E1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-ArtworkDocument-mDataController.swift"; sourceTree = "<group>"; };
 		CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontComponentValueSegments.swift"; sourceTree = "<group>"; };
@@ -1664,7 +1664,6 @@
 				CF6BC0501DE1C53A002D935F /* CanariMenu.swift */,
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForPanel.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
-				CF75947C20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
 				CF3395591B4AC885009C561B /* CanariSignatureField.swift */,
 				CF51EEAF1B4C61C8006D1A45 /* CanariVersionField.swift */,
@@ -1858,6 +1857,7 @@
 		CFDDD4D321BB14FF007D2F14 /* EBView */ = {
 			isa = PBXGroup;
 			children = (
+				CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */,
 				CF968AED21BBD2C10010175E /* EBView-binding-arrowKeyMagnitude.swift */,
 				CF968AF321BBD40B0010175E /* EBView-binding-backColor.swift */,
 				CFDDD4D821BB1529007D2F14 /* EBView-binding-gridCrossColor.swift */,
@@ -2287,6 +2287,7 @@
 				CF1D9C7821BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift in Sources */,
 				CF8D9AA321A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */,
 				CFD9522621039A2900D19FE9 /* transient-MergerRoot-boardOutlineRectDisplay.swift in Sources */,
+				CF604DC721BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */,
 				CF968AF121BBD3700010175E /* EBView-binding-shiftArrowKeyMagnitude.swift in Sources */,
 				CFA655CF21060672001E5067 /* action-MergerDocument-moveLeftAction.swift in Sources */,
 				CF69ABD121A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */,
@@ -2478,7 +2479,6 @@
 				CFCE71FB20DD611100AB1DE7 /* entity-BoardModelVia.swift in Sources */,
 				CF0CABEC1EB8E3B800DA81FF /* transient-ArtworkDocument-mStatusImage.swift in Sources */,
 				CFC3EDBB1DE0C10900445A35 /* GeometricOblong.swift in Sources */,
-				CF75947D20DFA5CF00FF2FDF /* CanariScrollViewWithPlacard.swift in Sources */,
 				CF323C2920E2DD9E00F8FD8D /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CFEDE5BA1B4677C500036ACF /* EBUndoManager.swift in Sources */,
 				CF71F9261B3EA3DF00FB5049 /* EBFontButton.swift in Sources */,
@@ -2615,6 +2615,7 @@
 				CF1D9C7921BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift in Sources */,
 				CF8D9AA421A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */,
 				CF5C4CF9219F04D600EAC52A /* transient-MergerRoot-boardOutlineRectDisplay.swift in Sources */,
+				CF604DC821BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */,
 				CF968AF221BBD3700010175E /* EBView-binding-shiftArrowKeyMagnitude.swift in Sources */,
 				CF5C4CFB219F04D600EAC52A /* action-MergerDocument-moveLeftAction.swift in Sources */,
 				CF69ABD221A6C08100F5E49A /* transient-SymbolPin-objectDisplay.swift in Sources */,
@@ -2805,7 +2806,6 @@
 				CF5C4D83219F04D600EAC52A /* entity-BoardModelVia.swift in Sources */,
 				CF5C4D84219F04D600EAC52A /* transient-ArtworkDocument-mStatusImage.swift in Sources */,
 				CF5C4D85219F04D600EAC52A /* GeometricOblong.swift in Sources */,
-				CF5C4D86219F04D600EAC52A /* CanariScrollViewWithPlacard.swift in Sources */,
 				CF5C4D87219F04D600EAC52A /* transient-BoardModel-backTrackSegments.swift in Sources */,
 				CF5C4D88219F04D600EAC52A /* EBUndoManager.swift in Sources */,
 				CF5C4D89219F04D600EAC52A /* EBFontButton.swift in Sources */,

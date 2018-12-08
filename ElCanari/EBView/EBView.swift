@@ -358,9 +358,7 @@ import Cocoa
 
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
-    if let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
-      self.installPlacards (scrollView)
-    }
+    self.installPlacards ()
   }
 
   //····················································································································
@@ -507,8 +505,8 @@ import Cocoa
   override func viewWillMove (toSuperview inSuperview : NSView?) {
      super.viewWillMove (toSuperview: inSuperview)
   //--- Remove from superview ?
-    if nil == inSuperview, let scrollView = self.enclosingScrollView as? CanariScrollViewWithPlacard {
-      self.removePlacards (scrollView)
+    if nil == inSuperview {
+      self.removePlacards ()
     }
   }
 
