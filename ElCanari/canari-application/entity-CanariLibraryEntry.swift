@@ -278,18 +278,6 @@ class CanariLibraryEntry : EBManagedObject,
 class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <CanariLibraryEntry> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [CanariLibraryEntry] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <CanariLibraryEntry> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'mPath' stored property
   //····················································································································
 

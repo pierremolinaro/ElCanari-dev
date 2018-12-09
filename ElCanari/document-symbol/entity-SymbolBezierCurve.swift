@@ -705,18 +705,6 @@ class SymbolBezierCurve : SymbolObject,
 class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolBezierCurve> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [SymbolBezierCurve] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <SymbolBezierCurve> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'y1' stored property
   //····················································································································
 

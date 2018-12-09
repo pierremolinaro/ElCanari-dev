@@ -420,18 +420,6 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <SegmentForFontCharacter> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [SegmentForFontCharacter] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <SegmentForFontCharacter> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
 

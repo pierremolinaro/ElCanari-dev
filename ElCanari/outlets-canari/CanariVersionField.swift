@@ -99,7 +99,7 @@ import Cocoa
     case .empty, .multiple :
       break
     case .single (let v) :
-      self.textColor = v ? NSColor.red : NSColor.black
+      self.textColor = v ? NSColor.systemBlue : NSColor.black
     }
   }
 

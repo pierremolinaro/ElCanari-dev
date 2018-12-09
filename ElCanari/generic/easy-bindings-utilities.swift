@@ -1069,9 +1069,23 @@ prefix func ! (operand:EBSelection<Bool>) -> EBSelection<Bool> {
 //    ReadOnlyAbstractArrayProperty
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
+class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
+
+  //····················································································································
 
   var prop : EBSelection < [T] > { get { return .empty } }
+
+  //····················································································································
+
+  weak var undoManager : EBUndoManager? = nil // SOULD BE WEAK
+
+  //····················································································································
+
+  var propval : [T] { return [] } // Abstract method
+
+  //····················································································································
+
+  var propset : Set <T> { return Set () } // Abstract method (requires T to be hashable)
 
   //····················································································································
 
@@ -1088,8 +1102,8 @@ class ReadOnlyAbstractArrayProperty <T> : EBAbstractProperty {
   override init () {
     super.init ()
     self.count_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        switch unwSelf.prop {
+      if let me = self {
+        switch me.prop {
         case .empty :
           return .empty
         case .multiple :

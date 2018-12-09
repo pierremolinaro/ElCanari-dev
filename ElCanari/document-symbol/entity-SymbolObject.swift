@@ -189,18 +189,6 @@ class SymbolObject : EBGraphicManagedObject,
 class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [SymbolObject] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <SymbolObject> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 

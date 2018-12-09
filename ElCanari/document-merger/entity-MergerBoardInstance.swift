@@ -606,18 +606,6 @@ class MergerBoardInstance : EBGraphicManagedObject,
 class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <MergerBoardInstance> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [MergerBoardInstance] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <MergerBoardInstance> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 

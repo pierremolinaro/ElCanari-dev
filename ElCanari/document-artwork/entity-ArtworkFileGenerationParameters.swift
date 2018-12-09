@@ -1257,18 +1257,6 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayProperty <ArtworkFileGenerationParameters> {
 
   //····················································································································
-
-  weak var undoManager : EBUndoManager? // SOULD BE WEAK
-
-  //····················································································································
-
-  var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
-
-  //····················································································································
-
-  var propset : Set <ArtworkFileGenerationParameters> { return Set () } // Abstract method
-
-  //····················································································································
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
