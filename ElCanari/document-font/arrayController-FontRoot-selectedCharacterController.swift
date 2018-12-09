@@ -101,7 +101,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_FontCharacter) {
+  func bind_model (_ inModel : ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
   }
@@ -179,7 +179,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //    select
   //····················································································································
 
-  func select (object inObject: FontCharacter) {
+  func select (object inObject : FontCharacter) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :

@@ -182,7 +182,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
 
-  func bind_model (_ inModel:ReadWriteArrayOf_MergerBoardInstance) {
+  func bind_model (_ inModel : ReadWriteArrayOf_MergerBoardInstance) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
     self.startObservingObjectShape ()
@@ -383,7 +383,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    select
   //····················································································································
 
-  func select (object inObject: MergerBoardInstance) {
+  func select (object inObject : MergerBoardInstance) {
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -500,7 +500,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     var result = [Int] ()
     let objects = self.mModel?.propval ?? []
     for object in self.selectedArray_property.propset {
-      let idx = objects.index (of:object)!
+      let idx = objects.index (of: object)!
       result.append (idx)
     }
     return result.sorted ()
@@ -547,7 +547,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if let pasteboardType = inPasteboardType {
     //--- Declare pasteboard types
       let pb = NSPasteboard.general
-      pb.declareTypes ([pasteboardType, .pdf], owner:self)
+      pb.declareTypes ([pasteboardType, .pdf], owner: self)
     //--- Build PDF representation
       let indexArray = self.sortedIndexArrayOfSelectedObjects ()
       let objects = mModel?.propval ?? []
@@ -672,7 +672,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for idx in sortedIndexArray.reversed () {
        let object = objects [idx]
        objects.remove (at: idx)
-       objects.insert (object, at:idx+1)
+       objects.insert (object, at: idx+1)
     }
     self.mModel?.setProp (objects)
   }
@@ -741,7 +741,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
-      objects.insert (object, at:idx-1)
+      objects.insert (object, at: idx-1)
     }
     self.mModel?.setProp (objects)
   }
@@ -761,7 +761,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for idx in sortedIndexArray.reversed () {
       let object = objects [idx]
       objects.remove (at: idx)
-      objects.insert (object, at:0)
+      objects.insert (object, at: 0)
     }
     self.mModel?.setProp (objects)
   }
@@ -951,8 +951,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedSet = Set (selectedObjects)
   }
-
-
 
   //····················································································································
   // MARK: -
