@@ -19,10 +19,10 @@ extension EBView : NSDraggingSource {
 
   internal func ebStartDragging (with inEvent : NSEvent, dragType : NSPasteboard.PasteboardType) {
     let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
- //--- Build dragging item
+  //--- Build dragging item
     let pasteboardItem = NSPasteboardItem ()
     let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
-  //--- Buils image ans data
+  //--- Buils image and data
     let objectArray = self.viewController?.objectArray ?? []
     let displayShape = EBShape ()
     var objectDictionaryArray = [NSDictionary] ()
@@ -34,34 +34,35 @@ extension EBView : NSDraggingSource {
         objectDictionaryArray.append (d)
       }
     }
+  //--- Associated data
+    let mouseDownCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
+    let mouseDownCanariLocation = mouseDownCocoaLocation.canariPointAligned (onCanariGrid: SYMBOL_GRID_IN_CANARI_UNIT)
+    let dataDictionary : NSDictionary = [
+      "OBJECTS" : objectDictionaryArray,
+      "X" : mouseDownCanariLocation.x,
+      "Y" : mouseDownCanariLocation.y
+    ]
+    pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
   //--- Transform image by scaling and translating
-    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
     let transform = NSAffineTransform ()
     transform.scale (by: self.actualScale ())
     transform.translateX (by: -displayShape.boundingBox.origin.x, yBy: -displayShape.boundingBox.origin.y)
     let finalShape = displayShape.transformedBy (transform)
   //--- Build image
     let rect = finalShape.boundingBox
-    let imagePDFData = buildPDFimage (frame: rect, shape: finalShape)
-    let image = NSImage (data: imagePDFData)
+    let image = NSImage (data: buildPDFimage (frame: rect, shape: finalShape))
+ //   NSLog ("\(String(describing: image))")
   //--- Move image rect origin to mouse click location
-    Swift.print ("\(mouseDownLocation) | \(displayShape.boundingBox)")
-    var p = mouseDownLocation
+    let p = mouseDownCocoaLocation
 //    var p = displayShape.boundingBox.origin //
 //      p.x -= displayShape.boundingBox.origin.x
 //      p.y -= displayShape.boundingBox.origin.y
-    p.x -= displayShape.boundingBox.size.width  / 2.0
-    p.y -= displayShape.boundingBox.size.height / 2.0
+//    p.x -= displayShape.boundingBox.size.width  / 2.0
+//    p.y -= displayShape.boundingBox.size.height / 2.0
     let draggingFrame = NSRect (origin: p, size: rect.size)
-  //--- Associated data
-    let dataDictionary : NSDictionary = [
-      "OBJECTS" : objectDictionaryArray,
-      "START" : NSStringFromPoint (mouseDownLocation)
-    ]
-    pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
   //--- Set dragged image
     draggingItem.setDraggingFrame (draggingFrame, contents: image)
-  //--- Begin
+  //--- Begin dragging
     self.beginDraggingSession (with: [draggingItem], event: inEvent, source: self)
   }
 

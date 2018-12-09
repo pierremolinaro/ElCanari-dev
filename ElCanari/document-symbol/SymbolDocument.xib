@@ -178,7 +178,7 @@
                 <button toolTip="Add Segment" id="1182" customClass="CanariDragSourceButton">
                     <rect key="frame" x="17" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="line-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1183">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1183">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -186,7 +186,7 @@
                 <button toolTip="Add Bezier Curve" id="1185" customClass="CanariDragSourceButton">
                     <rect key="frame" x="48" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="bezier-curve-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1186">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1186">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -194,7 +194,7 @@
                 <button toolTip="Add Oval" id="1188" customClass="CanariDragSourceButton">
                     <rect key="frame" x="111" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1189">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -202,7 +202,7 @@
                 <button toolTip="Add Solid Rect" id="1192" customClass="CanariDragSourceButton">
                     <rect key="frame" x="143" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="solidrect-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1193">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1193">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -210,7 +210,7 @@
                 <button toolTip="Add Text" id="1195" customClass="CanariDragSourceButton">
                     <rect key="frame" x="175" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="text-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1196">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1196">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -218,7 +218,7 @@
                 <button toolTip="Add Connexion Pin" id="1198" customClass="CanariDragSourceButton">
                     <rect key="frame" x="207" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pin-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1199">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="1199">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -229,22 +229,22 @@
                     <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1209">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Selected Object Inspector" image="selected-object" width="70"/>
-                            <segment toolTip="Zoom and Flip Inspector" image="loupe" width="71" tag="1"/>
-                            <segment toolTip="Display Inspector" image="display" width="70" tag="2"/>
+                            <segment toolTip="Selected Object Inspector" image="NSActionTemplate" imageScaling="proportionallyUpOrDown" width="70"/>
+                            <segment toolTip="Zoom and Flip Inspector" image="magnifyingGlass" imageScaling="proportionallyUpOrDown" width="71" tag="1"/>
+                            <segment toolTip="Display Inspector" image="NSStatusAvailable" imageScaling="proportionallyUpOrDown" width="70" tag="2"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
                 <button toolTip="Add Solid Oval" id="PeS-G6-Otd" customClass="CanariDragSourceButton">
                     <rect key="frame" x="80" y="352" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="Tbc-V6-l1x">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSStatusAvailable" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="Tbc-V6-l1x">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="622" y="-201"/>
+            <point key="canvasLocation" x="160" y="-167"/>
         </customView>
         <customView id="923" userLabel="Page : infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="622" height="385"/>
@@ -335,7 +335,7 @@ Cg
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="J1t-eF-bDG">
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="r2i-A5-R2a" customClass="CanariIssueTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
@@ -732,15 +732,9 @@ Cg
         </customView>
     </objects>
     <resources>
-        <image name="bezier-curve-in-symbol" width="64" height="64"/>
+        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="canariErrorStatus" width="40" height="100"/>
-        <image name="circle-in-symbol" width="64" height="64"/>
-        <image name="display" width="64" height="64"/>
-        <image name="line-in-symbol" width="64" height="64"/>
-        <image name="loupe" width="64" height="64"/>
-        <image name="pin-in-symbol" width="64" height="64"/>
-        <image name="selected-object" width="64" height="64"/>
-        <image name="solidrect-in-symbol" width="64" height="64"/>
-        <image name="text-in-symbol" width="64" height="64"/>
+        <image name="magnifyingGlass" width="40" height="40"/>
     </resources>
 </document>

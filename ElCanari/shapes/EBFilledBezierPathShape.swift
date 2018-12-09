@@ -101,7 +101,7 @@ class EBFilledBezierPathShape : EBShape {
     var idx = 0
     while (idx < self.mFilledPaths.count) && !result {
       if self.mFilledPaths [idx].bounds.intersects (inRect) {
-        result =  inRect.intersectsFilledBezizerPath (self.mFilledPaths [idx])
+        result =  inRect.intersectsFilledBezierPath (self.mFilledPaths [idx])
       }
       idx += 1
     }
@@ -144,54 +144,6 @@ class EBFilledBezierPathShape : EBShape {
       }
     }
     return equal
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSRect {
-
-  //····················································································································
-
-  func intersectsFilledBezizerPath (_ inPath: NSBezierPath) -> Bool {
-    var intersect = self.intersects (inPath.bounds)
-    if intersect {
-      intersect = inPath.contains (self.origin) // Bottom left
-      if !intersect {
-        intersect = inPath.contains (NSPoint (x: self.minX, y: self.maxY)) // Top left
-      }
-      if !intersect {
-        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.maxY)) // Top right
-      }
-      if !intersect {
-        intersect = inPath.contains (NSPoint (x: self.maxX, y: self.minY)) // Bottom right
-      }
-      if !intersect {
-        var points = [NSPoint] (repeating: .zero, count: 3)
-        var currentPoint = NSPoint ()
-        let flattenedPath = inPath.flattened
-        var idx = 0
-        while (idx < flattenedPath.elementCount) && !intersect {
-          let type = flattenedPath.element (at: idx, associatedPoints: &points)
-          idx += 1
-          switch type {
-          case .moveTo:
-            currentPoint = points [0]
-          case .lineTo:
-            let p = points [0]
-            let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
-            intersect = possibleResultSegment != nil
-            currentPoint = p
-          case .curveTo, .closePath: // Flattened path has no element of theses types
-            ()
-          }
-        }
-      }
-    }
-    return intersect
   }
 
   //····················································································································

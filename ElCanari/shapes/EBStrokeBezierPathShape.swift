@@ -18,18 +18,21 @@ class EBStrokeBezierPathShape : EBShape {
   //····················································································································
 
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mPaths = inPaths
+    mPaths = []
     mColor = inColor
     super.init ()
+    for path in inPaths {
+      let cgPath = path.pathByStroking
+      self.mPaths.append (cgPath.bezierPath)
+    }
   }
 
   //····················································································································
-  //  append
-  //····················································································································
 
-  func append (path inBezierPath : NSBezierPath) {
-    self.mPaths.append (inBezierPath)
-    self.mCachedBoundingBox = nil
+  private init (transformedPaths inPaths: [NSBezierPath], _ inColor: NSColor) {
+    mPaths = inPaths
+    mColor = inColor
+    super.init ()
   }
 
   //····················································································································
@@ -42,7 +45,7 @@ class EBStrokeBezierPathShape : EBShape {
       let bp = inAffineTransform.transform (path)
       paths.append (bp)
     }
-    let result = EBStrokeBezierPathShape (paths, self.mColor)
+    let result = EBStrokeBezierPathShape (transformedPaths: paths, self.mColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -53,9 +56,9 @@ class EBStrokeBezierPathShape : EBShape {
 
   override func draw (_ inDirtyRect: NSRect) {
     super.draw (inDirtyRect)
-    self.mColor.setStroke ()
+    self.mColor.setFill ()
     for bp in self.mPaths {
-      bp.stroke ()
+      bp.fill ()
     }
   }
 
@@ -69,8 +72,7 @@ class EBStrokeBezierPathShape : EBShape {
     }else{
       var r = super.boundingBox
       for bp in self.mPaths {
-        let lineWidth = max (bp.lineWidth, 1.0)
-        r = r.union (bp.bounds.insetBy (dx: -lineWidth, dy: -lineWidth))
+        r = r.union (bp.bounds)
       }
       self.mCachedBoundingBox = r
       return r
@@ -85,13 +87,7 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.contains (point: inPoint)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      let p = self.mPaths [idx].cgPath.copy (
-        strokingWithWidth: self.mPaths [idx].lineWidth,
-        lineCap: .round,
-        lineJoin: .round,
-        miterLimit: 1.0
-      )
-      result = p.contains (inPoint)
+      result = self.mPaths [idx].contains (inPoint)
       idx += 1
     }
     return result
@@ -105,7 +101,7 @@ class EBStrokeBezierPathShape : EBShape {
     var result = super.intersects (rect: inRect)
     var idx = 0
     while (idx < self.mPaths.count) && !result {
-      result = inRect.intersectsStrokeBezizerPath (self.mPaths [idx])
+      result = inRect.intersectsFilledBezierPath (self.mPaths [idx])
       idx += 1
     }
     return result
@@ -147,43 +143,6 @@ class EBStrokeBezierPathShape : EBShape {
       h ^= path.hashValue
     }
     return h
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSRect {
-
-  //····················································································································
-
-  func intersectsStrokeBezizerPath (_ inPath: NSBezierPath) -> Bool {
-    var intersect = self.intersects (inPath.bounds)
-    if intersect {
-      intersect = false
-      var points = [NSPoint] (repeating: .zero, count: 3)
-      var currentPoint = NSPoint ()
-      let flattenedPath = inPath.flattened
-      var idx = 0
-      while (idx < flattenedPath.elementCount) && !intersect {
-        let type = flattenedPath.element (at: idx, associatedPoints: &points)
-        idx += 1
-        switch type {
-        case .moveTo:
-          currentPoint = points [0]
-        case .lineTo:
-          let p = points [0]
-          let possibleResultSegment = self.clippedSegment (p1: currentPoint, p2: p)
-          intersect = possibleResultSegment != nil
-          currentPoint = p
-        case .curveTo, .closePath: // Flattened path has no element of theses types
-          ()
-        }
-      }
-    }
-    return intersect
   }
 
   //····················································································································

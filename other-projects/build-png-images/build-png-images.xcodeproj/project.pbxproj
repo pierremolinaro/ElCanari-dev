@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF31B52821BD842500BF3E89 /* MagnifyingGlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */; };
 		CFD336B521AEAD3E0085D2AB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD336B421AEAD3E0085D2AB /* main.swift */; };
 		CFD336BC21AEAD6B0085D2AB /* CanariStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD336BB21AEAD6B0085D2AB /* CanariStatusView.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifyingGlassView.swift; sourceTree = "<group>"; };
 		CFD336B121AEAD3E0085D2AB /* build-png-images */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "build-png-images"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD336B421AEAD3E0085D2AB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CFD336BB21AEAD6B0085D2AB /* CanariStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariStatusView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				CFD336BB21AEAD6B0085D2AB /* CanariStatusView.swift */,
 				CFD336B421AEAD3E0085D2AB /* main.swift */,
+				CF31B52721BD842500BF3E89 /* MagnifyingGlassView.swift */,
 			);
 			path = "build-png-images";
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 			files = (
 				CFD336BC21AEAD6B0085D2AB /* CanariStatusView.swift in Sources */,
 				CFD336B521AEAD3E0085D2AB /* main.swift in Sources */,
+				CF31B52821BD842500BF3E89 /* MagnifyingGlassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

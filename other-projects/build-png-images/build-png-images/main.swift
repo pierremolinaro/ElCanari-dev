@@ -34,11 +34,6 @@ func writeCGImage(_ image: CGImage, to destinationURL: URL) {
 func buildImage (view inView : NSView, fileName : String) {
   let PDFdata : Data = inView.dataWithPDF (inside: inView.frame)
   let image = NSImage (data: PDFdata)!
-//  let tiff = image.tiffRepresentation!
-//  var url = URL (fileURLWithPath: fileName + ".tiff")
-//  try! tiff.write (to: url)
-//  url = URL (fileURLWithPath: fileName + ".pdf")
-//  try! PDFdata.write (to: url)
   let url = URL (fileURLWithPath: fileName + ".png")
   writePNGImage (image, to: url)
 }
@@ -55,3 +50,5 @@ buildImage (view: statusView, fileName: "canariWarningStatus")
 statusView = CanariStatusView (frame: r)
 statusView.mDrawGreen = true
 buildImage (view: statusView, fileName: "canariOkStatus")
+var magnifyingGlassView = MagnifyingGlassView (frame: NSRect (x: 0.0, y:0.0, width: 40.0, height: 40.0))
+buildImage (view: magnifyingGlassView, fileName: "magnifyingGlass")

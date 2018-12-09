@@ -83,10 +83,10 @@
 		CF33955A1B4AC885009C561B /* CanariSignatureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3395591B4AC885009C561B /* CanariSignatureField.swift */; };
 		CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54721A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
-		CF35A54821A825BC00A0E500 /* extension-CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint.swift */; };
-		CF35A54921A825BC00A0E500 /* extension-CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint.swift */; };
-		CF35A54A21A825BC00A0E500 /* extension-CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54421A825BC00A0E500 /* extension-CGRect.swift */; };
-		CF35A54B21A825BC00A0E500 /* extension-CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54421A825BC00A0E500 /* extension-CGRect.swift */; };
+		CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
+		CF35A54921A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
+		CF35A54A21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */; };
+		CF35A54B21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */; };
 		CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54521A825BC00A0E500 /* extension-String.swift */; };
 		CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54521A825BC00A0E500 /* extension-String.swift */; };
 		CF372C491C033DBE00FFC17A /* CharacterGerberCodeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF372C481C033DBE00FFC17A /* CharacterGerberCodeClass.swift */; };
@@ -567,6 +567,18 @@
 		CF747FC71B3C419D00140C49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF747FC61B3C419D00140C49 /* WebKit.framework */; };
 		CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
 		CF7542D421B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
+		CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
+		CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
+		CF7A9F2221BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
+		CF7A9F2321BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
+		CF7A9F2521BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
+		CF7A9F2621BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
+		CF7A9F2821BDB17500AC0FC7 /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */; };
+		CF7A9F2921BDB17500AC0FC7 /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */; };
+		CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */; };
+		CF7A9F2C21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */; };
+		CF7A9F2E21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */; };
+		CF7A9F2F21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */; };
 		CF7C5A5D1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */; };
 		CF7C5A5F1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7C5A5E1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift */; };
 		CF7FFAE920E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */; };
@@ -920,8 +932,8 @@
 		CF324D7B20DE54B000ADD025 /* entity-BoardModelPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardModelPad.swift"; sourceTree = "<group>"; };
 		CF3395591B4AC885009C561B /* CanariSignatureField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSignatureField.swift; sourceTree = "<group>"; };
 		CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
-		CF35A54321A825BC00A0E500 /* extension-CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint.swift"; sourceTree = "<group>"; };
-		CF35A54421A825BC00A0E500 /* extension-CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect.swift"; sourceTree = "<group>"; };
+		CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint-NSPoint.swift"; sourceTree = "<group>"; };
+		CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect-NSRect.swift"; sourceTree = "<group>"; };
 		CF35A54521A825BC00A0E500 /* extension-String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-String.swift"; sourceTree = "<group>"; };
 		CF372C481C033DBE00FFC17A /* CharacterGerberCodeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterGerberCodeClass.swift; sourceTree = "<group>"; };
 		CF3AD50720ED16B100FBF514 /* CanariViewWithBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariViewWithBackground.swift; sourceTree = "<group>"; };
@@ -1084,6 +1096,12 @@
 		CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF747FC61B3C419D00140C49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildPDFimage.swift; sourceTree = "<group>"; };
+		CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingGlass.png; sourceTree = "<group>"; };
+		CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPath.swift"; sourceTree = "<group>"; };
+		CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Data.swift"; sourceTree = "<group>"; };
+		CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Int.swift"; sourceTree = "<group>"; };
+		CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSObject.swift"; sourceTree = "<group>"; };
+		CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSControl.swift"; sourceTree = "<group>"; };
 		CF7C5A5C1B46F6BF00213EA8 /* selectionController-ArtworkDocument-mDataSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-ArtworkDocument-mDataSelection.swift"; sourceTree = "<group>"; };
 		CF7C5A5E1B46F6DB00213EA8 /* arrayController-ArtworkDocument-mDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-ArtworkDocument-mDataController.swift"; sourceTree = "<group>"; };
 		CF7FFAE820E5449300DE60BC /* transient-BoardModel-frontComponentValueSegments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-frontComponentValueSegments.swift"; sourceTree = "<group>"; };
@@ -1345,9 +1363,14 @@
 		CF35A54121A8257D00A0E500 /* Swift Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CF35A54321A825BC00A0E500 /* extension-CGPoint.swift */,
-				CF35A54421A825BC00A0E500 /* extension-CGRect.swift */,
+				CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */,
+				CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */,
+				CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */,
+				CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */,
+				CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */,
 				CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */,
+				CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */,
+				CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */,
 				CF35A54521A825BC00A0E500 /* extension-String.swift */,
 			);
 			name = "Swift Extensions";
@@ -1606,6 +1629,7 @@
 				CF6172921B3C4CD600F3CA82 /* library.png */,
 				CF6172931B3C4CD600F3CA82 /* line-in-symbol.pdf */,
 				CF6172941B3C4CD600F3CA82 /* loupe.pdf */,
+				CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */,
 				CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */,
 				CF6172961B3C4CD600F3CA82 /* nc.png */,
 				CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */,
@@ -2008,6 +2032,7 @@
 				CF6172E21B3C4CD600F3CA82 /* loupe.pdf in Resources */,
 				CF6173061B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
+				CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
 				CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */,
 				CF6172C41B3C4CD600F3CA82 /* arrow.gif in Resources */,
 				CF61730A1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff in Resources */,
@@ -2104,6 +2129,7 @@
 				CF5C4C7B219F04D600EAC52A /* loupe.pdf in Resources */,
 				CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
+				CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
 				CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */,
 				CF5C4C7F219F04D600EAC52A /* arrow.gif in Resources */,
 				CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */,
@@ -2216,6 +2242,7 @@
 				CF550F3021BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */,
 				CFC80AA520E6390500C1A156 /* transient-BoardModel-drillSegments.swift in Sources */,
 				CF05C9BD21A809AC0021652C /* transient-SymbolSolidRect-issues.swift in Sources */,
+				CF7A9F2E21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */,
 				CF3FD6862104F83D0009B269 /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CFCD1F6221A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
 				CFDCA18821AB2AE8007B090C /* CanariDraggingDestinationScrollView.swift in Sources */,
@@ -2247,7 +2274,7 @@
 				CF968B0021BBD81B0010175E /* EBView-binding-horizontalFlip.swift in Sources */,
 				CF44C0D52136BEA900707645 /* transient-BoardModel-internalBoardsLimitsSegments.swift in Sources */,
 				CFDC5FE720FB2235003AB275 /* extension-MergerBoardInstance-graphic.swift in Sources */,
-				CF35A54821A825BC00A0E500 /* extension-CGPoint.swift in Sources */,
+				CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */,
 				CFDCA18521AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
 				CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */,
 				CF30637920E7EE1B0099182C /* action-MergerDocument-updateBoardModelAction.swift in Sources */,
@@ -2277,7 +2304,8 @@
 				CF71F9291B3EA3DF00FB5049 /* EBSwitch.swift in Sources */,
 				CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */,
 				CFD7EA2520E7D42900D53B87 /* transient-MergerRoot-modelNames.swift in Sources */,
-				CF35A54A21A825BC00A0E500 /* extension-CGRect.swift in Sources */,
+				CF35A54A21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
+				CF7A9F2821BDB17500AC0FC7 /* extension-Int.swift in Sources */,
 				CFE85A7A21A5B47A00991A66 /* extension-SymbolBezierCurve.swift in Sources */,
 				CFE5C0B02136F770009DF4C3 /* extension-BoardModel-boardLimitsSegments.swift in Sources */,
 				CFB4801C20DC2BBD00CF9639 /* extension-MergerDocument-model-ElCanari.swift in Sources */,
@@ -2399,6 +2427,7 @@
 				CF1FB92E20E56D290050391E /* transient-BoardModel-boardLimits.swift in Sources */,
 				CFEDEDC11DD88B5900782E3F /* Controller_CanariFontSampleStringView_bezierPath.swift in Sources */,
 				CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */,
+				CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */,
 				CFA655D121060672001E5067 /* action-MergerDocument-moveUpAction.swift in Sources */,
 				CFA655CE21060672001E5067 /* action-MergerDocument-moveDownAction.swift in Sources */,
 				CF65805820EE1E5F009C743D /* action-MergerDocument-generateProductFilesAction.swift in Sources */,
@@ -2432,6 +2461,7 @@
 				CFC35140213FEE6300EA504C /* kicad-class-KicadItem.swift in Sources */,
 				CF9363A82102472B00B068AB /* transient-function-canariUnitToCocoa.swift in Sources */,
 				CF2A474E1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */,
+				CF7A9F2521BDB0A400AC0FC7 /* extension-Data.swift in Sources */,
 				CFA0E4EF21BBE87300E4D471 /* EBView-dragging-source.swift in Sources */,
 				CF8455E41BF0CAB4000A1680 /* CanariLibraryEntryDelegate.swift in Sources */,
 				CFD1B75A21B2E92D00F6F9EA /* EBKnobShape.swift in Sources */,
@@ -2463,6 +2493,7 @@
 				CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */,
 				CFEDE5B01B4677BA00036ACF /* ArtworkDocument.swift in Sources */,
 				CF1D9C8421BBF4EE00FFF459 /* EBView-placards.swift in Sources */,
+				CF7A9F2221BDA09900AC0FC7 /* extension-CGPath.swift in Sources */,
 				CFCC4AF31BF2732D00EFB30A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
 				CF05F5F91C0328DA00AC21D1 /* EBTextObserverView.swift in Sources */,
 				CF90B77421427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift in Sources */,
@@ -2545,6 +2576,7 @@
 				CF550F3121BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */,
 				CF5C4CC2219F04D600EAC52A /* transient-BoardModel-drillSegments.swift in Sources */,
 				CF05C9BE21A809AC0021652C /* transient-SymbolSolidRect-issues.swift in Sources */,
+				CF7A9F2F21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */,
 				CF5C4CC3219F04D600EAC52A /* transient-MergerBoardInstance-objectDisplay.swift in Sources */,
 				CFCD1F6321A1CBFF00A8297B /* entity-SymbolRoot.swift in Sources */,
 				CFDCA18921AB2AE8007B090C /* CanariDraggingDestinationScrollView.swift in Sources */,
@@ -2576,7 +2608,7 @@
 				CF968B0121BBD81B0010175E /* EBView-binding-horizontalFlip.swift in Sources */,
 				CF5C4CDB219F04D600EAC52A /* transient-BoardModel-internalBoardsLimitsSegments.swift in Sources */,
 				CF5C4CDC219F04D600EAC52A /* extension-MergerBoardInstance-graphic.swift in Sources */,
-				CF35A54921A825BC00A0E500 /* extension-CGPoint.swift in Sources */,
+				CF35A54921A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */,
 				CFDCA18621AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
 				CF5C4CDD219F04D600EAC52A /* file-metadata-dictionary.swift in Sources */,
 				CF5C4CDE219F04D600EAC52A /* action-MergerDocument-updateBoardModelAction.swift in Sources */,
@@ -2606,7 +2638,8 @@
 				CF5C4CED219F04D600EAC52A /* EBSwitch.swift in Sources */,
 				CF5C4CEE219F04D600EAC52A /* CanariSegment.swift in Sources */,
 				CF5C4CEF219F04D600EAC52A /* transient-MergerRoot-modelNames.swift in Sources */,
-				CF35A54B21A825BC00A0E500 /* extension-CGRect.swift in Sources */,
+				CF35A54B21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
+				CF7A9F2921BDB17500AC0FC7 /* extension-Int.swift in Sources */,
 				CFE85A7B21A5B47A00991A66 /* extension-SymbolBezierCurve.swift in Sources */,
 				CF5C4CF0219F04D600EAC52A /* extension-BoardModel-boardLimitsSegments.swift in Sources */,
 				CF5C4CF1219F04D600EAC52A /* extension-MergerDocument-model-ElCanari.swift in Sources */,
@@ -2728,6 +2761,7 @@
 				CF5C4D3E219F04D600EAC52A /* Controller_CanariFontSampleStringView_bezierPath.swift in Sources */,
 				CF5C4D3F219F04D600EAC52A /* EBIntField.swift in Sources */,
 				CF5C4D40219F04D600EAC52A /* action-MergerDocument-moveUpAction.swift in Sources */,
+				CF7A9F2C21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */,
 				CF5C4D41219F04D600EAC52A /* action-MergerDocument-moveDownAction.swift in Sources */,
 				CF5C4D42219F04D600EAC52A /* action-MergerDocument-generateProductFilesAction.swift in Sources */,
 				CF5C4D43219F04D600EAC52A /* CanariVersionField.swift in Sources */,
@@ -2761,6 +2795,7 @@
 				CF5C4D5B219F04D600EAC52A /* transient-function-canariUnitToCocoa.swift in Sources */,
 				CF5C4D5C219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */,
 				CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */,
+				CF7A9F2621BDB0A400AC0FC7 /* extension-Data.swift in Sources */,
 				CFA0E4F021BBE87300E4D471 /* EBView-dragging-source.swift in Sources */,
 				CF5C4D5E219F04D600EAC52A /* view-CanariCharacterView.swift in Sources */,
 				CFD1B75B21B2E92D00F6F9EA /* EBKnobShape.swift in Sources */,
@@ -2792,6 +2827,7 @@
 				CF5C4D73219F04D600EAC52A /* ArtworkDocument.swift in Sources */,
 				CF5C4D74219F04D600EAC52A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
 				CF1D9C8521BBF4EE00FFF459 /* EBView-placards.swift in Sources */,
+				CF7A9F2321BDA09900AC0FC7 /* extension-CGPath.swift in Sources */,
 				CF5C4D75219F04D600EAC52A /* EBTextObserverView.swift in Sources */,
 				CF5C4D76219F04D600EAC52A /* transient-FontRoot-currentCharacterCodePointString.swift in Sources */,
 				CF5C4D77219F04D600EAC52A /* transient-BoardModel-frontLegendLinesSegments.swift in Sources */,

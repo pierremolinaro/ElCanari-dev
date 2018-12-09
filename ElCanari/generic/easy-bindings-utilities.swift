@@ -5,93 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// MARK: Extension NSBezierPath
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSBezierPath {
-
-  //····················································································································
-  // https://stackoverflow.com/questions/1815568/how-can-i-convert-nsbezierpath-to-cgpath
-
-  public var cgPath: CGPath {
-    let path = CGMutablePath ()
-    var points = [CGPoint] (repeating: .zero, count: 3)
-    for idx in 0 ..< self.elementCount {
-      let type = self.element (at: idx, associatedPoints: &points)
-      switch type {
-      case .moveTo:
-        path.move (to: points[0])
-      case .lineTo:
-        path.addLine (to: points[0])
-      case .curveTo:
-        path.addCurve (to: points[2], control1: points[0], control2: points[1])
-      case .closePath:
-        path.closeSubpath ()
-      }
-    }
-    return path
-  }
-
-  //····················································································································
-
-  public var pathByStroking : CGPath {
-    let lineCap : CGLineCap
-    switch self.lineCapStyle {
-    case .butt : lineCap = .butt
-    case .round : lineCap = .round
-    case .square : lineCap = .square
-    }
-    let lineJoin : CGLineJoin
-    switch self.lineJoinStyle {
-    case .bevel : lineJoin = .bevel
-    case .miter : lineJoin = .miter
-    case .round : lineJoin = .round
-    }
-    return self.cgPath.copy (
-      strokingWithWidth: self.lineWidth,
-      lineCap: lineCap,
-      lineJoin: lineJoin,
-      miterLimit: self.miterLimit
-    )
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  String path utilities
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension String {
-
-  //····················································································································
-  
-  var lastPathComponent : String { return (self as NSString).lastPathComponent }
-
-  //····················································································································
-  
-  var deletingPathExtension : String { return (self as NSString).deletingPathExtension }
-
-  //····················································································································
-  
-  var pathExtension : String { return (self as NSString).pathExtension }
-
-  //····················································································································
-
-  var deletingLastPathComponent : String { return (self as NSString).deletingLastPathComponent }
-
-  //····················································································································
-
-  func appendingPathComponent (_ path : String) -> String {
-    return (self as NSString).appendingPathComponent (path)
-  }
-  
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  EBSignatureObserverProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -105,6 +18,8 @@ extension String {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBWeakEventSetElement : EBObject {
+
+  //····················································································································
 
   fileprivate weak var mObserver : EBEvent? = nil { // SOULD BE WEAK
     didSet {
@@ -194,19 +109,6 @@ class EBWeakEventSet : EBObject, Sequence {
   }
 
   //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Extension Int : rotateLeft
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension Int {
-  mutating func rotateLeft () {
-    let b0 = self >> 31
-    let bl = self << 1
-    self = b0 | bl
-  }
 
 }
 

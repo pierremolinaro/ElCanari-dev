@@ -30,7 +30,9 @@ extension EBView {
     let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
     let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
     self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.arrowKeyMagnitude)
-    if let viewController = self.viewController {
+    if selectedObjectSet.count > 0, let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
+      self.ebStartDragging (with: inEvent, dragType: pbType)
+    }else if let viewController = self.viewController {
     //--- Find index of object under mouse down
       let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: mouseDownLocation)
       let controlKey = inEvent.modifierFlags.contains (.control)
@@ -61,8 +63,6 @@ extension EBView {
           self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint ()
         }
       }
-    }else if selectedObjectSet.count > 0, let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
-      self.ebStartDragging (with: inEvent, dragType: pbType)
     }else{
       super.mouseDown (with: inEvent)
     }

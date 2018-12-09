@@ -5,19 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSObject {
-
-  //····················································································································
-
-  @objc func ebCleanUp () {
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   MultipleBindingController_hidden
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -46,43 +33,6 @@ class MultipleBindingController_hidden : EBOutletEvent {
     default :
       mOutlet?.isHidden = false
     }
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Enabled binding
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gEnabledFromValueBindingDictionary = [NSControl : Bool] ()
-private var gEnabledBindingValueDictionary = [NSControl : Bool] ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSControl {
-
-  //····················································································································
-
-  func enableFromValueBinding (_ inValue : Bool) {
-    gEnabledFromValueBindingDictionary [self] = inValue
-    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
-  }
-
-  //····················································································································
-
-  func enableFromEnableBinding (_ inValue : Bool) {
-    gEnabledBindingValueDictionary [self] = inValue
-    self.isEnabled = (gEnabledBindingValueDictionary [self] ?? true) && (gEnabledFromValueBindingDictionary [self] ?? true)
-  }
-
-  //····················································································································
-
-  override func ebCleanUp () {
-    super.ebCleanUp ()
-    gEnabledFromValueBindingDictionary [self] = nil
-    gEnabledBindingValueDictionary [self] = nil
   }
 
   //····················································································································
