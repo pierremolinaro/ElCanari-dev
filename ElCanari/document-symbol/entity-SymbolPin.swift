@@ -887,6 +887,10 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   var propval : [SymbolPin] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <SymbolPin> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'yPin' stored property
   //····················································································································
 
@@ -1690,12 +1694,24 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
 class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolPin] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolPin] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolPin] >? 
+  override var propset : Set <SymbolPin> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolPin] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolPin] {
@@ -1721,60 +1737,63 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   private var mSet = Set <SymbolPin> ()
 
-  override var prop : EBSelection < [SymbolPin] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolPin>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolPin> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_yPin_fromElementsOfSet (removedSet)
-        removeEBObserversOf_xName_fromElementsOfSet (removedSet)
-        removeEBObserversOf_yName_fromElementsOfSet (removedSet)
-        removeEBObserversOf_xNumber_fromElementsOfSet (removedSet)
-        removeEBObserversOf_yNumber_fromElementsOfSet (removedSet)
-        removeEBObserversOf_name_fromElementsOfSet (removedSet)
-        removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedSet)
-        removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedSet)
-        removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedSet)
-        removeEBObserversOf_xPin_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-        removeEBObserversOf_nameRect_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_yPin_toElementsOfSet (addedSet)
-        addEBObserversOf_xName_toElementsOfSet (addedSet)
-        addEBObserversOf_yName_toElementsOfSet (addedSet)
-        addEBObserversOf_xNumber_toElementsOfSet (addedSet)
-        addEBObserversOf_yNumber_toElementsOfSet (addedSet)
-        addEBObserversOf_name_toElementsOfSet (addedSet)
-        addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedSet)
-        addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedSet)
-        addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedSet)
-        addEBObserversOf_xPin_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_issues_toElementsOfSet (addedSet)
-        addEBObserversOf_nameRect_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolPin] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolPin>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolPin> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_yPin_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xNumber_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yNumber_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_name_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xPin_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_nameRect_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_yPin_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xNumber_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yNumber_toElementsOfSet (addedSet)
+      self.addEBObserversOf_name_toElementsOfSet (addedSet)
+      self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xPin_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_nameRect_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1949,11 +1968,19 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   override var prop : EBSelection < [SymbolPin] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolPin]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolPin] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolPin> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolPin]) {
     self.mValue = oldValue
@@ -1985,12 +2012,15 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -2000,11 +2030,11 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -2022,9 +2052,9 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

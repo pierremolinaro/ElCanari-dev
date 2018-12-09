@@ -1588,6 +1588,10 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
   var propval : [MergerRoot] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <MergerRoot> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectedPageIndex' stored property
   //····················································································································
 
@@ -3073,12 +3077,24 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
 class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
-  var readModelFunction : Optional<() -> EBSelection < [MergerRoot] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [MergerRoot] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [MergerRoot] >? 
+  override var propset : Set <MergerRoot> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [MergerRoot] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [MergerRoot] {
@@ -3104,84 +3120,87 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   private var mSet = Set <MergerRoot> ()
 
-  override var prop : EBSelection < [MergerRoot] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <MergerRoot>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <MergerRoot> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
-        removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedSet)
-        removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedSet)
-        removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
-        removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedSet)
-        removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedSet)
-        removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedSet)
-        addEBObserversOf_automaticBoardSize_toElementsOfSet (addedSet)
-        addEBObserversOf_boardManualWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_boardManualHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
-        addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_arrowMagnitude_toElementsOfSet (addedSet)
-        addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedSet)
-        addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_artworkName_toElementsOfSet (addedSet)
-        addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedSet)
-        addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedSet)
-        addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_modelNames_toElementsOfSet (addedSet)
-        addEBObserversOf_boardRect_toElementsOfSet (addedSet)
-        addEBObserversOf_boardDisplayRect_toElementsOfSet (addedSet)
-        addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
-        addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [MergerRoot] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <MergerRoot>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <MergerRoot> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_modelNames_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardRect_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+      self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
+      self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedSet)
+      self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedSet)
+      self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_artworkName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedSet)
+      self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedSet)
+      self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_modelNames_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardRect_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardHeight_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -3380,11 +3399,19 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   override var prop : EBSelection < [MergerRoot] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [MergerRoot]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [MergerRoot] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <MergerRoot> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [MergerRoot]) {
     self.mValue = oldValue
@@ -3416,12 +3443,15 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -3431,11 +3461,11 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -3453,9 +3483,9 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -3532,7 +3562,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
         self.mValue?.minValueForPHDinEBUnit_property.addEBObserversFrom (mObserversOf_minValueForPHDinEBUnit)
         self.mValue?.selectedTab_property.addEBObserversFrom (mObserversOf_selectedTab)
        //--- Notify observers
-        postEvent ()
+        self.postEvent ()
       }
     }
   }
@@ -3593,7 +3623,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
     if let object = self.propval {
       object.comments_property.addEBObserver (inObserver)
     }
@@ -3602,7 +3632,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
     if let object = self.propval {
       object.comments_property.removeEBObserver (inObserver)
     }
@@ -3636,7 +3666,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillDataFileExtension.insert (inObserver)
+    self.mObserversOf_drillDataFileExtension.insert (inObserver)
     if let object = self.propval {
       object.drillDataFileExtension_property.addEBObserver (inObserver)
     }
@@ -3645,7 +3675,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
-    mObserversOf_drillDataFileExtension.remove (inObserver)
+    self.mObserversOf_drillDataFileExtension.remove (inObserver)
     if let object = self.propval {
       object.drillDataFileExtension_property.removeEBObserver (inObserver)
     }
@@ -3679,7 +3709,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    mObserversOf_minPPTPTTTW.insert (inObserver)
+    self.mObserversOf_minPPTPTTTW.insert (inObserver)
     if let object = self.propval {
       object.minPPTPTTTW_property.addEBObserver (inObserver)
     }
@@ -3688,7 +3718,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
-    mObserversOf_minPPTPTTTW.remove (inObserver)
+    self.mObserversOf_minPPTPTTTW.remove (inObserver)
     if let object = self.propval {
       object.minPPTPTTTW_property.removeEBObserver (inObserver)
     }
@@ -3722,7 +3752,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     if let object = self.propval {
       object.minPPTPTTTWdisplayUnit_property.addEBObserver (inObserver)
     }
@@ -3731,7 +3761,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
     if let object = self.propval {
       object.minPPTPTTTWdisplayUnit_property.removeEBObserver (inObserver)
     }
@@ -3765,7 +3795,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     if let object = self.propval {
       object.minValueForBoardLimitWidth_property.addEBObserver (inObserver)
     }
@@ -3774,7 +3804,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
     if let object = self.propval {
       object.minValueForBoardLimitWidth_property.removeEBObserver (inObserver)
     }
@@ -3808,7 +3838,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     if let object = self.propval {
       object.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (inObserver)
     }
@@ -3817,7 +3847,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
     if let object = self.propval {
       object.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (inObserver)
     }
@@ -3851,7 +3881,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     if let object = self.propval {
       object.minValueForOARdisplayUnit_property.addEBObserver (inObserver)
     }
@@ -3860,7 +3890,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
     if let object = self.propval {
       object.minValueForOARdisplayUnit_property.removeEBObserver (inObserver)
     }
@@ -3894,7 +3924,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForOARinEBUnit.insert (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     if let object = self.propval {
       object.minValueForOARinEBUnit_property.addEBObserver (inObserver)
     }
@@ -3903,7 +3933,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForOARinEBUnit.remove (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
     if let object = self.propval {
       object.minValueForOARinEBUnit_property.removeEBObserver (inObserver)
     }
@@ -3937,7 +3967,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     if let object = self.propval {
       object.minValueForPHDdisplayUnit_property.addEBObserver (inObserver)
     }
@@ -3946,7 +3976,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
     if let object = self.propval {
       object.minValueForPHDdisplayUnit_property.removeEBObserver (inObserver)
     }
@@ -3980,7 +4010,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     if let object = self.propval {
       object.minValueForPHDinEBUnit_property.addEBObserver (inObserver)
     }
@@ -3989,7 +4019,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
-    mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
     if let object = self.propval {
       object.minValueForPHDinEBUnit_property.removeEBObserver (inObserver)
     }
@@ -4023,7 +4053,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    mObserversOf_selectedTab.insert (inObserver)
+    self.mObserversOf_selectedTab.insert (inObserver)
     if let object = self.propval {
       object.selectedTab_property.addEBObserver (inObserver)
     }
@@ -4032,7 +4062,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
-    mObserversOf_selectedTab.remove (inObserver)
+    self.mObserversOf_selectedTab.remove (inObserver)
     if let object = self.propval {
       object.selectedTab_property.removeEBObserver (inObserver)
     }

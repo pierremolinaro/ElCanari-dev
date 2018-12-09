@@ -91,7 +91,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (686800)
+  var y1_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx1
   //····················································································································
 
-  var cpx1_property = EBStoredProperty_Int (686800)
+  var cpx1_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpy1
   //····················································································································
 
-  var cpy1_property = EBStoredProperty_Int (686800)
+  var cpy1_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -206,7 +206,7 @@ class SymbolBezierCurve : SymbolObject,
   //   Atomic property: cpx2
   //····················································································································
 
-  var cpx2_property = EBStoredProperty_Int (686800)
+  var cpx2_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -711,6 +711,10 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
   //····················································································································
 
   var propval : [SymbolBezierCurve] { return [] } // Abstract method
+
+  //····················································································································
+
+  var propset : Set <SymbolBezierCurve> { return Set () } // Abstract method
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1346,12 +1350,24 @@ class ReadOnlyArrayOf_SymbolBezierCurve : ReadOnlyAbstractArrayProperty <SymbolB
 
 class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolBezierCurve] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolBezierCurve] >? 
+  override var propset : Set <SymbolBezierCurve> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolBezierCurve] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolBezierCurve] {
@@ -1377,54 +1393,57 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   private var mSet = Set <SymbolBezierCurve> ()
 
-  override var prop : EBSelection < [SymbolBezierCurve] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolBezierCurve>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolBezierCurve> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_y1_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x2_fromElementsOfSet (removedSet)
-        removeEBObserversOf_y2_fromElementsOfSet (removedSet)
-        removeEBObserversOf_cpx1_fromElementsOfSet (removedSet)
-        removeEBObserversOf_cpy1_fromElementsOfSet (removedSet)
-        removeEBObserversOf_cpx2_fromElementsOfSet (removedSet)
-        removeEBObserversOf_cpy2_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x1_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_y1_toElementsOfSet (addedSet)
-        addEBObserversOf_x2_toElementsOfSet (addedSet)
-        addEBObserversOf_y2_toElementsOfSet (addedSet)
-        addEBObserversOf_cpx1_toElementsOfSet (addedSet)
-        addEBObserversOf_cpy1_toElementsOfSet (addedSet)
-        addEBObserversOf_cpx2_toElementsOfSet (addedSet)
-        addEBObserversOf_cpy2_toElementsOfSet (addedSet)
-        addEBObserversOf_x1_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_issues_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolBezierCurve] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolBezierCurve>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolBezierCurve> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_y1_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x2_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_cpx1_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_cpy1_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_cpx2_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_cpy2_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_y1_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x2_toElementsOfSet (addedSet)
+      self.addEBObserversOf_y2_toElementsOfSet (addedSet)
+      self.addEBObserversOf_cpx1_toElementsOfSet (addedSet)
+      self.addEBObserversOf_cpy1_toElementsOfSet (addedSet)
+      self.addEBObserversOf_cpx2_toElementsOfSet (addedSet)
+      self.addEBObserversOf_cpy2_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x1_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1593,11 +1612,19 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
 
   override var prop : EBSelection < [SymbolBezierCurve] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolBezierCurve]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolBezierCurve] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolBezierCurve> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolBezierCurve]) {
     self.mValue = oldValue
@@ -1629,12 +1656,15 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1644,11 +1674,11 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1666,9 +1696,9 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

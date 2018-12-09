@@ -711,6 +711,10 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   var propval : [ArtworkRoot] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <ArtworkRoot> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectedTab' stored property
   //····················································································································
 
@@ -1347,12 +1351,24 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
 class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
-  var readModelFunction : Optional<() -> EBSelection < [ArtworkRoot] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [ArtworkRoot] >? 
+  override var propset : Set <ArtworkRoot> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [ArtworkRoot] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [ArtworkRoot] {
@@ -1378,54 +1394,57 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   private var mSet = Set <ArtworkRoot> ()
 
-  override var prop : EBSelection < [ArtworkRoot] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <ArtworkRoot>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <ArtworkRoot> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
-        removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
-        addEBObserversOf_comments_toElementsOfSet (addedSet)
-        addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [ArtworkRoot] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <ArtworkRoot>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <ArtworkRoot> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
+      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1594,11 +1613,19 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   override var prop : EBSelection < [ArtworkRoot] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [ArtworkRoot]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [ArtworkRoot] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <ArtworkRoot> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [ArtworkRoot]) {
     self.mValue = oldValue
@@ -1630,12 +1657,15 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1645,11 +1675,11 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1667,9 +1697,9 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

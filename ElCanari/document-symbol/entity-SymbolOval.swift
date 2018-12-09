@@ -86,7 +86,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (686800)
+  var width_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class SymbolOval : SymbolObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (686800)
+  var height_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
@@ -482,6 +482,10 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   //····················································································································
 
   var propval : [SymbolOval] { return [] } // Abstract method
+
+  //····················································································································
+
+  var propset : Set <SymbolOval> { return Set () } // Abstract method
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -889,12 +893,24 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
 class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolOval] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolOval] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolOval] >? 
+  override var propset : Set <SymbolOval> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolOval] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolOval] {
@@ -920,46 +936,49 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
 
   private var mSet = Set <SymbolOval> ()
 
-  override var prop : EBSelection < [SymbolOval] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolOval>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolOval> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_width_fromElementsOfSet (removedSet)
-        removeEBObserversOf_height_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_width_toElementsOfSet (addedSet)
-        addEBObserversOf_height_toElementsOfSet (addedSet)
-        addEBObserversOf_x_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_issues_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolOval] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolOval>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolOval> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_y_toElementsOfSet (addedSet)
+      self.addEBObserversOf_width_toElementsOfSet (addedSet)
+      self.addEBObserversOf_height_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1120,11 +1139,19 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
 
   override var prop : EBSelection < [SymbolOval] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolOval]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolOval] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolOval> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolOval]) {
     self.mValue = oldValue
@@ -1156,12 +1183,15 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1171,11 +1201,11 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1193,9 +1223,9 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

@@ -614,6 +614,10 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   var propval : [MergerBoardInstance] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <MergerBoardInstance> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'x' stored property
   //····················································································································
 
@@ -1074,12 +1078,24 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
 class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance {
 
-  var readModelFunction : Optional<() -> EBSelection < [MergerBoardInstance] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [MergerBoardInstance] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [MergerBoardInstance] >? 
+  override var propset : Set <MergerBoardInstance> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [MergerBoardInstance] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [MergerBoardInstance] {
@@ -1105,48 +1121,51 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   private var mSet = Set <MergerBoardInstance> ()
 
-  override var prop : EBSelection < [MergerBoardInstance] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <MergerBoardInstance>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <MergerBoardInstance> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_instanceRotation_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
-        removeEBObserversOf_modelName_fromElementsOfSet (removedSet)
-        removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_x_toElementsOfSet (addedSet)
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_instanceRotation_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
-        addEBObserversOf_modelName_toElementsOfSet (addedSet)
-        addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [MergerBoardInstance] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <MergerBoardInstance>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <MergerBoardInstance> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_instanceRotation_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_instanceRect_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_modelName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+      self.addEBObserversOf_y_toElementsOfSet (addedSet)
+      self.addEBObserversOf_instanceRotation_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_instanceRect_toElementsOfSet (addedSet)
+      self.addEBObserversOf_modelName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1309,11 +1328,19 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
 
   override var prop : EBSelection < [MergerBoardInstance] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [MergerBoardInstance]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [MergerBoardInstance] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <MergerBoardInstance> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [MergerBoardInstance]) {
     self.mValue = oldValue
@@ -1345,12 +1372,15 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1360,11 +1390,11 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1382,9 +1412,9 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -1549,7 +1579,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         self.mValue?.viasBezierPaths_property.addEBObserversFrom (mObserversOf_viasBezierPaths)
         self.mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
        //--- Notify observers
-        postEvent ()
+        self.postEvent ()
       }
     }
   }
@@ -1610,7 +1640,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
-    mObserversOf_backComponentNameSegments.insert (inObserver)
+    self.mObserversOf_backComponentNameSegments.insert (inObserver)
     if let object = self.propval {
       object.backComponentNameSegments_property.addEBObserver (inObserver)
     }
@@ -1619,7 +1649,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
-    mObserversOf_backComponentNameSegments.remove (inObserver)
+    self.mObserversOf_backComponentNameSegments.remove (inObserver)
     if let object = self.propval {
       object.backComponentNameSegments_property.removeEBObserver (inObserver)
     }
@@ -1653,7 +1683,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
+    self.mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backComponentNamesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -1662,7 +1692,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
+    self.mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backComponentNamesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -1696,7 +1726,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
-    mObserversOf_backComponentValueSegments.insert (inObserver)
+    self.mObserversOf_backComponentValueSegments.insert (inObserver)
     if let object = self.propval {
       object.backComponentValueSegments_property.addEBObserver (inObserver)
     }
@@ -1705,7 +1735,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
-    mObserversOf_backComponentValueSegments.remove (inObserver)
+    self.mObserversOf_backComponentValueSegments.remove (inObserver)
     if let object = self.propval {
       object.backComponentValueSegments_property.removeEBObserver (inObserver)
     }
@@ -1739,7 +1769,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
+    self.mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backComponentValuesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -1748,7 +1778,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
+    self.mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backComponentValuesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -1782,7 +1812,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backLayoutTextsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -1791,7 +1821,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -1825,7 +1855,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLayoutTextsSegments.insert (inObserver)
+    self.mObserversOf_backLayoutTextsSegments.insert (inObserver)
     if let object = self.propval {
       object.backLayoutTextsSegments_property.addEBObserver (inObserver)
     }
@@ -1834,7 +1864,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLayoutTextsSegments.remove (inObserver)
+    self.mObserversOf_backLayoutTextsSegments.remove (inObserver)
     if let object = self.propval {
       object.backLayoutTextsSegments_property.removeEBObserver (inObserver)
     }
@@ -1868,7 +1898,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
+    self.mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backLegendLinesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -1877,7 +1907,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
+    self.mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backLegendLinesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -1911,7 +1941,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLegendLinesSegments.insert (inObserver)
+    self.mObserversOf_backLegendLinesSegments.insert (inObserver)
     if let object = self.propval {
       object.backLegendLinesSegments_property.addEBObserver (inObserver)
     }
@@ -1920,7 +1950,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLegendLinesSegments.remove (inObserver)
+    self.mObserversOf_backLegendLinesSegments.remove (inObserver)
     if let object = self.propval {
       object.backLegendLinesSegments_property.removeEBObserver (inObserver)
     }
@@ -1954,7 +1984,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backLegendTextsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -1963,7 +1993,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backLegendTextsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -1997,7 +2027,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLegendTextsSegments.insert (inObserver)
+    self.mObserversOf_backLegendTextsSegments.insert (inObserver)
     if let object = self.propval {
       object.backLegendTextsSegments_property.addEBObserver (inObserver)
     }
@@ -2006,7 +2036,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_backLegendTextsSegments.remove (inObserver)
+    self.mObserversOf_backLegendTextsSegments.remove (inObserver)
     if let object = self.propval {
       object.backLegendTextsSegments_property.removeEBObserver (inObserver)
     }
@@ -2040,7 +2070,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backPackagesBezierPaths.insert (inObserver)
+    self.mObserversOf_backPackagesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backPackagesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2049,7 +2079,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backPackagesBezierPaths.remove (inObserver)
+    self.mObserversOf_backPackagesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backPackagesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2083,7 +2113,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
-    mObserversOf_backPackagesSegments.insert (inObserver)
+    self.mObserversOf_backPackagesSegments.insert (inObserver)
     if let object = self.propval {
       object.backPackagesSegments_property.addEBObserver (inObserver)
     }
@@ -2092,7 +2122,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
-    mObserversOf_backPackagesSegments.remove (inObserver)
+    self.mObserversOf_backPackagesSegments.remove (inObserver)
     if let object = self.propval {
       object.backPackagesSegments_property.removeEBObserver (inObserver)
     }
@@ -2126,7 +2156,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
-    mObserversOf_backPadArray.insert (inObserver)
+    self.mObserversOf_backPadArray.insert (inObserver)
     if let object = self.propval {
       object.backPadArray_property.addEBObserver (inObserver)
     }
@@ -2135,7 +2165,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
-    mObserversOf_backPadArray.remove (inObserver)
+    self.mObserversOf_backPadArray.remove (inObserver)
     if let object = self.propval {
       object.backPadArray_property.removeEBObserver (inObserver)
     }
@@ -2169,7 +2199,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backPadsBezierPaths.insert (inObserver)
+    self.mObserversOf_backPadsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backPadsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2178,7 +2208,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backPadsBezierPaths.remove (inObserver)
+    self.mObserversOf_backPadsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backPadsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2212,7 +2242,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
-    mObserversOf_backTrackSegments.insert (inObserver)
+    self.mObserversOf_backTrackSegments.insert (inObserver)
     if let object = self.propval {
       object.backTrackSegments_property.addEBObserver (inObserver)
     }
@@ -2221,7 +2251,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
-    mObserversOf_backTrackSegments.remove (inObserver)
+    self.mObserversOf_backTrackSegments.remove (inObserver)
     if let object = self.propval {
       object.backTrackSegments_property.removeEBObserver (inObserver)
     }
@@ -2255,7 +2285,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backTracksBezierPaths.insert (inObserver)
+    self.mObserversOf_backTracksBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.backTracksBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2264,7 +2294,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_backTracksBezierPaths.remove (inObserver)
+    self.mObserversOf_backTracksBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.backTracksBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2298,7 +2328,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardLimits (_ inObserver : EBEvent) {
-    mObserversOf_boardLimits.insert (inObserver)
+    self.mObserversOf_boardLimits.insert (inObserver)
     if let object = self.propval {
       object.boardLimits_property.addEBObserver (inObserver)
     }
@@ -2307,7 +2337,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardLimits (_ inObserver : EBEvent) {
-    mObserversOf_boardLimits.remove (inObserver)
+    self.mObserversOf_boardLimits.remove (inObserver)
     if let object = self.propval {
       object.boardLimits_property.removeEBObserver (inObserver)
     }
@@ -2341,7 +2371,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitsBezierPaths.insert (inObserver)
+    self.mObserversOf_boardLimitsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.boardLimitsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2350,7 +2380,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitsBezierPaths.remove (inObserver)
+    self.mObserversOf_boardLimitsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.boardLimitsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2384,7 +2414,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
-    mObserversOf_drillSegments.insert (inObserver)
+    self.mObserversOf_drillSegments.insert (inObserver)
     if let object = self.propval {
       object.drillSegments_property.addEBObserver (inObserver)
     }
@@ -2393,7 +2423,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
-    mObserversOf_drillSegments.remove (inObserver)
+    self.mObserversOf_drillSegments.remove (inObserver)
     if let object = self.propval {
       object.drillSegments_property.removeEBObserver (inObserver)
     }
@@ -2427,7 +2457,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentNameSegments.insert (inObserver)
+    self.mObserversOf_frontComponentNameSegments.insert (inObserver)
     if let object = self.propval {
       object.frontComponentNameSegments_property.addEBObserver (inObserver)
     }
@@ -2436,7 +2466,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentNameSegments.remove (inObserver)
+    self.mObserversOf_frontComponentNameSegments.remove (inObserver)
     if let object = self.propval {
       object.frontComponentNameSegments_property.removeEBObserver (inObserver)
     }
@@ -2470,7 +2500,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontComponentNamesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2479,7 +2509,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontComponentNamesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2513,7 +2543,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentValueSegments.insert (inObserver)
+    self.mObserversOf_frontComponentValueSegments.insert (inObserver)
     if let object = self.propval {
       object.frontComponentValueSegments_property.addEBObserver (inObserver)
     }
@@ -2522,7 +2552,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentValueSegments.remove (inObserver)
+    self.mObserversOf_frontComponentValueSegments.remove (inObserver)
     if let object = self.propval {
       object.frontComponentValueSegments_property.removeEBObserver (inObserver)
     }
@@ -2556,7 +2586,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontComponentValuesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2565,7 +2595,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontComponentValuesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2599,7 +2629,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontLayoutTextsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2608,7 +2638,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontLayoutTextsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2642,7 +2672,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLayoutTextsSegments.insert (inObserver)
+    self.mObserversOf_frontLayoutTextsSegments.insert (inObserver)
     if let object = self.propval {
       object.frontLayoutTextsSegments_property.addEBObserver (inObserver)
     }
@@ -2651,7 +2681,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLayoutTextsSegments.remove (inObserver)
+    self.mObserversOf_frontLayoutTextsSegments.remove (inObserver)
     if let object = self.propval {
       object.frontLayoutTextsSegments_property.removeEBObserver (inObserver)
     }
@@ -2685,7 +2715,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2694,7 +2724,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontLegendLinesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2728,7 +2758,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendLinesSegments.insert (inObserver)
+    self.mObserversOf_frontLegendLinesSegments.insert (inObserver)
     if let object = self.propval {
       object.frontLegendLinesSegments_property.addEBObserver (inObserver)
     }
@@ -2737,7 +2767,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendLinesSegments.remove (inObserver)
+    self.mObserversOf_frontLegendLinesSegments.remove (inObserver)
     if let object = self.propval {
       object.frontLegendLinesSegments_property.removeEBObserver (inObserver)
     }
@@ -2771,7 +2801,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontLegendTextsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2780,7 +2810,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontLegendTextsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2814,7 +2844,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendTextsSegments.insert (inObserver)
+    self.mObserversOf_frontLegendTextsSegments.insert (inObserver)
     if let object = self.propval {
       object.frontLegendTextsSegments_property.addEBObserver (inObserver)
     }
@@ -2823,7 +2853,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontLegendTextsSegments.remove (inObserver)
+    self.mObserversOf_frontLegendTextsSegments.remove (inObserver)
     if let object = self.propval {
       object.frontLegendTextsSegments_property.removeEBObserver (inObserver)
     }
@@ -2857,7 +2887,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontPackagesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontPackagesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontPackagesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2866,7 +2896,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontPackagesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontPackagesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontPackagesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -2900,7 +2930,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontPackagesSegments.insert (inObserver)
+    self.mObserversOf_frontPackagesSegments.insert (inObserver)
     if let object = self.propval {
       object.frontPackagesSegments_property.addEBObserver (inObserver)
     }
@@ -2909,7 +2939,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontPackagesSegments.remove (inObserver)
+    self.mObserversOf_frontPackagesSegments.remove (inObserver)
     if let object = self.propval {
       object.frontPackagesSegments_property.removeEBObserver (inObserver)
     }
@@ -2943,7 +2973,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
-    mObserversOf_frontPadArray.insert (inObserver)
+    self.mObserversOf_frontPadArray.insert (inObserver)
     if let object = self.propval {
       object.frontPadArray_property.addEBObserver (inObserver)
     }
@@ -2952,7 +2982,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
-    mObserversOf_frontPadArray.remove (inObserver)
+    self.mObserversOf_frontPadArray.remove (inObserver)
     if let object = self.propval {
       object.frontPadArray_property.removeEBObserver (inObserver)
     }
@@ -2986,7 +3016,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontPadsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontPadsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontPadsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -2995,7 +3025,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontPadsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontPadsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontPadsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -3029,7 +3059,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontTrackSegments.insert (inObserver)
+    self.mObserversOf_frontTrackSegments.insert (inObserver)
     if let object = self.propval {
       object.frontTrackSegments_property.addEBObserver (inObserver)
     }
@@ -3038,7 +3068,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
-    mObserversOf_frontTrackSegments.remove (inObserver)
+    self.mObserversOf_frontTrackSegments.remove (inObserver)
     if let object = self.propval {
       object.frontTrackSegments_property.removeEBObserver (inObserver)
     }
@@ -3072,7 +3102,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontTracksBezierPaths.insert (inObserver)
+    self.mObserversOf_frontTracksBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.frontTracksBezierPaths_property.addEBObserver (inObserver)
     }
@@ -3081,7 +3111,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_frontTracksBezierPaths.remove (inObserver)
+    self.mObserversOf_frontTracksBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.frontTracksBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -3115,7 +3145,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_holesBezierPaths.insert (inObserver)
+    self.mObserversOf_holesBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.holesBezierPaths_property.addEBObserver (inObserver)
     }
@@ -3124,7 +3154,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_holesBezierPaths.remove (inObserver)
+    self.mObserversOf_holesBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.holesBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -3158,7 +3188,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
-    mObserversOf_imageForInstances.insert (inObserver)
+    self.mObserversOf_imageForInstances.insert (inObserver)
     if let object = self.propval {
       object.imageForInstances_property.addEBObserver (inObserver)
     }
@@ -3167,7 +3197,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
-    mObserversOf_imageForInstances.remove (inObserver)
+    self.mObserversOf_imageForInstances.remove (inObserver)
     if let object = self.propval {
       object.imageForInstances_property.removeEBObserver (inObserver)
     }
@@ -3201,7 +3231,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
-    mObserversOf_imageForModel.insert (inObserver)
+    self.mObserversOf_imageForModel.insert (inObserver)
     if let object = self.propval {
       object.imageForModel_property.addEBObserver (inObserver)
     }
@@ -3210,7 +3240,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
-    mObserversOf_imageForModel.remove (inObserver)
+    self.mObserversOf_imageForModel.remove (inObserver)
     if let object = self.propval {
       object.imageForModel_property.removeEBObserver (inObserver)
     }
@@ -3244,7 +3274,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
+    self.mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.internalBoardsLimitsBezierPaths_property.addEBObserver (inObserver)
     }
@@ -3253,7 +3283,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
+    self.mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.internalBoardsLimitsBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -3287,7 +3317,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
-    mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
+    self.mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
     if let object = self.propval {
       object.internalBoardsLimitsSegments_property.addEBObserver (inObserver)
     }
@@ -3296,7 +3326,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
-    mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
+    self.mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
     if let object = self.propval {
       object.internalBoardsLimitsSegments_property.removeEBObserver (inObserver)
     }
@@ -3330,7 +3360,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
-    mObserversOf_modelHeight.insert (inObserver)
+    self.mObserversOf_modelHeight.insert (inObserver)
     if let object = self.propval {
       object.modelHeight_property.addEBObserver (inObserver)
     }
@@ -3339,7 +3369,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
-    mObserversOf_modelHeight.remove (inObserver)
+    self.mObserversOf_modelHeight.remove (inObserver)
     if let object = self.propval {
       object.modelHeight_property.removeEBObserver (inObserver)
     }
@@ -3373,7 +3403,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelHeightUnit.insert (inObserver)
+    self.mObserversOf_modelHeightUnit.insert (inObserver)
     if let object = self.propval {
       object.modelHeightUnit_property.addEBObserver (inObserver)
     }
@@ -3382,7 +3412,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelHeightUnit.remove (inObserver)
+    self.mObserversOf_modelHeightUnit.remove (inObserver)
     if let object = self.propval {
       object.modelHeightUnit_property.removeEBObserver (inObserver)
     }
@@ -3416,7 +3446,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_modelLimitWidth.insert (inObserver)
+    self.mObserversOf_modelLimitWidth.insert (inObserver)
     if let object = self.propval {
       object.modelLimitWidth_property.addEBObserver (inObserver)
     }
@@ -3425,7 +3455,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_modelLimitWidth.remove (inObserver)
+    self.mObserversOf_modelLimitWidth.remove (inObserver)
     if let object = self.propval {
       object.modelLimitWidth_property.removeEBObserver (inObserver)
     }
@@ -3459,7 +3489,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelLimitWidthUnit.insert (inObserver)
+    self.mObserversOf_modelLimitWidthUnit.insert (inObserver)
     if let object = self.propval {
       object.modelLimitWidthUnit_property.addEBObserver (inObserver)
     }
@@ -3468,7 +3498,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelLimitWidthUnit.remove (inObserver)
+    self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
     if let object = self.propval {
       object.modelLimitWidthUnit_property.removeEBObserver (inObserver)
     }
@@ -3502,7 +3532,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelRect (_ inObserver : EBEvent) {
-    mObserversOf_modelRect.insert (inObserver)
+    self.mObserversOf_modelRect.insert (inObserver)
     if let object = self.propval {
       object.modelRect_property.addEBObserver (inObserver)
     }
@@ -3511,7 +3541,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelRect (_ inObserver : EBEvent) {
-    mObserversOf_modelRect.remove (inObserver)
+    self.mObserversOf_modelRect.remove (inObserver)
     if let object = self.propval {
       object.modelRect_property.removeEBObserver (inObserver)
     }
@@ -3545,7 +3575,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
-    mObserversOf_modelWidth.insert (inObserver)
+    self.mObserversOf_modelWidth.insert (inObserver)
     if let object = self.propval {
       object.modelWidth_property.addEBObserver (inObserver)
     }
@@ -3554,7 +3584,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
-    mObserversOf_modelWidth.remove (inObserver)
+    self.mObserversOf_modelWidth.remove (inObserver)
     if let object = self.propval {
       object.modelWidth_property.removeEBObserver (inObserver)
     }
@@ -3588,7 +3618,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelWidthUnit.insert (inObserver)
+    self.mObserversOf_modelWidthUnit.insert (inObserver)
     if let object = self.propval {
       object.modelWidthUnit_property.addEBObserver (inObserver)
     }
@@ -3597,7 +3627,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_modelWidthUnit.remove (inObserver)
+    self.mObserversOf_modelWidthUnit.remove (inObserver)
     if let object = self.propval {
       object.modelWidthUnit_property.removeEBObserver (inObserver)
     }
@@ -3631,7 +3661,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
-    mObserversOf_name.insert (inObserver)
+    self.mObserversOf_name.insert (inObserver)
     if let object = self.propval {
       object.name_property.addEBObserver (inObserver)
     }
@@ -3640,7 +3670,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
-    mObserversOf_name.remove (inObserver)
+    self.mObserversOf_name.remove (inObserver)
     if let object = self.propval {
       object.name_property.removeEBObserver (inObserver)
     }
@@ -3674,7 +3704,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
-    mObserversOf_viaShapes.insert (inObserver)
+    self.mObserversOf_viaShapes.insert (inObserver)
     if let object = self.propval {
       object.viaShapes_property.addEBObserver (inObserver)
     }
@@ -3683,7 +3713,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
-    mObserversOf_viaShapes.remove (inObserver)
+    self.mObserversOf_viaShapes.remove (inObserver)
     if let object = self.propval {
       object.viaShapes_property.removeEBObserver (inObserver)
     }
@@ -3717,7 +3747,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_viasBezierPaths.insert (inObserver)
+    self.mObserversOf_viasBezierPaths.insert (inObserver)
     if let object = self.propval {
       object.viasBezierPaths_property.addEBObserver (inObserver)
     }
@@ -3726,7 +3756,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
-    mObserversOf_viasBezierPaths.remove (inObserver)
+    self.mObserversOf_viasBezierPaths.remove (inObserver)
     if let object = self.propval {
       object.viasBezierPaths_property.removeEBObserver (inObserver)
     }
@@ -3760,7 +3790,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.insert (inObserver)
+    self.mObserversOf_zoom.insert (inObserver)
     if let object = self.propval {
       object.zoom_property.addEBObserver (inObserver)
     }
@@ -3769,7 +3799,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.remove (inObserver)
+    self.mObserversOf_zoom.remove (inObserver)
     if let object = self.propval {
       object.zoom_property.removeEBObserver (inObserver)
     }
@@ -3884,7 +3914,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
         self.mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
         self.mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
        //--- Notify observers
-        postEvent ()
+        self.postEvent ()
       }
     }
   }
@@ -3945,7 +3975,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitude.insert (inObserver)
+    self.mObserversOf_arrowMagnitude.insert (inObserver)
     if let object = self.propval {
       object.arrowMagnitude_property.addEBObserver (inObserver)
     }
@@ -3954,7 +3984,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_arrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitude.remove (inObserver)
+    self.mObserversOf_arrowMagnitude.remove (inObserver)
     if let object = self.propval {
       object.arrowMagnitude_property.removeEBObserver (inObserver)
     }
@@ -3988,7 +4018,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitudeUnit.insert (inObserver)
+    self.mObserversOf_arrowMagnitudeUnit.insert (inObserver)
     if let object = self.propval {
       object.arrowMagnitudeUnit_property.addEBObserver (inObserver)
     }
@@ -3997,7 +4027,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_arrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_arrowMagnitudeUnit.remove (inObserver)
+    self.mObserversOf_arrowMagnitudeUnit.remove (inObserver)
     if let object = self.propval {
       object.arrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
@@ -4031,7 +4061,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.insert (inObserver)
+    self.mObserversOf_artworkName.insert (inObserver)
     if let object = self.propval {
       object.artworkName_property.addEBObserver (inObserver)
     }
@@ -4040,7 +4070,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
-    mObserversOf_artworkName.remove (inObserver)
+    self.mObserversOf_artworkName.remove (inObserver)
     if let object = self.propval {
       object.artworkName_property.removeEBObserver (inObserver)
     }
@@ -4074,7 +4104,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    mObserversOf_automaticBoardSize.insert (inObserver)
+    self.mObserversOf_automaticBoardSize.insert (inObserver)
     if let object = self.propval {
       object.automaticBoardSize_property.addEBObserver (inObserver)
     }
@@ -4083,7 +4113,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_automaticBoardSize (_ inObserver : EBEvent) {
-    mObserversOf_automaticBoardSize.remove (inObserver)
+    self.mObserversOf_automaticBoardSize.remove (inObserver)
     if let object = self.propval {
       object.automaticBoardSize_property.removeEBObserver (inObserver)
     }
@@ -4117,7 +4147,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
-    mObserversOf_boardDisplayRect.insert (inObserver)
+    self.mObserversOf_boardDisplayRect.insert (inObserver)
     if let object = self.propval {
       object.boardDisplayRect_property.addEBObserver (inObserver)
     }
@@ -4126,7 +4156,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardDisplayRect (_ inObserver : EBEvent) {
-    mObserversOf_boardDisplayRect.remove (inObserver)
+    self.mObserversOf_boardDisplayRect.remove (inObserver)
     if let object = self.propval {
       object.boardDisplayRect_property.removeEBObserver (inObserver)
     }
@@ -4160,7 +4190,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardHeight.insert (inObserver)
+    self.mObserversOf_boardHeight.insert (inObserver)
     if let object = self.propval {
       object.boardHeight_property.addEBObserver (inObserver)
     }
@@ -4169,7 +4199,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardHeight.remove (inObserver)
+    self.mObserversOf_boardHeight.remove (inObserver)
     if let object = self.propval {
       object.boardHeight_property.removeEBObserver (inObserver)
     }
@@ -4203,7 +4233,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardHeightUnit.insert (inObserver)
+    self.mObserversOf_boardHeightUnit.insert (inObserver)
     if let object = self.propval {
       object.boardHeightUnit_property.addEBObserver (inObserver)
     }
@@ -4212,7 +4242,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardHeightUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardHeightUnit.remove (inObserver)
+    self.mObserversOf_boardHeightUnit.remove (inObserver)
     if let object = self.propval {
       object.boardHeightUnit_property.removeEBObserver (inObserver)
     }
@@ -4246,7 +4276,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidth.insert (inObserver)
+    self.mObserversOf_boardLimitWidth.insert (inObserver)
     if let object = self.propval {
       object.boardLimitWidth_property.addEBObserver (inObserver)
     }
@@ -4255,7 +4285,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidth.remove (inObserver)
+    self.mObserversOf_boardLimitWidth.remove (inObserver)
     if let object = self.propval {
       object.boardLimitWidth_property.removeEBObserver (inObserver)
     }
@@ -4289,7 +4319,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidthUnit.insert (inObserver)
+    self.mObserversOf_boardLimitWidthUnit.insert (inObserver)
     if let object = self.propval {
       object.boardLimitWidthUnit_property.addEBObserver (inObserver)
     }
@@ -4298,7 +4328,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardLimitWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardLimitWidthUnit.remove (inObserver)
+    self.mObserversOf_boardLimitWidthUnit.remove (inObserver)
     if let object = self.propval {
       object.boardLimitWidthUnit_property.removeEBObserver (inObserver)
     }
@@ -4332,7 +4362,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardManualHeight.insert (inObserver)
+    self.mObserversOf_boardManualHeight.insert (inObserver)
     if let object = self.propval {
       object.boardManualHeight_property.addEBObserver (inObserver)
     }
@@ -4341,7 +4371,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardManualHeight (_ inObserver : EBEvent) {
-    mObserversOf_boardManualHeight.remove (inObserver)
+    self.mObserversOf_boardManualHeight.remove (inObserver)
     if let object = self.propval {
       object.boardManualHeight_property.removeEBObserver (inObserver)
     }
@@ -4375,7 +4405,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardManualWidth.insert (inObserver)
+    self.mObserversOf_boardManualWidth.insert (inObserver)
     if let object = self.propval {
       object.boardManualWidth_property.addEBObserver (inObserver)
     }
@@ -4384,7 +4414,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardManualWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardManualWidth.remove (inObserver)
+    self.mObserversOf_boardManualWidth.remove (inObserver)
     if let object = self.propval {
       object.boardManualWidth_property.removeEBObserver (inObserver)
     }
@@ -4418,7 +4448,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardRect (_ inObserver : EBEvent) {
-    mObserversOf_boardRect.insert (inObserver)
+    self.mObserversOf_boardRect.insert (inObserver)
     if let object = self.propval {
       object.boardRect_property.addEBObserver (inObserver)
     }
@@ -4427,7 +4457,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardRect (_ inObserver : EBEvent) {
-    mObserversOf_boardRect.remove (inObserver)
+    self.mObserversOf_boardRect.remove (inObserver)
     if let object = self.propval {
       object.boardRect_property.removeEBObserver (inObserver)
     }
@@ -4461,7 +4491,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardWidth.insert (inObserver)
+    self.mObserversOf_boardWidth.insert (inObserver)
     if let object = self.propval {
       object.boardWidth_property.addEBObserver (inObserver)
     }
@@ -4470,7 +4500,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardWidth (_ inObserver : EBEvent) {
-    mObserversOf_boardWidth.remove (inObserver)
+    self.mObserversOf_boardWidth.remove (inObserver)
     if let object = self.propval {
       object.boardWidth_property.removeEBObserver (inObserver)
     }
@@ -4504,7 +4534,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardWidthUnit.insert (inObserver)
+    self.mObserversOf_boardWidthUnit.insert (inObserver)
     if let object = self.propval {
       object.boardWidthUnit_property.addEBObserver (inObserver)
     }
@@ -4513,7 +4543,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_boardWidthUnit (_ inObserver : EBEvent) {
-    mObserversOf_boardWidthUnit.remove (inObserver)
+    self.mObserversOf_boardWidthUnit.remove (inObserver)
     if let object = self.propval {
       object.boardWidthUnit_property.removeEBObserver (inObserver)
     }
@@ -4547,7 +4577,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generateGerberProductFile.insert (inObserver)
+    self.mObserversOf_generateGerberProductFile.insert (inObserver)
     if let object = self.propval {
       object.generateGerberProductFile_property.addEBObserver (inObserver)
     }
@@ -4556,7 +4586,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_generateGerberProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generateGerberProductFile.remove (inObserver)
+    self.mObserversOf_generateGerberProductFile.remove (inObserver)
     if let object = self.propval {
       object.generateGerberProductFile_property.removeEBObserver (inObserver)
     }
@@ -4590,7 +4620,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generatePDFProductFile.insert (inObserver)
+    self.mObserversOf_generatePDFProductFile.insert (inObserver)
     if let object = self.propval {
       object.generatePDFProductFile_property.addEBObserver (inObserver)
     }
@@ -4599,7 +4629,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_generatePDFProductFile (_ inObserver : EBEvent) {
-    mObserversOf_generatePDFProductFile.remove (inObserver)
+    self.mObserversOf_generatePDFProductFile.remove (inObserver)
     if let object = self.propval {
       object.generatePDFProductFile_property.removeEBObserver (inObserver)
     }
@@ -4633,7 +4663,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
+    self.mObserversOf_generatedBoardArchiveFormat.insert (inObserver)
     if let object = self.propval {
       object.generatedBoardArchiveFormat_property.addEBObserver (inObserver)
     }
@@ -4642,7 +4672,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_generatedBoardArchiveFormat (_ inObserver : EBEvent) {
-    mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
+    self.mObserversOf_generatedBoardArchiveFormat.remove (inObserver)
     if let object = self.propval {
       object.generatedBoardArchiveFormat_property.removeEBObserver (inObserver)
     }
@@ -4676,7 +4706,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_modelNames (_ inObserver : EBEvent) {
-    mObserversOf_modelNames.insert (inObserver)
+    self.mObserversOf_modelNames.insert (inObserver)
     if let object = self.propval {
       object.modelNames_property.addEBObserver (inObserver)
     }
@@ -4685,7 +4715,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_modelNames (_ inObserver : EBEvent) {
-    mObserversOf_modelNames.remove (inObserver)
+    self.mObserversOf_modelNames.remove (inObserver)
     if let object = self.propval {
       object.modelNames_property.removeEBObserver (inObserver)
     }
@@ -4719,7 +4749,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    mObserversOf_overlapingArrangment.insert (inObserver)
+    self.mObserversOf_overlapingArrangment.insert (inObserver)
     if let object = self.propval {
       object.overlapingArrangment_property.addEBObserver (inObserver)
     }
@@ -4728,7 +4758,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_overlapingArrangment (_ inObserver : EBEvent) {
-    mObserversOf_overlapingArrangment.remove (inObserver)
+    self.mObserversOf_overlapingArrangment.remove (inObserver)
     if let object = self.propval {
       object.overlapingArrangment_property.removeEBObserver (inObserver)
     }
@@ -4762,7 +4792,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardXUnit.insert (inObserver)
+    self.mObserversOf_selectedBoardXUnit.insert (inObserver)
     if let object = self.propval {
       object.selectedBoardXUnit_property.addEBObserver (inObserver)
     }
@@ -4771,7 +4801,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_selectedBoardXUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardXUnit.remove (inObserver)
+    self.mObserversOf_selectedBoardXUnit.remove (inObserver)
     if let object = self.propval {
       object.selectedBoardXUnit_property.removeEBObserver (inObserver)
     }
@@ -4805,7 +4835,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardYUnit.insert (inObserver)
+    self.mObserversOf_selectedBoardYUnit.insert (inObserver)
     if let object = self.propval {
       object.selectedBoardYUnit_property.addEBObserver (inObserver)
     }
@@ -4814,7 +4844,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_selectedBoardYUnit (_ inObserver : EBEvent) {
-    mObserversOf_selectedBoardYUnit.remove (inObserver)
+    self.mObserversOf_selectedBoardYUnit.remove (inObserver)
     if let object = self.propval {
       object.selectedBoardYUnit_property.removeEBObserver (inObserver)
     }
@@ -4848,7 +4878,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    mObserversOf_selectedPageIndex.insert (inObserver)
+    self.mObserversOf_selectedPageIndex.insert (inObserver)
     if let object = self.propval {
       object.selectedPageIndex_property.addEBObserver (inObserver)
     }
@@ -4857,7 +4887,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
-    mObserversOf_selectedPageIndex.remove (inObserver)
+    self.mObserversOf_selectedPageIndex.remove (inObserver)
     if let object = self.propval {
       object.selectedPageIndex_property.removeEBObserver (inObserver)
     }
@@ -4891,7 +4921,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitude.insert (inObserver)
+    self.mObserversOf_shiftArrowMagnitude.insert (inObserver)
     if let object = self.propval {
       object.shiftArrowMagnitude_property.addEBObserver (inObserver)
     }
@@ -4900,7 +4930,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_shiftArrowMagnitude (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitude.remove (inObserver)
+    self.mObserversOf_shiftArrowMagnitude.remove (inObserver)
     if let object = self.propval {
       object.shiftArrowMagnitude_property.removeEBObserver (inObserver)
     }
@@ -4934,7 +4964,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
+    self.mObserversOf_shiftArrowMagnitudeUnit.insert (inObserver)
     if let object = self.propval {
       object.shiftArrowMagnitudeUnit_property.addEBObserver (inObserver)
     }
@@ -4943,7 +4973,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_shiftArrowMagnitudeUnit (_ inObserver : EBEvent) {
-    mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
+    self.mObserversOf_shiftArrowMagnitudeUnit.remove (inObserver)
     if let object = self.propval {
       object.shiftArrowMagnitudeUnit_property.removeEBObserver (inObserver)
     }
@@ -4977,7 +5007,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.insert (inObserver)
+    self.mObserversOf_zoom.insert (inObserver)
     if let object = self.propval {
       object.zoom_property.addEBObserver (inObserver)
     }
@@ -4986,7 +5016,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
   //····················································································································
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
-    mObserversOf_zoom.remove (inObserver)
+    self.mObserversOf_zoom.remove (inObserver)
     if let object = self.propval {
       object.zoom_property.removeEBObserver (inObserver)
     }

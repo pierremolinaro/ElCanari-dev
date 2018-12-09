@@ -286,6 +286,10 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   var propval : [CanariLibraryEntry] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <CanariLibraryEntry> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'mPath' stored property
   //····················································································································
 
@@ -465,12 +469,24 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
 class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
-  var readModelFunction : Optional<() -> EBSelection < [CanariLibraryEntry] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [CanariLibraryEntry] >? 
+  override var propset : Set <CanariLibraryEntry> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [CanariLibraryEntry] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [CanariLibraryEntry] {
@@ -496,38 +512,41 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   private var mSet = Set <CanariLibraryEntry> ()
 
-  override var prop : EBSelection < [CanariLibraryEntry] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <CanariLibraryEntry>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <CanariLibraryEntry> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
-        removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_mPath_toElementsOfSet (addedSet)
-        addEBObserversOf_mUses_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [CanariLibraryEntry] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <CanariLibraryEntry>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <CanariLibraryEntry> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_mPath_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mUses_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -680,11 +699,19 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
 
   override var prop : EBSelection < [CanariLibraryEntry] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [CanariLibraryEntry]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [CanariLibraryEntry] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <CanariLibraryEntry> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [CanariLibraryEntry]) {
     self.mValue = oldValue
@@ -716,12 +743,15 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -731,11 +761,11 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -753,9 +783,9 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

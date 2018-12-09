@@ -764,6 +764,10 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   var propval : [SymbolRoot] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <SymbolRoot> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectedInspector' stored property
   //····················································································································
 
@@ -1399,12 +1403,24 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
 
 class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolRoot] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolRoot] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolRoot] >? 
+  override var propset : Set <SymbolRoot> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolRoot] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolRoot] {
@@ -1430,54 +1446,57 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   private var mSet = Set <SymbolRoot> ()
 
-  override var prop : EBSelection < [SymbolRoot] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolRoot>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolRoot> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
-        removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-        removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
-        removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
-        removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
-        removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
-        addEBObserversOf_comments_toElementsOfSet (addedSet)
-        addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
-        addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
-        addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
-        addEBObserversOf_gridStep_toElementsOfSet (addedSet)
-        addEBObserversOf_zoom_toElementsOfSet (addedSet)
-        addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
-        addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_issues_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolRoot] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolRoot>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolRoot> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
+      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
+      self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
+      self.addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gridStep_toElementsOfSet (addedSet)
+      self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1646,11 +1665,19 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   override var prop : EBSelection < [SymbolRoot] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolRoot]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolRoot] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolRoot> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolRoot]) {
     self.mValue = oldValue
@@ -1682,12 +1709,15 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1697,11 +1727,11 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1719,9 +1749,9 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

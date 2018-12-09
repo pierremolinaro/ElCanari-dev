@@ -15,7 +15,21 @@ private let DEBUG_EVENT = false
 final class ArrayController_FontRoot_selectedCharacterController : EBObject {
  
   //····················································································································
-  //    init
+  // MARK: -
+  //····················································································································
+ 
+   private var mModel : ReadWriteArrayOf_FontCharacter? = nil
+
+  //····················································································································
+
+  let objectArray_property = TransientArrayOf_FontCharacter ()
+
+  //····················································································································
+
+  let selectedArray_property = TransientArrayOf_FontCharacter ()
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   override init () {
@@ -44,19 +58,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     }
   }
 
-  //····················································································································
-  //    Object Array
-  //····················································································································
-
-  let objectArray_property = TransientArrayOf_FontCharacter ()
-
-  //····················································································································
-  //    Model
-  //····················································································································
-
-  private var mModel : ReadWriteArrayOf_FontCharacter? = nil
-
-  //····················································································································
+   //····················································································································
 
   var objectCount : Int {
     let objects = mModel?.propval ?? []
@@ -79,8 +81,8 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     self.objectArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //---
-    mSelectedSet.mSet = Set ()
-    mModel = nil
+    self.mSelectedSet.mSet = Set ()
+    self.mModel = nil
  }
 
   //····················································································································
@@ -93,10 +95,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
 
   //····················································································································
   //   SELECTION
-  //····················································································································
-
-  let selectedArray_property = TransientArrayOf_FontCharacter ()
-
   //····················································································································
 
   private let mSelectedSet : SelectedSet_FontRoot_selectedCharacterController
@@ -122,7 +120,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   func setSelection (_ inObjects : [FontCharacter]) {
-    mSelectedSet.mSet = Set (inObjects)
+    self.mSelectedSet.mSet = Set (inObjects)
   }
 
   //····················································································································
@@ -184,7 +182,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   func select (object inObject: FontCharacter) {
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -192,7 +190,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         if objectArray.contains (inObject) {
           var newSelectedObjectSet = Set <FontCharacter> ()
           newSelectedObjectSet.insert (inObject)
-          mSelectedSet.mSet = newSelectedObjectSet
+          self.mSelectedSet.mSet = newSelectedObjectSet
         }
       }
     }
@@ -206,7 +204,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -231,7 +229,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break

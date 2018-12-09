@@ -270,6 +270,10 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   var propval : [BoardModelVia] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <BoardModelVia> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
@@ -450,12 +454,24 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
 class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
-  var readModelFunction : Optional<() -> EBSelection < [BoardModelVia] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [BoardModelVia] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [BoardModelVia] >? 
+  override var propset : Set <BoardModelVia> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [BoardModelVia] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [BoardModelVia] {
@@ -481,38 +497,41 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 
   private var mSet = Set <BoardModelVia> ()
 
-  override var prop : EBSelection < [BoardModelVia] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <BoardModelVia>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <BoardModelVia> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
-        addEBObserversOf_x_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [BoardModelVia] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <BoardModelVia>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <BoardModelVia> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_y_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padDiameter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -665,11 +684,19 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
 
   override var prop : EBSelection < [BoardModelVia] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [BoardModelVia]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [BoardModelVia] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <BoardModelVia> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [BoardModelVia]) {
     self.mValue = oldValue
@@ -701,12 +728,15 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -716,11 +746,11 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -738,9 +768,9 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

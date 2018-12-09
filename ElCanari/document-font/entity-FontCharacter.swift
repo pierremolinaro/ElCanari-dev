@@ -472,6 +472,10 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   var propval : [FontCharacter] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <FontCharacter> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'codePoint' stored property
   //····················································································································
 
@@ -763,12 +767,24 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
 class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
-  var readModelFunction : Optional<() -> EBSelection < [FontCharacter] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [FontCharacter] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [FontCharacter] >? 
+  override var propset : Set <FontCharacter> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [FontCharacter] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [FontCharacter] {
@@ -794,42 +810,45 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   private var mSet = Set <FontCharacter> ()
 
-  override var prop : EBSelection < [FontCharacter] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <FontCharacter>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <FontCharacter> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_codePoint_fromElementsOfSet (removedSet)
-        removeEBObserversOf_advance_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
-        removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_codePoint_toElementsOfSet (addedSet)
-        addEBObserversOf_advance_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
-        addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
-        addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [FontCharacter] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <FontCharacter>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <FontCharacter> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_codePoint_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_advance_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_codePoint_toElementsOfSet (addedSet)
+      self.addEBObserversOf_advance_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -986,11 +1005,19 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   override var prop : EBSelection < [FontCharacter] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [FontCharacter]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [FontCharacter] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <FontCharacter> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [FontCharacter]) {
     self.mValue = oldValue
@@ -1022,12 +1049,15 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1037,11 +1067,11 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1059,9 +1089,9 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

@@ -1265,6 +1265,10 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   var propval : [ArtworkFileGenerationParameters] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <ArtworkFileGenerationParameters> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'drawBoardLimits' stored property
   //····················································································································
 
@@ -2585,12 +2589,24 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
 class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_ArtworkFileGenerationParameters {
 
-  var readModelFunction : Optional<() -> EBSelection < [ArtworkFileGenerationParameters] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? 
+  override var propset : Set <ArtworkFileGenerationParameters> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [ArtworkFileGenerationParameters] {
@@ -2616,78 +2632,81 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   private var mSet = Set <ArtworkFileGenerationParameters> ()
 
-  override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <ArtworkFileGenerationParameters>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <ArtworkFileGenerationParameters> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedSet)
-        removeEBObserversOf_drawVias_fromElementsOfSet (removedSet)
-        removeEBObserversOf_fileExtension_fromElementsOfSet (removedSet)
-        removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedSet)
-        removeEBObserversOf_name_fromElementsOfSet (removedSet)
-        removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedSet)
-        removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_drawBoardLimits_toElementsOfSet (addedSet)
-        addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedSet)
-        addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedSet)
-        addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedSet)
-        addEBObserversOf_drawVias_toElementsOfSet (addedSet)
-        addEBObserversOf_fileExtension_toElementsOfSet (addedSet)
-        addEBObserversOf_horizontalMirror_toElementsOfSet (addedSet)
-        addEBObserversOf_name_toElementsOfSet (addedSet)
-        addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedSet)
-        addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <ArtworkFileGenerationParameters>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <ArtworkFileGenerationParameters> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_drawVias_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_fileExtension_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_horizontalMirror_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_name_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawPadsTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawPadsBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTracksTopSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawTracksBottomSide_toElementsOfSet (addedSet)
+      self.addEBObserversOf_drawVias_toElementsOfSet (addedSet)
+      self.addEBObserversOf_fileExtension_toElementsOfSet (addedSet)
+      self.addEBObserversOf_horizontalMirror_toElementsOfSet (addedSet)
+      self.addEBObserversOf_name_toElementsOfSet (addedSet)
+      self.addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -2880,11 +2899,19 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 
   override var prop : EBSelection < [ArtworkFileGenerationParameters] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [ArtworkFileGenerationParameters]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [ArtworkFileGenerationParameters] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <ArtworkFileGenerationParameters> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [ArtworkFileGenerationParameters]) {
     self.mValue = oldValue
@@ -2916,12 +2943,15 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -2931,11 +2961,11 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -2953,9 +2983,9 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

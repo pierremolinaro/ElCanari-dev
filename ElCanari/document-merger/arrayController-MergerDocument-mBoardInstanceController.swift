@@ -15,7 +15,21 @@ private let DEBUG_EVENT = false
 final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBViewControllerProtocol {
  
   //····················································································································
-  //    init
+  // MARK: -
+  //····················································································································
+ 
+   private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
+
+  //····················································································································
+
+  let objectArray_property = TransientArrayOf_MergerBoardInstance ()
+
+  //····················································································································
+
+  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   override init () {
@@ -117,19 +131,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
   }
 
-  //····················································································································
-  //    Object Array
-  //····················································································································
-
-  let objectArray_property = TransientArrayOf_MergerBoardInstance ()
-
-  //····················································································································
-  //    Model
-  //····················································································································
-
-  private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
-
-  //····················································································································
+   //····················································································································
 
   var objectCount : Int {
     let objects = mModel?.propval ?? []
@@ -155,8 +157,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     self.objectArray_property.removeEBObserver (mSelectedSet)
     self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //---
-    mSelectedSet.mSet = Set ()
-    mModel = nil
+    self.mSelectedSet.mSet = Set ()
+    self.mModel = nil
  }
 
   //····················································································································
@@ -169,10 +171,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
   //   SELECTION
-  //····················································································································
-
-  let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
-
   //····················································································································
 
   private let mSelectedSet : SelectedSet_MergerDocument_mBoardInstanceController
@@ -198,7 +196,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func setSelection (_ inObjects : [MergerBoardInstance]) {
-    mSelectedSet.mSet = Set (inObjects)
+    self.mSelectedSet.mSet = Set (inObjects)
   }
 
   //····················································································································
@@ -333,7 +331,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func select (object inObject: MergerBoardInstance) {
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -341,7 +339,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         if objectArray.contains (inObject) {
           var newSelectedObjectSet = Set <MergerBoardInstance> ()
           newSelectedObjectSet.insert (inObject)
-          mSelectedSet.mSet = newSelectedObjectSet
+          self.mSelectedSet.mSet = newSelectedObjectSet
         }
       }
     }
@@ -355,7 +353,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -380,7 +378,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -457,8 +455,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
-    let objects = mModel?.propval ?? []
-    for object in mSelectedSet.mSet {
+    let objects = self.mModel?.propval ?? []
+    for object in self.mSelectedSet.mSet {
       let idx = objects.index (of:object)!
       result.append (idx)
     }

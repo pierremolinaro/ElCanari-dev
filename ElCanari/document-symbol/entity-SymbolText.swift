@@ -481,6 +481,10 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
   var propval : [SymbolText] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <SymbolText> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'y' stored property
   //····················································································································
 
@@ -886,12 +890,24 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
 class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolText] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolText] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolText] >? 
+  override var propset : Set <SymbolText> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolText] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolText] {
@@ -917,46 +933,49 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 
   private var mSet = Set <SymbolText> ()
 
-  override var prop : EBSelection < [SymbolText] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolText>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolText> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-     //--- Removed object set
-        let removedSet = self.mSet.subtracting (newSet)
-      //--- Remove observers of stored properties
-        removeEBObserversOf_y_fromElementsOfSet (removedSet)
-        removeEBObserversOf_text_fromElementsOfSet (removedSet)
-        removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedSet)
-        removeEBObserversOf_x_fromElementsOfSet (removedSet)
-      //--- Remove observers of transient properties
-        removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-        removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      //--- Added object set
-        let addedSet = newSet.subtracting (self.mSet)
-       //--- Add observers of stored properties
-        addEBObserversOf_y_toElementsOfSet (addedSet)
-        addEBObserversOf_text_toElementsOfSet (addedSet)
-        addEBObserversOf_horizontalAlignment_toElementsOfSet (addedSet)
-        addEBObserversOf_x_toElementsOfSet (addedSet)
-       //--- Add observers of transient properties
-        addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-        addEBObserversOf_issues_toElementsOfSet (addedSet)
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolText] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolText>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolText> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Removed object set
+      let removedSet = self.mSet.subtracting (newSet)
+    //--- Remove observers of stored properties
+      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_text_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_horizontalAlignment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+    //--- Remove observers of transient properties
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+    //--- Added object set
+      let addedSet = newSet.subtracting (self.mSet)
+     //--- Add observers of stored properties
+      self.addEBObserversOf_y_toElementsOfSet (addedSet)
+      self.addEBObserversOf_text_toElementsOfSet (addedSet)
+      self.addEBObserversOf_horizontalAlignment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+     //--- Add observers of transient properties
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -1117,11 +1136,19 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
 
   override var prop : EBSelection < [SymbolText] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolText]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolText] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolText> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolText]) {
     self.mValue = oldValue
@@ -1153,12 +1180,15 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -1168,11 +1198,11 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1190,9 +1220,9 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 

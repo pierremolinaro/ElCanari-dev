@@ -197,6 +197,10 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
   var propval : [SymbolObject] { return [] } // Abstract method
 
   //····················································································································
+
+  var propset : Set <SymbolObject> { return Set () } // Abstract method
+
+  //····················································································································
   //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
@@ -374,12 +378,24 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
 class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
-  var readModelFunction : Optional<() -> EBSelection < [SymbolObject] > >
+  //····················································································································
+
+  var readModelFunction : Optional < () -> EBSelection < [SymbolObject] > >
 
   //····················································································································
 
-   private var prop_cache : EBSelection < [SymbolObject] >? 
+  override var propset : Set <SymbolObject> {
+    self.computeArrayAndSet ()
+    return self.mSet
+  }
 
+  //····················································································································
+
+  override var prop : EBSelection < [SymbolObject] > {
+    self.computeArrayAndSet ()
+    return self.prop_cache!  
+  }
+ 
   //····················································································································
 
   override var propval : [SymbolObject] {
@@ -405,24 +421,27 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   private var mSet = Set <SymbolObject> ()
 
-  override var prop : EBSelection < [SymbolObject] > {
-    get {
-      if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-        self.prop_cache = unwrappedComputeFunction ()
-        let newSet : Set <SymbolObject>
-        switch self.prop_cache! {
-        case .multiple, .empty :
-          newSet = Set <SymbolObject> ()
-        case .single (let array) :
-          newSet = Set (array)
-        }
-      //--- Update object set
-        self.mSet = newSet
+  //····················································································································
+
+  private var prop_cache : EBSelection < [SymbolObject] >? = nil
+
+  //····················································································································
+
+  private func computeArrayAndSet () {
+    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
+      self.prop_cache = unwrappedComputeFunction ()
+      let newSet : Set <SymbolObject>
+      switch self.prop_cache! {
+      case .multiple, .empty :
+        newSet = Set <SymbolObject> ()
+      case .single (let array) :
+       newSet = Set (array)
       }
-      if self.prop_cache == nil {
-        self.prop_cache = .empty
-      }
-      return self.prop_cache!
+    //--- Update object set
+      self.mSet = newSet
+    }
+    if self.prop_cache == nil {
+      self.prop_cache = .empty
     }
   }
 
@@ -575,11 +594,19 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
 
   override var prop : EBSelection < [SymbolObject] > { return .single (self.mValue) }
 
+  //····················································································································
+
   override func setProp (_ inValue : [SymbolObject]) { self.mValue = inValue }
+
+  //····················································································································
 
   override var propval : [SymbolObject] { return self.mValue }
 
   //····················································································································
+
+  override var propset : Set <SymbolObject> { return self.mSet }
+
+ //····················································································································
 
   @objc func performUndo (_ oldValue : [SymbolObject]) {
     self.mValue = oldValue
@@ -611,12 +638,15 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
   //····················································································································
 
   private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
-  private var mSignatureCache : UInt32?
+
+  //····················································································································
+
+  private var mSignatureCache : UInt32? = nil
 
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
     for object in self.mValue {
       object.setSignatureObserver (observer: self)
     }
@@ -626,11 +656,11 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = computeSignature ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -648,9 +678,9 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
   //····················································································································
 
   final func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
