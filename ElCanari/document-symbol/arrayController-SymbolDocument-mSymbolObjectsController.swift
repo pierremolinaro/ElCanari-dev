@@ -19,11 +19,15 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
 
-  private var mySelectedSet = Set <SymbolObject> () {
+  private var mSelectedSet = Set <SymbolObject> () {
     didSet {
       self.selectedArray_property.postEvent ()
     }
   }
+
+  //····················································································································
+
+  var selectedSet : Set <SymbolObject> { return self.selectedArray_property.propset }
 
   //····················································································································
   // MARK: -
@@ -114,8 +118,6 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       }
     }
     self.selectedArray_property.addEBObserver (self.canRotate90CounterClockwise_property)
-  //--- Set selected array compute function
-    self.setSelectedArrayComputeFunction ()
   //--- Install object array read function
     self.objectArray_property.readModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -131,7 +133,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         return .empty
       }
     }
-  //--- Install selected object array read function
+   //--- Install selected object array read function
     self.selectedArray_property.readModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
@@ -140,7 +142,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          let selectedObjects = self?.mySelectedSet ?? Set ()
+          let selectedObjects = self?.mSelectedSet ?? Set ()
           var selectedArray = [SymbolObject] ()
           for object in modelArray {
             if selectedObjects.contains (object) {
@@ -153,7 +155,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         return .empty
       }
     }
-  }
+ }
 
    //····················································································································
 
@@ -163,13 +165,10 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   }
 
   //····················································································································
-  // MARK: -
-  //····················································································································
 
   func bind_model (_ inModel:ReadWriteArrayOf_SymbolObject) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
-    self.objectArray_property.addEBObserver (self.selectedArray_property)
     self.startObservingObjectShape ()
     self.startObservingSelectionShape ()
     self.inspectorViewManagerStartsObservingSelection ()
@@ -178,19 +177,17 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //····················································································································
 
   func unbind_model () {
-    self.mModel?.removeEBObserver (self.objectArray_property)
-    self.objectArray_property.removeEBObserver (self.selectedArray_property)
     self.stopObservingObjectShape ()
     self.stopObservingSelectionShape ()
     self.inspectorViewManagerStopsObservingSelection ()
+    self.mModel?.removeEBObserver (self.objectArray_property)
   //---
-    self.mySelectedSet = Set ()
+    self.mSelectedSet = Set ()
     self.mModel = nil
  }
 
   //····················································································································
   //    Undo manager
-  // MARK: -
   //····················································································································
 
   var undoManager : EBUndoManager? {
@@ -206,7 +203,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if self.mySelectedSet.contains (object) {
+      if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -217,11 +214,10 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //····················································································································
 
   func setSelection (_ inObjects : [SymbolObject]) {
-    self.mySelectedSet = Set (inObjects)
+    self.mSelectedSet = Set (inObjects)
   }
 
   //····················································································································
-  // MARK: -
   //  EBView interface
   //····················································································································
 
@@ -341,31 +337,6 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
 
   //····················································································································
-
-  private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.readModelFunction = { [weak self] in
-      if let me = self {
-        switch me.objectArray_property.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var result = [SymbolObject] ()
-          for object in v {
-            if me.selectedArray_property.propset.contains (object) {
-              result.append (object)
-            }
-          }
-          return .single (result)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //····················································································································
   //    Explorer
   //····················································································································
 
@@ -405,7 +376,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          self.mySelectedSet = Set ([inObject])
+           self.mSelectedSet = Set ([inObject])
         }
       }
     }
@@ -425,7 +396,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        self.mySelectedSet = Set ([newObject])
+        self.mSelectedSet = Set ([newObject])
         model.setProp (array)
       }
     }
@@ -499,7 +470,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
-          self.mySelectedSet = newSelectionSet
+          self.mSelectedSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
         }
@@ -626,7 +597,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       var objects = self.mModel?.propval ?? []
       objects += newObjects
       self.mModel?.setProp (objects)
-      self.mySelectedSet = Set (newObjects)
+      self.mSelectedSet = Set (newObjects)
     }
   }
 
@@ -648,7 +619,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       }
     }
     mModel?.setProp (objects)
-    self.mySelectedSet = Set ()
+    self.mSelectedSet = Set ()
   }
 
   //····················································································································
@@ -657,7 +628,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   func selectAllObjects () {
     let objects = mModel?.propval ?? []
-    self.mySelectedSet = Set (objects)
+    self.mSelectedSet = Set (objects)
   }
 
   //····················································································································
@@ -731,8 +702,8 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
 
   //····················································································································
   // SEND BACKWARD
-  // MARK: -
-  //····················································································································
+   // MARK: -
+ //····················································································································
 
   var canSendBackward_property = EBTransientProperty_Bool ()
 
@@ -936,7 +907,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       let newSelectedObject = objects [idx]
       newSelectedSet.insert (newSelectedObject)
     }
-    self.mySelectedSet = newSelectedSet
+    self.mSelectedSet = newSelectedSet
   }
 
   //····················································································································
@@ -946,13 +917,13 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     let object = objects [inIndex]
     var newSelectedSet = self.selectedArray_property.propset
     newSelectedSet.remove (object)
-    self.mySelectedSet = newSelectedSet
+    self.mSelectedSet = newSelectedSet
   }
 
   //····················································································································
 
   func clearSelection () {
-    self.mySelectedSet = []
+    self.mSelectedSet = []
   }
 
   //····················································································································
@@ -964,12 +935,14 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)
     }
-    self.mySelectedSet = Set (selectedObjects)
+    self.mSelectedSet = Set (selectedObjects)
   }
 
+
+
   //····················································································································
-  //  INSPECTOR VIEWS
   // MARK: -
+  //  INSPECTOR
   //····················································································································
 
   private var mInspectorView : NSView? = nil

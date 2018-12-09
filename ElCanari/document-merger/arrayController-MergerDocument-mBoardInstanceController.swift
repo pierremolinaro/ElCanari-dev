@@ -5,10 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let DEBUG_EVENT = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ArrayController_MergerDocument_mBoardInstanceController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -16,10 +12,26 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
  
   //····················································································································
   // MARK: -
+  // Models
   //····················································································································
  
    private var mModel : ReadWriteArrayOf_MergerBoardInstance? = nil
 
+  //····················································································································
+
+  private var mSelectedSet = Set <MergerBoardInstance> () {
+    didSet {
+      self.selectedArray_property.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  var selectedSet : Set <MergerBoardInstance> { return self.selectedArray_property.propset }
+
+  //····················································································································
+  // MARK: -
+  // Observable properties
   //····················································································································
 
   let objectArray_property = TransientArrayOf_MergerBoardInstance ()
@@ -33,13 +45,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_MergerDocument_mBoardInstanceController (
-      allowsEmptySelection: true,
-      allowsMultipleSelection: true,
-      sortedArray: self.objectArray_property
-    )
     super.init ()
-    self.mSelectedSet.set (callBack: { [weak self] in self?.computeSelectionShape () } )
   //--- Selection observers
     self.canBringForward_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -48,7 +54,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canBringToFront_property)
+    self.selectedArray_property.addEBObserver (self.canBringToFront_property)
   //---
     self.canBringToFront_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -57,7 +63,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canBringToFront_property)
+    self.selectedArray_property.addEBObserver (self.canBringToFront_property)
   //---
     self.canSendBackward_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -66,7 +72,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canSendBackward_property)
+    self.selectedArray_property.addEBObserver (self.canSendBackward_property)
   //---
     self.canSendToBack_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -75,7 +81,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canSendToBack_property)
+    self.selectedArray_property.addEBObserver (self.canSendToBack_property)
   //---
     self.canFlipHorizontally_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -84,7 +90,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canFlipHorizontally_property)
+    self.selectedArray_property.addEBObserver (self.canFlipHorizontally_property)
   //---
     self.canFlipVertically_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -93,7 +99,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canFlipVertically_property)
+    self.selectedArray_property.addEBObserver (self.canFlipVertically_property)
   //---
     self.canRotate90Clockwise_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -102,7 +108,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canRotate90Clockwise_property)
+    self.selectedArray_property.addEBObserver (self.canRotate90Clockwise_property)
   //---
     self.canRotate90CounterClockwise_property.readModelFunction = { [weak self] in
       if let me = self {
@@ -111,9 +117,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-    self.mSelectedSet.addEBObserver (self.canRotate90CounterClockwise_property)
-  //--- Set selected array compute function
-    self.setSelectedArrayComputeFunction ()
+    self.selectedArray_property.addEBObserver (self.canRotate90CounterClockwise_property)
   //--- Install object array read function
     self.objectArray_property.readModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -129,7 +133,29 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         return .empty
       }
     }
-  }
+   //--- Install selected object array read function
+    self.selectedArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          let selectedObjects = self?.mSelectedSet ?? Set ()
+          var selectedArray = [MergerBoardInstance] ()
+          for object in modelArray {
+            if selectedObjects.contains (object) {
+              selectedArray.append (object)
+            }
+          }
+          return .single (selectedArray)
+        }
+      }else{
+        return .empty
+      }
+    }
+ }
 
    //····················································································································
 
@@ -143,21 +169,20 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   func bind_model (_ inModel:ReadWriteArrayOf_MergerBoardInstance) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
-    self.objectArray_property.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (self.selectedArray_property)
-    inModel.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
-    self.mObjectDisplayObserver.eventCallBack = { [weak self] in self?.updateObjectDisplay () }
+    self.startObservingObjectShape ()
+    self.startObservingSelectionShape ()
+    self.inspectorViewManagerStartsObservingSelection ()
   }
 
   //····················································································································
 
   func unbind_model () {
-    self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.stopObservingObjectShape ()
+    self.stopObservingSelectionShape ()
+    self.inspectorViewManagerStopsObservingSelection ()
     self.mModel?.removeEBObserver (self.objectArray_property)
-    self.objectArray_property.removeEBObserver (mSelectedSet)
-    self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //---
-    self.mSelectedSet.mSet = Set ()
+    self.mSelectedSet = Set ()
     self.mModel = nil
  }
 
@@ -171,21 +196,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   //····················································································································
   //   SELECTION
-  //····················································································································
-
-  private let mSelectedSet : SelectedSet_MergerDocument_mBoardInstanceController
-
-  //····················································································································
-
-  var selectedSet : Set <MergerBoardInstance> { return mSelectedSet.mSet }
-
+  // MARK: -
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if mSelectedSet.mSet.contains (object) {
+      if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -196,20 +214,15 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func setSelection (_ inObjects : [MergerBoardInstance]) {
-    self.mSelectedSet.mSet = Set (inObjects)
+    self.mSelectedSet = Set (inObjects)
   }
 
   //····················································································································
   //  EBView interface
   //····················································································································
 
-  private var mObjectDisplayObserver = EBOutletEvent ()
-  private var mEBViews = [EBView] ()
-
-  //····················································································································
-
   var selectedGraphicObjectSet : Set <EBGraphicManagedObject> {
-    return self.selectedSet
+    return self.selectedArray_property.propset
   }
 
    //····················································································································
@@ -218,12 +231,35 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     return self.mModel?.propval ?? []
   }
 
- //····················································································································
+  //····················································································································
+  // MARK: -
+  // Compute selection shape
+  //····················································································································
 
-  func computeSelectionShape () {
+  private var mObjectSelectionObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  private func startObservingSelectionShape () {
+    self.mModel?.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.selectedArray_property.addEBObserver (self.mObjectSelectionObserver)
+    self.mObjectSelectionObserver.eventCallBack = { [weak self] in self?.computeSelectionShape () }
+  }
+
+  //····················································································································
+
+  private func stopObservingSelectionShape () {
+    self.mModel?.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
+    self.selectedArray_property.removeEBObserver (self.mObjectSelectionObserver)
+    self.mObjectSelectionObserver.eventCallBack = nil
+  }
+
+  //····················································································································
+
+  private func computeSelectionShape () {
     var selectionDisplayArray = [EBShape] ()
     for object in self.mModel?.propval ?? [] {
-      if !mSelectedSet.mSet.contains (object) {
+      if !self.selectedArray_property.propset.contains (object) {
         selectionDisplayArray.append (EBShape ())
       }else if let shape = object.selectionDisplay {
         selectionDisplayArray.append (shape)
@@ -234,6 +270,27 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for view in self.mEBViews {
       view.updateSelectionShape (selectionDisplayArray)
     }
+  }
+
+  //····················································································································
+  // MARK: -
+  // Compute object shape
+  //····················································································································
+
+  private var mObjectDisplayObserver = EBOutletEvent ()
+
+  //····················································································································
+
+  private func startObservingObjectShape () {
+    self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mObjectDisplayObserver.eventCallBack = { [weak self] in self?.updateObjectDisplay () }
+  }
+
+  //····················································································································
+
+  private func stopObservingObjectShape () {
+    self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
+    self.mObjectDisplayObserver.eventCallBack = nil
   }
 
   //····················································································································
@@ -251,6 +308,13 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       view.updateObjectDisplay (displayArray)
     }
   }
+
+  //····················································································································
+  // MARK: -
+  // EBViews
+  //····················································································································
+
+  private var mEBViews = [EBView] ()
 
   //····················································································································
 
@@ -273,31 +337,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
 
   //····················································································································
-
-  private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.readModelFunction = { [weak self] in
-      if let me = self {
-        switch me.objectArray_property.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var result = [MergerBoardInstance] ()
-          for object in v {
-            if me.mSelectedSet.mSet.contains (object) {
-              result.append (object)
-            }
-          }
-          return .single (result)
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //····················································································································
   //    Explorer
   //····················································································································
 
@@ -317,7 +356,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in mSelectedSet.mSet {
+      for object in self.selectedArray_property.propset {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -337,9 +376,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <MergerBoardInstance> ()
-          newSelectedObjectSet.insert (inObject)
-          self.mSelectedSet.mSet = newSelectedObjectSet
+           self.mSelectedSet = Set ([inObject])
         }
       }
     }
@@ -350,9 +387,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
    @objc func add (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -362,9 +396,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <MergerBoardInstance> ()
-        newSelectedObjectSet.insert (newObject)
-        self.mSelectedSet.mSet = newSelectedObjectSet
+        self.mSelectedSet = Set ([newObject])
         model.setProp (array)
       }
     }
@@ -375,9 +407,6 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   @objc func remove (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -394,7 +423,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.selectedArray_property.propset {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -423,7 +452,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.selectedArray_property.propset {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)
@@ -441,7 +470,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
-          mSelectedSet.mSet = newSelectionSet
+          self.mSelectedSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
         }
@@ -456,7 +485,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   private func sortedIndexArrayOfSelectedObjects () -> [Int] {
     var result = [Int] ()
     let objects = self.mModel?.propval ?? []
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       let idx = objects.index (of:object)!
       result.append (idx)
     }
@@ -468,10 +497,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func canCut (_ inPasteboardType : NSPasteboard.PasteboardType?) -> Bool {
-    if (inPasteboardType == nil) || (self.mSelectedSet.mSet.count == 0) {
+    if (inPasteboardType == nil) || (self.selectedArray_property.propset.count == 0) {
       return false
     }else{
-      for object in self.mSelectedSet.mSet {
+      for object in self.selectedArray_property.propset {
         if !object.canCopyAndPaste () {
           return false
         }
@@ -568,7 +597,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       var objects = self.mModel?.propval ?? []
       objects += newObjects
       self.mModel?.setProp (objects)
-      mSelectedSet.mSet = Set (newObjects)
+      self.mSelectedSet = Set (newObjects)
     }
   }
 
@@ -577,20 +606,20 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func canDelete () -> Bool {
-    return mSelectedSet.mSet.count > 0
+    return self.selectedArray_property.propset.count > 0
   }
 
   //····················································································································
 
    func deleteSelectedObjects () {
     var objects = mModel?.propval ?? []
-    for object in mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if let idx = objects.index (of: object) {
         objects.remove(at: idx)
       }
     }
     mModel?.setProp (objects)
-    mSelectedSet.mSet = Set ()
+    self.mSelectedSet = Set ()
   }
 
   //····················································································································
@@ -599,7 +628,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   func selectAllObjects () {
     let objects = mModel?.propval ?? []
-    mSelectedSet.mSet = Set (objects)
+    self.mSelectedSet = Set (objects)
   }
 
   //····················································································································
@@ -613,7 +642,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   var canBringForward : Bool {
     let objects = mModel?.propval ?? []
-    var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
+    var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       result = sortedIndexArray.last! < (objects.count - 1)
@@ -645,7 +674,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   var canBringToFront : Bool {
     let objects = mModel?.propval ?? []
-    if (objects.count > 1) && (mSelectedSet.mSet.count > 0) {
+    if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var top = objects.count - 1
       for idx in sortedIndexArray.reversed () {
@@ -682,7 +711,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   var canSendBackward : Bool {
     let objects = mModel?.propval ?? []
-    var result = (objects.count > 1) && (mSelectedSet.mSet.count > 0)
+    var result = (objects.count > 1) && (self.selectedArray_property.propset.count > 0)
     if result {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       result = sortedIndexArray [0] > 0
@@ -727,7 +756,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   var canSendToBack : Bool {
     let objects = mModel?.propval ?? []
-    if (objects.count > 1) && (mSelectedSet.mSet.count > 0) {
+    if (objects.count > 1) && (self.selectedArray_property.propset.count > 0) {
       let sortedIndexArray = self.sortedIndexArrayOfSelectedObjects ()
       var bottom = 0
       for idx in sortedIndexArray {
@@ -746,7 +775,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func snapToGrid (_ inGrid : Int) {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       object.snapToGrid (inGrid)
     }
   }
@@ -754,7 +783,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func canSnapToGrid (_ inGrid : Int) -> Bool {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if object.canSnapToGrid (inGrid) {
         return true
       }
@@ -773,7 +802,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func flipHorizontally () {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       object.flipHorizontally ()
     }
   }
@@ -781,12 +810,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   var canFlipHorizontally : Bool {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if !object.canFlipHorizontally () {
         return false
       }
     }
-    return self.mSelectedSet.mSet.count > 0
+    return self.selectedArray_property.propset.count > 0
   }
 
   //····················································································································
@@ -799,7 +828,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func flipVertically () {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       object.flipVertically ()
     }
   }
@@ -807,12 +836,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   var canFlipVertically : Bool {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if !object.canFlipVertically () {
         return false
       }
     }
-    return self.mSelectedSet.mSet.count > 0
+    return self.selectedArray_property.propset.count > 0
   }
 
   //····················································································································
@@ -825,7 +854,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func rotate90Clockwise () {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       object.rotate90Clockwise ()
     }
   }
@@ -833,7 +862,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   var canRotate90Clockwise : Bool {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if object.canRotate90Clockwise () {
         return true
       }
@@ -851,7 +880,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   func rotate90CounterClockwise () {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       object.rotate90CounterClockwise ()
     }
   }
@@ -859,7 +888,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //····················································································································
 
   var canRotate90CounterClockwise : Bool {
-    for object in self.mSelectedSet.mSet {
+    for object in self.selectedArray_property.propset {
       if object.canRotate90CounterClockwise () {
         return true
       }
@@ -873,12 +902,12 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   func addToSelection (objectsWithIndex inIndexes : [Int]) {
     let objects = mModel?.propval ?? []
-    var newSelectedSet = self.mSelectedSet.mSet
+    var newSelectedSet = self.selectedArray_property.propset
     for idx in inIndexes {
       let newSelectedObject = objects [idx]
       newSelectedSet.insert (newSelectedObject)
     }
-    self.mSelectedSet.mSet = newSelectedSet
+    self.mSelectedSet = newSelectedSet
   }
 
   //····················································································································
@@ -886,15 +915,15 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   func removeFromSelection (objectWithIndex inIndex : Int) {
     let objects = mModel?.propval ?? []
     let object = objects [inIndex]
-    var newSelectedSet = self.mSelectedSet.mSet
+    var newSelectedSet = self.selectedArray_property.propset
     newSelectedSet.remove (object)
-    self.mSelectedSet.mSet = newSelectedSet
+    self.mSelectedSet = newSelectedSet
   }
 
   //····················································································································
 
   func clearSelection () {
-    self.mSelectedSet.mSet = []
+    self.mSelectedSet = []
   }
 
   //····················································································································
@@ -906,100 +935,83 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       let newSelectedObject = objects [index]
       selectedObjects.append (newSelectedObject)
     }
-    self.mSelectedSet.mSet = Set (selectedObjects)
+    self.mSelectedSet = Set (selectedObjects)
   }
 
 
 
   //····················································································································
+  // MARK: -
   //  INSPECTOR
   //····················································································································
 
+  private var mInspectorView : NSView? = nil
+  private var mCurrentAttachedView : NSView? = nil
+  private var mInspectorDictionary = [String : NSView] ()
+  private var mInspectorObserver = EBOutletEvent ()
+
+  //····················································································································
+
   func register (inspectorView : NSView?) {
-    self.mSelectedSet.register (inspectorView: inspectorView)
+    self.mInspectorView = inspectorView
+    self.updateInspectorViews ()
   }
 
   //····················································································································
 
   func register (inspectorView : NSView?, forClass inClassName : String) {
-    self.mSelectedSet.register (inspectorView: inspectorView, forClass: inClassName)
+    self.mInspectorDictionary [inClassName] = inspectorView
+    self.updateInspectorViews ()
   }
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_MergerDocument_mBoardInstanceController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProperty {
-  private let mAllowsEmptySelection : Bool
-  private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_MergerBoardInstance
-  private var mObserverOfSelectionLayerOfSelectedObjects = EBOutletEvent ()
- 
-  //····················································································································
-
-  init (allowsEmptySelection : Bool,
-        allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_MergerBoardInstance) {
-    mAllowsMultipleSelection = allowsMultipleSelection
-    mAllowsEmptySelection = allowsEmptySelection
-    mSortedArray = sortedArray
-    super.init ()
+  private func inspectorViewManagerStartsObservingSelection () {
+    self.selectedArray_property.addEBObserver (self.mInspectorObserver)
+    self.mInspectorObserver.eventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
   //····················································································································
 
-  func set (callBack : @escaping () -> Void) {
-    self.mObserverOfSelectionLayerOfSelectedObjects.eventCallBack = callBack
+  private func inspectorViewManagerStopsObservingSelection () {
+    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
+    self.mInspectorObserver.eventCallBack = nil
   }
 
   //····················································································································
 
-  private var mPrivateSet = Set<MergerBoardInstance> () {
-    didSet {
-      if mPrivateSet != oldValue {
-        postEvent ()
-        self.updateInspectorViews ()
-        let addedSet = mPrivateSet.subtracting (oldValue)
-        for object in addedSet {
-          object.selectionDisplay_property.addEBObserver (self.mObserverOfSelectionLayerOfSelectedObjects)
+  private func updateInspectorViews () {
+    if let inspectorView = self.mInspectorView {
+    //--- Remove current attached view
+      self.mCurrentAttachedView?.removeFromSuperview ()
+    //--- Add the new attached view
+      if self.selectedArray_property.propset.count == 0 {
+        let tf = self.textField ("Empty Selection", inspectorView.frame)
+        inspectorView.addSubview (tf)
+        self.mCurrentAttachedView = tf
+      }else{
+        var classNames = Set <String> ()
+        for object in self.selectedArray_property.propset {
+          let className = String (describing: type (of: object))
+          classNames.insert (className)
         }
-        let removedSet = oldValue.subtracting (mPrivateSet)
-        for object in removedSet {
-          object.selectionDisplay_property.removeEBObserver (self.mObserverOfSelectionLayerOfSelectedObjects)
-        }
-        self.mObserverOfSelectionLayerOfSelectedObjects.postEvent ()
-      }
-    }
-  }
-
-  //····················································································································
-
-  var mSet : Set<MergerBoardInstance> {
-    set {
-      var newSelectedSet = newValue
-      switch mSortedArray.prop {
-      case .empty, .multiple :
-        break ;
-      case .single (let sortedArray) :
-        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
-          newSelectedSet = Set (arrayLiteral: sortedArray [0])
-        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
-          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
+        if classNames.count > 1 {
+          let tf = self.textField ("Multiple Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
+        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
+          selectionInspectorView.frame = inspectorView.frame
+          inspectorView.addSubview (selectionInspectorView)
+          self.mCurrentAttachedView = selectionInspectorView
+        }else{
+          let tf = self.textField ("No Inspector for this Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
         }
       }
-      self.mPrivateSet = newSelectedSet
-    }
-    get {
-      return mPrivateSet
     }
   }
 
-  //····················································································································
-  //  INSPECTOR VIEW
   //····················································································································
 
   private func textField (_ inString : String, _ inspectorFrame : NSRect) -> NSTextField {
@@ -1022,60 +1034,6 @@ final class SelectedSet_MergerDocument_mBoardInstanceController : EBAbstractProp
     tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
     tf.textColor = NSColor.lightGray
     return tf
-  }
-
-  //····················································································································
-
-  private var mInspectorView : NSView? = nil
-  private var mCurrentAttachedView : NSView? = nil
-  private var mInspectorDictionary = [String : NSView] ()
-
-  //····················································································································
-
-  func register (inspectorView : NSView?) {
-    self.mInspectorView = inspectorView
-    self.updateInspectorViews ()
-  }
-
-  //····················································································································
-
-  func register (inspectorView : NSView?, forClass inClassName : String) {
-    self.mInspectorDictionary [inClassName] = inspectorView
-    self.updateInspectorViews ()
-  }
-
-  //····················································································································
-
-  private func updateInspectorViews () {
-    if let inspectorView = self.mInspectorView {
-    //--- Remove current attached view
-      self.mCurrentAttachedView?.removeFromSuperview ()
-    //--- Add the new attached view
-      if self.mSet.count == 0 {
-        let tf = self.textField ("Empty Selection", inspectorView.frame)
-        inspectorView.addSubview (tf)
-        self.mCurrentAttachedView = tf
-      }else{
-        var classNames = Set <String> ()
-        for object in self.mSet {
-          let className = String (describing: type (of: object))
-          classNames.insert (className)
-        }
-        if classNames.count > 1 {
-          let tf = self.textField ("Multiple Selection", inspectorView.frame)
-          inspectorView.addSubview (tf)
-          self.mCurrentAttachedView = tf
-        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
-          selectionInspectorView.frame = inspectorView.frame
-          inspectorView.addSubview (selectionInspectorView)
-          self.mCurrentAttachedView = selectionInspectorView
-        }else{
-          let tf = self.textField ("No Inspector for this Selection", inspectorView.frame)
-          inspectorView.addSubview (tf)
-          self.mCurrentAttachedView = tf
-        }
-      }
-    }
   }
 
   //····················································································································

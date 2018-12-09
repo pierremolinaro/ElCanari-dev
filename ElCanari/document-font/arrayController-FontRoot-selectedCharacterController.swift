@@ -5,10 +5,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let DEBUG_EVENT = false
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    ArrayController_FontRoot_selectedCharacterController
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -16,10 +12,26 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
  
   //····················································································································
   // MARK: -
+  // Models
   //····················································································································
  
    private var mModel : ReadWriteArrayOf_FontCharacter? = nil
 
+  //····················································································································
+
+  private var mSelectedSet = Set <FontCharacter> () {
+    didSet {
+      self.selectedArray_property.postEvent ()
+    }
+  }
+
+  //····················································································································
+
+  var selectedSet : Set <FontCharacter> { return self.selectedArray_property.propset }
+
+  //····················································································································
+  // MARK: -
+  // Observable properties
   //····················································································································
 
   let objectArray_property = TransientArrayOf_FontCharacter ()
@@ -33,14 +45,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   override init () {
-    mSelectedSet = SelectedSet_FontRoot_selectedCharacterController (
-      allowsEmptySelection: true,
-      allowsMultipleSelection: true,
-      sortedArray: self.objectArray_property
-    )
     super.init ()
-  //--- Set selected array compute function
-    self.setSelectedArrayComputeFunction ()
   //--- Install object array read function
     self.objectArray_property.readModelFunction = { [weak self] in
       if let model = self?.mModel {
@@ -56,7 +61,29 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         return .empty
       }
     }
-  }
+   //--- Install selected object array read function
+    self.selectedArray_property.readModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          let selectedObjects = self?.mSelectedSet ?? Set ()
+          var selectedArray = [FontCharacter] ()
+          for object in modelArray {
+            if selectedObjects.contains (object) {
+              selectedArray.append (object)
+            }
+          }
+          return .single (selectedArray)
+        }
+      }else{
+        return .empty
+      }
+    }
+ }
 
    //····················································································································
 
@@ -70,18 +97,14 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   func bind_model (_ inModel:ReadWriteArrayOf_FontCharacter) {
     self.mModel = inModel
     inModel.addEBObserver (self.objectArray_property)
-    self.objectArray_property.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (self.selectedArray_property)
   }
 
   //····················································································································
 
   func unbind_model () {
     self.mModel?.removeEBObserver (self.objectArray_property)
-    self.objectArray_property.removeEBObserver (mSelectedSet)
-    self.mSelectedSet.removeEBObserver (self.selectedArray_property)
   //---
-    self.mSelectedSet.mSet = Set ()
+    self.mSelectedSet = Set ()
     self.mModel = nil
  }
 
@@ -95,21 +118,14 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
 
   //····················································································································
   //   SELECTION
-  //····················································································································
-
-  private let mSelectedSet : SelectedSet_FontRoot_selectedCharacterController
-
-  //····················································································································
-
-  var selectedSet : Set <FontCharacter> { return mSelectedSet.mSet }
-
+  // MARK: -
   //····················································································································
 
   var selectedIndexesSet : Set <Int> {
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if mSelectedSet.mSet.contains (object) {
+      if self.selectedArray_property.propset.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -120,32 +136,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   func setSelection (_ inObjects : [FontCharacter]) {
-    self.mSelectedSet.mSet = Set (inObjects)
-  }
-
-  //····················································································································
-
-  private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.readModelFunction = { [weak self] in
-      if let me = self {
-        switch me.objectArray_property.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var result = [FontCharacter] ()
-          for object in v {
-            if me.mSelectedSet.mSet.contains (object) {
-              result.append (object)
-            }
-          }
-          return .single (result)
-        }
-      }else{
-        return .empty
-      }
-    }
+    self.mSelectedSet = Set (inObjects)
   }
 
   //····················································································································
@@ -168,7 +159,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in mSelectedSet.mSet {
+      for object in self.selectedArray_property.propset {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -188,9 +179,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-          var newSelectedObjectSet = Set <FontCharacter> ()
-          newSelectedObjectSet.insert (inObject)
-          self.mSelectedSet.mSet = newSelectedObjectSet
+           self.mSelectedSet = Set ([inObject])
         }
       }
     }
@@ -201,9 +190,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
    @objc func add (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -213,9 +199,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        var newSelectedObjectSet = Set <FontCharacter> ()
-        newSelectedObjectSet.insert (newObject)
-        self.mSelectedSet.mSet = newSelectedObjectSet
+        self.mSelectedSet = Set ([newObject])
         model.setProp (array)
       }
     }
@@ -226,9 +210,6 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   @objc func remove (_ sender : Any) {
-    if DEBUG_EVENT {
-      print ("\(#function)")
-    }
     if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
@@ -245,7 +226,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.selectedArray_property.propset {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -274,7 +255,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.selectedArray_property.propset {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)
@@ -292,7 +273,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
-          mSelectedSet.mSet = newSelectionSet
+          self.mSelectedSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
         }
@@ -301,78 +282,77 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   }
 
   //····················································································································
+  // MARK: -
   //  INSPECTOR
   //····················································································································
 
+  private var mInspectorView : NSView? = nil
+  private var mCurrentAttachedView : NSView? = nil
+  private var mInspectorDictionary = [String : NSView] ()
+  private var mInspectorObserver = EBOutletEvent ()
+
+  //····················································································································
+
   func register (inspectorView : NSView?) {
-    self.mSelectedSet.register (inspectorView: inspectorView)
+    self.mInspectorView = inspectorView
+    self.updateInspectorViews ()
   }
 
   //····················································································································
 
   func register (inspectorView : NSView?, forClass inClassName : String) {
-    self.mSelectedSet.register (inspectorView: inspectorView, forClass: inClassName)
+    self.mInspectorDictionary [inClassName] = inspectorView
+    self.updateInspectorViews ()
   }
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectedSet_FontRoot_selectedCharacterController
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-final class SelectedSet_FontRoot_selectedCharacterController : EBAbstractProperty {
-  private let mAllowsEmptySelection : Bool
-  private let mAllowsMultipleSelection : Bool
-  private let mSortedArray : TransientArrayOf_FontCharacter
- 
-  //····················································································································
-
-  init (allowsEmptySelection : Bool,
-        allowsMultipleSelection : Bool,
-        sortedArray : TransientArrayOf_FontCharacter) {
-    mAllowsMultipleSelection = allowsMultipleSelection
-    mAllowsEmptySelection = allowsEmptySelection
-    mSortedArray = sortedArray
-    super.init ()
+  private func inspectorViewManagerStartsObservingSelection () {
+    self.selectedArray_property.addEBObserver (self.mInspectorObserver)
+    self.mInspectorObserver.eventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
   //····················································································································
 
-  private var mPrivateSet = Set<FontCharacter> () {
-    didSet {
-      if mPrivateSet != oldValue {
-        postEvent ()
-        self.updateInspectorViews ()
-      }
-    }
+  private func inspectorViewManagerStopsObservingSelection () {
+    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
+    self.mInspectorObserver.eventCallBack = nil
   }
 
   //····················································································································
 
-  var mSet : Set<FontCharacter> {
-    set {
-      var newSelectedSet = newValue
-      switch mSortedArray.prop {
-      case .empty, .multiple :
-        break ;
-      case .single (let sortedArray) :
-        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
-          newSelectedSet = Set (arrayLiteral: sortedArray [0])
-        }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
-          newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
+  private func updateInspectorViews () {
+    if let inspectorView = self.mInspectorView {
+    //--- Remove current attached view
+      self.mCurrentAttachedView?.removeFromSuperview ()
+    //--- Add the new attached view
+      if self.selectedArray_property.propset.count == 0 {
+        let tf = self.textField ("Empty Selection", inspectorView.frame)
+        inspectorView.addSubview (tf)
+        self.mCurrentAttachedView = tf
+      }else{
+        var classNames = Set <String> ()
+        for object in self.selectedArray_property.propset {
+          let className = String (describing: type (of: object))
+          classNames.insert (className)
+        }
+        if classNames.count > 1 {
+          let tf = self.textField ("Multiple Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
+        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
+          selectionInspectorView.frame = inspectorView.frame
+          inspectorView.addSubview (selectionInspectorView)
+          self.mCurrentAttachedView = selectionInspectorView
+        }else{
+          let tf = self.textField ("No Inspector for this Selection", inspectorView.frame)
+          inspectorView.addSubview (tf)
+          self.mCurrentAttachedView = tf
         }
       }
-      self.mPrivateSet = newSelectedSet
-    }
-    get {
-      return mPrivateSet
     }
   }
 
-  //····················································································································
-  //  INSPECTOR VIEW
   //····················································································································
 
   private func textField (_ inString : String, _ inspectorFrame : NSRect) -> NSTextField {
@@ -395,60 +375,6 @@ final class SelectedSet_FontRoot_selectedCharacterController : EBAbstractPropert
     tf.font = NSFont.boldSystemFont (ofSize: NSFont.systemFontSize * 1.25)
     tf.textColor = NSColor.lightGray
     return tf
-  }
-
-  //····················································································································
-
-  private var mInspectorView : NSView? = nil
-  private var mCurrentAttachedView : NSView? = nil
-  private var mInspectorDictionary = [String : NSView] ()
-
-  //····················································································································
-
-  func register (inspectorView : NSView?) {
-    self.mInspectorView = inspectorView
-    self.updateInspectorViews ()
-  }
-
-  //····················································································································
-
-  func register (inspectorView : NSView?, forClass inClassName : String) {
-    self.mInspectorDictionary [inClassName] = inspectorView
-    self.updateInspectorViews ()
-  }
-
-  //····················································································································
-
-  private func updateInspectorViews () {
-    if let inspectorView = self.mInspectorView {
-    //--- Remove current attached view
-      self.mCurrentAttachedView?.removeFromSuperview ()
-    //--- Add the new attached view
-      if self.mSet.count == 0 {
-        let tf = self.textField ("Empty Selection", inspectorView.frame)
-        inspectorView.addSubview (tf)
-        self.mCurrentAttachedView = tf
-      }else{
-        var classNames = Set <String> ()
-        for object in self.mSet {
-          let className = String (describing: type (of: object))
-          classNames.insert (className)
-        }
-        if classNames.count > 1 {
-          let tf = self.textField ("Multiple Selection", inspectorView.frame)
-          inspectorView.addSubview (tf)
-          self.mCurrentAttachedView = tf
-        }else if let selectionInspectorView = self.mInspectorDictionary [classNames.first!] {
-          selectionInspectorView.frame = inspectorView.frame
-          inspectorView.addSubview (selectionInspectorView)
-          self.mCurrentAttachedView = selectionInspectorView
-        }else{
-          let tf = self.textField ("No Inspector for this Selection", inspectorView.frame)
-          inspectorView.addSubview (tf)
-          self.mCurrentAttachedView = tf
-        }
-      }
-    }
   }
 
   //····················································································································
