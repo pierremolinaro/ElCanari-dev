@@ -17,17 +17,24 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
  
    private var mModel : ReadWriteArrayOf_FontCharacter? = nil
 
-  //····················································································································
+   //····················································································································
 
-  private var mSelectedSet = Set <FontCharacter> () {
-    didSet {
-      self.selectedArray_property.postEvent ()
+  var selectedSet : Set <FontCharacter> {
+    set (newValue) {
+      self.mPrivateSelectedSet = newValue
+    }
+    get {
+      return self.selectedArray_property.propset
     }
   }
 
   //····················································································································
 
-  var selectedSet : Set <FontCharacter> { return self.selectedArray_property.propset }
+  private var mPrivateSelectedSet = Set <FontCharacter> () {
+    didSet {
+      self.selectedArray_property.postEvent ()
+    }
+  }
 
   //····················································································································
   // MARK: -
@@ -70,7 +77,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         case .multiple :
           return .multiple
         case .single (let modelArray) :
-          let selectedObjects = self?.mSelectedSet ?? Set ()
+          let selectedObjects = self?.mPrivateSelectedSet ?? Set ()
           var selectedArray = [FontCharacter] ()
           for object in modelArray {
             if selectedObjects.contains (object) {
@@ -88,7 +95,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
    //····················································································································
 
   var objectCount : Int {
-    let objects = mModel?.propval ?? []
+    let objects = self.mModel?.propval ?? []
     return objects.count
   }
 
@@ -104,7 +111,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   func unbind_model () {
     self.mModel?.removeEBObserver (self.objectArray_property)
   //---
-    self.mSelectedSet = Set ()
+    self.selectedSet = Set ()
     self.mModel = nil
  }
 
@@ -136,7 +143,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   func setSelection (_ inObjects : [FontCharacter]) {
-    self.mSelectedSet = Set (inObjects)
+    self.selectedSet = Set (inObjects)
   }
 
   //····················································································································
@@ -179,7 +186,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         break
       case .single (let objectArray) :
         if objectArray.contains (inObject) {
-           self.mSelectedSet = Set ([inObject])
+           self.selectedSet = Set ([inObject])
         }
       }
     }
@@ -199,7 +206,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
         var array = v
         array.append (newObject)
       //--- New object is the selection
-        self.mSelectedSet = Set ([newObject])
+        self.selectedSet = Set ([newObject])
         model.setProp (array)
       }
     }
@@ -273,7 +280,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
-          self.mSelectedSet = newSelectionSet
+          self.selectedSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
         }
