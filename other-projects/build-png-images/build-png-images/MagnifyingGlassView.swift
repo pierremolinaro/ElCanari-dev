@@ -16,13 +16,24 @@ class MagnifyingGlassView : NSView {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-    NSColor.blue.setFill ()
-    __NSRectFill (inDirtyRect)
-    let s = self.frame.size.width / 1.5
-    let r = NSRect (x: 0.5, y: self.bounds.size.height - s - 0.5, width: s, height: s)
-    let bp = NSBezierPath (ovalIn: r)
-    bp.lineWidth = 1.0
-    NSColor.gray.setStroke ()
+//    NSColor.yellow.setFill ()
+//    __NSRectFill (inDirtyRect)
+    let drawingRect = self.bounds.insetBy (dx: 5.0, dy: 5.0)
+    let s = drawingRect.size.width * 0.65
+    let b = drawingRect.size.width * 0.4
+    let r = NSRect (x: drawingRect.minX + 1.5, y: drawingRect.maxY - s - 1.5, width: s, height: s)
+    NSColor.darkGray.setStroke ()
+    var bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = 3.0
+//    NSColor.white.setFill ()
+//    bp.fill ()
+    bp.stroke ()
+    let p1 = NSPoint (x: drawingRect.maxY, y: drawingRect.minY)
+    let p2 = NSPoint (x: p1.x - b, y: p1.y + b)
+    bp = NSBezierPath ()
+    bp.move (to: p1)
+    bp.line (to: p2)
+    bp.lineWidth = 5.0
     bp.stroke ()
   }
 
