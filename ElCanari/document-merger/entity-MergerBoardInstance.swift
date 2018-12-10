@@ -1507,7 +1507,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         oldValue?.modelHeightUnit_property.removeEBObserversFrom (mObserversOf_modelHeightUnit)
         oldValue?.modelLimitWidth_property.removeEBObserversFrom (mObserversOf_modelLimitWidth)
         oldValue?.modelLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_modelLimitWidthUnit)
-        oldValue?.modelRect_property.removeEBObserversFrom (mObserversOf_modelRect)
         oldValue?.modelWidth_property.removeEBObserversFrom (mObserversOf_modelWidth)
         oldValue?.modelWidthUnit_property.removeEBObserversFrom (mObserversOf_modelWidthUnit)
         oldValue?.name_property.removeEBObserversFrom (mObserversOf_name)
@@ -1559,7 +1558,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
         self.mValue?.modelHeightUnit_property.addEBObserversFrom (mObserversOf_modelHeightUnit)
         self.mValue?.modelLimitWidth_property.addEBObserversFrom (mObserversOf_modelLimitWidth)
         self.mValue?.modelLimitWidthUnit_property.addEBObserversFrom (mObserversOf_modelLimitWidthUnit)
-        self.mValue?.modelRect_property.addEBObserversFrom (mObserversOf_modelRect)
         self.mValue?.modelWidth_property.addEBObserversFrom (mObserversOf_modelWidth)
         self.mValue?.modelWidthUnit_property.addEBObserversFrom (mObserversOf_modelWidthUnit)
         self.mValue?.name_property.addEBObserversFrom (mObserversOf_name)
@@ -3489,49 +3487,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
     if let object = self.propval {
       object.modelLimitWidthUnit_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: modelRect
-  //····················································································································
-
-  private var mObserversOf_modelRect = EBWeakEventSet ()
-
-  //····················································································································
-
-  var modelRect_property_selection : EBSelection <CanariRect?> {
-    get {
-      if let model = self.propval {
-        switch (model.modelRect_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_modelRect (_ inObserver : EBEvent) {
-    self.mObserversOf_modelRect.insert (inObserver)
-    if let object = self.propval {
-      object.modelRect_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_modelRect (_ inObserver : EBEvent) {
-    self.mObserversOf_modelRect.remove (inObserver)
-    if let object = self.propval {
-      object.modelRect_property.removeEBObserver (inObserver)
     }
   }
 

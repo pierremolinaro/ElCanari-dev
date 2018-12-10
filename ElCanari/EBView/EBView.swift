@@ -74,6 +74,7 @@ import Cocoa
   final var mUnderObjectsDisplay = EBShape () {
     didSet {
       if self.mUnderObjectsDisplay != oldValue {
+        self.updateViewFrameAndBounds ()
         self.setNeedsDisplay (oldValue.boundingBox)
         self.setNeedsDisplay (self.mUnderObjectsDisplay.boundingBox)
       }
@@ -91,6 +92,7 @@ import Cocoa
   final var mOverObjectsDisplay = EBShape () {
     didSet {
       if self.mOverObjectsDisplay != oldValue {
+        self.updateViewFrameAndBounds ()
         self.setNeedsDisplay (oldValue.boundingBox)
         self.setNeedsDisplay (self.mOverObjectsDisplay.boundingBox)
       }
@@ -122,10 +124,10 @@ import Cocoa
     }
     self.drawIssue (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
-    if !self.mIsFirstResponder {
-      NSColor.white.withAlphaComponent (0.1).setFill ()
-      NSBezierPath.fill (inDirtyRect)
-    }
+//    if !self.mIsFirstResponder {
+//      NSColor.white.withAlphaComponent (0.1).setFill ()
+//      NSBezierPath.fill (inDirtyRect)
+//    }
   }
 
   //····················································································································
@@ -254,38 +256,40 @@ import Cocoa
 
   func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
   //--- Find invalid rectangle
-    var invalidRect = NSRect.null
-    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
-    var idx = 0
-    while idx < minCount {
-      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
-        invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
-        invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
-      }
-      idx += 1
-    }
-    while idx < self.mObjectDisplayArray.count {
-      invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
-      idx += 1
-    }
-    while idx < inObjectDisplayArray.count {
-      invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
-      idx += 1
-    }
+//    var invalidRect = NSRect.null
+//    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
+//    var idx = 0
+//    while idx < minCount {
+//      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
+//        invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
+//        invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+//      }
+//      idx += 1
+//    }
+//    while idx < self.mObjectDisplayArray.count {
+//      invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
+//      idx += 1
+//    }
+//    while idx < inObjectDisplayArray.count {
+//      invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
+//      idx += 1
+//    }
   //--- Store new object array and tell view to display
     self.mObjectDisplayArray = inObjectDisplayArray
     self.updateViewFrameAndBounds ()
-    self.setNeedsDisplay (invalidRect)
+ //   self.setNeedsDisplay (invalidRect)
   }
 
   //····················································································································
 
   var objectsAndIssueBoundingBox : NSRect {
     var r = NSRect.null
-    for shape in mObjectDisplayArray {
+    for shape in self.mObjectDisplayArray {
       r = r.union (shape.boundingBox)
     }
     r = r.union (self.issueBoundingBox)
+    r = r.union (self.mUnderObjectsDisplay.boundingBox)
+    r = r.union (self.mOverObjectsDisplay.boundingBox)
     return r
   }
 
@@ -343,11 +347,15 @@ import Cocoa
   //····················································································································
 
   internal func updateViewFrameAndBounds () {
-    var newRect = NSRect () // For including point (0, 0)
-    newRect = newRect.union (self.objectsAndIssueBoundingBox)
-    if self.bounds != newRect {
-      self.frame.size = newRect.size
-      self.bounds = newRect
+    let s = self.actualScale
+    var newBounds = NSRect () // For including point (0, 0)
+    newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
+    let currentBounds = self.bounds
+    if currentBounds != newBounds {
+      self.frame.size = newBounds.size
+      self.bounds = newBounds
+      self.needsDisplay = true
+      self.applyZoom (Int (s * 100.0))
     }
   }
 
@@ -407,7 +415,7 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  private var mIsFirstResponder = false
+ // private var mIsFirstResponder = false
 
   //····················································································································
 
@@ -416,16 +424,16 @@ import Cocoa
   //····················································································································
 
   override func becomeFirstResponder () -> Bool {
-    self.mIsFirstResponder = true
-    self.needsDisplay = true
+//    self.mIsFirstResponder = true
+//    self.needsDisplay = true
     return true
   }
 
   //····················································································································
 
   override func resignFirstResponder () -> Bool {
-    self.mIsFirstResponder = false
-    self.needsDisplay = true
+//    self.mIsFirstResponder = false
+//    self.needsDisplay = true
     return true
   }
 
@@ -447,57 +455,6 @@ import Cocoa
 
   internal var mIssueBezierPath : NSBezierPath? = nil
   internal var mIssueKind : CanariIssueKind = .error // Any value, not used if mIssueBezierPath is nil
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-  private var mCanariRectController : EBReadOnlyController_CanariRect? = nil
-
-  //····················································································································
-
-  func bind_canariRect (_ model : EBReadOnlyProperty_CanariRect, file : String, line : Int) {
-    self.mCanariRectController = EBReadOnlyController_CanariRect (
-      model: model,
-      callBack: { [weak self] in self?.updateRect (from: model) }
-    )
-  }
-
-  //····················································································································
-
-  func unbind_canariRect () {
-    self.mCanariRectController?.unregister ()
-    self.mCanariRectController = nil
-  }
-
-  //····················································································································
-
-  private func updateRect (from model : EBReadOnlyProperty_CanariRect) {
-    var rect = CanariRect ()
-    switch model.prop {
-    case .empty :
-      ()
-    case .single (let v) :
-      rect = v
-    case .multiple :
-      ()
-    }
-    self.setMinimumRect (rect)
-  }
-
-  //····················································································································
-
-  fileprivate var mMinimumRect : NSRect? = nil
-
-  internal func setMinimumRect (_ inCanariRect : CanariRect) {
-    let emptyModel = (inCanariRect.size.width <= 0) || (inCanariRect.size.height <= 0)
-    if emptyModel {
-      self.mMinimumRect = nil
-    }else{
-      self.mMinimumRect = inCanariRect.cocoaRect ()
-    }
-    self.updateViewFrameAndBounds ()
-  }
 
   //····················································································································
   // MARK: -

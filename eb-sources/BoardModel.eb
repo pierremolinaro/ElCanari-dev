@@ -9,7 +9,6 @@ entity BoardModel {
   property Int modelHeightUnit default 0 ;
 
   property Int zoom default 0 ; # 0 means "fit to window"
-  transient CanariRect modelRect dependsFrom self.modelWidth, self.modelHeight ;
 
 #--- Instances
   toMany MergerBoardInstance myInstances inverse toOne myModel ;

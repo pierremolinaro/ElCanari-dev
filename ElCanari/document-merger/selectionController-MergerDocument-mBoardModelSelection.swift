@@ -636,18 +636,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   }
 
   //····················································································································
-  //   Selection observable property: modelRect
-  //····················································································································
-
-  var modelRect_property = EBTransientProperty_CanariRect ()
-
-  var modelRect_property_selection : EBSelection <CanariRect> {
-    get {
-      return self.modelRect_property.prop
-    }
-  }
-
-  //····················································································································
   //   Selection observable property: modelWidth
   //····················································································································
 
@@ -783,7 +771,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     self.bind_property_modelHeightUnit (model: model)
     self.bind_property_modelLimitWidth (model: model)
     self.bind_property_modelLimitWidthUnit (model: model)
-    self.bind_property_modelRect (model: model)
     self.bind_property_modelWidth (model: model)
     self.bind_property_modelWidthUnit (model: model)
     self.bind_property_name (model: model)
@@ -945,9 +932,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     self.modelLimitWidthUnit_property.writeModelFunction = nil 
     self.modelLimitWidthUnit_property.validateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_modelLimitWidthUnit (self.modelLimitWidthUnit_property)
-  //--- modelRect
-    self.modelRect_property.readModelFunction = nil 
-    self.mModel?.removeEBObserverOf_modelRect (self.modelRect_property)
   //--- modelWidth
     self.modelWidth_property.readModelFunction = nil 
     self.modelWidth_property.writeModelFunction = nil 
@@ -3123,46 +3107,6 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
         }
       }else{
         return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_modelRect (model : ReadOnlyArrayOf_BoardModel) {
-    model.addEBObserverOf_modelRect (self.modelRect_property)
-    self.modelRect_property.readModelFunction = { [weak self] in
-      if let model = self?.mModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <CanariRect> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.modelRect_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
       }
     }
   }

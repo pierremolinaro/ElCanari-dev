@@ -450,8 +450,6 @@
 		CF5C4DAE219F04D600EAC52A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF747FC61B3C419D00140C49 /* WebKit.framework */; };
 		CF5C4DB0219F04D600EAC52A /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFDBEFF81BEA12BA001CEA4B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CF5CF73A1B46D53D0052AC7A /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */; };
-		CF60436121A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */; };
-		CF60436221A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */; };
 		CF604DC721BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */; };
 		CF604DC821BC1BC1004F2311 /* EBScrollViewWithPlacards.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */; };
 		CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
@@ -991,7 +989,6 @@
 		CF5B06FB213EC703005D6B37 /* CanariSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSegment.swift; sourceTree = "<group>"; };
 		CF5C4DB4219F04D600EAC52A /* ElCanari.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElCanari.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationDelegate.swift; sourceTree = "<group>"; };
-		CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-BoardModel-modelRect.swift"; sourceTree = "<group>"; };
 		CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBScrollViewWithPlacards.swift; sourceTree = "<group>"; };
 		CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		CF6172591B3C4B4300F3CA82 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
@@ -1461,7 +1458,6 @@
 				CF6436152104ED950020988A /* transient-BoardModel-imageForModel.swift */,
 				CF619DFE20ED0DB40024F387 /* transient-BoardModel-instanceCount.swift */,
 				CF44C0D42136BEA900707645 /* transient-BoardModel-internalBoardsLimitsSegments.swift */,
-				CF60436021A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift */,
 				CF12885B20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift */,
 				CFDEC77620E0CD170065FBCE /* transient-BoardModel-viaShapes.swift */,
 				CF9363A72102472B00B068AB /* transient-function-canariUnitToCocoa.swift */,
@@ -2502,7 +2498,6 @@
 				CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */,
 				CFDA579E1BFA524A00EEF3CB /* FontDocument.swift in Sources */,
 				CFF2652F20E6833600525C0F /* transient-BoardModel-frontLegendTextsSegments.swift in Sources */,
-				CF60436121A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */,
 				CF323C2520E2D6CC00F8FD8D /* transient-BoardModel-frontTrackSegments.swift in Sources */,
 				CFD7EA2120E7D09E00D53B87 /* menu-CanariBoardInsertMenu.swift in Sources */,
 				CFB4801A20DC1B8B00CF9639 /* entity-BoardModel.swift in Sources */,
@@ -2838,7 +2833,6 @@
 				CF5C4D68219F04D600EAC52A /* class-MergerPadArray.swift in Sources */,
 				CF5C4D69219F04D600EAC52A /* FontDocument.swift in Sources */,
 				CF5C4D6A219F04D600EAC52A /* transient-BoardModel-frontLegendTextsSegments.swift in Sources */,
-				CF60436221A6F38C0052A1A1 /* transient-BoardModel-modelRect.swift in Sources */,
 				CF5C4D6B219F04D600EAC52A /* transient-BoardModel-frontTrackSegments.swift in Sources */,
 				CF5C4D6C219F04D600EAC52A /* menu-CanariBoardInsertMenu.swift in Sources */,
 				CF5C4D6D219F04D600EAC52A /* entity-BoardModel.swift in Sources */,
