@@ -172,6 +172,44 @@ extension EBView {
 
   //····················································································································
 
+  internal func indexOfFrontmostObject (at inLocation : NSPoint) -> (Int?, Int?) {
+    var possibleObjectIndex : Int? = nil
+    var possibleKnobIndex : Int? = nil
+    var idx = self.selectionShapes.count
+    while (idx > 0) && (possibleObjectIndex == nil) {
+      idx -= 1
+      possibleKnobIndex = self.selectionShapes [idx].knobIndex (at: inLocation)
+      if possibleKnobIndex != nil {
+        possibleObjectIndex = idx
+      }
+    }
+    idx = self.objectDisplayArray.count
+    while (idx > 0) && (possibleObjectIndex == nil) {
+      idx -= 1
+      if self.objectDisplayArray [idx].contains (point: inLocation) {
+        possibleObjectIndex = idx
+      }
+    }
+    //Swift.print ("possibleObjectIndex \(possibleObjectIndex), possibleKnobIndex \(possibleKnobIndex)")
+    return (possibleObjectIndex, possibleKnobIndex)
+  }
+
+  //····················································································································
+
+  internal func indexesOfObjects (intersecting inRect : NSRect) -> Set <Int> {
+    var result = Set <Int> ()
+    var idx = 0
+    for object in self.objectDisplayArray {
+      if object.intersects (rect: inRect) {
+        result.insert (idx)
+      }
+      idx += 1
+    }
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

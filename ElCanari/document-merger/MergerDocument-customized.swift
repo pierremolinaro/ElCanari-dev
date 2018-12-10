@@ -92,7 +92,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
                                   offset dragImageOffset: NSPointPointer) -> NSImage {
     if let boardView = self.mComposedBoardView, dragRows.count == 1, let idx = dragRows.first {
     //--- Get board view scale and flip
-      let scale : CGFloat = boardView.actualScale ()
+      let scale : CGFloat = boardView.actualScale
      // Swift.print ("Scale \(scale)")
       let horizontalFlip : CGFloat = boardView.horizontalFlip ? -1.0 : 1.0
       let verticalFlip   : CGFloat = boardView.verticalFlip   ? -1.0 : 1.0

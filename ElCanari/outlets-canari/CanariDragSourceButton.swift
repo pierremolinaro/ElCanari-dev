@@ -80,7 +80,7 @@ import Cocoa
     //--- Get dragged image
       if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
         let transform = NSAffineTransform ()
-        transform.scale (by: self.mScaleProvider?.actualScale() ?? 1.0)
+        transform.scale (by: self.mScaleProvider?.actualScale ?? 1.0)
         let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
         let rect = displayShape.boundingBox
         let imagePDFData = buildPDFimage (frame: rect, shape: displayShape)

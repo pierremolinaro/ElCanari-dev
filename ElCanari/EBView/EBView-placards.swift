@@ -60,7 +60,7 @@ extension EBView {
       }
       zoomPopUpButton.isBordered = false
       zoomPopUpButton.menu?.addItem (
-        withTitle:"\(Int (self.actualScale () * 100.0)) %",
+        withTitle:"\(Int (self.actualScale * 100.0)) %",
         action:nil,
         keyEquivalent:""
       )

@@ -68,16 +68,25 @@ extension EBView : NSDraggingSource {
     ]
     pasteboardItem.setPropertyList (dataDictionary, forType: dragType)
   //--- Transform image by scaling and translating
+    let hasHorizontalFlip : CGFloat = self.horizontalFlip ? -1.0 : 1.0
+    let hasVerticalFlip   : CGFloat = self.verticalFlip   ? -1.0 : 1.0
     let transform = NSAffineTransform ()
-    transform.scale (by: self.actualScale ())
-    transform.translateX (by: -displayShape.boundingBox.origin.x, yBy: -displayShape.boundingBox.origin.y)
+    transform.scaleX (by: self.actualScale * hasHorizontalFlip, yBy: self.actualScale * hasVerticalFlip)
+    transform.translateX (
+      by:  -displayShape.boundingBox.minX,
+      yBy: -displayShape.boundingBox.minY
+    )
     let finalShape = displayShape.transformedBy (transform)
   //--- Build image
     let rect = finalShape.boundingBox
     let image = NSImage (data: buildPDFimage (frame: rect, shape: finalShape))
- //   NSLog ("\(String(describing: image))")
   //--- Move image rect origin to mouse click location
-    let draggingFrame = NSRect (origin: displayShape.boundingBox.origin, size: rect.size)
+    let draggingFrame = NSRect (
+      x: displayShape.boundingBox.minX,
+      y: displayShape.boundingBox.minY,
+      width: rect.size.width,
+      height: rect.size.height
+    )
   //--- Set dragged image
     draggingItem.setDraggingFrame (draggingFrame, contents: image)
   //--- Begin dragging
