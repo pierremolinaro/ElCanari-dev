@@ -65,6 +65,8 @@
 		CF23C0EE2103500F0026E675 /* CanariQuadrantSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */; };
 		CF26B2F321B5947500C37444 /* EBManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */; };
 		CF26B2F421B5947500C37444 /* EBManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */; };
+		CF2A42C321BE981D0023992F /* editorInspector.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2A42C221BE981D0023992F /* editorInspector.png */; };
+		CF2A42C421BE981D0023992F /* editorInspector.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2A42C221BE981D0023992F /* editorInspector.png */; };
 		CF2A474E1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A474D1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift */; };
 		CF2A48351DD8A9AB009EF897 /* EBDoubleObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */; };
 		CF2A491D1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A491B1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift */; };
@@ -922,6 +924,7 @@
 		CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolObject.swift"; sourceTree = "<group>"; };
 		CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariQuadrantSegmentedControl.swift; sourceTree = "<group>"; };
 		CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBManagedObjectFactory.swift; sourceTree = "<group>"; };
+		CF2A42C221BE981D0023992F /* editorInspector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editorInspector.png; sourceTree = "<group>"; };
 		CF2A474D1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-sampleStringBezierPathWidth.swift"; sourceTree = "<group>"; };
 		CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDoubleObserverField.swift; sourceTree = "<group>"; };
 		CF2A491B1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-sampleStringBezierPathAscent.swift"; sourceTree = "<group>"; };
@@ -1595,6 +1598,7 @@
 		CF61726E1B3C4CB600F3CA82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CF2A42C221BE981D0023992F /* editorInspector.png */,
 				CF61726F1B3C4CD600F3CA82 /* A4horizontal.pdf */,
 				CF6172701B3C4CD600F3CA82 /* A4vertical.pdf */,
 				CF6172711B3C4CD600F3CA82 /* add_angle.png */,
@@ -2041,6 +2045,7 @@
 				CF6173061B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
 				CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
+				CF2A42C321BE981D0023992F /* editorInspector.png in Resources */,
 				CFC5FBC11FDF06220014A257 /* Assets.xcassets in Resources */,
 				CF6172C41B3C4CD600F3CA82 /* arrow.gif in Resources */,
 				CF61730A1B3C4CD600F3CA82 /* ZoomOutToolbarImage.tiff in Resources */,
@@ -2138,6 +2143,7 @@
 				CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
 				CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */,
+				CF2A42C421BE981D0023992F /* editorInspector.png in Resources */,
 				CF5C4C7E219F04D600EAC52A /* Assets.xcassets in Resources */,
 				CF5C4C7F219F04D600EAC52A /* arrow.gif in Resources */,
 				CF5C4C80219F04D600EAC52A /* ZoomOutToolbarImage.tiff in Resources */,

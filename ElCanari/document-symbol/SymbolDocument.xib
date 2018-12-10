@@ -229,7 +229,7 @@
                     <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1209">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment toolTip="Selected Object Inspector" image="NSActionTemplate" imageScaling="proportionallyUpOrDown" width="70"/>
+                            <segment toolTip="Selected Object Inspector" image="editorInspector" imageScaling="proportionallyUpOrDown" width="70"/>
                             <segment toolTip="Zoom and Flip Inspector" image="magnifyingGlass" imageScaling="proportionallyUpOrDown" width="71" tag="1"/>
                             <segment toolTip="Display Inspector" image="NSStatusAvailable" imageScaling="proportionallyUpOrDown" width="70" tag="2"/>
                         </segments>
@@ -732,9 +732,9 @@ Cg
         </customView>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="canariErrorStatus" width="40" height="100"/>
+        <image name="editorInspector" width="40" height="40"/>
         <image name="magnifyingGlass" width="40" height="40"/>
     </resources>
 </document>

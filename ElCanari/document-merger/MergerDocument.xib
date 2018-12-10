@@ -261,7 +261,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="oAS-F8-HR9">
                         <rect key="frame" x="1" y="0.0" width="210" height="310"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="jkD-hJ-5td" viewBased="YES" id="xkX-ID-Qcd" customClass="EBTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="210" height="287"/>
@@ -327,7 +327,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" id="PpI-BL-fb0">
                         <rect key="frame" x="1" y="1" width="423" height="483"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView wantsLayer="YES" id="RA9-Ej-gEF" customClass="EBView">
                                 <rect key="frame" x="0.0" y="387" width="163" height="96"/>
@@ -574,7 +574,7 @@ AAAAAAEGA
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="roundRect" trackingMode="selectOne" id="oBs-IN-oLE">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment image="NSActionTemplate" imageScaling="proportionallyUpOrDown" width="109" selected="YES"/>
+                            <segment image="editorInspector" imageScaling="proportionallyUpOrDown" width="109" selected="YES"/>
                             <segment image="NSStatusUnavailable" imageScaling="proportionallyUpOrDown" width="109" tag="1"/>
                         </segments>
                     </segmentedCell>
@@ -2342,10 +2342,10 @@ Gw
         </customView>
     </objects>
     <resources>
-        <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="canariErrorStatus" width="40" height="100"/>
+        <image name="editorInspector" width="60" height="60"/>
     </resources>
 </document>
