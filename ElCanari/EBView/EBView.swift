@@ -37,6 +37,10 @@ import Cocoa
   override var isFlipped : Bool { return false }
 
   //····················································································································
+
+  override var isOpaque: Bool { return true }
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
@@ -108,10 +112,8 @@ import Cocoa
   //····················································································································
 
   override func draw (_ inDirtyRect: NSRect) {
-    if let backColor = self.mBackColor {
-      backColor.setFill ()
-      NSBezierPath.fill (inDirtyRect)
-    }
+    self.mBackColor.setFill ()
+    NSBezierPath.fill (inDirtyRect)
     self.drawGrid (inDirtyRect)
     self.mUnderObjectsDisplay.draw (inDirtyRect)
     for object in self.mObjectDisplayArray {
@@ -228,16 +230,12 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  final var mBackColor : NSColor? = nil {
+  final var mBackColor : NSColor = NSColor.white {
     didSet {
       self.needsDisplay = true
     }
   }
 
-  //····················································································································
-
-  override var isOpaque: Bool { return self.mBackColor != nil }
-  
   //····················································································································
 
   internal var mBackColorController : EBReadOnlyController_NSColor? = nil
@@ -290,6 +288,7 @@ import Cocoa
     r = r.union (self.issueBoundingBox)
     r = r.union (self.mUnderObjectsDisplay.boundingBox)
     r = r.union (self.mOverObjectsDisplay.boundingBox)
+    r = r.union (self.selectionShapeBoundingBox)
     return r
   }
 
@@ -332,14 +331,21 @@ import Cocoa
 
   //····················································································································
 
-  func updateSelectionShape (_ inShapes : [EBShape]) {
+  var selectionShapeBoundingBox : NSRect {
+    var r = NSRect.null
     for shape in self.mSelectionShapes {
-      self.setNeedsDisplay (shape.boundingBox)
+      r = r.union (shape.boundingBox)
     }
-    for shape in inShapes {
-      self.setNeedsDisplay (shape.boundingBox)
-    }
+    return r
+  }
+
+  //····················································································································
+
+  func updateSelectionShape (_ inShapes : [EBShape]) {
+    self.setNeedsDisplay (self.selectionShapeBoundingBox)
     self.mSelectionShapes = inShapes
+    self.setNeedsDisplay (self.selectionShapeBoundingBox)
+    self.updateViewFrameAndBounds ()
   }
 
   //····················································································································
@@ -350,6 +356,11 @@ import Cocoa
     let s = self.actualScale
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
+//    if let clipView = self.superview as? NSClipView {
+////      let r = self.convert (clipView.documentVisibleRect, from: clipView)
+//      let r = clipView.documentVisibleRect
+//      newBounds = newBounds.union (r)
+//    }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
       self.frame.size = newBounds.size
