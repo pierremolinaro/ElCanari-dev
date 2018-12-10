@@ -18,7 +18,31 @@ extension EBView : NSDraggingSource {
   //····················································································································
 
   internal func ebStartDragging (with inEvent : NSEvent, dragType : NSPasteboard.PasteboardType) {
-    let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
+  //--- Find object under mouse
+    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+    let (possibleObjectIndex, _) = self.indexOfFrontmostObject (at: mouseDownLocation)
+    if let objectIndex = possibleObjectIndex {
+    //--- Build dragged object set
+      var draggedObjectSet = Set <EBGraphicManagedObject> ()
+      let objectArray = self.viewController?.objectArray ?? []
+      let selectedObjectSet = self.viewController?.selectedGraphicObjectSet ?? Set ()
+      if selectedObjectSet.contains (objectArray [objectIndex]) { // Clic on a selected object: drag selection
+        draggedObjectSet = selectedObjectSet
+      }else{ // Object is not selected: drag only this object
+        draggedObjectSet.insert (objectArray [objectIndex])
+      }
+    //--- Start dragging
+      if draggedObjectSet.count > 0 {
+        self.performStartDragging (draggedObjectSet: draggedObjectSet, event: inEvent, dragType: dragType)
+      }
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func performStartDragging (draggedObjectSet : Set <EBGraphicManagedObject>,
+                                         event inEvent : NSEvent,
+                                         dragType : NSPasteboard.PasteboardType) {
   //--- Build dragging item
     let pasteboardItem = NSPasteboardItem ()
     let draggingItem = NSDraggingItem (pasteboardWriter: pasteboardItem)
@@ -27,7 +51,7 @@ extension EBView : NSDraggingSource {
     let displayShape = EBShape ()
     var objectDictionaryArray = [NSDictionary] ()
     for object in objectArray {
-      if selectedObjectSet.contains (object), let objectShape = object.objectDisplay {
+      if draggedObjectSet.contains (object), let objectShape = object.objectDisplay {
         displayShape.append (objectShape)
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
@@ -53,13 +77,7 @@ extension EBView : NSDraggingSource {
     let image = NSImage (data: buildPDFimage (frame: rect, shape: finalShape))
  //   NSLog ("\(String(describing: image))")
   //--- Move image rect origin to mouse click location
-    let p = mouseDownCocoaLocation
-//    var p = displayShape.boundingBox.origin //
-//      p.x -= displayShape.boundingBox.origin.x
-//      p.y -= displayShape.boundingBox.origin.y
-//    p.x -= displayShape.boundingBox.size.width  / 2.0
-//    p.y -= displayShape.boundingBox.size.height / 2.0
-    let draggingFrame = NSRect (origin: p, size: rect.size)
+    let draggingFrame = NSRect (origin: displayShape.boundingBox.origin, size: rect.size)
   //--- Set dragged image
     draggingItem.setDraggingFrame (draggingFrame, contents: image)
   //--- Begin dragging

@@ -32,6 +32,7 @@ extension EBView {
     if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
       self.installZoomPopUpButton (scrollView)
       self.installXYplacards (scrollView)
+      self.installLiveScrollingNotification ()
     }
   }
 
@@ -122,6 +123,37 @@ extension EBView {
       self.mXPlacard = nil ;
       scrollView.removePlacard (self.mYPlacard)
       self.mYPlacard = nil
+    }
+  }
+
+  //····················································································································
+  // Live scrolling notification is used for updating XY placards
+  //····················································································································
+
+  private func installLiveScrollingNotification () {
+    if let scrollView = self.enclosingScrollView {
+      let nc = NotificationCenter.default
+      nc.addObserver (
+        self,
+        selector: #selector (EBView.performLiveScrolling(_:)),
+        name: NSScrollView.didLiveScrollNotification,
+        object: scrollView
+      )
+    }
+  }
+
+  //····················································································································
+
+  @objc private func performLiveScrolling (_ inNotification : Notification) {
+    if let myWindow = self.window {
+      let mouseLocationInScreen = NSEvent.mouseLocation
+    //--- Note: NSWindow.convertPoint (fromScreen:) is available from 10.12
+    //   So we use NSWindow.convertFromScreen for NSRect (available from 10.7)
+      let rectInScreen = NSRect (origin: mouseLocationInScreen, size: NSSize ())
+      let rectInWindow = myWindow.convertFromScreen (rectInScreen)
+      let mouseLocationInView = self.convert (rectInWindow.origin, from: nil)
+      let locationOnGridInView = mouseLocationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+      self.updateXYplacards (locationOnGridInView)
     }
   }
 
