@@ -253,6 +253,10 @@ import Cocoa
 
   //····················································································································
 
+  override var isOpaque: Bool { return self.mBackColor != nil }
+  
+  //····················································································································
+
   internal var mBackColorController : EBReadOnlyController_NSColor? = nil
 
   //····················································································································
@@ -350,19 +354,6 @@ import Cocoa
 
   //····················································································································
 
-  func updateViewFrameAndBounds () {
-    scaleToZoom (self.mZoom, self.mHorizontalFlip, self.mVerticalFlip)
-  }
-
-  //····················································································································
-
-  override func viewDidMoveToSuperview () {
-    super.viewDidMoveToSuperview ()
-    self.installPlacards ()
-  }
-
-  //····················································································································
-
   internal func indexOfFrontmostObject (at inLocation : NSPoint) -> (Int?, Int?) {
     var possibleObjectIndex : Int? = nil
     var possibleKnobIndex : Int? = nil
@@ -403,47 +394,18 @@ import Cocoa
   //  MARK: -
   //····················································································································
 
-  internal var mZoom = 100
-
-  //····················································································································
-
-  internal func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
-                             _ inHorizontalFlip : Bool,
-                             _ inVerticalFlip : Bool) {
-    if let clipView = self.superview as? NSClipView {
-      var newRect = self.objectBoundingBox ()
-      if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
-        newRect = newRect.union (issueBezierPath.bounds)
-      }
-      if let minimumBounds = self.mMinimumRect {
-        newRect = newRect.union (minimumBounds)
-      }
-      if (inZoom != 0) || newRect.isNull {
-        let r = clipView.convert (clipView.documentVisibleRect, from: self)
-        newRect = newRect.union (r)
-      }
-      if self.bounds != newRect {
-        self.frame.size = newRect.size
-        self.bounds = newRect
-      }
-      let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
-      let currentScale = 1.0 / currentUnitSquareSize.width
-      let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
-      let toggleVerticalFlip   : CGFloat = (inVerticalFlip != self.mVerticalFlip) ? -1.0 : 1.0 ;
-      if 0 == inZoom { // Fit to window
-        let clipViewSize = clipView.frame.size
-        let currentSize = self.frame.size
-        let sx = clipViewSize.width / currentSize.width
-        let sy = clipViewSize.height / currentSize.height
-        let scale = fmin (sx, sy) / currentScale
-        clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
+  func applyZoom (_ inZoom : Int) {
+    if let scrollView = self.enclosingScrollView {
+      if inZoom == 0 {
+        let box = self.objectBoundingBox ()
+        if !box.isEmpty {
+          scrollView.magnify (toFit: box)
+        }
       }else{
-        let scale = CGFloat (inZoom) / (100.0 * currentScale)
-        clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
+        scrollView.magnification = CGFloat (inZoom) / 100.0
       }
       let zoomTitle = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
       self.mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(\(zoomTitle))") : zoomTitle
-      self.setNeedsDisplay (self.frame)
     }
   }
 
@@ -451,12 +413,78 @@ import Cocoa
 
   func actualScale () -> CGFloat {
     var result : CGFloat = 1.0
-    if let clipView = self.superview as? NSClipView {
-      let currentScale : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
-      result = 1.0 / currentScale.width
+    if let scrollView = self.enclosingScrollView {
+      result = scrollView.magnification
     }
     return result
   }
+
+  //····················································································································
+
+  fileprivate func updateViewFrameAndBounds () {
+    var newRect = self.objectBoundingBox ().union (NSRect ())
+    if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
+      newRect = newRect.union (issueBezierPath.bounds.insetBy (dx: -issueBezierPath.lineWidth, dy: -issueBezierPath.lineWidth))
+    }
+    if self.bounds != newRect {
+      self.frame.size = newRect.size
+      self.bounds = newRect
+    }
+  }
+
+  //····················································································································
+
+  fileprivate func flip (horizontal inHorizontalFlip : Bool, vertical inVerticalFlip : Bool) {
+     if let clipView = self.superview as? NSClipView {
+       let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0
+       let toggleVerticalFlip   : CGFloat = (inVerticalFlip   != self.mVerticalFlip)   ? -1.0 : 1.0
+       clipView.scaleUnitSquare (to: NSSize (width: toggleHorizontalFlip, height: toggleVerticalFlip))
+       self.mHorizontalFlip = inHorizontalFlip
+       self.mVerticalFlip = inVerticalFlip
+     }
+  }
+
+  //····················································································································
+
+//  fileprivate func scaleToZoom (_ inZoom : Int,  // 0 -> fit to window
+//                             _ inHorizontalFlip : Bool,
+//                             _ inVerticalFlip : Bool) {
+//    if let clipView = self.superview as? NSClipView {
+//      var newRect = self.objectBoundingBox ()
+//      if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
+//        newRect = newRect.union (issueBezierPath.bounds)
+//      }
+//      if let minimumBounds = self.mMinimumRect {
+//        newRect = newRect.union (minimumBounds)
+//      }
+//      if (inZoom != 0) || newRect.isNull {
+//        let r = clipView.convert (clipView.documentVisibleRect, from: self)
+//        newRect = newRect.union (r)
+//      }
+//      if self.bounds != newRect {
+//        self.frame.size = newRect.size
+//        self.bounds = newRect
+//      }
+//      let currentUnitSquareSize : NSSize = clipView.convert (NSSize (width: 1.0, height: 1.0), from:nil)
+//      let currentScale = 1.0 / currentUnitSquareSize.width
+//      let toggleHorizontalFlip : CGFloat = (inHorizontalFlip != self.mHorizontalFlip) ? -1.0 : 1.0 ;
+//      let toggleVerticalFlip   : CGFloat = (inVerticalFlip != self.mVerticalFlip) ? -1.0 : 1.0 ;
+//      if 0 == inZoom { // Fit to window
+//        let clipViewSize = clipView.frame.size
+//        let currentSize = self.frame.size
+//        let sx = clipViewSize.width / currentSize.width
+//        let sy = clipViewSize.height / currentSize.height
+//        let scale = fmin (sx, sy) / currentScale
+////        clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
+//      }else{
+//        let scale = CGFloat (inZoom) / (100.0 * currentScale)
+////        clipView.scaleUnitSquare(to: NSSize (width: toggleHorizontalFlip * scale, height: toggleVerticalFlip * scale))
+//      }
+////      let zoomTitle = "\(Int ((self.actualScale () * 100.0).rounded (.toNearestOrEven))) %"
+////      self.mZoomPopUpButton?.menu?.item (at:0)?.title = (0 == inZoom) ? ("(\(zoomTitle))") : zoomTitle
+//      self.setNeedsDisplay (self.frame)
+//    }
+//  }
 
   //····················································································································
   //  MARK: -
@@ -559,11 +587,15 @@ import Cocoa
 
   func setIssue (_ inBezierPath : NSBezierPath?, _ issueKind : CanariIssueKind) {
     if self.mIssueBezierPath != inBezierPath {
+      if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
+        self.setNeedsDisplay (bp.bounds.insetBy(dx: -bp.lineWidth, dy: -bp.lineWidth))
+      }
       self.mIssueBezierPath = inBezierPath
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
       if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
         self.scrollToVisible (bp.bounds)
+        self.setNeedsDisplay (bp.bounds.insetBy(dx: -bp.lineWidth, dy: -bp.lineWidth))
       }
     }
   }
@@ -626,14 +658,6 @@ import Cocoa
   internal var mZoomController : Controller_CanariViewWithZoomAndFlip_zoom?
 
   //····················································································································
-
-  func setZoom (_ inZoom : Int, activateZoomPopUpButton inActivate : Bool) {
-    scaleToZoom (inZoom, self.mHorizontalFlip, self.mVerticalFlip)
-    self.mZoom = inZoom
-    self.mZoomPopUpButton?.isEnabled = inActivate
-  }
-
-  //····················································································································
   // MARK: -
   //····················································································································
 
@@ -642,8 +666,7 @@ import Cocoa
   //····················································································································
 
   final func set (horizontalFlip inFlip : Bool) {
-    scaleToZoom (self.mZoom, inFlip, self.mVerticalFlip)
-    self.mHorizontalFlip = inFlip
+    self.flip (horizontal: inFlip, vertical: self.mVerticalFlip)
   }
 
   //····················································································································
@@ -665,8 +688,7 @@ import Cocoa
   //····················································································································
 
   final func setVerticalFlip (_ inFlip : Bool) {
-    scaleToZoom (self.mZoom, self.mHorizontalFlip, inFlip)
-    self.mVerticalFlip = inFlip
+    self.flip (horizontal: self.mHorizontalFlip, vertical: inFlip)
   }
 
   //····················································································································

@@ -24,7 +24,6 @@ extension EBView {
   }
 
   //····················································································································
-  //····················································································································
 
 }
 
@@ -35,13 +34,13 @@ extension EBView {
 
 final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
 
-  private let mZoom : EBReadWriteProperty_Int
+  private let mZoomProperty : EBReadWriteProperty_Int
   private let mOutlet : EBView
 
   //····················································································································
 
   init (zoom : EBReadWriteProperty_Int, outlet : EBView) {
-    mZoom = zoom
+    mZoomProperty = zoom
     mOutlet = outlet
     super.init (observedObjects:[zoom])
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
@@ -50,20 +49,18 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
   //····················································································································
 
   private func updateOutlet () {
-    switch mZoom.prop {
-    case .empty :
-      mOutlet.setZoom (100, activateZoomPopUpButton: false)
+    switch mZoomProperty.prop {
+    case .empty, .multiple :
+      mOutlet.applyZoom (100)
     case .single (let v) :
-      mOutlet.setZoom (v, activateZoomPopUpButton: true)
-    case .multiple :
-      mOutlet.setZoom (100, activateZoomPopUpButton: false)
+      mOutlet.applyZoom (v)
     }
   }
 
   //····················································································································
 
-  func updateModel (_ sender : EBView) {
-    _ = mZoom.validateAndSetProp (mOutlet.mZoom, windowForSheet:sender.window)
+  func updateModel (_ sender : EBView, _ inNewZoom : Int) {
+    _ = self.mZoomProperty.validateAndSetProp (inNewZoom, windowForSheet:sender.window)
   }
 
   //····················································································································

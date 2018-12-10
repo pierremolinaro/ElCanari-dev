@@ -11,7 +11,7 @@ extension EBView {
   //····················································································································
 
   override func updateTrackingAreas () { // This is required for receiving mouse moved and mouseExited events
-    self.updateViewFrameAndBounds ()
+ //   self.updateViewFrameAndBounds ()
   //--- Remove current tracking areas
     let currentTrackingAreas = self.trackingAreas
     for trackingArea in currentTrackingAreas {

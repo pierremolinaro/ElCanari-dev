@@ -8,6 +8,13 @@ import Cocoa
 
 extension EBView {
 
+  //····················································································································
+
+  override func viewDidMoveToSuperview () {
+    super.viewDidMoveToSuperview ()
+    self.installPlacards ()
+  }
+
  //····················································································································
 
   fileprivate func addPopupButtonItemForZoom (_ inZoom : Int) {
@@ -21,14 +28,16 @@ extension EBView {
   //····················································································································
 
   @objc func setZoomFromPopUpButton (_ inSender : NSMenuItem) {
-    scaleToZoom (inSender.tag, self.horizontalFlip, self.verticalFlip)
-    self.mZoom = inSender.tag
-    self.mZoomController?.updateModel (self)
+    if let scrollView = self.enclosingScrollView {
+      self.applyZoom (inSender.tag)
+      let actualZoom = Int ((scrollView.magnification * 100.0).rounded (.toNearestOrEven))
+      self.mZoomController?.updateModel (self, actualZoom)
+    }
   }
 
   //····················································································································
 
-  internal func installPlacards () {
+  private func installPlacards () {
     if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
       self.installZoomPopUpButton (scrollView)
       self.installXYplacards (scrollView)
@@ -55,7 +64,7 @@ extension EBView {
         action:nil,
         keyEquivalent:""
       )
-      self.addPopupButtonItemForZoom (50)
+    //  self.addPopupButtonItemForZoom (50)
       self.addPopupButtonItemForZoom (100)
       self.addPopupButtonItemForZoom (150)
       self.addPopupButtonItemForZoom (200)
