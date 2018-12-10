@@ -134,12 +134,12 @@ import Cocoa
     if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
       switch self.mIssueKind {
       case .error :
-        NSColor.red.withAlphaComponent (0.15).setFill ()
+        NSColor.red.withAlphaComponent (0.2).setFill ()
         issueBezierPath.fill ()
         NSColor.red.setStroke ()
         issueBezierPath.stroke ()
       case .warning :
-        NSColor.orange.withAlphaComponent (0.15).setFill ()
+        NSColor.orange.withAlphaComponent (0.2).setFill ()
         issueBezierPath.fill ()
         NSColor.orange.setStroke ()
         issueBezierPath.stroke ()
@@ -150,7 +150,7 @@ import Cocoa
   //····················································································································
 
   fileprivate func drawGrid (_ inDirtyRect: NSRect) {
-    let r = inDirtyRect // self.bounds
+    let r = inDirtyRect
     let gridDisplayStep = self.mGridStep * CGFloat (self.mGridStepFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
     let endX = r.maxX
@@ -562,6 +562,9 @@ import Cocoa
       self.mIssueBezierPath = inBezierPath
       self.mIssueKind = issueKind
       self.updateViewFrameAndBounds ()
+      if let bp = self.mIssueBezierPath, bp.elementCount > 0 {
+        self.scrollToVisible (bp.bounds)
+      }
     }
   }
 

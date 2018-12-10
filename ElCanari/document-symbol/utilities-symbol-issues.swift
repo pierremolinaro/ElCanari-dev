@@ -47,6 +47,20 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
+  mutating func appendSymbolSeveralPinAtSameLocationIssue (pinLocation inPoint: CanariPoint) {
+    let r = NSRect (
+      x: canariUnitToCocoa (inPoint.x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (inPoint.y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Several pin at the same location", path: bp))
+  }
+
+  //····················································································································
+
   mutating func appendSymbolDuplicatedPinNameIssueAt (rect: NSRect) {
     let bp = NSBezierPath (rect: rect)
     bp.lineWidth = LINE_WIDTH

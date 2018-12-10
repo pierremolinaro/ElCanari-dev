@@ -398,15 +398,17 @@ class SymbolRoot : EBManagedObject,
         var kind = unwSelf.symbolObjects_property_selection.kind ()
         kind &= unwSelf.symbolPins_property_selection.kind ()
         kind &= unwSelf.symbolPins_property_selection.kind ()
+        kind &= unwSelf.symbolPins_property_selection.kind ()
+        kind &= unwSelf.symbolPins_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_SymbolRoot_issues (v0, v1, v2))
+          switch (unwSelf.symbolObjects_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection, unwSelf.symbolPins_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_SymbolRoot_issues (v0, v1, v2, v3, v4))
           default :
             return .empty
           }
@@ -418,6 +420,8 @@ class SymbolRoot : EBManagedObject,
     self.symbolObjects_property.addEBObserverOf_issues (self.issues_property)
     self.symbolPins_property.addEBObserverOf_name (self.issues_property)
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
+    self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
+    self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
   //--- Install undoers and opposite setter for relationships
  //   self.symbolObjects_property.undoManager = self.undoManager
     self.symbolObjects_property.addEBObserver (self.symbolPins_property)
@@ -458,6 +462,8 @@ class SymbolRoot : EBManagedObject,
     self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_name (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)
+    self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
+    self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
   }
 
   //····················································································································

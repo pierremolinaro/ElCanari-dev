@@ -149,10 +149,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="894" customClass="CanariDraggingDestinationScrollView">
-                    <rect key="frame" x="253" y="-1" width="403" height="385"/>
+                    <rect key="frame" x="251" y="-1" width="405" height="387"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">
-                        <rect key="frame" x="1" y="1" width="386" height="368"/>
+                        <rect key="frame" x="1" y="1" width="388" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="895" customClass="SymbolObjectsView" customModule="ElCanari" customModuleProvider="target">
@@ -163,11 +163,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="1068">
-                        <rect key="frame" x="1" y="369" width="386" height="15"/>
+                        <rect key="frame" x="1" y="371" width="388" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.76119409999999998" horizontal="NO" id="1067">
-                        <rect key="frame" x="387" y="1" width="15" height="368"/>
+                        <rect key="frame" x="389" y="1" width="15" height="370"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
