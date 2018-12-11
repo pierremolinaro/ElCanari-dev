@@ -9,6 +9,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBViewControllerProtocol {
+  func alignmentPointsArray() -> [[CanariPoint]] {
+    return []
+  }
+
  
   //····················································································································
   // MARK: -

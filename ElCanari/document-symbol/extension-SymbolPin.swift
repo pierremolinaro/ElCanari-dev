@@ -175,6 +175,16 @@ extension SymbolPin {
 
   //····················································································································
 
+  override func alignmentPoints () -> AlignmentPointArray {
+    let result = AlignmentPointArray ()
+    result.points.append (CanariPoint (x: self.xPin, y: self.yPin))
+    result.points.append (CanariPoint (x: self.xName, y: self.yName))
+    result.points.append (CanariPoint (x: self.xNumber, y: self.yNumber))
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

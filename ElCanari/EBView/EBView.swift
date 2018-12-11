@@ -111,6 +111,19 @@ import Cocoa
   // MARK: -
   //····················································································································
 
+  internal var mGuideBezierPath : NSBezierPath? = nil {
+    willSet {
+      self.invalidateGuideBezierPath ()
+    }
+    didSet {
+      self.invalidateGuideBezierPath ()
+    }
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
   override func draw (_ inDirtyRect: NSRect) {
     self.mBackColor.setFill ()
     NSBezierPath.fill (inDirtyRect)
@@ -124,12 +137,9 @@ import Cocoa
     for shape in self.mSelectionShapes {
       shape.draw (inDirtyRect)
     }
+    self.drawGuideBezierPath (inDirtyRect)
     self.drawIssue (inDirtyRect)
     self.selectionRectangleLayer?.draw (inDirtyRect)
-//    if !self.mIsFirstResponder {
-//      NSColor.white.withAlphaComponent (0.1).setFill ()
-//      NSBezierPath.fill (inDirtyRect)
-//    }
   }
 
   //····················································································································
@@ -254,28 +264,26 @@ import Cocoa
 
   func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
   //--- Find invalid rectangle
-//    var invalidRect = NSRect.null
-//    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
-//    var idx = 0
-//    while idx < minCount {
-//      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
-//        invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
-//        invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
-//      }
-//      idx += 1
-//    }
-//    while idx < self.mObjectDisplayArray.count {
-//      invalidRect = invalidRect.union (self.mObjectDisplayArray [idx].boundingBox)
-//      idx += 1
-//    }
-//    while idx < inObjectDisplayArray.count {
-//      invalidRect = invalidRect.union (inObjectDisplayArray [idx].boundingBox)
-//      idx += 1
-//    }
+    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
+    var idx = 0
+    while idx < minCount {
+      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
+        self.setNeedsDisplay (inObjectDisplayArray [idx].boundingBox)
+        self.setNeedsDisplay (self.mObjectDisplayArray [idx].boundingBox)
+      }
+      idx += 1
+    }
+    while idx < self.mObjectDisplayArray.count {
+      self.setNeedsDisplay (self.mObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
+    while idx < inObjectDisplayArray.count {
+      self.setNeedsDisplay (inObjectDisplayArray [idx].boundingBox)
+      idx += 1
+    }
   //--- Store new object array and tell view to display
     self.mObjectDisplayArray = inObjectDisplayArray
     self.updateViewFrameAndBounds ()
- //   self.setNeedsDisplay (invalidRect)
   }
 
   //····················································································································

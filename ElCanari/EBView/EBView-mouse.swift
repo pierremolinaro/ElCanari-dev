@@ -27,39 +27,42 @@ extension EBView {
   //····················································································································
 
    override func mouseDown (with inEvent : NSEvent) {
-    let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-    self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.arrowKeyMagnitude)
-    if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
-      self.ebStartDragging (with: inEvent, dragType: pbType)
-    }else if let viewController = self.viewController {
-    //--- Find index of object under mouse down
-      let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: mouseDownLocation)
-      let controlKey = inEvent.modifierFlags.contains (.control)
-      if !controlKey {
-        let shiftKey = inEvent.modifierFlags.contains (.shift)
-        let commandKey = inEvent.modifierFlags.contains (.command)
-        if shiftKey { // Shift key extends selection
-          if let objectIndex = possibleObjectIndex {
-            viewController.addToSelection (objectsWithIndex: [objectIndex])
-          }
-        }else if commandKey { // Command key toggles selection of object under click
-          if let objectIndex = possibleObjectIndex {
-            if viewController.selectedIndexesSet.contains (objectIndex) {
-              viewController.removeFromSelection (objectWithIndex: objectIndex)
-            }else{
+    if let viewController = self.viewController {
+      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
+      self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.arrowKeyMagnitude)
+      if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
+        self.ebStartDragging (with: inEvent, dragType: pbType)
+      }else{
+      //--- Find index of object under mouse down
+        let (possibleObjectIndex, possibleKnobIndex) = self.indexOfFrontmostObject (at: mouseDownLocation)
+        self.guideFor (possibleObjectIndex: possibleObjectIndex)
+        let controlKey = inEvent.modifierFlags.contains (.control)
+        if !controlKey {
+          let shiftKey = inEvent.modifierFlags.contains (.shift)
+          let commandKey = inEvent.modifierFlags.contains (.command)
+          if shiftKey { // Shift key extends selection
+            if let objectIndex = possibleObjectIndex {
               viewController.addToSelection (objectsWithIndex: [objectIndex])
             }
+          }else if commandKey { // Command key toggles selection of object under click
+            if let objectIndex = possibleObjectIndex {
+              if viewController.selectedIndexesSet.contains (objectIndex) {
+                viewController.removeFromSelection (objectWithIndex: objectIndex)
+              }else{
+                viewController.addToSelection (objectsWithIndex: [objectIndex])
+              }
+            }
+          }else if let objectIndex = possibleObjectIndex {
+            if let knobIndex = possibleKnobIndex {
+              self.mPossibleKnob = (objectIndex, knobIndex)
+            }
+            if !viewController.selectedIndexesSet.contains (objectIndex) {
+              viewController.setSelection (objectsWithIndexes: [objectIndex])
+            }
+          }else{ // Click outside an object : clear selection
+            viewController.clearSelection ()
+            self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint ()
           }
-        }else if let objectIndex = possibleObjectIndex {
-          if let knobIndex = possibleKnobIndex {
-            self.mPossibleKnob = (objectIndex, knobIndex)
-          }
-          if !viewController.selectedIndexesSet.contains (objectIndex) {
-            viewController.setSelection (objectsWithIndexes: [objectIndex])
-          }
-        }else{ // Click outside an object : clear selection
-          viewController.clearSelection ()
-          self.mSelectionRectangleOrigin = mLastMouseDraggedLocation?.cocoaPoint ()
         }
       }
     }else{
@@ -87,8 +90,10 @@ extension EBView {
         proposedTranslation = proposedTranslation.point (alignedOnGrid: self.arrowKeyMagnitude)
       }
       if let (objectIndex, knobIndex) = self.mPossibleKnob {
+        self.guideFor (objectIndexes: [objectIndex])
         self.drag (knob: knobIndex, objectIndex: objectIndex, proposedTranslation, lastMouseDraggedLocation)
       }else{
+        self.guideFor (objectIndexes: self.viewController?.selectedIndexesSet ?? Set ())
         self.dragSelection (proposedTranslation, lastMouseDraggedLocation)
       }
     }
@@ -168,6 +173,7 @@ extension EBView {
     self.mSelectionRectangleOrigin = nil
     self.selectionRectangleLayer = nil
     self.mPossibleKnob = nil
+    self.mGuideBezierPath = nil
   }
 
   //····················································································································

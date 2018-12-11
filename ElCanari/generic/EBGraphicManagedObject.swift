@@ -184,7 +184,24 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
+  //  Alignment Points
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only type that can be represented in Objective-C are accepted
+  //····················································································································
 
+  @objc dynamic func alignmentPoints () -> AlignmentPointArray {
+    return AlignmentPointArray ()
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@objc class AlignmentPointArray : EBObject {
+
+  var points = [CanariPoint] ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

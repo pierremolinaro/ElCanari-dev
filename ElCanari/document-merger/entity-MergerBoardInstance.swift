@@ -56,7 +56,7 @@ protocol MergerBoardInstance_objectDisplay : class {
 //    Entity: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class MergerBoardInstance : EBGraphicManagedObject,
+final class MergerBoardInstance : EBGraphicManagedObject,
          MergerBoardInstance_x,
          MergerBoardInstance_y,
          MergerBoardInstance_instanceRotation,

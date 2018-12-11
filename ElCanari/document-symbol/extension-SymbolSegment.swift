@@ -163,6 +163,15 @@ extension SymbolSegment {
 
   //····················································································································
 
+  override func alignmentPoints () -> AlignmentPointArray {
+    let result = AlignmentPointArray ()
+    result.points.append (CanariPoint (x: self.x1, y: self.y1))
+    result.points.append (CanariPoint (x: self.x2, y: self.y2))
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

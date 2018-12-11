@@ -110,6 +110,8 @@
 		CF45B2731BFE8274004AFFC2 /* EBIntField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF45B2721BFE8274004AFFC2 /* EBIntField.swift */; };
 		CF4634451BEE10890064C49B /* ApplicationDelegate-new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */; };
 		CF4646C2213AA47C0062ECFD /* kicad-font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4646C1213AA47C0062ECFD /* kicad-font.swift */; };
+		CF4A8AF421BFF12A0058B8D7 /* EBView-guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */; };
+		CF4A8AF521BFF12A0058B8D7 /* EBView-guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */; };
 		CF4B7C751BEBEA7C00627E76 /* CanariToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B7C741BEBEA7C00627E76 /* CanariToolbar.swift */; };
 		CF4B7D591BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4B7D581BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift */; };
 		CF4C2C431DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C2C421DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift */; };
@@ -959,6 +961,7 @@
 		CF45B2721BFE8274004AFFC2 /* EBIntField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBIntField.swift; sourceTree = "<group>"; };
 		CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-new-document.swift"; sourceTree = "<group>"; };
 		CF4646C1213AA47C0062ECFD /* kicad-font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-font.swift"; sourceTree = "<group>"; };
+		CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-guide.swift"; sourceTree = "<group>"; };
 		CF4B7C741BEBEA7C00627E76 /* CanariToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariToolbar.swift; sourceTree = "<group>"; };
 		CF4B7D581BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariAppUpdaterSparkleSettings.swift; sourceTree = "<group>"; };
 		CF4C2C421DD9EA03002D570F /* Preferences+updateLibraryFromRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Preferences+updateLibraryFromRepository.swift"; sourceTree = "<group>"; };
@@ -1896,6 +1899,7 @@
 		CFDDD4D321BB14FF007D2F14 /* EBView */ = {
 			isa = PBXGroup;
 			children = (
+				CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */,
 				CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */,
 				CF968AED21BBD2C10010175E /* EBView-binding-arrowKeyMagnitude.swift */,
 				CF968AF321BBD40B0010175E /* EBView-binding-backColor.swift */,
@@ -2423,6 +2427,7 @@
 				CFDDD4E721BB1529007D2F14 /* EBViewScaleProvider.swift in Sources */,
 				CF87A96C20F121D80011B9EC /* extension-MergerDocument-generate-product-files.swift in Sources */,
 				CF5599521FDF364400ED5EE6 /* MergerDocument.swift in Sources */,
+				CF4A8AF421BFF12A0058B8D7 /* EBView-guide.swift in Sources */,
 				CFD1B75C21B2E92D00F6F9EA /* EBFilledBezierPathShape.swift in Sources */,
 				CF21787920EA894B00BBC1C4 /* transient-MergerBoardInstance-instanceRect.swift in Sources */,
 				CFBED92520F3BB900019C316 /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,
@@ -2759,6 +2764,7 @@
 				CFDDD4E821BB1529007D2F14 /* EBViewScaleProvider.swift in Sources */,
 				CF5C4D31219F04D600EAC52A /* MergerDocument.swift in Sources */,
 				CF5C4D32219F04D600EAC52A /* transient-MergerBoardInstance-instanceRect.swift in Sources */,
+				CF4A8AF521BFF12A0058B8D7 /* EBView-guide.swift in Sources */,
 				CFD1B75D21B2E92D00F6F9EA /* EBFilledBezierPathShape.swift in Sources */,
 				CF5C4D33219F04D600EAC52A /* transient-BoardModel-backLegendLinesSegments.swift in Sources */,
 				CF5C4D34219F04D600EAC52A /* transient-BoardModel-backPackagesSegments.swift in Sources */,

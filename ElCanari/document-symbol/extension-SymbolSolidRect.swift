@@ -123,6 +123,15 @@ extension SymbolSolidRect {
 
   //····················································································································
 
+  override func alignmentPoints () -> AlignmentPointArray {
+    let result = AlignmentPointArray ()
+    result.points.append (CanariPoint (x: self.x, y: self.y))
+    result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
+    return result
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -75,6 +75,9 @@ protocol EBViewControllerProtocol : class {
   func removeFromSelection (objectWithIndex inIndex : Int)
 
   func clearSelection ()
+
+  func alignmentPointsArray () -> [[CanariPoint]]
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
