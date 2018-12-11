@@ -151,7 +151,7 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" id="894" customClass="CanariDraggingDestinationScrollView">
                     <rect key="frame" x="251" y="-1" width="405" height="387"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="xCD-Dw-CrS">
+                    <clipView key="contentView" copiesOnScroll="NO" id="xCD-Dw-CrS">
                         <rect key="frame" x="1" y="1" width="388" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -1899,7 +1899,6 @@
 		CFDDD4D321BB14FF007D2F14 /* EBView */ = {
 			isa = PBXGroup;
 			children = (
-				CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */,
 				CF604DC621BC1BC1004F2311 /* EBScrollViewWithPlacards.swift */,
 				CF968AED21BBD2C10010175E /* EBView-binding-arrowKeyMagnitude.swift */,
 				CF968AF321BBD40B0010175E /* EBView-binding-backColor.swift */,
@@ -1916,6 +1915,7 @@
 				CF968AF921BBD5A00010175E /* EBView-binding-yPlacardUnit.swift */,
 				CF968AFC21BBD68D0010175E /* EBView-binding-zoom.swift */,
 				CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */,
+				CF4A8AF321BFF12A0058B8D7 /* EBView-guide.swift */,
 				CF3E658921BECB7A0041FA2A /* EBView-issue.swift */,
 				CF1D9C8621BBFBB100FFF459 /* EBView-key-down.swift */,
 				CFDDD4D721BB1529007D2F14 /* EBView-magnify-and-zoom.swift */,

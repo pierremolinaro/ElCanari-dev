@@ -39,13 +39,23 @@ extension EBView {
   // https://stackoverflow.com/questions/34124676/magnify-nsscrollview-at-cursor-location
   //····················································································································
 
-  override func magnify (with inEvent : NSEvent) {
+  internal func addEndLiveMagnificationObserver () {
     if let scrollView = self.enclosingScrollView {
-      let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      scrollView.setMagnification (scrollView.magnification + inEvent.magnification, centeredAt: mouseDownLocation)
-      let newZoom = Int ((scrollView.magnification * 100.0).rounded (.toNearestOrEven))
-      self.mZoomController?.updateModel (self, newZoom)
+      let nc = NotificationCenter.default
+      nc.addObserver (
+        self,
+        selector: #selector(EBView.didEndLiveScroll (_:)),
+        name: NSScrollView.didEndLiveMagnifyNotification,
+        object: scrollView
+      )
     }
+  }
+
+  //····················································································································
+
+  @objc internal func didEndLiveScroll (_ inNotification : Notification) {
+    let newZoom = Int ((self.actualScale * 100.0).rounded (.toNearestOrEven))
+    self.mZoomController?.updateModel (self, newZoom)
   }
 
   //····················································································································
