@@ -188,11 +188,11 @@ entity SymbolRoot {
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
   property Int gridStep default 4 ;
-  property Int zoom default 400 ;
+  property Int zoom default 600 ;
 
 #--- XY placard unit
-  property @signature Int xPlacardUnit default 2_286 ;
-  property @signature Int yPlacardUnit default 2_286 ;
+  property @signature Int xPlacardUnit default 2_286 ; # mils
+  property @signature Int yPlacardUnit default 2_286 ; # mils
 
 #--- Symbol definition
   toMany @signature SymbolObject symbolObjects ;

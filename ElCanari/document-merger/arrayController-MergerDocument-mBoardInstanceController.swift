@@ -9,10 +9,6 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, EBViewControllerProtocol {
-  func alignmentPointsArray() -> [[CanariPoint]] {
-    return []
-  }
-
  
   //····················································································································
   // MARK: -
@@ -325,6 +321,18 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     for view in self.mEBViews {
       view.updateObjectDisplay (displayArray)
     }
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  func alignmentPointsArray () -> [[CanariPoint]] {
+    var result = [[CanariPoint]] ()
+    for object in self.mModel?.propval ?? [] {
+      result.append (object.alignmentPoints ().points)
+    }
+    return result
   }
 
   //····················································································································
