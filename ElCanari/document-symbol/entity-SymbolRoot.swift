@@ -71,6 +71,12 @@ protocol SymbolRoot_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolRoot_noIssue : class {
+  var noIssue : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -85,7 +91,8 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_xPlacardUnit,
          SymbolRoot_yPlacardUnit,
          SymbolRoot_selectedPageIndex,
-         SymbolRoot_issues {
+         SymbolRoot_issues,
+         SymbolRoot_noIssue {
 
   //····················································································································
   //   Atomic property: selectedInspector
@@ -365,6 +372,29 @@ class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: noIssue
+  //····················································································································
+
+  var noIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var noIssue_property_selection : EBSelection <Bool> {
+    return self.noIssue_property.prop
+  }
+
+  //····················································································································
+
+    var noIssue : Bool? {
+    switch self.noIssue_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -422,6 +452,28 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
+  //--- Atomic property: noIssue
+    self.noIssue_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolRoot_noIssue (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
  //   self.symbolObjects_property.undoManager = self.undoManager
     self.symbolObjects_property.addEBObserver (self.symbolPins_property)
@@ -464,6 +516,7 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.removeEBObserverOf_nameRect (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
+    self.issues_property.removeEBObserver (self.noIssue_property)
   }
 
   //····················································································································
@@ -565,6 +618,14 @@ class SymbolRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "noIssue",
+      idx:self.noIssue_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.noIssue_property.mObserverExplorer,
+      valueExplorer:&self.noIssue_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1388,6 +1449,62 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
+  //   Observers of 'noIssue' transient property
+  //····················································································································
+
+  private var mObserversOf_noIssue = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_noIssue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noIssue_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_noIssue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noIssue_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noIssue {
+        managedObject.noIssue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noIssue {
+        managedObject.noIssue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1471,6 +1588,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
       self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_noIssue_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1486,6 +1604,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
       self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_noIssue_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1621,6 +1740,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : SymbolRoot in addedObjectSet {
@@ -1638,6 +1758,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

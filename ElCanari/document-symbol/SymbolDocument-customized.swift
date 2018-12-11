@@ -43,8 +43,15 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   //    windowControllerDidLoadNib: customization of interface
   //····················································································································
 
+  fileprivate var mSymbolColorObserver = EBOutletEvent ()
+
+  //····················································································································
+
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Symbol color observer
+    self.mSymbolColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
+    g_Preferences?.symbolColor_property.addEBObserver (self.mSymbolColorObserver)
   //--- Set pages segmented control
     let pages = [self.mSymbolPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
@@ -55,53 +62,44 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mAddSegmentButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolSegment",
-      provideImageFromEntity: true,
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddBezierButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolBezierCurve",
-      provideImageFromEntity: true,
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidOvalButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolSolidOval",
-      provideImageFromEntity: true,
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddOvalButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolOval",
-      provideImageFromEntity: true,
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddSolidRectButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolSolidRect",
-      provideImageFromEntity: true,
       scaleProvider: self.mComposedSymbolView
     )
 
     self.mAddTextButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolText",
-      provideImageFromEntity: false,
       scaleProvider: self.mComposedSymbolView
     )
-    self.mAddTextButton?.image = self.imageForAddTextButton ()
 
     self.mAddPinButton?.register (
       draggedType: symbolPasteboardType,
       entityName: "SymbolPin",
-      provideImageFromEntity: false,
       scaleProvider: self.mComposedSymbolView
     )
-    self.mAddPinButton?.image = self.imageForAddPinButton ()
 
     self.mComposedSymbolScrollView?.register (document: self, draggedTypes: [symbolPasteboardType])
     self.mComposedSymbolView?.register (pasteboardType: symbolPasteboardType)
@@ -165,7 +163,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont (name: "Cambria", size: 20.0)!,
-      NSAttributedString.Key.foregroundColor : NSColor.brown
+      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
     let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 1.0), textAttributes, .center, .center)
     let imagePDFData = buildPDFimage (frame: r, shape: shape)
@@ -193,6 +191,29 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let imagePDFData = buildPDFimage (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
+
+  //····················································································································
+
+  private func updateDragSourceButtons () {
+    self.mAddPinButton?.image = self.imageForAddPinButton ()
+    self.mAddTextButton?.image = self.imageForAddTextButton ()
+    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
+  }
+
+  //····················································································································
+  //   removeWindowController
+  //····················································································································
+
+  override func removeUserInterface () {
+    super.removeUserInterface ()
+    g_Preferences?.symbolColor_property.removeEBObserver (self.mSymbolColorObserver)
+  }
+
+  //····················································································································
 
 }
 

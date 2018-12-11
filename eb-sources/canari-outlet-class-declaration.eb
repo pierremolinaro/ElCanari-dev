@@ -14,6 +14,8 @@ extern outlet class NSImageView ;
 
 extern outlet class NSButton ;
 
+extern outlet class NSScrollView : NSView ;
+
 extern outlet class NSTextField : NSControl ;
 
 extern outlet class NSSegmentedControl ;

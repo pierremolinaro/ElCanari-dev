@@ -30,6 +30,12 @@ document SymbolDocument root SymbolRoot {
   outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
+  outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid {sendContinously:no} ;
+  outlet EBColorWell mLineColorOfSymbolGridColorWell $color prefs.lineColorOfSymbolGrid {sendContinously:no} ;
+  outlet EBColorWell mSymbolColorColorWell $color prefs.symbolColor {sendContinously:no} ;
+  outlet EBColorWell mSymbolBackgroundColorColorWell $color prefs.symbolBackgroundColor {sendContinously:no} ;
+  outlet EBPopUpButton mSymbolDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.symbolDrawingWidthMultipliedByTen ;
+  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
 
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
@@ -97,8 +103,9 @@ document SymbolDocument root SymbolRoot {
 
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 
-  outlet EBButton mDeselectIssueButton ;
+  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
   outlet CanariIssueTableView mIssueTableView $issues root.issues ;
+  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 #-------------------------- Page : Infos
   outlet CanariViewWithKeyView mInfosPageView ;

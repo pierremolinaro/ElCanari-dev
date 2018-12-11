@@ -110,21 +110,28 @@ import Cocoa
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
   @IBOutlet var mComposedSymbolView : EBView?
+  @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mIssueScrollView : NSScrollView?
   @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mIssueTextField : EBTextObserverField?
+  @IBOutlet var mLineColorOfSymbolGridColorWell : EBColorWell?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPinInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mPinNameFontButton : EBFontButton?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
+  @IBOutlet var mSymbolBackgroundColorColorWell : EBColorWell?
   @IBOutlet var mSymbolBaseInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSymbolColorColorWell : EBColorWell?
+  @IBOutlet var mSymbolDrawingWidthMultipliedByTenPopupButton : EBPopUpButton?
   @IBOutlet var mSymbolIssueInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolPinLabelHorizontalAlignmentPopUpButton : EBPopUpButton?
@@ -145,6 +152,8 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
+  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -364,6 +373,21 @@ import Cocoa
         errorMessage: "the 'mComposedSymbolView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mCrossColorOfSymbolGridColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mCrossColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mCrossColorOfSymbolGridColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mDeselectIssueButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -454,6 +478,21 @@ import Cocoa
         errorMessage: "the 'mInspectorSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mIssueScrollView {
+      if !(outlet is NSScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueScrollView' outlet is not an instance of 'NSScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueScrollView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mIssueTableView {
       if !(outlet is CanariIssueTableView) {
         presentErrorWindow (
@@ -482,6 +521,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mIssueTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mLineColorOfSymbolGridColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mLineColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mLineColorOfSymbolGridColorWell' outlet is nil"
       )
     }
     if let outlet : Any = self.mMasterView {
@@ -529,6 +583,21 @@ import Cocoa
         errorMessage: "the 'mPinInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPinNameFontButton {
+      if !(outlet is EBFontButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPinNameFontButton' outlet is not an instance of 'EBFontButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPinNameFontButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mResetVersionButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -574,6 +643,21 @@ import Cocoa
         errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolBackgroundColorColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolBackgroundColorColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolBackgroundColorColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolBaseInspectorView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -587,6 +671,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSymbolBaseInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolColorColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolColorColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolColorColorWell' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolDrawingWidthMultipliedByTenPopupButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolDrawingWidthMultipliedByTenPopupButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolDrawingWidthMultipliedByTenPopupButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mSymbolIssueInspectorView {
@@ -877,6 +991,12 @@ import Cocoa
     self.mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
+    self.mCrossColorOfSymbolGridColorWell?.bind_color (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    self.mLineColorOfSymbolGridColorWell?.bind_color (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    self.mSymbolColorColorWell?.bind_color (g_Preferences!.symbolColor_property, file: #file, line: #line, sendContinously:false)
+    self.mSymbolBackgroundColorColorWell?.bind_color (g_Preferences!.symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
+    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    self.mPinNameFontButton?.bind_fontValue (g_Preferences!.pinNameFont_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
@@ -899,6 +1019,26 @@ import Cocoa
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.noIssue_property_selection
+        },
+        outlet:self.mDeselectIssueButton
+      )
+      self.rootObject.noIssue_property.addEBObserver (controller)
+      mController_mDeselectIssueButton_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.noIssue_property_selection
+        },
+        outlet:self.mIssueScrollView
+      )
+      self.rootObject.noIssue_property.addEBObserver (controller)
+      mController_mIssueScrollView_hidden = controller
+    }
   //--------------------------- Set targets / actions
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
@@ -924,6 +1064,12 @@ import Cocoa
     self.mGridStep?.unbind_selectedTag ()
     self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
+    self.mCrossColorOfSymbolGridColorWell?.unbind_color ()
+    self.mLineColorOfSymbolGridColorWell?.unbind_color ()
+    self.mSymbolColorColorWell?.unbind_color ()
+    self.mSymbolBackgroundColorColorWell?.unbind_color ()
+    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
+    self.mPinNameFontButton?.unbind_fontValue ()
     self.mComposedSymbolView?.unbind_horizontalFlip ()
     self.mComposedSymbolView?.unbind_verticalFlip ()
     self.mComposedSymbolView?.unbind_gridStyle ()
@@ -946,6 +1092,10 @@ import Cocoa
     self.mIssueTableView?.unbind_issues ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
+    self.mController_mDeselectIssueButton_hidden = nil
+    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
+    self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)
   //--- Array controller property: mSymbolObjectsController
@@ -969,21 +1119,28 @@ import Cocoa
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedSymbolScrollView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
+    self.mCrossColorOfSymbolGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mIssueScrollView?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
     self.mIssueTextField?.ebCleanUp ()
+    self.mLineColorOfSymbolGridColorWell?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPinInspectorView?.ebCleanUp ()
+    self.mPinNameFontButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
+    self.mSymbolBackgroundColorColorWell?.ebCleanUp ()
     self.mSymbolBaseInspectorView?.ebCleanUp ()
+    self.mSymbolColorColorWell?.ebCleanUp ()
+    self.mSymbolDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
     self.mSymbolIssueInspectorView?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolPinLabelHorizontalAlignmentPopUpButton?.ebCleanUp ()

@@ -790,7 +790,7 @@
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5854">
                     <rect key="frame" x="17" y="116" width="124" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Grid Color (for Dots):" id="5856">
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="Grid Color (for Cross):" id="5856">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -2382,10 +2382,10 @@ Gw
                 <outlet property="mCheckingForLibraryUpdateProgressIndicator" destination="6221" id="U9t-ri-t3x"/>
                 <outlet property="mCheckingForLibraryUpdateWindow" destination="6215" id="1xF-fb-FaI"/>
                 <outlet property="mConnectionColorForSchematicColorWell" destination="5595" id="Zdp-yE-EWY"/>
+                <outlet property="mCrossColorOfSymbolGridColorWell" destination="5855" id="YEt-rL-Fka"/>
                 <outlet property="mDimensionFontButton" destination="5490" id="6t1-eG-fcg"/>
                 <outlet property="mDotColorGridForSchematicColorWell" destination="5831" id="nNV-u5-R1j"/>
                 <outlet property="mDotColorOfPackageGridColorWell" destination="5838" id="Q9z-AS-gDZ"/>
-                <outlet property="mDotColorOfSymbolGridColorWell" destination="5855" id="Oft-bd-qu2"/>
                 <outlet property="mEditionTransparencySlider" destination="5706" id="biF-Bc-GIJ"/>
                 <outlet property="mEditionTransparencyTextField" destination="5705" id="ihy-8t-wIs"/>
                 <outlet property="mErrorMessageColorColorWell" destination="5452" id="Jqq-A1-LGH"/>

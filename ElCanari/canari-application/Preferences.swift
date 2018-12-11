@@ -3622,10 +3622,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mCheckingForLibraryUpdateProgressIndicator : EBProgressIndicator? = nil
   @IBOutlet var mCheckingForLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mConnectionColorForSchematicColorWell : EBColorWell? = nil
+  @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mDimensionFontButton : EBFontButton? = nil
   @IBOutlet var mDotColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mDotColorOfPackageGridColorWell : EBColorWell? = nil
-  @IBOutlet var mDotColorOfSymbolGridColorWell : EBColorWell? = nil
   @IBOutlet var mEditionTransparencySlider : EBSlider? = nil
   @IBOutlet var mEditionTransparencyTextField : EBDoubleField? = nil
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
@@ -4507,6 +4507,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'mConnectionColorForSchematicColorWell' outlet is nil") ;
     }
+    if let outlet : Any = self.mCrossColorOfSymbolGridColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mCrossColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mCrossColorOfSymbolGridColorWell' outlet is nil") ;
+    }
     if let outlet : Any = self.mDimensionFontButton {
       if !(outlet is EBFontButton) {
         presentErrorWindow (file: #file,
@@ -4539,17 +4550,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mDotColorOfPackageGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mDotColorOfSymbolGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mDotColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mDotColorOfSymbolGridColorWell' outlet is nil") ;
     }
     if let outlet : Any = self.mEditionTransparencySlider {
       if !(outlet is EBSlider) {
@@ -5333,7 +5333,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mMenuRevealInFinder_fonts?.bind_populateSubmenus (self.mValueRevealInFinder_fonts_property, file: #file, line: #line)
     mMenuRevealInFinder_artworks?.bind_populateSubmenus (self.mValueRevealInFinder_artworks_property, file: #file, line: #line)
     mSymbolColorColorWell?.bind_color (self.symbolColor_property, file: #file, line: #line, sendContinously:false)
-    mDotColorOfSymbolGridColorWell?.bind_color (self.crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
+    mCrossColorOfSymbolGridColorWell?.bind_color (self.crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
     mLineColorOfSymbolGridColorWell?.bind_color (self.lineColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
     mSymbolBackgroundColorColorWell?.bind_color (self.symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)
