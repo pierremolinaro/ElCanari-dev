@@ -21,15 +21,6 @@ extension EBView {
 
   //····················································································································
 
-  internal func drawGuideBezierPath (_ inDirtyRect : NSRect) {
-    if let bp = self.mGuideBezierPath, !bp.isEmpty {
-      NSColor.orange.setStroke ()
-      bp.stroke ()
-    }
-  }
-
-  //····················································································································
-
   internal func guideFor (objectIndexes inIndexSet : Set <Int>) {
     let alignmentPointsArray = self.viewController?.alignmentPointsArray () ?? []
     let bp = NSBezierPath ()

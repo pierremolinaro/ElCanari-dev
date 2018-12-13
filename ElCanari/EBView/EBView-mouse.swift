@@ -107,15 +107,15 @@ extension EBView {
     let yMin = min (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
     let xMax = max (inSelectionRectangleOrigin.x, inMouseDraggedLocation.x)
     let yMax = max (inSelectionRectangleOrigin.y, inMouseDraggedLocation.y)
-    let r = NSRect (x:xMin, y:yMin, width:xMax-xMin, height:yMax-yMin)
-    var shapes = [EBShape] ()
-    let bp = NSBezierPath (rect: r)
-    bp.lineWidth = 0.0
-    shapes.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.withAlphaComponent (0.2)))
-    shapes.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
-    self.selectionRectangleLayer = EBShape (shapes: shapes)
-    let indexSet = self.indexesOfObjects (intersecting:r)
-    self.viewController?.setSelection (objectsWithIndexes: Array (indexSet))
+    if (xMax > xMin) && (yMax > yMin) {
+      let r = NSRect (x: xMin, y: yMin, width: xMax - xMin, height: yMax - yMin)
+      self.mSelectionRectangle = r
+      let indexSet = self.indexesOfObjects (intersecting: r)
+      self.viewController?.setSelection (objectsWithIndexes: Array (indexSet))
+    }else{
+      self.mSelectionRectangle = nil
+      self.viewController?.setSelection (objectsWithIndexes: [])
+    }
   }
 
   //····················································································································
@@ -171,7 +171,7 @@ extension EBView {
     }
     self.mLastMouseDraggedLocation = nil
     self.mSelectionRectangleOrigin = nil
-    self.selectionRectangleLayer = nil
+    self.mSelectionRectangle = nil
     self.mPossibleKnob = nil
     self.mGuideBezierPath = nil
   }

@@ -38,25 +38,6 @@ extension EBView {
 
   //····················································································································
 
-  internal func drawIssue (_ inDirtyRect : NSRect) {
-    if let issueBezierPath = self.mIssueBezierPath, !issueBezierPath.isEmpty {
-      switch self.mIssueKind {
-      case .error :
-        NSColor.red.withAlphaComponent (0.2).setFill ()
-        issueBezierPath.fill ()
-        NSColor.red.setStroke ()
-        issueBezierPath.stroke ()
-      case .warning :
-        NSColor.orange.withAlphaComponent (0.2).setFill ()
-        issueBezierPath.fill ()
-        NSColor.orange.setStroke ()
-        issueBezierPath.stroke ()
-      }
-    }
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

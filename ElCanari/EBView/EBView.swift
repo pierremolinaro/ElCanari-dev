@@ -70,13 +70,13 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  internal var selectionRectangleLayer : EBShape? = nil {
+  internal var mSelectionRectangle : NSRect? = nil {
     didSet {
-      if let oldSelectionRectangleLayer = oldValue {
-        self.setNeedsDisplay (oldSelectionRectangleLayer.boundingBox)
+      if let oldSelectionRectangle = oldValue {
+        self.setNeedsDisplay (oldSelectionRectangle)
       }
-      if let newSelectionRectangleLayer = self.selectionRectangleLayer {
-        self.setNeedsDisplay (newSelectionRectangleLayer.boundingBox)
+      if let newSelectionRectangle = self.mSelectionRectangle {
+        self.setNeedsDisplay (newSelectionRectangle)
       }
     }
   }
@@ -296,6 +296,7 @@ import Cocoa
     let s = self.actualScale
     var newBounds = NSRect () // For including point (0, 0)
     newBounds = newBounds.union (self.objectsAndIssueBoundingBox)
+    newBounds = newBounds.union (self.mMinimumRectangle)
 //    if let clipView = self.superview as? NSClipView {
 ////      let r = self.convert (clipView.documentVisibleRect, from: clipView)
 //      let r = clipView.documentVisibleRect
@@ -367,8 +368,20 @@ import Cocoa
   // MARK: -
   //····················································································································
 
- // private var mIsFirstResponder = false
+  private var mMinimumRectangle = NSRect ()
 
+
+  //····················································································································
+
+  func set (minimumRectangle inRect : NSRect) {
+    if self.mMinimumRectangle != inRect {
+      self.mMinimumRectangle = inRect
+      self.updateViewFrameAndBounds ()
+    }
+  }
+
+  //····················································································································
+  // MARK: -
   //····················································································································
 
   override var acceptsFirstResponder : Bool { return true }
