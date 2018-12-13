@@ -155,7 +155,7 @@
             <rect key="frame" x="0.0" y="0.0" width="656" height="385"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" id="894" customClass="CanariDraggingDestinationScrollView">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" minMagnification="1" usesPredominantAxisScrolling="NO" id="894" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="251" y="-1" width="405" height="387"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xCD-Dw-CrS">

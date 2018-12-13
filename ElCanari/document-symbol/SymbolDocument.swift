@@ -108,7 +108,7 @@ import Cocoa
   @IBOutlet var mAddSolidRectButton : CanariDragSourceButton?
   @IBOutlet var mAddTextButton : CanariDragSourceButton?
   @IBOutlet var mCommentTextView : EBTextView?
-  @IBOutlet var mComposedSymbolScrollView : CanariDraggingDestinationScrollView?
+  @IBOutlet var mComposedSymbolScrollView : EBScrollView?
   @IBOutlet var mComposedSymbolView : EBView?
   @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
@@ -344,11 +344,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mComposedSymbolScrollView {
-      if !(outlet is CanariDraggingDestinationScrollView) {
+      if !(outlet is EBScrollView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mComposedSymbolScrollView' outlet is not an instance of 'CanariDraggingDestinationScrollView'"
+          errorMessage: "the 'mComposedSymbolScrollView' outlet is not an instance of 'EBScrollView'"
         )
       }
     }else{

@@ -13,7 +13,7 @@ extension EBView {
   override func mouseMoved (with inEvent : NSEvent) {
     super.mouseMoved (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
   }
 
@@ -29,7 +29,7 @@ extension EBView {
    override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
-      self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.arrowKeyMagnitude)
+      self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
       if let pbType = self.pasteboardType, inEvent.modifierFlags.contains (.option) {
         self.ebStartDragging (with: inEvent, dragType: pbType)
       }else{
@@ -75,7 +75,7 @@ extension EBView {
   override func mouseDragged (with inEvent : NSEvent) {
     super.mouseDragged (with: inEvent)
     let locationInView = self.convert (inEvent.locationInWindow, from: nil)
-    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.arrowKeyMagnitude))
+    let locationOnGridInView = locationInView.aligned (onGrid: canariUnitToCocoa (self.mouseGridInCanariUnit))
     self.updateXYplacards (locationOnGridInView)
     let mouseDraggedCocoaLocation = self.convert (inEvent.locationInWindow, from:nil)
     if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
@@ -87,7 +87,7 @@ extension EBView {
         y: mouseDraggedCanariLocation.y - lastMouseDraggedLocation.y
       )
       if self.mDraggingObjectsIsAlignedOnArrowKeyMagnitude {
-        proposedTranslation = proposedTranslation.point (alignedOnGrid: self.arrowKeyMagnitude)
+        proposedTranslation = proposedTranslation.point (alignedOnGrid: self.mouseGridInCanariUnit)
       }
       if let (objectIndex, knobIndex) = self.mPossibleKnob {
         self.guideFor (objectIndexes: [objectIndex])

@@ -31,7 +31,7 @@ extension EBView {
   //····················································································································
 
   internal func installPlacards () {
-    if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
+    if let scrollView = self.enclosingScrollView as? EBScrollView {
       self.installZoomPopUpButton (scrollView)
       self.installXYplacards (scrollView)
       self.installLiveScrollingNotification ()
@@ -40,7 +40,7 @@ extension EBView {
 
   //····················································································································
 
-  internal func installZoomPopUpButton (_ inScrollView : EBScrollViewWithPlacards) {
+  internal func installZoomPopUpButton (_ inScrollView : EBScrollView) {
     if self.mZoomPopUpButton == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 70.0, height: 20.0)
       let zoomPopUpButton = NSPopUpButton (frame:r, pullsDown:true)
@@ -80,7 +80,7 @@ extension EBView {
 
   //····················································································································
 
-  private func installXYplacards (_ inScrollView : EBScrollViewWithPlacards) {
+  private func installXYplacards (_ inScrollView : EBScrollView) {
     if self.mXPlacard == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
       let xPlacard = NSTextField (frame: r)
@@ -126,7 +126,7 @@ extension EBView {
   //····················································································································
 
   internal func removePlacards () {
-    if let scrollView = self.enclosingScrollView as? EBScrollViewWithPlacards {
+    if let scrollView = self.enclosingScrollView as? EBScrollView {
       scrollView.removePlacard (self.mZoomPopUpButton)
       self.mZoomPopUpButton = nil
       scrollView.removePlacard (self.mXPlacard)

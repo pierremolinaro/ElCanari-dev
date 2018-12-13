@@ -268,7 +268,7 @@ import Cocoa
   @IBOutlet var mBoardViewVerticalFlipCheckbox : EBSwitch?
   @IBOutlet var mBoardWidthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mBoardWidthUnitPopUp : EBPopUpButton?
-  @IBOutlet var mComposedBoardScrollView : CanariDraggingDestinationScrollView?
+  @IBOutlet var mComposedBoardScrollView : EBScrollView?
   @IBOutlet var mComposedBoardView : EBView?
   @IBOutlet var mDangerView : NSView?
   @IBOutlet var mDeselectIssueButton : EBButton?
@@ -1167,11 +1167,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mComposedBoardScrollView {
-      if !(outlet is CanariDraggingDestinationScrollView) {
+      if !(outlet is EBScrollView) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mComposedBoardScrollView' outlet is not an instance of 'CanariDraggingDestinationScrollView'"
+          errorMessage: "the 'mComposedBoardScrollView' outlet is not an instance of 'EBScrollView'"
         )
       }
     }else{

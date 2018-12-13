@@ -44,16 +44,6 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  override func viewDidMoveToSuperview () {
-    super.viewDidMoveToSuperview ()
-    self.installPlacards ()
-    self.addEndLiveMagnificationObserver ()
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
    private weak var mViewController : EBViewControllerProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
@@ -223,6 +213,22 @@ import Cocoa
   // MARK: -
   //····················································································································
 
+  fileprivate var mMouseGridInCanariUnit : Int = 1 // No grid for mouse
+
+  //····················································································································
+
+  var mouseGridInCanariUnit : Int { return mMouseGridInCanariUnit }
+
+  //····················································································································
+
+  func set (mouseGridInCanariUnit : Int) {
+    self.mMouseGridInCanariUnit = mouseGridInCanariUnit
+  }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
   internal var mLastMouseDraggedLocation : CanariPoint? = nil
   internal var mSelectionRectangleOrigin : NSPoint? = nil
   internal var mPossibleKnob : (Int, Int)? = nil // Object index, knob index
@@ -307,7 +313,6 @@ import Cocoa
       // Swift.print ("updateViewFrameAndBounds change")
       self.frame.size = newBounds.size
       self.bounds = newBounds
- //     self.needsDisplay = true
       self.applyZoom (Int (s * 100.0))
     }
   }
@@ -353,23 +358,10 @@ import Cocoa
   internal var mYPlacardUnitController : EBReadOnlyController_Int? = nil
 
   //····················································································································
-  //  MARK: -
-  //····················································································································
-
-  override func viewWillMove (toSuperview inSuperview : NSView?) {
-     super.viewWillMove (toSuperview: inSuperview)
-  //--- Remove from superview ?
-    if nil == inSuperview {
-      self.removePlacards ()
-    }
-  }
-
-  //····················································································································
   // MARK: -
   //····················································································································
 
   private var mMinimumRectangle = NSRect ()
-
 
   //····················································································································
 
