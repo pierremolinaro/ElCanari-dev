@@ -22,8 +22,6 @@ enum StatusInMetadata : UInt8 {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-let PMPackageVersion = "PMPackageVersion"
 let PMDeviceVersion  = "PMDeviceVersion"
 
 //--- Dictionary of for embedded symbols and packages in device metadatadictionary

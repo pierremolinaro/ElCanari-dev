@@ -18,7 +18,7 @@ let Preferences_crossColorOfSymbolGrid = "Preferences:crossColorOfSymbolGrid"
 let Preferences_lineColorOfSymbolGrid = "Preferences:lineColorOfSymbolGrid"
 let Preferences_symbolBackgroundColor = "Preferences:symbolBackgroundColor"
 let Preferences_symbolDrawingWidthMultipliedByTen = "Preferences:symbolDrawingWidthMultipliedByTen"
-let Preferences_dotColorOfPackageGrid = "Preferences:dotColorOfPackageGrid"
+let Preferences_crossColorOfPackageGrid = "Preferences:crossColorOfPackageGrid"
 let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
 let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
 let Preferences_packageColor = "Preferences:packageColor"
@@ -344,26 +344,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: dotColorOfPackageGrid
+  //   Atomic property: crossColorOfPackageGrid
   //····················································································································
 
-  var dotColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_dotColorOfPackageGrid)
+  var crossColorOfPackageGrid_property = EBStoredProperty_NSColor (NSColor.white, prefKey: Preferences_crossColorOfPackageGrid)
 
   //····················································································································
 
-  var dotColorOfPackageGrid : NSColor {
+  var crossColorOfPackageGrid : NSColor {
     get {
-      return self.dotColorOfPackageGrid_property.propval
+      return self.crossColorOfPackageGrid_property.propval
     }
     set {
-      self.dotColorOfPackageGrid_property.setProp (newValue)
+      self.crossColorOfPackageGrid_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var dotColorOfPackageGrid_property_selection : EBSelection <NSColor> {
-    return self.dotColorOfPackageGrid_property.prop
+  var crossColorOfPackageGrid_property_selection : EBSelection <NSColor> {
+    return self.crossColorOfPackageGrid_property.prop
   }
 
   //····················································································································
@@ -3747,8 +3747,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.symbolBackgroundColor_property.undoManager = self.undoManager
   //--- Atomic property: symbolDrawingWidthMultipliedByTen
     self.symbolDrawingWidthMultipliedByTen_property.undoManager = self.undoManager
-  //--- Atomic property: dotColorOfPackageGrid
-    self.dotColorOfPackageGrid_property.undoManager = self.undoManager
+  //--- Atomic property: crossColorOfPackageGrid
+    self.crossColorOfPackageGrid_property.undoManager = self.undoManager
   //--- Atomic property: lineColorOfPackageGrid
     self.lineColorOfPackageGrid_property.undoManager = self.undoManager
   //--- Atomic property: packageBackgroundColor
@@ -5338,7 +5338,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mSymbolBackgroundColorColorWell?.bind_color (self.symbolBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     mSymbolDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (self.symbolDrawingWidthMultipliedByTen_property, file: #file, line: #line)
     mPinNameFontButton?.bind_fontValue (self.pinNameFont_property, file: #file, line: #line)
-    mDotColorOfPackageGridColorWell?.bind_color (self.dotColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
+    mDotColorOfPackageGridColorWell?.bind_color (self.crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     mLineColorOfPackageGridColorWell?.bind_color (self.lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     mPackageBackgroundColorColorWell?.bind_color (self.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     mPackageColorColorWell?.bind_color (self.packageColor_property, file: #file, line: #line, sendContinously:false)

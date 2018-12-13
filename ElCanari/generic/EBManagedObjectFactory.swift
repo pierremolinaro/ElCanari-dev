@@ -52,6 +52,12 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
     result = SymbolSegment (undoManager, file: #file, #line)
   }else if inEntityTypeName == "SymbolRoot" {
     result = SymbolRoot (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "PackageRoot" {
+    result = PackageRoot (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "PackageObject" {
+    result = PackageObject (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "PackageSegment" {
+    result = PackageSegment (undoManager, file: #file, #line)
   }
   return result
 }

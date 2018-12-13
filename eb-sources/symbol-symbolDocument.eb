@@ -1,12 +1,11 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 document SymbolDocument root SymbolRoot {
-#--- pin names and location
-#  transient CanariIssueArray pinNameAndErrorLocationArray dependsFrom root.symbolObjects.all.SymbolPin.name ;
-
 #--- Selected Page
   outlet CanariSegmentedControl mPageSegmentedControl $selectedPage root.selectedPageIndex ;
   outlet NSView mMasterView ;
+  outlet CanariViewWithKeyView mSymbolPageView ;
+  outlet CanariViewWithKeyView mInfosPageView ;
 
 #--- Signature
   outlet CanariSignatureField mSignatureTextField $signature signature ;
@@ -17,7 +16,6 @@ document SymbolDocument root SymbolRoot {
   outlet EBButton mResetVersionButton $run self.resetVersionAction ;
 
 #-------------------------- Page : Symbol
-  outlet CanariViewWithKeyView mSymbolPageView ;
 
 #--- Inspector segment control
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
@@ -108,8 +106,6 @@ document SymbolDocument root SymbolRoot {
   outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 #-------------------------- Page : Infos
-  outlet CanariViewWithKeyView mInfosPageView ;
- 
   outlet EBTextView mCommentTextView $value root.comments ;
 }
 

@@ -118,8 +118,8 @@ prefs {
 
 prefs {
 #--- Package Grid Colors
-  property NSColor dotColorOfPackageGrid  default white;
-  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.dotColorOfPackageGrid {sendContinously:no} ;
+  property NSColor crossColorOfPackageGrid  default white;
+  outlet EBColorWell mDotColorOfPackageGridColorWell $color self.crossColorOfPackageGrid {sendContinously:no} ;
   property NSColor lineColorOfPackageGrid default gray;
   outlet EBColorWell mLineColorOfPackageGridColorWell $color self.lineColorOfPackageGrid {sendContinously:no} ;
 #--- Background Color

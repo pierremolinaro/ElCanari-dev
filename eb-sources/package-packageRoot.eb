@@ -1,0 +1,50 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+abstract graphic entity PackageObject {
+  abstract transient CanariIssueArray issues ; 
+}
+
+#----------------------------------------------------------------------------*
+
+graphic entity PackageRoot {
+#--- Selected page index
+  property Int selectedPageIndex default 0 ;
+
+#--- Selected inspector
+  property Int selectedInspector default 0 ;
+
+#--- Comment
+  property @signature String comments default "" ;
+
+#--- Package definition
+  toMany @signature PackageObject packageObjects ;
+
+#--- Grid and display inspector
+  property Bool horizontalFlip default no ;
+  property Bool verticalFlip default no ;
+  property GridStyle gridStyle default line ;
+  property Int gridStep default 4 ;
+  property Int zoom default 600 ;
+
+#--- XY placard unit
+  property @signature Int xPlacardUnit default 2_286 ; # mils
+  property @signature Int yPlacardUnit default 2_286 ; # mils
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageSegment : PackageObject {
+  property @signature Int x1 default 0 ;
+  property @signature Int y1 default 0 ;
+  property @signature Int x2 default 6_858_00 ;
+  property @signature Int y2 default 6_858_00 ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x1, self.y1, self.x2, self.y2, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+  ;
+  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
+  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#----------------------------------------------------------------------------*

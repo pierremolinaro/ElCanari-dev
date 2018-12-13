@@ -107,13 +107,18 @@
                                                 <action selector="actionNewMergerDocument:" target="212" id="9oe-Ee-HU4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Symbol" keyEquivalent="n" id="862">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        <menuItem title="New Symbol" id="862">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionNewSymbolDocument:" target="212" id="yqH-Kb-rLp"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Package" id="863"/>
+                                        <menuItem title="New Package" keyEquivalent="n" id="863">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionNewPackageDocument:" target="212" id="8Ja-g8-weF"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="New Device" id="864"/>
                                         <menuItem title="New Font" id="865">
                                             <connections>

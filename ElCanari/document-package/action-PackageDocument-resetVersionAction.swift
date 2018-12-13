@@ -11,24 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolSegment_objectDisplay (
-       _ self_x1 : Int,                     
-       _ self_y1 : Int,                     
-       _ self_x2 : Int,                     
-       _ self_y2 : Int,                     
-       _ prefs_symbolColor : NSColor,       
-       _ prefs_symbolDrawingWidthMultipliedByTen : Int
-) -> EBShape {
+extension PackageDocument {
+  @objc func resetVersionAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let bp = NSBezierPath ()
-    bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
-    bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
-    bp.lineWidth = CGFloat (prefs_symbolDrawingWidthMultipliedByTen) / 10.0
-    bp.lineCapStyle = .round
-    let shape = EBShape ()
-    shape.append (EBStrokeBezierPathShape ([bp], prefs_symbolColor))
-    return shape
+    self.resetVersionAndSignature ()
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

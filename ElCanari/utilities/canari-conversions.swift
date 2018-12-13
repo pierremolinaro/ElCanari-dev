@@ -17,7 +17,7 @@ import Foundation
 // 1 pouce = 2,54 cm = 2 286 000 cu
 // 1 mil = 0,001 pouce = 2 286 cu
 // Le pixel Cocoa est 1/72 pouce
-// 1 px = 1/72 pouce = 31 750
+// 1 px = 1/72 pouce = 31 750 cu
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let ONE_MILLIMETER_IN_CANARI_UNIT = 90_000
