@@ -63,7 +63,7 @@ document SymbolDocument root SymbolRoot {
     $yPlacardUnit root.yPlacardUnit
   ;
 
-  outlet CanariDraggingDestinationScrollView mComposedSymbolScrollView ;
+  outlet EBScrollView mComposedSymbolScrollView ;
 
 #--- Inspector views
   outlet NSView mSymbolRootInspectorView ;

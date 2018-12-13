@@ -277,7 +277,7 @@ document MergerDocument root MergerRoot {
     $shiftArrowKeyMagnitude root.shiftArrowMagnitude
   ;
 
-  outlet CanariDraggingDestinationScrollView mComposedBoardScrollView ;
+  outlet EBScrollView mComposedBoardScrollView ;
 
   outlet CanariSegmentedControl mBoardInspectorSegmentedControl ;
   outlet NSView mBoardInspectorMasterView ;

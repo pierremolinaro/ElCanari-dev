@@ -25,7 +25,7 @@ extern outlet class CanariDragSourceButton ;
 extern outlet class CanariIssueTableView ;
 binding CanariIssueTableView $issues : transient CanariIssueArray ;
 
-extern outlet class CanariDraggingDestinationScrollView ;
+extern outlet class EBScrollView ;
 
 extern outlet class CanariDimensionTextField ;
 binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int ;
