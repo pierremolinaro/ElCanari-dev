@@ -632,20 +632,31 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //····················································································································
 
   func canDelete () -> Bool {
-    return self.selectedArray_property.propset.count > 0
+    if self.selectedArray_property.propset.count == 0 {
+      return false
+    }else{
+      for object in self.selectedArray_property.propset {
+        if !object.canBeDeleted () {
+          return false
+        }
+      }
+      return true
+    }
   }
 
   //····················································································································
 
-   func deleteSelectedObjects () {
-    var objects = self.mModel?.propval ?? []
-    for object in self.selectedArray_property.propset {
-      if let idx = objects.index (of: object) {
-        objects.remove(at: idx)
+  func deleteSelectedObjects () {
+    if self.canDelete () {
+      var objects = self.mModel?.propval ?? []
+      for object in self.selectedArray_property.propset {
+        if let idx = objects.index (of: object) {
+          objects.remove(at: idx)
+        }
       }
+      self.mModel?.setProp (objects)
+      self.selectedSet = Set ()
     }
-    self.mModel?.setProp (objects)
-    self.selectedSet = Set ()
   }
 
   //····················································································································

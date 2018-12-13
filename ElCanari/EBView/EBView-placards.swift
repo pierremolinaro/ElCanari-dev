@@ -84,18 +84,26 @@ extension EBView {
     if self.mXPlacard == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
       let xPlacard = NSTextField (frame: r)
-      self.mXPlacard = xPlacard
-      xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      xPlacard.isBezeled = false
       xPlacard.isBordered = false
+      xPlacard.drawsBackground = false
+      xPlacard.isEnabled = true
+      xPlacard.isEditable = false
+      xPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       inScrollView.addPlacard (xPlacard)
+      self.mXPlacard = xPlacard
     }
     if self.mYPlacard == nil {
       let r = NSRect (x: 0.0, y: 0.0, width: 90.0, height: 20.0)
       let yPlacard = NSTextField (frame: r)
-      self.mYPlacard = yPlacard
-      yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
+      yPlacard.isBezeled = false
       yPlacard.isBordered = false
+      yPlacard.drawsBackground = false
+      yPlacard.isEnabled = true
+      yPlacard.isEditable = false
+      yPlacard.font = NSFont.systemFont (ofSize: NSFont.smallSystemFontSize)
       inScrollView.addPlacard (yPlacard)
+      self.mYPlacard = yPlacard
     }
   }
 

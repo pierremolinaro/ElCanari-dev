@@ -194,6 +194,16 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
+  //  Can be deleted
+  //  @objc dynamic before func is required in order to allow function overriding in extensions
+  //  Only type that can be represented in Objective-C are accepted
+  //····················································································································
+
+  @objc dynamic func canBeDeleted () -> Bool {
+    return true
+  }
+
+  //····················································································································
 
 }
 

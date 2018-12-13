@@ -24,15 +24,6 @@ class EBFilledBezierPathShape : EBShape {
   }
 
   //····················································································································
-  //  append
-  //····················································································································
-
-  func append (_ inBezierPath : NSBezierPath) {
-    self.mFilledPaths.append (inBezierPath)
-    self.mCachedBoundingBox = nil
-  }
-
-  //····················································································································
   //  transformedBy
   //····················································································································
 
@@ -51,11 +42,13 @@ class EBFilledBezierPathShape : EBShape {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    super.draw (inDirtyRect)
+  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+    super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
     for bp in self.mFilledPaths {
-      bp.fill ()
+      if inView.needsToDraw (bp.bounds) {
+        bp.fill ()
+      }
     }
   }
 
@@ -64,7 +57,7 @@ class EBFilledBezierPathShape : EBShape {
   //····················································································································
 
   override var boundingBox : NSRect {
-    if let cbb = mCachedBoundingBox {
+    if let cbb = self.mCachedBoundingBox {
       return cbb
     }else{
       var r = super.boundingBox

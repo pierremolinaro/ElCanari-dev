@@ -63,21 +63,23 @@ class EBKnobShape : EBShape {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    super.draw (inDirtyRect)
-    let bp : NSBezierPath
-    switch mKind {
-    case .rect :
-      bp = NSBezierPath (rect: self.rect)
-    case .circ :
-      bp = NSBezierPath (ovalIn: self.rect)
+  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+    super.draw (inView, inDirtyRect)
+    if inView.needsToDraw (self.rect) {
+      let bp : NSBezierPath
+      switch mKind {
+      case .rect :
+        bp = NSBezierPath (rect: self.rect)
+      case .circ :
+        bp = NSBezierPath (ovalIn: self.rect)
+      }
+      bp.lineWidth = 0.0
+      bp.lineCapStyle = .round
+      NSColor.white.setFill ()
+      bp.fill ()
+      NSColor.black.setStroke ()
+      bp.stroke ()
     }
-    bp.lineWidth = 0.0
-    bp.lineCapStyle = .round
-    NSColor.white.setFill ()
-    bp.fill ()
-    NSColor.black.setStroke ()
-    bp.stroke ()
   }
 
   //····················································································································

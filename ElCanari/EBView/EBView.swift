@@ -87,7 +87,9 @@ import Cocoa
 
   final var mUnderObjectsDisplay = EBShape () {
     didSet {
+      self.noteInvalidRectangles (old: oldValue, new: self.mOverObjectsDisplay)
       if self.mUnderObjectsDisplay != oldValue {
+        // Swift.print ("mUnderObjectsDisplay Change")
         self.updateViewFrameAndBounds ()
         self.setNeedsDisplay (oldValue.boundingBox)
         self.setNeedsDisplay (self.mUnderObjectsDisplay.boundingBox)
@@ -105,10 +107,10 @@ import Cocoa
 
   final var mOverObjectsDisplay = EBShape () {
     didSet {
+      self.noteInvalidRectangles (old: oldValue, new: self.mOverObjectsDisplay)
       if self.mOverObjectsDisplay != oldValue {
+        // Swift.print ("mOverObjectsDisplay Change: \(oldValue.boundingBox) -> \(self.mOverObjectsDisplay.boundingBox)")
         self.updateViewFrameAndBounds ()
-        self.setNeedsDisplay (oldValue.boundingBox)
-        self.setNeedsDisplay (self.mOverObjectsDisplay.boundingBox)
       }
     }
   }
@@ -127,82 +129,6 @@ import Cocoa
     }
     didSet {
       self.invalidateGuideBezierPath ()
-    }
-  }
-
-  //····················································································································
-  // MARK: -
-  //····················································································································
-
-  override func draw (_ inDirtyRect: NSRect) {
-    self.mBackColor.setFill ()
-    NSBezierPath.fill (inDirtyRect)
-    self.drawGrid (inDirtyRect)
-    self.mUnderObjectsDisplay.draw (inDirtyRect)
-    for object in self.mObjectDisplayArray {
-      object.draw (inDirtyRect)
-    }
-    self.mOverObjectsDisplay.draw (inDirtyRect)
-    self.selectionRectangleLayer?.draw (inDirtyRect)
-    for shape in self.mSelectionShapes {
-      shape.draw (inDirtyRect)
-    }
-    self.drawGuideBezierPath (inDirtyRect)
-    self.drawIssue (inDirtyRect)
-    self.selectionRectangleLayer?.draw (inDirtyRect)
-  }
-
-  //····················································································································
-
-  fileprivate func drawGrid (_ inDirtyRect: NSRect) {
-    let r = inDirtyRect
-    let gridDisplayStep = self.mGridStep * CGFloat (self.mGridStepFactor)
-    let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
-    let endX = r.maxX
-    let startY = (r.origin.y / gridDisplayStep).rounded (.down) * gridDisplayStep
-    let endY = r.maxY
-    let displayOffset = 0.5 / self.actualScale
-    switch self.mGridStyle {
-    case .noGrid :
-      ()
-    case .cross :
-      let bp = NSBezierPath ()
-      bp.lineWidth = 0.0
-      bp.lineCapStyle = .round
-      var x = startX
-      while x <= endX {
-        var y = startY
-        while y <= endY {
-          bp.move (to: NSPoint (x: x - 0.5 + displayOffset, y: y + displayOffset))
-          bp.line (to: NSPoint (x: x + 0.5 + displayOffset, y: y + displayOffset))
-          bp.move (to: NSPoint (x: x + displayOffset,       y: y + 0.5 + displayOffset))
-          bp.line (to: NSPoint (x: x + displayOffset,       y: y - 0.5 + displayOffset))
-          y += gridDisplayStep
-        }
-        x += gridDisplayStep
-      }
-      self.mGridCrossColor.setStroke ()
-      bp.stroke ()
-    case .line :
-      let bp = NSBezierPath ()
-      bp.lineWidth = 0.0
-      bp.lineCapStyle = .round
-      var x = startX
-      while x <= r.maxX {
-        let p1 = NSPoint (x: x + displayOffset, y: startY + displayOffset)
-        let p2 = NSPoint (x: x + displayOffset, y: endY + displayOffset)
-        bp.move (to: p1)
-        bp.line (to: p2)
-        x += gridDisplayStep
-      }
-      var y = startY
-      while y <= endY {
-        bp.move (to: NSPoint (x: startX + displayOffset, y: y + displayOffset))
-        bp.line (to: NSPoint (x: endX   + displayOffset, y: y + displayOffset))
-        y += gridDisplayStep
-      }
-      self.mGridLineColor.setStroke ()
-      bp.stroke ()
     }
   }
 
@@ -273,25 +199,8 @@ import Cocoa
   //····················································································································
 
   func updateObjectDisplay (_ inObjectDisplayArray : [EBShape]) {
-  //--- Find invalid rectangle
-    let minCount = min (self.mObjectDisplayArray.count, inObjectDisplayArray.count)
-    var idx = 0
-    while idx < minCount {
-      if inObjectDisplayArray [idx] != self.mObjectDisplayArray [idx] {
-        self.setNeedsDisplay (inObjectDisplayArray [idx].boundingBox)
-        self.setNeedsDisplay (self.mObjectDisplayArray [idx].boundingBox)
-      }
-      idx += 1
-    }
-    while idx < self.mObjectDisplayArray.count {
-      self.setNeedsDisplay (self.mObjectDisplayArray [idx].boundingBox)
-      idx += 1
-    }
-    while idx < inObjectDisplayArray.count {
-      self.setNeedsDisplay (inObjectDisplayArray [idx].boundingBox)
-      idx += 1
-    }
-  //--- Store new object array and tell view to display
+   //  Swift.print ("updateObjectDisplay")
+    self.noteInvalidRectangles (old: self.mObjectDisplayArray, new: inObjectDisplayArray)
     self.mObjectDisplayArray = inObjectDisplayArray
     self.updateViewFrameAndBounds ()
   }
@@ -360,10 +269,23 @@ import Cocoa
   //····················································································································
 
   func updateSelectionShape (_ inShapes : [EBShape]) {
-    self.setNeedsDisplay (self.selectionShapeBoundingBox)
-    self.mSelectionShapes = inShapes
-    self.setNeedsDisplay (self.selectionShapeBoundingBox)
-    self.updateViewFrameAndBounds ()
+    if self.mSelectionShapes != inShapes {
+//      Swift.print ("updateSelectionShape Change")
+      for shape in self.mSelectionShapes {
+        if !shape.boundingBox.isEmpty {
+          // Swift.print ("  old \(shape.boundingBox)")
+          self.setNeedsDisplay (shape.boundingBox)
+        }
+      }
+      self.mSelectionShapes = inShapes
+      for shape in self.mSelectionShapes {
+        if !shape.boundingBox.isEmpty {
+           //Swift.print ("  new \(shape.boundingBox)")
+          self.setNeedsDisplay (shape.boundingBox)
+        }
+      }
+      self.updateViewFrameAndBounds ()
+    }
   }
 
   //····················································································································
@@ -381,9 +303,10 @@ import Cocoa
 //    }
     let currentBounds = self.bounds
     if currentBounds != newBounds {
+      // Swift.print ("updateViewFrameAndBounds change")
       self.frame.size = newBounds.size
       self.bounds = newBounds
-      self.needsDisplay = true
+ //     self.needsDisplay = true
       self.applyZoom (Int (s * 100.0))
     }
   }
@@ -452,19 +375,11 @@ import Cocoa
 
   //····················································································································
 
-  override func becomeFirstResponder () -> Bool {
-//    self.mIsFirstResponder = true
-//    self.needsDisplay = true
-    return true
-  }
+  override func becomeFirstResponder () -> Bool { return true }
 
   //····················································································································
 
-  override func resignFirstResponder () -> Bool {
-//    self.mIsFirstResponder = false
-//    self.needsDisplay = true
-    return true
-  }
+  override func resignFirstResponder () -> Bool { return true }
 
   //····················································································································
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)

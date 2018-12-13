@@ -72,7 +72,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
       NSBezierPath.fill (inDirtyRect)
     }
   //--- Bezier paths
-    self.mShape.draw (inDirtyRect)
+    self.mShape.draw (self, inDirtyRect)
   }
 
   //····················································································································

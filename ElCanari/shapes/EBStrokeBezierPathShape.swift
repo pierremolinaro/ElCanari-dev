@@ -11,7 +11,7 @@ import Cocoa
 class EBStrokeBezierPathShape : EBShape {
   private var mPaths : [NSBezierPath]
   private let mColor : NSColor
-  private var mCachedBoundingBox : NSRect?
+  private var mCachedBoundingBox : NSRect? = nil
 
   //····················································································································
   //  Init
@@ -54,11 +54,13 @@ class EBStrokeBezierPathShape : EBShape {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    super.draw (inDirtyRect)
+  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+    super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
     for bp in self.mPaths {
-      bp.fill ()
+      if inView.needsToDraw (bp.bounds) {
+        bp.fill ()
+      }
     }
   }
 
@@ -67,7 +69,7 @@ class EBStrokeBezierPathShape : EBShape {
   //····················································································································
 
   override var boundingBox : NSRect {
-    if let cbb = mCachedBoundingBox {
+    if let cbb = self.mCachedBoundingBox {
       return cbb
     }else{
       var r = super.boundingBox

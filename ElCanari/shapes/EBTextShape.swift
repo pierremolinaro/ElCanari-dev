@@ -100,10 +100,12 @@ class EBTextShape : EBShape {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    super.draw (inDirtyRect)
-    self.mForeColor.setFill ()
-    self.mFilledBezierPath.fill ()
+  override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
+    super.draw (inView, inDirtyRect)
+    if inView.needsToDraw(self.mFilledBezierPath.bounds) {
+      self.mForeColor.setFill ()
+      self.mFilledBezierPath.fill ()
+    }
  //   mString.draw (at: mOrigin, withAttributes: mTextAttributes)
   }
 
@@ -112,11 +114,10 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override var boundingBox : NSRect {
-    if let cbb = mCachedBoundingBox {
+    if let cbb = self.mCachedBoundingBox {
       return cbb
     }else{
       var r = super.boundingBox
-//      let rText = NSRect (origin: mOrigin, size: mSize)
       r = r.union (self.mFilledBezierPath.bounds)
       self.mCachedBoundingBox = r
       return r
@@ -130,7 +131,6 @@ class EBTextShape : EBShape {
   override func contains (point inPoint : NSPoint) -> Bool {
     var result = super.contains (point: inPoint)
     if !result {
-//      let rText = NSRect (origin: mOrigin, size: mSize)
       result = self.mFilledBezierPath.bounds.contains (inPoint)
     }
     return result
@@ -143,7 +143,6 @@ class EBTextShape : EBShape {
   override func intersects (rect inRect : NSRect) -> Bool {
     var result = super.intersects (rect: inRect)
     if !result {
-//      let rText = NSRect (origin: mOrigin, size: mSize)
       result = self.mFilledBezierPath.bounds.intersects (inRect)
     }
     return result

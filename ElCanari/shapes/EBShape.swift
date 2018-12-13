@@ -8,14 +8,14 @@ import Cocoa
 //    EBShape
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBShape : Hashable, EBUserClassNameProtocol {
+class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   //····················································································································
   //  Properties
   //····················································································································
 
   private var mShapes : [EBShape]
-  private var mCachedBoundingBox : NSRect?
+  private var mShapeCachedBoundingBox : NSRect?
 
   //····················································································································
   //  init
@@ -23,7 +23,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   init () {
     mShapes = []
-    mCachedBoundingBox = nil
+    mShapeCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -31,7 +31,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   init (shape inShape : EBShape) {
     mShapes = [inShape]
-    mCachedBoundingBox = nil
+    mShapeCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -39,7 +39,7 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   init (shapes inShapes : [EBShape]) {
     mShapes = inShapes
-    mCachedBoundingBox = nil
+    mShapeCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -57,14 +57,14 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   func append (_ inShape : EBShape) {
     self.mShapes.append (inShape)
-    self.mCachedBoundingBox = nil
+    self.mShapeCachedBoundingBox = nil
   }
 
   //····················································································································
 
-  func append (shapes inShapes : [EBShape]) {
+  func append (_ inShapes : [EBShape]) {
     self.mShapes += inShapes
-    self.mCachedBoundingBox = nil
+    self.mShapeCachedBoundingBox = nil
   }
 
   //····················································································································
@@ -89,9 +89,11 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //  Draw Rect
   //····················································································································
 
-  func draw (_ inDirtyRect: NSRect) {
+  func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     for shape in self.mShapes {
-      shape.draw (inDirtyRect)
+      if inView.needsToDraw (shape.boundingBox) {
+        shape.draw (inView, inDirtyRect)
+      }
     }
   }
 
@@ -100,14 +102,14 @@ class EBShape : Hashable, EBUserClassNameProtocol {
   //····················································································································
 
   var boundingBox : NSRect {
-    if let cbb = mCachedBoundingBox {
+    if let cbb = self.mShapeCachedBoundingBox {
       return cbb
     }else{
       var r = NSRect.null
       for shape in self.mShapes {
         r = r.union (shape.boundingBox)
       }
-      self.mCachedBoundingBox = r
+      self.mShapeCachedBoundingBox = r
       return r
     }
   }
@@ -166,6 +168,12 @@ class EBShape : Hashable, EBUserClassNameProtocol {
 
   public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
     return (lhs === rhs) || lhs.isEqualTo (rhs)
+  }
+
+  //····················································································································
+
+  public static func != (lhs: EBShape, rhs: EBShape) -> Bool {
+    return !(lhs == rhs)
   }
 
   //····················································································································

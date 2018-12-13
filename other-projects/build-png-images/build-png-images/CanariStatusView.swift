@@ -42,7 +42,7 @@ class CanariStatusView : NSView {
         height: 2.0 * s
       )
       bp = NSBezierPath (ovalIn: r)
-      NSColor.green.setFill ()
+      NSColor.systemGreen.setFill ()
       bp.fill ()
     }
   //--- Orange
@@ -54,7 +54,7 @@ class CanariStatusView : NSView {
         height: 2.0 * s
       )
       bp = NSBezierPath (ovalIn: r)
-      NSColor.orange.setFill ()
+      NSColor.systemOrange.setFill ()
       bp.fill ()
     }
   //--- Red
@@ -66,7 +66,7 @@ class CanariStatusView : NSView {
         height: 2.0 * s
       )
       bp = NSBezierPath (ovalIn: r)
-      NSColor.red.setFill ()
+      NSColor.systemRed.setFill ()
       bp.fill ()
     }
   }
