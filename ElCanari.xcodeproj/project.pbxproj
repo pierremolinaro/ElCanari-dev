@@ -646,8 +646,6 @@
 		CF8BEBF81BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */; };
 		CF8D061521A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */; };
 		CF8D061621A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */; };
-		CF8D9AA021A2EAA2001D8BF9 /* view-SymbolObjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */; };
-		CF8D9AA121A2EAA2001D8BF9 /* view-SymbolObjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */; };
 		CF8D9AA321A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */; };
 		CF8D9AA421A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */; };
 		CF8DDB4D21C25958009B74B1 /* EBView-draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8DDB4C21C25957009B74B1 /* EBView-draw.swift */; };
@@ -1187,7 +1185,6 @@
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
 		CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "validation-Preferences-currentCharacterCodePoint.swift"; sourceTree = "<group>"; };
 		CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SymbolDocument-customized.swift"; sourceTree = "<group>"; };
-		CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-SymbolObjectsView.swift"; sourceTree = "<group>"; };
 		CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SymbolSegment.swift"; sourceTree = "<group>"; };
 		CF8DDB4C21C25957009B74B1 /* EBView-draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-draw.swift"; sourceTree = "<group>"; };
 		CF90B77321427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-currentCharacterCodePointString.swift"; sourceTree = "<group>"; };
@@ -1888,7 +1885,6 @@
 				CFE85AA321A5D76600991A66 /* transient-SymbolText-objectDisplay.swift */,
 				CFE85AA521A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift */,
 				CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */,
-				CF8D9A9F21A2EAA2001D8BF9 /* view-SymbolObjectsView.swift */,
 			);
 			name = "document-symbol";
 			path = "ElCanari/document-symbol";
@@ -2645,7 +2641,6 @@
 				CFE3CF152103793C00085921 /* transient-MergerBoardInstance-modelName.swift in Sources */,
 				CF71F9241B3EA3DF00FB5049 /* EBColorWell.swift in Sources */,
 				CFEF3D2920F9F13E00DA6106 /* action-MergerDocument-showBoardHelpAction.swift in Sources */,
-				CF8D9AA021A2EAA2001D8BF9 /* view-SymbolObjectsView.swift in Sources */,
 				CF43A4792142F2FF00E2530F /* view-NewCharacterView.swift in Sources */,
 				CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */,
 				CFE85A7521A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
@@ -2996,7 +2991,6 @@
 				CF5C4D9B219F04D600EAC52A /* transient-MergerBoardInstance-modelName.swift in Sources */,
 				CF5C4D9D219F04D600EAC52A /* EBColorWell.swift in Sources */,
 				CF5C4D9E219F04D600EAC52A /* action-MergerDocument-showBoardHelpAction.swift in Sources */,
-				CF8D9AA121A2EAA2001D8BF9 /* view-SymbolObjectsView.swift in Sources */,
 				CF5C4D9F219F04D600EAC52A /* view-NewCharacterView.swift in Sources */,
 				CF7542D421B476F800F4CAA1 /* buildPDFimage.swift in Sources */,
 				CFE85A7621A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
