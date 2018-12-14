@@ -35,24 +35,28 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 
   private var mController : Controller_CanariDimensionTextField_dimensionAndUnit?
 
+  //····················································································································
+
   func bind_dimensionAndUnit (_ object:EBReadWriteProperty_Int,
                               _ unit:EBReadOnlyProperty_Int,
                               file:String, line:Int) {
-    mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
-  }
-
-  func unbind_dimensionAndUnit () {
-    mController?.unregister ()
-    mController = nil
+    self.mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
   }
 
   //····················································································································
 
-  func controlTextDidChange (_ inNotification : Notification) {
-/*    if mSendContinously {
-      NSApp.sendAction (self.action, to: self.target, from: self)
-    }*/
+  func unbind_dimensionAndUnit () {
+    self.mController?.unregister ()
+    self.mController = nil
   }
+
+  //····················································································································
+
+//  func controlTextDidChange (_ inNotification : Notification) {
+///*    if mSendContinously {
+//      NSApp.sendAction (self.action, to: self.target, from: self)
+//    }*/
+//  }
 
   //····················································································································
 
@@ -68,6 +72,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   private var mOutlet: CanariDimensionTextField
   private var mDimension : EBReadWriteProperty_Int
   private var mUnit : EBReadOnlyProperty_Int
+  private var mNumberFormatter : NumberFormatter
 
   //····················································································································
 
@@ -78,12 +83,18 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mDimension = dimension
     mUnit = unit
     mOutlet = outlet
+    mNumberFormatter = NumberFormatter ()
     super.init (observedObjects:[dimension, unit])
+  //--- Target
     mOutlet.target = self
     mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
-    if mOutlet.formatter == nil {
-      presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionTextField outlet has no formatter")
-    }
+  //--- Number formatter
+    self.mNumberFormatter.formatterBehavior = .behavior10_4
+    self.mNumberFormatter.numberStyle = .decimal
+    self.mNumberFormatter.localizesFormat = true
+    self.mNumberFormatter.minimumFractionDigits = 2
+    mOutlet.formatter = self.mNumberFormatter
+  //--- Call back
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -91,8 +102,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   
   override func unregister () {
     super.unregister ()
-    mOutlet.target = nil
-    mOutlet.action = nil
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
   }
 
   //····················································································································
@@ -103,8 +114,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
       mOutlet.stringValue = "—"
       mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      mOutlet.stringValue = "multiple"
+      mOutlet.enableFromValueBinding (true)
     case .single (let propertyValue) :
       mOutlet.doubleValue = propertyValue
       mOutlet.enableFromValueBinding (true)
@@ -118,8 +129,12 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     case .empty, .multiple :
       break
     case .single (let unit) :
-      let value : Int = 90 * Int (round (mOutlet.doubleValue * Double (unit) / 90.0))
-      _ = mDimension.validateAndSetProp (value, windowForSheet:sender.window)
+      if let outletValueNumber = self.mNumberFormatter.number (from: self.mOutlet.stringValue) {
+        let value : Int = 90 * Int (round (outletValueNumber.doubleValue * Double (unit) / 90.0))
+        _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
+      }else{
+        __NSBeep ()
+      }
     }
   }
 

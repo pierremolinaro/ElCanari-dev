@@ -39,6 +39,11 @@ graphic entity PackageSegment : PackageObject {
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 6_858_00 ;
   
+  property @signature Int x1Unit default 2_286 ;
+  property @signature Int y1Unit default 2_286 ;
+  property @signature Int x2Unit default 2_286 ;
+  property @signature Int y2Unit default 2_286 ;
+  
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;

@@ -15,6 +15,12 @@ import Cocoa
   var mPackageObjectsController = ArrayController_PackageDocument_mPackageObjectsController ()
 
   //····················································································································
+  //   Selection controller: mPackageSegmentSelectionController
+  //····················································································································
+
+  var mPackageSegmentSelectionController = SelectionController_PackageDocument_mPackageSegmentSelectionController ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -65,9 +71,17 @@ import Cocoa
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
-  @IBOutlet var mPinNameFontButton : EBFontButton?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
+  @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSegmentX1TextField : CanariDimensionTextField?
+  @IBOutlet var mSegmentX1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mSegmentX2TextField : CanariDimensionTextField?
+  @IBOutlet var mSegmentX2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mSegmentY1TextField : CanariDimensionTextField?
+  @IBOutlet var mSegmentY1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mSegmentY2TextField : CanariDimensionTextField?
+  @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mVersionField : CanariVersionField?
@@ -112,6 +126,8 @@ import Cocoa
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -489,21 +505,6 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
-    if let outlet : Any = self.mPinNameFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mPinNameFontButton' outlet is not an instance of 'EBFontButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mPinNameFontButton' outlet is nil"
-      )
-    }
     if let outlet : Any = self.mProgramPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -532,6 +533,141 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mResetVersionButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentX1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentX1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentX1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentX1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentX1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentX2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentX2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentX2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentX2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentX2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentY1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentY1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentY1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentY1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentY1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentY2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentY2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentY2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentY2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentY2UnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mSelectedObjectsInspectorView {
@@ -626,6 +762,8 @@ import Cocoa
     }
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property)
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -633,6 +771,14 @@ import Cocoa
     self.mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
     self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
     self.mInspectorSegmentedControl?.bind_selectedPage (self.rootObject.selectedInspector_property, file: #file, line: #line)
+    self.mSegmentX1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mSegmentX1TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x1_property, self.mPackageSegmentSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mSegmentY1UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mSegmentY1TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y1_property, self.mPackageSegmentSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mSegmentX2UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mSegmentX2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mSegmentY2UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mSegmentY2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
@@ -654,7 +800,6 @@ import Cocoa
     self.mPackageColorColorWell?.bind_color (g_Preferences!.packageColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageBackgroundColorColorWell?.bind_color (g_Preferences!.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
-    self.mPinNameFontButton?.bind_fontValue (g_Preferences!.pinNameFont_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
@@ -676,6 +821,14 @@ import Cocoa
     self.mVersionField?.unbind_version ()
     self.mVersionField?.unbind_versionShouldChange ()
     self.mInspectorSegmentedControl?.unbind_selectedPage ()
+    self.mSegmentX1UnitPopUp?.unbind_selectedTag ()
+    self.mSegmentX1TextField?.unbind_dimensionAndUnit ()
+    self.mSegmentY1UnitPopUp?.unbind_selectedTag ()
+    self.mSegmentY1TextField?.unbind_dimensionAndUnit ()
+    self.mSegmentX2UnitPopUp?.unbind_selectedTag ()
+    self.mSegmentX2TextField?.unbind_dimensionAndUnit ()
+    self.mSegmentY2UnitPopUp?.unbind_selectedTag ()
+    self.mSegmentY2TextField?.unbind_dimensionAndUnit ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_gridStyle ()
@@ -697,13 +850,14 @@ import Cocoa
     self.mPackageColorColorWell?.unbind_color ()
     self.mPackageBackgroundColorColorWell?.unbind_color ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
-    self.mPinNameFontButton?.unbind_fontValue ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.unbind_model ()
+  //--- Selection controller property: mPackageSegmentSelectionController
+    self.mPackageSegmentSelectionController.unbind_selection ()
   //--------------------------- Remove targets / actions
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
@@ -730,9 +884,17 @@ import Cocoa
     self.mPackagePageView?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
-    self.mPinNameFontButton?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
+    self.mSegmentInspectorView?.ebCleanUp ()
+    self.mSegmentX1TextField?.ebCleanUp ()
+    self.mSegmentX1UnitPopUp?.ebCleanUp ()
+    self.mSegmentX2TextField?.ebCleanUp ()
+    self.mSegmentX2UnitPopUp?.ebCleanUp ()
+    self.mSegmentY1TextField?.ebCleanUp ()
+    self.mSegmentY1UnitPopUp?.ebCleanUp ()
+    self.mSegmentY2TextField?.ebCleanUp ()
+    self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSelectedObjectsInspectorView?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()

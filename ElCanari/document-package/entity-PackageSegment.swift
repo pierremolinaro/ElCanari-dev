@@ -24,6 +24,30 @@ protocol PackageSegment_y2 : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageSegment_x1Unit : class {
+  var x1Unit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSegment_y1Unit : class {
+  var y1Unit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSegment_x2Unit : class {
+  var x2Unit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSegment_y2Unit : class {
+  var y2Unit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageSegment_x1 : class {
   var x1 : Int { get }
 }
@@ -54,6 +78,10 @@ class PackageSegment : PackageObject,
          PackageSegment_y1,
          PackageSegment_x2,
          PackageSegment_y2,
+         PackageSegment_x1Unit,
+         PackageSegment_y1Unit,
+         PackageSegment_x2Unit,
+         PackageSegment_y2Unit,
          PackageSegment_x1,
          PackageSegment_objectDisplay,
          PackageSegment_selectionDisplay,
@@ -129,6 +157,98 @@ class PackageSegment : PackageObject,
   }
 
   //····················································································································
+  //   Atomic property: x1Unit
+  //····················································································································
+
+  var x1Unit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var x1Unit : Int {
+    get {
+      return self.x1Unit_property.propval
+    }
+    set {
+      self.x1Unit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var x1Unit_property_selection : EBSelection <Int> {
+    return self.x1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: y1Unit
+  //····················································································································
+
+  var y1Unit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var y1Unit : Int {
+    get {
+      return self.y1Unit_property.propval
+    }
+    set {
+      self.y1Unit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var y1Unit_property_selection : EBSelection <Int> {
+    return self.y1Unit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: x2Unit
+  //····················································································································
+
+  var x2Unit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var x2Unit : Int {
+    get {
+      return self.x2Unit_property.propval
+    }
+    set {
+      self.x2Unit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var x2Unit_property_selection : EBSelection <Int> {
+    return self.x2Unit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: y2Unit
+  //····················································································································
+
+  var y2Unit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var y2Unit : Int {
+    get {
+      return self.y2Unit_property.propval
+    }
+    set {
+      self.y2Unit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var y2Unit_property_selection : EBSelection <Int> {
+    return self.y2Unit_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -163,6 +283,14 @@ class PackageSegment : PackageObject,
     self.x2_property.undoManager = self.undoManager
   //--- Atomic property: y2
     self.y2_property.undoManager = self.undoManager
+  //--- Atomic property: x1Unit
+    self.x1Unit_property.undoManager = self.undoManager
+  //--- Atomic property: y1Unit
+    self.y1Unit_property.undoManager = self.undoManager
+  //--- Atomic property: x2Unit
+    self.x2Unit_property.undoManager = self.undoManager
+  //--- Atomic property: y2Unit
+    self.y2Unit_property.undoManager = self.undoManager
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -256,9 +384,13 @@ class PackageSegment : PackageObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.x1_property.setSignatureObserver (observer:self)
+    self.x1Unit_property.setSignatureObserver (observer:self)
     self.x2_property.setSignatureObserver (observer:self)
+    self.x2Unit_property.setSignatureObserver (observer:self)
     self.y1_property.setSignatureObserver (observer:self)
+    self.y1Unit_property.setSignatureObserver (observer:self)
     self.y2_property.setSignatureObserver (observer:self)
+    self.y2Unit_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -318,6 +450,38 @@ class PackageSegment : PackageObject,
       valueExplorer:&self.y2_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "x1Unit",
+      idx:self.x1Unit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x1Unit_property.mObserverExplorer,
+      valueExplorer:&self.x1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y1Unit",
+      idx:self.y1Unit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y1Unit_property.mObserverExplorer,
+      valueExplorer:&self.y1Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "x2Unit",
+      idx:self.x2Unit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.x2Unit_property.mObserverExplorer,
+      valueExplorer:&self.x2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "y2Unit",
+      idx:self.y2Unit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.y2Unit_property.mObserverExplorer,
+      valueExplorer:&self.y2Unit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "x1",
       idx:self.x1_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -369,6 +533,18 @@ class PackageSegment : PackageObject,
   //--- Atomic property: y2
     self.y2_property.mObserverExplorer = nil
     self.y2_property.mValueExplorer = nil
+  //--- Atomic property: x1Unit
+    self.x1Unit_property.mObserverExplorer = nil
+    self.x1Unit_property.mValueExplorer = nil
+  //--- Atomic property: y1Unit
+    self.y1Unit_property.mObserverExplorer = nil
+    self.y1Unit_property.mValueExplorer = nil
+  //--- Atomic property: x2Unit
+    self.x2Unit_property.mObserverExplorer = nil
+    self.x2Unit_property.mValueExplorer = nil
+  //--- Atomic property: y2Unit
+    self.y2Unit_property.mObserverExplorer = nil
+    self.y2Unit_property.mValueExplorer = nil
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
@@ -388,6 +564,14 @@ class PackageSegment : PackageObject,
     self.x2_property.storeIn (dictionary: ioDictionary, forKey:"x2")
   //--- Atomic property: y2
     self.y2_property.storeIn (dictionary: ioDictionary, forKey:"y2")
+  //--- Atomic property: x1Unit
+    self.x1Unit_property.storeIn (dictionary: ioDictionary, forKey:"x1Unit")
+  //--- Atomic property: y1Unit
+    self.y1Unit_property.storeIn (dictionary: ioDictionary, forKey:"y1Unit")
+  //--- Atomic property: x2Unit
+    self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey:"x2Unit")
+  //--- Atomic property: y2Unit
+    self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey:"y2Unit")
   //--- Atomic property: x1
     self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
   }
@@ -413,6 +597,14 @@ class PackageSegment : PackageObject,
     self.x2_property.readFrom (dictionary: inDictionary, forKey:"x2")
   //--- Atomic property: y2
     self.y2_property.readFrom (dictionary: inDictionary, forKey:"y2")
+  //--- Atomic property: x1Unit
+    self.x1Unit_property.readFrom (dictionary: inDictionary, forKey:"x1Unit")
+  //--- Atomic property: y1Unit
+    self.y1Unit_property.readFrom (dictionary: inDictionary, forKey:"y1Unit")
+  //--- Atomic property: x2Unit
+    self.x2Unit_property.readFrom (dictionary: inDictionary, forKey:"x2Unit")
+  //--- Atomic property: y2Unit
+    self.y2Unit_property.readFrom (dictionary: inDictionary, forKey:"y2Unit")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
@@ -456,9 +648,13 @@ class PackageSegment : PackageObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.x1_property.signature ())
+    crc.accumulateUInt32 (self.x1Unit_property.signature ())
     crc.accumulateUInt32 (self.x2_property.signature ())
+    crc.accumulateUInt32 (self.x2Unit_property.signature ())
     crc.accumulateUInt32 (self.y1_property.signature ())
+    crc.accumulateUInt32 (self.y1Unit_property.signature ())
     crc.accumulateUInt32 (self.y2_property.signature ())
+    crc.accumulateUInt32 (self.y2Unit_property.signature ())
     return crc
   }
 
@@ -639,6 +835,234 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x1Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_x1Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_x1Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x1Unit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_x1Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x1Unit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_x1Unit {
+        managedObject.x1Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for observer in mObserversOf_x1Unit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x1Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y1Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_y1Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_y1Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.y1Unit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_y1Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.y1Unit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_y1Unit {
+        managedObject.y1Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for observer in mObserversOf_y1Unit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y1Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'x2Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_x2Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_x2Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x2Unit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_x2Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.x2Unit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_x2Unit {
+        managedObject.x2Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for observer in mObserversOf_x2Unit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.x2Unit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'y2Unit' stored property
+  //····················································································································
+
+  private var mObserversOf_y2Unit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_y2Unit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.y2Unit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_y2Unit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.y2Unit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_y2Unit {
+        managedObject.y2Unit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for observer in mObserversOf_y2Unit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.y2Unit_property.removeEBObserver (observer)
       }
     }
   }
@@ -943,6 +1367,10 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
       self.removeEBObserversOf_y1_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x2_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_y2_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -954,6 +1382,10 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
       self.addEBObserversOf_y1_toElementsOfSet (addedSet)
       self.addEBObserversOf_x2_toElementsOfSet (addedSet)
       self.addEBObserversOf_y2_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x1Unit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_y1Unit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x2Unit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_y2Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x1_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -1086,6 +1518,10 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -1099,6 +1535,10 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

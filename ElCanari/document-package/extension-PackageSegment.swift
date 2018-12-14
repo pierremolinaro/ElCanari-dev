@@ -14,49 +14,19 @@ extension PackageSegment {
   //····················································································································
 
   override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
-    do{
-      let newX = self.x1 + acceptedTranslation
-      if newX < 0 {
-        acceptedTranslation = -self.x1
-      }
-    }
-    do{
-      let newX = self.x2 + acceptedTranslation
-      if newX < 0 {
-        acceptedTranslation = -self.x2
-      }
-    }
-    return acceptedTranslation
+    return inDx
   }
 
   //····················································································································
 
   override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
-    do{
-      let newY = self.y1 + acceptedTranslation
-      if newY < 0 {
-        acceptedTranslation = -self.y1
-      }
-    }
-    do{
-      let newY = self.y2 + acceptedTranslation
-      if newY < 0 {
-        acceptedTranslation = -self.y2
-      }
-    }
-    return acceptedTranslation
+    return inDy
   }
 
   //····················································································································
 
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX1 = self.x1 + inDx
-    let newY1 = self.y1 + inDy
-    let newX2 = self.x2 + inDx
-    let newY2 = self.y2 + inDy
-    return (newX1 >= 0) && (newY1 >= 0) && (newX2 >= 0) && (newY2 >= 0)
+    return true
   }
 
   //····················································································································
@@ -73,17 +43,7 @@ extension PackageSegment {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    var accept = false
-    if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_1 {
-      let newX = self.x1 + inDx
-      let newY = self.y1 + inDy
-      accept = (newX >= 0) && (newY >= 0)
-    }else if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_2 {
-      let newX = self.x2 + inDx
-      let newY = self.y2 + inDy
-      accept = (newX >= 0) && (newY >= 0)
-    }
-    return accept
+    return true
  }
 
   //····················································································································

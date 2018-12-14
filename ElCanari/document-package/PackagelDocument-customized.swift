@@ -105,10 +105,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedPackageView?.set (minimumRectangle: r)
 //    self.mComposedPackageView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
-//  //--- Register inspector views
-//    self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
-//    self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
-//    self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
+  //--- Register inspector views
+    self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
+    self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")
+//    self.mPackageObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
 //  //--- Set issue display view
 //    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
 //    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)

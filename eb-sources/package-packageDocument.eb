@@ -18,8 +18,6 @@ document PackageDocument root PackageRoot {
   outlet CanariVersionField mVersionField $version version $versionShouldChange versionShouldChange ;
 
 #-------------------------- Page : Package
-
-#--- Inspector segment control
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
@@ -27,6 +25,30 @@ document PackageDocument root PackageRoot {
   outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
+
+#--- Segment inspector
+  selectionController PackageSegment mPackageSegmentSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mSegmentInspectorView ;
+#--- x1
+  outlet EBPopUpButton mSegmentX1UnitPopUp $selectedTag mPackageSegmentSelectionController.x1Unit ;
+  outlet CanariDimensionTextField mSegmentX1TextField
+     $dimensionAndUnit mPackageSegmentSelectionController.x1, mPackageSegmentSelectionController.x1Unit
+  ;
+#--- y1
+  outlet EBPopUpButton mSegmentY1UnitPopUp $selectedTag mPackageSegmentSelectionController.y1Unit ;
+  outlet CanariDimensionTextField mSegmentY1TextField
+     $dimensionAndUnit mPackageSegmentSelectionController.y1, mPackageSegmentSelectionController.y1Unit
+  ;
+#--- x2
+  outlet EBPopUpButton mSegmentX2UnitPopUp $selectedTag mPackageSegmentSelectionController.x2Unit ;
+  outlet CanariDimensionTextField mSegmentX2TextField
+     $dimensionAndUnit mPackageSegmentSelectionController.x2, mPackageSegmentSelectionController.x2Unit
+  ;
+#--- y2
+  outlet EBPopUpButton mSegmentY2UnitPopUp $selectedTag mPackageSegmentSelectionController.y2Unit ;
+  outlet CanariDimensionTextField mSegmentY2TextField
+     $dimensionAndUnit mPackageSegmentSelectionController.y2, mPackageSegmentSelectionController.y2Unit
+  ;
 
 #--- Issues
 #  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
@@ -67,7 +89,7 @@ document PackageDocument root PackageRoot {
   outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
   outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
-  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
+#  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
 
 
 
