@@ -50,6 +50,50 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackageSegmentSelectionController.y2, mPackageSegmentSelectionController.y2Unit
   ;
 
+#--- Bezier Curve inspector
+  selectionController PackageBezierCurve mPackageBezierCurveSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mBezierInspectorView ;
+#--- x1
+  outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.x1Unit ;
+  outlet CanariDimensionTextField mBezierCurveX1TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.x1, mPackageBezierCurveSelectionController.x1Unit
+  ;
+#--- y1
+  outlet EBPopUpButton mBezierCurveY1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.y1Unit ;
+  outlet CanariDimensionTextField mBezierCurveY1TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.y1, mPackageBezierCurveSelectionController.y1Unit
+  ;
+#--- x2
+  outlet EBPopUpButton mBezierCurveX2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.x2Unit ;
+  outlet CanariDimensionTextField mBezierCurveX2TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.x2, mPackageBezierCurveSelectionController.x2Unit
+  ;
+#--- y2
+  outlet EBPopUpButton mBezierCurveY2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.y2Unit ;
+  outlet CanariDimensionTextField mBezierCurveY2TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.y2, mPackageBezierCurveSelectionController.y2Unit
+  ;
+#--- cpx1
+  outlet EBPopUpButton mBezierCurveCPX1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpx1Unit ;
+  outlet CanariDimensionTextField mBezierCurveCPX1TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.cpx1, mPackageBezierCurveSelectionController.cpx1Unit
+  ;
+#--- cpy1
+  outlet EBPopUpButton mBezierCurveCPY1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpy1Unit ;
+  outlet CanariDimensionTextField mBezierCurveCPY1TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.cpy1, mPackageBezierCurveSelectionController.cpy1Unit
+  ;
+#--- x2
+  outlet EBPopUpButton mBezierCurveCPX2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpx2Unit ;
+  outlet CanariDimensionTextField mBezierCurveCPX2TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.cpx2, mPackageBezierCurveSelectionController.cpx2Unit
+  ;
+#--- y2
+  outlet EBPopUpButton mBezierCurveCPY2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpy2Unit ;
+  outlet CanariDimensionTextField mBezierCurveCPY2TextField
+     $dimensionAndUnit mPackageBezierCurveSelectionController.cpy2, mPackageBezierCurveSelectionController.cpy2Unit
+  ;
+
 #--- Issues
 #  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
 #  transient NSImage mStatusImage dependsFrom root.issues ;
@@ -57,6 +101,7 @@ document PackageDocument root PackageRoot {
 
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
+  outlet CanariDragSourceButton mAddBezierButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;

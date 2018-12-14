@@ -63,12 +63,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackageSegment",
       scaleProvider: self.mComposedPackageView
     )
-//
-//    self.mAddBezierButton?.register (
-//      draggedType: packagePasteboardType,
-//      entityName: "SymbolBezierCurve",
-//      scaleProvider: self.mComposedPackageView
-//    )
+    self.mAddBezierButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackageBezierCurve",
+      scaleProvider: self.mComposedPackageView
+    )
 //
 //    self.mAddSolidOvalButton?.register (
 //      draggedType: packagePasteboardType,
@@ -108,7 +107,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")
-//    self.mPackageObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
+    self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezierCurve")
 //  //--- Set issue display view
 //    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
 //    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
@@ -200,7 +199,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 //    self.mAddPinButton?.image = self.imageForAddPinButton ()
 //    self.mAddTextButton?.image = self.imageForAddTextButton ()
 //    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
-//    self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
@@ -212,7 +211,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   override func removeUserInterface () {
     super.removeUserInterface ()
-    g_Preferences?.symbolColor_property.removeEBObserver (self.mPackageColorObserver)
+    g_Preferences?.packageColor_property.removeEBObserver (self.mPackageColorObserver)
   }
 
   //····················································································································

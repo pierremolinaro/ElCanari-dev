@@ -15,6 +15,12 @@ import Cocoa
   var mPackageObjectsController = ArrayController_PackageDocument_mPackageObjectsController ()
 
   //····················································································································
+  //   Selection controller: mPackageBezierCurveSelectionController
+  //····················································································································
+
+  var mPackageBezierCurveSelectionController = SelectionController_PackageDocument_mPackageBezierCurveSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -48,9 +54,27 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddBezierButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
   @IBOutlet var mAutoNumberingInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBaseInspectorView : NSView?
+  @IBOutlet var mBezierCurveCPX1TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveCPX1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveCPX2TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveCPX2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveCPY1TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveCPY1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveCPY2TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveCPY2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveX1TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveX1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveX2TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveX2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveY1TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveY1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField?
+  @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mBezierInspectorView : CanariViewWithKeyView?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageScrollView : EBScrollView?
   @IBOutlet var mComposedPackageView : EBView?
@@ -126,6 +150,8 @@ import Cocoa
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
+  //--- Selection controller property: mPackageBezierCurveSelectionController
+    self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -160,6 +186,21 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mAddBezierButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddBezierButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddBezierButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mAddSegmentButton {
       if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
@@ -203,6 +244,261 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mBaseInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPX1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPX1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPX1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPX1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPX1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPX2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPX2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPX2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPX2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPX2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPY1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPY1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPY1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPY1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPY1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPY2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPY2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPY2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveCPY2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveCPY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveCPY2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveX1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveX1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveX1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveX1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveX1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveX2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveX2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveX2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveX2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveX2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveY1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveY1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveY1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveY1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveY1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveY2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveY2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveY2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierCurveY2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierCurveY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierCurveY2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBezierInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBezierInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBezierInspectorView' outlet is nil"
       )
     }
     if let outlet : Any = self.mCommentTextView {
@@ -762,6 +1058,8 @@ import Cocoa
     }
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property)
+  //--- Selection controller property: mPackageBezierCurveSelectionController
+    self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
@@ -779,6 +1077,22 @@ import Cocoa
     self.mSegmentX2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property, file: #file, line: #line)
     self.mSegmentY2UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
     self.mSegmentY2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mBezierCurveX1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mBezierCurveX1TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mBezierCurveY1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mBezierCurveY1TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y1_property, self.mPackageBezierCurveSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mBezierCurveX2UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mBezierCurveX2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x2_property, self.mPackageBezierCurveSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mBezierCurveY2UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mBezierCurveY2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.y2_property, self.mPackageBezierCurveSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPX1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.cpx1Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPX1TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx1_property, self.mPackageBezierCurveSelectionController.cpx1Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPY1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.cpy1Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPY1TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy1_property, self.mPackageBezierCurveSelectionController.cpy1Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPX2UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.cpx2Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPX2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPY2UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.cpy2Unit_property, file: #file, line: #line)
+    self.mBezierCurveCPY2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
@@ -829,6 +1143,22 @@ import Cocoa
     self.mSegmentX2TextField?.unbind_dimensionAndUnit ()
     self.mSegmentY2UnitPopUp?.unbind_selectedTag ()
     self.mSegmentY2TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveX1UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveX1TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveY1UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveY1TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveX2UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveX2TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveY2UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveY2TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveCPX1UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveCPX1TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveCPY1UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveCPY1TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveCPX2UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveCPX2TextField?.unbind_dimensionAndUnit ()
+    self.mBezierCurveCPY2UnitPopUp?.unbind_selectedTag ()
+    self.mBezierCurveCPY2TextField?.unbind_dimensionAndUnit ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_gridStyle ()
@@ -856,14 +1186,34 @@ import Cocoa
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.unbind_model ()
+  //--- Selection controller property: mPackageBezierCurveSelectionController
+    self.mPackageBezierCurveSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
   //--------------------------- Remove targets / actions
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddBezierButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAutoNumberingInspectorView?.ebCleanUp ()
     self.mBaseInspectorView?.ebCleanUp ()
+    self.mBezierCurveCPX1TextField?.ebCleanUp ()
+    self.mBezierCurveCPX1UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveCPX2TextField?.ebCleanUp ()
+    self.mBezierCurveCPX2UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveCPY1TextField?.ebCleanUp ()
+    self.mBezierCurveCPY1UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveCPY2TextField?.ebCleanUp ()
+    self.mBezierCurveCPY2UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveX1TextField?.ebCleanUp ()
+    self.mBezierCurveX1UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveX2TextField?.ebCleanUp ()
+    self.mBezierCurveX2UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveY1TextField?.ebCleanUp ()
+    self.mBezierCurveY1UnitPopUp?.ebCleanUp ()
+    self.mBezierCurveY2TextField?.ebCleanUp ()
+    self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
+    self.mBezierInspectorView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageScrollView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
