@@ -11,26 +11,22 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolOval_selectionDisplay (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_width : Int,                  
+func transient_PackageOval_issues (
+       _ self_x : Int,             
+       _ self_y : Int,             
+       _ self_width : Int,         
        _ self_height : Int
-) -> EBShape {
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  let shape = EBShape ()
-  let x = canariUnitToCocoa (self_x)
-  let y = canariUnitToCocoa (self_y)
-  let width = canariUnitToCocoa (self_width)
-  let height = canariUnitToCocoa (self_height)
-  let bp = NSBezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
-  bp.lineWidth = 0.25
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .circ))
-  return shape
+  var issues = [CanariIssue] ()
+  Swift.print ("self_width \(self_width), self_height \(self_height)")
+  if self_width == 0 {
+    issues.appendOvalZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
+  }
+  if self_height == 0 {
+    issues.appendOvalZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
+  }
+  return issues
 //--- END OF USER ZONE 2
 }
 

@@ -102,7 +102,7 @@ graphic entity SymbolOval : SymbolObject {
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
   transient EBShape selectionDisplay dependsFrom
-     self.x, self.y, self.width, self.height, prefs.symbolDrawingWidthMultipliedByTen
+     self.x, self.y, self.width, self.height
   ;
   
   transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;

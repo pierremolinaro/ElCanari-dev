@@ -6,58 +6,86 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_y : class {
+protocol PackageOval_y : class {
   var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_width : class {
+protocol PackageOval_width : class {
   var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_height : class {
+protocol PackageOval_height : class {
   var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_x : class {
+protocol PackageOval_xUnit : class {
+  var xUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageOval_yUnit : class {
+  var yUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageOval_widthUnit : class {
+  var widthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageOval_heightUnit : class {
+  var heightUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageOval_x : class {
   var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_objectDisplay : class {
+protocol PackageOval_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_selectionDisplay : class {
+protocol PackageOval_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolOval_issues : class {
+protocol PackageOval_issues : class {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SymbolOval
+//    Entity: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolOval : SymbolObject,
-         SymbolOval_y,
-         SymbolOval_width,
-         SymbolOval_height,
-         SymbolOval_x,
-         SymbolOval_objectDisplay,
-         SymbolOval_selectionDisplay,
-         SymbolOval_issues {
+class PackageOval : PackageObject,
+         PackageOval_y,
+         PackageOval_width,
+         PackageOval_height,
+         PackageOval_xUnit,
+         PackageOval_yUnit,
+         PackageOval_widthUnit,
+         PackageOval_heightUnit,
+         PackageOval_x,
+         PackageOval_objectDisplay,
+         PackageOval_selectionDisplay,
+         PackageOval_issues {
 
   //····················································································································
   //   Atomic property: y
@@ -129,6 +157,98 @@ class SymbolOval : SymbolObject,
   }
 
   //····················································································································
+  //   Atomic property: xUnit
+  //····················································································································
+
+  var xUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var xUnit : Int {
+    get {
+      return self.xUnit_property.propval
+    }
+    set {
+      self.xUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var xUnit_property_selection : EBSelection <Int> {
+    return self.xUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: yUnit
+  //····················································································································
+
+  var yUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var yUnit : Int {
+    get {
+      return self.yUnit_property.propval
+    }
+    set {
+      self.yUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var yUnit_property_selection : EBSelection <Int> {
+    return self.yUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: widthUnit
+  //····················································································································
+
+  var widthUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var widthUnit : Int {
+    get {
+      return self.widthUnit_property.propval
+    }
+    set {
+      self.widthUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var widthUnit_property_selection : EBSelection <Int> {
+    return self.widthUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: heightUnit
+  //····················································································································
+
+  var heightUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var heightUnit : Int {
+    get {
+      return self.heightUnit_property.propval
+    }
+    set {
+      self.heightUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var heightUnit_property_selection : EBSelection <Int> {
+    return self.heightUnit_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: x
   //····················································································································
 
@@ -163,6 +283,14 @@ class SymbolOval : SymbolObject,
     self.width_property.undoManager = self.undoManager
   //--- Atomic property: height
     self.height_property.undoManager = self.undoManager
+  //--- Atomic property: xUnit
+    self.xUnit_property.undoManager = self.undoManager
+  //--- Atomic property: yUnit
+    self.yUnit_property.undoManager = self.undoManager
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.undoManager = self.undoManager
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -172,17 +300,17 @@ class SymbolOval : SymbolObject,
         kind &= unwSelf.y_property_selection.kind ()
         kind &= unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
-        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= g_Preferences!.packageColor_property_selection.kind ()
+        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolOval_objectDisplay (v0, v1, v2, v3, v4, v5))
+            return .single (transient_PackageOval_objectDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -195,8 +323,8 @@ class SymbolOval : SymbolObject,
     self.y_property.addEBObserver (self.objectDisplay_property)
     self.width_property.addEBObserver (self.objectDisplay_property)
     self.height_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -212,7 +340,7 @@ class SymbolOval : SymbolObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolOval_selectionDisplay (v0, v1, v2, v3))
+            return .single (transient_PackageOval_selectionDisplay (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -240,7 +368,7 @@ class SymbolOval : SymbolObject,
         case .singleSelectionKind :
           switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolOval_issues (v0, v1, v2, v3))
+            return .single (transient_PackageOval_issues (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -256,9 +384,13 @@ class SymbolOval : SymbolObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.height_property.setSignatureObserver (observer:self)
+    self.heightUnit_property.setSignatureObserver (observer:self)
     self.width_property.setSignatureObserver (observer:self)
+    self.widthUnit_property.setSignatureObserver (observer:self)
     self.x_property.setSignatureObserver (observer:self)
+    self.xUnit_property.setSignatureObserver (observer:self)
     self.y_property.setSignatureObserver (observer:self)
+    self.yUnit_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -270,8 +402,8 @@ class SymbolOval : SymbolObject,
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
     self.height_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.x_property.removeEBObserver (self.selectionDisplay_property)
     self.y_property.removeEBObserver (self.selectionDisplay_property)
     self.width_property.removeEBObserver (self.selectionDisplay_property)
@@ -316,6 +448,38 @@ class SymbolOval : SymbolObject,
       view:view,
       observerExplorer:&self.height_property.mObserverExplorer,
       valueExplorer:&self.height_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "xUnit",
+      idx:self.xUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xUnit_property.mObserverExplorer,
+      valueExplorer:&self.xUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yUnit",
+      idx:self.yUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yUnit_property.mObserverExplorer,
+      valueExplorer:&self.yUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "widthUnit",
+      idx:self.widthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.widthUnit_property.mObserverExplorer,
+      valueExplorer:&self.widthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "heightUnit",
+      idx:self.heightUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.heightUnit_property.mObserverExplorer,
+      valueExplorer:&self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "x",
@@ -369,6 +533,18 @@ class SymbolOval : SymbolObject,
   //--- Atomic property: height
     self.height_property.mObserverExplorer = nil
     self.height_property.mValueExplorer = nil
+  //--- Atomic property: xUnit
+    self.xUnit_property.mObserverExplorer = nil
+    self.xUnit_property.mValueExplorer = nil
+  //--- Atomic property: yUnit
+    self.yUnit_property.mObserverExplorer = nil
+    self.yUnit_property.mValueExplorer = nil
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.mObserverExplorer = nil
+    self.widthUnit_property.mValueExplorer = nil
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.mObserverExplorer = nil
+    self.heightUnit_property.mValueExplorer = nil
   //--- Atomic property: x
     self.x_property.mObserverExplorer = nil
     self.x_property.mValueExplorer = nil
@@ -388,6 +564,14 @@ class SymbolOval : SymbolObject,
     self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
   //--- Atomic property: height
     self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+  //--- Atomic property: xUnit
+    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey:"xUnit")
+  //--- Atomic property: yUnit
+    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey:"yUnit")
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey:"widthUnit")
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
   //--- Atomic property: x
     self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
   }
@@ -413,6 +597,14 @@ class SymbolOval : SymbolObject,
     self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
   //--- Atomic property: height
     self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+  //--- Atomic property: xUnit
+    self.xUnit_property.readFrom (dictionary: inDictionary, forKey:"xUnit")
+  //--- Atomic property: yUnit
+    self.yUnit_property.readFrom (dictionary: inDictionary, forKey:"yUnit")
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey:"widthUnit")
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
   //--- Atomic property: x
     self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
   }
@@ -456,9 +648,13 @@ class SymbolOval : SymbolObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.height_property.signature ())
+    crc.accumulateUInt32 (self.heightUnit_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())
+    crc.accumulateUInt32 (self.widthUnit_property.signature ())
     crc.accumulateUInt32 (self.x_property.signature ())
+    crc.accumulateUInt32 (self.xUnit_property.signature ())
     crc.accumulateUInt32 (self.y_property.signature ())
+    crc.accumulateUInt32 (self.yUnit_property.signature ())
     return crc
   }
 
@@ -467,10 +663,10 @@ class SymbolOval : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolOval
+//    ReadOnlyArrayOf_PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
+class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> {
 
   //····················································································································
   //   Observers of 'y' stored property
@@ -510,7 +706,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_y {
         managedObject.y_property.addEBObserver (observer)
@@ -520,7 +716,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for observer in mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
@@ -567,7 +763,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_width {
         managedObject.width_property.addEBObserver (observer)
@@ -577,7 +773,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for observer in mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
@@ -624,7 +820,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_height {
         managedObject.height_property.addEBObserver (observer)
@@ -634,11 +830,239 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for observer in mObserversOf_height {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'xUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_xUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_xUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_xUnit {
+        managedObject.xUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
+    for observer in mObserversOf_xUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_yUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_yUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_yUnit {
+        managedObject.yUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
+    for observer in mObserversOf_yUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'widthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_widthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_widthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.widthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_widthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.widthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_widthUnit {
+        managedObject.widthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
+    for observer in mObserversOf_widthUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.widthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'heightUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_heightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_heightUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.heightUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_heightUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.heightUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_heightUnit {
+        managedObject.heightUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
+    for observer in mObserversOf_heightUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.heightUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -681,7 +1105,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_x {
         managedObject.x_property.addEBObserver (observer)
@@ -691,7 +1115,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for observer in mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
@@ -738,7 +1162,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -748,7 +1172,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -794,7 +1218,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -804,7 +1228,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -850,7 +1274,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
@@ -860,7 +1284,7 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
       for observer in mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
@@ -873,32 +1297,32 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolOval
+//    TransientArrayOf_PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
+class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolOval] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageOval] > >
 
   //····················································································································
 
-  override var propset : Set <SymbolOval> {
+  override var propset : Set <PackageOval> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolOval] > {
+  override var prop : EBSelection < [PackageOval] > {
     self.computeArrayAndSet ()
     return self.prop_cache!  
   }
  
   //····················································································································
 
-  override var propval : [SymbolOval] {
+  override var propval : [PackageOval] {
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -919,21 +1343,21 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
 
   //····················································································································
 
-  private var mSet = Set <SymbolOval> ()
+  private var mSet = Set <PackageOval> ()
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [SymbolOval] >? = nil
+  private var prop_cache : EBSelection < [PackageOval] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
       self.prop_cache = unwrappedComputeFunction ()
-      let newSet : Set <SymbolOval>
+      let newSet : Set <PackageOval>
       switch self.prop_cache! {
       case .multiple, .empty :
-        newSet = Set <SymbolOval> ()
+        newSet = Set <PackageOval> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -943,6 +1367,10 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
       self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -954,6 +1382,10 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
       self.addEBObserversOf_y_toElementsOfSet (addedSet)
       self.addEBObserversOf_width_toElementsOfSet (addedSet)
       self.addEBObserversOf_height_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_widthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_heightUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -986,28 +1418,28 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SymbolOval
+//    To many relationship read write: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
+class ReadWriteArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
  
-  func setProp (_ value :  [SymbolOval]) { } // Abstract method
+  func setProp (_ value :  [PackageOval]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolOval
+//    To many relationship: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureObserverProtocol {
+final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolOval?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageOval?) -> Void > = nil
   private var mPrefKey : String? = nil
 
   //····················································································································
@@ -1051,9 +1483,9 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolOval] ()
+      var objectArray = [PackageOval] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolOval") as? SymbolOval {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageOval") as? PackageOval {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1064,8 +1496,8 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
 
  //····················································································································
 
-  private var mSet = Set <SymbolOval> ()
-  private var mValue = [SymbolOval] () {
+  private var mSet = Set <PackageOval> ()
+  private var mValue = [PackageOval] () {
     didSet {
       self.postEvent ()
       if oldValue != self.mValue {
@@ -1086,19 +1518,27 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
         self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : SymbolOval in addedObjectSet {
+        for managedObject : PackageOval in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
         self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
@@ -1122,29 +1562,29 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolOval] > { return .single (self.mValue) }
+  override var prop : EBSelection < [PackageOval] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolOval]) { self.mValue = inValue }
+  override func setProp (_ inValue : [PackageOval]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [SymbolOval] { return self.mValue }
+  override var propval : [PackageOval] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <SymbolOval> { return self.mSet }
+  override var propset : Set <PackageOval> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [SymbolOval]) {
+  @objc func performUndo (_ oldValue : [PackageOval]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SymbolOval) {
+  func remove (_ object : PackageOval) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.index (of: object)
@@ -1155,7 +1595,7 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : SymbolOval) {
+  func add (_ object : PackageOval) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

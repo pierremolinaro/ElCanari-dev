@@ -60,6 +60,8 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
     result = PackageSegment (undoManager, file: #file, #line)
   }else if inEntityTypeName == "PackageBezierCurve" {
     result = PackageBezierCurve (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "PackageOval" {
+    result = PackageOval (undoManager, file: #file, #line)
   }
   return result
 }

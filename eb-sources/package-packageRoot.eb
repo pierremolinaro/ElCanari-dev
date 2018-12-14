@@ -29,6 +29,12 @@ graphic entity PackageRoot {
 #--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; # mils
   property @signature Int yPlacardUnit default 2_286 ; # mils
+
+#--- Issues
+  transient CanariIssueArray issues dependsFrom
+    self.packageObjects.all.issues
+  ;
+  transient Bool noIssue dependsFrom self.issues ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -87,6 +93,30 @@ graphic entity PackageBezierCurve : PackageObject {
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
   ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageOval : PackageObject {
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
+  property @signature Int width default 6_858_00 ;
+  property @signature Int height default 6_858_00 ;
+ 
+  property @signature Int xUnit default 2_286 ;
+  property @signature Int yUnit default 2_286 ;
+  property @signature Int widthUnit default 2_286 ;
+  property @signature Int heightUnit default 2_286 ;
+ 
+  transient EBShape objectDisplay dependsFrom
+     self.x, self.y, self.width, self.height,
+     prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.x, self.y, self.width, self.height
+  ;
+  
+  transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #----------------------------------------------------------------------------*

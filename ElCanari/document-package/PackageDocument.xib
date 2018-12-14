@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CustomizedPackageDocument">
             <connections>
                 <outlet property="mAddBezierButton" destination="2984" id="zfC-F5-wMS"/>
+                <outlet property="mAddOvalButton" destination="2985" id="7kr-NI-bhM"/>
                 <outlet property="mAddSegmentButton" destination="2983" id="M1N-vk-c72"/>
                 <outlet property="mAutoNumberingInspectorView" destination="2289" id="BNy-db-NKR"/>
                 <outlet property="mBaseInspectorView" destination="2923" id="1Bc-0k-tab"/>
@@ -33,6 +34,7 @@
                 <outlet property="mComposedPackageScrollView" destination="2476" id="coe-P2-hj3"/>
                 <outlet property="mComposedPackageView" destination="2477" id="SeZ-59-Job"/>
                 <outlet property="mCrossColorOfPackageGridColorWell" destination="TvY-Ah-5Fj" id="OHP-z2-fnE"/>
+                <outlet property="mDeselectIssueButton" destination="Sho-9k-G8X" id="B1M-Kx-Ovs"/>
                 <outlet property="mDisplayInspectorView" destination="1300" id="hT3-e9-zNs"/>
                 <outlet property="mGridStep" destination="vjx-yN-SDQ" id="yQV-Ht-1P8"/>
                 <outlet property="mGridStyle" destination="1tS-aK-Csg" id="l9a-Nm-2d2"/>
@@ -40,9 +42,22 @@
                 <outlet property="mHorizontalFlip" destination="Qr8-TS-wkl" id="Xak-rH-KmE"/>
                 <outlet property="mInfosPageView" destination="2517" id="tqX-dq-iES"/>
                 <outlet property="mInspectorSegmentedControl" destination="3010" id="2yf-g6-A0d"/>
+                <outlet property="mIssueInspectorView" destination="cRE-6w-ML1" id="uPB-Mf-quq"/>
+                <outlet property="mIssueScrollView" destination="P2W-0K-5nt" id="72k-zF-MZn"/>
+                <outlet property="mIssueTableView" destination="Zuh-hX-zHT" id="atR-jA-cEt"/>
+                <outlet property="mIssueTextField" destination="yVN-Jd-CYp" id="xjU-cG-srF"/>
                 <outlet property="mIssuesInspectorView" destination="cRE-6w-ML1" id="YPq-Dy-0kz"/>
                 <outlet property="mLineColorOfPackageGridColorWell" destination="Api-fM-79e" id="KlB-FC-Ti3"/>
                 <outlet property="mMasterView" destination="2532" id="Zih-F1-ZkL"/>
+                <outlet property="mOvalHeightTextField" destination="1708" id="dYV-7F-px1"/>
+                <outlet property="mOvalHeightUnitPopUp" destination="1699" id="mda-b5-C6B"/>
+                <outlet property="mOvalInspectorView" destination="1610" id="87V-bg-bH4"/>
+                <outlet property="mOvalWidthTextField" destination="1650" id="dAN-7r-OIT"/>
+                <outlet property="mOvalWidthUnitPopUp" destination="1641" id="VxA-A8-Ara"/>
+                <outlet property="mOvalXTextField" destination="1653" id="a6e-FK-Dh0"/>
+                <outlet property="mOvalXUnitPopUp" destination="1682" id="IO7-aB-Wcq"/>
+                <outlet property="mOvalYTextField" destination="1657" id="nKA-Y7-ceI"/>
+                <outlet property="mOvalYUnitPopUp" destination="1671" id="Cl6-f0-XXI"/>
                 <outlet property="mPackageBackgroundColorColorWell" destination="2tJ-cA-AHQ" id="FpP-OD-iMQ"/>
                 <outlet property="mPackageColorColorWell" destination="j2j-1n-oga" id="PgP-CR-80z"/>
                 <outlet property="mPackageDrawingWidthMultipliedByTenPopupButton" destination="9rg-KQ-NMp" id="PqQ-XQ-tip"/>
@@ -62,6 +77,7 @@
                 <outlet property="mSegmentY2UnitPopUp" destination="3019" id="Um8-YI-W56"/>
                 <outlet property="mSelectedObjectsInspectorView" destination="mI3-WB-pJe" id="F7v-N7-KzS"/>
                 <outlet property="mSignatureTextField" destination="CcA-xS-Gpa" id="wyL-De-3C8"/>
+                <outlet property="mStatusImageViewInToolbar" destination="2889" id="y6C-fV-rES"/>
                 <outlet property="mVersionField" destination="9x7-4Z-fQ9" id="SpJ-dC-Xex"/>
                 <outlet property="mVerticalFlip" destination="Ljc-JI-iq8" id="9OL-Kb-pPB"/>
                 <outlet property="mXPlacardUnitPopUpButton" destination="mxN-vd-WAz" id="G8R-z6-87Z"/>
@@ -96,7 +112,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
-                        <imageView key="view" id="2889" customClass="PMStatusImage">
+                        <imageView key="view" id="2889" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red20" id="2890"/>
@@ -834,21 +850,21 @@
                 </slider>
             </subviews>
         </customView>
-        <customView id="1610" userLabel="framedOvalInspector">
+        <customView id="1610" userLabel="Inspector: Oval" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="1710">
-                    <rect key="frame" x="17" y="367" width="76" height="14"/>
+                    <rect key="frame" x="17" y="367" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Height:" id="2764">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Height" id="2764">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1708">
-                    <rect key="frame" x="104" y="365" width="56" height="19"/>
+                <textField verticalHuggingPriority="750" id="1708" customClass="CanariDimensionTextField">
+                    <rect key="frame" x="94" y="365" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2763">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="1709">
@@ -863,36 +879,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1699">
-                    <rect key="frame" x="163" y="363" width="67" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="pc" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1701" id="2762">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="1700">
-                            <items>
-                                <menuItem title="in" tag="2286000" id="1702"/>
-                                <menuItem title="mil" tag="2286" id="1703"/>
-                                <menuItem title="pt" tag="31750" id="1704"/>
-                                <menuItem title="cm" tag="900000" id="1705"/>
-                                <menuItem title="mm" tag="90000" id="1706"/>
-                                <menuItem title="µm" tag="90" id="1707"/>
-                                <menuItem title="pc" state="on" tag="381000" id="1701"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" id="1616">
-                    <rect key="frame" x="17" y="394" width="76" height="14"/>
+                    <rect key="frame" x="17" y="394" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Width:" id="2754">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Width" id="2754">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1650">
-                    <rect key="frame" x="104" y="392" width="56" height="19"/>
+                <textField verticalHuggingPriority="750" id="1650" customClass="CanariDimensionTextField">
+                    <rect key="frame" x="94" y="392" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2757">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="1651">
@@ -907,10 +904,10 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1641">
-                    <rect key="frame" x="163" y="390" width="67" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="1641" customClass="EBPopUpButton">
+                    <rect key="frame" x="163" y="392" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="pc" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1649" id="2756">
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1649" id="2756">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="1642">
@@ -926,8 +923,8 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="1653">
-                    <rect key="frame" x="104" y="446" width="56" height="19"/>
+                <textField verticalHuggingPriority="750" id="1653" customClass="CanariDimensionTextField">
+                    <rect key="frame" x="94" y="446" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2758">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="1654">
@@ -942,10 +939,10 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1682">
-                    <rect key="frame" x="163" y="444" width="67" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="1682" customClass="EBPopUpButton">
+                    <rect key="frame" x="163" y="448" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="pc" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1684" id="2761">
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1684" id="2761">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="1683">
@@ -961,8 +958,8 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="1657">
-                    <rect key="frame" x="104" y="419" width="56" height="19"/>
+                <textField verticalHuggingPriority="750" id="1657" customClass="CanariDimensionTextField">
+                    <rect key="frame" x="94" y="419" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2759">
                         <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="1658">
@@ -977,10 +974,10 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1671">
-                    <rect key="frame" x="163" y="417" width="67" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="1671" customClass="EBPopUpButton">
+                    <rect key="frame" x="163" y="420" width="67" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="pc" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1673" id="2760">
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1673" id="2760">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="1672">
@@ -997,9 +994,9 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" id="1623">
-                    <rect key="frame" x="17" y="434" width="76" height="14"/>
+                    <rect key="frame" x="17" y="449" width="71" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Center:" id="2755">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Bottom Left" id="2755">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1014,7 +1011,27 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="1699" customClass="EBPopUpButton">
+                    <rect key="frame" x="163" y="365" width="67" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="pc" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="381000" inset="2" preferredEdge="maxY" selectedItem="1701" id="2762">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="1700">
+                            <items>
+                                <menuItem title="in" tag="2286000" id="1702"/>
+                                <menuItem title="mil" tag="2286" id="1703"/>
+                                <menuItem title="pt" tag="31750" id="1704"/>
+                                <menuItem title="cm" tag="900000" id="1705"/>
+                                <menuItem title="mm" tag="90000" id="1706"/>
+                                <menuItem title="µm" tag="90" id="1707"/>
+                                <menuItem title="pc" state="on" tag="381000" id="1701"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
+            <point key="canvasLocation" x="371" y="139"/>
         </customView>
         <customView id="2031" userLabel="padZonePadInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -1941,7 +1958,7 @@
                 <button toolTip="Add Oval" imageHugsTitle="YES" id="2985" customClass="CanariDragSourceButton">
                     <rect key="frame" x="58" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="circle-in-symbol" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2992">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2992">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
@@ -2014,7 +2031,7 @@
             <connections>
                 <outlet property="mSavedKeyView" destination="2477" id="2550"/>
             </connections>
-            <point key="canvasLocation" x="133" y="586"/>
+            <point key="canvasLocation" x="306" y="394"/>
         </customView>
         <customView id="2497" userLabel="Page : Pads" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="711" height="460"/>
@@ -2812,7 +2829,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="sbM-Qg-nHw">
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="Zuh-hX-zHT" customClass="CanariIssueTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
@@ -3162,7 +3179,7 @@
             </subviews>
             <point key="canvasLocation" x="-296" y="-120"/>
         </customView>
-        <customView id="mI3-WB-pJe" userLabel="Selected object root view" customClass="CanariViewWithKeyView">
+        <customView id="mI3-WB-pJe" userLabel="Selected object inspector root view" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="-362" y="432"/>
@@ -3171,7 +3188,6 @@
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="arc-in-package" width="64" height="64"/>
-        <image name="circle-in-symbol" width="64" height="64"/>
         <image name="dimension-in-package" width="64" height="64"/>
         <image name="display" width="64" height="64"/>
         <image name="guide-in-package" width="64" height="64"/>

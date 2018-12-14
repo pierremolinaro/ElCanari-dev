@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolOval_selectionDisplay (
-       _ self_x : Int,                      
-       _ self_y : Int,                      
-       _ self_width : Int,                  
+func transient_PackageOval_selectionDisplay (
+       _ self_x : Int,                       
+       _ self_y : Int,                       
+       _ self_width : Int,                   
        _ self_height : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -26,11 +26,12 @@ func transient_SymbolOval_selectionDisplay (
   let bp = NSBezierPath (ovalIn: NSRect (x: x, y:y, width: width, height: height))
   bp.lineWidth = 0.25
   shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: SYMBOL_OVAL_BOTTOM, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: SYMBOL_OVAL_TOP, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: SYMBOL_OVAL_RIGHT, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: SYMBOL_OVAL_LEFT, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_OVAL_BOTTOM, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_OVAL_TOP, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_OVAL_RIGHT, .circ))
+  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_OVAL_LEFT, .circ))
   return shape
+
 //--- END OF USER ZONE 2
 }
 

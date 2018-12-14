@@ -65,6 +65,18 @@ protocol PackageRoot_yPlacardUnit : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_noIssue : class {
+  var noIssue : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +90,9 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridStep,
          PackageRoot_zoom,
          PackageRoot_xPlacardUnit,
-         PackageRoot_yPlacardUnit {
+         PackageRoot_yPlacardUnit,
+         PackageRoot_issues,
+         PackageRoot_noIssue {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
@@ -323,6 +337,52 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+    var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: noIssue
+  //····················································································································
+
+  var noIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var noIssue_property_selection : EBSelection <Bool> {
+    return self.noIssue_property.prop
+  }
+
+  //····················································································································
+
+    var noIssue : Bool? {
+    switch self.noIssue_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -350,6 +410,50 @@ class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property.undoManager = self.undoManager
   //--- To many property: packageObjects (no option)
     self.packageObjects_property.undoManager = self.undoManager
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.packageObjects_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.packageObjects_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_issues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.packageObjects_property.addEBObserverOf_issues (self.issues_property)
+  //--- Atomic property: noIssue
+    self.noIssue_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageRoot_noIssue (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
  //   self.packageObjects_property.undoManager = self.undoManager
   //--- register properties for handling signature
@@ -364,6 +468,8 @@ class PackageRoot : EBGraphicManagedObject,
 
   deinit {
   //--- Remove observers
+    self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
+    self.issues_property.removeEBObserver (self.noIssue_property)
   }
 
   //····················································································································
@@ -458,6 +564,22 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer:&self.yPlacardUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "noIssue",
+      idx:self.noIssue_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.noIssue_property.mObserverExplorer,
+      valueExplorer:&self.noIssue_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "packageObjects",
@@ -1220,6 +1342,118 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'noIssue' transient property
+  //····················································································································
+
+  private var mObserversOf_noIssue = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_noIssue.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noIssue_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_noIssue.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.noIssue_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noIssue {
+        managedObject.noIssue_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_noIssue {
+        managedObject.noIssue_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1302,6 +1536,8 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_noIssue_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1316,6 +1552,8 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_noIssue_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1450,6 +1688,8 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : PackageRoot in addedObjectSet {
@@ -1466,6 +1706,8 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

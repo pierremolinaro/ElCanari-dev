@@ -83,25 +83,59 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mBezierCurveCPY1TextField
      $dimensionAndUnit mPackageBezierCurveSelectionController.cpy1, mPackageBezierCurveSelectionController.cpy1Unit
   ;
-#--- x2
+#--- cpx2
   outlet EBPopUpButton mBezierCurveCPX2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpx2Unit ;
   outlet CanariDimensionTextField mBezierCurveCPX2TextField
      $dimensionAndUnit mPackageBezierCurveSelectionController.cpx2, mPackageBezierCurveSelectionController.cpx2Unit
   ;
-#--- y2
+#--- cpy2
   outlet EBPopUpButton mBezierCurveCPY2UnitPopUp $selectedTag mPackageBezierCurveSelectionController.cpy2Unit ;
   outlet CanariDimensionTextField mBezierCurveCPY2TextField
      $dimensionAndUnit mPackageBezierCurveSelectionController.cpy2, mPackageBezierCurveSelectionController.cpy2Unit
   ;
 
+
+#------- Oval inspector
+  selectionController PackageOval mPackageOvalSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mOvalInspectorView ;
+#--- x
+  outlet EBPopUpButton mOvalXUnitPopUp $selectedTag mPackageOvalSelectionController.xUnit ;
+  outlet CanariDimensionTextField mOvalXTextField
+     $dimensionAndUnit mPackageOvalSelectionController.x, mPackageOvalSelectionController.xUnit
+  ;
+#--- y
+  outlet EBPopUpButton mOvalYUnitPopUp $selectedTag mPackageOvalSelectionController.yUnit ;
+  outlet CanariDimensionTextField mOvalYTextField
+     $dimensionAndUnit mPackageOvalSelectionController.y, mPackageOvalSelectionController.yUnit
+  ;
+#--- Width
+  outlet EBPopUpButton mOvalWidthUnitPopUp $selectedTag mPackageOvalSelectionController.widthUnit ;
+  outlet CanariDimensionTextField mOvalWidthTextField
+     $dimensionAndUnit mPackageOvalSelectionController.width, mPackageOvalSelectionController.widthUnit
+  ;
+#--- Height
+  outlet EBPopUpButton mOvalHeightUnitPopUp $selectedTag mPackageOvalSelectionController.heightUnit ;
+  outlet CanariDimensionTextField mOvalHeightTextField
+     $dimensionAndUnit mPackageOvalSelectionController.height, mPackageOvalSelectionController.heightUnit
+  ;
+
 #--- Issues
-#  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
-#  transient NSImage mStatusImage dependsFrom root.issues ;
-#  transient String mStatusMessage dependsFrom root.issues ;
+  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
+  transient NSImage mStatusImage dependsFrom root.issues ;
+  transient String mStatusMessage dependsFrom root.issues ;
+
+  outlet CanariViewWithKeyView mIssueInspectorView ;
+
+  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
+
+  outlet EBButton mDeselectIssueButton $hidden root.noIssue ;
+  outlet CanariIssueTableView mIssueTableView $issues root.issues ;
+  outlet NSScrollView mIssueScrollView $hidden root.noIssue ;
 
 #--- Buttons for new elements
   outlet CanariDragSourceButton mAddSegmentButton ;
   outlet CanariDragSourceButton mAddBezierButton ;
+  outlet CanariDragSourceButton mAddOvalButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;
@@ -135,494 +169,6 @@ document PackageDocument root PackageRoot {
   outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
 #  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
-
-
-
-##--- Selected Tab
-#  outlet segmentedControl : PMSegmentedControl $selectedIndex root.selectedTab ;
-#
-##--- Pad stats table view
-#  outlet padStatsTableView : PMTableViewForDictionaryArray $allObjects root.arrayForPadStats ;
-#
-##--- Status Signaling
-#  outlet statusImageView : PMStatusImage $statusValue root.computedStatus $binaryDataForToolTip root.statusMessage ;
-#  outlet statusTextView : NSTextView $data root.statusMessage $editable root.alwaysFalse ;
-#
-##--- packages graphics
-#  controller packageGraphicsController : PMPackageGraphicArrayController
-#   $contentSet root.packageGraphics
-#   $userIntegerParameterForDisplay root.userDisplayParameters
-#  forView .packageView ;
-#
-##--- Matrix for Package Inspector
-#  outlet addPackageLineButton : PMDraggingSourceButton ;
-#  outlet addPackageBezierCurveButton : PMDraggingSourceButton ;
-#  outlet addPackageCircleButton : PMDraggingSourceButton ;
-#  outlet addPackageMasterPadButton : PMDraggingSourceButton ;
-#  outlet addPackageSlavePadButton : PMDraggingSourceButton $enabled root.hasPads ;
-#  outlet addPackageArcButton : PMDraggingSourceButton ;
-#  outlet addPackagePadZoneButton : PMDraggingSourceButton ;
-#  outlet addPackageGuideButton : PMDraggingSourceButton ;
-#  outlet addPackageDimensionButton : PMDraggingSourceButton ;
-#
-#  outlet packageInspectorSegmentedControl : NSSegmentedControl ;
-#  outlet packageInspectorViewOutlet : NSView ;
-#
-##--- Grid, zoom and flip Inspector
-#  outlet packageGridZoomFlipInspectorView : NSView ;
-#  controller packageMeasurementController : EBMeasurementController
-#   $measurementUnitFactor root.packageMeasurementUnitsFactor
-#   $valueInEBUnit root.packageGrid
-#  ;
-#  outlet packageGridStylePopUpButton : NSPopUpButton $selectedIndex root.packageGridStyle;
-#  outlet packageGridStepPopUpButton : NSPopUpButton $selectedTag root.packageGridFactor;
-#  outlet packageGridTextField : NSTextField $value .packageMeasurementController.valueInUnitFactor ;
-#  outlet packageMeasurementUnitsFactorPopUpButton : NSPopUpButton $selectedTag root.packageMeasurementUnitsFactor ;
-#
-#  outlet packageHorizontalFlipButton : NSButton $value root.packageHorizontalFlip;
-#  outlet packageVerticalFlipButton : NSButton $value root.packageVerticalFlip;
-#
-##--- Display Inspector
-#  outlet displayInspectorView : NSView ;
-#  outlet displaysPadNumbersCheckbox : NSButton $value root.displaysPadNumbers ;
-#  outlet displaysPadZoneCheckbox : NSButton $value root.displaysPadZoneName $enabled root.displaysPadNumbers ;
-#  outlet displaysGuidesCheckbox : NSButton $value root.displaysGuides ;
-#  outlet displaysDimensionsCheckbox : NSButton $value root.displaysDimensions ;
-#  outlet displaysGeometryCheckbox : NSButton $value root.displaysGeometry ;
-#  outlet displaysComponentSidePadsCheckbox : NSButton $value root.displaysComponentSidePads ;
-#  outlet displaysSolderSidePadsCheckbox : NSButton $value root.displaysSolderSidePads ;
-#  outlet displaysPadZonesCheckbox : NSButton $value root.displaysZones ;
-#  
-##--- Pad Zone Inspector
-#  outlet padZoneInspectorView : NSView ;
-#  #--- Zone Name
-#  outlet padZoneNameTextField : NSTextField $value .packageGraphicsController.selectedZoneForPadEntity.zoneName ;
-#  #--- Pad autonumbering
-#  outlet zoneAutoNumberingPopUp : NSPopUpButton $selectedIndex .packageGraphicsController.selectedZoneForPadEntity.padAutoNumbering ;
-#
-##--- Default zone autonumbering Inspector
-#  outlet defaultZoneInspectorView : NSView ;
-#  #--- Pad autonumbering
-#  outlet defaultZoneAutoNumberingPopUp : NSPopUpButton $selectedIndex root.padAutoNumbering ;
-#
-##--- Slave Pad Inspector
-#  outlet slavePadInspectorView : NSView ;
-#  #--- pad shape
-#  outlet slavePadShapePopUp : NSPopUpButton $selectedIndex .packageGraphicsController.selectedSlavePadForPackageEntity.padShape ;
-#  #--- pad width
-#  controller slavePadWidthController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSlavePadForPackageEntity.padSize.width
-#    $measurementUnitFactor .packageGraphicsController.selectedSlavePadForPackageEntity.measurementUnitForWidth
-#  ;
-#  outlet slavePadWidthValueTextfield : NSTextField $value .slavePadWidthController.valueInUnitFactor ;
-#  outlet slavePadWidthUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSlavePadForPackageEntity.measurementUnitForWidth ;
-#  #--- pad height
-#  controller slavePadHeightController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController. selectedSlavePadForPackageEntity.padSize.height
-#    $measurementUnitFactor .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForHeight
-#  ;
-#  outlet slavePadHeightValueTextfield : NSTextField $value .slavePadHeightController.valueInUnitFactor ;
-#  outlet slavePadHeightUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForHeight ;
-#  #--- Pad side
-#  outlet slavePadSidePopUpButton : NSPopUpButton $selectedIndex .packageGraphicsController.selectedSlavePadForPackageEntity.side ;
-#  #--- Hole Diameter
-#  outlet slavePadHoleDiameterView : NSView $hidden .packageGraphicsController.selectedSlavePadForPackageEntity.padHasNoHole ;
-#  controller slavePadHoleController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSlavePadForPackageEntity.holeDiameter
-#    $measurementUnitFactor .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForHole
-#  ;
-#  outlet slavePadHoleValueTextfield : NSTextField $value . slavePadHoleController.valueInUnitFactor ;
-#  outlet slavePadHoleUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSlavePadForPackageEntity.measurementUnitForHole ;
-#  #--- Annular Ring
-#  controller slavePadAnnularRingController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.annularRingValue
-#    $measurementUnitFactor .packageGraphicsController.selectedSlavePadForPackageEntity.measurementUnitForAnnularRing
-#  ;
-#  outlet slavePadAnnularRingValueTextfield : NSTextField $value .slavePadAnnularRingController.valueInUnitFactor ;
-#  outlet slavePadAnnularRingUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSlavePadForPackageEntity.measurementUnitForAnnularRing ;
-#  #--- pad center, x
-#  controller slavePadCenterXController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSlavePadForPackageEntity.padCenter.x
-#    $measurementUnitFactor .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForCenterX
-#  ;
-#  outlet slavePadCenterXValueTextfield : NSTextField $value .slavePadCenterXController.valueInUnitFactor ;
-#  outlet slavePadCenterXUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForCenterX ;
-#  #--- pad center, y
-#  controller slavePadCenterYController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSlavePadForPackageEntity.padCenter.y
-#    $measurementUnitFactor .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForCenterY
-#  ;
-#  outlet slavePadCenterYValueTextfield : NSTextField $value .slavePadCenterYController.valueInUnitFactor ;
-#  outlet slavePadCenterYUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedSlavePadForPackageEntity.measurementUnitForCenterY ;
-#  #--- Master Pad Reference popup button
-#  outlet slavePadLinkPopUpButton : PMSlavePadReferencePopUpButton
-#    $currentObject .packageGraphicsController.selectedSlavePadForPackageEntity.dataForMasterPadPopUpButton
-#    $allObjects root.graphicObjectArray
-#  ;
-#
-##--- Master Pad Inspector
-#  outlet masterPadInspectorView : NSView ;
-#  #--- pad shape
-#  outlet masterPadShapePopUp : NSPopUpButton $selectedIndex .packageGraphicsController.selectedMasterPadForPackageEntity.padShape ;
-#  #--- pad number
-#  outlet masterPadNumberTextField : NSTextField $value .packageGraphicsController.selectedMasterPadForPackageEntity.padNumber ;
-#  #--- pad width
-#  controller masterPadWidthController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.padSize.width
-#    $measurementUnitFactor .packageGraphicsController.selectedMasterPadForPackageEntity.measurementUnitForWidth
-#  ;
-#  outlet masterPadWidthValueTextfield : NSTextField $value .masterPadWidthController.valueInUnitFactor ;
-#  outlet masterPadWidthUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedMasterPadForPackageEntity.measurementUnitForWidth ;
-#  #--- pad height
-#  controller masterPadHeightController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController. selectedMasterPadForPackageEntity.padSize.height
-#    $measurementUnitFactor .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForHeight
-#  ;
-#  outlet masterPadHeightValueTextfield : NSTextField $value .masterPadHeightController.valueInUnitFactor ;
-#  outlet masterPadHeightUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForHeight ;
-#  #--- Pad side
-#  outlet masterPadSidePopUpButton : NSPopUpButton $selectedIndex .packageGraphicsController.selectedMasterPadForPackageEntity.side ;
-#  #--- Hole Diameter
-#  outlet masterPadHoleDiameterView : NSView $hidden .packageGraphicsController.selectedMasterPadForPackageEntity.padHasNoHole ;
-#  controller masterPadHoleController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.holeDiameter
-#    $measurementUnitFactor .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForHole
-#  ;
-#  outlet masterPadHoleValueTextfield : NSTextField $value . masterPadHoleController.valueInUnitFactor ;
-#  outlet masterPadHoleUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedMasterPadForPackageEntity.measurementUnitForHole ;
-#  #--- Annular Ring
-#  controller masterPadAnnularRingController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.annularRingValue
-#    $measurementUnitFactor .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForAnnularRing
-#  ;
-#  outlet masterPadAnnularRingValueTextfield : NSTextField $value .masterPadAnnularRingController.valueInUnitFactor ;
-#  outlet masterPadAnnularRingUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedMasterPadForPackageEntity.measurementUnitForAnnularRing ;
-#  #--- pad center, x
-#  controller masterPadCenterXController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.padCenter.x
-#    $measurementUnitFactor .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForCenterX
-#  ;
-#  outlet masterPadCenterXValueTextfield : NSTextField $value .masterPadCenterXController.valueInUnitFactor ;
-#  outlet masterPadCenterXUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForCenterX ;
-#  #--- pad center, y
-#  controller masterPadCenterYController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedMasterPadForPackageEntity.padCenter.y
-#    $measurementUnitFactor .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForCenterY
-#  ;
-#  outlet masterPadCenterYValueTextfield : NSTextField $value .masterPadCenterYController.valueInUnitFactor ;
-#  outlet masterPadCenterYUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController. selectedMasterPadForPackageEntity.measurementUnitForCenterY ;
-#  #--- Zone name
-#  outlet masterPadZoneNameTextField : NSTextField $value .packageGraphicsController.selectedMasterPadForPackageEntity.zoneName ;
-#  #--- Exchange popup button
-#  outlet masterPadExchangePopUpButton : PMPadNumberExchangePullDownButton
-#    $currentObject .packageGraphicsController.selectedMasterPadForPackageEntity.dataForExchangePullDownButton
-#    $allObjects root.graphicObjectArray
-#  ;
-#
-##--- Dimension Inspector
-#  outlet dimensionInspectorView : NSView ;
-#  outlet measurementUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnit ;
-#  outlet resetOffsetButton : NSButton
-#    $targetIfEnabled .packageGraphicsController.selectedDimensionForPackageEntity.resetOffsetAction ;
-##--- P1X
-#  controller dimensionP1XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedDimensionForPackageEntity.p1.x
-#    $measurementUnitFactor .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP1X
-#  ;
-#  outlet dimensionP1XValueTextfield : NSTextField $value .dimensionP1XController.valueInUnitFactor ;
-#  outlet dimensionP1XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP1X ;
-#
-##--- P1Y
-#  controller dimensionP1YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedDimensionForPackageEntity.p1.y
-#    $measurementUnitFactor .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP1Y
-#  ;
-#  outlet dimensionP1YValueTextfield : NSTextField $value .dimensionP1YController.valueInUnitFactor ;
-#  outlet dimensionP1YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP1Y ;
-#
-##--- P2X
-#  controller dimensionP2XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedDimensionForPackageEntity.p2.x
-#    $measurementUnitFactor .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP2X
-#  ;
-#  outlet dimensionP2XValueTextfield : NSTextField $value .dimensionP2XController.valueInUnitFactor ;
-#  outlet dimensionP2XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP2X ;
-#
-##--- P2Y
-#  controller dimensionP2YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedDimensionForPackageEntity.p2.y
-#    $measurementUnitFactor .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP2Y
-#  ;
-#  outlet dimensionP2YValueTextfield : NSTextField $value .dimensionP2YController.valueInUnitFactor ;
-#  outlet dimensionP2YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedDimensionForPackageEntity.measurementUnitForP2Y ;
-#
-#
-##--- Arc Inspector ;
-#  outlet arcInspectorView : NSView ;
-##--- Center X
-#  controller arcCenterXController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedArcForPackageEntity.origin.x
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.measurementUnitForC1X
-#  ;
-#  outlet arcCenterXValueTextfield : NSTextField $value .arcCenterXController.valueInUnitFactor ;
-#  outlet arcCenterXUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.measurementUnitForC1X ;
-#
-##--- Center Y
-#  controller arcCenterYController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedArcForPackageEntity.origin.y
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.measurementUnitForC1Y
-#  ;
-#  outlet arcCenterYValueTextfield : NSTextField $value .arcCenterYController.valueInUnitFactor ;
-#  outlet arcCenterYUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.measurementUnitForC1Y ;
-#  #--- Arc is closed
-#  outlet arcIsClosedCheckBox : NSButton $value .packageGraphicsController.selectedArcForPackageEntity.arcIsClosed ;
-#  #--- Radius
-#  controller arcRadiusController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedArcForPackageEntity.radius
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.radiusMeasurementUnit
-#  ;
-#  outlet arcRadiusValueTextfield : NSTextField $value .arcRadiusController.valueInUnitFactor ;
-#  outlet arcRadiusUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.radiusMeasurementUnit ;
-#  #--- Start Angle
-#  outlet startAngleTextField : NSTextField $value .packageGraphicsController.selectedArcForPackageEntity.startAngle ;
-#  controller startAngleController : AngleForSliderController $angle .packageGraphicsController.selectedArcForPackageEntity.startAngle ;
-#  outlet startAngleSlider : PMSlider $value .startAngleController.angleForSlider ;
-#  #--- Arc Angle
-#  outlet arcAngleSlider : PMSlider $value .packageGraphicsController.selectedArcForPackageEntity.arcAngle ;
-#  outlet arcAngleTextField : NSTextField $value .packageGraphicsController.selectedArcForPackageEntity.arcAngle ;
-#  #--- Distance from center
-#  controller arcAngleController : PMDistanceArcController
-#    $radius .packageGraphicsController.selectedArcForPackageEntity.radius
-#    $startAngle .packageGraphicsController.selectedArcForPackageEntity.startAngle
-#    $arcAngle .packageGraphicsController.selectedArcForPackageEntity.arcAngle
-#  ;
-#  controller arcDistanceController : EBMeasurementController
-#    $valueInEBUnit .arcAngleController.distance
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.distanceMeasurementUnit
-#  ;
-#  outlet arcDistanceValueTextfield : NSTextField $value .arcDistanceController.valueInUnitFactor ;
-#  outlet arcDistanceUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.distanceMeasurementUnit ;
-#  #--- Direction
-#  outlet arcDirectionTextfield : NSTextField $value .arcAngleController.direction ;
-#  controller directionAngleController : AngleForSliderController $angle .arcAngleController.direction ;
-#  outlet arcDirectionSlider : PMSlider $value .directionAngleController.angleForSlider ;
-#  #--- Ending tangent
-#  controller endingTangentController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedArcForPackageEntity.endingTangentLength
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.endingTangentMeasurementUnit
-#  ;
-#  outlet endingTangentLengthValueTextfield : NSTextField $value .endingTangentController.valueInUnitFactor ;
-#  outlet endingTangentLengthUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.endingTangentMeasurementUnit ;
-#  #--- Starting tangent
-#  controller startingTangentController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedArcForPackageEntity.startingTangentLength
-#    $measurementUnitFactor .packageGraphicsController.selectedArcForPackageEntity.startingTangentMeasurementUnit
-#  ;
-#  outlet startingTangentLengthValueTextfield : NSTextField $value .startingTangentController.valueInUnitFactor ;
-#  outlet startingTangentLengthUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedArcForPackageEntity.startingTangentMeasurementUnit ;
-#
-##------------ Inspector for segment
-#  outlet segmentInspectorView : NSView ;
-#
-##--- P1X
-#  controller segmentP1XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSegmentForPackageEntity.p1.x
-#    $measurementUnitFactor .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP1X
-#  ;
-#  outlet segmentP1XValueTextfield : NSTextField $value .segmentP1XController.valueInUnitFactor ;
-#  outlet segmentP1XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP1X ;
-#
-##--- P1Y
-#  controller segmentP1YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSegmentForPackageEntity.p1.y
-#    $measurementUnitFactor .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP1Y
-#  ;
-#  outlet segmentP1YValueTextfield : NSTextField $value .segmentP1YController.valueInUnitFactor ;
-#  outlet segmentP1YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP1Y ;
-#
-##--- P2X
-#  controller segmentP2XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSegmentForPackageEntity.p2.x
-#    $measurementUnitFactor .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP2X
-#  ;
-#  outlet segmentP2XValueTextfield : NSTextField $value .segmentP2XController.valueInUnitFactor ;
-#  outlet segmentP2XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP2X ;
-#
-##--- P2Y
-#  controller segmentP2YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedSegmentForPackageEntity.p2.y
-#    $measurementUnitFactor .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP2Y
-#  ;
-#  outlet segmentP2YValueTextfield : NSTextField $value .segmentP2YController.valueInUnitFactor ;
-#  outlet segmentP2YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedSegmentForPackageEntity.measurementUnitForP2Y ;
-#
-##------------ Inspector for guide
-#  outlet guideInspectorView : NSView ;
-#
-##--- P1X
-#  controller guideP1XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedGuideForPackageEntity.p1.x
-#    $measurementUnitFactor .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP1X
-#  ;
-#  outlet guideP1XValueTextfield : NSTextField $value .guideP1XController.valueInUnitFactor ;
-#  outlet guideP1XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP1X ;
-#
-##--- P1Y
-#  controller guideP1YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedGuideForPackageEntity.p1.y
-#    $measurementUnitFactor .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP1Y
-#  ;
-#  outlet guideP1YValueTextfield : NSTextField $value .guideP1YController.valueInUnitFactor ;
-#  outlet guideP1YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP1Y ;
-#
-##--- P2X
-#  controller guideP2XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedGuideForPackageEntity.p2.x
-#    $measurementUnitFactor .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP2X
-#  ;
-#  outlet guideP2XValueTextfield : NSTextField $value .guideP2XController.valueInUnitFactor ;
-#  outlet guideP2XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP2X ;
-#
-##--- P2Y
-#  controller guideP2YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedGuideForPackageEntity.p2.y
-#    $measurementUnitFactor .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP2Y
-#  ;
-#  outlet guideP2YValueTextfield : NSTextField $value .guideP2YController.valueInUnitFactor ;
-#  outlet guideP2YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedGuideForPackageEntity.measurementUnitForP2Y ;
-#
-##------------ Inspector for Bezier Curve
-#  outlet bezierCurveInspectorView : NSView ;
-#
-##--- P1X
-#  controller bezierCurveP1XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.p1.x
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP1X
-#  ;
-#  outlet bezierCurveP1XValueTextfield : NSTextField $value .bezierCurveP1XController.valueInUnitFactor ;
-#  outlet bezierCurveP1XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP1X ;
-#
-##--- P1Y
-#  controller bezierCurveP1YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.p1.y
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP1Y
-#  ;
-#  outlet bezierCurveP1YValueTextfield : NSTextField $value .bezierCurveP1YController.valueInUnitFactor ;
-#  outlet bezierCurveP1YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP1Y ;
-#
-##--- P2X
-#  controller bezierCurveP2XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.p2.x
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP2X
-#  ;
-#  outlet bezierCurveP2XValueTextfield : NSTextField $value .bezierCurveP2XController.valueInUnitFactor ;
-#  outlet bezierCurveP2XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP2X ;
-#
-##--- P2Y
-#  controller bezierCurveP2YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.p2.y
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP2Y
-#  ;
-#  outlet bezierCurveP2YValueTextfield : NSTextField $value .bezierCurveP2YController.valueInUnitFactor ;
-#  outlet bezierCurveP2YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForP2Y ;
-#
-##--- C1X
-#  controller bezierCurveC1XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.controlP1.x
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC1X
-#  ;
-#  outlet bezierCurveC1XValueTextfield : NSTextField $value .bezierCurveC1XController.valueInUnitFactor ;
-#  outlet bezierCurveC1XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC1X ;
-#
-##--- C1Y
-#  controller bezierCurveC1YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.controlP1.y
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC1Y
-#  ;
-#  outlet bezierCurveC1YValueTextfield : NSTextField $value .bezierCurveC1YController.valueInUnitFactor ;
-#  outlet bezierCurveC1YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC1Y ;
-#
-##--- C2X
-#  controller bezierCurveC2XController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.controlP2.x
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC2X
-#  ;
-#  outlet bezierCurveC2XValueTextfield : NSTextField $value .bezierCurveC2XController.valueInUnitFactor ;
-#  outlet bezierCurveC2XUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC2X ;
-#
-##--- C2Y
-#  controller bezierCurveC2YController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedBezierCurveForPackageEntity.controlP2.y
-#    $measurementUnitFactor .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC2Y
-#  ;
-#  outlet bezierCurveC2YValueTextfield : NSTextField $value .bezierCurveC2YController.valueInUnitFactor ;
-#  outlet bezierCurveC2YUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedBezierCurveForPackageEntity.measurementUnitForC2Y ;
-#
-##--- Inspector for framed circle
-#  outlet framedOvalInspectorView : NSView ;
-#  #--- Controller
-#  controller framedOvalController : PMOvalController
-#    $rectangleXOrigin .packageGraphicsController.selectedFramedOvalForPackageEntity.r.origin.x
-#    $rectangleYOrigin .packageGraphicsController.selectedFramedOvalForPackageEntity.r.origin.y
-#    $rectangleWidth .packageGraphicsController.selectedFramedOvalForPackageEntity.r.size.width
-#    $rectangleHeight .packageGraphicsController.selectedFramedOvalForPackageEntity.r.size.height
-#  ;
-#  #--- X Center
-#  controller framedOvalXcenterController : EBMeasurementController
-#    $valueInEBUnit .framedOvalController.xCenter
-#    $measurementUnitFactor .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForCenterX
-#  ;
-#  outlet framedOvalXcenterValueTextfield : NSTextField $value .framedOvalXcenterController.valueInUnitFactor ;
-#  outlet framedOvalXcenterUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForCenterX ;
-#  #--- Y Center
-#  controller framedOvalYcenterController : EBMeasurementController
-#    $valueInEBUnit .framedOvalController.yCenter
-#    $measurementUnitFactor .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForCenterY
-#  ;
-#  outlet framedOvalYcenterValueTextfield : NSTextField $value .framedOvalYcenterController.valueInUnitFactor ;
-#  outlet framedOvalYcenterUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForCenterY ;
-#  #--- Width
-#  controller framedOvalWidthController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedFramedOvalForPackageEntity.r.size.width
-#    $measurementUnitFactor .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForHAxis
-#  ;
-#  outlet framedOvalWidthValueTextfield : NSTextField $value .framedOvalWidthController.valueInUnitFactor ;
-#  outlet framedOvalWidthUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForHAxis ;
-#  #--- Height
-#  controller framedOvalHeightController : EBMeasurementController
-#    $valueInEBUnit .packageGraphicsController.selectedFramedOvalForPackageEntity.r.size.height
-#    $measurementUnitFactor .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForVAxis
-#  ;
-#  outlet framedOvalHeightValueTextfield : NSTextField $value .framedOvalHeightController.valueInUnitFactor ;
-#  outlet framedOvalHeightUnitPopUpButton : NSPopUpButton $selectedTag .packageGraphicsController.selectedFramedOvalForPackageEntity.measurementUnitForVAxis ;
-#
-##--- package View
-#  outlet selectedObjectInspectorView : NSView ;
-#  outlet packageView : EBView
-#    $backgroundColor PMPackagePreferences.root.packageBackgroundColor
-#    $gridStyle root.packageGridStyle
-#    $gridFactor  root.packageGridFactor
-#    $placementGrid root.packageGrid
-#    $displayedGridStep root.packageGrid
-#    $zoom root.packageZoom
-#    $verticalFlip root.packageVerticalFlip
-#    $horizontalFlip root.packageHorizontalFlip
-#    $measurementUnitsFactor root.packageMeasurementUnitsFactor
-#    $shouldAntialias PMGeneralPreferences.root.antiAliasing
-#    $gridDotColor PMPackagePreferences.root.dotColorOfPackageGrid
-#    $gridLineColor PMPackagePreferences.root.lineColorOfPackageGrid
-#    inspectorView selectedObjectInspectorView ;
-#    inspector SlavePadForPackageEntity  -> .slavePadInspectorView ;
-#    inspector MasterPadForPackageEntity  -> .masterPadInspectorView ;
-#    inspector DimensionForPackageEntity -> .dimensionInspectorView ;
-#    inspector ArcForPackageEntity -> .arcInspectorView ;
-#    inspector FramedOvalForPackageEntity -> .framedOvalInspectorView ;
-#    inspector SegmentForPackageEntity -> .segmentInspectorView ;
-#    inspector BezierCurveForPackageEntity -> .bezierCurveInspectorView ;
-#    inspector ZoneForPadEntity -> .padZoneInspectorView ;
-#    inspector GuideForPackageEntity -> .guideInspectorView ;
-#  ;
-#  outlet packageScrollView : NSScrollView (PM_scroll_view_with_placards) ;
 #
 ##--------------- Program Tab
 #  outlet programTextView : NSTextView $value root.program {NSContinuouslyUpdatesValue:yes} ;

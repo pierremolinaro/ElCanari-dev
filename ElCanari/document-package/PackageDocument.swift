@@ -21,6 +21,12 @@ import Cocoa
   var mPackageBezierCurveSelectionController = SelectionController_PackageDocument_mPackageBezierCurveSelectionController ()
 
   //····················································································································
+  //   Selection controller: mPackageOvalSelectionController
+  //····················································································································
+
+  var mPackageOvalSelectionController = SelectionController_PackageDocument_mPackageOvalSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -49,12 +55,59 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
   //····················································································································
 
   @IBOutlet var mAddBezierButton : CanariDragSourceButton?
+  @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
   @IBOutlet var mAutoNumberingInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBaseInspectorView : NSView?
@@ -79,6 +132,7 @@ import Cocoa
   @IBOutlet var mComposedPackageScrollView : EBScrollView?
   @IBOutlet var mComposedPackageView : EBView?
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell?
+  @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView?
   @IBOutlet var mGridStep : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
@@ -86,9 +140,22 @@ import Cocoa
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mIssueInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mIssueScrollView : NSScrollView?
+  @IBOutlet var mIssueTableView : CanariIssueTableView?
+  @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mIssuesInspectorView : CanariViewWithKeyView?
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mOvalHeightTextField : CanariDimensionTextField?
+  @IBOutlet var mOvalHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mOvalInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mOvalWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mOvalWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mOvalXTextField : CanariDimensionTextField?
+  @IBOutlet var mOvalXUnitPopUp : EBPopUpButton?
+  @IBOutlet var mOvalYTextField : CanariDimensionTextField?
+  @IBOutlet var mOvalYUnitPopUp : EBPopUpButton?
   @IBOutlet var mPackageBackgroundColorColorWell : EBColorWell?
   @IBOutlet var mPackageColorColorWell : EBColorWell?
   @IBOutlet var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton?
@@ -108,6 +175,7 @@ import Cocoa
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
+  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton?
@@ -117,6 +185,8 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
+  var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -152,6 +222,8 @@ import Cocoa
     self.mPackageObjectsController.addExplorer (name: "mPackageObjectsController", y:&y, view:view)
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
+  //--- Selection controller property: mPackageOvalSelectionController
+    self.mPackageOvalSelectionController.addExplorer (name: "mPackageOvalSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -199,6 +271,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddBezierButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddOvalButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddOvalButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddOvalButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAddSegmentButton {
@@ -561,6 +648,21 @@ import Cocoa
         errorMessage: "the 'mCrossColorOfPackageGridColorWell' outlet is nil"
       )
     }
+    if let outlet : Any = self.mDeselectIssueButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDeselectIssueButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mDisplayInspectorView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -666,6 +768,66 @@ import Cocoa
         errorMessage: "the 'mInspectorSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mIssueInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueScrollView {
+      if !(outlet is NSScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueScrollView' outlet is not an instance of 'NSScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueScrollView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueTableView {
+      if !(outlet is CanariIssueTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTableView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mIssuesInspectorView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -709,6 +871,141 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mMasterView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalHeightTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalHeightTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalHeightTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalHeightUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalWidthTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalWidthTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalWidthTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalWidthUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalXTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalXTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalXTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalXUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalXUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalXUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalYTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalYTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalYTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mOvalYUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mOvalYUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mOvalYUnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mPackageBackgroundColorColorWell {
@@ -996,6 +1293,21 @@ import Cocoa
         errorMessage: "the 'mSignatureTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mStatusImageViewInToolbar {
+      if !(outlet is EBImageObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
         presentErrorWindow (
@@ -1060,8 +1372,54 @@ import Cocoa
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property)
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mPackageOvalSelectionController
+    self.mPackageOvalSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageDocument_mStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     self.mPackageObjectsController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1093,6 +1451,18 @@ import Cocoa
     self.mBezierCurveCPX2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpx2_property, self.mPackageBezierCurveSelectionController.cpx2Unit_property, file: #file, line: #line)
     self.mBezierCurveCPY2UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.cpy2Unit_property, file: #file, line: #line)
     self.mBezierCurveCPY2TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.cpy2_property, self.mPackageBezierCurveSelectionController.cpy2Unit_property, file: #file, line: #line)
+    self.mOvalXUnitPopUp?.bind_selectedTag (self.mPackageOvalSelectionController.xUnit_property, file: #file, line: #line)
+    self.mOvalXTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.x_property, self.mPackageOvalSelectionController.xUnit_property, file: #file, line: #line)
+    self.mOvalYUnitPopUp?.bind_selectedTag (self.mPackageOvalSelectionController.yUnit_property, file: #file, line: #line)
+    self.mOvalYTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.y_property, self.mPackageOvalSelectionController.yUnit_property, file: #file, line: #line)
+    self.mOvalWidthUnitPopUp?.bind_selectedTag (self.mPackageOvalSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mOvalWidthTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mOvalHeightUnitPopUp?.bind_selectedTag (self.mPackageOvalSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mOvalHeightTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
+    self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
+    self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
@@ -1116,6 +1486,26 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.noIssue_property_selection
+        },
+        outlet:self.mDeselectIssueButton
+      )
+      self.rootObject.noIssue_property.addEBObserver (controller)
+      mController_mDeselectIssueButton_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return self.rootObject.noIssue_property_selection
+        },
+        outlet:self.mIssueScrollView
+      )
+      self.rootObject.noIssue_property.addEBObserver (controller)
+      mController_mIssueScrollView_hidden = controller
+    }
   //--------------------------- Set targets / actions
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
@@ -1159,6 +1549,18 @@ import Cocoa
     self.mBezierCurveCPX2TextField?.unbind_dimensionAndUnit ()
     self.mBezierCurveCPY2UnitPopUp?.unbind_selectedTag ()
     self.mBezierCurveCPY2TextField?.unbind_dimensionAndUnit ()
+    self.mOvalXUnitPopUp?.unbind_selectedTag ()
+    self.mOvalXTextField?.unbind_dimensionAndUnit ()
+    self.mOvalYUnitPopUp?.unbind_selectedTag ()
+    self.mOvalYTextField?.unbind_dimensionAndUnit ()
+    self.mOvalWidthUnitPopUp?.unbind_selectedTag ()
+    self.mOvalWidthTextField?.unbind_dimensionAndUnit ()
+    self.mOvalHeightUnitPopUp?.unbind_selectedTag ()
+    self.mOvalHeightTextField?.unbind_dimensionAndUnit ()
+    self.mStatusImageViewInToolbar?.unbind_image ()
+    self.mStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mIssueTextField?.unbind_valueObserver ()
+    self.mIssueTableView?.unbind_issues ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_gridStyle ()
@@ -1182,18 +1584,27 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
+    self.mController_mDeselectIssueButton_hidden = nil
+    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
+    self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.unbind_model ()
   //--- Selection controller property: mPackageBezierCurveSelectionController
     self.mPackageBezierCurveSelectionController.unbind_selection ()
+  //--- Selection controller property: mPackageOvalSelectionController
+    self.mPackageOvalSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
+    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddBezierButton?.ebCleanUp ()
+    self.mAddOvalButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mAutoNumberingInspectorView?.ebCleanUp ()
     self.mBaseInspectorView?.ebCleanUp ()
@@ -1218,6 +1629,7 @@ import Cocoa
     self.mComposedPackageScrollView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
     self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
+    self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
     self.mGridStep?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
@@ -1225,9 +1637,22 @@ import Cocoa
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mIssueInspectorView?.ebCleanUp ()
+    self.mIssueScrollView?.ebCleanUp ()
+    self.mIssueTableView?.ebCleanUp ()
+    self.mIssueTextField?.ebCleanUp ()
     self.mIssuesInspectorView?.ebCleanUp ()
     self.mLineColorOfPackageGridColorWell?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mOvalHeightTextField?.ebCleanUp ()
+    self.mOvalHeightUnitPopUp?.ebCleanUp ()
+    self.mOvalInspectorView?.ebCleanUp ()
+    self.mOvalWidthTextField?.ebCleanUp ()
+    self.mOvalWidthUnitPopUp?.ebCleanUp ()
+    self.mOvalXTextField?.ebCleanUp ()
+    self.mOvalXUnitPopUp?.ebCleanUp ()
+    self.mOvalYTextField?.ebCleanUp ()
+    self.mOvalYUnitPopUp?.ebCleanUp ()
     self.mPackageBackgroundColorColorWell?.ebCleanUp ()
     self.mPackageColorColorWell?.ebCleanUp ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
@@ -1247,6 +1672,7 @@ import Cocoa
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSelectedObjectsInspectorView?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
