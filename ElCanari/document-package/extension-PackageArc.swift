@@ -39,27 +39,7 @@ extension PackageArc {
   //····················································································································
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
-    var dx = inDx
-    var dy = inDy
-    if inKnobIndex == PACKAGE_ARC_CENTER {
-//      if (self.width - dx) < 0 {
-//        dx = self.width
-//      }
-    }else if inKnobIndex == PACKAGE_ARC_RADIUS {
-//      shape.append (EBKnobShape (at: radiusKnob, index: PACKAGE_ARC_RADIUS, .circ))
-//      if (self.width + dx) < 0 {
-//        dx = -self.width
-//      }
-//    }else if inKnobIndex == PACKAGE_OVAL_BOTTOM {
-//      if (self.height - dy) < 0 {
-//        dy = self.height
-//      }
-//    }else if inKnobIndex == PACKAGE_OVAL_TOP {
-//      if (self.height + dy) < 0 {
-//        dy = -self.height
-//      }
-    }
-    return OCCanariPoint (x: dx, y: dy)
+    return OCCanariPoint (x: inDx, y: inDy)
  }
 
   //····················································································································

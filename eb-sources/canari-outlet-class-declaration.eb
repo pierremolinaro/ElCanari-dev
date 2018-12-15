@@ -45,6 +45,10 @@ binding CanariSegmentedControl $selectedPage : property Int ;
 extern outlet class CanariPackageArcAngleTextField ;
 binding CanariPackageArcAngleTextField $angle : property Int ;
 
+
+extern outlet class CanariPackageArcAngleSlider : NSControl ;
+binding CanariPackageArcAngleSlider $angle : property Int ;
+
 extern outlet class CanariQuadrantSegmentedControl : NSView ;
 binding CanariQuadrantSegmentedControl $quadrant : property QuadrantRotation ;
 

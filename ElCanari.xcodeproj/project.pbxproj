@@ -674,6 +674,8 @@
 		CF85859E21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85859C21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift */; };
 		CF85868421C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */; };
 		CF85868521C5458100082CE3 /* CanariPackageArcAngleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */; };
+		CF85868721C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */; };
+		CF85868821C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */; };
 		CF861AA31B3F04460006BE63 /* library-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA21B3F04460006BE63 /* library-utilities.swift */; };
 		CF861AA51B3F06230006BE63 /* EBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA41B3F06230006BE63 /* EBButton.swift */; };
 		CF861AA91B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */; };
@@ -1240,6 +1242,7 @@
 		CF85859821C5130900082CE3 /* extension-PackageArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-PackageArc.swift"; sourceTree = "<group>"; };
 		CF85859C21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageArcSelectionController.swift"; sourceTree = "<group>"; };
 		CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPackageArcAngleTextField.swift; sourceTree = "<group>"; };
+		CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPackageArcAngleSlider.swift; sourceTree = "<group>"; };
 		CF861AA21B3F04460006BE63 /* library-utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "library-utilities.swift"; sourceTree = "<group>"; };
 		CF861AA41B3F06230006BE63 /* EBButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBButton.swift; sourceTree = "<group>"; };
 		CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-revealUserLibraryInFinderAction.swift"; sourceTree = "<group>"; };
@@ -1865,6 +1868,7 @@
 				CF2ED48221ADAD830019114E /* CanariIssueTableView.swift */,
 				CF6BC0501DE1C53A002D935F /* CanariMenu.swift */,
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForPanel.swift */,
+				CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */,
 				CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
@@ -2743,6 +2747,7 @@
 				CF1D9C7E21BBEE3400FFF459 /* EBView-menu-actions.swift in Sources */,
 				CF33955A1B4AC885009C561B /* CanariSignatureField.swift in Sources */,
 				CFE85A9F21A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
+				CF85868721C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
 				CFCD1F6421A1CBFF00A8297B /* SymbolDocument.swift in Sources */,
 				CF00846621C4363E003627E9 /* transient-PackageDocument-mStatusImage.swift in Sources */,
 				CF61FA931B3EBF72000E0257 /* CanariFontCharacterSelectButton.swift in Sources */,
@@ -3118,6 +3123,7 @@
 				CF1D9C7F21BBEE3400FFF459 /* EBView-menu-actions.swift in Sources */,
 				CF5C4D8D219F04D600EAC52A /* CanariSignatureField.swift in Sources */,
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
+				CF85868821C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
 				CFCD1F6521A1CBFF00A8297B /* SymbolDocument.swift in Sources */,
 				CF00846721C4363E003627E9 /* transient-PackageDocument-mStatusImage.swift in Sources */,
 				CF5C4D8E219F04D600EAC52A /* CanariFontCharacterSelectButton.swift in Sources */,
