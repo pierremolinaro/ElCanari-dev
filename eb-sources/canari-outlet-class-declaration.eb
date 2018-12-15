@@ -42,6 +42,8 @@ binding CanariFontCharacterSelectButton $codePoint : property Int ;
 extern outlet class CanariSegmentedControl ;
 binding CanariSegmentedControl $selectedPage : property Int ;
 
+extern outlet class CanariPackageArcAngleTextField ;
+binding CanariPackageArcAngleTextField $angle : property Int ;
 
 extern outlet class CanariQuadrantSegmentedControl : NSView ;
 binding CanariQuadrantSegmentedControl $quadrant : property QuadrantRotation ;

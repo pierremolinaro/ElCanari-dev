@@ -26,7 +26,7 @@ func transient_PackageArc_selectionDisplay (
     let radius = canariUnitToCocoa (self_radius)
     let startTangentLength = canariUnitToCocoa (self_startTangentLength)
     let endTangentLength = canariUnitToCocoa (self_endTangentLength)
-    let startAngle = CGFloat (self_startAngle) / 1000.0
+    let startAngle = packageArcAngleToCocoaDegrees (self_startAngle)
     let arcAngle = CGFloat (self_arcAngle) / 1000.0
     let bp = NSBezierPath (
       arcWithTangentFromCenter: center,
@@ -39,13 +39,14 @@ func transient_PackageArc_selectionDisplay (
     )
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    let shape = EBStrokeBezierPathShape ([bp], NSColor.cyan)
+    let shape = EBShape ()
+    shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
   //--- Add center knob
     shape.append (EBKnobShape (at: center, index: PACKAGE_ARC_CENTER, .rect))
   //--- Add radius knob
     var t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
-    t.rotate (byDegrees: startAngle + arcAngle / 2.0)
+    t.rotate (byDegrees: startAngle - arcAngle / 2.0)
     let radiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
     shape.append (EBKnobShape (at: radiusKnob, index: PACKAGE_ARC_RADIUS, .circ))
   //--- Add start point knob
@@ -57,7 +58,7 @@ func transient_PackageArc_selectionDisplay (
   //--- Add end point knob
     t = NSAffineTransform ()
     t.translateX (by: center.x, yBy: center.y)
-    t.rotate (byDegrees: startAngle + arcAngle)
+    t.rotate (byDegrees: startAngle - arcAngle)
     let endPointKnob = t.transform (NSPoint (x: radius, y: 0.0))
     shape.append (EBKnobShape (at: endPointKnob, index: PACKAGE_ARC_END_ANGLE, .circ))
   //---

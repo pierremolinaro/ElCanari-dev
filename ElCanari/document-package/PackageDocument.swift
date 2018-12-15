@@ -116,12 +116,14 @@ import Cocoa
   @IBOutlet var mAddBezierButton : CanariDragSourceButton?
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
+  @IBOutlet var mArcAngle : CanariPackageArcAngleTextField?
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField?
   @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton?
   @IBOutlet var mArcInspectorView : CanariViewWithKeyView?
   @IBOutlet var mArcPathIsClosedSwitch : EBSwitch?
   @IBOutlet var mArcRadiusTextField : CanariDimensionTextField?
   @IBOutlet var mArcRadiusUnitPopUp : EBPopUpButton?
+  @IBOutlet var mArcStartAngle : CanariPackageArcAngleTextField?
   @IBOutlet var mArcStartTangentTextField : CanariDimensionTextField?
   @IBOutlet var mArcStartTangentUnitPopUp : EBPopUpButton?
   @IBOutlet var mArcXCenterTextField : CanariDimensionTextField?
@@ -339,6 +341,21 @@ import Cocoa
         errorMessage: "the 'mAddSegmentButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mArcAngle {
+      if !(outlet is CanariPackageArcAngleTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcAngle' outlet is not an instance of 'CanariPackageArcAngleTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcAngle' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mArcEndTangentTextField {
       if !(outlet is CanariDimensionTextField) {
         presentErrorWindow (
@@ -427,6 +444,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mArcRadiusUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcStartAngle {
+      if !(outlet is CanariPackageArcAngleTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcStartAngle' outlet is not an instance of 'CanariPackageArcAngleTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcStartAngle' outlet is nil"
       )
     }
     if let outlet : Any = self.mArcStartTangentTextField {
@@ -1688,6 +1720,8 @@ import Cocoa
     self.mArcEndTangentUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.endTangentLengthUnit_property, file: #file, line: #line)
     self.mArcEndTangentTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangentLength_property, self.mPackageArcSelectionController.endTangentLengthUnit_property, file: #file, line: #line)
     self.mArcPathIsClosedSwitch?.bind_value (self.mPackageArcSelectionController.pathIsClosed_property, file: #file, line: #line)
+    self.mArcStartAngle?.bind_angle (self.mPackageArcSelectionController.startAngle_property, file: #file, line: #line)
+    self.mArcAngle?.bind_angle (self.mPackageArcSelectionController.arcAngle_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -1797,6 +1831,8 @@ import Cocoa
     self.mArcEndTangentUnitPopUp?.unbind_selectedTag ()
     self.mArcEndTangentTextField?.unbind_dimensionAndUnit ()
     self.mArcPathIsClosedSwitch?.unbind_value ()
+    self.mArcStartAngle?.unbind_angle ()
+    self.mArcAngle?.unbind_angle ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -1849,12 +1885,14 @@ import Cocoa
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
     self.mArcEndTangentUnitPopUp?.ebCleanUp ()
     self.mArcInspectorView?.ebCleanUp ()
     self.mArcPathIsClosedSwitch?.ebCleanUp ()
     self.mArcRadiusTextField?.ebCleanUp ()
     self.mArcRadiusUnitPopUp?.ebCleanUp ()
+    self.mArcStartAngle?.ebCleanUp ()
     self.mArcStartTangentTextField?.ebCleanUp ()
     self.mArcStartTangentUnitPopUp?.ebCleanUp ()
     self.mArcXCenterTextField?.ebCleanUp ()

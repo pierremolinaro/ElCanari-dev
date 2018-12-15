@@ -28,7 +28,7 @@ func transient_PackageArc_objectDisplay (
   let radius = canariUnitToCocoa (self_radius)
   let startTangentLength = canariUnitToCocoa (self_startTangentLength)
   let endTangentLength = canariUnitToCocoa (self_endTangentLength)
-  let startAngle = CGFloat (self_startAngle) / 1000.0
+  let startAngle = packageArcAngleToCocoaDegrees (self_startAngle)
   let arcAngle = CGFloat (self_arcAngle) / 1000.0
   let bp = NSBezierPath (
     arcWithTangentFromCenter: center,

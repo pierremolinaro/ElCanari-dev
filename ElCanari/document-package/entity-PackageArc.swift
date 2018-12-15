@@ -172,7 +172,7 @@ class PackageArc : PackageObject,
   //   Atomic property: startAngle
   //····················································································································
 
-  var startAngle_property = EBStoredProperty_Int (225000)
+  var startAngle_property = EBStoredProperty_Int (45000)
 
   //····················································································································
 
@@ -218,7 +218,7 @@ class PackageArc : PackageObject,
   //   Atomic property: startTangentLength
   //····················································································································
 
-  var startTangentLength_property = EBStoredProperty_Int (228600)
+  var startTangentLength_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
@@ -241,7 +241,7 @@ class PackageArc : PackageObject,
   //   Atomic property: endTangentLength
   //····················································································································
 
-  var endTangentLength_property = EBStoredProperty_Int (228600)
+  var endTangentLength_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
@@ -264,7 +264,7 @@ class PackageArc : PackageObject,
   //   Atomic property: pathIsClosed
   //····················································································································
 
-  var pathIsClosed_property = EBStoredProperty_Bool (true)
+  var pathIsClosed_property = EBStoredProperty_Bool (false)
 
   //····················································································································
 

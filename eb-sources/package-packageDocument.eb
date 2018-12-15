@@ -151,6 +151,12 @@ document PackageDocument root PackageRoot {
 #--- Close path
   outlet EBSwitch mArcPathIsClosedSwitch $value mPackageArcSelectionController.pathIsClosed ;
 
+#--- Start angle
+  outlet CanariPackageArcAngleTextField mArcStartAngle $angle mPackageArcSelectionController.startAngle ;
+
+#--- Arc angle
+  outlet CanariPackageArcAngleTextField mArcAngle $angle mPackageArcSelectionController.arcAngle ;
+
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;

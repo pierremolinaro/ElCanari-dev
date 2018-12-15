@@ -1,11 +1,18 @@
+//
+//  CanariPackageArcAngleTextField.swift
+//  ElCanari
+//
+//  Created by Pierre Molinaro on 15/12/2018.
+//
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariDimensionTextField
+//   CanariPackageArcAngleTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDimensionTextField) // Required for an outlet
-class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 
@@ -22,7 +29,7 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
     self.delegate = self
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   deinit {
@@ -33,19 +40,18 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //  value binding
   //····················································································································
 
-  private var mController : Controller_CanariDimensionTextField_dimensionAndUnit?
+  private var mController : Controller_CanariPackageArcAngleTextField_angle?
 
   //····················································································································
 
-  func bind_dimensionAndUnit (_ object:EBReadWriteProperty_Int,
-                              _ unit:EBReadOnlyProperty_Int,
-                              file:String, line:Int) {
-    self.mController = Controller_CanariDimensionTextField_dimensionAndUnit (dimension:object, unit:unit, outlet:self, file:file, line:line)
+  func bind_angle (_ object:EBReadWriteProperty_Int,
+                   file:String, line:Int) {
+    self.mController = Controller_CanariPackageArcAngleTextField_angle (angle: object, outlet: self)
   }
 
   //····················································································································
 
-  func unbind_dimensionAndUnit () {
+  func unbind_angle () {
     self.mController?.unregister ()
     self.mController = nil
   }
@@ -55,42 +61,39 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Controller Controller_CanariDimensionTextField_dimensionAndUnit
+//   Controller Controller_CanariPackageArcAngleTextField_angle
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleController {
+final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController {
 
-  private var mOutlet: CanariDimensionTextField
-  private var mDimension : EBReadWriteProperty_Int
-  private var mUnit : EBReadOnlyProperty_Int
+  private var mOutlet: CanariPackageArcAngleTextField
+  private var mAngle : EBReadWriteProperty_Int
   private var mNumberFormatter : NumberFormatter
 
   //····················································································································
 
-  init (dimension:EBReadWriteProperty_Int,
-        unit:EBReadOnlyProperty_Int,
-        outlet : CanariDimensionTextField,
-        file : String, line : Int) {
-    mDimension = dimension
-    mUnit = unit
+  init (angle: EBReadWriteProperty_Int,
+        outlet: CanariPackageArcAngleTextField) {
+    mAngle = angle
     mOutlet = outlet
     mNumberFormatter = NumberFormatter ()
-    super.init (observedObjects:[dimension, unit])
+    super.init (observedObjects: [angle])
   //--- Target
     mOutlet.target = self
-    mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
+    mOutlet.action = #selector (Controller_CanariPackageArcAngleTextField_angle.action(_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
     self.mNumberFormatter.localizesFormat = true
-    self.mNumberFormatter.minimumFractionDigits = 2
+    self.mNumberFormatter.minimumFractionDigits = 3
+    self.mNumberFormatter.format = "##0.000°"
     mOutlet.formatter = self.mNumberFormatter
   //--- Call back
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
-  
+
   override func unregister () {
     super.unregister ()
     self.mOutlet.target = nil
@@ -100,29 +103,29 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   //····················································································································
 
   private func updateOutlet () {
-    switch combine (mDimension.prop, unit:mUnit.prop) {
+    switch self.mAngle.prop {
     case .empty :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "multiple"
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.stringValue = "multiple"
+      self.mOutlet.enableFromValueBinding (true)
     case .single (let propertyValue) :
-      mOutlet.doubleValue = propertyValue
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.doubleValue = Double (propertyValue) / 1000.0
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
   //····················································································································
 
-  @objc func action (_ sender : CanariDimensionTextField) {
-    switch mUnit.prop {
+  @objc func action (_ sender : CanariPackageArcAngleTextField) {
+    switch self.mAngle.prop {
     case .empty, .multiple :
       break
-    case .single (let unit) :
+    case .single (_) :
       if let outletValueNumber = self.mNumberFormatter.number (from: self.mOutlet.stringValue) {
-        let value : Int = 90 * Int (round (outletValueNumber.doubleValue * Double (unit) / 90.0))
-        _ = self.mDimension.validateAndSetProp (value, windowForSheet: sender.window)
+        let value : Int = Int (round (outletValueNumber.doubleValue * 1000.0))
+        _ = self.mAngle.validateAndSetProp (value, windowForSheet: sender.window)
       }else{
         __NSBeep ()
       }
