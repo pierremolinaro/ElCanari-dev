@@ -101,6 +101,8 @@ final class MergerPadArray : EBSimpleClass {
         }else{
           bp = NSBezierPath (ovalIn:r)
         }
+      case .octo :
+        bp = NSBezierPath (octogonInRect: r)
       }
       var transform = AffineTransform (translationByX: canariUnitToCocoa (pad.x), byY: canariUnitToCocoa (pad.y))
       transform.rotate (byRadians: canariRotationToRadians (pad.rotation))
@@ -160,6 +162,8 @@ final class MergerPadArray : EBSimpleClass {
         }else{
           bp = NSBezierPath (ovalIn:r)
         }
+      case .octo :
+        bp = NSBezierPath (octogonInRect: r)
       }
       ioBezierPaths.append (transform.transform (bp))
     }
@@ -245,14 +249,14 @@ final class MergerPadArray : EBSimpleClass {
         let sina = sin (pasRotationInRadians)
         let hs = CGFloat (widthTenthMilF) / 2.0
         let ws = CGFloat (heightTenthMilF) / 2.0
-        let p1x : CGFloat = CGFloat (xmt) + ( hs * cosa - ws * sina)
-        let p1y : CGFloat = CGFloat (ymt) + ( hs * sina + ws * cosa)
-        let p2x : CGFloat = CGFloat (xmt) + (-hs * cosa - ws * sina)
-        let p2y : CGFloat = CGFloat (ymt) + (-hs * sina + ws * cosa)
-        let p3x : CGFloat = CGFloat (xmt) + (-hs * cosa + ws * sina)
-        let p3y : CGFloat = CGFloat (ymt) + (-hs * sina - ws * cosa)
-        let p4x : CGFloat = CGFloat (xmt) + ( hs * cosa + ws * sina)
-        let p4y : CGFloat = CGFloat (ymt) + ( hs * sina - ws * cosa)
+        let p1x = CGFloat (xmt) + ( hs * cosa - ws * sina)
+        let p1y = CGFloat (ymt) + ( hs * sina + ws * cosa)
+        let p2x = CGFloat (xmt) + (-hs * cosa - ws * sina)
+        let p2y = CGFloat (ymt) + (-hs * sina + ws * cosa)
+        let p3x = CGFloat (xmt) + (-hs * cosa + ws * sina)
+        let p3y = CGFloat (ymt) + (-hs * sina - ws * cosa)
+        let p4x = CGFloat (xmt) + ( hs * cosa + ws * sina)
+        let p4y = CGFloat (ymt) + ( hs * sina - ws * cosa)
         var drawings = [String] ()
         drawings.append ("X\(Int (p1x))Y\(Int (p1y))D02") // Move to
         drawings.append ("X\(Int (p2x))Y\(Int (p2y))D01") // Line to
@@ -260,6 +264,25 @@ final class MergerPadArray : EBSimpleClass {
         drawings.append ("X\(Int (p4x))Y\(Int (p4y))D01") // Line to
         drawings.append ("X\(Int (p1x))Y\(Int (p1y))D01") // Line to
         ioPolygons.append (drawings)
+      case .octo :
+        var drawings = [String] ()
+        drawings.append ("Octogonal pad (\(#file):\(#line)")
+        ioPolygons.append (drawings)
+//        let s2 : CGFloat = sqrt (2.0)
+//        let w = inRect.size.width
+//        let h = inRect.size.height
+//        let x = inRect.origin.x // center x
+//        let y = inRect.origin.y // center y
+//        let lg = min (w, h) / (1.0 + s2)
+//        self.move (to: NSPoint (x: x + lg / s2,     y: y + h))
+//        self.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
+//        self.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
+//        self.line (to: NSPoint (x: x + w,           y: y + lg / s2))
+//        self.line (to: NSPoint (x: x + w - lg / s2, y: y))
+//        self.line (to: NSPoint (x: x + lg / s2,     y: y))
+//        self.line (to: NSPoint (x: x,               y: y + lg / s2))
+//        self.line (to: NSPoint (x: x,               y: y + h - lg / s2))
+//        self.close ()
       case .round :
         if pad.width < pad.height {
           let transform = NSAffineTransform ()

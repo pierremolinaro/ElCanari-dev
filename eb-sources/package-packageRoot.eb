@@ -152,4 +152,40 @@ graphic entity PackageArc : PackageObject {
   ;
 }
 
-#----------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackagePad : PackageObject {
+  property @signature Int xCenter default 0 ;
+  property @signature Int yCenter default 0 ;
+  property @signature Int width default 114_300 ;
+  property @signature Int height default 228_600 ;
+  property @signature Int holeDiameter default 57_150 ;
+  property @signature PadShape padShape default octo ;
+  property @signature PadStyle padStyle default traversing ;
+
+  property @signature Int xCenterUnit default 2_286 ;
+  property @signature Int yCenterUnit default 2_286 ;
+  property @signature Int widthUnit  default 2_286 ;
+  property @signature Int heightUnit  default 2_286 ;
+  property @signature Int holeDiameterUnit default 2_286 ;
+  property @signature Int annularRingUnit default 2_286 ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle,
+     prefs.packageColor
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.padShape
+  ;
+  
+  transient CanariIssueArray issues dependsFrom
+    self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
+  ;
+  
+  transient Bool padIsTraversing dependsFrom self.padStyle ;
+  
+  transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

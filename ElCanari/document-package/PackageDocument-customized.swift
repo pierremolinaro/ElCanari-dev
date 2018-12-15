@@ -78,6 +78,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackageArc",
       scaleProvider: self.mComposedPackageView
     )
+    self.mAddPadButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackagePad",
+      scaleProvider: self.mComposedPackageView
+    )
 //
 //    self.mAddOvalButton?.register (
 //      draggedType: packagePasteboardType,
@@ -114,6 +119,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezierCurve")
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")
     self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, forClass: "PackageArc")
+    self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")
 //  //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
@@ -209,6 +215,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
   }

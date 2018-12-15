@@ -33,6 +33,12 @@ import Cocoa
   var mPackageArcSelectionController = SelectionController_PackageDocument_mPackageArcSelectionController ()
 
   //····················································································································
+  //   Selection controller: mPackagePadSelectionController
+  //····················································································································
+
+  var mPackagePadSelectionController = SelectionController_PackageDocument_mPackagePadSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -115,6 +121,7 @@ import Cocoa
   @IBOutlet var mAddArcButton : CanariDragSourceButton?
   @IBOutlet var mAddBezierButton : CanariDragSourceButton?
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
+  @IBOutlet var mAddPadButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
   @IBOutlet var mArcAngle : CanariPackageArcAngleTextField?
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField?
@@ -182,7 +189,23 @@ import Cocoa
   @IBOutlet var mPackageColorColorWell : EBColorWell?
   @IBOutlet var mPackageDrawingWidthMultipliedByTenPopupButton : EBPopUpButton?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
+  @IBOutlet var mPackageShapePopUpButton : EBPopUpButton?
+  @IBOutlet var mPackageStylePopUpButton : EBPopUpButton?
+  @IBOutlet var mPadAnnularRingTextField : CanariDimensionObserverTextField?
+  @IBOutlet var mPadAnnularRingUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadHeightTextField : CanariDimensionTextField?
+  @IBOutlet var mPadHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadHoleDiameterTextField : CanariDimensionTextField?
+  @IBOutlet var mPadHoleDiameterUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
+  @IBOutlet var mPadStyleView : NSView?
+  @IBOutlet var mPadWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mPadWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadXCenterTextField : CanariDimensionTextField?
+  @IBOutlet var mPadXCenterUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadYCenterTextField : CanariDimensionTextField?
+  @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
@@ -207,6 +230,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mPadStyleView_hidden : MultipleBindingController_hidden? = nil
   var mController_mDeselectIssueButton_hidden : MultipleBindingController_hidden? = nil
   var mController_mIssueScrollView_hidden : MultipleBindingController_hidden? = nil
 
@@ -248,6 +272,8 @@ import Cocoa
     self.mPackageOvalSelectionController.addExplorer (name: "mPackageOvalSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageArcSelectionController
     self.mPackageArcSelectionController.addExplorer (name: "mPackageArcSelectionController", y:&y, view:view)
+  //--- Selection controller property: mPackagePadSelectionController
+    self.mPackagePadSelectionController.addExplorer (name: "mPackagePadSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -325,6 +351,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddOvalButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddPadButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddPadButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddPadButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAddSegmentButton {
@@ -1332,6 +1373,141 @@ import Cocoa
         errorMessage: "the 'mPackagePageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPackageShapePopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageShapePopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageShapePopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPackageStylePopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageStylePopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageStylePopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadAnnularRingTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadAnnularRingTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadAnnularRingTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadAnnularRingUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadAnnularRingUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadAnnularRingUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadHeightTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadHeightTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadHeightTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadHeightUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadHoleDiameterTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadHoleDiameterTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadHoleDiameterTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadHoleDiameterUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadHoleDiameterUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadHoleDiameterUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -1345,6 +1521,111 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPadPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadStyleView {
+      if !(outlet is NSView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadStyleView' outlet is not an instance of 'NSView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadStyleView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadWidthTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadWidthTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadWidthTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadWidthUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadXCenterTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadXCenterTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadXCenterTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadXCenterUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadXCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadXCenterUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadYCenterTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadYCenterTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadYCenterTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadYCenterUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadYCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadYCenterUnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mPageSegmentedControl {
@@ -1640,6 +1921,8 @@ import Cocoa
     self.mPackageOvalSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageArcSelectionController
     self.mPackageArcSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mPackagePadSelectionController
+    self.mPackagePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mStatusMessage
@@ -1739,6 +2022,20 @@ import Cocoa
     self.mArcStartAngleTextField?.bind_angle (self.mPackageArcSelectionController.startAngle_property, file: #file, line: #line)
     self.mArcStartAngleSlider?.bind_angle (self.mPackageArcSelectionController.startAngle_property, file: #file, line: #line)
     self.mArcAngle?.bind_angle (self.mPackageArcSelectionController.arcAngle_property, file: #file, line: #line)
+    self.mPackageShapePopUpButton?.bind_selectedIndex (self.mPackagePadSelectionController.padShape_property, file: #file, line: #line)
+    self.mPackageStylePopUpButton?.bind_selectedIndex (self.mPackagePadSelectionController.padStyle_property, file: #file, line: #line)
+    self.mPadXCenterUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.xCenterUnit_property, file: #file, line: #line)
+    self.mPadXCenterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.xCenter_property, self.mPackagePadSelectionController.xCenterUnit_property, file: #file, line: #line)
+    self.mPadYCenterUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.yCenterUnit_property, file: #file, line: #line)
+    self.mPadYCenterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.yCenter_property, self.mPackagePadSelectionController.yCenterUnit_property, file: #file, line: #line)
+    self.mPadWidthUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mPadWidthTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.width_property, self.mPackagePadSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mPadHeightUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mPadHeightTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.height_property, self.mPackagePadSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mPadHoleDiameterUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
+    self.mPadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeDiameter_property, self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
+    self.mPadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
+    self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -1766,6 +2063,16 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction:{
+          return !self.mPackagePadSelectionController.padIsTraversing_property_selection
+        },
+        outlet:self.mPadStyleView
+      )
+      self.mPackagePadSelectionController.padIsTraversing_property.addEBObserver (controller)
+      mController_mPadStyleView_hidden = controller
+    }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction:{
@@ -1851,6 +2158,20 @@ import Cocoa
     self.mArcStartAngleTextField?.unbind_angle ()
     self.mArcStartAngleSlider?.unbind_angle ()
     self.mArcAngle?.unbind_angle ()
+    self.mPackageShapePopUpButton?.unbind_selectedIndex ()
+    self.mPackageStylePopUpButton?.unbind_selectedIndex ()
+    self.mPadXCenterUnitPopUp?.unbind_selectedTag ()
+    self.mPadXCenterTextField?.unbind_dimensionAndUnit ()
+    self.mPadYCenterUnitPopUp?.unbind_selectedTag ()
+    self.mPadYCenterTextField?.unbind_dimensionAndUnit ()
+    self.mPadWidthUnitPopUp?.unbind_selectedTag ()
+    self.mPadWidthTextField?.unbind_dimensionAndUnit ()
+    self.mPadHeightUnitPopUp?.unbind_selectedTag ()
+    self.mPadHeightTextField?.unbind_dimensionAndUnit ()
+    self.mPadHoleDiameterUnitPopUp?.unbind_selectedTag ()
+    self.mPadHoleDiameterTextField?.unbind_dimensionAndUnit ()
+    self.mPadAnnularRingUnitPopUp?.unbind_selectedTag ()
+    self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -1878,6 +2199,8 @@ import Cocoa
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
+    self.mController_mPadStyleView_hidden = nil
     self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
     self.mController_mDeselectIssueButton_hidden = nil
     self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
@@ -1892,6 +2215,8 @@ import Cocoa
     self.mPackageOvalSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageArcSelectionController
     self.mPackageArcSelectionController.unbind_selection ()
+  //--- Selection controller property: mPackagePadSelectionController
+    self.mPackagePadSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
@@ -1902,6 +2227,7 @@ import Cocoa
     self.mAddArcButton?.ebCleanUp ()
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
+    self.mAddPadButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
@@ -1969,7 +2295,23 @@ import Cocoa
     self.mPackageColorColorWell?.ebCleanUp ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
+    self.mPackageShapePopUpButton?.ebCleanUp ()
+    self.mPackageStylePopUpButton?.ebCleanUp ()
+    self.mPadAnnularRingTextField?.ebCleanUp ()
+    self.mPadAnnularRingUnitPopUp?.ebCleanUp ()
+    self.mPadHeightTextField?.ebCleanUp ()
+    self.mPadHeightUnitPopUp?.ebCleanUp ()
+    self.mPadHoleDiameterTextField?.ebCleanUp ()
+    self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
+    self.mPadInspectorView?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
+    self.mPadStyleView?.ebCleanUp ()
+    self.mPadWidthTextField?.ebCleanUp ()
+    self.mPadWidthUnitPopUp?.ebCleanUp ()
+    self.mPadXCenterTextField?.ebCleanUp ()
+    self.mPadXCenterUnitPopUp?.ebCleanUp ()
+    self.mPadYCenterTextField?.ebCleanUp ()
+    self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()

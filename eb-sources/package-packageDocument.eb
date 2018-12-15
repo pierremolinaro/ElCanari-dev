@@ -128,7 +128,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mArcRadiusTextField
      $dimensionAndUnit mPackageArcSelectionController.radius, mPackageArcSelectionController.radiusUnit
   ;
-#--- xCenter
+#--- yCenter
   outlet EBPopUpButton mArcXCenterUnitPopUp $selectedTag mPackageArcSelectionController.xCenterUnit ;
   outlet CanariDimensionTextField mArcXCenterTextField
      $dimensionAndUnit mPackageArcSelectionController.xCenter, mPackageArcSelectionController.xCenterUnit
@@ -158,6 +158,55 @@ document PackageDocument root PackageRoot {
 #--- Arc angle
   outlet CanariPackageArcAngleTextField mArcAngle $angle mPackageArcSelectionController.arcAngle ;
 
+
+
+#------- Pad inspector
+  selectionController PackagePad mPackagePadSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mPadInspectorView ;
+
+#--- Pad shape
+  outlet EBPopUpButton mPackageShapePopUpButton $selectedIndex mPackagePadSelectionController.padShape ;
+
+#--- Pad style
+  outlet EBPopUpButton mPackageStylePopUpButton $selectedIndex mPackagePadSelectionController.padStyle ;
+  outlet NSView mPadStyleView $hidden !mPackagePadSelectionController.padIsTraversing ;
+
+#--- xCenter
+  outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag mPackagePadSelectionController.xCenterUnit ;
+  outlet CanariDimensionTextField mPadXCenterTextField
+     $dimensionAndUnit mPackagePadSelectionController.xCenter, mPackagePadSelectionController.xCenterUnit
+  ;
+
+#--- yCenter
+  outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag mPackagePadSelectionController.yCenterUnit ;
+  outlet CanariDimensionTextField mPadYCenterTextField
+     $dimensionAndUnit mPackagePadSelectionController.yCenter, mPackagePadSelectionController.yCenterUnit
+  ;
+
+#--- Width
+  outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag mPackagePadSelectionController.widthUnit ;
+  outlet CanariDimensionTextField mPadWidthTextField
+     $dimensionAndUnit mPackagePadSelectionController.width, mPackagePadSelectionController.widthUnit
+  ;
+
+#--- Height
+  outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag mPackagePadSelectionController.heightUnit ;
+  outlet CanariDimensionTextField mPadHeightTextField
+     $dimensionAndUnit mPackagePadSelectionController.height, mPackagePadSelectionController.heightUnit
+  ;
+
+#--- Hole Diameter
+  outlet EBPopUpButton mPadHoleDiameterUnitPopUp $selectedTag mPackagePadSelectionController.holeDiameterUnit ;
+  outlet CanariDimensionTextField mPadHoleDiameterTextField
+     $dimensionAndUnit mPackagePadSelectionController.holeDiameter, mPackagePadSelectionController.holeDiameterUnit
+  ;
+
+#--- Annular Ring
+  outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag mPackagePadSelectionController.annularRingUnit ;
+  outlet CanariDimensionObserverTextField mPadAnnularRingTextField
+     $dimensionAndUnit mPackagePadSelectionController.annularRing, mPackagePadSelectionController.annularRingUnit
+  ;
+
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
@@ -176,6 +225,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddBezierButton ;
   outlet CanariDragSourceButton mAddOvalButton ;
   outlet CanariDragSourceButton mAddArcButton ;
+  outlet CanariDragSourceButton mAddPadButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;

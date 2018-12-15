@@ -358,6 +358,8 @@ extension MergerDocument {
         pad.shape = .rectangular
       }else if shapeString == "ROUND" {
         pad.shape = .round
+      }else if shapeString == "OCTO" {
+        pad.shape = .octo
       }else{
         errorArray.append ("Invalid pad shape \"\(shapeString)\".")
       }

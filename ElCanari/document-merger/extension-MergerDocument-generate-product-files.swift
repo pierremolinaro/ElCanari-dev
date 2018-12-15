@@ -145,6 +145,8 @@ extension MergerDocument {
         switch pad.shape {
         case .rectangular :
           d ["SHAPE"] = "RECT"
+        case .octo :
+          d ["SHAPE"] = "OCTO"
         case .round :
           d ["SHAPE"] = "ROUND"
         }
@@ -174,6 +176,8 @@ extension MergerDocument {
           d ["SHAPE"] = "RECT"
         case .round :
           d ["SHAPE"] = "ROUND"
+        case .octo :
+          d ["SHAPE"] = "OCTO"
         }
         d ["WIDTH"] = pad.width
         switch instanceRotation {

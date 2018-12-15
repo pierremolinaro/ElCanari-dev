@@ -6,19 +6,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum PadShape : Int, EnumPropertyProtocol {
-  case rectangular = 0
-  case round = 1
-  case octo = 2
+enum PadStyle : Int, EnumPropertyProtocol {
+  case traversing = 0
+  case surface = 1
 
 
   //····················································································································
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .rectangular : return "rectangular" // 0
-      case .round : return "round" // 1
-      case .octo : return "octo" // 2
+      case .traversing : return "traversing" // 0
+      case .surface : return "surface" // 1
     }
   }
 
@@ -26,8 +24,8 @@ enum PadShape : Int, EnumPropertyProtocol {
   //  Enum generic bindings utility functions
   //····················································································································
 
-  static func buildfromRawValue (rawValue : Int) -> PadShape? {
-    if let v = PadShape (rawValue:rawValue) {
+  static func buildfromRawValue (rawValue : Int) -> PadStyle? {
+    if let v = PadStyle (rawValue:rawValue) {
       return v
     }else{
       return nil
@@ -36,9 +34,9 @@ enum PadShape : Int, EnumPropertyProtocol {
 
   //····················································································································
 
-  func enumfromRawValue (rawValue : Int) -> PadShape {
+  func enumfromRawValue (rawValue : Int) -> PadStyle {
     var result = self
-    let v : PadShape? = PadShape (rawValue:rawValue) ;
+    let v : PadStyle? = PadStyle (rawValue:rawValue) ;
     if let unwrappedV = v {
       result = unwrappedV
     }
@@ -57,9 +55,9 @@ enum PadShape : Int, EnumPropertyProtocol {
     return NSNumber (value: self.rawValue)
   }
 
-  static func convertFromNSObject (object : NSObject) -> PadShape {
-    var result = PadShape.rectangular
-    if let number = object as? NSNumber, let v = PadShape (rawValue: number.intValue) {
+  static func convertFromNSObject (object : NSObject) -> PadStyle {
+    var result = PadStyle.traversing
+    if let number = object as? NSNumber, let v = PadStyle (rawValue: number.intValue) {
       result = v
     }
     return result
@@ -71,12 +69,12 @@ enum PadShape : Int, EnumPropertyProtocol {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-typealias EBReadOnlyController_PadShape = EBReadOnlyEnumController <PadShape>
+typealias EBReadOnlyController_PadStyle = EBReadOnlyEnumController <PadStyle>
 
-typealias EBReadOnlyProperty_PadShape = EBReadOnlyEnumProperty <PadShape>
-typealias EBTransientProperty_PadShape = EBTransientEnumProperty <PadShape>
-typealias EBReadWriteProperty_PadShape = EBReadWriteEnumProperty <PadShape>
-typealias EBStoredProperty_PadShape = EBStoredEnumProperty <PadShape>
-typealias EBPropertyProxy_PadShape = EBPropertyEnumProxy <PadShape>
+typealias EBReadOnlyProperty_PadStyle = EBReadOnlyEnumProperty <PadStyle>
+typealias EBTransientProperty_PadStyle = EBTransientEnumProperty <PadStyle>
+typealias EBReadWriteProperty_PadStyle = EBReadWriteEnumProperty <PadStyle>
+typealias EBStoredProperty_PadStyle = EBStoredEnumProperty <PadStyle>
+typealias EBPropertyProxy_PadStyle = EBPropertyEnumProxy <PadStyle>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
