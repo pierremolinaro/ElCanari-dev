@@ -125,15 +125,16 @@ extension EBView {
                          _ inProposedTranslation: CanariPoint,
                          _ inLastMouseDraggedLocation : CanariPoint) {
     let objects = self.viewController?.objectArray ?? []
-    if objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y) {
+    let p = objects [objectIndex].canMove (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
+    if (p.x != 0) || (p.y != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.undoManager?.beginUndoGrouping ()
       }
-      objects [objectIndex].move (knob: knobIndex, xBy: inProposedTranslation.x, yBy: inProposedTranslation.y)
+      objects [objectIndex].move (knob: knobIndex, xBy: p.x, yBy: p.y)
       let mouseDraggedLocation = CanariPoint (
-        x: inProposedTranslation.x + inLastMouseDraggedLocation.x,
-        y: inProposedTranslation.y + inLastMouseDraggedLocation.y
+        x: p.x + inLastMouseDraggedLocation.x,
+        y: p.y + inLastMouseDraggedLocation.y
       )
       mLastMouseDraggedLocation = mouseDraggedLocation
     }
@@ -145,8 +146,9 @@ extension EBView {
     var dx = proposedTranslation.x
     var dy = proposedTranslation.y
     for object in self.viewController?.selectedGraphicObjectSet ?? [] {
-      dx = object.acceptedXTranslation (by: dx)
-      dy = object.acceptedYTranslation (by: dy)
+      let p = object.acceptedTranslation (xBy: dx, yBy: dy)
+      dx = p.x
+      dy = p.y
     }
     if (dx != 0) || (dy != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {

@@ -13,18 +13,6 @@ extension PackageSegment {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    return inDx
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    return inDy
-  }
-
-  //····················································································································
-
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }
@@ -40,12 +28,6 @@ extension PackageSegment {
 
   //····················································································································
   //  Knob
-  //····················································································································
-
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return true
- }
-
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
@@ -123,8 +105,8 @@ extension PackageSegment {
 
   //····················································································································
 
-  override func alignmentPoints () -> AlignmentPointArray {
-    let result = AlignmentPointArray ()
+  override func alignmentPoints () -> OCCanariPointArray {
+    let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.x1, y: self.y1))
     result.points.append (CanariPoint (x: self.x2, y: self.y2))
     return result

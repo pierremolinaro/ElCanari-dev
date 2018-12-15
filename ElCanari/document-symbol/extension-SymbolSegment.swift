@@ -13,40 +13,34 @@ extension SymbolSegment {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var acceptedX = inDx
     do{
-      let newX = self.x1 + acceptedTranslation
+      let newX = self.x1 + acceptedX
       if newX < 0 {
-        acceptedTranslation = -self.x1
+        acceptedX = -self.x1
       }
     }
     do{
-      let newX = self.x2 + acceptedTranslation
+      let newX = self.x2 + acceptedX
       if newX < 0 {
-        acceptedTranslation = -self.x2
+        acceptedX = -self.x2
       }
     }
-    return acceptedTranslation
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
+    var acceptedY = inDy
     do{
-      let newY = self.y1 + acceptedTranslation
+      let newY = self.y1 + acceptedY
       if newY < 0 {
-        acceptedTranslation = -self.y1
+        acceptedY = -self.y1
       }
     }
     do{
-      let newY = self.y2 + acceptedTranslation
+      let newY = self.y2 + acceptedY
       if newY < 0 {
-        acceptedTranslation = -self.y2
+        acceptedY = -self.y2
       }
     }
-    return acceptedTranslation
+    return OCCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -72,18 +66,25 @@ extension SymbolSegment {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    var accept = false
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var dx = inDx
+    var dy = inDy
     if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_1 {
-      let newX = self.x1 + inDx
-      let newY = self.y1 + inDy
-      accept = (newX >= 0) && (newY >= 0)
+      if (self.x1 + dx) < 0 {
+        dx = -self.x1
+      }
+      if (self.y1 + dy) < 0 {
+        dy = -self.y1
+      }
     }else if inKnobIndex == SYMBOL_SEGMENT_ENDPOINT_2 {
-      let newX = self.x2 + inDx
-      let newY = self.y2 + inDy
-      accept = (newX >= 0) && (newY >= 0)
+      if (self.x2 + dx) < 0 {
+        dx = -self.x2
+      }
+      if (self.y2 + dy) < 0 {
+        dy = -self.y2
+      }
     }
-    return accept
+    return OCCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -163,8 +164,8 @@ extension SymbolSegment {
 
   //····················································································································
 
-  override func alignmentPoints () -> AlignmentPointArray {
-    let result = AlignmentPointArray ()
+  override func alignmentPoints () -> OCCanariPointArray {
+    let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.x1, y: self.y1))
     result.points.append (CanariPoint (x: self.x2, y: self.y2))
     return result

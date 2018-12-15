@@ -109,9 +109,9 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezierCurve")
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")
 //  //--- Set issue display view
-//    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
-//    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
-//    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 2)
+    self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
+    self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
+    self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 4)
   }
 
   //····················································································································

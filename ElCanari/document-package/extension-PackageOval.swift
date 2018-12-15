@@ -15,18 +15,6 @@ extension PackageOval {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    return inDx
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    return inDy
-  }
-
-  //····················································································································
-
   override func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return true
   }
@@ -42,18 +30,27 @@ extension PackageOval {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    var accept = false
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var dx = inDx
+    var dy = inDy
     if inKnobIndex == PACKAGE_OVAL_LEFT {
-      accept = (self.width - inDx) >= 0
+      if (self.width - dx) < 0 {
+        dx = self.width
+      }
     }else if inKnobIndex == PACKAGE_OVAL_RIGHT {
-      accept = (self.width + inDx) >= 0
+      if (self.width + dx) < 0 {
+        dx = -self.width
+      }
     }else if inKnobIndex == PACKAGE_OVAL_BOTTOM {
-      accept = (self.height - inDy) >= 0
+      if (self.height - dy) < 0 {
+        dy = self.height
+      }
     }else if inKnobIndex == PACKAGE_OVAL_TOP {
-      accept = (self.height + inDy) >= 0
+      if (self.height + dy) < 0 {
+        dy = -self.height
+      }
     }
-    return accept
+    return OCCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -109,8 +106,8 @@ extension PackageOval {
 
   //····················································································································
 
-  override func alignmentPoints () -> AlignmentPointArray {
-    let result = AlignmentPointArray ()
+  override func alignmentPoints () -> OCCanariPointArray {
+    let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.x, y: self.y))
     result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

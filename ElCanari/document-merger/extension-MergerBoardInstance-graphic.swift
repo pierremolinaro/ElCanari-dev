@@ -17,24 +17,18 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
-    let newX = self.x + acceptedTranslation
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var acceptedX = inDx
+    let newX = self.x + acceptedX
     if newX < 0 {
-      acceptedTranslation = -self.x
+      acceptedX = -self.x
     }
-    return acceptedTranslation
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
-    let newY = self.y + acceptedTranslation
+    var acceptedY = inDy
+    let newY = self.y + acceptedY
     if newY < 0 {
-      acceptedTranslation = -self.y
+      acceptedY = -self.y
     }
-    return acceptedTranslation
+    return OCCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································

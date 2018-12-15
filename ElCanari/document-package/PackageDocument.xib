@@ -190,7 +190,7 @@
                 <button imageHugsTitle="YES" id="2123">
                     <rect key="frame" x="69" y="412" width="163" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="With Pad Zone" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2728">
+                    <buttonCell key="cell" type="check" title="With Pad Zone" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2728">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -198,7 +198,7 @@
                 <button imageHugsTitle="YES" id="2113">
                     <rect key="frame" x="17" y="247" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Pad Zones" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2727">
+                    <buttonCell key="cell" type="check" title="Pad Zones" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2727">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -206,7 +206,7 @@
                 <button imageHugsTitle="YES" id="1752">
                     <rect key="frame" x="17" y="357" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Bottom Side Pads" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2726">
+                    <buttonCell key="cell" type="check" title="Show Bottom Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2726">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -214,7 +214,7 @@
                 <button imageHugsTitle="YES" id="1751">
                     <rect key="frame" x="17" y="385" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Top Side Pads" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2725">
+                    <buttonCell key="cell" type="check" title="Show Top Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2725">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -222,7 +222,7 @@
                 <button imageHugsTitle="YES" id="1747">
                     <rect key="frame" x="17" y="275" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Geometry" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2724">
+                    <buttonCell key="cell" type="check" title="Show Geometry" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2724">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -230,7 +230,7 @@
                 <button imageHugsTitle="YES" id="1452">
                     <rect key="frame" x="17" y="302" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Dimensions" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2723">
+                    <buttonCell key="cell" type="check" title="Show Dimensions" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2723">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -238,15 +238,15 @@
                 <button imageHugsTitle="YES" id="1451">
                     <rect key="frame" x="17" y="330" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Dimension Guides" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2722">
+                    <buttonCell key="cell" type="check" title="Show Dimension Guides" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2722">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button imageHugsTitle="YES" id="1328">
+                <button id="1328">
                     <rect key="frame" x="17" y="440" width="215" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show Pad Numbers" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2721">
+                    <buttonCell key="cell" type="check" title="Show Pad Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2721">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -614,7 +614,7 @@
                 <button imageHugsTitle="YES" id="1571">
                     <rect key="frame" x="17" y="167" width="207" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Path Is Closed" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="2738">
+                    <buttonCell key="cell" type="check" title="Path Is Closed" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="2738">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -1197,7 +1197,7 @@
                     </subviews>
                 </customView>
                 <textField verticalHuggingPriority="750" id="2232">
-                    <rect key="frame" x="17" y="323" width="65" height="14"/>
+                    <rect key="frame" x="17" y="323" width="48" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Style:" id="2788">
                         <font key="font" metaFont="smallSystem"/>
@@ -1205,10 +1205,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="2227">
-                    <rect key="frame" x="87" y="318" width="143" height="22"/>
+                <popUpButton imageHugsTitle="YES" id="2227" customClass="EBPopUpButton">
+                    <rect key="frame" x="71" y="321" width="159" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Surface, Bottom Side" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="2231" id="2787">
+                    <popUpButtonCell key="cell" type="roundRect" title="Surface, Bottom Side" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2231" id="2787">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="2228">
@@ -1302,20 +1302,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="2181">
-                    <rect key="frame" x="141" y="229" width="89" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Round" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="1" inset="2" preferredEdge="maxY" selectedItem="2183" id="2777">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="2182">
-                            <items>
-                                <menuItem title="Square" id="2184"/>
-                                <menuItem title="Round" state="on" tag="1" id="2183"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" id="2171">
                     <rect key="frame" x="17" y="358" width="76" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1496,6 +1482,20 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="2181">
+                    <rect key="frame" x="141" y="231" width="89" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Round" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="2183" id="2777">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="2182">
+                            <items>
+                                <menuItem title="Square" id="2184"/>
+                                <menuItem title="Round" state="on" tag="1" id="2183"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
         </customView>
         <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView">
@@ -1644,7 +1644,7 @@
                     </subviews>
                 </customView>
                 <textField verticalHuggingPriority="750" id="2393">
-                    <rect key="frame" x="17" y="318" width="82" height="14"/>
+                    <rect key="frame" x="17" y="318" width="45" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Style:" id="2810">
                         <font key="font" metaFont="smallSystem"/>
@@ -1653,9 +1653,9 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="2388">
-                    <rect key="frame" x="104" y="314" width="126" height="22"/>
+                    <rect key="frame" x="79" y="317" width="151" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Surface, Bottom Side" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" preferredEdge="maxY" selectedItem="2392" id="2809">
+                    <popUpButtonCell key="cell" type="roundRect" title="Surface, Bottom Side" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2392" id="2809">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                         <menu key="menu" title="OtherViews" id="2389">
@@ -1712,20 +1712,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="2343">
-                    <rect key="frame" x="141" y="224" width="89" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Round" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" tag="1" inset="2" preferredEdge="maxY" selectedItem="2346" id="2800">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="2344">
-                            <items>
-                                <menuItem title="Square" id="2345"/>
-                                <menuItem title="Round" state="on" tag="1" id="2346"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <textField verticalHuggingPriority="750" id="2372">
                     <rect key="frame" x="17" y="363" width="76" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1906,6 +1892,20 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="2343">
+                    <rect key="frame" x="141" y="227" width="89" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Round" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="border" tag="1" inset="2" preferredEdge="maxY" selectedItem="2346" id="2800">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="2344">
+                            <items>
+                                <menuItem title="Square" id="2345"/>
+                                <menuItem title="Round" state="on" tag="1" id="2346"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
         </customView>
         <customView id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView">
@@ -1917,7 +1917,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2042,7 +2042,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="drN-9Y-pXu">
                         <rect key="frame" x="1" y="0.0" width="694" height="444"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="68" headerView="2831" id="2499" customClass="PMTableViewForDictionaryArray">
                                 <rect key="frame" x="0.0" y="0.0" width="694" height="421"/>
@@ -2882,7 +2882,7 @@
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="86" y="27"/>
+            <point key="canvasLocation" x="-37" y="-113"/>
         </customView>
         <customView id="Vyf-VZ-9r6" userLabel="Inspector : Grid and Flip" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>

@@ -8,24 +8,18 @@ extension SymbolText {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
-    let newX = self.x + acceptedTranslation
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var acceptedX = inDx
+    let newX = self.x + acceptedX
     if newX < 0 {
-      acceptedTranslation = -self.x
+      acceptedX = -self.x
     }
-    return acceptedTranslation
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
-    let newY = self.y + acceptedTranslation
+    var acceptedY = inDy
+    let newY = self.y + acceptedY
     if newY < 0 {
-      acceptedTranslation = -self.y
+      acceptedY = -self.y
     }
-    return acceptedTranslation
+    return OCCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -47,10 +41,16 @@ extension SymbolText {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    let newX = self.x + inDx
-    let newY = self.y + inDy
-    return (newX >= 0) && (newY >= 0)
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var dx = inDx
+    var dy = inDy
+    if (self.x + dx) < 0 {
+      dx = -self.x
+    }
+    if (self.y + dy) < 0 {
+      dy = -self.y
+    }
+    return OCCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································

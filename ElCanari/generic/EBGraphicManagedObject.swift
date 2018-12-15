@@ -62,8 +62,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func acceptedXTranslation (by inDx: Int) -> Int {
-    return inDx
+  @objc dynamic func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    return OCCanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
@@ -89,8 +89,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    return true
+  @objc dynamic func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    return OCCanariPoint (x: inDx, y: inDy)
   }
 
   //····················································································································
@@ -189,8 +189,8 @@ class EBGraphicManagedObject : EBManagedObject {
   //  Only type that can be represented in Objective-C are accepted
   //····················································································································
 
-  @objc dynamic func alignmentPoints () -> AlignmentPointArray {
-    return AlignmentPointArray ()
+  @objc dynamic func alignmentPoints () -> OCCanariPointArray {
+    return OCCanariPointArray ()
   }
 
   //····················································································································
@@ -209,7 +209,19 @@ class EBGraphicManagedObject : EBManagedObject {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc class AlignmentPointArray : EBObject {
+@objc class OCCanariPoint : EBObject {
+  let x : Int
+  let y : Int
+
+  init (x inX : Int, y inY : Int) {
+    x = inX
+    y = inY
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+@objc class OCCanariPointArray : EBObject {
 
   var points = [CanariPoint] ()
 }

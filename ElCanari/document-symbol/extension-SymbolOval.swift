@@ -15,24 +15,18 @@ extension SymbolOval {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
-    let newX = self.x + acceptedTranslation
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var acceptedX = inDx
+    let newX = self.x + acceptedX
     if newX < 0 {
-      acceptedTranslation = -self.x
+      acceptedX = -self.x
     }
-    return acceptedTranslation
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
-    let newY = self.y + acceptedTranslation
+    var acceptedY = inDy
+    let newY = self.y + acceptedY
     if newY < 0 {
-      acceptedTranslation = -self.y
+      acceptedY = -self.y
     }
-    return acceptedTranslation
+    return OCCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -54,18 +48,33 @@ extension SymbolOval {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    var accept = false
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var dx = inDx
+    var dy = inDy
     if inKnobIndex == SYMBOL_OVAL_LEFT {
-      accept = ((self.x + inDx) >= 0) && ((self.width - inDx) >= SYMBOL_GRID_IN_CANARI_UNIT)
+      if (self.x + dx) < 0 {
+        dx = -self.x
+      }
+      if (self.width - dx) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dx = SYMBOL_GRID_IN_CANARI_UNIT - self.width
+      }
     }else if inKnobIndex == SYMBOL_OVAL_RIGHT {
-      accept = (self.width + inDx) >= SYMBOL_GRID_IN_CANARI_UNIT
+      if (self.width + dx) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dx = -(SYMBOL_GRID_IN_CANARI_UNIT - self.width)
+      }
     }else if inKnobIndex == SYMBOL_OVAL_BOTTOM {
-      accept = ((self.y + inDy) >= 0) && ((self.height - inDy) >= SYMBOL_GRID_IN_CANARI_UNIT)
+      if (self.y + dy) < 0 {
+        dy = -self.y
+      }
+      if (self.height - dy) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dy = SYMBOL_GRID_IN_CANARI_UNIT - self.height
+      }
     }else if inKnobIndex == SYMBOL_OVAL_TOP {
-      accept = (self.height + inDy) >= SYMBOL_GRID_IN_CANARI_UNIT
+      if (self.height + dy) < SYMBOL_GRID_IN_CANARI_UNIT {
+        dy = -(SYMBOL_GRID_IN_CANARI_UNIT - self.height)
+      }
     }
-    return accept
+    return OCCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -121,8 +130,8 @@ extension SymbolOval {
 
   //····················································································································
 
-  override func alignmentPoints () -> AlignmentPointArray {
-    let result = AlignmentPointArray ()
+  override func alignmentPoints () -> OCCanariPointArray {
+    let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.x, y: self.y))
     result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
     return result

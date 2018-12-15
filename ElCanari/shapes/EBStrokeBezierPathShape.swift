@@ -74,7 +74,9 @@ class EBStrokeBezierPathShape : EBShape {
     }else{
       var r = super.boundingBox
       for bp in self.mPaths {
-        r = r.union (bp.bounds)
+        if !bp.isEmpty {
+          r = r.union (bp.bounds)
+        }
       }
       self.mCachedBoundingBox = r
       return r

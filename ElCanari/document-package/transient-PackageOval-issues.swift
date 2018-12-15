@@ -19,7 +19,6 @@ func transient_PackageOval_issues (
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
-  Swift.print ("self_width \(self_width), self_height \(self_height)")
   if self_width == 0 {
     issues.appendOvalZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
   }

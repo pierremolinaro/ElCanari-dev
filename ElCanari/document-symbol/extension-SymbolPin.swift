@@ -14,52 +14,46 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func acceptedXTranslation (by inDx : Int) -> Int {
-    var acceptedTranslation = inDx
+  override func acceptedTranslation (xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var acceptedX = inDx
     do{
-      let newX = self.xPin + acceptedTranslation
+      let newX = self.xPin + acceptedX
       if newX < 0 {
-        acceptedTranslation = -self.xPin
+        acceptedX = -self.xPin
       }
     }
     do{
-      let newX = self.xName + acceptedTranslation
+      let newX = self.xName + acceptedX
       if newX < 0 {
-        acceptedTranslation = -self.xName
+        acceptedX = -self.xName
       }
     }
     do{
-      let newX = self.xNumber + acceptedTranslation
+      let newX = self.xNumber + acceptedX
       if newX < 0 {
-        acceptedTranslation = -self.xNumber
+        acceptedX = -self.xNumber
       }
     }
-    return acceptedTranslation
-  }
-
-  //····················································································································
-
-  override func acceptedYTranslation (by inDy : Int) -> Int {
-    var acceptedTranslation = inDy
+    var acceptedY = inDy
     do{
-      let newY = self.yPin + acceptedTranslation
+      let newY = self.yPin + acceptedY
       if newY < 0 {
-        acceptedTranslation = -self.yPin
+        acceptedY = -self.yPin
       }
     }
     do{
-      let newY = self.yName + acceptedTranslation
+      let newY = self.yName + acceptedY
       if newY < 0 {
-        acceptedTranslation = -self.yName
+        acceptedY = -self.yName
       }
     }
     do{
-      let newY = self.yNumber + acceptedTranslation
+      let newY = self.yNumber + acceptedY
       if newY < 0 {
-        acceptedTranslation = -self.yNumber
+        acceptedY = -self.yNumber
       }
     }
-    return acceptedTranslation
+    return OCCanariPoint (x: acceptedX, y: acceptedY)
   }
 
   //····················································································································
@@ -89,26 +83,44 @@ extension SymbolPin {
   //  Knob
   //····················································································································
 
-  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> Bool {
-    var accept = false
+  override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
+    var dx = inDx
+    var dy = inDy
     if inKnobIndex == SYMBOL_PIN_ENDPOINT {
-      let newX = self.xPin + inDx
-      let newY = self.yPin + inDy
-      let newXLabel = self.xName + inDx
-      let newYLabel = self.yName + inDy
-      let newXNumber = self.xNumber + inDx
-      let newYNumber = self.yNumber + inDy
-      accept = (newX >= 0) && (newY >= 0) && (newXNumber >= 0) && (newYNumber >= 0) && (newXLabel >= 0) && (newYLabel >= 0)
+      if (self.xPin + dx) < 0 {
+        dx = -self.xPin
+      }
+      if (self.yPin + dy) < 0 {
+        dy = -self.yPin
+      }
+      if (self.xName + dx) < 0 {
+        dx = -self.xName
+      }
+      if (self.yName + dy) < 0 {
+        dy = -self.yName
+      }
+      if (self.xNumber + dx) < 0 {
+        dx = -self.xNumber
+      }
+      if (self.yNumber + dy) < 0 {
+        dy = -self.yNumber
+      }
     }else if inKnobIndex == SYMBOL_PIN_LABEL {
-      let newX = self.xName + inDx
-      let newY = self.yName + inDy
-      accept = (newX >= 0) && (newY >= 0)
+      if (self.xName + dx) < 0 {
+        dx = -self.xName
+      }
+      if (self.yName + dy) < 0 {
+        dy = -self.yName
+      }
     }else if inKnobIndex == SYMBOL_PIN_NUMBER {
-      let newX = self.xNumber + inDx
-      let newY = self.yNumber + inDy
-      accept = (newX >= 0) && (newY >= 0)
+      if (self.xNumber + dx) < 0 {
+        dx = -self.xNumber
+      }
+      if (self.yNumber + dy) < 0 {
+        dy = -self.yNumber
+      }
     }
-    return accept
+    return OCCanariPoint (x: dx, y: dy)
  }
 
   //····················································································································
@@ -175,8 +187,8 @@ extension SymbolPin {
 
   //····················································································································
 
-  override func alignmentPoints () -> AlignmentPointArray {
-    let result = AlignmentPointArray ()
+  override func alignmentPoints () -> OCCanariPointArray {
+    let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.xPin, y: self.yPin))
     result.points.append (CanariPoint (x: self.xName, y: self.yName))
     result.points.append (CanariPoint (x: self.xNumber, y: self.yNumber))

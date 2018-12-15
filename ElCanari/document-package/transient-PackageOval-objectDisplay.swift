@@ -20,19 +20,27 @@ func transient_PackageOval_objectDisplay (
        _ prefs_packageDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let r = CGRect (
-    x: canariUnitToCocoa (self_x),
-    y: canariUnitToCocoa (self_y),
-    width: canariUnitToCocoa (self_width),
-    height: canariUnitToCocoa (self_height)
-  )
-  let bp = NSBezierPath (ovalIn: r)
+  let x = canariUnitToCocoa (self_x)
+  let y = canariUnitToCocoa (self_y)
+  let width = canariUnitToCocoa (self_width)
+  let height = canariUnitToCocoa (self_height)
+  let bp = NSBezierPath ()
+  if (self_width <= 0) && (self_height <= 0) { // Oval is a point
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x, y: y))
+  }else if self_width <= 0 { // Vertical line
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x, y: y + height))
+  }else if self_height <= 0 { // Horizontal line
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x + width, y: y))
+  }else{
+    let r = CGRect (x: x, y: y, width: width, height: height)
+    bp.appendOval (in: r)
+  }
   bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (EBStrokeBezierPathShape ([bp], prefs_packageColor))
-  return shape
-
+  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
 //--- END OF USER ZONE 2
 }
 
