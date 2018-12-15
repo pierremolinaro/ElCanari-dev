@@ -119,4 +119,37 @@ graphic entity PackageOval : PackageObject {
   transient CanariIssueArray issues dependsFrom self.x, self.y, self.width, self.height ;
 }
 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageArc : PackageObject {
+  property @signature Int xCenter default 3_429_00 ;
+  property @signature Int yCenter default 3_429_00 ;
+  property @signature Int radius default 3_429_00 ;
+  property @signature Int startAngle default 225_000 ; # In degrees * 1000
+  property @signature Int arcAngle default 270_000 ; # In degrees * 1000
+  property @signature Int startTangentLength default 2_286_00 ;
+  property @signature Int endTangentLength default 2_286_00 ;
+  property @signature Bool pathIsClosed default yes ;
+ 
+  property @signature Int xCenterUnit default 2_286 ;
+  property @signature Int yCenterUnit default 2_286 ;
+  property @signature Int radiusUnit  default 2_286 ;
+  property @signature Int startTangentLengthUnit default 2_286 ;
+  property @signature Int endTangentLengthUnit default 2_286 ;
+ 
+  transient EBShape objectDisplay dependsFrom
+     self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
+     self.pathIsClosed, self.startTangentLength, self.endTangentLength,
+     prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
+     self.startTangentLength, self.endTangentLength, self.pathIsClosed
+  ;
+  
+  transient CanariIssueArray issues dependsFrom
+    self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle, self.pathIsClosed
+  ;
+}
+
 #----------------------------------------------------------------------------*

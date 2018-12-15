@@ -119,7 +119,39 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackageOvalSelectionController.height, mPackageOvalSelectionController.heightUnit
   ;
 
-#--- Issues
+
+#------- Arc inspector
+  selectionController PackageArc mPackageArcSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mArcInspectorView ;
+#--- xCenter
+  outlet EBPopUpButton mArcRadiusUnitPopUp $selectedTag mPackageArcSelectionController.radiusUnit ;
+  outlet CanariDimensionTextField mArcRadiusTextField
+     $dimensionAndUnit mPackageArcSelectionController.radius, mPackageArcSelectionController.radiusUnit
+  ;
+#--- xCenter
+  outlet EBPopUpButton mArcXCenterUnitPopUp $selectedTag mPackageArcSelectionController.xCenterUnit ;
+  outlet CanariDimensionTextField mArcXCenterTextField
+     $dimensionAndUnit mPackageArcSelectionController.xCenter, mPackageArcSelectionController.xCenterUnit
+  ;
+#--- yCenter
+  outlet EBPopUpButton mArcYCenterUnitPopUp $selectedTag mPackageArcSelectionController.yCenterUnit ;
+  outlet CanariDimensionTextField mArcYCenterTextField
+     $dimensionAndUnit mPackageArcSelectionController.yCenter, mPackageArcSelectionController.yCenterUnit
+  ;
+#--- Start Tangent
+  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag mPackageArcSelectionController.startTangentLengthUnit ;
+  outlet CanariDimensionTextField mArcStartTangentTextField
+     $dimensionAndUnit mPackageArcSelectionController.startTangentLength, mPackageArcSelectionController.startTangentLengthUnit
+  ;
+#--- End Tangent
+  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag mPackageArcSelectionController.endTangentLengthUnit ;
+  outlet CanariDimensionTextField mArcEndTangentTextField
+     $dimensionAndUnit mPackageArcSelectionController.endTangentLength, mPackageArcSelectionController.endTangentLengthUnit
+  ;
+#--- Close path
+  outlet EBSwitch mArcPathIsClosedSwitch $value mPackageArcSelectionController.pathIsClosed ;
+
+#------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
@@ -136,6 +168,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddSegmentButton ;
   outlet CanariDragSourceButton mAddBezierButton ;
   outlet CanariDragSourceButton mAddOvalButton ;
+  outlet CanariDragSourceButton mAddArcButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;

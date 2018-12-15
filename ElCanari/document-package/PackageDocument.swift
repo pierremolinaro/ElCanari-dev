@@ -27,6 +27,12 @@ import Cocoa
   var mPackageOvalSelectionController = SelectionController_PackageDocument_mPackageOvalSelectionController ()
 
   //····················································································································
+  //   Selection controller: mPackageArcSelectionController
+  //····················································································································
+
+  var mPackageArcSelectionController = SelectionController_PackageDocument_mPackageArcSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -106,9 +112,22 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddArcButton : CanariDragSourceButton?
   @IBOutlet var mAddBezierButton : CanariDragSourceButton?
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
+  @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField?
+  @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton?
+  @IBOutlet var mArcInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mArcPathIsClosedSwitch : EBSwitch?
+  @IBOutlet var mArcRadiusTextField : CanariDimensionTextField?
+  @IBOutlet var mArcRadiusUnitPopUp : EBPopUpButton?
+  @IBOutlet var mArcStartTangentTextField : CanariDimensionTextField?
+  @IBOutlet var mArcStartTangentUnitPopUp : EBPopUpButton?
+  @IBOutlet var mArcXCenterTextField : CanariDimensionTextField?
+  @IBOutlet var mArcXCenterUnitPopUp : EBPopUpButton?
+  @IBOutlet var mArcYCenterTextField : CanariDimensionTextField?
+  @IBOutlet var mArcYCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mAutoNumberingInspectorView : CanariViewWithKeyView?
   @IBOutlet var mBaseInspectorView : NSView?
   @IBOutlet var mBezierCurveCPX1TextField : CanariDimensionTextField?
@@ -224,6 +243,8 @@ import Cocoa
     self.mPackageBezierCurveSelectionController.addExplorer (name: "mPackageBezierCurveSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageOvalSelectionController
     self.mPackageOvalSelectionController.addExplorer (name: "mPackageOvalSelectionController", y:&y, view:view)
+  //--- Selection controller property: mPackageArcSelectionController
+    self.mPackageArcSelectionController.addExplorer (name: "mPackageArcSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -258,6 +279,21 @@ import Cocoa
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mAddArcButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddArcButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddArcButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mAddBezierButton {
       if !(outlet is CanariDragSourceButton) {
         presentErrorWindow (
@@ -301,6 +337,186 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddSegmentButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcEndTangentTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcEndTangentTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcEndTangentTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcEndTangentUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcEndTangentUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcEndTangentUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcPathIsClosedSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcPathIsClosedSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcPathIsClosedSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcRadiusTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcRadiusTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcRadiusTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcRadiusUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcRadiusUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcRadiusUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcStartTangentTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcStartTangentTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcStartTangentTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcStartTangentUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcStartTangentUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcStartTangentUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcXCenterTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcXCenterTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcXCenterTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcXCenterUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcXCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcXCenterUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcYCenterTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcYCenterTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcYCenterTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mArcYCenterUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mArcYCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mArcYCenterUnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mAutoNumberingInspectorView {
@@ -1374,6 +1590,8 @@ import Cocoa
     self.mPackageBezierCurveSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageOvalSelectionController
     self.mPackageOvalSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mPackageArcSelectionController
+    self.mPackageArcSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mStatusMessage
@@ -1459,6 +1677,17 @@ import Cocoa
     self.mOvalWidthTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.width_property, self.mPackageOvalSelectionController.widthUnit_property, file: #file, line: #line)
     self.mOvalHeightUnitPopUp?.bind_selectedTag (self.mPackageOvalSelectionController.heightUnit_property, file: #file, line: #line)
     self.mOvalHeightTextField?.bind_dimensionAndUnit (self.mPackageOvalSelectionController.height_property, self.mPackageOvalSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mArcRadiusUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.radiusUnit_property, file: #file, line: #line)
+    self.mArcRadiusTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.radius_property, self.mPackageArcSelectionController.radiusUnit_property, file: #file, line: #line)
+    self.mArcXCenterUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.xCenterUnit_property, file: #file, line: #line)
+    self.mArcXCenterTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.xCenter_property, self.mPackageArcSelectionController.xCenterUnit_property, file: #file, line: #line)
+    self.mArcYCenterUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.yCenterUnit_property, file: #file, line: #line)
+    self.mArcYCenterTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.yCenter_property, self.mPackageArcSelectionController.yCenterUnit_property, file: #file, line: #line)
+    self.mArcStartTangentUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.startTangentLengthUnit_property, file: #file, line: #line)
+    self.mArcStartTangentTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.startTangentLength_property, self.mPackageArcSelectionController.startTangentLengthUnit_property, file: #file, line: #line)
+    self.mArcEndTangentUnitPopUp?.bind_selectedTag (self.mPackageArcSelectionController.endTangentLengthUnit_property, file: #file, line: #line)
+    self.mArcEndTangentTextField?.bind_dimensionAndUnit (self.mPackageArcSelectionController.endTangentLength_property, self.mPackageArcSelectionController.endTangentLengthUnit_property, file: #file, line: #line)
+    self.mArcPathIsClosedSwitch?.bind_value (self.mPackageArcSelectionController.pathIsClosed_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -1557,6 +1786,17 @@ import Cocoa
     self.mOvalWidthTextField?.unbind_dimensionAndUnit ()
     self.mOvalHeightUnitPopUp?.unbind_selectedTag ()
     self.mOvalHeightTextField?.unbind_dimensionAndUnit ()
+    self.mArcRadiusUnitPopUp?.unbind_selectedTag ()
+    self.mArcRadiusTextField?.unbind_dimensionAndUnit ()
+    self.mArcXCenterUnitPopUp?.unbind_selectedTag ()
+    self.mArcXCenterTextField?.unbind_dimensionAndUnit ()
+    self.mArcYCenterUnitPopUp?.unbind_selectedTag ()
+    self.mArcYCenterTextField?.unbind_dimensionAndUnit ()
+    self.mArcStartTangentUnitPopUp?.unbind_selectedTag ()
+    self.mArcStartTangentTextField?.unbind_dimensionAndUnit ()
+    self.mArcEndTangentUnitPopUp?.unbind_selectedTag ()
+    self.mArcEndTangentTextField?.unbind_dimensionAndUnit ()
+    self.mArcPathIsClosedSwitch?.unbind_value ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -1596,6 +1836,8 @@ import Cocoa
     self.mPackageBezierCurveSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageOvalSelectionController
     self.mPackageOvalSelectionController.unbind_selection ()
+  //--- Selection controller property: mPackageArcSelectionController
+    self.mPackageArcSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
@@ -1603,9 +1845,22 @@ import Cocoa
   //--------------------------- Remove targets / actions
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddArcButton?.ebCleanUp ()
     self.mAddBezierButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mArcEndTangentTextField?.ebCleanUp ()
+    self.mArcEndTangentUnitPopUp?.ebCleanUp ()
+    self.mArcInspectorView?.ebCleanUp ()
+    self.mArcPathIsClosedSwitch?.ebCleanUp ()
+    self.mArcRadiusTextField?.ebCleanUp ()
+    self.mArcRadiusUnitPopUp?.ebCleanUp ()
+    self.mArcStartTangentTextField?.ebCleanUp ()
+    self.mArcStartTangentUnitPopUp?.ebCleanUp ()
+    self.mArcXCenterTextField?.ebCleanUp ()
+    self.mArcXCenterUnitPopUp?.ebCleanUp ()
+    self.mArcYCenterTextField?.ebCleanUp ()
+    self.mArcYCenterUnitPopUp?.ebCleanUp ()
     self.mAutoNumberingInspectorView?.ebCleanUp ()
     self.mBaseInspectorView?.ebCleanUp ()
     self.mBezierCurveCPX1TextField?.ebCleanUp ()

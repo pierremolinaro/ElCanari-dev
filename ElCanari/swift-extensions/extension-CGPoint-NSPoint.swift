@@ -58,11 +58,17 @@ extension CGPoint {
   static func angleInRadian (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
     let width = p2.x - p1.x
     let height = p2.y - p1.y
-    let angle = atan2 (height, width) // Result in radian
-//    if width == 0.0 && height == 0.0 {
-//      print ("width \(width), height \(height), angle \(angle * 180.0 / CGFloat.pi)")
-//    }
+    var angle = atan2 (height, width) // Result in radian
+    if angle < 0.0 {
+      angle += 2.0 * CGFloat.pi
+    }
     return angle
+  }
+
+  //····················································································································
+
+  static func angleInDegrees (_ p1 : CGPoint, _ p2 : CGPoint) -> CGFloat {
+    return self.angleInRadian (p1, p2) * 180.0 / CGFloat.pi
   }
 
   //····················································································································
