@@ -58,7 +58,7 @@ class EBStrokeBezierPathShape : EBShape {
     super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
     for bp in self.mPaths {
-      if inView.needsToDraw (bp.bounds) {
+      if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
         bp.fill ()
       }
     }
