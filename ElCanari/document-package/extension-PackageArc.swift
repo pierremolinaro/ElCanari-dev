@@ -54,8 +54,8 @@ extension PackageArc {
       self.yCenter += inDy
     }else if inKnobIndex == PACKAGE_ARC_RADIUS {
       let t = NSAffineTransform ()
-      t.rotate (byDegrees: startAngle - arcAngle / 2.0)
       t.translateX (by: center.x, yBy: center.y)
+      t.rotate (byDegrees: startAngle - arcAngle / 2.0)
       let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
       let newRadiusKnob = NSPoint (
         x: currentRadiusKnob.x + canariUnitToCocoa (inDx),

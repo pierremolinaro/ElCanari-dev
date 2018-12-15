@@ -1841,7 +1841,7 @@
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="PuU-Cb-ahz">

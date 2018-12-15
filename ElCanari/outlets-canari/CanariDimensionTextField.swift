@@ -84,6 +84,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     self.mNumberFormatter.numberStyle = .decimal
     self.mNumberFormatter.localizesFormat = true
     self.mNumberFormatter.minimumFractionDigits = 2
+    self.mNumberFormatter.maximumFractionDigits = 2
+    self.mNumberFormatter.isLenient = true
     mOutlet.formatter = self.mNumberFormatter
   //--- Call back
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
