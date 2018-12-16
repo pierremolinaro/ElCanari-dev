@@ -876,7 +876,26 @@ class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 //    To many relationship: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_FontCharacter : class {
+
+  func willAdd_FontCharacter (_ inObject : FontCharacter)
+
+  func didRemove_FontCharacter (_ inObject : FontCharacter)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_FontCharacter? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_FontCharacter?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

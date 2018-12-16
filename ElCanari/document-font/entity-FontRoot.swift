@@ -1333,7 +1333,26 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 //    To many relationship: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_FontRoot : class {
+
+  func willAdd_FontRoot (_ inObject : FontRoot)
+
+  func didRemove_FontRoot (_ inObject : FontRoot)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_FontRoot? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_FontRoot?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

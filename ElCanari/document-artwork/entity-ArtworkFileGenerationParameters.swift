@@ -2734,7 +2734,26 @@ class ReadWriteArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 //    To many relationship: ArtworkFileGenerationParameters
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_ArtworkFileGenerationParameters : class {
+
+  func willAdd_ArtworkFileGenerationParameters (_ inObject : ArtworkFileGenerationParameters)
+
+  func didRemove_ArtworkFileGenerationParameters (_ inObject : ArtworkFileGenerationParameters)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_ArtworkFileGenerationParameters, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_ArtworkFileGenerationParameters? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_ArtworkFileGenerationParameters?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

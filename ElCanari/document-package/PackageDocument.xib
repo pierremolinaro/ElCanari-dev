@@ -522,6 +522,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1581" id="YMb-01-Xyu"/>
+                    </connections>
                 </textField>
                 <slider horizontalHuggingPriority="750" verticalHuggingPriority="750" id="1569" customClass="CanariPackageArcAngleSlider" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="198" y="353" width="32" height="34"/>
@@ -554,6 +557,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1556" id="wtg-oE-2i3"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1503" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="394" width="67" height="17"/>
@@ -598,6 +604,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3221" id="Li3-pp-357"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3220" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="451" width="67" height="17"/>
@@ -633,6 +642,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1539" id="mnr-P6-438"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3222" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="427" width="67" height="17"/>
@@ -687,6 +699,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1726" id="41l-9i-mCL"/>
+                    </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1580">
                     <rect key="frame" x="31" y="333" width="62" height="17"/>
@@ -721,6 +736,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3219" id="NOm-pF-U75"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1730" customClass="EBPopUpButton">
                     <rect key="frame" x="166" y="279" width="64" height="17"/>
@@ -765,6 +783,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1739" id="v94-cu-Ur1"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1717" customClass="EBPopUpButton">
                     <rect key="frame" x="166" y="306" width="64" height="17"/>
@@ -824,6 +845,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1653" id="KgH-i0-Dlk"/>
+                    </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1616">
                     <rect key="frame" x="17" y="394" width="71" height="14"/>
@@ -849,6 +873,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1708" id="20R-FK-Wky"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1641" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="392" width="67" height="17"/>
@@ -884,6 +911,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1657" id="E6U-Ie-lXe"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1682" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="448" width="67" height="17"/>
@@ -919,6 +949,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="1650" id="nmr-1c-uG9"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="1671" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="420" width="67" height="17"/>
@@ -1057,7 +1090,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="2227" customClass="EBPopUpButton">
-                    <rect key="frame" x="69" y="321" width="161" height="17"/>
+                    <rect key="frame" x="91" y="321" width="139" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Traversing" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2230" id="2787">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1431,7 +1464,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="2181" customClass="EBPopUpButton">
-                    <rect key="frame" x="68" y="343" width="162" height="17"/>
+                    <rect key="frame" x="91" y="343" width="139" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Square" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2184" id="2777">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1865,7 +1898,7 @@
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="2476" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="259" y="-1" width="429" height="501"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="PuU-Cb-ahz">
+                    <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1874,7 +1907,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </customView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="2828">
                         <rect key="frame" x="1" y="485" width="412" height="15"/>
@@ -2172,6 +2204,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3023" id="aKU-bm-e45"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3019" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="339" width="67" height="17"/>
@@ -2200,6 +2235,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3018" id="FQW-FR-gcI"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3025" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="366" width="67" height="17"/>
@@ -2228,6 +2266,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3022" id="3DI-aG-5Ya"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3020" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="447" width="67" height="17"/>
@@ -2256,6 +2297,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3024" id="JPS-QB-fR9"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3021" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="420" width="67" height="17"/>
@@ -2318,6 +2362,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3150" id="HR6-Ei-shG"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3091" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="342" width="67" height="17"/>
@@ -2346,6 +2393,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3092" id="DT5-kA-R27"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3089" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="367" width="67" height="17"/>
@@ -2374,6 +2424,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3095" id="B7Z-Ze-kkF"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3097" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="448" width="67" height="17"/>
@@ -2402,6 +2455,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3090" id="PFd-zk-Cef"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3096" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="423" width="67" height="17"/>
@@ -2457,6 +2513,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3146" id="dGl-Ow-1ek"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3149" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="214" width="67" height="17"/>
@@ -2485,6 +2544,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3152" id="3lV-b1-gpx"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3151" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="293" width="67" height="17"/>
@@ -2513,6 +2575,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3148" id="QP5-NR-EFZ"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3153" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="268" width="67" height="17"/>
@@ -2559,6 +2624,9 @@
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="nextKeyView" destination="3094" id="PyV-HQ-5Kz"/>
+                    </connections>
                 </textField>
                 <popUpButton imageHugsTitle="YES" id="3147" customClass="EBPopUpButton">
                     <rect key="frame" x="163" y="189" width="67" height="17"/>

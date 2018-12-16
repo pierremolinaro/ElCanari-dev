@@ -574,7 +574,26 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //    To many relationship: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_CanariLibraryEntry : class {
+
+  func willAdd_CanariLibraryEntry (_ inObject : CanariLibraryEntry)
+
+  func didRemove_CanariLibraryEntry (_ inObject : CanariLibraryEntry)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_CanariLibraryEntry? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_CanariLibraryEntry?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

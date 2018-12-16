@@ -3228,7 +3228,26 @@ class ReadWriteArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 //    To many relationship: MergerRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_MergerRoot : class {
+
+  func willAdd_MergerRoot (_ inObject : MergerRoot)
+
+  func didRemove_MergerRoot (_ inObject : MergerRoot)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_MergerRoot? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_MergerRoot?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

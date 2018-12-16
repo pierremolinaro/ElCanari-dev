@@ -559,7 +559,26 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 //    To many relationship: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_BoardModelVia : class {
+
+  func willAdd_BoardModelVia (_ inObject : BoardModelVia)
+
+  func didRemove_BoardModelVia (_ inObject : BoardModelVia)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_BoardModelVia? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_BoardModelVia?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

@@ -2005,7 +2005,26 @@ class ReadWriteArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 //    To many relationship: PackageArc
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackageArc : class {
+
+  func willAdd_PackageArc (_ inObject : PackageArc)
+
+  func didRemove_PackageArc (_ inObject : PackageArc)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackageArc? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageArc?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

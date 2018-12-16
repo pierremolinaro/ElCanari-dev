@@ -218,7 +218,7 @@ final class MergerPadArray : EBSimpleClass {
                 modelHeight inModelHeight : Int,
                 instanceRotation inInstanceRotation : QuadrantRotation) {
     for pad in self.padArray {
-      let pasRotationInRadians = canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000)
+      let padRotationInRadians = canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000)
       var x = inDx
       var y = inDy
       switch inInstanceRotation {
@@ -239,16 +239,16 @@ final class MergerPadArray : EBSimpleClass {
       let ymt : Int = canariUnitToMilTenth (y)
       let widthTenthMil  : Int = canariUnitToMilTenth (pad.width)
       let heightTenthMil : Int = canariUnitToMilTenth (pad.height)
-      let widthTenthMilF = Double (widthTenthMil)
-      let heightTenthMilF = Double (heightTenthMil)
-      let widthInch  : CGFloat = canariUnitToInch (pad.width)
-      let heightInch : CGFloat = canariUnitToInch (pad.height)
+      let widthTenthMilF  = CGFloat (widthTenthMil)
+      let heightTenthMilF = CGFloat (heightTenthMil)
+      let widthInch  = canariUnitToInch (pad.width)
+      let heightInch = canariUnitToInch (pad.height)
       switch pad.shape {
       case .rectangular :
-        let cosa = cos (pasRotationInRadians)
-        let sina = sin (pasRotationInRadians)
-        let hs = CGFloat (widthTenthMilF) / 2.0
-        let ws = CGFloat (heightTenthMilF) / 2.0
+        let cosa = cos (padRotationInRadians)
+        let sina = sin (padRotationInRadians)
+        let hs = widthTenthMilF  / 2.0
+        let ws = heightTenthMilF / 2.0
         let p1x = CGFloat (xmt) + ( hs * cosa - ws * sina)
         let p1y = CGFloat (ymt) + ( hs * sina + ws * cosa)
         let p2x = CGFloat (xmt) + (-hs * cosa - ws * sina)
@@ -289,7 +289,7 @@ final class MergerPadArray : EBSimpleClass {
           if inHorizontalMirror {
             transform.scaleX (by:-1.0, yBy: 1.0)
           }
-          transform.rotate (byRadians:pasRotationInRadians)
+          transform.rotate (byRadians: padRotationInRadians)
           let apertureString = "C,\(String(format: "%.4f", widthInch))"
           let p1 = transform.transform (NSPoint (x: 0.0,  y:  (heightTenthMilF - widthTenthMilF) / 2.0))
           let p2 = transform.transform (NSPoint (x: 0.0,  y: -(heightTenthMilF - widthTenthMilF) / 2.0))
@@ -312,7 +312,7 @@ final class MergerPadArray : EBSimpleClass {
           if inHorizontalMirror {
             transform.scaleX (by:-1.0, yBy: 1.0)
           }
-          transform.rotate (byRadians:pasRotationInRadians)
+          transform.rotate (byRadians: padRotationInRadians)
           let apertureString = "C,\(String(format: "%.4f", heightInch))"
           let p1 = transform.transform (NSPoint (x:  (widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))
           let p2 = transform.transform (NSPoint (x: -(widthTenthMilF - heightTenthMilF) / 2.0, y:0.0))

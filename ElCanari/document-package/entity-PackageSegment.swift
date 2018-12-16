@@ -1435,7 +1435,26 @@ class ReadWriteArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 //    To many relationship: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackageSegment : class {
+
+  func willAdd_PackageSegment (_ inObject : PackageSegment)
+
+  func didRemove_PackageSegment (_ inObject : PackageSegment)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackageSegment? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageSegment?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

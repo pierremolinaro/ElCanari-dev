@@ -1003,7 +1003,26 @@ class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 //    To many relationship: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolSolidRect : class {
+
+  func willAdd_SymbolSolidRect (_ inObject : SymbolSolidRect)
+
+  func didRemove_SymbolSolidRect (_ inObject : SymbolSolidRect)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolSolidRect? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolSolidRect?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

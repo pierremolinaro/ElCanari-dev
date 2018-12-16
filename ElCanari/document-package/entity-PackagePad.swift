@@ -42,6 +42,12 @@ protocol PackagePad_padStyle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackagePad_padNumber : class {
+  var padNumber : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackagePad_xCenterUnit : class {
   var xCenterUnit : Int { get }
 }
@@ -123,6 +129,7 @@ class PackagePad : PackageObject,
          PackagePad_holeDiameter,
          PackagePad_padShape,
          PackagePad_padStyle,
+         PackagePad_padNumber,
          PackagePad_xCenterUnit,
          PackagePad_yCenterUnit,
          PackagePad_widthUnit,
@@ -272,6 +279,29 @@ class PackagePad : PackageObject,
 
   var padStyle_property_selection : EBSelection <PadStyle> {
     return self.padStyle_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: padNumber
+  //····················································································································
+
+  var padNumber_property = EBStoredProperty_Int (0)
+
+  //····················································································································
+
+  var padNumber : Int {
+    get {
+      return self.padNumber_property.propval
+    }
+    set {
+      self.padNumber_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumber_property_selection : EBSelection <Int> {
+    return self.padNumber_property.prop
   }
 
   //····················································································································
@@ -499,6 +529,8 @@ class PackagePad : PackageObject,
     self.padShape_property.undoManager = self.undoManager
   //--- Atomic property: padStyle
     self.padStyle_property.undoManager = self.undoManager
+  //--- Atomic property: padNumber
+    self.padNumber_property.undoManager = self.undoManager
   //--- Atomic property: xCenterUnit
     self.xCenterUnit_property.undoManager = self.undoManager
   //--- Atomic property: yCenterUnit
@@ -571,6 +603,9 @@ class PackagePad : PackageObject,
         kind &= unwSelf.holeDiameter_property_selection.kind ()
         kind &= unwSelf.padShape_property_selection.kind ()
         kind &= unwSelf.padStyle_property_selection.kind ()
+        kind &= unwSelf.padNumber_property_selection.kind ()
+        kind &= g_Preferences!.padNumberFont_property_selection.kind ()
+        kind &= g_Preferences!.padNumberColor_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -578,9 +613,9 @@ class PackagePad : PackageObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, g_Preferences!.packageColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, unwSelf.padNumber_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, g_Preferences!.packageColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
             return .empty
           }
@@ -596,6 +631,9 @@ class PackagePad : PackageObject,
     self.holeDiameter_property.addEBObserver (self.objectDisplay_property)
     self.padShape_property.addEBObserver (self.objectDisplay_property)
     self.padStyle_property.addEBObserver (self.objectDisplay_property)
+    self.padNumber_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberFont_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.readModelFunction = { [weak self] in
@@ -664,6 +702,7 @@ class PackagePad : PackageObject,
     self.heightUnit_property.setSignatureObserver (observer:self)
     self.holeDiameter_property.setSignatureObserver (observer:self)
     self.holeDiameterUnit_property.setSignatureObserver (observer:self)
+    self.padNumber_property.setSignatureObserver (observer:self)
     self.padShape_property.setSignatureObserver (observer:self)
     self.padStyle_property.setSignatureObserver (observer:self)
     self.width_property.setSignatureObserver (observer:self)
@@ -690,6 +729,9 @@ class PackagePad : PackageObject,
     self.holeDiameter_property.removeEBObserver (self.objectDisplay_property)
     self.padShape_property.removeEBObserver (self.objectDisplay_property)
     self.padStyle_property.removeEBObserver (self.objectDisplay_property)
+    self.padNumber_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberFont_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padNumberColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
     self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
     self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
@@ -761,6 +803,14 @@ class PackagePad : PackageObject,
       view:view,
       observerExplorer:&self.padStyle_property.mObserverExplorer,
       valueExplorer:&self.padStyle_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padNumber",
+      idx:self.padNumber_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padNumber_property.mObserverExplorer,
+      valueExplorer:&self.padNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
@@ -887,6 +937,9 @@ class PackagePad : PackageObject,
   //--- Atomic property: padStyle
     self.padStyle_property.mObserverExplorer = nil
     self.padStyle_property.mValueExplorer = nil
+  //--- Atomic property: padNumber
+    self.padNumber_property.mObserverExplorer = nil
+    self.padNumber_property.mValueExplorer = nil
   //--- Atomic property: xCenterUnit
     self.xCenterUnit_property.mObserverExplorer = nil
     self.xCenterUnit_property.mValueExplorer = nil
@@ -930,6 +983,8 @@ class PackagePad : PackageObject,
     self.padShape_property.storeIn (dictionary: ioDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
     self.padStyle_property.storeIn (dictionary: ioDictionary, forKey:"padStyle")
+  //--- Atomic property: padNumber
+    self.padNumber_property.storeIn (dictionary: ioDictionary, forKey:"padNumber")
   //--- Atomic property: xCenterUnit
     self.xCenterUnit_property.storeIn (dictionary: ioDictionary, forKey:"xCenterUnit")
   //--- Atomic property: yCenterUnit
@@ -973,6 +1028,8 @@ class PackagePad : PackageObject,
     self.padShape_property.readFrom (dictionary: inDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
     self.padStyle_property.readFrom (dictionary: inDictionary, forKey:"padStyle")
+  //--- Atomic property: padNumber
+    self.padNumber_property.readFrom (dictionary: inDictionary, forKey:"padNumber")
   //--- Atomic property: xCenterUnit
     self.xCenterUnit_property.readFrom (dictionary: inDictionary, forKey:"xCenterUnit")
   //--- Atomic property: yCenterUnit
@@ -1032,6 +1089,7 @@ class PackagePad : PackageObject,
     crc.accumulateUInt32 (self.heightUnit_property.signature ())
     crc.accumulateUInt32 (self.holeDiameter_property.signature ())
     crc.accumulateUInt32 (self.holeDiameterUnit_property.signature ())
+    crc.accumulateUInt32 (self.padNumber_property.signature ())
     crc.accumulateUInt32 (self.padShape_property.signature ())
     crc.accumulateUInt32 (self.padStyle_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())
@@ -1391,6 +1449,63 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padStyle_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padNumber' stored property
+  //····················································································································
+
+  private var mObserversOf_padNumber = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    mObserversOf_padNumber.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumber_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    mObserversOf_padNumber.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumber_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in mObserversOf_padNumber {
+        managedObject.padNumber_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for observer in mObserversOf_padNumber {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padNumber_property.removeEBObserver (observer)
       }
     }
   }
@@ -2152,6 +2267,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padShape_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padStyle_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padNumber_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedSet)
@@ -2174,6 +2290,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
       self.addEBObserversOf_padShape_toElementsOfSet (addedSet)
       self.addEBObserversOf_padStyle_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padNumber_toElementsOfSet (addedSet)
       self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_widthUnit_toElementsOfSet (addedSet)
@@ -2231,7 +2348,26 @@ class ReadWriteArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 //    To many relationship: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackagePad : class {
+
+  func willAdd_PackagePad (_ inObject : PackagePad)
+
+  func didRemove_PackagePad (_ inObject : PackagePad)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackagePad? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackagePad?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 
@@ -2317,6 +2453,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_padShape_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_padStyle_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padNumber_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
@@ -2341,6 +2478,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_padShape_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_padStyle_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padNumber_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)

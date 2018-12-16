@@ -162,6 +162,7 @@ graphic entity PackagePad : PackageObject {
   property @signature Int holeDiameter default 57_150 ;
   property @signature PadShape padShape default octo ;
   property @signature PadStyle padStyle default traversing ;
+  property @signature Int padNumber default 0 ;
 
   property @signature Int xCenterUnit default 2_286 ;
   property @signature Int yCenterUnit default 2_286 ;
@@ -173,6 +174,7 @@ graphic entity PackagePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
+     self.padNumber, prefs.padNumberFont, prefs.padNumberColor,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom

@@ -1598,7 +1598,26 @@ class ReadWriteArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 //    To many relationship: PackageRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackageRoot : class {
+
+  func willAdd_PackageRoot (_ inObject : PackageRoot)
+
+  func didRemove_PackageRoot (_ inObject : PackageRoot)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackageRoot? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageRoot?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

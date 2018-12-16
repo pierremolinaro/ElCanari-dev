@@ -1472,7 +1472,26 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    To many relationship: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_ArtworkRoot : class {
+
+  func willAdd_ArtworkRoot (_ inObject : ArtworkRoot)
+
+  func didRemove_ArtworkRoot (_ inObject : ArtworkRoot)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_ArtworkRoot? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_ArtworkRoot?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

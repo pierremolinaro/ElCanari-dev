@@ -877,7 +877,26 @@ class ReadWriteArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 //    To many relationship: BoardModelPad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_BoardModelPad : class {
+
+  func willAdd_BoardModelPad (_ inObject : BoardModelPad)
+
+  func didRemove_BoardModelPad (_ inObject : BoardModelPad)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_BoardModelPad? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_BoardModelPad?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

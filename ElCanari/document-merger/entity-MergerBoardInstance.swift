@@ -1193,7 +1193,26 @@ class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 //    To many relationship: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_MergerBoardInstance : class {
+
+  func willAdd_MergerBoardInstance (_ inObject : MergerBoardInstance)
+
+  func didRemove_MergerBoardInstance (_ inObject : MergerBoardInstance)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_MergerBoardInstance? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_MergerBoardInstance?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

@@ -1649,7 +1649,26 @@ class ReadWriteArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 //    To many relationship: SymbolRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolRoot : class {
+
+  func willAdd_SymbolRoot (_ inObject : SymbolRoot)
+
+  func didRemove_SymbolRoot (_ inObject : SymbolRoot)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolRoot? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolRoot?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

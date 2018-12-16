@@ -771,7 +771,26 @@ class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 //    To many relationship: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SegmentEntity : class {
+
+  func willAdd_SegmentEntity (_ inObject : SegmentEntity)
+
+  func didRemove_SegmentEntity (_ inObject : SegmentEntity)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SegmentEntity? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SegmentEntity?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

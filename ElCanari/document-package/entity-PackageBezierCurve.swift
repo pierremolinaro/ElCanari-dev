@@ -2335,7 +2335,26 @@ class ReadWriteArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
 //    To many relationship: PackageBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackageBezierCurve : class {
+
+  func willAdd_PackageBezierCurve (_ inObject : PackageBezierCurve)
+
+  func didRemove_PackageBezierCurve (_ inObject : PackageBezierCurve)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCurve, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackageBezierCurve? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageBezierCurve?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

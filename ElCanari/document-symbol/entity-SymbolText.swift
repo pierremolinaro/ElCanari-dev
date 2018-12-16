@@ -1003,7 +1003,26 @@ class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 //    To many relationship: SymbolText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolText : class {
+
+  func willAdd_SymbolText (_ inObject : SymbolText)
+
+  func didRemove_SymbolText (_ inObject : SymbolText)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolText? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolText?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

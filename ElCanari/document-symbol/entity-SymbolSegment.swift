@@ -1003,7 +1003,26 @@ class ReadWriteArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 //    To many relationship: SymbolSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolSegment : class {
+
+  func willAdd_SymbolSegment (_ inObject : SymbolSegment)
+
+  func didRemove_SymbolSegment (_ inObject : SymbolSegment)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolSegment : ReadWriteArrayOf_SymbolSegment, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolSegment? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolSegment?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

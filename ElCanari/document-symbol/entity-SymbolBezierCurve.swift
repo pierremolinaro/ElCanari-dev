@@ -1471,7 +1471,26 @@ class ReadWriteArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 //    To many relationship: SymbolBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolBezierCurve : class {
+
+  func willAdd_SymbolBezierCurve (_ inObject : SymbolBezierCurve)
+
+  func didRemove_SymbolBezierCurve (_ inObject : SymbolBezierCurve)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolBezierCurve? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolBezierCurve?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

@@ -13,7 +13,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument {
+@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument, Delegate_StoredArrayOf_PackageObject {
 
   //····················································································································
 
@@ -42,6 +42,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
+  //--- Set delegate from managing pad number
+    self.rootObject.packageObjects_property.set (delegate : self)
   //--- Package color observer
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
@@ -230,6 +232,17 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   }
 
   //····················································································································
+  //  MARK: -
+  // Implementation of Delegate_StoredArrayOf_PackageObject protocol
+  //····················································································································
+
+  func willAdd_PackageObject (_ inObject : PackageObject) {
+  }
+
+  //····················································································································
+
+  func didRemove_PackageObject (_ inObject : PackageObject) {
+  }
 
 }
 

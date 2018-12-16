@@ -1000,7 +1000,26 @@ class ReadWriteArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 //    To many relationship: SymbolSolidOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolSolidOval : class {
+
+  func willAdd_SymbolSolidOval (_ inObject : SymbolSolidOval)
+
+  func didRemove_SymbolSolidOval (_ inObject : SymbolSolidOval)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolSolidOval? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolSolidOval?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

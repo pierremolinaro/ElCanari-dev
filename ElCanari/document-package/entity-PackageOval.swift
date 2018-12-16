@@ -1435,7 +1435,26 @@ class ReadWriteArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 //    To many relationship: PackageOval
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_PackageOval : class {
+
+  func willAdd_PackageOval (_ inObject : PackageOval)
+
+  func didRemove_PackageOval (_ inObject : PackageOval)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_PackageOval? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageOval?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

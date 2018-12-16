@@ -1821,7 +1821,26 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 //    To many relationship: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SymbolPin : class {
+
+  func willAdd_SymbolPin (_ inObject : SymbolPin)
+
+  func didRemove_SymbolPin (_ inObject : SymbolPin)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SymbolPin? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolPin?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 

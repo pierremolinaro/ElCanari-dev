@@ -892,7 +892,26 @@ class ReadWriteArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 //    To many relationship: SegmentForFontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol Delegate_StoredArrayOf_SegmentForFontCharacter : class {
+
+  func willAdd_SegmentForFontCharacter (_ inObject : SegmentForFontCharacter)
+
+  func didRemove_SegmentForFontCharacter (_ inObject : SegmentForFontCharacter)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForFontCharacter, EBSignatureObserverProtocol {
+
+  //····················································································································
+
+  private weak var mDelegate : Delegate_StoredArrayOf_SegmentForFontCharacter? = nil
+
+  //····················································································································
+
+  func set (delegate inDelegate : Delegate_StoredArrayOf_SegmentForFontCharacter?) {
+    self.mDelegate = inDelegate
+  }
 
   //····················································································································
 
