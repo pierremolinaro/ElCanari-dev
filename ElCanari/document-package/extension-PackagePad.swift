@@ -116,35 +116,25 @@ extension PackagePad {
   //····················································································································
 
   override func canSnapToGrid (_ inGrid : Int) -> Bool {
-//    var result = (self.x % inGrid) != 0
-//    if !result {
-//      result = (self.y % inGrid) != 0
-//    }
-//    if !result {
-//      result = (self.width % inGrid) != 0
-//    }
-//    if !result {
-//      result = (self.height % inGrid) != 0
-//    }
-//    return result
-    return false
+    var result = (self.xCenter % inGrid) != 0
+    if !result {
+      result = (self.yCenter % inGrid) != 0
+    }
+    return result
   }
 
   //····················································································································
 
   override func snapToGrid (_ inGrid : Int) {
-//    self.x = ((self.x + inGrid / 2) / inGrid) * inGrid
-//    self.y = ((self.y + inGrid / 2) / inGrid) * inGrid
-//    self.width = ((self.width + inGrid / 2) / inGrid) * inGrid
-//    self.height = ((self.height + inGrid / 2) / inGrid) * inGrid
+    self.xCenter = ((self.xCenter + inGrid / 2) / inGrid) * inGrid
+    self.yCenter = ((self.yCenter + inGrid / 2) / inGrid) * inGrid
   }
 
   //····················································································································
 
   override func alignmentPoints () -> OCCanariPointArray {
     let result = OCCanariPointArray ()
-//    result.points.append (CanariPoint (x: self.x, y: self.y))
-//    result.points.append (CanariPoint (x: self.x + self.width, y: self.y + self.height))
+    result.points.append (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
   }
 

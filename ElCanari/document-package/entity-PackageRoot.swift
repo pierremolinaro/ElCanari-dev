@@ -48,6 +48,18 @@ protocol PackageRoot_gridStep : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_gridStepUnit : class {
+  var gridStepUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_gridDisplayFactor : class {
+  var gridDisplayFactor : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_zoom : class {
   var zoom : Int { get }
 }
@@ -62,6 +74,12 @@ protocol PackageRoot_xPlacardUnit : class {
 
 protocol PackageRoot_yPlacardUnit : class {
   var yPlacardUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
+  var gridStepMultipliedByDisplayFactor : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -88,9 +106,12 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_verticalFlip,
          PackageRoot_gridStyle,
          PackageRoot_gridStep,
+         PackageRoot_gridStepUnit,
+         PackageRoot_gridDisplayFactor,
          PackageRoot_zoom,
          PackageRoot_xPlacardUnit,
          PackageRoot_yPlacardUnit,
+         PackageRoot_gridStepMultipliedByDisplayFactor,
          PackageRoot_issues,
          PackageRoot_noIssue {
 
@@ -236,7 +257,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStep
   //····················································································································
 
-  var gridStep_property = EBStoredProperty_Int (4)
+  var gridStep_property = EBStoredProperty_Int (57150)
 
   //····················································································································
 
@@ -253,6 +274,52 @@ class PackageRoot : EBGraphicManagedObject,
 
   var gridStep_property_selection : EBSelection <Int> {
     return self.gridStep_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: gridStepUnit
+  //····················································································································
+
+  var gridStepUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var gridStepUnit : Int {
+    get {
+      return self.gridStepUnit_property.propval
+    }
+    set {
+      self.gridStepUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var gridStepUnit_property_selection : EBSelection <Int> {
+    return self.gridStepUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: gridDisplayFactor
+  //····················································································································
+
+  var gridDisplayFactor_property = EBStoredProperty_Int (4)
+
+  //····················································································································
+
+  var gridDisplayFactor : Int {
+    get {
+      return self.gridDisplayFactor_property.propval
+    }
+    set {
+      self.gridDisplayFactor_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var gridDisplayFactor_property_selection : EBSelection <Int> {
+    return self.gridDisplayFactor_property.prop
   }
 
   //····················································································································
@@ -349,6 +416,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: gridStepMultipliedByDisplayFactor
+  //····················································································································
+
+  var gridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var gridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
+    return self.gridStepMultipliedByDisplayFactor_property.prop
+  }
+
+  //····················································································································
+
+    var gridStepMultipliedByDisplayFactor : Int? {
+    switch self.gridStepMultipliedByDisplayFactor_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -414,6 +504,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStyle_property.undoManager = self.undoManager
   //--- Atomic property: gridStep
     self.gridStep_property.undoManager = self.undoManager
+  //--- Atomic property: gridStepUnit
+    self.gridStepUnit_property.undoManager = self.undoManager
+  //--- Atomic property: gridDisplayFactor
+    self.gridDisplayFactor_property.undoManager = self.undoManager
   //--- Atomic property: zoom
     self.zoom_property.undoManager = self.undoManager
   //--- Atomic property: xPlacardUnit
@@ -422,6 +516,30 @@ class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property.undoManager = self.undoManager
   //--- To many property: packageObjects (no option)
     self.packageObjects_property.undoManager = self.undoManager
+  //--- Atomic property: gridStepMultipliedByDisplayFactor
+    self.gridStepMultipliedByDisplayFactor_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.gridStep_property_selection.kind ()
+        kind &= unwSelf.gridDisplayFactor_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.gridStep_property_selection, unwSelf.gridDisplayFactor_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -502,6 +620,8 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Remove observers
   //--- To many property: packagePads
     self.packageObjects_property.removeEBObserver (self.packagePads_property)
+    self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.issues_property.removeEBObserver (self.noIssue_property)
   }
@@ -574,6 +694,22 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer:&self.gridStep_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "gridStepUnit",
+      idx:self.gridStepUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gridStepUnit_property.mObserverExplorer,
+      valueExplorer:&self.gridStepUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "gridDisplayFactor",
+      idx:self.gridDisplayFactor_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gridDisplayFactor_property.mObserverExplorer,
+      valueExplorer:&self.gridDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "zoom",
       idx:self.zoom_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -598,6 +734,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer:&self.yPlacardUnit_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "gridStepMultipliedByDisplayFactor",
+      idx:self.gridStepMultipliedByDisplayFactor_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
+      valueExplorer:&self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "issues",
       idx:self.issues_property.mEasyBindingsObjectIndex,
@@ -652,6 +796,12 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: gridStep
     self.gridStep_property.mObserverExplorer = nil
     self.gridStep_property.mValueExplorer = nil
+  //--- Atomic property: gridStepUnit
+    self.gridStepUnit_property.mObserverExplorer = nil
+    self.gridStepUnit_property.mValueExplorer = nil
+  //--- Atomic property: gridDisplayFactor
+    self.gridDisplayFactor_property.mObserverExplorer = nil
+    self.gridDisplayFactor_property.mValueExplorer = nil
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
@@ -687,6 +837,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
   //--- Atomic property: gridStep
     self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
+  //--- Atomic property: gridStepUnit
+    self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"gridStepUnit")
+  //--- Atomic property: gridDisplayFactor
+    self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
   //--- Atomic property: xPlacardUnit
@@ -736,6 +890,10 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
   //--- Atomic property: gridStep
     self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
+  //--- Atomic property: gridStepUnit
+    self.gridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"gridStepUnit")
+  //--- Atomic property: gridDisplayFactor
+    self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
   //--- Atomic property: xPlacardUnit
@@ -1209,6 +1367,120 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'gridStepUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_gridStepUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_gridStepUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridStepUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_gridStepUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridStepUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_gridStepUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_gridStepUnit {
+        managedObject.gridStepUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_gridStepUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for observer in self.mObserversOf_gridStepUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.gridStepUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'gridDisplayFactor' stored property
+  //····················································································································
+
+  private var mObserversOf_gridDisplayFactor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_gridDisplayFactor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridDisplayFactor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_gridDisplayFactor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridDisplayFactor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_gridDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_gridDisplayFactor {
+        managedObject.gridDisplayFactor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for observer in self.mObserversOf_gridDisplayFactor {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.gridDisplayFactor_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'zoom' stored property
   //····················································································································
 
@@ -1375,6 +1647,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'gridStepMultipliedByDisplayFactor' transient property
+  //····················································································································
+
+  private var mObserversOf_gridStepMultipliedByDisplayFactor = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_gridStepMultipliedByDisplayFactor.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_gridStepMultipliedByDisplayFactor.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor {
+        managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor {
+        managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
       }
     }
   }
@@ -1571,10 +1899,13 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_noIssue_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -1587,10 +1918,13 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridStep_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedSet)
       self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
       self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_noIssue_toElementsOfSet (addedSet)
     //--- Update object set
@@ -1727,9 +2061,12 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -1745,9 +2082,12 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
       //--- Notify observers

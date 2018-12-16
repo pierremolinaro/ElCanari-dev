@@ -12,28 +12,28 @@ extension EBView {
 
   //····················································································································
 
-  func bind_gridStepFactor (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
-    self.mGridStepFactorController = EBReadOnlyController_Int (
+  func bind_gridDisplayFactor (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
+    self.mGridDisplayFactorController = EBReadOnlyController_Int (
       model: model,
-      callBack: { [weak self] in self?.updateGridStepFactor (from: model) }
+      callBack: { [weak self] in self?.updateGridDisplayFactor (from: model) }
     )
   }
 
   //····················································································································
 
-  func unbind_gridStepFactor () {
-    self.mGridStepFactorController?.unregister ()
-    self.mGridStepFactorController = nil
+  func unbind_gridDisplayFactor () {
+    self.mGridDisplayFactorController?.unregister ()
+    self.mGridDisplayFactorController = nil
   }
 
   //····················································································································
 
-  private func updateGridStepFactor (from model : EBReadOnlyProperty_Int) {
+  private func updateGridDisplayFactor (from model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty, .multiple :
-      self.mGridStepFactor = 4
+      self.mGridDisplayFactor = 4
     case .single (let v) :
-      self.mGridStepFactor = v
+      self.mGridDisplayFactor = v
     }
   }
 

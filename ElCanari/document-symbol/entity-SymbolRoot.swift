@@ -36,8 +36,8 @@ protocol SymbolRoot_gridStyle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolRoot_gridStep : class {
-  var gridStep : Int { get }
+protocol SymbolRoot_gridDisplay : class {
+  var gridDisplay : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -86,7 +86,7 @@ class SymbolRoot : EBManagedObject,
          SymbolRoot_horizontalFlip,
          SymbolRoot_verticalFlip,
          SymbolRoot_gridStyle,
-         SymbolRoot_gridStep,
+         SymbolRoot_gridDisplay,
          SymbolRoot_zoom,
          SymbolRoot_xPlacardUnit,
          SymbolRoot_yPlacardUnit,
@@ -210,26 +210,26 @@ class SymbolRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: gridStep
+  //   Atomic property: gridDisplay
   //····················································································································
 
-  var gridStep_property = EBStoredProperty_Int (4)
+  var gridDisplay_property = EBStoredProperty_Int (4)
 
   //····················································································································
 
-  var gridStep : Int {
+  var gridDisplay : Int {
     get {
-      return self.gridStep_property.propval
+      return self.gridDisplay_property.propval
     }
     set {
-      self.gridStep_property.setProp (newValue)
+      self.gridDisplay_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridStep_property_selection : EBSelection <Int> {
-    return self.gridStep_property.prop
+  var gridDisplay_property_selection : EBSelection <Int> {
+    return self.gridDisplay_property.prop
   }
 
   //····················································································································
@@ -410,8 +410,8 @@ class SymbolRoot : EBManagedObject,
     self.verticalFlip_property.undoManager = self.undoManager
   //--- Atomic property: gridStyle
     self.gridStyle_property.undoManager = self.undoManager
-  //--- Atomic property: gridStep
-    self.gridStep_property.undoManager = self.undoManager
+  //--- Atomic property: gridDisplay
+    self.gridDisplay_property.undoManager = self.undoManager
   //--- Atomic property: zoom
     self.zoom_property.undoManager = self.undoManager
   //--- Atomic property: xPlacardUnit
@@ -570,12 +570,12 @@ class SymbolRoot : EBManagedObject,
       valueExplorer:&self.gridStyle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridStep",
-      idx:self.gridStep_property.mEasyBindingsObjectIndex,
+      "gridDisplay",
+      idx:self.gridDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStep_property.mObserverExplorer,
-      valueExplorer:&self.gridStep_property.mValueExplorer
+      observerExplorer:&self.gridDisplay_property.mObserverExplorer,
+      valueExplorer:&self.gridDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "zoom",
@@ -658,9 +658,9 @@ class SymbolRoot : EBManagedObject,
   //--- Atomic property: gridStyle
     self.gridStyle_property.mObserverExplorer = nil
     self.gridStyle_property.mValueExplorer = nil
-  //--- Atomic property: gridStep
-    self.gridStep_property.mObserverExplorer = nil
-    self.gridStep_property.mValueExplorer = nil
+  //--- Atomic property: gridDisplay
+    self.gridDisplay_property.mObserverExplorer = nil
+    self.gridDisplay_property.mValueExplorer = nil
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
@@ -695,8 +695,8 @@ class SymbolRoot : EBManagedObject,
     self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"verticalFlip")
   //--- Atomic property: gridStyle
     self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
+  //--- Atomic property: gridDisplay
+    self.gridDisplay_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplay")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
   //--- Atomic property: xPlacardUnit
@@ -744,8 +744,8 @@ class SymbolRoot : EBManagedObject,
     self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
   //--- Atomic property: gridStyle
     self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
+  //--- Atomic property: gridDisplay
+    self.gridDisplay_property.readFrom (dictionary: inDictionary, forKey:"gridDisplay")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
   //--- Atomic property: xPlacardUnit
@@ -1107,58 +1107,58 @@ class ReadOnlyArrayOf_SymbolRoot : ReadOnlyAbstractArrayProperty <SymbolRoot> {
   }
 
   //····················································································································
-  //   Observers of 'gridStep' stored property
+  //   Observers of 'gridDisplay' stored property
   //····················································································································
 
-  private var mObserversOf_gridStep = EBWeakEventSet ()
+  private var mObserversOf_gridDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func addEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridStep.insert (inObserver)
+    self.mObserversOf_gridDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.addEBObserver (inObserver)
+        managedObject.gridDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_gridDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridStep.remove (inObserver)
+    self.mObserversOf_gridDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.removeEBObserver (inObserver)
+        managedObject.gridDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStep_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
+  final func addEBObserversOf_gridDisplay_toElementsOfSet (_ inSet : Set<SymbolRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStep {
-        managedObject.gridStep_property.addEBObserver (observer)
+      for observer in self.mObserversOf_gridDisplay {
+        managedObject.gridDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
-    for observer in self.mObserversOf_gridStep {
+  final func removeEBObserversOf_gridDisplay_fromElementsOfSet (_ inSet : Set<SymbolRoot>) {
+    for observer in self.mObserversOf_gridDisplay {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridStep_property.removeEBObserver (observer)
+        managedObject.gridDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -1581,7 +1581,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
       self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_gridDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
@@ -1597,7 +1597,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
       self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gridStep_toElementsOfSet (addedSet)
+      self.addEBObserversOf_gridDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
       self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
@@ -1737,7 +1737,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_gridDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
@@ -1755,7 +1755,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_gridDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)

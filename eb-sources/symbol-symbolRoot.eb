@@ -187,7 +187,7 @@ entity SymbolRoot {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
-  property Int gridStep default 4 ;
+  property Int gridDisplay default 4 ;
   property Int zoom default 600 ;
 
 #--- XY placard unit

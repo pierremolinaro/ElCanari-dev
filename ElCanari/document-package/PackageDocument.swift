@@ -163,8 +163,10 @@ import Cocoa
   @IBOutlet var mCrossColorOfPackageGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
   @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mGridStep : EBPopUpButton?
+  @IBOutlet var mGridDisplayPopUpButton : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
+  @IBOutlet var mGridTextField : CanariDimensionTextField?
+  @IBOutlet var mGridUnitPopUp : EBPopUpButton?
   @IBOutlet var mGridZoomInspectorView : CanariViewWithKeyView?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
@@ -985,19 +987,19 @@ import Cocoa
         errorMessage: "the 'mDisplayInspectorView' outlet is nil"
       )
     }
-    if let outlet : Any = self.mGridStep {
+    if let outlet : Any = self.mGridDisplayPopUpButton {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mGridStep' outlet is not an instance of 'EBPopUpButton'"
+          errorMessage: "the 'mGridDisplayPopUpButton' outlet is not an instance of 'EBPopUpButton'"
         )
       }
     }else{
       presentErrorWindow (
         file: #file,
         line: #line,
-        errorMessage: "the 'mGridStep' outlet is nil"
+        errorMessage: "the 'mGridDisplayPopUpButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mGridStyle {
@@ -1013,6 +1015,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mGridStyle' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGridTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGridTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGridTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGridUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGridUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGridUnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mGridZoomInspectorView {
@@ -2076,8 +2108,12 @@ import Cocoa
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_mouseGrid (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_gridStep (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_arrowKeyMagnitude (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_shiftArrowKeyMagnitude (self.rootObject.gridStepMultipliedByDisplayFactor_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mComposedPackageView?.bind_gridStepFactor (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_gridDisplayFactor (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridLineColor (g_Preferences!.lineColorOfPackageGrid_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_gridCrossColor (g_Preferences!.crossColorOfPackageGrid_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
@@ -2087,7 +2123,7 @@ import Cocoa
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mCrossColorOfPackageGridColorWell?.bind_color (g_Preferences!.crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
@@ -2095,6 +2131,8 @@ import Cocoa
     self.mPackageColorColorWell?.bind_color (g_Preferences!.packageColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageBackgroundColorColorWell?.bind_color (g_Preferences!.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    self.mGridUnitPopUp?.bind_selectedTag (self.rootObject.gridStepUnit_property, file: #file, line: #line)
+    self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -2214,8 +2252,12 @@ import Cocoa
     self.mIssueTableView?.unbind_issues ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
+    self.mComposedPackageView?.unbind_mouseGrid ()
+    self.mComposedPackageView?.unbind_gridStep ()
+    self.mComposedPackageView?.unbind_arrowKeyMagnitude ()
+    self.mComposedPackageView?.unbind_shiftArrowKeyMagnitude ()
     self.mComposedPackageView?.unbind_gridStyle ()
-    self.mComposedPackageView?.unbind_gridStepFactor ()
+    self.mComposedPackageView?.unbind_gridDisplayFactor ()
     self.mComposedPackageView?.unbind_gridLineColor ()
     self.mComposedPackageView?.unbind_gridCrossColor ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -2225,7 +2267,7 @@ import Cocoa
     self.mHorizontalFlip?.unbind_value ()
     self.mVerticalFlip?.unbind_value ()
     self.mGridStyle?.unbind_selectedIndex ()
-    self.mGridStep?.unbind_selectedTag ()
+    self.mGridDisplayPopUpButton?.unbind_selectedTag ()
     self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mCrossColorOfPackageGridColorWell?.unbind_color ()
@@ -2233,6 +2275,8 @@ import Cocoa
     self.mPackageColorColorWell?.unbind_color ()
     self.mPackageBackgroundColorColorWell?.unbind_color ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
+    self.mGridUnitPopUp?.unbind_selectedTag ()
+    self.mGridTextField?.unbind_dimensionAndUnit ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
@@ -2305,8 +2349,10 @@ import Cocoa
     self.mCrossColorOfPackageGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
     self.mDisplayInspectorView?.ebCleanUp ()
-    self.mGridStep?.ebCleanUp ()
+    self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
+    self.mGridTextField?.ebCleanUp ()
+    self.mGridUnitPopUp?.ebCleanUp ()
     self.mGridZoomInspectorView?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()

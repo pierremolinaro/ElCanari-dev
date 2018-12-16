@@ -24,7 +24,9 @@ graphic entity PackageRoot {
   property Bool horizontalFlip default no ;
   property Bool verticalFlip default no ;
   property GridStyle gridStyle default line ;
-  property Int gridStep default 4 ;
+  property Int gridStep default 57_150 ; # 25 mils
+  property Int gridStepUnit default 2_286 ; # mil
+  property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
 
 #--- XY placard unit
@@ -36,6 +38,9 @@ graphic entity PackageRoot {
     self.packageObjects.all.issues
   ;
   transient Bool noIssue dependsFrom self.issues ;
+
+ #--- Mouse grid 
+  transient Int gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

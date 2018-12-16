@@ -25,7 +25,7 @@ document SymbolDocument root SymbolRoot {
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
-  outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
+  outlet EBPopUpButton mGridDisplayFactorPopUpButton $selectedTag root.gridDisplay ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
   outlet EBColorWell mCrossColorOfSymbolGridColorWell $color prefs.crossColorOfSymbolGrid {sendContinously:no} ;
@@ -52,7 +52,7 @@ document SymbolDocument root SymbolRoot {
     $verticalFlip root.verticalFlip
     $graphicController self.mSymbolObjectsController
     $gridStyle root.gridStyle
-    $gridStepFactor root.gridStep
+    $gridDisplayFactor root.gridDisplay
     $gridLineColor prefs.lineColorOfSymbolGrid
     $gridCrossColor prefs.crossColorOfSymbolGrid
     $zoom root.zoom

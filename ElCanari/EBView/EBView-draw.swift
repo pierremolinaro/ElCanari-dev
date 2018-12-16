@@ -57,7 +57,7 @@ extension EBView {
 
   fileprivate func drawGrid (_ inDirtyRect: NSRect) {
     let r = inDirtyRect
-    let gridDisplayStep = self.mGridStep * CGFloat (self.mGridStepFactor)
+    let gridDisplayStep = canariUnitToCocoa (self.mGridStepInCanariUnit) * CGFloat (self.mGridDisplayFactor)
     let startX = (r.origin.x / gridDisplayStep).rounded (.down) * gridDisplayStep
     let endX = r.maxX
     let startY = (r.origin.y / gridDisplayStep).rounded (.down) * gridDisplayStep

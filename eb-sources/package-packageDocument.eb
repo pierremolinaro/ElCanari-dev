@@ -238,8 +238,12 @@ document PackageDocument root PackageRoot {
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController self.mPackageObjectsController
+    $mouseGrid root.gridStep
+    $gridStep root.gridStep
+    $arrowKeyMagnitude root.gridStep
+    $shiftArrowKeyMagnitude root.gridStepMultipliedByDisplayFactor
     $gridStyle root.gridStyle
-    $gridStepFactor root.gridStep
+    $gridDisplayFactor root.gridDisplayFactor
     $gridLineColor prefs.lineColorOfPackageGrid
     $gridCrossColor prefs.crossColorOfPackageGrid
     $zoom root.zoom
@@ -254,7 +258,7 @@ document PackageDocument root PackageRoot {
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
-  outlet EBPopUpButton mGridStep $selectedTag root.gridStep ;
+  outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;
@@ -262,6 +266,13 @@ document PackageDocument root PackageRoot {
   outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
   outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
+
+#--- Grid
+  outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
+  outlet CanariDimensionTextField mGridTextField
+     $dimensionAndUnit root.gridStep, root.gridStepUnit
+  ;
+
 #  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
 #
 ##--------------- Program Tab

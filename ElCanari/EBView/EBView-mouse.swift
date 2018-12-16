@@ -26,7 +26,7 @@ extension EBView {
 
   //····················································································································
 
-   override func mouseDown (with inEvent : NSEvent) {
+  override func mouseDown (with inEvent : NSEvent) {
     if let viewController = self.viewController {
       let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
       self.mLastMouseDraggedLocation = mouseDownLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
@@ -81,7 +81,7 @@ extension EBView {
     if let selectionRectangleOrigin = self.mSelectionRectangleOrigin {
       self.handleSelectionRectangle (from: selectionRectangleOrigin, to: mouseDraggedCocoaLocation)
     }else if let lastMouseDraggedLocation = self.mLastMouseDraggedLocation {
-      let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPoint ()
+      let mouseDraggedCanariLocation = mouseDraggedCocoaLocation.canariPointAligned (onCanariGrid: self.mouseGridInCanariUnit)
       var proposedTranslation = CanariPoint (
         x: mouseDraggedCanariLocation.x - lastMouseDraggedLocation.x,
         y: mouseDraggedCanariLocation.y - lastMouseDraggedLocation.y

@@ -226,6 +226,10 @@ import Cocoa
   }
 
   //····················································································································
+
+  internal var mMouseGridController : EBReadOnlyController_Int? = nil
+
+  //····················································································································
   // MARK: -
   //····················································································································
 
@@ -483,21 +487,25 @@ import Cocoa
   // MARK: -
   //····················································································································
 
-  final var mGridStep : CGFloat = milsToCocoaUnit (25.0) {
+  final var mGridStepInCanariUnit : Int = milsToCanariUnit (25) {
     didSet {
-      if (self.mGridStep != oldValue) && (self.mGridStyle != .noGrid)  {
+      if (self.mGridStepInCanariUnit != oldValue) && (self.mGridStyle != .noGrid)  {
         self.needsDisplay = true
       }
     }
   }
+
+  //····················································································································
+
+  final internal var mGridStepController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   // MARK: -
   //····················································································································
 
-  final var mGridStepFactor : Int = 4 {
+  final var mGridDisplayFactor : Int = 4 {
     didSet {
-      if (self.mGridStepFactor != oldValue) && (self.mGridStyle != .noGrid)  {
+      if (self.mGridDisplayFactor != oldValue) && (self.mGridStyle != .noGrid)  {
         self.needsDisplay = true
       }
     }
@@ -505,7 +513,7 @@ import Cocoa
 
   //····················································································································
 
-  final internal var mGridStepFactorController : EBReadOnlyController_Int? = nil
+  final internal var mGridDisplayFactorController : EBReadOnlyController_Int? = nil
 
   //····················································································································
   // MARK: -

@@ -112,7 +112,7 @@ import Cocoa
   @IBOutlet var mComposedSymbolView : EBView?
   @IBOutlet var mCrossColorOfSymbolGridColorWell : EBColorWell?
   @IBOutlet var mDeselectIssueButton : EBButton?
-  @IBOutlet var mGridStep : EBPopUpButton?
+  @IBOutlet var mGridDisplayFactorPopUpButton : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
@@ -403,19 +403,19 @@ import Cocoa
         errorMessage: "the 'mDeselectIssueButton' outlet is nil"
       )
     }
-    if let outlet : Any = self.mGridStep {
+    if let outlet : Any = self.mGridDisplayFactorPopUpButton {
       if !(outlet is EBPopUpButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mGridStep' outlet is not an instance of 'EBPopUpButton'"
+          errorMessage: "the 'mGridDisplayFactorPopUpButton' outlet is not an instance of 'EBPopUpButton'"
         )
       }
     }else{
       presentErrorWindow (
         file: #file,
         line: #line,
-        errorMessage: "the 'mGridStep' outlet is nil"
+        errorMessage: "the 'mGridDisplayFactorPopUpButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mGridStyle {
@@ -988,7 +988,7 @@ import Cocoa
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mGridStep?.bind_selectedTag (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mGridDisplayFactorPopUpButton?.bind_selectedTag (self.rootObject.gridDisplay_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
     self.mYPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mCrossColorOfSymbolGridColorWell?.bind_color (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line, sendContinously:false)
@@ -1000,7 +1000,7 @@ import Cocoa
     self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.verticalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_gridStyle (self.rootObject.gridStyle_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_gridStepFactor (self.rootObject.gridStep_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_gridDisplayFactor (self.rootObject.gridDisplay_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_gridLineColor (g_Preferences!.lineColorOfSymbolGrid_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_gridCrossColor (g_Preferences!.crossColorOfSymbolGrid_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_zoom (self.rootObject.zoom_property, file: #file, line: #line)
@@ -1061,7 +1061,7 @@ import Cocoa
     self.mHorizontalFlip?.unbind_value ()
     self.mVerticalFlip?.unbind_value ()
     self.mGridStyle?.unbind_selectedIndex ()
-    self.mGridStep?.unbind_selectedTag ()
+    self.mGridDisplayFactorPopUpButton?.unbind_selectedTag ()
     self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mYPlacardUnitPopUpButton?.unbind_selectedTag ()
     self.mCrossColorOfSymbolGridColorWell?.unbind_color ()
@@ -1073,7 +1073,7 @@ import Cocoa
     self.mComposedSymbolView?.unbind_horizontalFlip ()
     self.mComposedSymbolView?.unbind_verticalFlip ()
     self.mComposedSymbolView?.unbind_gridStyle ()
-    self.mComposedSymbolView?.unbind_gridStepFactor ()
+    self.mComposedSymbolView?.unbind_gridDisplayFactor ()
     self.mComposedSymbolView?.unbind_gridLineColor ()
     self.mComposedSymbolView?.unbind_gridCrossColor ()
     self.mComposedSymbolView?.unbind_zoom ()
@@ -1121,7 +1121,7 @@ import Cocoa
     self.mComposedSymbolView?.ebCleanUp ()
     self.mCrossColorOfSymbolGridColorWell?.ebCleanUp ()
     self.mDeselectIssueButton?.ebCleanUp ()
-    self.mGridStep?.ebCleanUp ()
+    self.mGridDisplayFactorPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
