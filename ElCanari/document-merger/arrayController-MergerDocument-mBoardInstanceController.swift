@@ -616,6 +616,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       var newObjects = [MergerBoardInstance] ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? MergerBoardInstance {
+          object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
         }

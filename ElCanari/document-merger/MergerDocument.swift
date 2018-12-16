@@ -3159,7 +3159,7 @@ import Cocoa
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
-    flushOutletEvents ()
+    flushEvents ()
   }
 
   //····················································································································

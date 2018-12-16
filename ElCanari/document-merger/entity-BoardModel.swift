@@ -3230,26 +3230,6 @@ class BoardModel : EBManagedObject,
     }
     self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Install undoers and opposite setter for relationships
- //   self.frontLegendLines_property.undoManager = self.undoManager
- //   self.backLegendLines_property.undoManager = self.undoManager
- //   self.frontLegendTexts_property.undoManager = self.undoManager
- //   self.frontLayoutTexts_property.undoManager = self.undoManager
- //   self.backLegendTexts_property.undoManager = self.undoManager
- //   self.backLayoutTexts_property.undoManager = self.undoManager
- //   self.internalBoardsLimits_property.undoManager = self.undoManager
- //   self.drills_property.undoManager = self.undoManager
- //   self.vias_property.undoManager = self.undoManager
- //   self.frontPads_property.undoManager = self.undoManager
- //   self.backPads_property.undoManager = self.undoManager
- //   self.backComponentNames_property.undoManager = self.undoManager
- //   self.frontComponentNames_property.undoManager = self.undoManager
- //   self.frontComponentValues_property.undoManager = self.undoManager
- //   self.backComponentValues_property.undoManager = self.undoManager
- //   self.backTracks_property.undoManager = self.undoManager
- //   self.frontTracks_property.undoManager = self.undoManager
- //   self.frontPackages_property.undoManager = self.undoManager
- //   self.backPackages_property.undoManager = self.undoManager
- //   self.myInstances_property.undoManager = self.undoManager
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }
@@ -4631,7 +4611,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_name.insert (inObserver)
+    self.mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4646,7 +4626,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_name.remove (inObserver)
+    self.mObserversOf_name.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4661,7 +4641,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_name {
+      for observer in self.mObserversOf_name {
         managedObject.name_property.addEBObserver (observer)
       }
     }
@@ -4670,7 +4650,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_name {
+    for observer in self.mObserversOf_name {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.name_property.removeEBObserver (observer)
@@ -4688,7 +4668,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelWidth.insert (inObserver)
+    self.mObserversOf_modelWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4703,7 +4683,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelWidth.remove (inObserver)
+    self.mObserversOf_modelWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4718,7 +4698,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelWidth_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelWidth {
+      for observer in self.mObserversOf_modelWidth {
         managedObject.modelWidth_property.addEBObserver (observer)
       }
     }
@@ -4727,7 +4707,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelWidth_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelWidth {
+    for observer in self.mObserversOf_modelWidth {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelWidth_property.removeEBObserver (observer)
@@ -4745,7 +4725,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelWidthUnit.insert (inObserver)
+    self.mObserversOf_modelWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4760,7 +4740,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelWidthUnit.remove (inObserver)
+    self.mObserversOf_modelWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4775,7 +4755,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelWidthUnit_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelWidthUnit {
+      for observer in self.mObserversOf_modelWidthUnit {
         managedObject.modelWidthUnit_property.addEBObserver (observer)
       }
     }
@@ -4784,7 +4764,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelWidthUnit {
+    for observer in self.mObserversOf_modelWidthUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelWidthUnit_property.removeEBObserver (observer)
@@ -4802,7 +4782,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelHeight.insert (inObserver)
+    self.mObserversOf_modelHeight.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4817,7 +4797,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelHeight (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelHeight.remove (inObserver)
+    self.mObserversOf_modelHeight.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4832,7 +4812,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelHeight_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelHeight {
+      for observer in self.mObserversOf_modelHeight {
         managedObject.modelHeight_property.addEBObserver (observer)
       }
     }
@@ -4841,7 +4821,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelHeight_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelHeight {
+    for observer in self.mObserversOf_modelHeight {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelHeight_property.removeEBObserver (observer)
@@ -4859,7 +4839,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelHeightUnit.insert (inObserver)
+    self.mObserversOf_modelHeightUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4874,7 +4854,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelHeightUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelHeightUnit.remove (inObserver)
+    self.mObserversOf_modelHeightUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4889,7 +4869,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelHeightUnit_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelHeightUnit {
+      for observer in self.mObserversOf_modelHeightUnit {
         managedObject.modelHeightUnit_property.addEBObserver (observer)
       }
     }
@@ -4898,7 +4878,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelHeightUnit_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelHeightUnit {
+    for observer in self.mObserversOf_modelHeightUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelHeightUnit_property.removeEBObserver (observer)
@@ -4916,7 +4896,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_zoom.insert (inObserver)
+    self.mObserversOf_zoom.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4931,7 +4911,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_zoom.remove (inObserver)
+    self.mObserversOf_zoom.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4946,7 +4926,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_zoom {
+      for observer in self.mObserversOf_zoom {
         managedObject.zoom_property.addEBObserver (observer)
       }
     }
@@ -4955,7 +4935,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_zoom {
+    for observer in self.mObserversOf_zoom {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
@@ -4973,7 +4953,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelLimitWidth.insert (inObserver)
+    self.mObserversOf_modelLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -4988,7 +4968,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelLimitWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelLimitWidth.remove (inObserver)
+    self.mObserversOf_modelLimitWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5003,7 +4983,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelLimitWidth_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelLimitWidth {
+      for observer in self.mObserversOf_modelLimitWidth {
         managedObject.modelLimitWidth_property.addEBObserver (observer)
       }
     }
@@ -5012,7 +4992,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelLimitWidth_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelLimitWidth {
+    for observer in self.mObserversOf_modelLimitWidth {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelLimitWidth_property.removeEBObserver (observer)
@@ -5030,7 +5010,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelLimitWidthUnit.insert (inObserver)
+    self.mObserversOf_modelLimitWidthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5045,7 +5025,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_modelLimitWidthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelLimitWidthUnit.remove (inObserver)
+    self.mObserversOf_modelLimitWidthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5060,7 +5040,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelLimitWidthUnit {
+      for observer in self.mObserversOf_modelLimitWidthUnit {
         managedObject.modelLimitWidthUnit_property.addEBObserver (observer)
       }
     }
@@ -5069,7 +5049,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_modelLimitWidthUnit {
+    for observer in self.mObserversOf_modelLimitWidthUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.modelLimitWidthUnit_property.removeEBObserver (observer)
@@ -5087,7 +5067,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_artworkName.insert (inObserver)
+    self.mObserversOf_artworkName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5102,7 +5082,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_artworkName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_artworkName.remove (inObserver)
+    self.mObserversOf_artworkName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5117,7 +5097,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_artworkName {
+      for observer in self.mObserversOf_artworkName {
         managedObject.artworkName_property.addEBObserver (observer)
       }
     }
@@ -5126,7 +5106,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   //····················································································································
 
   final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for observer in mObserversOf_artworkName {
+    for observer in self.mObserversOf_artworkName {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.artworkName_property.removeEBObserver (observer)
@@ -5144,7 +5124,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLegendLinesSegments.insert (inObserver)
+    self.mObserversOf_frontLegendLinesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5159,7 +5139,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLegendLinesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLegendLinesSegments.remove (inObserver)
+    self.mObserversOf_frontLegendLinesSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5174,7 +5154,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendLinesSegments {
+      for observer in self.mObserversOf_frontLegendLinesSegments {
         managedObject.frontLegendLinesSegments_property.addEBObserver (observer)
       }
     }
@@ -5184,7 +5164,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendLinesSegments {
+      for observer in self.mObserversOf_frontLegendLinesSegments {
         managedObject.frontLegendLinesSegments_property.removeEBObserver (observer)
       }
     }
@@ -5200,7 +5180,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5215,7 +5195,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5230,7 +5210,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendLinesBezierPaths {
+      for observer in self.mObserversOf_frontLegendLinesBezierPaths {
         managedObject.frontLegendLinesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5240,7 +5220,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendLinesBezierPaths {
+      for observer in self.mObserversOf_frontLegendLinesBezierPaths {
         managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5256,7 +5236,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLegendLinesSegments.insert (inObserver)
+    self.mObserversOf_backLegendLinesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5271,7 +5251,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLegendLinesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLegendLinesSegments.remove (inObserver)
+    self.mObserversOf_backLegendLinesSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5286,7 +5266,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLegendLinesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendLinesSegments {
+      for observer in self.mObserversOf_backLegendLinesSegments {
         managedObject.backLegendLinesSegments_property.addEBObserver (observer)
       }
     }
@@ -5296,7 +5276,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendLinesSegments {
+      for observer in self.mObserversOf_backLegendLinesSegments {
         managedObject.backLegendLinesSegments_property.removeEBObserver (observer)
       }
     }
@@ -5312,7 +5292,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
+    self.mObserversOf_backLegendLinesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5327,7 +5307,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLegendLinesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
+    self.mObserversOf_backLegendLinesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5342,7 +5322,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendLinesBezierPaths {
+      for observer in self.mObserversOf_backLegendLinesBezierPaths {
         managedObject.backLegendLinesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5352,7 +5332,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendLinesBezierPaths {
+      for observer in self.mObserversOf_backLegendLinesBezierPaths {
         managedObject.backLegendLinesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5368,7 +5348,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLegendTextsSegments.insert (inObserver)
+    self.mObserversOf_frontLegendTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5383,7 +5363,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLegendTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLegendTextsSegments.remove (inObserver)
+    self.mObserversOf_frontLegendTextsSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5398,7 +5378,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsSegments {
+      for observer in self.mObserversOf_frontLegendTextsSegments {
         managedObject.frontLegendTextsSegments_property.addEBObserver (observer)
       }
     }
@@ -5408,7 +5388,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsSegments {
+      for observer in self.mObserversOf_frontLegendTextsSegments {
         managedObject.frontLegendTextsSegments_property.removeEBObserver (observer)
       }
     }
@@ -5424,7 +5404,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLegendTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5439,7 +5419,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLegendTextsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5454,7 +5434,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLegendTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsBezierPaths {
+      for observer in self.mObserversOf_frontLegendTextsBezierPaths {
         managedObject.frontLegendTextsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5464,7 +5444,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLegendTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLegendTextsBezierPaths {
+      for observer in self.mObserversOf_frontLegendTextsBezierPaths {
         managedObject.frontLegendTextsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5480,7 +5460,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsSegments.insert (inObserver)
+    self.mObserversOf_frontLayoutTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5495,7 +5475,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLayoutTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsSegments.remove (inObserver)
+    self.mObserversOf_frontLayoutTextsSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5510,7 +5490,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLayoutTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsSegments {
+      for observer in self.mObserversOf_frontLayoutTextsSegments {
         managedObject.frontLayoutTextsSegments_property.addEBObserver (observer)
       }
     }
@@ -5520,7 +5500,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLayoutTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsSegments {
+      for observer in self.mObserversOf_frontLayoutTextsSegments {
         managedObject.frontLayoutTextsSegments_property.removeEBObserver (observer)
       }
     }
@@ -5536,7 +5516,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontLayoutTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5551,7 +5531,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontLayoutTextsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5566,7 +5546,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontLayoutTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsBezierPaths {
+      for observer in self.mObserversOf_frontLayoutTextsBezierPaths {
         managedObject.frontLayoutTextsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5576,7 +5556,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontLayoutTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontLayoutTextsBezierPaths {
+      for observer in self.mObserversOf_frontLayoutTextsBezierPaths {
         managedObject.frontLayoutTextsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5592,7 +5572,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLegendTextsSegments.insert (inObserver)
+    self.mObserversOf_backLegendTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5607,7 +5587,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLegendTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLegendTextsSegments.remove (inObserver)
+    self.mObserversOf_backLegendTextsSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5622,7 +5602,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLegendTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsSegments {
+      for observer in self.mObserversOf_backLegendTextsSegments {
         managedObject.backLegendTextsSegments_property.addEBObserver (observer)
       }
     }
@@ -5632,7 +5612,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLegendTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsSegments {
+      for observer in self.mObserversOf_backLegendTextsSegments {
         managedObject.backLegendTextsSegments_property.removeEBObserver (observer)
       }
     }
@@ -5648,7 +5628,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_backLegendTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5663,7 +5643,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLegendTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_backLegendTextsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5678,7 +5658,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLegendTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsBezierPaths {
+      for observer in self.mObserversOf_backLegendTextsBezierPaths {
         managedObject.backLegendTextsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5688,7 +5668,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLegendTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLegendTextsBezierPaths {
+      for observer in self.mObserversOf_backLegendTextsBezierPaths {
         managedObject.backLegendTextsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5704,7 +5684,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLayoutTextsSegments.insert (inObserver)
+    self.mObserversOf_backLayoutTextsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5719,7 +5699,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLayoutTextsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLayoutTextsSegments.remove (inObserver)
+    self.mObserversOf_backLayoutTextsSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5734,7 +5714,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLayoutTextsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsSegments {
+      for observer in self.mObserversOf_backLayoutTextsSegments {
         managedObject.backLayoutTextsSegments_property.addEBObserver (observer)
       }
     }
@@ -5744,7 +5724,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLayoutTextsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsSegments {
+      for observer in self.mObserversOf_backLayoutTextsSegments {
         managedObject.backLayoutTextsSegments_property.removeEBObserver (observer)
       }
     }
@@ -5760,7 +5740,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
+    self.mObserversOf_backLayoutTextsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5775,7 +5755,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backLayoutTextsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
+    self.mObserversOf_backLayoutTextsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5790,7 +5770,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backLayoutTextsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsBezierPaths {
+      for observer in self.mObserversOf_backLayoutTextsBezierPaths {
         managedObject.backLayoutTextsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5800,7 +5780,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backLayoutTextsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backLayoutTextsBezierPaths {
+      for observer in self.mObserversOf_backLayoutTextsBezierPaths {
         managedObject.backLayoutTextsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5816,7 +5796,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
+    self.mObserversOf_internalBoardsLimitsSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5831,7 +5811,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_internalBoardsLimitsSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
+    self.mObserversOf_internalBoardsLimitsSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5846,7 +5826,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_internalBoardsLimitsSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_internalBoardsLimitsSegments {
+      for observer in self.mObserversOf_internalBoardsLimitsSegments {
         managedObject.internalBoardsLimitsSegments_property.addEBObserver (observer)
       }
     }
@@ -5856,7 +5836,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_internalBoardsLimitsSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_internalBoardsLimitsSegments {
+      for observer in self.mObserversOf_internalBoardsLimitsSegments {
         managedObject.internalBoardsLimitsSegments_property.removeEBObserver (observer)
       }
     }
@@ -5872,7 +5852,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
+    self.mObserversOf_internalBoardsLimitsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5887,7 +5867,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_internalBoardsLimitsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
+    self.mObserversOf_internalBoardsLimitsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5902,7 +5882,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_internalBoardsLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_internalBoardsLimitsBezierPaths {
+      for observer in self.mObserversOf_internalBoardsLimitsBezierPaths {
         managedObject.internalBoardsLimitsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -5912,7 +5892,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_internalBoardsLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_internalBoardsLimitsBezierPaths {
+      for observer in self.mObserversOf_internalBoardsLimitsBezierPaths {
         managedObject.internalBoardsLimitsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -5928,7 +5908,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_drillSegments.insert (inObserver)
+    self.mObserversOf_drillSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5943,7 +5923,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_drillSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_drillSegments.remove (inObserver)
+    self.mObserversOf_drillSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5958,7 +5938,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_drillSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_drillSegments {
+      for observer in self.mObserversOf_drillSegments {
         managedObject.drillSegments_property.addEBObserver (observer)
       }
     }
@@ -5968,7 +5948,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_drillSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_drillSegments {
+      for observer in self.mObserversOf_drillSegments {
         managedObject.drillSegments_property.removeEBObserver (observer)
       }
     }
@@ -5984,7 +5964,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_holesBezierPaths.insert (inObserver)
+    self.mObserversOf_holesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -5999,7 +5979,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_holesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_holesBezierPaths.remove (inObserver)
+    self.mObserversOf_holesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6014,7 +5994,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_holesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_holesBezierPaths {
+      for observer in self.mObserversOf_holesBezierPaths {
         managedObject.holesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6024,7 +6004,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_holesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_holesBezierPaths {
+      for observer in self.mObserversOf_holesBezierPaths {
         managedObject.holesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6040,7 +6020,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_viaShapes (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_viaShapes.insert (inObserver)
+    self.mObserversOf_viaShapes.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6055,7 +6035,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_viaShapes (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_viaShapes.remove (inObserver)
+    self.mObserversOf_viaShapes.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6070,7 +6050,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_viaShapes_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_viaShapes {
+      for observer in self.mObserversOf_viaShapes {
         managedObject.viaShapes_property.addEBObserver (observer)
       }
     }
@@ -6080,7 +6060,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_viaShapes_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_viaShapes {
+      for observer in self.mObserversOf_viaShapes {
         managedObject.viaShapes_property.removeEBObserver (observer)
       }
     }
@@ -6096,7 +6076,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_viasBezierPaths.insert (inObserver)
+    self.mObserversOf_viasBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6111,7 +6091,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_viasBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_viasBezierPaths.remove (inObserver)
+    self.mObserversOf_viasBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6126,7 +6106,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_viasBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_viasBezierPaths {
+      for observer in self.mObserversOf_viasBezierPaths {
         managedObject.viasBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6136,7 +6116,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_viasBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_viasBezierPaths {
+      for observer in self.mObserversOf_viasBezierPaths {
         managedObject.viasBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6152,7 +6132,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontPadArray.insert (inObserver)
+    self.mObserversOf_frontPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6167,7 +6147,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontPadArray.remove (inObserver)
+    self.mObserversOf_frontPadArray.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6182,7 +6162,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPadArray {
+      for observer in self.mObserversOf_frontPadArray {
         managedObject.frontPadArray_property.addEBObserver (observer)
       }
     }
@@ -6192,7 +6172,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPadArray {
+      for observer in self.mObserversOf_frontPadArray {
         managedObject.frontPadArray_property.removeEBObserver (observer)
       }
     }
@@ -6208,7 +6188,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontPadsBezierPaths.insert (inObserver)
+    self.mObserversOf_frontPadsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6223,7 +6203,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontPadsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontPadsBezierPaths.remove (inObserver)
+    self.mObserversOf_frontPadsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6238,7 +6218,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontPadsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPadsBezierPaths {
+      for observer in self.mObserversOf_frontPadsBezierPaths {
         managedObject.frontPadsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6248,7 +6228,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontPadsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPadsBezierPaths {
+      for observer in self.mObserversOf_frontPadsBezierPaths {
         managedObject.frontPadsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6264,7 +6244,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backPadArray.insert (inObserver)
+    self.mObserversOf_backPadArray.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6279,7 +6259,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backPadArray (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backPadArray.remove (inObserver)
+    self.mObserversOf_backPadArray.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6294,7 +6274,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backPadArray_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPadArray {
+      for observer in self.mObserversOf_backPadArray {
         managedObject.backPadArray_property.addEBObserver (observer)
       }
     }
@@ -6304,7 +6284,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backPadArray_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPadArray {
+      for observer in self.mObserversOf_backPadArray {
         managedObject.backPadArray_property.removeEBObserver (observer)
       }
     }
@@ -6320,7 +6300,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backPadsBezierPaths.insert (inObserver)
+    self.mObserversOf_backPadsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6335,7 +6315,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backPadsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backPadsBezierPaths.remove (inObserver)
+    self.mObserversOf_backPadsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6350,7 +6330,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backPadsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPadsBezierPaths {
+      for observer in self.mObserversOf_backPadsBezierPaths {
         managedObject.backPadsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6360,7 +6340,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backPadsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPadsBezierPaths {
+      for observer in self.mObserversOf_backPadsBezierPaths {
         managedObject.backPadsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6376,7 +6356,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_boardLimits (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardLimits.insert (inObserver)
+    self.mObserversOf_boardLimits.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6391,7 +6371,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_boardLimits (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardLimits.remove (inObserver)
+    self.mObserversOf_boardLimits.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6406,7 +6386,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_boardLimits_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimits {
+      for observer in self.mObserversOf_boardLimits {
         managedObject.boardLimits_property.addEBObserver (observer)
       }
     }
@@ -6416,7 +6396,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_boardLimits_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimits {
+      for observer in self.mObserversOf_boardLimits {
         managedObject.boardLimits_property.removeEBObserver (observer)
       }
     }
@@ -6432,7 +6412,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardLimitsBezierPaths.insert (inObserver)
+    self.mObserversOf_boardLimitsBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6447,7 +6427,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_boardLimitsBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitsBezierPaths.remove (inObserver)
+    self.mObserversOf_boardLimitsBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6462,7 +6442,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_boardLimitsBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsBezierPaths {
+      for observer in self.mObserversOf_boardLimitsBezierPaths {
         managedObject.boardLimitsBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6472,7 +6452,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_boardLimitsBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitsBezierPaths {
+      for observer in self.mObserversOf_boardLimitsBezierPaths {
         managedObject.boardLimitsBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6488,7 +6468,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backComponentNameSegments.insert (inObserver)
+    self.mObserversOf_backComponentNameSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6503,7 +6483,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backComponentNameSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backComponentNameSegments.remove (inObserver)
+    self.mObserversOf_backComponentNameSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6518,7 +6498,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentNameSegments {
+      for observer in self.mObserversOf_backComponentNameSegments {
         managedObject.backComponentNameSegments_property.addEBObserver (observer)
       }
     }
@@ -6528,7 +6508,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentNameSegments {
+      for observer in self.mObserversOf_backComponentNameSegments {
         managedObject.backComponentNameSegments_property.removeEBObserver (observer)
       }
     }
@@ -6544,7 +6524,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
+    self.mObserversOf_backComponentNamesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6559,7 +6539,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
+    self.mObserversOf_backComponentNamesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6574,7 +6554,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backComponentNamesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentNamesBezierPaths {
+      for observer in self.mObserversOf_backComponentNamesBezierPaths {
         managedObject.backComponentNamesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6584,7 +6564,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backComponentNamesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentNamesBezierPaths {
+      for observer in self.mObserversOf_backComponentNamesBezierPaths {
         managedObject.backComponentNamesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6600,7 +6580,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontComponentNameSegments.insert (inObserver)
+    self.mObserversOf_frontComponentNameSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6615,7 +6595,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontComponentNameSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentNameSegments.remove (inObserver)
+    self.mObserversOf_frontComponentNameSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6630,7 +6610,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontComponentNameSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNameSegments {
+      for observer in self.mObserversOf_frontComponentNameSegments {
         managedObject.frontComponentNameSegments_property.addEBObserver (observer)
       }
     }
@@ -6640,7 +6620,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontComponentNameSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNameSegments {
+      for observer in self.mObserversOf_frontComponentNameSegments {
         managedObject.frontComponentNameSegments_property.removeEBObserver (observer)
       }
     }
@@ -6656,7 +6636,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontComponentNamesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6671,7 +6651,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontComponentNamesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontComponentNamesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6686,7 +6666,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontComponentNamesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNamesBezierPaths {
+      for observer in self.mObserversOf_frontComponentNamesBezierPaths {
         managedObject.frontComponentNamesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6696,7 +6676,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontComponentNamesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentNamesBezierPaths {
+      for observer in self.mObserversOf_frontComponentNamesBezierPaths {
         managedObject.frontComponentNamesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6712,7 +6692,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontComponentValueSegments.insert (inObserver)
+    self.mObserversOf_frontComponentValueSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6727,7 +6707,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontComponentValueSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentValueSegments.remove (inObserver)
+    self.mObserversOf_frontComponentValueSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6742,7 +6722,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontComponentValueSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValueSegments {
+      for observer in self.mObserversOf_frontComponentValueSegments {
         managedObject.frontComponentValueSegments_property.addEBObserver (observer)
       }
     }
@@ -6752,7 +6732,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontComponentValueSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValueSegments {
+      for observer in self.mObserversOf_frontComponentValueSegments {
         managedObject.frontComponentValueSegments_property.removeEBObserver (observer)
       }
     }
@@ -6768,7 +6748,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontComponentValuesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6783,7 +6763,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontComponentValuesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6798,7 +6778,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontComponentValuesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValuesBezierPaths {
+      for observer in self.mObserversOf_frontComponentValuesBezierPaths {
         managedObject.frontComponentValuesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6808,7 +6788,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontComponentValuesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontComponentValuesBezierPaths {
+      for observer in self.mObserversOf_frontComponentValuesBezierPaths {
         managedObject.frontComponentValuesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6824,7 +6804,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backComponentValueSegments.insert (inObserver)
+    self.mObserversOf_backComponentValueSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6839,7 +6819,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backComponentValueSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backComponentValueSegments.remove (inObserver)
+    self.mObserversOf_backComponentValueSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6854,7 +6834,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backComponentValueSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentValueSegments {
+      for observer in self.mObserversOf_backComponentValueSegments {
         managedObject.backComponentValueSegments_property.addEBObserver (observer)
       }
     }
@@ -6864,7 +6844,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backComponentValueSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentValueSegments {
+      for observer in self.mObserversOf_backComponentValueSegments {
         managedObject.backComponentValueSegments_property.removeEBObserver (observer)
       }
     }
@@ -6880,7 +6860,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
+    self.mObserversOf_backComponentValuesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6895,7 +6875,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backComponentValuesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
+    self.mObserversOf_backComponentValuesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6910,7 +6890,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backComponentValuesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentValuesBezierPaths {
+      for observer in self.mObserversOf_backComponentValuesBezierPaths {
         managedObject.backComponentValuesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -6920,7 +6900,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backComponentValuesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backComponentValuesBezierPaths {
+      for observer in self.mObserversOf_backComponentValuesBezierPaths {
         managedObject.backComponentValuesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -6936,7 +6916,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backTrackSegments.insert (inObserver)
+    self.mObserversOf_backTrackSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6951,7 +6931,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backTrackSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backTrackSegments.remove (inObserver)
+    self.mObserversOf_backTrackSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -6966,7 +6946,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backTrackSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backTrackSegments {
+      for observer in self.mObserversOf_backTrackSegments {
         managedObject.backTrackSegments_property.addEBObserver (observer)
       }
     }
@@ -6976,7 +6956,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backTrackSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backTrackSegments {
+      for observer in self.mObserversOf_backTrackSegments {
         managedObject.backTrackSegments_property.removeEBObserver (observer)
       }
     }
@@ -6992,7 +6972,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backTracksBezierPaths.insert (inObserver)
+    self.mObserversOf_backTracksBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7007,7 +6987,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backTracksBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backTracksBezierPaths.remove (inObserver)
+    self.mObserversOf_backTracksBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7022,7 +7002,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backTracksBezierPaths {
+      for observer in self.mObserversOf_backTracksBezierPaths {
         managedObject.backTracksBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -7032,7 +7012,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backTracksBezierPaths {
+      for observer in self.mObserversOf_backTracksBezierPaths {
         managedObject.backTracksBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -7048,7 +7028,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontTrackSegments.insert (inObserver)
+    self.mObserversOf_frontTrackSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7063,7 +7043,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontTrackSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontTrackSegments.remove (inObserver)
+    self.mObserversOf_frontTrackSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7078,7 +7058,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontTrackSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontTrackSegments {
+      for observer in self.mObserversOf_frontTrackSegments {
         managedObject.frontTrackSegments_property.addEBObserver (observer)
       }
     }
@@ -7088,7 +7068,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontTrackSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontTrackSegments {
+      for observer in self.mObserversOf_frontTrackSegments {
         managedObject.frontTrackSegments_property.removeEBObserver (observer)
       }
     }
@@ -7104,7 +7084,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontTracksBezierPaths.insert (inObserver)
+    self.mObserversOf_frontTracksBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7119,7 +7099,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontTracksBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontTracksBezierPaths.remove (inObserver)
+    self.mObserversOf_frontTracksBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7134,7 +7114,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontTracksBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontTracksBezierPaths {
+      for observer in self.mObserversOf_frontTracksBezierPaths {
         managedObject.frontTracksBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -7144,7 +7124,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontTracksBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontTracksBezierPaths {
+      for observer in self.mObserversOf_frontTracksBezierPaths {
         managedObject.frontTracksBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -7160,7 +7140,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontPackagesSegments.insert (inObserver)
+    self.mObserversOf_frontPackagesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7175,7 +7155,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontPackagesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontPackagesSegments.remove (inObserver)
+    self.mObserversOf_frontPackagesSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7190,7 +7170,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontPackagesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesSegments {
+      for observer in self.mObserversOf_frontPackagesSegments {
         managedObject.frontPackagesSegments_property.addEBObserver (observer)
       }
     }
@@ -7200,7 +7180,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontPackagesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesSegments {
+      for observer in self.mObserversOf_frontPackagesSegments {
         managedObject.frontPackagesSegments_property.removeEBObserver (observer)
       }
     }
@@ -7216,7 +7196,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_frontPackagesBezierPaths.insert (inObserver)
+    self.mObserversOf_frontPackagesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7231,7 +7211,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_frontPackagesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_frontPackagesBezierPaths.remove (inObserver)
+    self.mObserversOf_frontPackagesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7246,7 +7226,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesBezierPaths {
+      for observer in self.mObserversOf_frontPackagesBezierPaths {
         managedObject.frontPackagesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -7256,7 +7236,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_frontPackagesBezierPaths {
+      for observer in self.mObserversOf_frontPackagesBezierPaths {
         managedObject.frontPackagesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -7272,7 +7252,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backPackagesSegments.insert (inObserver)
+    self.mObserversOf_backPackagesSegments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7287,7 +7267,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backPackagesSegments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backPackagesSegments.remove (inObserver)
+    self.mObserversOf_backPackagesSegments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7302,7 +7282,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backPackagesSegments_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPackagesSegments {
+      for observer in self.mObserversOf_backPackagesSegments {
         managedObject.backPackagesSegments_property.addEBObserver (observer)
       }
     }
@@ -7312,7 +7292,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backPackagesSegments_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPackagesSegments {
+      for observer in self.mObserversOf_backPackagesSegments {
         managedObject.backPackagesSegments_property.removeEBObserver (observer)
       }
     }
@@ -7328,7 +7308,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_backPackagesBezierPaths.insert (inObserver)
+    self.mObserversOf_backPackagesBezierPaths.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7343,7 +7323,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_backPackagesBezierPaths (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_backPackagesBezierPaths.remove (inObserver)
+    self.mObserversOf_backPackagesBezierPaths.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7358,7 +7338,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPackagesBezierPaths {
+      for observer in self.mObserversOf_backPackagesBezierPaths {
         managedObject.backPackagesBezierPaths_property.addEBObserver (observer)
       }
     }
@@ -7368,7 +7348,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_backPackagesBezierPaths {
+      for observer in self.mObserversOf_backPackagesBezierPaths {
         managedObject.backPackagesBezierPaths_property.removeEBObserver (observer)
       }
     }
@@ -7384,7 +7364,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_imageForModel (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_imageForModel.insert (inObserver)
+    self.mObserversOf_imageForModel.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7399,7 +7379,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_imageForModel (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_imageForModel.remove (inObserver)
+    self.mObserversOf_imageForModel.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7414,7 +7394,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_imageForModel_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_imageForModel {
+      for observer in self.mObserversOf_imageForModel {
         managedObject.imageForModel_property.addEBObserver (observer)
       }
     }
@@ -7424,7 +7404,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_imageForModel_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_imageForModel {
+      for observer in self.mObserversOf_imageForModel {
         managedObject.imageForModel_property.removeEBObserver (observer)
       }
     }
@@ -7440,7 +7420,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_imageForInstances.insert (inObserver)
+    self.mObserversOf_imageForInstances.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7455,7 +7435,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_imageForInstances (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_imageForInstances.remove (inObserver)
+    self.mObserversOf_imageForInstances.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7470,7 +7450,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_imageForInstances_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_imageForInstances {
+      for observer in self.mObserversOf_imageForInstances {
         managedObject.imageForInstances_property.addEBObserver (observer)
       }
     }
@@ -7480,7 +7460,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_imageForInstances_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_imageForInstances {
+      for observer in self.mObserversOf_imageForInstances {
         managedObject.imageForInstances_property.removeEBObserver (observer)
       }
     }
@@ -7496,7 +7476,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_instanceCount.insert (inObserver)
+    self.mObserversOf_instanceCount.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7511,7 +7491,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_instanceCount.remove (inObserver)
+    self.mObserversOf_instanceCount.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -7526,7 +7506,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceCount {
+      for observer in self.mObserversOf_instanceCount {
         managedObject.instanceCount_property.addEBObserver (observer)
       }
     }
@@ -7536,7 +7516,7 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
 
   final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceCount {
+      for observer in self.mObserversOf_instanceCount {
         managedObject.instanceCount_property.removeEBObserver (observer)
       }
     }
@@ -7573,6 +7553,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   //····················································································································
 
   override var propval : [BoardModel] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -7767,30 +7748,14 @@ class ReadWriteArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 //    To many relationship: BoardModel
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_BoardModel : class {
-
-  func willAdd_BoardModel (_ inObject : BoardModel)
-
-  func didRemove_BoardModel (_ inObject : BoardModel)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_BoardModel? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_BoardModel?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : BoardModel?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

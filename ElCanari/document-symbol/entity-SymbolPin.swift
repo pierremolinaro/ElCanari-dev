@@ -888,7 +888,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_yPin (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yPin.insert (inObserver)
+    self.mObserversOf_yPin.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -903,7 +903,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_yPin (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yPin.remove (inObserver)
+    self.mObserversOf_yPin.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -918,7 +918,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_yPin_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yPin {
+      for observer in self.mObserversOf_yPin {
         managedObject.yPin_property.addEBObserver (observer)
       }
     }
@@ -927,7 +927,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yPin_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_yPin {
+    for observer in self.mObserversOf_yPin {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yPin_property.removeEBObserver (observer)
@@ -945,7 +945,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_xName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_xName.insert (inObserver)
+    self.mObserversOf_xName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -960,7 +960,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_xName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_xName.remove (inObserver)
+    self.mObserversOf_xName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -975,7 +975,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_xName_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_xName {
+      for observer in self.mObserversOf_xName {
         managedObject.xName_property.addEBObserver (observer)
       }
     }
@@ -984,7 +984,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_xName {
+    for observer in self.mObserversOf_xName {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xName_property.removeEBObserver (observer)
@@ -1002,7 +1002,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_yName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yName.insert (inObserver)
+    self.mObserversOf_yName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1017,7 +1017,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_yName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yName.remove (inObserver)
+    self.mObserversOf_yName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1032,7 +1032,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_yName_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yName {
+      for observer in self.mObserversOf_yName {
         managedObject.yName_property.addEBObserver (observer)
       }
     }
@@ -1041,7 +1041,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_yName {
+    for observer in self.mObserversOf_yName {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yName_property.removeEBObserver (observer)
@@ -1059,7 +1059,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_xNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_xNumber.insert (inObserver)
+    self.mObserversOf_xNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1074,7 +1074,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_xNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_xNumber.remove (inObserver)
+    self.mObserversOf_xNumber.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1089,7 +1089,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_xNumber_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_xNumber {
+      for observer in self.mObserversOf_xNumber {
         managedObject.xNumber_property.addEBObserver (observer)
       }
     }
@@ -1098,7 +1098,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xNumber_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_xNumber {
+    for observer in self.mObserversOf_xNumber {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xNumber_property.removeEBObserver (observer)
@@ -1116,7 +1116,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_yNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yNumber.insert (inObserver)
+    self.mObserversOf_yNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1131,7 +1131,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_yNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yNumber.remove (inObserver)
+    self.mObserversOf_yNumber.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1146,7 +1146,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_yNumber_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yNumber {
+      for observer in self.mObserversOf_yNumber {
         managedObject.yNumber_property.addEBObserver (observer)
       }
     }
@@ -1155,7 +1155,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_yNumber_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_yNumber {
+    for observer in self.mObserversOf_yNumber {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yNumber_property.removeEBObserver (observer)
@@ -1173,7 +1173,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_name (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_name.insert (inObserver)
+    self.mObserversOf_name.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1188,7 +1188,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_name (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_name.remove (inObserver)
+    self.mObserversOf_name.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1203,7 +1203,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_name {
+      for observer in self.mObserversOf_name {
         managedObject.name_property.addEBObserver (observer)
       }
     }
@@ -1212,7 +1212,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_name {
+    for observer in self.mObserversOf_name {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.name_property.removeEBObserver (observer)
@@ -1230,7 +1230,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_nameHorizontalAlignment.insert (inObserver)
+    self.mObserversOf_nameHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1245,7 +1245,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_nameHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_nameHorizontalAlignment.remove (inObserver)
+    self.mObserversOf_nameHorizontalAlignment.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1260,7 +1260,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_nameHorizontalAlignment {
+      for observer in self.mObserversOf_nameHorizontalAlignment {
         managedObject.nameHorizontalAlignment_property.addEBObserver (observer)
       }
     }
@@ -1269,7 +1269,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_nameHorizontalAlignment {
+    for observer in self.mObserversOf_nameHorizontalAlignment {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.nameHorizontalAlignment_property.removeEBObserver (observer)
@@ -1287,7 +1287,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_numberHorizontalAlignment.insert (inObserver)
+    self.mObserversOf_numberHorizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1302,7 +1302,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_numberHorizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_numberHorizontalAlignment.remove (inObserver)
+    self.mObserversOf_numberHorizontalAlignment.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1317,7 +1317,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_numberHorizontalAlignment {
+      for observer in self.mObserversOf_numberHorizontalAlignment {
         managedObject.numberHorizontalAlignment_property.addEBObserver (observer)
       }
     }
@@ -1326,7 +1326,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_numberHorizontalAlignment {
+    for observer in self.mObserversOf_numberHorizontalAlignment {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.numberHorizontalAlignment_property.removeEBObserver (observer)
@@ -1344,7 +1344,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_pinNameIsDisplayedInSchematics.insert (inObserver)
+    self.mObserversOf_pinNameIsDisplayedInSchematics.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1359,7 +1359,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_pinNameIsDisplayedInSchematics (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_pinNameIsDisplayedInSchematics.remove (inObserver)
+    self.mObserversOf_pinNameIsDisplayedInSchematics.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1374,7 +1374,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_pinNameIsDisplayedInSchematics {
+      for observer in self.mObserversOf_pinNameIsDisplayedInSchematics {
         managedObject.pinNameIsDisplayedInSchematics_property.addEBObserver (observer)
       }
     }
@@ -1383,7 +1383,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_pinNameIsDisplayedInSchematics {
+    for observer in self.mObserversOf_pinNameIsDisplayedInSchematics {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.pinNameIsDisplayedInSchematics_property.removeEBObserver (observer)
@@ -1401,7 +1401,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_xPin (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_xPin.insert (inObserver)
+    self.mObserversOf_xPin.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1416,7 +1416,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_xPin (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_xPin.remove (inObserver)
+    self.mObserversOf_xPin.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1431,7 +1431,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_xPin_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_xPin {
+      for observer in self.mObserversOf_xPin {
         managedObject.xPin_property.addEBObserver (observer)
       }
     }
@@ -1440,7 +1440,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   //····················································································································
 
   final func removeEBObserversOf_xPin_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
-    for observer in mObserversOf_xPin {
+    for observer in self.mObserversOf_xPin {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xPin_property.removeEBObserver (observer)
@@ -1458,7 +1458,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1473,7 +1473,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1488,7 +1488,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -1498,7 +1498,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1514,7 +1514,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1529,7 +1529,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1544,7 +1544,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -1554,7 +1554,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1570,7 +1570,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1585,7 +1585,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1600,7 +1600,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -1610,7 +1610,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -1626,7 +1626,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserverOf_nameRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_nameRect.insert (inObserver)
+    self.mObserversOf_nameRect.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1641,7 +1641,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserverOf_nameRect (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_nameRect.remove (inObserver)
+    self.mObserversOf_nameRect.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1656,7 +1656,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func addEBObserversOf_nameRect_toElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_nameRect {
+      for observer in self.mObserversOf_nameRect {
         managedObject.nameRect_property.addEBObserver (observer)
       }
     }
@@ -1666,7 +1666,7 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
 
   final func removeEBObserversOf_nameRect_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
     for managedObject in inSet {
-      for observer in mObserversOf_nameRect {
+      for observer in self.mObserversOf_nameRect {
         managedObject.nameRect_property.removeEBObserver (observer)
       }
     }
@@ -1703,6 +1703,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //····················································································································
 
   override var propval : [SymbolPin] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1821,30 +1822,14 @@ class ReadWriteArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 //    To many relationship: SymbolPin
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_SymbolPin : class {
-
-  func willAdd_SymbolPin (_ inObject : SymbolPin)
-
-  func didRemove_SymbolPin (_ inObject : SymbolPin)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_SymbolPin? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolPin?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolPin?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

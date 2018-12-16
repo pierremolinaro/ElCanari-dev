@@ -383,7 +383,6 @@ class ArtworkRoot : EBManagedObject,
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
- //   self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.drillDataFileExtension_property.setSignatureObserver (observer:self)
@@ -712,7 +711,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectedTab.insert (inObserver)
+    self.mObserversOf_selectedTab.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -727,7 +726,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectedTab.remove (inObserver)
+    self.mObserversOf_selectedTab.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -742,7 +741,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectedTab {
+      for observer in self.mObserversOf_selectedTab {
         managedObject.selectedTab_property.addEBObserver (observer)
       }
     }
@@ -751,7 +750,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_selectedTab {
+    for observer in self.mObserversOf_selectedTab {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedTab_property.removeEBObserver (observer)
@@ -769,7 +768,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -784,7 +783,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -799,7 +798,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_comments {
+      for observer in self.mObserversOf_comments {
         managedObject.comments_property.addEBObserver (observer)
       }
     }
@@ -808,7 +807,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_comments {
+    for observer in self.mObserversOf_comments {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
@@ -826,7 +825,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -841,7 +840,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minPPTPTTTWdisplayUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
+    self.mObserversOf_minPPTPTTTWdisplayUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -856,7 +855,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minPPTPTTTWdisplayUnit {
+      for observer in self.mObserversOf_minPPTPTTTWdisplayUnit {
         managedObject.minPPTPTTTWdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -865,7 +864,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minPPTPTTTWdisplayUnit {
+    for observer in self.mObserversOf_minPPTPTTTWdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minPPTPTTTWdisplayUnit_property.removeEBObserver (observer)
@@ -883,7 +882,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minPPTPTTTW.insert (inObserver)
+    self.mObserversOf_minPPTPTTTW.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -898,7 +897,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minPPTPTTTW (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minPPTPTTTW.remove (inObserver)
+    self.mObserversOf_minPPTPTTTW.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -913,7 +912,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minPPTPTTTW_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minPPTPTTTW {
+      for observer in self.mObserversOf_minPPTPTTTW {
         managedObject.minPPTPTTTW_property.addEBObserver (observer)
       }
     }
@@ -922,7 +921,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minPPTPTTTW {
+    for observer in self.mObserversOf_minPPTPTTTW {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minPPTPTTTW_property.removeEBObserver (observer)
@@ -940,7 +939,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -955,7 +954,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForOARdisplayUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForOARdisplayUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -970,7 +969,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForOARdisplayUnit {
+      for observer in self.mObserversOf_minValueForOARdisplayUnit {
         managedObject.minValueForOARdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -979,7 +978,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForOARdisplayUnit {
+    for observer in self.mObserversOf_minValueForOARdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForOARdisplayUnit_property.removeEBObserver (observer)
@@ -997,7 +996,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForOARinEBUnit.insert (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1012,7 +1011,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForOARinEBUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForOARinEBUnit.remove (inObserver)
+    self.mObserversOf_minValueForOARinEBUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1027,7 +1026,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForOARinEBUnit {
+      for observer in self.mObserversOf_minValueForOARinEBUnit {
         managedObject.minValueForOARinEBUnit_property.addEBObserver (observer)
       }
     }
@@ -1036,7 +1035,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForOARinEBUnit {
+    for observer in self.mObserversOf_minValueForOARinEBUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForOARinEBUnit_property.removeEBObserver (observer)
@@ -1054,7 +1053,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1069,7 +1068,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForPHDdisplayUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForPHDdisplayUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1084,7 +1083,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForPHDdisplayUnit {
+      for observer in self.mObserversOf_minValueForPHDdisplayUnit {
         managedObject.minValueForPHDdisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -1093,7 +1092,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForPHDdisplayUnit {
+    for observer in self.mObserversOf_minValueForPHDdisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForPHDdisplayUnit_property.removeEBObserver (observer)
@@ -1111,7 +1110,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1126,7 +1125,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForPHDinEBUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
+    self.mObserversOf_minValueForPHDinEBUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1141,7 +1140,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForPHDinEBUnit {
+      for observer in self.mObserversOf_minValueForPHDinEBUnit {
         managedObject.minValueForPHDinEBUnit_property.addEBObserver (observer)
       }
     }
@@ -1150,7 +1149,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForPHDinEBUnit {
+    for observer in self.mObserversOf_minValueForPHDinEBUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForPHDinEBUnit_property.removeEBObserver (observer)
@@ -1168,7 +1167,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1183,7 +1182,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForBoardLimitWidthDisplayUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidthDisplayUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1198,7 +1197,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForBoardLimitWidthDisplayUnit {
+      for observer in self.mObserversOf_minValueForBoardLimitWidthDisplayUnit {
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.addEBObserver (observer)
       }
     }
@@ -1207,7 +1206,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForBoardLimitWidthDisplayUnit {
+    for observer in self.mObserversOf_minValueForBoardLimitWidthDisplayUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForBoardLimitWidthDisplayUnit_property.removeEBObserver (observer)
@@ -1225,7 +1224,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1240,7 +1239,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_minValueForBoardLimitWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
+    self.mObserversOf_minValueForBoardLimitWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1255,7 +1254,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_minValueForBoardLimitWidth {
+      for observer in self.mObserversOf_minValueForBoardLimitWidth {
         managedObject.minValueForBoardLimitWidth_property.addEBObserver (observer)
       }
     }
@@ -1264,7 +1263,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_minValueForBoardLimitWidth {
+    for observer in self.mObserversOf_minValueForBoardLimitWidth {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.minValueForBoardLimitWidth_property.removeEBObserver (observer)
@@ -1282,7 +1281,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_drillDataFileExtension.insert (inObserver)
+    self.mObserversOf_drillDataFileExtension.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1297,7 +1296,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func removeEBObserverOf_drillDataFileExtension (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_drillDataFileExtension.remove (inObserver)
+    self.mObserversOf_drillDataFileExtension.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1312,7 +1311,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
 
   final func addEBObserversOf_drillDataFileExtension_toElementsOfSet (_ inSet : Set<ArtworkRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_drillDataFileExtension {
+      for observer in self.mObserversOf_drillDataFileExtension {
         managedObject.drillDataFileExtension_property.addEBObserver (observer)
       }
     }
@@ -1321,7 +1320,7 @@ class ReadOnlyArrayOf_ArtworkRoot : ReadOnlyAbstractArrayProperty <ArtworkRoot> 
   //····················································································································
 
   final func removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (_ inSet : Set<ArtworkRoot>) {
-    for observer in mObserversOf_drillDataFileExtension {
+    for observer in self.mObserversOf_drillDataFileExtension {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drillDataFileExtension_property.removeEBObserver (observer)
@@ -1360,6 +1359,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   //····················································································································
 
   override var propval : [ArtworkRoot] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1472,30 +1472,14 @@ class ReadWriteArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 //    To many relationship: ArtworkRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_ArtworkRoot : class {
-
-  func willAdd_ArtworkRoot (_ inObject : ArtworkRoot)
-
-  func didRemove_ArtworkRoot (_ inObject : ArtworkRoot)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_ArtworkRoot? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_ArtworkRoot?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : ArtworkRoot?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

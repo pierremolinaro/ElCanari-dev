@@ -615,7 +615,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -630,7 +630,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    self.mObserversOf_x.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -645,7 +645,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
+      for observer in self.mObserversOf_x {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -654,7 +654,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in mObserversOf_x {
+    for observer in self.mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -672,7 +672,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -687,7 +687,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    self.mObserversOf_y.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -702,7 +702,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
+      for observer in self.mObserversOf_y {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -711,7 +711,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in mObserversOf_y {
+    for observer in self.mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -729,7 +729,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_instanceRotation.insert (inObserver)
+    self.mObserversOf_instanceRotation.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -744,7 +744,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_instanceRotation (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_instanceRotation.remove (inObserver)
+    self.mObserversOf_instanceRotation.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -759,7 +759,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceRotation {
+      for observer in self.mObserversOf_instanceRotation {
         managedObject.instanceRotation_property.addEBObserver (observer)
       }
     }
@@ -768,7 +768,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in mObserversOf_instanceRotation {
+    for observer in self.mObserversOf_instanceRotation {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.instanceRotation_property.removeEBObserver (observer)
@@ -786,7 +786,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_instanceRect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_instanceRect.insert (inObserver)
+    self.mObserversOf_instanceRect.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -801,7 +801,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_instanceRect (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_instanceRect.remove (inObserver)
+    self.mObserversOf_instanceRect.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -816,7 +816,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_instanceRect_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceRect {
+      for observer in self.mObserversOf_instanceRect {
         managedObject.instanceRect_property.addEBObserver (observer)
       }
     }
@@ -826,7 +826,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_instanceRect_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_instanceRect {
+      for observer in self.mObserversOf_instanceRect {
         managedObject.instanceRect_property.removeEBObserver (observer)
       }
     }
@@ -842,7 +842,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_modelName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_modelName.insert (inObserver)
+    self.mObserversOf_modelName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -857,7 +857,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_modelName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_modelName.remove (inObserver)
+    self.mObserversOf_modelName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -872,7 +872,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_modelName_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelName {
+      for observer in self.mObserversOf_modelName {
         managedObject.modelName_property.addEBObserver (observer)
       }
     }
@@ -882,7 +882,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_modelName_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_modelName {
+      for observer in self.mObserversOf_modelName {
         managedObject.modelName_property.removeEBObserver (observer)
       }
     }
@@ -898,7 +898,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_boardLimitWidth.insert (inObserver)
+    self.mObserversOf_boardLimitWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -913,7 +913,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_boardLimitWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_boardLimitWidth.remove (inObserver)
+    self.mObserversOf_boardLimitWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -928,7 +928,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitWidth {
+      for observer in self.mObserversOf_boardLimitWidth {
         managedObject.boardLimitWidth_property.addEBObserver (observer)
       }
     }
@@ -938,7 +938,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_boardLimitWidth {
+      for observer in self.mObserversOf_boardLimitWidth {
         managedObject.boardLimitWidth_property.removeEBObserver (observer)
       }
     }
@@ -954,7 +954,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -969,7 +969,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -984,7 +984,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -994,7 +994,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1010,7 +1010,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1025,7 +1025,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1040,7 +1040,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -1050,7 +1050,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1087,6 +1087,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
   //····················································································································
 
   override var propval : [MergerBoardInstance] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1193,30 +1194,14 @@ class ReadWriteArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 //    To many relationship: MergerBoardInstance
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_MergerBoardInstance : class {
-
-  func willAdd_MergerBoardInstance (_ inObject : MergerBoardInstance)
-
-  func didRemove_MergerBoardInstance (_ inObject : MergerBoardInstance)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInstance, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_MergerBoardInstance? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_MergerBoardInstance?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : MergerBoardInstance?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································
@@ -1482,107 +1467,107 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
           unwrappedValue.myInstances_property.add (unwrappedOwner)
         }
       //--- Remove property observers of old object
-        oldValue?.backComponentNameSegments_property.removeEBObserversFrom (mObserversOf_backComponentNameSegments)
-        oldValue?.backComponentNamesBezierPaths_property.removeEBObserversFrom (mObserversOf_backComponentNamesBezierPaths)
-        oldValue?.backComponentValueSegments_property.removeEBObserversFrom (mObserversOf_backComponentValueSegments)
-        oldValue?.backComponentValuesBezierPaths_property.removeEBObserversFrom (mObserversOf_backComponentValuesBezierPaths)
-        oldValue?.backLayoutTextsBezierPaths_property.removeEBObserversFrom (mObserversOf_backLayoutTextsBezierPaths)
-        oldValue?.backLayoutTextsSegments_property.removeEBObserversFrom (mObserversOf_backLayoutTextsSegments)
-        oldValue?.backLegendLinesBezierPaths_property.removeEBObserversFrom (mObserversOf_backLegendLinesBezierPaths)
-        oldValue?.backLegendLinesSegments_property.removeEBObserversFrom (mObserversOf_backLegendLinesSegments)
-        oldValue?.backLegendTextsBezierPaths_property.removeEBObserversFrom (mObserversOf_backLegendTextsBezierPaths)
-        oldValue?.backLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_backLegendTextsSegments)
-        oldValue?.backPackagesBezierPaths_property.removeEBObserversFrom (mObserversOf_backPackagesBezierPaths)
-        oldValue?.backPackagesSegments_property.removeEBObserversFrom (mObserversOf_backPackagesSegments)
-        oldValue?.backPadArray_property.removeEBObserversFrom (mObserversOf_backPadArray)
-        oldValue?.backPadsBezierPaths_property.removeEBObserversFrom (mObserversOf_backPadsBezierPaths)
-        oldValue?.backTrackSegments_property.removeEBObserversFrom (mObserversOf_backTrackSegments)
-        oldValue?.backTracksBezierPaths_property.removeEBObserversFrom (mObserversOf_backTracksBezierPaths)
-        oldValue?.boardLimits_property.removeEBObserversFrom (mObserversOf_boardLimits)
-        oldValue?.boardLimitsBezierPaths_property.removeEBObserversFrom (mObserversOf_boardLimitsBezierPaths)
-        oldValue?.drillSegments_property.removeEBObserversFrom (mObserversOf_drillSegments)
-        oldValue?.frontComponentNameSegments_property.removeEBObserversFrom (mObserversOf_frontComponentNameSegments)
-        oldValue?.frontComponentNamesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontComponentNamesBezierPaths)
-        oldValue?.frontComponentValueSegments_property.removeEBObserversFrom (mObserversOf_frontComponentValueSegments)
-        oldValue?.frontComponentValuesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontComponentValuesBezierPaths)
-        oldValue?.frontLayoutTextsBezierPaths_property.removeEBObserversFrom (mObserversOf_frontLayoutTextsBezierPaths)
-        oldValue?.frontLayoutTextsSegments_property.removeEBObserversFrom (mObserversOf_frontLayoutTextsSegments)
-        oldValue?.frontLegendLinesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontLegendLinesBezierPaths)
-        oldValue?.frontLegendLinesSegments_property.removeEBObserversFrom (mObserversOf_frontLegendLinesSegments)
-        oldValue?.frontLegendTextsBezierPaths_property.removeEBObserversFrom (mObserversOf_frontLegendTextsBezierPaths)
-        oldValue?.frontLegendTextsSegments_property.removeEBObserversFrom (mObserversOf_frontLegendTextsSegments)
-        oldValue?.frontPackagesBezierPaths_property.removeEBObserversFrom (mObserversOf_frontPackagesBezierPaths)
-        oldValue?.frontPackagesSegments_property.removeEBObserversFrom (mObserversOf_frontPackagesSegments)
-        oldValue?.frontPadArray_property.removeEBObserversFrom (mObserversOf_frontPadArray)
-        oldValue?.frontPadsBezierPaths_property.removeEBObserversFrom (mObserversOf_frontPadsBezierPaths)
-        oldValue?.frontTrackSegments_property.removeEBObserversFrom (mObserversOf_frontTrackSegments)
-        oldValue?.frontTracksBezierPaths_property.removeEBObserversFrom (mObserversOf_frontTracksBezierPaths)
-        oldValue?.holesBezierPaths_property.removeEBObserversFrom (mObserversOf_holesBezierPaths)
-        oldValue?.imageForInstances_property.removeEBObserversFrom (mObserversOf_imageForInstances)
-        oldValue?.imageForModel_property.removeEBObserversFrom (mObserversOf_imageForModel)
-        oldValue?.internalBoardsLimitsBezierPaths_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
-        oldValue?.internalBoardsLimitsSegments_property.removeEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
-        oldValue?.modelHeight_property.removeEBObserversFrom (mObserversOf_modelHeight)
-        oldValue?.modelHeightUnit_property.removeEBObserversFrom (mObserversOf_modelHeightUnit)
-        oldValue?.modelLimitWidth_property.removeEBObserversFrom (mObserversOf_modelLimitWidth)
-        oldValue?.modelLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_modelLimitWidthUnit)
-        oldValue?.modelWidth_property.removeEBObserversFrom (mObserversOf_modelWidth)
-        oldValue?.modelWidthUnit_property.removeEBObserversFrom (mObserversOf_modelWidthUnit)
-        oldValue?.name_property.removeEBObserversFrom (mObserversOf_name)
-        oldValue?.viaShapes_property.removeEBObserversFrom (mObserversOf_viaShapes)
-        oldValue?.viasBezierPaths_property.removeEBObserversFrom (mObserversOf_viasBezierPaths)
-        oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
+        oldValue?.backComponentNameSegments_property.removeEBObserversFrom (self.mObserversOf_backComponentNameSegments)
+        oldValue?.backComponentNamesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backComponentNamesBezierPaths)
+        oldValue?.backComponentValueSegments_property.removeEBObserversFrom (self.mObserversOf_backComponentValueSegments)
+        oldValue?.backComponentValuesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backComponentValuesBezierPaths)
+        oldValue?.backLayoutTextsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backLayoutTextsBezierPaths)
+        oldValue?.backLayoutTextsSegments_property.removeEBObserversFrom (self.mObserversOf_backLayoutTextsSegments)
+        oldValue?.backLegendLinesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backLegendLinesBezierPaths)
+        oldValue?.backLegendLinesSegments_property.removeEBObserversFrom (self.mObserversOf_backLegendLinesSegments)
+        oldValue?.backLegendTextsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backLegendTextsBezierPaths)
+        oldValue?.backLegendTextsSegments_property.removeEBObserversFrom (self.mObserversOf_backLegendTextsSegments)
+        oldValue?.backPackagesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backPackagesBezierPaths)
+        oldValue?.backPackagesSegments_property.removeEBObserversFrom (self.mObserversOf_backPackagesSegments)
+        oldValue?.backPadArray_property.removeEBObserversFrom (self.mObserversOf_backPadArray)
+        oldValue?.backPadsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backPadsBezierPaths)
+        oldValue?.backTrackSegments_property.removeEBObserversFrom (self.mObserversOf_backTrackSegments)
+        oldValue?.backTracksBezierPaths_property.removeEBObserversFrom (self.mObserversOf_backTracksBezierPaths)
+        oldValue?.boardLimits_property.removeEBObserversFrom (self.mObserversOf_boardLimits)
+        oldValue?.boardLimitsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_boardLimitsBezierPaths)
+        oldValue?.drillSegments_property.removeEBObserversFrom (self.mObserversOf_drillSegments)
+        oldValue?.frontComponentNameSegments_property.removeEBObserversFrom (self.mObserversOf_frontComponentNameSegments)
+        oldValue?.frontComponentNamesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontComponentNamesBezierPaths)
+        oldValue?.frontComponentValueSegments_property.removeEBObserversFrom (self.mObserversOf_frontComponentValueSegments)
+        oldValue?.frontComponentValuesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontComponentValuesBezierPaths)
+        oldValue?.frontLayoutTextsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontLayoutTextsBezierPaths)
+        oldValue?.frontLayoutTextsSegments_property.removeEBObserversFrom (self.mObserversOf_frontLayoutTextsSegments)
+        oldValue?.frontLegendLinesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontLegendLinesBezierPaths)
+        oldValue?.frontLegendLinesSegments_property.removeEBObserversFrom (self.mObserversOf_frontLegendLinesSegments)
+        oldValue?.frontLegendTextsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontLegendTextsBezierPaths)
+        oldValue?.frontLegendTextsSegments_property.removeEBObserversFrom (self.mObserversOf_frontLegendTextsSegments)
+        oldValue?.frontPackagesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontPackagesBezierPaths)
+        oldValue?.frontPackagesSegments_property.removeEBObserversFrom (self.mObserversOf_frontPackagesSegments)
+        oldValue?.frontPadArray_property.removeEBObserversFrom (self.mObserversOf_frontPadArray)
+        oldValue?.frontPadsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontPadsBezierPaths)
+        oldValue?.frontTrackSegments_property.removeEBObserversFrom (self.mObserversOf_frontTrackSegments)
+        oldValue?.frontTracksBezierPaths_property.removeEBObserversFrom (self.mObserversOf_frontTracksBezierPaths)
+        oldValue?.holesBezierPaths_property.removeEBObserversFrom (self.mObserversOf_holesBezierPaths)
+        oldValue?.imageForInstances_property.removeEBObserversFrom (self.mObserversOf_imageForInstances)
+        oldValue?.imageForModel_property.removeEBObserversFrom (self.mObserversOf_imageForModel)
+        oldValue?.internalBoardsLimitsBezierPaths_property.removeEBObserversFrom (self.mObserversOf_internalBoardsLimitsBezierPaths)
+        oldValue?.internalBoardsLimitsSegments_property.removeEBObserversFrom (self.mObserversOf_internalBoardsLimitsSegments)
+        oldValue?.modelHeight_property.removeEBObserversFrom (self.mObserversOf_modelHeight)
+        oldValue?.modelHeightUnit_property.removeEBObserversFrom (self.mObserversOf_modelHeightUnit)
+        oldValue?.modelLimitWidth_property.removeEBObserversFrom (self.mObserversOf_modelLimitWidth)
+        oldValue?.modelLimitWidthUnit_property.removeEBObserversFrom (self.mObserversOf_modelLimitWidthUnit)
+        oldValue?.modelWidth_property.removeEBObserversFrom (self.mObserversOf_modelWidth)
+        oldValue?.modelWidthUnit_property.removeEBObserversFrom (self.mObserversOf_modelWidthUnit)
+        oldValue?.name_property.removeEBObserversFrom (self.mObserversOf_name)
+        oldValue?.viaShapes_property.removeEBObserversFrom (self.mObserversOf_viaShapes)
+        oldValue?.viasBezierPaths_property.removeEBObserversFrom (self.mObserversOf_viasBezierPaths)
+        oldValue?.zoom_property.removeEBObserversFrom (self.mObserversOf_zoom)
       //--- Add property observers to new object
-        self.mValue?.backComponentNameSegments_property.addEBObserversFrom (mObserversOf_backComponentNameSegments)
-        self.mValue?.backComponentNamesBezierPaths_property.addEBObserversFrom (mObserversOf_backComponentNamesBezierPaths)
-        self.mValue?.backComponentValueSegments_property.addEBObserversFrom (mObserversOf_backComponentValueSegments)
-        self.mValue?.backComponentValuesBezierPaths_property.addEBObserversFrom (mObserversOf_backComponentValuesBezierPaths)
-        self.mValue?.backLayoutTextsBezierPaths_property.addEBObserversFrom (mObserversOf_backLayoutTextsBezierPaths)
-        self.mValue?.backLayoutTextsSegments_property.addEBObserversFrom (mObserversOf_backLayoutTextsSegments)
-        self.mValue?.backLegendLinesBezierPaths_property.addEBObserversFrom (mObserversOf_backLegendLinesBezierPaths)
-        self.mValue?.backLegendLinesSegments_property.addEBObserversFrom (mObserversOf_backLegendLinesSegments)
-        self.mValue?.backLegendTextsBezierPaths_property.addEBObserversFrom (mObserversOf_backLegendTextsBezierPaths)
-        self.mValue?.backLegendTextsSegments_property.addEBObserversFrom (mObserversOf_backLegendTextsSegments)
-        self.mValue?.backPackagesBezierPaths_property.addEBObserversFrom (mObserversOf_backPackagesBezierPaths)
-        self.mValue?.backPackagesSegments_property.addEBObserversFrom (mObserversOf_backPackagesSegments)
-        self.mValue?.backPadArray_property.addEBObserversFrom (mObserversOf_backPadArray)
-        self.mValue?.backPadsBezierPaths_property.addEBObserversFrom (mObserversOf_backPadsBezierPaths)
-        self.mValue?.backTrackSegments_property.addEBObserversFrom (mObserversOf_backTrackSegments)
-        self.mValue?.backTracksBezierPaths_property.addEBObserversFrom (mObserversOf_backTracksBezierPaths)
-        self.mValue?.boardLimits_property.addEBObserversFrom (mObserversOf_boardLimits)
-        self.mValue?.boardLimitsBezierPaths_property.addEBObserversFrom (mObserversOf_boardLimitsBezierPaths)
-        self.mValue?.drillSegments_property.addEBObserversFrom (mObserversOf_drillSegments)
-        self.mValue?.frontComponentNameSegments_property.addEBObserversFrom (mObserversOf_frontComponentNameSegments)
-        self.mValue?.frontComponentNamesBezierPaths_property.addEBObserversFrom (mObserversOf_frontComponentNamesBezierPaths)
-        self.mValue?.frontComponentValueSegments_property.addEBObserversFrom (mObserversOf_frontComponentValueSegments)
-        self.mValue?.frontComponentValuesBezierPaths_property.addEBObserversFrom (mObserversOf_frontComponentValuesBezierPaths)
-        self.mValue?.frontLayoutTextsBezierPaths_property.addEBObserversFrom (mObserversOf_frontLayoutTextsBezierPaths)
-        self.mValue?.frontLayoutTextsSegments_property.addEBObserversFrom (mObserversOf_frontLayoutTextsSegments)
-        self.mValue?.frontLegendLinesBezierPaths_property.addEBObserversFrom (mObserversOf_frontLegendLinesBezierPaths)
-        self.mValue?.frontLegendLinesSegments_property.addEBObserversFrom (mObserversOf_frontLegendLinesSegments)
-        self.mValue?.frontLegendTextsBezierPaths_property.addEBObserversFrom (mObserversOf_frontLegendTextsBezierPaths)
-        self.mValue?.frontLegendTextsSegments_property.addEBObserversFrom (mObserversOf_frontLegendTextsSegments)
-        self.mValue?.frontPackagesBezierPaths_property.addEBObserversFrom (mObserversOf_frontPackagesBezierPaths)
-        self.mValue?.frontPackagesSegments_property.addEBObserversFrom (mObserversOf_frontPackagesSegments)
-        self.mValue?.frontPadArray_property.addEBObserversFrom (mObserversOf_frontPadArray)
-        self.mValue?.frontPadsBezierPaths_property.addEBObserversFrom (mObserversOf_frontPadsBezierPaths)
-        self.mValue?.frontTrackSegments_property.addEBObserversFrom (mObserversOf_frontTrackSegments)
-        self.mValue?.frontTracksBezierPaths_property.addEBObserversFrom (mObserversOf_frontTracksBezierPaths)
-        self.mValue?.holesBezierPaths_property.addEBObserversFrom (mObserversOf_holesBezierPaths)
-        self.mValue?.imageForInstances_property.addEBObserversFrom (mObserversOf_imageForInstances)
-        self.mValue?.imageForModel_property.addEBObserversFrom (mObserversOf_imageForModel)
-        self.mValue?.internalBoardsLimitsBezierPaths_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsBezierPaths)
-        self.mValue?.internalBoardsLimitsSegments_property.addEBObserversFrom (mObserversOf_internalBoardsLimitsSegments)
-        self.mValue?.modelHeight_property.addEBObserversFrom (mObserversOf_modelHeight)
-        self.mValue?.modelHeightUnit_property.addEBObserversFrom (mObserversOf_modelHeightUnit)
-        self.mValue?.modelLimitWidth_property.addEBObserversFrom (mObserversOf_modelLimitWidth)
-        self.mValue?.modelLimitWidthUnit_property.addEBObserversFrom (mObserversOf_modelLimitWidthUnit)
-        self.mValue?.modelWidth_property.addEBObserversFrom (mObserversOf_modelWidth)
-        self.mValue?.modelWidthUnit_property.addEBObserversFrom (mObserversOf_modelWidthUnit)
-        self.mValue?.name_property.addEBObserversFrom (mObserversOf_name)
-        self.mValue?.viaShapes_property.addEBObserversFrom (mObserversOf_viaShapes)
-        self.mValue?.viasBezierPaths_property.addEBObserversFrom (mObserversOf_viasBezierPaths)
-        self.mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
+        self.mValue?.backComponentNameSegments_property.addEBObserversFrom (self.mObserversOf_backComponentNameSegments)
+        self.mValue?.backComponentNamesBezierPaths_property.addEBObserversFrom (self.mObserversOf_backComponentNamesBezierPaths)
+        self.mValue?.backComponentValueSegments_property.addEBObserversFrom (self.mObserversOf_backComponentValueSegments)
+        self.mValue?.backComponentValuesBezierPaths_property.addEBObserversFrom (self.mObserversOf_backComponentValuesBezierPaths)
+        self.mValue?.backLayoutTextsBezierPaths_property.addEBObserversFrom (self.mObserversOf_backLayoutTextsBezierPaths)
+        self.mValue?.backLayoutTextsSegments_property.addEBObserversFrom (self.mObserversOf_backLayoutTextsSegments)
+        self.mValue?.backLegendLinesBezierPaths_property.addEBObserversFrom (self.mObserversOf_backLegendLinesBezierPaths)
+        self.mValue?.backLegendLinesSegments_property.addEBObserversFrom (self.mObserversOf_backLegendLinesSegments)
+        self.mValue?.backLegendTextsBezierPaths_property.addEBObserversFrom (self.mObserversOf_backLegendTextsBezierPaths)
+        self.mValue?.backLegendTextsSegments_property.addEBObserversFrom (self.mObserversOf_backLegendTextsSegments)
+        self.mValue?.backPackagesBezierPaths_property.addEBObserversFrom (self.mObserversOf_backPackagesBezierPaths)
+        self.mValue?.backPackagesSegments_property.addEBObserversFrom (self.mObserversOf_backPackagesSegments)
+        self.mValue?.backPadArray_property.addEBObserversFrom (self.mObserversOf_backPadArray)
+        self.mValue?.backPadsBezierPaths_property.addEBObserversFrom (self.mObserversOf_backPadsBezierPaths)
+        self.mValue?.backTrackSegments_property.addEBObserversFrom (self.mObserversOf_backTrackSegments)
+        self.mValue?.backTracksBezierPaths_property.addEBObserversFrom (self.mObserversOf_backTracksBezierPaths)
+        self.mValue?.boardLimits_property.addEBObserversFrom (self.mObserversOf_boardLimits)
+        self.mValue?.boardLimitsBezierPaths_property.addEBObserversFrom (self.mObserversOf_boardLimitsBezierPaths)
+        self.mValue?.drillSegments_property.addEBObserversFrom (self.mObserversOf_drillSegments)
+        self.mValue?.frontComponentNameSegments_property.addEBObserversFrom (self.mObserversOf_frontComponentNameSegments)
+        self.mValue?.frontComponentNamesBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontComponentNamesBezierPaths)
+        self.mValue?.frontComponentValueSegments_property.addEBObserversFrom (self.mObserversOf_frontComponentValueSegments)
+        self.mValue?.frontComponentValuesBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontComponentValuesBezierPaths)
+        self.mValue?.frontLayoutTextsBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontLayoutTextsBezierPaths)
+        self.mValue?.frontLayoutTextsSegments_property.addEBObserversFrom (self.mObserversOf_frontLayoutTextsSegments)
+        self.mValue?.frontLegendLinesBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontLegendLinesBezierPaths)
+        self.mValue?.frontLegendLinesSegments_property.addEBObserversFrom (self.mObserversOf_frontLegendLinesSegments)
+        self.mValue?.frontLegendTextsBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontLegendTextsBezierPaths)
+        self.mValue?.frontLegendTextsSegments_property.addEBObserversFrom (self.mObserversOf_frontLegendTextsSegments)
+        self.mValue?.frontPackagesBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontPackagesBezierPaths)
+        self.mValue?.frontPackagesSegments_property.addEBObserversFrom (self.mObserversOf_frontPackagesSegments)
+        self.mValue?.frontPadArray_property.addEBObserversFrom (self.mObserversOf_frontPadArray)
+        self.mValue?.frontPadsBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontPadsBezierPaths)
+        self.mValue?.frontTrackSegments_property.addEBObserversFrom (self.mObserversOf_frontTrackSegments)
+        self.mValue?.frontTracksBezierPaths_property.addEBObserversFrom (self.mObserversOf_frontTracksBezierPaths)
+        self.mValue?.holesBezierPaths_property.addEBObserversFrom (self.mObserversOf_holesBezierPaths)
+        self.mValue?.imageForInstances_property.addEBObserversFrom (self.mObserversOf_imageForInstances)
+        self.mValue?.imageForModel_property.addEBObserversFrom (self.mObserversOf_imageForModel)
+        self.mValue?.internalBoardsLimitsBezierPaths_property.addEBObserversFrom (self.mObserversOf_internalBoardsLimitsBezierPaths)
+        self.mValue?.internalBoardsLimitsSegments_property.addEBObserversFrom (self.mObserversOf_internalBoardsLimitsSegments)
+        self.mValue?.modelHeight_property.addEBObserversFrom (self.mObserversOf_modelHeight)
+        self.mValue?.modelHeightUnit_property.addEBObserversFrom (self.mObserversOf_modelHeightUnit)
+        self.mValue?.modelLimitWidth_property.addEBObserversFrom (self.mObserversOf_modelLimitWidth)
+        self.mValue?.modelLimitWidthUnit_property.addEBObserversFrom (self.mObserversOf_modelLimitWidthUnit)
+        self.mValue?.modelWidth_property.addEBObserversFrom (self.mObserversOf_modelWidth)
+        self.mValue?.modelWidthUnit_property.addEBObserversFrom (self.mObserversOf_modelWidthUnit)
+        self.mValue?.name_property.addEBObserversFrom (self.mObserversOf_name)
+        self.mValue?.viaShapes_property.addEBObserversFrom (self.mObserversOf_viaShapes)
+        self.mValue?.viasBezierPaths_property.addEBObserversFrom (self.mObserversOf_viasBezierPaths)
+        self.mValue?.zoom_property.addEBObserversFrom (self.mObserversOf_zoom)
        //--- Notify observers
         self.postEvent ()
       }
@@ -3824,57 +3809,57 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
           unwrappedValue.boardInstances_property.add (unwrappedOwner)
         }
       //--- Remove property observers of old object
-        oldValue?.arrowMagnitude_property.removeEBObserversFrom (mObserversOf_arrowMagnitude)
-        oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
-        oldValue?.artworkName_property.removeEBObserversFrom (mObserversOf_artworkName)
-        oldValue?.automaticBoardSize_property.removeEBObserversFrom (mObserversOf_automaticBoardSize)
-        oldValue?.boardDisplayRect_property.removeEBObserversFrom (mObserversOf_boardDisplayRect)
-        oldValue?.boardHeight_property.removeEBObserversFrom (mObserversOf_boardHeight)
-        oldValue?.boardHeightUnit_property.removeEBObserversFrom (mObserversOf_boardHeightUnit)
-        oldValue?.boardLimitWidth_property.removeEBObserversFrom (mObserversOf_boardLimitWidth)
-        oldValue?.boardLimitWidthUnit_property.removeEBObserversFrom (mObserversOf_boardLimitWidthUnit)
-        oldValue?.boardManualHeight_property.removeEBObserversFrom (mObserversOf_boardManualHeight)
-        oldValue?.boardManualWidth_property.removeEBObserversFrom (mObserversOf_boardManualWidth)
-        oldValue?.boardRect_property.removeEBObserversFrom (mObserversOf_boardRect)
-        oldValue?.boardWidth_property.removeEBObserversFrom (mObserversOf_boardWidth)
-        oldValue?.boardWidthUnit_property.removeEBObserversFrom (mObserversOf_boardWidthUnit)
-        oldValue?.generateGerberProductFile_property.removeEBObserversFrom (mObserversOf_generateGerberProductFile)
-        oldValue?.generatePDFProductFile_property.removeEBObserversFrom (mObserversOf_generatePDFProductFile)
-        oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        oldValue?.modelNames_property.removeEBObserversFrom (mObserversOf_modelNames)
-        oldValue?.overlapingArrangment_property.removeEBObserversFrom (mObserversOf_overlapingArrangment)
-        oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardXUnit)
-        oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (mObserversOf_selectedBoardYUnit)
-        oldValue?.selectedPageIndex_property.removeEBObserversFrom (mObserversOf_selectedPageIndex)
-        oldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitude)
-        oldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
-        oldValue?.zoom_property.removeEBObserversFrom (mObserversOf_zoom)
+        oldValue?.arrowMagnitude_property.removeEBObserversFrom (self.mObserversOf_arrowMagnitude)
+        oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (self.mObserversOf_arrowMagnitudeUnit)
+        oldValue?.artworkName_property.removeEBObserversFrom (self.mObserversOf_artworkName)
+        oldValue?.automaticBoardSize_property.removeEBObserversFrom (self.mObserversOf_automaticBoardSize)
+        oldValue?.boardDisplayRect_property.removeEBObserversFrom (self.mObserversOf_boardDisplayRect)
+        oldValue?.boardHeight_property.removeEBObserversFrom (self.mObserversOf_boardHeight)
+        oldValue?.boardHeightUnit_property.removeEBObserversFrom (self.mObserversOf_boardHeightUnit)
+        oldValue?.boardLimitWidth_property.removeEBObserversFrom (self.mObserversOf_boardLimitWidth)
+        oldValue?.boardLimitWidthUnit_property.removeEBObserversFrom (self.mObserversOf_boardLimitWidthUnit)
+        oldValue?.boardManualHeight_property.removeEBObserversFrom (self.mObserversOf_boardManualHeight)
+        oldValue?.boardManualWidth_property.removeEBObserversFrom (self.mObserversOf_boardManualWidth)
+        oldValue?.boardRect_property.removeEBObserversFrom (self.mObserversOf_boardRect)
+        oldValue?.boardWidth_property.removeEBObserversFrom (self.mObserversOf_boardWidth)
+        oldValue?.boardWidthUnit_property.removeEBObserversFrom (self.mObserversOf_boardWidthUnit)
+        oldValue?.generateGerberProductFile_property.removeEBObserversFrom (self.mObserversOf_generateGerberProductFile)
+        oldValue?.generatePDFProductFile_property.removeEBObserversFrom (self.mObserversOf_generatePDFProductFile)
+        oldValue?.generatedBoardArchiveFormat_property.removeEBObserversFrom (self.mObserversOf_generatedBoardArchiveFormat)
+        oldValue?.modelNames_property.removeEBObserversFrom (self.mObserversOf_modelNames)
+        oldValue?.overlapingArrangment_property.removeEBObserversFrom (self.mObserversOf_overlapingArrangment)
+        oldValue?.selectedBoardXUnit_property.removeEBObserversFrom (self.mObserversOf_selectedBoardXUnit)
+        oldValue?.selectedBoardYUnit_property.removeEBObserversFrom (self.mObserversOf_selectedBoardYUnit)
+        oldValue?.selectedPageIndex_property.removeEBObserversFrom (self.mObserversOf_selectedPageIndex)
+        oldValue?.shiftArrowMagnitude_property.removeEBObserversFrom (self.mObserversOf_shiftArrowMagnitude)
+        oldValue?.shiftArrowMagnitudeUnit_property.removeEBObserversFrom (self.mObserversOf_shiftArrowMagnitudeUnit)
+        oldValue?.zoom_property.removeEBObserversFrom (self.mObserversOf_zoom)
       //--- Add property observers to new object
-        self.mValue?.arrowMagnitude_property.addEBObserversFrom (mObserversOf_arrowMagnitude)
-        self.mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_arrowMagnitudeUnit)
-        self.mValue?.artworkName_property.addEBObserversFrom (mObserversOf_artworkName)
-        self.mValue?.automaticBoardSize_property.addEBObserversFrom (mObserversOf_automaticBoardSize)
-        self.mValue?.boardDisplayRect_property.addEBObserversFrom (mObserversOf_boardDisplayRect)
-        self.mValue?.boardHeight_property.addEBObserversFrom (mObserversOf_boardHeight)
-        self.mValue?.boardHeightUnit_property.addEBObserversFrom (mObserversOf_boardHeightUnit)
-        self.mValue?.boardLimitWidth_property.addEBObserversFrom (mObserversOf_boardLimitWidth)
-        self.mValue?.boardLimitWidthUnit_property.addEBObserversFrom (mObserversOf_boardLimitWidthUnit)
-        self.mValue?.boardManualHeight_property.addEBObserversFrom (mObserversOf_boardManualHeight)
-        self.mValue?.boardManualWidth_property.addEBObserversFrom (mObserversOf_boardManualWidth)
-        self.mValue?.boardRect_property.addEBObserversFrom (mObserversOf_boardRect)
-        self.mValue?.boardWidth_property.addEBObserversFrom (mObserversOf_boardWidth)
-        self.mValue?.boardWidthUnit_property.addEBObserversFrom (mObserversOf_boardWidthUnit)
-        self.mValue?.generateGerberProductFile_property.addEBObserversFrom (mObserversOf_generateGerberProductFile)
-        self.mValue?.generatePDFProductFile_property.addEBObserversFrom (mObserversOf_generatePDFProductFile)
-        self.mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (mObserversOf_generatedBoardArchiveFormat)
-        self.mValue?.modelNames_property.addEBObserversFrom (mObserversOf_modelNames)
-        self.mValue?.overlapingArrangment_property.addEBObserversFrom (mObserversOf_overlapingArrangment)
-        self.mValue?.selectedBoardXUnit_property.addEBObserversFrom (mObserversOf_selectedBoardXUnit)
-        self.mValue?.selectedBoardYUnit_property.addEBObserversFrom (mObserversOf_selectedBoardYUnit)
-        self.mValue?.selectedPageIndex_property.addEBObserversFrom (mObserversOf_selectedPageIndex)
-        self.mValue?.shiftArrowMagnitude_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitude)
-        self.mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (mObserversOf_shiftArrowMagnitudeUnit)
-        self.mValue?.zoom_property.addEBObserversFrom (mObserversOf_zoom)
+        self.mValue?.arrowMagnitude_property.addEBObserversFrom (self.mObserversOf_arrowMagnitude)
+        self.mValue?.arrowMagnitudeUnit_property.addEBObserversFrom (self.mObserversOf_arrowMagnitudeUnit)
+        self.mValue?.artworkName_property.addEBObserversFrom (self.mObserversOf_artworkName)
+        self.mValue?.automaticBoardSize_property.addEBObserversFrom (self.mObserversOf_automaticBoardSize)
+        self.mValue?.boardDisplayRect_property.addEBObserversFrom (self.mObserversOf_boardDisplayRect)
+        self.mValue?.boardHeight_property.addEBObserversFrom (self.mObserversOf_boardHeight)
+        self.mValue?.boardHeightUnit_property.addEBObserversFrom (self.mObserversOf_boardHeightUnit)
+        self.mValue?.boardLimitWidth_property.addEBObserversFrom (self.mObserversOf_boardLimitWidth)
+        self.mValue?.boardLimitWidthUnit_property.addEBObserversFrom (self.mObserversOf_boardLimitWidthUnit)
+        self.mValue?.boardManualHeight_property.addEBObserversFrom (self.mObserversOf_boardManualHeight)
+        self.mValue?.boardManualWidth_property.addEBObserversFrom (self.mObserversOf_boardManualWidth)
+        self.mValue?.boardRect_property.addEBObserversFrom (self.mObserversOf_boardRect)
+        self.mValue?.boardWidth_property.addEBObserversFrom (self.mObserversOf_boardWidth)
+        self.mValue?.boardWidthUnit_property.addEBObserversFrom (self.mObserversOf_boardWidthUnit)
+        self.mValue?.generateGerberProductFile_property.addEBObserversFrom (self.mObserversOf_generateGerberProductFile)
+        self.mValue?.generatePDFProductFile_property.addEBObserversFrom (self.mObserversOf_generatePDFProductFile)
+        self.mValue?.generatedBoardArchiveFormat_property.addEBObserversFrom (self.mObserversOf_generatedBoardArchiveFormat)
+        self.mValue?.modelNames_property.addEBObserversFrom (self.mObserversOf_modelNames)
+        self.mValue?.overlapingArrangment_property.addEBObserversFrom (self.mObserversOf_overlapingArrangment)
+        self.mValue?.selectedBoardXUnit_property.addEBObserversFrom (self.mObserversOf_selectedBoardXUnit)
+        self.mValue?.selectedBoardYUnit_property.addEBObserversFrom (self.mObserversOf_selectedBoardYUnit)
+        self.mValue?.selectedPageIndex_property.addEBObserversFrom (self.mObserversOf_selectedPageIndex)
+        self.mValue?.shiftArrowMagnitude_property.addEBObserversFrom (self.mObserversOf_shiftArrowMagnitude)
+        self.mValue?.shiftArrowMagnitudeUnit_property.addEBObserversFrom (self.mObserversOf_shiftArrowMagnitudeUnit)
+        self.mValue?.zoom_property.addEBObserversFrom (self.mObserversOf_zoom)
        //--- Notify observers
         self.postEvent ()
       }

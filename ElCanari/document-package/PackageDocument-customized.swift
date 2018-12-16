@@ -13,7 +13,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument, Delegate_StoredArrayOf_PackageObject {
+@objc(CustomizedPackageDocument) class CustomizedPackageDocument : PackageDocument {
 
   //····················································································································
 
@@ -37,13 +37,16 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()
+  fileprivate var mPadNumberingObserver = EBModelEvent ()
 
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
-  //--- Set delegate from managing pad number
-    self.rootObject.packageObjects_property.set (delegate : self)
+  //--- Handle pad number event
+    self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
+    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
   //--- Package color observer
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
@@ -157,6 +160,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
            let Y = dataDictionary ["Y"] as? Int {
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
+              newObject.operationAfterPasting ()
               newObject.translate (
                 xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
                 yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y
@@ -232,17 +236,39 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   }
 
   //····················································································································
-  //  MARK: -
-  // Implementation of Delegate_StoredArrayOf_PackageObject protocol
+  //   Handle pad numbering
+  // MARK: -
   //····················································································································
 
-  func willAdd_PackageObject (_ inObject : PackageObject) {
+  fileprivate func handlePadNumbering () {
+    // Swift.print ("handlePadNumbering")
+  //--- Get all pads
+    var allPads = self.rootObject.packagePads_property.propval
+  //--- Find max pad number
+    var maxPadNumber = 0
+    for pad in allPads {
+      if maxPadNumber < pad.padNumber {
+        maxPadNumber = pad.padNumber
+      }
+    }
+  //--- Set a number to pad with number equal to 0
+    for pad in allPads {
+      if pad.padNumber == 0 {
+        maxPadNumber += 1
+        pad.padNumber = maxPadNumber
+      }
+    }
+  //--- Sort pads by pad number
+    allPads.sort (by: { $0.padNumber < $1.padNumber } )
+  //--- Set pad numbers from 1
+    var idx = 1
+    for pad in allPads {
+      pad.padNumber = idx
+      idx += 1
+    }
   }
 
   //····················································································································
-
-  func didRemove_PackageObject (_ inObject : PackageObject) {
-  }
 
 }
 

@@ -1123,7 +1123,7 @@ import Cocoa
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
-    flushOutletEvents ()
+    flushEvents ()
   }
 
   //····················································································································

@@ -482,7 +482,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -497,7 +497,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    self.mObserversOf_y.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
+      for observer in self.mObserversOf_y {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for observer in mObserversOf_y {
+    for observer in self.mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_width.insert (inObserver)
+    self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -554,7 +554,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_width.remove (inObserver)
+    self.mObserversOf_width.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_width {
+      for observer in self.mObserversOf_width {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -578,7 +578,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for observer in mObserversOf_width {
+    for observer in self.mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -596,7 +596,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_height.insert (inObserver)
+    self.mObserversOf_height.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -611,7 +611,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_height (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_height.remove (inObserver)
+    self.mObserversOf_height.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_height {
+      for observer in self.mObserversOf_height {
         managedObject.height_property.addEBObserver (observer)
       }
     }
@@ -635,7 +635,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for observer in mObserversOf_height {
+    for observer in self.mObserversOf_height {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
@@ -653,7 +653,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -668,7 +668,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    self.mObserversOf_x.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
+      for observer in self.mObserversOf_x {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -692,7 +692,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for observer in mObserversOf_x {
+    for observer in self.mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -710,7 +710,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -725,7 +725,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -740,7 +740,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -750,7 +750,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -766,7 +766,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -781,7 +781,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -796,7 +796,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -806,7 +806,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -822,7 +822,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -837,7 +837,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -852,7 +852,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -862,7 +862,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -899,6 +899,7 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
   //····················································································································
 
   override var propval : [SymbolSolidRect] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1003,30 +1004,14 @@ class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 //    To many relationship: SymbolSolidRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_SymbolSolidRect : class {
-
-  func willAdd_SymbolSolidRect (_ inObject : SymbolSolidRect)
-
-  func didRemove_SymbolSolidRect (_ inObject : SymbolSolidRect)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_SymbolSolidRect? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolSolidRect?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

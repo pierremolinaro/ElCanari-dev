@@ -271,7 +271,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -286,7 +286,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    self.mObserversOf_y.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -301,7 +301,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
+      for observer in self.mObserversOf_y {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -310,7 +310,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_y {
+    for observer in self.mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -328,7 +328,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padDiameter.insert (inObserver)
+    self.mObserversOf_padDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -343,7 +343,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserverOf_padDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padDiameter.remove (inObserver)
+    self.mObserversOf_padDiameter.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -358,7 +358,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padDiameter {
+      for observer in self.mObserversOf_padDiameter {
         managedObject.padDiameter_property.addEBObserver (observer)
       }
     }
@@ -367,7 +367,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_padDiameter {
+    for observer in self.mObserversOf_padDiameter {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padDiameter_property.removeEBObserver (observer)
@@ -385,7 +385,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -400,7 +400,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    self.mObserversOf_x.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -415,7 +415,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
+      for observer in self.mObserversOf_x {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -424,7 +424,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in mObserversOf_x {
+    for observer in self.mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -463,6 +463,7 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
   //····················································································································
 
   override var propval : [BoardModelVia] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -559,30 +560,14 @@ class ReadWriteArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
 //    To many relationship: BoardModelVia
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_BoardModelVia : class {
-
-  func willAdd_BoardModelVia (_ inObject : BoardModelVia)
-
-  func didRemove_BoardModelVia (_ inObject : BoardModelVia)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_BoardModelVia? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_BoardModelVia?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : BoardModelVia?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

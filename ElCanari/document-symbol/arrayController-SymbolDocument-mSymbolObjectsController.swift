@@ -616,6 +616,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       var newObjects = [SymbolObject] ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
+          object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
         }

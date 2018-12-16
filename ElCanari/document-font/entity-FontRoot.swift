@@ -431,7 +431,6 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Install undoers and opposite setter for relationships
- //   self.characters_property.undoManager = self.undoManager
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer:self)
     self.comments_property.setSignatureObserver (observer:self)
@@ -696,7 +695,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_comments (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -711,7 +710,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -726,7 +725,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_comments {
+      for observer in self.mObserversOf_comments {
         managedObject.comments_property.addEBObserver (observer)
       }
     }
@@ -735,7 +734,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for observer in mObserversOf_comments {
+    for observer in self.mObserversOf_comments {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
@@ -753,7 +752,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_nominalSize.insert (inObserver)
+    self.mObserversOf_nominalSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -768,7 +767,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_nominalSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_nominalSize.remove (inObserver)
+    self.mObserversOf_nominalSize.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -783,7 +782,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_nominalSize_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_nominalSize {
+      for observer in self.mObserversOf_nominalSize {
         managedObject.nominalSize_property.addEBObserver (observer)
       }
     }
@@ -792,7 +791,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   //····················································································································
 
   final func removeEBObserversOf_nominalSize_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for observer in mObserversOf_nominalSize {
+    for observer in self.mObserversOf_nominalSize {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.nominalSize_property.removeEBObserver (observer)
@@ -810,7 +809,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectedTab.insert (inObserver)
+    self.mObserversOf_selectedTab.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -825,7 +824,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_selectedTab (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectedTab.remove (inObserver)
+    self.mObserversOf_selectedTab.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -840,7 +839,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_selectedTab_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectedTab {
+      for observer in self.mObserversOf_selectedTab {
         managedObject.selectedTab_property.addEBObserver (observer)
       }
     }
@@ -849,7 +848,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   //····················································································································
 
   final func removeEBObserversOf_selectedTab_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for observer in mObserversOf_selectedTab {
+    for observer in self.mObserversOf_selectedTab {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedTab_property.removeEBObserver (observer)
@@ -867,7 +866,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectedInspector.insert (inObserver)
+    self.mObserversOf_selectedInspector.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -882,7 +881,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectedInspector.remove (inObserver)
+    self.mObserversOf_selectedInspector.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -897,7 +896,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectedInspector {
+      for observer in self.mObserversOf_selectedInspector {
         managedObject.selectedInspector_property.addEBObserver (observer)
       }
     }
@@ -906,7 +905,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   //····················································································································
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    for observer in mObserversOf_selectedInspector {
+    for observer in self.mObserversOf_selectedInspector {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedInspector_property.removeEBObserver (observer)
@@ -924,7 +923,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_currentCharacterCodePointString.insert (inObserver)
+    self.mObserversOf_currentCharacterCodePointString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -939,7 +938,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_currentCharacterCodePointString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_currentCharacterCodePointString.remove (inObserver)
+    self.mObserversOf_currentCharacterCodePointString.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -954,7 +953,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_currentCharacterCodePointString {
+      for observer in self.mObserversOf_currentCharacterCodePointString {
         managedObject.currentCharacterCodePointString_property.addEBObserver (observer)
       }
     }
@@ -964,7 +963,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_currentCharacterCodePointString {
+      for observer in self.mObserversOf_currentCharacterCodePointString {
         managedObject.currentCharacterCodePointString_property.removeEBObserver (observer)
       }
     }
@@ -980,7 +979,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPath.insert (inObserver)
+    self.mObserversOf_sampleStringBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -995,7 +994,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_sampleStringBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPath.remove (inObserver)
+    self.mObserversOf_sampleStringBezierPath.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1010,7 +1009,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_sampleStringBezierPath_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPath {
+      for observer in self.mObserversOf_sampleStringBezierPath {
         managedObject.sampleStringBezierPath_property.addEBObserver (observer)
       }
     }
@@ -1020,7 +1019,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPath {
+      for observer in self.mObserversOf_sampleStringBezierPath {
         managedObject.sampleStringBezierPath_property.removeEBObserver (observer)
       }
     }
@@ -1036,7 +1035,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
+    self.mObserversOf_sampleStringBezierPathWidth.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1051,7 +1050,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_sampleStringBezierPathWidth (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
+    self.mObserversOf_sampleStringBezierPathWidth.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1066,7 +1065,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathWidth {
+      for observer in self.mObserversOf_sampleStringBezierPathWidth {
         managedObject.sampleStringBezierPathWidth_property.addEBObserver (observer)
       }
     }
@@ -1076,7 +1075,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathWidth {
+      for observer in self.mObserversOf_sampleStringBezierPathWidth {
         managedObject.sampleStringBezierPathWidth_property.removeEBObserver (observer)
       }
     }
@@ -1092,7 +1091,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
+    self.mObserversOf_sampleStringBezierPathAscent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1107,7 +1106,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_sampleStringBezierPathAscent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
+    self.mObserversOf_sampleStringBezierPathAscent.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1122,7 +1121,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathAscent {
+      for observer in self.mObserversOf_sampleStringBezierPathAscent {
         managedObject.sampleStringBezierPathAscent_property.addEBObserver (observer)
       }
     }
@@ -1132,7 +1131,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathAscent {
+      for observer in self.mObserversOf_sampleStringBezierPathAscent {
         managedObject.sampleStringBezierPathAscent_property.removeEBObserver (observer)
       }
     }
@@ -1148,7 +1147,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
+    self.mObserversOf_sampleStringBezierPathDescent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1163,7 +1162,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserverOf_sampleStringBezierPathDescent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
+    self.mObserversOf_sampleStringBezierPathDescent.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1178,7 +1177,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathDescent {
+      for observer in self.mObserversOf_sampleStringBezierPathDescent {
         managedObject.sampleStringBezierPathDescent_property.addEBObserver (observer)
       }
     }
@@ -1188,7 +1187,7 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
 
   final func removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      for observer in mObserversOf_sampleStringBezierPathDescent {
+      for observer in self.mObserversOf_sampleStringBezierPathDescent {
         managedObject.sampleStringBezierPathDescent_property.removeEBObserver (observer)
       }
     }
@@ -1225,6 +1224,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
   //····················································································································
 
   override var propval : [FontRoot] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1333,30 +1333,14 @@ class ReadWriteArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 //    To many relationship: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_FontRoot : class {
-
-  func willAdd_FontRoot (_ inObject : FontRoot)
-
-  func didRemove_FontRoot (_ inObject : FontRoot)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_FontRoot? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_FontRoot?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : FontRoot?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

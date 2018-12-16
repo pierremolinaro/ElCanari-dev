@@ -287,7 +287,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_mPath.insert (inObserver)
+    self.mObserversOf_mPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -302,7 +302,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserverOf_mPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_mPath.remove (inObserver)
+    self.mObserversOf_mPath.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -317,7 +317,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in mObserversOf_mPath {
+      for observer in self.mObserversOf_mPath {
         managedObject.mPath_property.addEBObserver (observer)
       }
     }
@@ -326,7 +326,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    for observer in mObserversOf_mPath {
+    for observer in self.mObserversOf_mPath {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPath_property.removeEBObserver (observer)
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_mUses.insert (inObserver)
+    self.mObserversOf_mUses.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -359,7 +359,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserverOf_mUses (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_mUses.remove (inObserver)
+    self.mObserversOf_mUses.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -374,7 +374,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in mObserversOf_mUses {
+      for observer in self.mObserversOf_mUses {
         managedObject.mUses_property.addEBObserver (observer)
       }
     }
@@ -383,7 +383,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   //····················································································································
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    for observer in mObserversOf_mUses {
+    for observer in self.mObserversOf_mUses {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUses_property.removeEBObserver (observer)
@@ -401,7 +401,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_mStatusImage.insert (inObserver)
+    self.mObserversOf_mStatusImage.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserverOf_mStatusImage (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_mStatusImage.remove (inObserver)
+    self.mObserversOf_mStatusImage.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -431,7 +431,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in mObserversOf_mStatusImage {
+      for observer in self.mObserversOf_mStatusImage {
         managedObject.mStatusImage_property.addEBObserver (observer)
       }
     }
@@ -441,7 +441,7 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in mObserversOf_mStatusImage {
+      for observer in self.mObserversOf_mStatusImage {
         managedObject.mStatusImage_property.removeEBObserver (observer)
       }
     }
@@ -478,6 +478,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
   //····················································································································
 
   override var propval : [CanariLibraryEntry] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -574,30 +575,14 @@ class ReadWriteArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 //    To many relationship: CanariLibraryEntry
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_CanariLibraryEntry : class {
-
-  func willAdd_CanariLibraryEntry (_ inObject : CanariLibraryEntry)
-
-  func didRemove_CanariLibraryEntry (_ inObject : CanariLibraryEntry)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEntry, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_CanariLibraryEntry? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_CanariLibraryEntry?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : CanariLibraryEntry?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

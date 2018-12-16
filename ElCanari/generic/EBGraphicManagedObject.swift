@@ -184,6 +184,11 @@ class EBGraphicManagedObject : EBManagedObject {
   }
 
   //····················································································································
+
+  @objc dynamic func operationAfterPasting () {
+  }
+
+  //····················································································································
   //  Alignment Points
   //  @objc dynamic before func is required in order to allow function overriding in extensions
   //  Only type that can be represented in Objective-C are accepted

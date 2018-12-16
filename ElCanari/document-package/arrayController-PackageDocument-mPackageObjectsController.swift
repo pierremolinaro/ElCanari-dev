@@ -616,6 +616,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
       var newObjects = [PackageObject] ()
       for dictionary in array {
         if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? PackageObject {
+          object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)
         }

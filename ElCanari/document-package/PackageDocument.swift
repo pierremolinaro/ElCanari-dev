@@ -198,6 +198,7 @@ import Cocoa
   @IBOutlet var mPadHoleDiameterTextField : CanariDimensionTextField?
   @IBOutlet var mPadHoleDiameterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mPadNumberTextField : EBIntObserverField?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
   @IBOutlet var mPadStyleView : NSView?
   @IBOutlet var mPadWidthTextField : CanariDimensionTextField?
@@ -1508,6 +1509,21 @@ import Cocoa
         errorMessage: "the 'mPadInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadNumberTextField {
+      if !(outlet is EBIntObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadNumberTextField' outlet is not an instance of 'EBIntObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadNumberTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -2036,6 +2052,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeDiameter_property, self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
     self.mPadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
+    self.mPadNumberTextField?.bind_valueObserver (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line, autoFormatter:true)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -2098,7 +2115,7 @@ import Cocoa
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
-    flushOutletEvents ()
+    flushEvents ()
   }
 
   //····················································································································
@@ -2172,6 +2189,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.unbind_dimensionAndUnit ()
     self.mPadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
+    self.mPadNumberTextField?.unbind_valueObserver ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -2304,6 +2322,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.ebCleanUp ()
     self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
+    self.mPadNumberTextField?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
     self.mPadWidthTextField?.ebCleanUp ()

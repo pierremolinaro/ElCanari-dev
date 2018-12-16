@@ -207,6 +207,9 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackagePadSelectionController.annularRing, mPackagePadSelectionController.annularRingUnit
   ;
 
+#--- Pad Number
+  outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
+  
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;

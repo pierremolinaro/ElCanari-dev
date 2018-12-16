@@ -365,7 +365,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y1.insert (inObserver)
+    self.mObserversOf_y1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -380,7 +380,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y1.remove (inObserver)
+    self.mObserversOf_y1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -395,7 +395,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y1 {
+      for observer in self.mObserversOf_y1 {
         managedObject.y1_property.addEBObserver (observer)
       }
     }
@@ -404,7 +404,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for observer in mObserversOf_y1 {
+    for observer in self.mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1_property.removeEBObserver (observer)
@@ -422,7 +422,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x2.insert (inObserver)
+    self.mObserversOf_x2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -437,7 +437,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x2.remove (inObserver)
+    self.mObserversOf_x2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -452,7 +452,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x2 {
+      for observer in self.mObserversOf_x2 {
         managedObject.x2_property.addEBObserver (observer)
       }
     }
@@ -461,7 +461,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for observer in mObserversOf_x2 {
+    for observer in self.mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2_property.removeEBObserver (observer)
@@ -479,7 +479,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y2.insert (inObserver)
+    self.mObserversOf_y2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -494,7 +494,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y2.remove (inObserver)
+    self.mObserversOf_y2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -509,7 +509,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y2 {
+      for observer in self.mObserversOf_y2 {
         managedObject.y2_property.addEBObserver (observer)
       }
     }
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for observer in mObserversOf_y2 {
+    for observer in self.mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
@@ -536,7 +536,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_width.insert (inObserver)
+    self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -551,7 +551,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_width.remove (inObserver)
+    self.mObserversOf_width.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -566,7 +566,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_width {
+      for observer in self.mObserversOf_width {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -575,7 +575,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for observer in mObserversOf_width {
+    for observer in self.mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -593,7 +593,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x1.insert (inObserver)
+    self.mObserversOf_x1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -608,7 +608,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x1.remove (inObserver)
+    self.mObserversOf_x1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -623,7 +623,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
 
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentEntity>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x1 {
+      for observer in self.mObserversOf_x1 {
         managedObject.x1_property.addEBObserver (observer)
       }
     }
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_SegmentEntity : ReadOnlyAbstractArrayProperty <SegmentEnti
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentEntity>) {
-    for observer in mObserversOf_x1 {
+    for observer in self.mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1_property.removeEBObserver (observer)
@@ -671,6 +671,7 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
   //····················································································································
 
   override var propval : [SegmentEntity] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -771,30 +772,14 @@ class ReadWriteArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 //    To many relationship: SegmentEntity
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_SegmentEntity : class {
-
-  func willAdd_SegmentEntity (_ inObject : SegmentEntity)
-
-  func didRemove_SegmentEntity (_ inObject : SegmentEntity)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_SegmentEntity? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_SegmentEntity?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : SegmentEntity?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

@@ -1106,7 +1106,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y1.insert (inObserver)
+    self.mObserversOf_y1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1121,7 +1121,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_y1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y1.remove (inObserver)
+    self.mObserversOf_y1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1136,7 +1136,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y1 {
+      for observer in self.mObserversOf_y1 {
         managedObject.y1_property.addEBObserver (observer)
       }
     }
@@ -1145,7 +1145,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_y1 {
+    for observer in self.mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1_property.removeEBObserver (observer)
@@ -1163,7 +1163,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x2.insert (inObserver)
+    self.mObserversOf_x2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1178,7 +1178,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_x2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x2.remove (inObserver)
+    self.mObserversOf_x2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1193,7 +1193,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x2 {
+      for observer in self.mObserversOf_x2 {
         managedObject.x2_property.addEBObserver (observer)
       }
     }
@@ -1202,7 +1202,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_x2 {
+    for observer in self.mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2_property.removeEBObserver (observer)
@@ -1220,7 +1220,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y2.insert (inObserver)
+    self.mObserversOf_y2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1235,7 +1235,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_y2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y2.remove (inObserver)
+    self.mObserversOf_y2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1250,7 +1250,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y2 {
+      for observer in self.mObserversOf_y2 {
         managedObject.y2_property.addEBObserver (observer)
       }
     }
@@ -1259,7 +1259,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_y2 {
+    for observer in self.mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
@@ -1277,7 +1277,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpx1.insert (inObserver)
+    self.mObserversOf_cpx1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1292,7 +1292,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpx1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpx1.remove (inObserver)
+    self.mObserversOf_cpx1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1307,7 +1307,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpx1 {
+      for observer in self.mObserversOf_cpx1 {
         managedObject.cpx1_property.addEBObserver (observer)
       }
     }
@@ -1316,7 +1316,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpx1 {
+    for observer in self.mObserversOf_cpx1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx1_property.removeEBObserver (observer)
@@ -1334,7 +1334,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpy1.insert (inObserver)
+    self.mObserversOf_cpy1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1349,7 +1349,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpy1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpy1.remove (inObserver)
+    self.mObserversOf_cpy1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1364,7 +1364,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpy1 {
+      for observer in self.mObserversOf_cpy1 {
         managedObject.cpy1_property.addEBObserver (observer)
       }
     }
@@ -1373,7 +1373,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpy1 {
+    for observer in self.mObserversOf_cpy1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy1_property.removeEBObserver (observer)
@@ -1391,7 +1391,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpx2.insert (inObserver)
+    self.mObserversOf_cpx2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1406,7 +1406,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpx2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpx2.remove (inObserver)
+    self.mObserversOf_cpx2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1421,7 +1421,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpx2 {
+      for observer in self.mObserversOf_cpx2 {
         managedObject.cpx2_property.addEBObserver (observer)
       }
     }
@@ -1430,7 +1430,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpx2 {
+    for observer in self.mObserversOf_cpx2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx2_property.removeEBObserver (observer)
@@ -1448,7 +1448,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpy2.insert (inObserver)
+    self.mObserversOf_cpy2.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1463,7 +1463,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpy2 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpy2.remove (inObserver)
+    self.mObserversOf_cpy2.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1478,7 +1478,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpy2 {
+      for observer in self.mObserversOf_cpy2 {
         managedObject.cpy2_property.addEBObserver (observer)
       }
     }
@@ -1487,7 +1487,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpy2 {
+    for observer in self.mObserversOf_cpy2 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy2_property.removeEBObserver (observer)
@@ -1505,7 +1505,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x1Unit.insert (inObserver)
+    self.mObserversOf_x1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1520,7 +1520,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_x1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x1Unit.remove (inObserver)
+    self.mObserversOf_x1Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1535,7 +1535,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x1Unit {
+      for observer in self.mObserversOf_x1Unit {
         managedObject.x1Unit_property.addEBObserver (observer)
       }
     }
@@ -1544,7 +1544,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_x1Unit {
+    for observer in self.mObserversOf_x1Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1Unit_property.removeEBObserver (observer)
@@ -1562,7 +1562,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y1Unit.insert (inObserver)
+    self.mObserversOf_y1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1577,7 +1577,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_y1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y1Unit.remove (inObserver)
+    self.mObserversOf_y1Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1592,7 +1592,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y1Unit {
+      for observer in self.mObserversOf_y1Unit {
         managedObject.y1Unit_property.addEBObserver (observer)
       }
     }
@@ -1601,7 +1601,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_y1Unit {
+    for observer in self.mObserversOf_y1Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1Unit_property.removeEBObserver (observer)
@@ -1619,7 +1619,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x2Unit.insert (inObserver)
+    self.mObserversOf_x2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1634,7 +1634,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_x2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x2Unit.remove (inObserver)
+    self.mObserversOf_x2Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1649,7 +1649,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x2Unit {
+      for observer in self.mObserversOf_x2Unit {
         managedObject.x2Unit_property.addEBObserver (observer)
       }
     }
@@ -1658,7 +1658,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_x2Unit {
+    for observer in self.mObserversOf_x2Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2Unit_property.removeEBObserver (observer)
@@ -1676,7 +1676,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y2Unit.insert (inObserver)
+    self.mObserversOf_y2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1691,7 +1691,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_y2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y2Unit.remove (inObserver)
+    self.mObserversOf_y2Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1706,7 +1706,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y2Unit {
+      for observer in self.mObserversOf_y2Unit {
         managedObject.y2Unit_property.addEBObserver (observer)
       }
     }
@@ -1715,7 +1715,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_y2Unit {
+    for observer in self.mObserversOf_y2Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2Unit_property.removeEBObserver (observer)
@@ -1733,7 +1733,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpx1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpx1Unit.insert (inObserver)
+    self.mObserversOf_cpx1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1748,7 +1748,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpx1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpx1Unit.remove (inObserver)
+    self.mObserversOf_cpx1Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1763,7 +1763,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpx1Unit {
+      for observer in self.mObserversOf_cpx1Unit {
         managedObject.cpx1Unit_property.addEBObserver (observer)
       }
     }
@@ -1772,7 +1772,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpx1Unit {
+    for observer in self.mObserversOf_cpx1Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx1Unit_property.removeEBObserver (observer)
@@ -1790,7 +1790,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpy1Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpy1Unit.insert (inObserver)
+    self.mObserversOf_cpy1Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1805,7 +1805,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpy1Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpy1Unit.remove (inObserver)
+    self.mObserversOf_cpy1Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1820,7 +1820,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpy1Unit {
+      for observer in self.mObserversOf_cpy1Unit {
         managedObject.cpy1Unit_property.addEBObserver (observer)
       }
     }
@@ -1829,7 +1829,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpy1Unit {
+    for observer in self.mObserversOf_cpy1Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy1Unit_property.removeEBObserver (observer)
@@ -1847,7 +1847,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpx2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpx2Unit.insert (inObserver)
+    self.mObserversOf_cpx2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1862,7 +1862,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpx2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpx2Unit.remove (inObserver)
+    self.mObserversOf_cpx2Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1877,7 +1877,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpx2Unit {
+      for observer in self.mObserversOf_cpx2Unit {
         managedObject.cpx2Unit_property.addEBObserver (observer)
       }
     }
@@ -1886,7 +1886,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpx2Unit {
+    for observer in self.mObserversOf_cpx2Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpx2Unit_property.removeEBObserver (observer)
@@ -1904,7 +1904,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_cpy2Unit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_cpy2Unit.insert (inObserver)
+    self.mObserversOf_cpy2Unit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1919,7 +1919,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_cpy2Unit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_cpy2Unit.remove (inObserver)
+    self.mObserversOf_cpy2Unit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1934,7 +1934,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_cpy2Unit {
+      for observer in self.mObserversOf_cpy2Unit {
         managedObject.cpy2Unit_property.addEBObserver (observer)
       }
     }
@@ -1943,7 +1943,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_cpy2Unit {
+    for observer in self.mObserversOf_cpy2Unit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.cpy2Unit_property.removeEBObserver (observer)
@@ -1961,7 +1961,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x1.insert (inObserver)
+    self.mObserversOf_x1.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1976,7 +1976,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_x1 (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x1.remove (inObserver)
+    self.mObserversOf_x1.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1991,7 +1991,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x1 {
+      for observer in self.mObserversOf_x1 {
         managedObject.x1_property.addEBObserver (observer)
       }
     }
@@ -2000,7 +2000,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
-    for observer in mObserversOf_x1 {
+    for observer in self.mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1_property.removeEBObserver (observer)
@@ -2018,7 +2018,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2033,7 +2033,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2048,7 +2048,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -2058,7 +2058,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2074,7 +2074,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2089,7 +2089,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2104,7 +2104,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -2114,7 +2114,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2130,7 +2130,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2145,7 +2145,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2160,7 +2160,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -2170,7 +2170,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -2207,6 +2207,7 @@ class TransientArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
   //····················································································································
 
   override var propval : [PackageBezierCurve] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -2335,30 +2336,14 @@ class ReadWriteArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
 //    To many relationship: PackageBezierCurve
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_PackageBezierCurve : class {
-
-  func willAdd_PackageBezierCurve (_ inObject : PackageBezierCurve)
-
-  func didRemove_PackageBezierCurve (_ inObject : PackageBezierCurve)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCurve, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_PackageBezierCurve? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_PackageBezierCurve?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : PackageBezierCurve?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

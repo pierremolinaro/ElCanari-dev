@@ -201,6 +201,8 @@
 		CF51EEB01B4C61C8006D1A45 /* CanariVersionField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51EEAF1B4C61C8006D1A45 /* CanariVersionField.swift */; };
 		CF52DF5121501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */; };
 		CF52DF5221501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */; };
+		CF53C46421C662C2001502F4 /* EBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* EBEvent.swift */; };
+		CF53C46521C662C2001502F4 /* EBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* EBEvent.swift */; };
 		CF550F3021BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */; };
 		CF550F3121BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */; };
 		CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */; };
@@ -380,7 +382,7 @@
 		CF5C4D07219F04D600EAC52A /* entity-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */; };
 		CF5C4D08219F04D600EAC52A /* Controller_CanariCharacterView_characterGerberCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87642B1DD4A15A00D16B6B /* Controller_CanariCharacterView_characterGerberCode.swift */; };
 		CF5C4D09219F04D600EAC52A /* transient-MergerDocument-documentFileNameOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87A87D20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift */; };
-		CF5C4D0A219F04D600EAC52A /* application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725E1B3C4BA900F3CA82 /* application.swift */; };
+		CF5C4D0A219F04D600EAC52A /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725E1B3C4BA900F3CA82 /* Application.swift */; };
 		CF5C4D0B219F04D600EAC52A /* Controller_CanariCharacterView_displayDrawingIndexes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51AD131DD61BCE00CEFB7D /* Controller_CanariCharacterView_displayDrawingIndexes.swift */; };
 		CF5C4D0C219F04D600EAC52A /* transient-BoardModel-backPadArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8328AC213E820D00D5C8B8 /* transient-BoardModel-backPadArray.swift */; };
 		CF5C4D0D219F04D600EAC52A /* action-MergerDocument-addBoardModelAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB4801720DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift */; };
@@ -538,7 +540,7 @@
 		CF604DC721BC1BC1004F2311 /* EBScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollView.swift */; };
 		CF604DC821BC1BC1004F2311 /* EBScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF604DC621BC1BC1004F2311 /* EBScrollView.swift */; };
 		CF61725B1B3C4B4300F3CA82 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF6172591B3C4B4300F3CA82 /* MainMenu.xib */; };
-		CF6172631B3C4BA900F3CA82 /* application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725E1B3C4BA900F3CA82 /* application.swift */; };
+		CF6172631B3C4BA900F3CA82 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725E1B3C4BA900F3CA82 /* Application.swift */; };
 		CF6172641B3C4BA900F3CA82 /* easy-bindings-utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */; };
 		CF6172651B3C4BA900F3CA82 /* generic-bindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6172601B3C4BA900F3CA82 /* generic-bindings.swift */; };
 		CF6172661B3C4BA900F3CA82 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6172611B3C4BA900F3CA82 /* main.swift */; };
@@ -1110,6 +1112,7 @@
 		CF51EEAF1B4C61C8006D1A45 /* CanariVersionField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariVersionField.swift; sourceTree = "<group>"; };
 		CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-selectionDisplay.swift"; sourceTree = "<group>"; };
+		CF53C46321C662C2001502F4 /* EBEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEvent.swift; sourceTree = "<group>"; };
 		CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBAbstractArrayController.swift; sourceTree = "<group>"; };
 		CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MergerRoot.swift"; sourceTree = "<group>"; };
 		CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
@@ -1135,7 +1138,7 @@
 		CF604DC621BC1BC1004F2311 /* EBScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBScrollView.swift; sourceTree = "<group>"; };
 		CF6172581B3C4B4300F3CA82 /* Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		CF6172591B3C4B4300F3CA82 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		CF61725E1B3C4BA900F3CA82 /* application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = application.swift; sourceTree = "<group>"; };
+		CF61725E1B3C4BA900F3CA82 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "easy-bindings-utilities.swift"; sourceTree = "<group>"; };
 		CF6172601B3C4BA900F3CA82 /* generic-bindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "generic-bindings.swift"; sourceTree = "<group>"; };
 		CF6172611B3C4BA900F3CA82 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -1751,10 +1754,12 @@
 		CF61725D1B3C4B8A00F3CA82 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				CF61725E1B3C4BA900F3CA82 /* application.swift */,
+				CF61725E1B3C4BA900F3CA82 /* Application.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
 				CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */,
+				CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
+				CF53C46321C662C2001502F4 /* EBEvent.swift */,
 				CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */,
 				CFEDE5B21B4677C500036ACF /* EBManagedDocument.swift */,
 				CFEDE5B31B4677C500036ACF /* EBManagedObject.swift */,
@@ -1763,7 +1768,6 @@
 				CF6172601B3C4BA900F3CA82 /* generic-bindings.swift */,
 				CF6172611B3C4BA900F3CA82 /* main.swift */,
 				CF6172621B3C4BA900F3CA82 /* standard-properties.swift */,
-				CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */,
 			);
 			name = Generic;
 			path = ElCanari/generic;
@@ -2586,7 +2590,7 @@
 				CF23B1B121A48A4300DE1AD8 /* entity-SymbolObject.swift in Sources */,
 				CF87642C1DD4A15A00D16B6B /* Controller_CanariCharacterView_characterGerberCode.swift in Sources */,
 				CF87A87E20F111900011B9EC /* transient-MergerDocument-documentFileNameOk.swift in Sources */,
-				CF6172631B3C4BA900F3CA82 /* application.swift in Sources */,
+				CF6172631B3C4BA900F3CA82 /* Application.swift in Sources */,
 				CF00844D21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
 				CF51AD141DD61BCE00CEFB7D /* Controller_CanariCharacterView_displayDrawingIndexes.swift in Sources */,
 				CF8328AE213E820D00D5C8B8 /* transient-BoardModel-backPadArray.swift in Sources */,
@@ -2737,6 +2741,7 @@
 				CF0A175220FF42DC00448A4C /* transient-BoardModel-imageForInstances.swift in Sources */,
 				CF7FFAF520E5494500DE60BC /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
 				CF968B0321BBD8E70010175E /* EBView-binding-verticalFlip.swift in Sources */,
+				CF53C46421C662C2001502F4 /* EBEvent.swift in Sources */,
 				CFE979F521ABFD1F002E5716 /* StringArray.swift in Sources */,
 				CF11892620FE584400639468 /* transient-MergerDocument-documentIsUnnamed.swift in Sources */,
 				CF1FB93220E57D900050391E /* class-MergerPadArray.swift in Sources */,
@@ -2970,7 +2975,7 @@
 				CF00845721C42B64003627E9 /* selectionController-PackageDocument-mPackageOvalSelectionController.swift in Sources */,
 				CF5C4D08219F04D600EAC52A /* Controller_CanariCharacterView_characterGerberCode.swift in Sources */,
 				CF5C4D09219F04D600EAC52A /* transient-MergerDocument-documentFileNameOk.swift in Sources */,
-				CF5C4D0A219F04D600EAC52A /* application.swift in Sources */,
+				CF5C4D0A219F04D600EAC52A /* Application.swift in Sources */,
 				CF5C4D0B219F04D600EAC52A /* Controller_CanariCharacterView_displayDrawingIndexes.swift in Sources */,
 				CF00844E21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
 				CF5C4D0C219F04D600EAC52A /* transient-BoardModel-backPadArray.swift in Sources */,
@@ -3122,6 +3127,7 @@
 				CF5C4D66219F04D600EAC52A /* transient-BoardModel-backComponentValueSegments.swift in Sources */,
 				CFE979F621ABFD1F002E5716 /* StringArray.swift in Sources */,
 				CF968B0421BBD8E70010175E /* EBView-binding-verticalFlip.swift in Sources */,
+				CF53C46521C662C2001502F4 /* EBEvent.swift in Sources */,
 				CF5C4D67219F04D600EAC52A /* transient-MergerDocument-documentIsUnnamed.swift in Sources */,
 				CF5C4D68219F04D600EAC52A /* class-MergerPadArray.swift in Sources */,
 				CF5C4D69219F04D600EAC52A /* FontDocument.swift in Sources */,

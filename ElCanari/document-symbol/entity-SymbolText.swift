@@ -482,7 +482,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_y.insert (inObserver)
+    self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -497,7 +497,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_y.remove (inObserver)
+    self.mObserversOf_y.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_y {
+      for observer in self.mObserversOf_y {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -521,7 +521,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for observer in mObserversOf_y {
+    for observer in self.mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -539,7 +539,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_text (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_text.insert (inObserver)
+    self.mObserversOf_text.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -554,7 +554,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_text (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_text.remove (inObserver)
+    self.mObserversOf_text.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_text_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_text {
+      for observer in self.mObserversOf_text {
         managedObject.text_property.addEBObserver (observer)
       }
     }
@@ -578,7 +578,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
   //····················································································································
 
   final func removeEBObserversOf_text_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for observer in mObserversOf_text {
+    for observer in self.mObserversOf_text {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.text_property.removeEBObserver (observer)
@@ -596,7 +596,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_horizontalAlignment.insert (inObserver)
+    self.mObserversOf_horizontalAlignment.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -611,7 +611,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_horizontalAlignment (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_horizontalAlignment.remove (inObserver)
+    self.mObserversOf_horizontalAlignment.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_horizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_horizontalAlignment {
+      for observer in self.mObserversOf_horizontalAlignment {
         managedObject.horizontalAlignment_property.addEBObserver (observer)
       }
     }
@@ -635,7 +635,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
   //····················································································································
 
   final func removeEBObserversOf_horizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for observer in mObserversOf_horizontalAlignment {
+    for observer in self.mObserversOf_horizontalAlignment {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.horizontalAlignment_property.removeEBObserver (observer)
@@ -653,7 +653,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_x.insert (inObserver)
+    self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -668,7 +668,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_x.remove (inObserver)
+    self.mObserversOf_x.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_x {
+      for observer in self.mObserversOf_x {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -692,7 +692,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolText>) {
-    for observer in mObserversOf_x {
+    for observer in self.mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -710,7 +710,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -725,7 +725,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -740,7 +740,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -750,7 +750,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -766,7 +766,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -781,7 +781,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -796,7 +796,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -806,7 +806,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -822,7 +822,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -837,7 +837,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -852,7 +852,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -862,7 +862,7 @@ class ReadOnlyArrayOf_SymbolText : ReadOnlyAbstractArrayProperty <SymbolText> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolText>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -899,6 +899,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
   //····················································································································
 
   override var propval : [SymbolText] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -1003,30 +1004,14 @@ class ReadWriteArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 //    To many relationship: SymbolText
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_SymbolText : class {
-
-  func willAdd_SymbolText (_ inObject : SymbolText)
-
-  func didRemove_SymbolText (_ inObject : SymbolText)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_SymbolText? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_SymbolText?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : SymbolText?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································

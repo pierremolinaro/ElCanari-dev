@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackagePad_xCenter : class {
+  var xCenter : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackagePad_yCenter : class {
   var yCenter : Int { get }
 }
@@ -84,24 +90,6 @@ protocol PackagePad_annularRingUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackagePad_xCenter : class {
-  var xCenter : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackagePad_padIsTraversing : class {
-  var padIsTraversing : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol PackagePad_annularRing : class {
-  var annularRing : Int? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol PackagePad_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -119,10 +107,23 @@ protocol PackagePad_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackagePad_padIsTraversing : class {
+  var padIsTraversing : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackagePad_annularRing : class {
+  var annularRing : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class PackagePad : PackageObject,
+         PackagePad_xCenter,
          PackagePad_yCenter,
          PackagePad_width,
          PackagePad_height,
@@ -136,12 +137,34 @@ class PackagePad : PackageObject,
          PackagePad_heightUnit,
          PackagePad_holeDiameterUnit,
          PackagePad_annularRingUnit,
-         PackagePad_xCenter,
-         PackagePad_padIsTraversing,
-         PackagePad_annularRing,
          PackagePad_objectDisplay,
          PackagePad_selectionDisplay,
-         PackagePad_issues {
+         PackagePad_issues,
+         PackagePad_padIsTraversing,
+         PackagePad_annularRing {
+
+  //····················································································································
+  //   Atomic property: xCenter
+  //····················································································································
+
+  var xCenter_property = EBStoredProperty_Int (0)
+
+  //····················································································································
+
+  var xCenter : Int {
+    get {
+      return self.xCenter_property.propval
+    }
+    set {
+      self.xCenter_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var xCenter_property_selection : EBSelection <Int> {
+    return self.xCenter_property.prop
+  }
 
   //····················································································································
   //   Atomic property: yCenter
@@ -443,29 +466,6 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
-  //   Atomic property: xCenter
-  //····················································································································
-
-  var xCenter_property = EBStoredProperty_Int (0)
-
-  //····················································································································
-
-  var xCenter : Int {
-    get {
-      return self.xCenter_property.propval
-    }
-    set {
-      self.xCenter_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-
-  var xCenter_property_selection : EBSelection <Int> {
-    return self.xCenter_property.prop
-  }
-
-  //····················································································································
   //   Transient property: padIsTraversing
   //····················································································································
 
@@ -517,6 +517,8 @@ class PackagePad : PackageObject,
 
   override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
+  //--- Atomic property: xCenter
+    self.xCenter_property.undoManager = self.undoManager
   //--- Atomic property: yCenter
     self.yCenter_property.undoManager = self.undoManager
   //--- Atomic property: width
@@ -543,56 +545,6 @@ class PackagePad : PackageObject,
     self.holeDiameterUnit_property.undoManager = self.undoManager
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.undoManager = self.undoManager
-  //--- Atomic property: xCenter
-    self.xCenter_property.undoManager = self.undoManager
-  //--- Atomic property: padIsTraversing
-    self.padIsTraversing_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.padStyle_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.padStyle_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackagePad_padIsTraversing (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.padStyle_property.addEBObserver (self.padIsTraversing_property)
-  //--- Atomic property: annularRing
-    self.annularRing_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= unwSelf.holeDiameter_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_PackagePad_annularRing (v0, v1, v2))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.width_property.addEBObserver (self.annularRing_property)
-    self.height_property.addEBObserver (self.annularRing_property)
-    self.holeDiameter_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -695,6 +647,54 @@ class PackagePad : PackageObject,
     self.width_property.addEBObserver (self.issues_property)
     self.height_property.addEBObserver (self.issues_property)
     self.holeDiameter_property.addEBObserver (self.issues_property)
+  //--- Atomic property: padIsTraversing
+    self.padIsTraversing_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.padStyle_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.padStyle_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackagePad_padIsTraversing (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.padStyle_property.addEBObserver (self.padIsTraversing_property)
+  //--- Atomic property: annularRing
+    self.annularRing_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.holeDiameter_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_PackagePad_annularRing (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.width_property.addEBObserver (self.annularRing_property)
+    self.height_property.addEBObserver (self.annularRing_property)
+    self.holeDiameter_property.addEBObserver (self.annularRing_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer:self)
@@ -718,10 +718,6 @@ class PackagePad : PackageObject,
 
   deinit {
   //--- Remove observers
-    self.padStyle_property.removeEBObserver (self.padIsTraversing_property)
-    self.width_property.removeEBObserver (self.annularRing_property)
-    self.height_property.removeEBObserver (self.annularRing_property)
-    self.holeDiameter_property.removeEBObserver (self.annularRing_property)
     self.xCenter_property.removeEBObserver (self.objectDisplay_property)
     self.yCenter_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -743,6 +739,10 @@ class PackagePad : PackageObject,
     self.width_property.removeEBObserver (self.issues_property)
     self.height_property.removeEBObserver (self.issues_property)
     self.holeDiameter_property.removeEBObserver (self.issues_property)
+    self.padStyle_property.removeEBObserver (self.padIsTraversing_property)
+    self.width_property.removeEBObserver (self.annularRing_property)
+    self.height_property.removeEBObserver (self.annularRing_property)
+    self.holeDiameter_property.removeEBObserver (self.annularRing_property)
   }
 
   //····················································································································
@@ -756,6 +756,14 @@ class PackagePad : PackageObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "xCenter",
+      idx:self.xCenter_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xCenter_property.mObserverExplorer,
+      valueExplorer:&self.xCenter_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "yCenter",
       idx:self.yCenter_property.mEasyBindingsObjectIndex,
@@ -860,31 +868,7 @@ class PackagePad : PackageObject,
       observerExplorer:&self.annularRingUnit_property.mObserverExplorer,
       valueExplorer:&self.annularRingUnit_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "xCenter",
-      idx:self.xCenter_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.xCenter_property.mObserverExplorer,
-      valueExplorer:&self.xCenter_property.mValueExplorer
-    )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "padIsTraversing",
-      idx:self.padIsTraversing_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padIsTraversing_property.mObserverExplorer,
-      valueExplorer:&self.padIsTraversing_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "annularRing",
-      idx:self.annularRing_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.annularRing_property.mObserverExplorer,
-      valueExplorer:&self.annularRing_property.mValueExplorer
-    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
@@ -909,6 +893,22 @@ class PackagePad : PackageObject,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "padIsTraversing",
+      idx:self.padIsTraversing_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padIsTraversing_property.mObserverExplorer,
+      valueExplorer:&self.padIsTraversing_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "annularRing",
+      idx:self.annularRing_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.annularRing_property.mObserverExplorer,
+      valueExplorer:&self.annularRing_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -919,6 +919,9 @@ class PackagePad : PackageObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: xCenter
+    self.xCenter_property.mObserverExplorer = nil
+    self.xCenter_property.mValueExplorer = nil
   //--- Atomic property: yCenter
     self.yCenter_property.mObserverExplorer = nil
     self.yCenter_property.mValueExplorer = nil
@@ -958,9 +961,6 @@ class PackagePad : PackageObject,
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.mObserverExplorer = nil
     self.annularRingUnit_property.mValueExplorer = nil
-  //--- Atomic property: xCenter
-    self.xCenter_property.mObserverExplorer = nil
-    self.xCenter_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -971,6 +971,8 @@ class PackagePad : PackageObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: xCenter
+    self.xCenter_property.storeIn (dictionary: ioDictionary, forKey:"xCenter")
   //--- Atomic property: yCenter
     self.yCenter_property.storeIn (dictionary: ioDictionary, forKey:"yCenter")
   //--- Atomic property: width
@@ -997,8 +999,6 @@ class PackagePad : PackageObject,
     self.holeDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"holeDiameterUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey:"annularRingUnit")
-  //--- Atomic property: xCenter
-    self.xCenter_property.storeIn (dictionary: ioDictionary, forKey:"xCenter")
   }
 
   //····················································································································
@@ -1016,6 +1016,8 @@ class PackagePad : PackageObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: xCenter
+    self.xCenter_property.readFrom (dictionary: inDictionary, forKey:"xCenter")
   //--- Atomic property: yCenter
     self.yCenter_property.readFrom (dictionary: inDictionary, forKey:"yCenter")
   //--- Atomic property: width
@@ -1042,8 +1044,6 @@ class PackagePad : PackageObject,
     self.holeDiameterUnit_property.readFrom (dictionary: inDictionary, forKey:"holeDiameterUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.readFrom (dictionary: inDictionary, forKey:"annularRingUnit")
-  //--- Atomic property: xCenter
-    self.xCenter_property.readFrom (dictionary: inDictionary, forKey:"xCenter")
   }
 
   //····················································································································
@@ -1112,6 +1112,63 @@ class PackagePad : PackageObject,
 class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   //····················································································································
+  //   Observers of 'xCenter' stored property
+  //····················································································································
+
+  private var mObserversOf_xCenter = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xCenter.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xCenter_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xCenter.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xCenter_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_xCenter {
+        managedObject.xCenter_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for observer in self.mObserversOf_xCenter {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xCenter_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'yCenter' stored property
   //····················································································································
 
@@ -1121,7 +1178,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yCenter.insert (inObserver)
+    self.mObserversOf_yCenter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1136,7 +1193,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_yCenter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yCenter.remove (inObserver)
+    self.mObserversOf_yCenter.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1151,7 +1208,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yCenter {
+      for observer in self.mObserversOf_yCenter {
         managedObject.yCenter_property.addEBObserver (observer)
       }
     }
@@ -1160,7 +1217,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_yCenter {
+    for observer in self.mObserversOf_yCenter {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenter_property.removeEBObserver (observer)
@@ -1178,7 +1235,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_width.insert (inObserver)
+    self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1193,7 +1250,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_width.remove (inObserver)
+    self.mObserversOf_width.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1208,7 +1265,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_width {
+      for observer in self.mObserversOf_width {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -1217,7 +1274,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_width {
+    for observer in self.mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -1235,7 +1292,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_height.insert (inObserver)
+    self.mObserversOf_height.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1250,7 +1307,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_height (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_height.remove (inObserver)
+    self.mObserversOf_height.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1265,7 +1322,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_height {
+      for observer in self.mObserversOf_height {
         managedObject.height_property.addEBObserver (observer)
       }
     }
@@ -1274,7 +1331,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_height {
+    for observer in self.mObserversOf_height {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
@@ -1292,7 +1349,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_holeDiameter.insert (inObserver)
+    self.mObserversOf_holeDiameter.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1307,7 +1364,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_holeDiameter.remove (inObserver)
+    self.mObserversOf_holeDiameter.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1322,7 +1379,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_holeDiameter {
+      for observer in self.mObserversOf_holeDiameter {
         managedObject.holeDiameter_property.addEBObserver (observer)
       }
     }
@@ -1331,7 +1388,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_holeDiameter {
+    for observer in self.mObserversOf_holeDiameter {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.holeDiameter_property.removeEBObserver (observer)
@@ -1349,7 +1406,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_padShape (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padShape.insert (inObserver)
+    self.mObserversOf_padShape.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1364,7 +1421,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_padShape (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padShape.remove (inObserver)
+    self.mObserversOf_padShape.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1379,7 +1436,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padShape {
+      for observer in self.mObserversOf_padShape {
         managedObject.padShape_property.addEBObserver (observer)
       }
     }
@@ -1388,7 +1445,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_padShape {
+    for observer in self.mObserversOf_padShape {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padShape_property.removeEBObserver (observer)
@@ -1406,7 +1463,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_padStyle (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padStyle.insert (inObserver)
+    self.mObserversOf_padStyle.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1421,7 +1478,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_padStyle (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padStyle.remove (inObserver)
+    self.mObserversOf_padStyle.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1436,7 +1493,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padStyle {
+      for observer in self.mObserversOf_padStyle {
         managedObject.padStyle_property.addEBObserver (observer)
       }
     }
@@ -1445,7 +1502,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_padStyle {
+    for observer in self.mObserversOf_padStyle {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padStyle_property.removeEBObserver (observer)
@@ -1463,7 +1520,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_padNumber.insert (inObserver)
+    self.mObserversOf_padNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1478,7 +1535,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_padNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_padNumber.remove (inObserver)
+    self.mObserversOf_padNumber.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1493,7 +1550,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_padNumber_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_padNumber {
+      for observer in self.mObserversOf_padNumber {
         managedObject.padNumber_property.addEBObserver (observer)
       }
     }
@@ -1502,7 +1559,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_padNumber_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_padNumber {
+    for observer in self.mObserversOf_padNumber {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padNumber_property.removeEBObserver (observer)
@@ -1520,7 +1577,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_xCenterUnit.insert (inObserver)
+    self.mObserversOf_xCenterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1535,7 +1592,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_xCenterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_xCenterUnit.remove (inObserver)
+    self.mObserversOf_xCenterUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1550,7 +1607,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_xCenterUnit {
+      for observer in self.mObserversOf_xCenterUnit {
         managedObject.xCenterUnit_property.addEBObserver (observer)
       }
     }
@@ -1559,7 +1616,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_xCenterUnit {
+    for observer in self.mObserversOf_xCenterUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
@@ -1577,7 +1634,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_yCenterUnit.insert (inObserver)
+    self.mObserversOf_yCenterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1592,7 +1649,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_yCenterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_yCenterUnit.remove (inObserver)
+    self.mObserversOf_yCenterUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1607,7 +1664,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_yCenterUnit {
+      for observer in self.mObserversOf_yCenterUnit {
         managedObject.yCenterUnit_property.addEBObserver (observer)
       }
     }
@@ -1616,7 +1673,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_yCenterUnit {
+    for observer in self.mObserversOf_yCenterUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
@@ -1634,7 +1691,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_widthUnit.insert (inObserver)
+    self.mObserversOf_widthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1649,7 +1706,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_widthUnit.remove (inObserver)
+    self.mObserversOf_widthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1664,7 +1721,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_widthUnit {
+      for observer in self.mObserversOf_widthUnit {
         managedObject.widthUnit_property.addEBObserver (observer)
       }
     }
@@ -1673,7 +1730,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_widthUnit {
+    for observer in self.mObserversOf_widthUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.widthUnit_property.removeEBObserver (observer)
@@ -1691,7 +1748,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_heightUnit.insert (inObserver)
+    self.mObserversOf_heightUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1706,7 +1763,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_heightUnit.remove (inObserver)
+    self.mObserversOf_heightUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1721,7 +1778,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_heightUnit {
+      for observer in self.mObserversOf_heightUnit {
         managedObject.heightUnit_property.addEBObserver (observer)
       }
     }
@@ -1730,7 +1787,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_heightUnit {
+    for observer in self.mObserversOf_heightUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.heightUnit_property.removeEBObserver (observer)
@@ -1748,7 +1805,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_holeDiameterUnit.insert (inObserver)
+    self.mObserversOf_holeDiameterUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1763,7 +1820,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_holeDiameterUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_holeDiameterUnit.remove (inObserver)
+    self.mObserversOf_holeDiameterUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1778,7 +1835,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_holeDiameterUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_holeDiameterUnit {
+      for observer in self.mObserversOf_holeDiameterUnit {
         managedObject.holeDiameterUnit_property.addEBObserver (observer)
       }
     }
@@ -1787,7 +1844,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_holeDiameterUnit {
+    for observer in self.mObserversOf_holeDiameterUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.holeDiameterUnit_property.removeEBObserver (observer)
@@ -1805,7 +1862,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_annularRingUnit.insert (inObserver)
+    self.mObserversOf_annularRingUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1820,7 +1877,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_annularRingUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_annularRingUnit.remove (inObserver)
+    self.mObserversOf_annularRingUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -1835,7 +1892,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_annularRingUnit {
+      for observer in self.mObserversOf_annularRingUnit {
         managedObject.annularRingUnit_property.addEBObserver (observer)
       }
     }
@@ -1844,179 +1901,10 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   //····················································································································
 
   final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_annularRingUnit {
+    for observer in self.mObserversOf_annularRingUnit {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.annularRingUnit_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'xCenter' stored property
-  //····················································································································
-
-  private var mObserversOf_xCenter = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_xCenter.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.xCenter_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_xCenter.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.xCenter_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_xCenter {
-        managedObject.xCenter_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for observer in mObserversOf_xCenter {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.xCenter_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'padIsTraversing' transient property
-  //····················································································································
-
-  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_padIsTraversing.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padIsTraversing_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_padIsTraversing.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padIsTraversing_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_padIsTraversing {
-        managedObject.padIsTraversing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_padIsTraversing {
-        managedObject.padIsTraversing_property.removeEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'annularRing' transient property
-  //····················································································································
-
-  private var mObserversOf_annularRing = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_annularRing (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    mObserversOf_annularRing.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.annularRing_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_annularRing (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    mObserversOf_annularRing.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.annularRing_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_annularRing {
-        managedObject.annularRing_property.addEBObserver (observer)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set<PackagePad>) {
-    for managedObject in inSet {
-      for observer in mObserversOf_annularRing {
-        managedObject.annularRing_property.removeEBObserver (observer)
       }
     }
   }
@@ -2031,7 +1919,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_objectDisplay.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2046,7 +1934,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_objectDisplay.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2061,7 +1949,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -2071,7 +1959,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2087,7 +1975,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_selectionDisplay.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2102,7 +1990,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_selectionDisplay.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2117,7 +2005,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -2127,7 +2015,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2143,7 +2031,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserverOf_issues (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    mObserversOf_issues.insert (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2158,7 +2046,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    mObserversOf_issues.remove (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
@@ -2173,7 +2061,7 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -2183,8 +2071,120 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      for observer in mObserversOf_issues {
+      for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'padIsTraversing' transient property
+  //····················································································································
+
+  private var mObserversOf_padIsTraversing = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padIsTraversing.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padIsTraversing_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padIsTraversing (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padIsTraversing.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padIsTraversing_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_padIsTraversing {
+        managedObject.padIsTraversing_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_padIsTraversing {
+        managedObject.padIsTraversing_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'annularRing' transient property
+  //····················································································································
+
+  private var mObserversOf_annularRing = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_annularRing (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_annularRing.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.annularRing_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_annularRing (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_annularRing.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.annularRing_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_annularRing {
+        managedObject.annularRing_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_annularRing {
+        managedObject.annularRing_property.removeEBObserver (observer)
       }
     }
   }
@@ -2220,6 +2220,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
   //····················································································································
 
   override var propval : [PackagePad] {
+    self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
       case .empty, .multiple :
@@ -2261,6 +2262,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
+      self.removeEBObserversOf_xCenter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yCenter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
@@ -2274,16 +2276,16 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_xCenter_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_annularRing_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_annularRing_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
+      self.addEBObserversOf_xCenter_toElementsOfSet (addedSet)
       self.addEBObserversOf_yCenter_toElementsOfSet (addedSet)
       self.addEBObserversOf_width_toElementsOfSet (addedSet)
       self.addEBObserversOf_height_toElementsOfSet (addedSet)
@@ -2297,13 +2299,12 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.addEBObserversOf_heightUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_xCenter_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedSet)
-      self.addEBObserversOf_annularRing_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedSet)
+      self.addEBObserversOf_annularRing_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -2348,30 +2349,14 @@ class ReadWriteArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 //    To many relationship: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol Delegate_StoredArrayOf_PackagePad : class {
-
-  func willAdd_PackagePad (_ inObject : PackagePad)
-
-  func didRemove_PackagePad (_ inObject : PackagePad)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  private weak var mDelegate : Delegate_StoredArrayOf_PackagePad? = nil
-
-  //····················································································································
-
-  func set (delegate inDelegate : Delegate_StoredArrayOf_PackagePad?) {
-    self.mDelegate = inDelegate
-  }
-
-  //····················································································································
-
   var setOppositeRelationship : Optional < (_ inManagedObject : PackagePad?) -> Void > = nil
+
+  //····················································································································
+
   private var mPrefKey : String? = nil
 
   //····················································································································
@@ -2447,6 +2432,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
+        self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
@@ -2460,18 +2446,18 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : PackagePad in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
+        self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
@@ -2485,12 +2471,11 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

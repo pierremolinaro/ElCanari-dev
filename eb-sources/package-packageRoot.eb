@@ -18,6 +18,7 @@ graphic entity PackageRoot {
 
 #--- Package definition
   toMany @signature PackageObject packageObjects ;
+  toMany PackagePad packagePads dependsFrom self.packageObjects ;
 
 #--- Grid and display inspector
   property Bool horizontalFlip default no ;
