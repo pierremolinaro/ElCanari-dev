@@ -90,6 +90,7 @@
                 <outlet property="mPadInspectorView" destination="2143" id="JcW-Dk-CNU"/>
                 <outlet property="mPadNumberTextField" destination="2201" id="1Pw-Zc-vo3"/>
                 <outlet property="mPadPageView" destination="2497" id="kco-Jh-scD"/>
+                <outlet property="mPadRenumberingPullDownButton" destination="2156" id="x5i-fs-01L"/>
                 <outlet property="mPadStyleView" destination="2274" id="1yu-0h-Jz9"/>
                 <outlet property="mPadWidthTextField" destination="2161" id="baV-Jy-ztx"/>
                 <outlet property="mPadWidthUnitPopUp" destination="2214" id="XHk-or-qdI"/>
@@ -1342,7 +1343,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="2156">
+                <popUpButton imageHugsTitle="YES" id="2156" customClass="CanariPadRenumberingPullDownButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="20" y="171" width="210" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Exchange With:" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="clipping" borderStyle="border" inset="2" pullsDown="YES" preferredEdge="maxY" selectedItem="2158" id="2770">
@@ -1480,7 +1481,7 @@
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-670" y="154"/>
+            <point key="canvasLocation" x="-954" y="154"/>
         </customView>
         <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>

@@ -200,6 +200,7 @@ import Cocoa
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPadNumberTextField : EBIntObserverField?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
+  @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
   @IBOutlet var mPadStyleView : NSView?
   @IBOutlet var mPadWidthTextField : CanariDimensionTextField?
   @IBOutlet var mPadWidthUnitPopUp : EBPopUpButton?
@@ -1539,6 +1540,21 @@ import Cocoa
         errorMessage: "the 'mPadPageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadRenumberingPullDownButton {
+      if !(outlet is CanariPadRenumberingPullDownButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadRenumberingPullDownButton' outlet is not an instance of 'CanariPadRenumberingPullDownButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadRenumberingPullDownButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadStyleView {
       if !(outlet is NSView) {
         presentErrorWindow (
@@ -2053,6 +2069,7 @@ import Cocoa
     self.mPadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadNumberTextField?.bind_valueObserver (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line, autoFormatter:true)
+    self.mPadRenumberingPullDownButton?.bind_currentNumber (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -2190,6 +2207,7 @@ import Cocoa
     self.mPadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
     self.mPadNumberTextField?.unbind_valueObserver ()
+    self.mPadRenumberingPullDownButton?.unbind_currentNumber ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -2324,6 +2342,7 @@ import Cocoa
     self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
+    self.mPadRenumberingPullDownButton?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
     self.mPadWidthTextField?.ebCleanUp ()
     self.mPadWidthUnitPopUp?.ebCleanUp ()

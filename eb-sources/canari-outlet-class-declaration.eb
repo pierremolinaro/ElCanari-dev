@@ -34,6 +34,8 @@ binding CanariDimensionTextField $dimensionAndUnit : property Int, property Int 
 extern outlet class CanariDimensionObserverTextField ;
 binding CanariDimensionObserverTextField $dimensionAndUnit : transient Int, property Int ;
 
+extern outlet class CanariPadRenumberingPullDownButton ;
+binding CanariPadRenumberingPullDownButton $currentNumber : transient Int ;
 
 extern outlet class CanariFontCharacterSelectButton $enabled ;
 binding CanariFontCharacterSelectButton $codePoint : property Int ;

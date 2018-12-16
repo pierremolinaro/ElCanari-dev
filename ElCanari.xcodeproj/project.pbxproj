@@ -947,6 +947,8 @@
 		CFF83D4621ADAA310084BDA9 /* utilities-symbol-issues.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */; };
 		CFF83D4721ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift */; };
 		CFF83D4821ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift */; };
+		CFFDCEE221C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
+		CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
 		CFFF522021AEFB4200E7D041 /* canariWarningStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */; };
 		CFFF522121AEFB4200E7D041 /* canariWarningStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */; };
 		CFFF522221AEFB4200E7D041 /* canariErrorStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */; };
@@ -1459,6 +1461,7 @@
 		CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-mStatusImage.swift"; sourceTree = "<group>"; };
 		CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "utilities-symbol-issues.swift"; sourceTree = "<group>"; };
 		CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
+		CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPadRenumberingPullDownButton.swift; sourceTree = "<group>"; };
 		CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariWarningStatus.png; sourceTree = "<group>"; };
 		CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariErrorStatus.png; sourceTree = "<group>"; };
 		CFFF521F21AEFB4200E7D041 /* canariOkStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariOkStatus.png; sourceTree = "<group>"; };
@@ -1910,6 +1913,7 @@
 				CFEF3D2A20F9FAF900DA6106 /* CanariOkButtonForPanel.swift */,
 				CF85868621C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift */,
 				CF85868321C5458100082CE3 /* CanariPackageArcAngleTextField.swift */,
+				CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */,
 				CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */,
 				CF6A65F81B468ACF00BA5135 /* CanariSegmentedControl.swift */,
 				CF3395591B4AC885009C561B /* CanariSignatureField.swift */,
@@ -2501,6 +2505,7 @@
 				CF6A65F91B468ACF00BA5135 /* CanariSegmentedControl.swift in Sources */,
 				CF69ABD321A6C08100F5E49A /* entity-SymbolPin.swift in Sources */,
 				CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
+				CFFDCEE221C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */,
 				CF12885820FF5147007B808C /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
 				CF87F3E220F0CE4500918586 /* enum-PadShape.swift in Sources */,
 				CFB0D1E71B46FBC000006BD2 /* CanariDimensionTextField.swift in Sources */,
@@ -2887,6 +2892,7 @@
 				CF5C4CD5219F04D600EAC52A /* CanariSegmentedControl.swift in Sources */,
 				CF69ABD421A6C08100F5E49A /* entity-SymbolPin.swift in Sources */,
 				CF5C4CD6219F04D600EAC52A /* action-Preferences-addLibraryEntryAction.swift in Sources */,
+				CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */,
 				CF5C4CD8219F04D600EAC52A /* transient-BoardModel-boardLimitsBezierPaths.swift in Sources */,
 				CF5C4CD9219F04D600EAC52A /* enum-PadShape.swift in Sources */,
 				CF5C4CDA219F04D600EAC52A /* CanariDimensionTextField.swift in Sources */,

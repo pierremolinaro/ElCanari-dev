@@ -47,6 +47,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
     self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
     self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
+  //--- Register document for renumbering pull down button
+    self.mPadRenumberingPullDownButton?.register (document: self)
   //--- Package color observer
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
@@ -158,6 +160,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
            let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
            let X = dataDictionary ["X"] as? Int,
            let Y = dataDictionary ["Y"] as? Int {
+          var objetsToSelect = [PackageObject] ()
           for dictionary in dictionaryArray {
             if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? PackageObject {
               newObject.operationAfterPasting ()
@@ -166,9 +169,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
                 yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y
               )
               self.rootObject.packageObjects_property.add (newObject)
-              self.mPackageObjectsController.select (object: newObject)
+              objetsToSelect.append (newObject)
             }
           }
+          self.mPackageObjectsController.setSelection (objetsToSelect)
           ok = true
         }
       }

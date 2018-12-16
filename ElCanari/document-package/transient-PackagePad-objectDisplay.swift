@@ -57,19 +57,21 @@ func transient_PackagePad_objectDisplay (
     let shape = EBShape ()
     shape.append (EBFilledBezierPathShape ([bp], prefs_packageColor))
   //--- Pad number
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : prefs_padNumberFont,
-      NSAttributedString.Key.foregroundColor : prefs_padNumberColor
-    ]
-    let padString = "\(self_padNumber)"
-    let numberShape = EBTextShape (
-      padString,
-      NSPoint (x: xCenter, y: yCenter),
-      textAttributes,
-      .center,
-      .center
-    )
-    shape.append (numberShape)
+    if self_padNumber != 0 {
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : prefs_padNumberFont,
+        NSAttributedString.Key.foregroundColor : prefs_padNumberColor
+      ]
+      let padString = "\(self_padNumber)"
+      let numberShape = EBTextShape (
+        padString,
+        NSPoint (x: xCenter, y: yCenter),
+        textAttributes,
+        .center,
+        .center
+      )
+      shape.append (numberShape)
+    }
   //---
     return shape
 //--- END OF USER ZONE 2

@@ -209,6 +209,7 @@ document PackageDocument root PackageRoot {
 
 #--- Pad Number
   outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
+  outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton $currentNumber mPackagePadSelectionController.padNumber ;
   
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
