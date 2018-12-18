@@ -66,6 +66,8 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
     result = PackageOval (undoManager, file: #file, #line)
   }else if inEntityTypeName == "PackageArc" {
     result = PackageArc (undoManager, file: #file, #line)
+  }else if inEntityTypeName == "PackageGuide" {
+    result = PackageGuide (undoManager, file: #file, #line)
   }
   return result
 }

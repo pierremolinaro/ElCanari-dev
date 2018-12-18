@@ -39,6 +39,12 @@ import Cocoa
   var mPackagePadSelectionController = SelectionController_PackageDocument_mPackagePadSelectionController ()
 
   //····················································································································
+  //   Selection controller: mPackageGuideSelectionController
+  //····················································································································
+
+  var mPackageGuideSelectionController = SelectionController_PackageDocument_mPackageGuideSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -120,6 +126,7 @@ import Cocoa
 
   @IBOutlet var mAddArcButton : CanariDragSourceButton?
   @IBOutlet var mAddBezierButton : CanariDragSourceButton?
+  @IBOutlet var mAddGuideButton : CanariDragSourceButton?
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddPadButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
@@ -168,6 +175,15 @@ import Cocoa
   @IBOutlet var mGridTextField : CanariDimensionTextField?
   @IBOutlet var mGridUnitPopUp : EBPopUpButton?
   @IBOutlet var mGridZoomInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mGuideInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mGuideX1TextField : CanariDimensionTextField?
+  @IBOutlet var mGuideX1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mGuideX2TextField : CanariDimensionTextField?
+  @IBOutlet var mGuideX2UnitPopUp : EBPopUpButton?
+  @IBOutlet var mGuideY1TextField : CanariDimensionTextField?
+  @IBOutlet var mGuideY1UnitPopUp : EBPopUpButton?
+  @IBOutlet var mGuideY2TextField : CanariDimensionTextField?
+  @IBOutlet var mGuideY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mHorizontalFlip : EBSwitch?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
@@ -278,6 +294,8 @@ import Cocoa
     self.mPackageArcSelectionController.addExplorer (name: "mPackageArcSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackagePadSelectionController
     self.mPackagePadSelectionController.addExplorer (name: "mPackagePadSelectionController", y:&y, view:view)
+  //--- Selection controller property: mPackageGuideSelectionController
+    self.mPackageGuideSelectionController.addExplorer (name: "mPackageGuideSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -340,6 +358,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddBezierButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddGuideButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddGuideButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddGuideButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAddOvalButton {
@@ -1060,6 +1093,141 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mGridZoomInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideX1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideX1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideX1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideX1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideX1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideX2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideX2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideX2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideX2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideX2UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideY1TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideY1TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideY1TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideY1UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideY1UnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideY2TextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideY2TextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideY2TextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mGuideY2UnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mGuideY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mGuideY2UnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mHorizontalFlip {
@@ -1987,6 +2155,8 @@ import Cocoa
     self.mPackageArcSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackagePadSelectionController
     self.mPackagePadSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mPackageGuideSelectionController
+    self.mPackageGuideSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mStatusMessage
@@ -2102,6 +2272,14 @@ import Cocoa
     self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadNumberTextField?.bind_valueObserver (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line, autoFormatter:true)
     self.mPadRenumberingPullDownButton?.bind_currentNumber (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line)
+    self.mGuideX1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mGuideX1TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
+    self.mGuideY1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mGuideY1TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.y1_property, self.mPackageGuideSelectionController.y1Unit_property, file: #file, line: #line)
+    self.mGuideX2UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mGuideX2TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.x2_property, self.mPackageGuideSelectionController.x2Unit_property, file: #file, line: #line)
+    self.mGuideY2UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mGuideY2TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.y2_property, self.mPackageGuideSelectionController.y2Unit_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -2246,6 +2424,14 @@ import Cocoa
     self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
     self.mPadNumberTextField?.unbind_valueObserver ()
     self.mPadRenumberingPullDownButton?.unbind_currentNumber ()
+    self.mGuideX1UnitPopUp?.unbind_selectedTag ()
+    self.mGuideX1TextField?.unbind_dimensionAndUnit ()
+    self.mGuideY1UnitPopUp?.unbind_selectedTag ()
+    self.mGuideY1TextField?.unbind_dimensionAndUnit ()
+    self.mGuideX2UnitPopUp?.unbind_selectedTag ()
+    self.mGuideX2TextField?.unbind_dimensionAndUnit ()
+    self.mGuideY2UnitPopUp?.unbind_selectedTag ()
+    self.mGuideY2TextField?.unbind_dimensionAndUnit ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -2297,6 +2483,8 @@ import Cocoa
     self.mPackageArcSelectionController.unbind_selection ()
   //--- Selection controller property: mPackagePadSelectionController
     self.mPackagePadSelectionController.unbind_selection ()
+  //--- Selection controller property: mPackageGuideSelectionController
+    self.mPackageGuideSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
@@ -2306,6 +2494,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
     self.mAddBezierButton?.ebCleanUp ()
+    self.mAddGuideButton?.ebCleanUp ()
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddPadButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
@@ -2354,6 +2543,15 @@ import Cocoa
     self.mGridTextField?.ebCleanUp ()
     self.mGridUnitPopUp?.ebCleanUp ()
     self.mGridZoomInspectorView?.ebCleanUp ()
+    self.mGuideInspectorView?.ebCleanUp ()
+    self.mGuideX1TextField?.ebCleanUp ()
+    self.mGuideX1UnitPopUp?.ebCleanUp ()
+    self.mGuideX2TextField?.ebCleanUp ()
+    self.mGuideX2UnitPopUp?.ebCleanUp ()
+    self.mGuideY1TextField?.ebCleanUp ()
+    self.mGuideY1UnitPopUp?.ebCleanUp ()
+    self.mGuideY2TextField?.ebCleanUp ()
+    self.mGuideY2UnitPopUp?.ebCleanUp ()
     self.mHorizontalFlip?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()

@@ -197,3 +197,24 @@ graphic entity PackagePad : PackageObject {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageGuide : PackageObject {
+  property @signature Int x1 default 0 ;
+  property @signature Int y1 default 0 ;
+  property @signature Int x2 default 6_858_00 ;
+  property @signature Int y2 default 6_858_00 ;
+  
+  property @signature Int x1Unit default 2_286 ;
+  property @signature Int y1Unit default 2_286 ;
+  property @signature Int x2Unit default 2_286 ;
+  property @signature Int y2Unit default 2_286 ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.x1, self.y1, self.x2, self.y2
+  ;
+  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
+  transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

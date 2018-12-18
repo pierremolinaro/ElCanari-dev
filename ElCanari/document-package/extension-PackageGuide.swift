@@ -2,14 +2,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let PACKAGE_SEGMENT_ENDPOINT_1 = 1
-let PACKAGE_SEGMENT_ENDPOINT_2 = 2
+let PACKAGE_GUIDE_ENDPOINT_1 = 1
+let PACKAGE_GUIDE_ENDPOINT_2 = 2
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EXTENSION PackageSegment
+//   EXTENSION PackageGuide
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PackageSegment {
+extension PackageGuide {
 
   //····················································································································
 
@@ -31,10 +31,10 @@ extension PackageSegment {
   //····················································································································
 
   override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
-    if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_1 {
+    if inKnobIndex == PACKAGE_GUIDE_ENDPOINT_1 {
       self.x1 += inDx
       self.y1 += inDy
-    }else if inKnobIndex == PACKAGE_SEGMENT_ENDPOINT_2 {
+    }else if inKnobIndex == PACKAGE_GUIDE_ENDPOINT_2 {
       self.x2 += inDx
       self.y2 += inDy
     }

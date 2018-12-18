@@ -90,6 +90,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackagePad",
       scaleProvider: self.mComposedPackageView
     )
+    self.mAddGuideButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackageGuide",
+      scaleProvider: self.mComposedPackageView
+    )
 //
 //    self.mAddOvalButton?.register (
 //      draggedType: packagePasteboardType,
@@ -119,7 +124,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedPackageView?.set (minimumRectangle: r)
-//    self.mComposedPackageView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")
@@ -127,6 +131,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")
     self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, forClass: "PackageArc")
     self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")
+    self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, forClass: "PackageGuide")
 //  //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
@@ -226,6 +231,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddGuideButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
   }

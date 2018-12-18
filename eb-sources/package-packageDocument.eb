@@ -210,7 +210,35 @@ document PackageDocument root PackageRoot {
 #--- Pad Number
   outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
   outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton $currentNumber mPackagePadSelectionController.padNumber ;
-  
+
+
+
+
+#------- Guide inspector
+  selectionController PackageGuide mPackageGuideSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mGuideInspectorView ;
+
+#--- x1
+  outlet EBPopUpButton mGuideX1UnitPopUp $selectedTag mPackageGuideSelectionController.x1Unit ;
+  outlet CanariDimensionTextField mGuideX1TextField
+     $dimensionAndUnit mPackageGuideSelectionController.x1, mPackageGuideSelectionController.x1Unit
+  ;
+#--- y1
+  outlet EBPopUpButton mGuideY1UnitPopUp $selectedTag mPackageGuideSelectionController.y1Unit ;
+  outlet CanariDimensionTextField mGuideY1TextField
+     $dimensionAndUnit mPackageGuideSelectionController.y1, mPackageGuideSelectionController.y1Unit
+  ;
+#--- x2
+  outlet EBPopUpButton mGuideX2UnitPopUp $selectedTag mPackageGuideSelectionController.x2Unit ;
+  outlet CanariDimensionTextField mGuideX2TextField
+     $dimensionAndUnit mPackageGuideSelectionController.x2, mPackageGuideSelectionController.x2Unit
+  ;
+#--- y2
+  outlet EBPopUpButton mGuideY2UnitPopUp $selectedTag mPackageGuideSelectionController.y2Unit ;
+  outlet CanariDimensionTextField mGuideY2TextField
+     $dimensionAndUnit mPackageGuideSelectionController.y2, mPackageGuideSelectionController.y2Unit
+  ;
+
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
@@ -230,6 +258,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddOvalButton ;
   outlet CanariDragSourceButton mAddArcButton ;
   outlet CanariDragSourceButton mAddPadButton ;
+  outlet CanariDragSourceButton mAddGuideButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;
