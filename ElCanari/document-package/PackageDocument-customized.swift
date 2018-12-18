@@ -200,30 +200,29 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   //····················································································································
 
-//  fileprivate func imageForAddPinButton () ->  NSImage? {
-//    let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-//    let circleDiameter : CGFloat = 8.0
-//    let circle = NSRect (
-//      x: r.maxX - circleDiameter - 2.0,
-//      y: r.midY - circleDiameter / 2.0,
-//      width: circleDiameter,
-//      height: circleDiameter
-//    )
-//    let shape = EBShape ()
-//    shape.append (EBFilledBezierPathShape ([NSBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 12.0)!,
-//      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
-//    ]
-//    shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY), textAttributes, .left, .center))
-//    let imagePDFData = buildPDFimage (frame: r, shape: shape)
-//    return NSImage (data: imagePDFData)
-//  }
+  fileprivate func imageForAddGuideButton () ->  NSImage? {
+    let shape = EBShape ()
+    let r = NSRect (x: 0.0, y: 0.0, width: 60.0, height: 60.0)
+    let bp1 = NSBezierPath ()
+    bp1.move (to: NSPoint (x: 5.0, y: 5.0))
+    bp1.line (to: NSPoint (x: 55.0, y: 55.0))
+    bp1.lineWidth = 3.0
+    bp1.lineCapStyle = .round
+    shape.append (EBStrokeBezierPathShape ([bp1], NSColor.lightGray))
+    let bp2 = NSBezierPath ()
+    bp2.move (to: NSPoint (x: 5.0, y: 5.0))
+    bp2.line (to: NSPoint (x: 55.0, y: 55.0))
+    bp2.lineWidth = 1.5
+    bp2.lineCapStyle = .round
+    shape.append (EBStrokeBezierPathShape ([bp2], NSColor.yellow))
+    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    return NSImage (data: imagePDFData)
+  }
 
   //····················································································································
 
   private func updateDragSourceButtons () {
-//    self.mAddPinButton?.image = self.imageForAddPinButton ()
+    self.self.mAddGuideButton?.image = self.imageForAddGuideButton ()
 //    self.mAddTextButton?.image = self.imageForAddTextButton ()
 //    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
@@ -231,7 +230,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddGuideButton?.buildButtonImageFromDraggedObjectTypeName ()
+//    self.mAddGuideButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
   }
