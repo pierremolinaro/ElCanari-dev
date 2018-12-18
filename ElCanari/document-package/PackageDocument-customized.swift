@@ -95,31 +95,13 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackageGuide",
       scaleProvider: self.mComposedPackageView
     )
-//
-//    self.mAddOvalButton?.register (
-//      draggedType: packagePasteboardType,
-//      entityName: "SymbolOval",
-//      scaleProvider: self.mComposedPackageView
-//    )
-//
-//    self.mAddSolidRectButton?.register (
-//      draggedType: packagePasteboardType,
-//      entityName: "SymbolSolidRect",
-//      scaleProvider: self.mComposedPackageView
-//    )
-//
-//    self.mAddTextButton?.register (
-//      draggedType: packagePasteboardType,
-//      entityName: "SymbolText",
-//      scaleProvider: self.mComposedPackageView
-//    )
-//
-//    self.mAddPinButton?.register (
-//      draggedType: packagePasteboardType,
-//      entityName: "SymbolPin",
-//      scaleProvider: self.mComposedPackageView
-//    )
-//
+    self.mAddGuideButton?.image = self.imageForAddGuideButton ()
+    self.mAddDimensionButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackageDimension",
+      scaleProvider: self.mComposedPackageView
+    )
+ //--- Register scroll view
     self.mComposedPackageScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
@@ -132,7 +114,8 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, forClass: "PackageArc")
     self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")
     self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, forClass: "PackageGuide")
-//  //--- Set issue display view
+    self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, forClass: "PackageDimension")
+  //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 4)
@@ -187,19 +170,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   //····················································································································
 
-//  fileprivate func imageForAddTextButton () ->  NSImage? {
-//    let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-//    let textAttributes : [NSAttributedString.Key : Any] = [
-//      NSAttributedString.Key.font : NSFont (name: "Cambria", size: 20.0)!,
-//      NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
-//    ]
-//    let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 1.0), textAttributes, .center, .center)
-//    let imagePDFData = buildPDFimage (frame: r, shape: shape)
-//    return NSImage (data: imagePDFData)
-//  }
-
-  //····················································································································
-
   fileprivate func imageForAddGuideButton () ->  NSImage? {
     let shape = EBShape ()
     let r = NSRect (x: 0.0, y: 0.0, width: 60.0, height: 60.0)
@@ -222,7 +192,6 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   private func updateDragSourceButtons () {
-    self.self.mAddGuideButton?.image = self.imageForAddGuideButton ()
 //    self.mAddTextButton?.image = self.imageForAddTextButton ()
 //    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
@@ -230,6 +199,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddGuideButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
 //    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()

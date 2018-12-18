@@ -118,15 +118,27 @@ func angleInDegreesBetweenNSPoints (_ inP1 : NSPoint, _ inP2 : NSPoint) -> CGFlo
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func stringFrom (valueInCocoaUnit : CGFloat, displayUnit : Int) -> String {
-  let value = CGFloat (cocoaToCanariUnit (valueInCocoaUnit))
+  return stringFrom (valueInCanariUnit: cocoaToCanariUnit (valueInCocoaUnit), displayUnit: displayUnit)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func stringFrom (valueInCanariUnit : Int, displayUnit : Int) -> String {
+  let value = CGFloat (valueInCanariUnit)
   if displayUnit == 90 {
     return "\(Int (value / 90.0)) µm"
   }else if displayUnit == 90_000 {
     return String (format:"%.2f mm", value / 90_000.0)
   }else if displayUnit == 900_000 {
     return String (format:"%.2f cm", value / 900_000.0)
+  }else if displayUnit == 900_000 {
+    return String (format:"%.2f cm", value / 900_000.0)
   }else if displayUnit == 2_286_000 {
     return String (format:"%.2f in", value / 2_286_000.0)
+  }else if displayUnit == 31_750 {
+    return String (format:"%.2f pt", value / 31_750.0)
+  }else if displayUnit == 381_000 {
+    return String (format:"%.2f pc", value / 381_000.0)
   }else{
     return "\(Int (value / 2_286.0)) mil"
   }

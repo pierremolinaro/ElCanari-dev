@@ -239,6 +239,39 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackageGuideSelectionController.y2, mPackageGuideSelectionController.y2Unit
   ;
 
+
+#------- Dimension inspector
+  selectionController PackageDimension mPackageDimensionSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mDimensionInspectorView ;
+
+#--- x1
+  outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag mPackageDimensionSelectionController.x1Unit ;
+  outlet CanariDimensionTextField mDimensionX1TextField
+     $dimensionAndUnit mPackageDimensionSelectionController.x1, mPackageDimensionSelectionController.x1Unit
+  ;
+#--- y1
+  outlet EBPopUpButton mDimensionY1UnitPopUp $selectedTag mPackageDimensionSelectionController.y1Unit ;
+  outlet CanariDimensionTextField mDimensionY1TextField
+     $dimensionAndUnit mPackageDimensionSelectionController.y1, mPackageDimensionSelectionController.y1Unit
+  ;
+#--- x2
+  outlet EBPopUpButton mDimensionX2UnitPopUp $selectedTag mPackageDimensionSelectionController.x2Unit ;
+  outlet CanariDimensionTextField mDimensionX2TextField
+     $dimensionAndUnit mPackageDimensionSelectionController.x2, mPackageDimensionSelectionController.x2Unit
+  ;
+#--- y2
+  outlet EBPopUpButton mDimensionY2UnitPopUp $selectedTag mPackageDimensionSelectionController.y2Unit ;
+  outlet CanariDimensionTextField mDimensionY2TextField
+     $dimensionAndUnit mPackageDimensionSelectionController.y2, mPackageDimensionSelectionController.y2Unit
+  ;
+
+#--- Distance
+  outlet EBPopUpButton mDimensionDistanceUnitPopUp $selectedTag mPackageDimensionSelectionController.distanceUnit ;
+  outlet CanariDimensionObserverTextField mDimensionDistanceTextField
+     $dimensionAndUnit mPackageDimensionSelectionController.distanceInCanariUnit, mPackageDimensionSelectionController.distanceUnit
+  ;
+
+
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
@@ -259,6 +292,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddArcButton ;
   outlet CanariDragSourceButton mAddPadButton ;
   outlet CanariDragSourceButton mAddGuideButton ;
+  outlet CanariDragSourceButton mAddDimensionButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;
