@@ -240,7 +240,8 @@ graphic entity PackageDimension : PackageObject {
  
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
-     self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont
+     self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont,
+     prefs.packageBackgroundColor
   ;
 
   transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, self.xDimension, self.yDimension ;

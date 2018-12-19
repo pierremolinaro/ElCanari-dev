@@ -27,12 +27,9 @@ enum EBTextVerticalAlignment {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTextShape : EBShape {
-//  private let mString : String
-//  private let mOrigin : CGPoint
-//  private let mTextAttributes : [NSAttributedString.Key : Any]
-//  private let mSize : NSSize
   private let mFilledBezierPath : NSBezierPath
   private let mForeColor : NSColor
+  private let mBackColor : NSColor?
   private var mCachedBoundingBox : NSRect? = nil
 
   //····················································································································
@@ -44,9 +41,6 @@ class EBTextShape : EBShape {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
-//    mString = "" // inString
-//    mTextAttributes = inTextAttributes
-//    mSize = inString.size (withAttributes: mTextAttributes)
     let size = inString.size (withAttributes: inTextAttributes)
     var p = inOrigin
     switch inHorizontalAlignment {
@@ -65,24 +59,29 @@ class EBTextShape : EBShape {
     case .below :
       p.y -= size.height
     }
-//    mOrigin = p
   //--- Bezier path
     mFilledBezierPath = inString.bezierPath (at: p, withAttributes: inTextAttributes)
-  //--- Color
+  //--- Forecolor
     if let c = inTextAttributes [NSAttributedString.Key.foregroundColor] as? NSColor {
       mForeColor = c
     }else{
       mForeColor = NSColor.black
     }
+  //--- Back Color
+    if let c = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
+      mBackColor = c
+    }else{
+      mBackColor = nil
+    }
     super.init ()
-//    self.append (EBFilledBezierPathShape ([bp], color))
   }
 
   //····················································································································
 
-  private init (_ inBezierPath : NSBezierPath, _ inColor : NSColor) {
+  private init (_ inBezierPath : NSBezierPath, _ inForeColor : NSColor, _ inBackColor : NSColor?) {
     mFilledBezierPath = inBezierPath
-    mForeColor = inColor
+    mForeColor = inForeColor
+    mBackColor = inBackColor
     super.init ()
   }
 
@@ -91,7 +90,7 @@ class EBTextShape : EBShape {
   //····················································································································
 
   override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
-    let result = EBTextShape (inAffineTransform.transform (self.mFilledBezierPath), self.mForeColor)
+    let result = EBTextShape (inAffineTransform.transform (self.mFilledBezierPath), self.mForeColor, self.mBackColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -102,11 +101,14 @@ class EBTextShape : EBShape {
 
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     super.draw (inView, inDirtyRect)
-    if inView.needsToDraw(self.mFilledBezierPath.bounds) {
+    if inView.needsToDraw (self.mFilledBezierPath.bounds) {
+      if let backColor = self.mBackColor {
+        backColor.setFill ()
+        NSBezierPath.fill (self.mFilledBezierPath.bounds)
+      }
       self.mForeColor.setFill ()
       self.mFilledBezierPath.fill ()
     }
- //   mString.draw (at: mOrigin, withAttributes: mTextAttributes)
   }
 
   //····················································································································
@@ -161,8 +163,8 @@ class EBTextShape : EBShape {
     h ^= self.mFilledBezierPath.hashValue
     h.rotateLeft ()
     h ^= self.mForeColor.hashValue
-//    h.rotateLeft ()
-//    h ^= mOrigin.y.hashValue
+    h.rotateLeft ()
+    h ^= self.mBackColor.hashValue
     return h
   }
 
@@ -176,6 +178,9 @@ class EBTextShape : EBShape {
       equal = self.mFilledBezierPath == operand.mFilledBezierPath
       if equal {
         equal = self.mForeColor == operand.mForeColor
+      }
+      if equal {
+        equal = self.mBackColor == operand.mBackColor
       }
     }
     return equal

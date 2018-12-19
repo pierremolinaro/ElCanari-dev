@@ -135,6 +135,7 @@
                 <outlet property="mSegmentY2TextField" destination="3018" id="yJd-sa-25T"/>
                 <outlet property="mSegmentY2UnitPopUp" destination="3019" id="Um8-YI-W56"/>
                 <outlet property="mSelectedObjectsInspectorView" destination="mI3-WB-pJe" id="F7v-N7-KzS"/>
+                <outlet property="mSetTextOriginAtMidpoint" destination="PXv-uR-9gS" id="wqy-cu-aj1"/>
                 <outlet property="mSignatureTextField" destination="CcA-xS-Gpa" id="wyL-De-3C8"/>
                 <outlet property="mStatusImageViewInToolbar" destination="2889" id="y6C-fV-rES"/>
                 <outlet property="mVersionField" destination="9x7-4Z-fQ9" id="SpJ-dC-Xex"/>
@@ -534,6 +535,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" id="PXv-uR-9gS" customClass="EBButton">
+                    <rect key="frame" x="19" y="264" width="210" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Set text origin at Midpoint" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ejj-ZW-XFt">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-986" y="157"/>
         </customView>
@@ -1935,7 +1944,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2056,7 +2065,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="drN-9Y-pXu">
                         <rect key="frame" x="1" y="0.0" width="694" height="444"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="68" headerView="2831" id="2499">
                                 <rect key="frame" x="0.0" y="0.0" width="694" height="421"/>

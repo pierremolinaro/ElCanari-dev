@@ -243,6 +243,8 @@ document PackageDocument root PackageRoot {
 #------- Dimension inspector
   selectionController PackageDimension mPackageDimensionSelectionController : self.mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mDimensionInspectorView ;
+  action setTextOriginAtMidpointAction ;
+  outlet EBButton mSetTextOriginAtMidpoint $run self.setTextOriginAtMidpointAction ;
 
 #--- x1
   outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag mPackageDimensionSelectionController.x1Unit ;

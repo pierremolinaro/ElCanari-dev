@@ -172,10 +172,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate func imageForAddGuideButton () ->  NSImage? {
     let shape = EBShape ()
-    let r = NSRect (x: 0.0, y: 0.0, width: 60.0, height: 60.0)
+    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
     let bp1 = NSBezierPath ()
     bp1.move (to: NSPoint (x: 5.0, y: 5.0))
-    bp1.line (to: NSPoint (x: 55.0, y: 55.0))
+    bp1.line (to: NSPoint (x: 35.0, y: 35.0))
     bp1.lineWidth = 3.0
     bp1.lineCapStyle = .round
     shape.append (EBStrokeBezierPathShape ([bp1], NSColor.lightGray))
@@ -192,17 +192,12 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   private func updateDragSourceButtons () {
-//    self.mAddTextButton?.image = self.imageForAddTextButton ()
-//    self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddBezierButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
-//    self.mAddGuideButton?.buildButtonImageFromDraggedObjectTypeName ()
-//    self.mAddSolidOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
-//    self.mAddSolidRectButton?.buildButtonImageFromDraggedObjectTypeName ()
   }
 
   //····················································································································

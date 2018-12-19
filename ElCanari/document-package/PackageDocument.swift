@@ -257,6 +257,7 @@ import Cocoa
   @IBOutlet var mSegmentY2TextField : CanariDimensionTextField?
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSetTextOriginAtMidpoint : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mVersionField : CanariVersionField?
@@ -2255,6 +2256,21 @@ import Cocoa
         errorMessage: "the 'mSelectedObjectsInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSetTextOriginAtMidpoint {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSetTextOriginAtMidpoint' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSetTextOriginAtMidpoint' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSignatureTextField {
       if !(outlet is CanariSignatureField) {
         presentErrorWindow (
@@ -2556,6 +2572,8 @@ import Cocoa
       mController_mIssueScrollView_hidden = controller
     }
   //--------------------------- Set targets / actions
+    self.mSetTextOriginAtMidpoint?.target = self
+    self.mSetTextOriginAtMidpoint?.action = #selector (PackageDocument.setTextOriginAtMidpointAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
   //--------------------------- Update display
@@ -2714,6 +2732,7 @@ import Cocoa
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
+    self.mSetTextOriginAtMidpoint?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -2843,6 +2862,7 @@ import Cocoa
     self.mSegmentY2TextField?.ebCleanUp ()
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSelectedObjectsInspectorView?.ebCleanUp ()
+    self.mSetTextOriginAtMidpoint?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()

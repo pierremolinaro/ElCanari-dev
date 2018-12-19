@@ -20,7 +20,8 @@ func transient_PackageDimension_objectDisplay (
        _ self_yDimension : Int,                
        _ self_distanceInCanariUnit : Int,      
        _ self_distanceUnit : Int,              
-       _ prefs_dimensionFont : NSFont
+       _ prefs_dimensionFont : NSFont,         
+       _ prefs_packageBackgroundColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let arrowSize : CGFloat = 1.5
@@ -81,7 +82,8 @@ func transient_PackageDimension_objectDisplay (
   let p = CanariPoint (x: self_xDimension, y: self_yDimension).cocoaPoint ()
   let textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
-    NSAttributedString.Key.foregroundColor : NSColor.black
+    NSAttributedString.Key.foregroundColor : NSColor.black,
+    NSAttributedString.Key.backgroundColor : prefs_packageBackgroundColor
   ]
   shape.append (EBTextShape (dimensionText, p, textAttributes, .center, .center))
 //---
