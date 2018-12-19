@@ -36,7 +36,7 @@ func transient_PackageDimension_objectDisplay (
   if length <= (4.0 * arrowSize) {
     bp.move (to: p1)
     bp.line (to: p2)
-    bp.lineCapStyle = .round
+    bp.lineCapStyle = .butt
   }else{
   //--- Segment
     let center = NSPoint.center (p1, p2)

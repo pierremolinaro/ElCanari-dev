@@ -17,22 +17,30 @@ func transient_PackageDimension_selectionDisplay (
        _ self_x2 : Int,                           
        _ self_y2 : Int,                           
        _ self_xDimension : Int,                   
-       _ self_yDimension : Int
+       _ self_yDimension : Int,                   
+       _ self_distanceInCanariUnit : Int,         
+       _ self_distanceUnit : Int,                 
+       _ prefs_dimensionFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let p1 = CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1))
   let p2 = CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2))
-  let pText = CGPoint (x: canariUnitToCocoa (self_xDimension), y: canariUnitToCocoa (self_yDimension))
+  let pText = CanariPoint (x: self_xDimension, y: self_yDimension).cocoaPoint ()
   let bp = NSBezierPath ()
-  bp.move (to: p1)
-  bp.line (to: p2)
   bp.lineWidth = 0.25
   bp.lineCapStyle = .round
+  bp.move (to: p1)
+  bp.line (to: p2)
+  bp.move (to: NSPoint.center (p1, p2))
+  bp.line (to: pText)
+//--- Text
+  let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   let shape = EBShape ()
   shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
   shape.append (EBKnobShape (at: p1, index: PACKAGE_DIMENSION_ENDPOINT_1, .circ))
   shape.append (EBKnobShape (at: p2, index: PACKAGE_DIMENSION_ENDPOINT_2, .circ))
-  shape.append (EBKnobShape (at: pText, index: PACKAGE_DIMENSION_TEXT, .circ))
+  shape.append (EBTextKnobShape (dimensionText, pText, prefs_dimensionFont, .center, .center, PACKAGE_DIMENSION_TEXT))
+//---
   return shape
 //--- END OF USER ZONE 2
 }

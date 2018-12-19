@@ -244,7 +244,10 @@ graphic entity PackageDimension : PackageObject {
      prefs.packageBackgroundColor
   ;
 
-  transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2, self.xDimension, self.yDimension ;
+  transient EBShape selectionDisplay dependsFrom
+    self.x1, self.y1, self.x2, self.y2,
+    self.xDimension, self.yDimension, self.distanceInCanariUnit, self.distanceUnit, prefs.dimensionFont
+  ;
 
   transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
