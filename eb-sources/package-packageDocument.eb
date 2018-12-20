@@ -49,6 +49,11 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mSegmentY2TextField
      $dimensionAndUnit mPackageSegmentSelectionController.y2, mPackageSegmentSelectionController.y2Unit
   ;
+#--- length
+  outlet EBPopUpButton mSegmentLengthUnitPopUp $selectedTag mPackageSegmentSelectionController.lengthUnit ;
+  outlet CanariDimensionObserverTextField mSegmentLengthTextField
+     $dimensionAndUnit mPackageSegmentSelectionController.lengthInCanariUnit, mPackageSegmentSelectionController.lengthUnit
+  ;
 
 #--- Bezier Curve inspector
   selectionController PackageBezierCurve mPackageBezierCurveSelectionController : self.mPackageObjectsController.selectedArray ;
@@ -273,6 +278,9 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackageDimensionSelectionController.distanceInCanariUnit, mPackageDimensionSelectionController.distanceUnit
   ;
 
+
+#--- Pad numbering inspector
+  outlet EBPopUpButton mPadNumberingPopUpButton $selectedIndex root.padNumbering ;
 
 #------- Issues
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;

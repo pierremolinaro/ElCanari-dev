@@ -66,6 +66,12 @@ protocol PackageRoot_zoom : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_padNumbering : class {
+  var padNumbering : PadNumbering { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_xPlacardUnit : class {
   var xPlacardUnit : Int { get }
 }
@@ -109,6 +115,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_gridStepUnit,
          PackageRoot_gridDisplayFactor,
          PackageRoot_zoom,
+         PackageRoot_padNumbering,
          PackageRoot_xPlacardUnit,
          PackageRoot_yPlacardUnit,
          PackageRoot_gridStepMultipliedByDisplayFactor,
@@ -346,6 +353,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: padNumbering
+  //····················································································································
+
+  var padNumbering_property = EBStoredProperty_PadNumbering (PadNumbering.noNumbering)
+
+  //····················································································································
+
+  var padNumbering : PadNumbering {
+    get {
+      return self.padNumbering_property.propval
+    }
+    set {
+      self.padNumbering_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padNumbering_property_selection : EBSelection <PadNumbering> {
+    return self.padNumbering_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: xPlacardUnit
   //····················································································································
 
@@ -510,6 +540,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.undoManager = self.undoManager
   //--- Atomic property: zoom
     self.zoom_property.undoManager = self.undoManager
+  //--- Atomic property: padNumbering
+    self.padNumbering_property.undoManager = self.undoManager
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.undoManager = self.undoManager
   //--- Atomic property: yPlacardUnit
@@ -718,6 +750,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer:&self.zoom_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "padNumbering",
+      idx:self.padNumbering_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padNumbering_property.mObserverExplorer,
+      valueExplorer:&self.padNumbering_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "xPlacardUnit",
       idx:self.xPlacardUnit_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -805,6 +845,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: zoom
     self.zoom_property.mObserverExplorer = nil
     self.zoom_property.mValueExplorer = nil
+  //--- Atomic property: padNumbering
+    self.padNumbering_property.mObserverExplorer = nil
+    self.padNumbering_property.mValueExplorer = nil
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.mObserverExplorer = nil
     self.xPlacardUnit_property.mValueExplorer = nil
@@ -843,6 +886,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
+  //--- Atomic property: padNumbering
+    self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey:"padNumbering")
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
   //--- Atomic property: yPlacardUnit
@@ -896,6 +941,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
   //--- Atomic property: zoom
     self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
+  //--- Atomic property: padNumbering
+    self.padNumbering_property.readFrom (dictionary: inDictionary, forKey:"padNumbering")
   //--- Atomic property: xPlacardUnit
     self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
   //--- Atomic property: yPlacardUnit
@@ -1538,6 +1585,63 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'padNumbering' stored property
+  //····················································································································
+
+  private var mObserversOf_padNumbering = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNumbering (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNumbering.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumbering_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumbering (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNumbering.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumbering_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_padNumbering {
+        managedObject.padNumbering_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for observer in self.mObserversOf_padNumbering {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.padNumbering_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'xPlacardUnit' stored property
   //····················································································································
 
@@ -1902,6 +2006,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
@@ -1921,6 +2026,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedSet)
       self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padNumbering_toElementsOfSet (addedSet)
       self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
@@ -2064,6 +2170,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
@@ -2085,6 +2192,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)

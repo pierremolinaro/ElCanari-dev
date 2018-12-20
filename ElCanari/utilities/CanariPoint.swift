@@ -64,6 +64,18 @@ struct CanariPoint : Equatable, Hashable {
     return CanariPoint (x: ((self.x + inGrid / 2) / inGrid) * inGrid, y: ((self.y + inGrid / 2) / inGrid) * inGrid)
   }
 
+  //····················································································································
+
+  static func angleInRadian (_ p1 : CanariPoint, _ p2 : CanariPoint) -> CGFloat {
+    let width  = CGFloat (p2.x - p1.x)
+    let height = CGFloat (p2.y - p1.y)
+    var angle = atan2 (height, width) // Result in radian
+    if angle < 0.0 {
+      angle += 2.0 * CGFloat.pi
+    }
+    return angle
+  }
+
  //····················································································································
 
 }

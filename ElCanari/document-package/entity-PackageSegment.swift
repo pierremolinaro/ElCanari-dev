@@ -48,6 +48,12 @@ protocol PackageSegment_y2Unit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageSegment_lengthUnit : class {
+  var lengthUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageSegment_x1 : class {
   var x1 : Int { get }
 }
@@ -71,6 +77,12 @@ protocol PackageSegment_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageSegment_lengthInCanariUnit : class {
+  var lengthInCanariUnit : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageSegment
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -82,10 +94,12 @@ class PackageSegment : PackageObject,
          PackageSegment_y1Unit,
          PackageSegment_x2Unit,
          PackageSegment_y2Unit,
+         PackageSegment_lengthUnit,
          PackageSegment_x1,
          PackageSegment_objectDisplay,
          PackageSegment_selectionDisplay,
-         PackageSegment_issues {
+         PackageSegment_issues,
+         PackageSegment_lengthInCanariUnit {
 
   //····················································································································
   //   Atomic property: y1
@@ -249,6 +263,29 @@ class PackageSegment : PackageObject,
   }
 
   //····················································································································
+  //   Atomic property: lengthUnit
+  //····················································································································
+
+  var lengthUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var lengthUnit : Int {
+    get {
+      return self.lengthUnit_property.propval
+    }
+    set {
+      self.lengthUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var lengthUnit_property_selection : EBSelection <Int> {
+    return self.lengthUnit_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: x1
   //····················································································································
 
@@ -272,6 +309,29 @@ class PackageSegment : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: lengthInCanariUnit
+  //····················································································································
+
+  var lengthInCanariUnit_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var lengthInCanariUnit_property_selection : EBSelection <Int> {
+    return self.lengthInCanariUnit_property.prop
+  }
+
+  //····················································································································
+
+    var lengthInCanariUnit : Int? {
+    switch self.lengthInCanariUnit_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -291,6 +351,8 @@ class PackageSegment : PackageObject,
     self.x2Unit_property.undoManager = self.undoManager
   //--- Atomic property: y2Unit
     self.y2Unit_property.undoManager = self.undoManager
+  //--- Atomic property: lengthUnit
+    self.lengthUnit_property.undoManager = self.undoManager
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -381,8 +443,37 @@ class PackageSegment : PackageObject,
     self.y1_property.addEBObserver (self.issues_property)
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
+  //--- Atomic property: lengthInCanariUnit
+    self.lengthInCanariUnit_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x1_property_selection.kind ()
+        kind &= unwSelf.y1_property_selection.kind ()
+        kind &= unwSelf.x2_property_selection.kind ()
+        kind &= unwSelf.y2_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_PackageSegment_lengthInCanariUnit (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x1_property.addEBObserver (self.lengthInCanariUnit_property)
+    self.y1_property.addEBObserver (self.lengthInCanariUnit_property)
+    self.x2_property.addEBObserver (self.lengthInCanariUnit_property)
+    self.y2_property.addEBObserver (self.lengthInCanariUnit_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.lengthUnit_property.setSignatureObserver (observer:self)
     self.x1_property.setSignatureObserver (observer:self)
     self.x1Unit_property.setSignatureObserver (observer:self)
     self.x2_property.setSignatureObserver (observer:self)
@@ -412,6 +503,10 @@ class PackageSegment : PackageObject,
     self.y1_property.removeEBObserver (self.issues_property)
     self.x2_property.removeEBObserver (self.issues_property)
     self.y2_property.removeEBObserver (self.issues_property)
+    self.x1_property.removeEBObserver (self.lengthInCanariUnit_property)
+    self.y1_property.removeEBObserver (self.lengthInCanariUnit_property)
+    self.x2_property.removeEBObserver (self.lengthInCanariUnit_property)
+    self.y2_property.removeEBObserver (self.lengthInCanariUnit_property)
   }
 
   //····················································································································
@@ -482,6 +577,14 @@ class PackageSegment : PackageObject,
       valueExplorer:&self.y2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "lengthUnit",
+      idx:self.lengthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.lengthUnit_property.mObserverExplorer,
+      valueExplorer:&self.lengthUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "x1",
       idx:self.x1_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -514,6 +617,14 @@ class PackageSegment : PackageObject,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "lengthInCanariUnit",
+      idx:self.lengthInCanariUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.lengthInCanariUnit_property.mObserverExplorer,
+      valueExplorer:&self.lengthInCanariUnit_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -545,6 +656,9 @@ class PackageSegment : PackageObject,
   //--- Atomic property: y2Unit
     self.y2Unit_property.mObserverExplorer = nil
     self.y2Unit_property.mValueExplorer = nil
+  //--- Atomic property: lengthUnit
+    self.lengthUnit_property.mObserverExplorer = nil
+    self.lengthUnit_property.mValueExplorer = nil
   //--- Atomic property: x1
     self.x1_property.mObserverExplorer = nil
     self.x1_property.mValueExplorer = nil
@@ -572,6 +686,8 @@ class PackageSegment : PackageObject,
     self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey:"x2Unit")
   //--- Atomic property: y2Unit
     self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey:"y2Unit")
+  //--- Atomic property: lengthUnit
+    self.lengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"lengthUnit")
   //--- Atomic property: x1
     self.x1_property.storeIn (dictionary: ioDictionary, forKey:"x1")
   }
@@ -605,6 +721,8 @@ class PackageSegment : PackageObject,
     self.x2Unit_property.readFrom (dictionary: inDictionary, forKey:"x2Unit")
   //--- Atomic property: y2Unit
     self.y2Unit_property.readFrom (dictionary: inDictionary, forKey:"y2Unit")
+  //--- Atomic property: lengthUnit
+    self.lengthUnit_property.readFrom (dictionary: inDictionary, forKey:"lengthUnit")
   //--- Atomic property: x1
     self.x1_property.readFrom (dictionary: inDictionary, forKey:"x1")
   }
@@ -647,6 +765,7 @@ class PackageSegment : PackageObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.lengthUnit_property.signature ())
     crc.accumulateUInt32 (self.x1_property.signature ())
     crc.accumulateUInt32 (self.x1Unit_property.signature ())
     crc.accumulateUInt32 (self.x2_property.signature ())
@@ -1068,6 +1187,63 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   }
 
   //····················································································································
+  //   Observers of 'lengthUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_lengthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_lengthUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_lengthUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lengthUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_lengthUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_lengthUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lengthUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_lengthUnit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_lengthUnit {
+        managedObject.lengthUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_lengthUnit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for observer in self.mObserversOf_lengthUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.lengthUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'x1' stored property
   //····················································································································
 
@@ -1293,6 +1469,62 @@ class ReadOnlyArrayOf_PackageSegment : ReadOnlyAbstractArrayProperty <PackageSeg
   }
 
   //····················································································································
+  //   Observers of 'lengthInCanariUnit' transient property
+  //····················································································································
+
+  private var mObserversOf_lengthInCanariUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_lengthInCanariUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_lengthInCanariUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lengthInCanariUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_lengthInCanariUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_lengthInCanariUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.lengthInCanariUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_lengthInCanariUnit_toElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_lengthInCanariUnit {
+        managedObject.lengthInCanariUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_lengthInCanariUnit_fromElementsOfSet (_ inSet : Set<PackageSegment>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_lengthInCanariUnit {
+        managedObject.lengthInCanariUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1372,11 +1604,13 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
       self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_lengthUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_lengthInCanariUnit_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1387,11 +1621,13 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
       self.addEBObserversOf_y1Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x2Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_y2Unit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_lengthUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x1_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_lengthInCanariUnit_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1526,10 +1762,12 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_lengthUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_lengthInCanariUnit_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : PackageSegment in addedObjectSet {
@@ -1543,10 +1781,12 @@ final class StoredArrayOf_PackageSegment : ReadWriteArrayOf_PackageSegment, EBSi
         self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_lengthUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_lengthInCanariUnit_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

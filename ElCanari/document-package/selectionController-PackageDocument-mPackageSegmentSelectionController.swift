@@ -24,6 +24,30 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   }
 
   //····················································································································
+  //   Selection observable property: lengthInCanariUnit
+  //····················································································································
+
+  var lengthInCanariUnit_property = EBTransientProperty_Int ()
+
+  var lengthInCanariUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.lengthInCanariUnit_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Selection observable property: lengthUnit
+  //····················································································································
+
+  var lengthUnit_property = EBPropertyProxy_Int ()
+
+  var lengthUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.lengthUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: objectDisplay
   //····················································································································
 
@@ -176,6 +200,8 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     }
     model.addEBObserver (self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
+    self.bind_property_lengthInCanariUnit (model: self.mActualModel)
+    self.bind_property_lengthUnit (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
     self.bind_property_x1 (model: self.mActualModel)
@@ -198,6 +224,14 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //--- issues
     self.issues_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
+  //--- lengthInCanariUnit
+    self.lengthInCanariUnit_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
+  //--- lengthUnit
+    self.lengthUnit_property.readModelFunction = nil 
+    self.lengthUnit_property.writeModelFunction = nil 
+    self.lengthUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_lengthUnit (self.lengthUnit_property)
   //--- objectDisplay
     self.objectDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -284,6 +318,14 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
   //-------------------------------------------------- Adding properties
     let view = NSView (frame:r)
     var y : CGFloat = 0.0
+    createEntryForPropertyNamed (
+      "lengthUnit",
+      idx:self.lengthUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.lengthUnit_property.mObserverExplorer,
+      valueExplorer:&self.lengthUnit_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "x1",
       idx:self.x1_property.mEasyBindingsObjectIndex,
@@ -436,6 +478,116 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
         }
       }else{
         return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_lengthInCanariUnit (model : ReadOnlyArrayOf_PackageSegment) {
+    model.addEBObserverOf_lengthInCanariUnit (self.lengthInCanariUnit_property)
+    self.lengthInCanariUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.lengthInCanariUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_lengthUnit (model : ReadOnlyArrayOf_PackageSegment) {
+    model.addEBObserverOf_lengthUnit (self.lengthUnit_property)
+    self.lengthUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.lengthUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.lengthUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.lengthUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.lengthUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.lengthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
       }
     }
   }

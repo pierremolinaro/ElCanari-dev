@@ -6,6 +6,20 @@ abstract graphic entity PackageObject {
 
 #----------------------------------------------------------------------------*
 
+enum PadNumbering {
+  noNumbering,
+  counterClock,
+  upRight,
+  upLeft,
+  downRight,
+  downLeft,
+  rightUp,
+  rightDown,
+  leftUp,
+  leftDown
+}
+#----------------------------------------------------------------------------*
+
 graphic entity PackageRoot {
 #--- Selected page index
   property Int selectedPageIndex default 0 ;
@@ -28,6 +42,9 @@ graphic entity PackageRoot {
   property Int gridStepUnit default 2_286 ; # mil
   property Int gridDisplayFactor default 4 ;
   property Int zoom default 600 ;
+
+#--- Pad numbering
+  property PadNumbering padNumbering default noNumbering ;
 
 #--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; # mils
@@ -55,6 +72,7 @@ graphic entity PackageSegment : PackageObject {
   property @signature Int y1Unit default 2_286 ;
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
+  property @signature Int lengthUnit default 2_286 ;
   
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
@@ -62,6 +80,8 @@ graphic entity PackageSegment : PackageObject {
   transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
+  transient Int lengthInCanariUnit dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

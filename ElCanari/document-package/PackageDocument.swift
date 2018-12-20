@@ -235,6 +235,7 @@ import Cocoa
   @IBOutlet var mPadHoleDiameterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPadNumberTextField : EBIntObserverField?
+  @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
   @IBOutlet var mPadStyleView : NSView?
@@ -248,6 +249,8 @@ import Cocoa
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mSegmentLengthTextField : CanariDimensionObserverTextField?
+  @IBOutlet var mSegmentLengthUnitPopUp : EBPopUpButton?
   @IBOutlet var mSegmentX1TextField : CanariDimensionTextField?
   @IBOutlet var mSegmentX1UnitPopUp : EBPopUpButton?
   @IBOutlet var mSegmentX2TextField : CanariDimensionTextField?
@@ -1926,6 +1929,21 @@ import Cocoa
         errorMessage: "the 'mPadNumberTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadNumberingPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadNumberingPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadNumberingPopUpButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -2119,6 +2137,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSegmentInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentLengthTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentLengthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentLengthTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSegmentLengthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSegmentLengthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSegmentLengthUnitPopUp' outlet is nil"
       )
     }
     if let outlet : Any = self.mSegmentX1TextField {
@@ -2436,6 +2484,8 @@ import Cocoa
     self.mSegmentX2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.x2_property, self.mPackageSegmentSelectionController.x2Unit_property, file: #file, line: #line)
     self.mSegmentY2UnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
     self.mSegmentY2TextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.y2_property, self.mPackageSegmentSelectionController.y2Unit_property, file: #file, line: #line)
+    self.mSegmentLengthUnitPopUp?.bind_selectedTag (self.mPackageSegmentSelectionController.lengthUnit_property, file: #file, line: #line)
+    self.mSegmentLengthTextField?.bind_dimensionAndUnit (self.mPackageSegmentSelectionController.lengthInCanariUnit_property, self.mPackageSegmentSelectionController.lengthUnit_property, file: #file, line: #line)
     self.mBezierCurveX1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.x1Unit_property, file: #file, line: #line)
     self.mBezierCurveX1TextField?.bind_dimensionAndUnit (self.mPackageBezierCurveSelectionController.x1_property, self.mPackageBezierCurveSelectionController.x1Unit_property, file: #file, line: #line)
     self.mBezierCurveY1UnitPopUp?.bind_selectedTag (self.mPackageBezierCurveSelectionController.y1Unit_property, file: #file, line: #line)
@@ -2508,6 +2558,7 @@ import Cocoa
     self.mDimensionY2TextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property, file: #file, line: #line)
     self.mDimensionDistanceUnitPopUp?.bind_selectedTag (self.mPackageDimensionSelectionController.distanceUnit_property, file: #file, line: #line)
     self.mDimensionDistanceTextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property, file: #file, line: #line)
+    self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
@@ -2600,6 +2651,8 @@ import Cocoa
     self.mSegmentX2TextField?.unbind_dimensionAndUnit ()
     self.mSegmentY2UnitPopUp?.unbind_selectedTag ()
     self.mSegmentY2TextField?.unbind_dimensionAndUnit ()
+    self.mSegmentLengthUnitPopUp?.unbind_selectedTag ()
+    self.mSegmentLengthTextField?.unbind_dimensionAndUnit ()
     self.mBezierCurveX1UnitPopUp?.unbind_selectedTag ()
     self.mBezierCurveX1TextField?.unbind_dimensionAndUnit ()
     self.mBezierCurveY1UnitPopUp?.unbind_selectedTag ()
@@ -2672,6 +2725,7 @@ import Cocoa
     self.mDimensionY2TextField?.unbind_dimensionAndUnit ()
     self.mDimensionDistanceUnitPopUp?.unbind_selectedTag ()
     self.mDimensionDistanceTextField?.unbind_dimensionAndUnit ()
+    self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextField?.unbind_valueObserver ()
@@ -2840,6 +2894,7 @@ import Cocoa
     self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
+    self.mPadNumberingPopUpButton?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
@@ -2853,6 +2908,8 @@ import Cocoa
     self.mProgramPageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
+    self.mSegmentLengthTextField?.ebCleanUp ()
+    self.mSegmentLengthUnitPopUp?.ebCleanUp ()
     self.mSegmentX1TextField?.ebCleanUp ()
     self.mSegmentX1UnitPopUp?.ebCleanUp ()
     self.mSegmentX2TextField?.ebCleanUp ()
