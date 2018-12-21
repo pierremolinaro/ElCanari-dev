@@ -246,6 +246,8 @@ import Cocoa
   @IBOutlet var mPadYCenterTextField : CanariDimensionTextField?
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mProgramHelpButton : EBButton?
+  @IBOutlet var mProgramHelpPanel : NSPanel?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView?
@@ -2094,6 +2096,36 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mProgramHelpButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mProgramHelpButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mProgramHelpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mProgramHelpPanel {
+      if !(outlet is NSPanel) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mProgramHelpPanel' outlet is not an instance of 'NSPanel'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mProgramHelpPanel' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mProgramPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -2625,6 +2657,8 @@ import Cocoa
   //--------------------------- Set targets / actions
     self.mSetTextOriginAtMidpoint?.target = self
     self.mSetTextOriginAtMidpoint?.action = #selector (PackageDocument.setTextOriginAtMidpointAction (_:))
+    self.mProgramHelpButton?.target = self
+    self.mProgramHelpButton?.action = #selector (PackageDocument.programHelpAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
   //--------------------------- Update display
@@ -2787,6 +2821,7 @@ import Cocoa
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
     self.mSetTextOriginAtMidpoint?.target = nil
+    self.mProgramHelpButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -2905,6 +2940,8 @@ import Cocoa
     self.mPadYCenterTextField?.ebCleanUp ()
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mProgramHelpButton?.ebCleanUp ()
+    self.mProgramHelpPanel?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()

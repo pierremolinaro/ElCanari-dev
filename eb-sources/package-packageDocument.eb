@@ -347,8 +347,12 @@ document PackageDocument root PackageRoot {
   ;
 
 #  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
-#
-##--------------- Program Tab
+
+#--------------- Program Tab
+  outlet NSPanel mProgramHelpPanel ;
+  action programHelpAction ;
+  outlet EBButton mProgramHelpButton $run self.programHelpAction ;
+  
 #  outlet programTextView : NSTextView $value root.program {NSContinuouslyUpdatesValue:yes} ;
 #
 #  action runProgramAction ;

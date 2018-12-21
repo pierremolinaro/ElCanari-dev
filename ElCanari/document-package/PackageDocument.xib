@@ -124,6 +124,8 @@
                 <outlet property="mPadYCenterTextField" destination="2203" id="1ZE-Yo-XVW"/>
                 <outlet property="mPadYCenterUnitPopUp" destination="2172" id="prz-xu-cp3"/>
                 <outlet property="mPageSegmentedControl" destination="2896" id="IH0-Px-2WQ"/>
+                <outlet property="mProgramHelpButton" destination="S67-ds-8Uk" id="guS-YO-FvG"/>
+                <outlet property="mProgramHelpPanel" destination="h48-eq-iuE" id="hDk-S5-DNs"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
                 <outlet property="mSegmentInspectorView" destination="3015" id="Uuj-Fr-Dyh"/>
@@ -242,7 +244,7 @@
         </window>
         <customView id="1300" userLabel="Inspector : Display" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button imageHugsTitle="YES" id="2123">
                     <rect key="frame" x="69" y="412" width="163" height="18"/>
@@ -321,7 +323,7 @@
         </customView>
         <customView id="1364" userLabel="Inspector : Dimension" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" id="1447">
                     <rect key="frame" x="20" y="328" width="210" height="5"/>
@@ -551,7 +553,7 @@
         </customView>
         <customView id="1488" userLabel="Object Inspector : Arc" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="1556" customClass="CanariPackageArcAngleTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="360" width="83" height="19"/>
@@ -866,7 +868,7 @@
         </customView>
         <customView id="1610" userLabel="Object Inspector: Oval" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="1710">
                     <rect key="frame" x="17" y="367" width="71" height="14"/>
@@ -1125,7 +1127,7 @@
         </customView>
         <customView id="2143" userLabel="Object Inspector : Pad" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="2232">
                     <rect key="frame" x="20" y="320" width="43" height="17"/>
@@ -1530,7 +1532,7 @@
         </customView>
         <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="2292">
                     <rect key="frame" x="17" y="439" width="87" height="17"/>
@@ -1576,7 +1578,7 @@
         </customView>
         <customView id="2308" userLabel="slavePadInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView id="2395">
                     <rect key="frame" x="20" y="262" width="210" height="47"/>
@@ -1947,7 +1949,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -1965,7 +1967,7 @@
                     </scroller>
                 </scrollView>
                 <customView id="2923">
-                    <rect key="frame" x="4" y="0.0" width="250" height="444"/>
+                    <rect key="frame" x="4" y="0.0" width="250" height="441"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
                 <button toolTip="Add Segment" imageHugsTitle="YES" id="2983" customClass="CanariDragSourceButton">
@@ -1985,7 +1987,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Oval" imageHugsTitle="YES" id="2985" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="58" y="468" width="28" height="28"/>
+                    <rect key="frame" x="59" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2992">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1993,7 +1995,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Arc" imageHugsTitle="YES" id="2986" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="86" y="468" width="28" height="28"/>
+                    <rect key="frame" x="87" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2991">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2001,7 +2003,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Master Pad" imageHugsTitle="YES" id="2987" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="114" y="468" width="28" height="28"/>
+                    <rect key="frame" x="115" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2990">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2009,7 +2011,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Slave Pad" imageHugsTitle="YES" id="2988" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="142" y="468" width="28" height="28"/>
+                    <rect key="frame" x="143" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="slave-pad-in-package" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2989">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2017,7 +2019,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Pad Zone" imageHugsTitle="YES" id="3001" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="170" y="468" width="28" height="28"/>
+                    <rect key="frame" x="171" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pad-zone-in-package" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3002">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2025,7 +2027,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Guide Line" imageHugsTitle="YES" id="3003" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="197" y="468" width="28" height="28"/>
+                    <rect key="frame" x="199" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3004">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2033,7 +2035,7 @@
                     </buttonCell>
                 </button>
                 <button toolTip="Add Dimension Helper" imageHugsTitle="YES" id="3005" customClass="CanariDragSourceButton">
-                    <rect key="frame" x="224" y="468" width="28" height="28"/>
+                    <rect key="frame" x="226" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3006">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2049,15 +2051,13 @@
                             <segment image="selected-object" width="49"/>
                             <segment image="loupe" width="49" tag="1"/>
                             <segment image="display" width="49"/>
-                            <segment image="zone" width="49" selected="YES"/>
-                            <segment image="NSStatusAvailable" width="49">
-                                <nil key="label"/>
-                            </segment>
+                            <segment label="①…②" imageScaling="proportionallyUpOrDown" width="49" selected="YES"/>
+                            <segment image="NSStatusAvailable" width="49"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
             </subviews>
-            <point key="canvasLocation" x="306" y="394"/>
+            <point key="canvasLocation" x="68" y="382"/>
         </customView>
         <customView id="2497" userLabel="Page : Pads" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="711" height="460"/>
@@ -2128,18 +2128,18 @@
             <rect key="frame" x="0.0" y="0.0" width="686" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button imageHugsTitle="YES" id="2516">
-                    <rect key="frame" x="112" y="456" width="108" height="25"/>
+                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="2516">
+                    <rect key="frame" x="112" y="456" width="108" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Clear Error" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2817">
+                    <buttonCell key="cell" type="roundRect" title="Clear Error" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2817">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button imageHugsTitle="YES" id="2515">
-                    <rect key="frame" x="20" y="456" width="82" height="25"/>
+                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="2515">
+                    <rect key="frame" x="20" y="456" width="82" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="Run" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2816">
+                    <buttonCell key="cell" type="roundRect" title="Run" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2816">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -2149,7 +2149,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="8av-jO-Zwb">
                         <rect key="frame" x="1" y="1" width="629" height="418"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2514">
                                 <rect key="frame" x="0.0" y="0.0" width="629" height="418"/>
@@ -2182,6 +2182,14 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="S67-ds-8Uk" customClass="EBButton">
+                    <rect key="frame" x="643" y="449" width="25" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="BPI-qL-Wk2">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
         </customView>
         <customView id="2517" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
@@ -2238,11 +2246,11 @@
         </customView>
         <customView id="2936" userLabel="Inspector : Selected Objects" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
         </customView>
         <customView id="3015" userLabel="Object Inspector : Segment" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="3018" customClass="CanariDimensionTextField">
                     <rect key="frame" x="99" y="338" width="61" height="19"/>
@@ -2444,7 +2452,7 @@
         </customView>
         <customView id="3087" userLabel="Object Inspector : Bezier Curve" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="3092" customClass="CanariDimensionTextField">
                     <rect key="frame" x="99" y="341" width="61" height="19"/>
@@ -2744,7 +2752,7 @@
         </customView>
         <customView id="3254" userLabel="Inspector : Guide" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="3259" customClass="CanariDimensionTextField">
                     <rect key="frame" x="104" y="340" width="56" height="19"/>
@@ -2914,11 +2922,11 @@
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-356" y="204"/>
+            <point key="canvasLocation" x="-399" y="193"/>
         </customView>
         <customView id="cRE-6w-ML1" userLabel="Inspector : Issues" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="yVN-Jd-CYp" customClass="EBTextObserverField">
                     <rect key="frame" x="9" y="483" width="233" height="17"/>
@@ -2991,7 +2999,7 @@
         </customView>
         <customView id="Vyf-VZ-9r6" userLabel="Inspector : Grid and Flip" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button id="Ljc-JI-iq8" customClass="EBSwitch">
                     <rect key="frame" x="97" y="372" width="135" height="18"/>
@@ -3308,9 +3316,52 @@
         </customView>
         <customView id="mI3-WB-pJe" userLabel="Selected object inspector root view" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <point key="canvasLocation" x="-362" y="432"/>
         </customView>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="h48-eq-iuE" userLabel="Panel : Help pad program" customClass="NSPanel">
+            <windowStyleMask key="styleMask" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="139" y="81" width="659" height="378"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="XdQ-jW-bFU">
+                <rect key="frame" x="0.0" y="0.0" width="659" height="378"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" id="Rsb-Pc-dDr" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="567" y="19" width="72" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a8h-C6-d0e">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                    </button>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="SnN-7m-EeX">
+                        <rect key="frame" x="20" y="46" width="619" height="312"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ttk-9b-UM8">
+                            <rect key="frame" x="0.0" y="0.0" width="604" height="312"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
+                                    <rect key="frame" x="0.0" y="0.0" width="604" height="312"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <size key="minSize" width="604" height="312"/>
+                                    <size key="maxSize" width="604" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                </textView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Um2-vP-U4W">
+                            <rect key="frame" x="604" y="0.0" width="15" height="312"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-1657" y="-241"/>
+        </window>
     </objects>
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
@@ -3320,6 +3371,5 @@
         <image name="red20" width="20" height="20"/>
         <image name="selected-object" width="64" height="64"/>
         <image name="slave-pad-in-package" width="64" height="64"/>
-        <image name="zone" width="64" height="64"/>
     </resources>
 </document>

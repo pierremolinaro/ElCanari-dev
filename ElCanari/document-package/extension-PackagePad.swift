@@ -108,7 +108,7 @@ extension PackagePad {
   //····················································································································
 
   override func operationAfterPasting () {
-    self.padNumber = 0 // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
+    self.padNumber += 1_000_000 // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
   }
 
   //····················································································································
