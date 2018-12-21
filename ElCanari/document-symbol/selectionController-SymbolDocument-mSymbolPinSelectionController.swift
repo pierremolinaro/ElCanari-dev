@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_SymbolDocument_mSymbolPinSelectionController                                                 *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_SymbolDocument_mSymbolPinSelectionController)
 final class SelectionController_SymbolDocument_mSymbolPinSelectionController : EBObject {
 
   //····················································································································

@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageArcSelectionController                                               *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageArcSelectionController)
 final class SelectionController_PackageDocument_mPackageArcSelectionController : EBObject {
 
   //····················································································································

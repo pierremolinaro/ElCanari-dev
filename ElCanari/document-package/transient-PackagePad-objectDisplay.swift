@@ -22,6 +22,7 @@ func transient_PackagePad_objectDisplay (
        _ self_padNumber : Int,           
        _ prefs_padNumberFont : NSFont,   
        _ prefs_padNumberColor : NSColor, 
+       _ self_zone_zoneName : String?,   
        _ prefs_packageColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -62,7 +63,11 @@ func transient_PackagePad_objectDisplay (
         NSAttributedString.Key.font : prefs_padNumberFont,
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
-      let padString = "\(self_padNumber)"
+      var padString = ""
+      if let s = self_zone_zoneName {
+        padString += s + ":"
+      }
+      padString += "\(self_padNumber)"
       let numberShape = EBTextShape (
         padString,
         NSPoint (x: xCenter, y: yCenter),

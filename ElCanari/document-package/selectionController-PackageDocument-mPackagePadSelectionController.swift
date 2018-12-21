@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackagePadSelectionController                                               *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackagePadSelectionController)
 final class SelectionController_PackageDocument_mPackagePadSelectionController : EBObject {
 
   //····················································································································
@@ -240,6 +239,22 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
+  //   Selection observable property: zone
+  //····················································································································
+
+  //····················································································································
+  //   Selection observable property: zoneName
+  //····················································································································
+
+  var zoneName_property = EBTransientProperty_String ()
+
+  var zoneName_property_selection : EBSelection <String> {
+    get {
+      return self.zoneName_property.prop
+    }
+  }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
@@ -290,6 +305,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_xCenterUnit (model: self.mActualModel)
     self.bind_property_yCenter (model: self.mActualModel)
     self.bind_property_yCenterUnit (model: self.mActualModel)
+    self.bind_property_zoneName (model: self.mActualModel)
   }
 
   //····················································································································
@@ -384,6 +400,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.yCenterUnit_property.writeModelFunction = nil 
     self.yCenterUnit_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
+  //--- zoneName
+    self.zoneName_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_zoneName (self.zoneName_property)
   //---
     self.mModel = nil    
   }
@@ -1764,6 +1783,46 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
         }
       }else{
         return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_zoneName (model : ReadOnlyArrayOf_PackagePad) {
+    model.addEBObserverOf_zoneName (self.zoneName_property)
+    self.zoneName_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.zoneName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
       }
     }
   }

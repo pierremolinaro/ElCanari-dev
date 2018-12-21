@@ -15,6 +15,7 @@ extension CustomizedPackageDocument {
     self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
     self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserver (self.mPadNumberingObserver)
   }
 
   //····················································································································
@@ -26,18 +27,24 @@ extension CustomizedPackageDocument {
       let zoneRect = zone.rect!
       var idx = 0
       while idx < allPads.count {
-        if zoneRect.contains(x: allPads [idx].xCenter, y: allPads [idx].yCenter) {
+        let pad = allPads [idx]
+        idx += 1
+        if zoneRect.contains (x: pad.xCenter, y: pad.yCenter) {
           let a = zoneDictionary [zone] ?? []
-          zoneDictionary [zone] = a + [allPads [idx]]
+          zoneDictionary [zone] = a + [pad]
+          pad.zone_property.setProp (zone)
+          idx -= 1
           allPads.remove(at: idx)
-        }else{
-          idx += 1
         }
       }
     }
   //---
     for (zone, padArray) in zoneDictionary {
       self.performPadNumbering (padArray, zone.zoneNumbering)
+    }
+  //--- Handle pads outside zones
+    for pad in allPads {
+      pad.zone_property.setProp (nil)
     }
     self.performPadNumbering (allPads, self.rootObject.padNumbering)
   }

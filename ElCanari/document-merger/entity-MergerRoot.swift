@@ -585,18 +585,6 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   To one property: artwork
-  //····················································································································
-
-  var artwork_property = ToOneRelationship_MergerRoot_artwork ()
-
-  //····················································································································
-
-  var artwork_property_selection : EBSelection <Bool> {
-    return .single (self.artwork_property.propval == nil)
-  }
-
-  //····················································································································
   //   Atomic property: artworkName
   //····················································································································
 
@@ -804,6 +792,18 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: artwork
+  //····················································································································
+
+  var artwork_property = ToOneRelationship_MergerRoot_artwork ()
+
+  //····················································································································
+
+  var artwork_property_selection : EBSelection <Bool> {
+    return .single (self.artwork_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: boardOutlineRectDisplay
   //····················································································································
 
@@ -871,8 +871,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.undoManager = self.undoManager
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.undoManager = self.undoManager
-  //--- To one property: artwork
-    self.artwork_property.owner = self
   //--- Atomic property: artworkName
     self.artworkName_property.undoManager = self.undoManager
   //--- Atomic property: generateGerberProductFile
@@ -1001,6 +999,8 @@ class MergerRoot : EBManagedObject,
       }
     }
     self.boardRect_property.addEBObserver (self.boardHeight_property)
+  //--- To one property: artwork
+    self.artwork_property.owner = self
   //--- Atomic property: boardOutlineRectDisplay
     self.boardOutlineRectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1360,9 +1360,6 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.mObserverExplorer = nil
     self.shiftArrowMagnitudeUnit_property.mValueExplorer = nil
-  //--- To one property: artwork
-    self.artwork_property.mObserverExplorer = nil
-    self.artwork_property.mValueExplorer = nil
   //--- Atomic property: artworkName
     self.artworkName_property.mObserverExplorer = nil
     self.artworkName_property.mValueExplorer = nil
@@ -1375,6 +1372,9 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.mObserverExplorer = nil
     self.generatedBoardArchiveFormat_property.mValueExplorer = nil
+  //--- To one property: artwork
+    self.artwork_property.mObserverExplorer = nil
+    self.artwork_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -1429,10 +1429,6 @@ class MergerRoot : EBManagedObject,
     self.shiftArrowMagnitude_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitude")
   //--- Atomic property: shiftArrowMagnitudeUnit
     self.shiftArrowMagnitudeUnit_property.storeIn (dictionary: ioDictionary, forKey:"shiftArrowMagnitudeUnit")
-  //--- To one property: artwork
-    self.store (managedObject:self.artwork_property.propval,
-      relationshipName: "artwork",
-      intoDictionary: ioDictionary)
   //--- Atomic property: artworkName
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
   //--- Atomic property: generateGerberProductFile
@@ -1441,6 +1437,10 @@ class MergerRoot : EBManagedObject,
     self.generatePDFProductFile_property.storeIn (dictionary: ioDictionary, forKey:"generatePDFProductFile")
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.storeIn (dictionary: ioDictionary, forKey:"generatedBoardArchiveFormat")
+  //--- To one property: artwork
+    self.store (managedObject:self.artwork_property.propval,
+      relationshipName: "artwork",
+      intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -3581,9 +3581,9 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   
   //····················································································································
 
-  func add (_ object : ArtworkRoot) {
-    self.mValue = object
-  }
+//  func add (_ object : ArtworkRoot) {
+ //   self.mValue = object
+//  }
 
   //····················································································································
   //   Observable property: comments

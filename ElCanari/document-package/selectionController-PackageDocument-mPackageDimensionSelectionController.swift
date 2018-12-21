@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageDimensionSelectionController                                         *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageDimensionSelectionController)
 final class SelectionController_PackageDocument_mPackageDimensionSelectionController : EBObject {
 
   //····················································································································

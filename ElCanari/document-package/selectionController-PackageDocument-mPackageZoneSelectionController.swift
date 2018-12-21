@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageZoneSelectionController                                              *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageZoneSelectionController)
 final class SelectionController_PackageDocument_mPackageZoneSelectionController : EBObject {
 
   //····················································································································

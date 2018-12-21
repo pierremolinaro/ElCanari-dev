@@ -204,7 +204,7 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackagePadSelectionController.annularRing, mPackagePadSelectionController.annularRingUnit
   ;
 #--- Pad zone
-
+  outlet EBTextObserverField mPadZoneNameTextField $valueObserver mPackagePadSelectionController.zoneName ;
 #--- Pad Number
   outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
   outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton $currentNumber mPackagePadSelectionController.padNumber ;

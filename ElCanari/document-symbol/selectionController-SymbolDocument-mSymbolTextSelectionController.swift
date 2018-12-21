@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_SymbolDocument_mSymbolTextSelectionController                                                *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_SymbolDocument_mSymbolTextSelectionController)
 final class SelectionController_SymbolDocument_mSymbolTextSelectionController : EBObject {
 
   //····················································································································

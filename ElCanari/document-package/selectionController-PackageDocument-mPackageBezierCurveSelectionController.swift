@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageBezierCurveSelectionController                                       *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageBezierCurveSelectionController)
 final class SelectionController_PackageDocument_mPackageBezierCurveSelectionController : EBObject {
 
   //····················································································································

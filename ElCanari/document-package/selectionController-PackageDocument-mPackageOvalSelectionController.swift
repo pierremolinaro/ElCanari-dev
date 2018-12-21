@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageOvalSelectionController                                              *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageOvalSelectionController)
 final class SelectionController_PackageDocument_mPackageOvalSelectionController : EBObject {
 
   //····················································································································

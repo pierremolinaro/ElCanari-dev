@@ -694,6 +694,8 @@
 		CF6E148221CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148021CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift */; };
 		CF6E148421CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */; };
 		CF6E148521CD1F90008E2180 /* transient-PackageZone-rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */; };
+		CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
+		CF6E148821CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */; };
 		CF71F9241B3EA3DF00FB5049 /* EBColorWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */; };
 		CF71F9251B3EA3DF00FB5049 /* EBDoubleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */; };
 		CF71F9261B3EA3DF00FB5049 /* EBFontButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */; };
@@ -1322,6 +1324,7 @@
 		CF6E147D21CD130C008E2180 /* extension-PackageZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-PackageZone.swift"; sourceTree = "<group>"; };
 		CF6E148021CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "selectionController-PackageDocument-mPackageZoneSelectionController.swift"; sourceTree = "<group>"; };
 		CF6E148321CD1F90008E2180 /* transient-PackageZone-rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageZone-rect.swift"; sourceTree = "<group>"; };
+		CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackagePad-zoneName.swift"; sourceTree = "<group>"; };
 		CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBColorWell.swift; sourceTree = "<group>"; };
 		CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDoubleField.swift; sourceTree = "<group>"; };
 		CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBFontButton.swift; sourceTree = "<group>"; };
@@ -1675,6 +1678,7 @@
 				CF30CDE021C5709700CFE9CC /* transient-PackagePad-objectDisplay.swift */,
 				CF5A55CC21C597F000C7014E /* transient-PackagePad-padIsTraversing.swift */,
 				CF30CDE121C5709700CFE9CC /* transient-PackagePad-selectionDisplay.swift */,
+				CF6E148621CD32CA008E2180 /* transient-PackagePad-zoneName.swift */,
 				CF4A6C0C21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift */,
 				CF00845F21C4363E003627E9 /* transient-PackageRoot-issues.swift */,
 				CF00846121C4363E003627E9 /* transient-PackageRoot-noIssue.swift */,
@@ -2606,6 +2610,7 @@
 				CF5A55CA21C5949F00C7014E /* enum-PadStyle.swift in Sources */,
 				CF5632C021A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift in Sources */,
 				CF2ED48A21ADCE750019114E /* FontDocument-customized.swift in Sources */,
+				CF6E148721CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CF3086531B4008F5005D3BCE /* EBTableView.swift in Sources */,
 				CF99E37A21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */,
 				CF12885C20FF66EB007B808C /* transient-BoardModel-viasBezierPaths.swift in Sources */,
@@ -3022,6 +3027,7 @@
 				CF5A55CB21C5949F00C7014E /* enum-PadStyle.swift in Sources */,
 				CF5632C121A2C7B00026B7B7 /* arrayController-SymbolDocument-mSymbolObjectsController.swift in Sources */,
 				CF2ED48B21ADCE750019114E /* FontDocument-customized.swift in Sources */,
+				CF6E148821CD32CA008E2180 /* transient-PackagePad-zoneName.swift in Sources */,
 				CF5C4CC9219F04D600EAC52A /* EBTableView.swift in Sources */,
 				CF99E37B21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */,
 				CF5C4CCB219F04D600EAC52A /* transient-BoardModel-viasBezierPaths.swift in Sources */,

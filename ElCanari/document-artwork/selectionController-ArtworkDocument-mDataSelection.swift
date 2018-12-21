@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_ArtworkDocument_mDataSelection                                                               *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_ArtworkDocument_mDataSelection)
 final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
 
   //····················································································································

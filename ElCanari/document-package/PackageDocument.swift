@@ -252,6 +252,7 @@ import Cocoa
   @IBOutlet var mPadXCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadYCenterTextField : CanariDimensionTextField?
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton?
+  @IBOutlet var mPadZoneNameTextField : EBTextObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProgramHelpButton : EBButton?
   @IBOutlet var mProgramHelpPanel : NSPanel?
@@ -2116,6 +2117,21 @@ import Cocoa
         errorMessage: "the 'mPadYCenterUnitPopUp' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadZoneNameTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadZoneNameTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadZoneNameTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPageSegmentedControl {
       if !(outlet is CanariSegmentedControl) {
         presentErrorWindow (
@@ -2772,6 +2788,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.holeDiameter_property, self.mPackagePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
     self.mPadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mPadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackagePadSelectionController.annularRing_property, self.mPackagePadSelectionController.annularRingUnit_property, file: #file, line: #line)
+    self.mPadZoneNameTextField?.bind_valueObserver (self.mPackagePadSelectionController.zoneName_property, file: #file, line: #line)
     self.mPadNumberTextField?.bind_valueObserver (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line, autoFormatter:true)
     self.mPadRenumberingPullDownButton?.bind_currentNumber (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line)
     self.mGuideX1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
@@ -2951,6 +2968,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.unbind_dimensionAndUnit ()
     self.mPadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mPadAnnularRingTextField?.unbind_dimensionAndUnit ()
+    self.mPadZoneNameTextField?.unbind_valueObserver ()
     self.mPadNumberTextField?.unbind_valueObserver ()
     self.mPadRenumberingPullDownButton?.unbind_currentNumber ()
     self.mGuideX1UnitPopUp?.unbind_selectedTag ()
@@ -3164,6 +3182,7 @@ import Cocoa
     self.mPadXCenterUnitPopUp?.ebCleanUp ()
     self.mPadYCenterTextField?.ebCleanUp ()
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
+    self.mPadZoneNameTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProgramHelpButton?.ebCleanUp ()
     self.mProgramHelpPanel?.ebCleanUp ()

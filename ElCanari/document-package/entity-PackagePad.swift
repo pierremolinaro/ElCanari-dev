@@ -119,6 +119,12 @@ protocol PackagePad_annularRing : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackagePad_zoneName : class {
+  var zoneName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -141,7 +147,8 @@ class PackagePad : PackageObject,
          PackagePad_selectionDisplay,
          PackagePad_issues,
          PackagePad_padIsTraversing,
-         PackagePad_annularRing {
+         PackagePad_annularRing,
+         PackagePad_zoneName {
 
   //····················································································································
   //   Atomic property: xCenter
@@ -466,6 +473,18 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //   To one property: zone
+  //····················································································································
+
+  var zone_property = ToOneRelationship_PackagePad_zone ()
+
+  //····················································································································
+
+  var zone_property_selection : EBSelection <Bool> {
+    return .single (self.zone_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: padIsTraversing
   //····················································································································
 
@@ -512,6 +531,29 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: zoneName
+  //····················································································································
+
+  var zoneName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var zoneName_property_selection : EBSelection <String> {
+    return self.zoneName_property.prop
+  }
+
+  //····················································································································
+
+    var zoneName : String? {
+    switch self.zoneName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -545,6 +587,8 @@ class PackagePad : PackageObject,
     self.holeDiameterUnit_property.undoManager = self.undoManager
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.undoManager = self.undoManager
+  //--- To one property: zone
+    self.zone_property.owner = self
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -558,6 +602,7 @@ class PackagePad : PackageObject,
         kind &= unwSelf.padNumber_property_selection.kind ()
         kind &= g_Preferences!.padNumberFont_property_selection.kind ()
         kind &= g_Preferences!.padNumberColor_property_selection.kind ()
+        kind &= unwSelf.zone_property.zoneName_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -565,9 +610,9 @@ class PackagePad : PackageObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, unwSelf.padNumber_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, g_Preferences!.packageColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, unwSelf.padNumber_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.zone_property.zoneName_property_selection, g_Preferences!.packageColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -586,6 +631,7 @@ class PackagePad : PackageObject,
     self.padNumber_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberColor_property.addEBObserver (self.objectDisplay_property)
+    self.zone_property.addEBObserverOf_zoneName (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.readModelFunction = { [weak self] in
@@ -695,6 +741,28 @@ class PackagePad : PackageObject,
     self.width_property.addEBObserver (self.annularRing_property)
     self.height_property.addEBObserver (self.annularRing_property)
     self.holeDiameter_property.addEBObserver (self.annularRing_property)
+  //--- Atomic property: zoneName
+    self.zoneName_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.zone_property.zoneName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.zone_property.zoneName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackagePad_zoneName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.zone_property.addEBObserverOf_zoneName (self.zoneName_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer:self)
@@ -728,6 +796,7 @@ class PackagePad : PackageObject,
     self.padNumber_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberFont_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.objectDisplay_property)
+    self.zone_property.removeEBObserverOf_zoneName (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
     self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
     self.yCenter_property.removeEBObserver (self.selectionDisplay_property)
@@ -743,6 +812,7 @@ class PackagePad : PackageObject,
     self.width_property.removeEBObserver (self.annularRing_property)
     self.height_property.removeEBObserver (self.annularRing_property)
     self.holeDiameter_property.removeEBObserver (self.annularRing_property)
+    self.zone_property.removeEBObserverOf_zoneName (self.zoneName_property)
   }
 
   //····················································································································
@@ -909,8 +979,23 @@ class PackagePad : PackageObject,
       observerExplorer:&self.annularRing_property.mObserverExplorer,
       valueExplorer:&self.annularRing_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "zoneName",
+      idx:self.zoneName_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.zoneName_property.mObserverExplorer,
+      valueExplorer:&self.zoneName_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "zone",
+      idx:self.zone_property.mEasyBindingsObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.zone_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -961,6 +1046,9 @@ class PackagePad : PackageObject,
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.mObserverExplorer = nil
     self.annularRingUnit_property.mValueExplorer = nil
+  //--- To one property: zone
+    self.zone_property.mObserverExplorer = nil
+    self.zone_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -999,6 +1087,10 @@ class PackagePad : PackageObject,
     self.holeDiameterUnit_property.storeIn (dictionary: ioDictionary, forKey:"holeDiameterUnit")
   //--- Atomic property: annularRingUnit
     self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey:"annularRingUnit")
+  //--- To one property: zone
+    self.store (managedObject:self.zone_property.propval,
+      relationshipName: "zone",
+      intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -1008,6 +1100,12 @@ class PackagePad : PackageObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: zone
+    self.zone_property.setProp (readEntityFromDictionary (
+      inRelationshipName: "zone",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as? PackageZone)
   }
 
   //····················································································································
@@ -1068,6 +1166,7 @@ class PackagePad : PackageObject,
 
   override func resetToOneRelationships () {
     super.resetToOneRelationships ()
+    self.zone_property.setProp (nil)
   }
 
   //····················································································································
@@ -1076,6 +1175,10 @@ class PackagePad : PackageObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: zone
+    if let managedObject = self.zone_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -2190,6 +2293,62 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   }
 
   //····················································································································
+  //   Observers of 'zoneName' transient property
+  //····················································································································
+
+  private var mObserversOf_zoneName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_zoneName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_zoneName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoneName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoneName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_zoneName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.zoneName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_zoneName_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_zoneName {
+        managedObject.zoneName_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_zoneName_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_zoneName {
+        managedObject.zoneName_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -2282,6 +2441,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_annularRing_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_zoneName_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -2305,6 +2465,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedSet)
       self.addEBObserversOf_annularRing_toElementsOfSet (addedSet)
+      self.addEBObserversOf_zoneName_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -2451,6 +2612,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_padIsTraversing_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_annularRing_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : PackagePad in addedObjectSet {
@@ -2476,6 +2638,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_padIsTraversing_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_annularRing_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
@@ -2589,6 +2752,810 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: zone
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : PackagePad? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  weak private var mValue : PackageZone? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Remove property observers of old object
+        oldValue?.height_property.removeEBObserversFrom (self.mObserversOf_height)
+        oldValue?.heightUnit_property.removeEBObserversFrom (self.mObserversOf_heightUnit)
+        oldValue?.issues_property.removeEBObserversFrom (self.mObserversOf_issues)
+        oldValue?.objectDisplay_property.removeEBObserversFrom (self.mObserversOf_objectDisplay)
+        oldValue?.rect_property.removeEBObserversFrom (self.mObserversOf_rect)
+        oldValue?.selectionDisplay_property.removeEBObserversFrom (self.mObserversOf_selectionDisplay)
+        oldValue?.width_property.removeEBObserversFrom (self.mObserversOf_width)
+        oldValue?.widthUnit_property.removeEBObserversFrom (self.mObserversOf_widthUnit)
+        oldValue?.x_property.removeEBObserversFrom (self.mObserversOf_x)
+        oldValue?.xName_property.removeEBObserversFrom (self.mObserversOf_xName)
+        oldValue?.xUnit_property.removeEBObserversFrom (self.mObserversOf_xUnit)
+        oldValue?.y_property.removeEBObserversFrom (self.mObserversOf_y)
+        oldValue?.yName_property.removeEBObserversFrom (self.mObserversOf_yName)
+        oldValue?.yUnit_property.removeEBObserversFrom (self.mObserversOf_yUnit)
+        oldValue?.zoneName_property.removeEBObserversFrom (self.mObserversOf_zoneName)
+        oldValue?.zoneNumbering_property.removeEBObserversFrom (self.mObserversOf_zoneNumbering)
+      //--- Add property observers to new object
+        self.mValue?.height_property.addEBObserversFrom (self.mObserversOf_height)
+        self.mValue?.heightUnit_property.addEBObserversFrom (self.mObserversOf_heightUnit)
+        self.mValue?.issues_property.addEBObserversFrom (self.mObserversOf_issues)
+        self.mValue?.objectDisplay_property.addEBObserversFrom (self.mObserversOf_objectDisplay)
+        self.mValue?.rect_property.addEBObserversFrom (self.mObserversOf_rect)
+        self.mValue?.selectionDisplay_property.addEBObserversFrom (self.mObserversOf_selectionDisplay)
+        self.mValue?.width_property.addEBObserversFrom (self.mObserversOf_width)
+        self.mValue?.widthUnit_property.addEBObserversFrom (self.mObserversOf_widthUnit)
+        self.mValue?.x_property.addEBObserversFrom (self.mObserversOf_x)
+        self.mValue?.xName_property.addEBObserversFrom (self.mObserversOf_xName)
+        self.mValue?.xUnit_property.addEBObserversFrom (self.mObserversOf_xUnit)
+        self.mValue?.y_property.addEBObserversFrom (self.mObserversOf_y)
+        self.mValue?.yName_property.addEBObserversFrom (self.mObserversOf_yName)
+        self.mValue?.yUnit_property.addEBObserversFrom (self.mObserversOf_yUnit)
+        self.mValue?.zoneName_property.addEBObserversFrom (self.mObserversOf_zoneName)
+        self.mValue?.zoneNumbering_property.addEBObserversFrom (self.mObserversOf_zoneNumbering)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : PackageZone? { get { return self.mValue } }
+
+  var prop : EBSelection <PackageZone?> { get { return .single (self.mValue) } }
+
+  func setProp (_ value : PackageZone?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : PackageZone?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : PackageZone) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+  
+  //····················································································································
+
+//  func add (_ object : PackageZone) {
+ //   self.mValue = object
+//  }
+
+  //····················································································································
+  //   Observable property: height
+  //····················································································································
+
+  private var mObserversOf_height = EBWeakEventSet ()
+
+  //····················································································································
+
+  var height_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.height_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+    self.mObserversOf_height.insert (inObserver)
+    if let object = self.propval {
+      object.height_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
+    self.mObserversOf_height.remove (inObserver)
+    if let object = self.propval {
+      object.height_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: heightUnit
+  //····················································································································
+
+  private var mObserversOf_heightUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var heightUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.heightUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_heightUnit.insert (inObserver)
+    if let object = self.propval {
+      object.heightUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_heightUnit.remove (inObserver)
+    if let object = self.propval {
+      object.heightUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    get {
+      if let model = self.propval {
+        switch (model.issues_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: objectDisplay
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    get {
+      if let model = self.propval {
+        switch (model.objectDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: rect
+  //····················································································································
+
+  private var mObserversOf_rect = EBWeakEventSet ()
+
+  //····················································································································
+
+  var rect_property_selection : EBSelection <CanariRect?> {
+    get {
+      if let model = self.propval {
+        switch (model.rect_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_rect (_ inObserver : EBEvent) {
+    self.mObserversOf_rect.insert (inObserver)
+    if let object = self.propval {
+      object.rect_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_rect (_ inObserver : EBEvent) {
+    self.mObserversOf_rect.remove (inObserver)
+    if let object = self.propval {
+      object.rect_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectionDisplay
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    get {
+      if let model = self.propval {
+        switch (model.selectionDisplay_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: width
+  //····················································································································
+
+  private var mObserversOf_width = EBWeakEventSet ()
+
+  //····················································································································
+
+  var width_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.width_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.mObserversOf_width.insert (inObserver)
+    if let object = self.propval {
+      object.width_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+    self.mObserversOf_width.remove (inObserver)
+    if let object = self.propval {
+      object.width_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: widthUnit
+  //····················································································································
+
+  private var mObserversOf_widthUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var widthUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.widthUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_widthUnit.insert (inObserver)
+    if let object = self.propval {
+      object.widthUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_widthUnit.remove (inObserver)
+    if let object = self.propval {
+      object.widthUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: x
+  //····················································································································
+
+  private var mObserversOf_x = EBWeakEventSet ()
+
+  //····················································································································
+
+  var x_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.x_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
+    self.mObserversOf_x.insert (inObserver)
+    if let object = self.propval {
+      object.x_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
+    self.mObserversOf_x.remove (inObserver)
+    if let object = self.propval {
+      object.x_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: xName
+  //····················································································································
+
+  private var mObserversOf_xName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var xName_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.xName_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_xName (_ inObserver : EBEvent) {
+    self.mObserversOf_xName.insert (inObserver)
+    if let object = self.propval {
+      object.xName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xName (_ inObserver : EBEvent) {
+    self.mObserversOf_xName.remove (inObserver)
+    if let object = self.propval {
+      object.xName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: xUnit
+  //····················································································································
+
+  private var mObserversOf_xUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var xUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.xUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_xUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_xUnit.insert (inObserver)
+    if let object = self.propval {
+      object.xUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_xUnit.remove (inObserver)
+    if let object = self.propval {
+      object.xUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: y
+  //····················································································································
+
+  private var mObserversOf_y = EBWeakEventSet ()
+
+  //····················································································································
+
+  var y_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.y_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+    self.mObserversOf_y.insert (inObserver)
+    if let object = self.propval {
+      object.y_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+    self.mObserversOf_y.remove (inObserver)
+    if let object = self.propval {
+      object.y_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: yName
+  //····················································································································
+
+  private var mObserversOf_yName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var yName_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.yName_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_yName (_ inObserver : EBEvent) {
+    self.mObserversOf_yName.insert (inObserver)
+    if let object = self.propval {
+      object.yName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yName (_ inObserver : EBEvent) {
+    self.mObserversOf_yName.remove (inObserver)
+    if let object = self.propval {
+      object.yName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: yUnit
+  //····················································································································
+
+  private var mObserversOf_yUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var yUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.yUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_yUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_yUnit.insert (inObserver)
+    if let object = self.propval {
+      object.yUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_yUnit.remove (inObserver)
+    if let object = self.propval {
+      object.yUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: zoneName
+  //····················································································································
+
+  private var mObserversOf_zoneName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var zoneName_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.zoneName_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_zoneName (_ inObserver : EBEvent) {
+    self.mObserversOf_zoneName.insert (inObserver)
+    if let object = self.propval {
+      object.zoneName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoneName (_ inObserver : EBEvent) {
+    self.mObserversOf_zoneName.remove (inObserver)
+    if let object = self.propval {
+      object.zoneName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: zoneNumbering
+  //····················································································································
+
+  private var mObserversOf_zoneNumbering = EBWeakEventSet ()
+
+  //····················································································································
+
+  var zoneNumbering_property_selection : EBSelection <PadNumbering?> {
+    get {
+      if let model = self.propval {
+        switch (model.zoneNumbering_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_zoneNumbering (_ inObserver : EBEvent) {
+    self.mObserversOf_zoneNumbering.insert (inObserver)
+    if let object = self.propval {
+      object.zoneNumbering_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_zoneNumbering (_ inObserver : EBEvent) {
+    self.mObserversOf_zoneNumbering.remove (inObserver)
+    if let object = self.propval {
+      object.zoneNumbering_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

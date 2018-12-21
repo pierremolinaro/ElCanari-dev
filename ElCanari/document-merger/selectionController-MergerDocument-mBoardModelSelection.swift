@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_MergerDocument_mBoardModelSelection                                                          *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_MergerDocument_mBoardModelSelection)
 final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
 
   //····················································································································

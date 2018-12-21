@@ -198,11 +198,13 @@ graphic entity PackagePad : PackageObject {
   property @signature Int heightUnit  default 2_286 ;
   property @signature Int holeDiameterUnit default 2_286 ;
   property @signature Int annularRingUnit default 2_286 ;
+  
+  toOne PackageZone zone ;
 
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     self.padNumber, prefs.padNumberFont, prefs.padNumberColor,
+     self.padNumber, prefs.padNumberFont, prefs.padNumberColor, self.zone.one.zoneName,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom
@@ -216,6 +218,8 @@ graphic entity PackagePad : PackageObject {
   transient Bool padIsTraversing dependsFrom self.padStyle ;
   
   transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
+  
+  transient String zoneName dependsFrom self.zone.one.zoneName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -19,38 +19,37 @@ import Cocoa
 
 class EBWeakEventSetElement : EBObject {
 
-  fileprivate weak var mObserver : EBEvent? = nil { // SOULD BE WEAK
-    didSet {
-      if mObserver == nil, let object = mObject {
-        object.mDictionary [mObserverObjectIndex] = nil
-      }
-    }
-  }
-
   private weak var mObject : EBWeakEventSet? = nil // SOULD BE WEAK
   private var mObserverObjectIndex : Int
   private var mObserverRetainCount = 1
 
+  fileprivate weak var mObserver : EBEvent? = nil { // SOULD BE WEAK
+    didSet {
+      if self.mObserver == nil, let object = self.mObject {
+        object.mDictionary [self.mObserverObjectIndex] = nil
+      }
+    }
+  }
+
   //····················································································································
-  
+
   init (object : EBWeakEventSet, observer : EBEvent) {
     mObserver = observer
     mObject = object
     mObserverObjectIndex = observer.mEasyBindingsObjectIndex
     super.init ()
   }
-
   //····················································································································
   
   final func retainObserver () {
-    mObserverRetainCount += 1
+    self.mObserverRetainCount += 1
   }
 
   //····················································································································
   
   final func releaseObserver () -> Int {
-    mObserverRetainCount -= 1
-    return mObserverRetainCount
+    self.mObserverRetainCount -= 1
+    return self.mObserverRetainCount
   }
 
   //····················································································································
@@ -68,7 +67,7 @@ class EBWeakEventSet : EBObject, Sequence {
   
   func insert (_ inObserver : EBEvent) {
     let address : Int = inObserver.mEasyBindingsObjectIndex
-    if let entry = mDictionary [address] {
+    if let entry = self.mDictionary [address] {
       entry.retainObserver ()
     }else{
       mDictionary [address] = EBWeakEventSetElement (object:self, observer:inObserver)
@@ -79,7 +78,7 @@ class EBWeakEventSet : EBObject, Sequence {
   
   func remove (_ inObserver : EBEvent) {
     let address : Int = inObserver.mEasyBindingsObjectIndex
-    if let entry = mDictionary [address] {
+    if let entry = self.mDictionary [address] {
       if entry.releaseObserver () == 0 {
         mDictionary [address] = nil
       }
@@ -102,7 +101,7 @@ class EBWeakEventSet : EBObject, Sequence {
   
   var count : Int {
     get {
-      return mDictionary.count
+      return self.mDictionary.count
     }
   }
 
@@ -121,7 +120,7 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func addEBObserver (_ inObserver : EBEvent) {
-    mObservers.insert (inObserver)
+    self.mObservers.insert (inObserver)
     updateObserverExplorer ()
     inObserver.postEvent ()
   }
@@ -131,7 +130,8 @@ class EBAbstractProperty : EBEvent {
   final func addEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
     if inObserverSet.count > 0 {
       for observer in inObserverSet {
-        mObservers.insert (observer)
+        self.mObservers.insert (observer)
+        observer.postEvent ()
       }
       updateObserverExplorer ()
     }
@@ -140,7 +140,7 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func removeEBObserver (_ inObserver : EBEvent) {
-    mObservers.remove (inObserver)
+    self.mObservers.remove (inObserver)
     updateObserverExplorer ()
   }
 
@@ -149,7 +149,8 @@ class EBAbstractProperty : EBEvent {
   final func removeEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
     if inObserverSet.count > 0 {
       for observer in inObserverSet {
-        mObservers.remove (observer)
+        self.mObservers.remove (observer)
+        observer.postEvent ()
       }
       updateObserverExplorer ()
     }
@@ -158,7 +159,7 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   override func postEvent () {
-    for object in mObservers {
+    for object in self.mObservers {
       object.postEvent ()
     }
   }
@@ -174,11 +175,11 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func updateObserverExplorer () {
-    if let observerExplorer = mObserverExplorer {
+    if let observerExplorer = self.mObserverExplorer {
       observerExplorer.removeAllItems ()
       observerExplorer.addItem (withTitle: String (mObservers.count))
-      observerExplorer.isEnabled = mObservers.count > 0
-      for object : EBEvent in mObservers {
+      observerExplorer.isEnabled = self.mObservers.count > 0
+      for object : EBEvent in self.mObservers {
         let stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + object.className
         observerExplorer.addItem (withTitle: stringValue)
       }
@@ -199,13 +200,13 @@ class EBObserver : EBAbstractProperty {
   //····················································································································
 
   func setPostEventFunction (_ function : Optional < () -> Void >) {
-    mPostEventFunction = function
+    self.mPostEventFunction = function
   }
   
   //····················································································································
 
   override func postEvent() {
-    mPostEventFunction? ()
+    self.mPostEventFunction? ()
     super.postEvent ()
   }
 
@@ -259,7 +260,7 @@ func presentErrorWindow (file : String!,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension Array {
-  func objectAtIndex (_ index:Int, file:String, line:Int) -> Element {
+  func objectAtIndex (_ index: Int, file: String, line: Int) -> Element {
     if index < 0 {
       NSLog ("Negative index %d in '%@' line %d", index, file, line)
     }else if index >= count {

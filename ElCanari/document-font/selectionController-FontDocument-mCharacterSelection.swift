@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_FontDocument_mCharacterSelection                                                             *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_FontDocument_mCharacterSelection)
 final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   //····················································································································

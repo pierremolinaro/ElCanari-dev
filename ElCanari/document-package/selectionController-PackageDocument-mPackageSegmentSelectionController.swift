@@ -8,7 +8,6 @@ import Cocoa
 //    SelectionController_PackageDocument_mPackageSegmentSelectionController                                           *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(SelectionController_PackageDocument_mPackageSegmentSelectionController)
 final class SelectionController_PackageDocument_mPackageSegmentSelectionController : EBObject {
 
   //····················································································································
