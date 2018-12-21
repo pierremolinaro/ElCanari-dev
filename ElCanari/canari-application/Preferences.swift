@@ -30,6 +30,7 @@ let Preferences_packageGuideColor = "Preferences:packageGuideColor"
 let Preferences_packageDimensionColor = "Preferences:packageDimensionColor"
 let Preferences_dimensionFont = "Preferences:dimensionFont"
 let Preferences_padZoneColor = "Preferences:padZoneColor"
+let Preferences_padZoneFont = "Preferences:padZoneFont"
 let Preferences_packageDrawingWidthMultipliedByTen = "Preferences:packageDrawingWidthMultipliedByTen"
 let Preferences_mSymbolAndPackageGridDotColorForDevice = "Preferences:mSymbolAndPackageGridDotColorForDevice"
 let Preferences_mSymbolAndPackageGridLineColorForDevice = "Preferences:mSymbolAndPackageGridLineColorForDevice"
@@ -617,6 +618,29 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   var padZoneColor_property_selection : EBSelection <NSColor> {
     return self.padZoneColor_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: padZoneFont
+  //····················································································································
+
+  var padZoneFont_property = EBStoredProperty_NSFont (NSFont.systemFont (ofSize: 3.0), prefKey: Preferences_padZoneFont)
+
+  //····················································································································
+
+  var padZoneFont : NSFont {
+    get {
+      return self.padZoneFont_property.propval
+    }
+    set {
+      self.padZoneFont_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var padZoneFont_property_selection : EBSelection <NSFont> {
+    return self.padZoneFont_property.prop
   }
 
   //····················································································································
@@ -3771,6 +3795,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.dimensionFont_property.undoManager = self.undoManager
   //--- Atomic property: padZoneColor
     self.padZoneColor_property.undoManager = self.undoManager
+  //--- Atomic property: padZoneFont
+    self.padZoneFont_property.undoManager = self.undoManager
   //--- Atomic property: packageDrawingWidthMultipliedByTen
     self.packageDrawingWidthMultipliedByTen_property.undoManager = self.undoManager
   //--- Atomic property: mSymbolAndPackageGridDotColorForDevice

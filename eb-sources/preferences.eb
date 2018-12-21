@@ -138,7 +138,7 @@ prefs {
   property NSColor padNumberColor default red;
   outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor {sendContinously:no} ;
 #--- Pad Number Font
-  property NSFont padNumberFont default 3 ; # toolTipsFontOfSize:3 ;
+  property NSFont padNumberFont default 3 ;
   outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
 #--- Package Guide Color
   property NSColor packageGuideColor default yellow;
@@ -152,6 +152,8 @@ prefs {
 #--- Pad Zone Color
   property NSColor padZoneColor default magenta;
   outlet EBColorWell mPadZoneColorColorWell $color self.padZoneColor {sendContinously:no} ;
+#--- Pad Zone Font
+  property NSFont padZoneFont default 3 ;
 #--- Drawing width
   property Int packageDrawingWidthMultipliedByTen default 15 ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag self.packageDrawingWidthMultipliedByTen ;

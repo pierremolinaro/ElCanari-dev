@@ -37,17 +37,14 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()
-  fileprivate var mPadNumberingObserver = EBModelEvent ()
+  internal var mPadNumberingObserver = EBModelEvent ()
 
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Handle pad number event
-    self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
-    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
-    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
-    self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)
+    self.addPadNumbringObservers ()
   //--- Register document for renumbering pull down button
     self.mPadRenumberingPullDownButton?.register (document: self)
   //--- Package color observer
@@ -102,6 +99,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackageDimension",
       scaleProvider: self.mComposedPackageView
     )
+    self.mAddZoneButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackageZone",
+      scaleProvider: self.mComposedPackageView
+    )
  //--- Register scroll view
     self.mComposedPackageScrollView?.register (document: self, draggedTypes: [packagePasteboardType])
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
@@ -117,6 +119,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")
     self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, forClass: "PackageGuide")
     self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, forClass: "PackageDimension")
+    self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, forClass: "PackageZone")
   //--- Set issue display view
     self.mIssueTableView?.register (issueDisplayView: self.mComposedPackageView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
@@ -208,6 +211,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddZoneButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
   }
 

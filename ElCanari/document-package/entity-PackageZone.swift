@@ -6,519 +6,414 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_selectedPageIndex : class {
-  var selectedPageIndex : Int { get }
+protocol PackageZone_x : class {
+  var x : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_selectedInspector : class {
-  var selectedInspector : Int { get }
+protocol PackageZone_y : class {
+  var y : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_comments : class {
-  var comments : String { get }
+protocol PackageZone_width : class {
+  var width : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_horizontalFlip : class {
-  var horizontalFlip : Bool { get }
+protocol PackageZone_height : class {
+  var height : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_verticalFlip : class {
-  var verticalFlip : Bool { get }
+protocol PackageZone_xUnit : class {
+  var xUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStyle : class {
-  var gridStyle : GridStyle { get }
+protocol PackageZone_yUnit : class {
+  var yUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStep : class {
-  var gridStep : Int { get }
+protocol PackageZone_widthUnit : class {
+  var widthUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStepUnit : class {
-  var gridStepUnit : Int { get }
+protocol PackageZone_heightUnit : class {
+  var heightUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridDisplayFactor : class {
-  var gridDisplayFactor : Int { get }
+protocol PackageZone_zoneName : class {
+  var zoneName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_zoom : class {
-  var zoom : Int { get }
+protocol PackageZone_xName : class {
+  var xName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_padNumbering : class {
-  var padNumbering : PadNumbering { get }
+protocol PackageZone_yName : class {
+  var yName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_xPlacardUnit : class {
-  var xPlacardUnit : Int { get }
+protocol PackageZone_zoneNumbering : class {
+  var zoneNumbering : PadNumbering { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_yPlacardUnit : class {
-  var yPlacardUnit : Int { get }
+protocol PackageZone_objectDisplay : class {
+  var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
-  var gridStepMultipliedByDisplayFactor : Int? { get }
+protocol PackageZone_selectionDisplay : class {
+  var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_issues : class {
+protocol PackageZone_issues : class {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageRoot_noIssue : class {
-  var noIssue : Bool? { get }
+protocol PackageZone_rect : class {
+  var rect : CanariRect? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: PackageRoot
+//    Entity: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class PackageRoot : EBGraphicManagedObject,
-         PackageRoot_selectedPageIndex,
-         PackageRoot_selectedInspector,
-         PackageRoot_comments,
-         PackageRoot_horizontalFlip,
-         PackageRoot_verticalFlip,
-         PackageRoot_gridStyle,
-         PackageRoot_gridStep,
-         PackageRoot_gridStepUnit,
-         PackageRoot_gridDisplayFactor,
-         PackageRoot_zoom,
-         PackageRoot_padNumbering,
-         PackageRoot_xPlacardUnit,
-         PackageRoot_yPlacardUnit,
-         PackageRoot_gridStepMultipliedByDisplayFactor,
-         PackageRoot_issues,
-         PackageRoot_noIssue {
+class PackageZone : PackageObject,
+         PackageZone_x,
+         PackageZone_y,
+         PackageZone_width,
+         PackageZone_height,
+         PackageZone_xUnit,
+         PackageZone_yUnit,
+         PackageZone_widthUnit,
+         PackageZone_heightUnit,
+         PackageZone_zoneName,
+         PackageZone_xName,
+         PackageZone_yName,
+         PackageZone_zoneNumbering,
+         PackageZone_objectDisplay,
+         PackageZone_selectionDisplay,
+         PackageZone_issues,
+         PackageZone_rect {
 
   //····················································································································
-  //   Atomic property: selectedPageIndex
+  //   Atomic property: x
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
-  var selectedPageIndex : Int {
+  var x : Int {
     get {
-      return self.selectedPageIndex_property.propval
+      return self.x_property.propval
     }
     set {
-      self.selectedPageIndex_property.setProp (newValue)
+      self.x_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
+  var x_property_selection : EBSelection <Int> {
+    return self.x_property.prop
   }
 
   //····················································································································
-  //   Atomic property: selectedInspector
+  //   Atomic property: y
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
-  var selectedInspector : Int {
+  var y : Int {
     get {
-      return self.selectedInspector_property.propval
+      return self.y_property.propval
     }
     set {
-      self.selectedInspector_property.setProp (newValue)
+      self.y_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var selectedInspector_property_selection : EBSelection <Int> {
-    return self.selectedInspector_property.prop
+  var y_property_selection : EBSelection <Int> {
+    return self.y_property.prop
   }
 
   //····················································································································
-  //   Atomic property: comments
+  //   Atomic property: width
   //····················································································································
 
-  var comments_property = EBStoredProperty_String ("")
+  var width_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
-  var comments : String {
+  var width : Int {
     get {
-      return self.comments_property.propval
+      return self.width_property.propval
     }
     set {
-      self.comments_property.setProp (newValue)
+      self.width_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
+  var width_property_selection : EBSelection <Int> {
+    return self.width_property.prop
   }
 
   //····················································································································
-  //   Atomic property: horizontalFlip
+  //   Atomic property: height
   //····················································································································
 
-  var horizontalFlip_property = EBStoredProperty_Bool (false)
+  var height_property = EBStoredProperty_Int (685800)
 
   //····················································································································
 
-  var horizontalFlip : Bool {
+  var height : Int {
     get {
-      return self.horizontalFlip_property.propval
+      return self.height_property.propval
     }
     set {
-      self.horizontalFlip_property.setProp (newValue)
+      self.height_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var horizontalFlip_property_selection : EBSelection <Bool> {
-    return self.horizontalFlip_property.prop
+  var height_property_selection : EBSelection <Int> {
+    return self.height_property.prop
   }
 
   //····················································································································
-  //   Atomic property: verticalFlip
+  //   Atomic property: xUnit
   //····················································································································
 
-  var verticalFlip_property = EBStoredProperty_Bool (false)
+  var xUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var verticalFlip : Bool {
+  var xUnit : Int {
     get {
-      return self.verticalFlip_property.propval
+      return self.xUnit_property.propval
     }
     set {
-      self.verticalFlip_property.setProp (newValue)
+      self.xUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var verticalFlip_property_selection : EBSelection <Bool> {
-    return self.verticalFlip_property.prop
+  var xUnit_property_selection : EBSelection <Int> {
+    return self.xUnit_property.prop
   }
 
   //····················································································································
-  //   Atomic property: gridStyle
+  //   Atomic property: yUnit
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_GridStyle (GridStyle.line)
+  var yUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var gridStyle : GridStyle {
+  var yUnit : Int {
     get {
-      return self.gridStyle_property.propval
+      return self.yUnit_property.propval
     }
     set {
-      self.gridStyle_property.setProp (newValue)
+      self.yUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridStyle_property_selection : EBSelection <GridStyle> {
-    return self.gridStyle_property.prop
+  var yUnit_property_selection : EBSelection <Int> {
+    return self.yUnit_property.prop
   }
 
   //····················································································································
-  //   Atomic property: gridStep
+  //   Atomic property: widthUnit
   //····················································································································
 
-  var gridStep_property = EBStoredProperty_Int (57150)
+  var widthUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var gridStep : Int {
+  var widthUnit : Int {
     get {
-      return self.gridStep_property.propval
+      return self.widthUnit_property.propval
     }
     set {
-      self.gridStep_property.setProp (newValue)
+      self.widthUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridStep_property_selection : EBSelection <Int> {
-    return self.gridStep_property.prop
+  var widthUnit_property_selection : EBSelection <Int> {
+    return self.widthUnit_property.prop
   }
 
   //····················································································································
-  //   Atomic property: gridStepUnit
+  //   Atomic property: heightUnit
   //····················································································································
 
-  var gridStepUnit_property = EBStoredProperty_Int (2286)
+  var heightUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var gridStepUnit : Int {
+  var heightUnit : Int {
     get {
-      return self.gridStepUnit_property.propval
+      return self.heightUnit_property.propval
     }
     set {
-      self.gridStepUnit_property.setProp (newValue)
+      self.heightUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridStepUnit_property_selection : EBSelection <Int> {
-    return self.gridStepUnit_property.prop
+  var heightUnit_property_selection : EBSelection <Int> {
+    return self.heightUnit_property.prop
   }
 
   //····················································································································
-  //   Atomic property: gridDisplayFactor
+  //   Atomic property: zoneName
   //····················································································································
 
-  var gridDisplayFactor_property = EBStoredProperty_Int (4)
+  var zoneName_property = EBStoredProperty_String ("")
 
   //····················································································································
 
-  var gridDisplayFactor : Int {
+  var zoneName : String {
     get {
-      return self.gridDisplayFactor_property.propval
+      return self.zoneName_property.propval
     }
     set {
-      self.gridDisplayFactor_property.setProp (newValue)
+      self.zoneName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var gridDisplayFactor_property_selection : EBSelection <Int> {
-    return self.gridDisplayFactor_property.prop
+  var zoneName_property_selection : EBSelection <String> {
+    return self.zoneName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: zoom
+  //   Atomic property: xName
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (600)
+  var xName_property = EBStoredProperty_Int (342900)
 
   //····················································································································
 
-  var zoom : Int {
+  var xName : Int {
     get {
-      return self.zoom_property.propval
+      return self.xName_property.propval
     }
     set {
-      self.zoom_property.setProp (newValue)
+      self.xName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var zoom_property_selection : EBSelection <Int> {
-    return self.zoom_property.prop
+  var xName_property_selection : EBSelection <Int> {
+    return self.xName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: padNumbering
+  //   Atomic property: yName
   //····················································································································
 
-  var padNumbering_property = EBStoredProperty_PadNumbering (PadNumbering.noNumbering)
+  var yName_property = EBStoredProperty_Int (342900)
 
   //····················································································································
 
-  var padNumbering : PadNumbering {
+  var yName : Int {
     get {
-      return self.padNumbering_property.propval
+      return self.yName_property.propval
     }
     set {
-      self.padNumbering_property.setProp (newValue)
+      self.yName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var padNumbering_property_selection : EBSelection <PadNumbering> {
-    return self.padNumbering_property.prop
+  var yName_property_selection : EBSelection <Int> {
+    return self.yName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: xPlacardUnit
+  //   Atomic property: zoneNumbering
   //····················································································································
 
-  var xPlacardUnit_property = EBStoredProperty_Int (2286)
+  var zoneNumbering_property = EBStoredProperty_PadNumbering (PadNumbering.noNumbering)
 
   //····················································································································
 
-  var xPlacardUnit : Int {
+  var zoneNumbering : PadNumbering {
     get {
-      return self.xPlacardUnit_property.propval
+      return self.zoneNumbering_property.propval
     }
     set {
-      self.xPlacardUnit_property.setProp (newValue)
+      self.zoneNumbering_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var xPlacardUnit_property_selection : EBSelection <Int> {
-    return self.xPlacardUnit_property.prop
+  var zoneNumbering_property_selection : EBSelection <PadNumbering> {
+    return self.zoneNumbering_property.prop
   }
 
   //····················································································································
-  //   Atomic property: yPlacardUnit
+  //   Transient property: rect
   //····················································································································
 
-  var yPlacardUnit_property = EBStoredProperty_Int (2286)
+  var rect_property = EBTransientProperty_CanariRect ()
 
   //····················································································································
 
-  var yPlacardUnit : Int {
-    get {
-      return self.yPlacardUnit_property.propval
-    }
-    set {
-      self.yPlacardUnit_property.setProp (newValue)
-    }
+  var rect_property_selection : EBSelection <CanariRect> {
+    return self.rect_property.prop
   }
 
   //····················································································································
 
-  var yPlacardUnit_property_selection : EBSelection <Int> {
-    return self.yPlacardUnit_property.prop
-  }
-
-  //····················································································································
-  //   To many property: packageObjects
-  //····················································································································
-
-  var packageObjects_property = StoredArrayOf_PackageObject ()
-
-  //····················································································································
-
-  var packageObjects_property_selection : EBSelection < [PackageObject] > {
-      return self.packageObjects_property.prop
-  }
-
-  //····················································································································
-  //   To many property: packagePads
-  //····················································································································
-
-  var packagePads_property = TransientArrayOf_PackagePad ()
-
-  //····················································································································
-
-  var packagePads_property_selection : EBSelection < [PackagePad] > {
-      return self.packagePads_property.prop
-  }
-
-  //····················································································································
-  //   To many property: packageZones
-  //····················································································································
-
-  var packageZones_property = TransientArrayOf_PackageZone ()
-
-  //····················································································································
-
-  var packageZones_property_selection : EBSelection < [PackageZone] > {
-      return self.packageZones_property.prop
-  }
-
-  //····················································································································
-  //   Transient property: gridStepMultipliedByDisplayFactor
-  //····················································································································
-
-  var gridStepMultipliedByDisplayFactor_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  var gridStepMultipliedByDisplayFactor_property_selection : EBSelection <Int> {
-    return self.gridStepMultipliedByDisplayFactor_property.prop
-  }
-
-  //····················································································································
-
-    var gridStepMultipliedByDisplayFactor : Int? {
-    switch self.gridStepMultipliedByDisplayFactor_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: issues
-  //····················································································································
-
-  var issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-
-    var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: noIssue
-  //····················································································································
-
-  var noIssue_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var noIssue_property_selection : EBSelection <Bool> {
-    return self.noIssue_property.prop
-  }
-
-  //····················································································································
-
-    var noIssue : Bool? {
-    switch self.noIssue_property_selection {
+    var rect : CanariRect? {
+    switch self.rect_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -532,48 +427,51 @@ class PackageRoot : EBGraphicManagedObject,
 
   override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.undoManager = self.undoManager
-  //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.undoManager = self.undoManager
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.undoManager = self.undoManager
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.undoManager = self.undoManager
-  //--- Atomic property: gridStep
-    self.gridStep_property.undoManager = self.undoManager
-  //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.undoManager = self.undoManager
-  //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.undoManager = self.undoManager
-  //--- Atomic property: zoom
-    self.zoom_property.undoManager = self.undoManager
-  //--- Atomic property: padNumbering
-    self.padNumbering_property.undoManager = self.undoManager
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.undoManager = self.undoManager
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.undoManager = self.undoManager
-  //--- To many property: packageObjects (no option)
-    self.packageObjects_property.undoManager = self.undoManager
-  //--- Atomic property: gridStepMultipliedByDisplayFactor
-    self.gridStepMultipliedByDisplayFactor_property.readModelFunction = { [weak self] in
+  //--- Atomic property: x
+    self.x_property.undoManager = self.undoManager
+  //--- Atomic property: y
+    self.y_property.undoManager = self.undoManager
+  //--- Atomic property: width
+    self.width_property.undoManager = self.undoManager
+  //--- Atomic property: height
+    self.height_property.undoManager = self.undoManager
+  //--- Atomic property: xUnit
+    self.xUnit_property.undoManager = self.undoManager
+  //--- Atomic property: yUnit
+    self.yUnit_property.undoManager = self.undoManager
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.undoManager = self.undoManager
+  //--- Atomic property: zoneName
+    self.zoneName_property.undoManager = self.undoManager
+  //--- Atomic property: xName
+    self.xName_property.undoManager = self.undoManager
+  //--- Atomic property: yName
+    self.yName_property.undoManager = self.undoManager
+  //--- Atomic property: zoneNumbering
+    self.zoneNumbering_property.undoManager = self.undoManager
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.gridStep_property_selection.kind ()
-        kind &= unwSelf.gridDisplayFactor_property_selection.kind ()
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
+        kind &= unwSelf.zoneName_property_selection.kind ()
+        kind &= g_Preferences!.padZoneFont_property_selection.kind ()
+        kind &= g_Preferences!.padZoneColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.gridStep_property_selection, unwSelf.gridDisplayFactor_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageRoot_gridStepMultipliedByDisplayFactor (v0, v1))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, g_Preferences!.padZoneFont_property_selection, g_Preferences!.padZoneColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_PackageZone_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -582,26 +480,72 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    self.x_property.addEBObserver (self.objectDisplay_property)
+    self.y_property.addEBObserver (self.objectDisplay_property)
+    self.width_property.addEBObserver (self.objectDisplay_property)
+    self.height_property.addEBObserver (self.objectDisplay_property)
+    self.xName_property.addEBObserver (self.objectDisplay_property)
+    self.yName_property.addEBObserver (self.objectDisplay_property)
+    self.zoneName_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property)
+  //--- Atomic property: selectionDisplay
+    self.selectionDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
+        kind &= unwSelf.zoneName_property_selection.kind ()
+        kind &= g_Preferences!.padZoneFont_property_selection.kind ()
+        kind &= g_Preferences!.padZoneColor_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection, g_Preferences!.padZoneFont_property_selection, g_Preferences!.padZoneColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_PackageZone_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.addEBObserver (self.selectionDisplay_property)
+    self.y_property.addEBObserver (self.selectionDisplay_property)
+    self.width_property.addEBObserver (self.selectionDisplay_property)
+    self.height_property.addEBObserver (self.selectionDisplay_property)
+    self.xName_property.addEBObserver (self.selectionDisplay_property)
+    self.yName_property.addEBObserver (self.selectionDisplay_property)
+    self.zoneName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.packageObjects_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= unwSelf.packageZones_property_selection.kind ()
-        kind &= g_Preferences!.padZoneFont_property_selection.kind ()
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        kind &= unwSelf.xName_property_selection.kind ()
+        kind &= unwSelf.yName_property_selection.kind ()
+        kind &= unwSelf.zoneName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.packageObjects_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, unwSelf.packageZones_property_selection, g_Preferences!.padZoneFont_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_PackageRoot_issues (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.xName_property_selection, unwSelf.yName_property_selection, unwSelf.zoneName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_PackageZone_issues (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -610,25 +554,29 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.packageObjects_property.addEBObserverOf_issues (self.issues_property)
-    self.packageZones_property.addEBObserverOf_rect (self.issues_property)
-    self.packageZones_property.addEBObserverOf_zoneName (self.issues_property)
-    self.packageZones_property.addEBObserverOf_xName (self.issues_property)
-    self.packageZones_property.addEBObserverOf_yName (self.issues_property)
-    g_Preferences?.padZoneFont_property.addEBObserver (self.issues_property)
-  //--- Atomic property: noIssue
-    self.noIssue_property.readModelFunction = { [weak self] in
+    self.x_property.addEBObserver (self.issues_property)
+    self.y_property.addEBObserver (self.issues_property)
+    self.width_property.addEBObserver (self.issues_property)
+    self.height_property.addEBObserver (self.issues_property)
+    self.xName_property.addEBObserver (self.issues_property)
+    self.yName_property.addEBObserver (self.issues_property)
+    self.zoneName_property.addEBObserver (self.issues_property)
+  //--- Atomic property: rect
+    self.rect_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.issues_property_selection.kind ()
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_PackageRoot_noIssue (v0))
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_PackageZone_rect (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -637,55 +585,23 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.issues_property.addEBObserver (self.noIssue_property)
+    self.x_property.addEBObserver (self.rect_property)
+    self.y_property.addEBObserver (self.rect_property)
+    self.width_property.addEBObserver (self.rect_property)
+    self.height_property.addEBObserver (self.rect_property)
   //--- Install undoers and opposite setter for relationships
-    self.packageObjects_property.addEBObserver (self.packagePads_property)
-    self.packagePads_property.readModelFunction =  { [weak self] in
-      if let model = self?.packageObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [PackagePad] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? PackagePad {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.packageObjects_property.addEBObserver (self.packageZones_property)
-    self.packageZones_property.readModelFunction =  { [weak self] in
-      if let model = self?.packageObjects_property {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let modelArray) :
-          var array = [PackageZone] ()
-          for baseObject in modelArray {
-            if let object = baseObject as? PackageZone {
-              array.append (object)
-            }
-          }
-          return .single (array)
-        }
-      }else{
-        return .empty
-      }
-    }
   //--- register properties for handling signature
-    self.comments_property.setSignatureObserver (observer:self)
-    self.packageObjects_property.setSignatureObserver (observer:self)
-    self.xPlacardUnit_property.setSignatureObserver (observer:self)
-    self.yPlacardUnit_property.setSignatureObserver (observer:self)
+    self.height_property.setSignatureObserver (observer:self)
+    self.heightUnit_property.setSignatureObserver (observer:self)
+    self.width_property.setSignatureObserver (observer:self)
+    self.widthUnit_property.setSignatureObserver (observer:self)
+    self.x_property.setSignatureObserver (observer:self)
+    self.xName_property.setSignatureObserver (observer:self)
+    self.xUnit_property.setSignatureObserver (observer:self)
+    self.y_property.setSignatureObserver (observer:self)
+    self.yName_property.setSignatureObserver (observer:self)
+    self.yUnit_property.setSignatureObserver (observer:self)
+    self.zoneName_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -693,19 +609,35 @@ class PackageRoot : EBGraphicManagedObject,
 
   deinit {
   //--- Remove observers
-  //--- To many property: packagePads
-    self.packageObjects_property.removeEBObserver (self.packagePads_property)
-  //--- To many property: packageZones
-    self.packageObjects_property.removeEBObserver (self.packageZones_property)
-    self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
-    self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_xName (self.issues_property)
-    self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
-    g_Preferences?.padZoneFont_property.removeEBObserver (self.issues_property)
-    self.issues_property.removeEBObserver (self.noIssue_property)
+    self.x_property.removeEBObserver (self.objectDisplay_property)
+    self.y_property.removeEBObserver (self.objectDisplay_property)
+    self.width_property.removeEBObserver (self.objectDisplay_property)
+    self.height_property.removeEBObserver (self.objectDisplay_property)
+    self.xName_property.removeEBObserver (self.objectDisplay_property)
+    self.yName_property.removeEBObserver (self.objectDisplay_property)
+    self.zoneName_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padZoneFont_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.padZoneColor_property.removeEBObserver (self.objectDisplay_property)
+    self.x_property.removeEBObserver (self.selectionDisplay_property)
+    self.y_property.removeEBObserver (self.selectionDisplay_property)
+    self.width_property.removeEBObserver (self.selectionDisplay_property)
+    self.height_property.removeEBObserver (self.selectionDisplay_property)
+    self.xName_property.removeEBObserver (self.selectionDisplay_property)
+    self.yName_property.removeEBObserver (self.selectionDisplay_property)
+    self.zoneName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneFont_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.padZoneColor_property.removeEBObserver (self.selectionDisplay_property)
+    self.x_property.removeEBObserver (self.issues_property)
+    self.y_property.removeEBObserver (self.issues_property)
+    self.width_property.removeEBObserver (self.issues_property)
+    self.height_property.removeEBObserver (self.issues_property)
+    self.xName_property.removeEBObserver (self.issues_property)
+    self.yName_property.removeEBObserver (self.issues_property)
+    self.zoneName_property.removeEBObserver (self.issues_property)
+    self.x_property.removeEBObserver (self.rect_property)
+    self.y_property.removeEBObserver (self.rect_property)
+    self.width_property.removeEBObserver (self.rect_property)
+    self.height_property.removeEBObserver (self.rect_property)
   }
 
   //····················································································································
@@ -720,117 +652,117 @@ class PackageRoot : EBGraphicManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
+      "x",
+      idx:self.x_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.x_property.mObserverExplorer,
+      valueExplorer:&self.x_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "selectedInspector",
-      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      "y",
+      idx:self.y_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedInspector_property.mObserverExplorer,
-      valueExplorer:&self.selectedInspector_property.mValueExplorer
+      observerExplorer:&self.y_property.mObserverExplorer,
+      valueExplorer:&self.y_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      "width",
+      idx:self.width_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.comments_property.mObserverExplorer,
-      valueExplorer:&self.comments_property.mValueExplorer
+      observerExplorer:&self.width_property.mObserverExplorer,
+      valueExplorer:&self.width_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "horizontalFlip",
-      idx:self.horizontalFlip_property.mEasyBindingsObjectIndex,
+      "height",
+      idx:self.height_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.horizontalFlip_property.mObserverExplorer,
-      valueExplorer:&self.horizontalFlip_property.mValueExplorer
+      observerExplorer:&self.height_property.mObserverExplorer,
+      valueExplorer:&self.height_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "verticalFlip",
-      idx:self.verticalFlip_property.mEasyBindingsObjectIndex,
+      "xUnit",
+      idx:self.xUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.verticalFlip_property.mObserverExplorer,
-      valueExplorer:&self.verticalFlip_property.mValueExplorer
+      observerExplorer:&self.xUnit_property.mObserverExplorer,
+      valueExplorer:&self.xUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridStyle",
-      idx:self.gridStyle_property.mEasyBindingsObjectIndex,
+      "yUnit",
+      idx:self.yUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStyle_property.mObserverExplorer,
-      valueExplorer:&self.gridStyle_property.mValueExplorer
+      observerExplorer:&self.yUnit_property.mObserverExplorer,
+      valueExplorer:&self.yUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridStep",
-      idx:self.gridStep_property.mEasyBindingsObjectIndex,
+      "widthUnit",
+      idx:self.widthUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStep_property.mObserverExplorer,
-      valueExplorer:&self.gridStep_property.mValueExplorer
+      observerExplorer:&self.widthUnit_property.mObserverExplorer,
+      valueExplorer:&self.widthUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridStepUnit",
-      idx:self.gridStepUnit_property.mEasyBindingsObjectIndex,
+      "heightUnit",
+      idx:self.heightUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStepUnit_property.mObserverExplorer,
-      valueExplorer:&self.gridStepUnit_property.mValueExplorer
+      observerExplorer:&self.heightUnit_property.mObserverExplorer,
+      valueExplorer:&self.heightUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "gridDisplayFactor",
-      idx:self.gridDisplayFactor_property.mEasyBindingsObjectIndex,
+      "zoneName",
+      idx:self.zoneName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridDisplayFactor_property.mObserverExplorer,
-      valueExplorer:&self.gridDisplayFactor_property.mValueExplorer
+      observerExplorer:&self.zoneName_property.mObserverExplorer,
+      valueExplorer:&self.zoneName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      "xName",
+      idx:self.xName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.zoom_property.mObserverExplorer,
-      valueExplorer:&self.zoom_property.mValueExplorer
+      observerExplorer:&self.xName_property.mObserverExplorer,
+      valueExplorer:&self.xName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "padNumbering",
-      idx:self.padNumbering_property.mEasyBindingsObjectIndex,
+      "yName",
+      idx:self.yName_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.padNumbering_property.mObserverExplorer,
-      valueExplorer:&self.padNumbering_property.mValueExplorer
+      observerExplorer:&self.yName_property.mObserverExplorer,
+      valueExplorer:&self.yName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "xPlacardUnit",
-      idx:self.xPlacardUnit_property.mEasyBindingsObjectIndex,
+      "zoneNumbering",
+      idx:self.zoneNumbering_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.xPlacardUnit_property.mObserverExplorer,
-      valueExplorer:&self.xPlacardUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "yPlacardUnit",
-      idx:self.yPlacardUnit_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.yPlacardUnit_property.mObserverExplorer,
-      valueExplorer:&self.yPlacardUnit_property.mValueExplorer
+      observerExplorer:&self.zoneNumbering_property.mObserverExplorer,
+      valueExplorer:&self.zoneNumbering_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "gridStepMultipliedByDisplayFactor",
-      idx:self.gridStepMultipliedByDisplayFactor_property.mEasyBindingsObjectIndex,
+      "objectDisplay",
+      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
-      valueExplorer:&self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
+      observerExplorer:&self.objectDisplay_property.mObserverExplorer,
+      valueExplorer:&self.objectDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "selectionDisplay",
+      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
+      valueExplorer:&self.selectionDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
@@ -841,21 +773,14 @@ class PackageRoot : EBGraphicManagedObject,
       valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "noIssue",
-      idx:self.noIssue_property.mEasyBindingsObjectIndex,
+      "rect",
+      idx:self.rect_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.noIssue_property.mObserverExplorer,
-      valueExplorer:&self.noIssue_property.mValueExplorer
+      observerExplorer:&self.rect_property.mObserverExplorer,
+      valueExplorer:&self.rect_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "packageObjects",
-      idx:packageObjects_property.mEasyBindingsObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&packageObjects_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -865,47 +790,42 @@ class PackageRoot : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.mObserverExplorer = nil
-    self.selectedPageIndex_property.mValueExplorer = nil
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.mObserverExplorer = nil
-    self.selectedInspector_property.mValueExplorer = nil
-  //--- Atomic property: comments
-    self.comments_property.mObserverExplorer = nil
-    self.comments_property.mValueExplorer = nil
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.mObserverExplorer = nil
-    self.horizontalFlip_property.mValueExplorer = nil
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.mObserverExplorer = nil
-    self.verticalFlip_property.mValueExplorer = nil
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.mObserverExplorer = nil
-    self.gridStyle_property.mValueExplorer = nil
-  //--- Atomic property: gridStep
-    self.gridStep_property.mObserverExplorer = nil
-    self.gridStep_property.mValueExplorer = nil
-  //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.mObserverExplorer = nil
-    self.gridStepUnit_property.mValueExplorer = nil
-  //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.mObserverExplorer = nil
-    self.gridDisplayFactor_property.mValueExplorer = nil
-  //--- Atomic property: zoom
-    self.zoom_property.mObserverExplorer = nil
-    self.zoom_property.mValueExplorer = nil
-  //--- Atomic property: padNumbering
-    self.padNumbering_property.mObserverExplorer = nil
-    self.padNumbering_property.mValueExplorer = nil
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.mObserverExplorer = nil
-    self.xPlacardUnit_property.mValueExplorer = nil
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.mObserverExplorer = nil
-    self.yPlacardUnit_property.mValueExplorer = nil
-  //--- To many property: packageObjects
-    self.packageObjects_property.mValueExplorer = nil
+  //--- Atomic property: x
+    self.x_property.mObserverExplorer = nil
+    self.x_property.mValueExplorer = nil
+  //--- Atomic property: y
+    self.y_property.mObserverExplorer = nil
+    self.y_property.mValueExplorer = nil
+  //--- Atomic property: width
+    self.width_property.mObserverExplorer = nil
+    self.width_property.mValueExplorer = nil
+  //--- Atomic property: height
+    self.height_property.mObserverExplorer = nil
+    self.height_property.mValueExplorer = nil
+  //--- Atomic property: xUnit
+    self.xUnit_property.mObserverExplorer = nil
+    self.xUnit_property.mValueExplorer = nil
+  //--- Atomic property: yUnit
+    self.yUnit_property.mObserverExplorer = nil
+    self.yUnit_property.mValueExplorer = nil
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.mObserverExplorer = nil
+    self.widthUnit_property.mValueExplorer = nil
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.mObserverExplorer = nil
+    self.heightUnit_property.mValueExplorer = nil
+  //--- Atomic property: zoneName
+    self.zoneName_property.mObserverExplorer = nil
+    self.zoneName_property.mValueExplorer = nil
+  //--- Atomic property: xName
+    self.xName_property.mObserverExplorer = nil
+    self.xName_property.mValueExplorer = nil
+  //--- Atomic property: yName
+    self.yName_property.mObserverExplorer = nil
+    self.yName_property.mValueExplorer = nil
+  //--- Atomic property: zoneNumbering
+    self.zoneNumbering_property.mObserverExplorer = nil
+    self.zoneNumbering_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -916,38 +836,30 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
-  //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.storeIn (dictionary: ioDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.storeIn (dictionary: ioDictionary, forKey:"gridStep")
-  //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.storeIn (dictionary: ioDictionary, forKey:"gridStepUnit")
-  //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.storeIn (dictionary: ioDictionary, forKey:"gridDisplayFactor")
-  //--- Atomic property: zoom
-    self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
-  //--- Atomic property: padNumbering
-    self.padNumbering_property.storeIn (dictionary: ioDictionary, forKey:"padNumbering")
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"xPlacardUnit")
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
-  //--- To many property: packageObjects
-    self.store (
-      managedObjectArray: packageObjects_property.propval as NSArray,
-      relationshipName: "packageObjects",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: x
+    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+  //--- Atomic property: y
+    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
+  //--- Atomic property: width
+    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
+  //--- Atomic property: height
+    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
+  //--- Atomic property: xUnit
+    self.xUnit_property.storeIn (dictionary: ioDictionary, forKey:"xUnit")
+  //--- Atomic property: yUnit
+    self.yUnit_property.storeIn (dictionary: ioDictionary, forKey:"yUnit")
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.storeIn (dictionary: ioDictionary, forKey:"widthUnit")
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.storeIn (dictionary: ioDictionary, forKey:"heightUnit")
+  //--- Atomic property: zoneName
+    self.zoneName_property.storeIn (dictionary: ioDictionary, forKey:"zoneName")
+  //--- Atomic property: xName
+    self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
+  //--- Atomic property: yName
+    self.yName_property.storeIn (dictionary: ioDictionary, forKey:"yName")
+  //--- Atomic property: zoneNumbering
+    self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey:"zoneNumbering")
   }
 
   //····················································································································
@@ -957,12 +869,6 @@ class PackageRoot : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: packageObjects
-    self.packageObjects_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "packageObjects",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageObject])
   }
 
   //····················································································································
@@ -971,32 +877,30 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-  //--- Atomic property: selectedInspector
-    self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-  //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-  //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
-  //--- Atomic property: verticalFlip
-    self.verticalFlip_property.readFrom (dictionary: inDictionary, forKey:"verticalFlip")
-  //--- Atomic property: gridStyle
-    self.gridStyle_property.readFrom (dictionary: inDictionary, forKey:"gridStyle")
-  //--- Atomic property: gridStep
-    self.gridStep_property.readFrom (dictionary: inDictionary, forKey:"gridStep")
-  //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.readFrom (dictionary: inDictionary, forKey:"gridStepUnit")
-  //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.readFrom (dictionary: inDictionary, forKey:"gridDisplayFactor")
-  //--- Atomic property: zoom
-    self.zoom_property.readFrom (dictionary: inDictionary, forKey:"zoom")
-  //--- Atomic property: padNumbering
-    self.padNumbering_property.readFrom (dictionary: inDictionary, forKey:"padNumbering")
-  //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"xPlacardUnit")
-  //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.readFrom (dictionary: inDictionary, forKey:"yPlacardUnit")
+  //--- Atomic property: x
+    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: y
+    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
+  //--- Atomic property: width
+    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
+  //--- Atomic property: height
+    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
+  //--- Atomic property: xUnit
+    self.xUnit_property.readFrom (dictionary: inDictionary, forKey:"xUnit")
+  //--- Atomic property: yUnit
+    self.yUnit_property.readFrom (dictionary: inDictionary, forKey:"yUnit")
+  //--- Atomic property: widthUnit
+    self.widthUnit_property.readFrom (dictionary: inDictionary, forKey:"widthUnit")
+  //--- Atomic property: heightUnit
+    self.heightUnit_property.readFrom (dictionary: inDictionary, forKey:"heightUnit")
+  //--- Atomic property: zoneName
+    self.zoneName_property.readFrom (dictionary: inDictionary, forKey:"zoneName")
+  //--- Atomic property: xName
+    self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
+  //--- Atomic property: yName
+    self.yName_property.readFrom (dictionary: inDictionary, forKey:"yName")
+  //--- Atomic property: zoneNumbering
+    self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey:"zoneNumbering")
   }
 
   //····················································································································
@@ -1013,8 +917,6 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func resetToManyRelationships () {
     super.resetToManyRelationships ()
-  //--- To many property: packageObjects
-    self.packageObjects_property.setProp ([])
   }
 
   //····················································································································
@@ -1031,18 +933,6 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: packageObjects
-    for managedObject : EBManagedObject in self.packageObjects_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: packagePads
-    for managedObject : EBManagedObject in self.packagePads_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: packageZones
-    for managedObject : EBManagedObject in self.packageZones_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -1051,10 +941,17 @@ class PackageRoot : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.comments_property.signature ())
-    crc.accumulateUInt32 (self.packageObjects_property.signature ())
-    crc.accumulateUInt32 (self.xPlacardUnit_property.signature ())
-    crc.accumulateUInt32 (self.yPlacardUnit_property.signature ())
+    crc.accumulateUInt32 (self.height_property.signature ())
+    crc.accumulateUInt32 (self.heightUnit_property.signature ())
+    crc.accumulateUInt32 (self.width_property.signature ())
+    crc.accumulateUInt32 (self.widthUnit_property.signature ())
+    crc.accumulateUInt32 (self.x_property.signature ())
+    crc.accumulateUInt32 (self.xName_property.signature ())
+    crc.accumulateUInt32 (self.xUnit_property.signature ())
+    crc.accumulateUInt32 (self.y_property.signature ())
+    crc.accumulateUInt32 (self.yName_property.signature ())
+    crc.accumulateUInt32 (self.yUnit_property.signature ())
+    crc.accumulateUInt32 (self.zoneName_property.signature ())
     return crc
   }
 
@@ -1063,804 +960,803 @@ class PackageRoot : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageRoot
+//    ReadOnlyArrayOf_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> {
+class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> {
 
   //····················································································································
-  //   Observers of 'selectedPageIndex' stored property
+  //   Observers of 'x' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_x = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_x (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.insert (inObserver)
+    self.mObserversOf_x.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.x_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.remove (inObserver)
+    self.mObserversOf_x.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.x_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedPageIndex {
-        managedObject.selectedPageIndex_property.addEBObserver (observer)
+      for observer in self.mObserversOf_x {
+        managedObject.x_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_selectedPageIndex {
+  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_x {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedPageIndex_property.removeEBObserver (observer)
+        managedObject.x_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'selectedInspector' stored property
+  //   Observers of 'y' stored property
   //····················································································································
 
-  private var mObserversOf_selectedInspector = EBWeakEventSet ()
+  private var mObserversOf_y = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+  final func addEBObserverOf_y (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_selectedInspector.insert (inObserver)
+    self.mObserversOf_y.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.addEBObserver (inObserver)
+        managedObject.y_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedInspector (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedInspector.remove (inObserver)
+    self.mObserversOf_y.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedInspector_property.removeEBObserver (inObserver)
+        managedObject.y_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedInspector {
-        managedObject.selectedInspector_property.addEBObserver (observer)
+      for observer in self.mObserversOf_y {
+        managedObject.y_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_selectedInspector {
+  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_y {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedInspector_property.removeEBObserver (observer)
+        managedObject.y_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'comments' stored property
+  //   Observers of 'width' stored property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private var mObserversOf_width = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_width.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
+        managedObject.width_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_width.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.removeEBObserver (inObserver)
+        managedObject.width_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_comments {
-        managedObject.comments_property.addEBObserver (observer)
+      for observer in self.mObserversOf_width {
+        managedObject.width_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_comments {
+  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_width {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
+        managedObject.width_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'horizontalFlip' stored property
+  //   Observers of 'height' stored property
   //····················································································································
 
-  private var mObserversOf_horizontalFlip = EBWeakEventSet ()
+  private var mObserversOf_height = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_height (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_horizontalFlip.insert (inObserver)
+    self.mObserversOf_height.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalFlip_property.addEBObserver (inObserver)
+        managedObject.height_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_horizontalFlip (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_horizontalFlip.remove (inObserver)
+    self.mObserversOf_height.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.horizontalFlip_property.removeEBObserver (inObserver)
+        managedObject.height_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_horizontalFlip {
-        managedObject.horizontalFlip_property.addEBObserver (observer)
+      for observer in self.mObserversOf_height {
+        managedObject.height_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_horizontalFlip {
+  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_height {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.horizontalFlip_property.removeEBObserver (observer)
+        managedObject.height_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'verticalFlip' stored property
+  //   Observers of 'xUnit' stored property
   //····················································································································
 
-  private var mObserversOf_verticalFlip = EBWeakEventSet ()
+  private var mObserversOf_xUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_verticalFlip.insert (inObserver)
+    self.mObserversOf_xUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.verticalFlip_property.addEBObserver (inObserver)
+        managedObject.xUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_verticalFlip (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_xUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_verticalFlip.remove (inObserver)
+    self.mObserversOf_xUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.verticalFlip_property.removeEBObserver (inObserver)
+        managedObject.xUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_xUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_verticalFlip {
-        managedObject.verticalFlip_property.addEBObserver (observer)
+      for observer in self.mObserversOf_xUnit {
+        managedObject.xUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_verticalFlip {
+  final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_xUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.verticalFlip_property.removeEBObserver (observer)
+        managedObject.xUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStyle' stored property
+  //   Observers of 'yUnit' stored property
   //····················································································································
 
-  private var mObserversOf_gridStyle = EBWeakEventSet ()
+  private var mObserversOf_yUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridStyle.insert (inObserver)
+    self.mObserversOf_yUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStyle_property.addEBObserver (inObserver)
+        managedObject.yUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStyle (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_yUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridStyle.remove (inObserver)
+    self.mObserversOf_yUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStyle_property.removeEBObserver (inObserver)
+        managedObject.yUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_yUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStyle {
-        managedObject.gridStyle_property.addEBObserver (observer)
+      for observer in self.mObserversOf_yUnit {
+        managedObject.yUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStyle {
+  final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_yUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridStyle_property.removeEBObserver (observer)
+        managedObject.yUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStep' stored property
+  //   Observers of 'widthUnit' stored property
   //····················································································································
 
-  private var mObserversOf_gridStep = EBWeakEventSet ()
+  private var mObserversOf_widthUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func addEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridStep.insert (inObserver)
+    self.mObserversOf_widthUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.addEBObserver (inObserver)
+        managedObject.widthUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStep (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_widthUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridStep.remove (inObserver)
+    self.mObserversOf_widthUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStep_property.removeEBObserver (inObserver)
+        managedObject.widthUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStep_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStep {
-        managedObject.gridStep_property.addEBObserver (observer)
+      for observer in self.mObserversOf_widthUnit {
+        managedObject.widthUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStep {
+  final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_widthUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridStep_property.removeEBObserver (observer)
+        managedObject.widthUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStepUnit' stored property
+  //   Observers of 'heightUnit' stored property
   //····················································································································
 
-  private var mObserversOf_gridStepUnit = EBWeakEventSet ()
+  private var mObserversOf_heightUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridStepUnit.insert (inObserver)
+    self.mObserversOf_heightUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStepUnit_property.addEBObserver (inObserver)
+        managedObject.heightUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStepUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_heightUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridStepUnit.remove (inObserver)
+    self.mObserversOf_heightUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStepUnit_property.removeEBObserver (inObserver)
+        managedObject.heightUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStepUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepUnit {
-        managedObject.gridStepUnit_property.addEBObserver (observer)
+      for observer in self.mObserversOf_heightUnit {
+        managedObject.heightUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStepUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStepUnit {
+  final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_heightUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridStepUnit_property.removeEBObserver (observer)
+        managedObject.heightUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridDisplayFactor' stored property
+  //   Observers of 'zoneName' stored property
   //····················································································································
 
-  private var mObserversOf_gridDisplayFactor = EBWeakEventSet ()
+  private var mObserversOf_zoneName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_zoneName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridDisplayFactor.insert (inObserver)
+    self.mObserversOf_zoneName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.zoneName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridDisplayFactor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_zoneName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridDisplayFactor.remove (inObserver)
+    self.mObserversOf_zoneName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridDisplayFactor_property.removeEBObserver (inObserver)
+        managedObject.zoneName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_zoneName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridDisplayFactor {
-        managedObject.gridDisplayFactor_property.addEBObserver (observer)
+      for observer in self.mObserversOf_zoneName {
+        managedObject.zoneName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridDisplayFactor {
+  final func removeEBObserversOf_zoneName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_zoneName {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.gridDisplayFactor_property.removeEBObserver (observer)
+        managedObject.zoneName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'zoom' stored property
+  //   Observers of 'xName' stored property
   //····················································································································
 
-  private var mObserversOf_zoom = EBWeakEventSet ()
+  private var mObserversOf_xName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_zoom (_ inObserver : EBEvent) {
+  final func addEBObserverOf_xName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_zoom.insert (inObserver)
+    self.mObserversOf_xName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.zoom_property.addEBObserver (inObserver)
+        managedObject.xName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_zoom (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_xName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_zoom.remove (inObserver)
+    self.mObserversOf_xName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.zoom_property.removeEBObserver (inObserver)
+        managedObject.xName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_xName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_zoom {
-        managedObject.zoom_property.addEBObserver (observer)
+      for observer in self.mObserversOf_xName {
+        managedObject.xName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_zoom {
+  final func removeEBObserversOf_xName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_xName {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.zoom_property.removeEBObserver (observer)
+        managedObject.xName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'padNumbering' stored property
+  //   Observers of 'yName' stored property
   //····················································································································
 
-  private var mObserversOf_padNumbering = EBWeakEventSet ()
+  private var mObserversOf_yName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_padNumbering (_ inObserver : EBEvent) {
+  final func addEBObserverOf_yName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_padNumbering.insert (inObserver)
+    self.mObserversOf_yName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padNumbering_property.addEBObserver (inObserver)
+        managedObject.yName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_padNumbering (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_yName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_padNumbering.remove (inObserver)
+    self.mObserversOf_yName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.padNumbering_property.removeEBObserver (inObserver)
+        managedObject.yName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_padNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_yName_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumbering {
-        managedObject.padNumbering_property.addEBObserver (observer)
+      for observer in self.mObserversOf_yName {
+        managedObject.yName_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_padNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_padNumbering {
+  final func removeEBObserversOf_yName_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_yName {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.padNumbering_property.removeEBObserver (observer)
+        managedObject.yName_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'xPlacardUnit' stored property
+  //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
-  private var mObserversOf_xPlacardUnit = EBWeakEventSet ()
+  private var mObserversOf_zoneNumbering = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_zoneNumbering (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_xPlacardUnit.insert (inObserver)
+    self.mObserversOf_zoneNumbering.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xPlacardUnit_property.addEBObserver (inObserver)
+        managedObject.zoneNumbering_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_xPlacardUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_zoneNumbering (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_xPlacardUnit.remove (inObserver)
+    self.mObserversOf_zoneNumbering.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.xPlacardUnit_property.removeEBObserver (inObserver)
+        managedObject.zoneNumbering_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_zoneNumbering_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xPlacardUnit {
-        managedObject.xPlacardUnit_property.addEBObserver (observer)
+      for observer in self.mObserversOf_zoneNumbering {
+        managedObject.zoneNumbering_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_xPlacardUnit {
+  final func removeEBObserversOf_zoneNumbering_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_zoneNumbering {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.xPlacardUnit_property.removeEBObserver (observer)
+        managedObject.zoneNumbering_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'yPlacardUnit' stored property
+  //   Observers of 'objectDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_yPlacardUnit = EBWeakEventSet ()
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_yPlacardUnit.insert (inObserver)
+    self.mObserversOf_objectDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yPlacardUnit_property.addEBObserver (inObserver)
+        managedObject.objectDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_yPlacardUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_yPlacardUnit.remove (inObserver)
+    self.mObserversOf_objectDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.yPlacardUnit_property.removeEBObserver (inObserver)
+        managedObject.objectDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yPlacardUnit {
-        managedObject.yPlacardUnit_property.addEBObserver (observer)
+      for observer in self.mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_yPlacardUnit {
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.yPlacardUnit_property.removeEBObserver (observer)
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_objectDisplay {
+        managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'gridStepMultipliedByDisplayFactor' transient property
+  //   Observers of 'selectionDisplay' transient property
   //····················································································································
 
-  private var mObserversOf_gridStepMultipliedByDisplayFactor = EBWeakEventSet ()
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_gridStepMultipliedByDisplayFactor.insert (inObserver)
+    self.mObserversOf_selectionDisplay.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (inObserver)
+        managedObject.selectionDisplay_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_gridStepMultipliedByDisplayFactor (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_gridStepMultipliedByDisplayFactor.remove (inObserver)
+    self.mObserversOf_selectionDisplay.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (inObserver)
+        managedObject.selectionDisplay_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor {
-        managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
+      for observer in self.mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor {
-        managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
+      for observer in self.mObserversOf_selectionDisplay {
+        managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
   }
@@ -1903,7 +1799,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
@@ -1913,7 +1809,7 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
@@ -1922,57 +1818,57 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
-  //   Observers of 'noIssue' transient property
+  //   Observers of 'rect' transient property
   //····················································································································
 
-  private var mObserversOf_noIssue = EBWeakEventSet ()
+  private var mObserversOf_rect = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_noIssue (_ inObserver : EBEvent) {
+  final func addEBObserverOf_rect (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_noIssue.insert (inObserver)
+    self.mObserversOf_rect.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.noIssue_property.addEBObserver (inObserver)
+        managedObject.rect_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_noIssue (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_rect (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_noIssue.remove (inObserver)
+    self.mObserversOf_rect.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.noIssue_property.removeEBObserver (inObserver)
+        managedObject.rect_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func addEBObserversOf_rect_toElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_noIssue {
-        managedObject.noIssue_property.addEBObserver (observer)
+      for observer in self.mObserversOf_rect {
+        managedObject.rect_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+  final func removeEBObserversOf_rect_fromElementsOfSet (_ inSet : Set<PackageZone>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_noIssue {
-        managedObject.noIssue_property.removeEBObserver (observer)
+      for observer in self.mObserversOf_rect {
+        managedObject.rect_property.removeEBObserver (observer)
       }
     }
   }
@@ -1982,32 +1878,32 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageRoot
+//    TransientArrayOf_PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
+class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageZone] > >
 
   //····················································································································
 
-  override var propset : Set <PackageRoot> {
+  override var propset : Set <PackageZone> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageRoot] > {
+  override var prop : EBSelection < [PackageZone] > {
     self.computeArrayAndSet ()
     return self.prop_cache!  
   }
  
   //····················································································································
 
-  override var propval : [PackageRoot] {
+  override var propval : [PackageZone] {
     self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
@@ -2029,64 +1925,64 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 
   //····················································································································
 
-  private var mSet = Set <PackageRoot> ()
+  private var mSet = Set <PackageZone> ()
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [PackageRoot] >? = nil
+  private var prop_cache : EBSelection < [PackageZone] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
       self.prop_cache = unwrappedComputeFunction ()
-      let newSet : Set <PackageRoot>
+      let newSet : Set <PackageZone>
       switch self.prop_cache! {
       case .multiple, .empty :
-        newSet = Set <PackageRoot> ()
+        newSet = Set <PackageZone> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gridStep_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_zoom_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_zoneName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_noIssue_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_rect_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
-      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gridStep_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedSet)
-      self.addEBObserversOf_zoom_toElementsOfSet (addedSet)
-      self.addEBObserversOf_padNumbering_toElementsOfSet (addedSet)
-      self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+      self.addEBObserversOf_y_toElementsOfSet (addedSet)
+      self.addEBObserversOf_width_toElementsOfSet (addedSet)
+      self.addEBObserversOf_height_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_widthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_heightUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_zoneName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedSet)
+      self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
-      self.addEBObserversOf_noIssue_toElementsOfSet (addedSet)
+      self.addEBObserversOf_rect_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -2114,28 +2010,28 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: PackageRoot
+//    To many relationship read write: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
+class ReadWriteArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
  
-  func setProp (_ value :  [PackageRoot]) { } // Abstract method
+  func setProp (_ value :  [PackageZone]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PackageRoot
+//    To many relationship: PackageZone
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageZone?) -> Void > = nil
 
   //····················································································································
 
@@ -2182,9 +2078,9 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageRoot] ()
+      var objectArray = [PackageZone] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageRoot") as? PackageRoot {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageZone") as? PackageZone {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2195,8 +2091,8 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
 
  //····················································································································
 
-  private var mSet = Set <PackageRoot> ()
-  private var mValue = [PackageRoot] () {
+  private var mSet = Set <PackageZone> ()
+  private var mValue = [PackageZone] () {
     didSet {
       self.postEvent ()
       if oldValue != self.mValue {
@@ -2214,44 +2110,44 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
         }
-        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_widthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_rect_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : PackageRoot in addedObjectSet {
+        for managedObject : PackageZone in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
-        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_widthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_rect_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
@@ -2271,29 +2167,29 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageRoot] > { return .single (self.mValue) }
+  override var prop : EBSelection < [PackageZone] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageRoot]) { self.mValue = inValue }
+  override func setProp (_ inValue : [PackageZone]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [PackageRoot] { return self.mValue }
+  override var propval : [PackageZone] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <PackageRoot> { return self.mSet }
+  override var propset : Set <PackageZone> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [PackageRoot]) {
+  @objc func performUndo (_ oldValue : [PackageZone]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : PackageRoot) {
+  func remove (_ object : PackageZone) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.index (of: object)
@@ -2304,7 +2200,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   
   //····················································································································
 
-  func add (_ object : PackageRoot) {
+  func add (_ object : PackageZone) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

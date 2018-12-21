@@ -33,6 +33,7 @@ graphic entity PackageRoot {
 #--- Package definition
   toMany @signature PackageObject packageObjects ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
+  toMany PackageZone packageZones dependsFrom self.packageObjects ;
 
 #--- Grid and display inspector
   property Bool horizontalFlip default no ;
@@ -52,7 +53,8 @@ graphic entity PackageRoot {
 
 #--- Issues
   transient CanariIssueArray issues dependsFrom
-    self.packageObjects.all.issues
+    self.packageObjects.all.issues, self.packageZones.all.rect,
+    self.packageZones.all.zoneName, self.packageZones.all.xName, self.packageZones.all.yName, prefs.padZoneFont
   ;
   transient Bool noIssue dependsFrom self.issues ;
 
@@ -270,6 +272,43 @@ graphic entity PackageDimension : PackageObject {
   ;
 
   transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageZone : PackageObject {
+  property @signature Int x default 0 ;
+  property @signature Int y default 0 ;
+  property @signature Int width default 6_858_00 ;
+  property @signature Int height default 6_858_00 ;
+ 
+  property @signature Int xUnit default 2_286 ;
+  property @signature Int yUnit default 2_286 ;
+  property @signature Int widthUnit default 2_286 ;
+  property @signature Int heightUnit default 2_286 ;
+ 
+  property @signature String zoneName default "" ;
+  property @signature Int xName default 3_429_00 ;
+  property @signature Int yName default 3_429_00 ;
+
+#--- Pad numbering
+  property PadNumbering zoneNumbering default noNumbering ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.x, self.y, self.width, self.height,
+     self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.x, self.y, self.width, self.height,
+     self.xName, self.yName, self.zoneName, prefs.padZoneFont, prefs.padZoneColor
+  ;
+  
+  transient CanariIssueArray issues dependsFrom
+    self.x, self.y, self.width, self.height,
+    self.xName, self.yName, self.zoneName
+  ;
+  
+  transient CanariRect rect dependsFrom self.x, self.y, self.width, self.height ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -51,6 +51,12 @@ import Cocoa
   var mPackageDimensionSelectionController = SelectionController_PackageDocument_mPackageDimensionSelectionController ()
 
   //····················································································································
+  //   Selection controller: mPackageZoneSelectionController
+  //····················································································································
+
+  var mPackageZoneSelectionController = SelectionController_PackageDocument_mPackageZoneSelectionController ()
+
+  //····················································································································
   //   Selection controller: mPackageSegmentSelectionController
   //····················································································································
 
@@ -137,6 +143,7 @@ import Cocoa
   @IBOutlet var mAddOvalButton : CanariDragSourceButton?
   @IBOutlet var mAddPadButton : CanariDragSourceButton?
   @IBOutlet var mAddSegmentButton : CanariDragSourceButton?
+  @IBOutlet var mAddZoneButton : CanariDragSourceButton?
   @IBOutlet var mArcAngle : CanariPackageArcAngleTextField?
   @IBOutlet var mArcEndTangentTextField : CanariDimensionTextField?
   @IBOutlet var mArcEndTangentUnitPopUp : EBPopUpButton?
@@ -269,6 +276,17 @@ import Cocoa
   @IBOutlet var mVerticalFlip : EBSwitch?
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton?
   @IBOutlet var mYPlacardUnitPopUpButton : EBPopUpButton?
+  @IBOutlet var mZoneHeightTextField : CanariDimensionTextField?
+  @IBOutlet var mZoneHeightUnitPopUp : EBPopUpButton?
+  @IBOutlet var mZoneInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mZoneNameTextField : EBTextField?
+  @IBOutlet var mZoneNumberingPopUpButton : EBPopUpButton?
+  @IBOutlet var mZoneWidthTextField : CanariDimensionTextField?
+  @IBOutlet var mZoneWidthUnitPopUp : EBPopUpButton?
+  @IBOutlet var mZoneXTextField : CanariDimensionTextField?
+  @IBOutlet var mZoneXUnitPopUp : EBPopUpButton?
+  @IBOutlet var mZoneYTextField : CanariDimensionTextField?
+  @IBOutlet var mZoneYUnitPopUp : EBPopUpButton?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -322,6 +340,8 @@ import Cocoa
     self.mPackageGuideSelectionController.addExplorer (name: "mPackageGuideSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageDimensionSelectionController
     self.mPackageDimensionSelectionController.addExplorer (name: "mPackageDimensionSelectionController", y:&y, view:view)
+  //--- Selection controller property: mPackageZoneSelectionController
+    self.mPackageZoneSelectionController.addExplorer (name: "mPackageZoneSelectionController", y:&y, view:view)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.addExplorer (name: "mPackageSegmentSelectionController", y:&y, view:view)
   //---
@@ -459,6 +479,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddSegmentButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddZoneButton {
+      if !(outlet is CanariDragSourceButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddZoneButton' outlet is not an instance of 'CanariDragSourceButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddZoneButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mArcAngle {
@@ -2441,6 +2476,171 @@ import Cocoa
         errorMessage: "the 'mYPlacardUnitPopUpButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mZoneHeightTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneHeightTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneHeightTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneHeightUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneNameTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneNameTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneNameTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneNumberingPopUpButton {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneNumberingPopUpButton' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneNumberingPopUpButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneWidthTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneWidthTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneWidthTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneWidthUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneXTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneXTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneXTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneXUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneXUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneXUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneYTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneYTextField' outlet is not an instance of 'CanariDimensionTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneYTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mZoneYUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mZoneYUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mZoneYUnitPopUp' outlet is nil"
+      )
+    }
   //--- Array controller property: mPackageObjectsController
     self.mPackageObjectsController.bind_model (self.rootObject.packageObjects_property)
   //--- Selection controller property: mPackageBezierCurveSelectionController
@@ -2455,6 +2655,8 @@ import Cocoa
     self.mPackageGuideSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageDimensionSelectionController
     self.mPackageDimensionSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
+  //--- Selection controller property: mPackageZoneSelectionController
+    self.mPackageZoneSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.bind_selection (model: self.mPackageObjectsController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mStatusMessage
@@ -2590,6 +2792,16 @@ import Cocoa
     self.mDimensionY2TextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.y2_property, self.mPackageDimensionSelectionController.y2Unit_property, file: #file, line: #line)
     self.mDimensionDistanceUnitPopUp?.bind_selectedTag (self.mPackageDimensionSelectionController.distanceUnit_property, file: #file, line: #line)
     self.mDimensionDistanceTextField?.bind_dimensionAndUnit (self.mPackageDimensionSelectionController.distanceInCanariUnit_property, self.mPackageDimensionSelectionController.distanceUnit_property, file: #file, line: #line)
+    self.mZoneXUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.xUnit_property, file: #file, line: #line)
+    self.mZoneXTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.x_property, self.mPackageZoneSelectionController.xUnit_property, file: #file, line: #line)
+    self.mZoneYUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.yUnit_property, file: #file, line: #line)
+    self.mZoneYTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.y_property, self.mPackageZoneSelectionController.yUnit_property, file: #file, line: #line)
+    self.mZoneWidthUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mZoneWidthTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.width_property, self.mPackageZoneSelectionController.widthUnit_property, file: #file, line: #line)
+    self.mZoneHeightUnitPopUp?.bind_selectedTag (self.mPackageZoneSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mZoneHeightTextField?.bind_dimensionAndUnit (self.mPackageZoneSelectionController.height_property, self.mPackageZoneSelectionController.heightUnit_property, file: #file, line: #line)
+    self.mZoneNameTextField?.bind_value (self.mPackageZoneSelectionController.zoneName_property, file: #file, line: #line, sendContinously:true)
+    self.mZoneNumberingPopUpButton?.bind_selectedIndex (self.mPackageZoneSelectionController.zoneNumbering_property, file: #file, line: #line)
     self.mPadNumberingPopUpButton?.bind_selectedIndex (self.rootObject.padNumbering_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
@@ -2759,6 +2971,16 @@ import Cocoa
     self.mDimensionY2TextField?.unbind_dimensionAndUnit ()
     self.mDimensionDistanceUnitPopUp?.unbind_selectedTag ()
     self.mDimensionDistanceTextField?.unbind_dimensionAndUnit ()
+    self.mZoneXUnitPopUp?.unbind_selectedTag ()
+    self.mZoneXTextField?.unbind_dimensionAndUnit ()
+    self.mZoneYUnitPopUp?.unbind_selectedTag ()
+    self.mZoneYTextField?.unbind_dimensionAndUnit ()
+    self.mZoneWidthUnitPopUp?.unbind_selectedTag ()
+    self.mZoneWidthTextField?.unbind_dimensionAndUnit ()
+    self.mZoneHeightUnitPopUp?.unbind_selectedTag ()
+    self.mZoneHeightTextField?.unbind_dimensionAndUnit ()
+    self.mZoneNameTextField?.unbind_value ()
+    self.mZoneNumberingPopUpButton?.unbind_selectedIndex ()
     self.mPadNumberingPopUpButton?.unbind_selectedIndex ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
@@ -2815,6 +3037,8 @@ import Cocoa
     self.mPackageGuideSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageDimensionSelectionController
     self.mPackageDimensionSelectionController.unbind_selection ()
+  //--- Selection controller property: mPackageZoneSelectionController
+    self.mPackageZoneSelectionController.unbind_selection ()
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
@@ -2831,6 +3055,7 @@ import Cocoa
     self.mAddOvalButton?.ebCleanUp ()
     self.mAddPadButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mAddZoneButton?.ebCleanUp ()
     self.mArcAngle?.ebCleanUp ()
     self.mArcEndTangentTextField?.ebCleanUp ()
     self.mArcEndTangentUnitPopUp?.ebCleanUp ()
@@ -2963,6 +3188,17 @@ import Cocoa
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()
     self.mYPlacardUnitPopUpButton?.ebCleanUp ()
+    self.mZoneHeightTextField?.ebCleanUp ()
+    self.mZoneHeightUnitPopUp?.ebCleanUp ()
+    self.mZoneInspectorView?.ebCleanUp ()
+    self.mZoneNameTextField?.ebCleanUp ()
+    self.mZoneNumberingPopUpButton?.ebCleanUp ()
+    self.mZoneWidthTextField?.ebCleanUp ()
+    self.mZoneWidthUnitPopUp?.ebCleanUp ()
+    self.mZoneXTextField?.ebCleanUp ()
+    self.mZoneXUnitPopUp?.ebCleanUp ()
+    self.mZoneYTextField?.ebCleanUp ()
+    self.mZoneYUnitPopUp?.ebCleanUp ()
   }
 
   //····················································································································

@@ -168,49 +168,42 @@ document PackageDocument root PackageRoot {
 #------- Pad inspector
   selectionController PackagePad mPackagePadSelectionController : self.mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mPadInspectorView ;
-
 #--- Pad shape
   outlet EBPopUpButton mPackageShapePopUpButton $selectedIndex mPackagePadSelectionController.padShape ;
-
 #--- Pad style
   outlet EBPopUpButton mPackageStylePopUpButton $selectedIndex mPackagePadSelectionController.padStyle ;
   outlet NSView mPadStyleView $hidden !mPackagePadSelectionController.padIsTraversing ;
-
 #--- xCenter
   outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag mPackagePadSelectionController.xCenterUnit ;
   outlet CanariDimensionTextField mPadXCenterTextField
      $dimensionAndUnit mPackagePadSelectionController.xCenter, mPackagePadSelectionController.xCenterUnit
   ;
-
 #--- yCenter
   outlet EBPopUpButton mPadYCenterUnitPopUp $selectedTag mPackagePadSelectionController.yCenterUnit ;
   outlet CanariDimensionTextField mPadYCenterTextField
      $dimensionAndUnit mPackagePadSelectionController.yCenter, mPackagePadSelectionController.yCenterUnit
   ;
-
 #--- Width
   outlet EBPopUpButton mPadWidthUnitPopUp $selectedTag mPackagePadSelectionController.widthUnit ;
   outlet CanariDimensionTextField mPadWidthTextField
      $dimensionAndUnit mPackagePadSelectionController.width, mPackagePadSelectionController.widthUnit
   ;
-
 #--- Height
   outlet EBPopUpButton mPadHeightUnitPopUp $selectedTag mPackagePadSelectionController.heightUnit ;
   outlet CanariDimensionTextField mPadHeightTextField
      $dimensionAndUnit mPackagePadSelectionController.height, mPackagePadSelectionController.heightUnit
   ;
-
 #--- Hole Diameter
   outlet EBPopUpButton mPadHoleDiameterUnitPopUp $selectedTag mPackagePadSelectionController.holeDiameterUnit ;
   outlet CanariDimensionTextField mPadHoleDiameterTextField
      $dimensionAndUnit mPackagePadSelectionController.holeDiameter, mPackagePadSelectionController.holeDiameterUnit
   ;
-
 #--- Annular Ring
   outlet EBPopUpButton mPadAnnularRingUnitPopUp $selectedTag mPackagePadSelectionController.annularRingUnit ;
   outlet CanariDimensionObserverTextField mPadAnnularRingTextField
      $dimensionAndUnit mPackagePadSelectionController.annularRing, mPackagePadSelectionController.annularRingUnit
   ;
+#--- Pad zone
 
 #--- Pad Number
   outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
@@ -271,12 +264,42 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionTextField mDimensionY2TextField
      $dimensionAndUnit mPackageDimensionSelectionController.y2, mPackageDimensionSelectionController.y2Unit
   ;
-
 #--- Distance
   outlet EBPopUpButton mDimensionDistanceUnitPopUp $selectedTag mPackageDimensionSelectionController.distanceUnit ;
   outlet CanariDimensionObserverTextField mDimensionDistanceTextField
      $dimensionAndUnit mPackageDimensionSelectionController.distanceInCanariUnit, mPackageDimensionSelectionController.distanceUnit
   ;
+
+
+
+#------- Zone inspector
+  selectionController PackageZone mPackageZoneSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mZoneInspectorView ;
+#--- x
+  outlet EBPopUpButton mZoneXUnitPopUp $selectedTag mPackageZoneSelectionController.xUnit ;
+  outlet CanariDimensionTextField mZoneXTextField
+     $dimensionAndUnit mPackageZoneSelectionController.x, mPackageZoneSelectionController.xUnit
+  ;
+#--- y
+  outlet EBPopUpButton mZoneYUnitPopUp $selectedTag mPackageZoneSelectionController.yUnit ;
+  outlet CanariDimensionTextField mZoneYTextField
+     $dimensionAndUnit mPackageZoneSelectionController.y, mPackageZoneSelectionController.yUnit
+  ;
+#--- Width
+  outlet EBPopUpButton mZoneWidthUnitPopUp $selectedTag mPackageZoneSelectionController.widthUnit ;
+  outlet CanariDimensionTextField mZoneWidthTextField
+     $dimensionAndUnit mPackageZoneSelectionController.width, mPackageZoneSelectionController.widthUnit
+  ;
+#--- Height
+  outlet EBPopUpButton mZoneHeightUnitPopUp $selectedTag mPackageZoneSelectionController.heightUnit ;
+  outlet CanariDimensionTextField mZoneHeightTextField
+     $dimensionAndUnit mPackageZoneSelectionController.height, mPackageZoneSelectionController.heightUnit
+  ;
+#--- Name
+  outlet EBTextField mZoneNameTextField $value mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
+#--- Zone numbering
+  outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex mPackageZoneSelectionController.zoneNumbering ;
+
 
 
 #--- Pad numbering inspector
@@ -303,6 +326,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddPadButton ;
   outlet CanariDragSourceButton mAddGuideButton ;
   outlet CanariDragSourceButton mAddDimensionButton ;
+  outlet CanariDragSourceButton mAddZoneButton ;
 
 #--- Package display
   arrayController mPackageObjectsController : root.packageObjects ;

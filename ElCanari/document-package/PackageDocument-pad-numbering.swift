@@ -7,16 +7,49 @@ import Cocoa
 extension CustomizedPackageDocument {
 
   //····················································································································
-  //   Handle pad numbering
-  // MARK: -
+
+  internal func addPadNumbringObservers () {
+    self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
+    self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
+    self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
+    self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_rect (self.mPadNumberingObserver)
+    self.rootObject.packageZones_property.addEBObserverOf_zoneNumbering (self.mPadNumberingObserver)
+  }
+
   //····················································································································
 
-  internal func handlePadNumbering () {
+  private func handlePadNumbering () {
+    var allPads = self.rootObject.packagePads_property.propval
+    var zoneDictionary = [PackageZone : [PackagePad]] ()
+    for zone in self.rootObject.packageZones_property.propval {
+      let zoneRect = zone.rect!
+      var idx = 0
+      while idx < allPads.count {
+        if zoneRect.contains(x: allPads [idx].xCenter, y: allPads [idx].yCenter) {
+          let a = zoneDictionary [zone] ?? []
+          zoneDictionary [zone] = a + [allPads [idx]]
+          allPads.remove(at: idx)
+        }else{
+          idx += 1
+        }
+      }
+    }
+  //---
+    for (zone, padArray) in zoneDictionary {
+      self.performPadNumbering (padArray, zone.zoneNumbering)
+    }
+    self.performPadNumbering (allPads, self.rootObject.padNumbering)
+  }
+
+  //····················································································································
+
+  private func performPadNumbering (_ inPadArray : [PackagePad], _ inNumberingPolicy : PadNumbering) {
     // Swift.print ("handlePadNumbering")
   //--- Get all pads
-    var allPads = self.rootObject.packagePads_property.propval
+    var allPads = inPadArray
   //--- Apply pad numbering
-    switch self.rootObject.padNumbering {
+    switch inNumberingPolicy {
     case .noNumbering :
     //--- Find max pad number
       var maxPadNumber = 0

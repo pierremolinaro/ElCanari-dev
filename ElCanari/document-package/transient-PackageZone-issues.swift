@@ -11,42 +11,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageOval_selectionDisplay (
-       _ self_x : Int,                       
-       _ self_y : Int,                       
-       _ self_width : Int,                   
-       _ self_height : Int
-) -> EBShape {
+func transient_PackageZone_issues (
+       _ self_x : Int,             
+       _ self_y : Int,             
+       _ self_width : Int,         
+       _ self_height : Int,        
+       _ self_xName : Int,         
+       _ self_yName : Int,         
+       _ self_zoneName : String
+) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-  let shape = EBShape ()
-  let x = canariUnitToCocoa (self_x)
-  let y = canariUnitToCocoa (self_y)
-  let width = canariUnitToCocoa (self_width)
-  let height = canariUnitToCocoa (self_height)
-  let bp : NSBezierPath
-  if (self_width <= 0) && (self_height <= 0) { // Oval is a point
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x, y: y))
-  }else if self_width <= 0 { // Vertical line
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x, y: y + height))
-  }else if self_height <= 0 { // Horizontal line
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x + width, y: y))
-  }else{
-    let r = CGRect (x: x, y: y, width: width, height: height)
-    bp = NSBezierPath (ovalIn: r)
+  var issues = [CanariIssue] ()
+  if self_width == 0 {
+    issues.appendZoneZeroWidthIssueAt (x: self_x, y: self_y + self_height / 2)
   }
-  bp.lineWidth = 0.25
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_OVAL_BOTTOM, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_OVAL_LEFT, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_OVAL_TOP, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_OVAL_RIGHT, .circ))
-  return shape
+  if self_height == 0 {
+    issues.appendZoneZeroHeightIssueAt (x: self_x + self_width / 2, y: self_y)
+  }
+  if self_zoneName == "" {
+    issues.appendZoneEmptyNameHeightIssueAt (x: self_xName, y: self_yName)
+  }
+  return issues
 //--- END OF USER ZONE 2
 }
 

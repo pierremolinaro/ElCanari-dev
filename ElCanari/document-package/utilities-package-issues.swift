@@ -47,6 +47,64 @@ extension Array where Element == CanariIssue {
 
   //····················································································································
 
+  mutating func appendZoneZeroWidthIssueAt (x: Int, y: Int) {
+    let r = NSRect (
+      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Zone Width is null", path: bp))
+  }
+
+  //····················································································································
+
+  mutating func appendZoneZeroHeightIssueAt (x: Int, y: Int) {
+    let r = NSRect (
+      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Zone Height is null", path: bp))
+  }
+
+  //····················································································································
+
+  mutating func appendZoneEmptyNameHeightIssueAt (x: Int, y: Int) {
+    let r = NSRect (
+      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
+      width: HILITE_SIZE,
+      height: HILITE_SIZE
+    )
+    let bp = NSBezierPath (ovalIn: r)
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Zone Name is empty", path: bp))
+  }
+
+  //····················································································································
+
+  mutating func appendZoneIntersectionIssueIn (rect: CanariRect) {
+    let bp = NSBezierPath (rect: rect.cocoaRect ().insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Zone Intersection", path: bp))
+  }
+
+  //····················································································································
+
+  mutating func appendDuplicatedZoneNameIssueIn (rect: NSRect) {
+    let bp = NSBezierPath (rect: rect.insetBy (dx: -LINE_WIDTH, dy: -LINE_WIDTH))
+    bp.lineWidth = LINE_WIDTH
+    self.append (CanariIssue (kind: .error, message: "Duplicated Zone Name", path: bp))
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

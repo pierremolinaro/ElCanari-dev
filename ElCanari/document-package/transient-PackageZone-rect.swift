@@ -11,42 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageOval_selectionDisplay (
-       _ self_x : Int,                       
-       _ self_y : Int,                       
-       _ self_width : Int,                   
+func transient_PackageZone_rect (
+       _ self_x : Int,           
+       _ self_y : Int,           
+       _ self_width : Int,       
        _ self_height : Int
-) -> EBShape {
+) -> CanariRect {
 //--- START OF USER ZONE 2
-  let shape = EBShape ()
-  let x = canariUnitToCocoa (self_x)
-  let y = canariUnitToCocoa (self_y)
-  let width = canariUnitToCocoa (self_width)
-  let height = canariUnitToCocoa (self_height)
-  let bp : NSBezierPath
-  if (self_width <= 0) && (self_height <= 0) { // Oval is a point
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x, y: y))
-  }else if self_width <= 0 { // Vertical line
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x, y: y + height))
-  }else if self_height <= 0 { // Horizontal line
-    bp = NSBezierPath ()
-    bp.move (to: NSPoint (x: x, y: y))
-    bp.line (to: NSPoint (x: x + width, y: y))
-  }else{
-    let r = CGRect (x: x, y: y, width: width, height: height)
-    bp = NSBezierPath (ovalIn: r)
-  }
-  bp.lineWidth = 0.25
-  shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y), index: PACKAGE_OVAL_BOTTOM, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x, y: y + height / 2.0), index: PACKAGE_OVAL_LEFT, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width / 2.0, y: y + height), index: PACKAGE_OVAL_TOP, .circ))
-  shape.append (EBKnobShape (at: CGPoint (x: x + width, y: y + height / 2.0), index: PACKAGE_OVAL_RIGHT, .circ))
-  return shape
+    return CanariRect (left: self_x, bottom: self_y, width: self_width, height: self_height)
 //--- END OF USER ZONE 2
 }
 
