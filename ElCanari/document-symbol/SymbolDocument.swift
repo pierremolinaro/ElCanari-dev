@@ -1044,7 +1044,8 @@ import Cocoa
     self.mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
   //--------------------------- Update display
     super.windowControllerDidLoadNib (aController)
-    flushEvents ()
+  //--------------------------- Flush outlet event for forcing display
+    flushOutletEvents ()
   }
 
   //····················································································································

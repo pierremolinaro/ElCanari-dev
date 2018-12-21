@@ -53,6 +53,105 @@ import Cocoa
 
   //····················································································································
 
+  override func sendEvent (_ event: NSEvent) {
+    super.sendEvent (event)
+    flushModelEvents ()
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBModelEvent class
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate var gPendingModelEvents = [EBModelEvent] ()
+fileprivate var gCurrentModelEvent : EBModelEvent? = nil
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBModelEvent : EBEvent {
+
+  //····················································································································
+  //   Properties
+  //····················································································································
+
+  var eventCallBack : Optional < () -> Void > = nil
+  var mEventIsPosted = false
+
+  //····················································································································
+  //   postEvent
+  //····················································································································
+
+  override func postEvent () {
+    if gCurrentModelEvent !== self {
+      if gPendingModelEvents.count == 0 {
+  //      DispatchQueue.main.asyncAfter (deadline: DispatchTime.now()) { flushEvents () }
+        if logEvents () {
+          appendMessageString ("Post model events\n")
+        }
+      }
+      if logEvents () {
+        let str = "  " +  explorerIndexString (self.mEasyBindingsObjectIndex) + self.className + "\n"
+        if !self.mEventIsPosted {
+          appendMessageString (str)
+        }else{ // Event already posted
+          appendMessageString (str, color: NSColor.brown)
+        }
+      }
+      if !self.mEventIsPosted {
+        self.mEventIsPosted = true
+        gPendingModelEvents.append (self)
+      }
+    }
+  }
+
+  //····················································································································
+  //   sendUpdateEvent
+  //····················································································································
+
+  final func sendUpdateEvent () {
+    self.mEventIsPosted = false
+    self.eventCallBack? ()
+  }
+
+  //····················································································································
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    flushModelEvents
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func flushModelEvents () {
+  if gPendingModelEvents.count > 0 {
+    if logEvents () {
+      appendMessageString ("Flush model events\n", color: NSColor.blue)
+    }
+    while gPendingModelEvents.count > 0 {
+      let pendingModelEvents = gPendingModelEvents
+      gPendingModelEvents.removeAll ()
+      for event in pendingModelEvents {
+        event.mEventIsPosted = false
+      }
+      for event in pendingModelEvents {
+        if logEvents () {
+          let message = "  " +  explorerIndexString (event.mEasyBindingsObjectIndex) + event.className + "\n"
+          appendMessageString (message, color: NSColor.blue)
+        }
+        gCurrentModelEvent = event // For prevent event to be retriggerred during event handling
+        event.sendUpdateEvent ()
+        gCurrentModelEvent = nil
+      }
+      if gPendingModelEvents.count > 0 && logEvents () {
+        let message = String (gPendingModelEvents.count) +  " model event(s) posted during flush\n"
+        appendMessageString (message, color: NSColor.red)
+      }
+    }
+    if logEvents () {
+      appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
+    }
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
