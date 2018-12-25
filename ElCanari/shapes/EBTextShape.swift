@@ -157,15 +157,11 @@ class EBTextShape : EBShape {
   /// your program. Do not save hash values to use during a future execution.
   //····················································································································
 
-  override public var hashValue : Int {
-    var h = super.hashValue
-    h.rotateLeft ()
-    h ^= self.mFilledBezierPath.hashValue
-    h.rotateLeft ()
-    h ^= self.mForeColor.hashValue
-    h.rotateLeft ()
-    h ^= self.mBackColor.hashValue
-    return h
+  override func hash (into hasher: inout Hasher) {
+    super.hash (into: &hasher)
+    self.mFilledBezierPath.hash (into: &hasher)
+    self.mForeColor.hash (into: &hasher)
+    self.mBackColor.hash (into: &hasher)
   }
 
   //····················································································································

@@ -195,13 +195,10 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   /// your program. Do not save hash values to use during a future execution.
   //····················································································································
 
-  public var hashValue : Int {
-    var h = 0
+  func hash (into hasher: inout Hasher) {
     for shape in self.mShapes {
-      h.rotateLeft ()
-      h ^= shape.hashValue
+      shape.hash (into: &hasher)
     }
-    return h
   }
 
   //····················································································································

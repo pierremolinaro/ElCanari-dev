@@ -44,8 +44,12 @@ struct CanariSize : Equatable, Hashable {
   //   Protocol Hashable: hashValue
   //····················································································································
 
-  var hashValue : Int {
-    return self.width ^ self.height
+//  var hashValue : Int {
+//    return self.width ^ self.height
+//  }
+  public func hash (into hasher: inout Hasher) {
+    self.width.hash (into: &hasher)
+    self.height.hash (into: &hasher)
   }
 
   //····················································································································

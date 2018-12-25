@@ -10,6 +10,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+let CANARI_ISSUE_HILITE_SIZE : CGFloat = milsToCocoaUnit (25.0) * 4.0
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   CanariIssueKind
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -56,9 +60,11 @@ struct CanariIssue : Hashable {
   //   Protocol Hashable
   //····················································································································
 
-  public var hashValue : Int {
-    return self.mMessage.hashValue ^ self.mKind.hashValue ^ self.mPath.hashValue
-  }
+//  func hash (into hasher: inout Hasher) {
+//    self.mMessage.hash (into: &hasher)
+//    self.mKind.hash (into: &hasher)
+//    self.mPath.hash (into: &hasher)
+//  }
 
   //····················································································································
   // Bezier path center point

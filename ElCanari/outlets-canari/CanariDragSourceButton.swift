@@ -112,13 +112,9 @@ import Cocoa
   //  Hilite when mouse is within button
   //····················································································································
 
-  fileprivate var mTrackingArea : NSTrackingArea? = nil
-
-  //····················································································································
-
   override func updateTrackingAreas () { // This is required for receiving mouseEntered and mouseExited events
-  //--- Remove tracking area
-    if let trackingArea = self.mTrackingArea {
+  //--- Remove all tracking areas
+    for trackingArea in self.trackingAreas {
       self.removeTrackingArea (trackingArea)
     }
   //--- Add Updated tracking area
@@ -129,7 +125,6 @@ import Cocoa
       userInfo: nil
     )
     self.addTrackingArea (trackingArea)
-    self.mTrackingArea = trackingArea
   //---
     super.updateTrackingAreas ()
   }
@@ -158,6 +153,10 @@ import Cocoa
   //   DRAW
   //····················································································································
 
+ // fileprivate var mShape = EBShape ()
+  
+  //····················································································································
+
   override func draw (_ inDirtyRect : NSRect) {
     if self.mMouseWithin {
       NSColor.lightGray.setFill ()
@@ -165,6 +164,41 @@ import Cocoa
     }
     super.draw (inDirtyRect)
   }
+
+  //····················································································································
+  //   Color
+  //····················································································································
+
+//  fileprivate var mColorController : EBReadOnlyController_NSColor? = nil
+//  fileprivate var mColor : NSColor? = nil
+//
+// //····················································································································
+//
+//  func bind_color (_ model : EBReadOnlyProperty_NSColor, file : String, line : Int) {
+//    self.mColorController = EBReadOnlyController_NSColor (
+//      model: model,
+//      callBack: { [weak self] in self?.updateColor (from: model) }
+//     )
+//  }
+//
+//  //····················································································································
+//
+//  func unbind_color() {
+//    self.mColorController?.unregister ()
+//    self.mColorController = nil
+//  }
+//
+//  //····················································································································
+//
+//  private func updateColor (from model : EBReadOnlyProperty_NSColor) {
+//    switch model.prop {
+//    case .empty, .multiple :
+//      ()
+//    case .single (let v) :
+//      self.mColor = v
+//      self.needsDisplay = true
+//    }
+//  }
 
   //····················································································································
 

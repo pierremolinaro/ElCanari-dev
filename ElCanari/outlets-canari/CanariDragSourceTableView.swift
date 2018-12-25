@@ -51,8 +51,6 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func register (document : EBManagedDocument, draggedType : NSPasteboard.PasteboardType) {
- //   self.setDraggingSourceOperationMask (.copy, forLocal: true)
- //   self.registerForDraggedTypes ([draggedType])
     self.mDraggedType = draggedType
     self.mDocument = document
   }
@@ -70,13 +68,13 @@ class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableV
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return mModelArray.count
+    return self.mModelArray.count
   }
 
   //····················································································································
 
   func tableView (_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-    return mModelArray [row]
+    return self.mModelArray [row]
   }
 
   //····················································································································

@@ -35,13 +35,13 @@ private let LEFT_MARGIN      : CGFloat = 40.0
   //····················································································································
   
   func selectedCharacterCode () -> Int {
-    return mSelectedCharacterCode
+    return self.mSelectedCharacterCode
   }
 
   //····················································································································
   
   func setMouseDownSelectedCharacterCode (_ inCharacterCode : Int) {
-    mMouseDownCharacterCode = inCharacterCode
+    self.mMouseDownCharacterCode = inCharacterCode
   }
 
   //····················································································································
@@ -68,10 +68,10 @@ private let LEFT_MARGIN      : CGFloat = 40.0
         c += 1
       }
     //---
-      if (mSelectedCharacterCode != selectedCharCode) {
+      if (self.mSelectedCharacterCode != selectedCharCode) {
         self.setNeedsDisplay (rectangleForCharacter (mSelectedCharacterCode))
         self.setNeedsDisplay (rectangleForCharacter (selectedCharCode))
-        mSelectedCharacterCode = selectedCharCode
+        self.mSelectedCharacterCode = selectedCharCode
       }
     }
   }
@@ -124,11 +124,11 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 
   func drawCharacter (_ inCharacter : Int, attributes:[NSAttributedString.Key:AnyObject]) {
     let r = rectangleForCharacter (inCharacter)
-    if mSelectedCharacterCode == inCharacter {
+    if self.mSelectedCharacterCode == inCharacter {
       NSColor.lightGray.setFill ()
       NSBezierPath.fill (r)
     }
-    if mMouseDownCharacterCode == inCharacter {
+    if self.mMouseDownCharacterCode == inCharacter {
       NSColor.blue.setStroke ()
       NSBezierPath.stroke (NSInsetRect (r, 0.5, 0.5))
     }

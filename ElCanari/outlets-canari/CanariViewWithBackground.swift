@@ -17,16 +17,14 @@ class CanariViewWithBackground : NSView {
 
   //····················································································································
 
-  override func draw(_ dirtyRect: NSRect) {
+  override func draw (_ dirtyRect: NSRect) {
     NSColor.windowBackgroundColor.setFill ()
     NSBezierPath.fill (dirtyRect)
   }
 
   //····················································································································
 
-  override var isOpaque : Bool {
-    return true
-  }
+  override var isOpaque : Bool { return true }
 
   //····················································································································
 

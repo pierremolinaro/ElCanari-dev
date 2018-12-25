@@ -460,6 +460,7 @@ import Cocoa
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     if let outlet : Any = self.addBoardModelButton {
       if !(outlet is EBButton) {
@@ -3157,10 +3158,6 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     self.mImportArtworkButton?.target = self
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
-  //--------------------------- Update display
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Flush outlet event for forcing display
-    flushOutletEvents ()
   }
 
   //····················································································································

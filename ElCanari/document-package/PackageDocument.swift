@@ -376,6 +376,7 @@ import Cocoa
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     if let outlet : Any = self.mAddArcButton {
       if !(outlet is CanariDragSourceButton) {
@@ -2890,10 +2891,6 @@ import Cocoa
     self.mProgramHelpButton?.action = #selector (PackageDocument.programHelpAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
-  //--------------------------- Update display
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Flush outlet event for forcing display
-    flushOutletEvents ()
   }
 
   //····················································································································

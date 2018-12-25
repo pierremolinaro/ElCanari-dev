@@ -77,8 +77,8 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     mNumberFormatter = NumberFormatter ()
     super.init (observedObjects:[dimension, unit])
   //--- Target
-    mOutlet.target = self
-    mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector(Controller_CanariDimensionTextField_dimensionAndUnit.action(_:))
   //--- Number formatter
     self.mNumberFormatter.formatterBehavior = .behavior10_4
     self.mNumberFormatter.numberStyle = .decimal
@@ -86,7 +86,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     self.mNumberFormatter.minimumFractionDigits = 2
     self.mNumberFormatter.maximumFractionDigits = 2
     self.mNumberFormatter.isLenient = true
-    mOutlet.formatter = self.mNumberFormatter
+    self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
@@ -102,23 +102,23 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
   //····················································································································
 
   private func updateOutlet () {
-    switch combine (mDimension.prop, unit:mUnit.prop) {
+    switch combine (self.mDimension.prop, unit: self.mUnit.prop) {
     case .empty :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "multiple"
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.stringValue = "multiple"
+      self.mOutlet.enableFromValueBinding (true)
     case .single (let propertyValue) :
-      mOutlet.doubleValue = propertyValue
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.doubleValue = propertyValue
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
   //····················································································································
 
   @objc func action (_ sender : CanariDimensionTextField) {
-    switch mUnit.prop {
+    switch self.mUnit.prop {
     case .empty, .multiple :
       break
     case .single (let unit) :

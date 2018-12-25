@@ -50,8 +50,8 @@ import Cocoa
   //····················································································································
 
   func unbind_version () {
-    mVersionController?.unregister ()
-    mVersionController = nil
+    self.mVersionController?.unregister ()
+    self.mVersionController = nil
   }
 
   //····················································································································
@@ -79,7 +79,7 @@ import Cocoa
   //····················································································································
 
   func bind_versionShouldChange (_ model : EBReadOnlyProperty_Bool, file : String, line : Int) {
-    mVersionShouldChangeController = EBReadOnlyController_Bool (
+    self.mVersionShouldChangeController = EBReadOnlyController_Bool (
       model: model,
       callBack: { [weak self] in self?.update (from: model) }
      )
@@ -88,8 +88,8 @@ import Cocoa
   //····················································································································
 
   func unbind_versionShouldChange () {
-    mVersionShouldChangeController?.unregister ()
-    mVersionShouldChangeController = nil
+    self.mVersionShouldChangeController?.unregister ()
+    self.mVersionShouldChangeController = nil
   }
 
   //····················································································································

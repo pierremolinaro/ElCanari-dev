@@ -44,8 +44,12 @@ struct CanariPoint : Equatable, Hashable {
   //   Protocol Hashable: hashValue
   //····················································································································
 
-  var hashValue : Int {
-    return self.x ^ self.y
+//  var hashValue : Int {
+//    return self.x ^ self.y
+//  }
+  public func hash (into hasher: inout Hasher) {
+    self.x.hash (into: &hasher)
+    self.y.hash (into: &hasher)
   }
 
   //····················································································································

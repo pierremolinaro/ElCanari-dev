@@ -222,6 +222,7 @@ import Cocoa
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     if let outlet : Any = self.mAddBezierButton {
       if !(outlet is CanariDragSourceButton) {
@@ -1042,10 +1043,6 @@ import Cocoa
   //--------------------------- Set targets / actions
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
-  //--------------------------- Update display
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Flush outlet event for forcing display
-    flushOutletEvents ()
   }
 
   //····················································································································

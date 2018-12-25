@@ -108,7 +108,6 @@ import Cocoa
 //   Controller_CanariFontCharacterSelectButton_codePoint                                                              *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_CanariFontCharacterSelectButton_codePoint)
 final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_Int
@@ -126,23 +125,23 @@ final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleContr
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.title = ""
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.title = ""
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.mSelectedCharacterCode = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.mSelectedCharacterCode = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.title = ""
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.title = ""
     }
   }
 
   //····················································································································
 
   fileprivate func updateModel () {
-    _ = mObject.validateAndSetProp (Int (mOutlet.mSelectedCharacterCode), windowForSheet:mOutlet.window)
+    _ = self.mObject.validateAndSetProp (Int (self.mOutlet.mSelectedCharacterCode), windowForSheet:mOutlet.window)
   }
 
   //····················································································································

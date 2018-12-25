@@ -150,13 +150,10 @@ class EBTextKnobShape : EBShape {
   /// your program. Do not save hash values to use during a future execution.
   //····················································································································
 
-  override public var hashValue : Int {
-    var h = super.hashValue
-    h.rotateLeft ()
-    h ^= self.mFilledBezierPath.hashValue
-    h.rotateLeft ()
-    h ^= self.mIndex.hashValue
-    return h
+  override func hash (into hasher: inout Hasher) {
+    super.hash (into: &hasher)
+    self.mFilledBezierPath.hash (into: &hasher)
+    self.mIndex.hash (into: &hasher)
   }
 
   //····················································································································

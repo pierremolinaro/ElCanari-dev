@@ -35,7 +35,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     noteObjectAllocation (self)
     self.undoManager = self.mUndoManager
     self.mUndoManager.disableUndoRegistration ()
-    mRootObject = newInstanceOfEntityNamed (self.mUndoManager, rootEntityClassName ())!
+    self.mRootObject = newInstanceOfEntityNamed (self.mUndoManager, rootEntityClassName ())!
     self.mUndoManager.enableUndoRegistration ()
   }
 
@@ -74,26 +74,26 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-    metadataDictionary.setObject (NSNumber (value:version), forKey:EBVersion  as NSCopying)
+    metadataDictionary.setObject (NSNumber (value: version), forKey: EBVersion as NSCopying)
   }
 
   //····················································································································
 
   override func data (ofType typeName: String) throws -> Data {
   //--- Update document version
-    var version = mVersion.propval
-    switch mVersionShouldChangeObserver.prop {
+    var version = self.mVersion.propval
+    switch self.mVersionShouldChangeObserver.prop {
     case .empty, .multiple :
       break
     case .single (let shouldChange) :
       if shouldChange {
         version += 1
-        mVersion.setProp (version)
-        mVersionShouldChangeObserver.updateStartUpSignature ()
+        self.mVersion.setProp (version)
+        self.mVersionShouldChangeObserver.updateStartUpSignature ()
       }
     }
   //--- Save metadata dictionary
-    saveMetadataDictionary (version: version, metadataDictionary : &mMetadataDictionary)
+    saveMetadataDictionary (version: version, metadataDictionary : &self.mMetadataDictionary)
   //--- Add the witdth and the height of main window to metadata dictionary
     if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
       if unwrappedWindowForSheet.styleMask.contains(.resizable) { // Only if window is resizable
@@ -120,7 +120,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Write status
     fileData.writeByte (inByte: metadataStatusForSaving (), trace:&trace)
   //--- Append metadata dictionary
-    let metaData = try PropertyListSerialization.data (fromPropertyList: mMetadataDictionary,
+    let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary,
       format:PropertyListSerialization.PropertyListFormat.binary,
       options:0
     )
@@ -133,7 +133,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Append final byte
     fileData.writeByte (inByte: 0, trace:&trace)
   //---
-    return fileData as Data ;
+    return fileData
   }
 
   //····················································································································
@@ -239,20 +239,18 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //   showWindows
   //····················································································································
 
-  override func showWindows () {
+  override final func showWindows () {
     super.showWindows ()
-    if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
-      if unwrappedWindowForSheet.styleMask.contains (.resizable) { // Only if window is resizable
-        let windowWidthNumber : NSNumber? = mMetadataDictionary.object (forKey: "EBWindowWidth") as? NSNumber
-        let windowHeightNumber : NSNumber? = mMetadataDictionary.object (forKey: "EBWindowHeight") as? NSNumber
-        if (nil != windowWidthNumber) && (nil != windowHeightNumber) {
-          let newSize = NSSize (width: CGFloat (windowWidthNumber!.doubleValue), height: CGFloat (windowHeightNumber!.doubleValue))
-          var windowFrame : NSRect = unwrappedWindowForSheet.frame
-          windowFrame.size = newSize
-          unwrappedWindowForSheet.setFrame (windowFrame, display:true)
-        }
-      }
+    if let unwrappedWindowForSheet = windowForSheet, // Document has been opened in the user interface
+          unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
+          let windowWidthNumber = self.mMetadataDictionary.object (forKey: "EBWindowWidth") as? NSNumber,
+          let windowHeightNumber = self.mMetadataDictionary.object (forKey: "EBWindowHeight") as? NSNumber {
+      let newSize = NSSize (width: CGFloat (windowWidthNumber.doubleValue), height: CGFloat (windowHeightNumber.doubleValue))
+      var windowFrame : NSRect = unwrappedWindowForSheet.frame
+      windowFrame.size = newSize
+      unwrappedWindowForSheet.setFrame (windowFrame, display: true)
     }
+    flushOutletEvents ()
   }
 
   //····················································································································
@@ -342,13 +340,13 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-    if let rootObject = mRootObject {
+    if let rootObject = self.mRootObject {
       createEntryForToOneRelationshipNamed (
         "Root",
-        idx:rootObject.mEasyBindingsObjectIndex,
+        idx: rootObject.mEasyBindingsObjectIndex,
         y: &y,
         view: view,
-        valueExplorer:&mValueExplorer
+        valueExplorer: &self.mValueExplorer
       )
     }
   }
@@ -359,41 +357,22 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
-  //--- Signature obbserver
-    mRootObject?.setSignatureObserver (observer: mSignatureObserver)
-    mSignatureObserver.setRootObject (mRootObject!)
+  //--- Signature observer
+    self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
+    self.mSignatureObserver.setRootObject (self.mRootObject!)
   //--- Version did change observer
-    mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (mSignatureObserver, self.ebUndoManager)
-    mSignatureObserver.addEBObserver (mVersionShouldChangeObserver)
+    self.mVersionShouldChangeObserver.setSignatureObserverAndUndoManager (self.mSignatureObserver, self.ebUndoManager)
+    self.mSignatureObserver.addEBObserver (self.mVersionShouldChangeObserver)
   //--- Add Debug menu items ?
     if !gDebugMenuItemsAdded {
       gDebugMenuItemsAdded = true
       let menuItem = NSMenuItem (
-        title:"Explore document",
-        action:#selector(EBManagedDocument.showObjectExplorerWindow(_:)),
-        keyEquivalent:""
+        title: "Explore document",
+        action: #selector (EBManagedDocument.showObjectExplorerWindow(_:)),
+        keyEquivalent: ""
       )
       addItemToDebugMenu (menuItem)
-/*      menuItem = NSMenuItem (
-        title:"Check Relationships",
-        action:"checkRelationships:",
-        keyEquivalent:""
-      )
-      addItemToDebugMenu (menuItem) */
-/*      menuItem = NSMenuItem (
-        title:"Check All Objects are Reachable",
-        action:#selector(EBManagedDocument.checkEntityReachability(_:)),
-        keyEquivalent:""
-      )
-      addItemToDebugMenu (menuItem) */
     }
-  //-------------- Check relationships
-/*      NSUserDefaultsController * sudc = [NSUserDefaultsController sharedUserDefaultsController] ;
-      const BOOL check = [[[sudc values] value_for_key:@"checkDocumentRelationships"] boolValue] ;
-      if (check) {
-        [self.windowForSheet makeKeyAndOrderFront:nil] ;
-        [self checkRelationships:nil] ;
-      }*/
   }
 
   //····················································································································
@@ -401,12 +380,12 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func removeUserInterface () {
-    mSignatureObserver.removeEBObserver (mVersionShouldChangeObserver)
+    self.mSignatureObserver.removeEBObserver (mVersionShouldChangeObserver)
   }
 
   //····················································································································
 
-  override func removeWindowController (_ inWindowController : NSWindowController) {
+  override final func removeWindowController (_ inWindowController : NSWindowController) {
     DispatchQueue.main.asyncAfter (deadline: .now (), execute: { self.removeUserInterface () })
     super.removeWindowController (inWindowController)
   }
@@ -421,7 +400,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   var signatureObserver_property : EBSignatureObserverEvent {
     get {
-      return mSignatureObserver
+      return self.mSignatureObserver
     }
   }
 
@@ -434,14 +413,14 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   final func incrementVersionNumber () {
-    mVersion.setProp (mVersion.propval + 1)
+    self.mVersion.setProp (self.mVersion.propval + 1)
   }
 
   //····················································································································
 
   var versionObserver_property : EBStoredProperty_Int {
     get {
-      return mVersion
+      return self.mVersion
     }
   }
 
@@ -455,7 +434,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   var versionShouldChangeObserver_property : EBVersionShouldChangeObserver {
     get {
-      return mVersionShouldChangeObserver
+      return self.mVersionShouldChangeObserver
     }
   }
 

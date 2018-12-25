@@ -88,7 +88,7 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
     self.mNumberFormatter.minimumFractionDigits = 3
     self.mNumberFormatter.format = "##0.000°"
     self.mNumberFormatter.isLenient = true
-    mOutlet.formatter = self.mNumberFormatter
+    self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }

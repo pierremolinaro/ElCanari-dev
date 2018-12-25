@@ -17,13 +17,17 @@ import Cocoa
 
   private var mFormatController : Controller_CanariBoardBoardArchivePopUpButton_format?
 
+  //····················································································································
+
   func bind_format (_ object:EBReadWriteProperty_BoardArchiveFormat, file:String, line:Int) {
-    mFormatController = Controller_CanariBoardBoardArchivePopUpButton_format (object:object, outlet:self, file:file, line:line)
+    self.mFormatController = Controller_CanariBoardBoardArchivePopUpButton_format (object:object, outlet:self, file:file, line:line)
   }
 
+  //····················································································································
+
   func unbind_format () {
-    mFormatController?.unregister ()
-    mFormatController = nil
+    self.mFormatController?.unregister ()
+    self.mFormatController = nil
   }
 
 }
@@ -32,7 +36,6 @@ import Cocoa
 //   Controller_CanariBoardBoardArchivePopUpButton_format
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_CanariBoardBoardArchivePopUpButton_format)
 final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_BoardArchiveFormat
@@ -44,8 +47,8 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    mOutlet.target = self
-    mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -54,23 +57,23 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      let result = mOutlet.selectItem (withTag: v.rawValue)
+      self.mOutlet.enableFromValueBinding (true)
+      let result = self.mOutlet.selectItem (withTag: v.rawValue)
       if !result {
         presentErrorWindow (file: #file, line:#line, errorMessage:"no item with tag: " + String (v.rawValue))
       }
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.enableFromValueBinding (false)
     }
   }
 
   //····················································································································
 
   @objc func updateModel (_ sender : EBPopUpButton) {
-    if let v = BoardArchiveFormat (rawValue: mOutlet.selectedTag ()) {
-      _ = mObject.validateAndSetProp (v, windowForSheet:sender.window)
+    if let v = BoardArchiveFormat (rawValue: self.mOutlet.selectedTag ()) {
+      _ = self.mObject.validateAndSetProp (v, windowForSheet:sender.window)
     }
   }
 

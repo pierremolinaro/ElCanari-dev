@@ -62,7 +62,6 @@ import Cocoa
 //   Controller Controller_CanariDateObserverField_dateObserver
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_CanariDateObserverField_dateObserver)
 final class Controller_CanariDateObserverField_dateObserver : EBSimpleController {
 
   private var mOutlet : CanariDateObserverField
@@ -80,16 +79,16 @@ final class Controller_CanariDateObserverField_dateObserver : EBSimpleController
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     case .single (let v):
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.objectValue = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.objectValue = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     }
   }
 

@@ -239,6 +239,7 @@ import Cocoa
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     if let outlet : Any = self.mAddGenerationFileButton {
       if !(outlet is EBButton) {
@@ -1121,10 +1122,6 @@ import Cocoa
     self.mRemoveGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.remove (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
-  //--------------------------- Update display
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Flush outlet event for forcing display
-    flushOutletEvents ()
   }
 
   //····················································································································

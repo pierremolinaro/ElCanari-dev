@@ -10,8 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let HILITE_SIZE = SYMBOL_GRID_IN_COCOA_UNIT * 4.0
-private let LINE_WIDTH : CGFloat = 0.75
+private let LINE_WIDTH  : CGFloat = 0.75
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -21,10 +20,10 @@ extension Array where Element == CanariIssue {
 
   mutating func appendOvalZeroWidthIssueAt (x: Int, y: Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
-      width: HILITE_SIZE,
-      height: HILITE_SIZE
+      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: CANARI_ISSUE_HILITE_SIZE,
+      height: CANARI_ISSUE_HILITE_SIZE
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -35,10 +34,10 @@ extension Array where Element == CanariIssue {
 
   mutating func appendOvalZeroHeightIssueAt (x: Int, y: Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
-      width: HILITE_SIZE,
-      height: HILITE_SIZE
+      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: CANARI_ISSUE_HILITE_SIZE,
+      height: CANARI_ISSUE_HILITE_SIZE
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -49,10 +48,10 @@ extension Array where Element == CanariIssue {
 
   mutating func appendZoneZeroWidthIssueAt (x: Int, y: Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
-      width: HILITE_SIZE,
-      height: HILITE_SIZE
+      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: CANARI_ISSUE_HILITE_SIZE,
+      height: CANARI_ISSUE_HILITE_SIZE
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -63,10 +62,10 @@ extension Array where Element == CanariIssue {
 
   mutating func appendZoneZeroHeightIssueAt (x: Int, y: Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
-      width: HILITE_SIZE,
-      height: HILITE_SIZE
+      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: CANARI_ISSUE_HILITE_SIZE,
+      height: CANARI_ISSUE_HILITE_SIZE
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH
@@ -77,10 +76,10 @@ extension Array where Element == CanariIssue {
 
   mutating func appendZoneEmptyNameHeightIssueAt (x: Int, y: Int) {
     let r = NSRect (
-      x: canariUnitToCocoa (x) - HILITE_SIZE / 2.0,
-      y: canariUnitToCocoa (y) - HILITE_SIZE / 2.0,
-      width: HILITE_SIZE,
-      height: HILITE_SIZE
+      x: canariUnitToCocoa (x) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      y: canariUnitToCocoa (y) - CANARI_ISSUE_HILITE_SIZE / 2.0,
+      width: CANARI_ISSUE_HILITE_SIZE,
+      height: CANARI_ISSUE_HILITE_SIZE
     )
     let bp = NSBezierPath (ovalIn: r)
     bp.lineWidth = LINE_WIDTH

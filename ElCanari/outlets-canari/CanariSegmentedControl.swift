@@ -60,7 +60,7 @@ import Cocoa
 
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
     selectViewFromSelectedSegmentIndex ()
-    mController?.updateModel (self)
+    self.mController?.updateModel (self)
     return super.sendAction (inAction, to:target)
   }
 
@@ -69,7 +69,7 @@ import Cocoa
   //····················································································································
 
   func selectViewFromSelectedSegmentIndex () {
-    if let masterView = mMasterView {
+    if let masterView = self.mMasterView {
     //--- View to attach
       var possibleViewToAttach : CanariViewWithKeyView? = nil
       if (self.selectedSegment >= 0) && (self.selectedSegment < self.mPageViews.count) {
@@ -85,7 +85,7 @@ import Cocoa
         }else{
           masterView.addSubview (viewToAttach, positioned: .below, relativeTo: nil)
         }
-        mAttachedView = viewToAttach
+        self.mAttachedView = viewToAttach
       //--- Make First Responder
         viewToAttach.restoreFirstResponder ()
       }
@@ -99,12 +99,12 @@ import Cocoa
   private var mController : Controller_CanariSegmentedControl_selectedPage?
 
   func bind_selectedPage (_ object:EBReadWriteProperty_Int, file:String, line:Int) {
-    mController = Controller_CanariSegmentedControl_selectedPage (object:object, outlet:self, file:file, line:line)
+    self.mController = Controller_CanariSegmentedControl_selectedPage (object:object, outlet:self, file:file, line:line)
   }
 
   func unbind_selectedPage () {
-    mController?.unregister ()
-    mController = nil
+    self.mController?.unregister ()
+    self.mController = nil
     for view in self.mPageViews {
       view?.saveFirstResponder ()
     }
@@ -135,21 +135,21 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.selectedSegment = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.selectedSegment = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.enableFromValueBinding (false)
     }
   }
 
   //····················································································································
 
   func updateModel (_ sender : CanariSegmentedControl) {
-    _ = mObject.validateAndSetProp (mOutlet.selectedSegment, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.selectedSegment, windowForSheet:sender.window)
   }
 
   //····················································································································

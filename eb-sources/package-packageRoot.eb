@@ -283,8 +283,8 @@ graphic entity PackageDimension : PackageObject {
 graphic entity PackageZone : PackageObject {
   property @signature Int x default 0 ;
   property @signature Int y default 0 ;
-  property @signature Int width default 6_858_00 ;
-  property @signature Int height default 6_858_00 ;
+  property @signature Int width default 4_572_00 ;
+  property @signature Int height default 4_572_00 ;
  
   property @signature Int xUnit default 2_286 ;
   property @signature Int yUnit default 2_286 ;
@@ -292,8 +292,8 @@ graphic entity PackageZone : PackageObject {
   property @signature Int heightUnit default 2_286 ;
  
   property @signature String zoneName default "" ;
-  property @signature Int xName default 3_429_00 ;
-  property @signature Int yName default 3_429_00 ;
+  property @signature Int xName default 2_286_00 ;
+  property @signature Int yName default 2_286_00 ;
 
 #--- Pad numbering
   property PadNumbering zoneNumbering default noNumbering ;

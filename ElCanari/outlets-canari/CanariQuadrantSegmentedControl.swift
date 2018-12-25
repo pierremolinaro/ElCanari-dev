@@ -4,7 +4,6 @@
 //
 //  Created by Pierre Molinaro on 21/07/2018.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
@@ -36,7 +35,7 @@ import Cocoa
   //····················································································································
 
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
-    mController?.updateModel (self)
+    self.mController?.updateModel (self)
     return super.sendAction (inAction, to:target)
   }
 
@@ -46,13 +45,17 @@ import Cocoa
 
   private var mController : Controller_CanariQuadrantSegmentedControl_quadrant?
 
-  func bind_quadrant (_ object:EBReadWriteProperty_QuadrantRotation, file:String, line:Int) {
-    mController = Controller_CanariQuadrantSegmentedControl_quadrant (object:object, outlet:self)
+  //····················································································································
+
+  func bind_quadrant (_ object : EBReadWriteProperty_QuadrantRotation, file : String, line : Int) {
+    self.mController = Controller_CanariQuadrantSegmentedControl_quadrant (object:object, outlet:self)
   }
 
+  //····················································································································
+
   func unbind_quadrant () {
-    mController?.unregister ()
-    mController = nil
+    self.mController?.unregister ()
+    self.mController = nil
   }
 
   //····················································································································
@@ -80,24 +83,24 @@ final class Controller_CanariQuadrantSegmentedControl_quadrant : EBSimpleControl
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.selectedSegment = -1
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.selectedSegment = -1
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.selectedSegment = v.rawValue
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.selectedSegment = v.rawValue
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.selectedSegment = -1
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.selectedSegment = -1
     }
   }
 
   //····················································································································
 
   func updateModel (_ sender : CanariQuadrantSegmentedControl) {
-    if let v = QuadrantRotation (rawValue: mOutlet.selectedSegment) {
-      _ = mObject.validateAndSetProp (v, windowForSheet:sender.window)
+    if let v = QuadrantRotation (rawValue: self.mOutlet.selectedSegment) {
+      _ = self.mObject.validateAndSetProp (v, windowForSheet:sender.window)
     }
   }
 

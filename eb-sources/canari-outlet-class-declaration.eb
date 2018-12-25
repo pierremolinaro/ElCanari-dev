@@ -21,6 +21,7 @@ extern outlet class NSTextField : NSControl ;
 extern outlet class NSSegmentedControl ;
 
 extern outlet class CanariDragSourceButton ;
+#binding CanariDragSourceButton $color : transient NSColor ;
 
 extern outlet class CanariIssueTableView ;
 binding CanariIssueTableView $issues : transient CanariIssueArray ;

@@ -42,14 +42,18 @@ struct BezierPathArray : Hashable {
 
   //····················································································································
 
-  public var hashValue: Int {
-    var hash = 0
-    for path in mPathes {
-      hash = hash ^ path.hashValue
-    }
-    return hash
-  }
-
+//  public var hashValue: Int {
+//    var hash = 0
+//    for path in mPathes {
+//      hash = hash ^ path.hashValue
+//    }
+//    return hash
+//  }
+//  func hash (into hasher: inout Hasher) {
+//    for path in mPathes {
+//      path.hash (into: &hasher)
+//    }
+//  }
 
   //····················································································································
 

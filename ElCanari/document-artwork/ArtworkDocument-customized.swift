@@ -35,8 +35,8 @@ let PMArtworkComment = "PMArtworkComment"
     return result
   }
 
-   //····················································································································
-  //    windowControllerDidLoadNib: customization of interface
+  //····················································································································
+  //    buildUserInterface: customization of interface
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {

@@ -108,15 +108,11 @@ class EBFilledBezierPathShape : EBShape {
   /// your program. Do not save hash values to use during a future execution.
   //····················································································································
 
-  override public var hashValue : Int {
-    var h = super.hashValue
-    h.rotateLeft ()
-    h ^= mColor.hashValue
+  override func hash (into hasher: inout Hasher) {
+    super.hash (into: &hasher)
     for path in self.mFilledPaths {
-      h.rotateLeft ()
-      h ^= path.hashValue
+      path.hash (into: &hasher)
     }
-    return h
   }
 
   //····················································································································

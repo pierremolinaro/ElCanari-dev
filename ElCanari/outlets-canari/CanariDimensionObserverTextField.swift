@@ -78,7 +78,7 @@ final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSim
     mUnit = unit
     mOutlet = outlet
     super.init (observedObjects:[dimension, unit])
-    if mOutlet.formatter == nil {
+    if self.mOutlet.formatter == nil {
       presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionObserverTextField outlet has no formatter")
     }
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
@@ -87,16 +87,16 @@ final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSim
   //····················································································································
 
   private func updateOutlet () {
-    switch combine (mDimension.prop, unit:mUnit.prop) {
+    switch combine (self.mDimension.prop, unit: self.mUnit.prop) {
     case .empty :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      mOutlet.doubleValue = propertyValue
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.doubleValue = propertyValue
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 

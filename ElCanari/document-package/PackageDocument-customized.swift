@@ -33,7 +33,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   }
 
   //····················································································································
-  //    windowControllerDidLoadNib: customization of interface
+  //    buildUserInterface: customization of interface
   //····················································································································
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()

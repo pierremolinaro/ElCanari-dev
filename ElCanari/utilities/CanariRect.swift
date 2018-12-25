@@ -111,8 +111,14 @@ struct CanariRect : Equatable, Hashable {
   //   Protocol Hashable: hashValue
   //····················································································································
 
-  var hashValue : Int {
-    return self.origin.x ^ self.origin.y ^ self.size.width ^ self.size.height
+//  var hashValue : Int {
+//    return self.origin.x ^ self.origin.y ^ self.size.width ^ self.size.height
+//  }
+  public func hash (into hasher: inout Hasher) {
+    self.origin.x.hash (into: &hasher)
+    self.origin.y.hash (into: &hasher)
+    self.size.width.hash (into: &hasher)
+    self.size.height.hash (into: &hasher)
   }
 
   //····················································································································

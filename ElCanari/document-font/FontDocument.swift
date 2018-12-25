@@ -154,6 +154,7 @@ import Cocoa
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+    super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     if let outlet : Any = self.advancementSlider {
       if !(outlet is EBSlider) {
@@ -722,10 +723,6 @@ import Cocoa
     self.mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
-  //--------------------------- Update display
-    super.windowControllerDidLoadNib (aController)
-  //--------------------------- Flush outlet event for forcing display
-    flushOutletEvents ()
   }
 
   //····················································································································

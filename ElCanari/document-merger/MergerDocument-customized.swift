@@ -17,7 +17,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
 @objc(CustomizedMergerDocument) class CustomizedMergerDocument : MergerDocument {
 
   //····················································································································
-  //    windowControllerDidLoadNib: customization of interface
+  //    buildUserInterface: customization of interface
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {

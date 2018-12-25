@@ -49,7 +49,7 @@ let PMFontComment = "PMFontComment"
   }
 
   //····················································································································
-  //    windowControllerDidLoadNib: customization of interface
+  //    buildUserInterface: customization of interface
   //····················································································································
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
