@@ -107,7 +107,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedSymbolView?.set (minimumRectangle: r)
     self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
-    self.mComposedSymbolView?.scrollToVisible (NSRect ())
+    DispatchQueue.main.async (execute: { _ = self.mComposedSymbolView?.scrollToVisible (NSRect ()) })
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
