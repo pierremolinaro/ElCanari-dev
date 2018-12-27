@@ -185,6 +185,7 @@ import Cocoa
   @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField?
   @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mBezierInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mClearProgramErrorButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageScrollView : EBScrollView?
   @IBOutlet var mComposedPackageView : EBView?
@@ -268,11 +269,13 @@ import Cocoa
   @IBOutlet var mPadYCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadZoneNameTextField : EBTextObserverField?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mProgramErrorTextField : EBTextField?
   @IBOutlet var mProgramHelpButton : EBButton?
   @IBOutlet var mProgramHelpPanel : NSPanel?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mProgramTextView : EBTextView?
   @IBOutlet var mResetVersionButton : EBButton?
+  @IBOutlet var mRunProgramButton : EBButton?
   @IBOutlet var mSegmentInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSegmentLengthTextField : CanariDimensionObserverTextField?
   @IBOutlet var mSegmentLengthUnitPopUp : EBPopUpButton?
@@ -1060,6 +1063,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mBezierInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mClearProgramErrorButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mClearProgramErrorButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mClearProgramErrorButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mCommentTextView {
@@ -2307,6 +2325,21 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mProgramErrorTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mProgramErrorTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mProgramErrorTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mProgramHelpButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -2380,6 +2413,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mResetVersionButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mRunProgramButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mRunProgramButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mRunProgramButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mSegmentInspectorView {
@@ -3410,6 +3458,10 @@ import Cocoa
     self.mProgramHelpButton?.action = #selector (PackageDocument.programHelpAction (_:))
     self.mLoadFromDesignButton?.target = self
     self.mLoadFromDesignButton?.action = #selector (PackageDocument.loadFromDesignAction (_:))
+    self.mRunProgramButton?.target = self
+    self.mRunProgramButton?.action = #selector (PackageDocument.runProgramAction (_:))
+    self.mClearProgramErrorButton?.target = self
+    self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
   }
@@ -3620,6 +3672,8 @@ import Cocoa
     self.mSetTextOriginAtMidpoint?.target = nil
     self.mProgramHelpButton?.target = nil
     self.mLoadFromDesignButton?.target = nil
+    self.mRunProgramButton?.target = nil
+    self.mClearProgramErrorButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddArcButton?.ebCleanUp ()
@@ -3665,6 +3719,7 @@ import Cocoa
     self.mBezierCurveY2TextField?.ebCleanUp ()
     self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
     self.mBezierInspectorView?.ebCleanUp ()
+    self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageScrollView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
@@ -3748,11 +3803,13 @@ import Cocoa
     self.mPadYCenterUnitPopUp?.ebCleanUp ()
     self.mPadZoneNameTextField?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mProgramErrorTextField?.ebCleanUp ()
     self.mProgramHelpButton?.ebCleanUp ()
     self.mProgramHelpPanel?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
+    self.mRunProgramButton?.ebCleanUp ()
     self.mSegmentInspectorView?.ebCleanUp ()
     self.mSegmentLengthTextField?.ebCleanUp ()
     self.mSegmentLengthUnitPopUp?.ebCleanUp ()

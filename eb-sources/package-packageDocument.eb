@@ -453,13 +453,15 @@ document PackageDocument root PackageRoot {
 
   action loadFromDesignAction ;
   outlet EBButton mLoadFromDesignButton $run self.loadFromDesignAction ;
-#
-#  action runProgramAction ;
-#  outlet runProgramButton : NSButton $run .runProgramAction ;
-#
-#  action clearProgramErrorAction ;
-#  outlet clearProgramErrorButton : NSButton $run .clearProgramErrorAction ;
-#
+
+  action runProgramAction ;
+  outlet EBButton mRunProgramButton $run self.runProgramAction ;
+
+  action clearProgramErrorAction ;
+  outlet EBButton mClearProgramErrorButton $run self.clearProgramErrorAction ;
+
+  outlet EBTextField mProgramErrorTextField ;
+
 #--------------- Infos Tab
 #--- Comments
   outlet EBTextView mCommentTextView  $value root.comments ;

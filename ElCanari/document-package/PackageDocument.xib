@@ -51,6 +51,7 @@
                 <outlet property="mBezierCurveY2TextField" destination="3092" id="Pis-4f-rKA"/>
                 <outlet property="mBezierCurveY2UnitPopUp" destination="3091" id="vp2-ZP-wv9"/>
                 <outlet property="mBezierInspectorView" destination="3087" id="Cbw-cg-VDf"/>
+                <outlet property="mClearProgramErrorButton" destination="2516" id="uix-b6-yP2"/>
                 <outlet property="mCommentTextView" destination="2519" id="Hka-c2-v35"/>
                 <outlet property="mComposedPackageScrollView" destination="2476" id="coe-P2-hj3"/>
                 <outlet property="mComposedPackageView" destination="2477" id="SeZ-59-Job"/>
@@ -134,11 +135,13 @@
                 <outlet property="mPadYCenterUnitPopUp" destination="2172" id="prz-xu-cp3"/>
                 <outlet property="mPadZoneNameTextField" destination="2187" id="N4m-uk-LbU"/>
                 <outlet property="mPageSegmentedControl" destination="2896" id="IH0-Px-2WQ"/>
+                <outlet property="mProgramErrorTextField" destination="J66-Da-WpD" id="D1Y-72-Q4o"/>
                 <outlet property="mProgramHelpButton" destination="S67-ds-8Uk" id="guS-YO-FvG"/>
                 <outlet property="mProgramHelpPanel" destination="h48-eq-iuE" id="hDk-S5-DNs"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mProgramTextView" destination="2514" id="d7U-jr-k0N"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
+                <outlet property="mRunProgramButton" destination="2515" id="RyF-Iw-kFF"/>
                 <outlet property="mSegmentInspectorView" destination="3015" id="Uuj-Fr-Dyh"/>
                 <outlet property="mSegmentLengthTextField" destination="kWJ-ig-bvl" id="JjM-17-9DU"/>
                 <outlet property="mSegmentLengthUnitPopUp" destination="ZG8-kT-g4P" id="Iuj-Yc-R9q"/>
@@ -2285,7 +2288,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2403,7 +2406,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="drN-9Y-pXu">
                         <rect key="frame" x="1" y="0.0" width="694" height="444"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="68" headerView="2831" id="2499">
                                 <rect key="frame" x="0.0" y="0.0" width="694" height="421"/>
@@ -2463,14 +2466,6 @@
             <rect key="frame" x="0.0" y="0.0" width="686" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="2515" customClass="EBButton">
-                    <rect key="frame" x="147" y="456" width="82" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Run" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2816">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="2513">
                     <rect key="frame" x="20" y="20" width="646" height="420"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2518,7 +2513,7 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" imageHugsTitle="YES" id="Veo-5P-f4O" customClass="EBButton">
-                    <rect key="frame" x="20" y="456" width="119" height="17"/>
+                    <rect key="frame" x="20" y="456" width="120" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Load from Design" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="GSb-3Y-BOr">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -2526,15 +2521,32 @@
                     </buttonCell>
                 </button>
                 <button verticalHuggingPriority="750" imageHugsTitle="YES" id="2516" customClass="EBButton">
-                    <rect key="frame" x="237" y="456" width="108" height="17"/>
+                    <rect key="frame" x="237" y="456" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Clear Error" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2817">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="J66-Da-WpD" customClass="EBTextField">
+                    <rect key="frame" x="343" y="457" width="296" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" id="KCh-d6-n41">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" imageHugsTitle="YES" id="2515" customClass="EBButton">
+                    <rect key="frame" x="148" y="456" width="80" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Run" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2816">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="67" y="951.5"/>
+            <point key="canvasLocation" x="4" y="930"/>
         </customView>
         <customView id="2517" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="717" height="319"/>
@@ -3749,7 +3761,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ttk-9b-UM8">
                             <rect key="frame" x="0.0" y="0.0" width="604" height="312"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
                                     <rect key="frame" x="0.0" y="0.0" width="604" height="312"/>
