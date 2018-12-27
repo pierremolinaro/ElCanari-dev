@@ -191,6 +191,18 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
+  //   Selection observable property: slavePadCount
+  //····················································································································
+
+  var slavePadCount_property = EBTransientProperty_Int ()
+
+  var slavePadCount_property_selection : EBSelection <Int> {
+    get {
+      return self.slavePadCount_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: slaves
   //····················································································································
 
@@ -341,6 +353,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_padShape (model: self.mActualModel)
     self.bind_property_padStyle (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
+    self.bind_property_slavePadCount (model: self.mActualModel)
     self.bind_property_width (model: self.mActualModel)
     self.bind_property_widthUnit (model: self.mActualModel)
     self.bind_property_xCenter (model: self.mActualModel)
@@ -419,6 +432,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- slavePadCount
+    self.slavePadCount_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_slavePadCount (self.slavePadCount_property)
   //--- width
     self.width_property.readModelFunction = nil 
     self.width_property.writeModelFunction = nil 
@@ -1475,6 +1491,46 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_slavePadCount (model : ReadOnlyArrayOf_PackagePad) {
+    model.addEBObserverOf_slavePadCount (self.slavePadCount_property)
+    self.slavePadCount_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.slavePadCount_property_selection {
             case .empty :
               return .empty
             case .multiple :

@@ -138,6 +138,12 @@ protocol PackagePad_zoneAllowsManualRenumbering : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackagePad_slavePadCount : class {
+  var slavePadCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackagePad_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -169,6 +175,7 @@ class PackagePad : PackageObject,
          PackagePad_zoneName,
          PackagePad_noZone,
          PackagePad_zoneAllowsManualRenumbering,
+         PackagePad_slavePadCount,
          PackagePad_objectDisplay {
 
   //····················································································································
@@ -656,6 +663,29 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: slavePadCount
+  //····················································································································
+
+  var slavePadCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var slavePadCount_property_selection : EBSelection <Int> {
+    return self.slavePadCount_property.prop
+  }
+
+  //····················································································································
+
+    var slavePadCount : Int? {
+    switch self.slavePadCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -894,6 +924,28 @@ class PackagePad : PackageObject,
       }
     }
     self.zone_property.addEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property)
+  //--- Atomic property: slavePadCount
+    self.slavePadCount_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.slaves_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.slaves_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackagePad_slavePadCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.slaves_property.addEBObserver (self.slavePadCount_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -981,6 +1033,7 @@ class PackagePad : PackageObject,
     self.zone_property.removeEBObserverOf_zoneName (self.zoneName_property)
     self.zone_property.removeEBObserver (self.noZone_property)
     self.zone_property.removeEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property)
+    self.slaves_property.removeEBObserver (self.slavePadCount_property)
     self.xCenter_property.removeEBObserver (self.objectDisplay_property)
     self.yCenter_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -1181,6 +1234,14 @@ class PackagePad : PackageObject,
       view:view,
       observerExplorer:&self.zoneAllowsManualRenumbering_property.mObserverExplorer,
       valueExplorer:&self.zoneAllowsManualRenumbering_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "slavePadCount",
+      idx:self.slavePadCount_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.slavePadCount_property.mObserverExplorer,
+      valueExplorer:&self.slavePadCount_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -2691,6 +2752,62 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   }
 
   //····················································································································
+  //   Observers of 'slavePadCount' transient property
+  //····················································································································
+
+  private var mObserversOf_slavePadCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_slavePadCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.slavePadCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_slavePadCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.slavePadCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_slavePadCount_toElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_slavePadCount {
+        managedObject.slavePadCount_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_slavePadCount_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_slavePadCount {
+        managedObject.slavePadCount_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -2842,6 +2959,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.removeEBObserversOf_zoneName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_noZone_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_zoneAllowsManualRenumbering_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_slavePadCount_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -2869,6 +2987,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.addEBObserversOf_zoneName_toElementsOfSet (addedSet)
       self.addEBObserversOf_noZone_toElementsOfSet (addedSet)
       self.addEBObserversOf_zoneAllowsManualRenumbering_toElementsOfSet (addedSet)
+      self.addEBObserversOf_slavePadCount_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -3019,6 +3138,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_noZone_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoneAllowsManualRenumbering_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_slavePadCount_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -3048,6 +3168,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_noZone_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoneAllowsManualRenumbering_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_slavePadCount_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()

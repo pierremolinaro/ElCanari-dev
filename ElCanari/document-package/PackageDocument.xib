@@ -120,6 +120,7 @@
                 <outlet property="mPadNumberingPopUpButton" destination="2293" id="5dg-Wp-sIE"/>
                 <outlet property="mPadPageView" destination="2497" id="kco-Jh-scD"/>
                 <outlet property="mPadRenumberingPullDownButton" destination="2156" id="x5i-fs-01L"/>
+                <outlet property="mPadSlaveCountTextField" destination="1N6-cc-BMY" id="WhE-iO-y33"/>
                 <outlet property="mPadStyleView" destination="2274" id="1yu-0h-Jz9"/>
                 <outlet property="mPadWidthTextField" destination="2161" id="baV-Jy-ztx"/>
                 <outlet property="mPadWidthUnitPopUp" destination="2214" id="XHk-or-qdI"/>
@@ -149,6 +150,7 @@
                 <outlet property="mSignatureTextField" destination="CcA-xS-Gpa" id="wyL-De-3C8"/>
                 <outlet property="mSlavePadAnnularRingTextField" destination="Nu4-dp-zQW" id="TaU-hT-XVO"/>
                 <outlet property="mSlavePadAnnularRingUnitPopUp" destination="1tX-a5-2W5" id="wcP-LP-mUS"/>
+                <outlet property="mSlavePadAssignmentPopUpButton" destination="2335" id="u3k-AH-Ize"/>
                 <outlet property="mSlavePadHeightTextField" destination="Fh8-O9-36i" id="qMa-OW-RjW"/>
                 <outlet property="mSlavePadHeightUnitPopUp" destination="hag-fc-YVA" id="a3k-fy-rjN"/>
                 <outlet property="mSlavePadHoleDiameterTextField" destination="JaH-TP-fHh" id="Fkt-6P-FVZ"/>
@@ -1386,6 +1388,10 @@
                     <rect key="frame" x="20" y="247" width="210" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
+                <box verticalHuggingPriority="750" boxType="separator" id="QHS-cy-yvM">
+                    <rect key="frame" x="22" y="156" width="210" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </box>
                 <textField verticalHuggingPriority="750" id="2201" customClass="EBIntObserverField">
                     <rect key="frame" x="104" y="196" width="126" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1737,8 +1743,34 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <textField verticalHuggingPriority="750" id="xs5-Mk-dUw">
+                    <rect key="frame" x="20" y="133" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Slave Pads" id="cyC-eA-e9c">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="1N6-cc-BMY" customClass="EBIntObserverField">
+                    <rect key="frame" x="104" y="133" width="128" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="zzz" id="xir-Zn-dYv">
+                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="#,##0.00" negativeFormat="-#,##0.00" thousandSeparator=" " id="8tF-ca-oEM">
+                            <textAttributesForNegativeValues/>
+                            <attributedString key="attributedStringForZero">
+                                <fragment content="0,00"/>
+                            </attributedString>
+                            <decimal key="minimum" value="NaN"/>
+                            <decimal key="maximum" value="NaN"/>
+                        </numberFormatter>
+                        <font key="font" metaFont="smallSystemBold"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="-954" y="154"/>
+            <point key="canvasLocation" x="-1151" y="161"/>
         </customView>
         <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
@@ -2138,7 +2170,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <popUpButton imageHugsTitle="YES" id="2335">
+                <popUpButton imageHugsTitle="YES" id="2335" customClass="CanariSlavePadAssignmentPopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="108" y="246" width="122" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Item1" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" preferredEdge="maxY" selectedItem="2337" id="2798">
@@ -2154,7 +2186,7 @@
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-208" y="612.5"/>
+            <point key="canvasLocation" x="-332" y="585"/>
         </customView>
         <customView id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
@@ -2264,8 +2296,8 @@
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="3011">
                         <font key="font" metaFont="cellTitle"/>
                         <segments>
-                            <segment image="selected-object" width="49"/>
-                            <segment image="loupe" width="49" tag="1"/>
+                            <segment image="editorInspector" width="49"/>
+                            <segment image="magnifyingGlass" width="49" tag="1"/>
                             <segment image="display" width="49"/>
                             <segment label="①…②" imageScaling="proportionallyUpOrDown" width="49" selected="YES"/>
                             <segment image="NSStatusAvailable" width="49"/>
@@ -2284,7 +2316,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="drN-9Y-pXu">
                         <rect key="frame" x="1" y="0.0" width="694" height="444"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="68" headerView="2831" id="2499">
                                 <rect key="frame" x="0.0" y="0.0" width="694" height="421"/>
@@ -3582,8 +3614,8 @@
     <resources>
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="display" width="64" height="64"/>
-        <image name="loupe" width="64" height="64"/>
+        <image name="editorInspector" width="60" height="60"/>
+        <image name="magnifyingGlass" width="40" height="40"/>
         <image name="red20" width="20" height="20"/>
-        <image name="selected-object" width="64" height="64"/>
     </resources>
 </document>

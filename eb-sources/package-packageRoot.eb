@@ -33,6 +33,7 @@ graphic entity PackageRoot {
 #--- Package definition
   toMany @signature PackageObject packageObjects ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
+  toMany PackageSlavePad packageSlavePads dependsFrom self.packageObjects ;
   toMany PackageZone packageZones dependsFrom self.packageObjects ;
 
 #--- Grid and display inspector
@@ -228,6 +229,8 @@ graphic entity PackagePad : PackageObject {
   transient Bool noZone dependsFrom self.zone.none ;
   
   transient Bool zoneAllowsManualRenumbering dependsFrom self.zone.one.zoneNumbering ;
+  
+  transient Int slavePadCount dependsFrom self.slaves.count ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

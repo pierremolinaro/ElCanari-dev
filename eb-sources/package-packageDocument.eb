@@ -212,7 +212,8 @@ document PackageDocument root PackageRoot {
     $currentZoneName mPackagePadSelectionController.zoneName
     $enabled (mPackagePadSelectionController.noZone & root.freePadNumbering) | mPackagePadSelectionController.zoneAllowsManualRenumbering
   ;
-
+#--- Slave Pad count
+  outlet EBIntObserverField mPadSlaveCountTextField $valueObserver mPackagePadSelectionController.slavePadCount {autoFormatter : yes};
 
 
 
@@ -254,11 +255,10 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
      $dimensionAndUnit mPackageSlavePadSelectionController.annularRing, mPackageSlavePadSelectionController.annularRingUnit
   ;
-##--- Pad zone
-#  outlet EBTextObserverField mSlavePadZoneNameTextField $valueObserver mPackageSlavePadSelectionController.zoneName ;
-##--- Pad Number
-#  outlet EBIntObserverField mSlavePadNumberTextField $valueObserver mPackageSlavePadSelectionController.padNumber {autoFormatter : yes} ;
-#  outlet CanariPadRenumberingPullDownButton mSlavePadRenumberingPullDownButton $currentNumber mPackageSlavePadSelectionController.padNumber ;
+#--- Masrer Pad
+  outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
+    $masterPadName mPackageSlavePadSelectionController.padName
+  ;
 
 
 

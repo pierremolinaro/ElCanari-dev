@@ -254,6 +254,7 @@ import Cocoa
   @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton?
   @IBOutlet var mPadPageView : CanariViewWithKeyView?
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
+  @IBOutlet var mPadSlaveCountTextField : EBIntObserverField?
   @IBOutlet var mPadStyleView : NSView?
   @IBOutlet var mPadWidthTextField : CanariDimensionTextField?
   @IBOutlet var mPadWidthUnitPopUp : EBPopUpButton?
@@ -283,6 +284,7 @@ import Cocoa
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField?
   @IBOutlet var mSlavePadAnnularRingUnitPopUp : EBPopUpButton?
+  @IBOutlet var mSlavePadAssignmentPopUpButton : CanariSlavePadAssignmentPopUpButton?
   @IBOutlet var mSlavePadHeightTextField : CanariDimensionTextField?
   @IBOutlet var mSlavePadHeightUnitPopUp : EBPopUpButton?
   @IBOutlet var mSlavePadHoleDiameterTextField : CanariDimensionTextField?
@@ -2086,6 +2088,21 @@ import Cocoa
         errorMessage: "the 'mPadRenumberingPullDownButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadSlaveCountTextField {
+      if !(outlet is EBIntObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadSlaveCountTextField' outlet is not an instance of 'EBIntObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadSlaveCountTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadStyleView {
       if !(outlet is NSView) {
         presentErrorWindow (
@@ -2519,6 +2536,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSlavePadAnnularRingUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSlavePadAssignmentPopUpButton {
+      if !(outlet is CanariSlavePadAssignmentPopUpButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSlavePadAssignmentPopUpButton' outlet is not an instance of 'CanariSlavePadAssignmentPopUpButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSlavePadAssignmentPopUpButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mSlavePadHeightTextField {
@@ -3078,6 +3110,7 @@ import Cocoa
     self.mPadNumberTextField?.bind_valueObserver (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line, autoFormatter:true)
     self.mPadRenumberingPullDownButton?.bind_currentNumber (self.mPackagePadSelectionController.padNumber_property, file: #file, line: #line)
     self.mPadRenumberingPullDownButton?.bind_currentZoneName (self.mPackagePadSelectionController.zoneName_property, file: #file, line: #line)
+    self.mPadSlaveCountTextField?.bind_valueObserver (self.mPackagePadSelectionController.slavePadCount_property, file: #file, line: #line, autoFormatter:true)
     self.mPackageSlavePadShapePopUpButton?.bind_selectedIndex (self.mPackageSlavePadSelectionController.padShape_property, file: #file, line: #line)
     self.mPackageSlavePadStylePopUpButton?.bind_selectedIndex (self.mPackageSlavePadSelectionController.padStyle_property, file: #file, line: #line)
     self.mSlavePadXCenterUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.xCenterUnit_property, file: #file, line: #line)
@@ -3092,6 +3125,7 @@ import Cocoa
     self.mSlavePadHoleDiameterTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.holeDiameter_property, self.mPackageSlavePadSelectionController.holeDiameterUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingUnitPopUp?.bind_selectedTag (self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
     self.mSlavePadAnnularRingTextField?.bind_dimensionAndUnit (self.mPackageSlavePadSelectionController.annularRing_property, self.mPackageSlavePadSelectionController.annularRingUnit_property, file: #file, line: #line)
+    self.mSlavePadAssignmentPopUpButton?.bind_masterPadName (self.mPackageSlavePadSelectionController.padName_property, file: #file, line: #line)
     self.mGuideX1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
     self.mGuideX1TextField?.bind_dimensionAndUnit (self.mPackageGuideSelectionController.x1_property, self.mPackageGuideSelectionController.x1Unit_property, file: #file, line: #line)
     self.mGuideY1UnitPopUp?.bind_selectedTag (self.mPackageGuideSelectionController.y1Unit_property, file: #file, line: #line)
@@ -3302,6 +3336,7 @@ import Cocoa
     self.mPadNumberTextField?.unbind_valueObserver ()
     self.mPadRenumberingPullDownButton?.unbind_currentNumber ()
     self.mPadRenumberingPullDownButton?.unbind_currentZoneName ()
+    self.mPadSlaveCountTextField?.unbind_valueObserver ()
     self.mPackageSlavePadShapePopUpButton?.unbind_selectedIndex ()
     self.mPackageSlavePadStylePopUpButton?.unbind_selectedIndex ()
     self.mSlavePadXCenterUnitPopUp?.unbind_selectedTag ()
@@ -3316,6 +3351,7 @@ import Cocoa
     self.mSlavePadHoleDiameterTextField?.unbind_dimensionAndUnit ()
     self.mSlavePadAnnularRingUnitPopUp?.unbind_selectedTag ()
     self.mSlavePadAnnularRingTextField?.unbind_dimensionAndUnit ()
+    self.mSlavePadAssignmentPopUpButton?.unbind_masterPadName ()
     self.mGuideX1UnitPopUp?.unbind_selectedTag ()
     self.mGuideX1TextField?.unbind_dimensionAndUnit ()
     self.mGuideY1UnitPopUp?.unbind_selectedTag ()
@@ -3533,6 +3569,7 @@ import Cocoa
     self.mPadNumberingPopUpButton?.ebCleanUp ()
     self.mPadPageView?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
+    self.mPadSlaveCountTextField?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
     self.mPadWidthTextField?.ebCleanUp ()
     self.mPadWidthUnitPopUp?.ebCleanUp ()
@@ -3562,6 +3599,7 @@ import Cocoa
     self.mSignatureTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingUnitPopUp?.ebCleanUp ()
+    self.mSlavePadAssignmentPopUpButton?.ebCleanUp ()
     self.mSlavePadHeightTextField?.ebCleanUp ()
     self.mSlavePadHeightUnitPopUp?.ebCleanUp ()
     self.mSlavePadHoleDiameterTextField?.ebCleanUp ()

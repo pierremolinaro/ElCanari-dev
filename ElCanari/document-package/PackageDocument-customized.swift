@@ -44,9 +44,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Handle pad number event
-    self.addPadNumbringObservers ()
-  //--- Register document for renumbering pull down button
+    self.addPadNumberingObservers ()
+  //--- Register document for renumbering pads
     self.mPadRenumberingPullDownButton?.register (document: self)
+  //--- Register document for slave pad assignment
+    self.mSlavePadAssignmentPopUpButton?.register (document: self)
   //--- Package color observer
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)

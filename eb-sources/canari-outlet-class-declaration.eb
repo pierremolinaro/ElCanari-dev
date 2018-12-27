@@ -38,6 +38,9 @@ extern outlet class CanariPadRenumberingPullDownButton : NSControl ;
 binding CanariPadRenumberingPullDownButton $currentNumber : transient Int ;
 binding CanariPadRenumberingPullDownButton $currentZoneName : transient String ;
 
+extern outlet class CanariSlavePadAssignmentPopUpButton ;
+binding CanariSlavePadAssignmentPopUpButton $masterPadName : transient String ;
+
 extern outlet class CanariFontCharacterSelectButton $enabled ;
 binding CanariFontCharacterSelectButton $codePoint : property Int ;
 

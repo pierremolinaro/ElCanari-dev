@@ -527,7 +527,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
       return false
     }else{
       for object in self.selectedArray_property.propset {
-        if !object.canCopyAndPaste () {
+        if !object.canCopyAndPaste () || !object.canBeDeleted () {
           return false
         }
       }

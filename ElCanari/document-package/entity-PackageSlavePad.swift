@@ -2699,6 +2699,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
         oldValue?.padShape_property.removeEBObserversFrom (self.mObserversOf_padShape)
         oldValue?.padStyle_property.removeEBObserversFrom (self.mObserversOf_padStyle)
         oldValue?.selectionDisplay_property.removeEBObserversFrom (self.mObserversOf_selectionDisplay)
+        oldValue?.slavePadCount_property.removeEBObserversFrom (self.mObserversOf_slavePadCount)
         oldValue?.width_property.removeEBObserversFrom (self.mObserversOf_width)
         oldValue?.widthUnit_property.removeEBObserversFrom (self.mObserversOf_widthUnit)
         oldValue?.xCenter_property.removeEBObserversFrom (self.mObserversOf_xCenter)
@@ -2723,6 +2724,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
         self.mValue?.padShape_property.addEBObserversFrom (self.mObserversOf_padShape)
         self.mValue?.padStyle_property.addEBObserversFrom (self.mObserversOf_padStyle)
         self.mValue?.selectionDisplay_property.addEBObserversFrom (self.mObserversOf_selectionDisplay)
+        self.mValue?.slavePadCount_property.addEBObserversFrom (self.mObserversOf_slavePadCount)
         self.mValue?.width_property.addEBObserversFrom (self.mObserversOf_width)
         self.mValue?.widthUnit_property.addEBObserversFrom (self.mObserversOf_widthUnit)
         self.mValue?.xCenter_property.addEBObserversFrom (self.mObserversOf_xCenter)
@@ -3407,6 +3409,49 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
     self.mObserversOf_selectionDisplay.remove (inObserver)
     if let object = self.propval {
       object.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: slavePadCount
+  //····················································································································
+
+  private var mObserversOf_slavePadCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  var slavePadCount_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.slavePadCount_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
+    self.mObserversOf_slavePadCount.insert (inObserver)
+    if let object = self.propval {
+      object.slavePadCount_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_slavePadCount (_ inObserver : EBEvent) {
+    self.mObserversOf_slavePadCount.remove (inObserver)
+    if let object = self.propval {
+      object.slavePadCount_property.removeEBObserver (inObserver)
     }
   }
 

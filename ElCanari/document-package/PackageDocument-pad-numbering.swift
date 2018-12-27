@@ -8,7 +8,7 @@ extension CustomizedPackageDocument {
 
   //····················································································································
 
-  internal func addPadNumbringObservers () {
+  internal func addPadNumberingObservers () {
     self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
     self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
     self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
@@ -22,6 +22,7 @@ extension CustomizedPackageDocument {
 
   private func handlePadNumbering () {
     var allPads = self.rootObject.packagePads_property.propval
+    let aPad = allPads.first
     var zoneDictionary = [PackageZone : [PackagePad]] ()
     for zone in self.rootObject.packageZones_property.propval {
       let zoneRect = zone.rect!
@@ -47,6 +48,13 @@ extension CustomizedPackageDocument {
       pad.zone_property.setProp (nil)
     }
     self.performPadNumbering (allPads, self.rootObject.padNumbering)
+  //--- Link slave pads to any pad
+    let allSlavePads = self.rootObject.packageSlavePads_property.propval
+    for slavePad in allSlavePads {
+      if slavePad.master_property.propval == nil {
+        slavePad.master_property.setProp (aPad)
+      }
+    }
   }
 
   //····················································································································

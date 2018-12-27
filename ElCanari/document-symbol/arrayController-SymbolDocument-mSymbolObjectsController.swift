@@ -527,7 +527,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       return false
     }else{
       for object in self.selectedArray_property.propset {
-        if !object.canCopyAndPaste () {
+        if !object.canCopyAndPaste () || !object.canBeDeleted () {
           return false
         }
       }

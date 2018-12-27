@@ -453,6 +453,18 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To many property: packageSlavePads
+  //····················································································································
+
+  var packageSlavePads_property = TransientArrayOf_PackageSlavePad ()
+
+  //····················································································································
+
+  var packageSlavePads_property_selection : EBSelection < [PackageSlavePad] > {
+      return self.packageSlavePads_property.prop
+  }
+
+  //····················································································································
   //   To many property: packageZones
   //····················································································································
 
@@ -712,6 +724,27 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
+    self.packageObjects_property.addEBObserver (self.packageSlavePads_property)
+    self.packageSlavePads_property.readModelFunction =  { [weak self] in
+      if let model = self?.packageObjects_property {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let modelArray) :
+          var array = [PackageSlavePad] ()
+          for baseObject in modelArray {
+            if let object = baseObject as? PackageSlavePad {
+              array.append (object)
+            }
+          }
+          return .single (array)
+        }
+      }else{
+        return .empty
+      }
+    }
     self.packageObjects_property.addEBObserver (self.packageZones_property)
     self.packageZones_property.readModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
@@ -747,6 +780,8 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Remove observers
   //--- To many property: packagePads
     self.packageObjects_property.removeEBObserver (self.packagePads_property)
+  //--- To many property: packageSlavePads
+    self.packageObjects_property.removeEBObserver (self.packageSlavePads_property)
   //--- To many property: packageZones
     self.packageObjects_property.removeEBObserver (self.packageZones_property)
     self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
@@ -1098,6 +1133,10 @@ class PackageRoot : EBGraphicManagedObject,
     }
   //--- To many property: packagePads
     for managedObject : EBManagedObject in self.packagePads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: packageSlavePads
+    for managedObject : EBManagedObject in self.packageSlavePads_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
