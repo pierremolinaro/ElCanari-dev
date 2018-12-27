@@ -11,17 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_objectDisplay (
-       _ self_xCenter : Int,             
-       _ self_yCenter : Int,             
-       _ self_width : Int,               
-       _ self_height : Int,              
-       _ self_holeDiameter : Int,        
-       _ self_padShape : PadShape,       
-       _ self_padStyle : PadStyle,       
-       _ prefs_padNumberFont : NSFont,   
-       _ prefs_padNumberColor : NSColor, 
-       _ self_padName : String,          
+func transient_PackageSlavePad_objectDisplay (
+       _ self_xCenter : Int,                  
+       _ self_yCenter : Int,                  
+       _ self_width : Int,                    
+       _ self_height : Int,                   
+       _ self_holeDiameter : Int,             
+       _ self_padShape : PadShape,            
+       _ self_padStyle : PadStyle,            
+       _ self_padName : String,               
+       _ prefs_padNumberFont : NSFont,        
+       _ prefs_padNumberColor : NSColor,      
        _ prefs_packageColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -57,20 +57,18 @@ func transient_PackagePad_objectDisplay (
     let shape = EBShape ()
     shape.append (EBFilledBezierPathShape ([bp], prefs_packageColor))
   //--- Pad number
-    if self_padName != "" {
-      let textAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : prefs_padNumberFont,
-        NSAttributedString.Key.foregroundColor : prefs_padNumberColor
-      ]
-      let numberShape = EBTextShape (
-        self_padName, // padString,
-        NSPoint (x: xCenter, y: yCenter),
-        textAttributes,
-        .center,
-        .center
-      )
-      shape.append (numberShape)
-    }
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : prefs_padNumberFont,
+      NSAttributedString.Key.foregroundColor : prefs_padNumberColor
+    ]
+    let numberShape = EBTextShape (
+      self_padName, // padString,
+      NSPoint (x: xCenter, y: yCenter),
+      textAttributes,
+      .center,
+      .center
+    )
+    shape.append (numberShape)
   //---
     return shape
 //--- END OF USER ZONE 2

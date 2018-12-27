@@ -88,6 +88,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       entityName: "PackagePad",
       scaleProvider: self.mComposedPackageView
     )
+    self.mAddSlavePadButton?.register (
+      draggedType: packagePasteboardType,
+      entityName: "PackageSlavePad",
+      scaleProvider: self.mComposedPackageView
+    )
     self.mAddGuideButton?.register (
       draggedType: packagePasteboardType,
       entityName: "PackageGuide",
@@ -117,6 +122,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")
     self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, forClass: "PackageArc")
     self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")
+    self.mPackageObjectsController.register (inspectorView: self.mSlavePadInspectorView, forClass: "PackageSlavePad")
     self.mPackageObjectsController.register (inspectorView: self.mGuideInspectorView, forClass: "PackageGuide")
     self.mPackageObjectsController.register (inspectorView: self.mDimensionInspectorView, forClass: "PackageDimension")
     self.mPackageObjectsController.register (inspectorView: self.mZoneInspectorView, forClass: "PackageZone")
@@ -211,6 +217,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
+    self.mAddSlavePadButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddZoneButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
   }

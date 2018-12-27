@@ -169,9 +169,9 @@ document PackageDocument root PackageRoot {
   selectionController PackagePad mPackagePadSelectionController : self.mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mPadInspectorView ;
 #--- Pad shape
-  outlet EBPopUpButton mPackageShapePopUpButton $selectedIndex mPackagePadSelectionController.padShape ;
+  outlet EBPopUpButton mPackagePadShapePopUpButton $selectedIndex mPackagePadSelectionController.padShape ;
 #--- Pad style
-  outlet EBPopUpButton mPackageStylePopUpButton $selectedIndex mPackagePadSelectionController.padStyle ;
+  outlet EBPopUpButton mPackagePadStylePopUpButton $selectedIndex mPackagePadSelectionController.padStyle ;
   outlet NSView mPadStyleView $hidden !mPackagePadSelectionController.padIsTraversing ;
 #--- xCenter
   outlet EBPopUpButton mPadXCenterUnitPopUp $selectedTag mPackagePadSelectionController.xCenterUnit ;
@@ -207,7 +207,58 @@ document PackageDocument root PackageRoot {
   outlet EBTextObserverField mPadZoneNameTextField $valueObserver mPackagePadSelectionController.zoneName ;
 #--- Pad Number
   outlet EBIntObserverField mPadNumberTextField $valueObserver mPackagePadSelectionController.padNumber {autoFormatter : yes} ;
-  outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton $currentNumber mPackagePadSelectionController.padNumber ;
+  outlet CanariPadRenumberingPullDownButton mPadRenumberingPullDownButton
+    $currentNumber mPackagePadSelectionController.padNumber
+    $currentZoneName mPackagePadSelectionController.zoneName
+    $enabled (mPackagePadSelectionController.noZone & root.freePadNumbering) | mPackagePadSelectionController.zoneAllowsManualRenumbering
+  ;
+
+
+
+
+#------- Slave Pad inspector
+  selectionController PackageSlavePad mPackageSlavePadSelectionController : self.mPackageObjectsController.selectedArray ;
+  outlet CanariViewWithKeyView mSlavePadInspectorView ;
+#--- Pad shape
+  outlet EBPopUpButton mPackageSlavePadShapePopUpButton $selectedIndex mPackageSlavePadSelectionController.padShape ;
+#--- Pad style
+  outlet EBPopUpButton mPackageSlavePadStylePopUpButton $selectedIndex mPackageSlavePadSelectionController.padStyle ;
+  outlet NSView mSlavePadStyleView $hidden !mPackageSlavePadSelectionController.padIsTraversing ;
+#--- xCenter
+  outlet EBPopUpButton mSlavePadXCenterUnitPopUp $selectedTag mPackageSlavePadSelectionController.xCenterUnit ;
+  outlet CanariDimensionTextField mSlavePadXCenterTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.xCenter, mPackageSlavePadSelectionController.xCenterUnit
+  ;
+#--- yCenter
+  outlet EBPopUpButton mSlavePadYCenterUnitPopUp $selectedTag mPackageSlavePadSelectionController.yCenterUnit ;
+  outlet CanariDimensionTextField mSlavePadYCenterTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.yCenter, mPackageSlavePadSelectionController.yCenterUnit
+  ;
+#--- Width
+  outlet EBPopUpButton mSlavePadWidthUnitPopUp $selectedTag mPackageSlavePadSelectionController.widthUnit ;
+  outlet CanariDimensionTextField mSlavePadWidthTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.width, mPackageSlavePadSelectionController.widthUnit
+  ;
+#--- Height
+  outlet EBPopUpButton mSlavePadHeightUnitPopUp $selectedTag mPackageSlavePadSelectionController.heightUnit ;
+  outlet CanariDimensionTextField mSlavePadHeightTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.height, mPackageSlavePadSelectionController.heightUnit
+  ;
+#--- Hole Diameter
+  outlet EBPopUpButton mSlavePadHoleDiameterUnitPopUp $selectedTag mPackageSlavePadSelectionController.holeDiameterUnit ;
+  outlet CanariDimensionTextField mSlavePadHoleDiameterTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.holeDiameter, mPackageSlavePadSelectionController.holeDiameterUnit
+  ;
+#--- Annular Ring
+  outlet EBPopUpButton mSlavePadAnnularRingUnitPopUp $selectedTag mPackageSlavePadSelectionController.annularRingUnit ;
+  outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
+     $dimensionAndUnit mPackageSlavePadSelectionController.annularRing, mPackageSlavePadSelectionController.annularRingUnit
+  ;
+##--- Pad zone
+#  outlet EBTextObserverField mSlavePadZoneNameTextField $valueObserver mPackageSlavePadSelectionController.zoneName ;
+##--- Pad Number
+#  outlet EBIntObserverField mSlavePadNumberTextField $valueObserver mPackageSlavePadSelectionController.padNumber {autoFormatter : yes} ;
+#  outlet CanariPadRenumberingPullDownButton mSlavePadRenumberingPullDownButton $currentNumber mPackageSlavePadSelectionController.padNumber ;
 
 
 
@@ -324,6 +375,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDragSourceButton mAddOvalButton ;
   outlet CanariDragSourceButton mAddArcButton ;
   outlet CanariDragSourceButton mAddPadButton ;
+  outlet CanariDragSourceButton mAddSlavePadButton $enabled root.packagePads.count > 0 ;
   outlet CanariDragSourceButton mAddGuideButton ;
   outlet CanariDragSourceButton mAddDimensionButton ;
   outlet CanariDragSourceButton mAddZoneButton ;

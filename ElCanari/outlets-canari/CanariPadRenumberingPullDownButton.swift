@@ -50,7 +50,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   // MARK: -
   //····················································································································
 
-  private var mCurrentNumberController : EBReadOnlyController_Int?
+  private var mCurrentNumberController : EBReadOnlyController_Int? = nil
   private var mCurrentPadNumber = 0
 
   //····················································································································
@@ -58,7 +58,7 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
   func bind_currentNumber (_ model : EBReadOnlyProperty_Int, file : String, line : Int) {
     self.mCurrentNumberController = EBReadOnlyController_Int (
       model: model,
-      callBack: { [weak self] in self?.update (from: model) }
+      callBack: { [weak self] in self?.update (fromPadNumber: model) }
      )
   }
 
@@ -71,22 +71,38 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
 
   //····················································································································
 
-  private func update (from model : EBReadOnlyProperty_Int) {
+  private func update (fromPadNumber model : EBReadOnlyProperty_Int) {
     switch model.prop {
     case .empty, .multiple :
-      self.isEnabled = false
+      self.enableFromValueBinding (false)
     case .single (let v) :
       self.mCurrentPadNumber = v
-      self.isEnabled = self.mDocument != nil
-      if let document = self.mDocument {
-        let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNumber < $1.padNumber } )
-        self.removeAllItems ()
-        self.autoenablesItems = false
-        self.addItem (withTitle: "Exchange with")
-        for pad in allPads {
+      self.buildMenu ()
+    }
+  }
+
+  //····················································································································
+
+  private func buildMenu () {
+    self.enableFromValueBinding (self.mDocument != nil)
+    if let document = self.mDocument {
+      let allZones = document.rootObject.packageZones_property.propval
+      var myZone : PackageZone? = nil
+      for zone in allZones {
+        if zone.zoneName == mCurrentZoneName {
+          myZone = zone
+          break
+        }
+      }
+      let allPads = document.rootObject.packagePads_property.propval.sorted (by: { $0.padNumber < $1.padNumber } )
+      self.removeAllItems ()
+      self.autoenablesItems = false
+      self.addItem (withTitle: "Exchange with")
+      for pad in allPads {
+        if pad.zone_property.propval === myZone {
           self.addItem (withTitle: "\(pad.padNumber)")
           let menuItem = self.lastItem!
-          menuItem.isEnabled = pad.padNumber != v
+          menuItem.isEnabled = pad.padNumber != self.mCurrentPadNumber
           menuItem.target = self
           menuItem.action = #selector (CanariPadRenumberingPullDownButton.performRenumbering (_:))
           menuItem.tag = pad.padNumber
@@ -110,6 +126,44 @@ class CanariPadRenumberingPullDownButton : NSPopUpButton, EBUserClassNameProtoco
       }
     }
   }
+
+  //····················································································································
+  // MARK: -
+  //····················································································································
+
+  private var mCurrentZoneController : EBReadOnlyController_String? = nil
+  private var mCurrentZoneName = ""
+
+  //····················································································································
+
+  func bind_currentZoneName (_ model : EBReadOnlyProperty_String, file : String, line : Int) {
+    self.mCurrentZoneController = EBReadOnlyController_String (
+      model: model,
+      callBack: { [weak self] in self?.update (fromZoneName: model) }
+     )
+  }
+
+  //····················································································································
+
+  func unbind_currentZoneName () {
+    self.mCurrentZoneController?.unregister ()
+    self.mCurrentZoneController = nil
+  }
+
+  //····················································································································
+
+  private func update (fromZoneName model : EBReadOnlyProperty_String) {
+    switch model.prop {
+    case .empty, .multiple :
+      self.mCurrentZoneName = ""
+    case .single (let v) :
+      self.mCurrentZoneName = v
+      self.buildMenu ()
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

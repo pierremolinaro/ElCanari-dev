@@ -46,6 +46,7 @@ graphic entity PackageRoot {
 
 #--- Pad numbering
   property PadNumbering padNumbering default noNumbering ;
+  transient Bool freePadNumbering dependsFrom self.padNumbering ;
 
 #--- XY placard unit
   property @signature Int xPlacardUnit default 2_286 ; # mils
@@ -200,11 +201,12 @@ graphic entity PackagePad : PackageObject {
   property @signature Int annularRingUnit default 2_286 ;
   
   toOne PackageZone zone ;
+  toMany PackageSlavePad slaves inverse toOne master ;
 
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     self.padNumber, prefs.padNumberFont, prefs.padNumberColor, self.zone.one.zoneName,
+     prefs.padNumberFont, prefs.padNumberColor, self.padName,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom
@@ -219,7 +221,54 @@ graphic entity PackagePad : PackageObject {
   
   transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
   
+  transient String padName dependsFrom self.padNumber, self.zone.one.zoneName ;
+  
   transient String zoneName dependsFrom self.zone.one.zoneName ;
+  
+  transient Bool noZone dependsFrom self.zone.none ;
+  
+  transient Bool zoneAllowsManualRenumbering dependsFrom self.zone.one.zoneNumbering ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity PackageSlavePad : PackageObject {
+  property @signature Int xCenter default 0 ;
+  property @signature Int yCenter default 0 ;
+  property @signature Int width default 114_300 ;
+  property @signature Int height default 228_600 ;
+  property @signature Int holeDiameter default 57_150 ;
+  property @signature PadShape padShape default octo ;
+  property @signature PadStyle padStyle default traversing ;
+
+  property @signature Int xCenterUnit default 2_286 ;
+  property @signature Int yCenterUnit default 2_286 ;
+  property @signature Int widthUnit  default 2_286 ;
+  property @signature Int heightUnit  default 2_286 ;
+  property @signature Int holeDiameterUnit default 2_286 ;
+  property @signature Int annularRingUnit default 2_286 ;
+  
+  toOne PackagePad master inverse toMany slaves ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle,
+     self.padName, prefs.padNumberFont, prefs.padNumberColor,
+     prefs.packageColor
+  ;
+  transient EBShape selectionDisplay dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.padShape
+  ;
+  
+  transient CanariIssueArray issues dependsFrom
+    self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
+  ;
+  
+  transient Bool padIsTraversing dependsFrom self.padStyle ;
+  
+  transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
+  
+  transient String padName dependsFrom self.master.one.padName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

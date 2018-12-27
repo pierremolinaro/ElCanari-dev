@@ -5,10 +5,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    SelectionController_PackageDocument_mPackagePadSelectionController                                               *
+//    SelectionController_PackageDocument_mPackageSlavePadSelectionController                                          *
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class SelectionController_PackageDocument_mPackagePadSelectionController : EBObject {
+final class SelectionController_PackageDocument_mPackageSlavePadSelectionController : EBObject {
 
   //····················································································································
   //   Selection observable property: annularRing
@@ -95,16 +95,8 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: noZone
+  //   Selection observable property: master
   //····················································································································
-
-  var noZone_property = EBTransientProperty_Bool ()
-
-  var noZone_property_selection : EBSelection <Bool> {
-    get {
-      return self.noZone_property.prop
-    }
-  }
 
   //····················································································································
   //   Selection observable property: objectDisplay
@@ -143,18 +135,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: padNumber
-  //····················································································································
-
-  var padNumber_property = EBPropertyProxy_Int ()
-
-  var padNumber_property_selection : EBSelection <Int> {
-    get {
-      return self.padNumber_property.prop
-    }
-  }
-
-  //····················································································································
   //   Selection observable property: padShape
   //····················································································································
 
@@ -189,10 +169,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
       return self.selectionDisplay_property.prop
     }
   }
-
-  //····················································································································
-  //   Selection observable property: slaves
-  //····················································································································
 
   //····················································································································
   //   Selection observable property: width
@@ -267,45 +243,17 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: zone
-  //····················································································································
-
-  //····················································································································
-  //   Selection observable property: zoneAllowsManualRenumbering
-  //····················································································································
-
-  var zoneAllowsManualRenumbering_property = EBTransientProperty_Bool ()
-
-  var zoneAllowsManualRenumbering_property_selection : EBSelection <Bool> {
-    get {
-      return self.zoneAllowsManualRenumbering_property.prop
-    }
-  }
-
-  //····················································································································
-  //   Selection observable property: zoneName
-  //····················································································································
-
-  var zoneName_property = EBTransientProperty_String ()
-
-  var zoneName_property_selection : EBSelection <String> {
-    get {
-      return self.zoneName_property.prop
-    }
-  }
-
-  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
    private var mModel : ReadOnlyArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackagePad ()
+   private var mActualModel = TransientArrayOf_PackageSlavePad ()
 
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackagePad] > in
+    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageSlavePad] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -313,9 +261,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = [PackagePad] ()
+          var s = [PackageSlavePad] ()
           for baseObject in v {
-            if let object = baseObject as? PackagePad {
+            if let object = baseObject as? PackageSlavePad {
               s.append (object)
             }
           }
@@ -333,11 +281,9 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_holeDiameter (model: self.mActualModel)
     self.bind_property_holeDiameterUnit (model: self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
-    self.bind_property_noZone (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_padIsTraversing (model: self.mActualModel)
     self.bind_property_padName (model: self.mActualModel)
-    self.bind_property_padNumber (model: self.mActualModel)
     self.bind_property_padShape (model: self.mActualModel)
     self.bind_property_padStyle (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
@@ -347,8 +293,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.bind_property_xCenterUnit (model: self.mActualModel)
     self.bind_property_yCenter (model: self.mActualModel)
     self.bind_property_yCenterUnit (model: self.mActualModel)
-    self.bind_property_zoneAllowsManualRenumbering (model: self.mActualModel)
-    self.bind_property_zoneName (model: self.mActualModel)
   }
 
   //····················································································································
@@ -389,9 +333,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- issues
     self.issues_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
-  //--- noZone
-    self.noZone_property.readModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_noZone (self.noZone_property)
   //--- objectDisplay
     self.objectDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
@@ -401,11 +342,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- padName
     self.padName_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padName (self.padName_property)
-  //--- padNumber
-    self.padNumber_property.readModelFunction = nil 
-    self.padNumber_property.writeModelFunction = nil 
-    self.padNumber_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_padNumber (self.padNumber_property)
   //--- padShape
     self.padShape_property.readModelFunction = nil 
     self.padShape_property.writeModelFunction = nil 
@@ -449,12 +385,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     self.yCenterUnit_property.writeModelFunction = nil 
     self.yCenterUnit_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
-  //--- zoneAllowsManualRenumbering
-    self.zoneAllowsManualRenumbering_property.readModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_zoneAllowsManualRenumbering (self.zoneAllowsManualRenumbering_property)
-  //--- zoneName
-    self.zoneName_property.readModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_zoneName (self.zoneName_property)
   //---
     self.mModel = nil    
   }
@@ -480,7 +410,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
     valueExplorer.font = font
     valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
     valueExplorer.target = self
-    valueExplorer.action = #selector(SelectionController_PackageDocument_mPackagePadSelectionController.showObjectWindowFromExplorerButton(_:))
+    valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
     self.mValueExplorer = valueExplorer
     y += EXPLORER_ROW_HEIGHT
@@ -534,14 +464,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
       view:view,
       observerExplorer:&self.holeDiameterUnit_property.mObserverExplorer,
       valueExplorer:&self.holeDiameterUnit_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "padNumber",
-      idx:self.padNumber_property.mEasyBindingsObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padNumber_property.mObserverExplorer,
-      valueExplorer:&self.padNumber_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "padShape",
@@ -616,7 +538,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(SelectionController_PackageDocument_mPackagePadSelectionController.deleteSelectionControllerWindowAction(_:))
+    closeButton?.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
@@ -661,7 +583,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_annularRing (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_annularRing (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_annularRing (self.annularRing_property)
     self.annularRing_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -701,7 +623,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_annularRingUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_annularRingUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
     self.annularRingUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -771,7 +693,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_height (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_height (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_height (self.height_property)
     self.height_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -841,7 +763,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_heightUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_heightUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_heightUnit (self.heightUnit_property)
     self.heightUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -911,7 +833,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_holeDiameter (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_holeDiameter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_holeDiameter (self.holeDiameter_property)
     self.holeDiameter_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -981,7 +903,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_holeDiameterUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_holeDiameterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
     self.holeDiameterUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1051,7 +973,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_issues (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1091,47 +1013,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_noZone (model : ReadOnlyArrayOf_PackagePad) {
-    model.addEBObserverOf_noZone (self.noZone_property)
-    self.noZone_property.readModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.noZone_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1171,7 +1053,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_padIsTraversing (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_padIsTraversing (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
     self.padIsTraversing_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1211,7 +1093,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_padName (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_padName (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padName (self.padName_property)
     self.padName_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1251,77 +1133,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_padNumber (model : ReadOnlyArrayOf_PackagePad) {
-    model.addEBObserverOf_padNumber (self.padNumber_property)
-    self.padNumber_property.readModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Int> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.padNumber_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.padNumber_property.writeModelFunction = { [weak self] (inValue : Int) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          break
-        case .single (let v) :
-          for object in v {
-            object.padNumber_property.setProp (inValue)
-          }
-        }
-      }
-    }
-    self.padNumber_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty, .multiple :
-          return false
-        case .single (let v) :
-          for object in v {
-            let result = object.padNumber_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
-            if !result {
-              return false
-            }
-          }
-          return true
-        }
-      }else{
-        return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_padShape (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_padShape (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padShape (self.padShape_property)
     self.padShape_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1391,7 +1203,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_padStyle (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_padStyle (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padStyle (self.padStyle_property)
     self.padStyle_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1461,7 +1273,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1501,7 +1313,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_width (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_width (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_width (self.width_property)
     self.width_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1571,7 +1383,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_widthUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_widthUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_widthUnit (self.widthUnit_property)
     self.widthUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1641,7 +1453,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_xCenter (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_xCenter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_xCenter (self.xCenter_property)
     self.xCenter_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1711,7 +1523,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_xCenterUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_xCenterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
     self.xCenterUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1781,7 +1593,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_yCenter (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_yCenter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_yCenter (self.yCenter_property)
     self.yCenter_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1851,7 +1663,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_yCenterUnit (model : ReadOnlyArrayOf_PackagePad) {
+  private final func bind_property_yCenterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
     self.yCenterUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1915,86 +1727,6 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
         }
       }else{
         return false
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_zoneAllowsManualRenumbering (model : ReadOnlyArrayOf_PackagePad) {
-    model.addEBObserverOf_zoneAllowsManualRenumbering (self.zoneAllowsManualRenumbering_property)
-    self.zoneAllowsManualRenumbering_property.readModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <Bool> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.zoneAllowsManualRenumbering_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_zoneName (model : ReadOnlyArrayOf_PackagePad) {
-    model.addEBObserverOf_zoneName (self.zoneName_property)
-    self.zoneName_property.readModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <String> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.zoneName_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
       }
     }
   }

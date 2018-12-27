@@ -1,5 +1,5 @@
 //
-//  extension-PackageArc.swift
+//  extension-PackageSlavePad.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 15/12/2018.
@@ -9,19 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-//let PACKAGE_ARC_CENTER = 1
-//let PACKAGE_ARC_RADIUS = 2
-//let PACKAGE_ARC_START_ANGLE = 3
-//let PACKAGE_ARC_END_ANGLE = 4
-
-let VERY_LARGE_PAD_NUMBER = 1_000_000
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   EXTENSION PackagePad
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension PackagePad {
+extension PackageSlavePad {
 
   //····················································································································
 
@@ -110,7 +101,7 @@ extension PackagePad {
   //····················································································································
 
   override func operationAfterPasting () {
-    self.padNumber += VERY_LARGE_PAD_NUMBER // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
+//    self.padNumber += 1_000_000 // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
   }
 
   //····················································································································
@@ -146,43 +137,6 @@ extension PackagePad {
 
   func angle (from inCanariPoint : CanariPoint) -> CGFloat {
     return CanariPoint.angleInRadian (CanariPoint (x: self.xCenter, y: self.yCenter), inCanariPoint)
-  }
-
-  //····················································································································
-  //  Can be deleted
-  //····················································································································
-
-  override func canBeDeleted () -> Bool {
-    return true
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-extension NSBezierPath {
-
-  //····················································································································
-
-  convenience init (octogonInRect inRect : NSRect) {
-    self.init ()
-    let s2 : CGFloat = sqrt (2.0)
-    let w = inRect.size.width
-    let h = inRect.size.height
-    let x = inRect.origin.x // center x
-    let y = inRect.origin.y // center y
-    let lg = min (w, h) / (1.0 + s2)
-    self.move (to: NSPoint (x: x + lg / s2,     y: y + h))
-    self.line (to: NSPoint (x: x + w - lg / s2, y: y + h))
-    self.line (to: NSPoint (x: x + w,           y: y + h - lg / s2))
-    self.line (to: NSPoint (x: x + w,           y: y + lg / s2))
-    self.line (to: NSPoint (x: x + w - lg / s2, y: y))
-    self.line (to: NSPoint (x: x + lg / s2,     y: y))
-    self.line (to: NSPoint (x: x,               y: y + lg / s2))
-    self.line (to: NSPoint (x: x,               y: y + h - lg / s2))
-    self.close ()
   }
 
   //····················································································································
