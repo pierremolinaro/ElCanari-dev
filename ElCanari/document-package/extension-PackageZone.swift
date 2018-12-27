@@ -137,6 +137,29 @@ extension PackageZone {
 
   //····················································································································
 
+  override func program () -> String {
+    var s = "zone "
+    s += stringFrom (valueInCanariUnit: self.x, displayUnit : self.xUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.y, displayUnit : self.yUnit)
+    s += " size "
+    s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += " label "
+    s += stringFrom (valueInCanariUnit: self.xName, displayUnit : self.xNameUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.yName, displayUnit : self.yNameUnit)
+    s += " name "
+    s += self.zoneName
+    s += " numbering "
+    s += self.zoneNumbering.descriptionForExplorer ()
+    s += "\n"
+    return s
+  }
+
+ //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

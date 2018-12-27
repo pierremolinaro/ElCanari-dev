@@ -131,6 +131,18 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   }
 
   //····················································································································
+  //   Selection observable property: xDimensionUnit
+  //····················································································································
+
+  var xDimensionUnit_property = EBPropertyProxy_Int ()
+
+  var xDimensionUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.xDimensionUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: y1
   //····················································································································
 
@@ -191,6 +203,18 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
   }
 
   //····················································································································
+  //   Selection observable property: yDimensionUnit
+  //····················································································································
+
+  var yDimensionUnit_property = EBPropertyProxy_Int ()
+
+  var yDimensionUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.yDimensionUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
@@ -232,11 +256,13 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.bind_property_x2 (model: self.mActualModel)
     self.bind_property_x2Unit (model: self.mActualModel)
     self.bind_property_xDimension (model: self.mActualModel)
+    self.bind_property_xDimensionUnit (model: self.mActualModel)
     self.bind_property_y1 (model: self.mActualModel)
     self.bind_property_y1Unit (model: self.mActualModel)
     self.bind_property_y2 (model: self.mActualModel)
     self.bind_property_y2Unit (model: self.mActualModel)
     self.bind_property_yDimension (model: self.mActualModel)
+    self.bind_property_yDimensionUnit (model: self.mActualModel)
   }
 
   //····················································································································
@@ -288,6 +314,11 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.xDimension_property.writeModelFunction = nil 
     self.xDimension_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xDimension (self.xDimension_property)
+  //--- xDimensionUnit
+    self.xDimensionUnit_property.readModelFunction = nil 
+    self.xDimensionUnit_property.writeModelFunction = nil 
+    self.xDimensionUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
   //--- y1
     self.y1_property.readModelFunction = nil 
     self.y1_property.writeModelFunction = nil 
@@ -313,6 +344,11 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
     self.yDimension_property.writeModelFunction = nil 
     self.yDimension_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yDimension (self.yDimension_property)
+  //--- yDimensionUnit
+    self.yDimensionUnit_property.readModelFunction = nil 
+    self.yDimensionUnit_property.writeModelFunction = nil 
+    self.yDimensionUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
   //---
     self.mModel = nil    
   }
@@ -402,6 +438,14 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
       valueExplorer:&self.xDimension_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "xDimensionUnit",
+      idx:self.xDimensionUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xDimensionUnit_property.mObserverExplorer,
+      valueExplorer:&self.xDimensionUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "y1",
       idx:self.y1_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -440,6 +484,14 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
       view:view,
       observerExplorer:&self.yDimension_property.mObserverExplorer,
       valueExplorer:&self.yDimension_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yDimensionUnit",
+      idx:self.yDimensionUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yDimensionUnit_property.mObserverExplorer,
+      valueExplorer:&self.yDimensionUnit_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -1075,6 +1127,76 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   //···················································································································*
 
+  private final func bind_property_xDimensionUnit (model : ReadOnlyArrayOf_PackageDimension) {
+    model.addEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
+    self.xDimensionUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xDimensionUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xDimensionUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xDimensionUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xDimensionUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xDimensionUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_y1 (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.readModelFunction = { [weak self] in
@@ -1411,6 +1533,76 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         case .single (let v) :
           for object in v {
             let result = object.yDimension_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_yDimensionUnit (model : ReadOnlyArrayOf_PackageDimension) {
+    model.addEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
+    self.yDimensionUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yDimensionUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yDimensionUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yDimensionUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yDimensionUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yDimensionUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

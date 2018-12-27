@@ -141,6 +141,29 @@ extension PackageSlavePad {
 
   //····················································································································
 
+  override func program () -> String {
+    var s = "slave "
+    s += stringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += " size "
+    s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += " shape "
+    s += self.padShape.descriptionForExplorer ()
+    s += " style "
+    s += self.padStyle.descriptionForExplorer ()
+    s += " hole "
+    s += stringFrom (valueInCanariUnit: self.holeDiameter, displayUnit : self.holeDiameterUnit)
+    s += " id "
+    s += "\(self.master_property.propval!.mEasyBindingsObjectIndex)"
+    s += "\n"
+    return s
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

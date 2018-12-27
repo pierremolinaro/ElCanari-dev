@@ -22,7 +22,7 @@ document PackageDocument root PackageRoot {
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
-  outlet CanariViewWithKeyView mDisplayInspectorView ;
+#  outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
 
@@ -320,6 +320,16 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionObserverTextField mDimensionDistanceTextField
      $dimensionAndUnit mPackageDimensionSelectionController.distanceInCanariUnit, mPackageDimensionSelectionController.distanceUnit
   ;
+#--- xLabel
+  outlet EBPopUpButton mDimensionXLabelUnitPopUp $selectedTag mPackageDimensionSelectionController.xDimensionUnit ;
+  outlet CanariDimensionTextField mDimensionXLabelTextField
+     $dimensionAndUnit mPackageDimensionSelectionController.xDimension, mPackageDimensionSelectionController.xDimensionUnit
+  ;
+#--- yLabel
+  outlet EBPopUpButton mDimensionYLabelUnitPopUp $selectedTag mPackageDimensionSelectionController.yDimensionUnit ;
+  outlet CanariDimensionTextField mDimensionYLabelTextField
+     $dimensionAndUnit mPackageDimensionSelectionController.yDimension, mPackageDimensionSelectionController.yDimensionUnit
+  ;
 
 
 
@@ -350,6 +360,16 @@ document PackageDocument root PackageRoot {
   outlet EBTextField mZoneNameTextField $value mPackageZoneSelectionController.zoneName {sendContinously : yes} ;
 #--- Zone numbering
   outlet EBPopUpButton mZoneNumberingPopUpButton $selectedIndex mPackageZoneSelectionController.zoneNumbering ;
+#--- xLabel
+  outlet EBPopUpButton mZoneXLabelUnitPopUp $selectedTag mPackageZoneSelectionController.xNameUnit ;
+  outlet CanariDimensionTextField mZoneXLabelTextField
+     $dimensionAndUnit mPackageZoneSelectionController.xName, mPackageZoneSelectionController.xNameUnit
+  ;
+#--- yLabel
+  outlet EBPopUpButton mZoneYLabelUnitPopUp $selectedTag mPackageZoneSelectionController.yNameUnit ;
+  outlet CanariDimensionTextField mZoneYLabelTextField
+     $dimensionAndUnit mPackageZoneSelectionController.yName, mPackageZoneSelectionController.yNameUnit
+  ;
 
 
 
@@ -429,7 +449,10 @@ document PackageDocument root PackageRoot {
   action programHelpAction ;
   outlet EBButton mProgramHelpButton $run self.programHelpAction ;
   
-#  outlet programTextView : NSTextView $value root.program {NSContinuouslyUpdatesValue:yes} ;
+  outlet EBTextView mProgramTextView $value root.program ;
+
+  action loadFromDesignAction ;
+  outlet EBButton mLoadFromDesignButton $run self.loadFromDesignAction ;
 #
 #  action runProgramAction ;
 #  outlet runProgramButton : NSButton $run .runProgramAction ;

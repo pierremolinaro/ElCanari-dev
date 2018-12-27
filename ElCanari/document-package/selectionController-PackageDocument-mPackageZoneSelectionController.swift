@@ -131,6 +131,18 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   }
 
   //····················································································································
+  //   Selection observable property: xNameUnit
+  //····················································································································
+
+  var xNameUnit_property = EBPropertyProxy_Int ()
+
+  var xNameUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.xNameUnit_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: xUnit
   //····················································································································
 
@@ -163,6 +175,18 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
   var yName_property_selection : EBSelection <Int> {
     get {
       return self.yName_property.prop
+    }
+  }
+
+  //····················································································································
+  //   Selection observable property: yNameUnit
+  //····················································································································
+
+  var yNameUnit_property = EBPropertyProxy_Int ()
+
+  var yNameUnit_property_selection : EBSelection <Int> {
+    get {
+      return self.yNameUnit_property.prop
     }
   }
 
@@ -244,9 +268,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.bind_property_widthUnit (model: self.mActualModel)
     self.bind_property_x (model: self.mActualModel)
     self.bind_property_xName (model: self.mActualModel)
+    self.bind_property_xNameUnit (model: self.mActualModel)
     self.bind_property_xUnit (model: self.mActualModel)
     self.bind_property_y (model: self.mActualModel)
     self.bind_property_yName (model: self.mActualModel)
+    self.bind_property_yNameUnit (model: self.mActualModel)
     self.bind_property_yUnit (model: self.mActualModel)
     self.bind_property_zoneName (model: self.mActualModel)
     self.bind_property_zoneNumbering (model: self.mActualModel)
@@ -301,6 +327,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.xName_property.writeModelFunction = nil 
     self.xName_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xName (self.xName_property)
+  //--- xNameUnit
+    self.xNameUnit_property.readModelFunction = nil 
+    self.xNameUnit_property.writeModelFunction = nil 
+    self.xNameUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_xNameUnit (self.xNameUnit_property)
   //--- xUnit
     self.xUnit_property.readModelFunction = nil 
     self.xUnit_property.writeModelFunction = nil 
@@ -316,6 +347,11 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
     self.yName_property.writeModelFunction = nil 
     self.yName_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yName (self.yName_property)
+  //--- yNameUnit
+    self.yNameUnit_property.readModelFunction = nil 
+    self.yNameUnit_property.writeModelFunction = nil 
+    self.yNameUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_yNameUnit (self.yNameUnit_property)
   //--- yUnit
     self.yUnit_property.readModelFunction = nil 
     self.yUnit_property.writeModelFunction = nil 
@@ -420,6 +456,14 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       valueExplorer:&self.xName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "xNameUnit",
+      idx:self.xNameUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.xNameUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "xUnit",
       idx:self.xUnit_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -442,6 +486,14 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
       view:view,
       observerExplorer:&self.yName_property.mObserverExplorer,
       valueExplorer:&self.yName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yNameUnit",
+      idx:self.yNameUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.yNameUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "yUnit",
@@ -1101,6 +1153,76 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   //···················································································································*
 
+  private final func bind_property_xNameUnit (model : ReadOnlyArrayOf_PackageZone) {
+    model.addEBObserverOf_xNameUnit (self.xNameUnit_property)
+    self.xNameUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.xNameUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xNameUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.xNameUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.xNameUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.xNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
   private final func bind_property_xUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_xUnit (self.xUnit_property)
     self.xUnit_property.readModelFunction = { [weak self] in
@@ -1297,6 +1419,76 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         case .single (let v) :
           for object in v {
             let result = object.yName_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_yNameUnit (model : ReadOnlyArrayOf_PackageZone) {
+    model.addEBObserverOf_yNameUnit (self.yNameUnit_property)
+    self.yNameUnit_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Int> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.yNameUnit_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.yNameUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.yNameUnit_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.yNameUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.yNameUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

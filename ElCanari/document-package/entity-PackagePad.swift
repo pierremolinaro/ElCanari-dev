@@ -3340,9 +3340,11 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
         oldValue?.widthUnit_property.removeEBObserversFrom (self.mObserversOf_widthUnit)
         oldValue?.x_property.removeEBObserversFrom (self.mObserversOf_x)
         oldValue?.xName_property.removeEBObserversFrom (self.mObserversOf_xName)
+        oldValue?.xNameUnit_property.removeEBObserversFrom (self.mObserversOf_xNameUnit)
         oldValue?.xUnit_property.removeEBObserversFrom (self.mObserversOf_xUnit)
         oldValue?.y_property.removeEBObserversFrom (self.mObserversOf_y)
         oldValue?.yName_property.removeEBObserversFrom (self.mObserversOf_yName)
+        oldValue?.yNameUnit_property.removeEBObserversFrom (self.mObserversOf_yNameUnit)
         oldValue?.yUnit_property.removeEBObserversFrom (self.mObserversOf_yUnit)
         oldValue?.zoneName_property.removeEBObserversFrom (self.mObserversOf_zoneName)
         oldValue?.zoneNumbering_property.removeEBObserversFrom (self.mObserversOf_zoneNumbering)
@@ -3357,9 +3359,11 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
         self.mValue?.widthUnit_property.addEBObserversFrom (self.mObserversOf_widthUnit)
         self.mValue?.x_property.addEBObserversFrom (self.mObserversOf_x)
         self.mValue?.xName_property.addEBObserversFrom (self.mObserversOf_xName)
+        self.mValue?.xNameUnit_property.addEBObserversFrom (self.mObserversOf_xNameUnit)
         self.mValue?.xUnit_property.addEBObserversFrom (self.mObserversOf_xUnit)
         self.mValue?.y_property.addEBObserversFrom (self.mObserversOf_y)
         self.mValue?.yName_property.addEBObserversFrom (self.mObserversOf_yName)
+        self.mValue?.yNameUnit_property.addEBObserversFrom (self.mObserversOf_yNameUnit)
         self.mValue?.yUnit_property.addEBObserversFrom (self.mObserversOf_yUnit)
         self.mValue?.zoneName_property.addEBObserversFrom (self.mObserversOf_zoneName)
         self.mValue?.zoneNumbering_property.addEBObserversFrom (self.mObserversOf_zoneNumbering)
@@ -3828,6 +3832,49 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: xNameUnit
+  //····················································································································
+
+  private var mObserversOf_xNameUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var xNameUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.xNameUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_xNameUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_xNameUnit.insert (inObserver)
+    if let object = self.propval {
+      object.xNameUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xNameUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_xNameUnit.remove (inObserver)
+    if let object = self.propval {
+      object.xNameUnit_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: xUnit
   //····················································································································
 
@@ -3953,6 +4000,49 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
     self.mObserversOf_yName.remove (inObserver)
     if let object = self.propval {
       object.yName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: yNameUnit
+  //····················································································································
+
+  private var mObserversOf_yNameUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  var yNameUnit_property_selection : EBSelection <Int?> {
+    get {
+      if let model = self.propval {
+        switch (model.yNameUnit_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_yNameUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_yNameUnit.insert (inObserver)
+    if let object = self.propval {
+      object.yNameUnit_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yNameUnit (_ inObserver : EBEvent) {
+    self.mObserversOf_yNameUnit.remove (inObserver)
+    if let object = self.propval {
+      object.yNameUnit_property.removeEBObserver (inObserver)
     }
   }
 

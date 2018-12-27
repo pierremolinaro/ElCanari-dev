@@ -158,6 +158,31 @@ extension PackagePad {
 
   //····················································································································
 
+  override func program () -> String {
+    var s = "pad "
+    s += stringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += " size "
+    s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
+    s += " shape "
+    s += self.padShape.descriptionForExplorer ()
+    s += " style "
+    s += self.padStyle.descriptionForExplorer ()
+    s += " hole "
+    s += stringFrom (valueInCanariUnit: self.holeDiameter, displayUnit : self.holeDiameterUnit)
+    if self.slaves_property.propval.count > 0 {
+      s += " id "
+      s += "\(self.mEasyBindingsObjectIndex)"
+    }
+    s += "\n"
+    return s
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -60,6 +60,18 @@ protocol PackageDimension_y2Unit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageDimension_xDimensionUnit : class {
+  var xDimensionUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageDimension_yDimensionUnit : class {
+  var yDimensionUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageDimension_distanceUnit : class {
   var distanceUnit : Int { get }
 }
@@ -108,6 +120,8 @@ class PackageDimension : PackageObject,
          PackageDimension_y1Unit,
          PackageDimension_x2Unit,
          PackageDimension_y2Unit,
+         PackageDimension_xDimensionUnit,
+         PackageDimension_yDimensionUnit,
          PackageDimension_distanceUnit,
          PackageDimension_x1,
          PackageDimension_distanceInCanariUnit,
@@ -323,6 +337,52 @@ class PackageDimension : PackageObject,
   }
 
   //····················································································································
+  //   Atomic property: xDimensionUnit
+  //····················································································································
+
+  var xDimensionUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var xDimensionUnit : Int {
+    get {
+      return self.xDimensionUnit_property.propval
+    }
+    set {
+      self.xDimensionUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var xDimensionUnit_property_selection : EBSelection <Int> {
+    return self.xDimensionUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: yDimensionUnit
+  //····················································································································
+
+  var yDimensionUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var yDimensionUnit : Int {
+    get {
+      return self.yDimensionUnit_property.propval
+    }
+    set {
+      self.yDimensionUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var yDimensionUnit_property_selection : EBSelection <Int> {
+    return self.yDimensionUnit_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: distanceUnit
   //····················································································································
 
@@ -415,6 +475,10 @@ class PackageDimension : PackageObject,
     self.x2Unit_property.undoManager = self.undoManager
   //--- Atomic property: y2Unit
     self.y2Unit_property.undoManager = self.undoManager
+  //--- Atomic property: xDimensionUnit
+    self.xDimensionUnit_property.undoManager = self.undoManager
+  //--- Atomic property: yDimensionUnit
+    self.yDimensionUnit_property.undoManager = self.undoManager
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.undoManager = self.undoManager
   //--- Atomic property: x1
@@ -561,11 +625,13 @@ class PackageDimension : PackageObject,
     self.x2_property.setSignatureObserver (observer:self)
     self.x2Unit_property.setSignatureObserver (observer:self)
     self.xDimension_property.setSignatureObserver (observer:self)
+    self.xDimensionUnit_property.setSignatureObserver (observer:self)
     self.y1_property.setSignatureObserver (observer:self)
     self.y1Unit_property.setSignatureObserver (observer:self)
     self.y2_property.setSignatureObserver (observer:self)
     self.y2Unit_property.setSignatureObserver (observer:self)
     self.yDimension_property.setSignatureObserver (observer:self)
+    self.yDimensionUnit_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -686,6 +752,22 @@ class PackageDimension : PackageObject,
       valueExplorer:&self.y2Unit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "xDimensionUnit",
+      idx:self.xDimensionUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xDimensionUnit_property.mObserverExplorer,
+      valueExplorer:&self.xDimensionUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yDimensionUnit",
+      idx:self.yDimensionUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yDimensionUnit_property.mObserverExplorer,
+      valueExplorer:&self.yDimensionUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "distanceUnit",
       idx:self.distanceUnit_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -771,6 +853,12 @@ class PackageDimension : PackageObject,
   //--- Atomic property: y2Unit
     self.y2Unit_property.mObserverExplorer = nil
     self.y2Unit_property.mValueExplorer = nil
+  //--- Atomic property: xDimensionUnit
+    self.xDimensionUnit_property.mObserverExplorer = nil
+    self.xDimensionUnit_property.mValueExplorer = nil
+  //--- Atomic property: yDimensionUnit
+    self.yDimensionUnit_property.mObserverExplorer = nil
+    self.yDimensionUnit_property.mValueExplorer = nil
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.mObserverExplorer = nil
     self.distanceUnit_property.mValueExplorer = nil
@@ -805,6 +893,10 @@ class PackageDimension : PackageObject,
     self.x2Unit_property.storeIn (dictionary: ioDictionary, forKey:"x2Unit")
   //--- Atomic property: y2Unit
     self.y2Unit_property.storeIn (dictionary: ioDictionary, forKey:"y2Unit")
+  //--- Atomic property: xDimensionUnit
+    self.xDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey:"xDimensionUnit")
+  //--- Atomic property: yDimensionUnit
+    self.yDimensionUnit_property.storeIn (dictionary: ioDictionary, forKey:"yDimensionUnit")
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.storeIn (dictionary: ioDictionary, forKey:"distanceUnit")
   //--- Atomic property: x1
@@ -844,6 +936,10 @@ class PackageDimension : PackageObject,
     self.x2Unit_property.readFrom (dictionary: inDictionary, forKey:"x2Unit")
   //--- Atomic property: y2Unit
     self.y2Unit_property.readFrom (dictionary: inDictionary, forKey:"y2Unit")
+  //--- Atomic property: xDimensionUnit
+    self.xDimensionUnit_property.readFrom (dictionary: inDictionary, forKey:"xDimensionUnit")
+  //--- Atomic property: yDimensionUnit
+    self.yDimensionUnit_property.readFrom (dictionary: inDictionary, forKey:"yDimensionUnit")
   //--- Atomic property: distanceUnit
     self.distanceUnit_property.readFrom (dictionary: inDictionary, forKey:"distanceUnit")
   //--- Atomic property: x1
@@ -894,11 +990,13 @@ class PackageDimension : PackageObject,
     crc.accumulateUInt32 (self.x2_property.signature ())
     crc.accumulateUInt32 (self.x2Unit_property.signature ())
     crc.accumulateUInt32 (self.xDimension_property.signature ())
+    crc.accumulateUInt32 (self.xDimensionUnit_property.signature ())
     crc.accumulateUInt32 (self.y1_property.signature ())
     crc.accumulateUInt32 (self.y1Unit_property.signature ())
     crc.accumulateUInt32 (self.y2_property.signature ())
     crc.accumulateUInt32 (self.y2Unit_property.signature ())
     crc.accumulateUInt32 (self.yDimension_property.signature ())
+    crc.accumulateUInt32 (self.yDimensionUnit_property.signature ())
     return crc
   }
 
@@ -1426,6 +1524,120 @@ class ReadOnlyArrayOf_PackageDimension : ReadOnlyAbstractArrayProperty <PackageD
   }
 
   //····················································································································
+  //   Observers of 'xDimensionUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xDimensionUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xDimensionUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xDimensionUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xDimensionUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xDimensionUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xDimensionUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xDimensionUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_xDimensionUnit {
+        managedObject.xDimensionUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xDimensionUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for observer in self.mObserversOf_xDimensionUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xDimensionUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yDimensionUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yDimensionUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yDimensionUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yDimensionUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yDimensionUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yDimensionUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yDimensionUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yDimensionUnit_toElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_yDimensionUnit {
+        managedObject.yDimensionUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yDimensionUnit_fromElementsOfSet (_ inSet : Set<PackageDimension>) {
+    for observer in self.mObserversOf_yDimensionUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yDimensionUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'distanceUnit' stored property
   //····················································································································
 
@@ -1845,6 +2057,8 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
       self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xDimensionUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yDimensionUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_distanceUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
@@ -1864,6 +2078,8 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
       self.addEBObserversOf_y1Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x2Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_y2Unit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xDimensionUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yDimensionUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_distanceUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x1_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
@@ -2007,6 +2223,8 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
         self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xDimensionUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yDimensionUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_distanceUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_distanceInCanariUnit_fromElementsOfSet (removedObjectSet)
@@ -2028,6 +2246,8 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
         self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xDimensionUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yDimensionUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_distanceUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_distanceInCanariUnit_toElementsOfSet (addedObjectSet)

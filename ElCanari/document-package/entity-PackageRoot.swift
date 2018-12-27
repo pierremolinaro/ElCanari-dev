@@ -24,6 +24,12 @@ protocol PackageRoot_comments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_program : class {
+  var program : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_horizontalFlip : class {
   var horizontalFlip : Bool { get }
 }
@@ -114,6 +120,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_selectedPageIndex,
          PackageRoot_selectedInspector,
          PackageRoot_comments,
+         PackageRoot_program,
          PackageRoot_horizontalFlip,
          PackageRoot_verticalFlip,
          PackageRoot_gridStyle,
@@ -196,6 +203,29 @@ class PackageRoot : EBGraphicManagedObject,
 
   var comments_property_selection : EBSelection <String> {
     return self.comments_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: program
+  //····················································································································
+
+  var program_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var program : String {
+    get {
+      return self.program_property.propval
+    }
+    set {
+      self.program_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var program_property_selection : EBSelection <String> {
+    return self.program_property.prop
   }
 
   //····················································································································
@@ -580,6 +610,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.selectedInspector_property.undoManager = self.undoManager
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager
+  //--- Atomic property: program
+    self.program_property.undoManager = self.undoManager
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.undoManager = self.undoManager
   //--- Atomic property: verticalFlip
@@ -769,6 +801,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.packageObjects_property.setSignatureObserver (observer:self)
+    self.program_property.setSignatureObserver (observer:self)
     self.xPlacardUnit_property.setSignatureObserver (observer:self)
     self.yPlacardUnit_property.setSignatureObserver (observer:self)
   //--- Extern delegates
@@ -830,6 +863,14 @@ class PackageRoot : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
       valueExplorer:&self.comments_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "program",
+      idx:self.program_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.program_property.mObserverExplorer,
+      valueExplorer:&self.program_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
@@ -970,6 +1011,9 @@ class PackageRoot : EBGraphicManagedObject,
   //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+  //--- Atomic property: program
+    self.program_property.mObserverExplorer = nil
+    self.program_property.mValueExplorer = nil
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.mObserverExplorer = nil
     self.horizontalFlip_property.mValueExplorer = nil
@@ -1018,6 +1062,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
   //--- Atomic property: comments
     self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+  //--- Atomic property: program
+    self.program_property.storeIn (dictionary: ioDictionary, forKey:"program")
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"horizontalFlip")
   //--- Atomic property: verticalFlip
@@ -1073,6 +1119,8 @@ class PackageRoot : EBGraphicManagedObject,
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
   //--- Atomic property: comments
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+  //--- Atomic property: program
+    self.program_property.readFrom (dictionary: inDictionary, forKey:"program")
   //--- Atomic property: horizontalFlip
     self.horizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"horizontalFlip")
   //--- Atomic property: verticalFlip
@@ -1153,6 +1201,7 @@ class PackageRoot : EBGraphicManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.packageObjects_property.signature ())
+    crc.accumulateUInt32 (self.program_property.signature ())
     crc.accumulateUInt32 (self.xPlacardUnit_property.signature ())
     crc.accumulateUInt32 (self.yPlacardUnit_property.signature ())
     return crc
@@ -1335,6 +1384,63 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'program' stored property
+  //····················································································································
+
+  private var mObserversOf_program = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_program (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_program.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.program_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_program (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_program.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.program_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_program_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_program {
+        managedObject.program_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_program_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for observer in self.mObserversOf_program {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.program_property.removeEBObserver (observer)
       }
     }
   }
@@ -2209,6 +2315,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_program_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedSet)
@@ -2230,6 +2337,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
       self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
       self.addEBObserversOf_comments_toElementsOfSet (addedSet)
+      self.addEBObserversOf_program_toElementsOfSet (addedSet)
       self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_verticalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridStyle_toElementsOfSet (addedSet)
@@ -2375,6 +2483,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_program_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
@@ -2398,6 +2507,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_program_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)

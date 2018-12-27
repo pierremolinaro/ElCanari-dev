@@ -144,6 +144,30 @@ extension PackageArc {
 
   //····················································································································
 
+  override func program () -> String {
+    var s = "arc "
+    s += stringFrom (valueInCanariUnit: self.xCenter, displayUnit : self.xCenterUnit)
+    s += " : "
+    s += stringFrom (valueInCanariUnit: self.yCenter, displayUnit : self.yCenterUnit)
+    s += " radius "
+    s += stringFrom (valueInCanariUnit: self.radius, displayUnit : self.radiusUnit)
+    s += " start "
+    s += "\(self.startAngle)"
+    s += " angle "
+    s += "\(self.arcAngle)"
+    s += " leading "
+    s += stringFrom (valueInCanariUnit: self.startTangentLength, displayUnit : self.startTangentLengthUnit)
+    s += " training "
+    s += stringFrom (valueInCanariUnit: self.endTangentLength, displayUnit : self.endTangentLengthUnit)
+    if self.pathIsClosed {
+      s += " closed"
+    }
+    s += "\n"
+    return s
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

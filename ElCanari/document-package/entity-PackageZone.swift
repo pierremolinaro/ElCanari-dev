@@ -72,6 +72,18 @@ protocol PackageZone_yName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageZone_xNameUnit : class {
+  var xNameUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageZone_yNameUnit : class {
+  var yNameUnit : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageZone_zoneNumbering : class {
   var zoneNumbering : PadNumbering { get }
 }
@@ -116,6 +128,8 @@ class PackageZone : PackageObject,
          PackageZone_zoneName,
          PackageZone_xName,
          PackageZone_yName,
+         PackageZone_xNameUnit,
+         PackageZone_yNameUnit,
          PackageZone_zoneNumbering,
          PackageZone_objectDisplay,
          PackageZone_selectionDisplay,
@@ -376,6 +390,52 @@ class PackageZone : PackageObject,
   }
 
   //····················································································································
+  //   Atomic property: xNameUnit
+  //····················································································································
+
+  var xNameUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var xNameUnit : Int {
+    get {
+      return self.xNameUnit_property.propval
+    }
+    set {
+      self.xNameUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var xNameUnit_property_selection : EBSelection <Int> {
+    return self.xNameUnit_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: yNameUnit
+  //····················································································································
+
+  var yNameUnit_property = EBStoredProperty_Int (2286)
+
+  //····················································································································
+
+  var yNameUnit : Int {
+    get {
+      return self.yNameUnit_property.propval
+    }
+    set {
+      self.yNameUnit_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var yNameUnit_property_selection : EBSelection <Int> {
+    return self.yNameUnit_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: zoneNumbering
   //····················································································································
 
@@ -449,6 +509,10 @@ class PackageZone : PackageObject,
     self.xName_property.undoManager = self.undoManager
   //--- Atomic property: yName
     self.yName_property.undoManager = self.undoManager
+  //--- Atomic property: xNameUnit
+    self.xNameUnit_property.undoManager = self.undoManager
+  //--- Atomic property: yNameUnit
+    self.yNameUnit_property.undoManager = self.undoManager
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -597,9 +661,11 @@ class PackageZone : PackageObject,
     self.widthUnit_property.setSignatureObserver (observer:self)
     self.x_property.setSignatureObserver (observer:self)
     self.xName_property.setSignatureObserver (observer:self)
+    self.xNameUnit_property.setSignatureObserver (observer:self)
     self.xUnit_property.setSignatureObserver (observer:self)
     self.y_property.setSignatureObserver (observer:self)
     self.yName_property.setSignatureObserver (observer:self)
+    self.yNameUnit_property.setSignatureObserver (observer:self)
     self.yUnit_property.setSignatureObserver (observer:self)
     self.zoneName_property.setSignatureObserver (observer:self)
   //--- Extern delegates
@@ -740,6 +806,22 @@ class PackageZone : PackageObject,
       valueExplorer:&self.yName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "xNameUnit",
+      idx:self.xNameUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.xNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.xNameUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "yNameUnit",
+      idx:self.yNameUnit_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.yNameUnit_property.mObserverExplorer,
+      valueExplorer:&self.yNameUnit_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "zoneNumbering",
       idx:self.zoneNumbering_property.mEasyBindingsObjectIndex,
       y:&y,
@@ -823,6 +905,12 @@ class PackageZone : PackageObject,
   //--- Atomic property: yName
     self.yName_property.mObserverExplorer = nil
     self.yName_property.mValueExplorer = nil
+  //--- Atomic property: xNameUnit
+    self.xNameUnit_property.mObserverExplorer = nil
+    self.xNameUnit_property.mValueExplorer = nil
+  //--- Atomic property: yNameUnit
+    self.yNameUnit_property.mObserverExplorer = nil
+    self.yNameUnit_property.mValueExplorer = nil
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.mObserverExplorer = nil
     self.zoneNumbering_property.mValueExplorer = nil
@@ -858,6 +946,10 @@ class PackageZone : PackageObject,
     self.xName_property.storeIn (dictionary: ioDictionary, forKey:"xName")
   //--- Atomic property: yName
     self.yName_property.storeIn (dictionary: ioDictionary, forKey:"yName")
+  //--- Atomic property: xNameUnit
+    self.xNameUnit_property.storeIn (dictionary: ioDictionary, forKey:"xNameUnit")
+  //--- Atomic property: yNameUnit
+    self.yNameUnit_property.storeIn (dictionary: ioDictionary, forKey:"yNameUnit")
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.storeIn (dictionary: ioDictionary, forKey:"zoneNumbering")
   }
@@ -899,6 +991,10 @@ class PackageZone : PackageObject,
     self.xName_property.readFrom (dictionary: inDictionary, forKey:"xName")
   //--- Atomic property: yName
     self.yName_property.readFrom (dictionary: inDictionary, forKey:"yName")
+  //--- Atomic property: xNameUnit
+    self.xNameUnit_property.readFrom (dictionary: inDictionary, forKey:"xNameUnit")
+  //--- Atomic property: yNameUnit
+    self.yNameUnit_property.readFrom (dictionary: inDictionary, forKey:"yNameUnit")
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.readFrom (dictionary: inDictionary, forKey:"zoneNumbering")
   }
@@ -947,9 +1043,11 @@ class PackageZone : PackageObject,
     crc.accumulateUInt32 (self.widthUnit_property.signature ())
     crc.accumulateUInt32 (self.x_property.signature ())
     crc.accumulateUInt32 (self.xName_property.signature ())
+    crc.accumulateUInt32 (self.xNameUnit_property.signature ())
     crc.accumulateUInt32 (self.xUnit_property.signature ())
     crc.accumulateUInt32 (self.y_property.signature ())
     crc.accumulateUInt32 (self.yName_property.signature ())
+    crc.accumulateUInt32 (self.yNameUnit_property.signature ())
     crc.accumulateUInt32 (self.yUnit_property.signature ())
     crc.accumulateUInt32 (self.zoneName_property.signature ())
     return crc
@@ -1593,6 +1691,120 @@ class ReadOnlyArrayOf_PackageZone : ReadOnlyAbstractArrayProperty <PackageZone> 
   }
 
   //····················································································································
+  //   Observers of 'xNameUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_xNameUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_xNameUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_xNameUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xNameUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xNameUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_xNameUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.xNameUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_xNameUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_xNameUnit {
+        managedObject.xNameUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_xNameUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_xNameUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.xNameUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'yNameUnit' stored property
+  //····················································································································
+
+  private var mObserversOf_yNameUnit = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_yNameUnit (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_yNameUnit.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yNameUnit_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yNameUnit (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_yNameUnit.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.yNameUnit_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_yNameUnit_toElementsOfSet (_ inSet : Set<PackageZone>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_yNameUnit {
+        managedObject.yNameUnit_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_yNameUnit_fromElementsOfSet (_ inSet : Set<PackageZone>) {
+    for observer in self.mObserversOf_yNameUnit {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.yNameUnit_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'zoneNumbering' stored property
   //····················································································································
 
@@ -1957,6 +2169,8 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
       self.removeEBObserversOf_zoneName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -1977,6 +2191,8 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
       self.addEBObserversOf_zoneName_toElementsOfSet (addedSet)
       self.addEBObserversOf_xName_toElementsOfSet (addedSet)
       self.addEBObserversOf_yName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_xNameUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_yNameUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -2121,6 +2337,8 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         self.removeEBObserversOf_zoneName_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_xNameUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_yNameUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoneNumbering_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -2143,6 +2361,8 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         self.addEBObserversOf_zoneName_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_xNameUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_yNameUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoneNumbering_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)

@@ -30,6 +30,9 @@ graphic entity PackageRoot {
 #--- Comment
   property @signature String comments default "" ;
 
+#--- Program
+  property @signature String program default "" ;
+
 #--- Package definition
   toMany @signature PackageObject packageObjects ;
   toMany PackagePad packagePads dependsFrom self.packageObjects ;
@@ -309,6 +312,8 @@ graphic entity PackageDimension : PackageObject {
   property @signature Int y1Unit default 2_286 ;
   property @signature Int x2Unit default 2_286 ;
   property @signature Int y2Unit default 2_286 ;
+  property @signature Int xDimensionUnit default 2_286 ;
+  property @signature Int yDimensionUnit default 2_286 ;
   property @signature Int distanceUnit default 2_286 ;
  
  
@@ -346,6 +351,8 @@ graphic entity PackageZone : PackageObject {
   property @signature String zoneName default "" ;
   property @signature Int xName default 2_286_00 ;
   property @signature Int yName default 2_286_00 ;
+  property @signature Int xNameUnit default 2_286 ;
+  property @signature Int yNameUnit default 2_286 ;
 
 #--- Pad numbering
   property PadNumbering zoneNumbering default noNumbering ;
