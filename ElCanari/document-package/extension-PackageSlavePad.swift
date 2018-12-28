@@ -33,61 +33,6 @@ extension PackageSlavePad {
 
   override func canMove (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) -> OCCanariPoint {
     return OCCanariPoint (x: inDx, y: inDy)
- }
-
-  //····················································································································
-
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
-//    let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint ()
-//    let radius = canariUnitToCocoa (self.radius)
-//    let startAngle = packageArcAngleToCocoaDegrees (self.startAngle)
-//    let arcAngle = CGFloat (self.arcAngle) / 1000.0
-//    if inKnobIndex == PACKAGE_ARC_CENTER {
-//      self.xCenter += inDx
-//      self.yCenter += inDy
-//    }else if inKnobIndex == PACKAGE_ARC_RADIUS {
-//      let t = NSAffineTransform ()
-//      t.translateX (by: center.x, yBy: center.y)
-//      t.rotate (byDegrees: startAngle - arcAngle / 2.0)
-//      let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-//      let newRadiusKnob = NSPoint (
-//        x: currentRadiusKnob.x + canariUnitToCocoa (inDx),
-//        y: currentRadiusKnob.y + canariUnitToCocoa (inDy)
-//      )
-//      let deltaX = center.x - newRadiusKnob.x
-//      let deltaY = center.y - newRadiusKnob.y
-//      let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
-//      self.radius = cocoaToCanariUnit (newRadius)
-//    }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
-//      let t = NSAffineTransform ()
-//      t.translateX (by: center.x, yBy: center.y)
-//      t.rotate (byDegrees: startAngle)
-//      let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
-//      let newStartAngleKnob = NSPoint (
-//        x: currentRadiusKnob.x + canariUnitToCocoa (inDx),
-//        y: currentRadiusKnob.y + canariUnitToCocoa (inDy)
-//      )
-//      let newStartAngle = CGPoint.angleInDegrees (center, newStartAngleKnob)
-//      let newCanariStartAngle = cocoaDegreesToPackageArcAngle (newStartAngle)
-////      Swift.print ("\(startAngle)° -> \(newStartAngle)°")
-////      Swift.print ("\(self.startAngle) -> \(newCanariStartAngle)")
-//      self.startAngle = newCanariStartAngle
-//    }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
-//      let t = NSAffineTransform ()
-//      t.translateX (by: center.x, yBy: center.y)
-//      t.rotate (byDegrees: startAngle - arcAngle)
-//      let currentEndAngleKnob = t.transform (NSPoint (x: radius, y: 0.0))
-//      let newEndAngleKnob = NSPoint (
-//        x: currentEndAngleKnob.x + canariUnitToCocoa (inDx),
-//        y: currentEndAngleKnob.y + canariUnitToCocoa (inDy)
-//      )
-//      var newArcAngle = startAngle - CGPoint.angleInDegrees (center, newEndAngleKnob)
-//      if newArcAngle < 0.0 {
-//        newArcAngle += 360.0
-//      }
-//      // Swift.print ("\(arcAngle)° -> \(newArcAngle)°")
-//      self.arcAngle = Int ((newArcAngle * 1000.0).rounded (.toNearestOrEven))
-//    }
   }
 
   //····················································································································
@@ -96,12 +41,6 @@ extension PackageSlavePad {
 
   override func canCopyAndPaste () -> Bool {
     return true
-  }
-
-  //····················································································································
-
-  override func operationAfterPasting () {
-//    self.padNumber += 1_000_000 // So it will be numbered by model observer CustomizedPackageDocument:handlePadNumbering
   }
 
   //····················································································································
@@ -129,6 +68,12 @@ extension PackageSlavePad {
     let result = OCCanariPointArray ()
     result.points.append (CanariPoint (x: self.xCenter, y: self.yCenter))
     return result
+  }
+
+  //····················································································································
+
+  override func operationAfterRemoving () {
+    self.master_property.setProp (nil)
   }
 
   //····················································································································

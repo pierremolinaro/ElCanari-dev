@@ -68,12 +68,6 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  @objc dynamic func acceptedYTranslation (by inDy: Int) -> Int {
-    return inDy
-  }
-
-  //····················································································································
-
   @objc dynamic func acceptToTranslate (xBy inDx: Int, yBy inDy: Int) -> Bool {
     return false
   }
@@ -146,7 +140,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  ROTATE 90 CLOCKWISE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only type that can be represented in Objective-C are accepted
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func rotate90Clockwise () {
@@ -161,7 +155,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  ROTATE 90 COUNTER CLOCKWISE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only type that can be represented in Objective-C are accepted
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func rotate90CounterClockwise () {
@@ -176,7 +170,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  COPY AND PASTE
   //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only type that can be represented in Objective-C are accepted
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func canCopyAndPaste () -> Bool {
@@ -191,7 +185,7 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  Alignment Points
   //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only type that can be represented in Objective-C are accepted
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func alignmentPoints () -> OCCanariPointArray {
@@ -201,11 +195,16 @@ class EBGraphicManagedObject : EBManagedObject {
   //····················································································································
   //  Can be deleted
   //  @objc dynamic before func is required in order to allow function overriding in extensions
-  //  Only type that can be represented in Objective-C are accepted
+  //  Only types that can be represented in Objective-C are accepted
   //····················································································································
 
   @objc dynamic func canBeDeleted () -> Bool {
     return true
+  }
+
+  //····················································································································
+
+  @objc dynamic func operationAfterRemoving () {
   }
 
   //····················································································································
@@ -215,20 +214,34 @@ class EBGraphicManagedObject : EBManagedObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc class OCCanariPoint : EBObject {
+
+  //····················································································································
+
   let x : Int
   let y : Int
+
+  //····················································································································
 
   init (x inX : Int, y inY : Int) {
     x = inX
     y = inY
+    super.init ()
   }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc class OCCanariPointArray : EBObject {
 
+  //····················································································································
+
   var points = [CanariPoint] ()
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

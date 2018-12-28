@@ -167,7 +167,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     var reachableObjectArray = [EBManagedObject] ()
     var reachableObjectSet = Set <EBManagedObject> ()
     reachableObjectSet.insert (rootObject)
-    var objectsToExploreArray = Array<EBManagedObject> ()
+    var objectsToExploreArray = [EBManagedObject] ()
     objectsToExploreArray.append (rootObject)
     rootObject.savingIndex = reachableObjectArray.count
     reachableObjectArray.append (rootObject)
@@ -287,7 +287,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
     view.frame = viewFrame
   //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (NSWindow.ButtonType.closeButton)
     closeButton?.target = self

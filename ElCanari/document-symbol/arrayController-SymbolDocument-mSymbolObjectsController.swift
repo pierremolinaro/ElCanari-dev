@@ -651,6 +651,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
     if self.canDelete () {
       var objects = self.mModel?.propval ?? []
       for object in self.selectedArray_property.propset {
+        object.operationAfterRemoving ()
         if let idx = objects.index (of: object) {
           objects.remove(at: idx)
         }

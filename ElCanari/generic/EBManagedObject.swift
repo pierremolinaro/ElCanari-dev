@@ -70,31 +70,10 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
-  //   resetControllers
-  //····················································································································
-
-  func resetControllers () {
-  }
-
-  //····················································································································
-  //   resetToManyRelationships
-  //····················································································································
-
-  func resetToManyRelationships () {
-  }
-
-  //····················································································································
-  //   resetToOneRelationships
-  //····················································································································
-
-  func resetToOneRelationships () {
-  }
-
-  //····················································································································
   //   accessibleObjects
   //····················································································································
 
-  func accessibleObjects (objects : inout Array<EBManagedObject>) {
+  func accessibleObjects (objects : inout [EBManagedObject]) {
   }
 
   //····················································································································
@@ -127,11 +106,11 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
    // let rr = secondColumn (nameRect)
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
    // NSRect (x:0.0, y:0.0, width:NSMaxX (rr), height:NSMaxY (rr))
   //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width:EXPLORER_ROW_WIDTH + 16.0, height:fmin (600.0, y)))
+    mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
     let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
@@ -210,7 +189,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
 
   final func readEntityFromDictionary (inRelationshipName: String,
                                        inDictionary : NSDictionary,
-                                       managedObjectArray : inout Array<EBManagedObject>) -> EBManagedObject? {
+                                       managedObjectArray : inout [EBManagedObject]) -> EBManagedObject? {
     let opValue : Int? = inDictionary.value (forKey: inRelationshipName) as? Int
     var result : EBManagedObject? = nil
     if let value = opValue {

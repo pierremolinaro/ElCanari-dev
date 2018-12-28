@@ -385,6 +385,8 @@ extension PackageDocument {
     }
     self.check ("hole", inString, &ioIndex, &ioOk)
     let (holeDiameter, holeDiameterUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
+    self.check ("number", inString, &ioIndex, &ioOk)
+    let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
     let object = PackagePad (self.ebUndoManager, file: #file, #line)
     if self.test ("id", inString, &ioIndex, &ioOk) {
       let padID = self.scanNumber (inString, &ioIndex, &ioOk)
@@ -403,6 +405,7 @@ extension PackageDocument {
     object.padStyle = padStyle
     object.holeDiameter = holeDiameter
     object.holeDiameterUnit = holeDiameterUnit
+    object.padNumber = padNumber
     ioObjects.append (object)
  }
 

@@ -247,8 +247,6 @@
 		CF52DF5221501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */; };
 		CF53C46421C662C2001502F4 /* EBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* EBEvent.swift */; };
 		CF53C46521C662C2001502F4 /* EBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53C46321C662C2001502F4 /* EBEvent.swift */; };
-		CF550F3021BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */; };
-		CF550F3121BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */; };
 		CF5599511FDF364400ED5EE6 /* entity-MergerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */; };
 		CF5599521FDF364400ED5EE6 /* MergerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */; };
 		CF5599531FDF364400ED5EE6 /* MergerDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF5599501FDF364400ED5EE6 /* MergerDocument.xib */; };
@@ -1235,7 +1233,6 @@
 		CF52DF4F21501DBF00FAF0ED /* transient-SegmentForFontCharacter-objectDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-objectDisplay.swift"; sourceTree = "<group>"; };
 		CF52DF5021501DBF00FAF0ED /* transient-SegmentForFontCharacter-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SegmentForFontCharacter-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CF53C46321C662C2001502F4 /* EBEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBEvent.swift; sourceTree = "<group>"; };
-		CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBAbstractArrayController.swift; sourceTree = "<group>"; };
 		CF55994E1FDF364400ED5EE6 /* entity-MergerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MergerRoot.swift"; sourceTree = "<group>"; };
 		CF55994F1FDF364400ED5EE6 /* MergerDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerDocument.swift; sourceTree = "<group>"; };
 		CF5599501FDF364400ED5EE6 /* MergerDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MergerDocument.xib; sourceTree = "<group>"; };
@@ -1952,7 +1949,6 @@
 				CF61725E1B3C4BA900F3CA82 /* Application.swift */,
 				CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */,
 				CF61725F1B3C4BA900F3CA82 /* easy-bindings-utilities.swift */,
-				CF550F2F21BC59EC008D2845 /* EBAbstractArrayController.swift */,
 				CFEDE5B11B4677C500036ACF /* EBDataScanner.swift */,
 				CF53C46321C662C2001502F4 /* EBEvent.swift */,
 				CFDC5EFE20FB1F70003AB275 /* EBGraphicManagedObject.swift */,
@@ -2668,7 +2664,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF550F3021BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */,
 				CFC80AA520E6390500C1A156 /* transient-BoardModel-drillSegments.swift in Sources */,
 				CF05C9BD21A809AC0021652C /* transient-SymbolSolidRect-issues.swift in Sources */,
 				CF7A9F2E21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */,
@@ -3104,7 +3099,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF550F3121BC59EC008D2845 /* EBAbstractArrayController.swift in Sources */,
 				CF5C4CC2219F04D600EAC52A /* transient-BoardModel-drillSegments.swift in Sources */,
 				CF05C9BE21A809AC0021652C /* transient-SymbolSolidRect-issues.swift in Sources */,
 				CF7A9F2F21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */,
