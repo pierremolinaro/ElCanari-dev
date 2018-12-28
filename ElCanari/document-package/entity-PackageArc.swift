@@ -425,7 +425,7 @@ class PackageArc : PackageObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: yCenter
     self.yCenter_property.undoManager = self.undoManager

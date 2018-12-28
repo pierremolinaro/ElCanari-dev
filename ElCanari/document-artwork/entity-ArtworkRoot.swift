@@ -356,7 +356,7 @@ class ArtworkRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: selectedTab
     self.selectedTab_property.undoManager = self.undoManager

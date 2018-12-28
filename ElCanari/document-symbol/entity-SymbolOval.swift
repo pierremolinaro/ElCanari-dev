@@ -155,7 +155,7 @@ class SymbolOval : SymbolObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: y
     self.y_property.undoManager = self.undoManager

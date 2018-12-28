@@ -21,7 +21,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //  init
   //····················································································································
 
-  init (_ undoManager : EBUndoManager?, file : String, _ inLine : Int) {
+  required init (_ undoManager : EBUndoManager?, file : String, _ inLine : Int) {
     mUndoManager = undoManager
     mFile = file
     mLine = inLine

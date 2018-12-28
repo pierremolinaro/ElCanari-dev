@@ -104,7 +104,7 @@ class CanariLibraryEntry : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: mPath
     self.mPath_property.undoManager = self.undoManager

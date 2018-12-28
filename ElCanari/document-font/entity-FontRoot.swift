@@ -302,7 +302,7 @@ class FontRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager

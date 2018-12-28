@@ -164,7 +164,7 @@ class SegmentEntity : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: y1
     self.y1_property.undoManager = self.undoManager

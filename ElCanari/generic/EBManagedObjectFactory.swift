@@ -5,77 +5,52 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
+  "CanariLibraryEntry" : CanariLibraryEntry.self,
+  "FontCharacter" : FontCharacter.self,
+  "SegmentForFontCharacter" : SegmentForFontCharacter.self,
+  "FontRoot" : FontRoot.self,
+  "ArtworkRoot" : ArtworkRoot.self,
+  "ArtworkFileGenerationParameters" : ArtworkFileGenerationParameters.self,
+  "BoardModelPad" : BoardModelPad.self,
+  "SegmentEntity" : SegmentEntity.self,
+  "BoardModelVia" : BoardModelVia.self,
+  "BoardModel" : BoardModel.self,
+  "MergerBoardInstance" : MergerBoardInstance.self,
+  "MergerRoot" : MergerRoot.self,
+  "SymbolObject" : SymbolObject.self,
+  "SymbolPin" : SymbolPin.self,
+  "SymbolText" : SymbolText.self,
+  "SymbolSolidRect" : SymbolSolidRect.self,
+  "SymbolOval" : SymbolOval.self,
+  "SymbolSolidOval" : SymbolSolidOval.self,
+  "SymbolBezierCurve" : SymbolBezierCurve.self,
+  "SymbolSegment" : SymbolSegment.self,
+  "SymbolRoot" : SymbolRoot.self,
+  "PackageRoot" : PackageRoot.self,
+  "PackageObject" : PackageObject.self,
+  "PackagePad" : PackagePad.self,
+  "PackageSlavePad" : PackageSlavePad.self,
+  "PackageZone" : PackageZone.self,
+  "PackageSegment" : PackageSegment.self,
+  "PackageBezier" : PackageBezier.self,
+  "PackageOval" : PackageOval.self,
+  "PackageArc" : PackageArc.self,
+  "PackageGuide" : PackageGuide.self,
+  "PackageDimension" : PackageDimension.self
+]
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
-  var result : EBManagedObject? = nil
-  if inEntityTypeName == "CanariLibraryEntry" {
-    result = CanariLibraryEntry (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "FontCharacter" {
-    result = FontCharacter (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SegmentForFontCharacter" {
-    result = SegmentForFontCharacter (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "FontRoot" {
-    result = FontRoot (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "ArtworkRoot" {
-    result = ArtworkRoot (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "ArtworkFileGenerationParameters" {
-    result = ArtworkFileGenerationParameters (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "BoardModelPad" {
-    result = BoardModelPad (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SegmentEntity" {
-    result = SegmentEntity (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "BoardModelVia" {
-    result = BoardModelVia (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "BoardModel" {
-    result = BoardModel (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "MergerBoardInstance" {
-    result = MergerBoardInstance (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "MergerRoot" {
-    result = MergerRoot (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolObject" {
-    result = SymbolObject (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolPin" {
-    result = SymbolPin (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolText" {
-    result = SymbolText (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolSolidRect" {
-    result = SymbolSolidRect (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolOval" {
-    result = SymbolOval (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolSolidOval" {
-    result = SymbolSolidOval (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolBezierCurve" {
-    result = SymbolBezierCurve (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolSegment" {
-    result = SymbolSegment (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "SymbolRoot" {
-    result = SymbolRoot (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageRoot" {
-    result = PackageRoot (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageObject" {
-    result = PackageObject (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackagePad" {
-    result = PackagePad (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageSlavePad" {
-    result = PackageSlavePad (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageZone" {
-    result = PackageZone (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageSegment" {
-    result = PackageSegment (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageBezier" {
-    result = PackageBezier (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageOval" {
-    result = PackageOval (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageArc" {
-    result = PackageArc (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageGuide" {
-    result = PackageGuide (undoManager, file: #file, #line)
-  }else if inEntityTypeName == "PackageDimension" {
-    result = PackageDimension (undoManager, file: #file, #line)
+  if let T = kEntityDictionary [inEntityTypeName] {
+    return T.init (undoManager, file: #file, #line)
+  }else{
+    return nil
   }
-  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

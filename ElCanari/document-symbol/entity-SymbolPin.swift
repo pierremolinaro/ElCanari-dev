@@ -365,7 +365,7 @@ class SymbolPin : SymbolObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: yPin
     self.yPin_property.undoManager = self.undoManager

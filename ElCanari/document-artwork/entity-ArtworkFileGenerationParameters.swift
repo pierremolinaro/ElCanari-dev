@@ -704,7 +704,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //    init
   //····················································································································
 
-  override init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
+  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
   //--- Atomic property: drawBoardLimits
     self.drawBoardLimits_property.undoManager = self.undoManager
