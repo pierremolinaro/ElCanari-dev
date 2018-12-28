@@ -151,7 +151,7 @@ extension PackageZone {
     s += " : "
     s += stringFrom (valueInCanariUnit: self.yName, displayUnit : self.yNameUnit)
     s += " name "
-    s += self.zoneName
+    s += "\"" + self.zoneName + "\""
     s += " numbering "
     s += self.zoneNumbering.descriptionForExplorer ()
     s += "\n"
