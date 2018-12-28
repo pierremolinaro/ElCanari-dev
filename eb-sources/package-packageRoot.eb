@@ -93,7 +93,7 @@ graphic entity PackageSegment : PackageObject {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-graphic entity PackageBezierCurve : PackageObject {
+graphic entity PackageBezier : PackageObject {
   property @signature Int x1 default 0 ;
   property @signature Int y1 default 6_858_00 ;
   property @signature Int x2 default 0 ;

@@ -56,7 +56,7 @@ document PackageDocument root PackageRoot {
   ;
 
 #--- Bezier Curve inspector
-  selectionController PackageBezierCurve mPackageBezierCurveSelectionController : self.mPackageObjectsController.selectedArray ;
+  selectionController PackageBezier mPackageBezierCurveSelectionController : self.mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mBezierInspectorView ;
 #--- x1
   outlet EBPopUpButton mBezierCurveX1UnitPopUp $selectedTag mPackageBezierCurveSelectionController.x1Unit ;

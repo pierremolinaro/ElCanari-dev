@@ -442,7 +442,7 @@ extension PackageDocument {
     self.check ("cp2", inString, &ioIndex, &ioOk)
     let ((cpx2, cpx2Unit), (cpy2, cpy2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.check ("\n", inString, &ioIndex, &ioOk)
-    let object = PackageBezierCurve (self.ebUndoManager, file: #file, #line)
+    let object = PackageBezier (self.ebUndoManager, file: #file, #line)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1

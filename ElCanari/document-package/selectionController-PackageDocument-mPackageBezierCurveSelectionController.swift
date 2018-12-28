@@ -243,13 +243,13 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
   //····················································································································
 
    private var mModel : ReadOnlyArrayOf_PackageObject? = nil
-   private var mActualModel = TransientArrayOf_PackageBezierCurve ()
+   private var mActualModel = TransientArrayOf_PackageBezier ()
 
   //····················································································································
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageBezierCurve] > in
+    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageBezier] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -257,9 +257,9 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = [PackageBezierCurve] ()
+          var s = [PackageBezier] ()
           for baseObject in v {
-            if let object = baseObject as? PackageBezierCurve {
+            if let object = baseObject as? PackageBezier {
               s.append (object)
             }
           }
@@ -609,7 +609,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpx1 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpx1 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx1 (self.cpx1_property)
     self.cpx1_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -679,7 +679,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpx1Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpx1Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx1Unit (self.cpx1Unit_property)
     self.cpx1Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -749,7 +749,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpx2 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpx2 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx2 (self.cpx2_property)
     self.cpx2_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -819,7 +819,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpx2Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpx2Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpx2Unit (self.cpx2Unit_property)
     self.cpx2Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -889,7 +889,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpy1 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpy1 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy1 (self.cpy1_property)
     self.cpy1_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -959,7 +959,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpy1Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpy1Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy1Unit (self.cpy1Unit_property)
     self.cpy1Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1029,7 +1029,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpy2 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpy2 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy2 (self.cpy2_property)
     self.cpy2_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1099,7 +1099,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_cpy2Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_cpy2Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_cpy2Unit (self.cpy2Unit_property)
     self.cpy2Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1169,7 +1169,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_issues (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_issues (self.issues_property)
     self.issues_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1209,7 +1209,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
     self.objectDisplay_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1249,7 +1249,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
     self.selectionDisplay_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1289,7 +1289,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_x1 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_x1 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_x1 (self.x1_property)
     self.x1_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1359,7 +1359,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_x1Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_x1Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_x1Unit (self.x1Unit_property)
     self.x1Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1429,7 +1429,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_x2 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_x2 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_x2 (self.x2_property)
     self.x2_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1499,7 +1499,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_x2Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_x2Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_x2Unit (self.x2Unit_property)
     self.x2Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1569,7 +1569,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_y1 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_y1 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_y1 (self.y1_property)
     self.y1_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1639,7 +1639,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_y1Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_y1Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_y1Unit (self.y1Unit_property)
     self.y1Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1709,7 +1709,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_y2 (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_y2 (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_y2 (self.y2_property)
     self.y2_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
@@ -1779,7 +1779,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
 
   //···················································································································*
 
-  private final func bind_property_y2Unit (model : ReadOnlyArrayOf_PackageBezierCurve) {
+  private final func bind_property_y2Unit (model : ReadOnlyArrayOf_PackageBezier) {
     model.addEBObserverOf_y2Unit (self.y2Unit_property)
     self.y2Unit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {

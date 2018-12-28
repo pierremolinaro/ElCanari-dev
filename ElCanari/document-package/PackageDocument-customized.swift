@@ -71,7 +71,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     )
     self.mAddBezierButton?.register (
       draggedType: packagePasteboardType,
-      entityName: "PackageBezierCurve",
+      entityName: "PackageBezier",
       scaleProvider: self.mComposedPackageView
     )
     self.mAddOvalButton?.register (
@@ -119,7 +119,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")
-    self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezierCurve")
+    self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezier")
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")
     self.mPackageObjectsController.register (inspectorView: self.mArcInspectorView, forClass: "PackageArc")
     self.mPackageObjectsController.register (inspectorView: self.mPadInspectorView, forClass: "PackagePad")

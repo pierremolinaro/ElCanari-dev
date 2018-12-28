@@ -6,142 +6,142 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_y1 : class {
+protocol PackageBezier_y1 : class {
   var y1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_x2 : class {
+protocol PackageBezier_x2 : class {
   var x2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_y2 : class {
+protocol PackageBezier_y2 : class {
   var y2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpx1 : class {
+protocol PackageBezier_cpx1 : class {
   var cpx1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpy1 : class {
+protocol PackageBezier_cpy1 : class {
   var cpy1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpx2 : class {
+protocol PackageBezier_cpx2 : class {
   var cpx2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpy2 : class {
+protocol PackageBezier_cpy2 : class {
   var cpy2 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_x1Unit : class {
+protocol PackageBezier_x1Unit : class {
   var x1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_y1Unit : class {
+protocol PackageBezier_y1Unit : class {
   var y1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_x2Unit : class {
+protocol PackageBezier_x2Unit : class {
   var x2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_y2Unit : class {
+protocol PackageBezier_y2Unit : class {
   var y2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpx1Unit : class {
+protocol PackageBezier_cpx1Unit : class {
   var cpx1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpy1Unit : class {
+protocol PackageBezier_cpy1Unit : class {
   var cpy1Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpx2Unit : class {
+protocol PackageBezier_cpx2Unit : class {
   var cpx2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_cpy2Unit : class {
+protocol PackageBezier_cpy2Unit : class {
   var cpy2Unit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_x1 : class {
+protocol PackageBezier_x1 : class {
   var x1 : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_objectDisplay : class {
+protocol PackageBezier_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_selectionDisplay : class {
+protocol PackageBezier_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageBezierCurve_issues : class {
+protocol PackageBezier_issues : class {
   var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: PackageBezierCurve
+//    Entity: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class PackageBezierCurve : PackageObject,
-         PackageBezierCurve_y1,
-         PackageBezierCurve_x2,
-         PackageBezierCurve_y2,
-         PackageBezierCurve_cpx1,
-         PackageBezierCurve_cpy1,
-         PackageBezierCurve_cpx2,
-         PackageBezierCurve_cpy2,
-         PackageBezierCurve_x1Unit,
-         PackageBezierCurve_y1Unit,
-         PackageBezierCurve_x2Unit,
-         PackageBezierCurve_y2Unit,
-         PackageBezierCurve_cpx1Unit,
-         PackageBezierCurve_cpy1Unit,
-         PackageBezierCurve_cpx2Unit,
-         PackageBezierCurve_cpy2Unit,
-         PackageBezierCurve_x1,
-         PackageBezierCurve_objectDisplay,
-         PackageBezierCurve_selectionDisplay,
-         PackageBezierCurve_issues {
+class PackageBezier : PackageObject,
+         PackageBezier_y1,
+         PackageBezier_x2,
+         PackageBezier_y2,
+         PackageBezier_cpx1,
+         PackageBezier_cpy1,
+         PackageBezier_cpx2,
+         PackageBezier_cpy2,
+         PackageBezier_x1Unit,
+         PackageBezier_y1Unit,
+         PackageBezier_x2Unit,
+         PackageBezier_y2Unit,
+         PackageBezier_cpx1Unit,
+         PackageBezier_cpy1Unit,
+         PackageBezier_cpx2Unit,
+         PackageBezier_cpy2Unit,
+         PackageBezier_x1,
+         PackageBezier_objectDisplay,
+         PackageBezier_selectionDisplay,
+         PackageBezier_issues {
 
   //····················································································································
   //   Atomic property: y1
@@ -570,7 +570,7 @@ class PackageBezierCurve : PackageObject,
         case .singleSelectionKind :
           switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_PackageBezierCurve_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+            return .single (transient_PackageBezier_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -608,7 +608,7 @@ class PackageBezierCurve : PackageObject,
         case .singleSelectionKind :
           switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackageBezierCurve_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+            return .single (transient_PackageBezier_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -644,7 +644,7 @@ class PackageBezierCurve : PackageObject,
         case .singleSelectionKind :
           switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_PackageBezierCurve_issues (v0, v1, v2, v3, v4, v5, v6, v7))
+            return .single (transient_PackageBezier_issues (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -1091,10 +1091,10 @@ class PackageBezierCurve : PackageObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_PackageBezierCurve
+//    ReadOnlyArrayOf_PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <PackageBezierCurve> {
+class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezier> {
 
   //····················································································································
   //   Observers of 'y1' stored property
@@ -1134,7 +1134,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_y1 {
         managedObject.y1_property.addEBObserver (observer)
@@ -1144,7 +1144,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_y1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1191,7 +1191,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_x2 {
         managedObject.x2_property.addEBObserver (observer)
@@ -1201,7 +1201,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_x2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1248,7 +1248,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_y2 {
         managedObject.y2_property.addEBObserver (observer)
@@ -1258,7 +1258,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_y2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1305,7 +1305,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpx1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpx1 {
         managedObject.cpx1_property.addEBObserver (observer)
@@ -1315,7 +1315,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpx1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpx1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1362,7 +1362,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpy1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpy1 {
         managedObject.cpy1_property.addEBObserver (observer)
@@ -1372,7 +1372,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpy1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpy1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1419,7 +1419,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpx2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpx2 {
         managedObject.cpx2_property.addEBObserver (observer)
@@ -1429,7 +1429,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpx2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpx2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1476,7 +1476,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpy2_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpy2 {
         managedObject.cpy2_property.addEBObserver (observer)
@@ -1486,7 +1486,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpy2_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpy2 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1533,7 +1533,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_x1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_x1Unit {
         managedObject.x1Unit_property.addEBObserver (observer)
@@ -1543,7 +1543,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_x1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_x1Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1590,7 +1590,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_y1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_y1Unit {
         managedObject.y1Unit_property.addEBObserver (observer)
@@ -1600,7 +1600,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_y1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_y1Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1647,7 +1647,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_x2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_x2Unit {
         managedObject.x2Unit_property.addEBObserver (observer)
@@ -1657,7 +1657,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_x2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_x2Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1704,7 +1704,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_y2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_y2Unit {
         managedObject.y2Unit_property.addEBObserver (observer)
@@ -1714,7 +1714,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_y2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_y2Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1761,7 +1761,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpx1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpx1Unit {
         managedObject.cpx1Unit_property.addEBObserver (observer)
@@ -1771,7 +1771,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpx1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpx1Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1818,7 +1818,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpy1Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpy1Unit {
         managedObject.cpy1Unit_property.addEBObserver (observer)
@@ -1828,7 +1828,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpy1Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpy1Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1875,7 +1875,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpx2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpx2Unit {
         managedObject.cpx2Unit_property.addEBObserver (observer)
@@ -1885,7 +1885,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpx2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpx2Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1932,7 +1932,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_cpy2Unit_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_cpy2Unit {
         managedObject.cpy2Unit_property.addEBObserver (observer)
@@ -1942,7 +1942,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_cpy2Unit_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_cpy2Unit {
       observer.postEvent ()
       for managedObject in inSet {
@@ -1989,7 +1989,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_x1 {
         managedObject.x1_property.addEBObserver (observer)
@@ -1999,7 +1999,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for observer in self.mObserversOf_x1 {
       observer.postEvent ()
       for managedObject in inSet {
@@ -2046,7 +2046,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -2056,7 +2056,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_objectDisplay {
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -2102,7 +2102,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -2112,7 +2112,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_selectionDisplay {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
@@ -2158,7 +2158,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_issues {
         managedObject.issues_property.addEBObserver (observer)
@@ -2168,7 +2168,7 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 
   //····················································································································
 
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageBezierCurve>) {
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
     for managedObject in inSet {
       for observer in self.mObserversOf_issues {
         managedObject.issues_property.removeEBObserver (observer)
@@ -2181,32 +2181,32 @@ class ReadOnlyArrayOf_PackageBezierCurve : ReadOnlyAbstractArrayProperty <Packag
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_PackageBezierCurve
+//    TransientArrayOf_PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
+class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageBezierCurve] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageBezier] > >
 
   //····················································································································
 
-  override var propset : Set <PackageBezierCurve> {
+  override var propset : Set <PackageBezier> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezierCurve] > {
+  override var prop : EBSelection < [PackageBezier] > {
     self.computeArrayAndSet ()
     return self.prop_cache!  
   }
  
   //····················································································································
 
-  override var propval : [PackageBezierCurve] {
+  override var propval : [PackageBezier] {
     self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
@@ -2228,21 +2228,21 @@ class TransientArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
 
   //····················································································································
 
-  private var mSet = Set <PackageBezierCurve> ()
+  private var mSet = Set <PackageBezier> ()
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [PackageBezierCurve] >? = nil
+  private var prop_cache : EBSelection < [PackageBezier] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
       self.prop_cache = unwrappedComputeFunction ()
-      let newSet : Set <PackageBezierCurve>
+      let newSet : Set <PackageBezier>
       switch self.prop_cache! {
       case .multiple, .empty :
-        newSet = Set <PackageBezierCurve> ()
+        newSet = Set <PackageBezier> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -2319,28 +2319,28 @@ class TransientArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: PackageBezierCurve
+//    To many relationship read write: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_PackageBezierCurve : ReadOnlyArrayOf_PackageBezierCurve {
+class ReadWriteArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
  
-  func setProp (_ value :  [PackageBezierCurve]) { } // Abstract method
+  func setProp (_ value :  [PackageBezier]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: PackageBezierCurve
+//    To many relationship: PackageBezier
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCurve, EBSignatureObserverProtocol {
+final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : PackageBezierCurve?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageBezier?) -> Void > = nil
 
   //····················································································································
 
@@ -2387,9 +2387,9 @@ final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [PackageBezierCurve] ()
+      var objectArray = [PackageBezier] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageBezierCurve") as? PackageBezierCurve {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageBezier") as? PackageBezier {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2400,8 +2400,8 @@ final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCur
 
  //····················································································································
 
-  private var mSet = Set <PackageBezierCurve> ()
-  private var mValue = [PackageBezierCurve] () {
+  private var mSet = Set <PackageBezier> ()
+  private var mValue = [PackageBezier] () {
     didSet {
       self.postEvent ()
       if oldValue != self.mValue {
@@ -2440,7 +2440,7 @@ final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCur
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : PackageBezierCurve in addedObjectSet {
+        for managedObject : PackageBezier in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
         }
@@ -2482,29 +2482,29 @@ final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCur
 
   //····················································································································
 
-  override var prop : EBSelection < [PackageBezierCurve] > { return .single (self.mValue) }
+  override var prop : EBSelection < [PackageBezier] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [PackageBezierCurve]) { self.mValue = inValue }
+  override func setProp (_ inValue : [PackageBezier]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [PackageBezierCurve] { return self.mValue }
+  override var propval : [PackageBezier] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <PackageBezierCurve> { return self.mSet }
+  override var propset : Set <PackageBezier> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [PackageBezierCurve]) {
+  @objc func performUndo (_ oldValue : [PackageBezier]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : PackageBezierCurve) {
+  func remove (_ object : PackageBezier) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.index (of: object)
@@ -2515,7 +2515,7 @@ final class StoredArrayOf_PackageBezierCurve : ReadWriteArrayOf_PackageBezierCur
   
   //····················································································································
 
-  func add (_ object : PackageBezierCurve) {
+  func add (_ object : PackageBezier) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
