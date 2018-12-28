@@ -14,6 +14,17 @@ enum BoardArchiveFormat : Int, EnumPropertyProtocol {
 
   //····················································································································
 
+  init? (string : String) {
+    switch string {
+      case "noGeneration" : self = .noGeneration // 0
+      case "binary" : self = .binary // 1
+      case "xml" : self = .xml // 2
+      case _ : return nil
+    }
+  }
+
+  //····················································································································
+
   func descriptionForExplorer () -> String {
     switch self {
       case .noGeneration : return "noGeneration" // 0

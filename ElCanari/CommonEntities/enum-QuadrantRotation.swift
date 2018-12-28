@@ -15,6 +15,18 @@ enum QuadrantRotation : Int, EnumPropertyProtocol {
 
   //····················································································································
 
+  init? (string : String) {
+    switch string {
+      case "rotation0" : self = .rotation0 // 0
+      case "rotation90" : self = .rotation90 // 1
+      case "rotation180" : self = .rotation180 // 2
+      case "rotation270" : self = .rotation270 // 3
+      case _ : return nil
+    }
+  }
+
+  //····················································································································
+
   func descriptionForExplorer () -> String {
     switch self {
       case .rotation0 : return "rotation0" // 0

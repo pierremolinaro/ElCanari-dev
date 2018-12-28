@@ -750,8 +750,6 @@
 		CF7A9F2321BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
 		CF7A9F2521BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
 		CF7A9F2621BDB0A400AC0FC7 /* extension-Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */; };
-		CF7A9F2821BDB17500AC0FC7 /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */; };
-		CF7A9F2921BDB17500AC0FC7 /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */; };
 		CF7A9F2B21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */; };
 		CF7A9F2C21BDB2B000AC0FC7 /* extension-NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */; };
 		CF7A9F2E21BDB35D00AC0FC7 /* extension-NSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */; };
@@ -1398,7 +1396,6 @@
 		CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingGlass.png; sourceTree = "<group>"; };
 		CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPath.swift"; sourceTree = "<group>"; };
 		CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Data.swift"; sourceTree = "<group>"; };
-		CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Int.swift"; sourceTree = "<group>"; };
 		CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSObject.swift"; sourceTree = "<group>"; };
 		CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-NSControl.swift"; sourceTree = "<group>"; };
 		CF7AA01421BDB72900AC0FC7 /* extension-UInt32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-UInt32.swift"; sourceTree = "<group>"; };
@@ -1782,7 +1779,6 @@
 				CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */,
 				CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */,
 				CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */,
-				CF7A9F2721BDB17500AC0FC7 /* extension-Int.swift */,
 				CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */,
 				CF7A9F2D21BDB35D00AC0FC7 /* extension-NSControl.swift */,
 				CF7A9F2A21BDB2B000AC0FC7 /* extension-NSObject.swift */,
@@ -2757,7 +2753,6 @@
 				CF5B06FC213EC703005D6B37 /* CanariSegment.swift in Sources */,
 				CFD7EA2520E7D42900D53B87 /* transient-MergerRoot-modelNames.swift in Sources */,
 				CF35A54A21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
-				CF7A9F2821BDB17500AC0FC7 /* extension-Int.swift in Sources */,
 				CF4B39B921D3F1C5001217C6 /* transient-PackageSlavePad-padIsTraversing.swift in Sources */,
 				CFE85A7A21A5B47A00991A66 /* extension-SymbolBezierCurve.swift in Sources */,
 				CF85859D21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift in Sources */,
@@ -3194,7 +3189,6 @@
 				CF5C4CEE219F04D600EAC52A /* CanariSegment.swift in Sources */,
 				CF5C4CEF219F04D600EAC52A /* transient-MergerRoot-modelNames.swift in Sources */,
 				CF35A54B21A825BC00A0E500 /* extension-CGRect-NSRect.swift in Sources */,
-				CF7A9F2921BDB17500AC0FC7 /* extension-Int.swift in Sources */,
 				CF4B39BA21D3F1C5001217C6 /* transient-PackageSlavePad-padIsTraversing.swift in Sources */,
 				CFE85A7B21A5B47A00991A66 /* extension-SymbolBezierCurve.swift in Sources */,
 				CF85859E21C53CA900082CE3 /* selectionController-PackageDocument-mPackageArcSelectionController.swift in Sources */,

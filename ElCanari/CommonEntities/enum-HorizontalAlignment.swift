@@ -14,6 +14,17 @@ enum HorizontalAlignment : Int, EnumPropertyProtocol {
 
   //····················································································································
 
+  init? (string : String) {
+    switch string {
+      case "left" : self = .left // 0
+      case "center" : self = .center // 1
+      case "right" : self = .right // 2
+      case _ : return nil
+    }
+  }
+
+  //····················································································································
+
   func descriptionForExplorer () -> String {
     switch self {
       case .left : return "left" // 0

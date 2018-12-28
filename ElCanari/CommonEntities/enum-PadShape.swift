@@ -14,6 +14,17 @@ enum PadShape : Int, EnumPropertyProtocol {
 
   //····················································································································
 
+  init? (string : String) {
+    switch string {
+      case "rectangular" : self = .rectangular // 0
+      case "round" : self = .round // 1
+      case "octo" : self = .octo // 2
+      case _ : return nil
+    }
+  }
+
+  //····················································································································
+
   func descriptionForExplorer () -> String {
     switch self {
       case .rectangular : return "rectangular" // 0

@@ -13,6 +13,16 @@ enum PadStyle : Int, EnumPropertyProtocol {
 
   //····················································································································
 
+  init? (string : String) {
+    switch string {
+      case "traversing" : self = .traversing // 0
+      case "surface" : self = .surface // 1
+      case _ : return nil
+    }
+  }
+
+  //····················································································································
+
   func descriptionForExplorer () -> String {
     switch self {
       case .traversing : return "traversing" // 0
