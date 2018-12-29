@@ -257,7 +257,6 @@ import Cocoa
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPadNumberTextField : EBIntObserverField?
   @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton?
-  @IBOutlet var mPadPageView : CanariViewWithKeyView?
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
   @IBOutlet var mPadSlaveCountTextField : EBIntObserverField?
   @IBOutlet var mPadStyleView : NSView?
@@ -289,6 +288,7 @@ import Cocoa
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView?
   @IBOutlet var mSetTextOriginAtMidpoint : EBButton?
+  @IBOutlet var mShowPadNumberSwitch : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField?
   @IBOutlet var mSlavePadAnnularRingUnitPopUp : EBPopUpButton?
@@ -2145,21 +2145,6 @@ import Cocoa
         errorMessage: "the 'mPadNumberingPopUpButton' outlet is nil"
       )
     }
-    if let outlet : Any = self.mPadPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mPadPageView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mPadPageView' outlet is nil"
-      )
-    }
     if let outlet : Any = self.mPadRenumberingPullDownButton {
       if !(outlet is CanariPadRenumberingPullDownButton) {
         presentErrorWindow (
@@ -2623,6 +2608,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mSetTextOriginAtMidpoint' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mShowPadNumberSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowPadNumberSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowPadNumberSwitch' outlet is nil"
       )
     }
     if let outlet : Any = self.mSignatureTextField {
@@ -3375,6 +3375,7 @@ import Cocoa
     self.mComposedPackageView?.bind_yPlacardUnit (self.rootObject.yPlacardUnit_property, file: #file, line: #line)
     self.mHorizontalFlip?.bind_value (self.rootObject.horizontalFlip_property, file: #file, line: #line)
     self.mVerticalFlip?.bind_value (self.rootObject.verticalFlip_property, file: #file, line: #line)
+    self.mShowPadNumberSwitch?.bind_value (g_Preferences!.showPadNumber_property, file: #file, line: #line)
     self.mGridStyle?.bind_selectedIndex (self.rootObject.gridStyle_property, file: #file, line: #line)
     self.mGridDisplayPopUpButton?.bind_selectedTag (self.rootObject.gridDisplayFactor_property, file: #file, line: #line)
     self.mXPlacardUnitPopUpButton?.bind_selectedTag (self.rootObject.xPlacardUnit_property, file: #file, line: #line)
@@ -3616,6 +3617,7 @@ import Cocoa
     self.mComposedPackageView?.unbind_yPlacardUnit ()
     self.mHorizontalFlip?.unbind_value ()
     self.mVerticalFlip?.unbind_value ()
+    self.mShowPadNumberSwitch?.unbind_value ()
     self.mGridStyle?.unbind_selectedIndex ()
     self.mGridDisplayPopUpButton?.unbind_selectedTag ()
     self.mXPlacardUnitPopUpButton?.unbind_selectedTag ()
@@ -3791,7 +3793,6 @@ import Cocoa
     self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadNumberingPopUpButton?.ebCleanUp ()
-    self.mPadPageView?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
     self.mPadSlaveCountTextField?.ebCleanUp ()
     self.mPadStyleView?.ebCleanUp ()
@@ -3823,6 +3824,7 @@ import Cocoa
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSelectedObjectsInspectorView?.ebCleanUp ()
     self.mSetTextOriginAtMidpoint?.ebCleanUp ()
+    self.mShowPadNumberSwitch?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingUnitPopUp?.ebCleanUp ()

@@ -60,6 +60,7 @@ let Preferences_dotColorGridForBoard = "Preferences:dotColorGridForBoard"
 let Preferences_lineColorGridForBoard = "Preferences:lineColorGridForBoard"
 let Preferences_boardBackgroundColorForBoard = "Preferences:boardBackgroundColorForBoard"
 let Preferences_errorBackgroundColorForBoard = "Preferences:errorBackgroundColorForBoard"
+let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
 let Preferences_warningBackgroundColorForBoard = "Preferences:warningBackgroundColorForBoard"
 let Preferences_drawEWarningBackgroundForBoard = "Preferences:drawEWarningBackgroundForBoard"
 let Preferences_boardLimitsColorForBoard = "Preferences:boardLimitsColorForBoard"
@@ -151,7 +152,7 @@ let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedB
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
-let Preferences_drawErrorBackgroundForBoard = "Preferences:drawErrorBackgroundForBoard"
+let Preferences_showPadNumber = "Preferences:showPadNumber"
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
@@ -1308,6 +1309,29 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   var errorBackgroundColorForBoard_property_selection : EBSelection <NSColor> {
     return self.errorBackgroundColorForBoard_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: drawErrorBackgroundForBoard
+  //····················································································································
+
+  var drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (true, prefKey: Preferences_drawErrorBackgroundForBoard)
+
+  //····················································································································
+
+  var drawErrorBackgroundForBoard : Bool {
+    get {
+      return self.drawErrorBackgroundForBoard_property.propval
+    }
+    set {
+      self.drawErrorBackgroundForBoard_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
+    return self.drawErrorBackgroundForBoard_property.prop
   }
 
   //····················································································································
@@ -3399,26 +3423,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: drawErrorBackgroundForBoard
+  //   Atomic property: showPadNumber
   //····················································································································
 
-  var drawErrorBackgroundForBoard_property = EBStoredProperty_Bool (true, prefKey: Preferences_drawErrorBackgroundForBoard)
+  var showPadNumber_property = EBStoredProperty_Bool (true, prefKey: Preferences_showPadNumber)
 
   //····················································································································
 
-  var drawErrorBackgroundForBoard : Bool {
+  var showPadNumber : Bool {
     get {
-      return self.drawErrorBackgroundForBoard_property.propval
+      return self.showPadNumber_property.propval
     }
     set {
-      self.drawErrorBackgroundForBoard_property.setProp (newValue)
+      self.showPadNumber_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var drawErrorBackgroundForBoard_property_selection : EBSelection <Bool> {
-    return self.drawErrorBackgroundForBoard_property.prop
+  var showPadNumber_property_selection : EBSelection <Bool> {
+    return self.showPadNumber_property.prop
   }
 
   //····················································································································
@@ -3855,6 +3879,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.boardBackgroundColorForBoard_property.undoManager = self.undoManager
   //--- Atomic property: errorBackgroundColorForBoard
     self.errorBackgroundColorForBoard_property.undoManager = self.undoManager
+  //--- Atomic property: drawErrorBackgroundForBoard
+    self.drawErrorBackgroundForBoard_property.undoManager = self.undoManager
   //--- Atomic property: warningBackgroundColorForBoard
     self.warningBackgroundColorForBoard_property.undoManager = self.undoManager
   //--- Atomic property: drawEWarningBackgroundForBoard
@@ -4038,8 +4064,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Atomic property: pinNameFont
     self.pinNameFont_property.undoManager = self.undoManager
-  //--- Atomic property: drawErrorBackgroundForBoard
-    self.drawErrorBackgroundForBoard_property.undoManager = self.undoManager
+  //--- Atomic property: showPadNumber
+    self.showPadNumber_property.undoManager = self.undoManager
   //--- Atomic property: sampleString
     self.sampleString_property.undoManager = self.undoManager
   //--- Atomic property: sampleStringSize

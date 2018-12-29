@@ -700,6 +700,7 @@ class PackageSlavePad : PackageObject,
         kind &= unwSelf.padName_property_selection.kind ()
         kind &= g_Preferences!.padNumberFont_property_selection.kind ()
         kind &= g_Preferences!.padNumberColor_property_selection.kind ()
+        kind &= g_Preferences!.showPadNumber_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -707,9 +708,9 @@ class PackageSlavePad : PackageObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, unwSelf.padName_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, g_Preferences!.packageColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
-            return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, unwSelf.padName_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, g_Preferences!.showPadNumber_property_selection, g_Preferences!.packageColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11)) :
+            return .single (transient_PackageSlavePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11))
           default :
             return .empty
           }
@@ -728,6 +729,7 @@ class PackageSlavePad : PackageObject,
     self.padName_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.showPadNumber_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
@@ -776,6 +778,7 @@ class PackageSlavePad : PackageObject,
     self.padName_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberFont_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.showPadNumber_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
   }
 

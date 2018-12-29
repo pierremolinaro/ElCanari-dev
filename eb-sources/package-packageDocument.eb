@@ -8,7 +8,6 @@ document PackageDocument root PackageRoot {
   outlet NSView mMasterView ;
   outlet CanariViewWithKeyView mPackagePageView ;
   outlet CanariViewWithKeyView mProgramPageView ;
-  outlet CanariViewWithKeyView mPadPageView ;
   outlet CanariViewWithKeyView mInfosPageView ;
 
 #--- Signature
@@ -426,6 +425,7 @@ document PackageDocument root PackageRoot {
 #--- Zoom and flip inspector
   outlet EBSwitch mHorizontalFlip $value root.horizontalFlip ;
   outlet EBSwitch mVerticalFlip $value root.verticalFlip ;
+  outlet EBSwitch mShowPadNumberSwitch $value prefs.showPadNumber ;
   outlet EBPopUpButton mGridStyle $selectedIndex root.gridStyle ;
   outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;

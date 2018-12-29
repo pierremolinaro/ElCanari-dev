@@ -140,6 +140,7 @@ prefs {
 #--- Pad Number Font
   property NSFont padNumberFont default 3 ;
   outlet EBFontButton mPadFontButton $fontValue self.padNumberFont ;
+  property Bool showPadNumber default yes ;
 #--- Package Guide Color
   property NSColor packageGuideColor default yellow;
   outlet EBColorWell mPackageGuideColorWell $color self.packageGuideColor {sendContinously:no} ;

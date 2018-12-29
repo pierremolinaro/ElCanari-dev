@@ -580,7 +580,7 @@ extension MergerDocument {
           let padRotationInDegrees = item.getOptionalFloat (["pad", "at"], 2, &ioErrorArray, #line) ?? 0.0
           pad.rotation = degreesToCanariRotation (padRotationInDegrees)
           if padShapeString == "rect" {
-            pad.shape = .rectangular
+            pad.shape = .rect
           }else if padShapeString == "oval" {
             pad.shape = .round
           }else if padShapeString == "circle" {

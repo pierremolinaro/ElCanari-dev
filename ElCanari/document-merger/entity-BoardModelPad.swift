@@ -125,7 +125,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: shape
   //····················································································································
 
-  var shape_property = EBStoredProperty_PadShape (PadShape.rectangular)
+  var shape_property = EBStoredProperty_PadShape (PadShape.rect)
 
   //····················································································································
 

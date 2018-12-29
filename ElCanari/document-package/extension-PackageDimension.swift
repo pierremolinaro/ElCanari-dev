@@ -144,7 +144,7 @@ extension PackageDimension {
     s += stringFrom (valueInCanariUnit: self.yDimension, displayUnit : self.yDimensionUnit)
     s += " unit "
     s += stringFrom (displayUnit : self.distanceUnit)
-    s += "\n"
+    s += ";\n"
     return s
   }
 

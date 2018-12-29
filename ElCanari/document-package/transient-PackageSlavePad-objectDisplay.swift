@@ -22,6 +22,7 @@ func transient_PackageSlavePad_objectDisplay (
        _ self_padName : String,               
        _ prefs_padNumberFont : NSFont,        
        _ prefs_padNumberColor : NSColor,      
+       _ prefs_showPadNumber : Bool,          
        _ prefs_packageColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -33,7 +34,7 @@ func transient_PackageSlavePad_objectDisplay (
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     let bp : NSBezierPath
     switch self_padShape {
-    case .rectangular :
+    case .rect :
       bp = NSBezierPath (rect: rPad)
     case .round :
       if width < height {
@@ -57,18 +58,20 @@ func transient_PackageSlavePad_objectDisplay (
     let shape = EBShape ()
     shape.append (EBFilledBezierPathShape ([bp], prefs_packageColor))
   //--- Pad number
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : prefs_padNumberFont,
-      NSAttributedString.Key.foregroundColor : prefs_padNumberColor
-    ]
-    let numberShape = EBTextShape (
-      self_padName, // padString,
-      NSPoint (x: xCenter, y: yCenter),
-      textAttributes,
-      .center,
-      .center
-    )
-    shape.append (numberShape)
+    if prefs_showPadNumber {
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : prefs_padNumberFont,
+        NSAttributedString.Key.foregroundColor : prefs_padNumberColor
+      ]
+      let numberShape = EBTextShape (
+        self_padName, // padString,
+        NSPoint (x: xCenter, y: yCenter),
+        textAttributes,
+        .center,
+        .center
+      )
+      shape.append (numberShape)
+    }
   //---
     return shape
 //--- END OF USER ZONE 2

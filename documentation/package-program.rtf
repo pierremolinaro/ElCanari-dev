@@ -1,0 +1,335 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Cambria;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red251\green2\blue7;\red230\green230\blue230;
+\red253\green128\blue8;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c100000\c14913\c0;\csgray\c92143;
+\cssrgb\c100000\c57637\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19240\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\sl264\slmult1\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf2 Defining a Package by a Program\
+
+\b0 \
+Instead of graphically define a package, you can write a list of instructions whose execution produces a package.\
+\
+The "Load from Design" button can help you to understand the instruction syntax: it produces a code that is the image of the current design in the "Package" page. This current design is not modified by this operation.\
+\
+The "Run" button parses and executes the instruction list. On success, the current design is replaced by the result of execution. If an error is detected, the current design is not modified, and the source text is \cf3 colored in red \cf2 from the error location until its end.\
+\
+The "Clear Error" button removes the red color.\
+\
+
+\b \cb4 The instruction list
+\b0 \
+\cb1 The program is a sequence of instructions, terminated by the 
+\f1\b end
+\f0\b0  keyword. An instruction is terminated by a semicolon. In the following BNF rules, the syntax metacharacters are in \cf5 orange\cf2 . \cf5 (\cf2  \'85 \cf5 )*\cf2  denotes zero, one or more repetitions of enclosed material,  \cf5 (\cf2  \'85 \cf5 )+\cf2  denotes one or more repetitions,  and \cf5 |\cf2  the selection.\
+	
+\f2 <program> \cf5 ::= (\cf2 <instruction>\cf5 )*\cf2  
+\f1\b end
+\f0\b0 \
+\
+Instructions correspond to the "Add\'85" buttons in the "Package" page. An instruction is one of the following:\
+	- segment instruction;\
+	- Bezier curve instruction;\
+	- oval instruction;\
+	- arc instruction;\
+	- pad instruction;\
+	- slave pad instruction;\
+	- zone instruction;\
+	- guide instruction;\
+	- dimension instruction.\
+\
+
+\b \cb4 Name, unit, number, dimension, point:
+\b0  \
+\cb1 	
+\f2 <name> \cf5 ::= (\cf2 a \cf5 |\cf2  b \cf5 |\cf2  \'85 \cf5 |\cf2  z \cf5 |\cf2  A \cf5 |\cf2  B \cf5 |\cf2  \'85 \cf5 |\cf2  Z\cf5 )+
+\f0 \cf2 \
+\
+	
+\f2 <unit> \cf5 ::=\cf2  \'b5m \cf5 |\cf2  mm \cf5 |\cf2  cm \cf5 |\cf2  in \cf5 |\cf2  mil \cf5 |\cf2  pt \cf5 |\cf2  pc
+\f0 \
+Possible units are : \'b5m (1000 \'b5m = 1mm), cm (10 mm = 1 cm), in (1 in = 25.4 mm), mil (1000 mil = 1 in), pt  (72 pt = 1 in), pc (6 pc = 1 in).\
+\
+	
+\f2 <number> \cf5 ::=\cf2  \cf5 (\cf2 0 \cf5 |\cf2  1 \cf5 |\cf2  \'85 \cf5 |\cf2  9\cf5 )+
+\f0 \cf2 \
+	
+\f2 <number> \cf5 ::=\cf2  -\cf5 (\cf2 0 \cf5 |\cf2  1 \cf5 |\cf2  \'85 \cf5 |\cf2  9\cf5 )+
+\f0 \cf2 \
+A number is a negative or positive literal integer value.\
+\
+	
+\f2 <dimension> \cf5 ::=\cf2  <number> <unit>
+\f0 \
+A dimension is a number followed by an unit. For example: 10 mil.\
+\
+	
+\f2 <point> \cf5 ::=\cf2  <dimension> 
+\f1\b :
+\f2\b0  <dimension>
+\f0 \
+A  point consists of two dimensions separated by a colon.\
+\
+
+\b \cb4 Segment instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b segment
+\f2\b0  <point> 
+\f1\b to
+\f2\b0  <point>
+\f1\b  ;
+\f0\b0 \
+The two points are the two ends of the segment.\
+\
+
+\b \cb4 Bezier curve instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b bezier
+\f2\b0  <point> 
+\f1\b to
+\f2\b0  <point> 
+\f1\b cp
+\f2\b0  <point> 
+\f1\b cp
+\f2\b0  <point>
+\f1\b  ;
+\f0\b0 \
+The two first points are the two ends of the curve, and are followed by the first control point and the second control point.\
+\
+
+\b \cb4 Oval instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b oval
+\f2\b0  <point> 
+\f1\b size
+\f2\b0  <point>
+\f1\b  ;
+\f0\b0 \
+The first point is the bottom left point of the rectangle circumscribed to the oval, followed by its width and its height.  \
+\
+
+\b \cb4 Arc instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b arc
+\f2\b0  <point> 
+\f1\b radius
+\f2\b0  <dimension> 
+\f1\b start
+\f2\b0  <number> 
+\f1\b angle
+\f2\b0  <number> 
+\f1\b leading
+\f2\b0  <dimension> 
+\f1\b training
+\f2\b0  <dimension>
+\f1\b  ;
+\f0\b0 \
+or\
+	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b arc
+\f2\b0  <point> 
+\f1\b radius
+\f2\b0  <dimension> 
+\f1\b start
+\f2\b0  <number> 
+\f1\b angle
+\f2\b0  <number> 
+\f1\b leading
+\f2\b0  <dimension> 
+\f1\b training
+\f2\b0  <dimension> 
+\f1\b closed ;
+\f0\b0 \
+The point is the center of the arc. The start angle is the number following 
+\f1\b start
+\f0\b0 , and the arc angle follows 
+\f1\b angle
+\f0\b0 .  Both angles are written in thousandths of a degree, i.e. 90000 means 90\'b0. 
+\f1\b leading
+\f0\b0  and 
+\f1\b training
+\f0\b0  define the lengths of the leading and training tangents.  By default, the path is open, use 
+\f1\b closed
+\f0\b0  for closing the path.\
+\
+
+\b \cb4 Pad instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b pad
+\f2\b0  <point> 
+\f1\b size
+\f2\b0  <point> 
+\f1\b shape
+\f2\b0  <name> 
+\f1\b style
+\f2\b0  <name> 
+\f1\b hole
+\f2\b0  <dimension>
+\f1\b  number
+\f2\b0  <number>
+\f1\b  ;
+\f0\b0 \
+or\
+	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b pad
+\f2\b0  <point> 
+\f1\b size
+\f2\b0  <point> 
+\f1\b shape
+\f2\b0  <name> 
+\f1\b style
+\f2\b0  <name> 
+\f1\b hole
+\f2\b0  <dimension>
+\f1\b  number
+\f2\b0  <number>
+\f1\b  id
+\f2\b0  <number>
+\f1\b  ;
+\f0\b0 \
+The first point defines the center of the pad, and the next point is the size of the pad. The 
+\f1\b shape
+\f0\b0  name is: 
+\f2 rect
+\f0 , 
+\f2 round
+\f0  or 
+\f2 octo
+\f0 .  The 
+\f1\b style
+\f0\b0  name is: 
+\f2 traversing
+\f0  or 
+\f2 surface
+\f0 . A hole dimension should be defined, even if the pad is a surface pad. The 
+\f1\b number
+\f0\b0  argument is the number of the pad. Note that pad numbers are automatically reassigned depending from their location (within a zone or not), the numbering policy, so that they are numbered from 1. The 
+\f1\b id
+\f0\b0  argument is optional, it is a reference from linked slave pads.  If a pad has no slave pad, this argument is useless. You can use any value, provided it is unique. \
+\
+
+\b \cb4 Slave Pad instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b pad
+\f2\b0  <point> 
+\f1\b size
+\f2\b0  <point> 
+\f1\b shape
+\f2\b0  <name> 
+\f1\b style
+\f2\b0  <name> 
+\f1\b hole
+\f2\b0  <dimension>
+\f1\b  id
+\f2\b0  <number>
+\f1\b  ;
+\f0\b0 \
+The first point defines the center of the pad, and the next point is the size of the pad. The 
+\f1\b shape
+\f0\b0  name is: 
+\f2 rect
+\f0 , 
+\f2 round
+\f0  or 
+\f2 octo
+\f0 .  The 
+\f1\b style
+\f0\b0  name is: 
+\f2 traversing
+\f0  or 
+\f2 surface
+\f0 . A hole dimension should be defined, even if the pad is a surface pad. The 
+\f1\b id
+\f0\b0  argument value corresponds to the corresponding master pad 
+\f1\b id
+\f0\b0  value. \
+\
+
+\b \cb4 Zone instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b zone
+\f2\b0  <point> 
+\f1\b size
+\f2\b0  <point> 
+\f1\b label
+\f2\b0  <point> 
+\f1\b name
+\f2\b0  <string> 
+\f1\b numbering
+\f2\b0  <name>
+\f1\b  ;
+\f0\b0 \
+The zone rectangle is defined by its bottom left point and its size. The label location follows 
+\f1\b label
+\f0\b0 , and the zone name is definied by a string. The numbering scheme is one of the following: 
+\f2 noNumbering
+\f0 , 
+\f2 counterClock
+\f0 , 
+\f2 upRight
+\f0 , 
+\f2 upLeft
+\f0 , 
+\f2 downRight
+\f0 , 
+\f2 downLeft
+\f0 , 
+\f2 rightUp
+\f0 , 
+\f2 rightDown
+\f0 , 
+\f2 leftUp
+\f0 , 
+\f2 leftDown
+\f0 .\
+\
+
+\b \cb4 Guide instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b guide
+\f2\b0  <point> 
+\f1\b to
+\f2\b0  <point>
+\f1\b  ;
+\f0\b0 \
+The two points are the two ends of the guide segment.\
+\
+
+\b \cb4 Dimension instruction:
+\b0  \
+\cb1 	
+\f2 <instruction> \cf5 ::=\cf2  
+\f1\b dimension
+\f2\b0  <point> 
+\f1\b to
+\f2\b0  <point> 
+\f1\b label
+\f2\b0  <point> 
+\f1\b unit
+\f2\b0  <unit>
+\f1\b  ;
+\f0\b0 \
+The two first points are the two ends of the dimension segment, the third one is the location of the label, followed by the unit used for displaying the distance between the end points of the dimension segment.\
+\
+}

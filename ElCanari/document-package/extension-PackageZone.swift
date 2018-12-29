@@ -154,7 +154,7 @@ extension PackageZone {
     s += "\"" + self.zoneName + "\""
     s += " numbering "
     s += self.zoneNumbering.descriptionForExplorer ()
-    s += "\n"
+    s += ";\n"
     return s
   }
 

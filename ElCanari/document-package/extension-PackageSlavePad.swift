@@ -103,7 +103,7 @@ extension PackageSlavePad {
     s += stringFrom (valueInCanariUnit: self.holeDiameter, displayUnit : self.holeDiameterUnit)
     s += " id "
     s += "\(self.master_property.propval!.mEasyBindingsObjectIndex)"
-    s += "\n"
+    s += ";\n"
     return s
   }
 

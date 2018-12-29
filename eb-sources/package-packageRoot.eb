@@ -210,7 +210,7 @@ graphic entity PackagePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.padNumberFont, prefs.padNumberColor, self.padName,
+     prefs.padNumberFont, prefs.padNumberColor, self.padName, prefs.showPadNumber,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom
@@ -259,7 +259,7 @@ graphic entity PackageSlavePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     self.padName, prefs.padNumberFont, prefs.padNumberColor,
+     self.padName, prefs.padNumberFont, prefs.padNumberColor, prefs.showPadNumber,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom

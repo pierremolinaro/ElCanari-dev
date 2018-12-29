@@ -7,7 +7,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 enum PadShape : Int, EnumPropertyProtocol {
-  case rectangular = 0
+  case rect = 0
   case round = 1
   case octo = 2
 
@@ -16,7 +16,7 @@ enum PadShape : Int, EnumPropertyProtocol {
 
   init? (string : String) {
     switch string {
-      case "rectangular" : self = .rectangular // 0
+      case "rect" : self = .rect // 0
       case "round" : self = .round // 1
       case "octo" : self = .octo // 2
       case _ : return nil
@@ -27,7 +27,7 @@ enum PadShape : Int, EnumPropertyProtocol {
 
   func descriptionForExplorer () -> String {
     switch self {
-      case .rectangular : return "rectangular" // 0
+      case .rect : return "rect" // 0
       case .round : return "round" // 1
       case .octo : return "octo" // 2
     }
@@ -69,7 +69,7 @@ enum PadShape : Int, EnumPropertyProtocol {
   }
 
   static func convertFromNSObject (object : NSObject) -> PadShape {
-    var result = PadShape.rectangular
+    var result = PadShape.rect
     if let number = object as? NSNumber, let v = PadShape (rawValue: number.intValue) {
       result = v
     }

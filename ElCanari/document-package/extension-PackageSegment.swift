@@ -123,7 +123,7 @@ extension PackageSegment {
     s += stringFrom (valueInCanariUnit: self.x2, displayUnit : self.x2Unit)
     s += " : "
     s += stringFrom (valueInCanariUnit: self.y2, displayUnit : self.y2Unit)
-    s += "\n"
+    s += ";\n"
     return s
   }
 

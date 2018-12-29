@@ -162,7 +162,7 @@ extension PackageArc {
     if self.pathIsClosed {
       s += " closed"
     }
-    s += "\n"
+    s += ";\n"
     return s
   }
 

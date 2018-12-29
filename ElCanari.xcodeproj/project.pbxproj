@@ -1674,10 +1674,10 @@
 			isa = PBXGroup;
 			children = (
 				CFDEC6D921D5467900857F9C /* action-PackageDocument-clearProgramErrorAction.swift */,
-				CFDEC6DA21D5467900857F9C /* action-PackageDocument-runProgramAction.swift */,
 				CF4B3AC221D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift */,
 				CF61BA3721CCEA66000CC5EF /* action-PackageDocument-programHelpAction.swift */,
 				CF4D083021C2DE4200380ACA /* action-PackageDocument-resetVersionAction.swift */,
+				CFDEC6DA21D5467900857F9C /* action-PackageDocument-runProgramAction.swift */,
 				CFD5664021CA6E9200EC62C6 /* action-PackageDocument-setTextOriginAtMidpointAction.swift */,
 				CF4A463621C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift */,
 				CF85858D21C5124300082CE3 /* entity-PackageArc.swift */,

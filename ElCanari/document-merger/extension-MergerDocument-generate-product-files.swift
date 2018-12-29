@@ -143,7 +143,7 @@ extension MergerDocument {
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
-        case .rectangular :
+        case .rect :
           d ["SHAPE"] = "RECT"
         case .octo :
           d ["SHAPE"] = "OCTO"
@@ -172,7 +172,7 @@ extension MergerDocument {
         d ["HEIGHT"] = pad.height
         d ["ROTATION"] = (pad.rotation + instanceRotation.rawValue * 90_000) % 360_000
         switch pad.shape {
-        case .rectangular :
+        case .rect :
           d ["SHAPE"] = "RECT"
         case .round :
           d ["SHAPE"] = "ROUND"

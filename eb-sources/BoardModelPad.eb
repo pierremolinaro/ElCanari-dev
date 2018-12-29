@@ -5,7 +5,7 @@ entity BoardModelPad {
   property Int y default 0 ;
   property Int width default 0 ;
   property Int height default 0 ;
-  property PadShape shape default rectangular ;
+  property PadShape shape default rect ;
   property Int rotation default 0 ;
 }
 

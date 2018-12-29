@@ -179,7 +179,7 @@ extension PackagePad {
       s += " id "
       s += "\(self.mEasyBindingsObjectIndex)"
     }
-    s += "\n"
+    s += ";\n"
     return s
   }
 

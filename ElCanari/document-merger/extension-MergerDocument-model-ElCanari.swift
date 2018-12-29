@@ -355,7 +355,7 @@ extension MergerDocument {
       pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
       let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
       if shapeString == "RECT" {
-        pad.shape = .rectangular
+        pad.shape = .rect
       }else if shapeString == "ROUND" {
         pad.shape = .round
       }else if shapeString == "OCTO" {
@@ -378,7 +378,7 @@ extension MergerDocument {
       pad.rotation = int (fromDict: padDict, key: "ROTATION", &errorArray)
       let shapeString = string (fromDict: padDict, key: "SHAPE", &errorArray)
       if shapeString == "RECT" {
-        pad.shape = .rectangular
+        pad.shape = .rect
       }else if shapeString == "ROUND" {
         pad.shape = .round
       }else{

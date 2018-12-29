@@ -124,7 +124,7 @@ extension PackageOval {
     s += stringFrom (valueInCanariUnit: self.width, displayUnit : self.widthUnit)
     s += " : "
     s += stringFrom (valueInCanariUnit: self.height, displayUnit : self.heightUnit)
-    s += "\n"
+    s += ";\n"
     return s
   }
 

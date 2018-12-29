@@ -9,7 +9,7 @@ let PMPackageComment = "PMPackageComment"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pierre.pasteboard.package")
+fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pasteboard.package")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -53,7 +53,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
   //--- Set pages segmented control
-    let pages = [self.mPackagePageView, self.mProgramPageView, self.mPadPageView, self.mInfosPageView]
+    let pages = [self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //--- Set inspector segmented control
     let inspectors = [

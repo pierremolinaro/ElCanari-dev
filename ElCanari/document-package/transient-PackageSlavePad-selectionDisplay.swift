@@ -26,7 +26,7 @@ func transient_PackageSlavePad_selectionDisplay (
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     let bp : NSBezierPath
     switch self_padShape {
-    case .rectangular :
+    case .rect :
       bp = NSBezierPath (rect: rPad)
     case .round :
       if width < height {

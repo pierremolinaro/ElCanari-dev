@@ -91,7 +91,7 @@ final class MergerPadArray : EBSimpleClass {
       let r = CGRect (x: -width / 2.0, y: -height / 2.0, width:width, height:height)
       let bp : NSBezierPath
       switch pad.shape {
-      case .rectangular :
+      case .rect :
         bp = NSBezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
@@ -152,7 +152,7 @@ final class MergerPadArray : EBSimpleClass {
       transform.rotate (byRadians:canariRotationToRadians (pad.rotation + inInstanceRotation.rawValue * 90_000))
       let bp : NSBezierPath
       switch pad.shape {
-      case .rectangular :
+      case .rect :
         bp = NSBezierPath (rect:r)
       case .round :
         if pad.width < pad.height {
@@ -244,7 +244,7 @@ final class MergerPadArray : EBSimpleClass {
       let widthInch  = canariUnitToInch (pad.width)
       let heightInch = canariUnitToInch (pad.height)
       switch pad.shape {
-      case .rectangular :
+      case .rect :
         let cosa = cos (padRotationInRadians)
         let sina = sin (padRotationInRadians)
         let hs = widthTenthMilF  / 2.0
