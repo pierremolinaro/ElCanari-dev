@@ -30,7 +30,6 @@ class EBTextShape : EBShape {
   private let mFilledBezierPath : NSBezierPath
   private let mForeColor : NSColor
   private let mBackColor : NSColor?
-  private var mCachedBoundingBox : NSRect? = nil
 
   //····················································································································
   //  Init
@@ -115,15 +114,8 @@ class EBTextShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override var boundingBox : NSRect {
-    if let cbb = self.mCachedBoundingBox {
-      return cbb
-    }else{
-      var r = super.boundingBox
-      r = r.union (self.mFilledBezierPath.bounds)
-      self.mCachedBoundingBox = r
-      return r
-    }
+  override internal var internalBoundingBox : NSRect {
+    return self.mFilledBezierPath.bounds
   }
 
   //····················································································································

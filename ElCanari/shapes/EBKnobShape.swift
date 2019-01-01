@@ -55,8 +55,8 @@ class EBKnobShape : EBShape {
   // boundingBox (used for invalidating drawings)
   //····················································································································
 
-  override var boundingBox : NSRect {
-    return self.rect.insetBy (dx: -1.0, dy: -1.0)
+  override internal var internalBoundingBox : NSRect {
+    return self.rect // .insetBy (dx: -1.0, dy: -1.0)
   }
 
   //····················································································································

@@ -15,7 +15,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   //····················································································································
 
   private var mShapes : [EBShape]
-  private var mShapeCachedBoundingBox : NSRect?
+  private var mCachedBoundingBox : NSRect? = nil
 
   //····················································································································
   //  init
@@ -23,7 +23,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init () {
     mShapes = []
-    mShapeCachedBoundingBox = nil
+    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -31,7 +31,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init (shape inShape : EBShape) {
     mShapes = [inShape]
-    mShapeCachedBoundingBox = nil
+    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -39,7 +39,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init (shapes inShapes : [EBShape]) {
     mShapes = inShapes
-    mShapeCachedBoundingBox = nil
+    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -57,14 +57,14 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   func append (_ inShape : EBShape) {
     self.mShapes.append (inShape)
-    self.mShapeCachedBoundingBox = nil
+    self.mCachedBoundingBox = nil
   }
 
   //····················································································································
 
   func append (_ inShapes : [EBShape]) {
     self.mShapes += inShapes
-    self.mShapeCachedBoundingBox = nil
+    self.mCachedBoundingBox = nil
   }
 
   //····················································································································
@@ -101,18 +101,22 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   // boundingBox
   //····················································································································
 
-  var boundingBox : NSRect {
-    if let cbb = self.mShapeCachedBoundingBox {
+  final var boundingBox : NSRect {
+    if let cbb = self.mCachedBoundingBox {
       return cbb
     }else{
-      var r = NSRect.null
+      var r = self.internalBoundingBox
       for shape in self.mShapes {
         r = r.union (shape.boundingBox)
       }
-      self.mShapeCachedBoundingBox = r
+      self.mCachedBoundingBox = r
       return r
     }
   }
+
+  //····················································································································
+
+  internal var internalBoundingBox : NSRect { return .null }
 
   //····················································································································
   //   intersects

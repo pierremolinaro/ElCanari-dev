@@ -11,7 +11,6 @@ import Cocoa
 class EBFilledBezierPathShape : EBShape {
   private var mFilledPaths : [NSBezierPath]
   private let mColor : NSColor
-  private var mCachedBoundingBox : NSRect?
 
   //····················································································································
   //  Init
@@ -56,17 +55,14 @@ class EBFilledBezierPathShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override var boundingBox : NSRect {
-    if let cbb = self.mCachedBoundingBox {
-      return cbb
-    }else{
-      var r = super.boundingBox
-      for bp in self.mFilledPaths {
+  override internal var internalBoundingBox : NSRect {
+    var r = NSRect.null
+    for bp in self.mFilledPaths {
+      if !bp.isEmpty {
         r = r.union (bp.bounds)
       }
-      self.mCachedBoundingBox = r
-      return r
     }
+    return r
   }
 
   //····················································································································

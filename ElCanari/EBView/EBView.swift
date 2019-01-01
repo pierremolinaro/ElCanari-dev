@@ -77,12 +77,9 @@ import Cocoa
 
   final var mUnderObjectsDisplay = EBShape () {
     didSet {
-      self.noteInvalidRectangles (old: oldValue, new: self.mOverObjectsDisplay)
+      self.noteInvalidRectangles (old: oldValue, new: self.mUnderObjectsDisplay)
       if self.mUnderObjectsDisplay != oldValue {
-        // Swift.print ("mUnderObjectsDisplay Change")
         self.updateViewFrameAndBounds ()
-        self.setNeedsDisplay (oldValue.boundingBox)
-        self.setNeedsDisplay (self.mUnderObjectsDisplay.boundingBox)
       }
     }
   }
@@ -99,7 +96,6 @@ import Cocoa
     didSet {
       self.noteInvalidRectangles (old: oldValue, new: self.mOverObjectsDisplay)
       if self.mOverObjectsDisplay != oldValue {
-        // Swift.print ("mOverObjectsDisplay Change: \(oldValue.boundingBox) -> \(self.mOverObjectsDisplay.boundingBox)")
         self.updateViewFrameAndBounds ()
       }
     }

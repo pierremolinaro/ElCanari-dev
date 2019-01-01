@@ -10,7 +10,6 @@ import Cocoa
 
 class EBTextKnobShape : EBShape {
   private let mFilledBezierPath : NSBezierPath
-  private var mCachedBoundingBox : NSRect? = nil
   private var mIndex : Int
 
   //····················································································································
@@ -108,15 +107,8 @@ class EBTextKnobShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override var boundingBox : NSRect {
-    if let cbb = self.mCachedBoundingBox {
-      return cbb
-    }else{
-      var r = super.boundingBox
-      r = r.union (self.knobRect)
-      self.mCachedBoundingBox = r
-      return r
-    }
+  override internal var internalBoundingBox : NSRect {
+    return self.knobRect
   }
 
   //····················································································································
