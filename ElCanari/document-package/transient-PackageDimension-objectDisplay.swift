@@ -79,7 +79,7 @@ func transient_PackageDimension_objectDisplay (
   shape.append (EBFilledBezierPathShape ([path1, path2], NSColor.orange))
 //------- Add dimension text
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
-  let p = CanariPoint (x: self_xDimension, y: self_yDimension).cocoaPoint ()
+  let p = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2).cocoaPoint ()
   let textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
     NSAttributedString.Key.foregroundColor : NSColor.black,

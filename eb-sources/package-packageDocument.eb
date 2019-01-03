@@ -290,8 +290,12 @@ document PackageDocument root PackageRoot {
 #------- Dimension inspector
   selectionController PackageDimension mPackageDimensionSelectionController : self.mPackageObjectsController.selectedArray ;
   outlet CanariViewWithKeyView mDimensionInspectorView ;
-  action setTextOriginAtMidpointAction ;
-  outlet EBButton mSetTextOriginAtMidpoint $run self.setTextOriginAtMidpointAction ;
+
+  action setDimensionTextOriginAtMidXAction ;
+  outlet EBButton mSetDimensionTextOriginAtMidX $run self.setDimensionTextOriginAtMidXAction ;
+
+  action setDimensionTextOriginAtMidYAction ;
+  outlet EBButton mSetDimensionTextOriginAtMidY $run self.setDimensionTextOriginAtMidYAction ;
 
 #--- x1
   outlet EBPopUpButton mDimensionX1UnitPopUp $selectedTag mPackageDimensionSelectionController.x1Unit ;

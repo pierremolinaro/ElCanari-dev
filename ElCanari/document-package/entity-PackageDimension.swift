@@ -202,7 +202,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: xDimension
   //····················································································································
 
-  var xDimension_property = EBStoredProperty_Int (342900)
+  var xDimension_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
@@ -225,7 +225,7 @@ class PackageDimension : PackageObject,
   //   Atomic property: yDimension
   //····················································································································
 
-  var yDimension_property = EBStoredProperty_Int (114300)
+  var yDimension_property = EBStoredProperty_Int (0)
 
   //····················································································································
 

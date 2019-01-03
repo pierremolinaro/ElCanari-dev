@@ -12,12 +12,11 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension PackageDocument {
-  @objc func setTextOriginAtMidpointAction (_ sender : NSObject?) {
+  @objc func setDimensionTextOriginAtMidXAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     for object in self.mPackageObjectsController.selectedGraphicObjectSet {
       if let dim = object as? PackageDimension {
-        dim.xDimension = (dim.x1 + dim.x2) / 2
-        dim.yDimension = (dim.y1 + dim.y2) / 2
+        dim.xDimension = 0
       }
     }
 //--- END OF USER ZONE 2

@@ -321,8 +321,8 @@ graphic entity PackageDimension : PackageObject {
   property @signature Int y1 default 0 ;
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 0 ;
-  property @signature Int xDimension default 3_429_00 ;
-  property @signature Int yDimension default 1_143_00 ;
+  property @signature Int xDimension default 0 ;
+  property @signature Int yDimension default 0 ;
   
   property @signature Int x1Unit default 2_286 ;
   property @signature Int y1Unit default 2_286 ;

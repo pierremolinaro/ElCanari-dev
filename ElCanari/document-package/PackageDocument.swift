@@ -287,7 +287,8 @@ import Cocoa
   @IBOutlet var mSegmentY2TextField : CanariDimensionTextField?
   @IBOutlet var mSegmentY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mSelectedObjectsInspectorView : CanariViewWithKeyView?
-  @IBOutlet var mSetTextOriginAtMidpoint : EBButton?
+  @IBOutlet var mSetDimensionTextOriginAtMidX : EBButton?
+  @IBOutlet var mSetDimensionTextOriginAtMidY : EBButton?
   @IBOutlet var mShowPadNumberSwitch : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mSlavePadAnnularRingTextField : CanariDimensionObserverTextField?
@@ -2595,19 +2596,34 @@ import Cocoa
         errorMessage: "the 'mSelectedObjectsInspectorView' outlet is nil"
       )
     }
-    if let outlet : Any = self.mSetTextOriginAtMidpoint {
+    if let outlet : Any = self.mSetDimensionTextOriginAtMidX {
       if !(outlet is EBButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mSetTextOriginAtMidpoint' outlet is not an instance of 'EBButton'"
+          errorMessage: "the 'mSetDimensionTextOriginAtMidX' outlet is not an instance of 'EBButton'"
         )
       }
     }else{
       presentErrorWindow (
         file: #file,
         line: #line,
-        errorMessage: "the 'mSetTextOriginAtMidpoint' outlet is nil"
+        errorMessage: "the 'mSetDimensionTextOriginAtMidX' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSetDimensionTextOriginAtMidY {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSetDimensionTextOriginAtMidY' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSetDimensionTextOriginAtMidY' outlet is nil"
       )
     }
     if let outlet : Any = self.mShowPadNumberSwitch {
@@ -3454,8 +3470,10 @@ import Cocoa
       mController_mAddSlavePadButton_enabled = controller
     }
   //--------------------------- Set targets / actions
-    self.mSetTextOriginAtMidpoint?.target = self
-    self.mSetTextOriginAtMidpoint?.action = #selector (PackageDocument.setTextOriginAtMidpointAction (_:))
+    self.mSetDimensionTextOriginAtMidX?.target = self
+    self.mSetDimensionTextOriginAtMidX?.action = #selector (PackageDocument.setDimensionTextOriginAtMidXAction (_:))
+    self.mSetDimensionTextOriginAtMidY?.target = self
+    self.mSetDimensionTextOriginAtMidY?.action = #selector (PackageDocument.setDimensionTextOriginAtMidYAction (_:))
     self.mProgramHelpButton?.target = self
     self.mProgramHelpButton?.action = #selector (PackageDocument.programHelpAction (_:))
     self.mLoadFromDesignButton?.target = self
@@ -3673,7 +3691,8 @@ import Cocoa
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
-    self.mSetTextOriginAtMidpoint?.target = nil
+    self.mSetDimensionTextOriginAtMidX?.target = nil
+    self.mSetDimensionTextOriginAtMidY?.target = nil
     self.mProgramHelpButton?.target = nil
     self.mLoadFromDesignButton?.target = nil
     self.mRunProgramButton?.target = nil
@@ -3825,7 +3844,8 @@ import Cocoa
     self.mSegmentY2TextField?.ebCleanUp ()
     self.mSegmentY2UnitPopUp?.ebCleanUp ()
     self.mSelectedObjectsInspectorView?.ebCleanUp ()
-    self.mSetTextOriginAtMidpoint?.ebCleanUp ()
+    self.mSetDimensionTextOriginAtMidX?.ebCleanUp ()
+    self.mSetDimensionTextOriginAtMidY?.ebCleanUp ()
     self.mShowPadNumberSwitch?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mSlavePadAnnularRingTextField?.ebCleanUp ()

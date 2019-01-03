@@ -51,10 +51,7 @@ func transient_PackagePad_objectDisplay (
     case .surface :
       ()
     }
-    let shape = EBShape ()
-    shape.append (EBFilledBezierPathShape ([bp], prefs_packageColor))
-  //---
-    return shape
+    return EBFilledBezierPathShape ([bp], prefs_packageColor)
 //--- END OF USER ZONE 2
 }
 
