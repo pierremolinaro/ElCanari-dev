@@ -25,9 +25,7 @@ func transient_PackageSegment_objectDisplay (
   bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
   bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
-  let shape = EBShape ()
-  shape.append (EBStrokeBezierPathShape ([bp], prefs_packageColor))
-  return shape
+  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
 //--- END OF USER ZONE 2
 }
 

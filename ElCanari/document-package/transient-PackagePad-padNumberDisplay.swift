@@ -19,23 +19,22 @@ func transient_PackagePad_padNumberDisplay (
        _ self_padName : String
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
   //--- Pad number
     if self_padName != "" {
       let textAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : prefs_padNumberFont,
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
-      let numberShape = EBTextShape (
+      return EBTextShape (
         self_padName, // padString,
         CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint (),
         textAttributes,
         .center,
         .center
       )
-      shape.append (numberShape)
+    }else{
+      return EBShape ()
     }
-    return shape
 //--- END OF USER ZONE 2
 }
 

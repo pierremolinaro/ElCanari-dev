@@ -41,9 +41,7 @@ func transient_PackageSlavePad_selectionDisplay (
     }
     bp.lineWidth = 0.25
     bp.lineCapStyle = .round
-    let shape = EBShape ()
-    shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
-    return shape
+    return EBStrokeBezierPathShape ([bp], NSColor.cyan)
 //--- END OF USER ZONE 2
 }
 
