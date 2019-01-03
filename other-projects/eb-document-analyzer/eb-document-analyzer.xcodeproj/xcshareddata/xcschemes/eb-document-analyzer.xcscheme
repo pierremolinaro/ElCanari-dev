@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/pierremolinaro/Desktop/ElCanari-converted/passive/push-buttons/push-button-4-pins.ElCanariSymbol"
+            argument = "/Volumes/ClefUSB/ElCanari-converted/sot/sot-223.ElCanariPackage"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

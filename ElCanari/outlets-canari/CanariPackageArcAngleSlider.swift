@@ -98,7 +98,7 @@ final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
     case .multiple :
       self.mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      var value = Double (propertyValue) / 1000.0 - 90.0
+      var value = 90.0 - Double (propertyValue) / 1000.0
       if value < 0.0 {
         value += 360.0
       }
@@ -114,11 +114,11 @@ final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
     case .empty, .multiple :
       break
     case .single (_) :
-      var v = self.mOutlet.doubleValue + 90.0
-      if v >= 360.0 {
-        v -= 360.0
+      var v = 90.0 - self.mOutlet.doubleValue
+      if v < 0.0 {
+        v += 360.0
       }
-      let angle : Int = Int (round (v * 1000.0))
+      let angle = Int ((v * 1000.0).rounded (.toNearestOrEven))
       _ = self.mAngle.validateAndSetProp (angle, windowForSheet: sender.window)
     }
   }

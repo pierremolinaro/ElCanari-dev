@@ -1463,11 +1463,16 @@ class MergerRoot : EBManagedObject,
       managedObjectArray: &managedObjectArray
     ) as! [MergerBoardInstance])
   //--- To one property: artwork
-    self.artwork_property.setProp (readEntityFromDictionary (
-      inRelationshipName: "artwork",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as? ArtworkRoot)
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "artwork",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? ArtworkRoot {
+        self.artwork_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································

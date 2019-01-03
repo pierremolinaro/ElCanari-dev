@@ -55,7 +55,7 @@ extension SymbolText {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
+  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     self.x += inDx
     self.y += inDy
   }

@@ -1050,6 +1050,17 @@ class PackageSlavePad : PackageObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: master
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "master",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PackagePad {
+        self.master_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································

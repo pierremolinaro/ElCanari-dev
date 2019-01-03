@@ -23,26 +23,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: endTangentLength
+  //   Selection observable property: endTangent
   //····················································································································
 
-  var endTangentLength_property = EBPropertyProxy_Int ()
+  var endTangent_property = EBPropertyProxy_Int ()
 
-  var endTangentLength_property_selection : EBSelection <Int> {
+  var endTangent_property_selection : EBSelection <Int> {
     get {
-      return self.endTangentLength_property.prop
+      return self.endTangent_property.prop
     }
   }
 
   //····················································································································
-  //   Selection observable property: endTangentLengthUnit
+  //   Selection observable property: endTangentUnit
   //····················································································································
 
-  var endTangentLengthUnit_property = EBPropertyProxy_Int ()
+  var endTangentUnit_property = EBPropertyProxy_Int ()
 
-  var endTangentLengthUnit_property_selection : EBSelection <Int> {
+  var endTangentUnit_property_selection : EBSelection <Int> {
     get {
-      return self.endTangentLengthUnit_property.prop
+      return self.endTangentUnit_property.prop
     }
   }
 
@@ -131,26 +131,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   }
 
   //····················································································································
-  //   Selection observable property: startTangentLength
+  //   Selection observable property: startTangent
   //····················································································································
 
-  var startTangentLength_property = EBPropertyProxy_Int ()
+  var startTangent_property = EBPropertyProxy_Int ()
 
-  var startTangentLength_property_selection : EBSelection <Int> {
+  var startTangent_property_selection : EBSelection <Int> {
     get {
-      return self.startTangentLength_property.prop
+      return self.startTangent_property.prop
     }
   }
 
   //····················································································································
-  //   Selection observable property: startTangentLengthUnit
+  //   Selection observable property: startTangentUnit
   //····················································································································
 
-  var startTangentLengthUnit_property = EBPropertyProxy_Int ()
+  var startTangentUnit_property = EBPropertyProxy_Int ()
 
-  var startTangentLengthUnit_property_selection : EBSelection <Int> {
+  var startTangentUnit_property_selection : EBSelection <Int> {
     get {
-      return self.startTangentLengthUnit_property.prop
+      return self.startTangentUnit_property.prop
     }
   }
 
@@ -235,8 +235,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     }
     model.addEBObserver (self.mActualModel)
     self.bind_property_arcAngle (model: self.mActualModel)
-    self.bind_property_endTangentLength (model: self.mActualModel)
-    self.bind_property_endTangentLengthUnit (model: self.mActualModel)
+    self.bind_property_endTangent (model: self.mActualModel)
+    self.bind_property_endTangentUnit (model: self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_pathIsClosed (model: self.mActualModel)
@@ -244,8 +244,8 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     self.bind_property_radiusUnit (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
     self.bind_property_startAngle (model: self.mActualModel)
-    self.bind_property_startTangentLength (model: self.mActualModel)
-    self.bind_property_startTangentLengthUnit (model: self.mActualModel)
+    self.bind_property_startTangent (model: self.mActualModel)
+    self.bind_property_startTangentUnit (model: self.mActualModel)
     self.bind_property_xCenter (model: self.mActualModel)
     self.bind_property_xCenterUnit (model: self.mActualModel)
     self.bind_property_yCenter (model: self.mActualModel)
@@ -264,16 +264,16 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     self.arcAngle_property.writeModelFunction = nil 
     self.arcAngle_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_arcAngle (self.arcAngle_property)
-  //--- endTangentLength
-    self.endTangentLength_property.readModelFunction = nil 
-    self.endTangentLength_property.writeModelFunction = nil 
-    self.endTangentLength_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_endTangentLength (self.endTangentLength_property)
-  //--- endTangentLengthUnit
-    self.endTangentLengthUnit_property.readModelFunction = nil 
-    self.endTangentLengthUnit_property.writeModelFunction = nil 
-    self.endTangentLengthUnit_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_endTangentLengthUnit (self.endTangentLengthUnit_property)
+  //--- endTangent
+    self.endTangent_property.readModelFunction = nil 
+    self.endTangent_property.writeModelFunction = nil 
+    self.endTangent_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_endTangent (self.endTangent_property)
+  //--- endTangentUnit
+    self.endTangentUnit_property.readModelFunction = nil 
+    self.endTangentUnit_property.writeModelFunction = nil 
+    self.endTangentUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
   //--- issues
     self.issues_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
@@ -303,16 +303,16 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     self.startAngle_property.writeModelFunction = nil 
     self.startAngle_property.validateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_startAngle (self.startAngle_property)
-  //--- startTangentLength
-    self.startTangentLength_property.readModelFunction = nil 
-    self.startTangentLength_property.writeModelFunction = nil 
-    self.startTangentLength_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_startTangentLength (self.startTangentLength_property)
-  //--- startTangentLengthUnit
-    self.startTangentLengthUnit_property.readModelFunction = nil 
-    self.startTangentLengthUnit_property.writeModelFunction = nil 
-    self.startTangentLengthUnit_property.validateAndWriteModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_startTangentLengthUnit (self.startTangentLengthUnit_property)
+  //--- startTangent
+    self.startTangent_property.readModelFunction = nil 
+    self.startTangent_property.writeModelFunction = nil 
+    self.startTangent_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_startTangent (self.startTangent_property)
+  //--- startTangentUnit
+    self.startTangentUnit_property.readModelFunction = nil 
+    self.startTangentUnit_property.writeModelFunction = nil 
+    self.startTangentUnit_property.validateAndWriteModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
   //--- xCenter
     self.xCenter_property.readModelFunction = nil 
     self.xCenter_property.writeModelFunction = nil 
@@ -382,20 +382,20 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       valueExplorer:&self.arcAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "endTangentLength",
-      idx:self.endTangentLength_property.mEasyBindingsObjectIndex,
+      "endTangent",
+      idx:self.endTangent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.endTangentLength_property.mObserverExplorer,
-      valueExplorer:&self.endTangentLength_property.mValueExplorer
+      observerExplorer:&self.endTangent_property.mObserverExplorer,
+      valueExplorer:&self.endTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "endTangentLengthUnit",
-      idx:self.endTangentLengthUnit_property.mEasyBindingsObjectIndex,
+      "endTangentUnit",
+      idx:self.endTangentUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.endTangentLengthUnit_property.mObserverExplorer,
-      valueExplorer:&self.endTangentLengthUnit_property.mValueExplorer
+      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.endTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
@@ -430,20 +430,20 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
       valueExplorer:&self.startAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "startTangentLength",
-      idx:self.startTangentLength_property.mEasyBindingsObjectIndex,
+      "startTangent",
+      idx:self.startTangent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.startTangentLength_property.mObserverExplorer,
-      valueExplorer:&self.startTangentLength_property.mValueExplorer
+      observerExplorer:&self.startTangent_property.mObserverExplorer,
+      valueExplorer:&self.startTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "startTangentLengthUnit",
-      idx:self.startTangentLengthUnit_property.mEasyBindingsObjectIndex,
+      "startTangentUnit",
+      idx:self.startTangentUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.startTangentLengthUnit_property.mObserverExplorer,
-      valueExplorer:&self.startTangentLengthUnit_property.mValueExplorer
+      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.startTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenter",
@@ -601,9 +601,9 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_endTangentLength (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangentLength (self.endTangentLength_property)
-    self.endTangentLength_property.readModelFunction = { [weak self] in
+  private final func bind_property_endTangent (model : ReadOnlyArrayOf_PackageArc) {
+    model.addEBObserverOf_endTangent (self.endTangent_property)
+    self.endTangent_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -614,7 +614,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.endTangentLength_property_selection {
+            switch object.endTangent_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -637,26 +637,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.endTangentLength_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.endTangent_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.endTangentLength_property.setProp (inValue)
+            object.endTangent_property.setProp (inValue)
           }
         }
       }
     }
-    self.endTangentLength_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.endTangent_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.endTangentLength_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.endTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -671,9 +671,9 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_endTangentLengthUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_endTangentLengthUnit (self.endTangentLengthUnit_property)
-    self.endTangentLengthUnit_property.readModelFunction = { [weak self] in
+  private final func bind_property_endTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
+    model.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
+    self.endTangentUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -684,7 +684,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.endTangentLengthUnit_property_selection {
+            switch object.endTangentUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -707,26 +707,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.endTangentLengthUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.endTangentUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.endTangentLengthUnit_property.setProp (inValue)
+            object.endTangentUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.endTangentLengthUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.endTangentUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.endTangentLengthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.endTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1141,9 +1141,9 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_startTangentLength (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangentLength (self.startTangentLength_property)
-    self.startTangentLength_property.readModelFunction = { [weak self] in
+  private final func bind_property_startTangent (model : ReadOnlyArrayOf_PackageArc) {
+    model.addEBObserverOf_startTangent (self.startTangent_property)
+    self.startTangent_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1154,7 +1154,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.startTangentLength_property_selection {
+            switch object.startTangent_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1177,26 +1177,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.startTangentLength_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.startTangent_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.startTangentLength_property.setProp (inValue)
+            object.startTangent_property.setProp (inValue)
           }
         }
       }
     }
-    self.startTangentLength_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.startTangent_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.startTangentLength_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.startTangent_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }
@@ -1211,9 +1211,9 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   //···················································································································*
 
-  private final func bind_property_startTangentLengthUnit (model : ReadOnlyArrayOf_PackageArc) {
-    model.addEBObserverOf_startTangentLengthUnit (self.startTangentLengthUnit_property)
-    self.startTangentLengthUnit_property.readModelFunction = { [weak self] in
+  private final func bind_property_startTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
+    model.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
+    self.startTangentUnit_property.readModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1224,7 +1224,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
           var s = Set <Int> ()
           var isMultipleSelection = false
           for object in v {
-            switch object.startTangentLengthUnit_property_selection {
+            switch object.startTangentUnit_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1247,26 +1247,26 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.startTangentLengthUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.startTangentUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           break
         case .single (let v) :
           for object in v {
-            object.startTangentLengthUnit_property.setProp (inValue)
+            object.startTangentUnit_property.setProp (inValue)
           }
         }
       }
     }
-    self.startTangentLengthUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.startTangentUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
           return false
         case .single (let v) :
           for object in v {
-            let result = object.startTangentLengthUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            let result = object.startTangentUnit_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
             if !result {
               return false
             }

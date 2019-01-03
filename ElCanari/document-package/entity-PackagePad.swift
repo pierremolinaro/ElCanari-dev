@@ -1389,11 +1389,16 @@ class PackagePad : PackageObject,
       managedObjectArray: &managedObjectArray
     ) as! [PackageSlavePad])
   //--- To one property: zone
-    self.zone_property.setProp (readEntityFromDictionary (
-      inRelationshipName: "zone",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as? PackageZone)
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "zone",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PackageZone {
+        self.zone_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································

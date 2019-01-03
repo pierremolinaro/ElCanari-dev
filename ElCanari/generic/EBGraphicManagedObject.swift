@@ -89,7 +89,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  @objc dynamic func move (knob inKnobIndex: Int, xBy inDx: Int, yBy inDy: Int) {
+  @objc dynamic func move (knob inKnobIndex: Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
   }
 
   //····················································································································

@@ -131,12 +131,18 @@ extension EBView {
         self.mPerformEndUndoGroupingOnMouseUp = true
         self.viewController?.undoManager?.beginUndoGrouping ()
       }
-      objects [objectIndex].move (knob: knobIndex, xBy: p.x, yBy: p.y)
       let mouseDraggedLocation = CanariPoint (
         x: p.x + inLastMouseDraggedLocation.x,
         y: p.y + inLastMouseDraggedLocation.y
       )
-      mLastMouseDraggedLocation = mouseDraggedLocation
+      objects [objectIndex].move (
+        knob: knobIndex,
+        xBy: p.x,
+        yBy: p.y,
+        newX: mouseDraggedLocation.x,
+        newY: mouseDraggedLocation.y
+      )
+      self.mLastMouseDraggedLocation = mouseDraggedLocation
     }
   }
 

@@ -84,13 +84,25 @@ extension CustomizedPackageDocument {
       allPads.sort (by: { $0.padNumber < $1.padNumber } )
     case .counterClock :
       if allPads.count > 0 {
-        var x = 0
-        var y = 0
+        var xMin = Int.max
+        var yMin = Int.max
+        var xMax = Int.min
+        var yMax = Int.min
         for pad in allPads {
-          x += pad.xCenter
-          y += pad.yCenter
+          if xMin > pad.xCenter {
+            xMin = pad.xCenter
+          }
+          if yMin > pad.yCenter {
+            yMin = pad.yCenter
+          }
+          if xMax < pad.xCenter {
+            xMax = pad.xCenter
+          }
+          if yMax < pad.yCenter {
+            yMax = pad.yCenter
+          }
         }
-        let center = CanariPoint (x: x / allPads.count, y: y / allPads.count)
+        let center = CanariPoint (x: (xMin + xMax) / 2, y: (yMin + yMax) / 2)
         allPads.sort (by: { $0.angle (from: center) < $1.angle (from: center) } )
       }
     case .upRight :

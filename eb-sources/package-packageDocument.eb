@@ -143,14 +143,14 @@ document PackageDocument root PackageRoot {
      $dimensionAndUnit mPackageArcSelectionController.yCenter, mPackageArcSelectionController.yCenterUnit
   ;
 #--- Start Tangent
-  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag mPackageArcSelectionController.startTangentLengthUnit ;
+  outlet EBPopUpButton mArcStartTangentUnitPopUp $selectedTag mPackageArcSelectionController.startTangentUnit ;
   outlet CanariDimensionTextField mArcStartTangentTextField
-     $dimensionAndUnit mPackageArcSelectionController.startTangentLength, mPackageArcSelectionController.startTangentLengthUnit
+     $dimensionAndUnit mPackageArcSelectionController.startTangent, mPackageArcSelectionController.startTangentUnit
   ;
 #--- End Tangent
-  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag mPackageArcSelectionController.endTangentLengthUnit ;
+  outlet EBPopUpButton mArcEndTangentUnitPopUp $selectedTag mPackageArcSelectionController.endTangentUnit ;
   outlet CanariDimensionTextField mArcEndTangentTextField
-     $dimensionAndUnit mPackageArcSelectionController.endTangentLength, mPackageArcSelectionController.endTangentLengthUnit
+     $dimensionAndUnit mPackageArcSelectionController.endTangent, mPackageArcSelectionController.endTangentUnit
   ;
 #--- Close path
   outlet EBSwitch mArcPathIsClosedSwitch $value mPackageArcSelectionController.pathIsClosed ;

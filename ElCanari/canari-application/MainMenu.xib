@@ -206,6 +206,12 @@
                                                 <action selector="actionOpenAllSymbolsInDirectory:" target="212" id="SIt-VH-tF4"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Packages in Directory…" id="Vb6-0C-9vM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionOpenAllPackagesInDirectory:" target="212" id="W1H-8t-28e"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>

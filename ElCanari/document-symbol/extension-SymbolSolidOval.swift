@@ -80,7 +80,7 @@ extension SymbolSolidOval {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
+  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     if inKnobIndex == SYMBOL_SOLID_OVAL_RIGHT {
       self.width += inDx
     }else if inKnobIndex == SYMBOL_SOLID_OVAL_LEFT {

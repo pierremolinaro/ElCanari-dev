@@ -44,10 +44,10 @@ extension PackageArc {
 
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
+  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     let center = CanariPoint (x: self.xCenter, y: self.yCenter).cocoaPoint ()
     let radius = canariUnitToCocoa (self.radius)
-    let startAngle = packageArcAngleToCocoaDegrees (self.startAngle)
+    let startAngle = CGFloat (self.startAngle) / 1000.0
     let arcAngle = CGFloat (self.arcAngle) / 1000.0
     if inKnobIndex == PACKAGE_ARC_CENTER {
       self.xCenter += inDx
@@ -66,29 +66,19 @@ extension PackageArc {
       let newRadius = sqrt (deltaX * deltaX + deltaY * deltaY)
       self.radius = cocoaToCanariUnit (newRadius)
     }else if inKnobIndex == PACKAGE_ARC_START_ANGLE {
-      let t = NSAffineTransform ()
-      t.translateX (by: center.x, yBy: center.y)
-      t.rotate (byDegrees: startAngle)
-      let currentRadiusKnob = t.transform (NSPoint (x: radius, y: 0.0))
       let newStartAngleKnob = NSPoint (
-        x: currentRadiusKnob.x + canariUnitToCocoa (inDx),
-        y: currentRadiusKnob.y + canariUnitToCocoa (inDy)
+        x: canariUnitToCocoa (inNewX),
+        y: canariUnitToCocoa (inNewY)
       )
       let newStartAngle = CGPoint.angleInDegrees (center, newStartAngleKnob)
-      let newCanariStartAngle = cocoaDegreesToPackageArcAngle (newStartAngle)
-//      Swift.print ("\(startAngle)° -> \(newStartAngle)°")
-//      Swift.print ("\(self.startAngle) -> \(newCanariStartAngle)")
+      let newCanariStartAngle = Int ((newStartAngle * 1000.0).rounded (.toNearestOrEven))
       self.startAngle = newCanariStartAngle
     }else if inKnobIndex == PACKAGE_ARC_END_ANGLE {
-      let t = NSAffineTransform ()
-      t.translateX (by: center.x, yBy: center.y)
-      t.rotate (byDegrees: startAngle - arcAngle)
-      let currentEndAngleKnob = t.transform (NSPoint (x: radius, y: 0.0))
       let newEndAngleKnob = NSPoint (
-        x: currentEndAngleKnob.x + canariUnitToCocoa (inDx),
-        y: currentEndAngleKnob.y + canariUnitToCocoa (inDy)
+        x: canariUnitToCocoa (inNewX),
+        y: canariUnitToCocoa (inNewY)
       )
-      var newArcAngle = startAngle - CGPoint.angleInDegrees (center, newEndAngleKnob)
+      var newArcAngle = CGPoint.angleInDegrees (center, newEndAngleKnob) - startAngle
       if newArcAngle < 0.0 {
         newArcAngle += 360.0
       }
@@ -156,9 +146,9 @@ extension PackageArc {
     s += " angle "
     s += "\(self.arcAngle)"
     s += " leading "
-    s += stringFrom (valueInCanariUnit: self.startTangentLength, displayUnit : self.startTangentLengthUnit)
+    s += stringFrom (valueInCanariUnit: self.startTangent, displayUnit : self.startTangentUnit)
     s += " training "
-    s += stringFrom (valueInCanariUnit: self.endTangentLength, displayUnit : self.endTangentLengthUnit)
+    s += stringFrom (valueInCanariUnit: self.endTangent, displayUnit : self.endTangentUnit)
     if self.pathIsClosed {
       s += " closed"
     }
@@ -184,18 +174,20 @@ extension NSBezierPath {
         endTangentLength inEndTangentLength : CGFloat,
         pathIsClosed inPathIsClosed : Bool) {
     self.init ()
-    var endAngle = inStartAngleInDegrees - inArcAngleInDegrees
+    var endAngle = inStartAngleInDegrees + inArcAngleInDegrees
     if endAngle >= 360.0 {
       endAngle -= 360.0
     }else if endAngle < 0.0 {
       endAngle += 360.0
     }
+//    while endAngle >= 360.0 {
+//      endAngle -= 360.0
+//    }
     self.appendArc (
       withCenter: inCenter,
       radius: inRadius,
       startAngle: inStartAngleInDegrees,
-      endAngle: endAngle,
-      clockwise: true
+      endAngle: endAngle
     )
   //--- First point
     var t = NSAffineTransform ()
@@ -205,7 +197,7 @@ extension NSBezierPath {
     if inStartTangentLength > 0.0 {
       self.move (to: firstPoint)
       t = NSAffineTransform ()
-      t.rotate (byDegrees: inStartAngleInDegrees + 90.0)
+      t.rotate (byDegrees: inStartAngleInDegrees - 90.0)
       let p = t.transform (NSPoint (x: inStartTangentLength, y: 0.0))
       self.relativeLine (to: p)
       firstPoint.x += p.x
@@ -214,7 +206,7 @@ extension NSBezierPath {
   //--- Last Point
     t = NSAffineTransform ()
     t.translateX (by: inCenter.x, yBy: inCenter.y)
-    t.rotate (byDegrees: inStartAngleInDegrees - inArcAngleInDegrees)
+    t.rotate (byDegrees: inStartAngleInDegrees + inArcAngleInDegrees)
     var lastPoint = t.transform (NSPoint (x: inRadius, y: 0.0))
     if inEndTangentLength > 0.0 {
       self.move (to: lastPoint)
@@ -234,28 +226,6 @@ extension NSBezierPath {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// Angles in Cocoa are CGFloat, counterclockwise, in degrees (or radians)
-// Package arc angle are integer, in degrees * 1000; clockwise
-
-func packageArcAngleToCocoaDegrees (_ inCanariAngle : Int) -> CGFloat {
-  var angle = 180.0 - CGFloat (inCanariAngle) / 1000.0
-  if angle < 0.0 {
-    angle += 360.0
-  }
-  return angle
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func cocoaDegreesToPackageArcAngle (_ inCocoaAngle : CGFloat) -> Int {
-  var angle = 180_000 - Int ((inCocoaAngle * 1000.0).rounded (.toNearestOrEven))
-  if angle < 0 {
-    angle += 360_000
-  }
-  return angle
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

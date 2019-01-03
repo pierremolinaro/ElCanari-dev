@@ -18,17 +18,17 @@ func transient_PackageArc_objectDisplay (
        _ self_startAngle : Int,          
        _ self_arcAngle : Int,            
        _ self_pathIsClosed : Bool,       
-       _ self_startTangentLength : Int,  
-       _ self_endTangentLength : Int,    
+       _ self_startTangent : Int,        
+       _ self_endTangent : Int,          
        _ prefs_packageColor : NSColor,   
        _ prefs_packageDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint ()
   let radius = canariUnitToCocoa (self_radius)
-  let startTangentLength = canariUnitToCocoa (self_startTangentLength)
-  let endTangentLength = canariUnitToCocoa (self_endTangentLength)
-  let startAngle = packageArcAngleToCocoaDegrees (self_startAngle)
+  let startTangentLength = canariUnitToCocoa (self_startTangent)
+  let endTangentLength = canariUnitToCocoa (self_endTangent)
+  let startAngle = CGFloat (self_startAngle) / 1000.0
   let arcAngle = CGFloat (self_arcAngle) / 1000.0
   let bp = NSBezierPath (
     arcWithTangentFromCenter: center,

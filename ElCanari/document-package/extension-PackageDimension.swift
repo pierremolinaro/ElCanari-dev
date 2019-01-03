@@ -33,7 +33,7 @@ extension PackageDimension {
   //  Knob
   //····················································································································
 
-  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int) {
+  override func move (knob inKnobIndex : Int, xBy inDx: Int, yBy inDy: Int, newX inNewX : Int, newY inNewY : Int) {
     if inKnobIndex == PACKAGE_DIMENSION_ENDPOINT_1 {
       self.x1 += inDx
       self.y1 += inDy

@@ -14,8 +14,19 @@ extension ApplicationDelegate {
 
   //····················································································································
 
-
   @IBAction func actionOpenAllSymbolsInDirectory (_ inSender : AnyObject) {
+    self.actionOpenAllDocumentInDirectory (["ElCanariSymbol"])
+  }
+
+  //····················································································································
+
+  @IBAction func actionOpenAllPackagesInDirectory (_ inSender : AnyObject) {
+    self.actionOpenAllDocumentInDirectory (["ElCanariPackage"])
+  }
+
+  //····················································································································
+
+  private func actionOpenAllDocumentInDirectory (_ extensions : Set <String>) {
     let op = NSOpenPanel ()
     op.allowsMultipleSelection = false
     op.canChooseDirectories = true
@@ -29,14 +40,13 @@ extension ApplicationDelegate {
         let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
         for f in files {
           let fullpath = baseDirectory + "/" + f
-          if fullpath.pathExtension == "ElCanariSymbol" {
+          if extensions.contains (fullpath.pathExtension) {
             dc.openDocument (
               withContentsOf: URL (fileURLWithPath: fullpath),
               display: true,
               completionHandler: { (document : NSDocument?, display : Bool, error : Error?) in
                 document?.windowForSheet?.makeKeyAndOrderFront (nil)
                 _ = RunLoop.main.run (mode: .default, before: Date ())
-        //        _ = RunLoop.main.run (mode: .default, before: Date (timeIntervalSinceNow: 0.1))
               }
             )
           }

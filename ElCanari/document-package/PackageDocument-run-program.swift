@@ -515,10 +515,10 @@ extension PackageDocument {
     object.radiusUnit = radiusUnit
     object.startAngle = startAngle
     object.arcAngle = arcAngle
-    object.startTangentLength = startTangentLength
-    object.startTangentLengthUnit = startTangentLengthUnit
-    object.endTangentLength = endTangentLength
-    object.endTangentLengthUnit = endTangentLengthUnit
+    object.startTangent = startTangentLength
+    object.startTangentUnit = startTangentLengthUnit
+    object.endTangent = endTangentLength
+    object.endTangentUnit = endTangentLengthUnit
     ioObjects.append (object)
  }
 

@@ -537,6 +537,28 @@ class MergerBoardInstance : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: myModel
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "myModel",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? BoardModel {
+        self.myModel_property.setProp (entity)
+      }
+    }
+  //--- To one property: myRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "myRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? MergerRoot {
+        self.myRoot_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································

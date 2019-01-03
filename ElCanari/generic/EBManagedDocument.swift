@@ -7,8 +7,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let kFormatSignature = "PM-BINARY-FORMAT"
-private let EBVersion = "EBVersion"
 let kEntityKey = "--entity"
+private let EBVersion = "EBVersion"
+private let EBWindowHeight = "WindowHeight"
+private let EBWindowWidth  = "WindowWidth"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -98,19 +100,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
       if unwrappedWindowForSheet.styleMask.contains(.resizable) { // Only if window is resizable
         let windowSize = unwrappedWindowForSheet.frame.size ;
-        mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.width)), forKey:"EBWindowWidth" as NSCopying)
-        mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.height)), forKey:"EBWindowHeight" as NSCopying)
+        self.mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.width)), forKey: EBWindowWidth as NSCopying)
+        self.mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.height)), forKey: EBWindowHeight as NSCopying)
       }
-    }else{ // Document has not been opened in the user interface, use values read from file, if they exist
-/*      NSDictionary * metadataDictionaryReadFromFile = self.metadataDictionaryReadFromFile ;
-      NSNumber * v = [metadataDictionaryReadFromFile objectForKey:@"EBWindowWidth"] ;
-      if (nil != v) {
-        [metadataDictionary setObject:v forKey:@"EBWindowWidth"] ;
-      }
-      v = [metadataDictionaryReadFromFile objectForKey:@"EBWindowHeight"] ;
-      if (nil != v) {
-        [metadataDictionary setObject:v forKey:@"EBWindowHeight"] ;
-      }*/
     }
   //---
     var fileData = Data ()
@@ -243,8 +235,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     super.showWindows ()
     if let unwrappedWindowForSheet = windowForSheet, // Document has been opened in the user interface
           unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
-          let windowWidthNumber = self.mMetadataDictionary.object (forKey: "EBWindowWidth") as? NSNumber,
-          let windowHeightNumber = self.mMetadataDictionary.object (forKey: "EBWindowHeight") as? NSNumber {
+          let windowWidthNumber = self.mMetadataDictionary.object (forKey: EBWindowWidth) as? NSNumber,
+          let windowHeightNumber = self.mMetadataDictionary.object (forKey: EBWindowHeight) as? NSNumber {
       let newSize = NSSize (width: CGFloat (windowWidthNumber.doubleValue), height: CGFloat (windowHeightNumber.doubleValue))
       var windowFrame : NSRect = unwrappedWindowForSheet.frame
       windowFrame.size = newSize

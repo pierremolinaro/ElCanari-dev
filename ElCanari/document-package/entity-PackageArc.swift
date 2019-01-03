@@ -30,14 +30,14 @@ protocol PackageArc_arcAngle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_startTangentLength : class {
-  var startTangentLength : Int { get }
+protocol PackageArc_startTangent : class {
+  var startTangent : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_endTangentLength : class {
-  var endTangentLength : Int { get }
+protocol PackageArc_endTangent : class {
+  var endTangent : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,14 +66,14 @@ protocol PackageArc_radiusUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_startTangentLengthUnit : class {
-  var startTangentLengthUnit : Int { get }
+protocol PackageArc_startTangentUnit : class {
+  var startTangentUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackageArc_endTangentLengthUnit : class {
-  var endTangentLengthUnit : Int { get }
+protocol PackageArc_endTangentUnit : class {
+  var endTangentUnit : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -109,14 +109,14 @@ class PackageArc : PackageObject,
          PackageArc_radius,
          PackageArc_startAngle,
          PackageArc_arcAngle,
-         PackageArc_startTangentLength,
-         PackageArc_endTangentLength,
+         PackageArc_startTangent,
+         PackageArc_endTangent,
          PackageArc_pathIsClosed,
          PackageArc_xCenterUnit,
          PackageArc_yCenterUnit,
          PackageArc_radiusUnit,
-         PackageArc_startTangentLengthUnit,
-         PackageArc_endTangentLengthUnit,
+         PackageArc_startTangentUnit,
+         PackageArc_endTangentUnit,
          PackageArc_xCenter,
          PackageArc_objectDisplay,
          PackageArc_selectionDisplay,
@@ -215,49 +215,49 @@ class PackageArc : PackageObject,
   }
 
   //····················································································································
-  //   Atomic property: startTangentLength
+  //   Atomic property: startTangent
   //····················································································································
 
-  var startTangentLength_property = EBStoredProperty_Int (0)
+  var startTangent_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
-  var startTangentLength : Int {
+  var startTangent : Int {
     get {
-      return self.startTangentLength_property.propval
+      return self.startTangent_property.propval
     }
     set {
-      self.startTangentLength_property.setProp (newValue)
+      self.startTangent_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var startTangentLength_property_selection : EBSelection <Int> {
-    return self.startTangentLength_property.prop
+  var startTangent_property_selection : EBSelection <Int> {
+    return self.startTangent_property.prop
   }
 
   //····················································································································
-  //   Atomic property: endTangentLength
+  //   Atomic property: endTangent
   //····················································································································
 
-  var endTangentLength_property = EBStoredProperty_Int (0)
+  var endTangent_property = EBStoredProperty_Int (0)
 
   //····················································································································
 
-  var endTangentLength : Int {
+  var endTangent : Int {
     get {
-      return self.endTangentLength_property.propval
+      return self.endTangent_property.propval
     }
     set {
-      self.endTangentLength_property.setProp (newValue)
+      self.endTangent_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var endTangentLength_property_selection : EBSelection <Int> {
-    return self.endTangentLength_property.prop
+  var endTangent_property_selection : EBSelection <Int> {
+    return self.endTangent_property.prop
   }
 
   //····················································································································
@@ -353,49 +353,49 @@ class PackageArc : PackageObject,
   }
 
   //····················································································································
-  //   Atomic property: startTangentLengthUnit
+  //   Atomic property: startTangentUnit
   //····················································································································
 
-  var startTangentLengthUnit_property = EBStoredProperty_Int (2286)
+  var startTangentUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var startTangentLengthUnit : Int {
+  var startTangentUnit : Int {
     get {
-      return self.startTangentLengthUnit_property.propval
+      return self.startTangentUnit_property.propval
     }
     set {
-      self.startTangentLengthUnit_property.setProp (newValue)
+      self.startTangentUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var startTangentLengthUnit_property_selection : EBSelection <Int> {
-    return self.startTangentLengthUnit_property.prop
+  var startTangentUnit_property_selection : EBSelection <Int> {
+    return self.startTangentUnit_property.prop
   }
 
   //····················································································································
-  //   Atomic property: endTangentLengthUnit
+  //   Atomic property: endTangentUnit
   //····················································································································
 
-  var endTangentLengthUnit_property = EBStoredProperty_Int (2286)
+  var endTangentUnit_property = EBStoredProperty_Int (2286)
 
   //····················································································································
 
-  var endTangentLengthUnit : Int {
+  var endTangentUnit : Int {
     get {
-      return self.endTangentLengthUnit_property.propval
+      return self.endTangentUnit_property.propval
     }
     set {
-      self.endTangentLengthUnit_property.setProp (newValue)
+      self.endTangentUnit_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var endTangentLengthUnit_property_selection : EBSelection <Int> {
-    return self.endTangentLengthUnit_property.prop
+  var endTangentUnit_property_selection : EBSelection <Int> {
+    return self.endTangentUnit_property.prop
   }
 
   //····················································································································
@@ -435,10 +435,10 @@ class PackageArc : PackageObject,
     self.startAngle_property.undoManager = self.undoManager
   //--- Atomic property: arcAngle
     self.arcAngle_property.undoManager = self.undoManager
-  //--- Atomic property: startTangentLength
-    self.startTangentLength_property.undoManager = self.undoManager
-  //--- Atomic property: endTangentLength
-    self.endTangentLength_property.undoManager = self.undoManager
+  //--- Atomic property: startTangent
+    self.startTangent_property.undoManager = self.undoManager
+  //--- Atomic property: endTangent
+    self.endTangent_property.undoManager = self.undoManager
   //--- Atomic property: pathIsClosed
     self.pathIsClosed_property.undoManager = self.undoManager
   //--- Atomic property: xCenterUnit
@@ -447,10 +447,10 @@ class PackageArc : PackageObject,
     self.yCenterUnit_property.undoManager = self.undoManager
   //--- Atomic property: radiusUnit
     self.radiusUnit_property.undoManager = self.undoManager
-  //--- Atomic property: startTangentLengthUnit
-    self.startTangentLengthUnit_property.undoManager = self.undoManager
-  //--- Atomic property: endTangentLengthUnit
-    self.endTangentLengthUnit_property.undoManager = self.undoManager
+  //--- Atomic property: startTangentUnit
+    self.startTangentUnit_property.undoManager = self.undoManager
+  //--- Atomic property: endTangentUnit
+    self.endTangentUnit_property.undoManager = self.undoManager
   //--- Atomic property: xCenter
     self.xCenter_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
@@ -462,8 +462,8 @@ class PackageArc : PackageObject,
         kind &= unwSelf.startAngle_property_selection.kind ()
         kind &= unwSelf.arcAngle_property_selection.kind ()
         kind &= unwSelf.pathIsClosed_property_selection.kind ()
-        kind &= unwSelf.startTangentLength_property_selection.kind ()
-        kind &= unwSelf.endTangentLength_property_selection.kind ()
+        kind &= unwSelf.startTangent_property_selection.kind ()
+        kind &= unwSelf.endTangent_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
         kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
@@ -472,7 +472,7 @@ class PackageArc : PackageObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.startTangentLength_property_selection, unwSelf.endTangentLength_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.pathIsClosed_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
             return .single (transient_PackageArc_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
@@ -489,8 +489,8 @@ class PackageArc : PackageObject,
     self.startAngle_property.addEBObserver (self.objectDisplay_property)
     self.arcAngle_property.addEBObserver (self.objectDisplay_property)
     self.pathIsClosed_property.addEBObserver (self.objectDisplay_property)
-    self.startTangentLength_property.addEBObserver (self.objectDisplay_property)
-    self.endTangentLength_property.addEBObserver (self.objectDisplay_property)
+    self.startTangent_property.addEBObserver (self.objectDisplay_property)
+    self.endTangent_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -501,8 +501,8 @@ class PackageArc : PackageObject,
         kind &= unwSelf.radius_property_selection.kind ()
         kind &= unwSelf.startAngle_property_selection.kind ()
         kind &= unwSelf.arcAngle_property_selection.kind ()
-        kind &= unwSelf.startTangentLength_property_selection.kind ()
-        kind &= unwSelf.endTangentLength_property_selection.kind ()
+        kind &= unwSelf.startTangent_property_selection.kind ()
+        kind &= unwSelf.endTangent_property_selection.kind ()
         kind &= unwSelf.pathIsClosed_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -510,7 +510,7 @@ class PackageArc : PackageObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangentLength_property_selection, unwSelf.endTangentLength_property_selection, unwSelf.pathIsClosed_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.radius_property_selection, unwSelf.startAngle_property_selection, unwSelf.arcAngle_property_selection, unwSelf.startTangent_property_selection, unwSelf.endTangent_property_selection, unwSelf.pathIsClosed_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
             return .single (transient_PackageArc_selectionDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
@@ -526,8 +526,8 @@ class PackageArc : PackageObject,
     self.radius_property.addEBObserver (self.selectionDisplay_property)
     self.startAngle_property.addEBObserver (self.selectionDisplay_property)
     self.arcAngle_property.addEBObserver (self.selectionDisplay_property)
-    self.startTangentLength_property.addEBObserver (self.selectionDisplay_property)
-    self.endTangentLength_property.addEBObserver (self.selectionDisplay_property)
+    self.startTangent_property.addEBObserver (self.selectionDisplay_property)
+    self.endTangent_property.addEBObserver (self.selectionDisplay_property)
     self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
@@ -564,14 +564,14 @@ class PackageArc : PackageObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.arcAngle_property.setSignatureObserver (observer:self)
-    self.endTangentLength_property.setSignatureObserver (observer:self)
-    self.endTangentLengthUnit_property.setSignatureObserver (observer:self)
+    self.endTangent_property.setSignatureObserver (observer:self)
+    self.endTangentUnit_property.setSignatureObserver (observer:self)
     self.pathIsClosed_property.setSignatureObserver (observer:self)
     self.radius_property.setSignatureObserver (observer:self)
     self.radiusUnit_property.setSignatureObserver (observer:self)
     self.startAngle_property.setSignatureObserver (observer:self)
-    self.startTangentLength_property.setSignatureObserver (observer:self)
-    self.startTangentLengthUnit_property.setSignatureObserver (observer:self)
+    self.startTangent_property.setSignatureObserver (observer:self)
+    self.startTangentUnit_property.setSignatureObserver (observer:self)
     self.xCenter_property.setSignatureObserver (observer:self)
     self.xCenterUnit_property.setSignatureObserver (observer:self)
     self.yCenter_property.setSignatureObserver (observer:self)
@@ -589,8 +589,8 @@ class PackageArc : PackageObject,
     self.startAngle_property.removeEBObserver (self.objectDisplay_property)
     self.arcAngle_property.removeEBObserver (self.objectDisplay_property)
     self.pathIsClosed_property.removeEBObserver (self.objectDisplay_property)
-    self.startTangentLength_property.removeEBObserver (self.objectDisplay_property)
-    self.endTangentLength_property.removeEBObserver (self.objectDisplay_property)
+    self.startTangent_property.removeEBObserver (self.objectDisplay_property)
+    self.endTangent_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.xCenter_property.removeEBObserver (self.selectionDisplay_property)
@@ -598,8 +598,8 @@ class PackageArc : PackageObject,
     self.radius_property.removeEBObserver (self.selectionDisplay_property)
     self.startAngle_property.removeEBObserver (self.selectionDisplay_property)
     self.arcAngle_property.removeEBObserver (self.selectionDisplay_property)
-    self.startTangentLength_property.removeEBObserver (self.selectionDisplay_property)
-    self.endTangentLength_property.removeEBObserver (self.selectionDisplay_property)
+    self.startTangent_property.removeEBObserver (self.selectionDisplay_property)
+    self.endTangent_property.removeEBObserver (self.selectionDisplay_property)
     self.pathIsClosed_property.removeEBObserver (self.selectionDisplay_property)
     self.xCenter_property.removeEBObserver (self.issues_property)
     self.yCenter_property.removeEBObserver (self.issues_property)
@@ -653,20 +653,20 @@ class PackageArc : PackageObject,
       valueExplorer:&self.arcAngle_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "startTangentLength",
-      idx:self.startTangentLength_property.mEasyBindingsObjectIndex,
+      "startTangent",
+      idx:self.startTangent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.startTangentLength_property.mObserverExplorer,
-      valueExplorer:&self.startTangentLength_property.mValueExplorer
+      observerExplorer:&self.startTangent_property.mObserverExplorer,
+      valueExplorer:&self.startTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "endTangentLength",
-      idx:self.endTangentLength_property.mEasyBindingsObjectIndex,
+      "endTangent",
+      idx:self.endTangent_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.endTangentLength_property.mObserverExplorer,
-      valueExplorer:&self.endTangentLength_property.mValueExplorer
+      observerExplorer:&self.endTangent_property.mObserverExplorer,
+      valueExplorer:&self.endTangent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
@@ -701,20 +701,20 @@ class PackageArc : PackageObject,
       valueExplorer:&self.radiusUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "startTangentLengthUnit",
-      idx:self.startTangentLengthUnit_property.mEasyBindingsObjectIndex,
+      "startTangentUnit",
+      idx:self.startTangentUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.startTangentLengthUnit_property.mObserverExplorer,
-      valueExplorer:&self.startTangentLengthUnit_property.mValueExplorer
+      observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.startTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "endTangentLengthUnit",
-      idx:self.endTangentLengthUnit_property.mEasyBindingsObjectIndex,
+      "endTangentUnit",
+      idx:self.endTangentUnit_property.mEasyBindingsObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.endTangentLengthUnit_property.mObserverExplorer,
-      valueExplorer:&self.endTangentLengthUnit_property.mValueExplorer
+      observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
+      valueExplorer:&self.endTangentUnit_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "xCenter",
@@ -771,12 +771,12 @@ class PackageArc : PackageObject,
   //--- Atomic property: arcAngle
     self.arcAngle_property.mObserverExplorer = nil
     self.arcAngle_property.mValueExplorer = nil
-  //--- Atomic property: startTangentLength
-    self.startTangentLength_property.mObserverExplorer = nil
-    self.startTangentLength_property.mValueExplorer = nil
-  //--- Atomic property: endTangentLength
-    self.endTangentLength_property.mObserverExplorer = nil
-    self.endTangentLength_property.mValueExplorer = nil
+  //--- Atomic property: startTangent
+    self.startTangent_property.mObserverExplorer = nil
+    self.startTangent_property.mValueExplorer = nil
+  //--- Atomic property: endTangent
+    self.endTangent_property.mObserverExplorer = nil
+    self.endTangent_property.mValueExplorer = nil
   //--- Atomic property: pathIsClosed
     self.pathIsClosed_property.mObserverExplorer = nil
     self.pathIsClosed_property.mValueExplorer = nil
@@ -789,12 +789,12 @@ class PackageArc : PackageObject,
   //--- Atomic property: radiusUnit
     self.radiusUnit_property.mObserverExplorer = nil
     self.radiusUnit_property.mValueExplorer = nil
-  //--- Atomic property: startTangentLengthUnit
-    self.startTangentLengthUnit_property.mObserverExplorer = nil
-    self.startTangentLengthUnit_property.mValueExplorer = nil
-  //--- Atomic property: endTangentLengthUnit
-    self.endTangentLengthUnit_property.mObserverExplorer = nil
-    self.endTangentLengthUnit_property.mValueExplorer = nil
+  //--- Atomic property: startTangentUnit
+    self.startTangentUnit_property.mObserverExplorer = nil
+    self.startTangentUnit_property.mValueExplorer = nil
+  //--- Atomic property: endTangentUnit
+    self.endTangentUnit_property.mObserverExplorer = nil
+    self.endTangentUnit_property.mValueExplorer = nil
   //--- Atomic property: xCenter
     self.xCenter_property.mObserverExplorer = nil
     self.xCenter_property.mValueExplorer = nil
@@ -816,10 +816,10 @@ class PackageArc : PackageObject,
     self.startAngle_property.storeIn (dictionary: ioDictionary, forKey:"startAngle")
   //--- Atomic property: arcAngle
     self.arcAngle_property.storeIn (dictionary: ioDictionary, forKey:"arcAngle")
-  //--- Atomic property: startTangentLength
-    self.startTangentLength_property.storeIn (dictionary: ioDictionary, forKey:"startTangentLength")
-  //--- Atomic property: endTangentLength
-    self.endTangentLength_property.storeIn (dictionary: ioDictionary, forKey:"endTangentLength")
+  //--- Atomic property: startTangent
+    self.startTangent_property.storeIn (dictionary: ioDictionary, forKey:"startTangent")
+  //--- Atomic property: endTangent
+    self.endTangent_property.storeIn (dictionary: ioDictionary, forKey:"endTangent")
   //--- Atomic property: pathIsClosed
     self.pathIsClosed_property.storeIn (dictionary: ioDictionary, forKey:"pathIsClosed")
   //--- Atomic property: xCenterUnit
@@ -828,10 +828,10 @@ class PackageArc : PackageObject,
     self.yCenterUnit_property.storeIn (dictionary: ioDictionary, forKey:"yCenterUnit")
   //--- Atomic property: radiusUnit
     self.radiusUnit_property.storeIn (dictionary: ioDictionary, forKey:"radiusUnit")
-  //--- Atomic property: startTangentLengthUnit
-    self.startTangentLengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"startTangentLengthUnit")
-  //--- Atomic property: endTangentLengthUnit
-    self.endTangentLengthUnit_property.storeIn (dictionary: ioDictionary, forKey:"endTangentLengthUnit")
+  //--- Atomic property: startTangentUnit
+    self.startTangentUnit_property.storeIn (dictionary: ioDictionary, forKey:"startTangentUnit")
+  //--- Atomic property: endTangentUnit
+    self.endTangentUnit_property.storeIn (dictionary: ioDictionary, forKey:"endTangentUnit")
   //--- Atomic property: xCenter
     self.xCenter_property.storeIn (dictionary: ioDictionary, forKey:"xCenter")
   }
@@ -859,10 +859,10 @@ class PackageArc : PackageObject,
     self.startAngle_property.readFrom (dictionary: inDictionary, forKey:"startAngle")
   //--- Atomic property: arcAngle
     self.arcAngle_property.readFrom (dictionary: inDictionary, forKey:"arcAngle")
-  //--- Atomic property: startTangentLength
-    self.startTangentLength_property.readFrom (dictionary: inDictionary, forKey:"startTangentLength")
-  //--- Atomic property: endTangentLength
-    self.endTangentLength_property.readFrom (dictionary: inDictionary, forKey:"endTangentLength")
+  //--- Atomic property: startTangent
+    self.startTangent_property.readFrom (dictionary: inDictionary, forKey:"startTangent")
+  //--- Atomic property: endTangent
+    self.endTangent_property.readFrom (dictionary: inDictionary, forKey:"endTangent")
   //--- Atomic property: pathIsClosed
     self.pathIsClosed_property.readFrom (dictionary: inDictionary, forKey:"pathIsClosed")
   //--- Atomic property: xCenterUnit
@@ -871,10 +871,10 @@ class PackageArc : PackageObject,
     self.yCenterUnit_property.readFrom (dictionary: inDictionary, forKey:"yCenterUnit")
   //--- Atomic property: radiusUnit
     self.radiusUnit_property.readFrom (dictionary: inDictionary, forKey:"radiusUnit")
-  //--- Atomic property: startTangentLengthUnit
-    self.startTangentLengthUnit_property.readFrom (dictionary: inDictionary, forKey:"startTangentLengthUnit")
-  //--- Atomic property: endTangentLengthUnit
-    self.endTangentLengthUnit_property.readFrom (dictionary: inDictionary, forKey:"endTangentLengthUnit")
+  //--- Atomic property: startTangentUnit
+    self.startTangentUnit_property.readFrom (dictionary: inDictionary, forKey:"startTangentUnit")
+  //--- Atomic property: endTangentUnit
+    self.endTangentUnit_property.readFrom (dictionary: inDictionary, forKey:"endTangentUnit")
   //--- Atomic property: xCenter
     self.xCenter_property.readFrom (dictionary: inDictionary, forKey:"xCenter")
   }
@@ -894,14 +894,14 @@ class PackageArc : PackageObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.arcAngle_property.signature ())
-    crc.accumulateUInt32 (self.endTangentLength_property.signature ())
-    crc.accumulateUInt32 (self.endTangentLengthUnit_property.signature ())
+    crc.accumulateUInt32 (self.endTangent_property.signature ())
+    crc.accumulateUInt32 (self.endTangentUnit_property.signature ())
     crc.accumulateUInt32 (self.pathIsClosed_property.signature ())
     crc.accumulateUInt32 (self.radius_property.signature ())
     crc.accumulateUInt32 (self.radiusUnit_property.signature ())
     crc.accumulateUInt32 (self.startAngle_property.signature ())
-    crc.accumulateUInt32 (self.startTangentLength_property.signature ())
-    crc.accumulateUInt32 (self.startTangentLengthUnit_property.signature ())
+    crc.accumulateUInt32 (self.startTangent_property.signature ())
+    crc.accumulateUInt32 (self.startTangentUnit_property.signature ())
     crc.accumulateUInt32 (self.xCenter_property.signature ())
     crc.accumulateUInt32 (self.xCenterUnit_property.signature ())
     crc.accumulateUInt32 (self.yCenter_property.signature ())
@@ -1148,115 +1148,115 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   }
 
   //····················································································································
-  //   Observers of 'startTangentLength' stored property
+  //   Observers of 'startTangent' stored property
   //····················································································································
 
-  private var mObserversOf_startTangentLength = EBWeakEventSet ()
+  private var mObserversOf_startTangent = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_startTangentLength (_ inObserver : EBEvent) {
+  final func addEBObserverOf_startTangent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_startTangentLength.insert (inObserver)
+    self.mObserversOf_startTangent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentLength_property.addEBObserver (inObserver)
+        managedObject.startTangent_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_startTangentLength (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_startTangent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_startTangentLength.remove (inObserver)
+    self.mObserversOf_startTangent.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentLength_property.removeEBObserver (inObserver)
+        managedObject.startTangent_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_startTangentLength_toElementsOfSet (_ inSet : Set<PackageArc>) {
+  final func addEBObserversOf_startTangent_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_startTangentLength {
-        managedObject.startTangentLength_property.addEBObserver (observer)
+      for observer in self.mObserversOf_startTangent {
+        managedObject.startTangent_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_startTangentLength_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_startTangentLength {
+  final func removeEBObserversOf_startTangent_fromElementsOfSet (_ inSet : Set<PackageArc>) {
+    for observer in self.mObserversOf_startTangent {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.startTangentLength_property.removeEBObserver (observer)
+        managedObject.startTangent_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'endTangentLength' stored property
+  //   Observers of 'endTangent' stored property
   //····················································································································
 
-  private var mObserversOf_endTangentLength = EBWeakEventSet ()
+  private var mObserversOf_endTangent = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentLength (_ inObserver : EBEvent) {
+  final func addEBObserverOf_endTangent (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_endTangentLength.insert (inObserver)
+    self.mObserversOf_endTangent.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentLength_property.addEBObserver (inObserver)
+        managedObject.endTangent_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_endTangentLength (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_endTangent (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_endTangentLength.remove (inObserver)
+    self.mObserversOf_endTangent.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentLength_property.removeEBObserver (inObserver)
+        managedObject.endTangent_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_endTangentLength_toElementsOfSet (_ inSet : Set<PackageArc>) {
+  final func addEBObserversOf_endTangent_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_endTangentLength {
-        managedObject.endTangentLength_property.addEBObserver (observer)
+      for observer in self.mObserversOf_endTangent {
+        managedObject.endTangent_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_endTangentLength_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_endTangentLength {
+  final func removeEBObserversOf_endTangent_fromElementsOfSet (_ inSet : Set<PackageArc>) {
+    for observer in self.mObserversOf_endTangent {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.endTangentLength_property.removeEBObserver (observer)
+        managedObject.endTangent_property.removeEBObserver (observer)
       }
     }
   }
@@ -1490,115 +1490,115 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
   }
 
   //····················································································································
-  //   Observers of 'startTangentLengthUnit' stored property
+  //   Observers of 'startTangentUnit' stored property
   //····················································································································
 
-  private var mObserversOf_startTangentLengthUnit = EBWeakEventSet ()
+  private var mObserversOf_startTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_startTangentLengthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_startTangentLengthUnit.insert (inObserver)
+    self.mObserversOf_startTangentUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentLengthUnit_property.addEBObserver (inObserver)
+        managedObject.startTangentUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_startTangentLengthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_startTangentUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_startTangentLengthUnit.remove (inObserver)
+    self.mObserversOf_startTangentUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.startTangentLengthUnit_property.removeEBObserver (inObserver)
+        managedObject.startTangentUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_startTangentLengthUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
+  final func addEBObserversOf_startTangentUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_startTangentLengthUnit {
-        managedObject.startTangentLengthUnit_property.addEBObserver (observer)
+      for observer in self.mObserversOf_startTangentUnit {
+        managedObject.startTangentUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_startTangentLengthUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_startTangentLengthUnit {
+  final func removeEBObserversOf_startTangentUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
+    for observer in self.mObserversOf_startTangentUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.startTangentLengthUnit_property.removeEBObserver (observer)
+        managedObject.startTangentUnit_property.removeEBObserver (observer)
       }
     }
   }
 
   //····················································································································
-  //   Observers of 'endTangentLengthUnit' stored property
+  //   Observers of 'endTangentUnit' stored property
   //····················································································································
 
-  private var mObserversOf_endTangentLengthUnit = EBWeakEventSet ()
+  private var mObserversOf_endTangentUnit = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_endTangentLengthUnit (_ inObserver : EBEvent) {
+  final func addEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_endTangentLengthUnit.insert (inObserver)
+    self.mObserversOf_endTangentUnit.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentLengthUnit_property.addEBObserver (inObserver)
+        managedObject.endTangentUnit_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_endTangentLengthUnit (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_endTangentUnit (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_endTangentLengthUnit.remove (inObserver)
+    self.mObserversOf_endTangentUnit.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.endTangentLengthUnit_property.removeEBObserver (inObserver)
+        managedObject.endTangentUnit_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_endTangentLengthUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
+  final func addEBObserversOf_endTangentUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_endTangentLengthUnit {
-        managedObject.endTangentLengthUnit_property.addEBObserver (observer)
+      for observer in self.mObserversOf_endTangentUnit {
+        managedObject.endTangentUnit_property.addEBObserver (observer)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_endTangentLengthUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_endTangentLengthUnit {
+  final func removeEBObserversOf_endTangentUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
+    for observer in self.mObserversOf_endTangentUnit {
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.endTangentLengthUnit_property.removeEBObserver (observer)
+        managedObject.endTangentUnit_property.removeEBObserver (observer)
       }
     }
   }
@@ -1905,14 +1905,14 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
       self.removeEBObserversOf_radius_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_startAngle_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_arcAngle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_startTangentLength_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_endTangentLength_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_startTangent_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_endTangent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_radiusUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_startTangentLengthUnit_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_endTangentLengthUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xCenter_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
@@ -1925,14 +1925,14 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
       self.addEBObserversOf_radius_toElementsOfSet (addedSet)
       self.addEBObserversOf_startAngle_toElementsOfSet (addedSet)
       self.addEBObserversOf_arcAngle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_startTangentLength_toElementsOfSet (addedSet)
-      self.addEBObserversOf_endTangentLength_toElementsOfSet (addedSet)
+      self.addEBObserversOf_startTangent_toElementsOfSet (addedSet)
+      self.addEBObserversOf_endTangent_toElementsOfSet (addedSet)
       self.addEBObserversOf_pathIsClosed_toElementsOfSet (addedSet)
       self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_radiusUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_startTangentLengthUnit_toElementsOfSet (addedSet)
-      self.addEBObserversOf_endTangentLengthUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_startTangentUnit_toElementsOfSet (addedSet)
+      self.addEBObserversOf_endTangentUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_xCenter_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
@@ -2069,14 +2069,14 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         self.removeEBObserversOf_radius_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_startAngle_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_arcAngle_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_startTangentLength_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_endTangentLength_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_startTangent_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_endTangent_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_pathIsClosed_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xCenterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_yCenterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_radiusUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_startTangentLengthUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_endTangentLengthUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_startTangentUnit_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_endTangentUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
@@ -2091,14 +2091,14 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         self.addEBObserversOf_radius_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_startAngle_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_arcAngle_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_startTangentLength_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_endTangentLength_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_startTangent_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_endTangent_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_pathIsClosed_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xCenterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_yCenterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_radiusUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_startTangentLengthUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_endTangentLengthUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_startTangentUnit_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_endTangentUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
