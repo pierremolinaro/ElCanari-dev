@@ -212,6 +212,12 @@
                                                 <action selector="actionOpenAllPackagesInDirectory:" target="212" id="W1H-8t-28e"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Documents in Directory…" id="rSP-Xd-l2U">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="actionOpenAllDocumentsInDirectory:" target="212" id="XeM-Gq-ekk"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>

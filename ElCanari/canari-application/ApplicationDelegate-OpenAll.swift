@@ -14,6 +14,12 @@ extension ApplicationDelegate {
 
   //····················································································································
 
+  @IBAction func actionOpenAllDocumentsInDirectory (_ inSender : AnyObject) {
+    self.actionOpenAllDocumentInDirectory (["ElCanariSymbol", "ElCanariPackage"])
+  }
+
+  //····················································································································
+
   @IBAction func actionOpenAllSymbolsInDirectory (_ inSender : AnyObject) {
     self.actionOpenAllDocumentInDirectory (["ElCanariSymbol"])
   }
