@@ -185,6 +185,7 @@ import Cocoa
   @IBOutlet var mBezierCurveY2TextField : CanariDimensionTextField?
   @IBOutlet var mBezierCurveY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mBezierInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mBottomSidePadColorWell : EBColorWell?
   @IBOutlet var mClearProgramErrorButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageScrollView : EBScrollView?
@@ -206,6 +207,9 @@ import Cocoa
   @IBOutlet var mDimensionY2UnitPopUp : EBPopUpButton?
   @IBOutlet var mDimensionYLabelTextField : CanariDimensionTextField?
   @IBOutlet var mDimensionYLabelUnitPopUp : EBPopUpButton?
+  @IBOutlet var mDisplayBottomSidePadSwitch : EBSwitch?
+  @IBOutlet var mDisplayInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mDisplayTopSidePadSwitch : EBSwitch?
   @IBOutlet var mGridDisplayPopUpButton : EBPopUpButton?
   @IBOutlet var mGridStyle : EBPopUpButton?
   @IBOutlet var mGridTextField : CanariDimensionTextField?
@@ -255,6 +259,7 @@ import Cocoa
   @IBOutlet var mPadHoleDiameterTextField : CanariDimensionTextField?
   @IBOutlet var mPadHoleDiameterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
+  @IBOutlet var mPadNumberColorWell : EBColorWell?
   @IBOutlet var mPadNumberTextField : EBIntObserverField?
   @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton?
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
@@ -307,6 +312,7 @@ import Cocoa
   @IBOutlet var mSlavePadYCenterTextField : CanariDimensionTextField?
   @IBOutlet var mSlavePadYCenterUnitPopUp : EBPopUpButton?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
+  @IBOutlet var mTopSidePadColorWell : EBColorWell?
   @IBOutlet var mVersionField : CanariVersionField?
   @IBOutlet var mVerticalFlip : EBSwitch?
   @IBOutlet var mXPlacardUnitPopUpButton : EBPopUpButton?
@@ -1066,6 +1072,21 @@ import Cocoa
         errorMessage: "the 'mBezierInspectorView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mBottomSidePadColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBottomSidePadColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBottomSidePadColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mClearProgramErrorButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -1379,6 +1400,51 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mDimensionYLabelUnitPopUp' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mDisplayBottomSidePadSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDisplayBottomSidePadSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDisplayBottomSidePadSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mDisplayInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDisplayInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDisplayInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mDisplayTopSidePadSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDisplayTopSidePadSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDisplayTopSidePadSwitch' outlet is nil"
       )
     }
     if let outlet : Any = self.mGridDisplayPopUpButton {
@@ -2114,6 +2180,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPadInspectorView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPadNumberColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadNumberColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadNumberColorWell' outlet is nil"
       )
     }
     if let outlet : Any = self.mPadNumberTextField {
@@ -2896,6 +2977,21 @@ import Cocoa
         errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
       )
     }
+    if let outlet : Any = self.mTopSidePadColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mTopSidePadColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mTopSidePadColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
         presentErrorWindow (
@@ -3400,8 +3496,13 @@ import Cocoa
     self.mCrossColorOfPackageGridColorWell?.bind_color (g_Preferences!.crossColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     self.mLineColorOfPackageGridColorWell?.bind_color (g_Preferences!.lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     self.mPackageColorColorWell?.bind_color (g_Preferences!.packageColor_property, file: #file, line: #line, sendContinously:false)
+    self.mTopSidePadColorWell?.bind_color (g_Preferences!.topSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mBottomSidePadColorWell?.bind_color (g_Preferences!.bottomSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageBackgroundColorColorWell?.bind_color (g_Preferences!.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.bind_selectedTag (g_Preferences!.packageDrawingWidthMultipliedByTen_property, file: #file, line: #line)
+    self.mPadNumberColorWell?.bind_color (g_Preferences!.padNumberColor_property, file: #file, line: #line, sendContinously:false)
+    self.mDisplayTopSidePadSwitch?.bind_value (g_Preferences!.displayPackageTopSidePads_property, file: #file, line: #line)
+    self.mDisplayBottomSidePadSwitch?.bind_value (g_Preferences!.displayPackageBottomSidePads_property, file: #file, line: #line)
     self.mGridUnitPopUp?.bind_selectedTag (self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
@@ -3645,8 +3746,13 @@ import Cocoa
     self.mCrossColorOfPackageGridColorWell?.unbind_color ()
     self.mLineColorOfPackageGridColorWell?.unbind_color ()
     self.mPackageColorColorWell?.unbind_color ()
+    self.mTopSidePadColorWell?.unbind_color ()
+    self.mBottomSidePadColorWell?.unbind_color ()
     self.mPackageBackgroundColorColorWell?.unbind_color ()
     self.mPackageDrawingWidthMultipliedByTenPopupButton?.unbind_selectedTag ()
+    self.mPadNumberColorWell?.unbind_color ()
+    self.mDisplayTopSidePadSwitch?.unbind_value ()
+    self.mDisplayBottomSidePadSwitch?.unbind_value ()
     self.mGridUnitPopUp?.unbind_selectedTag ()
     self.mGridTextField?.unbind_dimensionAndUnit ()
     self.mProgramTextView?.unbind_value ()
@@ -3742,6 +3848,7 @@ import Cocoa
     self.mBezierCurveY2TextField?.ebCleanUp ()
     self.mBezierCurveY2UnitPopUp?.ebCleanUp ()
     self.mBezierInspectorView?.ebCleanUp ()
+    self.mBottomSidePadColorWell?.ebCleanUp ()
     self.mClearProgramErrorButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageScrollView?.ebCleanUp ()
@@ -3763,6 +3870,9 @@ import Cocoa
     self.mDimensionY2UnitPopUp?.ebCleanUp ()
     self.mDimensionYLabelTextField?.ebCleanUp ()
     self.mDimensionYLabelUnitPopUp?.ebCleanUp ()
+    self.mDisplayBottomSidePadSwitch?.ebCleanUp ()
+    self.mDisplayInspectorView?.ebCleanUp ()
+    self.mDisplayTopSidePadSwitch?.ebCleanUp ()
     self.mGridDisplayPopUpButton?.ebCleanUp ()
     self.mGridStyle?.ebCleanUp ()
     self.mGridTextField?.ebCleanUp ()
@@ -3812,6 +3922,7 @@ import Cocoa
     self.mPadHoleDiameterTextField?.ebCleanUp ()
     self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
+    self.mPadNumberColorWell?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadNumberingPopUpButton?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()
@@ -3864,6 +3975,7 @@ import Cocoa
     self.mSlavePadYCenterTextField?.ebCleanUp ()
     self.mSlavePadYCenterUnitPopUp?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
+    self.mTopSidePadColorWell?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
     self.mVerticalFlip?.ebCleanUp ()
     self.mXPlacardUnitPopUpButton?.ebCleanUp ()

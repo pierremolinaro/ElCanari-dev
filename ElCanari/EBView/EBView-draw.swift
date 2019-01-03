@@ -163,12 +163,12 @@ extension EBView {
   //····················································································································
 
   internal func noteInvalidRectangles (old inOldShapes : [EBShape], new inNewShapes : [EBShape]) {
-    // Swift.print ("noteInvalidRectangles")
+    // Swift.print ("noteInvalidRectangles \(inOldShapes.count) \(inNewShapes.count)")
     let minCount = min (inOldShapes.count, inNewShapes.count)
     var idx = 0
     while idx < minCount {
-      if inNewShapes [idx] != inOldShapes [idx] {
-        // Swift.print ("  object \(idx): \(inNewShapes [idx].boundingBox) -> \(inOldShapes [idx].boundingBox)")
+      if !inNewShapes [idx].isEqualToShape (inOldShapes [idx]) {
+        // Swift.print ("not equal")
         self.setNeedsDisplay (inNewShapes [idx].boundingBox)
         self.setNeedsDisplay (inOldShapes [idx].boundingBox)
       }

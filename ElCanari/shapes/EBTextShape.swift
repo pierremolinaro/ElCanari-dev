@@ -157,10 +157,10 @@ class EBTextShape : EBShape {
   }
 
   //····················································································································
-  //   isEqualTo
+  //   isEqualToShape
   //····················································································································
 
-  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+  override func isEqualToShape (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBTextShape {
       equal = self.mFilledBezierPath == operand.mFilledBezierPath
@@ -169,6 +169,9 @@ class EBTextShape : EBShape {
       }
       if equal {
         equal = self.mBackColor == operand.mBackColor
+      }
+      if equal {
+        equal = super.isEqualToShape (operand)
       }
     }
     return equal

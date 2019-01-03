@@ -162,9 +162,9 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //   Selection observable property: padStyle
   //····················································································································
 
-  var padStyle_property = EBPropertyProxy_PadStyle ()
+  var padStyle_property = EBPropertyProxy_SlavePadStyle ()
 
-  var padStyle_property_selection : EBSelection <PadStyle> {
+  var padStyle_property_selection : EBSelection <SlavePadStyle> {
     get {
       return self.padStyle_property.prop
     }
@@ -1269,7 +1269,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         case .multiple :
           return .multiple
         case .single (let v) :
-          var s = Set <PadStyle> ()
+          var s = Set <SlavePadStyle> ()
           var isMultipleSelection = false
           for object in v {
             switch object.padStyle_property_selection {
@@ -1295,7 +1295,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.padStyle_property.writeModelFunction = { [weak self] (inValue : PadStyle) in
+    self.padStyle_property.writeModelFunction = { [weak self] (inValue : SlavePadStyle) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1307,7 +1307,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.padStyle_property.validateAndWriteModelFunction = { [weak self] (candidateValue : PadStyle, windowForSheet : NSWindow?) in
+    self.padStyle_property.validateAndWriteModelFunction = { [weak self] (candidateValue : SlavePadStyle, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

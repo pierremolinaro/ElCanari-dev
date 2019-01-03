@@ -171,7 +171,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   //····················································································································
 
   public static func == (lhs: EBShape, rhs: EBShape) -> Bool {
-    return (lhs === rhs) || lhs.isEqualTo (rhs)
+    return (lhs === rhs) || lhs.isEqualToShape (rhs)
   }
 
   //····················································································································
@@ -182,8 +182,11 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func isEqualTo (_ inOperand : EBShape) -> Bool {
-    var equal = self.mShapes.count == inOperand.mShapes.count
+  func isEqualToShape (_ inOperand : EBShape) -> Bool {
+    var equal = type (of: self) == type (of: inOperand)
+    if equal {
+      equal = self.mShapes.count == inOperand.mShapes.count
+    }
     var idx = 0
     while (idx < self.mShapes.count) && equal {
       equal = self.mShapes [idx] == inOperand.mShapes [idx]

@@ -89,8 +89,8 @@ class EBFilledBezierPathShape : EBShape {
     var result = super.intersects (rect: inRect)
     var idx = 0
     while (idx < self.mFilledPaths.count) && !result {
-      if self.mFilledPaths [idx].bounds.intersects (inRect) {
-        result =  inRect.intersectsFilledBezierPath (self.mFilledPaths [idx])
+      if !self.mFilledPaths [idx].isEmpty && self.mFilledPaths [idx].bounds.intersects (inRect) {
+        result = inRect.intersectsFilledBezierPath (self.mFilledPaths [idx])
       }
       idx += 1
     }
@@ -106,21 +106,25 @@ class EBFilledBezierPathShape : EBShape {
 
   override func hash (into hasher: inout Hasher) {
     super.hash (into: &hasher)
+    self.mColor.hash (into: &hasher)
     for path in self.mFilledPaths {
       path.hash (into: &hasher)
     }
   }
 
   //····················································································································
-  //   isEqualTo
+  //   isEqualToShape
   //····················································································································
 
-  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+  override func isEqualToShape (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBFilledBezierPathShape {
       equal = self.mFilledPaths.count == operand.mFilledPaths.count
       if equal {
-        equal = super.isEqualTo (inOperand)
+        equal = self.mColor == operand.mColor
+      }
+      if equal {
+        equal = super.isEqualToShape (operand)
       }
       var idx = 0
       while (idx < self.mFilledPaths.count) && equal {

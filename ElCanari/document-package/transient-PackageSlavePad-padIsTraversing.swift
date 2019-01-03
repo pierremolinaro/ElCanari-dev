@@ -12,7 +12,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageSlavePad_padIsTraversing (
-       _ self_padStyle : PadStyle
+       _ self_padStyle : SlavePadStyle
 ) -> Bool {
 //--- START OF USER ZONE 2
   return self_padStyle == .traversing

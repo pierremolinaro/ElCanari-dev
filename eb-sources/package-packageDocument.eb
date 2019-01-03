@@ -21,6 +21,7 @@ document PackageDocument root PackageRoot {
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
+  outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
 
@@ -434,11 +435,18 @@ document PackageDocument root PackageRoot {
   outlet EBPopUpButton mGridDisplayPopUpButton $selectedTag root.gridDisplayFactor ;
   outlet EBPopUpButton mXPlacardUnitPopUpButton $selectedTag root.xPlacardUnit ;
   outlet EBPopUpButton mYPlacardUnitPopUpButton $selectedTag root.yPlacardUnit ;
+  
+#--- Display inspector
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
+  outlet EBColorWell mTopSidePadColorWell $color prefs.topSidePadColor {sendContinously:no} ;
+  outlet EBColorWell mBottomSidePadColorWell $color prefs.bottomSidePadColor {sendContinously:no} ;
   outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
+  outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor {sendContinously:no} ;
+  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageTopSidePads ;
+  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBottomSidePads ;
 
 #--- Grid
   outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;

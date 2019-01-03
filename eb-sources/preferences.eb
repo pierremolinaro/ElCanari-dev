@@ -131,9 +131,11 @@ prefs {
 #--- Top Side Pad Color
   property NSColor topSidePadColor default blue;
   outlet EBColorWell mTopSidePadColorWell $color self.topSidePadColor {sendContinously:no} ;
+  property Bool displayPackageTopSidePads default yes ;
 #--- Bottom Side Pad Color
   property NSColor bottomSidePadColor default green;
   outlet EBColorWell mBottomSidePadColorWell $color self.bottomSidePadColor {sendContinously:no} ;
+  property Bool displayPackageBottomSidePads default yes ;
 #--- Pad Number Color
   property NSColor padNumberColor default red;
   outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor {sendContinously:no} ;

@@ -119,15 +119,15 @@ class EBKnobShape : EBShape {
   }
 
   //····················································································································
-  //   isEqualTo
+  //   isEqualToShape
   //····················································································································
 
-  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+  override func isEqualToShape (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBKnobShape {
       equal = self.mPoint == operand.mPoint
       if equal {
-        equal = super.isEqualTo (inOperand)
+        equal = super.isEqualToShape (operand)
       }
     }
     return equal

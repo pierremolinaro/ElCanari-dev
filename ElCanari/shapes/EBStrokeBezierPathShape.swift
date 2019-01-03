@@ -106,15 +106,18 @@ class EBStrokeBezierPathShape : EBShape {
   }
 
   //····················································································································
-  //   isEqualTo
+  //   isEqualToShape
   //····················································································································
 
-  override func isEqualTo (_ inOperand : EBShape) -> Bool {
+  override func isEqualToShape (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBStrokeBezierPathShape {
       equal = self.mPaths.count == operand.mPaths.count
       if equal {
-        equal = super.isEqualTo (inOperand)
+        equal = self.mColor == operand.mColor
+      }
+      if equal {
+        equal = super.isEqualToShape (operand)
       }
       var idx = 0
       while (idx < self.mPaths.count) && equal {

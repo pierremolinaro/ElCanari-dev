@@ -58,9 +58,11 @@ import Cocoa
     if let temporaryObject = newInstanceOfEntityNamed (nil, self.mDraggedObjectTypeName) as? EBGraphicManagedObject {
       let displayShape = temporaryObject.objectDisplay!
       let rect = displayShape.boundingBox
-      let imagePDFData = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
-      let image = NSImage (data: imagePDFData)
-      self.image = image
+      if !rect.isEmpty {
+        let imagePDFData = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
+        let image = NSImage (data: imagePDFData)
+        self.image = image
+      }
     }
   }
 

@@ -347,12 +347,14 @@ extension PackageDocument {
       padShape = .octo
     }
     self.checkName ("style", inString, &ioIndex, &ioOk)
-    let padStyle : PadStyle
+    let padStyle : SlavePadStyle
     if self.test ("traversing", inString, &ioIndex, &ioOk) {
       padStyle = .traversing
+    }else if self.test ("topSide", inString, &ioIndex, &ioOk) {
+      padStyle = .topSide
     }else{
-      self.checkName ("surface", inString, &ioIndex, &ioOk)
-      padStyle = .surface
+      self.checkName ("bottomSide", inString, &ioIndex, &ioOk)
+      padStyle = .bottomSide
     }
     self.checkName ("hole", inString, &ioIndex, &ioOk)
     let holeDiameter = self.scanNumber (inString, &ioIndex, &ioOk)

@@ -217,8 +217,10 @@ graphic entity PackagePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.packageColor
+     prefs.topSidePadColor, prefs.displayPackageTopSidePads,
+     prefs.bottomSidePadColor, prefs.displayPackageBottomSidePads
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
@@ -256,7 +258,7 @@ graphic entity PackageSlavePad : PackageObject {
   property @signature Int height default 228_600 ;
   property @signature Int holeDiameter default 57_150 ;
   property @signature PadShape padShape default octo ;
-  property @signature PadStyle padStyle default traversing ;
+  property @signature SlavePadStyle padStyle default traversing ;
 
   property @signature Int xCenterUnit default 2_286 ;
   property @signature Int yCenterUnit default 2_286 ;
@@ -270,7 +272,8 @@ graphic entity PackageSlavePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.packageColor
+     prefs.topSidePadColor, prefs.displayPackageTopSidePads,
+     prefs.bottomSidePadColor, prefs.displayPackageBottomSidePads
   ;
   transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape

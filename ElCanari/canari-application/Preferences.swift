@@ -24,8 +24,10 @@ let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
 let Preferences_packageColor = "Preferences:packageColor"
 let Preferences_topSidePadColor = "Preferences:topSidePadColor"
 let Preferences_bottomSidePadColor = "Preferences:bottomSidePadColor"
+let Preferences_displayPackageBottomSidePads = "Preferences:displayPackageBottomSidePads"
 let Preferences_padNumberColor = "Preferences:padNumberColor"
 let Preferences_padNumberFont = "Preferences:padNumberFont"
+let Preferences_showPadNumber = "Preferences:showPadNumber"
 let Preferences_packageGuideColor = "Preferences:packageGuideColor"
 let Preferences_packageDimensionColor = "Preferences:packageDimensionColor"
 let Preferences_dimensionFont = "Preferences:dimensionFont"
@@ -152,7 +154,7 @@ let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedB
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
-let Preferences_showPadNumber = "Preferences:showPadNumber"
+let Preferences_displayPackageTopSidePads = "Preferences:displayPackageTopSidePads"
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
@@ -484,6 +486,29 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
+  //   Atomic property: displayPackageBottomSidePads
+  //····················································································································
+
+  var displayPackageBottomSidePads_property = EBStoredProperty_Bool (true, prefKey: Preferences_displayPackageBottomSidePads)
+
+  //····················································································································
+
+  var displayPackageBottomSidePads : Bool {
+    get {
+      return self.displayPackageBottomSidePads_property.propval
+    }
+    set {
+      self.displayPackageBottomSidePads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var displayPackageBottomSidePads_property_selection : EBSelection <Bool> {
+    return self.displayPackageBottomSidePads_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: padNumberColor
   //····················································································································
 
@@ -527,6 +552,29 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   var padNumberFont_property_selection : EBSelection <NSFont> {
     return self.padNumberFont_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: showPadNumber
+  //····················································································································
+
+  var showPadNumber_property = EBStoredProperty_Bool (true, prefKey: Preferences_showPadNumber)
+
+  //····················································································································
+
+  var showPadNumber : Bool {
+    get {
+      return self.showPadNumber_property.propval
+    }
+    set {
+      self.showPadNumber_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var showPadNumber_property_selection : EBSelection <Bool> {
+    return self.showPadNumber_property.prop
   }
 
   //····················································································································
@@ -3423,26 +3471,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: showPadNumber
+  //   Atomic property: displayPackageTopSidePads
   //····················································································································
 
-  var showPadNumber_property = EBStoredProperty_Bool (true, prefKey: Preferences_showPadNumber)
+  var displayPackageTopSidePads_property = EBStoredProperty_Bool (true, prefKey: Preferences_displayPackageTopSidePads)
 
   //····················································································································
 
-  var showPadNumber : Bool {
+  var displayPackageTopSidePads : Bool {
     get {
-      return self.showPadNumber_property.propval
+      return self.displayPackageTopSidePads_property.propval
     }
     set {
-      self.showPadNumber_property.setProp (newValue)
+      self.displayPackageTopSidePads_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var showPadNumber_property_selection : EBSelection <Bool> {
-    return self.showPadNumber_property.prop
+  var displayPackageTopSidePads_property_selection : EBSelection <Bool> {
+    return self.displayPackageTopSidePads_property.prop
   }
 
   //····················································································································
@@ -3807,10 +3855,14 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.topSidePadColor_property.undoManager = self.undoManager
   //--- Atomic property: bottomSidePadColor
     self.bottomSidePadColor_property.undoManager = self.undoManager
+  //--- Atomic property: displayPackageBottomSidePads
+    self.displayPackageBottomSidePads_property.undoManager = self.undoManager
   //--- Atomic property: padNumberColor
     self.padNumberColor_property.undoManager = self.undoManager
   //--- Atomic property: padNumberFont
     self.padNumberFont_property.undoManager = self.undoManager
+  //--- Atomic property: showPadNumber
+    self.showPadNumber_property.undoManager = self.undoManager
   //--- Atomic property: packageGuideColor
     self.packageGuideColor_property.undoManager = self.undoManager
   //--- Atomic property: packageDimensionColor
@@ -4064,8 +4116,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Atomic property: pinNameFont
     self.pinNameFont_property.undoManager = self.undoManager
-  //--- Atomic property: showPadNumber
-    self.showPadNumber_property.undoManager = self.undoManager
+  //--- Atomic property: displayPackageTopSidePads
+    self.displayPackageTopSidePads_property.undoManager = self.undoManager
   //--- Atomic property: sampleString
     self.sampleString_property.undoManager = self.undoManager
   //--- Atomic property: sampleStringSize

@@ -18,8 +18,11 @@ func transient_PackageSlavePad_objectDisplay (
        _ self_height : Int,                   
        _ self_holeDiameter : Int,             
        _ self_padShape : PadShape,            
-       _ self_padStyle : PadStyle,            
-       _ prefs_packageColor : NSColor
+       _ self_padStyle : SlavePadStyle,       
+       _ prefs_topSidePadColor : NSColor,     
+       _ prefs_displayPackageTopSidePads : Bool,
+       _ prefs_bottomSidePadColor : NSColor,  
+       _ prefs_displayPackageBottomSidePads : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_xCenter)
@@ -48,10 +51,26 @@ func transient_PackageSlavePad_objectDisplay (
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)
       bp.windingRule = .evenOdd
-    case .surface :
-      ()
+      if prefs_displayPackageTopSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_topSidePadColor)
+      }else if prefs_displayPackageBottomSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor)
+      }else{
+        return EBShape ()
+      }
+    case .topSide :
+      if prefs_displayPackageTopSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_topSidePadColor)
+      }else{
+        return EBShape ()
+      }
+    case .bottomSide :
+      if prefs_displayPackageBottomSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor)
+      }else{
+        return EBShape ()
+      }
     }
-    return EBFilledBezierPathShape ([bp], prefs_packageColor)
 //--- END OF USER ZONE 2
 }
 
