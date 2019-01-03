@@ -102,6 +102,12 @@ protocol PackageRoot_gridStepMultipliedByDisplayFactor : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageRoot_padNumberDisplay : class {
+  var padNumberDisplay : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -133,6 +139,7 @@ class PackageRoot : EBGraphicManagedObject,
          PackageRoot_yPlacardUnit,
          PackageRoot_freePadNumbering,
          PackageRoot_gridStepMultipliedByDisplayFactor,
+         PackageRoot_padNumberDisplay,
          PackageRoot_issues,
          PackageRoot_noIssue {
 
@@ -553,6 +560,29 @@ class PackageRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: padNumberDisplay
+  //····················································································································
+
+  var padNumberDisplay_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var padNumberDisplay_property_selection : EBSelection <EBShape> {
+    return self.padNumberDisplay_property.prop
+  }
+
+  //····················································································································
+
+    var padNumberDisplay : EBShape? {
+    switch self.padNumberDisplay_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -680,6 +710,32 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+  //--- Atomic property: padNumberDisplay
+    self.padNumberDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = g_Preferences!.showPadNumber_property_selection.kind ()
+        kind &= unwSelf.packagePads_property_selection.kind ()
+        kind &= unwSelf.packageSlavePads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (g_Preferences!.showPadNumber_property_selection, unwSelf.packagePads_property_selection, unwSelf.packageSlavePads_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_PackageRoot_padNumberDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    g_Preferences?.showPadNumber_property.addEBObserver (self.padNumberDisplay_property)
+    self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -820,6 +876,9 @@ class PackageRoot : EBGraphicManagedObject,
     self.padNumbering_property.removeEBObserver (self.freePadNumbering_property)
     self.gridStep_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.removeEBObserver (self.gridStepMultipliedByDisplayFactor_property)
+    g_Preferences?.showPadNumber_property.removeEBObserver (self.padNumberDisplay_property)
+    self.packagePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.packageSlavePads_property.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageObjects_property.removeEBObserverOf_issues (self.issues_property)
     self.packageZones_property.removeEBObserverOf_rect (self.issues_property)
     self.packageZones_property.removeEBObserverOf_zoneName (self.issues_property)
@@ -968,6 +1027,14 @@ class PackageRoot : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
       valueExplorer:&self.gridStepMultipliedByDisplayFactor_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padNumberDisplay",
+      idx:self.padNumberDisplay_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
+      valueExplorer:&self.padNumberDisplay_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
@@ -2102,6 +2169,62 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
   }
 
   //····················································································································
+  //   Observers of 'padNumberDisplay' transient property
+  //····················································································································
+
+  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNumberDisplay.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumberDisplay_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNumberDisplay.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNumberDisplay_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_padNumberDisplay {
+        managedObject.padNumberDisplay_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_padNumberDisplay {
+        managedObject.padNumberDisplay_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -2303,6 +2426,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
     //--- Remove observers of transient properties
       self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_noIssue_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -2325,6 +2449,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
      //--- Add observers of transient properties
       self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedSet)
       self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_noIssue_toElementsOfSet (addedSet)
     //--- Update object set
@@ -2470,6 +2595,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
       //--- Added object set
@@ -2494,6 +2620,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
       //--- Notify observers

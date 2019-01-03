@@ -135,6 +135,18 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: padNumberDisplay
+  //····················································································································
+
+  var padNumberDisplay_property = EBTransientProperty_EBShape ()
+
+  var padNumberDisplay_property_selection : EBSelection <EBShape> {
+    get {
+      return self.padNumberDisplay_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: padShape
   //····················································································································
 
@@ -284,6 +296,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_padIsTraversing (model: self.mActualModel)
     self.bind_property_padName (model: self.mActualModel)
+    self.bind_property_padNumberDisplay (model: self.mActualModel)
     self.bind_property_padShape (model: self.mActualModel)
     self.bind_property_padStyle (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
@@ -342,6 +355,9 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- padName
     self.padName_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padName (self.padName_property)
+  //--- padNumberDisplay
+    self.padNumberDisplay_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- padShape
     self.padShape_property.readModelFunction = nil 
     self.padShape_property.writeModelFunction = nil 
@@ -1107,6 +1123,46 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.padName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_padNumberDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
+    model.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
+    self.padNumberDisplay_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <EBShape> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.padNumberDisplay_property_selection {
             case .empty :
               return .empty
             case .multiple :

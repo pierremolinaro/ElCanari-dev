@@ -21,7 +21,6 @@ document PackageDocument root PackageRoot {
   outlet NSView mBaseInspectorView ;
   outlet CanariViewWithKeyView mSelectedObjectsInspectorView ;
   outlet CanariViewWithKeyView mGridZoomInspectorView ;
-#  outlet CanariViewWithKeyView mDisplayInspectorView ;
   outlet CanariViewWithKeyView mAutoNumberingInspectorView ;
   outlet CanariViewWithKeyView mIssuesInspectorView ;
 
@@ -254,7 +253,7 @@ document PackageDocument root PackageRoot {
   outlet CanariDimensionObserverTextField mSlavePadAnnularRingTextField
      $dimensionAndUnit mPackageSlavePadSelectionController.annularRing, mPackageSlavePadSelectionController.annularRingUnit
   ;
-#--- Masrer Pad
+#--- Master Pad
   outlet CanariSlavePadAssignmentPopUpButton mSlavePadAssignmentPopUpButton
     $masterPadName mPackageSlavePadSelectionController.padName
   ;
@@ -406,6 +405,7 @@ document PackageDocument root PackageRoot {
     $horizontalFlip root.horizontalFlip
     $verticalFlip root.verticalFlip
     $graphicController self.mPackageObjectsController
+    $overObjectsDisplay root.padNumberDisplay
     $mouseGrid root.gridStep
     $gridStep root.gridStep
     $arrowKeyMagnitude root.gridStep

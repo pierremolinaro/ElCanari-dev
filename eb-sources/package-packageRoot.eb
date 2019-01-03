@@ -65,6 +65,13 @@ graphic entity PackageRoot {
 
  #--- Mouse grid 
   transient Int gridStepMultipliedByDisplayFactor dependsFrom self.gridStep, self.gridDisplayFactor ;
+ 
+ #--- Pad number display
+   transient EBShape padNumberDisplay dependsFrom
+     prefs.showPadNumber,
+     self.packagePads.all.padNumberDisplay,
+     self.packageSlavePads.all.padNumberDisplay
+   ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -210,13 +217,17 @@ graphic entity PackagePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.padNumberFont, prefs.padNumberColor, self.padName, prefs.showPadNumber,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape
   ;
-  
+ 
+   transient EBShape padNumberDisplay dependsFrom
+     self.xCenter, self.yCenter,
+     prefs.padNumberFont, prefs.padNumberColor, self.padName
+  ;
+ 
   transient CanariIssueArray issues dependsFrom
     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter
   ;
@@ -259,7 +270,6 @@ graphic entity PackageSlavePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     self.padName, prefs.padNumberFont, prefs.padNumberColor, prefs.showPadNumber,
      prefs.packageColor
   ;
   transient EBShape selectionDisplay dependsFrom
@@ -275,6 +285,12 @@ graphic entity PackageSlavePad : PackageObject {
   transient Int annularRing dependsFrom self.width, self.height, self.holeDiameter ;
   
   transient String padName dependsFrom self.master.one.padName ;
+
+   transient EBShape padNumberDisplay dependsFrom
+     self.xCenter, self.yCenter,
+     prefs.padNumberFont, prefs.padNumberColor, self.padName
+  ;
+ 
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
