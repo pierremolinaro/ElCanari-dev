@@ -37,6 +37,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //····················································································································
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()
+  fileprivate var mPadColorObserver = EBOutletEvent ()
   internal var mPadNumberingObserver = EBModelEvent ()
 
   //····················································································································
@@ -52,6 +53,9 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Package color observer
     self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
+  //--- Pad color observer
+    self.mPadColorObserver.eventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
+    g_Preferences?.topSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
     let pages = [self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
@@ -218,13 +222,53 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mAddSegmentButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddOvalButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddArcButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddPadButton?.buildButtonImageFromDraggedObjectTypeName ()
-    self.mAddSlavePadButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddZoneButton?.buildButtonImageFromDraggedObjectTypeName ()
     self.mAddDimensionButton?.buildButtonImageFromDraggedObjectTypeName ()
   }
 
-   //····················································································································
+  //····················································································································
+
+  private func updateDragPadSourceButtons () {
+    self.mAddPadButton?.image = self.imageForAddMasterPadButton ()
+    self.mAddSlavePadButton?.image = self.imageForAddSlavePadButton ()
+  }
+
+  //····················································································································
+
+  fileprivate func imageForAddMasterPadButton () ->  NSImage? {
+    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+    let bp1 = NSBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+    bp1.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+    bp1.windingRule = .evenOdd
+    let shape = EBFilledBezierPathShape ([bp1], g_Preferences!.topSidePadColor)
+    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    return NSImage (data: imagePDFData)
+  }
+
+  //····················································································································
+
+  fileprivate func imageForAddSlavePadButton () ->  NSImage? {
+    let shape = EBShape ()
+  //---
+    let r = NSRect (x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+    let bp1 = NSBezierPath (rect: r.insetBy (dx: 12.0, dy: 8.0))
+    bp1.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
+    bp1.windingRule = .evenOdd
+    shape.append (EBFilledBezierPathShape ([bp1], g_Preferences!.topSidePadColor))
+ //---
+    let textAttributes : [NSAttributedString.Key : Any] = [
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: 28.0),
+      NSAttributedString.Key.foregroundColor : g_Preferences!.topSidePadColor
+  //    NSAttributedString.Key.backgroundColor : NSColor.white
+    ]
+    shape.append (EBTextShape ("(", NSPoint (x : 2.0, y: 17.0), textAttributes, .left, .center))
+    shape.append (EBTextShape (")", NSPoint (x :38.0, y: 17.0), textAttributes, .right, .center))
+ //---
+    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    return NSImage (data: imagePDFData)
+  }
+
+  //····················································································································
 
 }
 
