@@ -298,7 +298,6 @@
 		CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */; };
 		CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727E1B3C4CD600F3CA82 /* canari_package.icns */; };
 		CF5C4C78219F04D600EAC52A /* bezier-curve-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172791B3C4CD600F3CA82 /* bezier-curve-in-symbol.pdf */; };
-		CF5C4C79219F04D600EAC52A /* orange20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172991B3C4CD600F3CA82 /* orange20.png */; };
 		CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDA579C1BFA524A00EEF3CB /* FontDocument.xib */; };
 		CF5C4C7B219F04D600EAC52A /* loupe.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172941B3C4CD600F3CA82 /* loupe.pdf */; };
 		CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B81B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff */; };
@@ -318,7 +317,6 @@
 		CF5C4C8A219F04D600EAC52A /* text-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B11B3C4CD600F3CA82 /* text-in-symbol.pdf */; };
 		CF5C4C8B219F04D600EAC52A /* selectTool.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172AA1B3C4CD600F3CA82 /* selectTool.tif */; };
 		CF5C4C8C219F04D600EAC52A /* library.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172921B3C4CD600F3CA82 /* library.png */; };
-		CF5C4C8D219F04D600EAC52A /* green14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728C1B3C4CD600F3CA82 /* green14.png */; };
 		CF5C4C8E219F04D600EAC52A /* slave-pad-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172AD1B3C4CD600F3CA82 /* slave-pad-in-package.pdf */; };
 		CF5C4C8F219F04D600EAC52A /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CF5C4C90219F04D600EAC52A /* segment-in-font.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A81B3C4CD600F3CA82 /* segment-in-font.png */; };
@@ -337,7 +335,6 @@
 		CF5C4C9D219F04D600EAC52A /* pad-zone-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729B1B3C4CD600F3CA82 /* pad-zone-in-package.pdf */; };
 		CF5C4C9E219F04D600EAC52A /* slashArrowsCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172AC1B3C4CD600F3CA82 /* slashArrowsCursor.tiff */; };
 		CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172781B3C4CD600F3CA82 /* autorouter.png */; };
-		CF5C4CA0219F04D600EAC52A /* red20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A01B3C4CD600F3CA82 /* red20.png */; };
 		CF5C4CA1219F04D600EAC52A /* horizontalArrowsCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172901B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff */; };
 		CF5C4CA2219F04D600EAC52A /* disconnect.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172871B3C4CD600F3CA82 /* disconnect.gif */; };
 		CF5C4CA3219F04D600EAC52A /* device.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172851B3C4CD600F3CA82 /* device.pdf */; };
@@ -350,17 +347,14 @@
 		CF5C4CAA219F04D600EAC52A /* canari_device.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727C1B3C4CD600F3CA82 /* canari_device.icns */; };
 		CF5C4CAB219F04D600EAC52A /* verticalArrowsCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B91B3C4CD600F3CA82 /* verticalArrowsCursor.tiff */; };
 		CF5C4CAC219F04D600EAC52A /* unbind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172B51B3C4CD600F3CA82 /* unbind.png */; };
-		CF5C4CAD219F04D600EAC52A /* green20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728D1B3C4CD600F3CA82 /* green20.png */; };
 		CF5C4CAE219F04D600EAC52A /* bind.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61727A1B3C4CD600F3CA82 /* bind.png */; };
 		CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
 		CF5C4CB0219F04D600EAC52A /* guide-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61728E1B3C4CD600F3CA82 /* guide-in-package.pdf */; };
 		CF5C4CB1219F04D600EAC52A /* advancedpref.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF6172741B3C4CD600F3CA82 /* advancedpref.icns */; };
 		CF5C4CB2219F04D600EAC52A /* canari_font.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727D1B3C4CD600F3CA82 /* canari_font.icns */; };
-		CF5C4CB3219F04D600EAC52A /* orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172981B3C4CD600F3CA82 /* orange14.png */; };
 		CF5C4CB4219F04D600EAC52A /* add_terminal.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172721B3C4CD600F3CA82 /* add_terminal.gif */; };
 		CF5C4CB5219F04D600EAC52A /* reverseSlashArrowsCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A51B3C4CD600F3CA82 /* reverseSlashArrowsCursor.tiff */; };
 		CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172BA1B3C4CD600F3CA82 /* zone.pdf */; };
-		CF5C4CB7219F04D600EAC52A /* red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61729F1B3C4CD600F3CA82 /* red14.png */; };
 		CF5C4CB8219F04D600EAC52A /* canari_symbol.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */; };
 		CF5C4CB9219F04D600EAC52A /* master-pad-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */; };
 		CF5C4CBA219F04D600EAC52A /* canari_project.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF61727F1B3C4CD600F3CA82 /* canari_project.icns */; };
@@ -625,8 +619,6 @@
 		CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172891B3C4CD600F3CA82 /* exclamation.tif */; };
 		CF6172D81B3C4CD600F3CA82 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728A1B3C4CD600F3CA82 /* font.png */; };
 		CF6172D91B3C4CD600F3CA82 /* freeRoutingLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */; };
-		CF6172DA1B3C4CD600F3CA82 /* green14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728C1B3C4CD600F3CA82 /* green14.png */; };
-		CF6172DB1B3C4CD600F3CA82 /* green20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728D1B3C4CD600F3CA82 /* green20.png */; };
 		CF6172DC1B3C4CD600F3CA82 /* guide-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61728E1B3C4CD600F3CA82 /* guide-in-package.pdf */; };
 		CF6172DD1B3C4CD600F3CA82 /* helper.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61728F1B3C4CD600F3CA82 /* helper.png */; };
 		CF6172DE1B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF6172901B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff */; };
@@ -637,15 +629,11 @@
 		CF6172E31B3C4CD600F3CA82 /* master-pad-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */; };
 		CF6172E41B3C4CD600F3CA82 /* nc.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172961B3C4CD600F3CA82 /* nc.png */; };
 		CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */; };
-		CF6172E61B3C4CD600F3CA82 /* orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172981B3C4CD600F3CA82 /* orange14.png */; };
-		CF6172E71B3C4CD600F3CA82 /* orange20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172991B3C4CD600F3CA82 /* orange20.png */; };
 		CF6172E81B3C4CD600F3CA82 /* package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729A1B3C4CD600F3CA82 /* package.pdf */; };
 		CF6172E91B3C4CD600F3CA82 /* pad-zone-in-package.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729B1B3C4CD600F3CA82 /* pad-zone-in-package.pdf */; };
 		CF6172EA1B3C4CD600F3CA82 /* passing-point.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729C1B3C4CD600F3CA82 /* passing-point.pdf */; };
 		CF6172EB1B3C4CD600F3CA82 /* pin-in-symbol.pdf in Resources */ = {isa = PBXBuildFile; fileRef = CF61729D1B3C4CD600F3CA82 /* pin-in-symbol.pdf */; };
 		CF6172EC1B3C4CD600F3CA82 /* PreviousToolbarImage.tif in Resources */ = {isa = PBXBuildFile; fileRef = CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */; };
-		CF6172ED1B3C4CD600F3CA82 /* red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CF61729F1B3C4CD600F3CA82 /* red14.png */; };
-		CF6172EE1B3C4CD600F3CA82 /* red20.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A01B3C4CD600F3CA82 /* red20.png */; };
 		CF6172EF1B3C4CD600F3CA82 /* remove_angle.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A11B3C4CD600F3CA82 /* remove_angle.gif */; };
 		CF6172F01B3C4CD600F3CA82 /* restrict_rectangle_component_side.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A21B3C4CD600F3CA82 /* restrict_rectangle_component_side.gif */; };
 		CF6172F11B3C4CD600F3CA82 /* restrict_rectangle_solder_side.gif in Resources */ = {isa = PBXBuildFile; fileRef = CF6172A31B3C4CD600F3CA82 /* restrict_rectangle_solder_side.gif */; };
@@ -1055,12 +1043,6 @@
 		CFF83D4821ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift */; };
 		CFFDCEE221C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
 		CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */; };
-		CFFF522021AEFB4200E7D041 /* canariWarningStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */; };
-		CFFF522121AEFB4200E7D041 /* canariWarningStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */; };
-		CFFF522221AEFB4200E7D041 /* canariErrorStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */; };
-		CFFF522321AEFB4200E7D041 /* canariErrorStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */; };
-		CFFF522421AEFB4200E7D041 /* canariOkStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521F21AEFB4200E7D041 /* canariOkStatus.png */; };
-		CFFF522521AEFB4200E7D041 /* canariOkStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFF521F21AEFB4200E7D041 /* canariOkStatus.png */; };
 		CFFF522721AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
 		CFFF522821AEFE4E00E7D041 /* StatusImageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */; };
 /* End PBXBuildFile section */
@@ -1305,8 +1287,6 @@
 		CF6172891B3C4CD600F3CA82 /* exclamation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = exclamation.tif; sourceTree = "<group>"; };
 		CF61728A1B3C4CD600F3CA82 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font.png; sourceTree = "<group>"; };
 		CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freeRoutingLogo.png; sourceTree = "<group>"; };
-		CF61728C1B3C4CD600F3CA82 /* green14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green14.png; sourceTree = "<group>"; };
-		CF61728D1B3C4CD600F3CA82 /* green20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green20.png; sourceTree = "<group>"; };
 		CF61728E1B3C4CD600F3CA82 /* guide-in-package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "guide-in-package.pdf"; sourceTree = "<group>"; };
 		CF61728F1B3C4CD600F3CA82 /* helper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helper.png; sourceTree = "<group>"; };
 		CF6172901B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = horizontalArrowsCursor.tiff; sourceTree = "<group>"; };
@@ -1317,15 +1297,11 @@
 		CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "master-pad-in-package.pdf"; sourceTree = "<group>"; };
 		CF6172961B3C4CD600F3CA82 /* nc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nc.png; sourceTree = "<group>"; };
 		CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = NextToolbarImage.tif; sourceTree = "<group>"; };
-		CF6172981B3C4CD600F3CA82 /* orange14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange14.png; sourceTree = "<group>"; };
-		CF6172991B3C4CD600F3CA82 /* orange20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange20.png; sourceTree = "<group>"; };
 		CF61729A1B3C4CD600F3CA82 /* package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = package.pdf; sourceTree = "<group>"; };
 		CF61729B1B3C4CD600F3CA82 /* pad-zone-in-package.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "pad-zone-in-package.pdf"; sourceTree = "<group>"; };
 		CF61729C1B3C4CD600F3CA82 /* passing-point.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "passing-point.pdf"; sourceTree = "<group>"; };
 		CF61729D1B3C4CD600F3CA82 /* pin-in-symbol.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "pin-in-symbol.pdf"; sourceTree = "<group>"; };
 		CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = PreviousToolbarImage.tif; sourceTree = "<group>"; };
-		CF61729F1B3C4CD600F3CA82 /* red14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red14.png; sourceTree = "<group>"; };
-		CF6172A01B3C4CD600F3CA82 /* red20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red20.png; sourceTree = "<group>"; };
 		CF6172A11B3C4CD600F3CA82 /* remove_angle.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = remove_angle.gif; sourceTree = "<group>"; };
 		CF6172A21B3C4CD600F3CA82 /* restrict_rectangle_component_side.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = restrict_rectangle_component_side.gif; sourceTree = "<group>"; };
 		CF6172A31B3C4CD600F3CA82 /* restrict_rectangle_solder_side.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = restrict_rectangle_solder_side.gif; sourceTree = "<group>"; };
@@ -1621,9 +1597,6 @@
 		CFF83D4121ADAA300084BDA9 /* utilities-symbol-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "utilities-symbol-issues.swift"; sourceTree = "<group>"; };
 		CFF83D4221ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-mStatusMessage.swift"; sourceTree = "<group>"; };
 		CFFDCEE121C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanariPadRenumberingPullDownButton.swift; sourceTree = "<group>"; };
-		CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariWarningStatus.png; sourceTree = "<group>"; };
-		CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariErrorStatus.png; sourceTree = "<group>"; };
-		CFFF521F21AEFB4200E7D041 /* canariOkStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = canariOkStatus.png; sourceTree = "<group>"; };
 		CFFF522621AEFE4E00E7D041 /* StatusImageNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusImageNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2036,9 +2009,6 @@
 				CF61727E1B3C4CD600F3CA82 /* canari_package.icns */,
 				CF61727F1B3C4CD600F3CA82 /* canari_project.icns */,
 				CF6172801B3C4CD600F3CA82 /* canari_symbol.icns */,
-				CFFF521E21AEFB4200E7D041 /* canariErrorStatus.png */,
-				CFFF521F21AEFB4200E7D041 /* canariOkStatus.png */,
-				CFFF521D21AEFB4200E7D041 /* canariWarningStatus.png */,
 				CF6172821B3C4CD600F3CA82 /* circle-in-symbol.pdf */,
 				CF6172831B3C4CD600F3CA82 /* circuit-imprime.png */,
 				CF6172841B3C4CD600F3CA82 /* connect.gif */,
@@ -2049,8 +2019,6 @@
 				CF6172891B3C4CD600F3CA82 /* exclamation.tif */,
 				CF61728A1B3C4CD600F3CA82 /* font.png */,
 				CF61728B1B3C4CD600F3CA82 /* freeRoutingLogo.png */,
-				CF61728C1B3C4CD600F3CA82 /* green14.png */,
-				CF61728D1B3C4CD600F3CA82 /* green20.png */,
 				CF61728E1B3C4CD600F3CA82 /* guide-in-package.pdf */,
 				CF61728F1B3C4CD600F3CA82 /* helper.png */,
 				CF6172901B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff */,
@@ -2062,15 +2030,11 @@
 				CF6172951B3C4CD600F3CA82 /* master-pad-in-package.pdf */,
 				CF6172961B3C4CD600F3CA82 /* nc.png */,
 				CF6172971B3C4CD600F3CA82 /* NextToolbarImage.tif */,
-				CF6172981B3C4CD600F3CA82 /* orange14.png */,
-				CF6172991B3C4CD600F3CA82 /* orange20.png */,
 				CF61729A1B3C4CD600F3CA82 /* package.pdf */,
 				CF61729B1B3C4CD600F3CA82 /* pad-zone-in-package.pdf */,
 				CF61729C1B3C4CD600F3CA82 /* passing-point.pdf */,
 				CF61729D1B3C4CD600F3CA82 /* pin-in-symbol.pdf */,
 				CF61729E1B3C4CD600F3CA82 /* PreviousToolbarImage.tif */,
-				CF61729F1B3C4CD600F3CA82 /* red14.png */,
-				CF6172A01B3C4CD600F3CA82 /* red20.png */,
 				CF6172A11B3C4CD600F3CA82 /* remove_angle.gif */,
 				CF6172A21B3C4CD600F3CA82 /* restrict_rectangle_component_side.gif */,
 				CF6172A31B3C4CD600F3CA82 /* restrict_rectangle_solder_side.gif */,
@@ -2467,9 +2431,7 @@
 				CF6172D11B3C4CD600F3CA82 /* circuit-imprime.png in Resources */,
 				CF6172CC1B3C4CD600F3CA82 /* canari_package.icns in Resources */,
 				CF6172C71B3C4CD600F3CA82 /* bezier-curve-in-symbol.pdf in Resources */,
-				CF6172E71B3C4CD600F3CA82 /* orange20.png in Resources */,
 				CFDA579F1BFA524A00EEF3CB /* FontDocument.xib in Resources */,
-				CFFF522021AEFB4200E7D041 /* canariWarningStatus.png in Resources */,
 				CF6172E21B3C4CD600F3CA82 /* loupe.pdf in Resources */,
 				CF6173061B3C4CD600F3CA82 /* upDownRightLeftCursor.tiff in Resources */,
 				CF6172C51B3C4CD600F3CA82 /* artwork.tif in Resources */,
@@ -2490,8 +2452,6 @@
 				CF6172FF1B3C4CD600F3CA82 /* text-in-symbol.pdf in Resources */,
 				CF6172F81B3C4CD600F3CA82 /* selectTool.tif in Resources */,
 				CF6172E01B3C4CD600F3CA82 /* library.png in Resources */,
-				CF6172DA1B3C4CD600F3CA82 /* green14.png in Resources */,
-				CFFF522421AEFB4200E7D041 /* canariOkStatus.png in Resources */,
 				CF6172FB1B3C4CD600F3CA82 /* slave-pad-in-package.pdf in Resources */,
 				CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */,
 				CF6172F61B3C4CD600F3CA82 /* segment-in-font.png in Resources */,
@@ -2510,7 +2470,6 @@
 				CF6172E91B3C4CD600F3CA82 /* pad-zone-in-package.pdf in Resources */,
 				CF6172FA1B3C4CD600F3CA82 /* slashArrowsCursor.tiff in Resources */,
 				CF6172C61B3C4CD600F3CA82 /* autorouter.png in Resources */,
-				CF6172EE1B3C4CD600F3CA82 /* red20.png in Resources */,
 				CFCD1F6621A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
 				CF6172DE1B3C4CD600F3CA82 /* horizontalArrowsCursor.tiff in Resources */,
 				CF6172D51B3C4CD600F3CA82 /* disconnect.gif in Resources */,
@@ -2524,18 +2483,14 @@
 				CF6172CA1B3C4CD600F3CA82 /* canari_device.icns in Resources */,
 				CF6173071B3C4CD600F3CA82 /* verticalArrowsCursor.tiff in Resources */,
 				CF6173031B3C4CD600F3CA82 /* unbind.png in Resources */,
-				CF6172DB1B3C4CD600F3CA82 /* green20.png in Resources */,
-				CFFF522221AEFB4200E7D041 /* canariErrorStatus.png in Resources */,
 				CF6172C81B3C4CD600F3CA82 /* bind.png in Resources */,
 				CF6172E51B3C4CD600F3CA82 /* NextToolbarImage.tif in Resources */,
 				CF6172DC1B3C4CD600F3CA82 /* guide-in-package.pdf in Resources */,
 				CF6172C21B3C4CD600F3CA82 /* advancedpref.icns in Resources */,
 				CF6172CB1B3C4CD600F3CA82 /* canari_font.icns in Resources */,
-				CF6172E61B3C4CD600F3CA82 /* orange14.png in Resources */,
 				CF6172C01B3C4CD600F3CA82 /* add_terminal.gif in Resources */,
 				CF6172F31B3C4CD600F3CA82 /* reverseSlashArrowsCursor.tiff in Resources */,
 				CF6173081B3C4CD600F3CA82 /* zone.pdf in Resources */,
-				CF6172ED1B3C4CD600F3CA82 /* red14.png in Resources */,
 				CF6172CE1B3C4CD600F3CA82 /* canari_symbol.icns in Resources */,
 				CF6172E31B3C4CD600F3CA82 /* master-pad-in-package.pdf in Resources */,
 				CF6172CD1B3C4CD600F3CA82 /* canari_project.icns in Resources */,
@@ -2566,9 +2521,7 @@
 				CF5C4C76219F04D600EAC52A /* circuit-imprime.png in Resources */,
 				CF5C4C77219F04D600EAC52A /* canari_package.icns in Resources */,
 				CF5C4C78219F04D600EAC52A /* bezier-curve-in-symbol.pdf in Resources */,
-				CF5C4C79219F04D600EAC52A /* orange20.png in Resources */,
 				CF5C4C7A219F04D600EAC52A /* FontDocument.xib in Resources */,
-				CFFF522121AEFB4200E7D041 /* canariWarningStatus.png in Resources */,
 				CF5C4C7B219F04D600EAC52A /* loupe.pdf in Resources */,
 				CF5C4C7C219F04D600EAC52A /* upDownRightLeftCursor.tiff in Resources */,
 				CF5C4C7D219F04D600EAC52A /* artwork.tif in Resources */,
@@ -2589,8 +2542,6 @@
 				CF5C4C8A219F04D600EAC52A /* text-in-symbol.pdf in Resources */,
 				CF5C4C8B219F04D600EAC52A /* selectTool.tif in Resources */,
 				CF5C4C8C219F04D600EAC52A /* library.png in Resources */,
-				CF5C4C8D219F04D600EAC52A /* green14.png in Resources */,
-				CFFF522521AEFB4200E7D041 /* canariOkStatus.png in Resources */,
 				CF5C4C8E219F04D600EAC52A /* slave-pad-in-package.pdf in Resources */,
 				CF5C4C8F219F04D600EAC52A /* canari_artwork.icns in Resources */,
 				CF5C4C90219F04D600EAC52A /* segment-in-font.png in Resources */,
@@ -2609,7 +2560,6 @@
 				CF5C4C9D219F04D600EAC52A /* pad-zone-in-package.pdf in Resources */,
 				CF5C4C9E219F04D600EAC52A /* slashArrowsCursor.tiff in Resources */,
 				CF5C4C9F219F04D600EAC52A /* autorouter.png in Resources */,
-				CF5C4CA0219F04D600EAC52A /* red20.png in Resources */,
 				CFCD1F6721A1CBFF00A8297B /* SymbolDocument.xib in Resources */,
 				CF5C4CA1219F04D600EAC52A /* horizontalArrowsCursor.tiff in Resources */,
 				CF5C4CA2219F04D600EAC52A /* disconnect.gif in Resources */,
@@ -2623,18 +2573,14 @@
 				CF5C4CAA219F04D600EAC52A /* canari_device.icns in Resources */,
 				CF5C4CAB219F04D600EAC52A /* verticalArrowsCursor.tiff in Resources */,
 				CF5C4CAC219F04D600EAC52A /* unbind.png in Resources */,
-				CF5C4CAD219F04D600EAC52A /* green20.png in Resources */,
-				CFFF522321AEFB4200E7D041 /* canariErrorStatus.png in Resources */,
 				CF5C4CAE219F04D600EAC52A /* bind.png in Resources */,
 				CF5C4CAF219F04D600EAC52A /* NextToolbarImage.tif in Resources */,
 				CF5C4CB0219F04D600EAC52A /* guide-in-package.pdf in Resources */,
 				CF5C4CB1219F04D600EAC52A /* advancedpref.icns in Resources */,
 				CF5C4CB2219F04D600EAC52A /* canari_font.icns in Resources */,
-				CF5C4CB3219F04D600EAC52A /* orange14.png in Resources */,
 				CF5C4CB4219F04D600EAC52A /* add_terminal.gif in Resources */,
 				CF5C4CB5219F04D600EAC52A /* reverseSlashArrowsCursor.tiff in Resources */,
 				CF5C4CB6219F04D600EAC52A /* zone.pdf in Resources */,
-				CF5C4CB7219F04D600EAC52A /* red14.png in Resources */,
 				CF5C4CB8219F04D600EAC52A /* canari_symbol.icns in Resources */,
 				CF5C4CB9219F04D600EAC52A /* master-pad-in-package.pdf in Resources */,
 				CF5C4CBA219F04D600EAC52A /* canari_project.icns in Resources */,

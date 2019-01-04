@@ -85,14 +85,14 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="551"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="553"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="554"/>
-                    <toolbarItem implicitItemIdentifier="31A641FE-27C6-4A4A-A007-121B041D6BB6" label="Status" paletteLabel="Status" image="canariErrorStatus" id="X1d-O0-5kQ">
+                    <toolbarItem implicitItemIdentifier="31A641FE-27C6-4A4A-A007-121B041D6BB6" label="Status" paletteLabel="Status" image="NSStatusAvailable" id="X1d-O0-5kQ">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="48" height="48"/>
                         <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="hy4-bz-6Bw" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="canariErrorStatus" id="hPr-1n-KCO"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusAvailable" id="hPr-1n-KCO"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="60F57C98-B3B7-4131-9DDA-BCDB6EE558F3" label="Signature" paletteLabel="Signature" id="rBJ-XG-abp">
@@ -851,7 +851,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
         </customView>
     </objects>
     <resources>
+        <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="artwork" width="278" height="146"/>
-        <image name="canariErrorStatus" width="40" height="100"/>
     </resources>
 </document>

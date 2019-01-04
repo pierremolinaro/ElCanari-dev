@@ -19,11 +19,10 @@ class CanariOkButtonForPanel : EBButton {
 
   override func awakeFromNib () {
     super.awakeFromNib ()
-    if let myPanel = self.window {
-  //    NSLog ("myPanel \(myPanel)")
-      if let okCell = self.cell as? NSButtonCell {
-        myPanel.defaultButtonCell = okCell
-      }
+    if let myPanel = self.window, let okCell = self.cell as? NSButtonCell {
+      myPanel.defaultButtonCell = okCell
+      myPanel.enableKeyEquivalentForDefaultButtonCell ()
+   //   self.keyEquivalent = "\r"
       self.target = self
       self.action = #selector (CanariOkButtonForPanel.dismissPanelAction (_:))
     }

@@ -444,9 +444,14 @@
                                     <action selector="performMiniaturize:" target="-1" id="6272"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom" id="229">
+                            <menuItem title="Merge All Windows" id="229">
                                 <connections>
-                                    <action selector="performZoom:" target="-1" id="233"/>
+                                    <action selector="mergeAllWindows:" target="-1" id="xGD-8I-rUh"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="s7g-0k-SC5">
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="jP5-f3-mVf"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="231">

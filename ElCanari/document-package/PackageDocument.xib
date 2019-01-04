@@ -225,14 +225,14 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="2886"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="2887"/>
-                    <toolbarItem implicitItemIdentifier="7A09A85A-8D01-4EBD-BFCB-6FA455FD2160" label="Status" paletteLabel="Status" image="red20" id="2891">
+                    <toolbarItem implicitItemIdentifier="7A09A85A-8D01-4EBD-BFCB-6FA455FD2160" label="Status" paletteLabel="Status" image="NSStatusAvailable" id="2891">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
                         <imageView key="view" id="2889" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="red20" id="2890"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusAvailable" id="2890"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="EEA7E227-C6E3-412D-B765-ED7AA6CD6B40" label="Page" paletteLabel="Page" id="2898">
@@ -3515,7 +3515,7 @@
             <point key="canvasLocation" x="-362" y="432"/>
         </customView>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="h48-eq-iuE" userLabel="Panel : Help pad program" customClass="NSPanel">
-            <windowStyleMask key="styleMask" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowStyleMask key="styleMask" resizable="YES" utility="YES" documentModal="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="139" y="81" width="740" height="509"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -3523,23 +3523,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="740" height="509"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" id="Rsb-Pc-dDr" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="648" y="19" width="72" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Done" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a8h-C6-d0e">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
-                        </buttonCell>
-                    </button>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="SnN-7m-EeX">
                         <rect key="frame" x="20" y="46" width="700" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ttk-9b-UM8">
                             <rect key="frame" x="0.0" y="0.0" width="685" height="443"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="0.70000000000754881" width="685" height="1918.5"/>
+                                    <rect key="frame" x="0.0" y="1" width="685" height="1918"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6198,11 +6190,19 @@ The two first points are the two ends of the dimension segment, the third one is
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="6.7796610172050445e-05" horizontal="NO" id="Um2-vP-U4W">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Um2-vP-U4W">
                             <rect key="frame" x="685" y="0.0" width="15" height="443"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <button verticalHuggingPriority="750" id="Rsb-Pc-dDr" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="654" y="13" width="72" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a8h-C6-d0e">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-1722" y="-213.5"/>
@@ -6374,6 +6374,5 @@ The two first points are the two ends of the dimension segment, the third one is
         <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="editorInspector" width="60" height="60"/>
         <image name="magnifyingGlass" width="40" height="40"/>
-        <image name="red20" width="20" height="20"/>
     </resources>
 </document>

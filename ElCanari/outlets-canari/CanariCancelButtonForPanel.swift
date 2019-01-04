@@ -19,6 +19,7 @@ class CanariCancelButtonForPanel : EBButton {
 
   override func awakeFromNib () {
     super.awakeFromNib ()
+  //  self.keyEquivalent = "\r"
     self.target = self
     self.action = #selector (CanariCancelButtonForPanel.dismissPanelAction (_:))
   }

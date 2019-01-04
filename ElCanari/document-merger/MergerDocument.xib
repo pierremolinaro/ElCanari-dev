@@ -224,14 +224,14 @@ AAAAAAEGA
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1232"/>
-                    <toolbarItem implicitItemIdentifier="A45D30C6-B007-4C8E-96F9-A460D75D8D41" label="Status" paletteLabel="Status" image="canariErrorStatus" id="bKb-CY-cn1">
+                    <toolbarItem implicitItemIdentifier="A45D30C6-B007-4C8E-96F9-A460D75D8D41" label="Status" paletteLabel="Status" image="NSStatusAvailable" id="bKb-CY-cn1">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="48" height="48"/>
                         <imageView key="view" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6gJ-44-3tf" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="canariErrorStatus" id="qS0-yF-Kr5"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSStatusAvailable" id="qS0-yF-Kr5"/>
                         </imageView>
                     </toolbarItem>
                 </allowedToolbarItems>
@@ -2343,9 +2343,9 @@ Gw
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSStatusAvailable" width="16" height="16"/>
         <image name="NSStatusPartiallyAvailable" width="16" height="16"/>
         <image name="NSStatusUnavailable" width="16" height="16"/>
-        <image name="canariErrorStatus" width="40" height="100"/>
         <image name="editorInspector" width="60" height="60"/>
     </resources>
 </document>
