@@ -260,6 +260,7 @@ import Cocoa
   @IBOutlet var mPadHoleDiameterUnitPopUp : EBPopUpButton?
   @IBOutlet var mPadInspectorView : CanariViewWithKeyView?
   @IBOutlet var mPadNumberColorWell : EBColorWell?
+  @IBOutlet var mPadNumberFontButton : EBFontButton?
   @IBOutlet var mPadNumberTextField : EBIntObserverField?
   @IBOutlet var mPadNumberingPopUpButton : EBPopUpButton?
   @IBOutlet var mPadRenumberingPullDownButton : CanariPadRenumberingPullDownButton?
@@ -2197,6 +2198,21 @@ import Cocoa
         errorMessage: "the 'mPadNumberColorWell' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPadNumberFontButton {
+      if !(outlet is EBFontButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPadNumberFontButton' outlet is not an instance of 'EBFontButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPadNumberFontButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPadNumberTextField {
       if !(outlet is EBIntObserverField) {
         presentErrorWindow (
@@ -3503,6 +3519,7 @@ import Cocoa
     self.mPadNumberColorWell?.bind_color (g_Preferences!.padNumberColor_property, file: #file, line: #line, sendContinously:false)
     self.mDisplayTopSidePadSwitch?.bind_value (g_Preferences!.displayPackageTopSidePads_property, file: #file, line: #line)
     self.mDisplayBottomSidePadSwitch?.bind_value (g_Preferences!.displayPackageBottomSidePads_property, file: #file, line: #line)
+    self.mPadNumberFontButton?.bind_fontValue (g_Preferences!.padNumberFont_property, file: #file, line: #line)
     self.mGridUnitPopUp?.bind_selectedTag (self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mGridTextField?.bind_dimensionAndUnit (self.rootObject.gridStep_property, self.rootObject.gridStepUnit_property, file: #file, line: #line)
     self.mProgramTextView?.bind_value (self.rootObject.program_property, file: #file, line: #line)
@@ -3753,6 +3770,7 @@ import Cocoa
     self.mPadNumberColorWell?.unbind_color ()
     self.mDisplayTopSidePadSwitch?.unbind_value ()
     self.mDisplayBottomSidePadSwitch?.unbind_value ()
+    self.mPadNumberFontButton?.unbind_fontValue ()
     self.mGridUnitPopUp?.unbind_selectedTag ()
     self.mGridTextField?.unbind_dimensionAndUnit ()
     self.mProgramTextView?.unbind_value ()
@@ -3923,6 +3941,7 @@ import Cocoa
     self.mPadHoleDiameterUnitPopUp?.ebCleanUp ()
     self.mPadInspectorView?.ebCleanUp ()
     self.mPadNumberColorWell?.ebCleanUp ()
+    self.mPadNumberFontButton?.ebCleanUp ()
     self.mPadNumberTextField?.ebCleanUp ()
     self.mPadNumberingPopUpButton?.ebCleanUp ()
     self.mPadRenumberingPullDownButton?.ebCleanUp ()

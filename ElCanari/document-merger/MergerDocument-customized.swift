@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "drag.and.drop.board.model")
+fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.drag.and.drop.board.model")
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

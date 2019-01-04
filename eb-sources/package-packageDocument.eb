@@ -447,14 +447,13 @@ document PackageDocument root PackageRoot {
   outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor {sendContinously:no} ;
   outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageTopSidePads ;
   outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBottomSidePads ;
+  outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
 #--- Grid
   outlet EBPopUpButton mGridUnitPopUp $selectedTag root.gridStepUnit ;
   outlet CanariDimensionTextField mGridTextField
      $dimensionAndUnit root.gridStep, root.gridStepUnit
   ;
-
-#  outlet EBFontButton mPinNameFontButton $fontValue prefs.pinNameFont ;
 
 #--------------- Program Tab
   outlet NSPanel mProgramHelpPanel ;

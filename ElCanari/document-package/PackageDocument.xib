@@ -126,6 +126,7 @@
                 <outlet property="mPadHoleDiameterUnitPopUp" destination="2205" id="VWa-sf-SFr"/>
                 <outlet property="mPadInspectorView" destination="2143" id="JcW-Dk-CNU"/>
                 <outlet property="mPadNumberColorWell" destination="jvN-SU-KrT" id="oXW-8i-9Ce"/>
+                <outlet property="mPadNumberFontButton" destination="9Z8-JF-9J9" id="TWQ-6X-8V5"/>
                 <outlet property="mPadNumberTextField" destination="2201" id="1Pw-Zc-vo3"/>
                 <outlet property="mPadNumberingPopUpButton" destination="2293" id="5dg-Wp-sIE"/>
                 <outlet property="mPadRenumberingPullDownButton" destination="2156" id="x5i-fs-01L"/>
@@ -3538,7 +3539,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="0.6000000000037744" width="685" height="1918.5"/>
+                                    <rect key="frame" x="0.0" y="0.70000000000754881" width="685" height="1918.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6319,7 +6320,7 @@ The two first points are the two ends of the dimension segment, the third one is
                     </buttonCell>
                 </button>
                 <colorWell id="9nP-NT-1k8" customClass="EBColorWell">
-                    <rect key="frame" x="121" y="50" width="54" height="22"/>
+                    <rect key="frame" x="106" y="50" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
@@ -6332,7 +6333,7 @@ The two first points are the two ends of the dimension segment, the third one is
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <colorWell id="jvN-SU-KrT" customClass="EBColorWell">
-                    <rect key="frame" x="121" y="104" width="54" height="22"/>
+                    <rect key="frame" x="105" y="104" width="54" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
@@ -6345,26 +6346,26 @@ The two first points are the two ends of the dimension segment, the third one is
                     </buttonCell>
                 </button>
                 <button id="MJs-2h-EMj" customClass="EBSwitch">
-                    <rect key="frame" x="3" y="22" width="116" height="18"/>
+                    <rect key="frame" x="3" y="22" width="96" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Bottom Side Pads" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4TG-Sw-N6e">
+                    <buttonCell key="cell" type="check" title="Bottom Side" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="4TG-Sw-N6e">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="0wU-kk-tL1" customClass="EBColorWell">
-                    <rect key="frame" x="121" y="20" width="54" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </colorWell>
                 <button verticalHuggingPriority="750" id="9Z8-JF-9J9" customClass="EBFontButton">
-                    <rect key="frame" x="121" y="79" width="125" height="17"/>
+                    <rect key="frame" x="105" y="79" width="141" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Font pad number…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="eE6-8Y-TKH">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <colorWell id="0wU-kk-tL1" customClass="EBColorWell">
+                    <rect key="frame" x="106" y="20" width="54" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </colorWell>
             </subviews>
             <point key="canvasLocation" x="-712" y="-285"/>
         </customView>
