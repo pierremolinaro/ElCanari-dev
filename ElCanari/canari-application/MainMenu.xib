@@ -1948,7 +1948,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2032,17 +2032,17 @@
                                                             <rect key="frame" x="216" y="1" width="35" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <button id="e0P-3R-2Me" customClass="EBSwitch">
-                                                                    <rect key="frame" x="-15" y="-2" width="63" height="20"/>
+                                                                <button verticalHuggingPriority="750" id="qp0-gj-9te" customClass="EBSwitch">
+                                                                    <rect key="frame" x="0.0" y="-3" width="62" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" controlSize="small" state="on" inset="2" id="mzL-hZ-wdO">
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="center" controlSize="small" state="on" inset="2" id="2UU-iZ-BQB">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                     </buttonCell>
                                                                 </button>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="mCellOutlet" destination="e0P-3R-2Me" id="hLa-eQ-HU6"/>
+                                                                <outlet property="mCellOutlet" destination="qp0-gj-9te" id="rNM-1i-dPJ"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -2210,7 +2210,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="-401.5" y="-58.5"/>
+            <point key="canvasLocation" x="-311" y="-221"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckingForLibaryUpdateWindow" animationBehavior="default" id="6215" userLabel="CheckingForLibraryUpdate" customClass="EBWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
