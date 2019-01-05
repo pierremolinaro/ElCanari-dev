@@ -1949,7 +1949,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2496,7 +2496,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="Ojy-ZP-Pgt">
                             <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3UV-MD-e0D">
                                     <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>
@@ -2522,7 +2522,7 @@ Gw
             </view>
             <point key="canvasLocation" x="358" y="592"/>
         </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="" animationBehavior="default" id="qM1-Dc-ODN" userLabel="Window : Open in Library">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="qM1-Dc-ODN" userLabel="Window : Open in Library">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="511" height="414"/>
@@ -2535,7 +2535,7 @@ Gw
                         <rect key="frame" x="20" y="20" width="270" height="374"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" id="lP5-Hy-afn">
-                            <rect key="frame" x="1" y="23" width="268" height="350"/>
+                            <rect key="frame" x="1" y="0.0" width="268" height="373"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="tda-P9-W3F" viewBased="YES" indentationPerLevel="16" outlineTableColumn="SWi-Ls-FnJ" id="ziq-cw-Pvk">
@@ -2630,7 +2630,7 @@ Gw
                     </scrollView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-609" y="-231"/>
+            <point key="canvasLocation" x="-826" y="-234"/>
         </window>
     </objects>
     <resources>
