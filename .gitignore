@@ -12,19 +12,19 @@ build/**
 *.o
 *.dep
 other-projects/extract-kicad-font/build/**
-other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/project.xcworkspace/**
-other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcuserdata/**
-other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcshareddata/**
+other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/project.xcworkspace/*
+other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcuserdata/*
+other-projects/extract-kicad-font/extract-kicad-font.xcodeproj/xcshareddata/*
 
 other-projects/eb-document-analyzer/build/**
-other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/project.xcworkspace/**
-other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/xcuserdata/**
-other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/xcshareddata/**
+other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/project.xcworkspace/*
+other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/xcuserdata/*
+other-projects/eb-document-analyzer/eb-document-analyzer.xcodeproj/xcshareddata/*
 
 other-projects/build-png-images/build/**
-other-projects/build-png-images/build-png-images.xcodeproj/project.xcworkspace/**
-other-projects/build-png-images/build-png-images.xcodeproj/xcuserdata/**
-other-projects/build-png-images/build-png-images.xcodeproj/xcshareddata/**
+other-projects/build-png-images/build-png-images.xcodeproj/project.xcworkspace/*
+other-projects/build-png-images/build-png-images.xcodeproj/xcuserdata/*
+other-projects/build-png-images/build-png-images.xcodeproj/xcshareddata/*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

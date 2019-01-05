@@ -98,6 +98,7 @@ document SymbolDocument root SymbolRoot {
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
+  transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
 
   outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 

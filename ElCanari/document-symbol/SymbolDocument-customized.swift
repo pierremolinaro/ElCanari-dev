@@ -23,8 +23,9 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   //····················································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-     metadataDictionary.setObject (NSNumber (value:version), forKey: PMSymbolVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments, forKey: PMSymbolComment as NSCopying)
+    metadataDictionary.setObject (NSNumber (value:version), forKey: PMSymbolVersion as NSCopying)
+    metadataDictionary.setObject (rootObject.comments, forKey: PMSymbolComment as NSCopying)
+    metadataDictionary.setObject (NSNumber (value: self.mMetadataStatus!.rawValue), forKey: STATUS_METADATA_KEY as NSCopying)
   }
 
   //····················································································································

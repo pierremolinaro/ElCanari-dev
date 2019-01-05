@@ -115,6 +115,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: mMetadataStatus
+  //····················································································································
+
+  var mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
+    return self.mMetadataStatus_property.prop
+  }
+
+  //····················································································································
+
+    var mMetadataStatus : MetadataStatus? {
+    switch self.mMetadataStatus_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -3335,6 +3358,28 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+  //--- Atomic property: mMetadataStatus
+    self.mMetadataStatus_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageDocument_mMetadataStatus (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3813,6 +3858,7 @@ import Cocoa
   //--- Selection controller property: mPackageSegmentSelectionController
     self.mPackageSegmentSelectionController.unbind_selection ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = nil

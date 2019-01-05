@@ -383,6 +383,7 @@ document PackageDocument root PackageRoot {
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
+  transient MetadataStatus mMetadataStatus dependsFrom root.issues ;
 
   outlet CanariViewWithKeyView mIssueInspectorView ;
 

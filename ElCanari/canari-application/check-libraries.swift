@@ -11,6 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let STATUS_METADATA_KEY = "Status"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func checkLibrary (_ window : NSWindow,
                    logView : NSTextView?) {
 //--- Clear Log
@@ -127,7 +131,6 @@ private struct PMDeviceDictionaryEntry {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
                                             logView : NSTextView?,
@@ -325,7 +328,6 @@ private func checkDeviceLibrary (_ logView : NSTextView?,
 //   SYMBOL
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
 private struct PMSymbolDictionaryEntry {
   let mPartStatus : PartStatus
   let mVersion : Int
@@ -359,6 +361,20 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
     version = n.intValue
   }else{
     throw badFormatErrorForFileAtPath (symbolFullPath, code:#line)
+  }
+//--- Metadata status
+  if let rawStatus = metadataDictionary.object (forKey: STATUS_METADATA_KEY) as? NSNumber,
+     let status = MetadataStatus (rawValue: rawStatus.intValue) {
+    switch status {
+    case .unknown :
+      metadataStatus = .metadataStatusUnknown
+    case .ok :
+      metadataStatus = .metadataStatusSuccess
+    case .warning :
+      metadataStatus = .metadataStatusWarning
+    case .error :
+      metadataStatus = .metadataStatusError
+    }
   }
   let possibleEntry : PMSymbolDictionaryEntry? = symbolDict [symbolName]
   if let entry = possibleEntry {
@@ -460,7 +476,6 @@ private func checkSymbolLibrary (_ logView : NSTextView?,
 //   PACKAGE
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
 private struct PMPackageDictionaryEntry {
   let mPartStatus : PartStatus
   let mVersion : Int
@@ -493,6 +508,20 @@ private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
     version = n.intValue
   }else{
     throw badFormatErrorForFileAtPath (packageFullPath, code:#line)
+  }
+//--- Metadata status
+  if let rawStatus = metadataDictionary.object (forKey: STATUS_METADATA_KEY) as? NSNumber,
+     let status = MetadataStatus (rawValue: rawStatus.intValue) {
+    switch status {
+    case .unknown :
+      metadataStatus = .metadataStatusUnknown
+    case .ok :
+      metadataStatus = .metadataStatusSuccess
+    case .warning :
+      metadataStatus = .metadataStatusWarning
+    case .error :
+      metadataStatus = .metadataStatusError
+    }
   }
   let possibleEntry : PMPackageDictionaryEntry? = packageDict [packageName]
   if let entry = possibleEntry {
