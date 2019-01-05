@@ -649,7 +649,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="HvY-76-oul" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="HvY-76-oul" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="435" y="13" width="57" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1GL-aD-vXf">
@@ -660,7 +660,7 @@ Gw
 </string>
                         </buttonCell>
                     </button>
-                    <button verticalHuggingPriority="750" id="8v6-ti-duU" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="8v6-ti-duU" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="100" y="13" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tPp-aA-feQ">

@@ -14,11 +14,12 @@ import Cocoa
 extension PackageDocument {
   @objc func programHelpAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let window = self.windowForSheet, let panel = self.mProgramHelpPanel {
-  //    window.resignKey ()
-      window.beginSheet (panel, completionHandler: nil)
-      // NSApp.runModal (for: panel)
-   //   panel.makeKeyAndOrderFront (nil)
+    if let window = self.windowForSheet, let sheet = self.mProgramHelpSheet {
+//      window.beginSheet (sheet, completionHandler: { (returnCode : NSApplication.ModalResponse) in
+//        NSApp.stopModal (withCode: returnCode)
+//      })
+      window.beginSheet (sheet, completionHandler: nil)
+ //     NSApp.runModal (for: sheet)
     }
 //--- END OF USER ZONE 2
   }

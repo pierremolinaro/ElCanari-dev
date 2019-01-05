@@ -456,7 +456,7 @@ document PackageDocument root PackageRoot {
   ;
 
 #--------------- Program Tab
-  outlet NSPanel mProgramHelpPanel ;
+  outlet EBWindow mProgramHelpSheet ;
   action programHelpAction ;
   outlet EBButton mProgramHelpButton $run self.programHelpAction ;
   

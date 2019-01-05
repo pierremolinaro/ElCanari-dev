@@ -142,7 +142,7 @@
                 <outlet property="mPageSegmentedControl" destination="2896" id="IH0-Px-2WQ"/>
                 <outlet property="mProgramErrorTextField" destination="J66-Da-WpD" id="D1Y-72-Q4o"/>
                 <outlet property="mProgramHelpButton" destination="S67-ds-8Uk" id="guS-YO-FvG"/>
-                <outlet property="mProgramHelpPanel" destination="h48-eq-iuE" id="hDk-S5-DNs"/>
+                <outlet property="mProgramHelpSheet" destination="h48-eq-iuE" id="eJi-uE-0gc"/>
                 <outlet property="mProgramPageView" destination="2512" id="Mb6-tH-IZE"/>
                 <outlet property="mProgramTextView" destination="2514" id="d7U-jr-k0N"/>
                 <outlet property="mResetVersionButton" destination="2529" id="c7p-LE-qqa"/>
@@ -3514,8 +3514,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <point key="canvasLocation" x="-362" y="432"/>
         </customView>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="h48-eq-iuE" userLabel="Panel : Help pad program" customClass="NSPanel">
-            <windowStyleMask key="styleMask" resizable="YES" utility="YES" documentModal="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="h48-eq-iuE" userLabel="Sheet : Help pad program" customClass="EBWindow">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES" documentModal="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="139" y="81" width="740" height="509"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -6190,17 +6190,20 @@ The two first points are the two ends of the dimension segment, the third one is
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Um2-vP-U4W">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="6.7796610172050445e-05" horizontal="NO" id="Um2-vP-U4W">
                             <rect key="frame" x="685" y="0.0" width="15" height="443"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="Rsb-Pc-dDr" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="Rsb-Pc-dDr" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="654" y="13" width="72" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a8h-C6-d0e">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                     </button>
                 </subviews>

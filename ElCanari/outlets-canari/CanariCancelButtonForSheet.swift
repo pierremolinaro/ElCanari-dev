@@ -1,5 +1,5 @@
 //
-//  CanariCancelButtonForPanel.swift
+//  CanariCancelButtonForSheet.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 14/07/2018.
@@ -10,23 +10,22 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   CanariCancelButtonForPanel
+//   CanariCancelButtonForSheet
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariCancelButtonForPanel : EBButton {
+class CanariCancelButtonForSheet : EBButton {
 
   //····················································································································
 
   override func awakeFromNib () {
     super.awakeFromNib ()
-  //  self.keyEquivalent = "\r"
     self.target = self
-    self.action = #selector (CanariCancelButtonForPanel.dismissPanelAction (_:))
+    self.action = #selector (CanariCancelButtonForSheet.dismissSheetAction (_:))
   }
 
   //····················································································································
 
-  @objc func dismissPanelAction (_ sender : Any?) {
+  @objc func dismissSheetAction (_ sender : Any?) {
     if let myPanel = self.window, let parent = myPanel.sheetParent {
       parent.endSheet (myPanel, returnCode: .abort)
     }

@@ -276,7 +276,7 @@ import Cocoa
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProgramErrorTextField : EBTextField?
   @IBOutlet var mProgramHelpButton : EBButton?
-  @IBOutlet var mProgramHelpPanel : NSPanel?
+  @IBOutlet var mProgramHelpSheet : EBWindow?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mProgramTextView : EBTextView?
   @IBOutlet var mResetVersionButton : EBButton?
@@ -2438,19 +2438,19 @@ import Cocoa
         errorMessage: "the 'mProgramHelpButton' outlet is nil"
       )
     }
-    if let outlet : Any = self.mProgramHelpPanel {
-      if !(outlet is NSPanel) {
+    if let outlet : Any = self.mProgramHelpSheet {
+      if !(outlet is EBWindow) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mProgramHelpPanel' outlet is not an instance of 'NSPanel'"
+          errorMessage: "the 'mProgramHelpSheet' outlet is not an instance of 'EBWindow'"
         )
       }
     }else{
       presentErrorWindow (
         file: #file,
         line: #line,
-        errorMessage: "the 'mProgramHelpPanel' outlet is nil"
+        errorMessage: "the 'mProgramHelpSheet' outlet is nil"
       )
     }
     if let outlet : Any = self.mProgramPageView {
@@ -3957,7 +3957,7 @@ import Cocoa
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProgramErrorTextField?.ebCleanUp ()
     self.mProgramHelpButton?.ebCleanUp ()
-    self.mProgramHelpPanel?.ebCleanUp ()
+    self.mProgramHelpSheet?.ebCleanUp ()
     self.mProgramPageView?.ebCleanUp ()
     self.mProgramTextView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()

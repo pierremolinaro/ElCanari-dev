@@ -604,7 +604,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="Ia8-1D-Xh1">
                         <rect key="frame" x="1" y="1" width="874" height="541"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Rki-OK-VtG">
                                 <rect key="frame" x="0.0" y="0.0" width="874" height="541"/>
@@ -1526,7 +1526,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="gVY-xq-Qco" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="gVY-xq-Qco" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="396" y="19" width="75" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Insert" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HAC-FK-rHr">
@@ -1567,7 +1567,7 @@ AAAAAAEGA
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="00c-TV-6Q8" customClass="CanariCancelButtonForPanel" customModule="ElCanari" customModuleProvider="target">
+                    <button verticalHuggingPriority="750" id="00c-TV-6Q8" customClass="CanariCancelButtonForSheet" customModule="ElCanari" customModuleProvider="target">
                         <rect key="frame" x="179" y="19" width="82" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundRect" title="Cancel" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eER-aj-vEy">
@@ -1615,17 +1615,17 @@ Gw
             </view>
             <point key="canvasLocation" x="-472" y="-426"/>
         </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PAN-4y-duD" userLabel="Panel : Help for Board Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="PAN-4y-duD" userLabel="Panel : Help for Board Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" utility="YES" documentModal="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="139" y="81" width="461" height="165"/>
+            <rect key="contentRect" x="139" y="81" width="461" height="180"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="m8U-0R-sFg">
-                <rect key="frame" x="0.0" y="0.0" width="461" height="165"/>
+                <rect key="frame" x="0.0" y="0.0" width="461" height="180"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Le2-vh-bXD">
-                        <rect key="frame" x="20" y="46" width="421" height="99"/>
+                        <rect key="frame" x="20" y="61" width="421" height="99"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="aGn-fM-2YF">
                             <rect key="frame" x="0.0" y="0.0" width="421" height="99"/>
@@ -1674,17 +1674,20 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="CEr-gn-unV" customClass="CanariOkButtonForPanel" customModule="ElCanari" customModuleProvider="target">
-                        <rect key="frame" x="377" y="19" width="64" height="19"/>
+                    <button verticalHuggingPriority="750" id="CEr-gn-unV" customClass="CanariOkButtonForSheet" customModule="ElCanari" customModuleProvider="target">
+                        <rect key="frame" x="383" y="13" width="64" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="roundRect" title="Ok" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t52-z3-WhJ">
+                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="t52-z3-WhJ">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="cellTitle"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                         </buttonCell>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-240.5" y="-959.5"/>
+            <point key="canvasLocation" x="-316" y="-977"/>
         </window>
         <customView id="Olt-z2-VJY" userLabel="Inspector : Issues" customClass="CanariViewWithKeyView">
             <rect key="frame" x="0.0" y="0.0" width="231" height="448"/>
