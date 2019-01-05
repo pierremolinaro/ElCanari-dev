@@ -206,10 +206,14 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
     "-H", "If-None-Match:\"\(etag)\"",
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
   ] + inProxy
-  inLogTextView.appendMessageString ("  Command: \(command)\n")
-  let response = runShellCommandAndGetDataOutput (command)
-  inLogTextView.appendMessageString ("  Result code: \(response)\n")
-  switch response {
+  var commandString = ""
+  for s in command {
+    commandString += s + " "
+  }
+  inLogTextView.appendMessageString ("  Command: \(commandString)\n")
+  let responseCode = runShellCommandAndGetDataOutput (command)
+  inLogTextView.appendMessageString ("  Result code: \(responseCode)\n")
+  switch responseCode {
   case .error (let errorCode) :
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
     ioPossibleAlert = NSAlert ()
@@ -221,6 +225,7 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
   case .ok (let responseData) :
     inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
     if let response = String (data: responseData, encoding: .utf8) {
+      // Swift.print ("\(response)")
       let c0 = response.components (separatedBy: "Status: ")
       let c1 = c0 [1].components (separatedBy: " ")
       //print ("C1 \(c1 [0])")
@@ -341,11 +346,12 @@ private func readOrDownloadLibraryFileDictionary (
         do{
           let jsonObject = try JSONSerialization.jsonObject (with: responseData) as! NSDictionary
           let treeEntry = get (jsonObject, "tree", #line)
+          let extensions = Set <String> (["ElCanariFont", "ElCanariArtwork", "ElCanariSymbol", "ElCanariPackage", "ElCanariDevice"])
           if let fileDescriptionArray = treeEntry as? [[String : Any]] {
             for fileDescriptionDictionay in fileDescriptionArray {
               let filePath = fileDescriptionDictionay ["path"] as! String
-              let ext = filePath.pathExtension
-              if (ext == "ElCanariFont") || (ext == "ElCanariArtwork") {
+             // let ext = filePath.pathExtension
+              if extensions.contains (filePath.pathExtension) {
                 var localSHA = ""
                 if fm.fileExists (atPath: filePath) {
                   let fileData = try! Data (contentsOf: URL (fileURLWithPath: filePath))

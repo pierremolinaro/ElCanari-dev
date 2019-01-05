@@ -299,7 +299,7 @@ import Cocoa
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProgramErrorTextField : EBTextField?
   @IBOutlet var mProgramHelpButton : EBButton?
-  @IBOutlet var mProgramHelpSheet : EBWindow?
+  @IBOutlet var mProgramHelpSheet : NSPanel?
   @IBOutlet var mProgramPageView : CanariViewWithKeyView?
   @IBOutlet var mProgramTextView : EBTextView?
   @IBOutlet var mResetVersionButton : EBButton?
@@ -2462,11 +2462,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mProgramHelpSheet {
-      if !(outlet is EBWindow) {
+      if !(outlet is NSPanel) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mProgramHelpSheet' outlet is not an instance of 'EBWindow'"
+          errorMessage: "the 'mProgramHelpSheet' outlet is not an instance of 'NSPanel'"
         )
       }
     }else{
