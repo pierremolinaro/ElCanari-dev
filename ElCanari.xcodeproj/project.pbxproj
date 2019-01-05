@@ -804,6 +804,8 @@
 		CF87F3E220F0CE4500918586 /* enum-PadShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87F3E020F0CE4500918586 /* enum-PadShape.swift */; };
 		CF87F3E320F0CE4500918586 /* enum-PadSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF87F3E120F0CE4500918586 /* enum-PadSide.swift */; };
 		CF880FEF1DDB85F400954D4E /* GeometricCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */; };
+		CF88969F21E13334007A0F1C /* OpenInLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* OpenInLibrary.swift */; };
+		CF8896A021E13334007A0F1C /* OpenInLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88969E21E13334007A0F1C /* OpenInLibrary.swift */; };
 		CF8A118221B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */; };
 		CF8A118321B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */; };
 		CF8B1B8121CC0F5800C124FC /* enum-PadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */; };
@@ -1431,6 +1433,7 @@
 		CF87F3E020F0CE4500918586 /* enum-PadShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadShape.swift"; sourceTree = "<group>"; };
 		CF87F3E120F0CE4500918586 /* enum-PadSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadSide.swift"; sourceTree = "<group>"; };
 		CF880FEE1DDB85F400954D4E /* GeometricCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometricCircle.swift; sourceTree = "<group>"; };
+		CF88969E21E13334007A0F1C /* OpenInLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenInLibrary.swift; sourceTree = "<group>"; };
 		CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-OpenAll.swift"; sourceTree = "<group>"; };
 		CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadNumbering.swift"; sourceTree = "<group>"; };
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
@@ -1929,6 +1932,7 @@
 				CFA085E921A17A6B00DFD00B /* Info-Release.plist */,
 				CF861AA21B3F04460006BE63 /* library-utilities.swift */,
 				CF6172591B3C4B4300F3CA82 /* MainMenu.xib */,
+				CF88969E21E13334007A0F1C /* OpenInLibrary.swift */,
 				CF61726C1B3C4C4F00F3CA82 /* Preferences.swift */,
 				CF861AAA1B3F0AEF0006BE63 /* Preferences+setupForLibrary.swift */,
 				CFF2651D20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift */,
@@ -2691,6 +2695,7 @@
 				CFDCA18521AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
 				CF00843D21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
 				CF85859221C5124300082CE3 /* entity-PackageArc.swift in Sources */,
+				CF88969F21E13334007A0F1C /* OpenInLibrary.swift in Sources */,
 				CFC129231B44887700B1866D /* file-metadata-dictionary.swift in Sources */,
 				CF7C30E621CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */,
 				CF30637920E7EE1B0099182C /* action-MergerDocument-updateBoardModelAction.swift in Sources */,
@@ -3134,6 +3139,7 @@
 				CFDCA18621AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
 				CF00843E21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
 				CF85859321C5124300082CE3 /* entity-PackageArc.swift in Sources */,
+				CF8896A021E13334007A0F1C /* OpenInLibrary.swift in Sources */,
 				CF5C4CDD219F04D600EAC52A /* file-metadata-dictionary.swift in Sources */,
 				CF7C30E721CCCA9E00EFFDCA /* PackageDocument-pad-numbering.swift in Sources */,
 				CF5C4CDE219F04D600EAC52A /* action-MergerDocument-updateBoardModelAction.swift in Sources */,
