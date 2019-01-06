@@ -168,10 +168,10 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   fileprivate func imageForAddTextButton () ->  NSImage? {
     let r = NSRect (x: 0.0, y: 0.0, width: 20.0, height: 20.0)
     let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont (name: "Cambria", size: 20.0)!,
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: 18.0),
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
-    let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 1.0), textAttributes, .center, .center)
+    let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 3.0), textAttributes, .center, .center)
     let imagePDFData = buildPDFimage (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
@@ -190,10 +190,10 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let shape = EBShape ()
     shape.append (EBFilledBezierPathShape ([NSBezierPath (ovalIn: circle)], g_Preferences?.symbolColor ?? NSColor.black))
     let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 12.0)!,
+      NSAttributedString.Key.font : NSFont.systemFont (ofSize: 12.0),
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
-    shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY), textAttributes, .left, .center))
+    shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY - 1.0), textAttributes, .left, .center))
     let imagePDFData = buildPDFimage (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
