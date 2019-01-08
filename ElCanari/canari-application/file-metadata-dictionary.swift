@@ -98,8 +98,7 @@ private func readAutosizedData (_ inFileHandle : FileHandle) -> Data {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
-func metadataForFileAtPath (_ inFilePath : String,
-                            status: inout StatusInMetadata) throws -> NSDictionary {
+func metadataForFileAtPath (_ inFilePath : String) throws -> (StatusInMetadata, NSDictionary) {
 //--- Open file
   let f = try FileHandle (forReadingFrom: (URL (fileURLWithPath: inFilePath)))
 //--- Read format string
@@ -115,10 +114,11 @@ func metadataForFileAtPath (_ inFilePath : String,
     }
   }
 //--- Read status
-  let byteStatus : StatusInMetadata? = StatusInMetadata (rawValue:readByte (f))
-  if let unwStatus = byteStatus {
-    status = unwStatus
+  let status : StatusInMetadata
+  if let s = StatusInMetadata (rawValue:readByte (f)) {
+    status = s
   }else{
+    status = .metadataStatusUnknown
     f.closeFile ()
     throw badFormatErrorForFileAtPath (inFilePath, code:#line)
   }
@@ -145,7 +145,7 @@ func metadataForFileAtPath (_ inFilePath : String,
 //---
   f.closeFile ()
 //---
-  return metadataDictionary
+  return (status, metadataDictionary)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

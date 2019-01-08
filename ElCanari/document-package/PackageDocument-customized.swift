@@ -17,10 +17,16 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   //····················································································································
 
+  override func metadataStatusForSaving () -> UInt8 {
+    return UInt8 (self.mMetadataStatus!.rawValue)
+  }
+
+  //····················································································································
+
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
      metadataDictionary.setObject (NSNumber (value:version), forKey: PMPackageVersion as NSCopying)
      metadataDictionary.setObject (rootObject.comments, forKey: PMPackageComment as NSCopying)
-     metadataDictionary.setObject (NSNumber (value: self.mMetadataStatus!.rawValue), forKey: STATUS_METADATA_KEY as NSCopying)
+//     metadataDictionary.setObject (NSNumber (value: self.mMetadataStatus!.rawValue), forKey: STATUS_METADATA_KEY as NSCopying)
   }
 
   //····················································································································

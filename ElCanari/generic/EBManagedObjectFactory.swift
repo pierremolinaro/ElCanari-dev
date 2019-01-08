@@ -71,7 +71,7 @@ func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDict
 //     loadEasyBindingFile
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingFile (_ inUndoManager : EBUndoManager, from data: Data) throws -> (UInt8, NSDictionary, EBManagedObject?) {
+func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) throws -> (UInt8, NSDictionary, EBManagedObject?) {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data:data)
 //--- Check Signature
@@ -131,7 +131,7 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager, from data: Data) thro
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager, inData : Data) throws -> EBManagedObject? {
+fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
   let v : Any = try PropertyListSerialization.propertyList (from: inData as Data,
     options:[],
