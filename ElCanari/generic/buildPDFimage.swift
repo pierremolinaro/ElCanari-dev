@@ -5,16 +5,26 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Build PDF image data
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func buildPDFimageData (frame inFrame : CGRect,
+                        shape inShape : EBShape,
+                        backgroundColor inBackColor : NSColor? = nil) -> Data {
+  let view = EBOffscreenView (frame: inFrame)
+  view.setBackColor (inBackColor)
+  view.setShape (inShape)
+  return view.dataWithPDF (inside: inFrame)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Build PDF image
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func buildPDFimage (frame inFrame : CGRect,
                     shape inShape : EBShape,
-                    backgroundColor inBackColor : NSColor? = nil) -> Data {
-  let view = EBOffscreenView (frame: inFrame)
-  view.setBackColor (inBackColor)
-  view.setShape (inShape)
-  return view.dataWithPDF (inside: inFrame)
+                    backgroundColor inBackColor : NSColor? = nil) -> NSImage? {
+  return NSImage (data: buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,13 +76,12 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   //  Draw Rect
   //····················································································································
 
-  override func draw (_ inDirtyRect: NSRect) {
-    if let backColor = mBackColor {
+  override func draw (_ inDirtyRect : NSRect) {
+    if let backColor = self.mBackColor {
       backColor.setFill ()
-      NSBezierPath.fill (inDirtyRect)
+      NSBezierPath.fill (self.frame)
     }
-  //--- Bezier paths
-    self.mShape.draw (self, inDirtyRect)
+    self.mShape.draw (self, self.frame)
   }
 
   //····················································································································

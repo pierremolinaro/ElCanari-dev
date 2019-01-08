@@ -36,7 +36,7 @@ class EBKnobShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBKnobShape {
     let p = inAffineTransform.transform (self.mPoint)
     let result = EBKnobShape (at: p, index: self.mIndex, self.mKind)
     self.internalTransform (result, by: inAffineTransform)
@@ -48,15 +48,20 @@ class EBKnobShape : EBShape {
   //····················································································································
 
   fileprivate var rect : NSRect {
-    return NSRect (x: mPoint.x - mKnobSize / 2.0, y: mPoint.y - mKnobSize / 2.0, width: mKnobSize, height: mKnobSize)
+    return NSRect (
+      x: self.mPoint.x - self.mKnobSize / 2.0,
+      y: self.mPoint.y - self.mKnobSize / 2.0,
+      width:  self.mKnobSize,
+      height: self.mKnobSize
+    )
   }
 
   //····················································································································
   // boundingBox (used for invalidating drawings)
   //····················································································································
 
-  override internal var internalBoundingBox : NSRect {
-    return self.rect // .insetBy (dx: -1.0, dy: -1.0)
+  override internal func internalBoundingBox () -> NSRect {
+    return self.rect
   }
 
   //····················································································································
@@ -127,6 +132,12 @@ class EBKnobShape : EBShape {
     if let operand = inOperand as? EBKnobShape {
       equal = self.mPoint == operand.mPoint
       if equal {
+        equal = self.mIndex == operand.mIndex
+      }
+      if equal {
+        equal = self.mKind == operand.mKind
+      }
+      if equal {
         equal = super.isEqualToShape (operand)
       }
     }
@@ -144,6 +155,8 @@ class EBKnobShape : EBShape {
     super.hash (into: &hasher)
     self.mPoint.x.hash (into: &hasher)
     self.mPoint.y.hash (into: &hasher)
+    self.mIndex.hash (into: &hasher)
+    self.mKind.hash (into: &hasher)
   }
 
   //····················································································································

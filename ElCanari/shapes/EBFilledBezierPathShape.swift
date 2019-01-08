@@ -26,7 +26,7 @@ class EBFilledBezierPathShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBFilledBezierPathShape {
     var paths = [NSBezierPath] ()
     for path in self.mFilledPaths {
       let bp = inAffineTransform.transform (path)
@@ -55,7 +55,7 @@ class EBFilledBezierPathShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override internal var internalBoundingBox : NSRect {
+  override internal func internalBoundingBox () -> NSRect {
     var r = NSRect.null
     for bp in self.mFilledPaths {
       if !bp.isEmpty {

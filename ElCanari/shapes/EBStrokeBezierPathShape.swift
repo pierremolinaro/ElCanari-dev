@@ -9,7 +9,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBStrokeBezierPathShape : EBShape {
-  private var mPaths : [NSBezierPath]
+  private var mFilledPaths : [NSBezierPath]
   private let mColor : NSColor
 
   //····················································································································
@@ -17,19 +17,19 @@ class EBStrokeBezierPathShape : EBShape {
   //····················································································································
 
   init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mPaths = []
+    mFilledPaths = []
     mColor = inColor
     super.init ()
     for path in inPaths {
       let cgPath = path.pathByStroking
-      self.mPaths.append (cgPath.bezierPath)
+      self.mFilledPaths.append (cgPath.bezierPath)
     }
   }
 
   //····················································································································
 
-  private init (transformedPaths inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mPaths = inPaths
+  private init (transformedPaths inFilledPaths: [NSBezierPath], _ inColor: NSColor) {
+    mFilledPaths = inFilledPaths
     mColor = inColor
     super.init ()
   }
@@ -38,13 +38,13 @@ class EBStrokeBezierPathShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
-    var paths = [NSBezierPath] ()
-    for path in self.mPaths {
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBStrokeBezierPathShape {
+    var filledPaths = [NSBezierPath] ()
+    for path in self.mFilledPaths {
       let bp = inAffineTransform.transform (path)
-      paths.append (bp)
+      filledPaths.append (bp)
     }
-    let result = EBStrokeBezierPathShape (transformedPaths: paths, self.mColor)
+    let result = EBStrokeBezierPathShape (transformedPaths: filledPaths, self.mColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
   }
@@ -56,7 +56,7 @@ class EBStrokeBezierPathShape : EBShape {
   override func draw (_ inView : NSView, _ inDirtyRect: NSRect) {
     super.draw (inView, inDirtyRect)
     self.mColor.setFill ()
-    for bp in self.mPaths {
+    for bp in self.mFilledPaths {
       if !bp.isEmpty && inView.needsToDraw (bp.bounds) {
         bp.fill ()
       }
@@ -67,9 +67,9 @@ class EBStrokeBezierPathShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override internal var internalBoundingBox : NSRect {
+  override internal func internalBoundingBox () -> NSRect {
     var r = NSRect.null
-    for bp in self.mPaths {
+    for bp in self.mFilledPaths {
       if !bp.isEmpty {
         r = r.union (bp.bounds)
       }
@@ -84,8 +84,8 @@ class EBStrokeBezierPathShape : EBShape {
   override func contains (point inPoint : NSPoint) -> Bool {
     var result = super.contains (point: inPoint)
     var idx = 0
-    while (idx < self.mPaths.count) && !result {
-      result = self.mPaths [idx].contains (inPoint)
+    while (idx < self.mFilledPaths.count) && !result {
+      result = self.mFilledPaths [idx].contains (inPoint)
       idx += 1
     }
     return result
@@ -98,8 +98,8 @@ class EBStrokeBezierPathShape : EBShape {
   override func intersects (rect inRect : NSRect) -> Bool {
     var result = super.intersects (rect: inRect)
     var idx = 0
-    while (idx < self.mPaths.count) && !result {
-      result = inRect.intersectsFilledBezierPath (self.mPaths [idx])
+    while (idx < self.mFilledPaths.count) && !result {
+      result = inRect.intersectsFilledBezierPath (self.mFilledPaths [idx])
       idx += 1
     }
     return result
@@ -112,7 +112,7 @@ class EBStrokeBezierPathShape : EBShape {
   override func isEqualToShape (_ inOperand : EBShape) -> Bool {
     var equal = false
     if let operand = inOperand as? EBStrokeBezierPathShape {
-      equal = self.mPaths.count == operand.mPaths.count
+      equal = self.mFilledPaths.count == operand.mFilledPaths.count
       if equal {
         equal = self.mColor == operand.mColor
       }
@@ -120,8 +120,8 @@ class EBStrokeBezierPathShape : EBShape {
         equal = super.isEqualToShape (operand)
       }
       var idx = 0
-      while (idx < self.mPaths.count) && equal {
-        equal = self.mPaths [idx] == operand.mPaths [idx]
+      while (idx < self.mFilledPaths.count) && equal {
+        equal = self.mFilledPaths [idx] == operand.mFilledPaths [idx]
         idx += 1
       }
     }
@@ -138,10 +138,11 @@ class EBStrokeBezierPathShape : EBShape {
   override func hash (into hasher: inout Hasher) {
     super.hash (into: &hasher)
     self.mColor.hash (into: &hasher)
-    for path in self.mPaths {
+    for path in self.mFilledPaths {
       path.hash (into: &hasher)
     }
   }
+
   //····················································································································
 
 }

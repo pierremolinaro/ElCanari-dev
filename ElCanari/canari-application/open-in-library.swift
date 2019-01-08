@@ -16,7 +16,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
   //   Dialog
   //····················································································································
 
-  internal func openInLibrary (backColor : NSColor) {
+  internal func openInLibrary () {
   //--- Configure
     self.mFullPathTextField?.stringValue = ""
     self.mStatusTextField?.stringValue = ""
@@ -25,10 +25,8 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     self.mOpenButton?.target = self
     self.mOpenButton?.action = #selector (OpenInLibrary.openAction (_:))
     self.mOpenButton?.isEnabled = false
-    if let partView = self.mPartView {
-      partView.mBackColor = backColor
-      partView.set (minimumRectangle: .null)
-    }
+    self.mPartImage?.image = nil
+    self.mNoSelectedPartTextField?.isHidden = false
     self.mOutlineView?.dataSource = self
     self.mOutlineView?.delegate = self
     self.buildDataSource ()
@@ -47,8 +45,8 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
   @IBOutlet private var mOutlineView : NSOutlineView?
   @IBOutlet private var mFullPathTextField : NSTextField?
   @IBOutlet private var mStatusTextField : NSTextField?
-  @IBOutlet private var mPartView : EBView?
-  @IBOutlet private var mPartScrollView : NSScrollView?
+  @IBOutlet private var mPartImage : NSImageView?
+  @IBOutlet private var mNoSelectedPartTextField : NSTextField?
 
   //····················································································································
 
@@ -57,7 +55,6 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     self.mDialog?.orderOut (nil)
     self.mOutlineViewDataSource = []
     self.mOutlineView?.reloadData ()
-    self.mPartView?.updateObjectDisplay ([])
   }
 
   //····················································································································
@@ -74,7 +71,6 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     }
     self.mOutlineViewDataSource = []
     self.mOutlineView?.reloadData ()
-    self.mPartView?.updateObjectDisplay ([])
   }
 
   //····················································································································
@@ -143,22 +139,13 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
       self.mFullPathTextField?.stringValue = selectedItem.mFullPath
       self.mStatusTextField?.stringValue = selectedItem.statusString ()
       self.mOpenButton?.isEnabled = selectedItem.mFullPath != ""
-      self.mPartView?.updateObjectDisplay (selectedItem.shape)
-      var box = selectedItem.shape.boundingBox
-      if !box.isEmpty, let scrollView = self.mPartScrollView {
-        box = box.union (NSRect ())
-        let maxXmagnification = scrollView.frame.width  / box.width
-        let maxYmagnification = scrollView.frame.height / box.height
-        self.mPartScrollView?.magnification = min (maxXmagnification, maxYmagnification)
-      }else{
-        self.mPartScrollView?.magnification = 1.0
-      }
+      self.mNoSelectedPartTextField?.isHidden = selectedItem.mFullPath != ""
+      self.mPartImage?.image = selectedItem.image
     }else{
       self.mFullPathTextField?.stringValue = ""
       self.mStatusTextField?.stringValue = ""
       self.mOpenButton?.isEnabled = false
-      self.mPartView?.updateObjectDisplay ([])
-      self.mPartScrollView?.magnification = 1.0
+      self.mPartImage?.image = nil
     }
   }
 
@@ -176,7 +163,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
   //····················································································································
 
   internal func buildOutlineViewDataSource (extension inFileExtension : String,
-                                            _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
+                                            _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
     do{
       let fm = FileManager ()
     //--- Build part dictionary
@@ -229,7 +216,7 @@ fileprivate func enterPart (_ ioPartArray : inout [LibraryDialogItem],
                             _ inPathAsArray : [String],
                             _ inFullpath : String,
                             _ inIsDuplicated : Bool,
-        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
+        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
   if inPathAsArray.count == 1 {
     ioPartArray.append (LibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inBuildPreviewShapeFunction))
   }else{
@@ -276,15 +263,16 @@ fileprivate class LibraryDialogItem : EBObject {
   let mIsDuplicated : Bool
   let mFullPath : String
   private var mPartStatus : MetadataStatus? = nil
-  private var mObjectDisplay = [EBShape] ()
-  private var mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> [EBShape]
+  private var mObjectImage : NSImage? = nil
+  private var mObjectImageComputed = false
+  private var mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
 
   //····················································································································
 
   init (_ inPartName : String,
         _ inFullPath : String,
         _ inIsDuplicated : Bool,
-        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
+        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> NSImage?) {
     mPartName = inPartName
     mFullPath = inFullPath
     mIsDuplicated = inIsDuplicated
@@ -336,7 +324,13 @@ fileprivate class LibraryDialogItem : EBObject {
 
   //····················································································································
 
-  var shape : [EBShape] { return self.mObjectDisplay }
+  var image : NSImage? {
+    if !self.mObjectImageComputed {
+      self.mObjectImageComputed = true
+      self.mObjectImage = self.buildImage ()
+    }
+    return self.mObjectImage
+  }
 
   //····················································································································
 
@@ -345,30 +339,27 @@ fileprivate class LibraryDialogItem : EBObject {
     if let s = self.mPartStatus {
       status = s
     }else if self.mFullPath != "" {
-      let fm = FileManager ()
-      if let data = fm.contents (atPath: self.mFullPath) {
-        do{
-          let (metadataStatus, _, rootObject) = try loadEasyBindingFile (nil, from: data)
-          if let s = MetadataStatus (rawValue: Int (metadataStatus)) {
-            status = s
-          }
-//          if let symbolRoot = rootObject as? SymbolRoot {
-//            var symbolShape = [EBShape] ()
-//            for object in symbolRoot.symbolObjects_property.propval {
-//              if let shape = object.objectDisplay {
-//                symbolShape.append (shape)
-//              }
-//            }
-            self.mObjectDisplay = self.mBuildPreviewShapeFunction (rootObject)
-//          }
-        }catch let error {
-          let alert = NSAlert (error: error)
-          _ = alert.runModal ()
-        }
-      }
+      (status, _) = try! metadataForFileAtPath (self.mFullPath)
     }
     self.mPartStatus = status
     return status
+  }
+
+  //····················································································································
+
+  private func buildImage () -> NSImage? {
+    var image : NSImage? = nil
+    let fm = FileManager ()
+    if let data = fm.contents (atPath: self.mFullPath) {
+      do{
+        let (_, _, rootObject) = try loadEasyBindingFile (nil, from: data)
+        image = self.mBuildPreviewShapeFunction (rootObject)
+      }catch let error {
+        let alert = NSAlert (error: error)
+        _ = alert.runModal ()
+      }
+    }
+    return image
   }
 
   //····················································································································

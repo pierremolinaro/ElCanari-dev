@@ -182,13 +182,13 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
   }else{
     var partStatus : PartStatus
     switch metadataStatus {
-    case .metadataStatusUnknown :
+    case .unknown :
       partStatus = .pmPartHasUnknownStatus
-    case .metadataStatusSuccess :
+    case .ok :
       partStatus = partNameIsValid (deviceName) ? .pmPartIsValid : .pmPartHasInvalidName
-    case .metadataStatusWarning :
+    case .warning :
       partStatus = .pmPartHasWarning
-    case .metadataStatusError   :
+    case .error :
       partStatus = .pmPartHasError
     }
     let newEntry = PMDeviceDictionaryEntry (
@@ -385,13 +385,13 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
   }else{
     var partStatus : PartStatus
     switch metadataStatus {
-    case .metadataStatusUnknown :
+    case .unknown :
       partStatus = .pmPartHasUnknownStatus
-    case .metadataStatusSuccess :
+    case .ok :
       partStatus = partNameIsValid (symbolName) ? .pmPartIsValid : .pmPartHasInvalidName
-    case .metadataStatusWarning :
+    case .warning :
       partStatus = .pmPartHasWarning
-    case .metadataStatusError   :
+    case .error :
       partStatus = .pmPartHasError
     }
     let newEntry = PMSymbolDictionaryEntry (status:partStatus,
@@ -531,13 +531,13 @@ private func checkPackageLibraryCheckAtPath (_ packageFullPath : String,
   }else{
     var partStatus : PartStatus
     switch metadataStatus {
-    case .metadataStatusUnknown :
+    case .unknown :
       partStatus = .pmPartHasUnknownStatus
-    case .metadataStatusSuccess :
+    case .ok :
       partStatus = partNameIsValid (packageName) ? .pmPartIsValid : .pmPartHasInvalidName
-    case .metadataStatusWarning :
+    case .warning :
       partStatus = .pmPartHasWarning
-    case .metadataStatusError   :
+    case .error :
       partStatus = .pmPartHasError
     }
     let newEntry = PMPackageDictionaryEntry (status:partStatus,

@@ -570,7 +570,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
           shape.append (s)
         }
       }
-      let pdfData = buildPDFimage (frame: shape.boundingBox, shape: shape)
+      let pdfData = buildPDFimageData (frame: shape.boundingBox, shape: shape)
       pb.setData (pdfData, forType: .pdf)
    //--- Build private representation
       var objectDictionaryArray = [NSDictionary] ()

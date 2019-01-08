@@ -22,10 +22,10 @@
                 <outlet property="mCancelButton" destination="DcW-ew-epj" id="Oq8-aA-Rhz"/>
                 <outlet property="mDialog" destination="qM1-Dc-ODN" id="NPb-bv-BQg"/>
                 <outlet property="mFullPathTextField" destination="VKE-on-aP0" id="yNh-Ie-YgC"/>
+                <outlet property="mNoSelectedPartTextField" destination="jaK-Qw-uoc" id="hmb-JL-yjV"/>
                 <outlet property="mOpenButton" destination="Jdw-ec-XjP" id="lBk-GB-kuj"/>
                 <outlet property="mOutlineView" destination="ziq-cw-Pvk" id="vLS-7z-mXX"/>
-                <outlet property="mPartScrollView" destination="u63-0Y-yza" id="Q9t-VL-Vcn"/>
-                <outlet property="mPartView" destination="tKp-Yi-5ak" id="WK9-cU-PRq"/>
+                <outlet property="mPartImage" destination="sCo-vD-SzL" id="rmr-f4-kPL"/>
                 <outlet property="mStatusTextField" destination="Rdu-hI-pKj" id="DTT-iH-FY1"/>
             </connections>
         </customObject>
@@ -1968,7 +1968,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2697,41 +2697,33 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="u63-0Y-yza">
-                        <rect key="frame" x="429" y="100" width="351" height="481"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="sCo-vD-SzL">
+                        <rect key="frame" x="429" y="102" width="351" height="478"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" id="hhZ-Um-fR1">
-                            <rect key="frame" x="1" y="1" width="349" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <customView id="tKp-Yi-5ak" customClass="EBView">
-                                    <rect key="frame" x="8" y="0.0" width="341" height="479"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                </customView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="rAy-gF-Crf">
-                            <rect key="frame" x="1" y="465" width="340" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="QSC-ho-ceB">
-                            <rect key="frame" x="326" y="1" width="15" height="478"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Fyw-BL-v8D"/>
+                    </imageView>
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="jaK-Qw-uoc" customClass="EBTextField">
+                        <rect key="frame" x="427" y="326" width="355" height="29"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Symbol" id="6D4-K2-T6V">
+                            <font key="font" metaFont="systemBold" size="24"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-1246" y="-534"/>
+            <point key="canvasLocation" x="-1237" y="-619"/>
         </window>
         <customObject id="exs-Wo-kDc" customClass="OpenPackageInLibrary" customModule="ElCanari" customModuleProvider="target">
             <connections>
                 <outlet property="mCancelButton" destination="zte-B8-bQN" id="Jwx-Ad-UAh"/>
                 <outlet property="mDialog" destination="Fh6-r4-ISs" id="2ix-ly-Gbv"/>
                 <outlet property="mFullPathTextField" destination="uxg-Ec-L8o" id="gu1-WR-4ma"/>
+                <outlet property="mNoSelectedPartTextField" destination="A5R-iJ-xsq" id="CUU-zY-pSO"/>
                 <outlet property="mOpenButton" destination="wpc-LL-uG9" id="MH3-6u-54X"/>
                 <outlet property="mOutlineView" destination="vto-E6-Seb" id="cOQ-hj-lFZ"/>
-                <outlet property="mPartScrollView" destination="hfx-2p-Zln" id="S6S-Pk-RLT"/>
-                <outlet property="mPartView" destination="vSm-qq-dnu" id="QTr-qn-Hep"/>
+                <outlet property="mPartImage" destination="d1w-GF-d42" id="2MO-ts-s1J"/>
                 <outlet property="mStatusTextField" destination="Cmy-7C-4nl" id="bpv-Oc-0mM"/>
             </connections>
         </customObject>
@@ -2748,7 +2740,7 @@ Gw
                         <rect key="frame" x="20" y="100" width="384" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="hey-tH-UWa">
-                            <rect key="frame" x="1" y="23" width="382" height="456"/>
+                            <rect key="frame" x="1" y="0.0" width="382" height="479"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="ZeF-tu-w6t" viewBased="YES" indentationPerLevel="16" outlineTableColumn="fTc-Qq-vjb" id="vto-E6-Seb">
@@ -2891,28 +2883,20 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="hfx-2p-Zln">
-                        <rect key="frame" x="429" y="100" width="351" height="481"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d1w-GF-d42">
+                        <rect key="frame" x="429" y="102" width="351" height="478"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" id="PPm-Jh-Lnm">
-                            <rect key="frame" x="1" y="1" width="349" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <customView id="vSm-qq-dnu" customClass="EBView">
-                                    <rect key="frame" x="8" y="0.0" width="341" height="479"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
-                                </customView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Bc7-7J-QN6">
-                            <rect key="frame" x="1" y="465" width="340" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="L7G-Ki-ngB">
-                            <rect key="frame" x="326" y="1" width="15" height="478"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="ErB-8n-oqv"/>
+                    </imageView>
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="A5R-iJ-xsq" customClass="EBTextField">
+                        <rect key="frame" x="427" y="326" width="355" height="29"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="No Selected Package" id="SsN-rB-82x">
+                            <font key="font" metaFont="systemBold" size="24"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-1343" y="-600"/>

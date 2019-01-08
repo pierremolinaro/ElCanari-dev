@@ -19,24 +19,23 @@ class OpenPackageInLibrary : OpenInLibrary {
   //····················································································································
 
   @objc @IBAction func openPackageInLibrary (_ inSender : Any?) {
-    self.openInLibrary (backColor: g_Preferences!.packageBackgroundColor)
+    self.openInLibrary ()
   }
 
   //····················································································································
 
   override func buildDataSource () {
-    self.buildOutlineViewDataSource (extension: "ElCanariPackage", { (_ inRootObject : EBManagedObject?) -> [EBShape] in
-      if let symbolRoot = inRootObject as? PackageRoot {
-        var symbolShape = [EBShape] ()
-        for object in symbolRoot.packageObjects_property.propval {
+    self.buildOutlineViewDataSource (extension: "ElCanariPackage", { (_ inRootObject : EBManagedObject?) -> NSImage? in
+      let partShape = EBShape ()
+      if let root = inRootObject as? PackageRoot {
+        for object in root.packageObjects_property.propval {
           if !(object is PackageGuide), !(object is PackageDimension), let shape = object.objectDisplay {
-            symbolShape.append (shape)
+            partShape.append (shape)
           }
         }
-        return symbolShape
-      }else{
-        return []
       }
+      let box = partShape.boundingBox
+      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.packageBackgroundColor)
     })
   }
 

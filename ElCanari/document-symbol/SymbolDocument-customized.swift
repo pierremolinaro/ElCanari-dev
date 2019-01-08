@@ -178,7 +178,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
     let shape = EBTextShape ("T", CGPoint (x: r.midX, y: r.midY - 3.0), textAttributes, .center, .center)
-    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
 
@@ -200,7 +200,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
       NSAttributedString.Key.foregroundColor : g_Preferences?.symbolColor ?? NSColor.black
     ]
     shape.append (EBTextShape ("#", CGPoint (x: r.minX + 2.0, y: r.midY - 1.0), textAttributes, .left, .center))
-    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
 

@@ -19,24 +19,23 @@ class OpenSymbolInLibrary : OpenInLibrary {
   //····················································································································
 
   @objc @IBAction func openSymbolInLibrary (_ inSender : Any?) {
-    self.openInLibrary (backColor: g_Preferences!.symbolBackgroundColor)
+    self.openInLibrary ()
   }
 
   //····················································································································
 
   override func buildDataSource () {
-    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", { (_ inRootObject : EBManagedObject?) -> [EBShape] in
-      if let symbolRoot = inRootObject as? SymbolRoot {
-        var symbolShape = [EBShape] ()
-        for object in symbolRoot.symbolObjects_property.propval {
+    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", { (_ inRootObject : EBManagedObject?) -> NSImage? in
+      let partShape = EBShape ()
+      if let root = inRootObject as? SymbolRoot {
+        for object in root.symbolObjects_property.propval {
           if let shape = object.objectDisplay {
-            symbolShape.append (shape)
+            partShape.append (shape)
           }
         }
-        return symbolShape
-      }else{
-        return []
       }
+      let box = partShape.boundingBox
+      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
     })
   }
 

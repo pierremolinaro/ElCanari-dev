@@ -79,7 +79,7 @@ extension EBView : NSDraggingSource {
     let finalShape = displayShape.transformedBy (transform)
   //--- Build image
     let rect = finalShape.boundingBox
-    let image = NSImage (data: buildPDFimage (frame: rect, shape: finalShape))
+    let image = buildPDFimage (frame: rect, shape: finalShape)
   //--- Move image rect origin to mouse click location
     let draggingFrame = NSRect (
       x: displayShape.boundingBox.minX,

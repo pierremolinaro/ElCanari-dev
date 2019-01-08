@@ -62,7 +62,7 @@ class EBTextKnobShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBTextKnobShape {
     let result = EBTextKnobShape (inAffineTransform.transform (self.mFilledBezierPath), self.mIndex)
     self.internalTransform (result, by: inAffineTransform)
     return result
@@ -107,7 +107,7 @@ class EBTextKnobShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override internal var internalBoundingBox : NSRect {
+  override internal func internalBoundingBox () -> NSRect {
     return self.knobRect
   }
 

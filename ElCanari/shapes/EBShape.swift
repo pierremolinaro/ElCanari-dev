@@ -23,7 +23,6 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init () {
     mShapes = []
-    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -31,7 +30,6 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init (shape inShape : EBShape) {
     mShapes = [inShape]
-    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -39,7 +37,6 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   init (shapes inShapes : [EBShape]) {
     mShapes = inShapes
-    mCachedBoundingBox = nil
     noteObjectAllocation (self)
   }
 
@@ -55,14 +52,14 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   //  append
   //····················································································································
 
-  func append (_ inShape : EBShape) {
+  final func append (_ inShape : EBShape) {
     self.mShapes.append (inShape)
     self.mCachedBoundingBox = nil
   }
 
   //····················································································································
 
-  func append (_ inShapes : [EBShape]) {
+  final func append (_ inShapes : [EBShape]) {
     self.mShapes += inShapes
     self.mCachedBoundingBox = nil
   }
@@ -102,10 +99,10 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   //····················································································································
 
   final var boundingBox : NSRect {
-    if let cbb = self.mCachedBoundingBox {
-      return cbb
+    if let cachedBoundingBox = self.mCachedBoundingBox {
+      return cachedBoundingBox
     }else{
-      var r = self.internalBoundingBox
+      var r = self.internalBoundingBox ()
       for shape in self.mShapes {
         r = r.union (shape.boundingBox)
       }
@@ -116,7 +113,9 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
 
   //····················································································································
 
-  internal var internalBoundingBox : NSRect { return .null }
+  internal func internalBoundingBox () -> NSRect {
+    return .null
+  }
 
   //····················································································································
   //   intersects

@@ -12,13 +12,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-enum StatusInMetadata : UInt8 {
-  case metadataStatusUnknown = 0
-  case metadataStatusSuccess = 1
-  case metadataStatusWarning = 2
-  case metadataStatusError   = 3
-}
+//enum StatusInMetadata : UInt8 {
+//  case unknown = 0
+//  case ok = 1
+//  case warning = 2
+//  case error = 3
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -89,7 +88,6 @@ private func readAutosizedUnsignedInteger (_ inFileHandle : FileHandle) -> UInt 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
 private func readAutosizedData (_ inFileHandle : FileHandle) -> Data {
   let dataLength = readAutosizedUnsignedInteger (inFileHandle)
   return inFileHandle.readData (ofLength: Int (dataLength))
@@ -97,8 +95,7 @@ private func readAutosizedData (_ inFileHandle : FileHandle) -> Data {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
-func metadataForFileAtPath (_ inFilePath : String) throws -> (StatusInMetadata, NSDictionary) {
+func metadataForFileAtPath (_ inFilePath : String) throws -> (MetadataStatus, NSDictionary) {
 //--- Open file
   let f = try FileHandle (forReadingFrom: (URL (fileURLWithPath: inFilePath)))
 //--- Read format string
@@ -114,11 +111,11 @@ func metadataForFileAtPath (_ inFilePath : String) throws -> (StatusInMetadata, 
     }
   }
 //--- Read status
-  let status : StatusInMetadata
-  if let s = StatusInMetadata (rawValue:readByte (f)) {
+  let status : MetadataStatus
+  if let s = MetadataStatus (rawValue: Int (readByte (f))) {
     status = s
   }else{
-    status = .metadataStatusUnknown
+    status = .unknown
     f.closeFile ()
     throw badFormatErrorForFileAtPath (inFilePath, code:#line)
   }

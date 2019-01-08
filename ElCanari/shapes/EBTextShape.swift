@@ -88,7 +88,7 @@ class EBTextShape : EBShape {
   //  transformedBy
   //····················································································································
 
-  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBShape {
+  override func transformedBy (_ inAffineTransform : NSAffineTransform) -> EBTextShape {
     let result = EBTextShape (inAffineTransform.transform (self.mFilledBezierPath), self.mForeColor, self.mBackColor)
     self.internalTransform (result, by: inAffineTransform)
     return result
@@ -114,8 +114,8 @@ class EBTextShape : EBShape {
   // boundingBox
   //····················································································································
 
-  override internal var internalBoundingBox : NSRect {
-    return self.mFilledBezierPath.bounds
+  override internal func internalBoundingBox () -> NSRect {
+    return self.mFilledBezierPath.isEmpty ? .null : self.mFilledBezierPath.bounds
   }
 
   //····················································································································

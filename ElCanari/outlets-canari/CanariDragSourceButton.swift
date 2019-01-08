@@ -59,9 +59,7 @@ import Cocoa
       let displayShape = temporaryObject.objectDisplay!
       let rect = displayShape.boundingBox
       if !rect.isEmpty {
-        let imagePDFData = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
-        let image = NSImage (data: imagePDFData)
-        self.image = image
+        self.image = buildPDFimage (frame: rect.insetBy (dx: -3.0, dy: -3.0), shape: displayShape)
       }
     }
   }
@@ -90,8 +88,7 @@ import Cocoa
         transform.scaleX (by: scale * horizontalFlip, yBy: scale * verticalFlip)
         let displayShape = temporaryObject.objectDisplay!.transformedBy (transform)
         let rect = displayShape.boundingBox
-        let imagePDFData = buildPDFimage (frame: rect, shape: displayShape)
-        let image = NSImage (data: imagePDFData)
+        let image = buildPDFimage (frame: rect, shape: displayShape)
       //--- Move image rect origin to mouse click location
         let mouseDownLocation = self.convert (inEvent.locationInWindow, from:nil)
         var r = rect

@@ -218,7 +218,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     bp2.lineWidth = 1.5
     bp2.lineCapStyle = .round
     shape.append (EBStrokeBezierPathShape ([bp2], NSColor.yellow))
-    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
 
@@ -248,7 +248,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     bp1.appendOval (in: r.insetBy (dx: 17.0, dy: 17.0))
     bp1.windingRule = .evenOdd
     let shape = EBFilledBezierPathShape ([bp1], g_Preferences!.topSidePadColor)
-    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
 
@@ -271,7 +271,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     shape.append (EBTextShape ("(", NSPoint (x : 2.0, y: 17.0), textAttributes, .left, .center))
     shape.append (EBTextShape (")", NSPoint (x :38.0, y: 17.0), textAttributes, .right, .center))
  //---
-    let imagePDFData = buildPDFimage (frame: r, shape: shape)
+    let imagePDFData = buildPDFimageData (frame: r, shape: shape)
     return NSImage (data: imagePDFData)
   }
 
