@@ -13,6 +13,33 @@ import Cocoa
 class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   //····················································································································
+  //   Dialog
+  //····················································································································
+
+  internal func openInLibrary (backColor : NSColor) {
+  //--- Configure
+    self.mFullPathTextField?.stringValue = ""
+    self.mStatusTextField?.stringValue = ""
+    self.mCancelButton?.target = self
+    self.mCancelButton?.action = #selector (OpenInLibrary.cancelAction (_:))
+    self.mOpenButton?.target = self
+    self.mOpenButton?.action = #selector (OpenInLibrary.openAction (_:))
+    self.mOpenButton?.isEnabled = false
+    if let partView = self.mPartView {
+      partView.mBackColor = backColor
+      partView.set (minimumRectangle: .null)
+    }
+    self.mOutlineView?.dataSource = self
+    self.mOutlineView?.delegate = self
+    self.buildDataSource ()
+    self.mOutlineView?.reloadData ()
+  //--- Dialog
+    if let dialog = self.mDialog {
+      _ = NSApp.runModal (for: dialog)
+    }
+  }
+
+  //····················································································································
 
   @IBOutlet private var mDialog : NSWindow?
   @IBOutlet private var mOpenButton : NSButton?
@@ -21,6 +48,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
   @IBOutlet private var mFullPathTextField : NSTextField?
   @IBOutlet private var mStatusTextField : NSTextField?
   @IBOutlet private var mPartView : EBView?
+  @IBOutlet private var mPartScrollView : NSScrollView?
 
   //····················································································································
 
@@ -116,56 +144,48 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
       self.mStatusTextField?.stringValue = selectedItem.statusString ()
       self.mOpenButton?.isEnabled = selectedItem.mFullPath != ""
       self.mPartView?.updateObjectDisplay (selectedItem.shape)
+      var box = selectedItem.shape.boundingBox
+      if !box.isEmpty, let scrollView = self.mPartScrollView {
+        box = box.union (NSRect ())
+        let maxXmagnification = scrollView.frame.width  / box.width
+        let maxYmagnification = scrollView.frame.height / box.height
+        self.mPartScrollView?.magnification = min (maxXmagnification, maxYmagnification)
+      }else{
+        self.mPartScrollView?.magnification = 1.0
+      }
     }else{
       self.mFullPathTextField?.stringValue = ""
       self.mStatusTextField?.stringValue = ""
       self.mOpenButton?.isEnabled = false
       self.mPartView?.updateObjectDisplay ([])
-    }
-  }
-
-  //····················································································································
-  //   Dialog
-  //····················································································································
-
-  @objc @IBAction func openSymbolInLibrary (_ inSender : Any?) {
-  //--- Configure
-    self.mFullPathTextField?.stringValue = ""
-    self.mStatusTextField?.stringValue = ""
-    self.mCancelButton?.target = self
-    self.mCancelButton?.action = #selector (OpenInLibrary.cancelAction (_:))
-    self.mOpenButton?.target = self
-    self.mOpenButton?.action = #selector (OpenInLibrary.openAction (_:))
-    self.mOpenButton?.isEnabled = false
-    if let partView = self.mPartView {
-      partView.mBackColor = g_Preferences!.symbolBackgroundColor
- //     partView.set (minimumRectangle: partView.bounds)
-    }
-    self.mOutlineView?.dataSource = self
-    self.mOutlineView?.delegate = self
-    self.buildOutlineViewDataSource ()
-    self.mOutlineView?.reloadData ()
-  //--- Dialog
-    if let dialog = self.mDialog {
-      let response = NSApp.runModal (for: dialog)
-      if response == .stop {
-
-      }
+      self.mPartScrollView?.magnification = 1.0
     }
   }
 
   //····················································································································
 
-  private func buildOutlineViewDataSource () {
+  internal func buildDataSource () {
+  }
+
+  //····················································································································
+
+  internal func partLibraryPathForPath (_ inPath : String) -> String {
+    return inPath
+  }
+
+  //····················································································································
+
+  internal func buildOutlineViewDataSource (extension inFileExtension : String,
+                                            _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
     do{
       let fm = FileManager ()
     //--- Build part dictionary
       var partCountDictionary = [String : Int] ()
       for path in existingLibraryPathArray () {
-        let baseDirectory = path + "/symbols"
+        let baseDirectory = self.partLibraryPathForPath (path)
         let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
         for f in files {
-          if f.pathExtension == "ElCanariSymbol" {
+          if f.pathExtension == inFileExtension {
             let baseName = f.lastPathComponent.deletingPathExtension
             if let n = partCountDictionary [baseName] {
               partCountDictionary [baseName] = n + 1
@@ -178,15 +198,15 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     //--- Build data source array
       var partArray = [LibraryDialogItem] ()
       for path in existingLibraryPathArray () {
-        let baseDirectory = path + "/symbols"
+        let baseDirectory = self.partLibraryPathForPath (path)
         let files = try fm.subpathsOfDirectory (atPath: baseDirectory)
         for f in files {
-          if f.pathExtension == "ElCanariSymbol" {
+          if f.pathExtension == inFileExtension {
             let fullpath = baseDirectory + "/" + f
             let baseName = f.lastPathComponent.deletingPathExtension
             let isDuplicated = (partCountDictionary [baseName] ?? 0) > 1
             let pathAsArray = f.deletingPathExtension.components (separatedBy: "/")
-            enterPart (&partArray, pathAsArray, fullpath, isDuplicated)
+            enterPart (&partArray, pathAsArray, fullpath, isDuplicated, inBuildPreviewShapeFunction)
           }
         }
       }
@@ -208,9 +228,10 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 fileprivate func enterPart (_ ioPartArray : inout [LibraryDialogItem],
                             _ inPathAsArray : [String],
                             _ inFullpath : String,
-                            _ inIsDuplicated : Bool) {
+                            _ inIsDuplicated : Bool,
+        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
   if inPathAsArray.count == 1 {
-    ioPartArray.append (LibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated))
+    ioPartArray.append (LibraryDialogItem (inPathAsArray [0], inFullpath, inIsDuplicated, inBuildPreviewShapeFunction))
   }else{
     var idx = 0
     var found = false
@@ -221,11 +242,11 @@ fileprivate func enterPart (_ ioPartArray : inout [LibraryDialogItem],
       }
     }
     if !found {
-      ioPartArray.append (LibraryDialogItem (inPathAsArray [0], "", false))
+      ioPartArray.append (LibraryDialogItem (inPathAsArray [0], "", false, inBuildPreviewShapeFunction))
     }
     var pathAsArray = inPathAsArray
     pathAsArray.remove (at: 0)
-    enterPart (&ioPartArray [idx].mChildren, pathAsArray, inFullpath, inIsDuplicated)
+    enterPart (&ioPartArray [idx].mChildren, pathAsArray, inFullpath, inIsDuplicated, inBuildPreviewShapeFunction)
   }
 }
 
@@ -256,13 +277,18 @@ fileprivate class LibraryDialogItem : EBObject {
   let mFullPath : String
   private var mPartStatus : MetadataStatus? = nil
   private var mObjectDisplay = [EBShape] ()
+  private var mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> [EBShape]
 
   //····················································································································
 
-  init (_ inPartName : String, _ inFullPath : String, _ inIsDuplicated : Bool) {
+  init (_ inPartName : String,
+        _ inFullPath : String,
+        _ inIsDuplicated : Bool,
+        _ inBuildPreviewShapeFunction : @escaping (_ inRootObject : EBManagedObject?) -> [EBShape]) {
     mPartName = inPartName
     mFullPath = inFullPath
     mIsDuplicated = inIsDuplicated
+    mBuildPreviewShapeFunction = inBuildPreviewShapeFunction
     super.init ()
   }
 
@@ -326,15 +352,15 @@ fileprivate class LibraryDialogItem : EBObject {
           if let s = MetadataStatus (rawValue: Int (metadataStatus)) {
             status = s
           }
-          if let symbolRoot = rootObject as? SymbolRoot {
-            var symbolShape = [EBShape] ()
-            for object in symbolRoot.symbolObjects_property.propval {
-              if let shape = object.objectDisplay {
-                symbolShape.append (shape)
-              }
-            }
-            self.mObjectDisplay = symbolShape
-          }
+//          if let symbolRoot = rootObject as? SymbolRoot {
+//            var symbolShape = [EBShape] ()
+//            for object in symbolRoot.symbolObjects_property.propval {
+//              if let shape = object.objectDisplay {
+//                symbolShape.append (shape)
+//              }
+//            }
+            self.mObjectDisplay = self.mBuildPreviewShapeFunction (rootObject)
+//          }
         }catch let error {
           let alert = NSAlert (error: error)
           _ = alert.runModal ()
