@@ -264,7 +264,6 @@ fileprivate class LibraryDialogItem : EBObject {
   let mFullPath : String
   private var mPartStatus : MetadataStatus? = nil
   private var mObjectImage : NSImage? = nil
-  private var mObjectImageComputed = false
   private var mBuildPreviewShapeFunction : (_ inRootObject : EBManagedObject?) -> NSImage?
 
   //····················································································································
@@ -324,16 +323,6 @@ fileprivate class LibraryDialogItem : EBObject {
 
   //····················································································································
 
-  var image : NSImage? {
-    if !self.mObjectImageComputed {
-      self.mObjectImageComputed = true
-      self.mObjectImage = self.buildImage ()
-    }
-    return self.mObjectImage
-  }
-
-  //····················································································································
-
   var partStatus : MetadataStatus {
     var status = MetadataStatus.unknown
     if let s = self.mPartStatus {
@@ -345,9 +334,21 @@ fileprivate class LibraryDialogItem : EBObject {
     return status
   }
 
+ //····················································································································
+
+  var image : NSImage {
+    if let image = self.mObjectImage {
+      return image
+    }else{
+      let image = self.buildImage ()
+      self.mObjectImage = image
+      return image
+    }
+  }
+
   //····················································································································
 
-  private func buildImage () -> NSImage? {
+  private func buildImage () -> NSImage {
     var image : NSImage? = nil
     let fm = FileManager ()
     if let data = fm.contents (atPath: self.mFullPath) {
@@ -359,7 +360,7 @@ fileprivate class LibraryDialogItem : EBObject {
         _ = alert.runModal ()
       }
     }
-    return image
+    return image ?? NSImage ()
   }
 
   //····················································································································

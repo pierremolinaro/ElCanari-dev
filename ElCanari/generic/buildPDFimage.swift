@@ -11,10 +11,14 @@ import Cocoa
 func buildPDFimageData (frame inFrame : CGRect,
                         shape inShape : EBShape,
                         backgroundColor inBackColor : NSColor? = nil) -> Data {
-  let view = EBOffscreenView (frame: inFrame)
+  let origin = inFrame.origin
+  let tr = NSAffineTransform ()
+  tr.translateX (by: -origin.x, yBy: -origin.y)
+  let view = EBOffscreenView (frame: NSRect (origin: NSPoint (), size: inFrame.size))
   view.setBackColor (inBackColor)
-  view.setShape (inShape)
-  return view.dataWithPDF (inside: inFrame)
+  view.setShape (inShape.transformedBy (tr))
+  let data = view.dataWithPDF (inside: view.bounds)
+  return data
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -23,8 +27,9 @@ func buildPDFimageData (frame inFrame : CGRect,
 
 func buildPDFimage (frame inFrame : CGRect,
                     shape inShape : EBShape,
-                    backgroundColor inBackColor : NSColor? = nil) -> NSImage? {
-  return NSImage (data: buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor))
+                    backgroundColor inBackColor : NSColor? = nil) -> NSImage {
+  let image = NSImage (data: buildPDFimageData (frame: inFrame, shape: inShape, backgroundColor: inBackColor))
+  return image ?? NSImage ()
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -35,6 +40,10 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
 
   private var mShape = EBShape ()
   private var mBackColor : NSColor? = nil
+
+  //····················································································································
+
+  override var isFlipped : Bool  { return false }
 
   //····················································································································
 
@@ -79,9 +88,9 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   override func draw (_ inDirtyRect : NSRect) {
     if let backColor = self.mBackColor {
       backColor.setFill ()
-      NSBezierPath.fill (self.frame)
+      NSBezierPath.fill (inDirtyRect)
     }
-    self.mShape.draw (self, self.frame)
+    self.mShape.draw (self, inDirtyRect)
   }
 
   //····················································································································
