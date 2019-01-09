@@ -1,8 +1,13 @@
 {
   "NOTE" : [],
   "BUGFIX" : [
+    "Fixed symbol document metadata status",
+    "Fixed package document metadata status"
   ],
   "CHANGE" : [],
-  "NEW" : ["First release of Symbol document", "First release of Package document"]
+  "NEW" : [
+    "Added \"Open Symbol in Library\"",
+    "Added \"Open Package in Library\""
+  ]
 }
 
