@@ -12,16 +12,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-//enum StatusInMetadata : UInt8 {
-//  case unknown = 0
-//  case ok = 1
-//  case warning = 2
-//  case error = 3
-//}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-let PMDeviceVersion  = "PMDeviceVersion"
+// let PMDeviceVersion  = "PMDeviceVersion"
 
 //--- Dictionary of for embedded symbols and packages in device metadatadictionary
 let PMDeviceSymbols = "PMDeviceSymbols"

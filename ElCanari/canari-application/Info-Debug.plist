@@ -86,6 +86,22 @@
 			<key>NSDocumentClass</key>
 			<string>CustomizedPackageDocument</string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>ElCanariDevice</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>canari_device</string>
+			<key>CFBundleTypeName</key>
+			<string>El Canari Device</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
+			<key>NSDocumentClass</key>
+			<string>CustomizedDeviceDocument</string>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>

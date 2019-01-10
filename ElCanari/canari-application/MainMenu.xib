@@ -125,13 +125,18 @@
                                                 <action selector="actionNewSymbolDocument:" target="212" id="yqH-Kb-rLp"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Package" keyEquivalent="n" id="863">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                        <menuItem title="New Package" id="863">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="actionNewPackageDocument:" target="212" id="8Ja-g8-weF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Device" id="864"/>
+                                        <menuItem title="New Device" keyEquivalent="n" id="864">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="actionNewDeviceDocument:" target="212" id="wy4-1y-TWN"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="New Font" id="865">
                                             <connections>
                                                 <action selector="actionNewFontDocument:" target="212" id="Mxc-hi-tdF"/>
@@ -2741,7 +2746,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="hey-tH-UWa">
                             <rect key="frame" x="1" y="0.0" width="382" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="20" rowSizeStyle="automatic" headerView="ZeF-tu-w6t" viewBased="YES" indentationPerLevel="16" outlineTableColumn="fTc-Qq-vjb" id="vto-E6-Seb">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>

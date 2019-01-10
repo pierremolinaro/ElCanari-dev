@@ -30,4 +30,6 @@ include "eb-sources/symbol-symbolDocument.eb" ;
 #--- Package
 include "eb-sources/package-packageDocument.eb" ;
 include "eb-sources/package-packageRoot.eb" ;
-
+#--- Device
+include "eb-sources/device-deviceDocument.eb" ;
+include "eb-sources/device-deviceRoot.eb" ;
