@@ -4,12 +4,17 @@ graphic entity DeviceRoot {
 #--- Selected page index
   property Int selectedPageIndex default 0 ;
 
-#--- Selected inspector
-#  property Int selectedInspector default 0 ;
-#
-##--- Comment
-#  property @signature String comments default "" ;
-#
+#--- Title
+  property @signature String title default "" ;
+
+#--- Prefix
+  property @signature String prefix default "" ;
+
+#--- Issues
+  transient CanariIssueArray issues dependsFrom
+    self.title, self.prefix
+  ;
+
 ##--- Program
 #  property @signature String program default "" ;
 #

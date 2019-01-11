@@ -9,6 +9,52 @@ import Cocoa
 @objc(DeviceDocument) class DeviceDocument : EBManagedDocument {
 
   //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mMetadataStatus
+  //····················································································································
+
+  var mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
+    return self.mMetadataStatus_property.prop
+  }
+
+  //····················································································································
+
+    var mMetadataStatus : MetadataStatus? {
+    switch self.mMetadataStatus_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -31,6 +77,29 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+    var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -39,11 +108,18 @@ import Cocoa
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
+  @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mPrefixTextField : EBTextField?
+  @IBOutlet var mResetVersionButton : EBButton?
+  @IBOutlet var mSignatureTextField : CanariSignatureField?
+  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
+  @IBOutlet var mTitleTextField : EBTextField?
+  @IBOutlet var mVersionField : CanariVersionField?
 
   //····················································································································
   //    Multiple bindings controllers
@@ -158,6 +234,21 @@ import Cocoa
         errorMessage: "the 'mInfosPageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mIssueTextView {
+      if !(outlet is EBTextObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTextView' outlet is not an instance of 'EBTextObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTextView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mLibraryPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -218,6 +309,66 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPrefixTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPrefixTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPrefixTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mResetVersionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mResetVersionButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mResetVersionButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSignatureTextField {
+      if !(outlet is CanariSignatureField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSignatureTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mStatusImageViewInToolbar {
+      if !(outlet is EBImageObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -233,10 +384,116 @@ import Cocoa
         errorMessage: "the 'mSymbolPageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mTitleTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mTitleTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mTitleTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mVersionField {
+      if !(outlet is CanariVersionField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mVersionField' outlet is not an instance of 'CanariVersionField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mVersionField' outlet is nil"
+      )
+    }
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_mStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+  //--- Atomic property: mMetadataStatus
+    self.mMetadataStatus_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_mMetadataStatus (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
+    self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
+    self.mVersionField?.bind_version (self.versionObserver_property, file: #file, line: #line)
+    self.mVersionField?.bind_versionShouldChange (self.versionShouldChangeObserver_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
+    self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
+    self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
+    self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
+    self.mResetVersionButton?.target = self
+    self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   }
 
   //····················································································································
@@ -246,18 +503,37 @@ import Cocoa
   override func removeUserInterface () {
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
+    self.mSignatureTextField?.unbind_signature ()
+    self.mVersionField?.unbind_version ()
+    self.mVersionField?.unbind_versionShouldChange ()
+    self.mStatusImageViewInToolbar?.unbind_image ()
+    self.mStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mIssueTextView?.unbind_valueObserver ()
+    self.mTitleTextField?.unbind_value ()
+    self.mPrefixTextField?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
+    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
+    self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAssignmentPageView?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
+    self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mPrefixTextField?.ebCleanUp ()
+    self.mResetVersionButton?.ebCleanUp ()
+    self.mSignatureTextField?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
+    self.mTitleTextField?.ebCleanUp ()
+    self.mVersionField?.ebCleanUp ()
   }
 
   //····················································································································

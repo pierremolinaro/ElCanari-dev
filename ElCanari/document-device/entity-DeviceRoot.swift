@@ -11,11 +11,32 @@ protocol DeviceRoot_selectedPageIndex : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_title : class {
+  var title : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_prefix : class {
+  var prefix : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class DeviceRoot : EBGraphicManagedObject,
-         DeviceRoot_selectedPageIndex {
+         DeviceRoot_selectedPageIndex,
+         DeviceRoot_title,
+         DeviceRoot_prefix,
+         DeviceRoot_issues {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
@@ -41,6 +62,75 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: title
+  //····················································································································
+
+  var title_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var title : String {
+    get {
+      return self.title_property.propval
+    }
+    set {
+      self.title_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var title_property_selection : EBSelection <String> {
+    return self.title_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: prefix
+  //····················································································································
+
+  var prefix_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var prefix : String {
+    get {
+      return self.prefix_property.propval
+    }
+    set {
+      self.prefix_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var prefix_property_selection : EBSelection <String> {
+    return self.prefix_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+    var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -48,8 +138,38 @@ class DeviceRoot : EBGraphicManagedObject,
     super.init (undoManager, file: file, line)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
+  //--- Atomic property: title
+    self.title_property.undoManager = self.undoManager
+  //--- Atomic property: prefix
+    self.prefix_property.undoManager = self.undoManager
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.title_property_selection.kind ()
+        kind &= unwSelf.prefix_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceRoot_issues (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.title_property.addEBObserver (self.issues_property)
+    self.prefix_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.prefix_property.setSignatureObserver (observer:self)
+    self.title_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -57,6 +177,8 @@ class DeviceRoot : EBGraphicManagedObject,
 
   deinit {
   //--- Remove observers
+    self.title_property.removeEBObserver (self.issues_property)
+    self.prefix_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -78,7 +200,31 @@ class DeviceRoot : EBGraphicManagedObject,
       observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
       valueExplorer:&self.selectedPageIndex_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "title",
+      idx:self.title_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.title_property.mObserverExplorer,
+      valueExplorer:&self.title_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "prefix",
+      idx:self.prefix_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.prefix_property.mObserverExplorer,
+      valueExplorer:&self.prefix_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -92,6 +238,12 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.mObserverExplorer = nil
     self.selectedPageIndex_property.mValueExplorer = nil
+  //--- Atomic property: title
+    self.title_property.mObserverExplorer = nil
+    self.title_property.mValueExplorer = nil
+  //--- Atomic property: prefix
+    self.prefix_property.mObserverExplorer = nil
+    self.prefix_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -104,6 +256,10 @@ class DeviceRoot : EBGraphicManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: title
+    self.title_property.storeIn (dictionary: ioDictionary, forKey:"title")
+  //--- Atomic property: prefix
+    self.prefix_property.storeIn (dictionary: ioDictionary, forKey:"prefix")
   }
 
   //····················································································································
@@ -123,6 +279,10 @@ class DeviceRoot : EBGraphicManagedObject,
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
+  //--- Atomic property: title
+    self.title_property.readFrom (dictionary: inDictionary, forKey:"title")
+  //--- Atomic property: prefix
+    self.prefix_property.readFrom (dictionary: inDictionary, forKey:"prefix")
   }
 
   //····················································································································
@@ -131,6 +291,17 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.prefix_property.signature ())
+    crc.accumulateUInt32 (self.title_property.signature ())
+    return crc
   }
 
   //····················································································································
@@ -196,6 +367,176 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'title' stored property
+  //····················································································································
+
+  private var mObserversOf_title = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_title (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_title.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.title_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_title.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.title_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_title_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_title {
+        managedObject.title_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for observer in self.mObserversOf_title {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.title_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'prefix' stored property
+  //····················································································································
+
+  private var mObserversOf_prefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_prefix (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_prefix.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.prefix_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_prefix (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_prefix.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.prefix_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_prefix_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_prefix {
+        managedObject.prefix_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_prefix_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for observer in self.mObserversOf_prefix {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.prefix_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_issues {
+        managedObject.issues_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_issues {
+        managedObject.issues_property.removeEBObserver (observer)
       }
     }
   }
@@ -274,12 +615,18 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
       self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_title_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_prefix_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
+      self.addEBObserversOf_title_toElementsOfSet (addedSet)
+      self.addEBObserversOf_prefix_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -408,6 +755,9 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.setOppositeRelationship? (nil)
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : DeviceRoot in addedObjectSet {
@@ -415,6 +765,9 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.setOppositeRelationship? (managedObject)
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
