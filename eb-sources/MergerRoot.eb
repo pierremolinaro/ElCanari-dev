@@ -56,7 +56,6 @@ entity MergerRoot {
   property Bool generateGerberProductFile default yes ;
   property Bool generatePDFProductFile default yes ;
   property BoardArchiveFormat generatedBoardArchiveFormat default noGeneration ;
-#  objectController mArtworkController : self.artwork ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -527,7 +527,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var freePadNumbering : Bool? {
+  var freePadNumbering : Bool? {
     switch self.freePadNumbering_property_selection {
     case .empty, .multiple :
       return nil
@@ -550,7 +550,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var gridStepMultipliedByDisplayFactor : Int? {
+  var gridStepMultipliedByDisplayFactor : Int? {
     switch self.gridStepMultipliedByDisplayFactor_property_selection {
     case .empty, .multiple :
       return nil
@@ -573,7 +573,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var padNumberDisplay : EBShape? {
+  var padNumberDisplay : EBShape? {
     switch self.padNumberDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -596,7 +596,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var issues : CanariIssueArray? {
+  var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -619,7 +619,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var noIssue : Bool? {
+  var noIssue : Bool? {
     switch self.noIssue_property_selection {
     case .empty, .multiple :
       return nil

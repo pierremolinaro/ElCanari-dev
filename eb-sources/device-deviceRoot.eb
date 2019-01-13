@@ -10,6 +10,9 @@ graphic entity DeviceRoot {
 #--- Prefix
   property @signature String prefix default "" ;
 
+#--- Comment
+  property @signature String comments default "" ;
+
 #--- Issues
   transient CanariIssueArray issues dependsFrom
     self.title, self.prefix

@@ -352,7 +352,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-    var nameRect : NSRect? {
+  var nameRect : NSRect? {
     switch self.nameRect_property_selection {
     case .empty, .multiple :
       return nil

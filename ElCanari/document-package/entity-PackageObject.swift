@@ -45,7 +45,7 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-    var issues : CanariIssueArray? {
+  var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil

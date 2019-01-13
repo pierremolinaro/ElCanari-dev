@@ -46,7 +46,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -69,7 +69,7 @@ import Cocoa
 
   //····················································································································
 
-    var incorrectDocumentFileErrorMessage : String? {
+  var incorrectDocumentFileErrorMessage : String? {
     switch self.incorrectDocumentFileErrorMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -92,7 +92,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentIsUnnamed : Bool? {
+  var documentIsUnnamed : Bool? {
     switch self.documentIsUnnamed_property_selection {
     case .empty, .multiple :
       return nil
@@ -115,7 +115,7 @@ import Cocoa
 
   //····················································································································
 
-    var importArtworkButtonTitle : String? {
+  var importArtworkButtonTitle : String? {
     switch self.importArtworkButtonTitle_property_selection {
     case .empty, .multiple :
       return nil
@@ -138,7 +138,7 @@ import Cocoa
 
   //····················································································································
 
-    var issues : CanariIssueArray? {
+  var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -161,7 +161,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusImage : NSImage? {
+  var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -184,7 +184,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusMessage : String? {
+  var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -207,7 +207,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFileNameOk : Bool? {
+  var documentFileNameOk : Bool? {
     switch self.documentFileNameOk_property_selection {
     case .empty, .multiple :
       return nil
@@ -2961,177 +2961,176 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.selectedPageIndex_property_selection <= EBSelection.single (1))
         },
-        outlet:self.showPrefsForSettingMergerDisplayButton
+        outlet: self.showPrefsForSettingMergerDisplayButton
       )
       self.rootObject.selectedPageIndex_property.addEBObserver (controller)
-      mController_showPrefsForSettingMergerDisplayButton_enabled = controller
+      self.mController_showPrefsForSettingMergerDisplayButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.selectedPageIndex_property_selection > EBSelection.single (1))
         },
-        outlet:self.mDisplaySettingView
+        outlet: self.mDisplaySettingView
       )
       self.rootObject.selectedPageIndex_property.addEBObserver (controller)
-      mController_mDisplaySettingView_hidden = controller
+      self.mController_mDisplaySettingView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.boardModels_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mNoModelMessage
+        outlet: self.mNoModelMessage
       )
       self.rootObject.boardModels_property.count_property.addEBObserver (controller)
-      mController_mNoModelMessage_hidden = controller
+      self.mController_mNoModelMessage_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return ((self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0)) && (self.mBoardModelSelection.instanceCount_property_selection == EBSelection.single (0)))
         },
-        outlet:self.removeBoardModelButton
+        outlet: self.removeBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
       self.mBoardModelSelection.instanceCount_property.addEBObserver (controller)
-      mController_removeBoardModelButton_enabled = controller
+      self.mController_removeBoardModelButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mBoardModelController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.updateBoardModelButton
+        outlet: self.updateBoardModelButton
       )
       self.mBoardModelController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_updateBoardModelButton_enabled = controller
+      self.mController_updateBoardModelButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.rootObject.automaticBoardSize_property_selection
         },
-        outlet:self.mAutomaticBoardSizeView
+        outlet: self.mAutomaticBoardSizeView
       )
       self.rootObject.automaticBoardSize_property.addEBObserver (controller)
-      mController_mAutomaticBoardSizeView_hidden = controller
+      self.mController_mAutomaticBoardSizeView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.automaticBoardSize_property_selection
         },
-        outlet:self.mManualBoardSizeView
+        outlet: self.mManualBoardSizeView
       )
       self.rootObject.automaticBoardSize_property.addEBObserver (controller)
-      mController_mManualBoardSizeView_hidden = controller
+      self.mController_mManualBoardSizeView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mEmptyBoardMessage
+        outlet: self.mEmptyBoardMessage
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mEmptyBoardMessage_hidden = controller
+      self.mController_mEmptyBoardMessage_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mOverlapSwitch
+        outlet: self.mOverlapSwitch
       )
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mOverlapSwitch_enabled = controller
+      self.mController_mOverlapSwitch_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mMoveRightButton
+        outlet: self.mMoveRightButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mMoveRightButton_enabled = controller
+      self.mController_mMoveRightButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mMoveLeftButton
+        outlet: self.mMoveLeftButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mMoveLeftButton_enabled = controller
+      self.mController_mMoveLeftButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mMoveUpButton
+        outlet: self.mMoveUpButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mMoveUpButton_enabled = controller
+      self.mController_mMoveUpButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mBoardInstanceController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mMoveDownButton
+        outlet: self.mMoveDownButton
       )
       self.mBoardInstanceController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mMoveDownButton_enabled = controller
+      self.mController_mMoveDownButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.rootObject.artwork_property_selection
         },
-        outlet:self.mNoArtworkMessage
+        outlet: self.mNoArtworkMessage
       )
       self.rootObject.artwork_property.addEBObserver (controller)
-      mController_mNoArtworkMessage_hidden = controller
+      self.mController_mNoArtworkMessage_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
-          return (self.rootObject.artwork_property_selection || self.documentFileNameOk_property_selection)
+        computeFunction: {
+          return self.documentFileNameOk_property_selection
         },
-        outlet:self.mDangerView
+        outlet: self.mDangerView
       )
       self.documentFileNameOk_property.addEBObserver (controller)
-      self.rootObject.artwork_property.addEBObserver (controller)
-      mController_mDangerView_hidden = controller
+      self.mController_mDangerView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return ((!self.rootObject.artwork_property_selection && (self.rootObject.boardInstances_property.count_property_selection > EBSelection.single (0))) && !self.documentIsUnnamed_property_selection)
         },
-        outlet:self.mGenerateProductFilesActionButton
+        outlet: self.mGenerateProductFilesActionButton
       )
       self.documentIsUnnamed_property.addEBObserver (controller)
       self.rootObject.artwork_property.addEBObserver (controller)
       self.rootObject.boardInstances_property.count_property.addEBObserver (controller)
-      mController_mGenerateProductFilesActionButton_enabled = controller
+      self.mController_mGenerateProductFilesActionButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.artwork_property_selection
         },
-        outlet:self.mLogTextView
+        outlet: self.mLogTextView
       )
       self.rootObject.artwork_property.addEBObserver (controller)
-      mController_mLogTextView_hidden = controller
+      self.mController_mLogTextView_hidden = controller
     }
   //--------------------------- Set targets / actions
     self.showPrefsForSettingMergerDisplayButton?.target = self
@@ -3158,6 +3157,15 @@ import Cocoa
     self.mGenerateProductFilesActionButton?.action = #selector (MergerDocument.generateProductFilesAction (_:))
     self.mImportArtworkButton?.target = self
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································
@@ -3315,7 +3323,6 @@ import Cocoa
     self.self.rootObject.artwork_property.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
     self.mController_mNoArtworkMessage_hidden = nil
     self.self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
-    self.self.rootObject.artwork_property.removeEBObserver (self.mController_mDangerView_hidden!)
     self.mController_mDangerView_hidden = nil
     self.self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.self.rootObject.artwork_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)

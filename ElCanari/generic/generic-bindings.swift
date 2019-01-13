@@ -21,17 +21,18 @@ class MultipleBindingController_hidden : EBOutletEvent {
     mOutlet = inOutlet
     super.init ()
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.postEvent ()
   }
 
   //····················································································································
 
    private func updateOutlet () {
-    let model = mGetPropertyValueCallBack ()
+    let model = self.mGetPropertyValueCallBack ()
     switch model {
     case .single (let b) :
-      mOutlet?.isHidden = b
+      self.mOutlet?.isHidden = b
     default :
-      mOutlet?.isHidden = false
+      self.mOutlet?.isHidden = false
     }
   }
 
@@ -56,17 +57,18 @@ class MultipleBindingController_enabled : EBOutletEvent {
     mOutlet = inOutlet
     super.init ()
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.postEvent ()
   }
 
   //····················································································································
 
    private func updateOutlet () {
-    let model = mGetPropertyValueCallBack ()
+    let model = self.mGetPropertyValueCallBack ()
     switch model {
     case .single (let b) :
-      mOutlet?.enableFromEnableBinding (b)
+      self.mOutlet?.enableFromEnableBinding (b)
     default :
-      mOutlet?.enableFromEnableBinding (false)
+      self.mOutlet?.enableFromEnableBinding (false)
     }
   }
 

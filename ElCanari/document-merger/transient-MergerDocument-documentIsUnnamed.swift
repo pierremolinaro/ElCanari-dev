@@ -15,7 +15,7 @@ func transient_MergerDocument_documentIsUnnamed (
        _ self_documentFilePath : String
 ) -> Bool {
 //--- START OF USER ZONE 2
-  return self_documentFilePath == ""
+        return self_documentFilePath == ""
 //--- END OF USER ZONE 2
 }
 

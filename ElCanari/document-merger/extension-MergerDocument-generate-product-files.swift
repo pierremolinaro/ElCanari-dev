@@ -17,21 +17,21 @@ extension MergerDocument {
     do{
     //--- Create product directory
       if let productDirectory = self.fileURL?.path.deletingPathExtension {
-        mLogTextView?.clear ()
+        self.mLogTextView?.clear ()
         let baseName = productDirectory.lastPathComponent
         let fm = FileManager ()
       //--- Library directory
         if !fm.fileExists (atPath: productDirectory) {
-          mLogTextView?.appendMessageString("Creating \(productDirectory) directory…")
+          self.mLogTextView?.appendMessageString("Creating \(productDirectory) directory…")
           try fm.createDirectory (atPath: productDirectory, withIntermediateDirectories:true, attributes:nil)
-          mLogTextView?.appendSuccessString (" Ok\n")
+          self.mLogTextView?.appendSuccessString (" Ok\n")
         }
       //--- Generate board archive
         if self.rootObject.generatedBoardArchiveFormat != .noGeneration {
           let boardArchivePath = productDirectory + "/" + baseName + "." + EL_CANARI_MERGER_ARCHIVE
-          mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
+          self.mLogTextView?.appendMessageString("Generating \(boardArchivePath.lastPathComponent)…")
           try generateBoardArchive (atPath:boardArchivePath)
-          mLogTextView?.appendSuccessString (" Ok\n")
+          self.mLogTextView?.appendSuccessString (" Ok\n")
         }
       //--- Generate Gerber files
         if self.rootObject.generateGerberProductFile {
@@ -43,6 +43,8 @@ extension MergerDocument {
           let filePath = productDirectory + "/" + baseName
           try generatePDFfiles (atPath:filePath)
         }
+      //--- Done !
+        self.mLogTextView?.appendMessageString ("Done.")
       }
     }catch let error {
       self.windowForSheet?.presentError (error)
@@ -235,7 +237,7 @@ extension MergerDocument {
       for product in self.rootObject.artwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
         let horizontalMirror = product.horizontalMirror
         let filePath = inFilePath + "." + product.fileExtension + ".pdf"
-        mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+        self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
         var strokeBezierPaths = [NSBezierPath] ()
         var filledBezierPaths = [NSBezierPath] ()
         if product.drawInternalBoardLimits {
@@ -452,7 +454,7 @@ extension MergerDocument {
         shapes.append (EBStrokeBezierPathShape (drillBezierPaths, .white))
         let pdfData = buildPDFimageData (frame:cocoaBoardRect, shape: shapes, backgroundColor:NSColor.white)
         try pdfData.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-        mLogTextView?.appendSuccessString (" Ok\n")
+        self.mLogTextView?.appendSuccessString (" Ok\n")
       }
     }
   }
@@ -464,7 +466,7 @@ extension MergerDocument {
     for product in self.rootObject.artwork_property.propval?.fileGenerationParameterArray_property.propval ?? [] {
       let horizontalMirror = product.horizontalMirror
       let filePath = inFilePath + "." + product.fileExtension
-      mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+      self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
       var s = "%FSLAX24Y24*%\n" // A = Absolute coordinates, 24 = all data are in 2.4 form
       s += "%MOIN*%\n" // length unit is inch
       var apertureDictionary = [String : [String]] ()
@@ -727,11 +729,11 @@ extension MergerDocument {
       s += "M02*\n"
       let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
       try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-      mLogTextView?.appendSuccessString (" Ok\n")
+      self.mLogTextView?.appendSuccessString (" Ok\n")
     }
 //------------------------------------- Generate hole file
     let filePath = inFilePath + "." + (self.rootObject.artwork_property.propval?.drillDataFileExtension ?? "??")
-    mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
+    self.mLogTextView?.appendMessageString ("Generating \(filePath.lastPathComponent)…")
     var s = "M48\n"
     s += "INCH\n"
  //--- Array of hole diameters
@@ -775,7 +777,7 @@ extension MergerDocument {
  //--- Write file
     let data : Data? = s.data (using: .ascii, allowLossyConversion:false)
     try data?.write (to: URL (fileURLWithPath: filePath), options: .atomic)
-    mLogTextView?.appendSuccessString (" Ok\n")
+    self.mLogTextView?.appendSuccessString (" Ok\n")
   }
 
   //····················································································································

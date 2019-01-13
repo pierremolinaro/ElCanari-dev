@@ -34,7 +34,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -57,7 +57,7 @@ import Cocoa
 
   //····················································································································
 
-    var mGeneratedFileCountString : String? {
+  var mGeneratedFileCountString : String? {
     switch self.mGeneratedFileCountString_property_selection {
     case .empty, .multiple :
       return nil
@@ -80,7 +80,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusImage : NSImage? {
+  var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -103,7 +103,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusMessage : String? {
+  var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -1097,23 +1097,23 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.mDataController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mRemoveGenerationFileButton
+        outlet: self.mRemoveGenerationFileButton
       )
       self.mDataController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mRemoveGenerationFileButton_enabled = controller
+      self.mController_mRemoveGenerationFileButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.mDataSelection.drawPadHolesInPDF_property_selection
         },
-        outlet:self.mPadHoleDefinitionView
+        outlet: self.mPadHoleDefinitionView
       )
       self.mDataSelection.drawPadHolesInPDF_property.addEBObserver (controller)
-      mController_mPadHoleDefinitionView_hidden = controller
+      self.mController_mPadHoleDefinitionView_hidden = controller
     }
   //--------------------------- Set targets / actions
     self.mAddGenerationFileButton?.target = mDataController
@@ -1122,6 +1122,15 @@ import Cocoa
     self.mRemoveGenerationFileButton?.action = #selector (ArrayController_ArtworkDocument_mDataController.remove (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································

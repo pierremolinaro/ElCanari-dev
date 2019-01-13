@@ -24,6 +24,12 @@ protocol DeviceRoot_prefix : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_comments : class {
+  var comments : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -36,6 +42,7 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_selectedPageIndex,
          DeviceRoot_title,
          DeviceRoot_prefix,
+         DeviceRoot_comments,
          DeviceRoot_issues {
 
   //····················································································································
@@ -108,6 +115,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: comments
+  //····················································································································
+
+  var comments_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var comments : String {
+    get {
+      return self.comments_property.propval
+    }
+    set {
+      self.comments_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var comments_property_selection : EBSelection <String> {
+    return self.comments_property.prop
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -121,7 +151,7 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-    var issues : CanariIssueArray? {
+  var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -142,6 +172,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.title_property.undoManager = self.undoManager
   //--- Atomic property: prefix
     self.prefix_property.undoManager = self.undoManager
+  //--- Atomic property: comments
+    self.comments_property.undoManager = self.undoManager
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -168,6 +200,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.comments_property.setSignatureObserver (observer:self)
     self.prefix_property.setSignatureObserver (observer:self)
     self.title_property.setSignatureObserver (observer:self)
   //--- Extern delegates
@@ -216,6 +249,14 @@ class DeviceRoot : EBGraphicManagedObject,
       observerExplorer:&self.prefix_property.mObserverExplorer,
       valueExplorer:&self.prefix_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "comments",
+      idx:self.comments_property.mEasyBindingsObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.comments_property.mObserverExplorer,
+      valueExplorer:&self.comments_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "issues",
@@ -244,6 +285,9 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: prefix
     self.prefix_property.mObserverExplorer = nil
     self.prefix_property.mValueExplorer = nil
+  //--- Atomic property: comments
+    self.comments_property.mObserverExplorer = nil
+    self.comments_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -260,6 +304,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.title_property.storeIn (dictionary: ioDictionary, forKey:"title")
   //--- Atomic property: prefix
     self.prefix_property.storeIn (dictionary: ioDictionary, forKey:"prefix")
+  //--- Atomic property: comments
+    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
   }
 
   //····················································································································
@@ -283,6 +329,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.title_property.readFrom (dictionary: inDictionary, forKey:"title")
   //--- Atomic property: prefix
     self.prefix_property.readFrom (dictionary: inDictionary, forKey:"prefix")
+  //--- Atomic property: comments
+    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
   }
 
   //····················································································································
@@ -299,6 +347,7 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.comments_property.signature ())
     crc.accumulateUInt32 (self.prefix_property.signature ())
     crc.accumulateUInt32 (self.title_property.signature ())
     return crc
@@ -486,6 +535,63 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'comments' stored property
+  //····················································································································
+
+  private var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_comments.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_comments.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.comments_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      for observer in self.mObserversOf_comments {
+        managedObject.comments_property.addEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for observer in self.mObserversOf_comments {
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.comments_property.removeEBObserver (observer)
+      }
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -617,6 +723,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_title_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_prefix_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -625,6 +732,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
       self.addEBObserversOf_title_toElementsOfSet (addedSet)
       self.addEBObserversOf_prefix_toElementsOfSet (addedSet)
+      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
@@ -757,6 +865,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -767,6 +876,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()

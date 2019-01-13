@@ -472,7 +472,7 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-    var rect : CanariRect? {
+  var rect : CanariRect? {
     switch self.rect_property_selection {
     case .empty, .multiple :
       return nil

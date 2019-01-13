@@ -322,7 +322,7 @@ class PackageSegment : PackageObject,
 
   //····················································································································
 
-    var lengthInCanariUnit : Int? {
+  var lengthInCanariUnit : Int? {
     switch self.lengthInCanariUnit_property_selection {
     case .empty, .multiple :
       return nil

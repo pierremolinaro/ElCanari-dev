@@ -690,7 +690,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var modelNames : StringArray? {
+  var modelNames : StringArray? {
     switch self.modelNames_property_selection {
     case .empty, .multiple :
       return nil
@@ -713,7 +713,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var boardRect : CanariRect? {
+  var boardRect : CanariRect? {
     switch self.boardRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -736,7 +736,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var boardDisplayRect : CanariRect? {
+  var boardDisplayRect : CanariRect? {
     switch self.boardDisplayRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -759,7 +759,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var boardWidth : Int? {
+  var boardWidth : Int? {
     switch self.boardWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -782,7 +782,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var boardHeight : Int? {
+  var boardHeight : Int? {
     switch self.boardHeight_property_selection {
     case .empty, .multiple :
       return nil
@@ -817,7 +817,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-    var boardOutlineRectDisplay : EBShape? {
+  var boardOutlineRectDisplay : EBShape? {
     switch self.boardOutlineRectDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -3494,7 +3494,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : ArtworkRoot? { // SOULD BE WEAK
+  private var mValue : ArtworkRoot? { // SOULD NOT BE WEAK
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

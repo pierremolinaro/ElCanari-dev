@@ -34,7 +34,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -723,6 +723,15 @@ import Cocoa
     self.mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································

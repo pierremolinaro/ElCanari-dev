@@ -323,11 +323,10 @@ document MergerDocument root MergerRoot {
 
   outlet EBTextObserverField mArtworNameTextField $valueObserver root.artworkName ;
 
-#  outlet NSTabView mArtworkTabView $hidden root.artwork.none ;
 
-  outlet NSView mDangerView $hidden root.artwork.none | self.documentFileNameOk ;
+  outlet NSView mDangerView $hidden self.documentFileNameOk ;
  
- transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
+  transient Bool documentIsUnnamed dependsFrom self.documentFilePath ;
 
   action generateProductFilesAction ;
   outlet EBButton mGenerateProductFilesActionButton

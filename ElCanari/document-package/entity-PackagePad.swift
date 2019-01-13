@@ -545,7 +545,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var padName : String? {
+  var padName : String? {
     switch self.padName_property_selection {
     case .empty, .multiple :
       return nil
@@ -568,7 +568,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var padIsTraversing : Bool? {
+  var padIsTraversing : Bool? {
     switch self.padIsTraversing_property_selection {
     case .empty, .multiple :
       return nil
@@ -591,7 +591,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var annularRing : Int? {
+  var annularRing : Int? {
     switch self.annularRing_property_selection {
     case .empty, .multiple :
       return nil
@@ -614,7 +614,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var zoneName : String? {
+  var zoneName : String? {
     switch self.zoneName_property_selection {
     case .empty, .multiple :
       return nil
@@ -637,7 +637,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var noZone : Bool? {
+  var noZone : Bool? {
     switch self.noZone_property_selection {
     case .empty, .multiple :
       return nil
@@ -660,7 +660,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var zoneAllowsManualRenumbering : Bool? {
+  var zoneAllowsManualRenumbering : Bool? {
     switch self.zoneAllowsManualRenumbering_property_selection {
     case .empty, .multiple :
       return nil
@@ -683,7 +683,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var slavePadCount : Int? {
+  var slavePadCount : Int? {
     switch self.slavePadCount_property_selection {
     case .empty, .multiple :
       return nil
@@ -706,7 +706,7 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-    var padNumberDisplay : EBShape? {
+  var padNumberDisplay : EBShape? {
     switch self.padNumberDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -3431,7 +3431,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : PackageZone? { // SOULD BE WEAK
+  private var mValue : PackageZone? { // SOULD NOT BE WEAK
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

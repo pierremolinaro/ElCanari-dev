@@ -36,6 +36,9 @@ document DeviceDocument root DeviceRoot {
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;
 
+#--- Prefix
+  outlet EBTextView mCommentTextView $value root.comments ;
+
 #--- Reset
   action resetVersionAction ;
   outlet EBButton mResetVersionButton $run self.resetVersionAction ;

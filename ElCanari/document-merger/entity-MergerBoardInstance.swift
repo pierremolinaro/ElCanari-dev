@@ -161,7 +161,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-    var instanceRect : CanariRect? {
+  var instanceRect : CanariRect? {
     switch self.instanceRect_property_selection {
     case .empty, .multiple :
       return nil
@@ -184,7 +184,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-    var modelName : String? {
+  var modelName : String? {
     switch self.modelName_property_selection {
     case .empty, .multiple :
       return nil
@@ -207,7 +207,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-    var boardLimitWidth : Int? {
+  var boardLimitWidth : Int? {
     switch self.boardLimitWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -1445,7 +1445,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : BoardModel? { // SOULD BE WEAK
+  private var mValue : BoardModel? { // SOULD NOT BE WEAK
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
@@ -3877,7 +3877,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : MergerRoot? { // SOULD BE WEAK
+  private var mValue : MergerRoot? { // SOULD NOT BE WEAK
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

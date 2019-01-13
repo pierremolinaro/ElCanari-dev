@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CustomizedDeviceDocument">
             <connections>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
+                <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
                 <outlet property="mDescriptionPageView" destination="1037" id="xhe-k8-o4l"/>
                 <outlet property="mInfosPageView" destination="1177" id="qRd-J2-IOx"/>
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
@@ -118,7 +119,7 @@
                     <toolbarItem reference="1905"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="190" y="444"/>
+            <point key="canvasLocation" x="390" y="417"/>
         </window>
         <customView id="512" userLabel="packageNameInspector">
             <rect key="frame" x="0.0" y="0.0" width="250" height="508"/>
@@ -535,31 +536,31 @@
                             <rect key="frame" x="0.0" y="0.0" width="260" height="356"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <button toolTip="Delete Image" imageHugsTitle="YES" id="1041">
-                                    <rect key="frame" x="20" y="2" width="28" height="25"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="-" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
-                                    </buttonCell>
-                                </button>
                                 <imageView id="1043" customClass="PMDeviceDroppableImageView">
                                     <rect key="frame" x="17" y="32" width="235" height="311"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="1523"/>
                                 </imageView>
-                                <button toolTip="Paste Image from Pasteboard" imageHugsTitle="YES" id="2106">
-                                    <rect key="frame" x="58" y="2" width="89" height="25"/>
+                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2106">
+                                    <rect key="frame" x="78" y="2" width="89" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="Paste Image" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
+                                    <buttonCell key="cell" type="push" title="Paste Image" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Paste Image from Pasteboard" imageHugsTitle="YES" id="2176">
-                                    <rect key="frame" x="157" y="2" width="89" height="25"/>
+                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2176">
+                                    <rect key="frame" x="165" y="2" width="89" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="square" title="Copy Image" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
+                                    <buttonCell key="cell" type="push" title="Copy Image" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                </button>
+                                <button toolTip="Delete Image" verticalHuggingPriority="750" imageHugsTitle="YES" id="1041">
+                                    <rect key="frame" x="15" y="2" width="28" height="28"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -1347,8 +1348,8 @@
                 <textField verticalHuggingPriority="750" id="1171" customClass="EBTextField">
                     <rect key="frame" x="103" y="369" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="1547">
-                        <font key="font" metaFont="smallSystem"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="…" drawsBackground="YES" id="1547">
+                        <font key="font" metaFont="systemBold" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -1369,7 +1370,7 @@
                         <rect key="frame" x="1" y="1" width="548" height="233"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180">
+                            <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="233"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

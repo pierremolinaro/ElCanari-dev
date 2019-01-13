@@ -442,7 +442,7 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-    var distanceInCanariUnit : Int? {
+  var distanceInCanariUnit : Int? {
     switch self.distanceInCanariUnit_property_selection {
     case .empty, .multiple :
       return nil

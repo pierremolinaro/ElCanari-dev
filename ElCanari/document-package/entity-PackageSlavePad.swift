@@ -475,7 +475,7 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-    var padIsTraversing : Bool? {
+  var padIsTraversing : Bool? {
     switch self.padIsTraversing_property_selection {
     case .empty, .multiple :
       return nil
@@ -498,7 +498,7 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-    var annularRing : Int? {
+  var annularRing : Int? {
     switch self.annularRing_property_selection {
     case .empty, .multiple :
       return nil
@@ -521,7 +521,7 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-    var padName : String? {
+  var padName : String? {
     switch self.padName_property_selection {
     case .empty, .multiple :
       return nil
@@ -544,7 +544,7 @@ class PackageSlavePad : PackageObject,
 
   //····················································································································
 
-    var padNumberDisplay : EBShape? {
+  var padNumberDisplay : EBShape? {
     switch self.padNumberDisplay_property_selection {
     case .empty, .multiple :
       return nil
@@ -2785,7 +2785,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : PackagePad? { // SOULD BE WEAK
+  private var mValue : PackagePad? { // SOULD NOT BE WEAK
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

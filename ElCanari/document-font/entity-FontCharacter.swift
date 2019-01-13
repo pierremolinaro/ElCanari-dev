@@ -117,7 +117,7 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-    var segmentArrayForDrawing : CharacterSegmentListClass? {
+  var segmentArrayForDrawing : CharacterSegmentListClass? {
     switch self.segmentArrayForDrawing_property_selection {
     case .empty, .multiple :
       return nil
@@ -140,7 +140,7 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-    var gerberCode : CharacterGerberCodeClass? {
+  var gerberCode : CharacterGerberCodeClass? {
     switch self.gerberCode_property_selection {
     case .empty, .multiple :
       return nil
@@ -163,7 +163,7 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-    var gerberCodeInstructionCountMessage : String? {
+  var gerberCodeInstructionCountMessage : String? {
     switch self.gerberCodeInstructionCountMessage_property_selection {
     case .empty, .multiple :
       return nil

@@ -362,7 +362,7 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-    var issues : CanariIssueArray? {
+  var issues : CanariIssueArray? {
     switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
@@ -385,7 +385,7 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-    var noIssue : Bool? {
+  var noIssue : Bool? {
     switch self.noIssue_property_selection {
     case .empty, .multiple :
       return nil

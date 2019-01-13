@@ -22,7 +22,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusMessage : String? {
+  var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -45,7 +45,7 @@ import Cocoa
 
   //····················································································································
 
-    var mMetadataStatus : MetadataStatus? {
+  var mMetadataStatus : MetadataStatus? {
     switch self.mMetadataStatus_property_selection {
     case .empty, .multiple :
       return nil
@@ -68,7 +68,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -91,7 +91,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusImage : NSImage? {
+  var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -106,6 +106,7 @@ import Cocoa
   //····················································································································
 
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
+  @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
@@ -202,6 +203,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAssignmentPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mCommentTextView {
+      if !(outlet is EBTextView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mCommentTextView' outlet is not an instance of 'EBTextView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mCommentTextView' outlet is nil"
       )
     }
     if let outlet : Any = self.mDescriptionPageView {
@@ -490,10 +506,20 @@ import Cocoa
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
+    self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································
@@ -511,6 +537,7 @@ import Cocoa
     self.mIssueTextView?.unbind_valueObserver ()
     self.mTitleTextField?.unbind_value ()
     self.mPrefixTextField?.unbind_value ()
+    self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
@@ -520,6 +547,7 @@ import Cocoa
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAssignmentPageView?.ebCleanUp ()
+    self.mCommentTextView?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()

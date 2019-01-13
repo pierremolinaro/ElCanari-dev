@@ -197,7 +197,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-    var currentCharacterCodePointString : String? {
+  var currentCharacterCodePointString : String? {
     switch self.currentCharacterCodePointString_property_selection {
     case .empty, .multiple :
       return nil
@@ -220,7 +220,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-    var sampleStringBezierPath : NSBezierPath? {
+  var sampleStringBezierPath : NSBezierPath? {
     switch self.sampleStringBezierPath_property_selection {
     case .empty, .multiple :
       return nil
@@ -243,7 +243,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-    var sampleStringBezierPathWidth : String? {
+  var sampleStringBezierPathWidth : String? {
     switch self.sampleStringBezierPathWidth_property_selection {
     case .empty, .multiple :
       return nil
@@ -266,7 +266,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-    var sampleStringBezierPathAscent : String? {
+  var sampleStringBezierPathAscent : String? {
     switch self.sampleStringBezierPathAscent_property_selection {
     case .empty, .multiple :
       return nil
@@ -289,7 +289,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-    var sampleStringBezierPathDescent : String? {
+  var sampleStringBezierPathDescent : String? {
     switch self.sampleStringBezierPathDescent_property_selection {
     case .empty, .multiple :
       return nil

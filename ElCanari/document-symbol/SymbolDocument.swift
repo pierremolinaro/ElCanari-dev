@@ -40,7 +40,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusImage : NSImage? {
+  var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -63,7 +63,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusMessage : String? {
+  var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -86,7 +86,7 @@ import Cocoa
 
   //····················································································································
 
-    var mMetadataStatus : MetadataStatus? {
+  var mMetadataStatus : MetadataStatus? {
     switch self.mMetadataStatus_property_selection {
     case .empty, .multiple :
       return nil
@@ -109,7 +109,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -1067,27 +1067,36 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.noIssue_property_selection
         },
-        outlet:self.mDeselectIssueButton
+        outlet: self.mDeselectIssueButton
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
-      mController_mDeselectIssueButton_hidden = controller
+      self.mController_mDeselectIssueButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.noIssue_property_selection
         },
-        outlet:self.mIssueScrollView
+        outlet: self.mIssueScrollView
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
-      mController_mIssueScrollView_hidden = controller
+      self.mController_mIssueScrollView_hidden = controller
     }
   //--------------------------- Set targets / actions
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (SymbolDocument.resetVersionAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································

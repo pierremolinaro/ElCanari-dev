@@ -82,7 +82,7 @@ import Cocoa
 
   //····················································································································
 
-    var documentFilePath : String? {
+  var documentFilePath : String? {
     switch self.documentFilePath_property_selection {
     case .empty, .multiple :
       return nil
@@ -105,7 +105,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusMessage : String? {
+  var mStatusMessage : String? {
     switch self.mStatusMessage_property_selection {
     case .empty, .multiple :
       return nil
@@ -128,7 +128,7 @@ import Cocoa
 
   //····················································································································
 
-    var mMetadataStatus : MetadataStatus? {
+  var mMetadataStatus : MetadataStatus? {
     switch self.mMetadataStatus_property_selection {
     case .empty, .multiple :
       return nil
@@ -151,7 +151,7 @@ import Cocoa
 
   //····················································································································
 
-    var mStatusImage : NSImage? {
+  var mStatusImage : NSImage? {
     switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
@@ -3572,65 +3572,65 @@ import Cocoa
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.mPackagePadSelectionController.padIsTraversing_property_selection
         },
-        outlet:self.mPadStyleView
+        outlet: self.mPadStyleView
       )
       self.mPackagePadSelectionController.padIsTraversing_property.addEBObserver (controller)
-      mController_mPadStyleView_hidden = controller
+      self.mController_mPadStyleView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return ((self.mPackagePadSelectionController.noZone_property_selection && self.rootObject.freePadNumbering_property_selection) || self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property_selection)
         },
-        outlet:self.mPadRenumberingPullDownButton
+        outlet: self.mPadRenumberingPullDownButton
       )
       self.mPackagePadSelectionController.noZone_property.addEBObserver (controller)
       self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property.addEBObserver (controller)
       self.rootObject.freePadNumbering_property.addEBObserver (controller)
-      mController_mPadRenumberingPullDownButton_enabled = controller
+      self.mController_mPadRenumberingPullDownButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.mPackageSlavePadSelectionController.padIsTraversing_property_selection
         },
-        outlet:self.mSlavePadStyleView
+        outlet: self.mSlavePadStyleView
       )
       self.mPackageSlavePadSelectionController.padIsTraversing_property.addEBObserver (controller)
-      mController_mSlavePadStyleView_hidden = controller
+      self.mController_mSlavePadStyleView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.noIssue_property_selection
         },
-        outlet:self.mDeselectIssueButton
+        outlet: self.mDeselectIssueButton
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
-      mController_mDeselectIssueButton_hidden = controller
+      self.mController_mDeselectIssueButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return self.rootObject.noIssue_property_selection
         },
-        outlet:self.mIssueScrollView
+        outlet: self.mIssueScrollView
       )
       self.rootObject.noIssue_property.addEBObserver (controller)
-      mController_mIssueScrollView_hidden = controller
+      self.mController_mIssueScrollView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.rootObject.packagePads_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mAddSlavePadButton
+        outlet: self.mAddSlavePadButton
       )
       self.rootObject.packagePads_property.count_property.addEBObserver (controller)
-      mController_mAddSlavePadButton_enabled = controller
+      self.mController_mAddSlavePadButton_enabled = controller
     }
   //--------------------------- Set targets / actions
     self.mSetDimensionTextOriginAtMidX?.target = self
@@ -3647,6 +3647,15 @@ import Cocoa
     self.mClearProgramErrorButton?.action = #selector (PackageDocument.clearProgramErrorAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (PackageDocument.resetVersionAction (_:))
+  //--------------------------- Read documentFilePath model 
+    self.documentFilePath_property.readModelFunction = { [weak self] in
+      if let r = self?.computeTransient_documentFilePath () {
+        return .single (r)
+      }else{
+        return .empty
+      }
+    }
+
   }
 
   //····················································································································

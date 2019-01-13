@@ -3582,7 +3582,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-    var mValueRevealInFinder_packages : CanariMenuItemListClass? {
+  var mValueRevealInFinder_packages : CanariMenuItemListClass? {
     switch self.mValueRevealInFinder_packages_property_selection {
     case .empty, .multiple :
       return nil
@@ -3605,7 +3605,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-    var mValueRevealInFinder_devices : CanariMenuItemListClass? {
+  var mValueRevealInFinder_devices : CanariMenuItemListClass? {
     switch self.mValueRevealInFinder_devices_property_selection {
     case .empty, .multiple :
       return nil
@@ -3628,7 +3628,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-    var mValueRevealInFinder_fonts : CanariMenuItemListClass? {
+  var mValueRevealInFinder_fonts : CanariMenuItemListClass? {
     switch self.mValueRevealInFinder_fonts_property_selection {
     case .empty, .multiple :
       return nil
@@ -3651,7 +3651,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-    var mValueRevealInFinder_artworks : CanariMenuItemListClass? {
+  var mValueRevealInFinder_artworks : CanariMenuItemListClass? {
     switch self.mValueRevealInFinder_artworks_property_selection {
     case .empty, .multiple :
       return nil
@@ -3674,7 +3674,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   //····················································································································
 
-    var mValueRevealInFinder_symbols : CanariMenuItemListClass? {
+  var mValueRevealInFinder_symbols : CanariMenuItemListClass? {
     switch self.mValueRevealInFinder_symbols_property_selection {
     case .empty, .multiple :
       return nil
@@ -5513,43 +5513,43 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.checkForSystemLibraryAtStartUp_property_selection
         },
-        outlet:self.nextSystemLibraryCheckDate
+        outlet: self.nextSystemLibraryCheckDate
       )
       self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
-      mController_nextSystemLibraryCheckDate_hidden = controller
+      self.mController_nextSystemLibraryCheckDate_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.checkForSystemLibraryAtStartUp_property_selection
         },
-        outlet:self.systemLibraryCheckTimeIntervalPopupButton
+        outlet: self.systemLibraryCheckTimeIntervalPopupButton
       )
       self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
-      mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
+      self.mController_systemLibraryCheckTimeIntervalPopupButton_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
-        computeFunction:{
+        computeFunction: {
           return !self.checkForSystemLibraryAtStartUp_property_selection
         },
-        outlet:self.systemLibraryCheckTimeIntervalTitleTextField
+        outlet: self.systemLibraryCheckTimeIntervalTitleTextField
       )
       self.checkForSystemLibraryAtStartUp_property.addEBObserver (controller)
-      mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
+      self.mController_systemLibraryCheckTimeIntervalTitleTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
-        computeFunction:{
+        computeFunction: {
           return (self.additionnalLibraryArrayController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
-        outlet:self.mRemoveLibraryEntryButton
+        outlet: self.mRemoveLibraryEntryButton
       )
       self.additionnalLibraryArrayController.selectedArray_property.count_property.addEBObserver (controller)
-      mController_mRemoveLibraryEntryButton_enabled = controller
+      self.mController_mRemoveLibraryEntryButton_enabled = controller
     }
   //--------------------------- Array controller
     self.additionnalLibraryArrayController.bind_tableView (self.mAdditionnalLibraryArrayTableView, file: #file, line: #line)
