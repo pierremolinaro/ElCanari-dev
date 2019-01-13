@@ -154,7 +154,7 @@ nomArchive = "ElCanari-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])
 runCommand (["mv", "build/Release/ElCanari.app", nomArchive + "/ElCanari.app"])
 runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
-runCommand (["hdiutil", "-fs", " HFS+", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
+runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
 # while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
