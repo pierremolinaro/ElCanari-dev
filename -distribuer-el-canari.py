@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.4.1"
+VERSION_CANARI = "0.4.2"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -154,7 +154,7 @@ nomArchive = "ElCanari-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])
 runCommand (["mv", "build/Release/ElCanari.app", nomArchive + "/ElCanari.app"])
 runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
-runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
+runCommand (["hdiutil", "-fs", " HFS+", "create", "-srcfolder", nomArchive, nomArchive + ".dmg"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
 # while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):

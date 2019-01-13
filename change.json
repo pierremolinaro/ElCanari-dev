@@ -1,13 +1,10 @@
 {
   "NOTE" : [],
   "BUGFIX" : [
-    "Fixed symbol document metadata status",
-    "Fixed package document metadata status"
+    "Merger document was broken",
+    "DMG product has HFS+ file system"
   ],
   "CHANGE" : [],
-  "NEW" : [
-    "Added \"Open Symbol in Library\"",
-    "Added \"Open Package in Library\""
-  ]
+  "NEW" : []
 }
 

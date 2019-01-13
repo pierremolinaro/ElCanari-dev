@@ -131,11 +131,8 @@
                                                 <action selector="actionNewPackageDocument:" target="212" id="8Ja-g8-weF"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="New Device" keyEquivalent="n" id="864">
-                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="actionNewDeviceDocument:" target="212" id="wy4-1y-TWN"/>
-                                            </connections>
+                                        <menuItem title="New Device" id="864">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="New Font" id="865">
                                             <connections>
