@@ -1445,7 +1445,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : BoardModel? { // SOULD NOT BE WEAK
+  weak private var mValue : BoardModel? { // SHOULD BE WEAK, OPPOSITE RELATION
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
@@ -3877,7 +3877,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : MergerRoot? { // SOULD NOT BE WEAK
+  weak private var mValue : MergerRoot? { // SHOULD BE WEAK, OPPOSITE RELATION
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

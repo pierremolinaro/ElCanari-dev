@@ -3431,7 +3431,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : PackageZone? { // SOULD NOT BE WEAK
+  private var mValue : PackageZone? { // SHOULD NOT BE WEAK, NO OPPOSITE RELATION
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

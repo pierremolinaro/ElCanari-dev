@@ -21,7 +21,6 @@ class MultipleBindingController_hidden : EBOutletEvent {
     mOutlet = inOutlet
     super.init ()
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
-    self.postEvent ()
   }
 
   //····················································································································
@@ -57,7 +56,6 @@ class MultipleBindingController_enabled : EBOutletEvent {
     mOutlet = inOutlet
     super.init ()
     self.eventCallBack = { [weak self] in self?.updateOutlet () }
-    self.postEvent ()
   }
 
   //····················································································································

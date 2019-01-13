@@ -3494,7 +3494,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : ArtworkRoot? { // SOULD NOT BE WEAK
+  private var mValue : ArtworkRoot? { // SHOULD NOT BE WEAK, NO OPPOSITE RELATION
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

@@ -2785,7 +2785,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : PackagePad? { // SOULD NOT BE WEAK
+  weak private var mValue : PackagePad? { // SHOULD BE WEAK, OPPOSITE RELATION
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
