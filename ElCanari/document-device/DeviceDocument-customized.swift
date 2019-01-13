@@ -145,7 +145,7 @@ let PMDeviceComment = "PMDeviceComment"
   //····················································································································
 
   override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
-    var ok = false
+    let ok = false
 //    if let documentView = destinationScrollView.documentView {
 //      let pointInWindow = sender.draggingLocation
 //      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
