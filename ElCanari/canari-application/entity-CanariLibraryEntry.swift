@@ -311,21 +311,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mPath_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_mPath.eventArray () {
+      self.mObserversOf_mPath.apply ( {(_ observer : EBEvent) in
         managedObject.mPath_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mPath_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    for observer in self.mObserversOf_mPath.eventArray () {
+    self.mObserversOf_mPath.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mPath_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -368,21 +368,21 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mUses_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_mUses.eventArray () {
+      self.mObserversOf_mUses.apply ( {(_ observer : EBEvent) in
         managedObject.mUses_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_mUses_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
-    for observer in self.mObserversOf_mUses.eventArray () {
+    self.mObserversOf_mUses.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.mUses_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -425,9 +425,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func addEBObserversOf_mStatusImage_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_mStatusImage.eventArray () {
+      self.mObserversOf_mStatusImage.apply ( {(_ observer : EBEvent) in
         managedObject.mStatusImage_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -435,9 +435,9 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
 
   final func removeEBObserversOf_mStatusImage_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_mStatusImage.eventArray () {
+      self.mObserversOf_mStatusImage.apply ( {(_ observer : EBEvent) in
         managedObject.mStatusImage_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

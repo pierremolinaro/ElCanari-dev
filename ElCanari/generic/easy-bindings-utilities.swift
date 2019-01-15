@@ -61,16 +61,26 @@ class EBWeakEventSet : EBObject {
 
   //····················································································································
 
-  func eventArray () -> [EBEvent] {
-    var array = [EBEvent] ()
+  func apply (_ inFunction : (_ : EBEvent) -> Void) {
     for (key, entry) in self.mDictionary {
       if let observer = entry.observer {
-        array.append (observer)
+        inFunction (observer)
       }else{
         self.mDictionary [key] = nil
       }
     }
-    return array
+  }
+
+  //····················································································································
+
+  var count : Int {
+    var n = 0
+    for (_, entry) in self.mDictionary {
+      if entry.observer != nil {
+        n += 1
+      }
+    }
+    return n
   }
 
   //····················································································································
@@ -96,10 +106,10 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func addEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
-    for observer in inObserverSet.eventArray () {
+    inObserverSet.apply ( {(_ observer : EBEvent) in
       self.mObservers.insert (observer)
       observer.postEvent ()
-    }
+    })
     self.updateObserverExplorer ()
   }
 
@@ -113,19 +123,17 @@ class EBAbstractProperty : EBEvent {
   //····················································································································
 
   final func removeEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
-    for observer in inObserverSet.eventArray () {
+    inObserverSet.apply ( {(_ observer : EBEvent) in
       self.mObservers.remove (observer)
       observer.postEvent ()
-    }
+    })
     self.updateObserverExplorer ()
   }
 
   //····················································································································
 
   override func postEvent () {
-    for object in self.mObservers.eventArray () {
-      object.postEvent ()
-    }
+    self.mObservers.apply ( {(_ observer : EBEvent) in observer.postEvent () })
   }
   
   //····················································································································
@@ -141,13 +149,13 @@ class EBAbstractProperty : EBEvent {
   final func updateObserverExplorer () {
     if let observerExplorer = self.mObserverExplorer {
       observerExplorer.removeAllItems ()
-      let eventArray = self.mObservers.eventArray ()
-      observerExplorer.addItem (withTitle: String (eventArray.count))
-      observerExplorer.isEnabled = eventArray.count > 0
-      for object : EBEvent in eventArray {
-        let stringValue = explorerIndexString (object.ebObjectIndex) + object.className
+      let observerCount = self.mObservers.count
+      observerExplorer.addItem (withTitle: String (observerCount))
+      observerExplorer.isEnabled = observerCount > 0
+      self.mObservers.apply ( {(_ observer : EBEvent) in
+        let stringValue = explorerIndexString (observer.ebObjectIndex) + observer.className
         observerExplorer.addItem (withTitle: stringValue)
-      }
+      })
     }
   }
 

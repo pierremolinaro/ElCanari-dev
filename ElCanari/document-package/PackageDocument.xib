@@ -2304,7 +2304,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2423,7 +2423,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="8av-jO-Zwb">
                         <rect key="frame" x="1" y="1" width="629" height="418"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2514" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="629" height="418"/>
@@ -2503,7 +2503,7 @@
             <rect key="frame" x="0.0" y="0.0" width="717" height="319"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0.0F and clears history." verticalHuggingPriority="750" imageHugsTitle="YES" id="2529" customClass="EBButton">
+                <button toolTip="Resets version to 0." verticalHuggingPriority="750" imageHugsTitle="YES" id="2529" customClass="EBButton">
                     <rect key="frame" x="19" y="282" width="164" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2822">
@@ -2516,7 +2516,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="G1e-Bg-H7O">
                         <rect key="frame" x="1" y="1" width="591" height="253"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2519" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="147" width="591" height="253"/>
@@ -3528,10 +3528,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Ttk-9b-UM8">
                             <rect key="frame" x="0.0" y="0.0" width="685" height="443"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="1" width="685" height="1918"/>
+                                    <rect key="frame" x="0.0" y="0.6000000000037744" width="685" height="1918.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

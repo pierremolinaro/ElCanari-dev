@@ -493,6 +493,7 @@
         <customObject id="212" userLabel="Application Delegate" customClass="ApplicationDelegate">
             <connections>
                 <outlet property="mCanariAppUpdaterSettings" destination="n5I-oj-7oR" id="pTg-0I-V3B"/>
+                <outlet property="mOpenAllDialogAccessoryCheckBox" destination="waY-Tm-X9Z" id="GAF-Q8-lpY"/>
             </connections>
         </customObject>
         <window title="Library Checking Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckLibrariesWindowLocation" animationBehavior="default" id="752" userLabel="Window: CheckLibrariesLogWindow">
@@ -2903,6 +2904,15 @@ Gw
             </view>
             <point key="canvasLocation" x="-1343" y="-600"/>
         </window>
+        <button verticalHuggingPriority="750" id="waY-Tm-X9Z">
+            <rect key="frame" x="0.0" y="0.0" width="79" height="18"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <buttonCell key="cell" type="check" title="Animates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="92g-Aw-y3l">
+                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                <font key="font" metaFont="system"/>
+            </buttonCell>
+            <point key="canvasLocation" x="-199" y="-1203"/>
+        </button>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>

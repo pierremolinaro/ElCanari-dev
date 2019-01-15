@@ -127,7 +127,11 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
     self.mComposedPackageView?.register (pasteboardType: packagePasteboardType)
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedPackageView?.set (minimumRectangle: r)
-    DispatchQueue.main.async (execute: { _ = self.mComposedPackageView?.scrollToVisible (NSRect ()) })
+    DispatchQueue.main.async (execute: {
+      if let view = self.mComposedPackageView {
+         _ = view.scrollToVisible (view.objectsAndIssueBoundingBox)
+      }
+    })
   //--- Register inspector views
     self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")

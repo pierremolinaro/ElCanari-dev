@@ -1317,21 +1317,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedPageIndex.eventArray () {
+      self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
         managedObject.selectedPageIndex_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_selectedPageIndex.eventArray () {
+    self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1374,21 +1374,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_selectedInspector_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedInspector.eventArray () {
+      self.mObserversOf_selectedInspector.apply ( {(_ observer : EBEvent) in
         managedObject.selectedInspector_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedInspector_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_selectedInspector.eventArray () {
+    self.mObserversOf_selectedInspector.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedInspector_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1431,21 +1431,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_comments.eventArray () {
+      self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
         managedObject.comments_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_comments.eventArray () {
+    self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1488,21 +1488,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_program_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_program.eventArray () {
+      self.mObserversOf_program.apply ( {(_ observer : EBEvent) in
         managedObject.program_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_program_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_program.eventArray () {
+    self.mObserversOf_program.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.program_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1545,21 +1545,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_horizontalFlip_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_horizontalFlip.eventArray () {
+      self.mObserversOf_horizontalFlip.apply ( {(_ observer : EBEvent) in
         managedObject.horizontalFlip_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_horizontalFlip_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_horizontalFlip.eventArray () {
+    self.mObserversOf_horizontalFlip.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.horizontalFlip_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1602,21 +1602,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_verticalFlip_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_verticalFlip.eventArray () {
+      self.mObserversOf_verticalFlip.apply ( {(_ observer : EBEvent) in
         managedObject.verticalFlip_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_verticalFlip_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_verticalFlip.eventArray () {
+    self.mObserversOf_verticalFlip.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.verticalFlip_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1659,21 +1659,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridStyle_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStyle.eventArray () {
+      self.mObserversOf_gridStyle.apply ( {(_ observer : EBEvent) in
         managedObject.gridStyle_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridStyle_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStyle.eventArray () {
+    self.mObserversOf_gridStyle.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridStyle_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1716,21 +1716,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridStep_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStep.eventArray () {
+      self.mObserversOf_gridStep.apply ( {(_ observer : EBEvent) in
         managedObject.gridStep_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridStep_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStep.eventArray () {
+    self.mObserversOf_gridStep.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridStep_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1773,21 +1773,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridStepUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepUnit.eventArray () {
+      self.mObserversOf_gridStepUnit.apply ( {(_ observer : EBEvent) in
         managedObject.gridStepUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridStepUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridStepUnit.eventArray () {
+    self.mObserversOf_gridStepUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridStepUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1830,21 +1830,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridDisplayFactor.eventArray () {
+      self.mObserversOf_gridDisplayFactor.apply ( {(_ observer : EBEvent) in
         managedObject.gridDisplayFactor_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_gridDisplayFactor.eventArray () {
+    self.mObserversOf_gridDisplayFactor.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.gridDisplayFactor_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1887,21 +1887,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_zoom.eventArray () {
+      self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
         managedObject.zoom_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_zoom.eventArray () {
+    self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1944,21 +1944,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_padNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumbering.eventArray () {
+      self.mObserversOf_padNumbering.apply ( {(_ observer : EBEvent) in
         managedObject.padNumbering_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_padNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_padNumbering.eventArray () {
+    self.mObserversOf_padNumbering.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padNumbering_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2001,21 +2001,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_xPlacardUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xPlacardUnit.eventArray () {
+      self.mObserversOf_xPlacardUnit.apply ( {(_ observer : EBEvent) in
         managedObject.xPlacardUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xPlacardUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_xPlacardUnit.eventArray () {
+    self.mObserversOf_xPlacardUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xPlacardUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2058,21 +2058,21 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_yPlacardUnit_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yPlacardUnit.eventArray () {
+      self.mObserversOf_yPlacardUnit.apply ( {(_ observer : EBEvent) in
         managedObject.yPlacardUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yPlacardUnit_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
-    for observer in self.mObserversOf_yPlacardUnit.eventArray () {
+    self.mObserversOf_yPlacardUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yPlacardUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2115,9 +2115,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_freePadNumbering_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_freePadNumbering.eventArray () {
+      self.mObserversOf_freePadNumbering.apply ( {(_ observer : EBEvent) in
         managedObject.freePadNumbering_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2125,9 +2125,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_freePadNumbering_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_freePadNumbering.eventArray () {
+      self.mObserversOf_freePadNumbering.apply ( {(_ observer : EBEvent) in
         managedObject.freePadNumbering_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2171,9 +2171,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor.eventArray () {
+      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply ( {(_ observer : EBEvent) in
         managedObject.gridStepMultipliedByDisplayFactor_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2181,9 +2181,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gridStepMultipliedByDisplayFactor.eventArray () {
+      self.mObserversOf_gridStepMultipliedByDisplayFactor.apply ( {(_ observer : EBEvent) in
         managedObject.gridStepMultipliedByDisplayFactor_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2227,9 +2227,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumberDisplay.eventArray () {
+      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2237,9 +2237,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumberDisplay.eventArray () {
+      self.mObserversOf_padNumberDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2283,9 +2283,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2293,9 +2293,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2339,9 +2339,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func addEBObserversOf_noIssue_toElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_noIssue.eventArray () {
+      self.mObserversOf_noIssue.apply ( {(_ observer : EBEvent) in
         managedObject.noIssue_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2349,9 +2349,9 @@ class ReadOnlyArrayOf_PackageRoot : ReadOnlyAbstractArrayProperty <PackageRoot> 
 
   final func removeEBObserversOf_noIssue_fromElementsOfSet (_ inSet : Set<PackageRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_noIssue.eventArray () {
+      self.mObserversOf_noIssue.apply ( {(_ observer : EBEvent) in
         managedObject.noIssue_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

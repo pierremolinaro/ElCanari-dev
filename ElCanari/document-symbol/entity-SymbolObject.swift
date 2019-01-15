@@ -222,9 +222,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay.eventArray () {
+      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -232,9 +232,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay.eventArray () {
+      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -278,9 +278,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay.eventArray () {
+      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -288,9 +288,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay.eventArray () {
+      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -334,9 +334,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -344,9 +344,9 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

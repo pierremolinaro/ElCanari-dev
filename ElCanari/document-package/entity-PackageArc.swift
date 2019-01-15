@@ -977,21 +977,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yCenter.eventArray () {
+      self.mObserversOf_yCenter.apply ( {(_ observer : EBEvent) in
         managedObject.yCenter_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_yCenter.eventArray () {
+    self.mObserversOf_yCenter.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenter_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1034,21 +1034,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_radius_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_radius.eventArray () {
+      self.mObserversOf_radius.apply ( {(_ observer : EBEvent) in
         managedObject.radius_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_radius_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_radius.eventArray () {
+    self.mObserversOf_radius.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.radius_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1091,21 +1091,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_startAngle_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_startAngle.eventArray () {
+      self.mObserversOf_startAngle.apply ( {(_ observer : EBEvent) in
         managedObject.startAngle_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_startAngle_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_startAngle.eventArray () {
+    self.mObserversOf_startAngle.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.startAngle_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1148,21 +1148,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_arcAngle_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_arcAngle.eventArray () {
+      self.mObserversOf_arcAngle.apply ( {(_ observer : EBEvent) in
         managedObject.arcAngle_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_arcAngle_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_arcAngle.eventArray () {
+    self.mObserversOf_arcAngle.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.arcAngle_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1205,21 +1205,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_startTangent_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_startTangent.eventArray () {
+      self.mObserversOf_startTangent.apply ( {(_ observer : EBEvent) in
         managedObject.startTangent_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_startTangent_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_startTangent.eventArray () {
+    self.mObserversOf_startTangent.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.startTangent_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1262,21 +1262,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_endTangent_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_endTangent.eventArray () {
+      self.mObserversOf_endTangent.apply ( {(_ observer : EBEvent) in
         managedObject.endTangent_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_endTangent_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_endTangent.eventArray () {
+    self.mObserversOf_endTangent.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.endTangent_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1319,21 +1319,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_pathIsClosed_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_pathIsClosed.eventArray () {
+      self.mObserversOf_pathIsClosed.apply ( {(_ observer : EBEvent) in
         managedObject.pathIsClosed_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_pathIsClosed_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_pathIsClosed.eventArray () {
+    self.mObserversOf_pathIsClosed.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.pathIsClosed_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1376,21 +1376,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xCenterUnit.eventArray () {
+      self.mObserversOf_xCenterUnit.apply ( {(_ observer : EBEvent) in
         managedObject.xCenterUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_xCenterUnit.eventArray () {
+    self.mObserversOf_xCenterUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1433,21 +1433,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yCenterUnit.eventArray () {
+      self.mObserversOf_yCenterUnit.apply ( {(_ observer : EBEvent) in
         managedObject.yCenterUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_yCenterUnit.eventArray () {
+    self.mObserversOf_yCenterUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1490,21 +1490,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_radiusUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_radiusUnit.eventArray () {
+      self.mObserversOf_radiusUnit.apply ( {(_ observer : EBEvent) in
         managedObject.radiusUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_radiusUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_radiusUnit.eventArray () {
+    self.mObserversOf_radiusUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.radiusUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1547,21 +1547,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_startTangentUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_startTangentUnit.eventArray () {
+      self.mObserversOf_startTangentUnit.apply ( {(_ observer : EBEvent) in
         managedObject.startTangentUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_startTangentUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_startTangentUnit.eventArray () {
+    self.mObserversOf_startTangentUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.startTangentUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1604,21 +1604,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_endTangentUnit_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_endTangentUnit.eventArray () {
+      self.mObserversOf_endTangentUnit.apply ( {(_ observer : EBEvent) in
         managedObject.endTangentUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_endTangentUnit_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_endTangentUnit.eventArray () {
+    self.mObserversOf_endTangentUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.endTangentUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1661,21 +1661,21 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xCenter.eventArray () {
+      self.mObserversOf_xCenter.apply ( {(_ observer : EBEvent) in
         managedObject.xCenter_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackageArc>) {
-    for observer in self.mObserversOf_xCenter.eventArray () {
+    self.mObserversOf_xCenter.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xCenter_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1718,9 +1718,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay.eventArray () {
+      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -1728,9 +1728,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay.eventArray () {
+      self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -1774,9 +1774,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay.eventArray () {
+      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -1784,9 +1784,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay.eventArray () {
+      self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -1830,9 +1830,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -1840,9 +1840,9 @@ class ReadOnlyArrayOf_PackageArc : ReadOnlyAbstractArrayProperty <PackageArc> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageArc>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues.eventArray () {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
         managedObject.issues_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

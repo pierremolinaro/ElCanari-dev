@@ -19,6 +19,8 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
 
   @IBOutlet private var mCanariAppUpdaterSettings : CanariAppUpdaterSettings? = nil // Only for retaining object
 
+  @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
+
   //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   //····················································································································

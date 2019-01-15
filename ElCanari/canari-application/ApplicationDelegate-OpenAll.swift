@@ -58,19 +58,23 @@ extension ApplicationDelegate {
         }else{
           let alert = NSAlert ()
           alert.messageText = "Open \(fileCount) document\((fileCount > 1) ? "s" : "")?"
+          alert.accessoryView = self.mOpenAllDialogAccessoryCheckBox
+          alert.informativeText = "Animating is slower, but you have a visual effect during documents opening."
           alert.addButton (withTitle: "Ok")
           alert.addButton (withTitle: "Cancel")
           let response = alert.runModal ()
           if response == .alertFirstButtonReturn {
+            let animating = (self.mOpenAllDialogAccessoryCheckBox?.state ?? .on) == .on
             for f in files {
               let fullpath = baseDirectory + "/" + f
               if extensions.contains (fullpath.pathExtension) {
                 dc.openDocument (
                   withContentsOf: URL (fileURLWithPath: fullpath),
                   display: true,
-                  completionHandler: { (document : NSDocument?, display : Bool, error : Error?) in
-                    document?.windowForSheet?.makeKeyAndOrderFront (nil)
-                    _ = RunLoop.main.run (mode: .default, before: Date ())
+                  completionHandler: { (document : NSDocument?, documentWasAlreadyOpen : Bool, error : Error?) in
+                    if animating {
+                      _ = RunLoop.main.run (mode: .default, before: Date ())
+                    }
                   }
                 )
               }

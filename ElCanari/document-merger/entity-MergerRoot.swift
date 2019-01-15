@@ -1614,21 +1614,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedPageIndex.eventArray () {
+      self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
         managedObject.selectedPageIndex_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_selectedPageIndex.eventArray () {
+    self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1671,21 +1671,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_zoom_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_zoom.eventArray () {
+      self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
         managedObject.zoom_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_zoom_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_zoom.eventArray () {
+    self.mObserversOf_zoom.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.zoom_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1728,21 +1728,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_automaticBoardSize_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_automaticBoardSize.eventArray () {
+      self.mObserversOf_automaticBoardSize.apply ( {(_ observer : EBEvent) in
         managedObject.automaticBoardSize_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_automaticBoardSize_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_automaticBoardSize.eventArray () {
+    self.mObserversOf_automaticBoardSize.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.automaticBoardSize_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1785,21 +1785,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardManualWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardManualWidth.eventArray () {
+      self.mObserversOf_boardManualWidth.apply ( {(_ observer : EBEvent) in
         managedObject.boardManualWidth_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardManualWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardManualWidth.eventArray () {
+    self.mObserversOf_boardManualWidth.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardManualWidth_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1842,21 +1842,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardManualHeight_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardManualHeight.eventArray () {
+      self.mObserversOf_boardManualHeight.apply ( {(_ observer : EBEvent) in
         managedObject.boardManualHeight_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardManualHeight_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardManualHeight.eventArray () {
+    self.mObserversOf_boardManualHeight.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardManualHeight_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1899,21 +1899,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardWidthUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardWidthUnit.eventArray () {
+      self.mObserversOf_boardWidthUnit.apply ( {(_ observer : EBEvent) in
         managedObject.boardWidthUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardWidthUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardWidthUnit.eventArray () {
+    self.mObserversOf_boardWidthUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardWidthUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -1956,21 +1956,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardHeightUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardHeightUnit.eventArray () {
+      self.mObserversOf_boardHeightUnit.apply ( {(_ observer : EBEvent) in
         managedObject.boardHeightUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardHeightUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardHeightUnit.eventArray () {
+    self.mObserversOf_boardHeightUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardHeightUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2013,21 +2013,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_overlapingArrangment_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_overlapingArrangment.eventArray () {
+      self.mObserversOf_overlapingArrangment.apply ( {(_ observer : EBEvent) in
         managedObject.overlapingArrangment_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_overlapingArrangment_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_overlapingArrangment.eventArray () {
+    self.mObserversOf_overlapingArrangment.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.overlapingArrangment_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2070,21 +2070,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_selectedBoardXUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedBoardXUnit.eventArray () {
+      self.mObserversOf_selectedBoardXUnit.apply ( {(_ observer : EBEvent) in
         managedObject.selectedBoardXUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_selectedBoardXUnit.eventArray () {
+    self.mObserversOf_selectedBoardXUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedBoardXUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2127,21 +2127,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_selectedBoardYUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedBoardYUnit.eventArray () {
+      self.mObserversOf_selectedBoardYUnit.apply ( {(_ observer : EBEvent) in
         managedObject.selectedBoardYUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_selectedBoardYUnit.eventArray () {
+    self.mObserversOf_selectedBoardYUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedBoardYUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2184,21 +2184,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardLimitWidth.eventArray () {
+      self.mObserversOf_boardLimitWidth.apply ( {(_ observer : EBEvent) in
         managedObject.boardLimitWidth_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardLimitWidth.eventArray () {
+    self.mObserversOf_boardLimitWidth.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardLimitWidth_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2241,21 +2241,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardLimitWidthUnit.eventArray () {
+      self.mObserversOf_boardLimitWidthUnit.apply ( {(_ observer : EBEvent) in
         managedObject.boardLimitWidthUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_boardLimitWidthUnit.eventArray () {
+    self.mObserversOf_boardLimitWidthUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.boardLimitWidthUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2298,21 +2298,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_arrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_arrowMagnitude.eventArray () {
+      self.mObserversOf_arrowMagnitude.apply ( {(_ observer : EBEvent) in
         managedObject.arrowMagnitude_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_arrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_arrowMagnitude.eventArray () {
+    self.mObserversOf_arrowMagnitude.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.arrowMagnitude_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2355,21 +2355,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_arrowMagnitudeUnit.eventArray () {
+      self.mObserversOf_arrowMagnitudeUnit.apply ( {(_ observer : EBEvent) in
         managedObject.arrowMagnitudeUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_arrowMagnitudeUnit.eventArray () {
+    self.mObserversOf_arrowMagnitudeUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.arrowMagnitudeUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2412,21 +2412,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_shiftArrowMagnitude.eventArray () {
+      self.mObserversOf_shiftArrowMagnitude.apply ( {(_ observer : EBEvent) in
         managedObject.shiftArrowMagnitude_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_shiftArrowMagnitude.eventArray () {
+    self.mObserversOf_shiftArrowMagnitude.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.shiftArrowMagnitude_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2469,21 +2469,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_shiftArrowMagnitudeUnit.eventArray () {
+      self.mObserversOf_shiftArrowMagnitudeUnit.apply ( {(_ observer : EBEvent) in
         managedObject.shiftArrowMagnitudeUnit_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_shiftArrowMagnitudeUnit.eventArray () {
+    self.mObserversOf_shiftArrowMagnitudeUnit.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.shiftArrowMagnitudeUnit_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2526,21 +2526,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_artworkName_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_artworkName.eventArray () {
+      self.mObserversOf_artworkName.apply ( {(_ observer : EBEvent) in
         managedObject.artworkName_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_artworkName_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_artworkName.eventArray () {
+    self.mObserversOf_artworkName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.artworkName_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2583,21 +2583,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_generateGerberProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_generateGerberProductFile.eventArray () {
+      self.mObserversOf_generateGerberProductFile.apply ( {(_ observer : EBEvent) in
         managedObject.generateGerberProductFile_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_generateGerberProductFile.eventArray () {
+    self.mObserversOf_generateGerberProductFile.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.generateGerberProductFile_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2640,21 +2640,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_generatePDFProductFile_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_generatePDFProductFile.eventArray () {
+      self.mObserversOf_generatePDFProductFile.apply ( {(_ observer : EBEvent) in
         managedObject.generatePDFProductFile_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_generatePDFProductFile.eventArray () {
+    self.mObserversOf_generatePDFProductFile.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.generatePDFProductFile_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2697,21 +2697,21 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_generatedBoardArchiveFormat.eventArray () {
+      self.mObserversOf_generatedBoardArchiveFormat.apply ( {(_ observer : EBEvent) in
         managedObject.generatedBoardArchiveFormat_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
-    for observer in self.mObserversOf_generatedBoardArchiveFormat.eventArray () {
+    self.mObserversOf_generatedBoardArchiveFormat.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.generatedBoardArchiveFormat_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -2754,9 +2754,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_modelNames_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_modelNames.eventArray () {
+      self.mObserversOf_modelNames.apply ( {(_ observer : EBEvent) in
         managedObject.modelNames_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2764,9 +2764,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_modelNames_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_modelNames.eventArray () {
+      self.mObserversOf_modelNames.apply ( {(_ observer : EBEvent) in
         managedObject.modelNames_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2810,9 +2810,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardRect_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardRect.eventArray () {
+      self.mObserversOf_boardRect.apply ( {(_ observer : EBEvent) in
         managedObject.boardRect_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2820,9 +2820,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_boardRect_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardRect.eventArray () {
+      self.mObserversOf_boardRect.apply ( {(_ observer : EBEvent) in
         managedObject.boardRect_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2866,9 +2866,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardDisplayRect_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardDisplayRect.eventArray () {
+      self.mObserversOf_boardDisplayRect.apply ( {(_ observer : EBEvent) in
         managedObject.boardDisplayRect_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2876,9 +2876,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_boardDisplayRect_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardDisplayRect.eventArray () {
+      self.mObserversOf_boardDisplayRect.apply ( {(_ observer : EBEvent) in
         managedObject.boardDisplayRect_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2922,9 +2922,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardWidth_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardWidth.eventArray () {
+      self.mObserversOf_boardWidth.apply ( {(_ observer : EBEvent) in
         managedObject.boardWidth_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2932,9 +2932,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_boardWidth_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardWidth.eventArray () {
+      self.mObserversOf_boardWidth.apply ( {(_ observer : EBEvent) in
         managedObject.boardWidth_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2978,9 +2978,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardHeight_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardHeight.eventArray () {
+      self.mObserversOf_boardHeight.apply ( {(_ observer : EBEvent) in
         managedObject.boardHeight_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -2988,9 +2988,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_boardHeight_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardHeight.eventArray () {
+      self.mObserversOf_boardHeight.apply ( {(_ observer : EBEvent) in
         managedObject.boardHeight_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -3034,9 +3034,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardOutlineRectDisplay.eventArray () {
+      self.mObserversOf_boardOutlineRectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.boardOutlineRectDisplay_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -3044,9 +3044,9 @@ class ReadOnlyArrayOf_MergerRoot : ReadOnlyAbstractArrayProperty <MergerRoot> {
 
   final func removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (_ inSet : Set<MergerRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardOutlineRectDisplay.eventArray () {
+      self.mObserversOf_boardOutlineRectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.boardOutlineRectDisplay_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

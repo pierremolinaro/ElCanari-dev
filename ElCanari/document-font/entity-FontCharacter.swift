@@ -495,21 +495,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_codePoint_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_codePoint.eventArray () {
+      self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
         managedObject.codePoint_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_codePoint_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for observer in self.mObserversOf_codePoint.eventArray () {
+    self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.codePoint_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -552,21 +552,21 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_advance_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_advance.eventArray () {
+      self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
         managedObject.advance_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
   //····················································································································
 
   final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for observer in self.mObserversOf_advance.eventArray () {
+    self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.advance_property.removeEBObserver (observer)
       }
-    }
+    })
   }
 
   //····················································································································
@@ -609,9 +609,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_segmentArrayForDrawing.eventArray () {
+      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
         managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -619,9 +619,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_segmentArrayForDrawing.eventArray () {
+      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
         managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -665,9 +665,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gerberCode.eventArray () {
+      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
         managedObject.gerberCode_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -675,9 +675,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gerberCode.eventArray () {
+      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
         managedObject.gerberCode_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -721,9 +721,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gerberCodeInstructionCountMessage.eventArray () {
+      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
         managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
-      }
+      })
     }
   }
 
@@ -731,9 +731,9 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 
   final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_gerberCodeInstructionCountMessage.eventArray () {
+      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
         managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
-      }
+      })
     }
   }
 

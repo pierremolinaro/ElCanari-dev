@@ -609,7 +609,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="1" width="370" height="271"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" id="1049" customClass="PMDevicePDFDroppableTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="271"/>
@@ -1103,7 +1103,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="U38-Nl-hUZ">
                                             <rect key="frame" x="1" y="0.0" width="611" height="328"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="importedSymbolsInDevice" headerView="1589" id="1132">
                                                     <rect key="frame" x="0.0" y="0.0" width="611" height="305"/>
@@ -1337,7 +1337,7 @@
             <rect key="frame" x="0.0" y="0.0" width="688" height="408"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Resets version to 0.0F and clears history." verticalHuggingPriority="750" imageHugsTitle="YES" id="1189" customClass="EBButton">
+                <button toolTip="Resets version to 0." verticalHuggingPriority="750" imageHugsTitle="YES" id="1189" customClass="EBButton">
                     <rect key="frame" x="499" y="371" width="169" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Reset Version and Signature" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1553">
@@ -1349,7 +1349,7 @@
                     <rect key="frame" x="103" y="369" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="…" drawsBackground="YES" id="1547">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
