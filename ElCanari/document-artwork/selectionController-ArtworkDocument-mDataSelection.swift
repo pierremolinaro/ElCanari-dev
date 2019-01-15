@@ -464,7 +464,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_ArtworkDocument_mDataSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -483,7 +483,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "drawBoardLimits",
-      idx:self.drawBoardLimits_property.mEasyBindingsObjectIndex,
+      idx:self.drawBoardLimits_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawBoardLimits_property.mObserverExplorer,
@@ -491,7 +491,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawComponentNamesBottomSide",
-      idx:self.drawComponentNamesBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawComponentNamesBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawComponentNamesBottomSide_property.mObserverExplorer,
@@ -499,7 +499,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawComponentNamesTopSide",
-      idx:self.drawComponentNamesTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawComponentNamesTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawComponentNamesTopSide_property.mObserverExplorer,
@@ -507,7 +507,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawComponentValuesBottomSide",
-      idx:self.drawComponentValuesBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawComponentValuesBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawComponentValuesBottomSide_property.mObserverExplorer,
@@ -515,7 +515,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawComponentValuesTopSide",
-      idx:self.drawComponentValuesTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawComponentValuesTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawComponentValuesTopSide_property.mObserverExplorer,
@@ -523,7 +523,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawInternalBoardLimits",
-      idx:self.drawInternalBoardLimits_property.mEasyBindingsObjectIndex,
+      idx:self.drawInternalBoardLimits_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawInternalBoardLimits_property.mObserverExplorer,
@@ -531,7 +531,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawPackageLegendBottomSide",
-      idx:self.drawPackageLegendBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawPackageLegendBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawPackageLegendBottomSide_property.mObserverExplorer,
@@ -539,7 +539,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawPackageLegendTopSide",
-      idx:self.drawPackageLegendTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawPackageLegendTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawPackageLegendTopSide_property.mObserverExplorer,
@@ -547,7 +547,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawPadHolesInPDF",
-      idx:self.drawPadHolesInPDF_property.mEasyBindingsObjectIndex,
+      idx:self.drawPadHolesInPDF_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawPadHolesInPDF_property.mObserverExplorer,
@@ -555,7 +555,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawPadsBottomSide",
-      idx:self.drawPadsBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawPadsBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawPadsBottomSide_property.mObserverExplorer,
@@ -563,7 +563,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawPadsTopSide",
-      idx:self.drawPadsTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawPadsTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawPadsTopSide_property.mObserverExplorer,
@@ -571,7 +571,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutBottomSide",
-      idx:self.drawTextsLayoutBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLayoutBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTextsLayoutBottomSide_property.mObserverExplorer,
@@ -579,7 +579,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTextsLayoutTopSide",
-      idx:self.drawTextsLayoutTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLayoutTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTextsLayoutTopSide_property.mObserverExplorer,
@@ -587,7 +587,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTextsLegendBottomSide",
-      idx:self.drawTextsLegendBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLegendBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTextsLegendBottomSide_property.mObserverExplorer,
@@ -595,7 +595,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTextsLegendTopSide",
-      idx:self.drawTextsLegendTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTextsLegendTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTextsLegendTopSide_property.mObserverExplorer,
@@ -603,7 +603,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTracksBottomSide",
-      idx:self.drawTracksBottomSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTracksBottomSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTracksBottomSide_property.mObserverExplorer,
@@ -611,7 +611,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawTracksTopSide",
-      idx:self.drawTracksTopSide_property.mEasyBindingsObjectIndex,
+      idx:self.drawTracksTopSide_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawTracksTopSide_property.mObserverExplorer,
@@ -619,7 +619,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "drawVias",
-      idx:self.drawVias_property.mEasyBindingsObjectIndex,
+      idx:self.drawVias_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drawVias_property.mObserverExplorer,
@@ -627,7 +627,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "fileExtension",
-      idx:self.fileExtension_property.mEasyBindingsObjectIndex,
+      idx:self.fileExtension_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.fileExtension_property.mObserverExplorer,
@@ -635,7 +635,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "horizontalMirror",
-      idx:self.horizontalMirror_property.mEasyBindingsObjectIndex,
+      idx:self.horizontalMirror_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.horizontalMirror_property.mObserverExplorer,
@@ -643,7 +643,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "measurementUnitForPadHoleInPDF",
-      idx:self.measurementUnitForPadHoleInPDF_property.mEasyBindingsObjectIndex,
+      idx:self.measurementUnitForPadHoleInPDF_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.measurementUnitForPadHoleInPDF_property.mObserverExplorer,
@@ -651,7 +651,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
+      idx:self.name_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.name_property.mObserverExplorer,
@@ -659,7 +659,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "padHoleDiameterInPDF",
-      idx:self.padHoleDiameterInPDF_property.mEasyBindingsObjectIndex,
+      idx:self.padHoleDiameterInPDF_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padHoleDiameterInPDF_property.mObserverExplorer,
@@ -676,7 +676,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_ArtworkDocument_mDataSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

@@ -3502,7 +3502,7 @@ class BoardModel : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
+      idx:self.name_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.name_property.mObserverExplorer,
@@ -3510,7 +3510,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelWidth",
-      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
+      idx:self.modelWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelWidth_property.mObserverExplorer,
@@ -3518,7 +3518,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelWidthUnit",
-      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelWidthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
@@ -3526,7 +3526,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelHeight",
-      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
+      idx:self.modelHeight_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelHeight_property.mObserverExplorer,
@@ -3534,7 +3534,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelHeightUnit",
-      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelHeightUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
@@ -3542,7 +3542,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      idx:self.zoom_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoom_property.mObserverExplorer,
@@ -3550,7 +3550,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelLimitWidth",
-      idx:self.modelLimitWidth_property.mEasyBindingsObjectIndex,
+      idx:self.modelLimitWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
@@ -3558,7 +3558,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "modelLimitWidthUnit",
-      idx:self.modelLimitWidthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelLimitWidthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
@@ -3566,7 +3566,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "artworkName",
-      idx:self.artworkName_property.mEasyBindingsObjectIndex,
+      idx:self.artworkName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.artworkName_property.mObserverExplorer,
@@ -3575,7 +3575,7 @@ class BoardModel : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "frontLegendLinesSegments",
-      idx:self.frontLegendLinesSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontLegendLinesSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLegendLinesSegments_property.mObserverExplorer,
@@ -3583,7 +3583,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontLegendLinesBezierPaths",
-      idx:self.frontLegendLinesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontLegendLinesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLegendLinesBezierPaths_property.mObserverExplorer,
@@ -3591,7 +3591,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLegendLinesSegments",
-      idx:self.backLegendLinesSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backLegendLinesSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLegendLinesSegments_property.mObserverExplorer,
@@ -3599,7 +3599,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLegendLinesBezierPaths",
-      idx:self.backLegendLinesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backLegendLinesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLegendLinesBezierPaths_property.mObserverExplorer,
@@ -3607,7 +3607,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontLegendTextsSegments",
-      idx:self.frontLegendTextsSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontLegendTextsSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLegendTextsSegments_property.mObserverExplorer,
@@ -3615,7 +3615,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontLegendTextsBezierPaths",
-      idx:self.frontLegendTextsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontLegendTextsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLegendTextsBezierPaths_property.mObserverExplorer,
@@ -3623,7 +3623,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontLayoutTextsSegments",
-      idx:self.frontLayoutTextsSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontLayoutTextsSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLayoutTextsSegments_property.mObserverExplorer,
@@ -3631,7 +3631,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontLayoutTextsBezierPaths",
-      idx:self.frontLayoutTextsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontLayoutTextsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontLayoutTextsBezierPaths_property.mObserverExplorer,
@@ -3639,7 +3639,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLegendTextsSegments",
-      idx:self.backLegendTextsSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backLegendTextsSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLegendTextsSegments_property.mObserverExplorer,
@@ -3647,7 +3647,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLegendTextsBezierPaths",
-      idx:self.backLegendTextsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backLegendTextsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLegendTextsBezierPaths_property.mObserverExplorer,
@@ -3655,7 +3655,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLayoutTextsSegments",
-      idx:self.backLayoutTextsSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backLayoutTextsSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLayoutTextsSegments_property.mObserverExplorer,
@@ -3663,7 +3663,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backLayoutTextsBezierPaths",
-      idx:self.backLayoutTextsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backLayoutTextsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backLayoutTextsBezierPaths_property.mObserverExplorer,
@@ -3671,7 +3671,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "internalBoardsLimitsSegments",
-      idx:self.internalBoardsLimitsSegments_property.mEasyBindingsObjectIndex,
+      idx:self.internalBoardsLimitsSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.internalBoardsLimitsSegments_property.mObserverExplorer,
@@ -3679,7 +3679,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "internalBoardsLimitsBezierPaths",
-      idx:self.internalBoardsLimitsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.internalBoardsLimitsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.internalBoardsLimitsBezierPaths_property.mObserverExplorer,
@@ -3687,7 +3687,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "drillSegments",
-      idx:self.drillSegments_property.mEasyBindingsObjectIndex,
+      idx:self.drillSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drillSegments_property.mObserverExplorer,
@@ -3695,7 +3695,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "holesBezierPaths",
-      idx:self.holesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.holesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.holesBezierPaths_property.mObserverExplorer,
@@ -3703,7 +3703,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "viaShapes",
-      idx:self.viaShapes_property.mEasyBindingsObjectIndex,
+      idx:self.viaShapes_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.viaShapes_property.mObserverExplorer,
@@ -3711,7 +3711,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "viasBezierPaths",
-      idx:self.viasBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.viasBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.viasBezierPaths_property.mObserverExplorer,
@@ -3719,7 +3719,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontPadArray",
-      idx:self.frontPadArray_property.mEasyBindingsObjectIndex,
+      idx:self.frontPadArray_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontPadArray_property.mObserverExplorer,
@@ -3727,7 +3727,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontPadsBezierPaths",
-      idx:self.frontPadsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontPadsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontPadsBezierPaths_property.mObserverExplorer,
@@ -3735,7 +3735,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backPadArray",
-      idx:self.backPadArray_property.mEasyBindingsObjectIndex,
+      idx:self.backPadArray_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backPadArray_property.mObserverExplorer,
@@ -3743,7 +3743,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backPadsBezierPaths",
-      idx:self.backPadsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backPadsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backPadsBezierPaths_property.mObserverExplorer,
@@ -3751,7 +3751,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "boardLimits",
-      idx:self.boardLimits_property.mEasyBindingsObjectIndex,
+      idx:self.boardLimits_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.boardLimits_property.mObserverExplorer,
@@ -3759,7 +3759,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "boardLimitsBezierPaths",
-      idx:self.boardLimitsBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.boardLimitsBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.boardLimitsBezierPaths_property.mObserverExplorer,
@@ -3767,7 +3767,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backComponentNameSegments",
-      idx:self.backComponentNameSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backComponentNameSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backComponentNameSegments_property.mObserverExplorer,
@@ -3775,7 +3775,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backComponentNamesBezierPaths",
-      idx:self.backComponentNamesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backComponentNamesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backComponentNamesBezierPaths_property.mObserverExplorer,
@@ -3783,7 +3783,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontComponentNameSegments",
-      idx:self.frontComponentNameSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontComponentNameSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontComponentNameSegments_property.mObserverExplorer,
@@ -3791,7 +3791,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontComponentNamesBezierPaths",
-      idx:self.frontComponentNamesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontComponentNamesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontComponentNamesBezierPaths_property.mObserverExplorer,
@@ -3799,7 +3799,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontComponentValueSegments",
-      idx:self.frontComponentValueSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontComponentValueSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontComponentValueSegments_property.mObserverExplorer,
@@ -3807,7 +3807,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontComponentValuesBezierPaths",
-      idx:self.frontComponentValuesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontComponentValuesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontComponentValuesBezierPaths_property.mObserverExplorer,
@@ -3815,7 +3815,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backComponentValueSegments",
-      idx:self.backComponentValueSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backComponentValueSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backComponentValueSegments_property.mObserverExplorer,
@@ -3823,7 +3823,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backComponentValuesBezierPaths",
-      idx:self.backComponentValuesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backComponentValuesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backComponentValuesBezierPaths_property.mObserverExplorer,
@@ -3831,7 +3831,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backTrackSegments",
-      idx:self.backTrackSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backTrackSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backTrackSegments_property.mObserverExplorer,
@@ -3839,7 +3839,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backTracksBezierPaths",
-      idx:self.backTracksBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backTracksBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backTracksBezierPaths_property.mObserverExplorer,
@@ -3847,7 +3847,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontTrackSegments",
-      idx:self.frontTrackSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontTrackSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontTrackSegments_property.mObserverExplorer,
@@ -3855,7 +3855,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontTracksBezierPaths",
-      idx:self.frontTracksBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontTracksBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontTracksBezierPaths_property.mObserverExplorer,
@@ -3863,7 +3863,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontPackagesSegments",
-      idx:self.frontPackagesSegments_property.mEasyBindingsObjectIndex,
+      idx:self.frontPackagesSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontPackagesSegments_property.mObserverExplorer,
@@ -3871,7 +3871,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "frontPackagesBezierPaths",
-      idx:self.frontPackagesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.frontPackagesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.frontPackagesBezierPaths_property.mObserverExplorer,
@@ -3879,7 +3879,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backPackagesSegments",
-      idx:self.backPackagesSegments_property.mEasyBindingsObjectIndex,
+      idx:self.backPackagesSegments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backPackagesSegments_property.mObserverExplorer,
@@ -3887,7 +3887,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "backPackagesBezierPaths",
-      idx:self.backPackagesBezierPaths_property.mEasyBindingsObjectIndex,
+      idx:self.backPackagesBezierPaths_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.backPackagesBezierPaths_property.mObserverExplorer,
@@ -3895,7 +3895,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "imageForModel",
-      idx:self.imageForModel_property.mEasyBindingsObjectIndex,
+      idx:self.imageForModel_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.imageForModel_property.mObserverExplorer,
@@ -3903,7 +3903,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "imageForInstances",
-      idx:self.imageForInstances_property.mEasyBindingsObjectIndex,
+      idx:self.imageForInstances_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.imageForInstances_property.mObserverExplorer,
@@ -3911,7 +3911,7 @@ class BoardModel : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "instanceCount",
-      idx:self.instanceCount_property.mEasyBindingsObjectIndex,
+      idx:self.instanceCount_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.instanceCount_property.mObserverExplorer,
@@ -3920,140 +3920,140 @@ class BoardModel : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "frontLegendLines",
-      idx:frontLegendLines_property.mEasyBindingsObjectIndex,
+      idx:frontLegendLines_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontLegendLines_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backLegendLines",
-      idx:backLegendLines_property.mEasyBindingsObjectIndex,
+      idx:backLegendLines_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backLegendLines_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontLegendTexts",
-      idx:frontLegendTexts_property.mEasyBindingsObjectIndex,
+      idx:frontLegendTexts_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontLegendTexts_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontLayoutTexts",
-      idx:frontLayoutTexts_property.mEasyBindingsObjectIndex,
+      idx:frontLayoutTexts_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontLayoutTexts_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backLegendTexts",
-      idx:backLegendTexts_property.mEasyBindingsObjectIndex,
+      idx:backLegendTexts_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backLegendTexts_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backLayoutTexts",
-      idx:backLayoutTexts_property.mEasyBindingsObjectIndex,
+      idx:backLayoutTexts_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backLayoutTexts_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "internalBoardsLimits",
-      idx:internalBoardsLimits_property.mEasyBindingsObjectIndex,
+      idx:internalBoardsLimits_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&internalBoardsLimits_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "drills",
-      idx:drills_property.mEasyBindingsObjectIndex,
+      idx:drills_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&drills_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "vias",
-      idx:vias_property.mEasyBindingsObjectIndex,
+      idx:vias_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&vias_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontPads",
-      idx:frontPads_property.mEasyBindingsObjectIndex,
+      idx:frontPads_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontPads_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backPads",
-      idx:backPads_property.mEasyBindingsObjectIndex,
+      idx:backPads_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backPads_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backComponentNames",
-      idx:backComponentNames_property.mEasyBindingsObjectIndex,
+      idx:backComponentNames_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backComponentNames_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontComponentNames",
-      idx:frontComponentNames_property.mEasyBindingsObjectIndex,
+      idx:frontComponentNames_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontComponentNames_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontComponentValues",
-      idx:frontComponentValues_property.mEasyBindingsObjectIndex,
+      idx:frontComponentValues_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontComponentValues_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backComponentValues",
-      idx:backComponentValues_property.mEasyBindingsObjectIndex,
+      idx:backComponentValues_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backComponentValues_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backTracks",
-      idx:backTracks_property.mEasyBindingsObjectIndex,
+      idx:backTracks_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backTracks_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontTracks",
-      idx:frontTracks_property.mEasyBindingsObjectIndex,
+      idx:frontTracks_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontTracks_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "frontPackages",
-      idx:frontPackages_property.mEasyBindingsObjectIndex,
+      idx:frontPackages_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&frontPackages_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "backPackages",
-      idx:backPackages_property.mEasyBindingsObjectIndex,
+      idx:backPackages_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&backPackages_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
       "myInstances",
-      idx:myInstances_property.mEasyBindingsObjectIndex,
+      idx:myInstances_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&myInstances_property.mValueExplorer
@@ -7692,11 +7692,11 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

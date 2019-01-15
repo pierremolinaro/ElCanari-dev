@@ -356,7 +356,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageArcSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -375,7 +375,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "arcAngle",
-      idx:self.arcAngle_property.mEasyBindingsObjectIndex,
+      idx:self.arcAngle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.arcAngle_property.mObserverExplorer,
@@ -383,7 +383,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "endTangent",
-      idx:self.endTangent_property.mEasyBindingsObjectIndex,
+      idx:self.endTangent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.endTangent_property.mObserverExplorer,
@@ -391,7 +391,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "endTangentUnit",
-      idx:self.endTangentUnit_property.mEasyBindingsObjectIndex,
+      idx:self.endTangentUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
@@ -399,7 +399,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
-      idx:self.pathIsClosed_property.mEasyBindingsObjectIndex,
+      idx:self.pathIsClosed_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
@@ -407,7 +407,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "radius",
-      idx:self.radius_property.mEasyBindingsObjectIndex,
+      idx:self.radius_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.radius_property.mObserverExplorer,
@@ -415,7 +415,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "radiusUnit",
-      idx:self.radiusUnit_property.mEasyBindingsObjectIndex,
+      idx:self.radiusUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.radiusUnit_property.mObserverExplorer,
@@ -423,7 +423,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "startAngle",
-      idx:self.startAngle_property.mEasyBindingsObjectIndex,
+      idx:self.startAngle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startAngle_property.mObserverExplorer,
@@ -431,7 +431,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "startTangent",
-      idx:self.startTangent_property.mEasyBindingsObjectIndex,
+      idx:self.startTangent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startTangent_property.mObserverExplorer,
@@ -439,7 +439,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "startTangentUnit",
-      idx:self.startTangentUnit_property.mEasyBindingsObjectIndex,
+      idx:self.startTangentUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
@@ -447,7 +447,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.mEasyBindingsObjectIndex,
+      idx:self.xCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenter_property.mObserverExplorer,
@@ -455,7 +455,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
@@ -463,7 +463,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.mEasyBindingsObjectIndex,
+      idx:self.yCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenter_property.mObserverExplorer,
@@ -471,7 +471,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
@@ -488,7 +488,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageArcSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

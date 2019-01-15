@@ -200,7 +200,7 @@ class SegmentEntity : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -208,7 +208,7 @@ class SegmentEntity : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -216,7 +216,7 @@ class SegmentEntity : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -224,7 +224,7 @@ class SegmentEntity : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.mEasyBindingsObjectIndex,
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.width_property.mObserverExplorer,
@@ -232,7 +232,7 @@ class SegmentEntity : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -736,11 +736,11 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

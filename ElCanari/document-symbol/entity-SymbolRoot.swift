@@ -531,7 +531,7 @@ class SymbolRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedInspector",
-      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      idx:self.selectedInspector_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedInspector_property.mObserverExplorer,
@@ -539,7 +539,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      idx:self.comments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
@@ -547,7 +547,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
-      idx:self.horizontalFlip_property.mEasyBindingsObjectIndex,
+      idx:self.horizontalFlip_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.horizontalFlip_property.mObserverExplorer,
@@ -555,7 +555,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "verticalFlip",
-      idx:self.verticalFlip_property.mEasyBindingsObjectIndex,
+      idx:self.verticalFlip_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.verticalFlip_property.mObserverExplorer,
@@ -563,7 +563,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "gridStyle",
-      idx:self.gridStyle_property.mEasyBindingsObjectIndex,
+      idx:self.gridStyle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridStyle_property.mObserverExplorer,
@@ -571,7 +571,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "gridDisplay",
-      idx:self.gridDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.gridDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridDisplay_property.mObserverExplorer,
@@ -579,7 +579,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      idx:self.zoom_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoom_property.mObserverExplorer,
@@ -587,7 +587,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "xPlacardUnit",
-      idx:self.xPlacardUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xPlacardUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xPlacardUnit_property.mObserverExplorer,
@@ -595,7 +595,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "yPlacardUnit",
-      idx:self.yPlacardUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yPlacardUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yPlacardUnit_property.mObserverExplorer,
@@ -603,7 +603,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
+      idx:self.selectedPageIndex_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
@@ -612,7 +612,7 @@ class SymbolRoot : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -620,7 +620,7 @@ class SymbolRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "noIssue",
-      idx:self.noIssue_property.mEasyBindingsObjectIndex,
+      idx:self.noIssue_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.noIssue_property.mObserverExplorer,
@@ -629,7 +629,7 @@ class SymbolRoot : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "symbolObjects",
-      idx:symbolObjects_property.mEasyBindingsObjectIndex,
+      idx:symbolObjects_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&symbolObjects_property.mValueExplorer
@@ -1612,11 +1612,11 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

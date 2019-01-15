@@ -85,7 +85,7 @@ class PackageObject : EBGraphicManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -93,7 +93,7 @@ class PackageObject : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -101,7 +101,7 @@ class PackageObject : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -434,11 +434,11 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

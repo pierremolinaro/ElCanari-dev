@@ -84,7 +84,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_FontRoot_mCharacterSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -103,7 +103,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "advance",
-      idx:self.advance_property.mEasyBindingsObjectIndex,
+      idx:self.advance_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.advance_property.mObserverExplorer,
@@ -111,7 +111,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "codePoint",
-      idx:self.codePoint_property.mEasyBindingsObjectIndex,
+      idx:self.codePoint_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.codePoint_property.mObserverExplorer,
@@ -128,7 +128,7 @@ final class SelectionController_FontRoot_mCharacterSelection : EBObject {
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_FontRoot_mCharacterSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

@@ -467,7 +467,7 @@ class FontRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      idx:self.comments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
@@ -475,7 +475,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "nominalSize",
-      idx:self.nominalSize_property.mEasyBindingsObjectIndex,
+      idx:self.nominalSize_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.nominalSize_property.mObserverExplorer,
@@ -483,7 +483,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "selectedTab",
-      idx:self.selectedTab_property.mEasyBindingsObjectIndex,
+      idx:self.selectedTab_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedTab_property.mObserverExplorer,
@@ -491,7 +491,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "selectedInspector",
-      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      idx:self.selectedInspector_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedInspector_property.mObserverExplorer,
@@ -500,7 +500,7 @@ class FontRoot : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "currentCharacterCodePointString",
-      idx:self.currentCharacterCodePointString_property.mEasyBindingsObjectIndex,
+      idx:self.currentCharacterCodePointString_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.currentCharacterCodePointString_property.mObserverExplorer,
@@ -508,7 +508,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPath",
-      idx:self.sampleStringBezierPath_property.mEasyBindingsObjectIndex,
+      idx:self.sampleStringBezierPath_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.sampleStringBezierPath_property.mObserverExplorer,
@@ -516,7 +516,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathWidth",
-      idx:self.sampleStringBezierPathWidth_property.mEasyBindingsObjectIndex,
+      idx:self.sampleStringBezierPathWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.sampleStringBezierPathWidth_property.mObserverExplorer,
@@ -524,7 +524,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathAscent",
-      idx:self.sampleStringBezierPathAscent_property.mEasyBindingsObjectIndex,
+      idx:self.sampleStringBezierPathAscent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.sampleStringBezierPathAscent_property.mObserverExplorer,
@@ -532,7 +532,7 @@ class FontRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "sampleStringBezierPathDescent",
-      idx:self.sampleStringBezierPathDescent_property.mEasyBindingsObjectIndex,
+      idx:self.sampleStringBezierPathDescent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.sampleStringBezierPathDescent_property.mObserverExplorer,
@@ -541,7 +541,7 @@ class FontRoot : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "characters",
-      idx:characters_property.mEasyBindingsObjectIndex,
+      idx:characters_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&characters_property.mValueExplorer
@@ -1296,11 +1296,11 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

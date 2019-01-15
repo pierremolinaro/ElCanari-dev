@@ -266,7 +266,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageOvalSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -285,7 +285,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.mEasyBindingsObjectIndex,
+      idx:self.height_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.height_property.mObserverExplorer,
@@ -293,7 +293,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "heightUnit",
-      idx:self.heightUnit_property.mEasyBindingsObjectIndex,
+      idx:self.heightUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.heightUnit_property.mObserverExplorer,
@@ -301,7 +301,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.mEasyBindingsObjectIndex,
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.width_property.mObserverExplorer,
@@ -309,7 +309,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "widthUnit",
-      idx:self.widthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.widthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.widthUnit_property.mObserverExplorer,
@@ -317,7 +317,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -325,7 +325,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "xUnit",
-      idx:self.xUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xUnit_property.mObserverExplorer,
@@ -333,7 +333,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -341,7 +341,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     )
     createEntryForPropertyNamed (
       "yUnit",
-      idx:self.yUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yUnit_property.mObserverExplorer,
@@ -358,7 +358,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageOvalSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

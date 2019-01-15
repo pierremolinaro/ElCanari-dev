@@ -136,7 +136,7 @@ class BoardModelVia : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -144,7 +144,7 @@ class BoardModelVia : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "padDiameter",
-      idx:self.padDiameter_property.mEasyBindingsObjectIndex,
+      idx:self.padDiameter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padDiameter_property.mObserverExplorer,
@@ -152,7 +152,7 @@ class BoardModelVia : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -524,11 +524,11 @@ class TransientArrayOf_BoardModelVia : ReadOnlyArrayOf_BoardModelVia {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

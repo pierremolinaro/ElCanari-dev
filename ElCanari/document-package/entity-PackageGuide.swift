@@ -421,7 +421,7 @@ class PackageGuide : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -429,7 +429,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -437,7 +437,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -445,7 +445,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1Unit_property.mObserverExplorer,
@@ -453,7 +453,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1Unit_property.mObserverExplorer,
@@ -461,7 +461,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2Unit_property.mObserverExplorer,
@@ -469,7 +469,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2Unit_property.mObserverExplorer,
@@ -477,7 +477,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -486,7 +486,7 @@ class PackageGuide : PackageObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -494,7 +494,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -502,7 +502,7 @@ class PackageGuide : PackageObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -1394,11 +1394,11 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

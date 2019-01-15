@@ -130,7 +130,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
     closeButton?.target = self
     closeButton?.action = #selector(EBManagedObject.deleteWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (self.ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
@@ -285,7 +285,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
 func updateManagedObjectToOneRelationshipDisplay (object : EBManagedObject?, button : NSButton?) {
   var stringValue = "nil"
   if let unwrappedObject = object {
-    stringValue = explorerIndexString (unwrappedObject.mEasyBindingsObjectIndex) + unwrappedObject.className
+    stringValue = explorerIndexString (unwrappedObject.ebObjectIndex) + unwrappedObject.className
   }
   button?.isEnabled = object != nil
   button?.title = stringValue
@@ -309,7 +309,7 @@ func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObjec
   popUpButton?.addItem (withTitle: title)
   popUpButton?.isEnabled = objectArray.count > 0
   for object : EBManagedObject in objectArray {
-    let stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + object.className
+    let stringValue = explorerIndexString (object.ebObjectIndex) + object.className
     popUpButton?.addItem (withTitle: stringValue)
     let item = popUpButton?.lastItem
     item?.target = object

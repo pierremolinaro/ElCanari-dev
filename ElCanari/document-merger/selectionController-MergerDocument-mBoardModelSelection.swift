@@ -980,7 +980,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -999,7 +999,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "artworkName",
-      idx:self.artworkName_property.mEasyBindingsObjectIndex,
+      idx:self.artworkName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.artworkName_property.mObserverExplorer,
@@ -1007,7 +1007,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelHeight",
-      idx:self.modelHeight_property.mEasyBindingsObjectIndex,
+      idx:self.modelHeight_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelHeight_property.mObserverExplorer,
@@ -1015,7 +1015,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelHeightUnit",
-      idx:self.modelHeightUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelHeightUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelHeightUnit_property.mObserverExplorer,
@@ -1023,7 +1023,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelLimitWidth",
-      idx:self.modelLimitWidth_property.mEasyBindingsObjectIndex,
+      idx:self.modelLimitWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelLimitWidth_property.mObserverExplorer,
@@ -1031,7 +1031,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelLimitWidthUnit",
-      idx:self.modelLimitWidthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelLimitWidthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelLimitWidthUnit_property.mObserverExplorer,
@@ -1039,7 +1039,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelWidth",
-      idx:self.modelWidth_property.mEasyBindingsObjectIndex,
+      idx:self.modelWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelWidth_property.mObserverExplorer,
@@ -1047,7 +1047,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "modelWidthUnit",
-      idx:self.modelWidthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.modelWidthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelWidthUnit_property.mObserverExplorer,
@@ -1055,7 +1055,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
+      idx:self.name_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.name_property.mObserverExplorer,
@@ -1063,7 +1063,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      idx:self.zoom_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoom_property.mObserverExplorer,
@@ -1080,7 +1080,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_MergerDocument_mBoardModelSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

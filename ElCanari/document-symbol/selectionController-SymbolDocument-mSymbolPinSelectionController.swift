@@ -318,7 +318,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -337,7 +337,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
+      idx:self.name_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.name_property.mObserverExplorer,
@@ -345,7 +345,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "nameHorizontalAlignment",
-      idx:self.nameHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      idx:self.nameHorizontalAlignment_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.nameHorizontalAlignment_property.mObserverExplorer,
@@ -353,7 +353,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "numberHorizontalAlignment",
-      idx:self.numberHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      idx:self.numberHorizontalAlignment_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.numberHorizontalAlignment_property.mObserverExplorer,
@@ -361,7 +361,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "pinNameIsDisplayedInSchematics",
-      idx:self.pinNameIsDisplayedInSchematics_property.mEasyBindingsObjectIndex,
+      idx:self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
@@ -369,7 +369,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "xName",
-      idx:self.xName_property.mEasyBindingsObjectIndex,
+      idx:self.xName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xName_property.mObserverExplorer,
@@ -377,7 +377,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "xNumber",
-      idx:self.xNumber_property.mEasyBindingsObjectIndex,
+      idx:self.xNumber_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xNumber_property.mObserverExplorer,
@@ -385,7 +385,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "xPin",
-      idx:self.xPin_property.mEasyBindingsObjectIndex,
+      idx:self.xPin_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xPin_property.mObserverExplorer,
@@ -393,7 +393,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "yName",
-      idx:self.yName_property.mEasyBindingsObjectIndex,
+      idx:self.yName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yName_property.mObserverExplorer,
@@ -401,7 +401,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "yNumber",
-      idx:self.yNumber_property.mEasyBindingsObjectIndex,
+      idx:self.yNumber_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yNumber_property.mObserverExplorer,
@@ -409,7 +409,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     )
     createEntryForPropertyNamed (
       "yPin",
-      idx:self.yPin_property.mEasyBindingsObjectIndex,
+      idx:self.yPin_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yPin_property.mObserverExplorer,
@@ -426,7 +426,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_SymbolDocument_mSymbolPinSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

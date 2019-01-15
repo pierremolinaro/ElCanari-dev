@@ -727,7 +727,7 @@ class PackageBezier : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -735,7 +735,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -743,7 +743,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -751,7 +751,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpx1",
-      idx:self.cpx1_property.mEasyBindingsObjectIndex,
+      idx:self.cpx1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1_property.mObserverExplorer,
@@ -759,7 +759,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpy1",
-      idx:self.cpy1_property.mEasyBindingsObjectIndex,
+      idx:self.cpy1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy1_property.mObserverExplorer,
@@ -767,7 +767,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpx2",
-      idx:self.cpx2_property.mEasyBindingsObjectIndex,
+      idx:self.cpx2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx2_property.mObserverExplorer,
@@ -775,7 +775,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpy2",
-      idx:self.cpy2_property.mEasyBindingsObjectIndex,
+      idx:self.cpy2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy2_property.mObserverExplorer,
@@ -783,7 +783,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1Unit_property.mObserverExplorer,
@@ -791,7 +791,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1Unit_property.mObserverExplorer,
@@ -799,7 +799,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2Unit_property.mObserverExplorer,
@@ -807,7 +807,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2Unit_property.mObserverExplorer,
@@ -815,7 +815,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpx1Unit",
-      idx:self.cpx1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpx1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1Unit_property.mObserverExplorer,
@@ -823,7 +823,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpy1Unit",
-      idx:self.cpy1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpy1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy1Unit_property.mObserverExplorer,
@@ -831,7 +831,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpx2Unit",
-      idx:self.cpx2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpx2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx2Unit_property.mObserverExplorer,
@@ -839,7 +839,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "cpy2Unit",
-      idx:self.cpy2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpy2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy2Unit_property.mObserverExplorer,
@@ -847,7 +847,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -856,7 +856,7 @@ class PackageBezier : PackageObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -864,7 +864,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -872,7 +872,7 @@ class PackageBezier : PackageObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -2300,11 +2300,11 @@ class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

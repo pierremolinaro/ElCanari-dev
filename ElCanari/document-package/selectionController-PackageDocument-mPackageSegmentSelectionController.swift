@@ -300,7 +300,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageSegmentSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -319,7 +319,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "lengthUnit",
-      idx:self.lengthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.lengthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.lengthUnit_property.mObserverExplorer,
@@ -327,7 +327,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -335,7 +335,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1Unit_property.mObserverExplorer,
@@ -343,7 +343,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -351,7 +351,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2Unit_property.mObserverExplorer,
@@ -359,7 +359,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -367,7 +367,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1Unit_property.mObserverExplorer,
@@ -375,7 +375,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -383,7 +383,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2Unit_property.mObserverExplorer,
@@ -400,7 +400,7 @@ final class SelectionController_PackageDocument_mPackageSegmentSelectionControll
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageSegmentSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

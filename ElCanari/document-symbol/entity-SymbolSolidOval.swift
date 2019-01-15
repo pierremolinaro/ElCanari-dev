@@ -292,7 +292,7 @@ class SymbolSolidOval : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -300,7 +300,7 @@ class SymbolSolidOval : SymbolObject,
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.mEasyBindingsObjectIndex,
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.width_property.mObserverExplorer,
@@ -308,7 +308,7 @@ class SymbolSolidOval : SymbolObject,
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.mEasyBindingsObjectIndex,
+      idx:self.height_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.height_property.mObserverExplorer,
@@ -316,7 +316,7 @@ class SymbolSolidOval : SymbolObject,
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -325,7 +325,7 @@ class SymbolSolidOval : SymbolObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -333,7 +333,7 @@ class SymbolSolidOval : SymbolObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -341,7 +341,7 @@ class SymbolSolidOval : SymbolObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -965,11 +965,11 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

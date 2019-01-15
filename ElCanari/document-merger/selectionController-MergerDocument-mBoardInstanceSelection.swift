@@ -192,7 +192,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_MergerDocument_mBoardInstanceSelection.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -211,7 +211,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "instanceRotation",
-      idx:self.instanceRotation_property.mEasyBindingsObjectIndex,
+      idx:self.instanceRotation_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.instanceRotation_property.mObserverExplorer,
@@ -219,7 +219,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -227,7 +227,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     )
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -244,7 +244,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_MergerDocument_mBoardInstanceSelection.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

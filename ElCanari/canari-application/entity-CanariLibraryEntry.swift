@@ -159,7 +159,7 @@ class CanariLibraryEntry : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "mPath",
-      idx:self.mPath_property.mEasyBindingsObjectIndex,
+      idx:self.mPath_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.mPath_property.mObserverExplorer,
@@ -167,7 +167,7 @@ class CanariLibraryEntry : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "mUses",
-      idx:self.mUses_property.mEasyBindingsObjectIndex,
+      idx:self.mUses_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.mUses_property.mObserverExplorer,
@@ -176,7 +176,7 @@ class CanariLibraryEntry : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "mStatusImage",
-      idx:self.mStatusImage_property.mEasyBindingsObjectIndex,
+      idx:self.mStatusImage_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.mStatusImage_property.mObserverExplorer,
@@ -539,11 +539,11 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

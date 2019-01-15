@@ -463,7 +463,7 @@ class SymbolBezierCurve : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -471,7 +471,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -479,7 +479,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -487,7 +487,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "cpx1",
-      idx:self.cpx1_property.mEasyBindingsObjectIndex,
+      idx:self.cpx1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1_property.mObserverExplorer,
@@ -495,7 +495,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "cpy1",
-      idx:self.cpy1_property.mEasyBindingsObjectIndex,
+      idx:self.cpy1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy1_property.mObserverExplorer,
@@ -503,7 +503,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "cpx2",
-      idx:self.cpx2_property.mEasyBindingsObjectIndex,
+      idx:self.cpx2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx2_property.mObserverExplorer,
@@ -511,7 +511,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "cpy2",
-      idx:self.cpy2_property.mEasyBindingsObjectIndex,
+      idx:self.cpy2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy2_property.mObserverExplorer,
@@ -519,7 +519,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -528,7 +528,7 @@ class SymbolBezierCurve : SymbolObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -536,7 +536,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -544,7 +544,7 @@ class SymbolBezierCurve : SymbolObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -1436,11 +1436,11 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

@@ -42,7 +42,7 @@ class EBOutletEvent : EBEvent {
     }
 
     if logEvents () {
-      let str = "  " +  explorerIndexString (self.mEasyBindingsObjectIndex) + self.className + "\n"
+      let str = "  " +  explorerIndexString (self.ebObjectIndex) + self.className + "\n"
       if !self.mEventIsPosted {
         appendMessageString (str)
       }else{ // Event already posted
@@ -84,7 +84,7 @@ func flushOutletEvents () {
       }
       for event in pendingOutletEvents {
         if logEvents () {
-          let message = "  " +  explorerIndexString (event.mEasyBindingsObjectIndex) + event.className + "\n"
+          let message = "  " +  explorerIndexString (event.ebObjectIndex) + event.className + "\n"
           appendMessageString (message, color: NSColor.blue)
         }
         event.sendUpdateEvent ()

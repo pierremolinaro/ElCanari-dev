@@ -289,7 +289,7 @@ class FontCharacter : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "codePoint",
-      idx:self.codePoint_property.mEasyBindingsObjectIndex,
+      idx:self.codePoint_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.codePoint_property.mObserverExplorer,
@@ -297,7 +297,7 @@ class FontCharacter : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "advance",
-      idx:self.advance_property.mEasyBindingsObjectIndex,
+      idx:self.advance_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.advance_property.mObserverExplorer,
@@ -306,7 +306,7 @@ class FontCharacter : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "segmentArrayForDrawing",
-      idx:self.segmentArrayForDrawing_property.mEasyBindingsObjectIndex,
+      idx:self.segmentArrayForDrawing_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.segmentArrayForDrawing_property.mObserverExplorer,
@@ -314,7 +314,7 @@ class FontCharacter : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "gerberCode",
-      idx:self.gerberCode_property.mEasyBindingsObjectIndex,
+      idx:self.gerberCode_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gerberCode_property.mObserverExplorer,
@@ -322,7 +322,7 @@ class FontCharacter : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "gerberCodeInstructionCountMessage",
-      idx:self.gerberCodeInstructionCountMessage_property.mEasyBindingsObjectIndex,
+      idx:self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
@@ -331,7 +331,7 @@ class FontCharacter : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "segments",
-      idx:segments_property.mEasyBindingsObjectIndex,
+      idx:segments_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&segments_property.mValueExplorer
@@ -839,11 +839,11 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

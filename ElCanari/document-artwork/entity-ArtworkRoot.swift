@@ -413,7 +413,7 @@ class ArtworkRoot : EBManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedTab",
-      idx:self.selectedTab_property.mEasyBindingsObjectIndex,
+      idx:self.selectedTab_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedTab_property.mObserverExplorer,
@@ -421,7 +421,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      idx:self.comments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
@@ -429,7 +429,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minPPTPTTTWdisplayUnit",
-      idx:self.minPPTPTTTWdisplayUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minPPTPTTTWdisplayUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minPPTPTTTWdisplayUnit_property.mObserverExplorer,
@@ -437,7 +437,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minPPTPTTTW",
-      idx:self.minPPTPTTTW_property.mEasyBindingsObjectIndex,
+      idx:self.minPPTPTTTW_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minPPTPTTTW_property.mObserverExplorer,
@@ -445,7 +445,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForOARdisplayUnit",
-      idx:self.minValueForOARdisplayUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForOARdisplayUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForOARdisplayUnit_property.mObserverExplorer,
@@ -453,7 +453,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForOARinEBUnit",
-      idx:self.minValueForOARinEBUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForOARinEBUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForOARinEBUnit_property.mObserverExplorer,
@@ -461,7 +461,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForPHDdisplayUnit",
-      idx:self.minValueForPHDdisplayUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForPHDdisplayUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForPHDdisplayUnit_property.mObserverExplorer,
@@ -469,7 +469,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForPHDinEBUnit",
-      idx:self.minValueForPHDinEBUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForPHDinEBUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForPHDinEBUnit_property.mObserverExplorer,
@@ -477,7 +477,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForBoardLimitWidthDisplayUnit",
-      idx:self.minValueForBoardLimitWidthDisplayUnit_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForBoardLimitWidthDisplayUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForBoardLimitWidthDisplayUnit_property.mObserverExplorer,
@@ -485,7 +485,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "minValueForBoardLimitWidth",
-      idx:self.minValueForBoardLimitWidth_property.mEasyBindingsObjectIndex,
+      idx:self.minValueForBoardLimitWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.minValueForBoardLimitWidth_property.mObserverExplorer,
@@ -493,7 +493,7 @@ class ArtworkRoot : EBManagedObject,
     )
     createEntryForPropertyNamed (
       "drillDataFileExtension",
-      idx:self.drillDataFileExtension_property.mEasyBindingsObjectIndex,
+      idx:self.drillDataFileExtension_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.drillDataFileExtension_property.mObserverExplorer,
@@ -503,7 +503,7 @@ class ArtworkRoot : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "fileGenerationParameterArray",
-      idx:fileGenerationParameterArray_property.mEasyBindingsObjectIndex,
+      idx:fileGenerationParameterArray_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&fileGenerationParameterArray_property.mValueExplorer
@@ -1435,11 +1435,11 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

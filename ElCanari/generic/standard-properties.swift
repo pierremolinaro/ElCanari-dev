@@ -82,11 +82,11 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
     if prop_cache != nil {
       prop_cache = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -176,7 +176,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
         mValueExplorer?.stringValue = "\(mValue)"
         undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.mEasyBindingsObjectIndex)) did change value to \(mValue)\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
         postEvent ()
         clearSignatureCache ()
@@ -338,11 +338,11 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
       mValueCache = nil
       mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -460,11 +460,11 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
     if prop_cache != nil {
       prop_cache = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -554,7 +554,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         mValueExplorer?.stringValue = "\(mValue)"
         undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.mEasyBindingsObjectIndex)) did change value to \(mValue)\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
         postEvent ()
         clearSignatureCache ()
@@ -716,11 +716,11 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
       mValueCache = nil
       mValueExplorer?.stringValue = "nil"
       if logEvents () {
-        appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Transient \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -1085,11 +1085,11 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
     if prop_cache != nil {
       prop_cache = nil
       if logEvents () {
-        appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("Proxy \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
@@ -1179,7 +1179,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
         mValueExplorer?.stringValue = "\(mValue)"
         undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue)
         if logEvents () {
-          appendMessageString ("Property \(explorerIndexString (self.mEasyBindingsObjectIndex)) did change value to \(mValue)\n")
+          appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
         postEvent ()
         clearSignatureCache ()
@@ -1342,12 +1342,12 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
       mValueExplorer?.stringValue = "nil"
       if logEvents () {
         let className = String (describing:type(of: self))
-        appendMessageString ("Transient \(className) \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
       let className = String (describing:type(of: self))
-      appendMessageString ("Transient \(className) \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

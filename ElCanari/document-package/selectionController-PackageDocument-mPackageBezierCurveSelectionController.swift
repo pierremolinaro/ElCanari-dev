@@ -410,7 +410,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageBezierCurveSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -429,7 +429,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "cpx1",
-      idx:self.cpx1_property.mEasyBindingsObjectIndex,
+      idx:self.cpx1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1_property.mObserverExplorer,
@@ -437,7 +437,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpx1Unit",
-      idx:self.cpx1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpx1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx1Unit_property.mObserverExplorer,
@@ -445,7 +445,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpx2",
-      idx:self.cpx2_property.mEasyBindingsObjectIndex,
+      idx:self.cpx2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx2_property.mObserverExplorer,
@@ -453,7 +453,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpx2Unit",
-      idx:self.cpx2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpx2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpx2Unit_property.mObserverExplorer,
@@ -461,7 +461,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpy1",
-      idx:self.cpy1_property.mEasyBindingsObjectIndex,
+      idx:self.cpy1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy1_property.mObserverExplorer,
@@ -469,7 +469,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpy1Unit",
-      idx:self.cpy1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpy1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy1Unit_property.mObserverExplorer,
@@ -477,7 +477,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpy2",
-      idx:self.cpy2_property.mEasyBindingsObjectIndex,
+      idx:self.cpy2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy2_property.mObserverExplorer,
@@ -485,7 +485,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "cpy2Unit",
-      idx:self.cpy2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.cpy2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.cpy2Unit_property.mObserverExplorer,
@@ -493,7 +493,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "x1",
-      idx:self.x1_property.mEasyBindingsObjectIndex,
+      idx:self.x1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1_property.mObserverExplorer,
@@ -501,7 +501,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "x1Unit",
-      idx:self.x1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x1Unit_property.mObserverExplorer,
@@ -509,7 +509,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "x2",
-      idx:self.x2_property.mEasyBindingsObjectIndex,
+      idx:self.x2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2_property.mObserverExplorer,
@@ -517,7 +517,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "x2Unit",
-      idx:self.x2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.x2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x2Unit_property.mObserverExplorer,
@@ -525,7 +525,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "y1",
-      idx:self.y1_property.mEasyBindingsObjectIndex,
+      idx:self.y1_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1_property.mObserverExplorer,
@@ -533,7 +533,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "y1Unit",
-      idx:self.y1Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y1Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y1Unit_property.mObserverExplorer,
@@ -541,7 +541,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "y2",
-      idx:self.y2_property.mEasyBindingsObjectIndex,
+      idx:self.y2_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2_property.mObserverExplorer,
@@ -549,7 +549,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     )
     createEntryForPropertyNamed (
       "y2Unit",
-      idx:self.y2Unit_property.mEasyBindingsObjectIndex,
+      idx:self.y2Unit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y2Unit_property.mObserverExplorer,
@@ -566,7 +566,7 @@ final class SelectionController_PackageDocument_mPackageBezierCurveSelectionCont
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageBezierCurveSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

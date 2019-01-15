@@ -597,7 +597,7 @@ class SymbolPin : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "yPin",
-      idx:self.yPin_property.mEasyBindingsObjectIndex,
+      idx:self.yPin_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yPin_property.mObserverExplorer,
@@ -605,7 +605,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "xName",
-      idx:self.xName_property.mEasyBindingsObjectIndex,
+      idx:self.xName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xName_property.mObserverExplorer,
@@ -613,7 +613,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "yName",
-      idx:self.yName_property.mEasyBindingsObjectIndex,
+      idx:self.yName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yName_property.mObserverExplorer,
@@ -621,7 +621,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "xNumber",
-      idx:self.xNumber_property.mEasyBindingsObjectIndex,
+      idx:self.xNumber_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xNumber_property.mObserverExplorer,
@@ -629,7 +629,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "yNumber",
-      idx:self.yNumber_property.mEasyBindingsObjectIndex,
+      idx:self.yNumber_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yNumber_property.mObserverExplorer,
@@ -637,7 +637,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "name",
-      idx:self.name_property.mEasyBindingsObjectIndex,
+      idx:self.name_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.name_property.mObserverExplorer,
@@ -645,7 +645,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "nameHorizontalAlignment",
-      idx:self.nameHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      idx:self.nameHorizontalAlignment_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.nameHorizontalAlignment_property.mObserverExplorer,
@@ -653,7 +653,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "numberHorizontalAlignment",
-      idx:self.numberHorizontalAlignment_property.mEasyBindingsObjectIndex,
+      idx:self.numberHorizontalAlignment_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.numberHorizontalAlignment_property.mObserverExplorer,
@@ -661,7 +661,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "pinNameIsDisplayedInSchematics",
-      idx:self.pinNameIsDisplayedInSchematics_property.mEasyBindingsObjectIndex,
+      idx:self.pinNameIsDisplayedInSchematics_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.pinNameIsDisplayedInSchematics_property.mObserverExplorer,
@@ -669,7 +669,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "xPin",
-      idx:self.xPin_property.mEasyBindingsObjectIndex,
+      idx:self.xPin_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xPin_property.mObserverExplorer,
@@ -678,7 +678,7 @@ class SymbolPin : SymbolObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -686,7 +686,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -694,7 +694,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -702,7 +702,7 @@ class SymbolPin : SymbolObject,
     )
     createEntryForPropertyNamed (
       "nameRect",
-      idx:self.nameRect_property.mEasyBindingsObjectIndex,
+      idx:self.nameRect_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.nameRect_property.mObserverExplorer,
@@ -1786,11 +1786,11 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

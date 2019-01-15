@@ -424,7 +424,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     view.addSubview (tf)
     let valueExplorer = NSButton (frame:thirdColumn (y))
     valueExplorer.font = font
-    valueExplorer.title = explorerIndexString (mEasyBindingsObjectIndex) + className
+    valueExplorer.title = explorerIndexString (ebObjectIndex) + className
     valueExplorer.target = self
     valueExplorer.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.showObjectWindowFromExplorerButton(_:))
     view.addSubview (valueExplorer)
@@ -443,7 +443,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     var y : CGFloat = 0.0
     createEntryForPropertyNamed (
       "annularRingUnit",
-      idx:self.annularRingUnit_property.mEasyBindingsObjectIndex,
+      idx:self.annularRingUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.annularRingUnit_property.mObserverExplorer,
@@ -451,7 +451,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.mEasyBindingsObjectIndex,
+      idx:self.height_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.height_property.mObserverExplorer,
@@ -459,7 +459,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "heightUnit",
-      idx:self.heightUnit_property.mEasyBindingsObjectIndex,
+      idx:self.heightUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.heightUnit_property.mObserverExplorer,
@@ -467,7 +467,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "holeDiameter",
-      idx:self.holeDiameter_property.mEasyBindingsObjectIndex,
+      idx:self.holeDiameter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.holeDiameter_property.mObserverExplorer,
@@ -475,7 +475,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "holeDiameterUnit",
-      idx:self.holeDiameterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.holeDiameterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.holeDiameterUnit_property.mObserverExplorer,
@@ -483,7 +483,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "padShape",
-      idx:self.padShape_property.mEasyBindingsObjectIndex,
+      idx:self.padShape_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padShape_property.mObserverExplorer,
@@ -491,7 +491,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "padStyle",
-      idx:self.padStyle_property.mEasyBindingsObjectIndex,
+      idx:self.padStyle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padStyle_property.mObserverExplorer,
@@ -499,7 +499,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.mEasyBindingsObjectIndex,
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.width_property.mObserverExplorer,
@@ -507,7 +507,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "widthUnit",
-      idx:self.widthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.widthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.widthUnit_property.mObserverExplorer,
@@ -515,7 +515,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.mEasyBindingsObjectIndex,
+      idx:self.xCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenter_property.mObserverExplorer,
@@ -523,7 +523,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
@@ -531,7 +531,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.mEasyBindingsObjectIndex,
+      idx:self.yCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenter_property.mObserverExplorer,
@@ -539,7 +539,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
@@ -556,7 +556,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     closeButton?.target = self
     closeButton?.action = #selector(SelectionController_PackageDocument_mPackageSlavePadSelectionController.deleteSelectionControllerWindowAction(_:))
   //--- Set window title
-    let windowTitle = explorerIndexString (mEasyBindingsObjectIndex) + className
+    let windowTitle = explorerIndexString (ebObjectIndex) + className
     self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
     let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)

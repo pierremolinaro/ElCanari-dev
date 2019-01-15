@@ -14,10 +14,10 @@ import Cocoa
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   EBWeakEventSetElement
+//   EBWeakObserverSetElement
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBWeakEventSetElement : EBObject {
+fileprivate class EBWeakObserverSetElement : EBObject {
 
   //····················································································································
 
@@ -43,19 +43,19 @@ class EBWeakEventSetElement : EBObject {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBWeakEventSet : EBObject {
-  fileprivate var mDictionary = [Int : EBWeakEventSetElement] ()
+  fileprivate var mDictionary = [Int : EBWeakObserverSetElement] ()
 
   //····················································································································
 
   func insert (_ inObserver : EBEvent) {
-    let address : Int = inObserver.mEasyBindingsObjectIndex
-    self.mDictionary [address] = EBWeakEventSetElement (observer:inObserver)
+    let address : Int = inObserver.ebObjectIndex
+    self.mDictionary [address] = EBWeakObserverSetElement (observer:inObserver)
   }
 
   //····················································································································
 
   func remove (_ inObserver : EBEvent) {
-    let address : Int = inObserver.mEasyBindingsObjectIndex
+    let address : Int = inObserver.ebObjectIndex
     self.mDictionary [address] = nil
   }
 
@@ -145,7 +145,7 @@ class EBAbstractProperty : EBEvent {
       observerExplorer.addItem (withTitle: String (eventArray.count))
       observerExplorer.isEnabled = eventArray.count > 0
       for object : EBEvent in eventArray {
-        let stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + object.className
+        let stringValue = explorerIndexString (object.ebObjectIndex) + object.className
         observerExplorer.addItem (withTitle: stringValue)
       }
     }
@@ -309,12 +309,12 @@ private var gEasyBindingsObjectIndex = 0
 //······················································································································
 
 class EBObject : NSObject, EBUserClassNameProtocol {
-  let mEasyBindingsObjectIndex : Int
+  let ebObjectIndex : Int
 
   //····················································································································
 
   override init () {
-    mEasyBindingsObjectIndex = gEasyBindingsObjectIndex
+    ebObjectIndex = gEasyBindingsObjectIndex
     gEasyBindingsObjectIndex += 1
     super.init ()
     noteObjectAllocation (self)
@@ -550,7 +550,7 @@ func createEntryForObjectNamed (_ name : String,
   let vtf = NSTextField (frame:thirdColumn (y))
   vtf.isEnabled = true
   vtf.isEditable = false
-  vtf.stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + String (describing: type(of: object))
+  vtf.stringValue = explorerIndexString (object.ebObjectIndex) + String (describing: type(of: object))
   vtf.font = font
   view.addSubview (vtf)
 //--- Update rect origin

@@ -227,7 +227,7 @@ class DeviceRoot : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
+      idx:self.selectedPageIndex_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
@@ -235,7 +235,7 @@ class DeviceRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "title",
-      idx:self.title_property.mEasyBindingsObjectIndex,
+      idx:self.title_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.title_property.mObserverExplorer,
@@ -243,7 +243,7 @@ class DeviceRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "prefix",
-      idx:self.prefix_property.mEasyBindingsObjectIndex,
+      idx:self.prefix_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.prefix_property.mObserverExplorer,
@@ -251,7 +251,7 @@ class DeviceRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      idx:self.comments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
@@ -260,7 +260,7 @@ class DeviceRoot : EBGraphicManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -767,11 +767,11 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

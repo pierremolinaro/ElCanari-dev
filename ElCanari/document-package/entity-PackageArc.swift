@@ -622,7 +622,7 @@ class PackageArc : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.mEasyBindingsObjectIndex,
+      idx:self.yCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenter_property.mObserverExplorer,
@@ -630,7 +630,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "radius",
-      idx:self.radius_property.mEasyBindingsObjectIndex,
+      idx:self.radius_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.radius_property.mObserverExplorer,
@@ -638,7 +638,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "startAngle",
-      idx:self.startAngle_property.mEasyBindingsObjectIndex,
+      idx:self.startAngle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startAngle_property.mObserverExplorer,
@@ -646,7 +646,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "arcAngle",
-      idx:self.arcAngle_property.mEasyBindingsObjectIndex,
+      idx:self.arcAngle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.arcAngle_property.mObserverExplorer,
@@ -654,7 +654,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "startTangent",
-      idx:self.startTangent_property.mEasyBindingsObjectIndex,
+      idx:self.startTangent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startTangent_property.mObserverExplorer,
@@ -662,7 +662,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "endTangent",
-      idx:self.endTangent_property.mEasyBindingsObjectIndex,
+      idx:self.endTangent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.endTangent_property.mObserverExplorer,
@@ -670,7 +670,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "pathIsClosed",
-      idx:self.pathIsClosed_property.mEasyBindingsObjectIndex,
+      idx:self.pathIsClosed_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.pathIsClosed_property.mObserverExplorer,
@@ -678,7 +678,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
@@ -686,7 +686,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
@@ -694,7 +694,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "radiusUnit",
-      idx:self.radiusUnit_property.mEasyBindingsObjectIndex,
+      idx:self.radiusUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.radiusUnit_property.mObserverExplorer,
@@ -702,7 +702,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "startTangentUnit",
-      idx:self.startTangentUnit_property.mEasyBindingsObjectIndex,
+      idx:self.startTangentUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.startTangentUnit_property.mObserverExplorer,
@@ -710,7 +710,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "endTangentUnit",
-      idx:self.endTangentUnit_property.mEasyBindingsObjectIndex,
+      idx:self.endTangentUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.endTangentUnit_property.mObserverExplorer,
@@ -718,7 +718,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.mEasyBindingsObjectIndex,
+      idx:self.xCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenter_property.mObserverExplorer,
@@ -727,7 +727,7 @@ class PackageArc : PackageObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -735,7 +735,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -743,7 +743,7 @@ class PackageArc : PackageObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -1970,11 +1970,11 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

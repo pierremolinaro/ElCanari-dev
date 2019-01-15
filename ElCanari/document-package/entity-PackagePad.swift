@@ -1125,7 +1125,7 @@ class PackagePad : PackageObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "xCenter",
-      idx:self.xCenter_property.mEasyBindingsObjectIndex,
+      idx:self.xCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenter_property.mObserverExplorer,
@@ -1133,7 +1133,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "yCenter",
-      idx:self.yCenter_property.mEasyBindingsObjectIndex,
+      idx:self.yCenter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenter_property.mObserverExplorer,
@@ -1141,7 +1141,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "width",
-      idx:self.width_property.mEasyBindingsObjectIndex,
+      idx:self.width_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.width_property.mObserverExplorer,
@@ -1149,7 +1149,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "height",
-      idx:self.height_property.mEasyBindingsObjectIndex,
+      idx:self.height_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.height_property.mObserverExplorer,
@@ -1157,7 +1157,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "holeDiameter",
-      idx:self.holeDiameter_property.mEasyBindingsObjectIndex,
+      idx:self.holeDiameter_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.holeDiameter_property.mObserverExplorer,
@@ -1165,7 +1165,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padShape",
-      idx:self.padShape_property.mEasyBindingsObjectIndex,
+      idx:self.padShape_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padShape_property.mObserverExplorer,
@@ -1173,7 +1173,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padStyle",
-      idx:self.padStyle_property.mEasyBindingsObjectIndex,
+      idx:self.padStyle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padStyle_property.mObserverExplorer,
@@ -1181,7 +1181,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padNumber",
-      idx:self.padNumber_property.mEasyBindingsObjectIndex,
+      idx:self.padNumber_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padNumber_property.mObserverExplorer,
@@ -1189,7 +1189,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "xCenterUnit",
-      idx:self.xCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xCenterUnit_property.mObserverExplorer,
@@ -1197,7 +1197,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "yCenterUnit",
-      idx:self.yCenterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yCenterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yCenterUnit_property.mObserverExplorer,
@@ -1205,7 +1205,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "widthUnit",
-      idx:self.widthUnit_property.mEasyBindingsObjectIndex,
+      idx:self.widthUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.widthUnit_property.mObserverExplorer,
@@ -1213,7 +1213,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "heightUnit",
-      idx:self.heightUnit_property.mEasyBindingsObjectIndex,
+      idx:self.heightUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.heightUnit_property.mObserverExplorer,
@@ -1221,7 +1221,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "holeDiameterUnit",
-      idx:self.holeDiameterUnit_property.mEasyBindingsObjectIndex,
+      idx:self.holeDiameterUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.holeDiameterUnit_property.mObserverExplorer,
@@ -1229,7 +1229,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "annularRingUnit",
-      idx:self.annularRingUnit_property.mEasyBindingsObjectIndex,
+      idx:self.annularRingUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.annularRingUnit_property.mObserverExplorer,
@@ -1238,7 +1238,7 @@ class PackagePad : PackageObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -1246,7 +1246,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padName",
-      idx:self.padName_property.mEasyBindingsObjectIndex,
+      idx:self.padName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padName_property.mObserverExplorer,
@@ -1254,7 +1254,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -1262,7 +1262,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padIsTraversing",
-      idx:self.padIsTraversing_property.mEasyBindingsObjectIndex,
+      idx:self.padIsTraversing_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padIsTraversing_property.mObserverExplorer,
@@ -1270,7 +1270,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "annularRing",
-      idx:self.annularRing_property.mEasyBindingsObjectIndex,
+      idx:self.annularRing_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.annularRing_property.mObserverExplorer,
@@ -1278,7 +1278,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "zoneName",
-      idx:self.zoneName_property.mEasyBindingsObjectIndex,
+      idx:self.zoneName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoneName_property.mObserverExplorer,
@@ -1286,7 +1286,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "noZone",
-      idx:self.noZone_property.mEasyBindingsObjectIndex,
+      idx:self.noZone_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.noZone_property.mObserverExplorer,
@@ -1294,7 +1294,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "zoneAllowsManualRenumbering",
-      idx:self.zoneAllowsManualRenumbering_property.mEasyBindingsObjectIndex,
+      idx:self.zoneAllowsManualRenumbering_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoneAllowsManualRenumbering_property.mObserverExplorer,
@@ -1302,7 +1302,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "slavePadCount",
-      idx:self.slavePadCount_property.mEasyBindingsObjectIndex,
+      idx:self.slavePadCount_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.slavePadCount_property.mObserverExplorer,
@@ -1310,7 +1310,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -1318,7 +1318,7 @@ class PackagePad : PackageObject,
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
-      idx:self.padNumberDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.padNumberDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
@@ -1327,7 +1327,7 @@ class PackagePad : PackageObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "slaves",
-      idx:slaves_property.mEasyBindingsObjectIndex,
+      idx:slaves_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&slaves_property.mValueExplorer
@@ -1335,7 +1335,7 @@ class PackagePad : PackageObject,
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "zone",
-      idx:self.zone_property.mEasyBindingsObjectIndex,
+      idx:self.zone_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&self.zone_property.mValueExplorer
@@ -3132,11 +3132,11 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

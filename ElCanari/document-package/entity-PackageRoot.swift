@@ -901,7 +901,7 @@ class PackageRoot : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "selectedPageIndex",
-      idx:self.selectedPageIndex_property.mEasyBindingsObjectIndex,
+      idx:self.selectedPageIndex_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
@@ -909,7 +909,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "selectedInspector",
-      idx:self.selectedInspector_property.mEasyBindingsObjectIndex,
+      idx:self.selectedInspector_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectedInspector_property.mObserverExplorer,
@@ -917,7 +917,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "comments",
-      idx:self.comments_property.mEasyBindingsObjectIndex,
+      idx:self.comments_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.comments_property.mObserverExplorer,
@@ -925,7 +925,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "program",
-      idx:self.program_property.mEasyBindingsObjectIndex,
+      idx:self.program_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.program_property.mObserverExplorer,
@@ -933,7 +933,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "horizontalFlip",
-      idx:self.horizontalFlip_property.mEasyBindingsObjectIndex,
+      idx:self.horizontalFlip_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.horizontalFlip_property.mObserverExplorer,
@@ -941,7 +941,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "verticalFlip",
-      idx:self.verticalFlip_property.mEasyBindingsObjectIndex,
+      idx:self.verticalFlip_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.verticalFlip_property.mObserverExplorer,
@@ -949,7 +949,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "gridStyle",
-      idx:self.gridStyle_property.mEasyBindingsObjectIndex,
+      idx:self.gridStyle_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridStyle_property.mObserverExplorer,
@@ -957,7 +957,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "gridStep",
-      idx:self.gridStep_property.mEasyBindingsObjectIndex,
+      idx:self.gridStep_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridStep_property.mObserverExplorer,
@@ -965,7 +965,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "gridStepUnit",
-      idx:self.gridStepUnit_property.mEasyBindingsObjectIndex,
+      idx:self.gridStepUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridStepUnit_property.mObserverExplorer,
@@ -973,7 +973,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "gridDisplayFactor",
-      idx:self.gridDisplayFactor_property.mEasyBindingsObjectIndex,
+      idx:self.gridDisplayFactor_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridDisplayFactor_property.mObserverExplorer,
@@ -981,7 +981,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "zoom",
-      idx:self.zoom_property.mEasyBindingsObjectIndex,
+      idx:self.zoom_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.zoom_property.mObserverExplorer,
@@ -989,7 +989,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "padNumbering",
-      idx:self.padNumbering_property.mEasyBindingsObjectIndex,
+      idx:self.padNumbering_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padNumbering_property.mObserverExplorer,
@@ -997,7 +997,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "xPlacardUnit",
-      idx:self.xPlacardUnit_property.mEasyBindingsObjectIndex,
+      idx:self.xPlacardUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.xPlacardUnit_property.mObserverExplorer,
@@ -1005,7 +1005,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "yPlacardUnit",
-      idx:self.yPlacardUnit_property.mEasyBindingsObjectIndex,
+      idx:self.yPlacardUnit_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.yPlacardUnit_property.mObserverExplorer,
@@ -1014,7 +1014,7 @@ class PackageRoot : EBGraphicManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "freePadNumbering",
-      idx:self.freePadNumbering_property.mEasyBindingsObjectIndex,
+      idx:self.freePadNumbering_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.freePadNumbering_property.mObserverExplorer,
@@ -1022,7 +1022,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "gridStepMultipliedByDisplayFactor",
-      idx:self.gridStepMultipliedByDisplayFactor_property.mEasyBindingsObjectIndex,
+      idx:self.gridStepMultipliedByDisplayFactor_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.gridStepMultipliedByDisplayFactor_property.mObserverExplorer,
@@ -1030,7 +1030,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "padNumberDisplay",
-      idx:self.padNumberDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.padNumberDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.padNumberDisplay_property.mObserverExplorer,
@@ -1038,7 +1038,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -1046,7 +1046,7 @@ class PackageRoot : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "noIssue",
-      idx:self.noIssue_property.mEasyBindingsObjectIndex,
+      idx:self.noIssue_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.noIssue_property.mObserverExplorer,
@@ -1055,7 +1055,7 @@ class PackageRoot : EBGraphicManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "packageObjects",
-      idx:packageObjects_property.mEasyBindingsObjectIndex,
+      idx:packageObjects_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&packageObjects_property.mValueExplorer
@@ -2485,11 +2485,11 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

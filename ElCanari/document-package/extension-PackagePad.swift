@@ -127,7 +127,7 @@ extension PackagePad {
     s += "\(self.padNumber)"
     if self.slaves_property.propval.count > 0 {
       s += " id "
-      s += "\(self.mEasyBindingsObjectIndex)"
+      s += "\(self.ebObjectIndex)"
     }
     s += ";\n"
     return s

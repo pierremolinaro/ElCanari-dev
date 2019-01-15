@@ -410,7 +410,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -418,7 +418,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -426,7 +426,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "instanceRotation",
-      idx:self.instanceRotation_property.mEasyBindingsObjectIndex,
+      idx:self.instanceRotation_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.instanceRotation_property.mObserverExplorer,
@@ -435,7 +435,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "instanceRect",
-      idx:self.instanceRect_property.mEasyBindingsObjectIndex,
+      idx:self.instanceRect_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.instanceRect_property.mObserverExplorer,
@@ -443,7 +443,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "modelName",
-      idx:self.modelName_property.mEasyBindingsObjectIndex,
+      idx:self.modelName_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.modelName_property.mObserverExplorer,
@@ -451,7 +451,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "boardLimitWidth",
-      idx:self.boardLimitWidth_property.mEasyBindingsObjectIndex,
+      idx:self.boardLimitWidth_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.boardLimitWidth_property.mObserverExplorer,
@@ -459,7 +459,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -467,7 +467,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     )
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -477,14 +477,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "myModel",
-      idx:self.myModel_property.mEasyBindingsObjectIndex,
+      idx:self.myModel_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&self.myModel_property.mValueExplorer
     )
     createEntryForToOneRelationshipNamed (
       "myRoot",
-      idx:self.myRoot_property.mEasyBindingsObjectIndex,
+      idx:self.myRoot_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&self.myRoot_property.mValueExplorer
@@ -1180,11 +1180,11 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 

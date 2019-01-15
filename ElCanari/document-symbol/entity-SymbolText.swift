@@ -295,7 +295,7 @@ class SymbolText : SymbolObject,
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
       "y",
-      idx:self.y_property.mEasyBindingsObjectIndex,
+      idx:self.y_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.y_property.mObserverExplorer,
@@ -303,7 +303,7 @@ class SymbolText : SymbolObject,
     )
     createEntryForPropertyNamed (
       "text",
-      idx:self.text_property.mEasyBindingsObjectIndex,
+      idx:self.text_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.text_property.mObserverExplorer,
@@ -311,7 +311,7 @@ class SymbolText : SymbolObject,
     )
     createEntryForPropertyNamed (
       "horizontalAlignment",
-      idx:self.horizontalAlignment_property.mEasyBindingsObjectIndex,
+      idx:self.horizontalAlignment_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.horizontalAlignment_property.mObserverExplorer,
@@ -319,7 +319,7 @@ class SymbolText : SymbolObject,
     )
     createEntryForPropertyNamed (
       "x",
-      idx:self.x_property.mEasyBindingsObjectIndex,
+      idx:self.x_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.x_property.mObserverExplorer,
@@ -328,7 +328,7 @@ class SymbolText : SymbolObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "objectDisplay",
-      idx:self.objectDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.objectDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.objectDisplay_property.mObserverExplorer,
@@ -336,7 +336,7 @@ class SymbolText : SymbolObject,
     )
     createEntryForPropertyNamed (
       "selectionDisplay",
-      idx:self.selectionDisplay_property.mEasyBindingsObjectIndex,
+      idx:self.selectionDisplay_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
@@ -344,7 +344,7 @@ class SymbolText : SymbolObject,
     )
     createEntryForPropertyNamed (
       "issues",
-      idx:self.issues_property.mEasyBindingsObjectIndex,
+      idx:self.issues_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
@@ -968,11 +968,11 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
     if self.prop_cache != nil {
       self.prop_cache = nil
       if logEvents () {
-        appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) propagation\n")
+        appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
       super.postEvent ()
     }else if logEvents () {
-      appendMessageString ("  \(explorerIndexString (self.mEasyBindingsObjectIndex)) nil\n")
+      appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) nil\n")
     }
   }
 
