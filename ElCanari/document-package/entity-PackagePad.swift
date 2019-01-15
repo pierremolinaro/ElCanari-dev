@@ -1400,6 +1400,26 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
+  //    cleanUpToManyRelationships
+  //····················································································································
+
+  override func cleanUpToManyRelationships () {
+    self.slaves_property.setProp ([])
+  //---
+    super.cleanUpToManyRelationships ()
+  }
+
+  //····················································································································
+  //    cleanUpToOneRelationships
+  //····················································································································
+
+  override func cleanUpToOneRelationships () {
+    self.zone_property.setProp (nil)
+  //---
+    super.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -3431,7 +3451,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : PackageZone? { // SHOULD NOT BE WEAK, NO OPPOSITE RELATION
+  private var mValue : PackageZone? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

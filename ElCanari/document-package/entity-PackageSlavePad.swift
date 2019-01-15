@@ -1080,6 +1080,25 @@ class PackageSlavePad : PackageObject,
   }
 
   //····················································································································
+  //    cleanUpToManyRelationships
+  //····················································································································
+
+  override func cleanUpToManyRelationships () {
+  //---
+    super.cleanUpToManyRelationships ()
+  }
+
+  //····················································································································
+  //    cleanUpToOneRelationships
+  //····················································································································
+
+  override func cleanUpToOneRelationships () {
+    self.master_property.setProp (nil)
+  //---
+    super.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -2785,7 +2804,7 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : PackagePad? { // SHOULD BE WEAK, OPPOSITE RELATION
+  private var mValue : PackagePad? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

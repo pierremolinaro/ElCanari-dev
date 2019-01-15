@@ -378,7 +378,19 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   override final func removeWindowController (_ inWindowController : NSWindowController) {
-    DispatchQueue.main.asyncAfter (deadline: .now (), execute: { self.removeUserInterface () })
+  //--- Remove user interface
+    self.removeUserInterface ()
+//    DispatchQueue.main.asyncAfter (deadline: .now (), execute: { self.removeUserInterface () })
+  //--- Remove all entities
+    let allEntities = self.reachableObjectsFromRootObject (rootObject: self.mRootObject!)
+    for entity in allEntities {
+      entity.clearObjectExplorer ()
+      entity.cleanUpToManyRelationships ()
+    }
+    for entity in allEntities {
+      entity.cleanUpToOneRelationships ()
+    }
+  //---
     super.removeWindowController (inWindowController)
   }
 

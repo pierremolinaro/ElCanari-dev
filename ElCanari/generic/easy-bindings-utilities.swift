@@ -19,7 +19,7 @@ import Cocoa
 
 class EBWeakEventSetElement : EBObject {
 
-  private weak var mObject : EBWeakEventSet? = nil // SOULD BE WEAK
+  fileprivate weak var mObject : EBWeakEventSet? = nil // SOULD BE WEAK
   private var mObserverObjectIndex : Int
   private var mObserverRetainCount = 1
 
@@ -84,6 +84,20 @@ class EBWeakEventSet : EBObject, Sequence {
       }
     }
   }
+
+  //····················································································································
+
+//  func eventArray () -> [EBEvent] {
+//    var array = [EBEvent] ()
+//    for (key, entry) in self.mDictionary {
+//      if let observer = entry.mObserver, entry.mObject != nil {
+//        array.append (observer)
+//      }else{
+//        self.mDictionary [key] = nil
+//      }
+//    }
+//    return array
+//  }
 
   //····················································································································
 

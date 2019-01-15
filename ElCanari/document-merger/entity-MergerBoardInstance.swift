@@ -517,6 +517,26 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //    cleanUpToManyRelationships
+  //····················································································································
+
+  override func cleanUpToManyRelationships () {
+  //---
+    super.cleanUpToManyRelationships ()
+  }
+
+  //····················································································································
+  //    cleanUpToOneRelationships
+  //····················································································································
+
+  override func cleanUpToOneRelationships () {
+    self.myModel_property.setProp (nil)
+    self.myRoot_property.setProp (nil)
+  //---
+    super.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -1445,7 +1465,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : BoardModel? { // SHOULD BE WEAK, OPPOSITE RELATION
+  private var mValue : BoardModel? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
@@ -3877,7 +3897,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
  
   //····················································································································
 
-  weak private var mValue : MergerRoot? { // SHOULD BE WEAK, OPPOSITE RELATION
+  private var mValue : MergerRoot? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

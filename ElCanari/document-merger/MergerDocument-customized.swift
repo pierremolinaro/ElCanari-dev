@@ -35,6 +35,22 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
     self.mIssueTableView?.register (issueDisplayView: self.mComposedBoardView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mBoardInspectorSegmentedControl, segment: 1)
+  //--- Has unused instance(s) ?
+    for model in self.rootObject.boardModels_property.propval {
+      var newInstanceArray = [MergerBoardInstance] ()
+      var change = false
+      for instance in model.myInstances_property.propval {
+        if instance.myRoot_property.propval == nil {
+          NSLog ("unused instance")
+          change = true
+        }else{
+          newInstanceArray.append (instance)
+        }
+      }
+      if change {
+        model.myInstances_property.setProp (newInstanceArray)
+      }
+    }
   }
 
   //····················································································································

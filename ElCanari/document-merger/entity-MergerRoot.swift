@@ -1380,6 +1380,27 @@ class MergerRoot : EBManagedObject,
   }
 
   //····················································································································
+  //    cleanUpToManyRelationships
+  //····················································································································
+
+  override func cleanUpToManyRelationships () {
+    self.boardModels_property.setProp ([])
+    self.boardInstances_property.setProp ([])
+  //---
+    super.cleanUpToManyRelationships ()
+  }
+
+  //····················································································································
+  //    cleanUpToOneRelationships
+  //····················································································································
+
+  override func cleanUpToOneRelationships () {
+    self.artwork_property.setProp (nil)
+  //---
+    super.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
@@ -3494,7 +3515,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
  
   //····················································································································
 
-  private var mValue : ArtworkRoot? { // SHOULD NOT BE WEAK, NO OPPOSITE RELATION
+  private var mValue : ArtworkRoot? {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager

@@ -77,6 +77,20 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
+  //   cleanUpToManyRelationships
+  //····················································································································
+
+  func cleanUpToManyRelationships () {
+  }
+
+  //····················································································································
+  //   cleanUpToOneRelationships
+  //····················································································································
+
+  func cleanUpToOneRelationships () {
+  }
+
+  //····················································································································
   //    populateExplorerWindow
   //····················································································································
 
@@ -148,7 +162,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
 
   func clearObjectExplorer () {
     let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
-    closeButton!.target = nil
+    closeButton?.target = nil
     self.mExplorerWindow?.orderOut (nil)
     self.mExplorerWindow = nil
   }

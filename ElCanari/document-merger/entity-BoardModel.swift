@@ -4139,6 +4139,44 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //    cleanUpToManyRelationships
+  //····················································································································
+
+  override func cleanUpToManyRelationships () {
+    self.frontLegendLines_property.setProp ([])
+    self.backLegendLines_property.setProp ([])
+    self.frontLegendTexts_property.setProp ([])
+    self.frontLayoutTexts_property.setProp ([])
+    self.backLegendTexts_property.setProp ([])
+    self.backLayoutTexts_property.setProp ([])
+    self.internalBoardsLimits_property.setProp ([])
+    self.drills_property.setProp ([])
+    self.vias_property.setProp ([])
+    self.frontPads_property.setProp ([])
+    self.backPads_property.setProp ([])
+    self.backComponentNames_property.setProp ([])
+    self.frontComponentNames_property.setProp ([])
+    self.frontComponentValues_property.setProp ([])
+    self.backComponentValues_property.setProp ([])
+    self.backTracks_property.setProp ([])
+    self.frontTracks_property.setProp ([])
+    self.frontPackages_property.setProp ([])
+    self.backPackages_property.setProp ([])
+    self.myInstances_property.setProp ([])
+  //---
+    super.cleanUpToManyRelationships ()
+  }
+
+  //····················································································································
+  //    cleanUpToOneRelationships
+  //····················································································································
+
+  override func cleanUpToOneRelationships () {
+  //---
+    super.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //    saveIntoDictionary
   //····················································································································
 
