@@ -453,7 +453,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_x1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x1 {
+      for observer in self.mObserversOf_x1.eventArray () {
         managedObject.x1_property.addEBObserver (observer)
       }
     }
@@ -462,7 +462,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   //····················································································································
 
   final func removeEBObserversOf_x1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for observer in self.mObserversOf_x1 {
+    for observer in self.mObserversOf_x1.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x1_property.removeEBObserver (observer)
@@ -510,7 +510,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_y1_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y1 {
+      for observer in self.mObserversOf_y1.eventArray () {
         managedObject.y1_property.addEBObserver (observer)
       }
     }
@@ -519,7 +519,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   //····················································································································
 
   final func removeEBObserversOf_y1_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for observer in self.mObserversOf_y1 {
+    for observer in self.mObserversOf_y1.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y1_property.removeEBObserver (observer)
@@ -567,7 +567,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_x2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x2 {
+      for observer in self.mObserversOf_x2.eventArray () {
         managedObject.x2_property.addEBObserver (observer)
       }
     }
@@ -576,7 +576,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   //····················································································································
 
   final func removeEBObserversOf_x2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for observer in self.mObserversOf_x2 {
+    for observer in self.mObserversOf_x2.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x2_property.removeEBObserver (observer)
@@ -624,7 +624,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_y2_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y2 {
+      for observer in self.mObserversOf_y2.eventArray () {
         managedObject.y2_property.addEBObserver (observer)
       }
     }
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
   //····················································································································
 
   final func removeEBObserversOf_y2_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
-    for observer in self.mObserversOf_y2 {
+    for observer in self.mObserversOf_y2.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y2_property.removeEBObserver (observer)
@@ -681,7 +681,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -691,7 +691,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -737,7 +737,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -747,7 +747,7 @@ class ReadOnlyArrayOf_SegmentForFontCharacter : ReadOnlyAbstractArrayProperty <S
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SegmentForFontCharacter>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }

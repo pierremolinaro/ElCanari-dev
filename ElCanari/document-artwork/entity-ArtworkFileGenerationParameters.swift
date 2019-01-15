@@ -1290,7 +1290,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawBoardLimits {
+      for observer in self.mObserversOf_drawBoardLimits.eventArray () {
         managedObject.drawBoardLimits_property.addEBObserver (observer)
       }
     }
@@ -1299,7 +1299,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawBoardLimits {
+    for observer in self.mObserversOf_drawBoardLimits.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawBoardLimits_property.removeEBObserver (observer)
@@ -1347,7 +1347,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawInternalBoardLimits {
+      for observer in self.mObserversOf_drawInternalBoardLimits.eventArray () {
         managedObject.drawInternalBoardLimits_property.addEBObserver (observer)
       }
     }
@@ -1356,7 +1356,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawInternalBoardLimits {
+    for observer in self.mObserversOf_drawInternalBoardLimits.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawInternalBoardLimits_property.removeEBObserver (observer)
@@ -1404,7 +1404,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawComponentNamesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawComponentNamesTopSide {
+      for observer in self.mObserversOf_drawComponentNamesTopSide.eventArray () {
         managedObject.drawComponentNamesTopSide_property.addEBObserver (observer)
       }
     }
@@ -1413,7 +1413,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawComponentNamesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawComponentNamesTopSide {
+    for observer in self.mObserversOf_drawComponentNamesTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawComponentNamesTopSide_property.removeEBObserver (observer)
@@ -1461,7 +1461,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawComponentNamesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawComponentNamesBottomSide {
+      for observer in self.mObserversOf_drawComponentNamesBottomSide.eventArray () {
         managedObject.drawComponentNamesBottomSide_property.addEBObserver (observer)
       }
     }
@@ -1470,7 +1470,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawComponentNamesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawComponentNamesBottomSide {
+    for observer in self.mObserversOf_drawComponentNamesBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawComponentNamesBottomSide_property.removeEBObserver (observer)
@@ -1518,7 +1518,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawComponentValuesTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawComponentValuesTopSide {
+      for observer in self.mObserversOf_drawComponentValuesTopSide.eventArray () {
         managedObject.drawComponentValuesTopSide_property.addEBObserver (observer)
       }
     }
@@ -1527,7 +1527,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawComponentValuesTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawComponentValuesTopSide {
+    for observer in self.mObserversOf_drawComponentValuesTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawComponentValuesTopSide_property.removeEBObserver (observer)
@@ -1575,7 +1575,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawComponentValuesBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawComponentValuesBottomSide {
+      for observer in self.mObserversOf_drawComponentValuesBottomSide.eventArray () {
         managedObject.drawComponentValuesBottomSide_property.addEBObserver (observer)
       }
     }
@@ -1584,7 +1584,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawComponentValuesBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawComponentValuesBottomSide {
+    for observer in self.mObserversOf_drawComponentValuesBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawComponentValuesBottomSide_property.removeEBObserver (observer)
@@ -1632,7 +1632,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawPackageLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawPackageLegendTopSide {
+      for observer in self.mObserversOf_drawPackageLegendTopSide.eventArray () {
         managedObject.drawPackageLegendTopSide_property.addEBObserver (observer)
       }
     }
@@ -1641,7 +1641,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawPackageLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawPackageLegendTopSide {
+    for observer in self.mObserversOf_drawPackageLegendTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawPackageLegendTopSide_property.removeEBObserver (observer)
@@ -1689,7 +1689,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawPackageLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawPackageLegendBottomSide {
+      for observer in self.mObserversOf_drawPackageLegendBottomSide.eventArray () {
         managedObject.drawPackageLegendBottomSide_property.addEBObserver (observer)
       }
     }
@@ -1698,7 +1698,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawPackageLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawPackageLegendBottomSide {
+    for observer in self.mObserversOf_drawPackageLegendBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawPackageLegendBottomSide_property.removeEBObserver (observer)
@@ -1746,7 +1746,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawPadHolesInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawPadHolesInPDF {
+      for observer in self.mObserversOf_drawPadHolesInPDF.eventArray () {
         managedObject.drawPadHolesInPDF_property.addEBObserver (observer)
       }
     }
@@ -1755,7 +1755,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawPadHolesInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawPadHolesInPDF {
+    for observer in self.mObserversOf_drawPadHolesInPDF.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawPadHolesInPDF_property.removeEBObserver (observer)
@@ -1803,7 +1803,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawPadsTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawPadsTopSide {
+      for observer in self.mObserversOf_drawPadsTopSide.eventArray () {
         managedObject.drawPadsTopSide_property.addEBObserver (observer)
       }
     }
@@ -1812,7 +1812,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawPadsTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawPadsTopSide {
+    for observer in self.mObserversOf_drawPadsTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawPadsTopSide_property.removeEBObserver (observer)
@@ -1860,7 +1860,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawPadsBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawPadsBottomSide {
+      for observer in self.mObserversOf_drawPadsBottomSide.eventArray () {
         managedObject.drawPadsBottomSide_property.addEBObserver (observer)
       }
     }
@@ -1869,7 +1869,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawPadsBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawPadsBottomSide {
+    for observer in self.mObserversOf_drawPadsBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawPadsBottomSide_property.removeEBObserver (observer)
@@ -1917,7 +1917,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTextsLayoutTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTextsLayoutTopSide {
+      for observer in self.mObserversOf_drawTextsLayoutTopSide.eventArray () {
         managedObject.drawTextsLayoutTopSide_property.addEBObserver (observer)
       }
     }
@@ -1926,7 +1926,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTextsLayoutTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTextsLayoutTopSide {
+    for observer in self.mObserversOf_drawTextsLayoutTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTextsLayoutTopSide_property.removeEBObserver (observer)
@@ -1974,7 +1974,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTextsLayoutBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTextsLayoutBottomSide {
+      for observer in self.mObserversOf_drawTextsLayoutBottomSide.eventArray () {
         managedObject.drawTextsLayoutBottomSide_property.addEBObserver (observer)
       }
     }
@@ -1983,7 +1983,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTextsLayoutBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTextsLayoutBottomSide {
+    for observer in self.mObserversOf_drawTextsLayoutBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTextsLayoutBottomSide_property.removeEBObserver (observer)
@@ -2031,7 +2031,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTextsLegendTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTextsLegendTopSide {
+      for observer in self.mObserversOf_drawTextsLegendTopSide.eventArray () {
         managedObject.drawTextsLegendTopSide_property.addEBObserver (observer)
       }
     }
@@ -2040,7 +2040,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTextsLegendTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTextsLegendTopSide {
+    for observer in self.mObserversOf_drawTextsLegendTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTextsLegendTopSide_property.removeEBObserver (observer)
@@ -2088,7 +2088,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTextsLegendBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTextsLegendBottomSide {
+      for observer in self.mObserversOf_drawTextsLegendBottomSide.eventArray () {
         managedObject.drawTextsLegendBottomSide_property.addEBObserver (observer)
       }
     }
@@ -2097,7 +2097,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTextsLegendBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTextsLegendBottomSide {
+    for observer in self.mObserversOf_drawTextsLegendBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTextsLegendBottomSide_property.removeEBObserver (observer)
@@ -2145,7 +2145,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTracksTopSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTracksTopSide {
+      for observer in self.mObserversOf_drawTracksTopSide.eventArray () {
         managedObject.drawTracksTopSide_property.addEBObserver (observer)
       }
     }
@@ -2154,7 +2154,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTracksTopSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTracksTopSide {
+    for observer in self.mObserversOf_drawTracksTopSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTracksTopSide_property.removeEBObserver (observer)
@@ -2202,7 +2202,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawTracksBottomSide_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawTracksBottomSide {
+      for observer in self.mObserversOf_drawTracksBottomSide.eventArray () {
         managedObject.drawTracksBottomSide_property.addEBObserver (observer)
       }
     }
@@ -2211,7 +2211,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawTracksBottomSide_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawTracksBottomSide {
+    for observer in self.mObserversOf_drawTracksBottomSide.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawTracksBottomSide_property.removeEBObserver (observer)
@@ -2259,7 +2259,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_drawVias_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_drawVias {
+      for observer in self.mObserversOf_drawVias.eventArray () {
         managedObject.drawVias_property.addEBObserver (observer)
       }
     }
@@ -2268,7 +2268,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_drawVias_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_drawVias {
+    for observer in self.mObserversOf_drawVias.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.drawVias_property.removeEBObserver (observer)
@@ -2316,7 +2316,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_fileExtension_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_fileExtension {
+      for observer in self.mObserversOf_fileExtension.eventArray () {
         managedObject.fileExtension_property.addEBObserver (observer)
       }
     }
@@ -2325,7 +2325,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_fileExtension_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_fileExtension {
+    for observer in self.mObserversOf_fileExtension.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.fileExtension_property.removeEBObserver (observer)
@@ -2373,7 +2373,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_horizontalMirror_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_horizontalMirror {
+      for observer in self.mObserversOf_horizontalMirror.eventArray () {
         managedObject.horizontalMirror_property.addEBObserver (observer)
       }
     }
@@ -2382,7 +2382,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_horizontalMirror_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_horizontalMirror {
+    for observer in self.mObserversOf_horizontalMirror.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.horizontalMirror_property.removeEBObserver (observer)
@@ -2430,7 +2430,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_name_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_name {
+      for observer in self.mObserversOf_name.eventArray () {
         managedObject.name_property.addEBObserver (observer)
       }
     }
@@ -2439,7 +2439,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_name_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_name {
+    for observer in self.mObserversOf_name.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.name_property.removeEBObserver (observer)
@@ -2487,7 +2487,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_measurementUnitForPadHoleInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_measurementUnitForPadHoleInPDF {
+      for observer in self.mObserversOf_measurementUnitForPadHoleInPDF.eventArray () {
         managedObject.measurementUnitForPadHoleInPDF_property.addEBObserver (observer)
       }
     }
@@ -2496,7 +2496,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_measurementUnitForPadHoleInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_measurementUnitForPadHoleInPDF {
+    for observer in self.mObserversOf_measurementUnitForPadHoleInPDF.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.measurementUnitForPadHoleInPDF_property.removeEBObserver (observer)
@@ -2544,7 +2544,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
 
   final func addEBObserversOf_padHoleDiameterInPDF_toElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padHoleDiameterInPDF {
+      for observer in self.mObserversOf_padHoleDiameterInPDF.eventArray () {
         managedObject.padHoleDiameterInPDF_property.addEBObserver (observer)
       }
     }
@@ -2553,7 +2553,7 @@ class ReadOnlyArrayOf_ArtworkFileGenerationParameters : ReadOnlyAbstractArrayPro
   //····················································································································
 
   final func removeEBObserversOf_padHoleDiameterInPDF_fromElementsOfSet (_ inSet : Set<ArtworkFileGenerationParameters>) {
-    for observer in self.mObserversOf_padHoleDiameterInPDF {
+    for observer in self.mObserversOf_padHoleDiameterInPDF.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padHoleDiameterInPDF_property.removeEBObserver (observer)

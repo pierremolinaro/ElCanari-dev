@@ -45,7 +45,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   fileprivate var mPackageColorObserver = EBOutletEvent ()
   fileprivate var mPadColorObserver = EBOutletEvent ()
-  internal var mPadNumberingObserver = EBModelEvent ()
+  internal var mPadNumberingObserver = EBModelEvent () // Used in PackageDocument-pad-numbering.swift
 
   //····················································································································
 
@@ -152,6 +152,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   override func removeUserInterface () {
     super.removeUserInterface ()
     g_Preferences?.packageColor_property.removeEBObserver (self.mPackageColorObserver)
+    g_Preferences?.topSidePadColor_property.removeEBObserver (self.mPadColorObserver)
   }
 
   //····················································································································

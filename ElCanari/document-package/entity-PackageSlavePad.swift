@@ -1270,7 +1270,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_xCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xCenter {
+      for observer in self.mObserversOf_xCenter.eventArray () {
         managedObject.xCenter_property.addEBObserver (observer)
       }
     }
@@ -1279,7 +1279,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_xCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_xCenter {
+    for observer in self.mObserversOf_xCenter.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xCenter_property.removeEBObserver (observer)
@@ -1327,7 +1327,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_yCenter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yCenter {
+      for observer in self.mObserversOf_yCenter.eventArray () {
         managedObject.yCenter_property.addEBObserver (observer)
       }
     }
@@ -1336,7 +1336,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_yCenter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_yCenter {
+    for observer in self.mObserversOf_yCenter.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenter_property.removeEBObserver (observer)
@@ -1384,7 +1384,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_width {
+      for observer in self.mObserversOf_width.eventArray () {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -1393,7 +1393,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_width {
+    for observer in self.mObserversOf_width.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -1441,7 +1441,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_height {
+      for observer in self.mObserversOf_height.eventArray () {
         managedObject.height_property.addEBObserver (observer)
       }
     }
@@ -1450,7 +1450,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_height {
+    for observer in self.mObserversOf_height.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
@@ -1498,7 +1498,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_holeDiameter_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_holeDiameter {
+      for observer in self.mObserversOf_holeDiameter.eventArray () {
         managedObject.holeDiameter_property.addEBObserver (observer)
       }
     }
@@ -1507,7 +1507,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_holeDiameter_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_holeDiameter {
+    for observer in self.mObserversOf_holeDiameter.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.holeDiameter_property.removeEBObserver (observer)
@@ -1555,7 +1555,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_padShape_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padShape {
+      for observer in self.mObserversOf_padShape.eventArray () {
         managedObject.padShape_property.addEBObserver (observer)
       }
     }
@@ -1564,7 +1564,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_padShape_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_padShape {
+    for observer in self.mObserversOf_padShape.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padShape_property.removeEBObserver (observer)
@@ -1612,7 +1612,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_padStyle_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padStyle {
+      for observer in self.mObserversOf_padStyle.eventArray () {
         managedObject.padStyle_property.addEBObserver (observer)
       }
     }
@@ -1621,7 +1621,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_padStyle_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_padStyle {
+    for observer in self.mObserversOf_padStyle.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padStyle_property.removeEBObserver (observer)
@@ -1669,7 +1669,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_xCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xCenterUnit {
+      for observer in self.mObserversOf_xCenterUnit.eventArray () {
         managedObject.xCenterUnit_property.addEBObserver (observer)
       }
     }
@@ -1678,7 +1678,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_xCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_xCenterUnit {
+    for observer in self.mObserversOf_xCenterUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xCenterUnit_property.removeEBObserver (observer)
@@ -1726,7 +1726,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_yCenterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yCenterUnit {
+      for observer in self.mObserversOf_yCenterUnit.eventArray () {
         managedObject.yCenterUnit_property.addEBObserver (observer)
       }
     }
@@ -1735,7 +1735,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_yCenterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_yCenterUnit {
+    for observer in self.mObserversOf_yCenterUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yCenterUnit_property.removeEBObserver (observer)
@@ -1783,7 +1783,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_widthUnit {
+      for observer in self.mObserversOf_widthUnit.eventArray () {
         managedObject.widthUnit_property.addEBObserver (observer)
       }
     }
@@ -1792,7 +1792,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_widthUnit {
+    for observer in self.mObserversOf_widthUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.widthUnit_property.removeEBObserver (observer)
@@ -1840,7 +1840,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_heightUnit {
+      for observer in self.mObserversOf_heightUnit.eventArray () {
         managedObject.heightUnit_property.addEBObserver (observer)
       }
     }
@@ -1849,7 +1849,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_heightUnit {
+    for observer in self.mObserversOf_heightUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.heightUnit_property.removeEBObserver (observer)
@@ -1897,7 +1897,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_holeDiameterUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_holeDiameterUnit {
+      for observer in self.mObserversOf_holeDiameterUnit.eventArray () {
         managedObject.holeDiameterUnit_property.addEBObserver (observer)
       }
     }
@@ -1906,7 +1906,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_holeDiameterUnit {
+    for observer in self.mObserversOf_holeDiameterUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.holeDiameterUnit_property.removeEBObserver (observer)
@@ -1954,7 +1954,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_annularRingUnit_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_annularRingUnit {
+      for observer in self.mObserversOf_annularRingUnit.eventArray () {
         managedObject.annularRingUnit_property.addEBObserver (observer)
       }
     }
@@ -1963,7 +1963,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
   //····················································································································
 
   final func removeEBObserversOf_annularRingUnit_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
-    for observer in self.mObserversOf_annularRingUnit {
+    for observer in self.mObserversOf_annularRingUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.annularRingUnit_property.removeEBObserver (observer)
@@ -2011,7 +2011,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -2021,7 +2021,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2067,7 +2067,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -2077,7 +2077,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }
@@ -2123,7 +2123,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_padIsTraversing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padIsTraversing {
+      for observer in self.mObserversOf_padIsTraversing.eventArray () {
         managedObject.padIsTraversing_property.addEBObserver (observer)
       }
     }
@@ -2133,7 +2133,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_padIsTraversing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padIsTraversing {
+      for observer in self.mObserversOf_padIsTraversing.eventArray () {
         managedObject.padIsTraversing_property.removeEBObserver (observer)
       }
     }
@@ -2179,7 +2179,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_annularRing_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_annularRing {
+      for observer in self.mObserversOf_annularRing.eventArray () {
         managedObject.annularRing_property.addEBObserver (observer)
       }
     }
@@ -2189,7 +2189,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_annularRing_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_annularRing {
+      for observer in self.mObserversOf_annularRing.eventArray () {
         managedObject.annularRing_property.removeEBObserver (observer)
       }
     }
@@ -2235,7 +2235,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_padName_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padName {
+      for observer in self.mObserversOf_padName.eventArray () {
         managedObject.padName_property.addEBObserver (observer)
       }
     }
@@ -2245,7 +2245,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_padName_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padName {
+      for observer in self.mObserversOf_padName.eventArray () {
         managedObject.padName_property.removeEBObserver (observer)
       }
     }
@@ -2291,7 +2291,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_padNumberDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumberDisplay {
+      for observer in self.mObserversOf_padNumberDisplay.eventArray () {
         managedObject.padNumberDisplay_property.addEBObserver (observer)
       }
     }
@@ -2301,7 +2301,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_padNumberDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padNumberDisplay {
+      for observer in self.mObserversOf_padNumberDisplay.eventArray () {
         managedObject.padNumberDisplay_property.removeEBObserver (observer)
       }
     }
@@ -2347,7 +2347,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -2357,7 +2357,7 @@ class ReadOnlyArrayOf_PackageSlavePad : ReadOnlyAbstractArrayProperty <PackageSl
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageSlavePad>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }

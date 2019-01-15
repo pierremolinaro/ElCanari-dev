@@ -421,7 +421,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectedPageIndex {
+      for observer in self.mObserversOf_selectedPageIndex.eventArray () {
         managedObject.selectedPageIndex_property.addEBObserver (observer)
       }
     }
@@ -430,7 +430,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //····················································································································
 
   final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for observer in self.mObserversOf_selectedPageIndex {
+    for observer in self.mObserversOf_selectedPageIndex.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.selectedPageIndex_property.removeEBObserver (observer)
@@ -478,7 +478,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_title_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_title {
+      for observer in self.mObserversOf_title.eventArray () {
         managedObject.title_property.addEBObserver (observer)
       }
     }
@@ -487,7 +487,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //····················································································································
 
   final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for observer in self.mObserversOf_title {
+    for observer in self.mObserversOf_title.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.title_property.removeEBObserver (observer)
@@ -535,7 +535,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_prefix_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_prefix {
+      for observer in self.mObserversOf_prefix.eventArray () {
         managedObject.prefix_property.addEBObserver (observer)
       }
     }
@@ -544,7 +544,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //····················································································································
 
   final func removeEBObserversOf_prefix_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for observer in self.mObserversOf_prefix {
+    for observer in self.mObserversOf_prefix.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.prefix_property.removeEBObserver (observer)
@@ -592,7 +592,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_comments {
+      for observer in self.mObserversOf_comments.eventArray () {
         managedObject.comments_property.addEBObserver (observer)
       }
     }
@@ -601,7 +601,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   //····················································································································
 
   final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for observer in self.mObserversOf_comments {
+    for observer in self.mObserversOf_comments.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.comments_property.removeEBObserver (observer)
@@ -649,7 +649,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -659,7 +659,7 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

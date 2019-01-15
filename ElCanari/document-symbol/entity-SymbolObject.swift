@@ -222,7 +222,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -232,7 +232,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -278,7 +278,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -288,7 +288,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -334,7 +334,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -344,7 +344,7 @@ class ReadOnlyArrayOf_SymbolObject : ReadOnlyAbstractArrayProperty <SymbolObject
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolObject>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

@@ -295,7 +295,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y {
+      for observer in self.mObserversOf_y.eventArray () {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -304,7 +304,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in self.mObserversOf_y {
+    for observer in self.mObserversOf_y.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -352,7 +352,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_padDiameter_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_padDiameter {
+      for observer in self.mObserversOf_padDiameter.eventArray () {
         managedObject.padDiameter_property.addEBObserver (observer)
       }
     }
@@ -361,7 +361,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_padDiameter_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in self.mObserversOf_padDiameter {
+    for observer in self.mObserversOf_padDiameter.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.padDiameter_property.removeEBObserver (observer)
@@ -409,7 +409,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<BoardModelVia>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x {
+      for observer in self.mObserversOf_x.eventArray () {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -418,7 +418,7 @@ class ReadOnlyArrayOf_BoardModelVia : ReadOnlyAbstractArrayProperty <BoardModelV
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<BoardModelVia>) {
-    for observer in self.mObserversOf_x {
+    for observer in self.mObserversOf_x.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)

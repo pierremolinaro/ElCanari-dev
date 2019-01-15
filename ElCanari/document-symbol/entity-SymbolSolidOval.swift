@@ -503,7 +503,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y {
+      for observer in self.mObserversOf_y.eventArray () {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -512,7 +512,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for observer in self.mObserversOf_y {
+    for observer in self.mObserversOf_y.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -560,7 +560,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_width {
+      for observer in self.mObserversOf_width.eventArray () {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -569,7 +569,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for observer in self.mObserversOf_width {
+    for observer in self.mObserversOf_width.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -617,7 +617,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_height {
+      for observer in self.mObserversOf_height.eventArray () {
         managedObject.height_property.addEBObserver (observer)
       }
     }
@@ -626,7 +626,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for observer in self.mObserversOf_height {
+    for observer in self.mObserversOf_height.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
@@ -674,7 +674,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x {
+      for observer in self.mObserversOf_x.eventArray () {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -683,7 +683,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
-    for observer in self.mObserversOf_x {
+    for observer in self.mObserversOf_x.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -731,7 +731,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -741,7 +741,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -787,7 +787,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -797,7 +797,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -843,7 +843,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -853,7 +853,7 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

@@ -661,7 +661,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x {
+      for observer in self.mObserversOf_x.eventArray () {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -670,7 +670,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in self.mObserversOf_x {
+    for observer in self.mObserversOf_x.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -718,7 +718,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y {
+      for observer in self.mObserversOf_y.eventArray () {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -727,7 +727,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in self.mObserversOf_y {
+    for observer in self.mObserversOf_y.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -775,7 +775,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_instanceRotation_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_instanceRotation {
+      for observer in self.mObserversOf_instanceRotation.eventArray () {
         managedObject.instanceRotation_property.addEBObserver (observer)
       }
     }
@@ -784,7 +784,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
   //····················································································································
 
   final func removeEBObserversOf_instanceRotation_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
-    for observer in self.mObserversOf_instanceRotation {
+    for observer in self.mObserversOf_instanceRotation.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.instanceRotation_property.removeEBObserver (observer)
@@ -832,7 +832,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_instanceRect_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_instanceRect {
+      for observer in self.mObserversOf_instanceRect.eventArray () {
         managedObject.instanceRect_property.addEBObserver (observer)
       }
     }
@@ -842,7 +842,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_instanceRect_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_instanceRect {
+      for observer in self.mObserversOf_instanceRect.eventArray () {
         managedObject.instanceRect_property.removeEBObserver (observer)
       }
     }
@@ -888,7 +888,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_modelName_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_modelName {
+      for observer in self.mObserversOf_modelName.eventArray () {
         managedObject.modelName_property.addEBObserver (observer)
       }
     }
@@ -898,7 +898,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_modelName_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_modelName {
+      for observer in self.mObserversOf_modelName.eventArray () {
         managedObject.modelName_property.removeEBObserver (observer)
       }
     }
@@ -944,7 +944,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_boardLimitWidth_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardLimitWidth {
+      for observer in self.mObserversOf_boardLimitWidth.eventArray () {
         managedObject.boardLimitWidth_property.addEBObserver (observer)
       }
     }
@@ -954,7 +954,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_boardLimitWidth_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_boardLimitWidth {
+      for observer in self.mObserversOf_boardLimitWidth.eventArray () {
         managedObject.boardLimitWidth_property.removeEBObserver (observer)
       }
     }
@@ -1000,7 +1000,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -1010,7 +1010,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1056,7 +1056,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -1066,7 +1066,7 @@ class ReadOnlyArrayOf_MergerBoardInstance : ReadOnlyAbstractArrayProperty <Merge
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<MergerBoardInstance>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }

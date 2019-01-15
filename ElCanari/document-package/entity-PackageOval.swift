@@ -702,7 +702,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_y {
+      for observer in self.mObserversOf_y.eventArray () {
         managedObject.y_property.addEBObserver (observer)
       }
     }
@@ -711,7 +711,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_y {
+    for observer in self.mObserversOf_y.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.y_property.removeEBObserver (observer)
@@ -759,7 +759,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_width {
+      for observer in self.mObserversOf_width.eventArray () {
         managedObject.width_property.addEBObserver (observer)
       }
     }
@@ -768,7 +768,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_width {
+    for observer in self.mObserversOf_width.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.width_property.removeEBObserver (observer)
@@ -816,7 +816,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_height {
+      for observer in self.mObserversOf_height.eventArray () {
         managedObject.height_property.addEBObserver (observer)
       }
     }
@@ -825,7 +825,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_height {
+    for observer in self.mObserversOf_height.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.height_property.removeEBObserver (observer)
@@ -873,7 +873,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_xUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_xUnit {
+      for observer in self.mObserversOf_xUnit.eventArray () {
         managedObject.xUnit_property.addEBObserver (observer)
       }
     }
@@ -882,7 +882,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_xUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_xUnit {
+    for observer in self.mObserversOf_xUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.xUnit_property.removeEBObserver (observer)
@@ -930,7 +930,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_yUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_yUnit {
+      for observer in self.mObserversOf_yUnit.eventArray () {
         managedObject.yUnit_property.addEBObserver (observer)
       }
     }
@@ -939,7 +939,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_yUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_yUnit {
+    for observer in self.mObserversOf_yUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.yUnit_property.removeEBObserver (observer)
@@ -987,7 +987,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_widthUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_widthUnit {
+      for observer in self.mObserversOf_widthUnit.eventArray () {
         managedObject.widthUnit_property.addEBObserver (observer)
       }
     }
@@ -996,7 +996,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_widthUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_widthUnit {
+    for observer in self.mObserversOf_widthUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.widthUnit_property.removeEBObserver (observer)
@@ -1044,7 +1044,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_heightUnit_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_heightUnit {
+      for observer in self.mObserversOf_heightUnit.eventArray () {
         managedObject.heightUnit_property.addEBObserver (observer)
       }
     }
@@ -1053,7 +1053,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_heightUnit_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_heightUnit {
+    for observer in self.mObserversOf_heightUnit.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.heightUnit_property.removeEBObserver (observer)
@@ -1101,7 +1101,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_x {
+      for observer in self.mObserversOf_x.eventArray () {
         managedObject.x_property.addEBObserver (observer)
       }
     }
@@ -1110,7 +1110,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
   //····················································································································
 
   final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<PackageOval>) {
-    for observer in self.mObserversOf_x {
+    for observer in self.mObserversOf_x.eventArray () {
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.x_property.removeEBObserver (observer)
@@ -1158,7 +1158,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.addEBObserver (observer)
       }
     }
@@ -1168,7 +1168,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_objectDisplay {
+      for observer in self.mObserversOf_objectDisplay.eventArray () {
         managedObject.objectDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1214,7 +1214,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.addEBObserver (observer)
       }
     }
@@ -1224,7 +1224,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_selectionDisplay {
+      for observer in self.mObserversOf_selectionDisplay.eventArray () {
         managedObject.selectionDisplay_property.removeEBObserver (observer)
       }
     }
@@ -1270,7 +1270,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.addEBObserver (observer)
       }
     }
@@ -1280,7 +1280,7 @@ class ReadOnlyArrayOf_PackageOval : ReadOnlyAbstractArrayProperty <PackageOval> 
 
   final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<PackageOval>) {
     for managedObject in inSet {
-      for observer in self.mObserversOf_issues {
+      for observer in self.mObserversOf_issues.eventArray () {
         managedObject.issues_property.removeEBObserver (observer)
       }
     }

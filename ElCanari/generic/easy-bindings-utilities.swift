@@ -19,37 +19,19 @@ import Cocoa
 
 class EBWeakEventSetElement : EBObject {
 
-  fileprivate weak var mObject : EBWeakEventSet? = nil // SOULD BE WEAK
-  private var mObserverObjectIndex : Int
-  private var mObserverRetainCount = 1
+  //····················································································································
 
-  fileprivate weak var mObserver : EBEvent? = nil { // SOULD BE WEAK
-    didSet {
-      if self.mObserver == nil, let object = self.mObject {
-        object.mDictionary [self.mObserverObjectIndex] = nil
-      }
-    }
-  }
+  private weak var mObserver : EBEvent? = nil // SOULD BE WEAK
 
   //····················································································································
 
-  init (object : EBWeakEventSet, observer : EBEvent) {
+  fileprivate var observer : EBEvent? { return self.mObserver }
+
+  //····················································································································
+
+  init (observer : EBEvent) {
     mObserver = observer
-    mObject = object
-    mObserverObjectIndex = observer.mEasyBindingsObjectIndex
     super.init ()
-  }
-  //····················································································································
-  
-  final func retainObserver () {
-    self.mObserverRetainCount += 1
-  }
-
-  //····················································································································
-  
-  final func releaseObserver () -> Int {
-    self.mObserverRetainCount -= 1
-    return self.mObserverRetainCount
   }
 
   //····················································································································
@@ -60,63 +42,35 @@ class EBWeakEventSetElement : EBObject {
 //   EBWeakEventSet
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBWeakEventSet : EBObject, Sequence {
+class EBWeakEventSet : EBObject {
   fileprivate var mDictionary = [Int : EBWeakEventSetElement] ()
 
   //····················································································································
-  
+
   func insert (_ inObserver : EBEvent) {
     let address : Int = inObserver.mEasyBindingsObjectIndex
-    if let entry = self.mDictionary [address] {
-      entry.retainObserver ()
-    }else{
-      mDictionary [address] = EBWeakEventSetElement (object:self, observer:inObserver)
-    }
+    self.mDictionary [address] = EBWeakEventSetElement (observer:inObserver)
   }
 
   //····················································································································
-  
+
   func remove (_ inObserver : EBEvent) {
     let address : Int = inObserver.mEasyBindingsObjectIndex
-    if let entry = self.mDictionary [address] {
-      if entry.releaseObserver () == 0 {
-        mDictionary [address] = nil
-      }
-    }
+    self.mDictionary [address] = nil
   }
 
   //····················································································································
 
-//  func eventArray () -> [EBEvent] {
-//    var array = [EBEvent] ()
-//    for (key, entry) in self.mDictionary {
-//      if let observer = entry.mObserver, entry.mObject != nil {
-//        array.append (observer)
-//      }else{
-//        self.mDictionary [key] = nil
-//      }
-//    }
-//    return array
-//  }
-
-  //····················································································································
-
-  func makeIterator () -> IndexingIterator <[EBEvent]> {
+  func eventArray () -> [EBEvent] {
     var array = [EBEvent] ()
-    for (_, entry) in mDictionary {
-      if let observer = entry.mObserver {
-        array.append(observer)
+    for (key, entry) in self.mDictionary {
+      if let observer = entry.observer {
+        array.append (observer)
+      }else{
+        self.mDictionary [key] = nil
       }
     }
-    return array.makeIterator ()
-  }
-
-  //····················································································································
-  
-  var count : Int {
-    get {
-      return self.mDictionary.count
-    }
+    return array
   }
 
   //····················································································································
@@ -135,45 +89,41 @@ class EBAbstractProperty : EBEvent {
 
   final func addEBObserver (_ inObserver : EBEvent) {
     self.mObservers.insert (inObserver)
-    updateObserverExplorer ()
+    self.updateObserverExplorer ()
     inObserver.postEvent ()
   }
  
   //····················································································································
 
   final func addEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
-    if inObserverSet.count > 0 {
-      for observer in inObserverSet {
-        self.mObservers.insert (observer)
-        observer.postEvent ()
-      }
-      updateObserverExplorer ()
+    for observer in inObserverSet.eventArray () {
+      self.mObservers.insert (observer)
+      observer.postEvent ()
     }
+    self.updateObserverExplorer ()
   }
 
   //····················································································································
 
   final func removeEBObserver (_ inObserver : EBEvent) {
     self.mObservers.remove (inObserver)
-    updateObserverExplorer ()
+    self.updateObserverExplorer ()
   }
 
   //····················································································································
 
   final func removeEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
-    if inObserverSet.count > 0 {
-      for observer in inObserverSet {
-        self.mObservers.remove (observer)
-        observer.postEvent ()
-      }
-      updateObserverExplorer ()
+    for observer in inObserverSet.eventArray () {
+      self.mObservers.remove (observer)
+      observer.postEvent ()
     }
+    self.updateObserverExplorer ()
   }
 
   //····················································································································
 
   override func postEvent () {
-    for object in self.mObservers {
+    for object in self.mObservers.eventArray () {
       object.postEvent ()
     }
   }
@@ -182,7 +132,7 @@ class EBAbstractProperty : EBEvent {
 
   final var mObserverExplorer : NSPopUpButton? {
     didSet {
-      updateObserverExplorer ()
+      self.updateObserverExplorer ()
     }
   }
   
@@ -191,9 +141,10 @@ class EBAbstractProperty : EBEvent {
   final func updateObserverExplorer () {
     if let observerExplorer = self.mObserverExplorer {
       observerExplorer.removeAllItems ()
-      observerExplorer.addItem (withTitle: String (mObservers.count))
-      observerExplorer.isEnabled = self.mObservers.count > 0
-      for object : EBEvent in self.mObservers {
+      let eventArray = self.mObservers.eventArray ()
+      observerExplorer.addItem (withTitle: String (eventArray.count))
+      observerExplorer.isEnabled = eventArray.count > 0
+      for object : EBEvent in eventArray {
         let stringValue = explorerIndexString (object.mEasyBindingsObjectIndex) + object.className
         observerExplorer.addItem (withTitle: stringValue)
       }
