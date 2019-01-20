@@ -1,8 +1,8 @@
 {
   "NOTE" : [],
   "BUGFIX" : [
-    "Merger document was broken",
-    "DMG product has HFS+ file system"
+    "Imported artwork in Merger document was not retained",
+    "Spacing between boards on \"Insert an array of Boards…\" action"
   ],
   "CHANGE" : [],
   "NEW" : []
