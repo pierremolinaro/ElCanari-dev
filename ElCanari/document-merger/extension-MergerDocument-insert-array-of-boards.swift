@@ -64,9 +64,19 @@ extension MergerDocument {
                 newBoard.y = y
                 self.rootObject.boardInstances_property.add (newBoard)
                 newBoardArray.append (newBoard)
-                x += boardModelWidth
+                switch rotation {
+                case .rotation0, .rotation180 :
+                  x += boardModelWidth
+                case .rotation90, .rotation270 :
+                  x += boardModelHeight
+                }
               }
-              y += boardModelHeight
+              switch rotation {
+              case .rotation0, .rotation180 :
+                y += boardModelHeight
+              case .rotation90, .rotation270 :
+                y += boardModelWidth
+              }
             }
             self.mBoardInstanceController.setSelection (newBoardArray)
           }
