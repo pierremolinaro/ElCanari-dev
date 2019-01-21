@@ -4,7 +4,6 @@
 //
 //  Created by Pierre Molinaro on 06/07/2018.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
@@ -51,6 +50,7 @@ extension MergerDocument {
             let boardModel = self.rootObject.boardModels_property.propval [insertArrayOfBoardsPopUpButton.selectedTag()]
             let boardModelWidth = boardModel.modelWidth
             let boardModelHeight = boardModel.modelHeight
+            let overlapAmount = self.rootObject.overlapingArrangment ? boardModel.modelLimitWidth : 0
             let rotation = QuadrantRotation (rawValue: self.mInsertArrayOfBoardsOrientation?.selectedSegment ?? 0)!
             var newBoardArray = [MergerBoardInstance] ()
             var y = inY
@@ -66,16 +66,16 @@ extension MergerDocument {
                 newBoardArray.append (newBoard)
                 switch rotation {
                 case .rotation0, .rotation180 :
-                  x += boardModelWidth
+                  x += boardModelWidth - overlapAmount
                 case .rotation90, .rotation270 :
-                  x += boardModelHeight
+                  x += boardModelHeight - overlapAmount
                 }
               }
               switch rotation {
               case .rotation0, .rotation180 :
-                y += boardModelHeight
+                y += boardModelHeight - overlapAmount
               case .rotation90, .rotation270 :
-                y += boardModelWidth
+                y += boardModelWidth - overlapAmount
               }
             }
             self.mBoardInstanceController.setSelection (newBoardArray)
@@ -88,6 +88,5 @@ extension MergerDocument {
   //····················································································································
 
 }
-
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
