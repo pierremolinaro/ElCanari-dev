@@ -1943,25 +1943,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button toolTip="Reveal this directory in Finder" verticalHuggingPriority="750" id="6278" customClass="EBButton">
-                                <rect key="frame" x="40" y="154" width="394" height="28"/>
+                                <rect key="frame" x="38" y="160" width="394" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="--- user library path ---" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6279">
+                                <buttonCell key="cell" type="roundRect" title="--- user library path ---" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6279">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button id="5737" customClass="EBButton">
-                                <rect key="frame" x="38" y="14" width="22" height="22"/>
+                            <button verticalHuggingPriority="750" id="5738" customClass="EBButton">
+                                <rect key="frame" x="17" y="19" width="22" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="-" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5749">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystem"/>
-                                </buttonCell>
-                            </button>
-                            <button id="5738" customClass="EBButton">
-                                <rect key="frame" x="17" y="14" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="+" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5748">
+                                <buttonCell key="cell" type="roundRect" title="+" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5748">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -1971,7 +1963,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2056,9 +2048,9 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" id="qp0-gj-9te" customClass="EBSwitch">
-                                                                    <rect key="frame" x="0.0" y="-3" width="62" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="-3" width="34" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" alignment="center" controlSize="small" inset="2" id="2UU-iZ-BQB">
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" controlSize="small" inset="2" id="2UU-iZ-BQB">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                     </buttonCell>
@@ -2126,6 +2118,14 @@
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" id="5737" customClass="EBButton">
+                                <rect key="frame" x="38" y="19" width="22" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5749">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                 </box>
@@ -2136,18 +2136,18 @@
                         <rect key="frame" x="2" y="2" width="449" height="45"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button id="5758" customClass="EBButton">
-                                <rect key="frame" x="17" y="10" width="120" height="22"/>
+                            <button verticalHuggingPriority="750" id="5758" customClass="EBButton">
+                                <rect key="frame" x="20" y="14" width="120" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title=" Check" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5759">
+                                <buttonCell key="cell" type="roundRect" title=" Check" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5759">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button id="5757">
-                                <rect key="frame" x="147" y="10" width="120" height="22"/>
+                            <button verticalHuggingPriority="750" id="5757">
+                                <rect key="frame" x="148" y="14" width="120" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Show Log Window" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5760">
+                                <buttonCell key="cell" type="roundRect" title="Show Log Window" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5760">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -2165,10 +2165,10 @@
                         <rect key="frame" x="2" y="2" width="449" height="73"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button id="5761" customClass="EBButton">
-                                <rect key="frame" x="16" y="41" width="184" height="22"/>
+                            <button verticalHuggingPriority="750" id="5761" customClass="EBButton">
+                                <rect key="frame" x="16" y="43" width="185" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Check For Library Updates…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5762">
+                                <buttonCell key="cell" type="roundRect" title="Check For Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5762">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <connections>
@@ -2177,7 +2177,7 @@
                                 </buttonCell>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="z0R-Xy-yGB" customClass="CanariDateObserverField">
-                                <rect key="frame" x="113" y="19" width="190" height="14"/>
+                                <rect key="frame" x="241" y="19" width="190" height="14"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8b3-7M-44S">
                                     <dateFormatter key="formatter" dateStyle="long" timeStyle="short" id="7aC-XD-xZa"/>
@@ -2187,7 +2187,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="FqY-uW-mJE">
-                                <rect key="frame" x="14" y="19" width="95" height="14"/>
+                                <rect key="frame" x="142" y="19" width="95" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last Check Time:" id="Dvx-8P-W8p">
                                     <font key="font" metaFont="smallSystem"/>
@@ -2196,10 +2196,10 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" id="IMe-Qv-bBs" customClass="EBPopUpButton">
-                                <rect key="frame" x="334" y="40" width="98" height="22"/>
+                                <rect key="frame" x="331" y="43" width="98" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Weekly" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="iiN-Ml-rca" id="obk-oe-Duk">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <popUpButtonCell key="cell" type="roundRect" title="Weekly" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" tag="1" imageScaling="proportionallyDown" inset="2" selectedItem="iiN-Ml-rca" id="obk-oe-Duk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <menu key="menu" id="UVB-TA-ZwJ">
                                         <items>
@@ -2211,17 +2211,17 @@
                                 </popUpButtonCell>
                             </popUpButton>
                             <button id="6165" customClass="EBSwitch">
-                                <rect key="frame" x="212" y="43" width="119" height="18"/>
+                                <rect key="frame" x="206" y="43" width="119" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Check At Start-Up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="6166">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button id="nM8-3Z-Ust" customClass="EBButton">
-                                <rect key="frame" x="309" y="13" width="120" height="22"/>
+                            <button verticalHuggingPriority="750" id="nM8-3Z-Ust" customClass="EBButton">
+                                <rect key="frame" x="16" y="17" width="120" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="square" title="Show Log Window" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="fRL-zb-OS4">
+                                <buttonCell key="cell" type="roundRect" title="Show Log Window" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="fRL-zb-OS4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
@@ -2233,7 +2233,7 @@
                     </view>
                 </box>
             </subviews>
-            <point key="canvasLocation" x="-311" y="-221"/>
+            <point key="canvasLocation" x="-101.5" y="-225.5"/>
         </customView>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="PMCheckingForLibaryUpdateWindow" animationBehavior="default" id="6215" userLabel="CheckingForLibraryUpdate" customClass="EBWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -2558,7 +2558,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="lP5-Hy-afn">
                             <rect key="frame" x="1" y="0.0" width="382" height="479"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="yqL-UJ-hra" viewBased="YES" indentationPerLevel="16" outlineTableColumn="SWi-Ls-FnJ" id="ziq-cw-Pvk">
                                     <rect key="frame" x="0.0" y="0.0" width="382" height="456"/>

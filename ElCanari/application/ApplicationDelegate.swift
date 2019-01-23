@@ -46,7 +46,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
         }
         let checkDate = Date (timeInterval: nextInterval, since:lastCheckDate)
         if checkDate < Date () {
-          performLibraryUpdate (nil, logTextView)
+          startLibraryUpdateOperation (nil, logTextView)
           g_Preferences?.mLastSystemLibraryCheckTime = Date ()
         }
       }else{

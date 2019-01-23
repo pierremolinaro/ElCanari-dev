@@ -1,6 +1,5 @@
 
 import Cocoa
-import SystemConfiguration
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
@@ -63,22 +62,19 @@ import SystemConfiguration
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let SLOW_DOWNLOAD = false // When active, downloading is slowed down with sleep (1)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let repositoryDescriptionFile = "repository-description.plist"
-private let CURL = "/usr/bin/curl"
+let repositoryDescriptionFile = "repository-description.plist"
+let CURL = "/usr/bin/curl"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   LIBRARY UPDATE ENTRY POINT
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func performLibraryUpdate (_ inWindow : EBWindow?, _ inLogTextView : NSTextView) {
+func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTextView) {
+  inLogTextView.appendMessageString ("Start library update operation\n", color: NSColor.blue)
 //--- Disable update buttons
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = false
   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = false
@@ -88,7 +84,7 @@ func performLibraryUpdate (_ inWindow : EBWindow?, _ inLogTextView : NSTextView)
   inWindow?.makeKeyAndOrderFront (nil)
 //-------- ⓪ Get system proxy
   inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
-  let proxy = getProxy (inLogTextView)
+  let proxy = getSystemProxy (inLogTextView)
 //-------- ① We start by checking if a repository did change using etag
   inLogTextView.appendMessageString ("Phase 1: repository did change?\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil
@@ -167,52 +163,19 @@ private func enableItemsAfterCompletion () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// https://stackoverflow.com/questions/13276195/mac-osx-how-can-i-grab-proxy-configuration-using-cocoa-or-even-pure-c-function
-
-fileprivate func getProxy (_ inLogTextView : NSTextView) -> [String] {
-  var proxyOption = [String] ()
-  if let proxies : NSDictionary = SCDynamicStoreCopyProxies (nil) {
-//    inLogTextView.appendMessageString("  SCDynamicStoreCopyProxies returns \(proxies)\n")
-    let possibleHTTPSProxy = proxies ["HTTPSProxy"]
-    let possibleHTTPSEnable = proxies ["HTTPSEnable"]
-    let possibleHTTPSPort = proxies ["HTTPSPort"]
-    if let HTTPSEnable : Int = possibleHTTPSEnable as? Int, HTTPSEnable == 1, let HTTPSProxy = possibleHTTPSProxy {
-      var proxySetting : String = "\(HTTPSProxy)"
-      if let HTTPSPort = possibleHTTPSPort {
-        proxySetting += ":" + "\(HTTPSPort)"
-      }
-      proxyOption = ["--proxy", proxySetting]
-    }
-  }else{
-    inLogTextView.appendWarningString ("  SCDynamicStoreCopyProxies returns nil\n")
-  }
-  inLogTextView.appendSuccessString ("  Proxy \(proxyOption)\n")
-  return proxyOption
-}
-
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 private func queryServerLastCommitUsingEtag (_ etag : String,
                                              _ inLogTextView : NSTextView,
                                              _ inProxy : [String],
                                              _ outNeedsToDownloadRepositoryFileList : inout Bool,
                                              _ ioPossibleAlert : inout NSAlert?) {
-  let command = [
-    CURL,
+  let arguments = [
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
     "-H", "If-None-Match:\"\(etag)\"",
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
   ] + inProxy
-  var commandString = ""
-  for s in command {
-    commandString += s + " "
-  }
-  inLogTextView.appendMessageString ("  Command: \(commandString)\n")
-  let responseCode = runShellCommandAndGetDataOutput (command)
-  inLogTextView.appendMessageString ("  Result code: \(responseCode)\n")
+  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
   switch responseCode {
   case .error (let errorCode) :
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
@@ -251,16 +214,13 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
 private func queryServerLastCommitWithNoEtag (_ inLogTextView : NSTextView,
                                               _ inProxy : [String],
                                               _ ioPossibleAlert : inout NSAlert?) {
-  let command = [
-    CURL,
+  let arguments = [
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
     "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
   ] + inProxy
-  inLogTextView.appendMessageString ("  Command: \(command)\n")
-  let response = runShellCommandAndGetDataOutput (command)
-  inLogTextView.appendMessageString ("  Result code: \(response)\n")
+  let response = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
   switch response {
   case .error (let errorCode) :
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
@@ -325,15 +285,12 @@ private func readOrDownloadLibraryFileDictionary (
   if inNeedsToDownloadRepositoryFileList || !libraryDescriptionFileIsValid () {
     if let repositoryCommitSHA = getRepositoryCommitSHA () {
       inLogTextView.appendWarningString ("  Local repository image file is not valid: get it from repository\n")
-      let command = [
-        CURL,
+      let arguments = [
         "-s", // Silent mode, do not show download progress
         "-L", // Follow redirections
         "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
       ] + inProxy
-      inLogTextView.appendMessageString ("  Command: \(command)\n")
-      let response = runShellCommandAndGetDataOutput (command)
-      inLogTextView.appendMessageString ("  Result code: \(response)\n")
+      let response = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
       switch response {
       case .error (let errorCode) :
         if errorCode != 6 { // Error #6 is 'no network connection'
@@ -530,6 +487,10 @@ private func buildLibraryOperations (
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+private var gCanariLibraryUpdateController = CanariLibraryUpdateController ()
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 private func performLibraryOperations (
    _ inLibraryOperations : [LibraryOperationElement],
    _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
@@ -561,356 +522,6 @@ private func performLibraryOperations (
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-enum LibraryOperation {
-  case download
-  case update
-  case delete
-  case deleteRegistered
-  case downloadError (Int32)
-  case downloading (Int)
-  case downloaded (Data)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class LibraryOperationElement : EBObject {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let mRelativePath : String
-  let mSizeInRepository : Int
-  let mLogTextView : NSTextView
-  let mProxy : [String]
-
-  var mOperation : LibraryOperation {
-    willSet {
-      self.willChangeValue (forKey: "actionName")
-    }
-    didSet {
-      self.didChangeValue (forKey: "actionName")
-    }
-  }
-
-  //····················································································································
-
-  init (relativePath inRelativePath : String,
-        sizeInRepository inSizeInRepository : Int,
-        operation inOperation : LibraryOperation,
-        logTextView inLogTextView: NSTextView,
-        proxy inProxy: [String]) {
-    mRelativePath = inRelativePath
-    mOperation = inOperation
-    mSizeInRepository = inSizeInRepository
-    mLogTextView = inLogTextView
-    mProxy = inProxy
-    super.init ()
-  }
-
-
-  //····················································································································
-  // Values for progress indicator
-  //····················································································································
-
-  var maxIndicatorValue : Double { return Double (self.mSizeInRepository + 10_000) }
-
-  var currentIndicatorValue : Double {
-    switch self.mOperation {
-    case .download, .update, .delete, .downloadError :
-      return 0.0
-    case .downloading (let progress) :
-      return Double (progress) * self.maxIndicatorValue / 100.0
-    case .downloaded (_), .deleteRegistered :
-      return self.maxIndicatorValue
-    }
-  }
-
-  //····················································································································
-  // Dynamic properties for Cocoa bindings
-  //····················································································································
-
-  @objc dynamic var relativePath : String { return self.mRelativePath }
-
-  @objc dynamic var actionName : String {
-    switch self.mOperation {
-    case .download :
-      return "Download (\(mSizeInRepository) bytes)"
-    case .update :
-      return "Update (\(mSizeInRepository) bytes)"
-    case .delete :
-      return "Delete"
-    case .deleteRegistered :
-      return "Delete registered"
-    case .downloadError (let errorCode) :
-      return "Error \(errorCode)"
-    case .downloaded (_) :
-      return "Downloaded"
-    case .downloading (let progress) :
-      return "Downloading… (\(progress)%)"
-    }
-  }
-
-  //····················································································································
-
-  func beginAction (_ inController : CanariLibraryUpdateController) {
-    if inController.shouldCancel {
-      inController.elementActionDidEnd (self, 0)
-    }else{
-      switch mOperation {
-      case .download, .update :
-        let repositoryCommitSHA = getRepositoryCommitSHA ()!
-        self.mOperation = .downloading (0)
-        let task = Process ()
-        let concurrentQueue = DispatchQueue (label: "Queue \(relativePath)", attributes: .concurrent)
-        concurrentQueue.async {
-          let arguments = [
-            "-s", // Silent mode, do not show download progress
-            "-L", // Follow redirections
-            "https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/\(repositoryCommitSHA)/\(self.mRelativePath)",
-          ] + self.mProxy
-          DispatchQueue.main.async {
-            self.mLogTextView.appendMessageString ("  Download arguments: \(arguments)\n")
-          }
-        //--- Define task
-          task.launchPath = CURL
-          task.arguments = arguments
-          let pipe = Pipe ()
-          task.standardOutput = pipe
-          task.standardError = pipe
-          let fileHandle = pipe.fileHandleForReading
-        //--- Launch
-          task.launch ()
-          var data = Data ()
-          var hasData = true
-        //--- Loop until all data is got, or download is cancelled
-          while hasData && !inController.shouldCancel {
-            let newData = fileHandle.availableData
-            hasData = newData.count > 0
-            data.append (newData)
-            DispatchQueue.main.async {
-              self.mOperation = .downloading (data.count * 100 / self.mSizeInRepository)
-              inController.updateProgressIndicator ()
-            }
-            if SLOW_DOWNLOAD {
-              sleep (1)
-            }
-          }
-          if inController.shouldCancel {
-            task.terminate ()
-          }
-        //--- Task completed
-          task.waitUntilExit ()
-          fileHandle.closeFile ()
-          let status = task.terminationStatus
-          if inController.shouldCancel || (status != 0) {
-            self.mOperation = .downloadError (status)
-          }else{
-            self.mOperation = .downloaded (data)
-          }
-          DispatchQueue.main.async { inController.elementActionDidEnd (self, status) }
-        }
-      case .delete :
-        self.mOperation = .deleteRegistered
-        inController.elementActionDidEnd (self, 0)
-      case .downloadError, .downloaded, .downloading, .deleteRegistered :
-        inController.elementActionDidEnd (self, 0)
-      }
-    }
-  }
-
-  //····················································································································
-
-  func commit () throws {
-    switch self.mOperation {
-    case .download, .update, .downloadError, .downloading, .delete :
-      ()
-    case .deleteRegistered :
-      let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
-      let fm = FileManager ()
-      DispatchQueue.main.async {
-        self.mLogTextView.appendMessageString ("  Delete file '\(fullFilePath)'\n")
-      }
-      try fm.removeItem (atPath: fullFilePath)
-    case .downloaded (let data) :
-      let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
-      let fm = FileManager ()
-    //--- Create directory
-      let destinationDirectory = fullFilePath.deletingLastPathComponent
-      if !fm.fileExists(atPath: destinationDirectory) { // If directory does not exist, create it
-        DispatchQueue.main.async {
-          self.mLogTextView.appendMessageString ("  Create directory '\(destinationDirectory)'\n")
-        }
-        try fm.createDirectory (atPath:destinationDirectory, withIntermediateDirectories:true, attributes:nil)
-      }else if fm.fileExists (atPath: fullFilePath) { // If file exists, delete it
-        try fm.removeItem (atPath:fullFilePath)
-      }
-    //--- Write file
-      DispatchQueue.main.async {
-        self.mLogTextView.appendMessageString ("  Write file '\(fullFilePath)'\n")
-      }
-      try data.write(to: URL (fileURLWithPath: fullFilePath))
-    }
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gCanariLibraryUpdateController = CanariLibraryUpdateController ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class CanariLibraryUpdateController : EBObject {
-
-  let mArrayController = NSArrayController ()
-
-  var mCurrentActionArray : [LibraryOperationElement]
-  var mCurrentParallelActionCount = 0
-  var mNextActionIndex = 0 // Index of mActionArray
-
-  let mActionArray : [LibraryOperationElement]
-  let mRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
-  let mLogTextView : NSTextView
-
-  var logTextView : NSTextView { return self.mLogTextView }
-
-  //····················································································································
-  //   Init
-  //····················································································································
-
-  init (_ inActionArray : [LibraryOperationElement],
-        _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView) {
-    mCurrentActionArray = inActionArray
-    mActionArray = inActionArray
-    mRepositoryFileDictionary = inRepositoryFileDictionary
-    mLogTextView = inLogTextView
-    super.init ()
-  }
-
-  //····················································································································
-
-  override init () {
-    mCurrentActionArray = []
-    mActionArray = []
-    mRepositoryFileDictionary = [:]
-    mLogTextView = NSTextView ()
-    super.init ()
-  }
-  
-  //····················································································································
-  //   Handling error or cancel
-  //····················································································································
-
-  private var mErrorCode : Int32 = 0 // No error
-
-  //····················································································································
-
-  var shouldCancel : Bool { return mErrorCode != 0 }
-
-  //····················································································································
-
-  func cancel () {
-    self.mErrorCode = -1
-  }
-
-  //····················································································································
-  //  Cocoa bindings
-  //····················································································································
-
-  func bind () {
-    if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
-        NSBindingName(rawValue: "value"),
-        to:self.mArrayController,
-        withKeyPath:"arrangedObjects.relativePath",
-        options:nil
-      )
-      tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
-        NSBindingName(rawValue: "value"),
-        to:self.mArrayController,
-        withKeyPath:"arrangedObjects.actionName",
-        options:nil
-      )
-      self.mArrayController.content = self.mCurrentActionArray
-    }
-  }
-  
-  //····················································································································
-
-  func unbind () { //--- Remove bindings
-    if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName(rawValue: "value"))
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName(rawValue: "value"))
-      mArrayController.content = nil
-    }
-  }
-
-  //····················································································································
-  //   launchElementDownload
-  //····················································································································
-
-  fileprivate func launchElementDownload () {
-    if self.mNextActionIndex < self.mActionArray.count {
-      self.mNextActionIndex += 1
-      self.mCurrentParallelActionCount += 1
-      self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
-    }
-  }
-
-  //····················································································································
-  //   elementActionDidEnd
-  //····················································································································
-
-  fileprivate func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
-    if (self.mErrorCode == 0) && (inErrorCode != 0) {
-       mErrorCode = inErrorCode
-    }
-  //--- Decrement parallel action count
-    self.mCurrentParallelActionCount -= 1
-  //--- Remove corresponding entry in table view
-    if let idx = self.mCurrentActionArray.index (of: inElement) {
-      self.mCurrentActionArray.remove (at: idx)
-      self.mArrayController.content = self.mCurrentActionArray
-    }
-  //--- Update progress indicator
-    self.updateProgressIndicator ()
-  //--- Update remaining operation count
-    if self.mCurrentActionArray.count == 0 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "Commiting changes…"
-    }else if self.mCurrentActionArray.count == 1 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
-   }else{
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(self.mCurrentActionArray.count) elements to update"
-    }
-  //--- Launch next action, if any
-    if self.mNextActionIndex < self.mActionArray.count {
-      self.mNextActionIndex += 1
-      self.mCurrentParallelActionCount += 1
-      self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
-    }else if self.mCurrentParallelActionCount == 0 { // Last download did end
-      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mRepositoryFileDictionary, self.mLogTextView) }
-    }
-  }
-
-  //····················································································································
-
-  fileprivate func updateProgressIndicator () {
-    var progressCurrentValue = 0.0
-    for action in self.mActionArray {
-      progressCurrentValue += action.currentIndicatorValue
-    }
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = progressCurrentValue
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func startLibraryUpdate () {
 //--- Launch parallel downloads
   for _ in 1...parallelDownloadCount {
@@ -930,9 +541,9 @@ func cancelLibraryUpdate () {
 //   C O M M I T    U P D A T E S   I N   F I L E    S Y S T E M
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                               _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-                               _ inLogTextView : NSTextView) {
+func commitAllActions (_ inActionArray : [LibraryOperationElement],
+                       _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+                       _ inLogTextView : NSTextView) {
 //--- Update UI
   gCanariLibraryUpdateController.unbind ()
   let logTextView = gCanariLibraryUpdateController.logTextView
@@ -1079,125 +690,6 @@ struct CanariLibraryFileDescriptor {
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Computing SHA1 of Data
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func sha1 (_ inData : Data) -> String {
-  let transform = SecDigestTransformCreate (kSecDigestSHA1, 0, nil)
-  SecTransformSetAttribute (transform, kSecTransformInputAttributeName, inData as CFTypeRef, nil)
-  let shaValue = SecTransformExecute (transform, nil) as! Data
-  var s = ""
-  for byte in shaValue {
-    s += "\(String (byte, radix:16, uppercase: false))"
-  }
-  return s
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//  Computing SHA1 of a library file
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func computeFileSHA (_ filePath : String) throws -> String {
-  let absoluteFilePath = systemLibraryPath () + "/" + filePath
-  let data = try Data (contentsOf: URL (fileURLWithPath: absoluteFilePath))
-  return sha1 (data)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   runShellCommandAndGetDataOutput
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private enum ShellCommandStatus {
-  case ok (Data)
-  case error (Int32)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func runShellCommandAndGetDataOutput (_ command : [String]) -> ShellCommandStatus {
-//--- Separate command and arguments
-  let cmd = command [0]
-  let args = [String] (command.dropFirst ())
-//--- Define task
-  let task = Process ()
-  task.launchPath = cmd
-  task.arguments = args
-  let pipe = Pipe ()
-  task.standardOutput = pipe
-  task.standardError = pipe
-  let fileHandle = pipe.fileHandleForReading
-//--- Launch
-  task.launch ()
-  var data = Data ()
-  var hasData = true
-  while hasData {
-    let newData = fileHandle.availableData
-    // print ("  \(newData.count)")
-    hasData = newData.count > 0
-    data.append (newData)
-  }
-  task.waitUntilExit ()
-//--- Task completed
-  fileHandle.closeFile ()
-  let status = task.terminationStatus
-  if status != 0 {
-    return .error (status)
-  }else{
-    return .ok (data)
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private let LIBRARY_REPOSITORY_TAG = "library-repository-etag"
-private let LIBRARY_REPOSITORY_COMMIT_SHA = "library-repository-commit-sha"
-private let LOCAL_IMAGE_FILE_SHA = "library-repository-file-sha"
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func getRepositoryCurrentETag () -> String? { // Returns nil if no current description file
-  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_TAG)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func storeRepositoryCurrentETag (_ inETag : String) {
-  UserDefaults ().set (inETag, forKey: LIBRARY_REPOSITORY_TAG)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func getRepositoryCommitSHA () -> String? { // Returns nil if no current commit
-  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func storeRepositoryCommitSHA(_ inSHA : String) {
-  UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func storeRepositoryFileSHA(_ inSHA : String) {
-  UserDefaults ().set (inSHA, forKey: LOCAL_IMAGE_FILE_SHA)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func libraryDescriptionFileIsValid () -> Bool {
-  let possibleLibraryDescriptionFileSHA = UserDefaults ().string (forKey: LOCAL_IMAGE_FILE_SHA)
-  if let libraryDescriptionFileSHA = possibleLibraryDescriptionFileSHA {
-    do{
-      let actualSHA = try computeFileSHA (repositoryDescriptionFile)
-      return actualSHA == libraryDescriptionFileSHA
-    }catch _ {
-    }
-  }
-  return false
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
