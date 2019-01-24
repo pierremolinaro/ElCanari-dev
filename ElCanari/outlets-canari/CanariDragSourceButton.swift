@@ -165,41 +165,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Color
-  //····················································································································
-
-//  fileprivate var mColorController : EBReadOnlyController_NSColor? = nil
-//  fileprivate var mColor : NSColor? = nil
-//
-// //····················································································································
-//
-//  func bind_color (_ model : EBReadOnlyProperty_NSColor, file : String, line : Int) {
-//    self.mColorController = EBReadOnlyController_NSColor (
-//      model: model,
-//      callBack: { [weak self] in self?.updateColor (from: model) }
-//     )
-//  }
-//
-//  //····················································································································
-//
-//  func unbind_color() {
-//    self.mColorController?.unregister ()
-//    self.mColorController = nil
-//  }
-//
-//  //····················································································································
-//
-//  private func updateColor (from model : EBReadOnlyProperty_NSColor) {
-//    switch model.prop {
-//    case .empty, .multiple :
-//      ()
-//    case .single (let v) :
-//      self.mColor = v
-//      self.needsDisplay = true
-//    }
-//  }
-
-  //····················································································································
 
 }
 

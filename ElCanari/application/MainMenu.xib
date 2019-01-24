@@ -2165,10 +2165,10 @@
                         <rect key="frame" x="2" y="2" width="449" height="73"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" id="5761" customClass="EBButton">
+                            <button focusRingType="none" verticalHuggingPriority="750" id="5761" customClass="LibraryUpdateButton" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="16" y="43" width="185" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundRect" title="Check For Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="5762">
+                                <buttonCell key="cell" type="roundRect" title="Check For Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" focusRingType="none" inset="2" id="5762">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>
                                     <connections>
@@ -2220,7 +2220,7 @@
                             </button>
                             <button verticalHuggingPriority="750" id="nM8-3Z-Ust" customClass="EBButton">
                                 <rect key="frame" x="16" y="17" width="120" height="17"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="roundRect" title="Show Log Window" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="fRL-zb-OS4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="smallSystem"/>

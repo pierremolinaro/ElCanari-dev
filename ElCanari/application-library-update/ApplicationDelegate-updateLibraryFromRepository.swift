@@ -10,7 +10,13 @@ extension ApplicationDelegate {
   @IBAction func updateLibrary (_ inSender : AnyObject) {
     if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
       g_Preferences?.mCheckingForLibraryUpdateProgressIndicator?.startAnimation (nil)
-      startLibraryUpdateOperation (g_Preferences?.mCheckingForLibraryUpdateWindow, logTextView)
+      let optionKey = NSApp.currentEvent?.modifierFlags.contains (.option) ?? false
+      // Swift.print ("optionKey \(optionKey)")
+      if optionKey {
+        startLibraryRevisionListOperation (logTextView)
+      }else{
+        startLibraryUpdateOperation (g_Preferences?.mCheckingForLibraryUpdateWindow, logTextView)
+      }
     }
   }
 

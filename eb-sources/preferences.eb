@@ -12,7 +12,7 @@ prefs {
 #--- Progress window during repository list download
   outlet EBWindow mCheckingForLibraryUpdateWindow ;
   outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
-  outlet EBButton mCheckForLibraryUpdatesButton ;
+  outlet NSButton mCheckForLibraryUpdatesButton ;
 #--- Dialog for library updating
   outlet EBWindow mLibraryUpdateWindow ;
   outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;

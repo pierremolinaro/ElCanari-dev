@@ -3711,7 +3711,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mBoardWarningBackgroundColorWell : EBColorWell? = nil
   @IBOutlet var mBottomSidePadColorDorDeviveColorWell : EBColorWell? = nil
   @IBOutlet var mBottomSidePadColorWell : EBColorWell? = nil
-  @IBOutlet var mCheckForLibraryUpdatesButton : EBButton? = nil
+  @IBOutlet var mCheckForLibraryUpdatesButton : NSButton? = nil
   @IBOutlet var mCheckForSystemLibraryAtStartUpSwitch : EBSwitch? = nil
   @IBOutlet var mCheckLibraryAction : EBButton? = nil
   @IBOutlet var mCheckLibraryResultTextView : NSTextView? = nil
@@ -4535,10 +4535,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           errorMessage: "the 'mBottomSidePadColorWell' outlet is nil") ;
     }
     if let outlet : Any = self.mCheckForLibraryUpdatesButton {
-      if !(outlet is EBButton) {
+      if !(outlet is NSButton) {
         presentErrorWindow (file: #file,
                             line: #line,
-                            errorMessage: "the 'mCheckForLibraryUpdatesButton' outlet is not an instance of 'EBButton'") ;
+                            errorMessage: "the 'mCheckForLibraryUpdatesButton' outlet is not an instance of 'NSButton'") ;
       }
     }else{
       presentErrorWindow (file: #file,
