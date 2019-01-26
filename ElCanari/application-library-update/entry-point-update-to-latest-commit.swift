@@ -4,7 +4,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //
 //---------------- ① Pour savoir si le repository a changé, on appelle :
-//        curl -s -i -L https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches
+//        curl -s -i -L https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches
 // La réponse est :
 //  ·······
 //   Status: 200 OK
@@ -16,7 +16,7 @@ import Cocoa
 //      "name": "master",
 //      "commit": {
 //        "sha": "20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
-//        "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/commits/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f"
+//        "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/commits/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f"
 //      }
 //    }
 //  ]
@@ -25,7 +25,7 @@ import Cocoa
 //   - commit / sha --> 20adfd48680e893e29a2e6bb94ebbbe88bb83e8f : valeur caractérisant le commit, utilisé dans les étapes suivantes
 //   - Etag --> 22fc6b218e31128b7f802057f883393b : cette valeur permet d'interroger le serveur en lui indiquant 
 // d'envoyer une réponse 304 si le repository n'a pas changé :
-//        curl -s -i -L -H 'If-None-Match:"22fc6b218e31128b7f802057f883393b"' https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches
+//        curl -s -i -L -H 'If-None-Match:"22fc6b218e31128b7f802057f883393b"' https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches
 // On obtient alors la réponse suivante (sans donnée JSON)
 //  ·······
 //   Status: 304 Not Modified
@@ -34,11 +34,11 @@ import Cocoa
 
 
 //---------------- ② Pour obtenir la liste des fichiers du repository, on appelle :
-// curl -s -L https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f?recursive=1
+// curl -s -L https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f?recursive=1
 // La réponse est :
 //{
 //  "sha": "20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
-//  "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
+//  "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
 //  "tree": [
 //  ·······
 //    {
@@ -46,7 +46,7 @@ import Cocoa
 //      "mode": "040000",
 //      "type": "tree",
 //      "sha": "aef45cfbb8a896426e0c49eda7ced76b5ce340c9",
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/aef45cfbb8a896426e0c49eda7ced76b5ce340c9"
+//      "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/aef45cfbb8a896426e0c49eda7ced76b5ce340c9"
 //    },
 //    {
 //      "path": "artworks/electro_dragon.ElCanariArtwork",
@@ -54,7 +54,7 @@ import Cocoa
 //      "type": "blob",
 //      "sha": "e089e1c10538d15cda9de3e8a74b3bfd5ee1100a",
 //      "size": 5850,
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/blobs/e089e1c10538d15cda9de3e8a74b3bfd5ee1100a"
+//      "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/blobs/e089e1c10538d15cda9de3e8a74b3bfd5ee1100a"
 //    },
 //  ·······
 // Le champ "tree" est un tableau, un élément par fichier ou répertoire. Pour chaque fichier "size" contient sa taille ;
@@ -173,7 +173,7 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
     "-i", // Add response header in output
     "-L", // Follow
     "-H", "If-None-Match:\"\(etag)\"",
-    "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
+    "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches"
   ] + inProxy
   let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
   switch responseCode {
@@ -218,7 +218,7 @@ private func queryServerLastCommitWithNoEtag (_ inLogTextView : NSTextView,
     "-s", // Silent mode, do not show download progress
     "-i", // Add response header in output
     "-L", // Follow
-    "https://api.github.com/repos/pierremolinaro/ElCanari-Library/branches"
+    "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches"
   ] + inProxy
   let response = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
   switch response {
@@ -267,115 +267,6 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
     }
   }else{
     inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line (should be ≥ 2)\n")
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func readOrDownloadLibraryFileDictionary (
-        _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView,
-        _ inProxy : [String],
-        _ inNeedsToDownloadRepositoryFileList : Bool,
-        _ ioPossibleAlert : inout NSAlert?) {
-//--- Download library description file ?
-  let fm = FileManager ()
-  inLogTextView.appendWarningString ("  Needs to download description file: \(inNeedsToDownloadRepositoryFileList)\n")
-  inLogTextView.appendWarningString ("  Local description file is valid: \(libraryDescriptionFileIsValid ())\n")
-  if inNeedsToDownloadRepositoryFileList || !libraryDescriptionFileIsValid () {
-    if let repositoryCommitSHA = getRepositoryCommitSHA () {
-      inLogTextView.appendWarningString ("  Local repository image file is not valid: get it from repository\n")
-      let arguments = [
-        "-s", // Silent mode, do not show download progress
-        "-L", // Follow redirections
-        "https://api.github.com/repos/pierremolinaro/ElCanari-Library/git/trees/\(repositoryCommitSHA)?recursive=1"
-      ] + inProxy
-      let response = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
-      switch response {
-      case .error (let errorCode) :
-        if errorCode != 6 { // Error #6 is 'no network connection'
-          ioPossibleAlert = NSAlert ()
-          ioPossibleAlert?.messageText = "Cannot connect to the server"
-          ioPossibleAlert?.addButton (withTitle: "Ok")
-          ioPossibleAlert?.informativeText = "Error code: \(errorCode)"
-        }
-      case .ok (let responseData) :
-        do{
-          let jsonObject = try JSONSerialization.jsonObject (with: responseData) as! NSDictionary
-          let treeEntry = get (jsonObject, "tree", #line)
-          let extensions = Set <String> (["ElCanariFont", "ElCanariArtwork", "ElCanariSymbol", "ElCanariPackage", "ElCanariDevice"])
-          if let fileDescriptionArray = treeEntry as? [[String : Any]] {
-            for fileDescriptionDictionay in fileDescriptionArray {
-              let filePath = fileDescriptionDictionay ["path"] as! String
-             // let ext = filePath.pathExtension
-              if extensions.contains (filePath.pathExtension) {
-                var localSHA = ""
-                if fm.fileExists (atPath: filePath) {
-                  let fileData = try! Data (contentsOf: URL (fileURLWithPath: filePath))
-                  localSHA = sha1 (fileData)
-                }
-                let descriptor = CanariLibraryFileDescriptor (
-                  relativePath: filePath,
-                  repositorySHA: "?",
-                  sizeInRepository: fileDescriptionDictionay ["size"] as! Int,
-                  localSHA: localSHA
-                )
-                ioLibraryFileDictionary [filePath] = descriptor
-              }
-            }
-          }else{
-            inLogTextView.appendErrorString ("  Entry is not an [[String : String]] object: \(String (describing: treeEntry))\n")
-          }
-        }catch let error {
-          ioPossibleAlert = NSAlert (error: error)
-        }
-      }
-    }else{
-      inLogTextView.appendErrorString ("  Repository commit SHA does not exist in preferences\n")
-      let alert = NSAlert ()
-      alert.messageText = "Internal error"
-      alert.addButton (withTitle: "Ok")
-      alert.informativeText = "Repository commit SHA does not exist in preferences."
-      ioPossibleAlert = alert
-    }
-  }
-//--- Now, use local library description file to get repository SHA
-  if (ioPossibleAlert == nil) && libraryDescriptionFileIsValid () {
-    let f = systemLibraryPath () + "/" + repositoryDescriptionFile
-    let data = try! Data (contentsOf: URL (fileURLWithPath: f))
-    let propertyList = try! PropertyListSerialization.propertyList (from: data, format: nil) as! [[String : String]]
-    for entry in propertyList {
-      let filePath = entry ["path"]!
-      let repositorySHA = entry ["sha"]!
-      if let descriptor = ioLibraryFileDictionary [filePath] {
-        let newDescriptor = CanariLibraryFileDescriptor (
-          relativePath: filePath,
-          repositorySHA: repositorySHA,
-          sizeInRepository: descriptor.mSizeInRepository,
-          localSHA: descriptor.mLocalSHA
-        )
-        ioLibraryFileDictionary [filePath] = newDescriptor
-      }else{
-        let fullFilePath = systemLibraryPath () + "/" + filePath
-        var localSHA = ""
-        if fm.fileExists (atPath: fullFilePath) {
-          let fileData = try! Data (contentsOf: URL (fileURLWithPath: fullFilePath))
-          localSHA = sha1 (fileData)
-        }
-        let newDescriptor = CanariLibraryFileDescriptor (
-          relativePath: filePath,
-          repositorySHA: repositorySHA,
-          sizeInRepository: Int (entry ["size"]!)!,
-          localSHA: localSHA
-        )
-        ioLibraryFileDictionary [filePath] = newDescriptor
-      }
-    }
-  }
-//--- Print ?
-  inLogTextView.appendMessageString ("  Repository contents (repositorySHA:size:path):\n")
-  for (path, value) in ioLibraryFileDictionary {
-    inLogTextView.appendMessageString ("    (\(value.mRepositorySHA):\(value.mSizeInRepository):\(path))\n")
   }
 }
 

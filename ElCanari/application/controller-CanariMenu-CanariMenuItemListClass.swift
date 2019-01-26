@@ -51,9 +51,8 @@ final class Controller_CanariMenu_CanariMenuItemListClass : EBSimpleController {
       __NSBeep ()
       let alert = NSAlert ()
       alert.messageText = "Cannot open the \(title) directory"
-      alert.addButton (withTitle: "Ok")
       alert.informativeText = "This directory does not exist."
-      alert.runModal ()
+      _ = alert.runModal ()
     }
   }
 

@@ -28,7 +28,6 @@ extension MergerDocument {
     }else{ // Cannot read file
       let alert = NSAlert ()
       alert.messageText = "Cannot read file"
-      alert.addButton (withTitle: "Ok")
       alert.informativeText = "The file \(inFilePath) cannot be read."
       alert.beginSheetModal (for: inWindow, completionHandler: {(NSModalResponse) in})
     }
@@ -50,7 +49,6 @@ extension MergerDocument {
     }catch let error {
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse file contents"
-      alert.addButton (withTitle: "Ok")
       alert.informativeText = "\(error)"
       alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
     }
@@ -398,7 +396,6 @@ extension MergerDocument {
       }
       let alert = NSAlert ()
       alert.messageText = "Cannot Analyse file contents"
-      alert.addButton (withTitle: "Ok")
       alert.informativeText = s
       alert.beginSheetModal (for: self.windowForSheet!, completionHandler: {(NSModalResponse) in})
     }

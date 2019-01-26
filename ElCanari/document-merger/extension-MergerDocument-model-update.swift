@@ -132,7 +132,6 @@ extension MergerDocument {
                 }else{ // Cannot read file
                   let alert = NSAlert ()
                   alert.messageText = "Cannot read file"
-                  alert.addButton (withTitle: "Ok")
                   alert.informativeText = "The file \(filePath) cannot be read."
                   alert.beginSheetModal (for: window, completionHandler: {(NSModalResponse) in})
                 }

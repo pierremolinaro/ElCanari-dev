@@ -120,7 +120,7 @@ class LibraryOperationElement : EBObject {
           let arguments = [
             "-s", // Silent mode, do not show download progress
             "-L", // Follow redirections
-            "https://raw.githubusercontent.com/pierremolinaro/ElCanari-Library/\(repositoryCommitSHA)/\(self.mRelativePath)",
+            "https://raw.githubusercontent.com/pierremolinaro/ElCanariLibrary/\(repositoryCommitSHA)/\(self.mRelativePath)",
           ] + self.mProxy
           DispatchQueue.main.async {
             self.mLogTextView.appendMessageString ("  Download arguments: \(arguments)\n")

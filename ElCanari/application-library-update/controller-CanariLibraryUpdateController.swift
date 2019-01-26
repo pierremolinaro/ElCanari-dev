@@ -71,13 +71,13 @@ class CanariLibraryUpdateController : EBObject {
   func bind () {
     if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
       tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
-        NSBindingName(rawValue: "value"),
+        NSBindingName.value,
         to:self.mArrayController,
         withKeyPath:"arrangedObjects.relativePath",
         options:nil
       )
       tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
-        NSBindingName(rawValue: "value"),
+        NSBindingName.value,
         to:self.mArrayController,
         withKeyPath:"arrangedObjects.actionName",
         options:nil
@@ -90,8 +90,8 @@ class CanariLibraryUpdateController : EBObject {
 
   func unbind () { //--- Remove bindings
     if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName(rawValue: "value"))
-      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName(rawValue: "value"))
+      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.unbind (NSBindingName.value)
+      tableView.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.unbind (NSBindingName.value)
       mArrayController.content = nil
     }
   }

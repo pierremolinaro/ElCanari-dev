@@ -6,6 +6,8 @@ extern outlet class CanariToolbar ;
 
 extern outlet class NSTabView : NSControl ;
 
+extern outlet class NSTableView ;
+
 extern outlet class NSClipView ;
 
 extern outlet class NSPanel ;

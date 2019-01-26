@@ -34,7 +34,14 @@ func getRepositoryCommitSHA () -> String? { // Returns nil if no current commit
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func storeRepositoryCommitSHA(_ inSHA : String) {
+func storeRepositoryCommitSHA_removeETAG (_ inSHA : String) {
+  UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
+  UserDefaults ().set (nil, forKey: LIBRARY_REPOSITORY_TAG)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func storeRepositoryCommitSHA (_ inSHA : String) {
   UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA)
 }
 

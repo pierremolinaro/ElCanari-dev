@@ -3727,6 +3727,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
+  @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
+  @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
   @IBOutlet var mLibraryUpdateLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
   @IBOutlet var mLineColorGridForSchematicColorWell : EBColorWell? = nil
@@ -4709,6 +4711,28 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryRevisionListScrollView {
+      if !(outlet is NSScrollView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRevisionListScrollView' outlet is not an instance of 'NSScrollView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRevisionListScrollView' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryRevisionListTableView {
+      if !(outlet is NSTableView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRevisionListTableView' outlet is not an instance of 'NSTableView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRevisionListTableView' outlet is nil") ;
     }
     if let outlet : Any = self.mLibraryUpdateLogTextView {
       if !(outlet is NSTextView) {

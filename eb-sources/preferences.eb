@@ -9,6 +9,9 @@ prefs {
 #! Library update 
 
 prefs {
+#--- Library repository commit list
+  outlet NSScrollView mLibraryRevisionListScrollView ;
+  outlet NSTableView mLibraryRevisionListTableView ;
 #--- Progress window during repository list download
   outlet EBWindow mCheckingForLibraryUpdateWindow ;
   outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
