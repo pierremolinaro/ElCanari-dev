@@ -1,5 +1,5 @@
 //
-//  phase4-buildLibraryOperations.swift
+//  phase5-buildLibraryOperations.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 26/01/2019.
@@ -10,10 +10,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase4_buildLibraryOperations (_ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
+func phase5_buildLibraryOperations (_ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
                                     _ outLibraryOperations : inout [LibraryOperationElement],
                                     _ inLogTextView : NSTextView,
                                     _ inProxy : [String]) {
+  inLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
   inLogTextView.appendMessageString ("  Library File Dictionary has \(inLibraryFileDictionary.count) entries\n")
   for descriptor in inLibraryFileDictionary.values {
     // inLogTextView.appendMessageString ("    \(descriptor.mRelativePath): \(descriptor.mRepositorySHA) \(descriptor.mLocalSHA)\n")

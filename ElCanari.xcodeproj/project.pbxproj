@@ -940,12 +940,14 @@
 		CFCD1F6721A1CBFF00A8297B /* SymbolDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFCD1F6121A1CBFF00A8297B /* SymbolDocument.xib */; };
 		CFCD3ACA21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AC921FC76F300DE503C /* phase2-download-file-list-for-commit.swift */; };
 		CFCD3ACB21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AC921FC76F300DE503C /* phase2-download-file-list-for-commit.swift */; };
-		CFCD3ACD21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACC21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift */; };
-		CFCD3ACE21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACC21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift */; };
-		CFCD3AD021FC85FA00DE503C /* phase4-buildLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACF21FC85FA00DE503C /* phase4-buildLibraryOperations.swift */; };
-		CFCD3AD121FC85FA00DE503C /* phase4-buildLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACF21FC85FA00DE503C /* phase4-buildLibraryOperations.swift */; };
-		CFCD3AD321FC91A000DE503C /* phase6-performLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD221FC91A000DE503C /* phase6-performLibraryOperations.swift */; };
-		CFCD3AD421FC91A000DE503C /* phase6-performLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD221FC91A000DE503C /* phase6-performLibraryOperations.swift */; };
+		CFCD3ACD21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACC21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift */; };
+		CFCD3ACE21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACC21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift */; };
+		CFCD3AD021FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACF21FC85FA00DE503C /* phase5-buildLibraryOperations.swift */; };
+		CFCD3AD121FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3ACF21FC85FA00DE503C /* phase5-buildLibraryOperations.swift */; };
+		CFCD3AD321FC91A000DE503C /* phase7-performLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */; };
+		CFCD3AD421FC91A000DE503C /* phase7-performLibraryOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */; };
+		CFCD3AD621FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */; };
+		CFCD3AD721FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */; };
 		CFCE71FB20DD611100AB1DE7 /* entity-BoardModelVia.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */; };
 		CFD1B75821B2E92D00F6F9EA /* EBStrokeBezierPathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1B75321B2E92D00F6F9EA /* EBStrokeBezierPathShape.swift */; };
 		CFD1B75921B2E92D00F6F9EA /* EBStrokeBezierPathShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1B75321B2E92D00F6F9EA /* EBStrokeBezierPathShape.swift */; };
@@ -1574,9 +1576,10 @@
 		CFCD1F6021A1CBFF00A8297B /* SymbolDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolDocument.swift; sourceTree = "<group>"; };
 		CFCD1F6121A1CBFF00A8297B /* SymbolDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SymbolDocument.xib; sourceTree = "<group>"; };
 		CFCD3AC921FC76F300DE503C /* phase2-download-file-list-for-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase2-download-file-list-for-commit.swift"; sourceTree = "<group>"; };
-		CFCD3ACC21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase3-appendLocalFilesToLibraryFileDictionary.swift"; sourceTree = "<group>"; };
-		CFCD3ACF21FC85FA00DE503C /* phase4-buildLibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase4-buildLibraryOperations.swift"; sourceTree = "<group>"; };
-		CFCD3AD221FC91A000DE503C /* phase6-performLibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase6-performLibraryOperations.swift"; sourceTree = "<group>"; };
+		CFCD3ACC21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase4-appendLocalFilesToLibraryFileDictionary.swift"; sourceTree = "<group>"; };
+		CFCD3ACF21FC85FA00DE503C /* phase5-buildLibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase5-buildLibraryOperations.swift"; sourceTree = "<group>"; };
+		CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase7-performLibraryOperations.swift"; sourceTree = "<group>"; };
+		CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "phase3-readLibraryDescriptionFileContents.swift"; sourceTree = "<group>"; };
 		CFCE71FA20DD611100AB1DE7 /* entity-BoardModelVia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-BoardModelVia.swift"; sourceTree = "<group>"; };
 		CFD1B75321B2E92D00F6F9EA /* EBStrokeBezierPathShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStrokeBezierPathShape.swift; sourceTree = "<group>"; };
 		CFD1B75421B2E92D00F6F9EA /* EBKnobShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBKnobShape.swift; sourceTree = "<group>"; };
@@ -2199,9 +2202,10 @@
 				CF001F6921F8AAE10091518E /* func-sha1.swift */,
 				CF18963521F9E9C000F94354 /* LibraryUpdateButton.swift */,
 				CFCD3AC921FC76F300DE503C /* phase2-download-file-list-for-commit.swift */,
-				CFCD3ACC21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift */,
-				CFCD3ACF21FC85FA00DE503C /* phase4-buildLibraryOperations.swift */,
-				CFCD3AD221FC91A000DE503C /* phase6-performLibraryOperations.swift */,
+				CFCD3AD521FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift */,
+				CFCD3ACC21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift */,
+				CFCD3ACF21FC85FA00DE503C /* phase5-buildLibraryOperations.swift */,
+				CFCD3AD221FC91A000DE503C /* phase7-performLibraryOperations.swift */,
 				CF001F7821F8B2780091518E /* prefs-get-and-store.swift */,
 				CF001F6F21F8AE730091518E /* run-shell-command.swift */,
 			);
@@ -2882,7 +2886,7 @@
 				CFEDE5B61B4677C500036ACF /* EBDataScanner.swift in Sources */,
 				CF1D9C7821BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift in Sources */,
 				CF8D9AA321A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */,
-				CFCD3AD021FC85FA00DE503C /* phase4-buildLibraryOperations.swift in Sources */,
+				CFCD3AD021FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */,
 				CFD9522621039A2900D19FE9 /* transient-MergerRoot-boardOutlineRectDisplay.swift in Sources */,
 				CF604DC721BC1BC1004F2311 /* EBScrollView.swift in Sources */,
 				CF00846821C4363E003627E9 /* transient-PackageRoot-noIssue.swift in Sources */,
@@ -3093,7 +3097,7 @@
 				CF4D084321C2F30300380ACA /* extension-PackageSegment.swift in Sources */,
 				CF4D084021C2F18000380ACA /* entity-PackageSegment.swift in Sources */,
 				CFF2620A20EF824700E8F453 /* extension-MergerDocument-insert-array-of-boards.swift in Sources */,
-				CFCD3ACD21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
+				CFCD3ACD21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
 				CFA655D021060672001E5067 /* action-MergerDocument-moveRightAction.swift in Sources */,
 				CF3086551B401259005D3BCE /* arrayController-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CF968AFD21BBD68D0010175E /* EBView-binding-zoom.swift in Sources */,
@@ -3120,7 +3124,7 @@
 				CFB671D820FB719700C94777 /* arrayController-MergerDocument-mBoardInstanceController.swift in Sources */,
 				CFE85AAB21A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift in Sources */,
 				CF0AE89021E0F56E00BE7EE2 /* enum-MetadataStatus.swift in Sources */,
-				CFCD3AD321FC91A000DE503C /* phase6-performLibraryOperations.swift in Sources */,
+				CFCD3AD321FC91A000DE503C /* phase7-performLibraryOperations.swift in Sources */,
 				CF1A11072108D53F00987BFD /* transient-MergerRoot-boardDisplayRect.swift in Sources */,
 				CFEDE5B01B4677BA00036ACF /* ArtworkDocument.swift in Sources */,
 				CF1D9C8421BBF4EE00FFF459 /* EBView-placards.swift in Sources */,
@@ -3163,6 +3167,7 @@
 				CF1A11012108AC8600987BFD /* transient-MergerDocument-mStatusMessage.swift in Sources */,
 				CFF83D4721ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift in Sources */,
 				CF1D9C7E21BBEE3400FFF459 /* EBView-menu-actions.swift in Sources */,
+				CFCD3AD621FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */,
 				CF001F7021F8AE730091518E /* run-shell-command.swift in Sources */,
 				CF30CDE521C5709800CFE9CC /* transient-PackagePad-objectDisplay.swift in Sources */,
 				CFDEC6DD21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,
@@ -3348,7 +3353,7 @@
 				CF5C4CF8219F04D600EAC52A /* EBDataScanner.swift in Sources */,
 				CF1D9C7921BBEA6400FFF459 /* EBView-binding-underObjectsDisplay.swift in Sources */,
 				CF8D9AA421A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */,
-				CFCD3AD121FC85FA00DE503C /* phase4-buildLibraryOperations.swift in Sources */,
+				CFCD3AD121FC85FA00DE503C /* phase5-buildLibraryOperations.swift in Sources */,
 				CF5C4CF9219F04D600EAC52A /* transient-MergerRoot-boardOutlineRectDisplay.swift in Sources */,
 				CF604DC821BC1BC1004F2311 /* EBScrollView.swift in Sources */,
 				CF00846921C4363E003627E9 /* transient-PackageRoot-noIssue.swift in Sources */,
@@ -3559,7 +3564,7 @@
 				CF4D084421C2F30300380ACA /* extension-PackageSegment.swift in Sources */,
 				CF4D084121C2F18000380ACA /* entity-PackageSegment.swift in Sources */,
 				CF5C4D63219F04D600EAC52A /* action-MergerDocument-moveRightAction.swift in Sources */,
-				CFCD3ACE21FC84E000DE503C /* phase3-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
+				CFCD3ACE21FC84E000DE503C /* phase4-appendLocalFilesToLibraryFileDictionary.swift in Sources */,
 				CF5C4D64219F04D600EAC52A /* arrayController-Preferences-additionnalLibraryArrayController.swift in Sources */,
 				CF5C4D65219F04D600EAC52A /* transient-BoardModel-imageForInstances.swift in Sources */,
 				CF968AFE21BBD68D0010175E /* EBView-binding-zoom.swift in Sources */,
@@ -3586,7 +3591,7 @@
 				CFE85AAC21A5D76600991A66 /* transient-SymbolText-selectionDisplay.swift in Sources */,
 				CF5C4D72219F04D600EAC52A /* transient-MergerRoot-boardDisplayRect.swift in Sources */,
 				CF0AE89121E0F56E00BE7EE2 /* enum-MetadataStatus.swift in Sources */,
-				CFCD3AD421FC91A000DE503C /* phase6-performLibraryOperations.swift in Sources */,
+				CFCD3AD421FC91A000DE503C /* phase7-performLibraryOperations.swift in Sources */,
 				CF5C4D73219F04D600EAC52A /* ArtworkDocument.swift in Sources */,
 				CF5C4D74219F04D600EAC52A /* action-CanariLibraryEntry-revealLibraryInFinderAction.swift in Sources */,
 				CF1D9C8521BBF4EE00FFF459 /* EBView-placards.swift in Sources */,
@@ -3629,6 +3634,7 @@
 				CF5C4D8C219F04D600EAC52A /* transient-MergerDocument-mStatusMessage.swift in Sources */,
 				CFF83D4821ADAA310084BDA9 /* transient-SymbolDocument-mStatusMessage.swift in Sources */,
 				CF1D9C7F21BBEE3400FFF459 /* EBView-menu-actions.swift in Sources */,
+				CFCD3AD721FCD09000DE503C /* phase3-readLibraryDescriptionFileContents.swift in Sources */,
 				CF001F7121F8AE730091518E /* run-shell-command.swift in Sources */,
 				CF30CDE621C5709800CFE9CC /* transient-PackagePad-objectDisplay.swift in Sources */,
 				CFDEC6DE21D5467900857F9C /* action-PackageDocument-runProgramAction.swift in Sources */,

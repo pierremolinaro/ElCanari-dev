@@ -1,5 +1,5 @@
 //
-//  phase3-appendLocalFilesToLibraryFileDictionary.swift
+//  phase4-appendLocalFilesToLibraryFileDictionary.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 26/01/2019.
@@ -10,9 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase3_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
+func phase4_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
                                                      _ inLogTextView : NSTextView,
                                                      _ ioPossibleAlert : inout NSAlert?) {
+  inLogTextView.appendMessageString ("Phase 4: enumerate local system library\n", color: NSColor.purple)
   do{
     inLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
     let fm = FileManager ()
@@ -30,12 +31,12 @@ func phase3_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary :
         }
         if enter {
           if let descriptor = ioLibraryFileDictionary [filePath] {
-            let localSHA = try computeFileSHA (filePath)
+            let localSHA = computeFileSHA (filePath)
             let newDescriptor = CanariLibraryFileDescriptor (
               relativePath: descriptor.mRelativePath,
               repositorySHA: descriptor.mRepositorySHA,
               sizeInRepository: descriptor.mSizeInRepository,
-              localSHA: localSHA
+              localSHA: localSHA ?? ""
             )
             ioLibraryFileDictionary [filePath] = newDescriptor
           }else{

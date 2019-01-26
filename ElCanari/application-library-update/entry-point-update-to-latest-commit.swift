@@ -84,43 +84,48 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
 //-------- ① We start by checking if a repository did change using etag
   inLogTextView.appendMessageString ("Phase 1: repository did change?\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil
-  var needsToDownloadRepositoryFileList = true
+//  var needsToDownloadRepositoryFileList = true
   if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
     inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
     inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
-    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &needsToDownloadRepositoryFileList, &possibleAlert)
+//    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &needsToDownloadRepositoryFileList, &possibleAlert)
+    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
     queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
-    needsToDownloadRepositoryFileList = true
+//    needsToDownloadRepositoryFileList = true
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
-  inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
-  var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
+  let repositoryFileDictionary : [String : LibraryRepositoryFileDescriptor]
   if possibleAlert == nil {
-    phase2_readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, needsToDownloadRepositoryFileList, &possibleAlert)
+    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (inLogTextView, proxy, &possibleAlert)
   }else{
-    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
+    repositoryFileDictionary = [String : LibraryRepositoryFileDescriptor] ()
   }
-//-------- ③ Repository contents has been successfully retrieved, then enumerate local system library
-  inLogTextView.appendMessageString ("Phase 3: enumerate local system library\n", color: NSColor.purple)
-  var libraryFileDictionary = repositoryFileDictionary
+//-------- ③ Read library descriptor file
+  let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
   if possibleAlert == nil {
-    phase3_appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary, inLogTextView, &possibleAlert)
+    libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
   }else{
-    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
+    libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
   }
-//-------- ④ Build library operations
-  inLogTextView.appendMessageString ("Phase 4: build operation list\n", color: NSColor.purple)
-  var libraryOperations = [LibraryOperationElement] ()
+//-------- ④ Repository contents has been successfully retrieved, then enumerate local system library
+  let localFileSet : Set <String>
   if possibleAlert == nil {
-    phase4_buildLibraryOperations (libraryFileDictionary, &libraryOperations, inLogTextView, proxy)
+    localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
   }else{
-    inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
+    localFileSet = Set <String> ()
   }
-//-------- ⑤ Order out "Check for update" window
-  inLogTextView.appendMessageString ("Phase 5: library is up to date ?\n", color: NSColor.purple)
+//-------- ⑤ Build library operations
+  let libraryOperations : [LibraryOperationElement]
+  if possibleAlert == nil {
+    libraryOperations = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+  }else{
+    libraryOperations = [LibraryOperationElement] ()
+  }
+//-------- ⑥ Order out "Check for update" window
+  inLogTextView.appendMessageString ("Phase 6: library is up to date ?\n", color: NSColor.purple)
   let ok = possibleAlert == nil
   if let window = inWindow {
     if (possibleAlert == nil) && (libraryOperations.count == 0) {
@@ -137,10 +142,9 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
       window.orderOut (nil)
     }
   }
-//-------- ⑥ If ok and there are update operations, perform library update
+//-------- ⑦ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {
-    inLogTextView.appendMessageString ("  Display Update Dialog\n", color: NSColor.purple)
-    phase6_performLibraryOperations (libraryOperations, repositoryFileDictionary, inLogTextView)
+    phase7_performLibraryOperations (libraryOperations, libraryDescriptorFileContents, inLogTextView)
   }else{
     if !ok {
       inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
@@ -161,7 +165,7 @@ func enableItemsAfterCompletion () {
 private func queryServerLastCommitUsingEtag (_ etag : String,
                                              _ inLogTextView : NSTextView,
                                              _ inProxy : [String],
-                                             _ outNeedsToDownloadRepositoryFileList : inout Bool,
+//                                             _ outNeedsToDownloadRepositoryFileList : inout Bool,
                                              _ ioPossibleAlert : inout NSAlert?) {
   let arguments = [
     "-s", // Silent mode, do not show download progress
@@ -190,11 +194,11 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
         inLogTextView.appendMessageString ("  HTTP Status: \(status)\n", color: NSColor.black)
         if status == 304 { // Status 304 --> not modified, use current repository description file
           inLogTextView.appendMessageString ("  HTTP Status means 'no repository change, use current description file'\n", color: NSColor.black)
-          outNeedsToDownloadRepositoryFileList = false
+//          outNeedsToDownloadRepositoryFileList = false
         }else if status == 200 { // Status 200 --> Ok, modified
           inLogTextView.appendMessageString ("  HTTP Status means 'repository did change'\n", color: NSColor.black)
           storeRepositoryETagAndLastCommitSHA (withResponse: response, inLogTextView, &ioPossibleAlert)
-          outNeedsToDownloadRepositoryFileList = true
+//          outNeedsToDownloadRepositoryFileList = true
         }
       }else{
         inLogTextView.appendErrorString ("  Cannot extract HTTP status from downloaded data\n")

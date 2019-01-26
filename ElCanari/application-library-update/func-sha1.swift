@@ -27,10 +27,15 @@ func sha1 (_ inData : Data) -> String {
 //  Computing SHA1 of a library file
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func computeFileSHA (_ filePath : String) throws -> String {
+func computeFileSHA (_ filePath : String) -> String? {
   let absoluteFilePath = systemLibraryPath () + "/" + filePath
-  let data = try Data (contentsOf: URL (fileURLWithPath: absoluteFilePath))
-  return sha1 (data)
+  var result : String? = nil
+  do{
+    let data = try Data (contentsOf: URL (fileURLWithPath: absoluteFilePath))
+    result = sha1 (data)
+  }catch _ {
+  }
+  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -16,8 +16,8 @@ extension NSTextView {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         let endOfText = NSRange (location:ts.length, length:0)
-        scrollRangeToVisible (endOfText)
-        displayIfNeeded ()
+        self.scrollRangeToVisible (endOfText)
+    //    self.displayIfNeeded ()
       }
     }
   }
@@ -39,7 +39,7 @@ extension NSTextView {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         ts.append (inAttributedString)
-        displayAndScrollToEndOfText ()
+        self.displayAndScrollToEndOfText ()
       }
     }
   }
@@ -55,7 +55,7 @@ extension NSTextView {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         ts.append (str)
-        displayAndScrollToEndOfText ()
+        self.displayAndScrollToEndOfText ()
       }
     }
   }
@@ -71,7 +71,7 @@ extension NSTextView {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         ts.append (str)
-        displayAndScrollToEndOfText ()
+        self.displayAndScrollToEndOfText ()
       }
     }
   }
@@ -79,19 +79,19 @@ extension NSTextView {
   //····················································································································
 
   func appendErrorString (_ inString : String) {
-    appendMessageString (inString, color:NSColor.red)
+    self.appendMessageString (inString, color:NSColor.red)
   }
 
   //····················································································································
 
   func appendWarningString (_ inString : String) {
-    appendMessageString (inString, color:NSColor.orange)
+    self.appendMessageString (inString, color:NSColor.orange)
   }
 
   //····················································································································
 
   func appendSuccessString (_ inString : String) {
-    appendMessageString (inString, color:NSColor.blue)
+    self.appendMessageString (inString, color:NSColor.blue)
   }
 
   //····················································································································
