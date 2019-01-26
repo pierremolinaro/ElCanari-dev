@@ -62,10 +62,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let parallelDownloadCount = 4
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 let repositoryDescriptionFile = "repository-description.plist"
 let CURL = "/usr/bin/curl"
 
@@ -103,15 +99,15 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
   var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   if possibleAlert == nil {
-    readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, needsToDownloadRepositoryFileList, &possibleAlert)
+    phase2_readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, needsToDownloadRepositoryFileList, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
-//-------- ③ Repository has been successfully interrogated, then enumerate local system library
+//-------- ③ Repository contents has been successfully retrieved, then enumerate local system library
   inLogTextView.appendMessageString ("Phase 3: enumerate local system library\n", color: NSColor.purple)
   var libraryFileDictionary = repositoryFileDictionary
   if possibleAlert == nil {
-    appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary, inLogTextView, &possibleAlert)
+    phase3_appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary, inLogTextView, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
@@ -119,7 +115,7 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   inLogTextView.appendMessageString ("Phase 4: build operation list\n", color: NSColor.purple)
   var libraryOperations = [LibraryOperationElement] ()
   if possibleAlert == nil {
-    buildLibraryOperations (libraryFileDictionary, &libraryOperations, inLogTextView, proxy)
+    phase4_buildLibraryOperations (libraryFileDictionary, &libraryOperations, inLogTextView, proxy)
   }else{
     inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
   }
@@ -131,7 +127,6 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
       inLogTextView.appendSuccessString ("  The library is up to date\n")
       possibleAlert = NSAlert ()
       possibleAlert?.messageText = "The library is up to date"
-      possibleAlert?.addButton (withTitle: "Ok")
     }
     if let alert = possibleAlert {
       alert.beginSheetModal (
@@ -145,7 +140,7 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
 //-------- ⑥ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {
     inLogTextView.appendMessageString ("  Display Update Dialog\n", color: NSColor.purple)
-    performLibraryOperations (libraryOperations, repositoryFileDictionary, inLogTextView)
+    phase6_performLibraryOperations (libraryOperations, repositoryFileDictionary, inLogTextView)
   }else{
     if !ok {
       inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")
@@ -156,7 +151,7 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func enableItemsAfterCompletion () {
+func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }
@@ -181,7 +176,6 @@ private func queryServerLastCommitUsingEtag (_ etag : String,
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
     ioPossibleAlert = NSAlert ()
     ioPossibleAlert?.messageText = "Cannot connect to the server"
-    ioPossibleAlert?.addButton (withTitle: "Ok")
     ioPossibleAlert?.informativeText = (errorCode == 6)
       ? "No network connection"
       : "Server connection error"
@@ -226,7 +220,6 @@ private func queryServerLastCommitWithNoEtag (_ inLogTextView : NSTextView,
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
     let alert = NSAlert ()
     alert.messageText = "Cannot connect to the server"
-    alert.addButton (withTitle: "Ok")
     alert.informativeText = (errorCode == 6)
       ? "No network connection"
       : "Server connection error"
@@ -267,337 +260,6 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
     }
   }else{
     inLogTextView.appendErrorString ("  Invalid HTTP result, has \(components.count) line (should be ≥ 2)\n")
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func appendLocalFilesToLibraryFileDictionary (
-        _ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView,
-        _ ioPossibleAlert : inout NSAlert?) {
-  do{
-    inLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
-    let fm = FileManager ()
-    if fm.fileExists (atPath: systemLibraryPath ()) {
-      let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
-      for filePath in currentLibraryContents {
-      //--- Eliminate ".DS_store" and description plist file
-        var enter = (filePath.lastPathComponent != ".DS_Store") && (filePath != repositoryDescriptionFile)
-      //--- Eliminate directories
-        if enter {
-          let fullPath = systemLibraryPath () + "/" + filePath
-          var isDirectory : ObjCBool = false
-          _ = fm.fileExists (atPath:fullPath, isDirectory: &isDirectory)
-          enter = !isDirectory.boolValue
-        }
-        if enter {
-          if let descriptor = ioLibraryFileDictionary [filePath] {
-            let localSHA = try computeFileSHA (filePath)
-            let newDescriptor = CanariLibraryFileDescriptor (
-              relativePath: descriptor.mRelativePath,
-              repositorySHA: descriptor.mRepositorySHA,
-              sizeInRepository: descriptor.mSizeInRepository,
-              localSHA: localSHA
-            )
-            ioLibraryFileDictionary [filePath] = newDescriptor
-          }else{
-            let descriptor = CanariLibraryFileDescriptor (
-              relativePath: filePath,
-              repositorySHA: "",
-              sizeInRepository: 0,
-              localSHA: "?"
-            )
-            ioLibraryFileDictionary [filePath] = descriptor
-          }
-        }
-      }
-      inLogTextView.appendMessageString ("  System Library directory contents:\n")
-      inLogTextView.appendMessageString ("    local SHA:repository SHA:SHA:repository size:file path\n")
-      for descriptor in ioLibraryFileDictionary.values {
-        inLogTextView.appendMessageString ("    \(descriptor.mLocalSHA):\(descriptor.mRepositorySHA):\(descriptor.mSizeInRepository):\(descriptor.mRelativePath)\n")
-      }
-    }else{
-      inLogTextView.appendWarningString ("  System Library directory does not exist\n")
-    }
-  }catch let error {
-    inLogTextView.appendErrorString ("  Switch exception \(error)\n")
-    ioPossibleAlert = NSAlert (error: error)
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func buildLibraryOperations (
-        _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
-        _ outLibraryOperations : inout [LibraryOperationElement],
-        _ inLogTextView : NSTextView,
-        _ inProxy : [String]) {
-  inLogTextView.appendMessageString ("  Library File Dictionary has \(inLibraryFileDictionary.count) entries\n")
-  for descriptor in inLibraryFileDictionary.values {
-    // inLogTextView.appendMessageString ("    \(descriptor.mRelativePath): \(descriptor.mRepositorySHA) \(descriptor.mLocalSHA)\n")
-    if descriptor.mRepositorySHA == "" {
-     inLogTextView.appendMessageString ("    Delete \(descriptor.mRelativePath)\n")
-     let element = LibraryOperationElement (
-        relativePath: descriptor.mRelativePath,
-        sizeInRepository: 0,
-        operation: .delete,
-        logTextView: inLogTextView,
-        proxy: inProxy
-      )
-      outLibraryOperations.append (element)
-    }else if (descriptor.mRepositorySHA != "") && (descriptor.mLocalSHA == "?") {
-      let element = LibraryOperationElement (
-        relativePath: descriptor.mRelativePath,
-        sizeInRepository: descriptor.mSizeInRepository,
-        operation: .download,
-        logTextView: inLogTextView,
-        proxy: inProxy
-      )
-      outLibraryOperations.append (element)
-    }else if (descriptor.mRepositorySHA != descriptor.mLocalSHA) {
-      let element = LibraryOperationElement (
-        relativePath: descriptor.mRelativePath,
-        sizeInRepository: descriptor.mSizeInRepository,
-        operation: .update,
-        logTextView: inLogTextView,
-        proxy: inProxy
-      )
-      outLibraryOperations.append (element)
-    }
-  }
-  if outLibraryOperations.count == 0 {
-    inLogTextView.appendMessageString ("  No operation\n")
-  }else{
-    inLogTextView.appendMessageString ("  Library operations (operation:file path:size in repository)\n")
-    for op in outLibraryOperations {
-      inLogTextView.appendMessageString ("    \(op.mOperation):\(op.mRelativePath):\(op.mSizeInRepository)\n")
-    }
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private var gCanariLibraryUpdateController = CanariLibraryUpdateController ()
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func performLibraryOperations (
-   _ inLibraryOperations : [LibraryOperationElement],
-   _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-   _ inLogTextView : NSTextView) {
-//--- Perform library update in main thread
-  DispatchQueue.main.async  {
-  //--- Configure informative text in library update window
-    if inLibraryOperations.count == 1 {
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"
-   }else{
-      g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "\(inLibraryOperations.count) elements to update"
-    }
-    var progressMaxValue = 0.0
-    for action in inLibraryOperations {
-      progressMaxValue += action.maxIndicatorValue
-    }
-  //--- Configure progress indicator in library update window
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.minValue = 0.0
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.maxValue = progressMaxValue
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
-    g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
-  //--- Configure table view in library update window
-    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inRepositoryFileDictionary, inLogTextView)
-    gCanariLibraryUpdateController.bind ()
-  //--- Show library update window
-    g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func startLibraryUpdate () {
-//--- Launch parallel downloads
-  for _ in 1...parallelDownloadCount {
-    gCanariLibraryUpdateController.launchElementDownload ()
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func cancelLibraryUpdate () {
-//--- Cancel current downloadings
-  gCanariLibraryUpdateController.cancel ()
-  startLibraryUpdate ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   C O M M I T    U P D A T E S   I N   F I L E    S Y S T E M
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                       _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
-                       _ inLogTextView : NSTextView) {
-//--- Update UI
-  gCanariLibraryUpdateController.unbind ()
-  let logTextView = gCanariLibraryUpdateController.logTextView
-  gCanariLibraryUpdateController = CanariLibraryUpdateController ()
-//--- Commit change only if all actions has been successdully completed
-  var repositoryFileDictionary = inRepositoryFileDictionary
-  var performCommit = true
-  for action in inActionArray {
-    switch action.mOperation {
-    case .download, .update, .downloadError, .downloading, .delete :
-      performCommit = false
-    case .deleteRegistered :
-      ()
-    case .downloaded (let data) :
-      var descriptor = repositoryFileDictionary [action.mRelativePath]!
-      descriptor.mRepositorySHA = sha1 (data)
-      repositoryFileDictionary [action.mRelativePath] = descriptor
-    }
-  }
-//--- Perform commit
-  if !performCommit {
-    g_Preferences?.mLibraryUpdateWindow?.orderOut (nil)
-    enableItemsAfterCompletion ()
-  }else{
-    if let window = g_Preferences?.mLibraryUpdateWindow {
-      do{
-        for action in inActionArray {
-          try action.commit ()
-        }
-      //--- Delete orphean directories
-        try deleteOrphanDirectories (logTextView)
-      //--- Write library description plist file
-        try writeLibraryDescriptionPlistFile (repositoryFileDictionary, inLogTextView)
-      //--- Completed!
-        let alert = NSAlert ()
-        alert.messageText = "Update completed, the library is up to date"
-        alert.addButton (withTitle: "Ok")
-        alert.beginSheetModal (
-          for: window,
-          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
-        )
-      }catch let error {
-        let alert = NSAlert ()
-        alert.messageText = "Cannot commit changes"
-        alert.addButton (withTitle: "Ok")
-        alert.informativeText = "A file system operation returns \(error) error"
-        alert.beginSheetModal (
-          for: window,
-          completionHandler: { (response : NSApplication.ModalResponse) in window.orderOut (nil) ; enableItemsAfterCompletion () }
-        )
-      }
-    }
-  }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    deleteOrphanDirectories
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
-  let fm = FileManager ()
-  let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
-  var directoryArray = [String] ()
-  for relativePath in currentLibraryContents {
-    let fullPath = systemLibraryPath () + "/" + relativePath
-    var isDirectory : ObjCBool = false
-    fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
-    if (isDirectory.boolValue) {
-      directoryArray.append (fullPath)
-    }
-  }
-  directoryArray.sort ()
-  var i=directoryArray.count-1
-  while i>=0 {
-    let fullPath = directoryArray [i]
-    var currentDirectoryContents = try fm.contentsOfDirectory (atPath: fullPath)
-  //--- Remove .DS_Store files
-    var j=0
-    while j<currentDirectoryContents.count {
-      let s = currentDirectoryContents [j]
-      if s == ".DS_Store" {
-        currentDirectoryContents.remove (at: j)
-        j -= 1
-      }
-      j += 1
-    }
-    if (currentDirectoryContents.count == 0) {
-      inLogTextView.appendMessageString ("  Delete orphean directory at '\(fullPath)\n")
-      try fm.removeItem (atPath: fullPath)
-    }
-    i -= 1
-  }
-  enableItemsAfterCompletion ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func writeLibraryDescriptionPlistFile (
-        _ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView) throws {
-  inLogTextView.appendMessageString ("  Write Library Description Plist File (repositorySHA:size:path)\n")
-  for (path, value) in inRepositoryFileDictionary {
-    inLogTextView.appendMessageString ("    \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)\n")
-  }
-//--- Write plist file
-  var dictionaryArray = [[String : String]] ()
-  for descriptor in inRepositoryFileDictionary.values {
-    var dictionary = [String : String] ()
-    dictionary ["path"] = descriptor.mRelativePath
-    dictionary ["size"] = "\(descriptor.mSizeInRepository)"
-    dictionary ["sha"] = descriptor.mRepositorySHA
-    dictionaryArray.append (dictionary)
-  }
-  let data : Data = try PropertyListSerialization.data (fromPropertyList: dictionaryArray, format: .binary, options: 0)
-  let f = systemLibraryPath () + "/" + repositoryDescriptionFile
-  try data.write (to: URL (fileURLWithPath: f))
-  storeRepositoryFileSHA (sha1 (data))
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct CanariLibraryFileDescriptor {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let mRelativePath : String
-  var mRepositorySHA : String
-  let mSizeInRepository : Int
-  let mLocalSHA : String
-
-  //····················································································································
-
-  init (relativePath inRelativePath : String,
-        repositorySHA inRepositorySHA : String,
-        sizeInRepository inSizeInRepository : Int,
-        localSHA inLocalSHA : String) {
-    mRelativePath = inRelativePath
-    mRepositorySHA = inRepositorySHA
-    mLocalSHA = inLocalSHA
-    mSizeInRepository = inSizeInRepository
-  }
-
-  //····················································································································
-
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   get fromDictionary
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func get (_ inObject: Any?, _ key : String, _ line : Int) -> Any? {
-  if let dictionary = inObject as? NSDictionary {
-    if let r = dictionary [key] {
-      return r
-    }else{
-      print ("line \(line) : no \(key) key in dictionary")
-      return nil
-    }
-  }else{
-    print ("line \(line) : object is not a dictionary")
-    return nil
   }
 }
 

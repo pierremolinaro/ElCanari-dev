@@ -22,15 +22,71 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
   let proxy = getSystemProxy (inLogTextView)
 //-------- ① We start by checking if a repository did change using etag
   inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
+  var possibleAlert : NSAlert? = nil // If not nil, smoething goes wrong
+  var revisions = [LibraryRevisionDescriptor] ()
+  getRepositoryCommitList (&revisions, &possibleAlert, proxy, inLogTextView)
+  var performUpdate = false
+  if possibleAlert == nil {
+    if let commitSHA = displayRepositoryCommitList (revisions, proxy, inLogTextView) {
+      storeRepositoryCommitSHA_removeETAG (commitSHA)
+      performUpdate = true
+    }
+  }
+//-------- ② Repository ETAG and commit SHA have been successfully retrieve,
+//            now read of download the file list corresponding to this commit
+  var repositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
+  if performUpdate && (possibleAlert == nil) {
+    inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
+    phase2_readOrDownloadLibraryFileDictionary (&repositoryFileDictionary, inLogTextView, proxy, true, &possibleAlert)
+  }
+//-------- ③ Repository contents has been successfully retrieved, then enumerate local system library
+  var libraryFileDictionary = repositoryFileDictionary
+  if performUpdate && (possibleAlert == nil) {
+    inLogTextView.appendMessageString ("Phase 3: enumerate local system library\n", color: NSColor.purple)
+    phase3_appendLocalFilesToLibraryFileDictionary (&libraryFileDictionary, inLogTextView, &possibleAlert)
+  }
+//-------- ④ Build library operations
+  var libraryOperations = [LibraryOperationElement] ()
+  if performUpdate && (possibleAlert == nil) {
+    inLogTextView.appendMessageString ("Phase 4: build operation list\n", color: NSColor.purple)
+    phase4_buildLibraryOperations (libraryFileDictionary, &libraryOperations, inLogTextView, proxy)
+  }
+//-------- ⑤ is the library up to date?
+  if performUpdate && (possibleAlert == nil) {
+    inLogTextView.appendMessageString ("Phase 5: is the library up to date?\n", color: NSColor.purple)
+    if libraryOperations.count == 0 {
+      inLogTextView.appendSuccessString ("  The library is up to date\n")
+      let alert = NSAlert ()
+      alert.messageText = "The library is up to date"
+      _ = alert.runModal ()
+    }
+  }
+//-------- ⑥ If ok and there are update operations, perform library update
+  if performUpdate && (possibleAlert == nil) && (libraryOperations.count != 0) {
+    inLogTextView.appendMessageString ("Phase 6: perform libary operations\n", color: NSColor.purple)
+    phase6_performLibraryOperations (libraryOperations, repositoryFileDictionary, inLogTextView)
+  }else{
+    if let alert = possibleAlert {
+      _ = alert.runModal ()
+    }
+    enableItemsAfterCompletion ()
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private func getRepositoryCommitList (_ ioRevisions : inout [LibraryRevisionDescriptor],
+                                      _ ioPossibleAlert : inout NSAlert?,
+                                      _ inProxy : [String],
+                                      _ inLogTextView : NSTextView) {
   let query = "object(expression:master) { ... on Commit { history { edges { node { committedDate message oid } } } } }"
-  if let dict = runGraphqlQuery (query, proxy, inLogTextView) {
+  if let dict = runGraphqlQuery (query, inProxy, inLogTextView) {
     var ok = true
     if let repository = dict ["repository"] as? [String : Any],
        let object = repository ["object"] as? [String : Any],
        let history = object ["history"] as? [String : Any],
        let edges = history ["edges"] as? [Any] {
       inLogTextView.appendMessageString ("  \(edges.count) commits\n")
-      var revisions = [LibraryRevisionDescriptor] ()
       for commit in edges {
         if let nodeDictionary = commit as? [String : Any],
           let commitDictionary = nodeDictionary ["node"] as? [String : Any] {
@@ -39,7 +95,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
           let possibleCommitDateString = (commitDictionary ["committedDate"] as? String)
           let possibleCommitDate = iso8601StringToDate (possibleCommitDateString)
           if let commitDate = possibleCommitDate, let commitSHA = possibleCommitSHA, let commitMessage = possibleCommitMessage {
-            revisions.append (LibraryRevisionDescriptor (commitDate, commitSHA, commitMessage))
+            ioRevisions.append (LibraryRevisionDescriptor (commitDate, commitSHA, commitMessage))
             inLogTextView.appendMessageString ("  Date '\(commitDate)', sha \(commitSHA), message '\(commitMessage)'\n")
           }else{
             inLogTextView.appendErrorString ("  Invalid commit format\n")
@@ -49,21 +105,18 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
           ok = false
         }
       }
-      if ok {
-        displayRepositoryCommitList (revisions, proxy, inLogTextView)
-      }
+//      if ok {
+//        displayRepositoryCommitList (ioRevisions, inProxy, inLogTextView)
+//      }
     }else{
       ok = false
     }
     if !ok {
       let alert = NSAlert ()
       alert.messageText = "Cannot decode server response"
-      _ = alert.runModal ()
+      ioPossibleAlert = alert
     }
   }
-//--- Enable update buttons
-  g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
-  g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -178,7 +231,7 @@ var gLibraryCommitListController : LibraryCommitListController? = nil
 
 fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDescriptor],
                                               _ proxy : [String],
-                                              _ inLogTextView : NSTextView) {
+                                              _ inLogTextView : NSTextView) -> String? {
   gLibraryCommitListController = LibraryCommitListController (revisions, g_Preferences?.mLibraryRevisionListTableView)
   let alert = NSAlert ()
   alert.messageText = "Select Library Revision"
@@ -186,13 +239,19 @@ fileprivate func displayRepositoryCommitList (_ revisions : [LibraryRevisionDesc
   alert.addButton (withTitle: "Ok")
   alert.addButton (withTitle: "Cancel")
   let response = alert.runModal ()
+  var result : String?
   if response == .alertFirstButtonReturn, let selectedRow = g_Preferences?.mLibraryRevisionListTableView?.selectedRow {
     let commitSHA = revisions [selectedRow].mCommitSHA
-    inLogTextView.appendMessageString ("  Selected commit SHA: \(commitSHA)\n")
-    getRepositoryFileList (forCommitSHA: commitSHA, proxy, inLogTextView)
+    result = commitSHA
+    inLogTextView.appendMessageString ("  Selected commit SHA from dialog: \(commitSHA)\n")
+//    getRepositoryFileList (forCommitSHA: commitSHA, proxy, inLogTextView)
+  }else{
+    inLogTextView.appendMessageString ("  Dialog has been cancelled\n")
+    result = nil
   }
   gLibraryCommitListController?.ebCleanUp ()
   gLibraryCommitListController = nil
+  return result
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
