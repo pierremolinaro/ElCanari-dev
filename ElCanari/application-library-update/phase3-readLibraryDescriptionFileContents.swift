@@ -8,7 +8,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
- func phase3_enumerateLocalFiles (_ inLogTextView : NSTextView) -> [String : CanariLibraryFileDescriptor] {
+ func phase3_readLibraryDescriptionFileContents (_ inLogTextView : NSTextView) -> [String : CanariLibraryFileDescriptor] {
   inLogTextView.appendMessageString ("Phase 3: enumerate local files\n", color: NSColor.purple)
   var libraryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   if let propertyList = libraryDescriptionFileContents () {

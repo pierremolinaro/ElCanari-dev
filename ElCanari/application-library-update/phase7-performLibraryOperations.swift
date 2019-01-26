@@ -1,5 +1,5 @@
 //
-//  phase6-performLibraryOperations.swift
+//  phase7-performLibraryOperations.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 26/01/2019.
@@ -18,9 +18,10 @@ private var gCanariLibraryUpdateController = CanariLibraryUpdateController ()
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase6_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
+func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
                                       _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
                                       _ inLogTextView : NSTextView) {
+  inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
 //--- Perform library update in main thread
   DispatchQueue.main.async  {
   //--- Configure informative text in library update window
@@ -85,7 +86,7 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
       ()
     case .downloaded (let data) :
       var descriptor = repositoryFileDictionary [action.mRelativePath]!
-      descriptor.mRepositorySHA = sha1 (data)
+      descriptor.mFileContentSHA = sha1 (data)
       repositoryFileDictionary [action.mRelativePath] = descriptor
     }
   }
@@ -168,17 +169,18 @@ private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
 private func writeLibraryDescriptionPlistFile (
         _ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
         _ inLogTextView : NSTextView) throws {
-  inLogTextView.appendMessageString ("  Write Library Description Plist File (repositorySHA:size:path)\n")
+  inLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
   for (path, value) in inRepositoryFileDictionary {
-    inLogTextView.appendMessageString ("    \(value.mRepositorySHA):\(value.mSizeInRepository):\(path)\n")
+    inLogTextView.appendMessageString ("    [\(path) — \(value.mFileContentSHA) — \(value.mFileSize)]\n")
   }
 //--- Write plist file
   var dictionaryArray = [[String : String]] ()
-  for descriptor in inRepositoryFileDictionary.values {
-    var dictionary = [String : String] ()
-    dictionary ["path"] = descriptor.mRelativePath
-    dictionary ["size"] = "\(descriptor.mSizeInRepository)"
-    dictionary ["sha"] = descriptor.mRepositorySHA
+  for (path, descriptor) in inRepositoryFileDictionary {
+    let dictionary : [String : String] = [
+      "path" : path,
+      "size" : "\(descriptor.mFileSize)",
+      "sha" : descriptor.mFileContentSHA
+    ]
     dictionaryArray.append (dictionary)
   }
   let data : Data = try PropertyListSerialization.data (fromPropertyList: dictionaryArray, format: .binary, options: 0)
@@ -188,31 +190,3 @@ private func writeLibraryDescriptionPlistFile (
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-struct CanariLibraryFileDescriptor {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  let mRelativePath : String
-  var mRepositorySHA : String
-  let mSizeInRepository : Int
-  let mLocalSHA : String
-
-  //····················································································································
-
-  init (relativePath inRelativePath : String,
-        repositorySHA inRepositorySHA : String,
-        sizeInRepository inSizeInRepository : Int,
-        localSHA inLocalSHA : String) {
-    mRelativePath = inRelativePath
-    mRepositorySHA = inRepositorySHA
-    mLocalSHA = inLocalSHA
-    mSizeInRepository = inSizeInRepository
-  }
-
-  //····················································································································
-
-}
-

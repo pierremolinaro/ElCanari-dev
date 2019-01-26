@@ -10,9 +10,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase4_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary : inout [String : CanariLibraryFileDescriptor],
-                                                     _ inLogTextView : NSTextView,
-                                                     _ ioPossibleAlert : inout NSAlert?) {
+func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : NSTextView,
+                                                     _ ioPossibleAlert : inout NSAlert?) -> Set <String> {
+  var libraryFileDictionary = Set <String> ()
   inLogTextView.appendMessageString ("Phase 4: enumerate local system library\n", color: NSColor.purple)
   do{
     inLogTextView.appendMessageString ("  System Library path is \(systemLibraryPath ())\n")
@@ -26,34 +26,16 @@ func phase4_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary :
         if enter {
           let fullPath = systemLibraryPath () + "/" + filePath
           var isDirectory : ObjCBool = false
-          _ = fm.fileExists (atPath:fullPath, isDirectory: &isDirectory)
+          _ = fm.fileExists (atPath: fullPath, isDirectory: &isDirectory)
           enter = !isDirectory.boolValue
         }
         if enter {
-          if let descriptor = ioLibraryFileDictionary [filePath] {
-            let localSHA = computeFileSHA (filePath)
-            let newDescriptor = CanariLibraryFileDescriptor (
-              relativePath: descriptor.mRelativePath,
-              repositorySHA: descriptor.mRepositorySHA,
-              sizeInRepository: descriptor.mSizeInRepository,
-              localSHA: localSHA ?? ""
-            )
-            ioLibraryFileDictionary [filePath] = newDescriptor
-          }else{
-            let descriptor = CanariLibraryFileDescriptor (
-              relativePath: filePath,
-              repositorySHA: "",
-              sizeInRepository: 0,
-              localSHA: "?"
-            )
-            ioLibraryFileDictionary [filePath] = descriptor
-          }
+          libraryFileDictionary.insert (filePath)
         }
       }
-      inLogTextView.appendMessageString ("  System Library directory contents:\n")
-      inLogTextView.appendMessageString ("    local SHA:repository SHA:SHA:repository size:file path\n")
-      for descriptor in ioLibraryFileDictionary.values {
-        inLogTextView.appendMessageString ("    \(descriptor.mLocalSHA):\(descriptor.mRepositorySHA):\(descriptor.mSizeInRepository):\(descriptor.mRelativePath)\n")
+      inLogTextView.appendMessageString ("  System Library directory contents [file path]:\n")
+      for descriptor in libraryFileDictionary {
+        inLogTextView.appendMessageString ("    [\(descriptor)]\n")
       }
     }else{
       inLogTextView.appendWarningString ("  System Library directory does not exist\n")
@@ -62,6 +44,32 @@ func phase4_appendLocalFilesToLibraryFileDictionary (_ ioLibraryFileDictionary :
     inLogTextView.appendErrorString ("  Switch exception \(error)\n")
     ioPossibleAlert = NSAlert (error: error)
   }
+  return libraryFileDictionary
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//struct LocalLibraryFileDescriptor {
+//
+//  //····················································································································
+//  //   Properties
+//  //····················································································································
+//
+//  let mRelativePath : String
+//  let mLocalFileSize : Int
+//
+//  //····················································································································
+//
+//  init (relativePath inRelativePath : String,
+//        localFileSize inLocalFileSize : Int) {
+//    mRelativePath = inRelativePath
+//    mLocalFileSize = inRepositorySHA
+//    mLocalSHA = inLocalSHA
+//    mLocalFileSize = inSizeInRepository
+//  }
+//
+//  //····················································································································
+//
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
