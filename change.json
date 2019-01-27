@@ -1,10 +1,8 @@
 {
   "NOTE" : [],
   "BUGFIX" : [
-    "Imported artwork in Merger document was not retained",
-    "Spacing between boards on \"Insert an array of Boards…\" action"
   ],
-  "CHANGE" : [],
+  "CHANGE" : ["New library management"],
   "NEW" : []
 }
 
