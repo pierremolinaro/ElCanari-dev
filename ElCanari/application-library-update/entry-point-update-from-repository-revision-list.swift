@@ -23,8 +23,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
 //-------- ① We start by getting the list of all commits
   inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil // If not nil, smoething goes wrong
-  var revisions = [LibraryRevisionDescriptor] ()
-  getRepositoryCommitList (&revisions, &possibleAlert, proxy, inLogTextView)
+  let revisions = getRepositoryCommitList (&possibleAlert, proxy, inLogTextView)
   var performUpdate = false
   if possibleAlert == nil {
     if let commitSHA = displayRepositoryCommitList (revisions, proxy, inLogTextView) {
@@ -86,46 +85,109 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func getRepositoryCommitList (_ ioRevisions : inout [LibraryRevisionDescriptor],
-                                      _ ioPossibleAlert : inout NSAlert?,
+private func getRepositoryCommitList (_ ioPossibleAlert : inout NSAlert?,
                                       _ inProxy : [String],
-                                      _ inLogTextView : NSTextView) {
-  let query = "object(expression:master) { ... on Commit { history { edges { node { committedDate message oid } } } } }"
-  if let dict = runGraphqlQuery (query, inProxy, &ioPossibleAlert, inLogTextView) {
-    var ok = true
-    if let repository = dict ["repository"] as? [String : Any],
-       let object = repository ["object"] as? [String : Any],
-       let history = object ["history"] as? [String : Any],
-       let edges = history ["edges"] as? [Any] {
-      inLogTextView.appendMessageString ("  \(edges.count) commits\n")
-      for commit in edges {
-        if let nodeDictionary = commit as? [String : Any],
-          let commitDictionary = nodeDictionary ["node"] as? [String : Any] {
-          let possibleCommitSHA = commitDictionary ["oid"] as? String
-          let possibleCommitMessage = commitDictionary ["message"] as? String
-          let possibleCommitDateString = (commitDictionary ["committedDate"] as? String)
-          let possibleCommitDate = iso8601StringToDate (possibleCommitDateString)
-          if let commitDate = possibleCommitDate, let commitSHA = possibleCommitSHA, let commitMessage = possibleCommitMessage {
-            ioRevisions.append (LibraryRevisionDescriptor (commitDate, commitSHA, commitMessage))
-            inLogTextView.appendMessageString ("  Date '\(commitDate)', sha \(commitSHA), message '\(commitMessage)'\n")
+                                      _ inLogTextView : NSTextView) -> [LibraryRevisionDescriptor] {
+  let arguments = [
+    "-s", // Silent mode, do not show download progress
+    "-L", // Follow
+    "https://api.github.com/repos/pierremolinaro/ElCanari-Library/commits"
+  ] + inProxy
+  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
+  var possibleAlert : NSAlert? = nil
+  var revisions = [LibraryRevisionDescriptor] ()
+  switch responseCode {
+  case .error (let errorCode) :
+    inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
+    possibleAlert = NSAlert ()
+    possibleAlert?.messageText = "Cannot connect to the server"
+    possibleAlert?.informativeText = (errorCode == 6)
+      ? "No network connection"
+      : "Server connection error"
+  case .ok (let responseData) :
+    inLogTextView.appendSuccessString ("  Result code means 'Ok'\n")
+    do{
+      let response = try JSONSerialization.jsonObject (with: responseData)
+      var ok = true
+      if let array = response as? [Any] {
+        inLogTextView.appendMessageString ("  \(array.count) revisions\n")
+        for commit in array {
+          if let dictionary = commit as? [String : Any] {
+            let possibleCommitURL = dictionary ["url"] as? String
+            let commitDictionary = dictionary ["commit"] as? [String : Any]
+            let possibleCommitMessage = commitDictionary? ["message"] as? String
+            let committerDictionary = commitDictionary? ["committer"] as? [String : Any]
+            let possibleCommitDateString = (committerDictionary? ["date"] as? String)
+            let possibleCommitDate = iso8601StringToDate (possibleCommitDateString)
+            if let commitDate = possibleCommitDate, let commitURL = possibleCommitURL, let commitMessage = possibleCommitMessage {
+              let commitSHA = commitURL.lastPathComponent
+              revisions.append (LibraryRevisionDescriptor (commitDate, commitSHA, commitMessage))
+              inLogTextView.appendMessageString ("  Date \(commitDate), sha \(commitSHA), message \(commitMessage)\n")
+            }else{
+              inLogTextView.appendErrorString ("  Invalid commit format\n")
+              ok = false
+            }
           }else{
-            inLogTextView.appendErrorString ("  Invalid commit format\n")
             ok = false
           }
-        }else{
-          ok = false
         }
+      }else{
+        ok = false
       }
-    }else{
-      ok = false
-    }
-    if !ok {
-      let alert = NSAlert ()
-      alert.messageText = "Cannot decode server response"
-      ioPossibleAlert = alert
+      if !ok {
+        possibleAlert = NSAlert ()
+        possibleAlert?.messageText = "Cannot decode server response"
+      }
+    }catch let error {
+      possibleAlert = NSAlert (error: error)
     }
   }
+  return revisions
 }
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+//private func getRepositoryCommitListEx (_ ioPossibleAlert : inout NSAlert?,
+//                                      _ inProxy : [String],
+//                                      _ inLogTextView : NSTextView) -> [LibraryRevisionDescriptor] {
+//  var revisions = [LibraryRevisionDescriptor] ()
+//  let query = "object(expression:master) { ... on Commit { history { edges { node { committedDate message oid } } } } }"
+//  if let dict = runGraphqlQuery (query, inProxy, &ioPossibleAlert, inLogTextView) {
+//    var ok = true
+//    if let repository = dict ["repository"] as? [String : Any],
+//       let object = repository ["object"] as? [String : Any],
+//       let history = object ["history"] as? [String : Any],
+//       let edges = history ["edges"] as? [Any] {
+//      inLogTextView.appendMessageString ("  \(edges.count) commits\n")
+//      for commit in edges {
+//        if let nodeDictionary = commit as? [String : Any],
+//          let commitDictionary = nodeDictionary ["node"] as? [String : Any] {
+//          let possibleCommitSHA = commitDictionary ["oid"] as? String
+//          let possibleCommitMessage = commitDictionary ["message"] as? String
+//          let possibleCommitDateString = (commitDictionary ["committedDate"] as? String)
+//          let possibleCommitDate = iso8601StringToDate (possibleCommitDateString)
+//          if let commitDate = possibleCommitDate, let commitSHA = possibleCommitSHA, let commitMessage = possibleCommitMessage {
+//            revisions.append (LibraryRevisionDescriptor (commitDate, commitSHA, commitMessage))
+//            inLogTextView.appendMessageString ("  Date '\(commitDate)', sha \(commitSHA), message '\(commitMessage)'\n")
+//          }else{
+//            inLogTextView.appendErrorString ("  Invalid commit format\n")
+//            ok = false
+//          }
+//        }else{
+//          ok = false
+//        }
+//      }
+//    }else{
+//      ok = false
+//    }
+//    if !ok {
+//      let alert = NSAlert ()
+//      alert.messageText = "Cannot decode server response"
+//      ioPossibleAlert = alert
+//    }
+//  }
+//  return revisions
+//}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //https://stackoverflow.com/questions/39433852/parsing-a-iso8601-string-to-date-in-swift

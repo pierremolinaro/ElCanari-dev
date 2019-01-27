@@ -11,14 +11,9 @@ import Cocoa
 // https://developer.github.com/v4/object/commit/
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
- func phase2_readOrDownloadLibraryFileDictionary (_ inLogTextView : NSTextView,
+func phase2_readOrDownloadLibraryFileDictionary (_ inLogTextView : NSTextView,
                                                   _ inProxy : [String],
                                                   _ ioPossibleAlert : inout NSAlert?) -> [String : LibraryRepositoryFileDescriptor] {
-
-//  let query = "node(oid:\(getRepositoryCommitSHA ()!)) { tree { entries { name type oid } } }"
-//  if let dict = runGraphqlQuery (query, inProxy, inLogTextView) {
-//    Swift.print ("\(dict)")
-//  }
   let libraryFileDictionary : [String : LibraryRepositoryFileDescriptor]
   inLogTextView.appendMessageString ("Phase 2: get repository file list\n", color: NSColor.purple)
   if let repositoryCommitSHA = getRepositoryCommitSHA () {
