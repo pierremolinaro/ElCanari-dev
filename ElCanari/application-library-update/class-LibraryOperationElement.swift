@@ -88,6 +88,8 @@ class LibraryOperationElement : EBObject {
 
   @objc dynamic var relativePath : String { return self.mRelativePath }
 
+  //····················································································································
+
   @objc dynamic var actionName : String {
     switch self.mOperation {
     case .download :
@@ -111,7 +113,7 @@ class LibraryOperationElement : EBObject {
 
   func beginAction (_ inController : CanariLibraryUpdateController) {
     if inController.shouldCancel {
-      inController.elementActionDidEnd (self, 0)
+      DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
     }else{
       switch mOperation {
       case .download, .update :
@@ -168,9 +170,9 @@ class LibraryOperationElement : EBObject {
         }
       case .delete :
         self.mOperation = .deleteRegistered
-        inController.elementActionDidEnd (self, 0)
+        DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
       case .downloadError, .downloaded, .downloading, .deleteRegistered :
-        inController.elementActionDidEnd (self, 0)
+        DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
       }
     }
   }

@@ -60,15 +60,15 @@ class CanariLibraryUpdateController : EBObject {
     if let tableView = g_Preferences?.mTableViewInLibraryUpdateWindow {
       tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "name"))?.bind (
         NSBindingName.value,
-        to:self.mArrayController,
-        withKeyPath:"arrangedObjects.relativePath",
-        options:nil
+        to: self.mArrayController,
+        withKeyPath: "arrangedObjects.relativePath",
+        options: nil
       )
       tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "action"))?.bind (
         NSBindingName.value,
-        to:self.mArrayController,
-        withKeyPath:"arrangedObjects.actionName",
-        options:nil
+        to: self.mArrayController,
+        withKeyPath: "arrangedObjects.actionName",
+        options: nil
       )
       self.mArrayController.content = self.mCurrentActionArray
     }
@@ -94,13 +94,16 @@ class CanariLibraryUpdateController : EBObject {
       self.mCurrentParallelActionCount += 1
       self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
     }
-  }
+ }
 
   //····················································································································
-  //   elementActionDidEnd
+  //   elementActionDidEnd (runs in main thread)
   //····················································································································
 
   func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
+    if !Thread.isMainThread {
+      Swift.print ("Not in main thread!")
+    }
     if (self.mErrorCode == 0) && (inErrorCode != 0) {
        mErrorCode = inErrorCode
     }
@@ -109,7 +112,7 @@ class CanariLibraryUpdateController : EBObject {
   //--- Remove corresponding entry in table view
     if let idx = self.mCurrentActionArray.index (of: inElement) {
       self.mCurrentActionArray.remove (at: idx)
-      self.mArrayController.content = self.mCurrentActionArray
+      DispatchQueue.main.async { self.mArrayController.content = self.mCurrentActionArray }
     }
   //--- Update progress indicator
     self.updateProgressIndicator ()
@@ -125,15 +128,20 @@ class CanariLibraryUpdateController : EBObject {
     if self.mNextActionIndex < self.mActionArray.count {
       self.mNextActionIndex += 1
       self.mCurrentParallelActionCount += 1
-      self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
+      let action = self.mActionArray [self.mNextActionIndex - 1]
+      DispatchQueue.main.async { action.beginAction (self) }
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
       DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView) }
+    //  commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView)
     }
   }
 
   //····················································································································
 
   func updateProgressIndicator () {
+    if !Thread.isMainThread {
+      Swift.print ("Not in main thread!")
+    }
     var progressCurrentValue = 0.0
     for action in self.mActionArray {
       progressCurrentValue += action.currentIndicatorValue

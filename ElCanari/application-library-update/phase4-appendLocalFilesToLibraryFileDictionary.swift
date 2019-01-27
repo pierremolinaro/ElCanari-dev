@@ -10,6 +10,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let REPOSITORY_DESCRIPTION_PLIST_FILE_NAME = "repository-description.plist"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : NSTextView,
                                                      _ ioPossibleAlert : inout NSAlert?) -> Set <String> {
   var libraryFileDictionary = Set <String> ()
@@ -21,7 +25,7 @@ func phase4_appendLocalFilesToLibraryFileDictionary (_ inLogTextView : NSTextVie
       let currentLibraryContents = try fm.subpathsOfDirectory (atPath: systemLibraryPath ())
       for filePath in currentLibraryContents {
       //--- Eliminate ".DS_store" and description plist file
-        var enter = (filePath.lastPathComponent != ".DS_Store") && (filePath != repositoryDescriptionFile)
+        var enter = (filePath.lastPathComponent != ".DS_Store") && (filePath != REPOSITORY_DESCRIPTION_PLIST_FILE_NAME)
       //--- Eliminate directories
         if enter {
           let fullPath = systemLibraryPath () + "/" + filePath

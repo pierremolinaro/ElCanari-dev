@@ -2300,7 +2300,7 @@ Gw
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="6230">
+                    <button verticalHuggingPriority="750" id="6230" customClass="EBButton">
                         <rect key="frame" x="572" y="12" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6234">
@@ -2333,7 +2333,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="BPs-Uj-CKs">
                             <rect key="frame" x="1" y="0.0" width="667" height="282"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="PMPerformLibraryUpdateTableViewInfo" headerView="6242" id="6241" customClass="EBTableView">
                                     <rect key="frame" x="0.0" y="0.0" width="667" height="265"/>
@@ -2392,7 +2392,7 @@ Gw
                     </progressIndicator>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="453" y="-15.5"/>
+            <point key="canvasLocation" x="1088" y="-26"/>
         </window>
         <customObject id="lAs-GB-mIJ" userLabel="Preferences" customClass="Preferences">
             <connections>
@@ -2420,6 +2420,7 @@ Gw
                 <outlet property="mBoardWarningBackgroundColorWell" destination="5638" id="YnT-rA-F85"/>
                 <outlet property="mBottomSidePadColorDorDeviveColorWell" destination="5541" id="8o6-Y9-4SS"/>
                 <outlet property="mBottomSidePadColorWell" destination="5487" id="eor-yR-BLW"/>
+                <outlet property="mCancelButtonInLibraryUpdateWindow" destination="6230" id="Xlr-bm-VVS"/>
                 <outlet property="mCheckForLibraryUpdatesButton" destination="5761" id="1kO-n6-5DQ"/>
                 <outlet property="mCheckForSystemLibraryAtStartUpSwitch" destination="6165" id="GQd-oh-fr6"/>
                 <outlet property="mCheckLibraryAction" destination="5758" id="nj8-9B-iFa"/>

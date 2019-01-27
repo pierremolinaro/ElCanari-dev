@@ -95,7 +95,7 @@ private let SHA_OF_LIBRARY_REPOSITORY_FILE_KEY = "library-repository-file-sha"
 func libraryDescriptionFileIsValid () -> Bool {
   let possibleLibraryDescriptionFileSHA = UserDefaults ().string (forKey: SHA_OF_LIBRARY_REPOSITORY_FILE_KEY)
   if let libraryDescriptionFileSHA = possibleLibraryDescriptionFileSHA {
-    if let actualSHA = computeFileSHA (repositoryDescriptionFile) {
+    if let actualSHA = computeFileSHA (REPOSITORY_DESCRIPTION_PLIST_FILE_NAME) {
       return actualSHA == libraryDescriptionFileSHA
     }else{
       return false
@@ -110,7 +110,7 @@ func libraryDescriptionFileContents () -> [[String : Any]]? {
   var result : [[String : Any]]? = nil
   let possibleLibraryDescriptionFileSHA = UserDefaults ().string (forKey: SHA_OF_LIBRARY_REPOSITORY_FILE_KEY)
   if let libraryDescriptionFileSHA = possibleLibraryDescriptionFileSHA {
-    let absoluteFilePath = systemLibraryPath () + "/" + repositoryDescriptionFile
+    let absoluteFilePath = systemLibraryPath () + "/" + REPOSITORY_DESCRIPTION_PLIST_FILE_NAME
     do{
       let fm = FileManager ()
       if let data = fm.contents(atPath: absoluteFilePath), libraryDescriptionFileSHA == sha1 (data) {

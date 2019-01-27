@@ -40,22 +40,22 @@ import Cocoa
   //····················································································································
 
   override func awakeFromNib () {
-    if let updater = mSparkleUpdater {
-      mUpdateCheckbox?.bind (
-        NSBindingName(rawValue: "value"),
-        to:updater,
+    if let updater = self.mSparkleUpdater {
+      self.mUpdateCheckbox?.bind (
+        NSBindingName.value,
+        to: updater,
         withKeyPath: "automaticallyChecksForUpdates",
         options: nil
       )
-      mUpdateIntervalPopUpButton?.bind (
-        NSBindingName(rawValue: "selectedTag"),
-        to:updater,
+      self.mUpdateIntervalPopUpButton?.bind (
+        NSBindingName.selectedTag,
+        to: updater,
         withKeyPath: "updateCheckInterval",
         options: nil
       )
-      mUpdateIntervalPopUpButton?.bind (
-        NSBindingName(rawValue: "enabled"),
-        to:updater,
+      self.mUpdateIntervalPopUpButton?.bind (
+        NSBindingName.enabled,
+        to: updater,
         withKeyPath: "automaticallyChecksForUpdates",
         options: nil
       )
@@ -69,7 +69,7 @@ import Cocoa
           if let plist = try PropertyListSerialization.propertyList (from:data, format:nil) as? NSDictionary {
             if let sparkleVersionString = plist ["CFBundleShortVersionString"] as? String {
               // NSLog ("\(sparkleVersionString)")
-              mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
+              self.mSparkleVersionTextField?.stringValue = "Using Sparkle " + sparkleVersionString
             }
           }
         }catch let error {

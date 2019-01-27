@@ -195,14 +195,14 @@ private var gDebugObject : EBAllocationDebug? = nil
     mDisplayFilter = df.integer (forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   //--- Enable / disable object allocation debug
     mEnableObjectAllocationDebug?.bind (
-      NSBindingName(rawValue: NSBindingName.value.rawValue),
+      NSBindingName.value,
       to: NSUserDefaultsController.shared ,
       withKeyPath: "values." + prefsEnableObjectAllocationDebugString,
       options: nil
     )
     if gEnableObjectAllocationDebug {
       mReuseTableViewCellsButton?.bind (
-        NSBindingName(rawValue: NSBindingName.value.rawValue),
+        NSBindingName.value,
         to: NSUserDefaultsController.shared ,
         withKeyPath: "values." + prefsReuseTableViewCells,
         options: nil

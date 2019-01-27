@@ -54,7 +54,7 @@ func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : C
     dictionaryArray.append (dictionary)
   }
   let data : Data = try PropertyListSerialization.data (fromPropertyList: dictionaryArray, format: .binary, options: 0)
-  let f = systemLibraryPath () + "/" + repositoryDescriptionFile
+  let f = systemLibraryPath () + "/" + REPOSITORY_DESCRIPTION_PLIST_FILE_NAME
   try data.write (to: URL (fileURLWithPath: f))
   storeRepositoryFileSHA (sha1 (data))
 }

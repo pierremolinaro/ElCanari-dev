@@ -22,6 +22,7 @@ prefs {
   outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
   outlet EBTableView mTableViewInLibraryUpdateWindow ;
   outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
+  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
   outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
 }
 

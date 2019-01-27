@@ -34,6 +34,9 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
     for action in inLibraryOperations {
       progressMaxValue += action.maxIndicatorValue
     }
+  //--- Enable buttons
+    g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = true
+    g_Preferences?.mCancelButtonInLibraryUpdateWindow?.isEnabled = true
   //--- Configure progress indicator in library update window
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.minValue = 0.0
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.maxValue = progressMaxValue
@@ -50,6 +53,7 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func startLibraryUpdate () {
+  g_Preferences?.mUpDateButtonInLibraryUpdateWindow?.isEnabled = false
 //--- Launch parallel downloads
   for _ in 1...parallelDownloadCount {
     gCanariLibraryUpdateController?.launchElementDownload ()
@@ -59,6 +63,7 @@ func startLibraryUpdate () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func cancelLibraryUpdate () {
+  g_Preferences?.mCancelButtonInLibraryUpdateWindow?.window?.orderOut (nil)
 //--- Cancel current downloadings
   gCanariLibraryUpdateController?.cancel ()
   startLibraryUpdate ()
