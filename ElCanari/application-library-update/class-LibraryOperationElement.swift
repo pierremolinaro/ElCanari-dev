@@ -34,6 +34,7 @@ class LibraryOperationElement : EBObject {
 
   let mRelativePath : String
   let mSizeInRepository : Int
+  let mBlobSHA : String
   let mLogTextView : NSTextView
   let mProxy : [String]
 
@@ -50,12 +51,14 @@ class LibraryOperationElement : EBObject {
 
   init (relativePath inRelativePath : String,
         sizeInRepository inSizeInRepository : Int,
+        blobSHA inBlobSHA : String,
         operation inOperation : LibraryOperation,
         logTextView inLogTextView: NSTextView,
         proxy inProxy: [String]) {
     mRelativePath = inRelativePath
     mOperation = inOperation
     mSizeInRepository = inSizeInRepository
+    mBlobSHA = inBlobSHA
     mLogTextView = inLogTextView
     mProxy = inProxy
     super.init ()

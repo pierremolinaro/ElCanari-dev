@@ -88,12 +88,10 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
     inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
     inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
-//    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &needsToDownloadRepositoryFileList, &possibleAlert)
     queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
   }else{
     inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
     queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
-//    needsToDownloadRepositoryFileList = true
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
@@ -119,10 +117,12 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   }
 //-------- ⑤ Build library operations
   let libraryOperations : [LibraryOperationElement]
+  let newLocalDescription : [String : CanariLibraryFileDescriptor]
   if possibleAlert == nil {
-    libraryOperations = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+    (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
   }else{
     libraryOperations = [LibraryOperationElement] ()
+    newLocalDescription = [String : CanariLibraryFileDescriptor] ()
   }
 //-------- ⑥ Order out "Check for update" window
   inLogTextView.appendMessageString ("Phase 6: library is up to date ?\n", color: NSColor.purple)
@@ -144,7 +144,7 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   }
 //-------- ⑦ If ok and there are update operations, perform library update
   if ok && (libraryOperations.count != 0) {
-    phase7_performLibraryOperations (libraryOperations, libraryDescriptorFileContents, inLogTextView)
+    phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
   }else{
     if !ok {
       inLogTextView.appendWarningString ("  Not realized, due to previous errors\n")

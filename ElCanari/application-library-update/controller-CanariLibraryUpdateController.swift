@@ -12,39 +12,27 @@ import Cocoa
 
 class CanariLibraryUpdateController : EBObject {
 
-  let mArrayController = NSArrayController ()
+  private let mArrayController = NSArrayController ()
 
-  var mCurrentActionArray : [LibraryOperationElement]
-  var mCurrentParallelActionCount = 0
-  var mNextActionIndex = 0 // Index of mActionArray
+  private var mCurrentActionArray : [LibraryOperationElement]
+  private var mCurrentParallelActionCount = 0
+  private var mNextActionIndex = 0 // Index of mActionArray
 
-  let mActionArray : [LibraryOperationElement]
-  let mRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
-  let mLogTextView : NSTextView
-
-  var logTextView : NSTextView { return self.mLogTextView }
+  private let mActionArray : [LibraryOperationElement]
+  private let mNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor]
+  private let mLogTextView : NSTextView
 
   //····················································································································
   //   Init
   //····················································································································
 
   init (_ inActionArray : [LibraryOperationElement],
-        _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+        _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
         _ inLogTextView : NSTextView) {
     mCurrentActionArray = inActionArray
     mActionArray = inActionArray
-    mRepositoryFileDictionary = inRepositoryFileDictionary
+    mNewRepositoryFileDictionary = inNewLocalDescriptionDictionary
     mLogTextView = inLogTextView
-    super.init ()
-  }
-
-  //····················································································································
-
-  override init () {
-    mCurrentActionArray = []
-    mActionArray = []
-    mRepositoryFileDictionary = [:]
-    mLogTextView = NSTextView ()
     super.init ()
   }
 
@@ -139,7 +127,7 @@ class CanariLibraryUpdateController : EBObject {
       self.mCurrentParallelActionCount += 1
       self.mActionArray [self.mNextActionIndex - 1].beginAction (self)
     }else if self.mCurrentParallelActionCount == 0 { // Last download did end
-      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mRepositoryFileDictionary, self.mLogTextView) }
+      DispatchQueue.main.async { commitAllActions (self.mActionArray, self.mNewRepositoryFileDictionary, self.mLogTextView) }
     }
   }
 

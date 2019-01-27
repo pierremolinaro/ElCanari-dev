@@ -29,7 +29,10 @@ private let personalAccessToken = "6d93d94df92bdcc2cd8addb97c1d49ab668c98d8"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func runGraphqlQuery (_ inString : String, _ inProxy : [String], _ inLogTextView : NSTextView) -> [String : Any]? {
+func runGraphqlQuery (_ inString : String,
+                      _ inProxy : [String],
+                      _ ioPossibleAlert : inout NSAlert?,
+                      _ inLogTextView : NSTextView) -> [String : Any]? {
   var result : [String : Any]? = nil
   let queryString = "{\n\"query\":\"query{repository(owner:pierremolinaro, name:ElCanariLibrary){\(inString)}}\"}"
   let arguments = [
@@ -41,13 +44,12 @@ func runGraphqlQuery (_ inString : String, _ inProxy : [String], _ inLogTextView
     "https://api.github.com/graphql"
   ] + inProxy
   let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
-  var possibleAlert : NSAlert? = nil
   switch responseCode {
   case .error (let errorCode) :
     inLogTextView.appendErrorString ("  Result code means 'Cannot connect to the server'\n")
-    possibleAlert = NSAlert ()
-    possibleAlert?.messageText = "Cannot connect to the server"
-    possibleAlert?.informativeText = (errorCode == 6)
+    ioPossibleAlert = NSAlert ()
+    ioPossibleAlert?.messageText = "Cannot connect to the server"
+    ioPossibleAlert?.informativeText = (errorCode == 6)
       ? "No network connection"
       : "Server connection error"
   case .ok (let responseData) :
@@ -60,21 +62,17 @@ func runGraphqlQuery (_ inString : String, _ inProxy : [String], _ inLogTextView
           result = responseDictionary
         }else{
           inLogTextView.appendErrorString ("  Invalid server response: dictionary has no 'data' field\n")
-          possibleAlert = NSAlert ()
-          possibleAlert?.messageText = "Invalid server response"
+          ioPossibleAlert = NSAlert ()
+          ioPossibleAlert?.messageText = "Invalid server response"
         }
       }else{
         inLogTextView.appendErrorString ("  Invalid server response: data is not a dictionary\n")
-        possibleAlert = NSAlert ()
-        possibleAlert?.messageText = "Invalid server response"
+        ioPossibleAlert = NSAlert ()
+        ioPossibleAlert?.messageText = "Invalid server response"
       }
     }catch let error {
-      possibleAlert = NSAlert (error: error)
+      ioPossibleAlert = NSAlert (error: error)
     }
-  }
-//--- Display alert ?
-  if let alert = possibleAlert {
-    _ = alert.runModal ()
   }
 //---
   return result

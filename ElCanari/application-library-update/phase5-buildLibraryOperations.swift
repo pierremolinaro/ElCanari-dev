@@ -14,7 +14,8 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
                                     _ inLocalFileSet : Set <String>,
                                     _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
                                     _ inLogTextView : NSTextView,
-                                    _ inProxy : [String]) -> [LibraryOperationElement] {
+                                    _ inProxy : [String])
+        -> ([LibraryOperationElement], [String : CanariLibraryFileDescriptor] ) {
   inLogTextView.appendMessageString ("Phase 5: build operation list\n", color: NSColor.purple)
   inLogTextView.appendMessageString ("  Repository File Dictionary has \(inRepositoryFileDictionary.count) entries\n")
   inLogTextView.appendMessageString ("  Local files: \(inLocalFileSet.count)\n")
@@ -25,7 +26,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
   allPaths.formUnion (inLibraryFileDictionary.keys)
 //--- Iterate over paths
   var operations = [LibraryOperationElement] ()
-//  var newRepositoryFileDictionary = [String : LibraryRepositoryFileDescriptor] ()
+  var newRepositoryFileDictionary = [String : CanariLibraryFileDescriptor] ()
   for path in allPaths {
     let possibleRepositoryDescriptor = inRepositoryFileDictionary [path]
     let localFileExists = inLocalFileSet.contains (path)
@@ -34,7 +35,18 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       let element = LibraryOperationElement (
         relativePath: path,
         sizeInRepository: repositoryDescriptor.mSizeInRepository,
+        blobSHA: repositoryDescriptor.mBlobSHA,
         operation: .download,
+        logTextView: inLogTextView,
+        proxy: inProxy
+      )
+      operations.append (element)
+    }else if let repositoryDescriptor = possibleRepositoryDescriptor, possibleLocalDescription == nil { // Update
+      let element = LibraryOperationElement (
+        relativePath: path,
+        sizeInRepository: repositoryDescriptor.mSizeInRepository,
+        blobSHA: repositoryDescriptor.mBlobSHA,
+        operation: .update,
         logTextView: inLogTextView,
         proxy: inProxy
       )
@@ -43,17 +55,34 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
      let element = LibraryOperationElement (
         relativePath: path,
         sizeInRepository: 0,
+        blobSHA: "",
         operation: .delete,
         logTextView: inLogTextView,
         proxy: inProxy
       )
       operations.append (element)
-    }else if let repositoryDescriptor = possibleRepositoryDescriptor, let localDescription = possibleLocalDescription { // Download
-      let update = repositoryDescriptor.mSizeInRepository != localDescription.mFileSize
-      if update {
+    }else if let repositoryDescriptor = possibleRepositoryDescriptor, let localDescription = possibleLocalDescription { // Update ?
+      var upToDate = repositoryDescriptor.mSizeInRepository == localDescription.mFileSize
+      if upToDate {
+        upToDate = repositoryDescriptor.mBlobSHA == localDescription.mBlobSHA
+      }
+      if upToDate {
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: systemLibraryPath () + "/" + path)) {
+           upToDate = data.count == localDescription.mFileSize
+           if upToDate {
+             upToDate = sha1 (data) == localDescription.mFileContentSHA
+           }
+        }else{
+           upToDate = false
+        }
+      }
+      if upToDate {
+        newRepositoryFileDictionary [path] = localDescription
+      }else{
         let element = LibraryOperationElement (
           relativePath: path,
           sizeInRepository: repositoryDescriptor.mSizeInRepository,
+          blobSHA: repositoryDescriptor.mBlobSHA,
           operation: .update,
           logTextView: inLogTextView,
           proxy: inProxy
@@ -62,39 +91,6 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       }
     }
   }
-
-//  for descriptor in inLibraryFileDictionary.values {
-//    // inLogTextView.appendMessageString ("    \(descriptor.mRelativePath): \(descriptor.mRepositorySHA) \(descriptor.mLocalSHA)\n")
-//    if descriptor.mRepositorySHA == "" {
-//     inLogTextView.appendMessageString ("    Delete \(descriptor.mRelativePath)\n")
-//     let element = LibraryOperationElement (
-//        relativePath: descriptor.mRelativePath,
-//        sizeInRepository: 0,
-//        operation: .delete,
-//        logTextView: inLogTextView,
-//        proxy: inProxy
-//      )
-//      outLibraryOperations.append (element)
-//    }else if (descriptor.mRepositorySHA != "") && (descriptor.mLocalSHA == "?") {
-//      let element = LibraryOperationElement (
-//        relativePath: descriptor.mRelativePath,
-//        sizeInRepository: descriptor.mSizeInRepository,
-//        operation: .download,
-//        logTextView: inLogTextView,
-//        proxy: inProxy
-//      )
-//      outLibraryOperations.append (element)
-//    }else if (descriptor.mRepositorySHA != descriptor.mLocalSHA) {
-//      let element = LibraryOperationElement (
-//        relativePath: descriptor.mRelativePath,
-//        sizeInRepository: descriptor.mSizeInRepository,
-//        operation: .update,
-//        logTextView: inLogTextView,
-//        proxy: inProxy
-//      )
-//      outLibraryOperations.append (element)
-//    }
-//  }
   if operations.count == 0 {
     inLogTextView.appendMessageString ("  No operation\n")
   }else{
@@ -103,7 +99,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       inLogTextView.appendMessageString ("    [\(op.mOperation) — \(op.mRelativePath) — \(op.mSizeInRepository)]\n")
     }
   }
-  return operations
+  return (operations, newRepositoryFileDictionary)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

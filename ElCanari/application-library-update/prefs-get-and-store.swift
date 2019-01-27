@@ -115,7 +115,7 @@ func libraryDescriptionFileContents () -> [[String : Any]]? {
       let fm = FileManager ()
       if let data = fm.contents(atPath: absoluteFilePath), libraryDescriptionFileSHA == sha1 (data) {
         do{
-          if let propertyList = try PropertyListSerialization.propertyList (from: data, format: nil) as? [[String : String]] {
+          if let propertyList = try PropertyListSerialization.propertyList (from: data, format: nil) as? [[String : Any]] {
             result = propertyList
           }
         }catch _ {

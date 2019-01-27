@@ -20,7 +20,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
 //-------- ⓪ Get system proxy
   inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
   let proxy = getSystemProxy (inLogTextView)
-//-------- ① We start by checking if a repository did change using etag
+//-------- ① We start by getting the list of all commits
   inLogTextView.appendMessageString ("Phase 1: asking for commit list\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil // If not nil, smoething goes wrong
   var revisions = [LibraryRevisionDescriptor] ()
@@ -56,10 +56,12 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
   }
 //-------- ⑤ Build library operations
   let libraryOperations : [LibraryOperationElement]
+  let newLocalDescription : [String : CanariLibraryFileDescriptor]
   if performUpdate && (possibleAlert == nil) {
-    libraryOperations = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+    (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
   }else{
     libraryOperations = [LibraryOperationElement] ()
+    newLocalDescription = [String : CanariLibraryFileDescriptor] ()
   }
 //-------- ⑥ is the library up to date?
   if performUpdate && (possibleAlert == nil) {
@@ -73,7 +75,7 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
   }
 //-------- ⑦ If ok and there are update operations, perform library update
   if performUpdate && (possibleAlert == nil) && (libraryOperations.count != 0) {
-    phase7_performLibraryOperations (libraryOperations, libraryDescriptorFileContents, inLogTextView)
+    phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
   }else{
     if let alert = possibleAlert {
       _ = alert.runModal ()
@@ -89,7 +91,7 @@ private func getRepositoryCommitList (_ ioRevisions : inout [LibraryRevisionDesc
                                       _ inProxy : [String],
                                       _ inLogTextView : NSTextView) {
   let query = "object(expression:master) { ... on Commit { history { edges { node { committedDate message oid } } } } }"
-  if let dict = runGraphqlQuery (query, inProxy, inLogTextView) {
+  if let dict = runGraphqlQuery (query, inProxy, &ioPossibleAlert, inLogTextView) {
     var ok = true
     if let repository = dict ["repository"] as? [String : Any],
        let object = repository ["object"] as? [String : Any],
@@ -114,9 +116,6 @@ private func getRepositoryCommitList (_ ioRevisions : inout [LibraryRevisionDesc
           ok = false
         }
       }
-//      if ok {
-//        displayRepositoryCommitList (ioRevisions, inProxy, inLogTextView)
-//      }
     }else{
       ok = false
     }

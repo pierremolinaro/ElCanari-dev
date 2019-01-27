@@ -14,12 +14,12 @@ private let parallelDownloadCount = 4
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private var gCanariLibraryUpdateController = CanariLibraryUpdateController ()
+private var gCanariLibraryUpdateController : CanariLibraryUpdateController? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationElement],
-                                      _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+                                      _ inNewLocalDescriptionDictionary : [String : CanariLibraryFileDescriptor],
                                       _ inLogTextView : NSTextView) {
   inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
 //--- Perform library update in main thread
@@ -40,8 +40,8 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.doubleValue = 0.0
     g_Preferences?.mProgressIndicatorInLibraryUpdateWindow?.isIndeterminate = false
   //--- Configure table view in library update window
-    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inRepositoryFileDictionary, inLogTextView)
-    gCanariLibraryUpdateController.bind ()
+    gCanariLibraryUpdateController = CanariLibraryUpdateController (inLibraryOperations, inNewLocalDescriptionDictionary, inLogTextView)
+    gCanariLibraryUpdateController?.bind ()
   //--- Show library update window
     g_Preferences?.mLibraryUpdateWindow?.makeKeyAndOrderFront (nil)
   }
@@ -52,7 +52,7 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
 func startLibraryUpdate () {
 //--- Launch parallel downloads
   for _ in 1...parallelDownloadCount {
-    gCanariLibraryUpdateController.launchElementDownload ()
+    gCanariLibraryUpdateController?.launchElementDownload ()
   }
 }
 
@@ -60,7 +60,7 @@ func startLibraryUpdate () {
 
 func cancelLibraryUpdate () {
 //--- Cancel current downloadings
-  gCanariLibraryUpdateController.cancel ()
+  gCanariLibraryUpdateController?.cancel ()
   startLibraryUpdate ()
 }
 
@@ -69,14 +69,14 @@ func cancelLibraryUpdate () {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func commitAllActions (_ inActionArray : [LibraryOperationElement],
-                       _ inRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
+                       _ inNewRepositoryFileDictionary : [String : CanariLibraryFileDescriptor],
                        _ inLogTextView : NSTextView) {
 //--- Update UI
-  gCanariLibraryUpdateController.unbind ()
-  let logTextView = gCanariLibraryUpdateController.logTextView
-  gCanariLibraryUpdateController = CanariLibraryUpdateController ()
+  gCanariLibraryUpdateController?.unbind ()
+//  let logTextView = gCanariLibraryUpdateController?.logTextView
+  gCanariLibraryUpdateController = nil
 //--- Commit change only if all actions has been successdully completed
-  var repositoryFileDictionary = inRepositoryFileDictionary
+  var newRepositoryFileDictionary = inNewRepositoryFileDictionary
   var performCommit = true
   for action in inActionArray {
     switch action.mOperation {
@@ -85,9 +85,12 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
     case .deleteRegistered :
       ()
     case .downloaded (let data) :
-      var descriptor = repositoryFileDictionary [action.mRelativePath]!
-      descriptor.mFileContentSHA = sha1 (data)
-      repositoryFileDictionary [action.mRelativePath] = descriptor
+      let newDescriptor = CanariLibraryFileDescriptor (
+        fileSize: data.count,
+        blobSHA: action.mBlobSHA,
+        fileContentSHA: sha1 (data)
+      )
+      newRepositoryFileDictionary [action.mRelativePath] = newDescriptor
     }
   }
 //--- Perform commit
@@ -101,9 +104,9 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
           try action.commit ()
         }
       //--- Delete orphean directories
-        try deleteOrphanDirectories (logTextView)
+        try deleteOrphanDirectories (inLogTextView)
       //--- Write library description plist file
-        try writeLibraryDescriptionPlistFile (repositoryFileDictionary, inLogTextView)
+        try writeLibraryDescriptionPlistFile (newRepositoryFileDictionary, inLogTextView)
       //--- Completed!
         let alert = NSAlert ()
         alert.messageText = "Update completed, the library is up to date"
@@ -162,31 +165,6 @@ private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
     i -= 1
   }
   enableItemsAfterCompletion ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-private func writeLibraryDescriptionPlistFile (
-        _ inRepositoryFileDictionary: [String : CanariLibraryFileDescriptor],
-        _ inLogTextView : NSTextView) throws {
-  inLogTextView.appendMessageString ("  Write Library Description Plist File [path — repositorySHA — size]\n")
-  for (path, value) in inRepositoryFileDictionary {
-    inLogTextView.appendMessageString ("    [\(path) — \(value.mFileContentSHA) — \(value.mFileSize)]\n")
-  }
-//--- Write plist file
-  var dictionaryArray = [[String : String]] ()
-  for (path, descriptor) in inRepositoryFileDictionary {
-    let dictionary : [String : String] = [
-      "path" : path,
-      "size" : "\(descriptor.mFileSize)",
-      "sha" : descriptor.mFileContentSHA
-    ]
-    dictionaryArray.append (dictionary)
-  }
-  let data : Data = try PropertyListSerialization.data (fromPropertyList: dictionaryArray, format: .binary, options: 0)
-  let f = systemLibraryPath () + "/" + repositoryDescriptionFile
-  try data.write (to: URL (fileURLWithPath: f))
-  storeRepositoryFileSHA (sha1 (data))
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

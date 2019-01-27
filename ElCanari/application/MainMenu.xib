@@ -2520,9 +2520,9 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="Ojy-ZP-Pgt">
                             <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3UV-MD-e0D">
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" selectionGranularity="word" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" textCompletion="NO" id="3UV-MD-e0D">
                                     <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
