@@ -2319,6 +2319,20 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.x_property.mSetterDelegate = nil
+          managedObject.y_property.mSetterDelegate = nil
+          managedObject.width_property.mSetterDelegate = nil
+          managedObject.height_property.mSetterDelegate = nil
+          managedObject.xUnit_property.mSetterDelegate = nil
+          managedObject.yUnit_property.mSetterDelegate = nil
+          managedObject.widthUnit_property.mSetterDelegate = nil
+          managedObject.heightUnit_property.mSetterDelegate = nil
+          managedObject.zoneName_property.mSetterDelegate = nil
+          managedObject.xName_property.mSetterDelegate = nil
+          managedObject.yName_property.mSetterDelegate = nil
+          managedObject.xNameUnit_property.mSetterDelegate = nil
+          managedObject.yNameUnit_property.mSetterDelegate = nil
+          managedObject.zoneNumbering_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
@@ -2343,6 +2357,20 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
         for managedObject : PackageZone in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.widthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.heightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.zoneName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yNameUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.zoneNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
@@ -2365,17 +2393,23 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

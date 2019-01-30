@@ -3306,6 +3306,26 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.selectedPageIndex_property.mSetterDelegate = nil
+          managedObject.zoom_property.mSetterDelegate = nil
+          managedObject.automaticBoardSize_property.mSetterDelegate = nil
+          managedObject.boardManualWidth_property.mSetterDelegate = nil
+          managedObject.boardManualHeight_property.mSetterDelegate = nil
+          managedObject.boardWidthUnit_property.mSetterDelegate = nil
+          managedObject.boardHeightUnit_property.mSetterDelegate = nil
+          managedObject.overlapingArrangment_property.mSetterDelegate = nil
+          managedObject.selectedBoardXUnit_property.mSetterDelegate = nil
+          managedObject.selectedBoardYUnit_property.mSetterDelegate = nil
+          managedObject.boardLimitWidth_property.mSetterDelegate = nil
+          managedObject.boardLimitWidthUnit_property.mSetterDelegate = nil
+          managedObject.arrowMagnitude_property.mSetterDelegate = nil
+          managedObject.arrowMagnitudeUnit_property.mSetterDelegate = nil
+          managedObject.shiftArrowMagnitude_property.mSetterDelegate = nil
+          managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = nil
+          managedObject.artworkName_property.mSetterDelegate = nil
+          managedObject.generateGerberProductFile_property.mSetterDelegate = nil
+          managedObject.generatePDFProductFile_property.mSetterDelegate = nil
+          managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
@@ -3338,6 +3358,26 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         for managedObject : MergerRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.automaticBoardSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardManualWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardManualHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.overlapingArrangment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.selectedBoardXUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.selectedBoardYUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.boardLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.arrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.arrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.shiftArrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.generateGerberProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.generatePDFProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
@@ -3368,17 +3408,23 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

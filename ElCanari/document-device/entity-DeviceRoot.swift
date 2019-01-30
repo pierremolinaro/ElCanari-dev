@@ -879,6 +879,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.selectedPageIndex_property.mSetterDelegate = nil
+          managedObject.title_property.mSetterDelegate = nil
+          managedObject.prefix_property.mSetterDelegate = nil
+          managedObject.comments_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
@@ -890,6 +894,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         for managedObject : DeviceRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.title_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.prefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
@@ -899,17 +907,23 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

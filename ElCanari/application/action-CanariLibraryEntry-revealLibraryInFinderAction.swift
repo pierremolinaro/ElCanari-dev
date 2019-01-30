@@ -14,8 +14,12 @@ import Cocoa
 extension CanariLibraryEntry {
   @objc func revealLibraryInFinderAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let ws = NSWorkspace.shared
-    ws.open (URL (fileURLWithPath:self.mPath))
+    if NSApp.currentEvent?.modifierFlags.contains (.option) ?? false {
+      self.showUploadDialog (self.mPath)
+    }else{
+      let ws = NSWorkspace.shared
+      ws.open (URL (fileURLWithPath:self.mPath))
+    }
 //--- END OF USER ZONE 2
   }
 }

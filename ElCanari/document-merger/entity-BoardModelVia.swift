@@ -636,6 +636,9 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.y_property.mSetterDelegate = nil
+          managedObject.padDiameter_property.mSetterDelegate = nil
+          managedObject.x_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
@@ -645,6 +648,9 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
         for managedObject : BoardModelVia in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.padDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
@@ -652,17 +658,23 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

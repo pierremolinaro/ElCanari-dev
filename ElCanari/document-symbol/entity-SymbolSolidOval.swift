@@ -1077,6 +1077,10 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.y_property.mSetterDelegate = nil
+          managedObject.width_property.mSetterDelegate = nil
+          managedObject.height_property.mSetterDelegate = nil
+          managedObject.x_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
@@ -1090,6 +1094,10 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
         for managedObject : SymbolSolidOval in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
@@ -1101,17 +1109,23 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

@@ -1506,6 +1506,14 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.y1_property.mSetterDelegate = nil
+          managedObject.x2_property.mSetterDelegate = nil
+          managedObject.y2_property.mSetterDelegate = nil
+          managedObject.x1Unit_property.mSetterDelegate = nil
+          managedObject.y1Unit_property.mSetterDelegate = nil
+          managedObject.x2Unit_property.mSetterDelegate = nil
+          managedObject.y2Unit_property.mSetterDelegate = nil
+          managedObject.x1_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
@@ -1523,6 +1531,14 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
         for managedObject : PackageGuide in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
@@ -1538,17 +1554,23 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

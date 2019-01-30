@@ -2811,6 +2811,29 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.drawBoardLimits_property.mSetterDelegate = nil
+          managedObject.drawInternalBoardLimits_property.mSetterDelegate = nil
+          managedObject.drawComponentNamesTopSide_property.mSetterDelegate = nil
+          managedObject.drawComponentNamesBottomSide_property.mSetterDelegate = nil
+          managedObject.drawComponentValuesTopSide_property.mSetterDelegate = nil
+          managedObject.drawComponentValuesBottomSide_property.mSetterDelegate = nil
+          managedObject.drawPackageLegendTopSide_property.mSetterDelegate = nil
+          managedObject.drawPackageLegendBottomSide_property.mSetterDelegate = nil
+          managedObject.drawPadHolesInPDF_property.mSetterDelegate = nil
+          managedObject.drawPadsTopSide_property.mSetterDelegate = nil
+          managedObject.drawPadsBottomSide_property.mSetterDelegate = nil
+          managedObject.drawTextsLayoutTopSide_property.mSetterDelegate = nil
+          managedObject.drawTextsLayoutBottomSide_property.mSetterDelegate = nil
+          managedObject.drawTextsLegendTopSide_property.mSetterDelegate = nil
+          managedObject.drawTextsLegendBottomSide_property.mSetterDelegate = nil
+          managedObject.drawTracksTopSide_property.mSetterDelegate = nil
+          managedObject.drawTracksBottomSide_property.mSetterDelegate = nil
+          managedObject.drawVias_property.mSetterDelegate = nil
+          managedObject.fileExtension_property.mSetterDelegate = nil
+          managedObject.horizontalMirror_property.mSetterDelegate = nil
+          managedObject.name_property.mSetterDelegate = nil
+          managedObject.measurementUnitForPadHoleInPDF_property.mSetterDelegate = nil
+          managedObject.padHoleDiameterInPDF_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_drawBoardLimits_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_drawInternalBoardLimits_fromElementsOfSet (removedObjectSet)
@@ -2840,6 +2863,29 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         for managedObject : ArtworkFileGenerationParameters in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.drawBoardLimits_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawInternalBoardLimits_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawComponentNamesTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawComponentNamesBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawComponentValuesTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawComponentValuesBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawPackageLegendTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawPackageLegendBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawPadHolesInPDF_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawPadsTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawPadsBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTextsLayoutTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTextsLayoutBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTextsLegendTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTextsLegendBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTracksTopSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawTracksBottomSide_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drawVias_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.fileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.horizontalMirror_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.measurementUnitForPadHoleInPDF_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.padHoleDiameterInPDF_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_drawBoardLimits_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_drawInternalBoardLimits_toElementsOfSet (addedObjectSet)
@@ -2867,17 +2913,23 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

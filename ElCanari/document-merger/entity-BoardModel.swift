@@ -7804,6 +7804,15 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.name_property.mSetterDelegate = nil
+          managedObject.modelWidth_property.mSetterDelegate = nil
+          managedObject.modelWidthUnit_property.mSetterDelegate = nil
+          managedObject.modelHeight_property.mSetterDelegate = nil
+          managedObject.modelHeightUnit_property.mSetterDelegate = nil
+          managedObject.zoom_property.mSetterDelegate = nil
+          managedObject.modelLimitWidth_property.mSetterDelegate = nil
+          managedObject.modelLimitWidthUnit_property.mSetterDelegate = nil
+          managedObject.artworkName_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_modelWidth_fromElementsOfSet (removedObjectSet)
@@ -7862,6 +7871,15 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         for managedObject : BoardModel in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.modelLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_modelWidth_toElementsOfSet (addedObjectSet)
@@ -7918,17 +7936,23 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

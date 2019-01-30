@@ -62,7 +62,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = mValueExplorer, let unwProp = possibleValue {
+    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
       switch unwProp {
       case .empty :
         valueExplorer.stringValue = "—"
@@ -72,7 +72,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
         valueExplorer.stringValue = "\(value)"
       }
     }else{
-      mValueExplorer?.stringValue = "nil"
+      self.mValueExplorer?.stringValue = "nil"
     }
   }
 
@@ -135,12 +135,13 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
   weak var undoManager : UndoManager?  // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
+  var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
 
   var mValueExplorer : NSTextField? {
     didSet {
-      mValueExplorer?.stringValue = "\(mValue)"
+      self.mValueExplorer?.stringValue = "\(mValue)"
     }
   }
 
@@ -149,6 +150,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   init (_ inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
+    mSetterDelegate = nil
     super.init ()
   }
 
@@ -157,6 +159,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   init (_ inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
+    mSetterDelegate = nil
     super.init ()
   //--- Read from preferences
     let value : Any? = UserDefaults.standard.object (forKey: inPreferenceKey)
@@ -165,16 +168,26 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
     }
   }
 
+ //····················································································································
+
+  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+    mValue = inValue
+    mPreferenceKey = nil
+    mSetterDelegate = inSetterDelegate
+    super.init ()
+   }
+
   //····················································································································
 
   private var mValue : T {
     didSet {
-      if mValue != oldValue {
+      if self.mValue != oldValue {
+        self.mSetterDelegate? (mValue)
         if let prefKey = self.mPreferenceKey {
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
-        mValueExplorer?.stringValue = "\(mValue)"
-        undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.mValueExplorer?.stringValue = "\(mValue)"
+        self.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -187,16 +200,16 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   //····················································································································
 
   @objc func performUndo (_ oldValue : NSNumber) {
-    mValue = T.convertFromNSObject (object:oldValue)
+    self.mValue = T.convertFromNSObject (object: oldValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection<T> { get { return .single (mValue) } }
 
-  var propval : T { get { return mValue } }
+  var propval : T { get { return self.mValue } }
 
-  override func setProp (_ value : T) { mValue = value }
+  override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
  
@@ -260,15 +273,15 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
   }
 
   //····················································································································
 
   final private func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -276,11 +289,11 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = propval.ebHashValue ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -306,10 +319,10 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   var mValueExplorer : NSTextField? {
     didSet {
-      if let valueCache = mValueCache {
-        mValueExplorer?.stringValue = "\(valueCache)"
+      if let valueCache = self.mValueCache {
+        self.mValueExplorer?.stringValue = "\(valueCache)"
       }else{
-        mValueExplorer?.stringValue = "nil"
+        self.mValueExplorer?.stringValue = "nil"
       }
     }
   }
@@ -318,25 +331,25 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   override var prop : EBSelection <T> {
     get {
-      if mValueCache == nil {
+      if self.mValueCache == nil {
         if let unwrappedComputeFunction = readModelFunction {
-          mValueCache = unwrappedComputeFunction ()
+          self.mValueCache = unwrappedComputeFunction ()
         }
-        if mValueCache == nil {
-          mValueCache = .empty
+        if self.mValueCache == nil {
+          self.mValueCache = .empty
         }
-        mValueExplorer?.stringValue = "\(mValueCache!)"
+        self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
       }
-      return mValueCache!
+      return self.mValueCache!
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if mValueCache != nil {
-      mValueCache = nil
-      mValueExplorer?.stringValue = "nil"
+    if self.mValueCache != nil {
+      self.mValueCache = nil
+      self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
         appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -440,7 +453,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = mValueExplorer, let unwProp = possibleValue {
+    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
       switch unwProp {
       case .empty :
         valueExplorer.stringValue = "—"
@@ -450,7 +463,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
         valueExplorer.stringValue = "\(value)"
       }
     }else{
-      mValueExplorer?.stringValue = "nil"
+      self.mValueExplorer?.stringValue = "nil"
     }
   }
 
@@ -513,12 +526,13 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
   weak var undoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
+  var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
 
   var mValueExplorer : NSTextField? {
     didSet {
-      mValueExplorer?.stringValue = "\(mValue)"
+      self.mValueExplorer?.stringValue = "\(mValue)"
     }
   }
 
@@ -527,6 +541,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   init (_ inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
+    mSetterDelegate = nil
     super.init ()
   }
 
@@ -535,6 +550,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   init (_ inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
+    mSetterDelegate = nil
     super.init ()
   //--- Read from preferences
     let value : Any? = UserDefaults.standard.object (forKey: inPreferenceKey)
@@ -543,16 +559,26 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
     }
   }
 
+ //····················································································································
+
+  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+    mValue = inValue
+    mPreferenceKey = nil
+    mSetterDelegate = inSetterDelegate
+    super.init ()
+  }
+
   //····················································································································
 
   private var mValue : T {
     didSet {
-      if mValue != oldValue {
+      if self.mValue != oldValue {
+        self.mSetterDelegate? (self.mValue)
         if let prefKey = self.mPreferenceKey {
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
-        mValueExplorer?.stringValue = "\(mValue)"
-        undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.mValueExplorer?.stringValue = "\(mValue)"
+        self.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -565,16 +591,16 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //····················································································································
 
   @objc func performUndo (_ oldValue : NSNumber) {
-    mValue = T.convertFromNSObject (object:oldValue)
+    self.mValue = T.convertFromNSObject (object:oldValue)
   }
 
   //····················································································································
 
   override var prop : EBSelection<T> { get { return .single (mValue) } }
 
-  var propval : T { get { return mValue } }
+  var propval : T { get { return self.mValue } }
 
-  override func setProp (_ value : T) { mValue = value }
+  override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
 
@@ -638,15 +664,15 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
   }
 
   //····················································································································
 
   final private func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -654,11 +680,11 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = propval.ebHashValue ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -684,10 +710,10 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   var mValueExplorer : NSTextField? {
     didSet {
-      if let valueCache = mValueCache {
-        mValueExplorer?.stringValue = "\(valueCache)"
+      if let valueCache = self.mValueCache {
+        self.mValueExplorer?.stringValue = "\(valueCache)"
       }else{
-        mValueExplorer?.stringValue = "nil"
+        self.mValueExplorer?.stringValue = "nil"
       }
     }
   }
@@ -696,25 +722,25 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   override var prop : EBSelection <T> {
     get {
-      if mValueCache == nil {
+      if self.mValueCache == nil {
         if let unwrappedComputeFunction = readModelFunction {
-          mValueCache = unwrappedComputeFunction ()
+          self.mValueCache = unwrappedComputeFunction ()
         }
-        if mValueCache == nil {
-          mValueCache = .empty
+        if self.mValueCache == nil {
+          self.mValueCache = .empty
         }
-        mValueExplorer?.stringValue = "\(mValueCache!)"
+        self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
       }
-      return mValueCache!
+      return self.mValueCache!
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if mValueCache != nil {
-      mValueCache = nil
-      mValueExplorer?.stringValue = "nil"
+    if self.mValueCache != nil {
+      self.mValueCache = nil
+      self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
         appendMessageString ("Transient \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -896,14 +922,14 @@ extension NSColor : ClassPropertyProtocol {
   //····················································································································
 
   final func ebHashValue () -> UInt32 {
-    let data = NSArchiver.archivedData (withRootObject:self)
+    let data = NSArchiver.archivedData (withRootObject: self)
     return data.ebHashValue ()
   }
 
   //····················································································································
 
   func archiveToNSData () -> Data {
-    return NSArchiver.archivedData (withRootObject:self)
+    return NSArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
@@ -1058,14 +1084,14 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 
   var mValueExplorer : NSTextField? {
     didSet {
-      updateValueExplorer (possibleValue:prop_cache)
+      updateValueExplorer (possibleValue: prop_cache)
     }
   }
 
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = mValueExplorer, let unwProp = possibleValue {
+    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
       switch unwProp {
       case .empty :
         valueExplorer.stringValue = "—"
@@ -1075,7 +1101,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
         valueExplorer.stringValue = "\(value)"
       }
     }else{
-      mValueExplorer?.stringValue = "nil"
+      self.mValueExplorer?.stringValue = "nil"
     }
   }
 
@@ -1138,6 +1164,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
   weak var undoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
+  var mSetterDelegate : ((_ inValue : T) -> Void)?
 
   //····················································································································
 
@@ -1152,6 +1179,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   init (_ inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
+    mSetterDelegate = nil
     super.init ()
   }
 
@@ -1160,6 +1188,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   init (_ inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
+    mSetterDelegate = nil
     super.init ()
   //--- Read value from preferences
     let value : Any? = UserDefaults.standard.object (forKey:inPreferenceKey)
@@ -1170,19 +1199,29 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
+  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+    mValue = inValue
+    mPreferenceKey = nil
+    mSetterDelegate = inSetterDelegate
+    super.init ()
+  }
+
+  //····················································································································
+
   private var mValue : T {
     didSet {
-      if mValue != oldValue {
+      if self.mValue != oldValue {
+        self.mSetterDelegate? (self.mValue)
         if let prefKey = self.mPreferenceKey {
-          UserDefaults.standard.set (mValue.archiveToNSData (), forKey:prefKey)
+          UserDefaults.standard.set (self.mValue.archiveToNSData (), forKey:prefKey)
         }
-        mValueExplorer?.stringValue = "\(mValue)"
-        undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue)
+        self.mValueExplorer?.stringValue = "\(mValue)"
+        self.undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
-        postEvent ()
-        clearSignatureCache ()
+        self.postEvent ()
+        self.clearSignatureCache ()
       }
     }
   }
@@ -1190,16 +1229,16 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   //····················································································································
 
   @objc func performUndo (_ oldValue : NSObject) {
-    mValue = oldValue as! T
+    self.mValue = oldValue as! T
   }
 
   //····················································································································
 
   override var prop : EBSelection<T> { get { return .single (mValue) } }
 
-  var propval : T { get { return mValue } }
+  var propval : T { get { return self.mValue } }
 
-  override func setProp (_ value : T) { mValue = value }
+  override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
  
@@ -1263,15 +1302,15 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   //····················································································································
 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
-    mSignatureObserver = observer
+    self.mSignatureObserver = observer
   }
 
   //····················································································································
 
   final private func clearSignatureCache () {
-    if mSignatureCache != nil {
-      mSignatureCache = nil
-      mSignatureObserver?.clearSignatureCache ()
+    if self.mSignatureCache != nil {
+      self.mSignatureCache = nil
+      self.mSignatureObserver?.clearSignatureCache ()
     }
   }
 
@@ -1279,11 +1318,11 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   final func signature () -> UInt32 {
     let computedSignature : UInt32
-    if let s = mSignatureCache {
+    if let s = self.mSignatureCache {
       computedSignature = s
     }else{
       computedSignature = propval.ebHashValue ()
-      mSignatureCache = computedSignature
+      self.mSignatureCache = computedSignature
     }
     return computedSignature
   }
@@ -1309,10 +1348,10 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   var mValueExplorer : NSTextField? {
     didSet {
-      if let valueCache = mValueCache {
-        mValueExplorer?.stringValue = "\(valueCache)"
+      if let valueCache = self.mValueCache {
+        self.mValueExplorer?.stringValue = "\(valueCache)"
       }else{
-        mValueExplorer?.stringValue = "nil"
+        self.mValueExplorer?.stringValue = "nil"
       }
     }
   }
@@ -1321,25 +1360,25 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   override var prop : EBSelection <T> {
     get {
-      if mValueCache == nil {
+      if self.mValueCache == nil {
         if let unwrappedComputeFunction = readModelFunction {
-          mValueCache = unwrappedComputeFunction ()
+          self.mValueCache = unwrappedComputeFunction ()
         }
-        if mValueCache == nil {
-          mValueCache = .empty
+        if self.mValueCache == nil {
+          self.mValueCache = .empty
         }
-        mValueExplorer?.stringValue = "\(mValueCache!)"
+        self.mValueExplorer?.stringValue = "\(mValueCache!)"
       }
-      return mValueCache!
+      return self.mValueCache!
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if mValueCache != nil {
-      mValueCache = nil
-      mValueExplorer?.stringValue = "nil"
+    if self.mValueCache != nil {
+      self.mValueCache = nil
+      self.mValueExplorer?.stringValue = "nil"
       if logEvents () {
         let className = String (describing:type(of: self))
         appendMessageString ("Transient \(className) \(explorerIndexString (self.ebObjectIndex)) propagation\n")

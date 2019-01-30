@@ -6,28 +6,6 @@ prefs {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#! Library update 
-
-prefs {
-#--- Library repository commit list
-  outlet NSScrollView mLibraryRevisionListScrollView ;
-  outlet NSTableView mLibraryRevisionListTableView ;
-#--- Progress window during repository list download
-  outlet EBWindow mCheckingForLibraryUpdateWindow ;
-  outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
-  outlet NSButton mCheckForLibraryUpdatesButton ;
-#--- Dialog for library updating
-  outlet EBWindow mLibraryUpdateWindow ;
-  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
-  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
-  outlet EBTableView mTableViewInLibraryUpdateWindow ;
-  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
-  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
-  outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 #! General
 
 prefs {
@@ -405,6 +383,34 @@ prefs {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#! Library update 
+
+prefs {
+#--- Library repository commit list
+  outlet NSScrollView mLibraryRevisionListScrollView ;
+  outlet NSTableView mLibraryRevisionListTableView ;
+#--- Progress window during repository list download
+  outlet EBWindow mCheckingForLibraryUpdateWindow ;
+  outlet EBProgressIndicator mCheckingForLibraryUpdateProgressIndicator ;
+  outlet NSButton mCheckForLibraryUpdatesButton ;
+#--- Dialog for library updating
+  outlet EBWindow mLibraryUpdateWindow ;
+  outlet EBProgressIndicator mProgressIndicatorInLibraryUpdateWindow ;
+  outlet EBTextField mInformativeTextInLibraryUpdateWindow ;
+  outlet EBTableView mTableViewInLibraryUpdateWindow ;
+  outlet EBButton mUpDateButtonInLibraryUpdateWindow ;
+  outlet EBButton mCancelButtonInLibraryUpdateWindow ;
+  outlet EBMenuItem mUpDateLibraryMenuItemInCanariMenu ;
+
+#--- Dialog for library uploader
+  outlet EBWindow mLibraryUploadWindow ;
+  outlet NSButton mSetLibraryRepositoryButton ;
+  outlet NSTextField mLibraryRepositoryTextField ;
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 #! Merger
 
 prefs {
@@ -488,6 +494,8 @@ entity CanariLibraryEntry {
   transient NSImage mStatusImage dependsFrom self.mPath ;
   
   action revealLibraryInFinderAction ;
+  
+  property String mLibraryRepositoryURL default "" ;
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

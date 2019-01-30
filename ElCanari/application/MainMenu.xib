@@ -1963,7 +1963,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2437,10 +2437,12 @@ Gw
                 <outlet property="mErrorMessageColorColorWell" destination="5452" id="Jqq-A1-LGH"/>
                 <outlet property="mFontCharacterSelectButton" destination="6078" id="V4u-fD-9uY"/>
                 <outlet property="mInformativeTextInLibraryUpdateWindow" destination="6232" id="Dt2-8e-xuV"/>
+                <outlet property="mLibraryRepositoryTextField" destination="Mt0-6n-szx" id="Jc9-WA-fHk"/>
                 <outlet property="mLibraryRevisionListScrollView" destination="3ph-dI-ghr" id="bnI-TL-nve"/>
                 <outlet property="mLibraryRevisionListTableView" destination="lsM-NG-KWR" id="I8X-5y-GJD"/>
                 <outlet property="mLibraryUpdateLogTextView" destination="3UV-MD-e0D" id="UpG-5r-3OT"/>
                 <outlet property="mLibraryUpdateWindow" destination="6227" id="qrY-sc-flT"/>
+                <outlet property="mLibraryUploadWindow" destination="SFC-4d-lQe" id="Q7g-lp-vgh"/>
                 <outlet property="mLineColorGridForSchematicColorWell" destination="5833" id="4Os-u0-D2h"/>
                 <outlet property="mLineColorOfPackageGridColorWell" destination="5840" id="wdq-sz-nqo"/>
                 <outlet property="mLineColorOfSymbolGridColorWell" destination="5857" id="fkM-b3-Dzh"/>
@@ -2476,6 +2478,7 @@ Gw
                 <outlet property="mSampleStringField" destination="5700" id="Zv9-AK-DgC"/>
                 <outlet property="mSampleStringSizeField" destination="5698" id="bDE-ka-b7c"/>
                 <outlet property="mSelectionHiliteColorColorWell" destination="5416" id="BUK-am-HxO"/>
+                <outlet property="mSetLibraryRepositoryButton" destination="nId-KG-x1P" id="gQ6-bQ-a1Q"/>
                 <outlet property="mShowGerberDrawingFlowCheckbox" destination="5709" id="wnD-7x-Oyv"/>
                 <outlet property="mShowGerberDrawingIndexesCheckbox" destination="5708" id="NOt-wD-d6M"/>
                 <outlet property="mSuccessMessageColorColorWell" destination="5454" id="bEv-Oo-jvH"/>
@@ -2521,7 +2524,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" id="Ojy-ZP-Pgt">
                             <rect key="frame" x="1" y="1" width="655" height="358"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" selectionGranularity="word" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" textCompletion="NO" id="3UV-MD-e0D">
                                     <rect key="frame" x="0.0" y="0.0" width="655" height="358"/>
@@ -2975,6 +2978,44 @@ Gw
             </tableHeaderView>
             <point key="canvasLocation" x="-752" y="-397"/>
         </scrollView>
+        <window identifier="libraryUploadWindowPosition" title="Library Uploader" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="SFC-4d-lQe" customClass="EBWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="158" width="600" height="400"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="xTu-LZ-X8X">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button verticalHuggingPriority="750" id="nId-KG-x1P">
+                        <rect key="frame" x="20" y="361" width="147" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Repository…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IUD-Bb-2Fr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mt0-6n-szx">
+                        <rect key="frame" x="173" y="362" width="409" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="uzl-tt-aBN">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" id="SyU-mo-jqJ">
+                        <rect key="frame" x="20" y="335" width="147" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="User and Password…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jdd-pa-lCr">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                    </button>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-964" y="-437"/>
+        </window>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>

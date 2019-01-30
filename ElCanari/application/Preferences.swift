@@ -3728,10 +3728,12 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
+  @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
   @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
   @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
   @IBOutlet var mLibraryUpdateLogTextView : NSTextView? = nil
   @IBOutlet var mLibraryUpdateWindow : EBWindow? = nil
+  @IBOutlet var mLibraryUploadWindow : EBWindow? = nil
   @IBOutlet var mLineColorGridForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mLineColorOfPackageGridColorWell : EBColorWell? = nil
   @IBOutlet var mLineColorOfSymbolGridColorWell : EBColorWell? = nil
@@ -3767,6 +3769,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mSampleStringField : EBTextField? = nil
   @IBOutlet var mSampleStringSizeField : EBDoubleField? = nil
   @IBOutlet var mSelectionHiliteColorColorWell : EBColorWell? = nil
+  @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
   @IBOutlet var mSuccessMessageColorColorWell : EBColorWell? = nil
@@ -4724,6 +4727,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil") ;
     }
+    if let outlet : Any = self.mLibraryRepositoryTextField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryTextField' outlet is not an instance of 'NSTextField'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryTextField' outlet is nil") ;
+    }
     if let outlet : Any = self.mLibraryRevisionListScrollView {
       if !(outlet is NSScrollView) {
         presentErrorWindow (file: #file,
@@ -4767,6 +4781,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mLibraryUpdateWindow' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryUploadWindow {
+      if !(outlet is EBWindow) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryUploadWindow' outlet is not an instance of 'EBWindow'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryUploadWindow' outlet is nil") ;
     }
     if let outlet : Any = self.mLineColorGridForSchematicColorWell {
       if !(outlet is EBColorWell) {
@@ -5152,6 +5177,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mSelectionHiliteColorColorWell' outlet is nil") ;
+    }
+    if let outlet : Any = self.mSetLibraryRepositoryButton {
+      if !(outlet is NSButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSetLibraryRepositoryButton' outlet is not an instance of 'NSButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mSetLibraryRepositoryButton' outlet is nil") ;
     }
     if let outlet : Any = self.mShowGerberDrawingFlowCheckbox {
       if !(outlet is EBSwitch) {

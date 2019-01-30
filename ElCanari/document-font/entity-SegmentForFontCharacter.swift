@@ -969,6 +969,10 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.x1_property.mSetterDelegate = nil
+          managedObject.y1_property.mSetterDelegate = nil
+          managedObject.x2_property.mSetterDelegate = nil
+          managedObject.y2_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
@@ -981,6 +985,10 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         for managedObject : SegmentForFontCharacter in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
@@ -991,17 +999,23 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

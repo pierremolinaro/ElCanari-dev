@@ -1898,6 +1898,16 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.yPin_property.mSetterDelegate = nil
+          managedObject.xName_property.mSetterDelegate = nil
+          managedObject.yName_property.mSetterDelegate = nil
+          managedObject.xNumber_property.mSetterDelegate = nil
+          managedObject.yNumber_property.mSetterDelegate = nil
+          managedObject.name_property.mSetterDelegate = nil
+          managedObject.nameHorizontalAlignment_property.mSetterDelegate = nil
+          managedObject.numberHorizontalAlignment_property.mSetterDelegate = nil
+          managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
+          managedObject.xPin_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
@@ -1918,6 +1928,16 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         for managedObject : SymbolPin in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.yPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.nameHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.numberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
@@ -1936,17 +1956,23 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

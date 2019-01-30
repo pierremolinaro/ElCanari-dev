@@ -18,6 +18,12 @@ protocol CanariLibraryEntry_mUses : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol CanariLibraryEntry_mLibraryRepositoryURL : class {
+  var mLibraryRepositoryURL : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol CanariLibraryEntry_mStatusImage : class {
   var mStatusImage : NSImage? { get }
 }
@@ -29,6 +35,7 @@ protocol CanariLibraryEntry_mStatusImage : class {
 class CanariLibraryEntry : EBManagedObject,
          CanariLibraryEntry_mPath,
          CanariLibraryEntry_mUses,
+         CanariLibraryEntry_mLibraryRepositoryURL,
          CanariLibraryEntry_mStatusImage {
 
   //····················································································································
@@ -78,6 +85,29 @@ class CanariLibraryEntry : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mLibraryRepositoryURL
+  //····················································································································
+
+  var mLibraryRepositoryURL_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var mLibraryRepositoryURL : String {
+    get {
+      return self.mLibraryRepositoryURL_property.propval
+    }
+    set {
+      self.mLibraryRepositoryURL_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mLibraryRepositoryURL_property_selection : EBSelection <String> {
+    return self.mLibraryRepositoryURL_property.prop
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -110,6 +140,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mPath_property.undoManager = self.undoManager
   //--- Atomic property: mUses
     self.mUses_property.undoManager = self.undoManager
+  //--- Atomic property: mLibraryRepositoryURL
+    self.mLibraryRepositoryURL_property.undoManager = self.undoManager
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -173,6 +205,14 @@ class CanariLibraryEntry : EBManagedObject,
       observerExplorer:&self.mUses_property.mObserverExplorer,
       valueExplorer:&self.mUses_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mLibraryRepositoryURL",
+      idx:self.mLibraryRepositoryURL_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mLibraryRepositoryURL_property.mObserverExplorer,
+      valueExplorer:&self.mLibraryRepositoryURL_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "mStatusImage",
@@ -198,6 +238,9 @@ class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mUses
     self.mUses_property.mObserverExplorer = nil
     self.mUses_property.mValueExplorer = nil
+  //--- Atomic property: mLibraryRepositoryURL
+    self.mLibraryRepositoryURL_property.mObserverExplorer = nil
+    self.mLibraryRepositoryURL_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -230,6 +273,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mPath_property.storeIn (dictionary: ioDictionary, forKey:"mPath")
   //--- Atomic property: mUses
     self.mUses_property.storeIn (dictionary: ioDictionary, forKey:"mUses")
+  //--- Atomic property: mLibraryRepositoryURL
+    self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey:"mLibraryRepositoryURL")
   }
 
   //····················································································································
@@ -251,6 +296,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mPath_property.readFrom (dictionary: inDictionary, forKey:"mPath")
   //--- Atomic property: mUses
     self.mUses_property.readFrom (dictionary: inDictionary, forKey:"mUses")
+  //--- Atomic property: mLibraryRepositoryURL
+    self.mLibraryRepositoryURL_property.readFrom (dictionary: inDictionary, forKey:"mLibraryRepositoryURL")
   }
 
   //····················································································································
@@ -386,6 +433,63 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   }
 
   //····················································································································
+  //   Observers of 'mLibraryRepositoryURL' stored property
+  //····················································································································
+
+  private var mObserversOf_mLibraryRepositoryURL = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mLibraryRepositoryURL.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLibraryRepositoryURL_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mLibraryRepositoryURL (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mLibraryRepositoryURL.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mLibraryRepositoryURL_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
+    for managedObject in inSet {
+      self.mObserversOf_mLibraryRepositoryURL.apply ( {(_ observer : EBEvent) in
+        managedObject.mLibraryRepositoryURL_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
+    self.mObserversOf_mLibraryRepositoryURL.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mLibraryRepositoryURL_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
@@ -516,6 +620,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -523,6 +628,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
      //--- Add observers of stored properties
       self.addEBObserversOf_mPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_mUses_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
     //--- Update object set
@@ -651,33 +757,47 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.mPath_property.mSetterDelegate = nil
+          managedObject.mUses_property.mSetterDelegate = nil
+          managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : CanariLibraryEntry in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

@@ -2597,6 +2597,20 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.selectedPageIndex_property.mSetterDelegate = nil
+          managedObject.selectedInspector_property.mSetterDelegate = nil
+          managedObject.comments_property.mSetterDelegate = nil
+          managedObject.program_property.mSetterDelegate = nil
+          managedObject.horizontalFlip_property.mSetterDelegate = nil
+          managedObject.verticalFlip_property.mSetterDelegate = nil
+          managedObject.gridStyle_property.mSetterDelegate = nil
+          managedObject.gridStep_property.mSetterDelegate = nil
+          managedObject.gridStepUnit_property.mSetterDelegate = nil
+          managedObject.gridDisplayFactor_property.mSetterDelegate = nil
+          managedObject.zoom_property.mSetterDelegate = nil
+          managedObject.padNumbering_property.mSetterDelegate = nil
+          managedObject.xPlacardUnit_property.mSetterDelegate = nil
+          managedObject.yPlacardUnit_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
@@ -2622,6 +2636,20 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         for managedObject : PackageRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.program_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.horizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.verticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.gridStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.gridStep_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.gridStepUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.gridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.padNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.xPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
@@ -2645,17 +2673,23 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 

@@ -1547,6 +1547,17 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
+          managedObject.selectedTab_property.mSetterDelegate = nil
+          managedObject.comments_property.mSetterDelegate = nil
+          managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = nil
+          managedObject.minPPTPTTTW_property.mSetterDelegate = nil
+          managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = nil
+          managedObject.minValueForOARinEBUnit_property.mSetterDelegate = nil
+          managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = nil
+          managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = nil
+          managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = nil
+          managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = nil
+          managedObject.drillDataFileExtension_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
@@ -1564,6 +1575,17 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         for managedObject : ArtworkRoot in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
+          managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minPPTPTTTW_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForOARinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.drillDataFileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
@@ -1579,17 +1601,23 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
-        if let prefKey = self.mPrefKey {
-          var dictionaryArray = [NSDictionary] ()
-          for object in self.mValue {
-            let d = NSMutableDictionary ()
-            object.saveIntoDictionary (d)
-            d [kEntityKey] = nil // Remove entity key, not used in preferences
-            dictionaryArray.append (d)
-          }
-          UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
-        }
+        self.writeInPreferences ()
       }
+    }
+  }
+
+  //····················································································································
+
+  private func writeInPreferences () {
+    if let prefKey = self.mPrefKey {
+      var dictionaryArray = [NSDictionary] ()
+      for object in self.mValue {
+        let d = NSMutableDictionary ()
+        object.saveIntoDictionary (d)
+        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        dictionaryArray.append (d)
+      }
+      UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
     }
   }
 
