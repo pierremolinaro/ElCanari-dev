@@ -19,12 +19,12 @@ enum ShellCommandStatus {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func runShellCommandAndGetDataOutput (_ command : String, _ arguments : [String], _ inLogTextView : NSTextView) -> ShellCommandStatus {
+func runShellCommandAndGetDataOutput (_ command : String, _ arguments : [String], _ inLogTextView : NSTextView? = nil) -> ShellCommandStatus {
   var commandString = command
   for s in arguments {
     commandString += " " + s
   }
-  inLogTextView.appendMessageString ("  Command: \(commandString)\n")
+  inLogTextView?.appendMessageString ("  Command: \(commandString)\n")
 //--- Define task
   let task = Process ()
   task.launchPath = command
@@ -53,7 +53,7 @@ func runShellCommandAndGetDataOutput (_ command : String, _ arguments : [String]
   }else{
     response = .ok (data)
   }
-  inLogTextView.appendMessageString ("  Result code: \(response)\n")
+  inLogTextView?.appendMessageString ("  Result code: \(response)\n")
   return response
 }
 

@@ -3728,6 +3728,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
+  @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
+  @IBOutlet var mLibraryRepositoryLoadCurrentReleaseButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
   @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
   @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
@@ -3770,6 +3772,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mSampleStringSizeField : EBDoubleField? = nil
   @IBOutlet var mSelectionHiliteColorColorWell : EBColorWell? = nil
   @IBOutlet var mSetLibraryRepositoryButton : NSButton? = nil
+  @IBOutlet var mSetUserAndPasswordButton : NSButton? = nil
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch? = nil
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch? = nil
   @IBOutlet var mSuccessMessageColorColorWell : EBColorWell? = nil
@@ -3793,6 +3796,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
   @IBOutlet var mUpdateSystemLibraryBox : NSBox? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
+  @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
   @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var nextSystemLibraryCheckDate : CanariDateObserverField? = nil
   @IBOutlet var selectionHilitePopupButton : EBPopUpButton? = nil
@@ -4727,6 +4731,28 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil") ;
     }
+    if let outlet : Any = self.mLibraryRepositoryCurrentReleaseTextField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryCurrentReleaseTextField' outlet is not an instance of 'NSTextField'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryCurrentReleaseTextField' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryRepositoryLoadCurrentReleaseButton {
+      if !(outlet is NSButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryLoadCurrentReleaseButton' outlet is not an instance of 'NSButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryLoadCurrentReleaseButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mLibraryRepositoryTextField {
       if !(outlet is NSTextField) {
         presentErrorWindow (file: #file,
@@ -5189,6 +5215,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'mSetLibraryRepositoryButton' outlet is nil") ;
     }
+    if let outlet : Any = self.mSetUserAndPasswordButton {
+      if !(outlet is NSButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mSetUserAndPasswordButton' outlet is not an instance of 'NSButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mSetUserAndPasswordButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mShowGerberDrawingFlowCheckbox {
       if !(outlet is EBSwitch) {
         presentErrorWindow (file: #file,
@@ -5441,6 +5478,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mUseLibraryInUserApplicationSupportPathCheckBox' outlet is nil") ;
+    }
+    if let outlet : Any = self.mUserAndPasswordTextField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mUserAndPasswordTextField' outlet is not an instance of 'NSTextField'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mUserAndPasswordTextField' outlet is nil") ;
     }
     if let outlet : Any = self.mWarningMessageColorColorWell {
       if !(outlet is EBColorWell) {

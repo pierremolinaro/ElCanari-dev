@@ -406,6 +406,11 @@ prefs {
   outlet EBWindow mLibraryUploadWindow ;
   outlet NSButton mSetLibraryRepositoryButton ;
   outlet NSTextField mLibraryRepositoryTextField ;
+  outlet NSButton mSetUserAndPasswordButton ;
+  outlet NSTextField mUserAndPasswordTextField ;
+
+  outlet NSButton mLibraryRepositoryLoadCurrentReleaseButton ;
+  outlet NSTextField mLibraryRepositoryCurrentReleaseTextField ;
 
 }
 
@@ -496,6 +501,7 @@ entity CanariLibraryEntry {
   action revealLibraryInFinderAction ;
   
   property String mLibraryRepositoryURL default "" ;
+  property String mUserAndPasswordTag default "" ;
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

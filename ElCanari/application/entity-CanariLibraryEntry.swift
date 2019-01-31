@@ -24,6 +24,12 @@ protocol CanariLibraryEntry_mLibraryRepositoryURL : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol CanariLibraryEntry_mUserAndPasswordTag : class {
+  var mUserAndPasswordTag : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol CanariLibraryEntry_mStatusImage : class {
   var mStatusImage : NSImage? { get }
 }
@@ -36,6 +42,7 @@ class CanariLibraryEntry : EBManagedObject,
          CanariLibraryEntry_mPath,
          CanariLibraryEntry_mUses,
          CanariLibraryEntry_mLibraryRepositoryURL,
+         CanariLibraryEntry_mUserAndPasswordTag,
          CanariLibraryEntry_mStatusImage {
 
   //····················································································································
@@ -108,6 +115,29 @@ class CanariLibraryEntry : EBManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mUserAndPasswordTag
+  //····················································································································
+
+  var mUserAndPasswordTag_property = EBStoredProperty_String ("")
+
+  //····················································································································
+
+  var mUserAndPasswordTag : String {
+    get {
+      return self.mUserAndPasswordTag_property.propval
+    }
+    set {
+      self.mUserAndPasswordTag_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mUserAndPasswordTag_property_selection : EBSelection <String> {
+    return self.mUserAndPasswordTag_property.prop
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -142,6 +172,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mUses_property.undoManager = self.undoManager
   //--- Atomic property: mLibraryRepositoryURL
     self.mLibraryRepositoryURL_property.undoManager = self.undoManager
+  //--- Atomic property: mUserAndPasswordTag
+    self.mUserAndPasswordTag_property.undoManager = self.undoManager
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -213,6 +245,14 @@ class CanariLibraryEntry : EBManagedObject,
       observerExplorer:&self.mLibraryRepositoryURL_property.mObserverExplorer,
       valueExplorer:&self.mLibraryRepositoryURL_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mUserAndPasswordTag",
+      idx:self.mUserAndPasswordTag_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mUserAndPasswordTag_property.mObserverExplorer,
+      valueExplorer:&self.mUserAndPasswordTag_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "mStatusImage",
@@ -241,6 +281,9 @@ class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mLibraryRepositoryURL
     self.mLibraryRepositoryURL_property.mObserverExplorer = nil
     self.mLibraryRepositoryURL_property.mValueExplorer = nil
+  //--- Atomic property: mUserAndPasswordTag
+    self.mUserAndPasswordTag_property.mObserverExplorer = nil
+    self.mUserAndPasswordTag_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -275,6 +318,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mUses_property.storeIn (dictionary: ioDictionary, forKey:"mUses")
   //--- Atomic property: mLibraryRepositoryURL
     self.mLibraryRepositoryURL_property.storeIn (dictionary: ioDictionary, forKey:"mLibraryRepositoryURL")
+  //--- Atomic property: mUserAndPasswordTag
+    self.mUserAndPasswordTag_property.storeIn (dictionary: ioDictionary, forKey:"mUserAndPasswordTag")
   }
 
   //····················································································································
@@ -298,6 +343,8 @@ class CanariLibraryEntry : EBManagedObject,
     self.mUses_property.readFrom (dictionary: inDictionary, forKey:"mUses")
   //--- Atomic property: mLibraryRepositoryURL
     self.mLibraryRepositoryURL_property.readFrom (dictionary: inDictionary, forKey:"mLibraryRepositoryURL")
+  //--- Atomic property: mUserAndPasswordTag
+    self.mUserAndPasswordTag_property.readFrom (dictionary: inDictionary, forKey:"mUserAndPasswordTag")
   }
 
   //····················································································································
@@ -490,6 +537,63 @@ class ReadOnlyArrayOf_CanariLibraryEntry : ReadOnlyAbstractArrayProperty <Canari
   }
 
   //····················································································································
+  //   Observers of 'mUserAndPasswordTag' stored property
+  //····················································································································
+
+  private var mObserversOf_mUserAndPasswordTag = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mUserAndPasswordTag.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mUserAndPasswordTag_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mUserAndPasswordTag (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mUserAndPasswordTag.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mUserAndPasswordTag_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
+    for managedObject in inSet {
+      self.mObserversOf_mUserAndPasswordTag.apply ( {(_ observer : EBEvent) in
+        managedObject.mUserAndPasswordTag_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (_ inSet : Set<CanariLibraryEntry>) {
+    self.mObserversOf_mUserAndPasswordTag.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mUserAndPasswordTag_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
   //   Observers of 'mStatusImage' transient property
   //····················································································································
 
@@ -621,6 +725,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
       self.removeEBObserversOf_mPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mUses_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -629,6 +734,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
       self.addEBObserversOf_mPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_mUses_toElementsOfSet (addedSet)
       self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_mStatusImage_toElementsOfSet (addedSet)
     //--- Update object set
@@ -760,10 +866,12 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
           managedObject.mPath_property.mSetterDelegate = nil
           managedObject.mUses_property.mSetterDelegate = nil
           managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
+          managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -773,10 +881,12 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
           managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
