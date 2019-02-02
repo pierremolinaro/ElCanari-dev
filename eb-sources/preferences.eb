@@ -409,9 +409,11 @@ prefs {
   outlet NSButton mSetUserAndPasswordButton ;
   outlet NSTextField mUserAndPasswordTextField ;
 
+  outlet NSButton mLibraryRepositoryStatusButton ;
   outlet NSButton mLibraryRepositoryLoadCurrentReleaseButton ;
+  outlet NSButton mLibraryRepositoryCommitButton ;
   outlet NSTextField mLibraryRepositoryCurrentReleaseTextField ;
-
+  outlet NSTextView mLibraryRepositoryLogTextView ;
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

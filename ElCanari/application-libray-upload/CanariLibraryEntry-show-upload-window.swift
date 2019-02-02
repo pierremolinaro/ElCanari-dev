@@ -3,6 +3,8 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys/storing_keys_in_the_keychain
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension CanariLibraryEntry {
 
@@ -13,11 +15,17 @@ extension CanariLibraryEntry {
       window.title = "Library Repository Management for " + inLibraryPath
     //--- User and password
       self.set (userAndPassword: self.mUserAndPasswordTag)
+    //--- Commit button
+      g_Preferences?.mLibraryRepositoryCommitButton?.target = self
+      g_Preferences?.mLibraryRepositoryCommitButton?.action = #selector (repositorPerformCommitAction (_:))
     //--- Set repository action
       g_Preferences?.mSetUserAndPasswordButton?.target = self
       g_Preferences?.mSetUserAndPasswordButton?.action = #selector (showDefineUserAndPasswordDialogAction (_:))
     //--- Repository name
       self.set (repositoryURL: self.mLibraryRepositoryURL)
+    //--- Status button
+      g_Preferences?.mLibraryRepositoryStatusButton?.target = self
+      g_Preferences?.mLibraryRepositoryStatusButton?.action = #selector (showStatusAction (_:))
     //--- Set repository action
       g_Preferences?.mSetLibraryRepositoryButton?.target = self
       g_Preferences?.mSetLibraryRepositoryButton?.action = #selector (showDefineRepositoryDialogAction (_:))
@@ -25,7 +33,7 @@ extension CanariLibraryEntry {
       g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "— not loaded —"
     //--- Load current release action
       g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.target = self
-      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.action = #selector (loadRepositorCurrentReleaseAction (_:))
+      g_Preferences?.mLibraryRepositoryLoadCurrentReleaseButton?.action = #selector (loadRepositorCurrentCommitAction (_:))
       self.updateLibraryRepositoryLoadCurrentReleaseButton ()
     //--- Dialog
       _ = NSApp.runModal (for: window)
@@ -42,23 +50,15 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc func loadRepositorCurrentReleaseAction (_ inSender : Any?) {
-    let response = readRemoteFile ("last-commit", self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag)
-    switch response {
-    case .error (let status) :
-      g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "Error \(status)"
-    case .ok (let data) :
-      if let s = String (data: data, encoding: .utf8) {
-        g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = s
-      }else{
-        g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "invalid value"
-      }
+  @objc private func showStatusAction (_ inSender : Any?) {
+    if let logTextView = g_Preferences?.mLibraryRepositoryLogTextView {
+      _ = self.status (logTextView)
     }
   }
 
   //····················································································································
 
-  @objc func showDefineUserAndPasswordDialogAction (_ inSender : Any?) {
+  @objc private func showDefineUserAndPasswordDialogAction (_ inSender : Any?) {
     if let window = g_Preferences?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "User and password:"
@@ -86,7 +86,7 @@ extension CanariLibraryEntry {
 
   //····················································································································
 
-  @objc func showDefineRepositoryDialogAction (_ inSender : Any?) {
+  @objc private func showDefineRepositoryDialogAction (_ inSender : Any?) {
     if let window = g_Preferences?.mLibraryUploadWindow {
       let alert = NSAlert ()
       alert.messageText = "Repository URL:"

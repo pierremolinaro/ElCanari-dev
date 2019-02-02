@@ -3728,8 +3728,11 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
   @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
+  @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
   @IBOutlet var mLibraryRepositoryLoadCurrentReleaseButton : NSButton? = nil
+  @IBOutlet var mLibraryRepositoryLogTextView : NSTextView? = nil
+  @IBOutlet var mLibraryRepositoryStatusButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryTextField : NSTextField? = nil
   @IBOutlet var mLibraryRevisionListScrollView : NSScrollView? = nil
   @IBOutlet var mLibraryRevisionListTableView : NSTableView? = nil
@@ -4731,6 +4734,17 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           line: #line,
                           errorMessage: "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil") ;
     }
+    if let outlet : Any = self.mLibraryRepositoryCommitButton {
+      if !(outlet is NSButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryCommitButton' outlet is not an instance of 'NSButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryCommitButton' outlet is nil") ;
+    }
     if let outlet : Any = self.mLibraryRepositoryCurrentReleaseTextField {
       if !(outlet is NSTextField) {
         presentErrorWindow (file: #file,
@@ -4752,6 +4766,28 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mLibraryRepositoryLoadCurrentReleaseButton' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryRepositoryLogTextView {
+      if !(outlet is NSTextView) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryLogTextView' outlet is not an instance of 'NSTextView'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryLogTextView' outlet is nil") ;
+    }
+    if let outlet : Any = self.mLibraryRepositoryStatusButton {
+      if !(outlet is NSButton) {
+        presentErrorWindow (file: #file,
+                            line: #line,
+                            errorMessage: "the 'mLibraryRepositoryStatusButton' outlet is not an instance of 'NSButton'") ;
+      }
+    }else{
+      presentErrorWindow (file: #file,
+                          line: #line,
+                          errorMessage: "the 'mLibraryRepositoryStatusButton' outlet is nil") ;
     }
     if let outlet : Any = self.mLibraryRepositoryTextField {
       if !(outlet is NSTextField) {

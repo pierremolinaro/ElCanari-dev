@@ -1,34 +1,42 @@
 //
-//  StopModalButton.swift
+//  load-repository-current-commit.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 31/01/2019.
+//  Created by Pierre Molinaro on 02/02/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   StopModalButton
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class StopModalButton : EBButton {
+extension CanariLibraryEntry {
 
   //····················································································································
 
-  override func awakeFromNib () {
-    super.awakeFromNib ()
-    self.target = self
-    self.action = #selector (StopModalButton.stopModalAction (_:))
+  @objc internal func loadRepositorCurrentCommitAction (_ inSender : Any?) {
+    _ = self.loadRepositorCurrentCommit ()
   }
 
   //····················································································································
 
-  @objc func stopModalAction (_ sender : Any?) {
-    if let window = self.window {
-      window.performClose (sender)
+  internal func loadRepositorCurrentCommit () -> Int? {
+    let response = readRemoteFile ("lastCommit.txt", url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag)
+    let result : Int?
+    switch response {
+    case .error (_) :
+      g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "Error \(status)"
+      result = nil
+    case .ok (let data) :
+      if let s = String (data: data, encoding: .utf8), let currentCommit = Int (s) {
+        g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "\(currentCommit)"
+        result = currentCommit
+      }else{
+        g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "invalid value"
+        result = nil
+      }
     }
- //   NSApp.stop (sender)
+    return result
   }
 
   //····················································································································

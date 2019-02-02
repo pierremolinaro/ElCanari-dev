@@ -528,7 +528,7 @@
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5354">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="5354">
                             <rect key="frame" x="656" y="1" width="15" height="358"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -2097,11 +2097,11 @@
                                         </tableView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="5742">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="5742">
                                     <rect key="frame" x="1" y="92" width="398" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="5741">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="5741">
                                     <rect key="frame" x="399" y="17" width="15" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -2373,11 +2373,11 @@ Gw
                                 </tableView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="6240">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="6240">
                             <rect key="frame" x="1" y="267" width="667" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="6239">
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="6239">
                             <rect key="frame" x="432" y="17" width="15" height="274"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -2437,8 +2437,11 @@ Gw
                 <outlet property="mErrorMessageColorColorWell" destination="5452" id="Jqq-A1-LGH"/>
                 <outlet property="mFontCharacterSelectButton" destination="6078" id="V4u-fD-9uY"/>
                 <outlet property="mInformativeTextInLibraryUpdateWindow" destination="6232" id="Dt2-8e-xuV"/>
+                <outlet property="mLibraryRepositoryCommitButton" destination="hFG-qJ-h7e" id="rN4-xG-g3c"/>
                 <outlet property="mLibraryRepositoryCurrentReleaseTextField" destination="xhb-Tg-0jH" id="WdO-ma-jUU"/>
                 <outlet property="mLibraryRepositoryLoadCurrentReleaseButton" destination="olG-oR-6Vt" id="8PX-dM-QES"/>
+                <outlet property="mLibraryRepositoryLogTextView" destination="gbV-Al-Z5s" id="amG-tJ-zyn"/>
+                <outlet property="mLibraryRepositoryStatusButton" destination="IKq-Og-gw6" id="2Gn-S4-byS"/>
                 <outlet property="mLibraryRepositoryTextField" destination="Mt0-6n-szx" id="Jc9-WA-fHk"/>
                 <outlet property="mLibraryRevisionListScrollView" destination="3ph-dI-ghr" id="bnI-TL-nve"/>
                 <outlet property="mLibraryRevisionListTableView" destination="lsM-NG-KWR" id="I8X-5y-GJD"/>
@@ -2545,7 +2548,7 @@ Gw
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hFQ-vO-1vW">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="hFQ-vO-1vW">
                             <rect key="frame" x="656" y="1" width="15" height="358"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -2987,6 +2990,7 @@ Gw
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="131" y="158" width="600" height="434"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <value key="minSize" type="size" width="600" height="400"/>
             <view key="contentView" id="xTu-LZ-X8X">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="434"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -3047,7 +3051,7 @@ Gw
                     </button>
                     <scrollView appearanceType="aqua" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="xri-pV-Xxt">
                         <rect key="frame" x="20" y="54" width="560" height="225"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="fLT-xn-hr7">
                             <rect key="frame" x="0.0" y="0.0" width="545" height="225"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3062,7 +3066,11 @@ Gw
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="eox-eE-5eS">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="vKQ-lg-Ddx">
+                            <rect key="frame" x="-100" y="-100" width="560" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="eox-eE-5eS">
                             <rect key="frame" x="545" y="0.0" width="15" height="225"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -3076,7 +3084,7 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="43Q-9B-zEo" customClass="NSB">
+                    <button verticalHuggingPriority="750" id="43Q-9B-zEo">
                         <rect key="frame" x="511" y="13" width="75" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LvI-Qz-AQY">
@@ -3087,9 +3095,17 @@ Gw
                             <action selector="stop:" target="-3" id="KK5-h7-5Ia"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" id="hFG-qJ-h7e">
+                        <rect key="frame" x="175" y="286" width="147" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="roundRect" title="Commit…" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wgk-bp-hwa">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="cellTitle"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-4070" y="-619"/>
+            <point key="canvasLocation" x="-4136" y="-603"/>
         </window>
     </objects>
     <resources>

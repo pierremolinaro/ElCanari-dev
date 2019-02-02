@@ -78,7 +78,6 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
                        _ inLogTextView : NSTextView) {
 //--- Update UI
   gCanariLibraryUpdateController?.unbind ()
-//  let logTextView = gCanariLibraryUpdateController?.logTextView
   gCanariLibraryUpdateController = nil
 //--- Commit change only if all actions has been successdully completed
   var newRepositoryFileDictionary = inNewRepositoryFileDictionary

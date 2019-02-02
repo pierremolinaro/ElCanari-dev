@@ -92,8 +92,6 @@
 		CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */; };
 		CF1893A82202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
 		CF1893A92202EEC600EF2308 /* library-repository-status.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893A72202EEC600EF2308 /* library-repository-status.swift */; };
-		CF1893AB2202F4E100EF2308 /* StopModalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893AA2202F4E100EF2308 /* StopModalButton.swift */; };
-		CF1893AC2202F4E100EF2308 /* StopModalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1893AA2202F4E100EF2308 /* StopModalButton.swift */; };
 		CF18963621F9E9C000F94354 /* button-LibraryUpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */; };
 		CF18963721F9E9C000F94354 /* button-LibraryUpdateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */; };
 		CF18963921F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF18963821F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift */; };
@@ -214,6 +212,8 @@
 		CF46301221EBC4EC00FF9A15 /* multiple-binding-controllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46301021EBC4EC00FF9A15 /* multiple-binding-controllers.swift */; };
 		CF4634451BEE10890064C49B /* ApplicationDelegate-new-document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */; };
 		CF4646C2213AA47C0062ECFD /* kicad-font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4646C1213AA47C0062ECFD /* kicad-font.swift */; };
+		CF46523E2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
+		CF46523F2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */; };
 		CF4A463721C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A463621C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift */; };
 		CF4A463821C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A463621C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift */; };
 		CF4A6C0A21C6B80200997A19 /* EBView-binding-gridStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4A6C0921C6B80200997A19 /* EBView-binding-gridStep.swift */; };
@@ -771,6 +771,10 @@
 		CF747FC71B3C419D00140C49 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF747FC61B3C419D00140C49 /* WebKit.framework */; };
 		CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
 		CF7542D421B476F800F4CAA1 /* buildPDFimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */; };
+		CF76EF2D2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76EF2C2205AC7F005ECF32 /* library-repository-get-current-commit.swift */; };
+		CF76EF2E2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76EF2C2205AC7F005ECF32 /* library-repository-get-current-commit.swift */; };
+		CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF76EF2F2205ADA4005ECF32 /* how-to.rtf */; };
+		CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF76EF2F2205ADA4005ECF32 /* how-to.rtf */; };
 		CF7A9E3B21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
 		CF7A9E3C21BD87CE00AC0FC7 /* magnifyingGlass.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */; };
 		CF7A9F2221BDA09900AC0FC7 /* extension-CGPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */; };
@@ -1189,7 +1193,6 @@
 		CF1623061BE25A2B001D351B /* canari-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "canari-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF186B021B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-Preferences-addLibraryEntryAction.swift"; sourceTree = "<group>"; };
 		CF1893A72202EEC600EF2308 /* library-repository-status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-status.swift"; sourceTree = "<group>"; };
-		CF1893AA2202F4E100EF2308 /* StopModalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopModalButton.swift; sourceTree = "<group>"; };
 		CF18963521F9E9C000F94354 /* button-LibraryUpdateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "button-LibraryUpdateButton.swift"; sourceTree = "<group>"; };
 		CF18963821F9F5FE00F94354 /* entry-point-update-from-repository-revision-list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "entry-point-update-from-repository-revision-list.swift"; sourceTree = "<group>"; };
 		CF1A10FC2108A1EC00987BFD /* transient-MergerDocument-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MergerDocument-issues.swift"; sourceTree = "<group>"; };
@@ -1269,6 +1272,7 @@
 		CF46301021EBC4EC00FF9A15 /* multiple-binding-controllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "multiple-binding-controllers.swift"; sourceTree = "<group>"; };
 		CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-new-document.swift"; sourceTree = "<group>"; };
 		CF4646C1213AA47C0062ECFD /* kicad-font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "kicad-font.swift"; sourceTree = "<group>"; };
+		CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-perform-commit.swift"; sourceTree = "<group>"; };
 		CF4A463621C2FF8D005F722D /* arrayController-PackageDocument-mPackageObjectsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-PackageDocument-mPackageObjectsController.swift"; sourceTree = "<group>"; };
 		CF4A6C0921C6B80200997A19 /* EBView-binding-gridStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-binding-gridStep.swift"; sourceTree = "<group>"; };
 		CF4A6C0C21C6BF0F00997A19 /* transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-PackageRoot-gridStepMultipliedByDisplayFactor.swift"; sourceTree = "<group>"; };
@@ -1463,6 +1467,8 @@
 		CF747FAF1B3C3D8D00140C49 /* ElCanari-Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ElCanari-Debug.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF747FC61B3C419D00140C49 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		CF7542D221B476F800F4CAA1 /* buildPDFimage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buildPDFimage.swift; sourceTree = "<group>"; };
+		CF76EF2C2205AC7F005ECF32 /* library-repository-get-current-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-get-current-commit.swift"; sourceTree = "<group>"; };
+		CF76EF2F2205ADA4005ECF32 /* how-to.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "how-to.rtf"; sourceTree = "<group>"; };
 		CF7A9E3A21BD87CE00AC0FC7 /* magnifyingGlass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifyingGlass.png; sourceTree = "<group>"; };
 		CF7A9F2121BDA09900AC0FC7 /* extension-CGPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPath.swift"; sourceTree = "<group>"; };
 		CF7A9F2421BDB0A400AC0FC7 /* extension-Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-Data.swift"; sourceTree = "<group>"; };
@@ -1866,10 +1872,12 @@
 		CF34A0AD2200CFC900DEA8EF /* Application — Library Upload */ = {
 			isa = PBXGroup;
 			children = (
-				CF1893AA2202F4E100EF2308 /* StopModalButton.swift */,
 				CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */,
 				CF1361FD220223E800E7CEE7 /* ftp-read-write.swift */,
+				CF76EF2F2205ADA4005ECF32 /* how-to.rtf */,
+				CF46523D2205CCE800E9E7E2 /* library-repository-perform-commit.swift */,
 				CF1893A72202EEC600EF2308 /* library-repository-status.swift */,
+				CF76EF2C2205AC7F005ECF32 /* library-repository-get-current-commit.swift */,
 			);
 			name = "Application — Library Upload";
 			path = "ElCanari/application-libray-upload";
@@ -2635,6 +2643,7 @@
 				CF5599531FDF364400ED5EE6 /* MergerDocument.xib in Resources */,
 				CF6172DD1B3C4CD600F3CA82 /* helper.png in Resources */,
 				CF6172E41B3C4CD600F3CA82 /* nc.png in Resources */,
+				CF76EF302205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF6172D41B3C4CD600F3CA82 /* dimension-in-package.pdf in Resources */,
 				CF6172F41B3C4CD600F3CA82 /* SaveAsToolbarImage.tiff in Resources */,
 				CF6172D71B3C4CD600F3CA82 /* exclamation.tif in Resources */,
@@ -2726,6 +2735,7 @@
 				CF5C4C97219F04D600EAC52A /* MergerDocument.xib in Resources */,
 				CF5C4C98219F04D600EAC52A /* helper.png in Resources */,
 				CF5C4C99219F04D600EAC52A /* nc.png in Resources */,
+				CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */,
 				CF5C4C9A219F04D600EAC52A /* dimension-in-package.pdf in Resources */,
 				CF5C4C9B219F04D600EAC52A /* SaveAsToolbarImage.tiff in Resources */,
 				CF5C4C9C219F04D600EAC52A /* exclamation.tif in Resources */,
@@ -3169,10 +3179,10 @@
 				CF6B32F821C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
 				CFCC4BE720EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift in Sources */,
 				CF58DF9A21AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift in Sources */,
-				CF1893AB2202F4E100EF2308 /* StopModalButton.swift in Sources */,
 				CFDBFC5B2143BA06006780C7 /* arrayController-FontDocument-mSelectedCharacterController.swift in Sources */,
 				CF00845321C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CF2A48351DD8A9AB009EF897 /* EBDoubleObserverField.swift in Sources */,
+				CF76EF2D2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */,
 				CF861AA91B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,
 				CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */,
 				CFE1F0031BDBC14600DC51E1 /* ApplicationDelegate-CanariWebSite.swift in Sources */,
@@ -3230,6 +3240,7 @@
 				CF71F9241B3EA3DF00FB5049 /* EBColorWell.swift in Sources */,
 				CF18963621F9E9C000F94354 /* button-LibraryUpdateButton.swift in Sources */,
 				CFEF3D2920F9F13E00DA6106 /* action-MergerDocument-showBoardHelpAction.swift in Sources */,
+				CF46523E2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */,
 				CF43A4792142F2FF00E2530F /* view-NewCharacterView.swift in Sources */,
 				CF7542D321B476F800F4CAA1 /* buildPDFimage.swift in Sources */,
 				CFE85A7521A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,
@@ -3640,10 +3651,10 @@
 				CF6B32F921C91FA100E3B985 /* transient-PackageDimension-selectionDisplay.swift in Sources */,
 				CF58DF9B21AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift in Sources */,
 				CF5C4D7B219F04D600EAC52A /* arrayController-FontDocument-mSelectedCharacterController.swift in Sources */,
-				CF1893AC2202F4E100EF2308 /* StopModalButton.swift in Sources */,
 				CF5C4D7C219F04D600EAC52A /* EBDoubleObserverField.swift in Sources */,
 				CF00845421C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CF5C4D7D219F04D600EAC52A /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,
+				CF76EF2E2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */,
 				CF5C4D7E219F04D600EAC52A /* entity-SegmentEntity.swift in Sources */,
 				CF5C4D7F219F04D600EAC52A /* ApplicationDelegate-CanariWebSite.swift in Sources */,
 				CF5C4D80219F04D600EAC52A /* extension-MergerDocument-arrange-move-selection.swift in Sources */,
@@ -3701,6 +3712,7 @@
 				CF5C4D9D219F04D600EAC52A /* EBColorWell.swift in Sources */,
 				CF18963721F9E9C000F94354 /* button-LibraryUpdateButton.swift in Sources */,
 				CF5C4D9E219F04D600EAC52A /* action-MergerDocument-showBoardHelpAction.swift in Sources */,
+				CF46523F2205CCE800E9E7E2 /* library-repository-perform-commit.swift in Sources */,
 				CF5C4D9F219F04D600EAC52A /* view-NewCharacterView.swift in Sources */,
 				CF7542D421B476F800F4CAA1 /* buildPDFimage.swift in Sources */,
 				CFE85A7621A5B37900991A66 /* transient-SymbolBezierCurve-objectDisplay.swift in Sources */,

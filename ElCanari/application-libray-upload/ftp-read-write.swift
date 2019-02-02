@@ -10,7 +10,7 @@ import Foundation
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func readRemoteFile (_ inRemotePath : String, _ url : String, userPwd : String) -> ShellCommandStatus {
+func readRemoteFile (_ inRemotePath : String, url : String, userPwd : String) -> ShellCommandStatus {
   let arguments = [
     "-s", // Silent mode, do not show download progress
     "-L", // Follow redirections
@@ -22,19 +22,24 @@ func readRemoteFile (_ inRemotePath : String, _ url : String, userPwd : String) 
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func writeRemoteFile (_ inRemotePath : String, _ inData : Data) -> ShellCommandStatus {
-  let tempFilePath = NSTemporaryDirectory () + ProcessInfo ().globallyUniqueString
-  try! inData.write (to: URL (fileURLWithPath: tempFilePath))
-  // Swift.print (tempFilePath)
+func writeRemoteFile (_ inRemotePath : String, url : String, userPwd : String, _ inLocalFullPath : String) -> ShellCommandStatus {
   let arguments = [
     "-s", // Silent mode, do not show download progress
     "-L", // Follow redirections
     "--ftp-create-dirs", // Create intermediate directories if needed
-    "-T", tempFilePath,
-    "ftp://ftp.pcmolinaro.name/www/CanariLibrary/" + inRemotePath,
-    "-u", "pcmolinaca:gT8amP5e9vSX"
+    "-T", inLocalFullPath,
+    url + "/" + inRemotePath,
+    "-u", userPwd
   ]
   return runShellCommandAndGetDataOutput (CURL, arguments)
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func writeRemoteData (_ inRemotePath : String, url : String, userPwd : String, _ inData : Data) -> ShellCommandStatus {
+  let tempFilePath = NSTemporaryDirectory () + ProcessInfo ().globallyUniqueString
+  try! inData.write (to: URL (fileURLWithPath: tempFilePath))
+  return writeRemoteFile (inRemotePath, url: url, userPwd: userPwd, tempFilePath)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
