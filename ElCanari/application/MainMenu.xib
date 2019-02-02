@@ -3006,7 +3006,7 @@ Gw
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mt0-6n-szx">
                         <rect key="frame" x="173" y="396" width="409" height="17"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="uzl-tt-aBN">
+                        <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Label" id="uzl-tt-aBN">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -3105,7 +3105,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-4136" y="-603"/>
+            <point key="canvasLocation" x="-4109" y="-688"/>
         </window>
     </objects>
     <resources>

@@ -2,65 +2,6 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//
-//---------------- ① Pour savoir si le repository a changé, on appelle :
-//        curl -s -i -L https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches
-// La réponse est :
-//  ·······
-//   Status: 200 OK
-//  ·······
-//   ETag: "22fc6b218e31128b7f802057f883393b"
-//  ·······
-//  [
-//    {
-//      "name": "master",
-//      "commit": {
-//        "sha": "20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
-//        "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/commits/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f"
-//      }
-//    }
-//  ]
-// Trois infos intéressantes dans la réponse :
-//   - Status --> 200 : la requête s'est correctement déroulée
-//   - commit / sha --> 20adfd48680e893e29a2e6bb94ebbbe88bb83e8f : valeur caractérisant le commit, utilisé dans les étapes suivantes
-//   - Etag --> 22fc6b218e31128b7f802057f883393b : cette valeur permet d'interroger le serveur en lui indiquant 
-// d'envoyer une réponse 304 si le repository n'a pas changé :
-//        curl -s -i -L -H 'If-None-Match:"22fc6b218e31128b7f802057f883393b"' https://api.github.com/repos/pierremolinaro/ElCanariLibrary/branches
-// On obtient alors la réponse suivante (sans donnée JSON)
-//  ·······
-//   Status: 304 Not Modified
-//  ·······
-// Si le contenu a changé, on obtient une réponse 200 comme précédemment, avec à la fin les données JSON.
-
-
-//---------------- ② Pour obtenir la liste des fichiers du repository, on appelle :
-// curl -s -L https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f?recursive=1
-// La réponse est :
-//{
-//  "sha": "20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
-//  "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/20adfd48680e893e29a2e6bb94ebbbe88bb83e8f",
-//  "tree": [
-//  ·······
-//    {
-//      "path": "artworks",
-//      "mode": "040000",
-//      "type": "tree",
-//      "sha": "aef45cfbb8a896426e0c49eda7ced76b5ce340c9",
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/trees/aef45cfbb8a896426e0c49eda7ced76b5ce340c9"
-//    },
-//    {
-//      "path": "artworks/electro_dragon.ElCanariArtwork",
-//      "mode": "100644",
-//      "type": "blob",
-//      "sha": "e089e1c10538d15cda9de3e8a74b3bfd5ee1100a",
-//      "size": 5850,
-//      "url": "https://api.github.com/repos/pierremolinaro/ElCanariLibrary/git/blobs/e089e1c10538d15cda9de3e8a74b3bfd5ee1100a"
-//    },
-//  ·······
-// Le champ "tree" est un tableau, un élément par fichier ou répertoire. Pour chaque fichier "size" contient sa taille ;
-// Attention "sha" n'est pas le SHA du fichier, mais de son blob.
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 let CURL = "/usr/bin/curl"
 
@@ -80,25 +21,33 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
 //-------- ⓪ Get system proxy
   inLogTextView.appendMessageString ("Phase 0: Get proxy (if any)\n", color: NSColor.purple)
   let proxy = getSystemProxy (inLogTextView)
-//-------- ① We start by checking if a repository did change using etag
+//-------- ① We start by checking if the repository did change by reading the last commit value
   inLogTextView.appendMessageString ("Phase 1: repository did change?\n", color: NSColor.purple)
   var possibleAlert : NSAlert? = nil
-//  var needsToDownloadRepositoryFileList = true
-  if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
-    inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
-    inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
-    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
+  let possibleStoredCurrentCommit = getStoredCurrentCommit ()
+  let possibleRemoteCurrentCommit = getRemoteCurrentCommit (inLogTextView, &possibleAlert, proxy)
+  if let storedCurrentCommit = possibleStoredCurrentCommit {
+    inLogTextView.appendMessageString ("  Local commit: \(storedCurrentCommit)\n")
   }else{
-    inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
-    queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
+    inLogTextView.appendMessageString ("  No local commit\n")
   }
-//-------- ② Repository ETAG and commit SHA have been successfully retrieve,
-//            now read of download the file list corresponding to this commit
-  let repositoryFileDictionary : [String : LibraryRepositoryFileDescriptor]
-  if possibleAlert == nil {
-    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (inLogTextView, proxy, &possibleAlert)
+  if let remoteCurrentCommit = possibleRemoteCurrentCommit {
+    inLogTextView.appendMessageString ("  Repository last commit: \(remoteCurrentCommit)\n")
+  }
+//  if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
+//    inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
+//    inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
+//    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
+//  }else{
+//    inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
+//    queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
+//  }
+//-------- ② Now get remote file that describes this commit
+  let repositoryFileDictionary : [String : LibraryContentsDescriptor]
+  if possibleAlert == nil, let remoteCurrentCommit = possibleRemoteCurrentCommit {
+    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
   }else{
-    repositoryFileDictionary = [String : LibraryRepositoryFileDescriptor] ()
+    repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
   }
 //-------- ③ Read library descriptor file
   let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
@@ -157,6 +106,25 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
 func enableItemsAfterCompletion () {
   g_Preferences?.mCheckForLibraryUpdatesButton?.isEnabled = true
   g_Preferences?.mUpDateLibraryMenuItemInCanariMenu?.isEnabled = true
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+private func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
+                                     _ ioPossibleAlert : inout NSAlert?,
+                                     _ inProxy : [String]) -> Int? {
+  if let data = getRemoteFileData ("lastCommit.txt", &ioPossibleAlert, inLogTextView, inProxy) {
+    if let s = String (data: data, encoding: .ascii), let commit = Int (s) {
+      return commit
+    }else{
+      ioPossibleAlert = NSAlert ()
+      ioPossibleAlert?.messageText = "Cannot get remote file"
+      ioPossibleAlert?.informativeText = "lastCommit.txt file has an invalid contents"
+      return nil
+    }
+  }else{
+    return nil
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -255,7 +223,7 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
       let c1 = components [components.count - 2].components (separatedBy:"ETag: \"")
       let c2 = c1 [1].components (separatedBy:"\"")
       let etag = c2 [0]
-      storeRepositoryCurrentETag (etag)
+   //   storeRepositoryCurrentETag (etag)
       inLogTextView.appendSuccessString ("  Etag: \(etag) has been stored in preferences\n")
     }catch let error {
       inLogTextView.appendErrorString ("  Error parsing JSON: \(error)\n")

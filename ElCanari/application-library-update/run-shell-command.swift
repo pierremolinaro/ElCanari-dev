@@ -9,6 +9,29 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func getRemoteFileData (_ inRelativeFilePath : String,
+                        _ ioPossibleAlert : inout NSAlert?,
+                        _ inLogTextView : NSTextView,
+                        _ inProxy : [String]) -> Data? {
+  let arguments = [
+    "-s", // Silent mode, do not show download progress
+    "-L", // Follow
+    "https://www.pcmolinaro.name/CanariLibrary/" + inRelativeFilePath
+  ] + inProxy
+  let responseCode = runShellCommandAndGetDataOutput (CURL, arguments, inLogTextView)
+  switch responseCode {
+  case .error (let errorCode) :
+    ioPossibleAlert = NSAlert ()
+    ioPossibleAlert?.messageText = "Cannot get file from repository"
+    ioPossibleAlert?.informativeText = "The server returns error \(errorCode) on reading '\(inRelativeFilePath)' file"
+    return nil
+  case .ok (let data) :
+    return data
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   runShellCommandAndGetDataOutput
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -33,54 +33,54 @@ func startLibraryRevisionListOperation (_ inLogTextView : NSTextView) {
   }
 //-------- ② Repository ETAG and commit SHA have been successfully retrieve,
 //            now read of download the file list corresponding to this commit
-  let repositoryFileDictionary : [String : LibraryRepositoryFileDescriptor]
-  if performUpdate && (possibleAlert == nil) {
-    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (inLogTextView, proxy, &possibleAlert)
-  }else{
-    repositoryFileDictionary = [String : LibraryRepositoryFileDescriptor] ()
-  }
+//  let repositoryFileDictionary : [String : LibraryContentsDescriptor]
+//  if performUpdate && (possibleAlert == nil) {
+//    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (inLogTextView, proxy, &possibleAlert)
+//  }else{
+//    repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
+//  }
 //-------- ③ Read library descriptor file
-  let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
-  if performUpdate && (possibleAlert == nil) {
-    libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
-  }else{
-    libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
-  }
+//  let libraryDescriptorFileContents : [String : CanariLibraryFileDescriptor]
+//  if performUpdate && (possibleAlert == nil) {
+//    libraryDescriptorFileContents = phase3_readLibraryDescriptionFileContents (inLogTextView)
+//  }else{
+//    libraryDescriptorFileContents = [String : CanariLibraryFileDescriptor] ()
+//  }
 //-------- ④ Repository contents has been successfully retrieved, then enumerate local system library
-  let localFileSet : Set <String>
-  if performUpdate && (possibleAlert == nil) {
-    localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
-  }else{
-    localFileSet = Set <String> ()
-  }
+//  let localFileSet : Set <String>
+//  if performUpdate && (possibleAlert == nil) {
+//    localFileSet = phase4_appendLocalFilesToLibraryFileDictionary (inLogTextView, &possibleAlert)
+//  }else{
+//    localFileSet = Set <String> ()
+//  }
 //-------- ⑤ Build library operations
-  let libraryOperations : [LibraryOperationElement]
-  let newLocalDescription : [String : CanariLibraryFileDescriptor]
-  if performUpdate && (possibleAlert == nil) {
-    (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
-  }else{
-    libraryOperations = [LibraryOperationElement] ()
-    newLocalDescription = [String : CanariLibraryFileDescriptor] ()
-  }
+//  let libraryOperations : [LibraryOperationElement]
+//  let newLocalDescription : [String : CanariLibraryFileDescriptor]
+//  if performUpdate && (possibleAlert == nil) {
+//    (libraryOperations, newLocalDescription) = phase5_buildLibraryOperations (repositoryFileDictionary, localFileSet, libraryDescriptorFileContents, inLogTextView, proxy)
+//  }else{
+//    libraryOperations = [LibraryOperationElement] ()
+//    newLocalDescription = [String : CanariLibraryFileDescriptor] ()
+//  }
 //-------- ⑥ is the library up to date?
-  if performUpdate && (possibleAlert == nil) {
-    inLogTextView.appendMessageString ("Phase 6: is the library up to date?\n", color: NSColor.purple)
-    if libraryOperations.count == 0 {
-      inLogTextView.appendSuccessString ("  The library is up to date\n")
-      let alert = NSAlert ()
-      alert.messageText = "The library is up to date"
-      _ = alert.runModal ()
-    }
-  }
+//  if performUpdate && (possibleAlert == nil) {
+//    inLogTextView.appendMessageString ("Phase 6: is the library up to date?\n", color: NSColor.purple)
+//    if libraryOperations.count == 0 {
+//      inLogTextView.appendSuccessString ("  The library is up to date\n")
+//      let alert = NSAlert ()
+//      alert.messageText = "The library is up to date"
+//      _ = alert.runModal ()
+//    }
+//  }
 //-------- ⑦ If ok and there are update operations, perform library update
-  if performUpdate && (possibleAlert == nil) && (libraryOperations.count != 0) {
-    phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
-  }else{
-    if let alert = possibleAlert {
-      _ = alert.runModal ()
-    }
-    enableItemsAfterCompletion ()
-  }
+//  if performUpdate && (possibleAlert == nil) && (libraryOperations.count != 0) {
+//    phase7_performLibraryOperations (libraryOperations, newLocalDescription, inLogTextView)
+//  }else{
+//    if let alert = possibleAlert {
+//      _ = alert.runModal ()
+//    }
+//    enableItemsAfterCompletion ()
+//  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

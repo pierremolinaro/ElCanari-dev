@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : LibraryRepositoryFileDescriptor],
+func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : LibraryContentsDescriptor],
                                     _ inLocalFileSet : Set <String>,
                                     _ inLibraryFileDictionary : [String : CanariLibraryFileDescriptor],
                                     _ inLogTextView : NSTextView,
@@ -34,8 +34,9 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
     if let repositoryDescriptor = possibleRepositoryDescriptor, !localFileExists { // Download
       let element = LibraryOperationElement (
         relativePath: path,
-        sizeInRepository: repositoryDescriptor.mSizeInRepository,
-        blobSHA: repositoryDescriptor.mBlobSHA,
+        commit: repositoryDescriptor.mCommit,
+        sizeInRepository: repositoryDescriptor.mLength,
+        fileSHA: repositoryDescriptor.mSHA,
         operation: .download,
         logTextView: inLogTextView,
         proxy: inProxy
@@ -44,8 +45,9 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
     }else if let repositoryDescriptor = possibleRepositoryDescriptor, possibleLocalDescription == nil { // Update
       let element = LibraryOperationElement (
         relativePath: path,
-        sizeInRepository: repositoryDescriptor.mSizeInRepository,
-        blobSHA: repositoryDescriptor.mBlobSHA,
+        commit: repositoryDescriptor.mCommit,
+        sizeInRepository: repositoryDescriptor.mLength,
+        fileSHA: repositoryDescriptor.mSHA,
         operation: .update,
         logTextView: inLogTextView,
         proxy: inProxy
@@ -54,17 +56,18 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
     }else if localFileExists && (possibleRepositoryDescriptor == nil) { // Delete file
      let element = LibraryOperationElement (
         relativePath: path,
+        commit: 0,
         sizeInRepository: 0,
-        blobSHA: "",
+        fileSHA: "",
         operation: .delete,
         logTextView: inLogTextView,
         proxy: inProxy
       )
       operations.append (element)
     }else if let repositoryDescriptor = possibleRepositoryDescriptor, let localDescription = possibleLocalDescription { // Update ?
-      var upToDate = repositoryDescriptor.mSizeInRepository == localDescription.mFileSize
+      var upToDate = repositoryDescriptor.mLength == localDescription.mFileSize
       if upToDate {
-        upToDate = repositoryDescriptor.mBlobSHA == localDescription.mBlobSHA
+        upToDate = repositoryDescriptor.mSHA == localDescription.mFileContentSHA
       }
       if upToDate {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: systemLibraryPath () + "/" + path)) {
@@ -81,8 +84,9 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       }else{
         let element = LibraryOperationElement (
           relativePath: path,
-          sizeInRepository: repositoryDescriptor.mSizeInRepository,
-          blobSHA: repositoryDescriptor.mBlobSHA,
+          commit: repositoryDescriptor.mCommit,
+          sizeInRepository: repositoryDescriptor.mLength,
+          fileSHA: repositoryDescriptor.mSHA,
           operation: .update,
           logTextView: inLogTextView,
           proxy: inProxy

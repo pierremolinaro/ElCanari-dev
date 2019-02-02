@@ -14,12 +14,10 @@ import Cocoa
   if let propertyList = libraryDescriptionFileContents () {
     for entry in propertyList {
       if let filePath = entry ["path"] as? String,
-         let blobSHA = entry ["blob-sha"] as? String,
          let fileContentSHA = entry ["file-sha"] as? String,
          let fileSize = entry ["size"] as? Int {
         let newDescriptor = CanariLibraryFileDescriptor (
           fileSize: fileSize,
-          blobSHA: blobSHA,
           fileContentSHA: fileContentSHA
         )
         libraryFileDictionary [filePath] = newDescriptor
@@ -27,9 +25,9 @@ import Cocoa
     }
   }
 //--- Print
-  inLogTextView.appendMessageString ("  Local contents, from description file [path — blob SHA — size — fileContentSHA]:\n")
+  inLogTextView.appendMessageString ("  Local contents, from description file [path — size — fileContentSHA]:\n")
   for (path, value) in libraryFileDictionary {
-    inLogTextView.appendMessageString ("    [\(path) — \(value.mBlobSHA) — \(value.mFileSize) — \(value.mFileContentSHA)]\n")
+    inLogTextView.appendMessageString ("    [\(path) — \(value.mFileSize) — \(value.mFileContentSHA)]\n")
   }
   return libraryFileDictionary
 }
@@ -48,7 +46,6 @@ func writeLibraryDescriptionPlistFile (_ inRepositoryFileDictionary: [String : C
     let dictionary : [String : Any] = [
       "path" : path,
       "size" : descriptor.mFileSize,
-      "blob-sha" : descriptor.mBlobSHA,
       "file-sha" : descriptor.mFileContentSHA
     ]
     dictionaryArray.append (dictionary)
@@ -68,16 +65,13 @@ struct CanariLibraryFileDescriptor {
   //····················································································································
 
   let mFileSize : Int
-  let mBlobSHA : String
   let mFileContentSHA : String
 
   //····················································································································
 
   init (fileSize inFileSize : Int,
-        blobSHA inBlobSHA : String,
         fileContentSHA inFileContentSHA : String) {
     mFileSize = inFileSize
-    mBlobSHA = inBlobSHA
     mFileContentSHA = inFileContentSHA
   }
 

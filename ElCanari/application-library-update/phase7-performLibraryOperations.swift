@@ -91,7 +91,6 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
     case .downloaded (let data) :
       let newDescriptor = CanariLibraryFileDescriptor (
         fileSize: data.count,
-        blobSHA: action.mBlobSHA,
         fileContentSHA: sha1 (data)
       )
       newRepositoryFileDictionary [action.mRelativePath] = newDescriptor

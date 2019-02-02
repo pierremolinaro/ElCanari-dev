@@ -33,8 +33,9 @@ class LibraryOperationElement : EBObject {
   //····················································································································
 
   let mRelativePath : String
+  let mCommit : Int
   let mSizeInRepository : Int
-  let mBlobSHA : String
+  let mFileSHA : String
   let mLogTextView : NSTextView
   let mProxy : [String]
 
@@ -50,15 +51,17 @@ class LibraryOperationElement : EBObject {
   //····················································································································
 
   init (relativePath inRelativePath : String,
+        commit : Int,
         sizeInRepository inSizeInRepository : Int,
-        blobSHA inBlobSHA : String,
+        fileSHA inFileSHA : String,
         operation inOperation : LibraryOperation,
         logTextView inLogTextView: NSTextView,
         proxy inProxy: [String]) {
     mRelativePath = inRelativePath
+    mCommit = commit
     mOperation = inOperation
     mSizeInRepository = inSizeInRepository
-    mBlobSHA = inBlobSHA
+    mFileSHA = inFileSHA
     mLogTextView = inLogTextView
     mProxy = inProxy
     super.init ()
@@ -117,7 +120,6 @@ class LibraryOperationElement : EBObject {
     }else{
       switch mOperation {
       case .download, .update :
-        let repositoryCommitSHA = getRepositoryCommitSHA ()!
         self.mOperation = .downloading (0)
         let task = Process ()
         let concurrentQueue = DispatchQueue (label: "Queue \(relativePath)", attributes: .concurrent)
@@ -125,7 +127,7 @@ class LibraryOperationElement : EBObject {
           let arguments = [
             "-s", // Silent mode, do not show download progress
             "-L", // Follow redirections
-            "https://raw.githubusercontent.com/pierremolinaro/ElCanariLibrary/\(repositoryCommitSHA)/\(self.mRelativePath)",
+            "https://www.pcmolinaro.name/CanariLibrary/files/\(self.mCommit)/\(self.mRelativePath)",
           ] + self.mProxy
           DispatchQueue.main.async {
             self.mLogTextView.appendMessageString ("  Download arguments: \(arguments)\n")

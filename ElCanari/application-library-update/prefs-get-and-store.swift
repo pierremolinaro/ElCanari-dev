@@ -39,18 +39,23 @@ func storeRepositoryContentsForCommitCache (_ inCommitSHA : String, _ inArray : 
 // ETAG
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private let LIBRARY_REPOSITORY_TAG_KEY = "library-repository-etag"
+private let LIBRARY_REPOSITORY_LAST_COMMIT_KEY = "library-repository-current-version"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func getRepositoryCurrentETag () -> String? { // Returns nil if no current ETAG
-  return UserDefaults ().string (forKey: LIBRARY_REPOSITORY_TAG_KEY)
+func getStoredCurrentCommit () -> Int? { // Returns nil if no current ETAG
+  let value = UserDefaults ().value (forKey: LIBRARY_REPOSITORY_LAST_COMMIT_KEY)
+  if let v = value as? Int {
+    return v
+  }else{
+    return nil
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func storeRepositoryCurrentETag (_ inETag : String) {
-  UserDefaults ().set (inETag, forKey: LIBRARY_REPOSITORY_TAG_KEY)
+func storeRepositoryCurrentCommit (_ inCommit : Int) {
+  UserDefaults ().set (inCommit, forKey: LIBRARY_REPOSITORY_LAST_COMMIT_KEY)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -75,7 +80,7 @@ func storeRepositoryCommitSHA (_ inSHA : String) {
 
 func storeRepositoryCommitSHA_removeETAG (_ inSHA : String) {
   UserDefaults ().set (inSHA, forKey: LIBRARY_REPOSITORY_COMMIT_SHA_KEY)
-  UserDefaults ().set (nil, forKey: LIBRARY_REPOSITORY_TAG_KEY)
+//  UserDefaults ().set (nil, forKey: LIBRARY_REPOSITORY_TAG_KEY)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

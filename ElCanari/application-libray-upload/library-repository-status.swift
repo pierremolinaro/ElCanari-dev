@@ -80,18 +80,30 @@ extension CanariLibraryEntry {
         operations.append (operation)
       }
     //---
-      inLogTextView.appendMessageString("Operations:\n")
+      inLogTextView.appendMessageString ("Operations:\n")
+      var operationCount : UInt = 0
       for entry in operations {
         switch entry.mOperation {
         case .nop :
-          inLogTextView.appendMessageString ("  No change for \(entry.mRelativePath)\n")
+          ()
+          // inLogTextView.appendMessageString ("  No change for \(entry.mRelativePath)\n")
         case .remove :
+          operationCount += 1
           inLogTextView.appendMessageString ("  Remove \(entry.mRelativePath)\n")
         case .upload :
+          operationCount += 1
           inLogTextView.appendMessageString ("  Upload \(entry.mRelativePath)\n")
         case .upgrade :
+          operationCount += 1
           inLogTextView.appendMessageString ("  UpGrade \(entry.mRelativePath)\n")
         }
+      }
+      if operationCount == 0 {
+        inLogTextView.appendSuccessString ("No operation\n")
+      }else if operationCount == 1 {
+        inLogTextView.appendSuccessString ("1 operation\n")
+      }else{
+        inLogTextView.appendSuccessString ("\(operationCount) operations\n")
       }
     }
   //---
@@ -137,8 +149,13 @@ extension CanariLibraryEntry {
       possibleLocalFileDescriptors = [LibraryContentsDescriptor] ()
       if let currentLibraryContents = try? fm.subpathsOfDirectory (atPath: self.mPath) {
         for relativePath in currentLibraryContents {
-        //--- Eliminate ".DS_store" and description plist file
-          var enter = (relativePath.lastPathComponent != ".DS_Store") && (relativePath != REPOSITORY_DESCRIPTION_PLIST_FILE_NAME)
+        //--- Eliminate hidden files
+          var enter = true
+          var p = relativePath
+          while enter && (p != "") {
+            enter = p.lastPathComponent.first! != "."
+            p = p.deletingLastPathComponent
+          }
         //--- Eliminate directories
           let fullPath = self.mPath + "/" + relativePath
           if enter {
