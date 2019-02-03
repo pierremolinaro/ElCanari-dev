@@ -35,7 +35,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       let element = LibraryOperationElement (
         relativePath: path,
         commit: repositoryDescriptor.mCommit,
-        sizeInRepository: repositoryDescriptor.mLength,
+        sizeInRepository: repositoryDescriptor.mSize,
         fileSHA: repositoryDescriptor.mSHA,
         operation: .download,
         logTextView: inLogTextView,
@@ -46,7 +46,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       let element = LibraryOperationElement (
         relativePath: path,
         commit: repositoryDescriptor.mCommit,
-        sizeInRepository: repositoryDescriptor.mLength,
+        sizeInRepository: repositoryDescriptor.mSize,
         fileSHA: repositoryDescriptor.mSHA,
         operation: .update,
         logTextView: inLogTextView,
@@ -65,15 +65,15 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
       )
       operations.append (element)
     }else if let repositoryDescriptor = possibleRepositoryDescriptor, let localDescription = possibleLocalDescription { // Update ?
-      var upToDate = repositoryDescriptor.mLength == localDescription.mFileSize
+      var upToDate = repositoryDescriptor.mSize == localDescription.mSize
       if upToDate {
-        upToDate = repositoryDescriptor.mSHA == localDescription.mFileContentSHA
+        upToDate = repositoryDescriptor.mSHA == localDescription.mSHA
       }
       if upToDate {
         if let data = try? Data (contentsOf: URL (fileURLWithPath: systemLibraryPath () + "/" + path)) {
-           upToDate = data.count == localDescription.mFileSize
+           upToDate = data.count == localDescription.mSize
            if upToDate {
-             upToDate = sha1 (data) == localDescription.mFileContentSHA
+             upToDate = sha1 (data) == localDescription.mSHA
            }
         }else{
            upToDate = false
@@ -85,7 +85,7 @@ func phase5_buildLibraryOperations (_ inRepositoryFileDictionary : [String : Lib
         let element = LibraryOperationElement (
           relativePath: path,
           commit: repositoryDescriptor.mCommit,
-          sizeInRepository: repositoryDescriptor.mLength,
+          sizeInRepository: repositoryDescriptor.mSize,
           fileSHA: repositoryDescriptor.mSHA,
           operation: .update,
           logTextView: inLogTextView,

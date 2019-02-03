@@ -37,12 +37,12 @@ extension CanariLibraryEntry {
       for localEntry in localFilesDescriptors {
         handledFiles.insert (localEntry.mRelativePath)
         if let remoteEntry = remoteFileDescriptorDict [localEntry.mRelativePath] {
-          let fileChanged = (localEntry.mLength != remoteEntry.mLength) || (localEntry.mSHA != remoteEntry.mSHA)
+          let fileChanged = (localEntry.mSize != remoteEntry.mSize) || (localEntry.mSHA != remoteEntry.mSHA)
           if fileChanged {
             let operation = LibraryOperationDescriptor (
               relativePath: localEntry.mRelativePath,
               commit: currentCommit + 1,
-              length: localEntry.mLength,
+              length: localEntry.mSize,
               sha: localEntry.mSHA,
               operation: .upgrade
             )
@@ -51,7 +51,7 @@ extension CanariLibraryEntry {
             let operation = LibraryOperationDescriptor (
               relativePath: localEntry.mRelativePath,
               commit: remoteEntry.mCommit,
-              length: localEntry.mLength,
+              length: localEntry.mSize,
               sha: localEntry.mSHA,
               operation: .nop
             )
@@ -61,7 +61,7 @@ extension CanariLibraryEntry {
           let operation = LibraryOperationDescriptor (
             relativePath: localEntry.mRelativePath,
             commit: currentCommit + 1,
-            length: localEntry.mLength,
+            length: localEntry.mSize,
             sha: localEntry.mSHA,
             operation: .upload
           )
@@ -192,7 +192,7 @@ struct LibraryContentsDescriptor {
 
   let mRelativePath : String
   let mCommit : Int
-  let mLength : Int
+  let mSize : Int
   let mSHA : String
 
   //····················································································································
@@ -202,7 +202,7 @@ struct LibraryContentsDescriptor {
   init (relativePath: String, commit : Int, contents : Data) {
     mRelativePath = relativePath
     mCommit = commit
-    mLength = contents.count
+    mSize = contents.count
     mSHA = sha1 (contents)
   }
 
@@ -211,11 +211,11 @@ struct LibraryContentsDescriptor {
   init? (withDictionary inDictionary : [String : Any]) {
     if let relativePath = inDictionary ["path"] as? String,
        let commit = inDictionary ["commit"] as? Int,
-       let length = inDictionary ["length"] as? Int,
+       let length = inDictionary ["size"] as? Int,
        let sha = inDictionary ["sha"] as? String {
       mRelativePath = relativePath
       mCommit = commit
-      mLength = length
+      mSize = length
       mSHA = sha
     }else{
       return nil
@@ -228,7 +228,7 @@ struct LibraryContentsDescriptor {
     let dict : [String : Any] = [
       "path" : self.mRelativePath,
       "commit" : self.mCommit,
-      "length" : self.mLength,
+      "size" : self.mSize,
       "sha" : self.mSHA
     ]
     return dict

@@ -34,18 +34,10 @@ func startLibraryUpdateOperation (_ inWindow : EBWindow?, _ inLogTextView : NSTe
   if let remoteCurrentCommit = possibleRemoteCurrentCommit {
     inLogTextView.appendMessageString ("  Repository last commit: \(remoteCurrentCommit)\n")
   }
-//  if let etag = getRepositoryCurrentETag (), let sha = getRepositoryCommitSHA () {
-//    inLogTextView.appendSuccessString ("  Current Etag: \(etag)\n")
-//    inLogTextView.appendSuccessString ("  Current commit SHA: \(sha)\n")
-//    queryServerLastCommitUsingEtag (etag, inLogTextView, proxy, &possibleAlert)
-//  }else{
-//    inLogTextView.appendWarningString ("  No current Etag and/or no current commit SHA\n")
-//    queryServerLastCommitWithNoEtag (inLogTextView, proxy, &possibleAlert)
-//  }
 //-------- ② Now get remote file that describes this commit
   let repositoryFileDictionary : [String : LibraryContentsDescriptor]
   if possibleAlert == nil, let remoteCurrentCommit = possibleRemoteCurrentCommit {
-    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
+    repositoryFileDictionary = phase2_readOrDownloadLibraryFileDictionary (possibleStoredCurrentCommit, remoteCurrentCommit, inLogTextView, proxy, &possibleAlert)
   }else{
     repositoryFileDictionary = [String : LibraryContentsDescriptor] ()
   }
