@@ -102,7 +102,7 @@ func enableItemsAfterCompletion () {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-private func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
+func getRemoteCurrentCommit (_ inLogTextView : NSTextView,
                                      _ ioPossibleAlert : inout NSAlert?,
                                      _ inProxy : [String]) -> Int? {
   if let data = getRemoteFileData ("lastCommit.txt", &ioPossibleAlert, inLogTextView, inProxy) {
