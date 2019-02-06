@@ -242,7 +242,7 @@ class LibraryCommitListController : EBObject {
 
   let mRevisions : [LibraryRevisionDescriptor]
   let mArrayController = NSArrayController ()
-  let mTableView : NSTableView?
+  let mTableView : Optional <NSTableView>
 
   //····················································································································
   //   init

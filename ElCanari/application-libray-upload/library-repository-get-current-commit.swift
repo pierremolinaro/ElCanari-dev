@@ -24,7 +24,7 @@ extension CanariLibraryEntry {
     let response = readRemoteFile ("lastCommit.txt", url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag)
     let result : Int?
     switch response {
-    case .error (_) :
+    case .error (let status) :
       g_Preferences?.mLibraryRepositoryCurrentReleaseTextField?.stringValue = "Error \(status)"
       result = nil
     case .ok (let data) :
