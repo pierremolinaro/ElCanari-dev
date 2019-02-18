@@ -45,17 +45,17 @@ func phase2_readOrDownloadLibraryFileDictionary (_ possibleStoredCurrentCommit :
         if let entry = LibraryContentsDescriptor (withDictionary: dictionary) {
           libraryFileDictionary [entry.mRelativePath] = entry
         }else{
-          inLogTextView.appendErrorString ("  Commit file has an invalid structure.\n")
+          inLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
           ioPossibleAlert = NSAlert ()
           ioPossibleAlert?.messageText = "Internal error"
-          ioPossibleAlert?.informativeText = "Commit file has an invalid structure."
+          ioPossibleAlert?.informativeText = "Contents file has an invalid structure."
         }
       }
     }else{
-      inLogTextView.appendErrorString ("  Commit file has an invalid structure.\n")
+      inLogTextView.appendErrorString ("  Contents file has an invalid structure.\n")
       ioPossibleAlert = NSAlert ()
       ioPossibleAlert?.messageText = "Internal error"
-      ioPossibleAlert?.informativeText = "Commit file has an invalid structure."
+      ioPossibleAlert?.informativeText = "Contents file has an invalid structure."
     }
   }
 //--- Print

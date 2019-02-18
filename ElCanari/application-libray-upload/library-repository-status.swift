@@ -211,7 +211,7 @@ struct LibraryContentsDescriptor {
   init? (withDictionary inDictionary : [String : Any]) {
     if let relativePath = inDictionary ["path"] as? String,
        let commit = inDictionary ["commit"] as? Int,
-       let length = inDictionary ["size"] as? Int,
+       let length = inDictionary ["length"] as? Int,
        let sha = inDictionary ["sha"] as? String {
       mRelativePath = relativePath
       mCommit = commit
@@ -228,7 +228,7 @@ struct LibraryContentsDescriptor {
     let dict : [String : Any] = [
       "path" : self.mRelativePath,
       "commit" : self.mCommit,
-      "size" : self.mSize,
+      "length" : self.mSize,
       "sha" : self.mSHA
     ]
     return dict

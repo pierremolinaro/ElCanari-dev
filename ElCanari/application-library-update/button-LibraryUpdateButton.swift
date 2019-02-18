@@ -19,7 +19,7 @@ class LibraryUpdateButton : NSButton {
   //····················································································································
 
   private var mRegularTitle = "" // Set by awakeFromNib
-  private var mOptionTitle = "Update Library ro Revision…"
+  private var mOptionTitle = "Update Library to Revision…"
   private var mEventMonitor : Any? = nil // For tracking option key change
 
   //····················································································································
@@ -31,7 +31,7 @@ class LibraryUpdateButton : NSButton {
     self.mRegularTitle = self.title
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { inEvent in
       let optionKey = inEvent.modifierFlags.contains (.option)
-      self.title = optionKey ?  self.mRegularTitle : self.mOptionTitle
+      self.title = optionKey ? self.mRegularTitle : self.mOptionTitle
       return inEvent
     }
   }

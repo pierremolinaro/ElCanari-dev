@@ -63,7 +63,8 @@ extension CanariLibraryEntry {
           case .remove :
             inLogTextView.appendMessageString ("Remove \(op.mRelativePath)\n")
           case .nop :
-            inLogTextView.appendMessageString ("No change for \(op.mRelativePath)\n")
+            ()
+            // inLogTextView.appendMessageString ("No change for \(op.mRelativePath)\n")
           case .upload :
             inLogTextView.appendMessageString ("Upload \(op.mRelativePath) (\(op.mLength) bytes)... ")
             let localFullPath = self.mPath + "/" + op.mRelativePath
@@ -177,3 +178,5 @@ extension CanariLibraryEntry {
 
 }
 
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
