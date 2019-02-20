@@ -3002,7 +3002,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackagePad] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackagePad] > > = nil
 
   //····················································································································
 

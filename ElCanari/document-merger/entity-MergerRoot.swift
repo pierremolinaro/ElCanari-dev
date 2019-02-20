@@ -3062,7 +3062,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [MergerRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [MergerRoot] > > = nil
 
   //····················································································································
 

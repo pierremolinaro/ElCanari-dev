@@ -7508,7 +7508,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [BoardModel] > >
+  var readModelFunction : Optional < () -> EBSelection < [BoardModel] > > = nil
 
   //····················································································································
 

@@ -1508,7 +1508,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolRoot] > > = nil
 
   //····················································································································
 

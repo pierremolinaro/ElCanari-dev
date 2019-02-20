@@ -661,7 +661,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > >
+  var readModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > > = nil
 
   //····················································································································
 

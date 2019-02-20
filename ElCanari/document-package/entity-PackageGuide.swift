@@ -1292,7 +1292,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageGuide] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageGuide] > > = nil
 
   //····················································································································
 

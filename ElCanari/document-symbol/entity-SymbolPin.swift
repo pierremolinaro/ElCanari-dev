@@ -1678,7 +1678,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolPin] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolPin] > > = nil
 
   //····················································································································
 

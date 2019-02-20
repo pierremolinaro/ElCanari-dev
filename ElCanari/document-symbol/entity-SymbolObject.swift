@@ -362,7 +362,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolObject] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolObject] > > = nil
 
   //····················································································································
 

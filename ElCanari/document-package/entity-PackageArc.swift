@@ -1858,7 +1858,7 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageArc] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageArc] > > = nil
 
   //····················································································································
 

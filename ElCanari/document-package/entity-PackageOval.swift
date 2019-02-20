@@ -1298,7 +1298,7 @@ class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageOval] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageOval] > > = nil
 
   //····················································································································
 

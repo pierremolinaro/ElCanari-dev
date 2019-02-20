@@ -874,7 +874,7 @@ class TransientArrayOf_SymbolSegment : ReadOnlyArrayOf_SymbolSegment {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolSegment] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolSegment] > > = nil
 
   //····················································································································
 

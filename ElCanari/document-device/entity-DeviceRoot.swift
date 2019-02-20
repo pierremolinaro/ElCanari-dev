@@ -677,7 +677,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [DeviceRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
 
   //····················································································································
 

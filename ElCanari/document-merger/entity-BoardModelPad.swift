@@ -750,7 +750,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [BoardModelPad] > >
+  var readModelFunction : Optional < () -> EBSelection < [BoardModelPad] > > = nil
 
   //····················································································································
 

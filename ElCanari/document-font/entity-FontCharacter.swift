@@ -749,7 +749,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [FontCharacter] > >
+  var readModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
 
   //····················································································································
 

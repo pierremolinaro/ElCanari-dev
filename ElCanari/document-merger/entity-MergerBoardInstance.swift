@@ -1084,7 +1084,7 @@ class TransientArrayOf_MergerBoardInstance : ReadOnlyArrayOf_MergerBoardInstance
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [MergerBoardInstance] > >
+  var readModelFunction : Optional < () -> EBSelection < [MergerBoardInstance] > > = nil
 
   //····················································································································
 

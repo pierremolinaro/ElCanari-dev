@@ -2573,7 +2573,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > >
+  var readModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > > = nil
 
   //····················································································································
 

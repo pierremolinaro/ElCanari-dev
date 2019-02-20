@@ -874,7 +874,7 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolSolidRect] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolSolidRect] > > = nil
 
   //····················································································································
 

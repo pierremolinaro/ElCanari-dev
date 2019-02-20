@@ -16,7 +16,8 @@ extension NSTextView {
     if let unwrappedLayoutManager = layoutManager {
       if let ts = unwrappedLayoutManager.textStorage {
         let endOfText = NSRange (location:ts.length, length:0)
-        DispatchQueue.main.async (execute: { self.scrollRangeToVisible (endOfText) } )
+        self.scrollRangeToVisible (endOfText)
+    //    self.displayIfNeeded ()
       }
     }
   }

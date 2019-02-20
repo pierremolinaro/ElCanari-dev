@@ -39,11 +39,11 @@ class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
-  var readModelFunction : Optional < () -> EBSelection <T> >
-  var writeModelFunction : Optional < (T) -> Void >
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool >
+  var readModelFunction : Optional < () -> EBSelection <T> > = nil
+  var writeModelFunction : Optional < (T) -> Void > = nil
+  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   
-  private var prop_cache : EBSelection <T>?
+  private var prop_cache : EBSelection <T>? = nil
   
   //····················································································································
 
@@ -307,7 +307,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
 class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> >
+  var readModelFunction : Optional<() -> EBSelection <T> > = nil
   
   //····················································································································
 
@@ -430,11 +430,11 @@ class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
-  var readModelFunction : Optional < () -> EBSelection <T> >
-  var writeModelFunction : Optional < (T) -> Void >
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool >
+  var readModelFunction : Optional < () -> EBSelection <T> > = nil
+  var writeModelFunction : Optional < (T) -> Void > = nil
+  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
 
-  private var prop_cache : EBSelection <T>?
+  private var prop_cache : EBSelection <T>? = nil
 
   //····················································································································
 
@@ -698,7 +698,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
 class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> >
+  var readModelFunction : Optional<() -> EBSelection <T> > = nil
 
   //····················································································································
 
@@ -1068,11 +1068,11 @@ class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  var readModelFunction : Optional < () -> EBSelection <T> >
-  var writeModelFunction : Optional < (T) -> Void >
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool >
+  var readModelFunction : Optional < () -> EBSelection <T> > = nil
+  var writeModelFunction : Optional < (T) -> Void > = nil
+  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   
-  private var prop_cache : EBSelection <T>?
+  private var prop_cache : EBSelection <T>? = nil
   
   //····················································································································
 
@@ -1336,7 +1336,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
 class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> >
+  var readModelFunction : Optional<() -> EBSelection <T> > = nil
   
   //····················································································································
 

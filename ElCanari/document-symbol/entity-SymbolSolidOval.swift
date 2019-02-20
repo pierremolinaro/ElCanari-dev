@@ -871,7 +871,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
 
   //····················································································································
 

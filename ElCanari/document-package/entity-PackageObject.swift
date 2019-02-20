@@ -362,7 +362,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageObject] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageObject] > > = nil
 
   //····················································································································
 

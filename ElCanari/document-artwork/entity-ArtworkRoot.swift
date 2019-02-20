@@ -1333,7 +1333,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > > = nil
 
   //····················································································································
 

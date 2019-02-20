@@ -1198,7 +1198,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [FontRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [FontRoot] > > = nil
 
   //····················································································································
 

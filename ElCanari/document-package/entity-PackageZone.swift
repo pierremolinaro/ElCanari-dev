@@ -2091,7 +2091,7 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageZone] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageZone] > > = nil
 
   //····················································································································
 

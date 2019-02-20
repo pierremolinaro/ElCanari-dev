@@ -2367,7 +2367,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageRoot] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageRoot] > > = nil
 
   //····················································································································
 

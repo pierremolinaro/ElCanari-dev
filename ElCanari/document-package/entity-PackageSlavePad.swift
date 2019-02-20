@@ -2375,7 +2375,7 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageSlavePad] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageSlavePad] > > = nil
 
   //····················································································································
 

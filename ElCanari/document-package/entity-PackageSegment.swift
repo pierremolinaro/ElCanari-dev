@@ -1530,7 +1530,7 @@ class TransientArrayOf_PackageSegment : ReadOnlyArrayOf_PackageSegment {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageSegment] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageSegment] > > = nil
 
   //····················································································································
 

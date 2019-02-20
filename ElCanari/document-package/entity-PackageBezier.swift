@@ -2182,7 +2182,7 @@ class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageBezier] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageBezier] > > = nil
 
   //····················································································································
 

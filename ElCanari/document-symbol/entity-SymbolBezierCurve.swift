@@ -1334,7 +1334,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > >
+  var readModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > > = nil
 
   //····················································································································
 

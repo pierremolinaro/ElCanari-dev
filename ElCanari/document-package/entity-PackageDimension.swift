@@ -1981,7 +1981,7 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageDimension] > >
+  var readModelFunction : Optional < () -> EBSelection < [PackageDimension] > > = nil
 
   //····················································································································
 

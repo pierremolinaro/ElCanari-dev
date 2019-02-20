@@ -646,7 +646,7 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SegmentEntity] > >
+  var readModelFunction : Optional < () -> EBSelection < [SegmentEntity] > > = nil
 
   //····················································································································
 

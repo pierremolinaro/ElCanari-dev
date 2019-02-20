@@ -765,7 +765,7 @@ class TransientArrayOf_SegmentForFontCharacter : ReadOnlyArrayOf_SegmentForFontC
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SegmentForFontCharacter] > >
+  var readModelFunction : Optional < () -> EBSelection < [SegmentForFontCharacter] > > = nil
 
   //····················································································································
 
