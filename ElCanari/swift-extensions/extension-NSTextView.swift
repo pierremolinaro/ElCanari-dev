@@ -12,35 +12,20 @@ extension NSTextView {
 
   //····················································································································
 
-  func displayAndScrollToEndOfText () {
-    if let unwrappedLayoutManager = layoutManager {
-      if let ts = unwrappedLayoutManager.textStorage {
-        let endOfText = NSRange (location:ts.length, length:0)
-        self.scrollRangeToVisible (endOfText)
-    //    self.displayIfNeeded ()
-      }
-    }
-  }
-
-  //····················································································································
-
   func clear () {
-    let str = NSAttributedString (string:"", attributes:nil)
-    if let unwrappedLayoutManager = layoutManager {
-      if let ts = unwrappedLayoutManager.textStorage {
-        ts.setAttributedString (str)
-      }
+    if let ts = self.layoutManager?.textStorage {
+      let str = NSAttributedString (string: "", attributes: nil)
+      ts.setAttributedString (str)
     }
   }
 
   //····················································································································
 
   func appendAttributedString (_ inAttributedString : NSAttributedString) {
-    if let unwrappedLayoutManager = layoutManager {
-      if let ts = unwrappedLayoutManager.textStorage {
-        ts.append (inAttributedString)
-        self.displayAndScrollToEndOfText ()
-      }
+    if let ts = self.layoutManager?.textStorage {
+      ts.append (inAttributedString)
+      let endOfText = NSRange (location: ts.length, length: 0)
+      self.scrollRangeToVisible (endOfText)
     }
   }
 
@@ -52,12 +37,7 @@ extension NSTextView {
       NSAttributedString.Key.foregroundColor : NSColor.black
     ]
     let str = NSAttributedString (string:inString, attributes:attributes)
-    if let unwrappedLayoutManager = layoutManager {
-      if let ts = unwrappedLayoutManager.textStorage {
-        ts.append (str)
-        self.displayAndScrollToEndOfText ()
-      }
-    }
+    self.appendAttributedString (str)
   }
 
   //····················································································································
@@ -68,30 +48,25 @@ extension NSTextView {
       NSAttributedString.Key.foregroundColor : color
     ]
     let str = NSAttributedString (string:inString, attributes: attributes)
-    if let unwrappedLayoutManager = layoutManager {
-      if let ts = unwrappedLayoutManager.textStorage {
-        ts.append (str)
-        self.displayAndScrollToEndOfText ()
-      }
-    }
+    self.appendAttributedString (str)
   }
 
   //····················································································································
 
   func appendErrorString (_ inString : String) {
-    self.appendMessageString (inString, color:NSColor.red)
+    self.appendMessageString (inString, color: NSColor.red)
   }
 
   //····················································································································
 
   func appendWarningString (_ inString : String) {
-    self.appendMessageString (inString, color:NSColor.orange)
+    self.appendMessageString (inString, color: NSColor.orange)
   }
 
   //····················································································································
 
   func appendSuccessString (_ inString : String) {
-    self.appendMessageString (inString, color:NSColor.blue)
+    self.appendMessageString (inString, color: NSColor.blue)
   }
 
   //····················································································································
