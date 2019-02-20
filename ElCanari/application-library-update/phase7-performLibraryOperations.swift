@@ -112,6 +112,7 @@ func commitAllActions (_ inActionArray : [LibraryOperationElement],
       //--- Write library description plist file
         try writeLibraryDescriptionPlistFile (newRepositoryFileDictionary, inLogTextView)
       //--- Completed!
+        inLogTextView.appendSuccessString ("Done.")
         let alert = NSAlert ()
         alert.messageText = "Update completed, the library is up to date"
         alert.beginSheetModal (
@@ -148,7 +149,7 @@ private func deleteOrphanDirectories (_ inLogTextView : NSTextView) throws {
     }
   }
   directoryArray.sort ()
-  var i=directoryArray.count-1
+  var i = directoryArray.count - 1
   while i>=0 {
     let fullPath = directoryArray [i]
     var currentDirectoryContents = try fm.contentsOfDirectory (atPath: fullPath)

@@ -163,16 +163,20 @@ class LibraryOperationElement : EBObject {
           task.waitUntilExit ()
           fileHandle.closeFile ()
           let status = task.terminationStatus
-          if inController.shouldCancel || (status != 0) {
-            self.mOperation = .downloadError (status)
-          }else{
-            self.mOperation = .downloaded (data)
+          DispatchQueue.main.async {
+            if inController.shouldCancel || (status != 0) {
+              self.mOperation = .downloadError (status)
+            }else{
+              self.mOperation = .downloaded (data)
+            }
+            inController.elementActionDidEnd (self, status)
           }
-          DispatchQueue.main.async { inController.elementActionDidEnd (self, status) }
         }
       case .delete :
-        self.mOperation = .deleteRegistered
-        DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
+        DispatchQueue.main.async {
+          self.mOperation = .deleteRegistered
+          inController.elementActionDidEnd (self, 0)
+        }
       case .downloadError, .downloaded, .downloading, .deleteRegistered :
         DispatchQueue.main.async { inController.elementActionDidEnd (self, 0) }
       }
@@ -188,27 +192,21 @@ class LibraryOperationElement : EBObject {
     case .deleteRegistered :
       let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
       let fm = FileManager ()
-      DispatchQueue.main.async {
-        self.mLogTextView.appendMessageString ("  Delete file '\(fullFilePath)'\n")
-      }
+      self.mLogTextView.appendMessageString ("  Delete file '\(fullFilePath)'\n")
       try fm.removeItem (atPath: fullFilePath)
     case .downloaded (let data) :
       let fullFilePath = systemLibraryPath() + "/" + self.mRelativePath
       let fm = FileManager ()
     //--- Create directory
       let destinationDirectory = fullFilePath.deletingLastPathComponent
-      if !fm.fileExists(atPath: destinationDirectory) { // If directory does not exist, create it
-        DispatchQueue.main.async {
-          self.mLogTextView.appendMessageString ("  Create directory '\(destinationDirectory)'\n")
-        }
-        try fm.createDirectory (atPath:destinationDirectory, withIntermediateDirectories:true, attributes:nil)
+      if !fm.fileExists (atPath: destinationDirectory) { // If directory does not exist, create it
+        self.mLogTextView.appendMessageString ("  Create directory '\(destinationDirectory)'\n")
+        try fm.createDirectory (atPath: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
       }else if fm.fileExists (atPath: fullFilePath) { // If file exists, delete it
-        try fm.removeItem (atPath:fullFilePath)
+        try fm.removeItem (atPath: fullFilePath)
       }
     //--- Write file
-      DispatchQueue.main.async {
-        self.mLogTextView.appendMessageString ("  Write file '\(fullFilePath)'\n")
-      }
+      self.mLogTextView.appendMessageString ("  Write file '\(fullFilePath)'\n")
       try data.write (to: URL (fileURLWithPath: fullFilePath))
     }
   }
