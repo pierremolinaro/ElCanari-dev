@@ -52,6 +52,8 @@ extension NSBezierPath {
         path.addCurve (to: points[2], control1: points[0], control2: points[1])
       case .closePath:
         path.closeSubpath ()
+      @unknown default:
+         ()
       }
     }
     return path
@@ -65,12 +67,16 @@ extension NSBezierPath {
     case .butt : lineCap = .butt
     case .round : lineCap = .round
     case .square : lineCap = .square
+    @unknown default:
+      lineCap = .round
     }
     let lineJoin : CGLineJoin
     switch self.lineJoinStyle {
     case .bevel : lineJoin = .bevel
     case .miter : lineJoin = .miter
     case .round : lineJoin = .round
+    @unknown default:
+      lineJoin = .round
     }
     return self.cgPath.copy (
       strokingWithWidth: self.lineWidth,

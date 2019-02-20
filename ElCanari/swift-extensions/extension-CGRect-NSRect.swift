@@ -117,6 +117,8 @@ extension CGRect : Hashable {
           currentPoint = p
         case .curveTo, .closePath: // Flattened path has no element of theses types
           ()
+        @unknown default:
+          ()
         }
       }
     }
@@ -155,6 +157,8 @@ extension CGRect : Hashable {
             intersect = possibleResultSegment != nil
             currentPoint = p
           case .curveTo, .closePath: // Flattened path has no element of theses types
+            ()
+          @unknown default:
             ()
           }
         }

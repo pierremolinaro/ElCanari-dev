@@ -51,6 +51,8 @@ private func CGPathCallback (_ info: UnsafeMutableRawPointer?, _ element : Unsaf
       bezierPath.curve (to:points[2], controlPoint1: points[0], controlPoint2: points[1])
     case .closeSubpath:
       bezierPath.close ()
+    @unknown default:
+      ()
     }
   }
 }

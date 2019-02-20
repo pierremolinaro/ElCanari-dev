@@ -547,7 +547,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     }else{
       var newSegmentArray = self.mSegmentList
       for segment in mSelection {
-        let possibleIdx = self.mSegmentList.index(of: segment)
+        let possibleIdx = self.mSegmentList.firstIndex (of: segment)
         if let idx = possibleIdx {
           newSegmentArray.remove (at: idx)
         }
