@@ -1643,7 +1643,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   func remove (_ object : SymbolBezierCurve) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

@@ -1046,7 +1046,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   func remove (_ object : SegmentForFontCharacter) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

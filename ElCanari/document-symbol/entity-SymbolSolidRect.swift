@@ -1159,7 +1159,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
   func remove (_ object : SymbolSolidRect) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

@@ -90,7 +90,7 @@ fileprivate class OpenPanelDelegateForFilteringBoardModels : EBSimpleClass, NSOp
   func panel (_ sender: Any, shouldEnable url: URL) -> Bool {
     let fileName = url.path.lastPathComponent.deletingPathExtension
     // NSLog ("\(fileName)")
-    return mBoardModelNames.index (of:fileName) == nil
+    return mBoardModelNames.firstIndex (of:fileName) == nil
   }
 
   //····················································································································

@@ -1747,6 +1747,7 @@
 				CF61726E1B3C4CB600F3CA82 /* Images */,
 				CF61FA911B3EBF21000E0257 /* Outlets Canari */,
 				CF6172681B3C4BE000F3CA82 /* Outlets Easy Bindings */,
+				CF747FB01B3C3D8D00140C49 /* Products */,
 				CFD1B75221B2E90400F6F9EA /* Shapes */,
 				CFDBEFF71BEA126C001CEA4B /* Sparkle */,
 				CF35A54121A8257D00A0E500 /* Swift Extensions */,
@@ -2000,7 +2001,6 @@
 		CF5CEFB81DD8C4E000A70419 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CF747FB01B3C3D8D00140C49 /* Products */,
 				CFBAB0B320DE786C00476FB7 /* canari-conversions.swift */,
 				CFE85A8B21A5C1C100991A66 /* CanariPoint.swift */,
 				CFE85A8E21A5C2EB00991A66 /* CanariRect.swift */,
@@ -2253,7 +2253,6 @@
 				CF5C4DB4219F04D600EAC52A /* ElCanari.app */,
 			);
 			name = Products;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		CF747FC81B3C41BB00140C49 /* Frameworks */ = {

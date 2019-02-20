@@ -705,7 +705,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   func remove (_ object : BoardModelVia) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

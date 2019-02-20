@@ -938,7 +938,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   func remove (_ object : CanariLibraryEntry) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

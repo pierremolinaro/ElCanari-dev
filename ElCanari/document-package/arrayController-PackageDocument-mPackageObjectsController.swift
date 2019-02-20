@@ -354,7 +354,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
   //····················································································································
 
   func unbind_ebView (_ inEBView : EBView?) {
-    if let ebView = inEBView, let idx = self.mEBViews.index (of: ebView) {
+    if let ebView = inEBView, let idx = self.mEBViews.firstIndex (of: ebView) {
       ebView.updateObjectDisplay ([])
       ebView.updateSelectionShape ([])
       self.mEBViews.remove (at: idx)
@@ -512,7 +512,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
     var result = [Int] ()
     let objects = self.mModel?.propval ?? []
     for object in self.selectedArray_property.propset {
-      let idx = objects.index (of: object)!
+      let idx = objects.firstIndex (of: object)!
       result.append (idx)
     }
     return result.sorted ()
@@ -652,7 +652,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
       var objects = self.mModel?.propval ?? []
       for object in self.selectedArray_property.propset {
         object.operationAfterRemoving ()
-        if let idx = objects.index (of: object) {
+        if let idx = objects.firstIndex (of: object) {
           objects.remove(at: idx)
         }
       }

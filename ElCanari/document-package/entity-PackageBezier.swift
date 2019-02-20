@@ -2539,7 +2539,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
   func remove (_ object : PackageBezier) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

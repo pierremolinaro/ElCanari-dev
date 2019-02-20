@@ -24,7 +24,7 @@ extension EBScrollView {
   func removePlacard (_ inPlacardView : NSView?) {
     if let view = inPlacardView, self.mPlacardArray.contains (view) {
       view.removeFromSuperview ()
-      if let index = self.mPlacardArray.index (of: view) {
+      if let index = self.mPlacardArray.firstIndex (of: view) {
         self.mPlacardArray.remove (at: index)
       }
     }

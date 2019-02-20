@@ -241,7 +241,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let tableView = inTableView, let idx = self.mTableViewArray.index (of:tableView) {
+    if let tableView = inTableView, let idx = self.mTableViewArray.firstIndex (of:tableView) {
       self.sortedArray_property.removeEBObserver (self.mTableViewDataSourceControllerArray [idx])
       self.mSelectedSet.removeEBObserver (self.mTableViewSelectionControllerArray [idx])
       self.mTableViewArray.remove (at: idx)

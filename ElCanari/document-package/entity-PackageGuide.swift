@@ -1601,7 +1601,7 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
   func remove (_ object : PackageGuide) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }

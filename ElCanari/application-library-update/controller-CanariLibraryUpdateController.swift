@@ -110,7 +110,7 @@ class CanariLibraryUpdateController : EBObject {
   //--- Decrement parallel action count
     self.mCurrentParallelActionCount -= 1
   //--- Remove corresponding entry in table view
-    if let idx = self.mCurrentActionArray.index (of: inElement) {
+    if let idx = self.mCurrentActionArray.firstIndex (of: inElement) {
       self.mCurrentActionArray.remove (at: idx)
       DispatchQueue.main.async { self.mArrayController.content = self.mCurrentActionArray }
     }

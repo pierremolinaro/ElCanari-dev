@@ -2324,7 +2324,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   func remove (_ object : PackageDimension) {
     if self.mSet.contains (object) {
       var array = self.mValue
-      let idx = array.index (of: object)
+      let idx = array.firstIndex (of: object)
       array.remove (at: idx!)
       self.mValue = array
     }
