@@ -167,8 +167,11 @@ extension CGRect : Hashable {
   //   Protocol Hashable: hashValue
   //····················································································································
 
-  public var hashValue : Int {
-    return self.origin.x.hashValue ^ self.origin.y.hashValue ^ self.size.width.hashValue ^ self.size.height.hashValue
+  public func hash (into hasher : inout Hasher) {
+    self.origin.x.hash (into: &hasher)
+    self.origin.y.hash (into: &hasher)
+    self.size.width.hash (into: &hasher)
+    self.size.height.hash (into: &hasher)
   }
 
   //····················································································································
