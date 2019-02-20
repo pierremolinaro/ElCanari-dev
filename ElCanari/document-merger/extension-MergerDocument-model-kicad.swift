@@ -558,6 +558,8 @@ extension MergerDocument {
               ioErrorArray.append (("Invalid curveToBezierPathElement", #line))
             case .closePath :
               ioErrorArray.append (("Invalid closePathBezierPathElement", #line))
+            @unknown default:
+              ()
             }
           }
         }else if item.key == "pad",
