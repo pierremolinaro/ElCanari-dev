@@ -14,7 +14,10 @@ import Cocoa
 extension DeviceDocument {
   @objc func copyImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+    let data = self.rootObject.representationImageData
+    let pasteboard = NSPasteboard.general
+    pasteboard.clearContents ()
+    pasteboard.setData (data, forType: .tiff)
 //--- END OF USER ZONE 2
   }
 }
