@@ -30,7 +30,16 @@ document DeviceDocument root DeviceRoot {
 #-------------------------- Page : Description
   outlet EBTextField mTitleTextField $value root.title {sendContinously: yes} ;
 
-
+  outlet DeviceDroppableImageView mRepresentationImageView $imageData root.representationImageData ;
+  
+  action pasteImageAction ;
+  outlet EBButton mPasteImageButton $run self.pasteImageAction ;
+  
+  action copyImageAction ;
+  outlet EBButton mCopyImageButton $run self.copyImageAction ;
+  
+  action removeImageAction ;
+  outlet EBButton mRemoveImageButton $run self.removeImageAction ;
 
 #--------------- Infos Tab
 #--- Prefix

@@ -40,7 +40,7 @@ extension MergerDocument {
       openPanel.delegate = gPanel
       openPanel.beginSheetModal (for: window, completionHandler: { (returnCode : NSApplication.ModalResponse) in
         gPanel = nil
-        if returnCode == NSApplication.ModalResponse (NSFileHandlingPanelOKButton) {
+        if returnCode == .OK {
           if let url = openPanel.url, url.isFileURL {
             let filePath = url.path
             if filePath.pathExtension == EL_CANARI_MERGER_ARCHIVE {

@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
+                <outlet property="mCopyImageButton" destination="2176" id="Mb0-sr-Sxk"/>
                 <outlet property="mDescriptionPageView" destination="1037" id="xhe-k8-o4l"/>
                 <outlet property="mInfosPageView" destination="1177" id="qRd-J2-IOx"/>
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
@@ -17,7 +18,10 @@
                 <outlet property="mMasterView" destination="1198" id="hbK-Bd-u96"/>
                 <outlet property="mPackagePageView" destination="1080" id="Jmt-gr-8Nm"/>
                 <outlet property="mPageSegmentedControl" destination="1907" id="2dS-r6-OP5"/>
+                <outlet property="mPasteImageButton" destination="2106" id="OgU-8Y-X0Y"/>
                 <outlet property="mPrefixTextField" destination="1171" id="AA5-NL-TvD"/>
+                <outlet property="mRemoveImageButton" destination="1041" id="Jjp-9P-8An"/>
+                <outlet property="mRepresentationImageView" destination="1043" id="SCe-aC-7xm"/>
                 <outlet property="mResetVersionButton" destination="1189" id="fWg-v5-UdL"/>
                 <outlet property="mSignatureTextField" destination="bnM-Hr-Cbk" id="ayw-3i-Ruq"/>
                 <outlet property="mStatusImageViewInToolbar" destination="1903" id="oKC-FJ-Gh1"/>
@@ -50,14 +54,14 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="1899"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="1900"/>
-                    <toolbarItem implicitItemIdentifier="CC114F3D-86D0-4D2E-BEA7-49B8F084BC35" label="Status" paletteLabel="Status" image="red20" id="1905">
+                    <toolbarItem implicitItemIdentifier="CC114F3D-86D0-4D2E-BEA7-49B8F084BC35" label="Status" paletteLabel="Status" image="NSStatusUnavailable" id="1905">
                         <nil key="toolTip"/>
                         <size key="minSize" width="24" height="24"/>
                         <size key="maxSize" width="24" height="24"/>
                         <imageView key="view" id="1903" customClass="EBImageObserverView">
                             <rect key="frame" x="9" y="14" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="red20" id="1904"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="NSStatusUnavailable" id="1904"/>
                         </imageView>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="3A94B1D7-5FC0-4A64-B61A-92CB78D8050E" label="Page" paletteLabel="Page" id="1909">
@@ -536,31 +540,31 @@
                             <rect key="frame" x="0.0" y="0.0" width="260" height="356"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <imageView id="1043" customClass="PMDeviceDroppableImageView">
+                                <imageView id="1043" customClass="DeviceDroppableImageView" customModule="ElCanari" customModuleProvider="target">
                                     <rect key="frame" x="17" y="32" width="235" height="311"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" id="1523"/>
                                 </imageView>
-                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2106">
-                                    <rect key="frame" x="78" y="2" width="89" height="28"/>
+                                <button toolTip="Copy Image to Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2176" customClass="EBButton">
+                                    <rect key="frame" x="160" y="10" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Paste Image" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
+                                    <buttonCell key="cell" type="roundRect" title="Copy Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2176">
-                                    <rect key="frame" x="165" y="2" width="89" height="28"/>
+                                <button toolTip="Delete Image" verticalHuggingPriority="750" imageHugsTitle="YES" id="1041" customClass="EBButton">
+                                    <rect key="frame" x="20" y="10" width="28" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Copy Image" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2177">
+                                    <buttonCell key="cell" type="roundRect" title="-" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                 </button>
-                                <button toolTip="Delete Image" verticalHuggingPriority="750" imageHugsTitle="YES" id="1041">
-                                    <rect key="frame" x="15" y="2" width="28" height="28"/>
+                                <button toolTip="Paste Image from Pasteboard" verticalHuggingPriority="750" imageHugsTitle="YES" id="2106" customClass="EBButton">
+                                    <rect key="frame" x="71" y="10" width="89" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <buttonCell key="cell" type="push" title="-" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="1521">
+                                    <buttonCell key="cell" type="roundRect" title="Paste Image" bezelStyle="roundedRect" alignment="center" controlSize="small" state="on" borderStyle="border" inset="2" id="2107">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
@@ -609,9 +613,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="1" width="370" height="271"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" id="1049" customClass="PMDevicePDFDroppableTableView">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" id="1049">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="271"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -677,7 +681,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <popUpButton imageHugsTitle="YES" id="1955" customClass="PMPullDownButtonWithItems">
+                <popUpButton imageHugsTitle="YES" id="1955">
                     <rect key="frame" x="111" y="331" width="132" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="square" title="Imported Library" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
@@ -709,12 +713,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1068" customClass="PM_scroll_view_with_placards">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1068">
                     <rect key="frame" x="252" y="-1" width="349" height="401"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1069" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -765,12 +769,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1081" customClass="PM_scroll_view_with_placards">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1081">
                     <rect key="frame" x="258" y="-1" width="343" height="402"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1082" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -834,7 +838,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1586" id="1111">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -880,9 +884,9 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107" customClass="PMTableViewForDictionaryArray">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -986,7 +990,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1580" id="1095">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -1368,7 +1372,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IrZ-A4-tug">
                         <rect key="frame" x="1" y="1" width="548" height="233"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="233"/>
@@ -1396,7 +1400,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="cxS-7T-S4H">
                         <rect key="frame" x="1" y="1" width="548" height="93"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="93"/>
@@ -1702,11 +1706,11 @@
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="bind" width="80" height="27"/>
         <image name="display" width="64" height="64"/>
         <image name="loupe" width="64" height="64"/>
         <image name="nc" width="80" height="27"/>
-        <image name="red20" width="20" height="20"/>
         <image name="selected-object" width="64" height="64"/>
         <image name="unbind" width="80" height="27"/>
         <image name="unbind_all" width="81" height="27"/>

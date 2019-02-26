@@ -7,6 +7,9 @@ graphic entity DeviceRoot {
 #--- Title
   property @signature String title default "" ;
 
+#--- Image
+  property Data representationImageData default empty ;
+
 #--- Prefix
   property @signature String prefix default "" ;
 

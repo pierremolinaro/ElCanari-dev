@@ -77,6 +77,9 @@ binding CanariMenu $populateSubmenus : transient CanariMenuItemListClass ;
 extern outlet class CanariDateObserverField : NSTextField ;
 binding CanariDateObserverField $dateObserver : transient Date ;
 
+extern outlet class DeviceDroppableImageView ;
+binding DeviceDroppableImageView $imageData : property Data ;
+
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   Cocoa Outlets
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

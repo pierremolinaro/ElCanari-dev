@@ -1395,7 +1395,7 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property Int
+//   Scalar property Int
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_Int = EBReadOnlyValueController <Int>
@@ -1443,7 +1443,7 @@ func compare_Int (left : EBReadOnlyProperty_Int, right : EBReadOnlyProperty_Int)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property Bool
+//   Scalar property Bool
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_Bool = EBReadOnlyValueController <Bool>
@@ -1491,7 +1491,7 @@ func compare_Bool (left : EBReadOnlyProperty_Bool, right : EBReadOnlyProperty_Bo
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property Double
+//   Scalar property Double
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_Double = EBReadOnlyValueController <Double>
@@ -1539,7 +1539,7 @@ func compare_Double (left : EBReadOnlyProperty_Double, right : EBReadOnlyPropert
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property String
+//   Scalar property String
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_String = EBReadOnlyValueController <String>
@@ -1587,7 +1587,103 @@ func compare_String (left : EBReadOnlyProperty_String, right : EBReadOnlyPropert
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CGFloat
+//   Scalar property Data
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_Data = EBReadOnlyValueController <Data>
+
+typealias EBReadOnlyProperty_Data  = EBReadOnlyValueProperty <Data>
+typealias EBTransientProperty_Data = EBTransientValueProperty <Data>
+typealias EBReadWriteProperty_Data = EBReadWriteValueProperty <Data>
+typealias EBPropertyProxy_Data     = EBPropertyValueProxy <Data>
+typealias EBStoredProperty_Data    = EBStoredValueProperty <Data>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func compare_Data (left : EBReadOnlyProperty_Data, right : EBReadOnlyProperty_Data) -> ComparisonResult {
+  switch left.prop {
+  case .empty :
+    switch right.prop {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.prop {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.prop {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      if currentValue < otherValue {
+        return .orderedAscending
+      }else if currentValue > otherValue {
+        return .orderedDescending
+      }else{
+        return .orderedSame
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property Date
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_Date = EBReadOnlyValueController <Date>
+
+typealias EBReadOnlyProperty_Date  = EBReadOnlyValueProperty <Date>
+typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
+typealias EBReadWriteProperty_Date = EBReadWriteValueProperty <Date>
+typealias EBPropertyProxy_Date     = EBPropertyValueProxy <Date>
+typealias EBStoredProperty_Date    = EBStoredValueProperty <Date>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Date) -> ComparisonResult {
+  switch left.prop {
+  case .empty :
+    switch right.prop {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.prop {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.prop {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      if currentValue < otherValue {
+        return .orderedAscending
+      }else if currentValue > otherValue {
+        return .orderedDescending
+      }else{
+        return .orderedSame
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_CGFloat = EBReadOnlyValueController <CGFloat>
@@ -1716,7 +1812,7 @@ typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[B
 typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property CanariIssueArray
+//   Scalar property CanariIssueArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <CanariIssueArray>
@@ -1724,7 +1820,7 @@ typealias EBReadOnlyController_CanariIssueArray = EBReadOnlyValueController <Can
 typealias EBReadOnlyProperty_CanariIssueArray  = EBReadOnlyValueProperty <CanariIssueArray>
 typealias EBTransientProperty_CanariIssueArray = EBTransientValueProperty <CanariIssueArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property SymbolPinNameAndErrorLocationArray
+//   Scalar property SymbolPinNameAndErrorLocationArray
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyValueController <SymbolPinNameAndErrorLocationArray>
@@ -1732,7 +1828,7 @@ typealias EBReadOnlyController_SymbolPinNameAndErrorLocationArray = EBReadOnlyVa
 typealias EBReadOnlyProperty_SymbolPinNameAndErrorLocationArray  = EBReadOnlyValueProperty <SymbolPinNameAndErrorLocationArray>
 typealias EBTransientProperty_SymbolPinNameAndErrorLocationArray = EBTransientValueProperty <SymbolPinNameAndErrorLocationArray>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property NSRect
+//   Scalar property NSRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 typealias EBReadOnlyController_NSRect = EBReadOnlyValueController <NSRect>
@@ -1760,54 +1856,6 @@ typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty
 typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
 typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
 typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Property Date
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyController_Date = EBReadOnlyValueController <Date>
-
-typealias EBReadOnlyProperty_Date  = EBReadOnlyValueProperty <Date>
-typealias EBTransientProperty_Date = EBTransientValueProperty <Date>
-typealias EBReadWriteProperty_Date = EBReadWriteValueProperty <Date>
-typealias EBPropertyProxy_Date     = EBPropertyValueProxy <Date>
-typealias EBStoredProperty_Date    = EBStoredValueProperty <Date>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Date) -> ComparisonResult {
-  switch left.prop {
-  case .empty :
-    switch right.prop {
-    case .empty :
-      return .orderedSame
-    default:
-      return .orderedAscending
-    }
-  case .multiple :
-    switch right.prop {
-    case .empty :
-      return .orderedDescending
-    case .multiple :
-      return .orderedSame
-   case .single (_) :
-      return .orderedAscending
-   }
- case .single (let currentValue) :
-    switch right.prop {
-    case .empty, .multiple :
-      return .orderedDescending
-    case .single (let otherValue) :
-      if currentValue < otherValue {
-        return .orderedAscending
-      }else if currentValue > otherValue {
-        return .orderedDescending
-      }else{
-        return .orderedSame
-      }
-    }
-  }
-}
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property class NSFont

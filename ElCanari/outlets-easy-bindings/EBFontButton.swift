@@ -36,7 +36,7 @@ import Cocoa
     if let font = mFont {
     //  self.window?.makeFirstResponder (self)
       let fontManager = NSFontManager.shared 
-      fontManager.delegate = self
+   //   fontManager.delegate = self
       fontManager.setSelectedFont (font, isMultiple:false)
       fontManager.orderFrontFontPanel (self)
       fontManager.target = self

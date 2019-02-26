@@ -107,6 +107,7 @@ import Cocoa
 
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mCommentTextView : EBTextView?
+  @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
@@ -114,7 +115,10 @@ import Cocoa
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mPasteImageButton : EBButton?
   @IBOutlet var mPrefixTextField : EBTextField?
+  @IBOutlet var mRemoveImageButton : EBButton?
+  @IBOutlet var mRepresentationImageView : DeviceDroppableImageView?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
@@ -218,6 +222,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mCommentTextView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mCopyImageButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mCopyImageButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mCopyImageButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mDescriptionPageView {
@@ -325,6 +344,21 @@ import Cocoa
         errorMessage: "the 'mPageSegmentedControl' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPasteImageButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPasteImageButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPasteImageButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPrefixTextField {
       if !(outlet is EBTextField) {
         presentErrorWindow (
@@ -338,6 +372,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPrefixTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mRemoveImageButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mRemoveImageButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mRemoveImageButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mRepresentationImageView {
+      if !(outlet is DeviceDroppableImageView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mRepresentationImageView' outlet is not an instance of 'DeviceDroppableImageView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mRepresentationImageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mResetVersionButton {
@@ -505,10 +569,17 @@ import Cocoa
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
+    self.mRepresentationImageView?.bind_imageData (self.rootObject.representationImageData_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
+    self.mPasteImageButton?.target = self
+    self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
+    self.mCopyImageButton?.target = self
+    self.mCopyImageButton?.action = #selector (DeviceDocument.copyImageAction (_:))
+    self.mRemoveImageButton?.target = self
+    self.mRemoveImageButton?.action = #selector (DeviceDocument.removeImageAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
@@ -536,6 +607,7 @@ import Cocoa
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.mIssueTextView?.unbind_valueObserver ()
     self.mTitleTextField?.unbind_value ()
+    self.mRepresentationImageView?.unbind_imageData ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -544,10 +616,14 @@ import Cocoa
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
+    self.mPasteImageButton?.target = nil
+    self.mCopyImageButton?.target = nil
+    self.mRemoveImageButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAssignmentPageView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
+    self.mCopyImageButton?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()
@@ -555,7 +631,10 @@ import Cocoa
     self.mMasterView?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
+    self.mPasteImageButton?.ebCleanUp ()
     self.mPrefixTextField?.ebCleanUp ()
+    self.mRemoveImageButton?.ebCleanUp ()
+    self.mRepresentationImageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()

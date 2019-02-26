@@ -30,6 +30,12 @@ protocol DeviceRoot_comments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_representationImageData : class {
+  var representationImageData : Data { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -43,6 +49,7 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_title,
          DeviceRoot_prefix,
          DeviceRoot_comments,
+         DeviceRoot_representationImageData,
          DeviceRoot_issues {
 
   //····················································································································
@@ -138,6 +145,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: representationImageData
+  //····················································································································
+
+  var representationImageData_property = EBStoredProperty_Data (Data ())
+
+  //····················································································································
+
+  var representationImageData : Data {
+    get {
+      return self.representationImageData_property.propval
+    }
+    set {
+      self.representationImageData_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var representationImageData_property_selection : EBSelection <Data> {
+    return self.representationImageData_property.prop
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -174,6 +204,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.undoManager = self.undoManager
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.undoManager = self.undoManager
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -257,6 +289,14 @@ class DeviceRoot : EBGraphicManagedObject,
       observerExplorer:&self.comments_property.mObserverExplorer,
       valueExplorer:&self.comments_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "representationImageData",
+      idx:self.representationImageData_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.representationImageData_property.mObserverExplorer,
+      valueExplorer:&self.representationImageData_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "issues",
@@ -288,6 +328,9 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.mObserverExplorer = nil
+    self.representationImageData_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -324,6 +367,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.storeIn (dictionary: ioDictionary, forKey:"prefix")
   //--- Atomic property: comments
     self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
   }
 
   //····················································································································
@@ -349,6 +394,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.readFrom (dictionary: inDictionary, forKey:"prefix")
   //--- Atomic property: comments
     self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.readFrom (dictionary: inDictionary, forKey:"representationImageData")
   }
 
   //····················································································································
@@ -610,6 +657,63 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'representationImageData' stored property
+  //····················································································································
+
+  private var mObserversOf_representationImageData = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_representationImageData (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_representationImageData.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.representationImageData_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_representationImageData (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_representationImageData.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.representationImageData_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_representationImageData_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_representationImageData.apply ( {(_ observer : EBEvent) in
+        managedObject.representationImageData_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_representationImageData_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_representationImageData.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.representationImageData_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -742,6 +846,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_title_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_prefix_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -751,6 +856,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_title_toElementsOfSet (addedSet)
       self.addEBObserversOf_prefix_toElementsOfSet (addedSet)
       self.addEBObserversOf_comments_toElementsOfSet (addedSet)
+      self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
@@ -883,11 +989,13 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           managedObject.title_property.mSetterDelegate = nil
           managedObject.prefix_property.mSetterDelegate = nil
           managedObject.comments_property.mSetterDelegate = nil
+          managedObject.representationImageData_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -898,11 +1006,13 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           managedObject.title_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.prefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.representationImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
