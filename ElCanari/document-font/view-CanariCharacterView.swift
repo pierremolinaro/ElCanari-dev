@@ -442,7 +442,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     }else if action == #selector (CanariCharacterView.cut(_:)) {
       return (mSelection.count > 0) && (self.mSegmentList.count > 0)
     }else if action == #selector (CanariCharacterView.paste(_:)) {
-      return NSPasteboard.general .data (forType: PRIVATE_PASTEBOARD_TYPE) != nil
+      return NSPasteboard.general .data (forType: FONT_SEGMENTS_PASTEBOARD_TYPE) != nil
     }else{
       return false // super.validateMenuItem (menuItem)
     }
@@ -662,12 +662,12 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //   PASTEBOARD
   //····················································································································
 
-  private let PRIVATE_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "AZERTY")
+  private let FONT_SEGMENTS_PASTEBOARD_TYPE = NSPasteboard.PasteboardType (rawValue: "name.pcmolinaro.pierre.ElCanari.font.segments")
   
   //····················································································································
 
   private final func setPasteboardPrivateObjectType () {
-    registerForDraggedTypes ([PRIVATE_PASTEBOARD_TYPE])
+    registerForDraggedTypes ([FONT_SEGMENTS_PASTEBOARD_TYPE])
   }
 
   //····················································································································
@@ -676,13 +676,13 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Get General Pasteboard
     let pb = NSPasteboard.general 
   //--- Find a matching type name
-    let possibleMatchingTypeName : String? = pb.availableType (from: [PRIVATE_PASTEBOARD_TYPE]).map { $0.rawValue }
+    let possibleMatchingTypeName : String? = pb.availableType (from: [FONT_SEGMENTS_PASTEBOARD_TYPE]).map { $0.rawValue }
     if let matchingTypeName = possibleMatchingTypeName {
     //--- Get data from pasteboard
       let possibleArchive : Data? = pb.data (forType:NSPasteboard.PasteboardType(rawValue: matchingTypeName))
       if let archive = possibleArchive {
       //--- Unarchive to get array of archived objects
-        let unarchivedObject : Any? = NSUnarchiver.unarchiveObject (with: archive)
+        let unarchivedObject = NSKeyedUnarchiver.unarchiveObject (with: archive)
         if let segmentListObject = unarchivedObject as? [[NSNumber]] {
           var newSegmentArray = self.mSegmentList
           self.mSelection.removeAll ()
@@ -707,7 +707,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   @objc func copy (_ sender : Any?) {
   //--- Declare pasteboard types
     let pb = NSPasteboard.general 
-    pb.declareTypes ([PRIVATE_PASTEBOARD_TYPE], owner:self)
+    pb.declareTypes ([FONT_SEGMENTS_PASTEBOARD_TYPE], owner:self)
   //--- Copy private representation
     var segmentArray = [[NSNumber]] ()
     for segment in self.mSegmentList {
@@ -721,8 +721,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         segmentArray.append (s)
       }
     }
-    let data = NSArchiver.archivedData (withRootObject: segmentArray)
-    pb.setData (data, forType: PRIVATE_PASTEBOARD_TYPE)
+    let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray)
+ //   let data = NSArchiver.archivedData (withRootObject: segmentArray)
+    pb.setData (data, forType: FONT_SEGMENTS_PASTEBOARD_TYPE)
   }
 
   //····················································································································

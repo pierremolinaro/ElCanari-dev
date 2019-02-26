@@ -20,7 +20,11 @@ protocol ValuePropertyProtocol : Equatable {
 
 class EBReadOnlyValueProperty <T> : EBAbstractProperty {
 
-  var prop : EBSelection <T> { get { return .empty } } // Abstract method
+  //····················································································································
+
+  var prop : EBSelection <T> { return .empty } // Abstract method
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -28,10 +32,18 @@ class EBReadOnlyValueProperty <T> : EBAbstractProperty {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> {
+
+  //····················································································································
+
   func setProp (_ value : T) { } // Abstract method
+
+  //····················································································································
+
   func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
     return false
   } // Abstract method
+
+  //····················································································································
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,10 +51,12 @@ class EBReadWriteValueProperty <T> : EBReadOnlyValueProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
+
+  //····················································································································
+
   var readModelFunction : Optional < () -> EBSelection <T> > = nil
   var writeModelFunction : Optional < (T) -> Void > = nil
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
-  
   private var prop_cache : EBSelection <T>? = nil
   
   //····················································································································
@@ -133,6 +147,9 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValueProperty <T> {
+
+  //····················································································································
+
   weak var undoManager : UndoManager?  // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
@@ -162,9 +179,9 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
     mSetterDelegate = nil
     super.init ()
   //--- Read from preferences
-    let value : Any? = UserDefaults.standard.object (forKey: inPreferenceKey)
-    if let unwValue : NSObject = value as? NSObject {
-      setProp (T.convertFromNSObject (object:unwValue))
+    let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
+    if let value = possibleValue as? NSObject {
+      setProp (T.convertFromNSObject (object: value))
     }
   }
 
@@ -175,7 +192,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
     mPreferenceKey = nil
     mSetterDelegate = inSetterDelegate
     super.init ()
-   }
+  }
 
   //····················································································································
 
@@ -205,16 +222,22 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  override var prop : EBSelection<T> { get { return .single (mValue) } }
+  override var prop : EBSelection<T> { return .single (mValue) }
 
-  var propval : T { get { return self.mValue } }
+  //····················································································································
+
+  var propval : T { return self.mValue }
+
+  //····················································································································
 
   override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
  
   var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
-  
+ 
+   //····················································································································
+ 
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
     var result = true
@@ -230,13 +253,13 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       let alert = NSAlert ()
       alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."
       alert.informativeText = informativeText
-      alert.addButton (withTitle:"Ok")
-      alert.addButton (withTitle:"Discard Change")
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
       if let window = inWindow {
         alert.beginSheetModal (
           for:window,
-          completionHandler:{ (response : NSApplication.ModalResponse) in
-            if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
+          completionHandler: { (response : NSApplication.ModalResponse) in
+            if response == .alertSecondButtonReturn { // Discard Change
               self.postEvent ()
             }
           }
@@ -250,16 +273,16 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
-    dictionary.setValue (mValue.convertToNSObject (), forKey:inKey)
+  func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
+    dictionary.setValue (mValue.convertToNSObject (), forKey: inKey)
   }
 
   //····················································································································
 
-  func readFrom (dictionary: NSDictionary, forKey inKey:String) {
-    let value : Any? = dictionary.object (forKey:inKey)
-    if let unwValue : NSObject = value as? NSObject {
-      setProp (T.convertFromNSObject (object:unwValue))
+  func readFrom (dictionary : NSDictionary, forKey inKey : String) {
+    let possibleValue = dictionary.object (forKey: inKey)
+    if let value = possibleValue as? NSObject {
+      self.setProp (T.convertFromNSObject (object: value))
     }
   }
 
@@ -388,7 +411,7 @@ class EBAbstractEnumProperty : EBAbstractProperty {
 
 class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty {
 
-  var prop : EBSelection <T> { get { return .empty } } // Abstract method
+  var prop : EBSelection <T> { return .empty } // Abstract method
 
   //····················································································································
 
@@ -411,17 +434,25 @@ class EBReadOnlyEnumProperty <T : EBEnumProtocol> : EBAbstractEnumProperty {
 
 class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
 
+  //····················································································································
+
   func setProp (_ value : T) { } // Abstract method
+
+  //····················································································································
 
   func validateAndSetProp (_ candidateValue : T, windowForSheet inWindow:NSWindow?) -> Bool {
     return false
   } // Abstract method
+
+  //····················································································································
 
   override func setFrom (rawValue : Int) {
     if let v = T.buildfromRawValue (rawValue: rawValue) {
       self.setProp (v)
     }
   }
+
+  //····················································································································
 
 }
 
@@ -553,9 +584,9 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
     mSetterDelegate = nil
     super.init ()
   //--- Read from preferences
-    let value : Any? = UserDefaults.standard.object (forKey: inPreferenceKey)
-    if let unwValue : NSObject = value as? NSObject {
-      setProp (T.convertFromNSObject (object:unwValue))
+    let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
+    if let value = possibleValue as? NSObject {
+      setProp (T.convertFromNSObject (object: value))
     }
   }
 
@@ -591,20 +622,26 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //····················································································································
 
   @objc func performUndo (_ oldValue : NSNumber) {
-    self.mValue = T.convertFromNSObject (object:oldValue)
+    self.mValue = T.convertFromNSObject (object: oldValue)
   }
 
   //····················································································································
 
-  override var prop : EBSelection<T> { get { return .single (mValue) } }
+  override var prop : EBSelection<T> { return .single (mValue) }
 
-  var propval : T { get { return self.mValue } }
+  //····················································································································
+
+  var propval : T { return self.mValue }
+
+  //····················································································································
 
   override func setProp (_ value : T) { self.mValue = value }
 
   //····················································································································
 
   var validationFunction : (T, T) -> EBValidationResult <T> = defaultValidationFunction
+
+  //····················································································································
 
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
@@ -627,7 +664,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
         alert.beginSheetModal (
           for:window,
           completionHandler:{ (response : NSApplication.ModalResponse) in
-            if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
+            if response == .alertSecondButtonReturn { // Discard Change
               self.postEvent ()
             }
           }
@@ -648,9 +685,9 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
   //····················································································································
 
   func readFrom (dictionary: NSDictionary, forKey inKey:String) {
-    let value : Any? = dictionary.object (forKey:inKey)
-    if let unwValue : NSObject = value as? NSObject {
-      setProp (T.convertFromNSObject (object:unwValue))
+    let possibleValue = dictionary.object (forKey:inKey)
+    if let value = possibleValue as? NSObject {
+      self.setProp (T.convertFromNSObject (object: value))
     }
   }
 
@@ -813,14 +850,9 @@ extension Int : ValuePropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    var crc : UInt32 = 0
-    var v = UInt (bitPattern:self) // So that negative value is handled
-    for _ in 0 ..< MemoryLayout<Int>.size {
-      let byte = UInt8 (v & 255)
-      crc.accumulateByte (byte)
-      v >>= 8
-    }
-    return crc
+    var value = self.bigEndian
+    let array = withUnsafeBytes (of: &value) { Array($0) }
+    return array.ebHashValue ()
   }
   
   //····················································································································
@@ -849,9 +881,9 @@ extension Double : ValuePropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let nsValue = NSNumber (value:self)
-    let data = NSArchiver.archivedData (withRootObject:nsValue)
-    return data.ebHashValue ()
+    var value = self.bitPattern.bigEndian
+    let array = withUnsafeBytes (of: &value) { Array($0) }
+    return array.ebHashValue ()
   }
 
   //····················································································································
@@ -922,20 +954,20 @@ extension NSColor : ClassPropertyProtocol {
   //····················································································································
 
   final func ebHashValue () -> UInt32 {
-    let data = NSArchiver.archivedData (withRootObject: self)
+    let data = self.archiveToData ()
     return data.ebHashValue ()
   }
 
   //····················································································································
 
-  func archiveToNSData () -> Data {
+  func archiveToData () -> Data {
     return NSArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
 
-  static func unarchiveFromNSData (data : Data) -> NSObject {
-    return NSUnarchiver.unarchiveObject (with: data as Data) as! NSObject
+  static func unarchiveFromData (data : Data) -> NSObject? {
+    return NSUnarchiver.unarchiveObject (with: data as Data) as? NSColor
   }
 
   //····················································································································
@@ -980,20 +1012,20 @@ extension NSFont : ClassPropertyProtocol {
   //····················································································································
 
   final func ebHashValue () -> UInt32 {
-    let data = NSArchiver.archivedData (withRootObject: self)
+    let data = self.archiveToData ()
     return data.ebHashValue ()
   }
 
   //····················································································································
 
-  func archiveToNSData () -> Data {
+  func archiveToData () -> Data {
     return NSArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
 
-  static func unarchiveFromNSData (data : Data) -> NSObject {
-    return NSUnarchiver.unarchiveObject (with: data as Data) as! NSObject
+  static func unarchiveFromData (data : Data) -> NSObject? {
+    return NSUnarchiver.unarchiveObject (with: data as Data) as? NSFont
   }
 
   //····················································································································
@@ -1038,8 +1070,8 @@ extension Data : ValuePropertyProtocol {
 
 protocol ClassPropertyProtocol : class, Equatable {
   func ebHashValue () -> UInt32
-  func archiveToNSData () -> Data
-  static func unarchiveFromNSData (data : Data) -> NSObject
+  func archiveToData () -> Data
+  static func unarchiveFromData (data : Data) -> NSObject?
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1048,7 +1080,7 @@ protocol ClassPropertyProtocol : class, Equatable {
 
 class EBReadOnlyClassProperty <T> : EBAbstractProperty {
 
-  var prop : EBSelection <T> { get { return .empty } } // Abstract method
+  var prop : EBSelection <T> { return .empty } // Abstract method
 
 }
 
@@ -1191,9 +1223,9 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
     mSetterDelegate = nil
     super.init ()
   //--- Read value from preferences
-    let value : Any? = UserDefaults.standard.object (forKey:inPreferenceKey)
-    if let unwValue : Data = value as? Data {
-      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
+    let possibleValue = UserDefaults.standard.object (forKey: inPreferenceKey)
+    if let value = possibleValue as? Data, let unarchivedValue = T.unarchiveFromData (data: value) as? T {
+      self.setProp (unarchivedValue)
     }
   }
 
@@ -1213,7 +1245,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       if self.mValue != oldValue {
         self.mSetterDelegate? (self.mValue)
         if let prefKey = self.mPreferenceKey {
-          UserDefaults.standard.set (self.mValue.archiveToNSData (), forKey:prefKey)
+          UserDefaults.standard.set (self.mValue.archiveToData (), forKey:prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
@@ -1234,9 +1266,9 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  override var prop : EBSelection<T> { get { return .single (mValue) } }
+  override var prop : EBSelection<T> { return .single (mValue) }
 
-  var propval : T { get { return self.mValue } }
+  var propval : T { return self.mValue }
 
   override func setProp (_ value : T) { self.mValue = value }
 
@@ -1265,7 +1297,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
         alert.beginSheetModal (
           for:window,
           completionHandler:{ (response : NSApplication.ModalResponse) in
-            if response == NSApplication.ModalResponse.alertSecondButtonReturn { // Discard Change
+            if response == .alertSecondButtonReturn { // Discard Change
               self.postEvent ()
             }
           }
@@ -1280,15 +1312,15 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
   //····················································································································
 
   func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
-    dictionary.setValue (mValue.archiveToNSData (), forKey:inKey)
+    dictionary.setValue (mValue.archiveToData (), forKey:inKey)
   }
 
   //····················································································································
 
-  func readFrom (dictionary:NSDictionary, forKey inKey:String) {
-    let value : Any? = dictionary.object (forKey:inKey)
-    if let unwValue : Data = value as? Data {
-      setProp (T.unarchiveFromNSData (data:unwValue) as! T)
+  func readFrom (dictionary: NSDictionary, forKey inKey: String) {
+    let possibleValue = dictionary.object (forKey:inKey)
+    if let value = possibleValue as? Data, let unarchivedValue = T.unarchiveFromData (data: value) as? T {
+      self.setProp (unarchivedValue)
     }
   }
 

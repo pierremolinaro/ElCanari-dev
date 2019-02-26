@@ -26,6 +26,11 @@ other-projects/build-png-images/build-png-images.xcodeproj/project.xcworkspace/*
 other-projects/build-png-images/build-png-images.xcodeproj/xcuserdata/*
 other-projects/build-png-images/build-png-images.xcodeproj/xcshareddata/*
 
+other-projects/keyed-archiver/build/**
+other-projects/keyed-archiver/keyed-archiver.xcodeproj/project.xcworkspace/*
+other-projects/keyed-archiver/keyed-archiver.xcodeproj/xcuserdata/*
+other-projects/keyed-archiver/keyed-archiver.xcodeproj/xcshareddata/*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
