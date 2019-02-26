@@ -3883,6 +3883,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3913,6 +3914,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4038,7 +4040,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -4075,7 +4077,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
 				PRODUCT_NAME = "ElCanari-Debug";

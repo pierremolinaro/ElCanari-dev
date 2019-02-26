@@ -93,13 +93,26 @@ import Cocoa
   }
 
   //····················································································································
+  // NSColor.systemBlue is not defined in 10.9
+  // We use 10.10 setting for getting systemBlue RGB components:
+  //      let c = NSColor.systemBlue.usingColorSpace (.sRGB)!
+  //      Swift.print ("RGB \(c.redComponent) \(c.greenComponent) \(c.blueComponent)")
 
   private func update (from model : EBReadOnlyProperty_Bool) {
     switch model.prop {
     case .empty, .multiple :
       break
     case .single (let v) :
-      self.textColor = v ? NSColor.systemBlue : NSColor.black
+      if v {
+        self.textColor = NSColor (
+          calibratedRed: 0.10588235294117647,
+          green: 0.6784313725490196,
+          blue: 0.9725490196078431,
+          alpha: 1.0
+        )
+      }else{
+        self.textColor = NSColor.black
+      }
     }
   }
 
