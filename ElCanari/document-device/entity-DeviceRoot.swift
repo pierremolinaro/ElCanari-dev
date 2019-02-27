@@ -41,6 +41,12 @@ protocol DeviceRoot_issues : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_imageIsValid : class {
+  var imageIsValid : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -50,7 +56,8 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_prefix,
          DeviceRoot_comments,
          DeviceRoot_representationImageData,
-         DeviceRoot_issues {
+         DeviceRoot_issues,
+         DeviceRoot_imageIsValid {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
@@ -191,6 +198,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: imageIsValid
+  //····················································································································
+
+  var imageIsValid_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var imageIsValid_property_selection : EBSelection <Bool> {
+    return self.imageIsValid_property.prop
+  }
+
+  //····················································································································
+
+  var imageIsValid : Bool? {
+    switch self.imageIsValid_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -230,6 +260,28 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.title_property.addEBObserver (self.issues_property)
     self.prefix_property.addEBObserver (self.issues_property)
+  //--- Atomic property: imageIsValid
+    self.imageIsValid_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.representationImageData_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.representationImageData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_imageIsValid (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.representationImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
@@ -244,6 +296,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Remove observers
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
+    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
   }
 
   //····················································································································
@@ -305,6 +358,14 @@ class DeviceRoot : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.issues_property.mObserverExplorer,
       valueExplorer:&self.issues_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "imageIsValid",
+      idx:self.imageIsValid_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.imageIsValid_property.mObserverExplorer,
+      valueExplorer:&self.imageIsValid_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -770,6 +831,62 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'imageIsValid' transient property
+  //····················································································································
+
+  private var mObserversOf_imageIsValid = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_imageIsValid.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageIsValid_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_imageIsValid.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageIsValid_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+        managedObject.imageIsValid_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+        managedObject.imageIsValid_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -849,6 +966,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -859,6 +977,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
+      self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -997,6 +1116,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : DeviceRoot in addedObjectSet {
@@ -1014,6 +1134,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

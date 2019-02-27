@@ -130,6 +130,8 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -573,6 +575,26 @@ import Cocoa
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.imageIsValid_property_selection
+        },
+        outlet: self.mCopyImageButton
+      )
+      self.rootObject.imageIsValid_property.addEBObserver (controller)
+      self.mController_mCopyImageButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.rootObject.imageIsValid_property_selection
+        },
+        outlet: self.mRemoveImageButton
+      )
+      self.rootObject.imageIsValid_property.addEBObserver (controller)
+      self.mController_mRemoveImageButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
@@ -611,6 +633,10 @@ import Cocoa
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mCopyImageButton_enabled!)
+    self.mController_mCopyImageButton_enabled = nil
+    self.self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
+    self.mController_mRemoveImageButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)

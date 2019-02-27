@@ -120,7 +120,7 @@
 	<key>CFBundleVersion</key>
 	<string>9.0.9</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.10</string>
+	<string>10.9</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

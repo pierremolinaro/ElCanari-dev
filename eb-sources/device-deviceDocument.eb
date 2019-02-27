@@ -36,10 +36,10 @@ document DeviceDocument root DeviceRoot {
   outlet EBButton mPasteImageButton $run self.pasteImageAction ;
   
   action copyImageAction ;
-  outlet EBButton mCopyImageButton $run self.copyImageAction ;
+  outlet EBButton mCopyImageButton $run self.copyImageAction $enabled root.imageIsValid ;
   
   action removeImageAction ;
-  outlet EBButton mRemoveImageButton $run self.removeImageAction ;
+  outlet EBButton mRemoveImageButton $run self.removeImageAction $enabled root.imageIsValid ;
 
 #--------------- Infos Tab
 #--- Prefix

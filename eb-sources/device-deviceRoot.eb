@@ -9,6 +9,7 @@ graphic entity DeviceRoot {
 
 #--- Image
   property Data representationImageData default empty ;
+  transient Bool imageIsValid dependsFrom self.representationImageData ;
 
 #--- Prefix
   property @signature String prefix default "" ;
