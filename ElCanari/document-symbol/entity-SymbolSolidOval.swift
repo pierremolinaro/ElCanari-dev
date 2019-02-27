@@ -63,7 +63,7 @@ class SymbolSolidOval : SymbolObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -86,7 +86,7 @@ class SymbolSolidOval : SymbolObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (685800)
+  var width_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class SymbolSolidOval : SymbolObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (685800)
+  var height_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class SymbolSolidOval : SymbolObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

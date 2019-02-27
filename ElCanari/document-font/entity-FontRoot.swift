@@ -77,7 +77,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String ("")
+  var comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -100,7 +100,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: nominalSize
   //····················································································································
 
-  var nominalSize_property = EBStoredProperty_Int (14)
+  var nominalSize_property = EBStoredProperty_Int (defaultValue: 14)
 
   //····················································································································
 
@@ -123,7 +123,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedTab
   //····················································································································
 
-  var selectedTab_property = EBStoredProperty_Int (0)
+  var selectedTab_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -146,7 +146,7 @@ class FontRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (0)
+  var selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

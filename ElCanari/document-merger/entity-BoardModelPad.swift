@@ -56,7 +56,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -79,7 +79,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (0)
+  var width_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -102,7 +102,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (0)
+  var height_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -125,7 +125,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: shape
   //····················································································································
 
-  var shape_property = EBStoredProperty_PadShape (PadShape.rect)
+  var shape_property = EBStoredProperty_PadShape (defaultValue: PadShape.rect)
 
   //····················································································································
 
@@ -148,7 +148,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: rotation
   //····················································································································
 
-  var rotation_property = EBStoredProperty_Int (0)
+  var rotation_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -171,7 +171,7 @@ class BoardModelPad : EBManagedObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

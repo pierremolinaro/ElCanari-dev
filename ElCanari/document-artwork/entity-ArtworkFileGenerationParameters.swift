@@ -175,7 +175,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawBoardLimits
   //····················································································································
 
-  var drawBoardLimits_property = EBStoredProperty_Bool (false)
+  var drawBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -198,7 +198,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawInternalBoardLimits
   //····················································································································
 
-  var drawInternalBoardLimits_property = EBStoredProperty_Bool (false)
+  var drawInternalBoardLimits_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -221,7 +221,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentNamesTopSide
   //····················································································································
 
-  var drawComponentNamesTopSide_property = EBStoredProperty_Bool (false)
+  var drawComponentNamesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -244,7 +244,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentNamesBottomSide
   //····················································································································
 
-  var drawComponentNamesBottomSide_property = EBStoredProperty_Bool (false)
+  var drawComponentNamesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -267,7 +267,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentValuesTopSide
   //····················································································································
 
-  var drawComponentValuesTopSide_property = EBStoredProperty_Bool (false)
+  var drawComponentValuesTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -290,7 +290,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawComponentValuesBottomSide
   //····················································································································
 
-  var drawComponentValuesBottomSide_property = EBStoredProperty_Bool (false)
+  var drawComponentValuesBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -313,7 +313,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPackageLegendTopSide
   //····················································································································
 
-  var drawPackageLegendTopSide_property = EBStoredProperty_Bool (false)
+  var drawPackageLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -336,7 +336,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPackageLegendBottomSide
   //····················································································································
 
-  var drawPackageLegendBottomSide_property = EBStoredProperty_Bool (false)
+  var drawPackageLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -359,7 +359,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadHolesInPDF
   //····················································································································
 
-  var drawPadHolesInPDF_property = EBStoredProperty_Bool (false)
+  var drawPadHolesInPDF_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -382,7 +382,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadsTopSide
   //····················································································································
 
-  var drawPadsTopSide_property = EBStoredProperty_Bool (false)
+  var drawPadsTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -405,7 +405,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawPadsBottomSide
   //····················································································································
 
-  var drawPadsBottomSide_property = EBStoredProperty_Bool (false)
+  var drawPadsBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -428,7 +428,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLayoutTopSide
   //····················································································································
 
-  var drawTextsLayoutTopSide_property = EBStoredProperty_Bool (false)
+  var drawTextsLayoutTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -451,7 +451,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLayoutBottomSide
   //····················································································································
 
-  var drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (false)
+  var drawTextsLayoutBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -474,7 +474,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLegendTopSide
   //····················································································································
 
-  var drawTextsLegendTopSide_property = EBStoredProperty_Bool (false)
+  var drawTextsLegendTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -497,7 +497,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTextsLegendBottomSide
   //····················································································································
 
-  var drawTextsLegendBottomSide_property = EBStoredProperty_Bool (false)
+  var drawTextsLegendBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -520,7 +520,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTracksTopSide
   //····················································································································
 
-  var drawTracksTopSide_property = EBStoredProperty_Bool (false)
+  var drawTracksTopSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -543,7 +543,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawTracksBottomSide
   //····················································································································
 
-  var drawTracksBottomSide_property = EBStoredProperty_Bool (false)
+  var drawTracksBottomSide_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -566,7 +566,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: drawVias
   //····················································································································
 
-  var drawVias_property = EBStoredProperty_Bool (false)
+  var drawVias_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -589,7 +589,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: fileExtension
   //····················································································································
 
-  var fileExtension_property = EBStoredProperty_String ("?")
+  var fileExtension_property = EBStoredProperty_String (defaultValue: "?")
 
   //····················································································································
 
@@ -612,7 +612,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: horizontalMirror
   //····················································································································
 
-  var horizontalMirror_property = EBStoredProperty_Bool (false)
+  var horizontalMirror_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -635,7 +635,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  var name_property = EBStoredProperty_String ("Unnamed")
+  var name_property = EBStoredProperty_String (defaultValue: "Unnamed")
 
   //····················································································································
 
@@ -658,7 +658,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: measurementUnitForPadHoleInPDF
   //····················································································································
 
-  var measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (90000)
+  var measurementUnitForPadHoleInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 
@@ -681,7 +681,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //   Atomic property: padHoleDiameterInPDF
   //····················································································································
 
-  var padHoleDiameterInPDF_property = EBStoredProperty_Int (90000)
+  var padHoleDiameterInPDF_property = EBStoredProperty_Int (defaultValue: 90000)
 
   //····················································································································
 

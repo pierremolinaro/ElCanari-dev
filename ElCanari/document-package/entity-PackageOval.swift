@@ -91,7 +91,7 @@ class PackageOval : PackageObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -114,7 +114,7 @@ class PackageOval : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (685800)
+  var width_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -137,7 +137,7 @@ class PackageOval : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (685800)
+  var height_property = EBStoredProperty_Int (defaultValue: 685800)
 
   //····················································································································
 
@@ -160,7 +160,7 @@ class PackageOval : PackageObject,
   //   Atomic property: xUnit
   //····················································································································
 
-  var xUnit_property = EBStoredProperty_Int (2286)
+  var xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -183,7 +183,7 @@ class PackageOval : PackageObject,
   //   Atomic property: yUnit
   //····················································································································
 
-  var yUnit_property = EBStoredProperty_Int (2286)
+  var yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -206,7 +206,7 @@ class PackageOval : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  var widthUnit_property = EBStoredProperty_Int (2286)
+  var widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -229,7 +229,7 @@ class PackageOval : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  var heightUnit_property = EBStoredProperty_Int (2286)
+  var heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -252,7 +252,7 @@ class PackageOval : PackageObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

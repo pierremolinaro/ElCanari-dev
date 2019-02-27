@@ -147,7 +147,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
+  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -170,7 +170,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (0)
+  var selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -193,7 +193,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String ("")
+  var comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -216,7 +216,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: program
   //····················································································································
 
-  var program_property = EBStoredProperty_String ("")
+  var program_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -239,7 +239,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  var horizontalFlip_property = EBStoredProperty_Bool (false)
+  var horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -262,7 +262,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: verticalFlip
   //····················································································································
 
-  var verticalFlip_property = EBStoredProperty_Bool (false)
+  var verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -285,7 +285,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_GridStyle (GridStyle.line)
+  var gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -308,7 +308,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStep
   //····················································································································
 
-  var gridStep_property = EBStoredProperty_Int (57150)
+  var gridStep_property = EBStoredProperty_Int (defaultValue: 57150)
 
   //····················································································································
 
@@ -331,7 +331,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridStepUnit
   //····················································································································
 
-  var gridStepUnit_property = EBStoredProperty_Int (2286)
+  var gridStepUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -354,7 +354,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: gridDisplayFactor
   //····················································································································
 
-  var gridDisplayFactor_property = EBStoredProperty_Int (4)
+  var gridDisplayFactor_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -377,7 +377,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (600)
+  var zoom_property = EBStoredProperty_Int (defaultValue: 600)
 
   //····················································································································
 
@@ -400,7 +400,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: padNumbering
   //····················································································································
 
-  var padNumbering_property = EBStoredProperty_PadNumbering (PadNumbering.noNumbering)
+  var padNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering)
 
   //····················································································································
 
@@ -423,7 +423,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  var xPlacardUnit_property = EBStoredProperty_Int (2286)
+  var xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -446,7 +446,7 @@ class PackageRoot : EBGraphicManagedObject,
   //   Atomic property: yPlacardUnit
   //····················································································································
 
-  var yPlacardUnit_property = EBStoredProperty_Int (2286)
+  var yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 

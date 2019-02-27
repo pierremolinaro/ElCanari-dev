@@ -49,7 +49,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mPath
   //····················································································································
 
-  var mPath_property = EBStoredProperty_String ("Hello")
+  var mPath_property = EBStoredProperty_String (defaultValue: "Hello")
 
   //····················································································································
 
@@ -72,7 +72,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUses
   //····················································································································
 
-  var mUses_property = EBStoredProperty_Bool (true)
+  var mUses_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mLibraryRepositoryURL
   //····················································································································
 
-  var mLibraryRepositoryURL_property = EBStoredProperty_String ("")
+  var mLibraryRepositoryURL_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class CanariLibraryEntry : EBManagedObject,
   //   Atomic property: mUserAndPasswordTag
   //····················································································································
 
-  var mUserAndPasswordTag_property = EBStoredProperty_String ("")
+  var mUserAndPasswordTag_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

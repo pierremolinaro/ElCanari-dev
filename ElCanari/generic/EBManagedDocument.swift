@@ -412,7 +412,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //    Version
   //····················································································································
 
-  private var mVersion = EBStoredProperty_Int (0) // No undo manager
+  private var mVersion = EBStoredProperty_Int (defaultValue: 0) // No undo manager
 
   //····················································································································
 

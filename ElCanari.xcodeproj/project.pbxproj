@@ -1111,6 +1111,10 @@
 		CFF2A1F821B2D18E00945D01 /* entity-SymbolSolidOval.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1F021B2D18E00945D01 /* entity-SymbolSolidOval.swift */; };
 		CFF2A1FA21B2D24A00945D01 /* extension-SymbolSolidOval.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1F921B2D24A00945D01 /* extension-SymbolSolidOval.swift */; };
 		CFF2A1FB21B2D24A00945D01 /* extension-SymbolSolidOval.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF2A1F921B2D24A00945D01 /* extension-SymbolSolidOval.swift */; };
+		CFF5EF03222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */; };
+		CFF5EF04222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */; };
+		CFF5EF0622269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */; };
+		CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */; };
 		CFF7B4271FDF28C800A5CF44 /* canari_artwork.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */; };
 		CFF7B4291FDF2E3400A5CF44 /* canari_merger.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */; };
 		CFF83D4321ADAA310084BDA9 /* transient-SymbolDocument-mStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-mStatusImage.swift */; };
@@ -1710,6 +1714,8 @@
 		CFF2A1EF21B2D18E00945D01 /* transient-SymbolSolidOval-selectionDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSolidOval-selectionDisplay.swift"; sourceTree = "<group>"; };
 		CFF2A1F021B2D18E00945D01 /* entity-SymbolSolidOval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolSolidOval.swift"; sourceTree = "<group>"; };
 		CFF2A1F921B2D24A00945D01 /* extension-SymbolSolidOval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SymbolSolidOval.swift"; sourceTree = "<group>"; };
+		CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-DeviceDocumentation.swift"; sourceTree = "<group>"; };
+		CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceDocumentation-fileSize.swift"; sourceTree = "<group>"; };
 		CFF7B4261FDF28C800A5CF44 /* canari_artwork.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_artwork.icns; sourceTree = "<group>"; };
 		CFF7B4281FDF2E3400A5CF44 /* canari_merger.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = canari_merger.icns; sourceTree = "<group>"; };
 		CFF83D4021ADAA300084BDA9 /* transient-SymbolDocument-mStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolDocument-mStatusImage.swift"; sourceTree = "<group>"; };
@@ -2307,10 +2313,12 @@
 				CF85624B21E7CB560032F52D /* DeviceDocument-customized.swift */,
 				CF85624C21E7CB570032F52D /* DeviceDocument.swift */,
 				CF85624D21E7CB570032F52D /* DeviceDocument.xib */,
+				CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */,
 				CF85624A21E7CB560032F52D /* entity-DeviceRoot.swift */,
 				CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */,
 				CFC8547721E91817006ADB6C /* transient-DeviceDocument-mStatusImage.swift */,
 				CFC8547621E91817006ADB6C /* transient-DeviceDocument-mStatusMessage.swift */,
+				CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */,
 				CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */,
 				CFC8547521E91817006ADB6C /* transient-DeviceRoot-issues.swift */,
 				CF0DC14222253B9100DD2076 /* view-droppable-image-view.swift */,
@@ -2880,6 +2888,7 @@
 				CFDC5FE720FB2235003AB275 /* extension-MergerBoardInstance-graphic.swift in Sources */,
 				CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */,
 				CFDCA18521AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
+				CFF5EF03222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */,
 				CF00843D21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
 				CF85859221C5124300082CE3 /* entity-PackageArc.swift in Sources */,
 				CF88969F21E13334007A0F1C /* open-in-library.swift in Sources */,
@@ -3277,6 +3286,7 @@
 				CF6172641B3C4BA900F3CA82 /* easy-bindings-utilities.swift in Sources */,
 				CF30CDE321C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */,
+				CFF5EF0622269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
 				CFDA579D1BFA524A00EEF3CB /* entity-FontRoot.swift in Sources */,
 				CFE85A9921A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,
@@ -3357,6 +3367,7 @@
 				CF5C4CDC219F04D600EAC52A /* extension-MergerBoardInstance-graphic.swift in Sources */,
 				CF35A54921A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */,
 				CFDCA18621AB1CC8007B090C /* MergerDocument-customized.swift in Sources */,
+				CFF5EF04222695F9006BFE57 /* entity-DeviceDocumentation.swift in Sources */,
 				CF00843E21C41B8D003627E9 /* transient-PackageBezier-selectionDisplay.swift in Sources */,
 				CF85859321C5124300082CE3 /* entity-PackageArc.swift in Sources */,
 				CF8896A021E13334007A0F1C /* open-in-library.swift in Sources */,
@@ -3754,6 +3765,7 @@
 				CF5C4DA1219F04D600EAC52A /* easy-bindings-utilities.swift in Sources */,
 				CF30CDE421C5709800CFE9CC /* transient-PackagePad-issues.swift in Sources */,
 				CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */,
+				CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DB21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
 				CF5C4DA2219F04D600EAC52A /* entity-FontRoot.swift in Sources */,
 				CFE85A9A21A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,

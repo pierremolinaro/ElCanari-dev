@@ -164,7 +164,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  init (_ inValue : T) {
+  init (defaultValue inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = nil
@@ -173,7 +173,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  init (_ inValue : T, prefKey inPreferenceKey : String) {
+  init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
     mSetterDelegate = nil
@@ -187,7 +187,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
  //····················································································································
 
-  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = inSetterDelegate
@@ -569,7 +569,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  init (_ inValue : T) {
+  init (defaultValue inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = nil
@@ -578,7 +578,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  init (_ inValue : T, prefKey inPreferenceKey : String) {
+  init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
     mSetterDelegate = nil
@@ -592,7 +592,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
  //····················································································································
 
-  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = inSetterDelegate
@@ -1208,7 +1208,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  init (_ inValue : T) {
+  init (defaultValue inValue : T) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = nil
@@ -1217,7 +1217,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  init (_ inValue : T, prefKey inPreferenceKey : String) {
+  init (defaultValue inValue : T, prefKey inPreferenceKey : String) {
     mValue = inValue
     mPreferenceKey = inPreferenceKey
     mSetterDelegate = nil
@@ -1231,7 +1231,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  init (_ inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
+  init (defaultValue inValue : T, setterDelegate inSetterDelegate : @escaping (_ inValue : T) -> Void) {
     mValue = inValue
     mPreferenceKey = nil
     mSetterDelegate = inSetterDelegate

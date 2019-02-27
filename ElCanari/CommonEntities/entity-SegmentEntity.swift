@@ -49,7 +49,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (0)
+  var y1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -72,7 +72,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (0)
+  var x2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -95,7 +95,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (0)
+  var y2_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -118,7 +118,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (0)
+  var width_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -141,7 +141,7 @@ class SegmentEntity : EBManagedObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (0)
+  var x1_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

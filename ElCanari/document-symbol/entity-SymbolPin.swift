@@ -112,7 +112,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yPin
   //····················································································································
 
-  var yPin_property = EBStoredProperty_Int (0)
+  var yPin_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -135,7 +135,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: xName
   //····················································································································
 
-  var xName_property = EBStoredProperty_Int (0)
+  var xName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -158,7 +158,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yName
   //····················································································································
 
-  var yName_property = EBStoredProperty_Int (228600)
+  var yName_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -181,7 +181,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: xNumber
   //····················································································································
 
-  var xNumber_property = EBStoredProperty_Int (0)
+  var xNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -204,7 +204,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: yNumber
   //····················································································································
 
-  var yNumber_property = EBStoredProperty_Int (-228600)
+  var yNumber_property = EBStoredProperty_Int (defaultValue: -228600)
 
   //····················································································································
 
@@ -227,7 +227,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: name
   //····················································································································
 
-  var name_property = EBStoredProperty_String ("")
+  var name_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -250,7 +250,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: nameHorizontalAlignment
   //····················································································································
 
-  var nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (HorizontalAlignment.center)
+  var nameHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -273,7 +273,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: numberHorizontalAlignment
   //····················································································································
 
-  var numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (HorizontalAlignment.center)
+  var numberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
 
   //····················································································································
 
@@ -296,7 +296,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: pinNameIsDisplayedInSchematics
   //····················································································································
 
-  var pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (true)
+  var pinNameIsDisplayedInSchematics_property = EBStoredProperty_Bool (defaultValue: true)
 
   //····················································································································
 
@@ -319,7 +319,7 @@ class SymbolPin : SymbolObject,
   //   Atomic property: xPin
   //····················································································································
 
-  var xPin_property = EBStoredProperty_Int (0)
+  var xPin_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

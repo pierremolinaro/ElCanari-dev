@@ -63,7 +63,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
+  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -86,7 +86,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: title
   //····················································································································
 
-  var title_property = EBStoredProperty_String ("")
+  var title_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -109,7 +109,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: prefix
   //····················································································································
 
-  var prefix_property = EBStoredProperty_String ("")
+  var prefix_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -132,7 +132,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String ("")
+  var comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -155,7 +155,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //   Atomic property: representationImageData
   //····················································································································
 
-  var representationImageData_property = EBStoredProperty_Data (Data ())
+  var representationImageData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
@@ -172,6 +172,18 @@ class DeviceRoot : EBGraphicManagedObject,
 
   var representationImageData_property_selection : EBSelection <Data> {
     return self.representationImageData_property.prop
+  }
+
+  //····················································································································
+  //   To many property: mDocs
+  //····················································································································
+
+  var mDocs_property = StoredArrayOf_DeviceDocumentation ()
+
+  //····················································································································
+
+  var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
+      return self.mDocs_property.prop
   }
 
   //····················································································································
@@ -236,6 +248,8 @@ class DeviceRoot : EBGraphicManagedObject,
     self.comments_property.undoManager = self.undoManager
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
+  //--- To many property: mDocs (no option)
+    self.mDocs_property.undoManager = self.undoManager
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -368,6 +382,13 @@ class DeviceRoot : EBGraphicManagedObject,
       valueExplorer:&self.imageIsValid_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mDocs",
+      idx:mDocs_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mDocs_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -392,6 +413,8 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: representationImageData
     self.representationImageData_property.mObserverExplorer = nil
     self.representationImageData_property.mValueExplorer = nil
+  //--- To many property: mDocs
+    self.mDocs_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -401,6 +424,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override func cleanUpToManyRelationships () {
+    self.mDocs_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -430,6 +454,12 @@ class DeviceRoot : EBGraphicManagedObject,
     self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
   //--- Atomic property: representationImageData
     self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
+  //--- To many property: mDocs
+    self.store (
+      managedObjectArray: mDocs_property.propval as NSArray,
+      relationshipName: "mDocs",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -439,6 +469,12 @@ class DeviceRoot : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mDocs
+    self.mDocs_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mDocs",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [DeviceDocumentation])
   }
 
   //····················································································································
@@ -465,6 +501,10 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mDocs
+    for managedObject : EBManagedObject in self.mDocs_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································

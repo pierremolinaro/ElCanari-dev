@@ -6,165 +6,93 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_codePoint : class {
-  var codePoint : Int { get }
+protocol DeviceDocumentation_mFileName : class {
+  var mFileName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_advance : class {
-  var advance : Int { get }
+protocol DeviceDocumentation_mFileData : class {
+  var mFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_segmentArrayForDrawing : class {
-  var segmentArrayForDrawing : CharacterSegmentListClass? { get }
+protocol DeviceDocumentation_fileSize : class {
+  var fileSize : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol FontCharacter_gerberCode : class {
-  var gerberCode : CharacterGerberCodeClass? { get }
-}
-
+//    Entity: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontCharacter_gerberCodeInstructionCountMessage : class {
-  var gerberCodeInstructionCountMessage : String? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: FontCharacter
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class FontCharacter : EBManagedObject,
-         FontCharacter_codePoint,
-         FontCharacter_advance,
-         FontCharacter_segmentArrayForDrawing,
-         FontCharacter_gerberCode,
-         FontCharacter_gerberCodeInstructionCountMessage {
+class DeviceDocumentation : EBManagedObject,
+         DeviceDocumentation_mFileName,
+         DeviceDocumentation_mFileData,
+         DeviceDocumentation_fileSize {
 
   //····················································································································
-  //   Atomic property: codePoint
+  //   Atomic property: mFileName
   //····················································································································
 
-  var codePoint_property = EBStoredProperty_Int (defaultValue: 0)
+  var mFileName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var codePoint : Int {
+  var mFileName : String {
     get {
-      return self.codePoint_property.propval
+      return self.mFileName_property.propval
     }
     set {
-      self.codePoint_property.setProp (newValue)
+      self.mFileName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var codePoint_property_selection : EBSelection <Int> {
-    return self.codePoint_property.prop
+  var mFileName_property_selection : EBSelection <String> {
+    return self.mFileName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: advance
+  //   Atomic property: mFileData
   //····················································································································
 
-  var advance_property = EBStoredProperty_Int (defaultValue: 0)
+  var mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
-  var advance : Int {
+  var mFileData : Data {
     get {
-      return self.advance_property.propval
+      return self.mFileData_property.propval
     }
     set {
-      self.advance_property.setProp (newValue)
+      self.mFileData_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var advance_property_selection : EBSelection <Int> {
-    return self.advance_property.prop
+  var mFileData_property_selection : EBSelection <Data> {
+    return self.mFileData_property.prop
   }
 
   //····················································································································
-  //   To many property: segments
+  //   Transient property: fileSize
   //····················································································································
 
-  var segments_property = StoredArrayOf_SegmentForFontCharacter ()
-
-  //····················································································································
-
-  var segments_property_selection : EBSelection < [SegmentForFontCharacter] > {
-      return self.segments_property.prop
-  }
-
-  //····················································································································
-  //   Transient property: segmentArrayForDrawing
-  //····················································································································
-
-  var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
+  var fileSize_property = EBTransientProperty_Int ()
 
   //····················································································································
 
-  var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    return self.segmentArrayForDrawing_property.prop
+  var fileSize_property_selection : EBSelection <Int> {
+    return self.fileSize_property.prop
   }
 
   //····················································································································
 
-  var segmentArrayForDrawing : CharacterSegmentListClass? {
-    switch self.segmentArrayForDrawing_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: gerberCode
-  //····················································································································
-
-  var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
-
-  //····················································································································
-
-  var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    return self.gerberCode_property.prop
-  }
-
-  //····················································································································
-
-  var gerberCode : CharacterGerberCodeClass? {
-    switch self.gerberCode_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: gerberCodeInstructionCountMessage
-  //····················································································································
-
-  var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    return self.gerberCodeInstructionCountMessage_property.prop
-  }
-
-  //····················································································································
-
-  var gerberCodeInstructionCountMessage : String? {
-    switch self.gerberCodeInstructionCountMessage_property_selection {
+  var fileSize : Int? {
+    switch self.fileSize_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -178,53 +106,23 @@ class FontCharacter : EBManagedObject,
 
   required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
-  //--- Atomic property: codePoint
-    self.codePoint_property.undoManager = self.undoManager
-  //--- Atomic property: advance
-    self.advance_property.undoManager = self.undoManager
-  //--- To many property: segments (no option)
-    self.segments_property.undoManager = self.undoManager
-  //--- Atomic property: segmentArrayForDrawing
-    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
+  //--- Atomic property: mFileName
+    self.mFileName_property.undoManager = self.undoManager
+  //--- Atomic property: mFileData
+    self.mFileData_property.undoManager = self.undoManager
+  //--- Atomic property: fileSize
+    self.fileSize_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
-        kind &= unwSelf.segments_property_selection.kind ()
+        let kind = unwSelf.mFileData_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection, unwSelf.segments_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_FontCharacter_segmentArrayForDrawing (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.segments_property.addEBObserverOf_x1 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_y1 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
-    self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
-  //--- Atomic property: gerberCode
-    self.gerberCode_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.segmentArrayForDrawing_property_selection) {
+          switch (unwSelf.mFileData_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_FontCharacter_gerberCode (v0))
+            return .single (transient_DeviceDocumentation_fileSize (v0))
           default :
             return .empty
           }
@@ -233,34 +131,9 @@ class FontCharacter : EBManagedObject,
         return .empty
       }
     }
-    self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
-  //--- Atomic property: gerberCodeInstructionCountMessage
-    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.gerberCode_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.gerberCode_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_FontCharacter_gerberCodeInstructionCountMessage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
+    self.mFileData_property.addEBObserver (self.fileSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.advance_property.setSignatureObserver (observer:self)
-    self.codePoint_property.setSignatureObserver (observer:self)
-    self.segments_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -268,12 +141,7 @@ class FontCharacter : EBManagedObject,
 
   deinit {
   //--- Remove observers
-    self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_x2 (self.segmentArrayForDrawing_property)
-    self.segments_property.removeEBObserverOf_y2 (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
-    self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
+    self.mFileData_property.removeEBObserver (self.fileSize_property)
   }
 
   //····················································································································
@@ -288,54 +156,31 @@ class FontCharacter : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "codePoint",
-      idx:self.codePoint_property.ebObjectIndex,
+      "mFileName",
+      idx:self.mFileName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.codePoint_property.mObserverExplorer,
-      valueExplorer:&self.codePoint_property.mValueExplorer
+      observerExplorer:&self.mFileName_property.mObserverExplorer,
+      valueExplorer:&self.mFileName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "advance",
-      idx:self.advance_property.ebObjectIndex,
+      "mFileData",
+      idx:self.mFileData_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.advance_property.mObserverExplorer,
-      valueExplorer:&self.advance_property.mValueExplorer
+      observerExplorer:&self.mFileData_property.mObserverExplorer,
+      valueExplorer:&self.mFileData_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "segmentArrayForDrawing",
-      idx:self.segmentArrayForDrawing_property.ebObjectIndex,
+      "fileSize",
+      idx:self.fileSize_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.segmentArrayForDrawing_property.mObserverExplorer,
-      valueExplorer:&self.segmentArrayForDrawing_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCode",
-      idx:self.gerberCode_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCode_property.mObserverExplorer,
-      valueExplorer:&self.gerberCode_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "gerberCodeInstructionCountMessage",
-      idx:self.gerberCodeInstructionCountMessage_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
-      valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
+      observerExplorer:&self.fileSize_property.mObserverExplorer,
+      valueExplorer:&self.fileSize_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "segments",
-      idx:segments_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&segments_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -345,14 +190,12 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: codePoint
-    self.codePoint_property.mObserverExplorer = nil
-    self.codePoint_property.mValueExplorer = nil
-  //--- Atomic property: advance
-    self.advance_property.mObserverExplorer = nil
-    self.advance_property.mValueExplorer = nil
-  //--- To many property: segments
-    self.segments_property.mValueExplorer = nil
+  //--- Atomic property: mFileName
+    self.mFileName_property.mObserverExplorer = nil
+    self.mFileName_property.mValueExplorer = nil
+  //--- Atomic property: mFileData
+    self.mFileData_property.mObserverExplorer = nil
+    self.mFileData_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -362,7 +205,6 @@ class FontCharacter : EBManagedObject,
   //····················································································································
 
   override func cleanUpToManyRelationships () {
-    self.segments_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -382,16 +224,10 @@ class FontCharacter : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: codePoint
-    self.codePoint_property.storeIn (dictionary: ioDictionary, forKey:"codePoint")
-  //--- Atomic property: advance
-    self.advance_property.storeIn (dictionary: ioDictionary, forKey:"advance")
-  //--- To many property: segments
-    self.store (
-      managedObjectArray: segments_property.propval as NSArray,
-      relationshipName: "segments",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mFileName
+    self.mFileName_property.storeIn (dictionary: ioDictionary, forKey:"mFileName")
+  //--- Atomic property: mFileData
+    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey:"mFileData")
   }
 
   //····················································································································
@@ -401,12 +237,6 @@ class FontCharacter : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: segments
-    self.segments_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "segments",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SegmentForFontCharacter])
   }
 
   //····················································································································
@@ -415,10 +245,10 @@ class FontCharacter : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: codePoint
-    self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
-  //--- Atomic property: advance
-    self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
+  //--- Atomic property: mFileName
+    self.mFileName_property.readFrom (dictionary: inDictionary, forKey:"mFileName")
+  //--- Atomic property: mFileData
+    self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
   }
 
   //····················································································································
@@ -427,22 +257,6 @@ class FontCharacter : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: segments
-    for managedObject : EBManagedObject in self.segments_property.propval {
-      objects.append (managedObject)
-    }
-  }
-
-  //····················································································································
-  //   computeSignature
-  //····················································································································
-
-  override func computeSignature () -> UInt32 {
-    var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.advance_property.signature ())
-    crc.accumulateUInt32 (self.codePoint_property.signature ())
-    crc.accumulateUInt32 (self.segments_property.signature ())
-    return crc
   }
 
   //····················································································································
@@ -450,289 +264,177 @@ class FontCharacter : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_FontCharacter
+//    ReadOnlyArrayOf_DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharacter> {
+class ReadOnlyArrayOf_DeviceDocumentation : ReadOnlyAbstractArrayProperty <DeviceDocumentation> {
 
   //····················································································································
-  //   Observers of 'codePoint' stored property
+  //   Observers of 'mFileName' stored property
   //····················································································································
 
-  private var mObserversOf_codePoint = EBWeakEventSet ()
+  private var mObserversOf_mFileName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_codePoint (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_codePoint.insert (inObserver)
+    self.mObserversOf_mFileName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.codePoint_property.addEBObserver (inObserver)
+        managedObject.mFileName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_codePoint (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFileName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_codePoint.remove (inObserver)
+    self.mObserversOf_mFileName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.codePoint_property.removeEBObserver (inObserver)
+        managedObject.mFileName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_codePoint_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+  final func addEBObserversOf_mFileName_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
-        managedObject.codePoint_property.addEBObserver (observer)
+      self.mObserversOf_mFileName.apply ( {(_ observer : EBEvent) in
+        managedObject.mFileName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_codePoint_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_codePoint.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mFileName_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
+    self.mObserversOf_mFileName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.codePoint_property.removeEBObserver (observer)
+        managedObject.mFileName_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'advance' stored property
+  //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private var mObserversOf_advance = EBWeakEventSet ()
+  private var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_advance.insert (inObserver)
+    self.mObserversOf_mFileData.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.advance_property.addEBObserver (inObserver)
+        managedObject.mFileData_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_advance (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_advance.remove (inObserver)
+    self.mObserversOf_mFileData.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.advance_property.removeEBObserver (inObserver)
+        managedObject.mFileData_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_advance_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
-        managedObject.advance_property.addEBObserver (observer)
+      self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+        managedObject.mFileData_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_advance_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    self.mObserversOf_advance.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
+    self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.advance_property.removeEBObserver (observer)
+        managedObject.mFileData_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'segmentArrayForDrawing' transient property
+  //   Observers of 'fileSize' transient property
   //····················································································································
 
-  private var mObserversOf_segmentArrayForDrawing = EBWeakEventSet ()
+  private var mObserversOf_fileSize = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func addEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_segmentArrayForDrawing.insert (inObserver)
+    self.mObserversOf_fileSize.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentArrayForDrawing_property.addEBObserver (inObserver)
+        managedObject.fileSize_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_segmentArrayForDrawing (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_fileSize (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_segmentArrayForDrawing.remove (inObserver)
+    self.mObserversOf_fileSize.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (inObserver)
+        managedObject.fileSize_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+  final func addEBObserversOf_fileSize_toElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.addEBObserver (observer)
+      self.mObserversOf_fileSize.apply ( {(_ observer : EBEvent) in
+        managedObject.fileSize_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
+  final func removeEBObserversOf_fileSize_fromElementsOfSet (_ inSet : Set<DeviceDocumentation>) {
     for managedObject in inSet {
-      self.mObserversOf_segmentArrayForDrawing.apply ( {(_ observer : EBEvent) in
-        managedObject.segmentArrayForDrawing_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'gerberCode' transient property
-  //····················································································································
-
-  private var mObserversOf_gerberCode = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_gerberCode (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_gerberCode.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gerberCode_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gerberCode (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_gerberCode.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gerberCode_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gerberCode_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
-        managedObject.gerberCode_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCode_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCode.apply ( {(_ observer : EBEvent) in
-        managedObject.gerberCode_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'gerberCodeInstructionCountMessage' transient property
-  //····················································································································
-
-  private var mObserversOf_gerberCodeInstructionCountMessage = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_gerberCodeInstructionCountMessage.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_gerberCodeInstructionCountMessage (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_gerberCodeInstructionCountMessage.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
-    for managedObject in inSet {
-      self.mObserversOf_gerberCodeInstructionCountMessage.apply ( {(_ observer : EBEvent) in
-        managedObject.gerberCodeInstructionCountMessage_property.removeEBObserver (observer)
+      self.mObserversOf_fileSize.apply ( {(_ observer : EBEvent) in
+        managedObject.fileSize_property.removeEBObserver (observer)
       })
     }
   }
@@ -742,32 +444,32 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_FontCharacter
+//    TransientArrayOf_DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
+  var readModelFunction : Optional < () -> EBSelection < [DeviceDocumentation] > > = nil
 
   //····················································································································
 
-  override var propset : Set <FontCharacter> {
+  override var propset : Set <DeviceDocumentation> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [FontCharacter] > {
+  override var prop : EBSelection < [DeviceDocumentation] > {
     self.computeArrayAndSet ()
     return self.prop_cache!  
   }
  
   //····················································································································
 
-  override var propval : [FontCharacter] {
+  override var propval : [DeviceDocumentation] {
     self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
@@ -789,42 +491,38 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  private var mSet = Set <FontCharacter> ()
+  private var mSet = Set <DeviceDocumentation> ()
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [FontCharacter] >? = nil
+  private var prop_cache : EBSelection < [DeviceDocumentation] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
       self.prop_cache = unwrappedComputeFunction ()
-      let newSet : Set <FontCharacter>
+      let newSet : Set <DeviceDocumentation>
       switch self.prop_cache! {
       case .multiple, .empty :
-        newSet = Set <FontCharacter> ()
+        newSet = Set <DeviceDocumentation> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_codePoint_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_advance_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mFileName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mFileData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_fileSize_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_codePoint_toElementsOfSet (addedSet)
-      self.addEBObserversOf_advance_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mFileName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mFileData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
-      self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_fileSize_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -852,28 +550,28 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: FontCharacter
+//    To many relationship read write: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
+class ReadWriteArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation {
 
   //····················································································································
  
-  func setProp (_ value :  [FontCharacter]) { } // Abstract method
+  func setProp (_ value :  [DeviceDocumentation]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: FontCharacter
+//    To many relationship: DeviceDocumentation
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSignatureObserverProtocol {
+final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumentation, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : FontCharacter?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceDocumentation?) -> Void > = nil
 
   //····················································································································
 
@@ -920,9 +618,9 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [FontCharacter] ()
+      var objectArray = [DeviceDocumentation] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "FontCharacter") as? FontCharacter {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "DeviceDocumentation") as? DeviceDocumentation {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -933,8 +631,8 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
  //····················································································································
 
-  private var mSet = Set <FontCharacter> ()
-  private var mValue = [FontCharacter] () {
+  private var mSet = Set <DeviceDocumentation> ()
+  private var mValue = [DeviceDocumentation] () {
     didSet {
       self.postEvent ()
       if oldValue != self.mValue {
@@ -951,27 +649,23 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
-          managedObject.codePoint_property.mSetterDelegate = nil
-          managedObject.advance_property.mSetterDelegate = nil
+          managedObject.mFileName_property.mSetterDelegate = nil
+          managedObject.mFileData_property.mSetterDelegate = nil
         }
-        self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : FontCharacter in addedObjectSet {
+        for managedObject : DeviceDocumentation in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
-          managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mFileName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
-        self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
@@ -997,29 +691,29 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < [FontCharacter] > { return .single (self.mValue) }
+  override var prop : EBSelection < [DeviceDocumentation] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [FontCharacter]) { self.mValue = inValue }
+  override func setProp (_ inValue : [DeviceDocumentation]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [FontCharacter] { return self.mValue }
+  override var propval : [DeviceDocumentation] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <FontCharacter> { return self.mSet }
+  override var propset : Set <DeviceDocumentation> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [FontCharacter]) {
+  @objc func performUndo (_ oldValue : [DeviceDocumentation]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : FontCharacter) {
+  func remove (_ object : DeviceDocumentation) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1030,7 +724,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   
   //····················································································································
 
-  func add (_ object : FontCharacter) {
+  func add (_ object : DeviceDocumentation) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

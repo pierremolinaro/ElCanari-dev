@@ -70,7 +70,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -93,7 +93,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -116,7 +116,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //   Atomic property: instanceRotation
   //····················································································································
 
-  var instanceRotation_property = EBStoredProperty_QuadrantRotation (QuadrantRotation.rotation0)
+  var instanceRotation_property = EBStoredProperty_QuadrantRotation (defaultValue: QuadrantRotation.rotation0)
 
   //····················································································································
 

@@ -378,7 +378,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: name
   //····················································································································
 
-  var name_property = EBStoredProperty_String ("")
+  var name_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -401,7 +401,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidth
   //····················································································································
 
-  var modelWidth_property = EBStoredProperty_Int (0)
+  var modelWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -424,7 +424,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelWidthUnit
   //····················································································································
 
-  var modelWidthUnit_property = EBStoredProperty_Int (0)
+  var modelWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -447,7 +447,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeight
   //····················································································································
 
-  var modelHeight_property = EBStoredProperty_Int (0)
+  var modelHeight_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -470,7 +470,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelHeightUnit
   //····················································································································
 
-  var modelHeightUnit_property = EBStoredProperty_Int (0)
+  var modelHeightUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -493,7 +493,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (0)
+  var zoom_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -648,7 +648,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidth
   //····················································································································
 
-  var modelLimitWidth_property = EBStoredProperty_Int (0)
+  var modelLimitWidth_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -671,7 +671,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: modelLimitWidthUnit
   //····················································································································
 
-  var modelLimitWidthUnit_property = EBStoredProperty_Int (0)
+  var modelLimitWidthUnit_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -790,7 +790,7 @@ class BoardModel : EBManagedObject,
   //   Atomic property: artworkName
   //····················································································································
 
-  var artworkName_property = EBStoredProperty_String ("")
+  var artworkName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 

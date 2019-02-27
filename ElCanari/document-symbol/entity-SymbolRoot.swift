@@ -98,7 +98,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedInspector
   //····················································································································
 
-  var selectedInspector_property = EBStoredProperty_Int (0)
+  var selectedInspector_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -121,7 +121,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: comments
   //····················································································································
 
-  var comments_property = EBStoredProperty_String ("")
+  var comments_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -144,7 +144,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: horizontalFlip
   //····················································································································
 
-  var horizontalFlip_property = EBStoredProperty_Bool (false)
+  var horizontalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -167,7 +167,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: verticalFlip
   //····················································································································
 
-  var verticalFlip_property = EBStoredProperty_Bool (false)
+  var verticalFlip_property = EBStoredProperty_Bool (defaultValue: false)
 
   //····················································································································
 
@@ -190,7 +190,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridStyle
   //····················································································································
 
-  var gridStyle_property = EBStoredProperty_GridStyle (GridStyle.line)
+  var gridStyle_property = EBStoredProperty_GridStyle (defaultValue: GridStyle.line)
 
   //····················································································································
 
@@ -213,7 +213,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: gridDisplay
   //····················································································································
 
-  var gridDisplay_property = EBStoredProperty_Int (4)
+  var gridDisplay_property = EBStoredProperty_Int (defaultValue: 4)
 
   //····················································································································
 
@@ -236,7 +236,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: zoom
   //····················································································································
 
-  var zoom_property = EBStoredProperty_Int (600)
+  var zoom_property = EBStoredProperty_Int (defaultValue: 600)
 
   //····················································································································
 
@@ -259,7 +259,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: xPlacardUnit
   //····················································································································
 
-  var xPlacardUnit_property = EBStoredProperty_Int (2286)
+  var xPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -282,7 +282,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: yPlacardUnit
   //····················································································································
 
-  var yPlacardUnit_property = EBStoredProperty_Int (2286)
+  var yPlacardUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -329,7 +329,7 @@ class SymbolRoot : EBManagedObject,
   //   Atomic property: selectedPageIndex
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (0)
+  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 

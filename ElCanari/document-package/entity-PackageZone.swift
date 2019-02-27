@@ -140,7 +140,7 @@ class PackageZone : PackageObject,
   //   Atomic property: x
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (0)
+  var x_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -163,7 +163,7 @@ class PackageZone : PackageObject,
   //   Atomic property: y
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (0)
+  var y_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
@@ -186,7 +186,7 @@ class PackageZone : PackageObject,
   //   Atomic property: width
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (457200)
+  var width_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -209,7 +209,7 @@ class PackageZone : PackageObject,
   //   Atomic property: height
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (457200)
+  var height_property = EBStoredProperty_Int (defaultValue: 457200)
 
   //····················································································································
 
@@ -232,7 +232,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xUnit
   //····················································································································
 
-  var xUnit_property = EBStoredProperty_Int (2286)
+  var xUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -255,7 +255,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yUnit
   //····················································································································
 
-  var yUnit_property = EBStoredProperty_Int (2286)
+  var yUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -278,7 +278,7 @@ class PackageZone : PackageObject,
   //   Atomic property: widthUnit
   //····················································································································
 
-  var widthUnit_property = EBStoredProperty_Int (2286)
+  var widthUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -301,7 +301,7 @@ class PackageZone : PackageObject,
   //   Atomic property: heightUnit
   //····················································································································
 
-  var heightUnit_property = EBStoredProperty_Int (2286)
+  var heightUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -324,7 +324,7 @@ class PackageZone : PackageObject,
   //   Atomic property: zoneName
   //····················································································································
 
-  var zoneName_property = EBStoredProperty_String ("")
+  var zoneName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
@@ -347,7 +347,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xName
   //····················································································································
 
-  var xName_property = EBStoredProperty_Int (228600)
+  var xName_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -370,7 +370,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yName
   //····················································································································
 
-  var yName_property = EBStoredProperty_Int (228600)
+  var yName_property = EBStoredProperty_Int (defaultValue: 228600)
 
   //····················································································································
 
@@ -393,7 +393,7 @@ class PackageZone : PackageObject,
   //   Atomic property: xNameUnit
   //····················································································································
 
-  var xNameUnit_property = EBStoredProperty_Int (2286)
+  var xNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -416,7 +416,7 @@ class PackageZone : PackageObject,
   //   Atomic property: yNameUnit
   //····················································································································
 
-  var yNameUnit_property = EBStoredProperty_Int (2286)
+  var yNameUnit_property = EBStoredProperty_Int (defaultValue: 2286)
 
   //····················································································································
 
@@ -439,7 +439,7 @@ class PackageZone : PackageObject,
   //   Atomic property: zoneNumbering
   //····················································································································
 
-  var zoneNumbering_property = EBStoredProperty_PadNumbering (PadNumbering.noNumbering)
+  var zoneNumbering_property = EBStoredProperty_PadNumbering (defaultValue: PadNumbering.noNumbering)
 
   //····················································································································
 

@@ -56,7 +56,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //   Atomic property: x1
   //····················································································································
 
-  var x1_property = EBStoredProperty_Int (2)
+  var x1_property = EBStoredProperty_Int (defaultValue: 2)
 
   //····················································································································
 
@@ -79,7 +79,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //   Atomic property: y1
   //····················································································································
 
-  var y1_property = EBStoredProperty_Int (1)
+  var y1_property = EBStoredProperty_Int (defaultValue: 1)
 
   //····················································································································
 
@@ -102,7 +102,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //   Atomic property: x2
   //····················································································································
 
-  var x2_property = EBStoredProperty_Int (9)
+  var x2_property = EBStoredProperty_Int (defaultValue: 9)
 
   //····················································································································
 
@@ -125,7 +125,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //   Atomic property: y2
   //····················································································································
 
-  var y2_property = EBStoredProperty_Int (8)
+  var y2_property = EBStoredProperty_Int (defaultValue: 8)
 
   //····················································································································
 
