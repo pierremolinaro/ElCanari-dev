@@ -59,6 +59,8 @@ let PMDeviceComment = "PMDeviceComment"
       self.mInfosPageView
     ]
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
+  //---
+    self.mDocumentationTableView?.registerDraggedTypesAnd (document: self)
 
 //  //--- Symbol color observer
 //    self.mSymbolColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }

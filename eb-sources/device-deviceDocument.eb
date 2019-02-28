@@ -41,6 +41,29 @@ document DeviceDocument root DeviceRoot {
   action removeImageAction ;
   outlet EBButton mRemoveImageButton $run self.removeImageAction $enabled root.imageIsValid ;
 
+  tableViewController mDocumentationController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDocs {
+     column "name" EBTextObserverField $valueObserver self.mFileName
+     column "size" EBIntObserverField $valueObserver self.fileSize {autoFormatter : yes}
+  }
+
+  outlet DeviceDocumentationTableView mDocumentationTableView $tableValue mDocumentationController ;
+
+  outlet EBButton mRemoveSelectedDocButton
+    $run mDocumentationController.remove
+    $enabled mDocumentationController.selectedArray.count > 0
+  ;
+
+  action showDocAction ;
+  outlet EBButton mShowDocButton
+    $run self.showDocAction
+    $enabled mDocumentationController.selectedArray.count > 0
+  ;
+
+  action saveDocAction ;
+  outlet EBButton mSaveDocButton
+    $run self.saveDocAction
+    $enabled mDocumentationController.selectedArray.count > 0
+  ;
 #--------------- Infos Tab
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;

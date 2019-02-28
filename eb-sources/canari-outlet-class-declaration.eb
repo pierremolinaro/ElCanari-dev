@@ -24,6 +24,8 @@ extern outlet class NSSegmentedControl ;
 
 extern outlet class CanariDragSourceButton : NSControl ;
 
+extern outlet class DeviceDocumentationTableView : EBTableView ;
+
 extern outlet class CanariIssueTableView ;
 binding CanariIssueTableView $issues : transient CanariIssueArray ;
 

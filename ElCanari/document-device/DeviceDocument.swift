@@ -9,6 +9,12 @@ import Cocoa
 @objc(DeviceDocument) class DeviceDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mDocumentationController
+  //····················································································································
+
+  var mDocumentationController = ArrayController_DeviceDocument_mDocumentationController ()
+
+  //····················································································································
   //   Transient property: mStatusMessage
   //····················································································································
 
@@ -109,6 +115,7 @@ import Cocoa
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
+  @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
@@ -118,8 +125,11 @@ import Cocoa
   @IBOutlet var mPasteImageButton : EBButton?
   @IBOutlet var mPrefixTextField : EBTextField?
   @IBOutlet var mRemoveImageButton : EBButton?
+  @IBOutlet var mRemoveSelectedDocButton : EBButton?
   @IBOutlet var mRepresentationImageView : DeviceDroppableImageView?
   @IBOutlet var mResetVersionButton : EBButton?
+  @IBOutlet var mSaveDocButton : EBButton?
+  @IBOutlet var mShowDocButton : EBButton?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
@@ -132,6 +142,9 @@ import Cocoa
 
   var mController_mCopyImageButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveImageButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -163,6 +176,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -254,6 +269,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mDescriptionPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mDocumentationTableView {
+      if !(outlet is DeviceDocumentationTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mDocumentationTableView' outlet is not an instance of 'DeviceDocumentationTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDocumentationTableView' outlet is nil"
       )
     }
     if let outlet : Any = self.mInfosPageView {
@@ -391,6 +421,21 @@ import Cocoa
         errorMessage: "the 'mRemoveImageButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mRemoveSelectedDocButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mRemoveSelectedDocButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mRemoveSelectedDocButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mRepresentationImageView {
       if !(outlet is DeviceDroppableImageView) {
         presentErrorWindow (
@@ -419,6 +464,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mResetVersionButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSaveDocButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSaveDocButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSaveDocButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mShowDocButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowDocButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowDocButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mSignatureTextField {
@@ -496,6 +571,8 @@ import Cocoa
         errorMessage: "the 'mVersionField' outlet is nil"
       )
     }
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -562,6 +639,7 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -595,6 +673,36 @@ import Cocoa
       self.rootObject.imageIsValid_property.addEBObserver (controller)
       self.mController_mRemoveImageButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRemoveSelectedDocButton
+      )
+      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveSelectedDocButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mShowDocButton
+      )
+      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mShowDocButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mDocumentationController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mSaveDocButton
+      )
+      self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mSaveDocButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
@@ -602,6 +710,12 @@ import Cocoa
     self.mCopyImageButton?.action = #selector (DeviceDocument.copyImageAction (_:))
     self.mRemoveImageButton?.target = self
     self.mRemoveImageButton?.action = #selector (DeviceDocument.removeImageAction (_:))
+    self.mRemoveSelectedDocButton?.target = mDocumentationController
+    self.mRemoveSelectedDocButton?.action = #selector (ArrayController_DeviceDocument_mDocumentationController.remove (_:))
+    self.mShowDocButton?.target = self
+    self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
+    self.mSaveDocButton?.target = self
+    self.mSaveDocButton?.action = #selector (DeviceDocument.saveDocAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
@@ -637,7 +751,16 @@ import Cocoa
     self.mController_mCopyImageButton_enabled = nil
     self.self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
     self.mController_mRemoveImageButton_enabled = nil
+    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
+    self.mController_mRemoveSelectedDocButton_enabled = nil
+    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
+    self.mController_mShowDocButton_enabled = nil
+    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
+    self.mController_mSaveDocButton_enabled = nil
   //--------------------------- Unbind array controllers
+    self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.unbind_model ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
@@ -645,12 +768,16 @@ import Cocoa
     self.mPasteImageButton?.target = nil
     self.mCopyImageButton?.target = nil
     self.mRemoveImageButton?.target = nil
+    self.mRemoveSelectedDocButton?.target = nil
+    self.mShowDocButton?.target = nil
+    self.mSaveDocButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAssignmentPageView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
+    self.mDocumentationTableView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
@@ -660,8 +787,11 @@ import Cocoa
     self.mPasteImageButton?.ebCleanUp ()
     self.mPrefixTextField?.ebCleanUp ()
     self.mRemoveImageButton?.ebCleanUp ()
+    self.mRemoveSelectedDocButton?.ebCleanUp ()
     self.mRepresentationImageView?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
+    self.mSaveDocButton?.ebCleanUp ()
+    self.mShowDocButton?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()

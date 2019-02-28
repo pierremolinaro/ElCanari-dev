@@ -152,6 +152,18 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To many property: mDocs
+  //····················································································································
+
+  var mDocs_property = StoredArrayOf_DeviceDocumentation ()
+
+  //····················································································································
+
+  var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
+      return self.mDocs_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: representationImageData
   //····················································································································
 
@@ -172,18 +184,6 @@ class DeviceRoot : EBGraphicManagedObject,
 
   var representationImageData_property_selection : EBSelection <Data> {
     return self.representationImageData_property.prop
-  }
-
-  //····················································································································
-  //   To many property: mDocs
-  //····················································································································
-
-  var mDocs_property = StoredArrayOf_DeviceDocumentation ()
-
-  //····················································································································
-
-  var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
-      return self.mDocs_property.prop
   }
 
   //····················································································································
@@ -246,10 +246,10 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.undoManager = self.undoManager
   //--- Atomic property: comments
     self.comments_property.undoManager = self.undoManager
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.undoManager = self.undoManager
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = self.undoManager
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.undoManager = self.undoManager
   //--- Atomic property: issues
     self.issues_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -410,11 +410,11 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: comments
     self.comments_property.mObserverExplorer = nil
     self.comments_property.mValueExplorer = nil
+  //--- To many property: mDocs
+    self.mDocs_property.mValueExplorer = nil
   //--- Atomic property: representationImageData
     self.representationImageData_property.mObserverExplorer = nil
     self.representationImageData_property.mValueExplorer = nil
-  //--- To many property: mDocs
-    self.mDocs_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -452,14 +452,14 @@ class DeviceRoot : EBGraphicManagedObject,
     self.prefix_property.storeIn (dictionary: ioDictionary, forKey:"prefix")
   //--- Atomic property: comments
     self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
   //--- To many property: mDocs
     self.store (
       managedObjectArray: mDocs_property.propval as NSArray,
       relationshipName: "mDocs",
       intoDictionary: ioDictionary
     )
+  //--- Atomic property: representationImageData
+    self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
   }
 
   //····················································································································
