@@ -865,6 +865,8 @@
 		CF8BEBF81BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */; };
 		CF8C0E84222810D4007DD2B8 /* action-DeviceDocument-saveDocAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C0E83222810D4007DD2B8 /* action-DeviceDocument-saveDocAction.swift */; };
 		CF8C0E85222810D4007DD2B8 /* action-DeviceDocument-saveDocAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C0E83222810D4007DD2B8 /* action-DeviceDocument-saveDocAction.swift */; };
+		CF8C31F1222846010001C649 /* window-pdf-doc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C31F0222846010001C649 /* window-pdf-doc.swift */; };
+		CF8C31F2222846010001C649 /* window-pdf-doc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8C31F0222846010001C649 /* window-pdf-doc.swift */; };
 		CF8D061521A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */; };
 		CF8D061621A2AD92007D12D9 /* SymbolDocument-customized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */; };
 		CF8D9AA321A2F2A2001D8BF9 /* extension-SymbolSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */; };
@@ -1549,6 +1551,7 @@
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
 		CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "validation-Preferences-currentCharacterCodePoint.swift"; sourceTree = "<group>"; };
 		CF8C0E83222810D4007DD2B8 /* action-DeviceDocument-saveDocAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-saveDocAction.swift"; sourceTree = "<group>"; };
+		CF8C31F0222846010001C649 /* window-pdf-doc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "window-pdf-doc.swift"; sourceTree = "<group>"; };
 		CF8D061421A2AD92007D12D9 /* SymbolDocument-customized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SymbolDocument-customized.swift"; sourceTree = "<group>"; };
 		CF8D9AA221A2F2A2001D8BF9 /* extension-SymbolSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SymbolSegment.swift"; sourceTree = "<group>"; };
 		CF8DDB4C21C25957009B74B1 /* EBView-draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-draw.swift"; sourceTree = "<group>"; };
@@ -2338,6 +2341,7 @@
 				CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */,
 				CFC8547521E91817006ADB6C /* transient-DeviceRoot-issues.swift */,
 				CF0DC14222253B9100DD2076 /* view-droppable-image-view.swift */,
+				CF8C31F0222846010001C649 /* window-pdf-doc.swift */,
 			);
 			name = "document — device";
 			path = "ElCanari/document-device";
@@ -3094,6 +3098,7 @@
 				CFA0DF5221C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */,
 				CFD7E80520EE3C200056BEC4 /* action-MergerDocument-importArtworkAction.swift in Sources */,
 				CF4B7D591BEC030100627E76 /* CanariAppUpdaterSparkleSettings.swift in Sources */,
+				CF8C31F1222846010001C649 /* window-pdf-doc.swift in Sources */,
 				CFDDD4E721BB1529007D2F14 /* EBViewScaleProvider.swift in Sources */,
 				CF3EA66021C29EB80059392B /* EBScrollView-dragging-destination.swift in Sources */,
 				CF730B4421F87E8A00944B3E /* entry-point-update-to-latest-commit.swift in Sources */,
@@ -3577,6 +3582,7 @@
 				CFA0DF5321C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */,
 				CF5C4D2F219F04D600EAC52A /* CanariAppUpdaterSparkleSettings.swift in Sources */,
 				CF5C4D30219F04D600EAC52A /* extension-MergerDocument-generate-product-files.swift in Sources */,
+				CF8C31F2222846010001C649 /* window-pdf-doc.swift in Sources */,
 				CFDDD4E821BB1529007D2F14 /* EBViewScaleProvider.swift in Sources */,
 				CF3EA66121C29EB80059392B /* EBScrollView-dragging-destination.swift in Sources */,
 				CF730B4521F87E8A00944B3E /* entry-point-update-to-latest-commit.swift in Sources */,

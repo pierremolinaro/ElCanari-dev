@@ -14,7 +14,19 @@ import Cocoa
 extension DeviceDocument {
   @objc func saveDocAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-
+    let selectedDocArray = self.mDocumentationController.selectedArray_property.propval
+    if selectedDocArray.count == 1 {
+      let selectedDoc = selectedDocArray [0]
+      let savePanel = NSSavePanel ()
+      savePanel.allowedFileTypes = ["pdf"]
+      savePanel.allowsOtherFileTypes = false
+      savePanel.nameFieldStringValue = selectedDoc.mFileName + ".pdf"
+      savePanel.beginSheetModal (for: self.windowForSheet!, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+        if inResponse == .OK, let url = savePanel.url {
+          try? selectedDoc.mFileData.write (to: url)
+        }
+      })
+    }
 //--- END OF USER ZONE 2
   }
 }
