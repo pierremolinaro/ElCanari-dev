@@ -68,7 +68,41 @@ document DeviceDocument root DeviceRoot {
 #-------------------------- Page : Package
   action addPackageFromLibraryAction ;
   outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;
+
+#-------------------------- Page : Library
+
+
+#--- Packages
+  tableViewController mPackageController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.packages {
+     column "package" EBTextObserverField $valueObserver self.mName
+     column "version" EBTextObserverField $valueObserver self.versionString
+  }
+  outlet EBTableView mPackageTableView $tableValue mPackageController ;
   
+  action resetSelectedPackageVersion ;
+  outlet EBButton mResetSelectedPackageVersionButton
+    $run self.resetSelectedPackageVersion
+    $enabled mPackageController.selectedArray.count > 0
+  ;
+
+  action editSelectedPackages ;
+  outlet EBButton mEditSelectedPackagesButton
+    $run self.editSelectedPackages
+    $enabled mPackageController.selectedArray.count > 0
+  ;
+
+  action exportSelectedPackages ;
+  outlet EBButton mExportSelectedPackagesButton
+    $run self.exportSelectedPackages
+    $enabled mPackageController.selectedArray.count > 0
+  ;
+
+  action updateSelectedPackages ;
+  outlet EBButton mUpdateSelectedPackagesButton
+    $run self.updateSelectedPackages
+    $enabled mPackageController.selectedArray.count > 0
+  ;
+
 #--------------- Infos Tab
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;

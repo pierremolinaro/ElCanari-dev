@@ -6,237 +6,123 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_selectedPageIndex : class {
-  var selectedPageIndex : Int { get }
+protocol PackageInDevice_mFileData : class {
+  var mFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_title : class {
-  var title : String { get }
+protocol PackageInDevice_mName : class {
+  var mName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_prefix : class {
-  var prefix : String { get }
+protocol PackageInDevice_mVersion : class {
+  var mVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_comments : class {
-  var comments : String { get }
+protocol PackageInDevice_versionString : class {
+  var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceRoot_representationImageData : class {
-  var representationImageData : Data { get }
-}
-
+//    Entity: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_issues : class {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol DeviceRoot_imageIsValid : class {
-  var imageIsValid : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: DeviceRoot
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class DeviceRoot : EBGraphicManagedObject,
-         DeviceRoot_selectedPageIndex,
-         DeviceRoot_title,
-         DeviceRoot_prefix,
-         DeviceRoot_comments,
-         DeviceRoot_representationImageData,
-         DeviceRoot_issues,
-         DeviceRoot_imageIsValid {
+class PackageInDevice : EBManagedObject,
+         PackageInDevice_mFileData,
+         PackageInDevice_mName,
+         PackageInDevice_mVersion,
+         PackageInDevice_versionString {
 
   //····················································································································
-  //   Atomic property: selectedPageIndex
+  //   Atomic property: mFileData
   //····················································································································
 
-  var selectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  var mFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
-  var selectedPageIndex : Int {
+  var mFileData : Data {
     get {
-      return self.selectedPageIndex_property.propval
+      return self.mFileData_property.propval
     }
     set {
-      self.selectedPageIndex_property.setProp (newValue)
+      self.mFileData_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var selectedPageIndex_property_selection : EBSelection <Int> {
-    return self.selectedPageIndex_property.prop
+  var mFileData_property_selection : EBSelection <Data> {
+    return self.mFileData_property.prop
   }
 
   //····················································································································
-  //   Atomic property: title
+  //   Atomic property: mName
   //····················································································································
 
-  var title_property = EBStoredProperty_String (defaultValue: "")
+  var mName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var title : String {
+  var mName : String {
     get {
-      return self.title_property.propval
+      return self.mName_property.propval
     }
     set {
-      self.title_property.setProp (newValue)
+      self.mName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var title_property_selection : EBSelection <String> {
-    return self.title_property.prop
+  var mName_property_selection : EBSelection <String> {
+    return self.mName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: prefix
+  //   Atomic property: mVersion
   //····················································································································
 
-  var prefix_property = EBStoredProperty_String (defaultValue: "")
+  var mVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var prefix : String {
+  var mVersion : Int {
     get {
-      return self.prefix_property.propval
+      return self.mVersion_property.propval
     }
     set {
-      self.prefix_property.setProp (newValue)
+      self.mVersion_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var prefix_property_selection : EBSelection <String> {
-    return self.prefix_property.prop
+  var mVersion_property_selection : EBSelection <Int> {
+    return self.mVersion_property.prop
   }
 
   //····················································································································
-  //   Atomic property: comments
+  //   Transient property: versionString
   //····················································································································
 
-  var comments_property = EBStoredProperty_String (defaultValue: "")
+  var versionString_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var comments : String {
-    get {
-      return self.comments_property.propval
-    }
-    set {
-      self.comments_property.setProp (newValue)
-    }
+  var versionString_property_selection : EBSelection <String> {
+    return self.versionString_property.prop
   }
 
   //····················································································································
 
-  var comments_property_selection : EBSelection <String> {
-    return self.comments_property.prop
-  }
-
-  //····················································································································
-  //   To many property: mDocs
-  //····················································································································
-
-  var mDocs_property = StoredArrayOf_DeviceDocumentation ()
-
-  //····················································································································
-
-  var mDocs_property_selection : EBSelection < [DeviceDocumentation] > {
-      return self.mDocs_property.prop
-  }
-
-  //····················································································································
-  //   To many property: packages
-  //····················································································································
-
-  var packages_property = StoredArrayOf_PackageInDevice ()
-
-  //····················································································································
-
-  var packages_property_selection : EBSelection < [PackageInDevice] > {
-      return self.packages_property.prop
-  }
-
-  //····················································································································
-  //   Atomic property: representationImageData
-  //····················································································································
-
-  var representationImageData_property = EBStoredProperty_Data (defaultValue: Data ())
-
-  //····················································································································
-
-  var representationImageData : Data {
-    get {
-      return self.representationImageData_property.propval
-    }
-    set {
-      self.representationImageData_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-
-  var representationImageData_property_selection : EBSelection <Data> {
-    return self.representationImageData_property.prop
-  }
-
-  //····················································································································
-  //   Transient property: issues
-  //····················································································································
-
-  var issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: imageIsValid
-  //····················································································································
-
-  var imageIsValid_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var imageIsValid_property_selection : EBSelection <Bool> {
-    return self.imageIsValid_property.prop
-  }
-
-  //····················································································································
-
-  var imageIsValid : Bool? {
-    switch self.imageIsValid_property_selection {
+  var versionString : String? {
+    switch self.versionString_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -250,57 +136,25 @@ class DeviceRoot : EBGraphicManagedObject,
 
   required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
-  //--- Atomic property: title
-    self.title_property.undoManager = self.undoManager
-  //--- Atomic property: prefix
-    self.prefix_property.undoManager = self.undoManager
-  //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
-  //--- To many property: mDocs (no option)
-    self.mDocs_property.undoManager = self.undoManager
-  //--- To many property: packages (no option)
-    self.packages_property.undoManager = self.undoManager
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.undoManager = self.undoManager
-  //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+  //--- Atomic property: mFileData
+    self.mFileData_property.undoManager = self.undoManager
+  //--- Atomic property: mName
+    self.mName_property.undoManager = self.undoManager
+  //--- Atomic property: mVersion
+    self.mVersion_property.undoManager = self.undoManager
+  //--- Atomic property: versionString
+    self.versionString_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.title_property_selection.kind ()
-        kind &= unwSelf.prefix_property_selection.kind ()
+        let kind = unwSelf.mVersion_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceRoot_issues (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.title_property.addEBObserver (self.issues_property)
-    self.prefix_property.addEBObserver (self.issues_property)
-  //--- Atomic property: imageIsValid
-    self.imageIsValid_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.representationImageData_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.representationImageData_property_selection) {
+          switch (unwSelf.mVersion_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_DeviceRoot_imageIsValid (v0))
+            return .single (transient_PackageInDevice_versionString (v0))
           default :
             return .empty
           }
@@ -309,14 +163,12 @@ class DeviceRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.representationImageData_property.addEBObserver (self.imageIsValid_property)
+    self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.comments_property.setSignatureObserver (observer:self)
-    self.mDocs_property.setSignatureObserver (observer:self)
-    self.packages_property.setSignatureObserver (observer:self)
-    self.prefix_property.setSignatureObserver (observer:self)
-    self.title_property.setSignatureObserver (observer:self)
+    self.mFileData_property.setSignatureObserver (observer:self)
+    self.mName_property.setSignatureObserver (observer:self)
+    self.mVersion_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -324,9 +176,7 @@ class DeviceRoot : EBGraphicManagedObject,
 
   deinit {
   //--- Remove observers
-    self.title_property.removeEBObserver (self.issues_property)
-    self.prefix_property.removeEBObserver (self.issues_property)
-    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
+    self.mVersion_property.removeEBObserver (self.versionString_property)
   }
 
   //····················································································································
@@ -341,77 +191,39 @@ class DeviceRoot : EBGraphicManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "selectedPageIndex",
-      idx:self.selectedPageIndex_property.ebObjectIndex,
+      "mFileData",
+      idx:self.mFileData_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.selectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.mFileData_property.mObserverExplorer,
+      valueExplorer:&self.mFileData_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "title",
-      idx:self.title_property.ebObjectIndex,
+      "mName",
+      idx:self.mName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.title_property.mObserverExplorer,
-      valueExplorer:&self.title_property.mValueExplorer
+      observerExplorer:&self.mName_property.mObserverExplorer,
+      valueExplorer:&self.mName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "prefix",
-      idx:self.prefix_property.ebObjectIndex,
+      "mVersion",
+      idx:self.mVersion_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.prefix_property.mObserverExplorer,
-      valueExplorer:&self.prefix_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "comments",
-      idx:self.comments_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.comments_property.mObserverExplorer,
-      valueExplorer:&self.comments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "representationImageData",
-      idx:self.representationImageData_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.representationImageData_property.mObserverExplorer,
-      valueExplorer:&self.representationImageData_property.mValueExplorer
+      observerExplorer:&self.mVersion_property.mObserverExplorer,
+      valueExplorer:&self.mVersion_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "issues",
-      idx:self.issues_property.ebObjectIndex,
+      "versionString",
+      idx:self.versionString_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "imageIsValid",
-      idx:self.imageIsValid_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.imageIsValid_property.mObserverExplorer,
-      valueExplorer:&self.imageIsValid_property.mValueExplorer
+      observerExplorer:&self.versionString_property.mObserverExplorer,
+      valueExplorer:&self.versionString_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mDocs",
-      idx:mDocs_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mDocs_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "packages",
-      idx:packages_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&packages_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -421,25 +233,15 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.mObserverExplorer = nil
-    self.selectedPageIndex_property.mValueExplorer = nil
-  //--- Atomic property: title
-    self.title_property.mObserverExplorer = nil
-    self.title_property.mValueExplorer = nil
-  //--- Atomic property: prefix
-    self.prefix_property.mObserverExplorer = nil
-    self.prefix_property.mValueExplorer = nil
-  //--- Atomic property: comments
-    self.comments_property.mObserverExplorer = nil
-    self.comments_property.mValueExplorer = nil
-  //--- To many property: mDocs
-    self.mDocs_property.mValueExplorer = nil
-  //--- To many property: packages
-    self.packages_property.mValueExplorer = nil
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.mObserverExplorer = nil
-    self.representationImageData_property.mValueExplorer = nil
+  //--- Atomic property: mFileData
+    self.mFileData_property.mObserverExplorer = nil
+    self.mFileData_property.mValueExplorer = nil
+  //--- Atomic property: mName
+    self.mName_property.mObserverExplorer = nil
+    self.mName_property.mValueExplorer = nil
+  //--- Atomic property: mVersion
+    self.mVersion_property.mObserverExplorer = nil
+    self.mVersion_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -449,8 +251,6 @@ class DeviceRoot : EBGraphicManagedObject,
   //····················································································································
 
   override func cleanUpToManyRelationships () {
-    self.mDocs_property.setProp ([])
-    self.packages_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -470,28 +270,12 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"selectedPageIndex")
-  //--- Atomic property: title
-    self.title_property.storeIn (dictionary: ioDictionary, forKey:"title")
-  //--- Atomic property: prefix
-    self.prefix_property.storeIn (dictionary: ioDictionary, forKey:"prefix")
-  //--- Atomic property: comments
-    self.comments_property.storeIn (dictionary: ioDictionary, forKey:"comments")
-  //--- To many property: mDocs
-    self.store (
-      managedObjectArray: mDocs_property.propval as NSArray,
-      relationshipName: "mDocs",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: packages
-    self.store (
-      managedObjectArray: packages_property.propval as NSArray,
-      relationshipName: "packages",
-      intoDictionary: ioDictionary
-    )
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
+  //--- Atomic property: mFileData
+    self.mFileData_property.storeIn (dictionary: ioDictionary, forKey:"mFileData")
+  //--- Atomic property: mName
+    self.mName_property.storeIn (dictionary: ioDictionary, forKey:"mName")
+  //--- Atomic property: mVersion
+    self.mVersion_property.storeIn (dictionary: ioDictionary, forKey:"mVersion")
   }
 
   //····················································································································
@@ -501,18 +285,6 @@ class DeviceRoot : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mDocs
-    self.mDocs_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDocs",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [DeviceDocumentation])
-  //--- To many property: packages
-    self.packages_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "packages",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [PackageInDevice])
   }
 
   //····················································································································
@@ -521,16 +293,12 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"selectedPageIndex")
-  //--- Atomic property: title
-    self.title_property.readFrom (dictionary: inDictionary, forKey:"title")
-  //--- Atomic property: prefix
-    self.prefix_property.readFrom (dictionary: inDictionary, forKey:"prefix")
-  //--- Atomic property: comments
-    self.comments_property.readFrom (dictionary: inDictionary, forKey:"comments")
-  //--- Atomic property: representationImageData
-    self.representationImageData_property.readFrom (dictionary: inDictionary, forKey:"representationImageData")
+  //--- Atomic property: mFileData
+    self.mFileData_property.readFrom (dictionary: inDictionary, forKey:"mFileData")
+  //--- Atomic property: mName
+    self.mName_property.readFrom (dictionary: inDictionary, forKey:"mName")
+  //--- Atomic property: mVersion
+    self.mVersion_property.readFrom (dictionary: inDictionary, forKey:"mVersion")
   }
 
   //····················································································································
@@ -539,14 +307,6 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mDocs
-    for managedObject : EBManagedObject in self.mDocs_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: packages
-    for managedObject : EBManagedObject in self.packages_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -555,11 +315,9 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.comments_property.signature ())
-    crc.accumulateUInt32 (self.mDocs_property.signature ())
-    crc.accumulateUInt32 (self.packages_property.signature ())
-    crc.accumulateUInt32 (self.prefix_property.signature ())
-    crc.accumulateUInt32 (self.title_property.signature ())
+    crc.accumulateUInt32 (self.mFileData_property.signature ())
+    crc.accumulateUInt32 (self.mName_property.signature ())
+    crc.accumulateUInt32 (self.mVersion_property.signature ())
     return crc
   }
 
@@ -568,404 +326,234 @@ class DeviceRoot : EBGraphicManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_DeviceRoot
+//    ReadOnlyArrayOf_PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
+class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageInDevice> {
 
   //····················································································································
-  //   Observers of 'selectedPageIndex' stored property
+  //   Observers of 'mFileData' stored property
   //····················································································································
 
-  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_mFileData = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.insert (inObserver)
+    self.mObserversOf_mFileData.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mFileData_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedPageIndex.remove (inObserver)
+    self.mObserversOf_mFileData.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.mFileData_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedPageIndex_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_mFileData_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
-        managedObject.selectedPageIndex_property.addEBObserver (observer)
+      self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
+        managedObject.mFileData_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedPageIndex_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_selectedPageIndex.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mFileData_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    self.mObserversOf_mFileData.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedPageIndex_property.removeEBObserver (observer)
+        managedObject.mFileData_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'title' stored property
+  //   Observers of 'mName' stored property
   //····················································································································
 
-  private var mObserversOf_title = EBWeakEventSet ()
+  private var mObserversOf_mName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_title (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_title.insert (inObserver)
+    self.mObserversOf_mName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.title_property.addEBObserver (inObserver)
+        managedObject.mName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_title.remove (inObserver)
+    self.mObserversOf_mName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.title_property.removeEBObserver (inObserver)
+        managedObject.mName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_title_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_mName_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_title.apply ( {(_ observer : EBEvent) in
-        managedObject.title_property.addEBObserver (observer)
+      self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
+        managedObject.mName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_title_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_title.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mName_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    self.mObserversOf_mName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.title_property.removeEBObserver (observer)
+        managedObject.mName_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'prefix' stored property
+  //   Observers of 'mVersion' stored property
   //····················································································································
 
-  private var mObserversOf_prefix = EBWeakEventSet ()
+  private var mObserversOf_mVersion = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_prefix (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_prefix.insert (inObserver)
+    self.mObserversOf_mVersion.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.prefix_property.addEBObserver (inObserver)
+        managedObject.mVersion_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_prefix (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_prefix.remove (inObserver)
+    self.mObserversOf_mVersion.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.prefix_property.removeEBObserver (inObserver)
+        managedObject.mVersion_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_prefix_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_mVersion_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_prefix.apply ( {(_ observer : EBEvent) in
-        managedObject.prefix_property.addEBObserver (observer)
+      self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
+        managedObject.mVersion_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_prefix_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_prefix.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mVersion_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    self.mObserversOf_mVersion.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.prefix_property.removeEBObserver (observer)
+        managedObject.mVersion_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'comments' stored property
+  //   Observers of 'versionString' transient property
   //····················································································································
 
-  private var mObserversOf_comments = EBWeakEventSet ()
+  private var mObserversOf_versionString = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_comments.insert (inObserver)
+    self.mObserversOf_versionString.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.addEBObserver (inObserver)
+        managedObject.versionString_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_comments.remove (inObserver)
+    self.mObserversOf_versionString.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.comments_property.removeEBObserver (inObserver)
+        managedObject.versionString_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_comments_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
-        managedObject.comments_property.addEBObserver (observer)
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_comments_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_comments.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.comments_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'representationImageData' stored property
-  //····················································································································
-
-  private var mObserversOf_representationImageData = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_representationImageData (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_representationImageData.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.representationImageData_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_representationImageData (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_representationImageData.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.representationImageData_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_representationImageData_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_representationImageData.apply ( {(_ observer : EBEvent) in
-        managedObject.representationImageData_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_representationImageData_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    self.mObserversOf_representationImageData.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.representationImageData_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'imageIsValid' transient property
-  //····················································································································
-
-  private var mObserversOf_imageIsValid = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.imageIsValid_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.imageIsValid_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
-        managedObject.imageIsValid_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
-        managedObject.imageIsValid_property.removeEBObserver (observer)
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.removeEBObserver (observer)
       })
     }
   }
@@ -975,32 +563,32 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_DeviceRoot
+//    TransientArrayOf_PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
+class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
+  var readModelFunction : Optional < () -> EBSelection < [PackageInDevice] > > = nil
 
   //····················································································································
 
-  override var propset : Set <DeviceRoot> {
+  override var propset : Set <PackageInDevice> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceRoot] > {
+  override var prop : EBSelection < [PackageInDevice] > {
     self.computeArrayAndSet ()
     return self.prop_cache!  
   }
  
   //····················································································································
 
-  override var propval : [DeviceRoot] {
+  override var propval : [PackageInDevice] {
     self.computeArrayAndSet ()
     if let value = self.prop_cache {
       switch value {
@@ -1022,46 +610,40 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  private var mSet = Set <DeviceRoot> ()
+  private var mSet = Set <PackageInDevice> ()
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [DeviceRoot] >? = nil
+  private var prop_cache : EBSelection < [PackageInDevice] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
       self.prop_cache = unwrappedComputeFunction ()
-      let newSet : Set <DeviceRoot>
+      let newSet : Set <PackageInDevice>
       switch self.prop_cache! {
       case .multiple, .empty :
-        newSet = Set <DeviceRoot> ()
+        newSet = Set <PackageInDevice> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_title_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_prefix_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_comments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mFileData_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mVersion_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedSet)
-      self.addEBObserversOf_title_toElementsOfSet (addedSet)
-      self.addEBObserversOf_prefix_toElementsOfSet (addedSet)
-      self.addEBObserversOf_comments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mFileData_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mVersion_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
-      self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
+      self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1089,28 +671,28 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: DeviceRoot
+//    To many relationship read write: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
+class ReadWriteArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
  
-  func setProp (_ value :  [DeviceRoot]) { } // Abstract method
+  func setProp (_ value :  [PackageInDevice]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: DeviceRoot
+//    To many relationship: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : PackageInDevice?) -> Void > = nil
 
   //····················································································································
 
@@ -1157,9 +739,9 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [DeviceRoot] ()
+      var objectArray = [PackageInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "DeviceRoot") as? DeviceRoot {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageInDevice") as? PackageInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1170,8 +752,8 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
  //····················································································································
 
-  private var mSet = Set <DeviceRoot> ()
-  private var mValue = [DeviceRoot] () {
+  private var mSet = Set <PackageInDevice> ()
+  private var mValue = [PackageInDevice] () {
     didSet {
       self.postEvent ()
       if oldValue != self.mValue {
@@ -1188,37 +770,27 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         for managedObject in removedObjectSet {
           managedObject.setSignatureObserver (observer: nil)
           self.setOppositeRelationship? (nil)
-          managedObject.selectedPageIndex_property.mSetterDelegate = nil
-          managedObject.title_property.mSetterDelegate = nil
-          managedObject.prefix_property.mSetterDelegate = nil
-          managedObject.comments_property.mSetterDelegate = nil
-          managedObject.representationImageData_property.mSetterDelegate = nil
+          managedObject.mFileData_property.mSetterDelegate = nil
+          managedObject.mName_property.mSetterDelegate = nil
+          managedObject.mVersion_property.mSetterDelegate = nil
         }
-        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mVersion_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : DeviceRoot in addedObjectSet {
+        for managedObject : PackageInDevice in addedObjectSet {
           managedObject.setSignatureObserver (observer: self)
           self.setOppositeRelationship? (managedObject)
-          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.title_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.prefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.representationImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
-        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mVersion_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
@@ -1244,29 +816,29 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [DeviceRoot] > { return .single (self.mValue) }
+  override var prop : EBSelection < [PackageInDevice] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [DeviceRoot]) { self.mValue = inValue }
+  override func setProp (_ inValue : [PackageInDevice]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [DeviceRoot] { return self.mValue }
+  override var propval : [PackageInDevice] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <DeviceRoot> { return self.mSet }
+  override var propset : Set <PackageInDevice> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [DeviceRoot]) {
+  @objc func performUndo (_ oldValue : [PackageInDevice]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : DeviceRoot) {
+  func remove (_ object : PackageInDevice) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1277,7 +849,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : DeviceRoot) {
+  func add (_ object : PackageInDevice) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

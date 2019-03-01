@@ -14,17 +14,21 @@
                 <outlet property="mCopyImageButton" destination="2176" id="Mb0-sr-Sxk"/>
                 <outlet property="mDescriptionPageView" destination="1037" id="xhe-k8-o4l"/>
                 <outlet property="mDocumentationTableView" destination="1049" id="XGw-7g-axe"/>
+                <outlet property="mEditSelectedPackagesButton" destination="1608" id="XhX-Wp-crR"/>
+                <outlet property="mExportSelectedPackagesButton" destination="2195" id="d5K-bA-zcW"/>
                 <outlet property="mInfosPageView" destination="1177" id="qRd-J2-IOx"/>
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
                 <outlet property="mLibraryPageView" destination="1124" id="3bK-az-okh"/>
                 <outlet property="mMasterView" destination="1198" id="hbK-Bd-u96"/>
                 <outlet property="mPackagePageView" destination="1080" id="Jmt-gr-8Nm"/>
+                <outlet property="mPackageTableView" destination="1616" id="QjC-ZE-6aU"/>
                 <outlet property="mPageSegmentedControl" destination="1907" id="2dS-r6-OP5"/>
                 <outlet property="mPasteImageButton" destination="2106" id="OgU-8Y-X0Y"/>
                 <outlet property="mPrefixTextField" destination="1171" id="AA5-NL-TvD"/>
                 <outlet property="mRemoveImageButton" destination="1041" id="Jjp-9P-8An"/>
                 <outlet property="mRemoveSelectedDocButton" destination="1046" id="FAd-DZ-gZS"/>
                 <outlet property="mRepresentationImageView" destination="1043" id="SCe-aC-7xm"/>
+                <outlet property="mResetSelectedPackageVersionButton" destination="1606" id="Xl2-Ou-fCB"/>
                 <outlet property="mResetVersionButton" destination="1189" id="fWg-v5-UdL"/>
                 <outlet property="mSaveDocButton" destination="1051" id="EgX-xI-b4s"/>
                 <outlet property="mShowDocButton" destination="1047" id="rBf-Er-dl0"/>
@@ -32,6 +36,7 @@
                 <outlet property="mStatusImageViewInToolbar" destination="1903" id="oKC-FJ-Gh1"/>
                 <outlet property="mSymbolPageView" destination="1055" id="iEF-FY-31C"/>
                 <outlet property="mTitleTextField" destination="1038" id="pDd-Se-xfr"/>
+                <outlet property="mUpdateSelectedPackagesButton" destination="1607" id="78N-VX-Ivc"/>
                 <outlet property="mVersionField" destination="kn8-9U-hSR" id="GHM-bH-Hz6"/>
                 <outlet property="window" destination="5" id="51"/>
             </connections>
@@ -593,7 +598,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="0.0" width="370" height="272"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="249"/>
@@ -1162,7 +1167,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="U38-Nl-hUZ">
                                             <rect key="frame" x="1" y="0.0" width="611" height="328"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="importedSymbolsInDevice" headerView="1589" id="1132">
                                                     <rect key="frame" x="0.0" y="0.0" width="611" height="305"/>
@@ -1274,9 +1279,9 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="mSf-qk-Njd">
                                             <rect key="frame" x="1" y="0.0" width="611" height="332"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="1613" id="1616">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="1613" viewBased="YES" id="1616" customClass="EBTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="611" height="309"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -1296,6 +1301,27 @@
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <prototypeCellViews>
+                                                                <tableCellView id="2is-KI-WEu" customClass="EBTextObserverField_TableViewCell">
+                                                                    <rect key="frame" x="1" y="1" width="73" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="lZF-ot-qsm" customClass="EBTextObserverField">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="73" height="17"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="version" id="zSg-jK-VDE">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <connections>
+                                                                        <outlet property="mCellOutlet" destination="lZF-ot-qsm" id="G8j-6A-uOn"/>
+                                                                        <outlet property="textField" destination="lZF-ot-qsm" id="cgn-Fl-zZa"/>
+                                                                    </connections>
+                                                                </tableCellView>
+                                                            </prototypeCellViews>
                                                         </tableColumn>
                                                         <tableColumn identifier="package" width="531.8877" minWidth="56.887700000000002" maxWidth="1000" id="1618">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Package">
@@ -1309,6 +1335,27 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                            <prototypeCellViews>
+                                                                <tableCellView id="nTk-m1-VoY" customClass="EBTextObserverField_TableViewCell">
+                                                                    <rect key="frame" x="77" y="1" width="532" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="fBL-VG-mXI" customClass="EBTextObserverField">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="532" height="17"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="iks-n7-Z89">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                    <connections>
+                                                                        <outlet property="mCellOutlet" destination="fBL-VG-mXI" id="ZHA-39-zzp"/>
+                                                                        <outlet property="textField" destination="fBL-VG-mXI" id="8jS-sC-r3C"/>
+                                                                    </connections>
+                                                                </tableCellView>
+                                                            </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
                                                 </tableView>
@@ -1327,36 +1374,36 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
-                                    <button toolTip="Update Selected Package From File in Libraries." imageHugsTitle="YES" id="1606">
-                                        <rect key="frame" x="321" y="369" width="100" height="22"/>
+                                    <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1606" customClass="EBButton">
+                                        <rect key="frame" x="321" y="369" width="100" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Reset Version" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1611">
+                                        <buttonCell key="cell" type="roundRect" title="Reset Version" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1611">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
-                                    <button toolTip="Update Selected Package From File in Libraries." imageHugsTitle="YES" id="1607">
-                                        <rect key="frame" x="431" y="369" width="100" height="22"/>
+                                    <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1607" customClass="EBButton">
+                                        <rect key="frame" x="431" y="369" width="100" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Update…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1610">
+                                        <buttonCell key="cell" type="roundRect" title="Update…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1610">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
-                                    <button toolTip="Update Selected Package From File in Libraries." imageHugsTitle="YES" id="1608">
-                                        <rect key="frame" x="211" y="369" width="100" height="22"/>
+                                    <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="1608" customClass="EBButton">
+                                        <rect key="frame" x="211" y="369" width="100" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Edit" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1609">
+                                        <buttonCell key="cell" type="roundRect" title="Edit" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="1609">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
-                                    <button toolTip="Update Selected Package From File in Libraries." imageHugsTitle="YES" id="2195">
-                                        <rect key="frame" x="541" y="369" width="100" height="22"/>
+                                    <button toolTip="Update Selected Package From File in Libraries." verticalHuggingPriority="750" imageHugsTitle="YES" id="2195" customClass="EBButton">
+                                        <rect key="frame" x="541" y="369" width="100" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Export…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2196">
+                                        <buttonCell key="cell" type="roundRect" title="Export…" bezelStyle="roundedRect" alignment="center" borderStyle="border" inset="2" id="2196">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" id="2197">

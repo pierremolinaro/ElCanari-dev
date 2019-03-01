@@ -28,7 +28,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
   //····················································································································
 
   internal func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
-                                         callBack : @escaping (_ inRootObject : EBManagedObject?) -> Void) {
+                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Void) {
   //--- Configure
     self.mFullPathTextField?.stringValue = ""
     self.mStatusTextField?.stringValue = ""
@@ -52,13 +52,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
              selectedItem.mFullPath != "" {
           let fm = FileManager ()
           if let data = fm.contents (atPath: selectedItem.mFullPath) {
-            do{
-              let (_, _, rootObject) = try loadEasyBindingFile (nil, from: data)
-              callBack (rootObject)
-            }catch let error {
-              let alert = NSAlert (error: error)
-              _ = alert.runModal ()
-            }
+            callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
           }
         }
         self.mOutlineViewDataSource = []

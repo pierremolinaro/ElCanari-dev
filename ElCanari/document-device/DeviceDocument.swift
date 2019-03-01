@@ -15,6 +15,12 @@ import Cocoa
   var mDocumentationController = ArrayController_DeviceDocument_mDocumentationController ()
 
   //····················································································································
+  //   Array controller: mPackageController
+  //····················································································································
+
+  var mPackageController = ArrayController_DeviceDocument_mPackageController ()
+
+  //····················································································································
   //   Transient property: mStatusMessage
   //····················································································································
 
@@ -117,17 +123,21 @@ import Cocoa
   @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
+  @IBOutlet var mEditSelectedPackagesButton : EBButton?
+  @IBOutlet var mExportSelectedPackagesButton : EBButton?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
+  @IBOutlet var mPackageTableView : EBTableView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPasteImageButton : EBButton?
   @IBOutlet var mPrefixTextField : EBTextField?
   @IBOutlet var mRemoveImageButton : EBButton?
   @IBOutlet var mRemoveSelectedDocButton : EBButton?
   @IBOutlet var mRepresentationImageView : DeviceDroppableImageView?
+  @IBOutlet var mResetSelectedPackageVersionButton : EBButton?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSaveDocButton : EBButton?
   @IBOutlet var mShowDocButton : EBButton?
@@ -135,6 +145,7 @@ import Cocoa
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mTitleTextField : EBTextField?
+  @IBOutlet var mUpdateSelectedPackagesButton : EBButton?
   @IBOutlet var mVersionField : CanariVersionField?
 
   //····················································································································
@@ -146,6 +157,10 @@ import Cocoa
   var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -179,6 +194,8 @@ import Cocoa
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
+  //--- Array controller property: mPackageController
+    self.mPackageController.addExplorer (name: "mPackageController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -302,6 +319,36 @@ import Cocoa
         errorMessage: "the 'mDocumentationTableView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mEditSelectedPackagesButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mEditSelectedPackagesButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mEditSelectedPackagesButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mExportSelectedPackagesButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mExportSelectedPackagesButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mExportSelectedPackagesButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mInfosPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -375,6 +422,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPackagePageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPackageTableView {
+      if !(outlet is EBTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageTableView' outlet is not an instance of 'EBTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageTableView' outlet is nil"
       )
     }
     if let outlet : Any = self.mPageSegmentedControl {
@@ -465,6 +527,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mRepresentationImageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mResetSelectedPackageVersionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mResetSelectedPackageVersionButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mResetSelectedPackageVersionButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mResetVersionButton {
@@ -572,6 +649,21 @@ import Cocoa
         errorMessage: "the 'mTitleTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mUpdateSelectedPackagesButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUpdateSelectedPackagesButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUpdateSelectedPackagesButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
         presentErrorWindow (
@@ -589,6 +681,8 @@ import Cocoa
     }
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
+  //--- Array controller property: mPackageController
+    self.mPackageController.bind_model (self.rootObject.packages_property)
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -656,6 +750,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
+    self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -719,6 +814,46 @@ import Cocoa
       self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSaveDocButton_enabled = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mResetSelectedPackageVersionButton
+      )
+      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mResetSelectedPackageVersionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mEditSelectedPackagesButton
+      )
+      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mEditSelectedPackagesButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mExportSelectedPackagesButton
+      )
+      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mExportSelectedPackagesButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mUpdateSelectedPackagesButton
+      )
+      self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mUpdateSelectedPackagesButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
@@ -734,6 +869,14 @@ import Cocoa
     self.mSaveDocButton?.action = #selector (DeviceDocument.saveDocAction (_:))
     self.mAddPackageFromLibraryButton?.target = self
     self.mAddPackageFromLibraryButton?.action = #selector (DeviceDocument.addPackageFromLibraryAction (_:))
+    self.mResetSelectedPackageVersionButton?.target = self
+    self.mResetSelectedPackageVersionButton?.action = #selector (DeviceDocument.resetSelectedPackageVersion (_:))
+    self.mEditSelectedPackagesButton?.target = self
+    self.mEditSelectedPackagesButton?.action = #selector (DeviceDocument.editSelectedPackages (_:))
+    self.mExportSelectedPackagesButton?.target = self
+    self.mExportSelectedPackagesButton?.action = #selector (DeviceDocument.exportSelectedPackages (_:))
+    self.mUpdateSelectedPackagesButton?.target = self
+    self.mUpdateSelectedPackagesButton?.action = #selector (DeviceDocument.updateSelectedPackages (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
@@ -775,10 +918,21 @@ import Cocoa
     self.mController_mShowDocButton_enabled = nil
     self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
+    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
+    self.mController_mResetSelectedPackageVersionButton_enabled = nil
+    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
+    self.mController_mEditSelectedPackagesButton_enabled = nil
+    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
+    self.mController_mExportSelectedPackagesButton_enabled = nil
+    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
+    self.mController_mUpdateSelectedPackagesButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
+    self.mPackageController.unbind_tableView (self.mPackageTableView)
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.unbind_model ()
+  //--- Array controller property: mPackageController
+    self.mPackageController.unbind_model ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
@@ -790,6 +944,10 @@ import Cocoa
     self.mShowDocButton?.target = nil
     self.mSaveDocButton?.target = nil
     self.mAddPackageFromLibraryButton?.target = nil
+    self.mResetSelectedPackageVersionButton?.target = nil
+    self.mEditSelectedPackagesButton?.target = nil
+    self.mExportSelectedPackagesButton?.target = nil
+    self.mUpdateSelectedPackagesButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
@@ -798,17 +956,21 @@ import Cocoa
     self.mCopyImageButton?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mDocumentationTableView?.ebCleanUp ()
+    self.mEditSelectedPackagesButton?.ebCleanUp ()
+    self.mExportSelectedPackagesButton?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
+    self.mPackageTableView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPasteImageButton?.ebCleanUp ()
     self.mPrefixTextField?.ebCleanUp ()
     self.mRemoveImageButton?.ebCleanUp ()
     self.mRemoveSelectedDocButton?.ebCleanUp ()
     self.mRepresentationImageView?.ebCleanUp ()
+    self.mResetSelectedPackageVersionButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
@@ -816,6 +978,7 @@ import Cocoa
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
+    self.mUpdateSelectedPackagesButton?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
   }
 

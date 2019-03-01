@@ -134,6 +134,8 @@ class DeviceDocumentation : EBManagedObject,
     self.mFileData_property.addEBObserver (self.fileSize_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
+    self.mFileData_property.setSignatureObserver (observer:self)
+    self.mFileName_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -257,6 +259,17 @@ class DeviceDocumentation : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  }
+
+  //····················································································································
+  //   computeSignature
+  //····················································································································
+
+  override func computeSignature () -> UInt32 {
+    var crc = super.computeSignature ()
+    crc.accumulateUInt32 (self.mFileData_property.signature ())
+    crc.accumulateUInt32 (self.mFileName_property.signature ())
+    return crc
   }
 
   //····················································································································

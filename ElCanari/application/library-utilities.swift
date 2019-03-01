@@ -53,12 +53,6 @@ func existingLibraryPathArray () -> [String] {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func libraryDescriptionPLISTfilename() -> String {
-  return "library-description.plist"
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func temporaryDownloadDirectory () -> String {
   return NSTemporaryDirectory () + "/ElCanariTemporaries"
 }
@@ -156,6 +150,42 @@ func createLibraryAtPath (_ inPath : String) throws {
       try fm.createDirectory (atPath: dir, withIntermediateDirectories:true, attributes:nil)
     }
   }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func packageFilePathInLibraries (_ inPackageName : String) -> [String] {
+  var pathes = [String] ()
+  let fm = FileManager ()
+  for libraryDir in existingLibraryPathArray () {
+    let packageLibraryDir = packageLibraryPathForPath (libraryDir)
+    if let allPackages = try? fm.subpathsOfDirectory(atPath: packageLibraryDir) {
+      for candidatePackagePath in allPackages {
+        if candidatePackagePath.lastPathComponent.deletingPathExtension == inPackageName {
+          pathes.append (packageLibraryDir + "/" + candidatePackagePath)
+        }
+      }
+    }
+  }
+  return pathes
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func deviceFilePathInLibraries (_ inDeviceName : String) -> [String] {
+  var pathes = [String] ()
+  let fm = FileManager ()
+  for libraryDir in existingLibraryPathArray () {
+    let deviceLibraryDir = deviceLibraryPathForPath (libraryDir)
+    if let allDevices = try? fm.subpathsOfDirectory(atPath: deviceLibraryDir) {
+      for candidateDevicePath in allDevices {
+        if candidateDevicePath.lastPathComponent.deletingPathExtension == inDeviceName {
+          pathes.append (deviceLibraryDir + "/" + candidateDevicePath)
+        }
+      }
+    }
+  }
+  return pathes
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

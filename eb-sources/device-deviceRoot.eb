@@ -12,7 +12,7 @@ graphic entity DeviceRoot {
   transient Bool imageIsValid dependsFrom self.representationImageData ;
 
 #--- Documentation
-  toMany DeviceDocumentation mDocs ;
+  toMany @signature DeviceDocumentation mDocs ;
 
 #--- Prefix
   property @signature String prefix default "" ;
@@ -22,16 +22,30 @@ graphic entity DeviceRoot {
 
 #--- Issues
   transient CanariIssueArray issues dependsFrom self.title, self.prefix ;
+  
+#--- Packages
+  toMany @signature PackageInDevice packages ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity DeviceDocumentation {
 
-  property String mFileName default "" ;
-  property Data mFileData default empty ;
+  property @signature String mFileName default "" ;
+  property @signature Data mFileData default empty ;
   
   transient Int fileSize dependsFrom self.mFileData ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity PackageInDevice {
+
+  property @signature Data mFileData default empty ;
+  property @signature String mName default "" ;
+  property @signature Int mVersion default 0 ;
+ 
+  transient String versionString dependsFrom self.mVersion ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
