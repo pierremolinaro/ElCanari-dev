@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CustomizedDeviceDocument">
             <connections>
+                <outlet property="mAddPackageFromLibraryButton" destination="1084" id="10r-pn-HTc"/>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
                 <outlet property="mCopyImageButton" destination="2176" id="Mb0-sr-Sxk"/>
@@ -815,20 +816,12 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button toolTip="Add a Package to Device" imageHugsTitle="YES" id="1084">
-                    <rect key="frame" x="140" y="358" width="110" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="File Library…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1531">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                    </buttonCell>
-                </button>
                 <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1081">
                     <rect key="frame" x="258" y="-1" width="343" height="402"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1082" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -870,6 +863,14 @@
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
+                <button toolTip="Add a Package to Device" verticalHuggingPriority="750" imageHugsTitle="YES" id="1084" customClass="EBButton">
+                    <rect key="frame" x="115" y="360" width="135" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1531">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <connections>
                 <outlet property="mSavedKeyView" destination="1082" id="1212"/>

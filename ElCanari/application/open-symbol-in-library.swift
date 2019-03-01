@@ -9,6 +9,8 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// This class is instancied as object in MainMenu.xib
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class OpenSymbolInLibrary : OpenInLibrary {
 
@@ -19,7 +21,7 @@ class OpenSymbolInLibrary : OpenInLibrary {
   //····················································································································
 
   @objc @IBAction func openSymbolInLibrary (_ inSender : Any?) {
-    self.openInLibrary ()
+    super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
   }
 
   //····················································································································

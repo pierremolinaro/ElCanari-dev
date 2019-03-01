@@ -13,17 +13,90 @@ import Cocoa
 class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   //····················································································································
-  //   Dialog
+
+  @IBOutlet private var mDialog : NSWindow?
+  @IBOutlet private var mOpenButton : NSButton?
+  @IBOutlet private var mCancelButton : NSButton?
+  @IBOutlet private var mOutlineView : NSOutlineView?
+  @IBOutlet private var mFullPathTextField : NSTextField?
+  @IBOutlet private var mStatusTextField : NSTextField?
+  @IBOutlet private var mPartImage : NSImageView?
+  @IBOutlet private var mNoSelectedPartTextField : NSTextField?
+
+  //····················································································································
+  //   Load document, displayed as sheet
   //····················································································································
 
-  internal func openInLibrary () {
+  internal func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
+                                         callBack : @escaping (_ inRootObject : EBManagedObject?) -> Void) {
   //--- Configure
     self.mFullPathTextField?.stringValue = ""
     self.mStatusTextField?.stringValue = ""
     self.mCancelButton?.target = self
-    self.mCancelButton?.action = #selector (OpenInLibrary.cancelAction (_:))
+    self.mCancelButton?.action = #selector (OpenInLibrary.abortSheetAction (_:))
     self.mOpenButton?.target = self
-    self.mOpenButton?.action = #selector (OpenInLibrary.openAction (_:))
+    self.mOpenButton?.action = #selector (OpenInLibrary.stopSheetAction (_:))
+    self.mOpenButton?.isEnabled = false
+    self.mPartImage?.image = nil
+    self.mNoSelectedPartTextField?.isHidden = false
+    self.mOutlineView?.dataSource = self
+    self.mOutlineView?.delegate = self
+    self.buildDataSource ()
+    self.mOutlineView?.reloadData ()
+  //--- Dialog
+    if let dialog = self.mDialog {
+      inWindow.beginSheet (dialog, completionHandler: { (_ inModalResponse : NSApplication.ModalResponse) in
+        if inModalResponse == .stop,
+             let selectedRow = self.mOutlineView?.selectedRow,
+             let selectedItem = self.mOutlineView?.item (atRow: selectedRow) as? LibraryDialogItem,
+             selectedItem.mFullPath != "" {
+          let fm = FileManager ()
+          if let data = fm.contents (atPath: selectedItem.mFullPath) {
+            do{
+              let (_, _, rootObject) = try loadEasyBindingFile (nil, from: data)
+              callBack (rootObject)
+            }catch let error {
+              let alert = NSAlert (error: error)
+              _ = alert.runModal ()
+            }
+          }
+        }
+        self.mOutlineViewDataSource = []
+        self.mOutlineView?.reloadData ()
+      })
+    }
+  }
+
+  //····················································································································
+
+  @objc private func abortSheetAction (_ inSender : Any?) {
+    if let myWindow = self.mDialog, let parent = myWindow.sheetParent {
+      parent.endSheet (myWindow, returnCode: .abort)
+    }
+  }
+
+  //····················································································································
+
+  @objc private func stopSheetAction (_ inSender : Any?) {
+    if let myWindow = self.mDialog, let parent = myWindow.sheetParent {
+      parent.endSheet (myWindow, returnCode: .stop)
+    }
+  }
+
+
+  //····················································································································
+  //   Open document in library, displayed as dialog window
+  //····················································································································
+
+  internal func openDocumentInLibrary (windowTitle inTitle : String) {
+  //--- Configure
+    self.mDialog?.title = inTitle
+    self.mFullPathTextField?.stringValue = ""
+    self.mStatusTextField?.stringValue = ""
+    self.mCancelButton?.target = self
+    self.mCancelButton?.action = #selector (OpenInLibrary.abortModalAction (_:))
+    self.mOpenButton?.target = self
+    self.mOpenButton?.action = #selector (OpenInLibrary.stopModalAndOpenDocumentAction (_:))
     self.mOpenButton?.isEnabled = false
     self.mPartImage?.image = nil
     self.mNoSelectedPartTextField?.isHidden = false
@@ -39,18 +112,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   //····················································································································
 
-  @IBOutlet private var mDialog : NSWindow?
-  @IBOutlet private var mOpenButton : NSButton?
-  @IBOutlet private var mCancelButton : NSButton?
-  @IBOutlet private var mOutlineView : NSOutlineView?
-  @IBOutlet private var mFullPathTextField : NSTextField?
-  @IBOutlet private var mStatusTextField : NSTextField?
-  @IBOutlet private var mPartImage : NSImageView?
-  @IBOutlet private var mNoSelectedPartTextField : NSTextField?
-
-  //····················································································································
-
-  @objc private func cancelAction (_ inSender : Any?) {
+  @objc private func abortModalAction (_ inSender : Any?) {
     NSApp.abortModal ()
     self.mDialog?.orderOut (nil)
     self.mOutlineViewDataSource = []
@@ -59,7 +121,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   //····················································································································
 
-  @objc private func openAction (_ inSender : Any?) {
+  @objc private func stopModalAndOpenDocumentAction (_ inSender : Any?) {
     NSApp.stopModal ()
     self.mDialog?.orderOut (nil)
     if let selectedRow = self.mOutlineView?.selectedRow,
@@ -151,7 +213,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   //····················································································································
 
-  internal func buildDataSource () {
+  internal func buildDataSource () { // Abstract method
   }
 
   //····················································································································

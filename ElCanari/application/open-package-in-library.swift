@@ -10,22 +10,35 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+var gOpenPackageInLibrary : OpenPackageInLibrary? = nil
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+// This class is instancied as object in MainMenu.xib
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 class OpenPackageInLibrary : OpenInLibrary {
 
   //····················································································································
+  //   INIT
+  //····················································································································
+
+  override init () {
+    super.init ()
+    gOpenPackageInLibrary = self
+  }
 
   //····················································································································
   //   Dialog
   //····················································································································
 
   @objc @IBAction func openPackageInLibrary (_ inSender : Any?) {
-    self.openInLibrary ()
+    self.openDocumentInLibrary (windowTitle: "Open Package in Library")
   }
 
   //····················································································································
 
   override func buildDataSource () {
-    self.buildOutlineViewDataSource (extension: "ElCanariPackage", { (_ inRootObject : EBManagedObject?) -> NSImage? in
+    super.buildOutlineViewDataSource (extension: "ElCanariPackage", { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
       if let root = inRootObject as? PackageRoot {
         for object in root.packageObjects_property.propval {

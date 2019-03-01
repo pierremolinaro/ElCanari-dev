@@ -111,6 +111,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddPackageFromLibraryButton : EBButton?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mCopyImageButton : EBButton?
@@ -211,6 +212,21 @@ import Cocoa
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
+    if let outlet : Any = self.mAddPackageFromLibraryButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddPackageFromLibraryButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddPackageFromLibraryButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mAssignmentPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -716,6 +732,8 @@ import Cocoa
     self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
     self.mSaveDocButton?.action = #selector (DeviceDocument.saveDocAction (_:))
+    self.mAddPackageFromLibraryButton?.target = self
+    self.mAddPackageFromLibraryButton?.action = #selector (DeviceDocument.addPackageFromLibraryAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
@@ -771,8 +789,10 @@ import Cocoa
     self.mRemoveSelectedDocButton?.target = nil
     self.mShowDocButton?.target = nil
     self.mSaveDocButton?.target = nil
+    self.mAddPackageFromLibraryButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()

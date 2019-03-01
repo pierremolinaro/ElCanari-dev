@@ -11,12 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension MergerDocument {
-  @objc func showBoardHelpAction (_ sender : NSObject?) {
+extension DeviceDocument {
+  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    if let panel = self.boardHelpPanel {
-      self.windowForSheet?.beginSheet (panel, completionHandler: nil)
-    }
+   gOpenPackageInLibrary?.loadDocumentFromLibrary (windowForSheet: self.windowForSheet!, callBack: self.packageFromLoadPackageDialog)
 //--- END OF USER ZONE 2
   }
 }

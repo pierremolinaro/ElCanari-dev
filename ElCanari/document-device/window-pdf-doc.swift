@@ -6,7 +6,6 @@
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-import Cocoa
 import Quartz
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -32,7 +31,7 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
     mData = pdfData
   //--- Create window
     super.init (
-      contentRect: NSRect (x:0, y:0, width:800, height: 600),
+      contentRect: NSRect (x: 0.0, y: 0.0, width: 800.0, height: 600.0),
       styleMask: [.titled, .closable, .resizable],
       backing: .buffered,
       defer: false
@@ -57,38 +56,38 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
   //   TOOL BAR
   //····················································································································
 
-  func toolbar (_ toolbar: NSToolbar,
-                itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-                willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+  func toolbar (_ toolbar : NSToolbar,
+                itemForItemIdentifier itemIdentifier : NSToolbarItem.Identifier,
+                willBeInsertedIntoToolbar flag : Bool) -> NSToolbarItem? {
     let toolbarItem = NSToolbarItem (itemIdentifier: itemIdentifier)
     if itemIdentifier == ZoomInToolbarIdentifier {
       toolbarItem.label = "Zoom In"
       toolbarItem.paletteLabel = "Zoom In"
       toolbarItem.toolTip = "Zoom PDF Documentation In"
       toolbarItem.image = NSImage (named: "ZoomInToolbarImage")
-      toolbarItem.target = self
-      toolbarItem.action = #selector (CanariPDFWindow.zoomIn(_:))
+      toolbarItem.target = self.mPDFView
+      toolbarItem.action = #selector (PDFView.zoomIn(_:))
     }else if itemIdentifier == ZoomOutToolbarIdentifier {
       toolbarItem.label = "Zoom Out"
       toolbarItem.paletteLabel = "Zoom Out"
       toolbarItem.toolTip = "Zoom PDF Documentation Out"
       toolbarItem.image = NSImage (named: "ZoomOutToolbarImage")
-      toolbarItem.target = self
-      toolbarItem.action = #selector (CanariPDFWindow.zoomOut(_:))
+      toolbarItem.target = self.mPDFView
+      toolbarItem.action = #selector (PDFView.zoomOut(_:))
     }else if itemIdentifier == NextPageToolbarIdentifier {
       toolbarItem.label = "Next"
       toolbarItem.paletteLabel = "Next"
       toolbarItem.toolTip = "Go To Next Page"
       toolbarItem.image = NSImage (named: "NextToolbarImage")
-      toolbarItem.target = self
-      toolbarItem.action = #selector (CanariPDFWindow.goToNextPage(_:))
+      toolbarItem.target = self.mPDFView
+      toolbarItem.action = #selector (PDFView.goToNextPage(_:))
     }else if itemIdentifier == PreviousPageToolbarIdentifier {
       toolbarItem.label = "Previous"
       toolbarItem.paletteLabel = "Previous"
       toolbarItem.toolTip = "Go To Previous Page"
       toolbarItem.image = NSImage (named: "PreviousToolbarImage")
-      toolbarItem.target = self
-      toolbarItem.action = #selector (CanariPDFWindow.goToPreviousPage(_:))
+      toolbarItem.target = self.mPDFView
+      toolbarItem.action = #selector (PDFView.goToPreviousPage(_:))
     }else if itemIdentifier == SaveAsToolbarIdentifier {
       toolbarItem.label = "Save As..."
       toolbarItem.paletteLabel = "Save As..."
@@ -125,49 +124,6 @@ class CanariPDFWindow : EBWindow, NSToolbarDelegate {
       ZoomOutToolbarIdentifier,
       .separator
     ]
-  }
-
-  //····················································································································
-
-//- (BOOL) validateToolbarItem: (NSToolbarItem *)toolbarItem {
-//  BOOL enable = NO ;
-//  NSString * toolbarIdf = [toolbarItem itemIdentifier] ;
-//  if ([toolbarIdf isEqualToString:NextPageToolbarIdentifier]) {
-//    enable = [mPDFView canGoToNextPage] ;
-//  }else if ([toolbarIdf isEqualToString:PreviousPageToolbarIdentifier]) {
-//    enable = [mPDFView canGoToPreviousPage] ;
-//  }else if ([toolbarIdf isEqualToString:ZoomInToolbarIdentifier]) {
-//    enable = [mPDFView canZoomIn] ;
-//  }else if ([toolbarIdf isEqualToString:ZoomOutToolbarIdentifier]) {
-//    enable = [mPDFView canZoomOut] ;
-//  }else if ([toolbarIdf isEqualToString:SaveAsToolbarIdentifier]) {
-//    enable = YES ;
-//  }
-//  return enable ;
-//}
-
-  //····················································································································
-
-  @objc func goToPreviousPage (_ inSender : Any?) {
-    self.mPDFView.goToPreviousPage (inSender)
-  }
-
-  //····················································································································
-
-  @objc func goToNextPage (_ inSender : Any?) {
-    self.mPDFView.goToNextPage (inSender)
-  }
-
-  //····················································································································
-
-  @objc func zoomOut (_ inSender : Any?) {
-    self.mPDFView.zoomOut (inSender)
-  }
-
-  //····················································································································
-
-  @objc func zoomIn (_ inSender : Any?) {
-    self.mPDFView.zoomIn (inSender)
   }
 
   //····················································································································

@@ -64,6 +64,11 @@ document DeviceDocument root DeviceRoot {
     $run self.saveDocAction
     $enabled mDocumentationController.selectedArray.count > 0
   ;
+
+#-------------------------- Page : Package
+  action addPackageFromLibraryAction ;
+  outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;
+  
 #--------------- Infos Tab
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;
