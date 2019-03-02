@@ -44,6 +44,10 @@ entity PackageInDevice {
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
   property @signature Int mVersion default 0 ;
+  
+  property @signature NSBezierPath mPadTopSideFilledBezierPath default empty ;
+  property @signature NSBezierPath mPadBackSideFilledBezierPath default empty ;
+  property @signature NSBezierPath mStrokeBezierPath default empty ;
  
   transient String versionString dependsFrom self.mVersion ;
 }

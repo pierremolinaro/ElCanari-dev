@@ -9,7 +9,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariBoardBoardArchivePopUpButton) class CanariBoardBoardArchivePopUpButton : EBPopUpButton {
+class CanariBoardBoardArchivePopUpButton : EBPopUpButton {
 
   //····················································································································
   //  format binding

@@ -20,21 +20,27 @@ extension DeviceDocument {
     for package in selectedPackages {
       let pathes = packageFilePathInLibraries (package.mName)
       if pathes.count == 0 {
-        messages.append ("No file for package \(package.mName) in Library")
+        messages.append ("No file in Library for package \(package.mName)")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
            let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
+           let packageRoot = rootObject as? PackageRoot,
            let version = metadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {
             messages.append ("Package \(package.mName) is up-to-date")
           }else{
             package.mVersion = version
             package.mFileData = data
+            let strokeBezierPathes = NSBezierPath ()
+            packageRoot.accumulate (strokeBezierPathes: strokeBezierPathes)
+            package.mStrokeBezierPath = strokeBezierPathes
             messages.append ("Package \(package.mName) has been updated to version \(version)")
           }
+        }else{
+          messages.append ("Invalid file at path \(pathes [0])")
         }
       }else{ // pathes.count > 1
-        messages.append ("Several files for package \(package.mName) in Library:")
+        messages.append ("Cannot update, several files in Library for package \(package.mName):")
         for path in pathes {
           messages.append ("  - \(path)")
         }
@@ -43,7 +49,6 @@ extension DeviceDocument {
     if messages.count > 0 {
       let alert = NSAlert ()
       alert.messageText = messages.joined (separator: "\n")
-//      alert.informativeText = messages.joined (separator: "\n")
       alert.beginSheetModal (for: self.windowForSheet!)
     }
 //--- END OF USER ZONE 2

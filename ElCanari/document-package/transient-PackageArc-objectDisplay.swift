@@ -12,33 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageArc_objectDisplay (
-       _ self_xCenter : Int,             
-       _ self_yCenter : Int,             
-       _ self_radius : Int,              
-       _ self_startAngle : Int,          
-       _ self_arcAngle : Int,            
-       _ self_pathIsClosed : Bool,       
-       _ self_startTangent : Int,        
-       _ self_endTangent : Int,          
+       _ self_strokeBezierPath : NSBezierPath,
        _ prefs_packageColor : NSColor,   
        _ prefs_packageDrawingWidthMultipliedByTen : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let center = CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint ()
-  let radius = canariUnitToCocoa (self_radius)
-  let startTangentLength = canariUnitToCocoa (self_startTangent)
-  let endTangentLength = canariUnitToCocoa (self_endTangent)
-  let startAngle = CGFloat (self_startAngle) / 1000.0
-  let arcAngle = CGFloat (self_arcAngle) / 1000.0
-  let bp = NSBezierPath (
-    arcWithTangentFromCenter: center,
-    radius: radius,
-    startAngleInDegrees: startAngle,
-    arcAngleInDegrees: arcAngle,
-    startTangentLength: startTangentLength,
-    endTangentLength: endTangentLength,
-    pathIsClosed: self_pathIsClosed
-  )
+  let bp = NSBezierPath ()
+  bp.append (self_strokeBezierPath)
   bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
   bp.lineCapStyle = .round
   return EBStrokeBezierPathShape ([bp], prefs_packageColor)

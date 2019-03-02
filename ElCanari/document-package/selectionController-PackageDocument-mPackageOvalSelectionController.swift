@@ -71,6 +71,18 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   }
 
   //····················································································································
+  //   Selection observable property: strokeBezierPath
+  //····················································································································
+
+  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    get {
+      return self.strokeBezierPath_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: width
   //····················································································································
 
@@ -179,6 +191,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
     self.bind_property_issues (model: self.mActualModel)
     self.bind_property_objectDisplay (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
+    self.bind_property_strokeBezierPath (model: self.mActualModel)
     self.bind_property_width (model: self.mActualModel)
     self.bind_property_widthUnit (model: self.mActualModel)
     self.bind_property_x (model: self.mActualModel)
@@ -213,6 +226,9 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- strokeBezierPath
+    self.strokeBezierPath_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
   //--- width
     self.width_property.readModelFunction = nil 
     self.width_property.writeModelFunction = nil 
@@ -635,6 +651,46 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_strokeBezierPath (model : ReadOnlyArrayOf_PackageOval) {
+    model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
+    self.strokeBezierPath_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.strokeBezierPath_property_selection {
             case .empty :
               return .empty
             case .multiple :

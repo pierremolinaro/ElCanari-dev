@@ -1065,6 +1065,35 @@ extension Data : ValuePropertyProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    extension NSBezierPath : ClassPropertyProtocol
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+extension NSBezierPath : ClassPropertyProtocol {
+
+  //····················································································································
+
+  final func ebHashValue () -> UInt32 {
+    let data = self.archiveToData ()
+    return data.ebHashValue ()
+  }
+
+  //····················································································································
+
+  func archiveToData () -> Data {
+    return NSArchiver.archivedData (withRootObject: self)
+  }
+  
+  //····················································································································
+
+  static func unarchiveFromData (data : Data) -> NSObject? {
+    return NSUnarchiver.unarchiveObject (with: data as Data) as? NSBezierPath
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Protocol ClassPropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1756,17 +1785,6 @@ typealias EBReadOnlyPropertyArray_CanariRect  = EBReadOnlyClassProperty <[Canari
 typealias EBTransientPropertyArray_CanariRect = EBTransientClassProperty <[CanariRect]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class NSBezierPath
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyController_NSBezierPath = EBReadOnlyClassController <NSBezierPath>
-
-typealias EBReadOnlyProperty_NSBezierPath  = EBReadOnlyClassProperty <NSBezierPath>
-typealias EBTransientProperty_NSBezierPath = EBTransientClassProperty <NSBezierPath>
-typealias EBReadOnlyPropertyArray_NSBezierPath  = EBReadOnlyClassProperty <[NSBezierPath]>
-typealias EBTransientPropertyArray_NSBezierPath = EBTransientClassProperty <[NSBezierPath]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariMenuItemListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1888,6 +1906,18 @@ typealias EBReadOnlyProperty_CharacterGerberCodeClass  = EBReadOnlyClassProperty
 typealias EBTransientProperty_CharacterGerberCodeClass = EBTransientClassProperty <CharacterGerberCodeClass>
 typealias EBReadOnlyPropertyArray_CharacterGerberCodeClass  = EBReadOnlyClassProperty <[CharacterGerberCodeClass]>
 typealias EBTransientPropertyArray_CharacterGerberCodeClass = EBTransientClassProperty <[CharacterGerberCodeClass]>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Property class NSBezierPath
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_NSBezierPath = EBReadOnlyClassController <NSBezierPath>
+
+typealias EBReadOnlyProperty_NSBezierPath  = EBReadOnlyClassProperty <NSBezierPath>
+typealias EBTransientProperty_NSBezierPath = EBTransientClassProperty <NSBezierPath>
+typealias EBReadWriteProperty_NSBezierPath = EBReadWriteClassProperty <NSBezierPath>
+typealias EBPropertyProxy_NSBezierPath     = EBPropertyClassProxy <NSBezierPath>
+typealias EBStoredProperty_NSBezierPath    = EBStoredClassProperty <NSBezierPath>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Property class NSFont

@@ -102,6 +102,12 @@ protocol PackageBezier_x1 : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol PackageBezier_strokeBezierPath : class {
+  var strokeBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol PackageBezier_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -139,6 +145,7 @@ class PackageBezier : PackageObject,
          PackageBezier_cpx2Unit,
          PackageBezier_cpy2Unit,
          PackageBezier_x1,
+         PackageBezier_strokeBezierPath,
          PackageBezier_objectDisplay,
          PackageBezier_selectionDisplay,
          PackageBezier_issues {
@@ -512,6 +519,29 @@ class PackageBezier : PackageObject,
   }
 
   //····················································································································
+  //   Transient property: strokeBezierPath
+  //····················································································································
+
+  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.strokeBezierPath_property.prop
+  }
+
+  //····················································································································
+
+  var strokeBezierPath : NSBezierPath? {
+    switch self.strokeBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -549,8 +579,8 @@ class PackageBezier : PackageObject,
     self.cpy2Unit_property.undoManager = self.undoManager
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
-  //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+  //--- Atomic property: strokeBezierPath
+    self.strokeBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -560,17 +590,15 @@ class PackageBezier : PackageObject,
         kind &= unwSelf.cpy1_property_selection.kind ()
         kind &= unwSelf.cpx2_property_selection.kind ()
         kind &= unwSelf.cpy2_property_selection.kind ()
-        kind &= g_Preferences!.packageColor_property_selection.kind ()
-        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_PackageBezier_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.cpx1_property_selection, unwSelf.cpy1_property_selection, unwSelf.cpx2_property_selection, unwSelf.cpy2_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_PackageBezier_strokeBezierPath (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -579,14 +607,38 @@ class PackageBezier : PackageObject,
         return .empty
       }
     }
-    self.x1_property.addEBObserver (self.objectDisplay_property)
-    self.y1_property.addEBObserver (self.objectDisplay_property)
-    self.x2_property.addEBObserver (self.objectDisplay_property)
-    self.y2_property.addEBObserver (self.objectDisplay_property)
-    self.cpx1_property.addEBObserver (self.objectDisplay_property)
-    self.cpy1_property.addEBObserver (self.objectDisplay_property)
-    self.cpx2_property.addEBObserver (self.objectDisplay_property)
-    self.cpy2_property.addEBObserver (self.objectDisplay_property)
+    self.x1_property.addEBObserver (self.strokeBezierPath_property)
+    self.y1_property.addEBObserver (self.strokeBezierPath_property)
+    self.x2_property.addEBObserver (self.strokeBezierPath_property)
+    self.y2_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpx1_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpy1_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpx2_property.addEBObserver (self.strokeBezierPath_property)
+    self.cpy2_property.addEBObserver (self.strokeBezierPath_property)
+  //--- Atomic property: objectDisplay
+    self.objectDisplay_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.strokeBezierPath_property_selection.kind ()
+        kind &= g_Preferences!.packageColor_property_selection.kind ()
+        kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.strokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_PackageBezier_objectDisplay (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.strokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
@@ -686,14 +738,15 @@ class PackageBezier : PackageObject,
 
   deinit {
   //--- Remove observers
-    self.x1_property.removeEBObserver (self.objectDisplay_property)
-    self.y1_property.removeEBObserver (self.objectDisplay_property)
-    self.x2_property.removeEBObserver (self.objectDisplay_property)
-    self.y2_property.removeEBObserver (self.objectDisplay_property)
-    self.cpx1_property.removeEBObserver (self.objectDisplay_property)
-    self.cpy1_property.removeEBObserver (self.objectDisplay_property)
-    self.cpx2_property.removeEBObserver (self.objectDisplay_property)
-    self.cpy2_property.removeEBObserver (self.objectDisplay_property)
+    self.x1_property.removeEBObserver (self.strokeBezierPath_property)
+    self.y1_property.removeEBObserver (self.strokeBezierPath_property)
+    self.x2_property.removeEBObserver (self.strokeBezierPath_property)
+    self.y2_property.removeEBObserver (self.strokeBezierPath_property)
+    self.cpx1_property.removeEBObserver (self.strokeBezierPath_property)
+    self.cpy1_property.removeEBObserver (self.strokeBezierPath_property)
+    self.cpx2_property.removeEBObserver (self.strokeBezierPath_property)
+    self.cpy2_property.removeEBObserver (self.strokeBezierPath_property)
+    self.strokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.x1_property.removeEBObserver (self.selectionDisplay_property)
@@ -854,6 +907,14 @@ class PackageBezier : PackageObject,
       valueExplorer:&self.x1_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "strokeBezierPath",
+      idx:self.strokeBezierPath_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.strokeBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.strokeBezierPath_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.ebObjectIndex,
@@ -2003,6 +2064,62 @@ class ReadOnlyArrayOf_PackageBezier : ReadOnlyAbstractArrayProperty <PackageBezi
   }
 
   //····················································································································
+  //   Observers of 'strokeBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<PackageBezier>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<PackageBezier>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -2260,6 +2377,7 @@ class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
       self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x1_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -2283,6 +2401,7 @@ class TransientArrayOf_PackageBezier : ReadOnlyArrayOf_PackageBezier {
       self.addEBObserversOf_cpy2Unit_toElementsOfSet (addedSet)
       self.addEBObserversOf_x1_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -2445,6 +2564,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
         self.removeEBObserversOf_cpx2Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -2486,6 +2606,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
         self.addEBObserversOf_cpx2Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_cpy2Unit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

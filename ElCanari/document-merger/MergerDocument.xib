@@ -535,7 +535,7 @@ AAAAAAEGA
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" wantsLayer="YES" focusRingType="none" drawsBackground="NO" id="nFP-mw-Omh">
                         <rect key="frame" x="1" y="1" width="423" height="650"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView wantsLayer="YES" focusRingType="none" id="nao-E9-sci" customClass="EBView">
                                 <rect key="frame" x="0.0" y="554" width="452" height="417"/>
@@ -697,7 +697,7 @@ AAAAAAEGA
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton">
+                <popUpButton verticalHuggingPriority="750" id="a1Z-gP-Hcs" customClass="CanariBoardBoardArchivePopUpButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="465" y="576" width="128" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="roundRect" title="Do Not Generate" bezelStyle="roundedRect" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="3TW-pU-g6M" id="5mj-Ac-WS7">

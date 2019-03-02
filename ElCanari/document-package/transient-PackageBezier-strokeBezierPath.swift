@@ -11,17 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_objectDisplay (
-       _ self_strokeBezierPath : NSBezierPath,
-       _ prefs_packageColor : NSColor,      
-       _ prefs_packageDrawingWidthMultipliedByTen : Int
-) -> EBShape {
+func transient_PackageBezier_strokeBezierPath (
+       _ self_x1 : Int,                        
+       _ self_y1 : Int,                        
+       _ self_x2 : Int,                        
+       _ self_y2 : Int,                        
+       _ self_cpx1 : Int,                      
+       _ self_cpy1 : Int,                      
+       _ self_cpx2 : Int,                      
+       _ self_cpy2 : Int
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let bp = NSBezierPath ()
-  bp.append (self_strokeBezierPath)
-  bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
+  bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
+  bp.curve (
+    to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)),
+    controlPoint1: CGPoint (x: canariUnitToCocoa (self_cpx1), y: canariUnitToCocoa (self_cpy1)),
+    controlPoint2: CGPoint (x: canariUnitToCocoa (self_cpx2), y: canariUnitToCocoa (self_cpy2))
+  )
+  return bp
 //--- END OF USER ZONE 2
 }
 

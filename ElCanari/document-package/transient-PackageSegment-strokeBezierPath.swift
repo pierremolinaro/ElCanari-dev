@@ -11,17 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_objectDisplay (
-       _ self_strokeBezierPath : NSBezierPath,
-       _ prefs_packageColor : NSColor,      
-       _ prefs_packageDrawingWidthMultipliedByTen : Int
-) -> EBShape {
+func transient_PackageSegment_strokeBezierPath (
+       _ self_x1 : Int,                         
+       _ self_y1 : Int,                         
+       _ self_x2 : Int,                         
+       _ self_y2 : Int
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
   let bp = NSBezierPath ()
-  bp.append (self_strokeBezierPath)
-  bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
+  bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
+  bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
+  return bp
 //--- END OF USER ZONE 2
 }
 

@@ -88,9 +88,12 @@ graphic entity PackageSegment : PackageObject {
   property @signature Int y2Unit default 2_286 ;
   property @signature Int lengthUnit default 2_286 ;
   
+  transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+  
   transient EBShape objectDisplay dependsFrom
-     self.x1, self.y1, self.x2, self.y2, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+     self.strokeBezierPath, prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
+
   transient EBShape selectionDisplay dependsFrom self.x1, self.y1, self.x2, self.y2 ;
 
   transient CanariIssueArray issues dependsFrom self.x1, self.y1, self.x2, self.y2 ;
@@ -119,11 +122,16 @@ graphic entity PackageBezier : PackageObject {
   property @signature Int cpx2Unit default 2_286 ;
   property @signature Int cpy2Unit default 2_286 ;
   
-  transient EBShape objectDisplay dependsFrom
+  transient NSBezierPath strokeBezierPath dependsFrom
      self.x1, self.y1, self.x2, self.y2,
-     self.cpx1, self.cpy1, self.cpx2, self.cpy2,
+     self.cpx1, self.cpy1, self.cpx2, self.cpy2
+  ;
+  
+  transient EBShape objectDisplay dependsFrom
+     self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
+
   transient EBShape selectionDisplay dependsFrom
     self.x1, self.y1, self.x2, self.y2,
     self.cpx1, self.cpy1, self.cpx2, self.cpy2
@@ -148,10 +156,15 @@ graphic entity PackageOval : PackageObject {
   property @signature Int widthUnit default 2_286 ;
   property @signature Int heightUnit default 2_286 ;
  
+  transient NSBezierPath strokeBezierPath dependsFrom
+     self.x, self.y, self.width, self.height
+  ;
+ 
   transient EBShape objectDisplay dependsFrom
-     self.x, self.y, self.width, self.height,
+     self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
@@ -177,11 +190,16 @@ graphic entity PackageArc : PackageObject {
   property @signature Int startTangentUnit default 2_286 ;
   property @signature Int endTangentUnit default 2_286 ;
  
-  transient EBShape objectDisplay dependsFrom
+  transient NSBezierPath strokeBezierPath dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
-     self.pathIsClosed, self.startTangent, self.endTangent,
+     self.pathIsClosed, self.startTangent, self.endTangent
+  ;
+ 
+  transient EBShape objectDisplay dependsFrom
+     self.strokeBezierPath,
      prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.radius, self.startAngle, self.arcAngle,
      self.startTangent, self.endTangent, self.pathIsClosed

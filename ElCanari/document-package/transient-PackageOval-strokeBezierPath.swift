@@ -11,17 +11,32 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageBezier_objectDisplay (
-       _ self_strokeBezierPath : NSBezierPath,
-       _ prefs_packageColor : NSColor,      
-       _ prefs_packageDrawingWidthMultipliedByTen : Int
-) -> EBShape {
+func transient_PackageOval_strokeBezierPath (
+       _ self_x : Int,                       
+       _ self_y : Int,                       
+       _ self_width : Int,                   
+       _ self_height : Int
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
+  let x = canariUnitToCocoa (self_x)
+  let y = canariUnitToCocoa (self_y)
+  let width = canariUnitToCocoa (self_width)
+  let height = canariUnitToCocoa (self_height)
   let bp = NSBezierPath ()
-  bp.append (self_strokeBezierPath)
-  bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
+  if (self_width <= 0) && (self_height <= 0) { // Oval is a point
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x, y: y))
+  }else if self_width <= 0 { // Vertical line
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x, y: y + height))
+  }else if self_height <= 0 { // Horizontal line
+    bp.move (to: NSPoint (x: x, y: y))
+    bp.line (to: NSPoint (x: x + width, y: y))
+  }else{
+    let r = CGRect (x: x, y: y, width: width, height: height)
+    bp.appendOval (in: r)
+  }
+  return bp
 //--- END OF USER ZONE 2
 }
 
