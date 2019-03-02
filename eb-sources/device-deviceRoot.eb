@@ -39,7 +39,7 @@ entity DeviceDocumentation {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity PackageInDevice {
+graphic entity PackageInDevice {
 
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
@@ -50,6 +50,15 @@ entity PackageInDevice {
   property @signature NSBezierPath mStrokeBezierPath default empty ;
  
   transient String versionString dependsFrom self.mVersion ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.mStrokeBezierPath,
+     prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+  ;
+
+  transient EBShape selectionDisplay dependsFrom
+     self.mStrokeBezierPath
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -73,7 +73,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //····················································································································
 
   var objectCount : Int {
-    let objects = mModel?.propval ?? []
+    let objects = self.mModel?.propval ?? []
     return objects.count
   }
 
@@ -83,7 +83,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     self.mModel = inModel
     inModel.addEBObserver (self.sortedArray_property)
     self.sortedArray_property.addEBObserver (mSelectedSet)
-    mSelectedSet.addEBObserver (self.selectedArray_property)
+    self.mSelectedSet.addEBObserver (self.selectedArray_property)
   //--- Add observed properties (for filtering and sorting)
     inModel.addEBObserverOf_name (self.sortedArray_property)
   }
@@ -100,11 +100,11 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       self.sortedArray_property.removeEBObserver (tvc)
     }
     for tvc in mTableViewSelectionControllerArray {
-      mSelectedSet.removeEBObserver (tvc)
+      self.mSelectedSet.removeEBObserver (tvc)
     }
   //---
-    mSelectedSet.mSet = Set ()
-    mModel = nil
+    self.mSelectedSet.mSet = Set ()
+    self.mModel = nil
  }
 
   //····················································································································
@@ -127,7 +127,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
-  var selectedSet : Set <ArtworkFileGenerationParameters> { return mSelectedSet.mSet }
+  var selectedSet : Set <ArtworkFileGenerationParameters> { return self.mSelectedSet.mSet }
 
   //····················································································································
 
@@ -135,7 +135,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     var result = Set <Int> ()
     var idx = 0
     for object in self.mModel?.propval ?? [] {
-      if mSelectedSet.mSet.contains (object) {
+      if self.mSelectedSet.mSet.contains (object) {
         result.insert (idx)
       }
       idx += 1
@@ -146,7 +146,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //····················································································································
 
   func setSelection (_ inObjects : [ArtworkFileGenerationParameters]) {
-    mSelectedSet.mSet = Set (inObjects)
+    self.mSelectedSet.mSet = Set (inObjects)
   }
 
   //····················································································································
@@ -178,7 +178,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   func isOrderedBefore (left : ArtworkFileGenerationParameters, right : ArtworkFileGenerationParameters) -> Bool {
     var order = ComparisonResult.orderedSame
-    for (column, ascending) in mSortDescriptorArray {
+    for (column, ascending) in self.mSortDescriptorArray {
       if column == "name" {
         order = compare_String (left: left.name_property, right:right.name_property)
       }
@@ -245,11 +245,11 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     //--- Set table view data source controller
       let dataSourceTableViewController = DataSource_EBTableView_controller (delegate:self, tableView:tableView)
       self.sortedArray_property.addEBObserver (dataSourceTableViewController)
-      mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
+      self.mTableViewDataSourceControllerArray.append (dataSourceTableViewController)
     //--- Set table view selection controller
       let selectionTableViewController = Selection_EBTableView_controller (delegate:self, tableView:tableView)
-       mSelectedSet.addEBObserver (selectionTableViewController)
-      mTableViewSelectionControllerArray.append (selectionTableViewController)
+      self.mSelectedSet.addEBObserver (selectionTableViewController)
+      self.mTableViewSelectionControllerArray.append (selectionTableViewController)
     //--- Check 'name' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
@@ -261,8 +261,8 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       for column in tableView.tableColumns {
         newSortDescriptorArray.append ((column.identifier.rawValue, true)) // Ascending
       }
-      mSortDescriptorArray = newSortDescriptorArray
-      mTableViewArray.append (tableView)
+      self.mSortDescriptorArray = newSortDescriptorArray
+      self.mTableViewArray.append (tableView)
     }
   }
 
@@ -294,7 +294,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         objectDictionary [object] = index
       }
       let indexSet = NSMutableIndexSet ()
-      for object in mSelectedSet.mSet {
+      for object in self.mSelectedSet.mSet {
         if let index = objectDictionary [object] {
           indexSet.add (index)
         }
@@ -336,7 +336,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       for index in tableView.selectedRowIndexes {
         newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
       }
-      mSelectedSet.mSet = newSelectedObjectSet
+      self.mSelectedSet.mSet = newSelectedObjectSet
     }
   }
 
@@ -346,14 +346,14 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   func tableView (_ tableView: NSTableView, mouseDownInHeaderOf inTableColumn: NSTableColumn) {
     var newSortDescriptorArray = [(String, Bool)] ()
-    for (columnName, ascending) in mSortDescriptorArray {
+    for (columnName, ascending) in self.mSortDescriptorArray {
       if inTableColumn.identifier == NSUserInterfaceItemIdentifier (columnName) {
         newSortDescriptorArray.insert ((columnName, !ascending), at:0)
       }else{
         newSortDescriptorArray.append ((columnName, !ascending))
       }
     }
-    mSortDescriptorArray = newSortDescriptorArray
+    self.mSortDescriptorArray = newSortDescriptorArray
   }
 
   //····················································································································
@@ -395,7 +395,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //····················································································································
 
   func select (object inObject: ArtworkFileGenerationParameters) {
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -403,7 +403,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         if objectArray.contains (inObject) {
           var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
           newSelectedObjectSet.insert (inObject)
-          mSelectedSet.mSet = newSelectedObjectSet
+          self.mSelectedSet.mSet = newSelectedObjectSet
         }
       }
     }
@@ -417,7 +417,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -428,7 +428,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       //--- New object is the selection
         var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
         newSelectedObjectSet.insert (newObject)
-        mSelectedSet.mSet = newSelectedObjectSet
+        self.mSelectedSet.mSet = newSelectedObjectSet
         model.setProp (array)
       }
     }
@@ -442,7 +442,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     if DEBUG_EVENT {
       print ("\(#function)")
     }
-    if let model = mModel {
+    if let model = self.mModel {
       switch model.prop {
       case .empty, .multiple :
         break
@@ -458,7 +458,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
             sortedObjectDictionary [object] = index
           }
           var indexArrayOfSelectedObjects = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.mSelectedSet.mSet {
             let index = sortedObjectDictionary [object]
             if let idx = index {
               indexArrayOfSelectedObjects.append (idx)
@@ -487,7 +487,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
           }
         //--- Build selected objects index array
           var selectedObjectIndexArray = [Int] ()
-          for object in mSelectedSet.mSet {
+          for object in self.mSelectedSet.mSet {
             let index = objectDictionary [object]
             if let idx = index {
               selectedObjectIndexArray.append (idx)
@@ -505,7 +505,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
           if let object = newSelectedObject {
             newSelectionSet.insert (object)
           }
-          mSelectedSet.mSet = newSelectionSet
+          self.mSelectedSet.mSet = newSelectionSet
         //----------------------------------------- Set new object array
           model.setProp (newObjectArray)
         }
@@ -541,8 +541,8 @@ final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
 
   private var mPrivateSet = Set<ArtworkFileGenerationParameters> () {
     didSet {
-      if mPrivateSet != oldValue {
-        postEvent ()
+      if self.mPrivateSet != oldValue {
+        self.postEvent ()
       }
     }
   }
@@ -552,20 +552,20 @@ final class SelectedSet_ArtworkDocument_mDataController : EBAbstractProperty {
   var mSet : Set<ArtworkFileGenerationParameters> {
     set {
       var newSelectedSet = newValue
-      switch mSortedArray.prop {
+      switch self.mSortedArray.prop {
       case .empty, .multiple :
         break ;
       case .single (let sortedArray) :
-        if !mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
+        if !self.mAllowsEmptySelection && (newSelectedSet.count == 0) && (sortedArray.count > 0) {
           newSelectedSet = Set (arrayLiteral: sortedArray [0])
         }else if !mAllowsMultipleSelection && (newSelectedSet.count > 1) {
           newSelectedSet = Set (arrayLiteral: newSelectedSet.first!)
         }
       }
-      mPrivateSet = newSelectedSet
+      self.mPrivateSet = newSelectedSet
     }
     get {
-      return mPrivateSet
+      return self.mPrivateSet
     }
   }
 
