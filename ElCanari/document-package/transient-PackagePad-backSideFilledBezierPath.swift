@@ -46,6 +46,7 @@ func transient_PackagePad_backSideFilledBezierPath (
     case .traversing :
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)
+      bp.windingRule = .evenOdd
     case .surface :
       bp.removeAllPoints ()
     }

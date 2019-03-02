@@ -1094,6 +1094,92 @@ extension NSBezierPath : ClassPropertyProtocol {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    BezierPathArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
+
+  //····················································································································
+
+  private var mPathes = [NSBezierPath] ()
+
+  //····················································································································
+
+  var array : [NSBezierPath] { return mPathes }
+
+  //····················································································································
+
+  mutating func append (_ inBP : NSBezierPath) {
+    if !inBP.isEmpty {
+      self.mPathes.append (inBP)
+    }
+  }
+
+  //····················································································································
+
+  var bounds : NSRect {
+    var r = NSRect.null
+    for path in self.mPathes {
+      r = r.union (path.bounds)
+    }
+    return r
+  }
+  
+  //····················································································································
+
+  public static func == (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
+    var equal = lhs.mPathes.count == rhs.mPathes.count
+    if equal {
+      var idx = 0
+      while idx < lhs.mPathes.count {
+        if lhs.mPathes [idx] != rhs.mPathes [idx] {
+          equal = false
+          idx = lhs.mPathes.count // For exiting loop
+        }
+        idx += 1
+      }
+    }
+    return equal
+  }
+
+  //····················································································································
+
+  public static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
+    var inferior = lhs.mPathes.count < rhs.mPathes.count
+    if lhs.mPathes.count == rhs.mPathes.count {
+      let leftData  = NSArchiver.archivedData (withRootObject: lhs.mPathes)
+      let rightData = NSArchiver.archivedData (withRootObject: rhs.mPathes)
+      inferior = leftData < rightData
+    }
+    return inferior
+  }
+
+  //····················································································································
+
+  func ebHashValue () -> UInt32 {
+    let data = NSArchiver.archivedData (withRootObject: self.mPathes)
+    return data.ebHashValue ()
+  }
+
+  //····················································································································
+
+  func convertToNSObject () -> NSObject {
+    let data = NSArchiver.archivedData (withRootObject: self.mPathes)
+    return data as NSData
+  }
+  
+  //····················································································································
+
+  static func convertFromNSObject (object : NSObject) -> BezierPathArray {
+    let array = NSUnarchiver.unarchiveObject (with: object as! Data) as! [NSBezierPath]
+    return BezierPathArray (mPathes: array)
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Protocol ClassPropertyProtocol
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1744,6 +1830,54 @@ func compare_Date (left : EBReadOnlyProperty_Date, right : EBReadOnlyProperty_Da
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property BezierPathArray
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_BezierPathArray = EBReadOnlyValueController <BezierPathArray>
+
+typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyValueProperty <BezierPathArray>
+typealias EBTransientProperty_BezierPathArray = EBTransientValueProperty <BezierPathArray>
+typealias EBReadWriteProperty_BezierPathArray = EBReadWriteValueProperty <BezierPathArray>
+typealias EBPropertyProxy_BezierPathArray     = EBPropertyValueProxy <BezierPathArray>
+typealias EBStoredProperty_BezierPathArray    = EBStoredValueProperty <BezierPathArray>
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func compare_BezierPathArray (left : EBReadOnlyProperty_BezierPathArray, right : EBReadOnlyProperty_BezierPathArray) -> ComparisonResult {
+  switch left.prop {
+  case .empty :
+    switch right.prop {
+    case .empty :
+      return .orderedSame
+    default:
+      return .orderedAscending
+    }
+  case .multiple :
+    switch right.prop {
+    case .empty :
+      return .orderedDescending
+    case .multiple :
+      return .orderedSame
+   case .single (_) :
+      return .orderedAscending
+   }
+ case .single (let currentValue) :
+    switch right.prop {
+    case .empty, .multiple :
+      return .orderedDescending
+    case .single (let otherValue) :
+      if currentValue < otherValue {
+        return .orderedAscending
+      }else if currentValue > otherValue {
+        return .orderedDescending
+      }else{
+        return .orderedSame
+      }
+    }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property CGFloat
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -1849,17 +1983,6 @@ typealias EBReadOnlyProperty_MergerPadArray  = EBReadOnlyClassProperty <MergerPa
 typealias EBTransientProperty_MergerPadArray = EBTransientClassProperty <MergerPadArray>
 typealias EBReadOnlyPropertyArray_MergerPadArray  = EBReadOnlyClassProperty <[MergerPadArray]>
 typealias EBTransientPropertyArray_MergerPadArray = EBTransientClassProperty <[MergerPadArray]>
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Transient property class BezierPathArray
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-typealias EBReadOnlyController_BezierPathArray = EBReadOnlyClassController <BezierPathArray>
-
-typealias EBReadOnlyProperty_BezierPathArray  = EBReadOnlyClassProperty <BezierPathArray>
-typealias EBTransientProperty_BezierPathArray = EBTransientClassProperty <BezierPathArray>
-typealias EBReadOnlyPropertyArray_BezierPathArray  = EBReadOnlyClassProperty <[BezierPathArray]>
-typealias EBTransientPropertyArray_BezierPathArray = EBTransientClassProperty <[BezierPathArray]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Scalar property CanariIssueArray

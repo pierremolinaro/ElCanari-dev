@@ -15,9 +15,9 @@ func transient_PackageInDevice_objectDisplay (
        _ self_mStrokeBezierPath : NSBezierPath,
        _ prefs_packageColor : NSColor,        
        _ prefs_packageDrawingWidthMultipliedByTen : Int,
-       _ self_mPadTopSideFilledBezierPath : NSBezierPath,
+       _ self_mPadTopSideFilledBezierPathArray : BezierPathArray,
        _ prefs_topSidePadColor : NSColor,     
-       _ self_mPadBackSideFilledBezierPath : NSBezierPath,
+       _ self_mPadBackSideFilledBezierPathArray : BezierPathArray,
        _ prefs_bottomSidePadColor : NSColor,  
        _ self_mName : String,                 
        _ self_mX : Int,                       
@@ -33,12 +33,8 @@ func transient_PackageInDevice_objectDisplay (
       if !self_mStrokeBezierPath.isEmpty {
         r = r.union (self_mStrokeBezierPath.bounds)
       }
-      if !self_mPadTopSideFilledBezierPath.isEmpty {
-        r = r.union (self_mPadTopSideFilledBezierPath.bounds)
-      }
-      if !self_mPadBackSideFilledBezierPath.isEmpty {
-        r = r.union (self_mPadBackSideFilledBezierPath.bounds)
-      }
+      r = r.union (self_mPadTopSideFilledBezierPathArray.bounds)
+      r = r.union (self_mPadBackSideFilledBezierPathArray.bounds)
     //--- Frame
       let frameRadius : CGFloat = 3.0
       let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
@@ -56,15 +52,15 @@ func transient_PackageInDevice_objectDisplay (
       let nameShape = EBTextShape (self_mName, nameOrigin, nameTextAttributes, .center, .above)
       shape.append (nameShape)
     //--- Back side pad
-      bp = NSBezierPath ()
-      bp.append (self_mPadBackSideFilledBezierPath)
-      bp.windingRule = .evenOdd
-      shape.append (EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor))
+//      bp = NSBezierPath ()
+//      bp.append (self_mPadBackSideFilledBezierPath)
+//      bp.windingRule = .evenOdd
+      shape.append (EBFilledBezierPathShape (self_mPadBackSideFilledBezierPathArray.array, prefs_bottomSidePadColor))
     //--- Top side pad
-      bp = NSBezierPath ()
-      bp.append (self_mPadTopSideFilledBezierPath)
-      bp.windingRule = .evenOdd
-      shape.append (EBFilledBezierPathShape ([bp], prefs_topSidePadColor))
+//      bp = NSBezierPath ()
+//      bp.append (self_mPadTopSideFilledBezierPath)
+//      bp.windingRule = .evenOdd
+      shape.append (EBFilledBezierPathShape (self_mPadTopSideFilledBezierPathArray.array, prefs_topSidePadColor))
     //--- Package shape
       bp = NSBezierPath ()
       bp.append (self_mStrokeBezierPath)

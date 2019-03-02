@@ -48,8 +48,8 @@ graphic entity PackageInDevice {
   property @signature String mName default "" ;
   property @signature Int mVersion default 0 ;
   
-  property @signature NSBezierPath mPadTopSideFilledBezierPath default empty ;
-  property @signature NSBezierPath mPadBackSideFilledBezierPath default empty ;
+  property @signature BezierPathArray mPadTopSideFilledBezierPathArray default empty ;
+  property @signature BezierPathArray mPadBackSideFilledBezierPathArray default empty ;
   property @signature NSBezierPath mStrokeBezierPath default empty ;
  
   property Int mX default 0 ;
@@ -61,9 +61,9 @@ graphic entity PackageInDevice {
      self.mStrokeBezierPath,
      prefs.packageColor,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.mPadTopSideFilledBezierPath,
+     self.mPadTopSideFilledBezierPathArray,
      prefs.topSidePadColor,
-     self.mPadBackSideFilledBezierPath,
+     self.mPadBackSideFilledBezierPathArray,
      prefs.bottomSidePadColor,
      self.mName, self.mX, self.mY
   ;
@@ -71,8 +71,8 @@ graphic entity PackageInDevice {
   transient EBShape selectionDisplay dependsFrom
      self.mStrokeBezierPath,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.mPadTopSideFilledBezierPath,
-     self.mPadBackSideFilledBezierPath,
+     self.mPadTopSideFilledBezierPathArray,
+     self.mPadBackSideFilledBezierPathArray,
      self.mName, self.mX, self.mY
   ;
 }

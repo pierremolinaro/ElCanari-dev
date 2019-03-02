@@ -43,10 +43,6 @@ let PMDeviceComment = "PMDeviceComment"
   //    windowControllerDidLoadNib: customization of interface
   //····················································································································
 
-//  fileprivate var mSymbolColorObserver = EBOutletEvent ()
-
-  //····················································································································
-
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Set pages segmented control
@@ -61,6 +57,8 @@ let PMDeviceComment = "PMDeviceComment"
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //---
     self.mDocumentationTableView?.registerDraggedTypesAnd (document: self)
+  //--- TEMPORARY
+//    self.rootObject.packages_property.setProp ([])
 
 //  //--- Symbol color observer
 //    self.mSymbolColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }

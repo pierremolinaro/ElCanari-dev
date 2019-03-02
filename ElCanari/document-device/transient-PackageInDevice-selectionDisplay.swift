@@ -14,14 +14,14 @@ import Cocoa
 func transient_PackageInDevice_selectionDisplay (
        _ self_mStrokeBezierPath : NSBezierPath,  
        _ prefs_packageDrawingWidthMultipliedByTen : Int,
-       _ self_mPadTopSideFilledBezierPath : NSBezierPath,
-       _ self_mPadBackSideFilledBezierPath : NSBezierPath,
+       _ self_mPadTopSideFilledBezierPathArray : BezierPathArray,
+       _ self_mPadBackSideFilledBezierPathArray : BezierPathArray,
        _ self_mName : String,                    
        _ self_mX : Int,                          
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-     let nameTextAttributes : [NSAttributedString.Key : Any] = [
+      let nameTextAttributes : [NSAttributedString.Key : Any] = [
         NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
       ]
       let shape = EBShape ()
@@ -30,12 +30,8 @@ func transient_PackageInDevice_selectionDisplay (
       if !self_mStrokeBezierPath.isEmpty {
         r = r.union (self_mStrokeBezierPath.bounds)
       }
-      if !self_mPadTopSideFilledBezierPath.isEmpty {
-        r = r.union (self_mPadTopSideFilledBezierPath.bounds)
-      }
-      if !self_mPadBackSideFilledBezierPath.isEmpty {
-        r = r.union (self_mPadBackSideFilledBezierPath.bounds)
-      }
+      r = r.union (self_mPadTopSideFilledBezierPathArray.bounds)
+      r = r.union (self_mPadBackSideFilledBezierPathArray.bounds)
     //--- Frame
       let frameRadius : CGFloat = 3.0
       let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0

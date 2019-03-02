@@ -6,7 +6,6 @@ transient property class MergerViaShapeArray ;
 transient property class MergerSegmentArray ;
 transient property class MergerBoardLimits ;
 transient property class MergerPadArray ;
-transient property class BezierPathArray ;
 
 transient property struct CanariIssueArray ;
 transient property struct SymbolPinNameAndErrorLocationArray ;

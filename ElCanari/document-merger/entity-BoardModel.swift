@@ -66,12 +66,6 @@ protocol BoardModel_frontLegendLinesSegments : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol BoardModel_frontLegendLinesBezierPaths : class {
-  var frontLegendLinesBezierPaths : BezierPathArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol BoardModel_backLegendLinesSegments : class {
   var backLegendLinesSegments : MergerSegmentArray? { get }
 }
@@ -300,6 +294,18 @@ protocol BoardModel_backPackagesBezierPaths : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol BoardModel_instanceCount : class {
+  var instanceCount : Int? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol BoardModel_frontLegendLinesBezierPaths : class {
+  var frontLegendLinesBezierPaths : BezierPathArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol BoardModel_imageForModel : class {
   var imageForModel : EBShape? { get }
 }
@@ -308,12 +314,6 @@ protocol BoardModel_imageForModel : class {
 
 protocol BoardModel_imageForInstances : class {
   var imageForInstances : EBShape? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol BoardModel_instanceCount : class {
-  var instanceCount : Int? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -331,7 +331,6 @@ class BoardModel : EBManagedObject,
          BoardModel_modelLimitWidthUnit,
          BoardModel_artworkName,
          BoardModel_frontLegendLinesSegments,
-         BoardModel_frontLegendLinesBezierPaths,
          BoardModel_backLegendLinesSegments,
          BoardModel_backLegendLinesBezierPaths,
          BoardModel_frontLegendTextsSegments,
@@ -370,9 +369,10 @@ class BoardModel : EBManagedObject,
          BoardModel_frontPackagesBezierPaths,
          BoardModel_backPackagesSegments,
          BoardModel_backPackagesBezierPaths,
+         BoardModel_instanceCount,
+         BoardModel_frontLegendLinesBezierPaths,
          BoardModel_imageForModel,
-         BoardModel_imageForInstances,
-         BoardModel_instanceCount {
+         BoardModel_imageForInstances {
 
   //····················································································································
   //   Atomic property: name
@@ -837,29 +837,6 @@ class BoardModel : EBManagedObject,
 
   var frontLegendLinesSegments : MergerSegmentArray? {
     switch self.frontLegendLinesSegments_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: frontLegendLinesBezierPaths
-  //····················································································································
-
-  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
-
-  //····················································································································
-
-  var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    return self.frontLegendLinesBezierPaths_property.prop
-  }
-
-  //····················································································································
-
-  var frontLegendLinesBezierPaths : BezierPathArray? {
-    switch self.frontLegendLinesBezierPaths_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1742,6 +1719,52 @@ class BoardModel : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: instanceCount
+  //····················································································································
+
+  var instanceCount_property = EBTransientProperty_Int ()
+
+  //····················································································································
+
+  var instanceCount_property_selection : EBSelection <Int> {
+    return self.instanceCount_property.prop
+  }
+
+  //····················································································································
+
+  var instanceCount : Int? {
+    switch self.instanceCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: frontLegendLinesBezierPaths
+  //····················································································································
+
+  var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
+
+  //····················································································································
+
+  var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
+    return self.frontLegendLinesBezierPaths_property.prop
+  }
+
+  //····················································································································
+
+  var frontLegendLinesBezierPaths : BezierPathArray? {
+    switch self.frontLegendLinesBezierPaths_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: imageForModel
   //····················································································································
 
@@ -1780,29 +1803,6 @@ class BoardModel : EBManagedObject,
 
   var imageForInstances : EBShape? {
     switch self.imageForInstances_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: instanceCount
-  //····················································································································
-
-  var instanceCount_property = EBTransientProperty_Int ()
-
-  //····················································································································
-
-  var instanceCount_property_selection : EBSelection <Int> {
-    return self.instanceCount_property.prop
-  }
-
-  //····················································································································
-
-  var instanceCount : Int? {
-    switch self.instanceCount_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1907,28 +1907,6 @@ class BoardModel : EBManagedObject,
     self.frontLegendLines_property.addEBObserverOf_x2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
-  //--- Atomic property: frontLegendLinesBezierPaths
-    self.frontLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.frontLegendLinesSegments_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_segmentsToBezierPaths (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
   //--- Atomic property: backLegendLinesSegments
     self.backLegendLinesSegments_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2919,6 +2897,50 @@ class BoardModel : EBManagedObject,
       }
     }
     self.backPackagesSegments_property.addEBObserver (self.backPackagesBezierPaths_property)
+  //--- Atomic property: instanceCount
+    self.instanceCount_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.myInstances_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.myInstances_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_BoardModel_instanceCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.myInstances_property.addEBObserver (self.instanceCount_property)
+  //--- Atomic property: frontLegendLinesBezierPaths
+    self.frontLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.frontLegendLinesSegments_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_segmentsToBezierPaths (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
   //--- Atomic property: imageForModel
     self.imageForModel_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3207,28 +3229,6 @@ class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.addEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForInstances_property)
-  //--- Atomic property: instanceCount
-    self.instanceCount_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.myInstances_property.count_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.myInstances_property.count_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_BoardModel_instanceCount (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Install undoers and opposite setter for relationships
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
@@ -3246,7 +3246,6 @@ class BoardModel : EBManagedObject,
     self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_y2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_width (self.frontLegendLinesSegments_property)
-    self.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesBezierPaths_property)
     self.backLegendLines_property.removeEBObserverOf_x1 (self.backLegendLinesSegments_property)
     self.backLegendLines_property.removeEBObserverOf_y1 (self.backLegendLinesSegments_property)
     self.backLegendLines_property.removeEBObserverOf_x2 (self.backLegendLinesSegments_property)
@@ -3362,6 +3361,8 @@ class BoardModel : EBManagedObject,
     self.backPackages_property.removeEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.removeEBObserverOf_width (self.backPackagesSegments_property)
     self.backPackagesSegments_property.removeEBObserver (self.backPackagesBezierPaths_property)
+    self.myInstances_property.removeEBObserver (self.instanceCount_property)
+    self.frontLegendLinesSegments_property.removeEBObserver (self.frontLegendLinesBezierPaths_property)
     g_Preferences?.mergerColorBackground_property.removeEBObserver (self.imageForModel_property)
     self.modelWidth_property.removeEBObserver (self.imageForModel_property)
     self.modelHeight_property.removeEBObserver (self.imageForModel_property)
@@ -3486,7 +3487,6 @@ class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
-    self.myInstances_property.removeEBObserver (self.instanceCount_property)
   }
 
   //····················································································································
@@ -3580,14 +3580,6 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.frontLegendLinesSegments_property.mObserverExplorer,
       valueExplorer:&self.frontLegendLinesSegments_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "frontLegendLinesBezierPaths",
-      idx:self.frontLegendLinesBezierPaths_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.frontLegendLinesBezierPaths_property.mObserverExplorer,
-      valueExplorer:&self.frontLegendLinesBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backLegendLinesSegments",
@@ -3894,6 +3886,22 @@ class BoardModel : EBManagedObject,
       valueExplorer:&self.backPackagesBezierPaths_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "instanceCount",
+      idx:self.instanceCount_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.instanceCount_property.mObserverExplorer,
+      valueExplorer:&self.instanceCount_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "frontLegendLinesBezierPaths",
+      idx:self.frontLegendLinesBezierPaths_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.frontLegendLinesBezierPaths_property.mObserverExplorer,
+      valueExplorer:&self.frontLegendLinesBezierPaths_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "imageForModel",
       idx:self.imageForModel_property.ebObjectIndex,
       y:&y,
@@ -3908,14 +3916,6 @@ class BoardModel : EBManagedObject,
       view:view,
       observerExplorer:&self.imageForInstances_property.mObserverExplorer,
       valueExplorer:&self.imageForInstances_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "instanceCount",
-      idx:self.instanceCount_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.instanceCount_property.mObserverExplorer,
-      valueExplorer:&self.instanceCount_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -5140,62 +5140,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
     for managedObject in inSet {
       self.mObserversOf_frontLegendLinesSegments.apply ( {(_ observer : EBEvent) in
         managedObject.frontLegendLinesSegments_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'frontLegendLinesBezierPaths' transient property
-  //····················································································································
-
-  private var mObserversOf_frontLegendLinesBezierPaths = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesBezierPaths.apply ( {(_ observer : EBEvent) in
-        managedObject.frontLegendLinesBezierPaths_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_frontLegendLinesBezierPaths.apply ( {(_ observer : EBEvent) in
-        managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (observer)
       })
     }
   }
@@ -7329,6 +7273,118 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
+  //   Observers of 'instanceCount' transient property
+  //····················································································································
+
+  private var mObserversOf_instanceCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_instanceCount.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_instanceCount.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.instanceCount_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
+        managedObject.instanceCount_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
+        managedObject.instanceCount_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'frontLegendLinesBezierPaths' transient property
+  //····················································································································
+
+  private var mObserversOf_frontLegendLinesBezierPaths = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesBezierPaths_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontLegendLinesBezierPaths (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_frontLegendLinesBezierPaths.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      self.mObserversOf_frontLegendLinesBezierPaths.apply ( {(_ observer : EBEvent) in
+        managedObject.frontLegendLinesBezierPaths_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (_ inSet : Set<BoardModel>) {
+    for managedObject in inSet {
+      self.mObserversOf_frontLegendLinesBezierPaths.apply ( {(_ observer : EBEvent) in
+        managedObject.frontLegendLinesBezierPaths_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'imageForModel' transient property
   //····················································································································
 
@@ -7441,62 +7497,6 @@ class ReadOnlyArrayOf_BoardModel : ReadOnlyAbstractArrayProperty <BoardModel> {
   }
 
   //····················································································································
-  //   Observers of 'instanceCount' transient property
-  //····················································································································
-
-  private var mObserversOf_instanceCount = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_instanceCount.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.instanceCount_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_instanceCount.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.instanceCount_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_instanceCount_toElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
-        managedObject.instanceCount_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_instanceCount_fromElementsOfSet (_ inSet : Set<BoardModel>) {
-    for managedObject in inSet {
-      self.mObserversOf_instanceCount.apply ( {(_ observer : EBEvent) in
-        managedObject.instanceCount_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
 
 }
 
@@ -7580,7 +7580,6 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
       self.removeEBObserversOf_artworkName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedSet)
@@ -7619,9 +7618,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
       self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -7636,7 +7636,6 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
       self.addEBObserversOf_artworkName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedSet)
-      self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedSet)
       self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedSet)
       self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedSet)
       self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedSet)
@@ -7675,9 +7674,10 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
       self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedSet)
       self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedSet)
       self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedSet)
+      self.addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
+      self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedSet)
       self.addEBObserversOf_imageForModel_toElementsOfSet (addedSet)
       self.addEBObserversOf_imageForInstances_toElementsOfSet (addedSet)
-      self.addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -7824,7 +7824,6 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         self.removeEBObserversOf_modelLimitWidthUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_frontLegendLinesSegments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_backLegendLinesSegments_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_backLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_frontLegendTextsSegments_fromElementsOfSet (removedObjectSet)
@@ -7863,9 +7862,10 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         self.removeEBObserversOf_frontPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_backPackagesSegments_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_backPackagesBezierPaths_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontLegendLinesBezierPaths_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_imageForModel_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_imageForInstances_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : BoardModel in addedObjectSet {
@@ -7891,7 +7891,6 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         self.addEBObserversOf_modelLimitWidthUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_frontLegendLinesSegments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_backLegendLinesSegments_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_backLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_frontLegendTextsSegments_toElementsOfSet (addedObjectSet)
@@ -7930,9 +7929,10 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         self.addEBObserversOf_frontPackagesBezierPaths_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_backPackagesSegments_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_backPackagesBezierPaths_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontLegendLinesBezierPaths_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_imageForModel_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_imageForInstances_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
