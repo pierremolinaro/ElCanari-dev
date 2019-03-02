@@ -26,8 +26,8 @@ class OpenSymbolInLibrary : OpenInLibrary {
 
   //····················································································································
 
-  override func buildDataSource () {
-    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", { (_ inRootObject : EBManagedObject?) -> NSImage? in
+  override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
+    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
       if let root = inRootObject as? SymbolRoot {
         for object in root.symbolObjects_property.propval {

@@ -24,10 +24,14 @@ graphic entity DeviceRoot {
   transient CanariIssueArray issues dependsFrom self.title, self.prefix ;
   
 #--- Packages
-  toMany @signature PackageInDevice packages ;
+  toMany @signature PackageInDevice packages inverse toOne mRoot ;
   property @signature Int mPackageDisplayZoom default 100 ;
   property @signature Bool mPackageDisplayHorizontalFlip default no ;
   property @signature Bool mPackageDisplayVerticalFlip default no ;
+  property @signature Bool mShowPackages default yes ;
+  property @signature Bool mShowPackagePadNumbers default yes ;
+  property @signature Bool mShowPackageFrontPads default yes ;
+  property @signature Bool mShowPackageBackPads default yes ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -43,7 +47,8 @@ entity DeviceDocumentation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageInDevice {
-
+  toOne DeviceRoot mRoot inverse toMany packages ;
+  
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
   property @signature Int mVersion default 0 ;
@@ -58,12 +63,12 @@ graphic entity PackageInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient EBShape objectDisplay dependsFrom
-     self.mStrokeBezierPath,
+     self.mStrokeBezierPath, self.mRoot.one.mShowPackages,
      prefs.packageColor,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.mPadTopSideFilledBezierPathArray,
+     self.mPadTopSideFilledBezierPathArray, self.mRoot.one.mShowPackageFrontPads,
      prefs.topSidePadColor,
-     self.mPadBackSideFilledBezierPathArray,
+     self.mPadBackSideFilledBezierPathArray, self.mRoot.one.mShowPackageBackPads,
      prefs.bottomSidePadColor,
      self.mName, self.mX, self.mY
   ;

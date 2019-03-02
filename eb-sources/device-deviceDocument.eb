@@ -80,6 +80,18 @@ document DeviceDocument root DeviceRoot {
 #    $yPlacardUnit root.yPlacardUnit
   ;
 
+  outlet EBSwitch mPackageDisplayHorizontalFlipSwitch $value root.mPackageDisplayHorizontalFlip ;
+
+  outlet EBSwitch mPackageDisplayVerticalFlipSwitch $value root.mPackageDisplayVerticalFlip ;
+
+  outlet EBSwitch mShowPackagesSwitch $value root.mShowPackages ;
+
+  outlet EBSwitch mShowPackagePadNumbersSwitch $value root.mShowPackagePadNumbers ;
+
+  outlet EBSwitch mShowPackageFrontPadsSwitch $value root.mShowPackageFrontPads ;
+
+  outlet EBSwitch mShowPackageBackPadsSwitch $value root.mShowPackageBackPads ;
+
 #-------------------------- Page : Library
 
 

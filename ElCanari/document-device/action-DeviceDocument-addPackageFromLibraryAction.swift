@@ -14,7 +14,15 @@ import Cocoa
 extension DeviceDocument {
   @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (windowForSheet: self.windowForSheet!, callBack: self.packageFromLoadPackageDialog)
+   var currentPackageNames = Set <String> ()
+   for package in self.rootObject.packages_property.propval {
+     currentPackageNames.insert (package.mName)
+   }
+   gOpenPackageInLibrary?.loadDocumentFromLibrary (
+     windowForSheet: self.windowForSheet!,
+     alreadyLoadedDocuments: currentPackageNames,
+     callBack: self.packageFromLoadPackageDialog
+  )
 //--- END OF USER ZONE 2
   }
 }

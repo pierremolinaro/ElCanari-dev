@@ -38,6 +38,10 @@ func transient_PackageInDevice_selectionDisplay (
       r = r.insetBy (dx: enlarge, dy: enlarge)
       let s = self_mName.size (withAttributes: nameTextAttributes)
       r.size.height += s.height
+      let e = (r.size.width - s.width) / 2.0 - frameRadius
+      if e < 0.0 {
+        r = r.insetBy (dx: e, dy: 0.0)
+      }
       let bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
       bp.lineWidth = 0.5
       shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))

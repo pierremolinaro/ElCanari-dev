@@ -37,8 +37,8 @@ class OpenPackageInLibrary : OpenInLibrary {
 
   //····················································································································
 
-  override func buildDataSource () {
-    super.buildOutlineViewDataSource (extension: "ElCanariPackage", { (_ inRootObject : EBManagedObject?) -> NSImage? in
+  override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
+    super.buildOutlineViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
       if let root = inRootObject as? PackageRoot {
         for object in root.packageObjects_property.propval {

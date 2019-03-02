@@ -136,6 +136,8 @@ import Cocoa
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mPackageDisplayHorizontalFlipSwitch : EBSwitch?
+  @IBOutlet var mPackageDisplayVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
   @IBOutlet var mPackageTableView : EBTableView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
@@ -148,6 +150,10 @@ import Cocoa
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSaveDocButton : EBButton?
   @IBOutlet var mShowDocButton : EBButton?
+  @IBOutlet var mShowPackageBackPadsSwitch : EBSwitch?
+  @IBOutlet var mShowPackageFrontPadsSwitch : EBSwitch?
+  @IBOutlet var mShowPackagePadNumbersSwitch : EBSwitch?
+  @IBOutlet var mShowPackagesSwitch : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
@@ -433,6 +439,36 @@ import Cocoa
         errorMessage: "the 'mMasterView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPackageDisplayHorizontalFlipSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageDisplayHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageDisplayHorizontalFlipSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPackageDisplayVerticalFlipSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageDisplayVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageDisplayVerticalFlipSwitch' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPackagePageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -613,6 +649,66 @@ import Cocoa
         errorMessage: "the 'mShowDocButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mShowPackageBackPadsSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowPackageBackPadsSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowPackageBackPadsSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mShowPackageFrontPadsSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowPackageFrontPadsSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowPackageFrontPadsSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mShowPackagePadNumbersSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowPackagePadNumbersSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowPackagePadNumbersSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mShowPackagesSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mShowPackagesSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mShowPackagesSwitch' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSignatureTextField {
       if !(outlet is CanariSignatureField) {
         presentErrorWindow (
@@ -791,6 +887,12 @@ import Cocoa
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
+    self.mPackageDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mPackageDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mShowPackagesSwitch?.bind_value (self.rootObject.mShowPackages_property, file: #file, line: #line)
+    self.mShowPackagePadNumbersSwitch?.bind_value (self.rootObject.mShowPackagePadNumbers_property, file: #file, line: #line)
+    self.mShowPackageFrontPadsSwitch?.bind_value (self.rootObject.mShowPackageFrontPads_property, file: #file, line: #line)
+    self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -938,6 +1040,12 @@ import Cocoa
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
+    self.mPackageDisplayHorizontalFlipSwitch?.unbind_value ()
+    self.mPackageDisplayVerticalFlipSwitch?.unbind_value ()
+    self.mShowPackagesSwitch?.unbind_value ()
+    self.mShowPackagePadNumbersSwitch?.unbind_value ()
+    self.mShowPackageFrontPadsSwitch?.unbind_value ()
+    self.mShowPackageBackPadsSwitch?.unbind_value ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -999,6 +1107,8 @@ import Cocoa
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mPackageDisplayHorizontalFlipSwitch?.ebCleanUp ()
+    self.mPackageDisplayVerticalFlipSwitch?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
     self.mPackageTableView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
@@ -1011,6 +1121,10 @@ import Cocoa
     self.mResetVersionButton?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
+    self.mShowPackageBackPadsSwitch?.ebCleanUp ()
+    self.mShowPackageFrontPadsSwitch?.ebCleanUp ()
+    self.mShowPackagePadNumbersSwitch?.ebCleanUp ()
+    self.mShowPackagesSwitch?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()

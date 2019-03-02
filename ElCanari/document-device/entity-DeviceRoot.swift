@@ -48,6 +48,30 @@ protocol DeviceRoot_mPackageDisplayVerticalFlip : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_mShowPackages : class {
+  var mShowPackages : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_mShowPackagePadNumbers : class {
+  var mShowPackagePadNumbers : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_mShowPackageFrontPads : class {
+  var mShowPackageFrontPads : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_mShowPackageBackPads : class {
+  var mShowPackageBackPads : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_representationImageData : class {
   var representationImageData : Data { get }
 }
@@ -76,6 +100,10 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mPackageDisplayZoom,
          DeviceRoot_mPackageDisplayHorizontalFlip,
          DeviceRoot_mPackageDisplayVerticalFlip,
+         DeviceRoot_mShowPackages,
+         DeviceRoot_mShowPackagePadNumbers,
+         DeviceRoot_mShowPackageFrontPads,
+         DeviceRoot_mShowPackageBackPads,
          DeviceRoot_representationImageData,
          DeviceRoot_issues,
          DeviceRoot_imageIsValid {
@@ -242,6 +270,98 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Atomic property: mShowPackages
+  //····················································································································
+
+  var mShowPackages_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mShowPackages : Bool {
+    get {
+      return self.mShowPackages_property.propval
+    }
+    set {
+      self.mShowPackages_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mShowPackages_property_selection : EBSelection <Bool> {
+    return self.mShowPackages_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mShowPackagePadNumbers
+  //····················································································································
+
+  var mShowPackagePadNumbers_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mShowPackagePadNumbers : Bool {
+    get {
+      return self.mShowPackagePadNumbers_property.propval
+    }
+    set {
+      self.mShowPackagePadNumbers_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mShowPackagePadNumbers_property_selection : EBSelection <Bool> {
+    return self.mShowPackagePadNumbers_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mShowPackageFrontPads
+  //····················································································································
+
+  var mShowPackageFrontPads_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mShowPackageFrontPads : Bool {
+    get {
+      return self.mShowPackageFrontPads_property.propval
+    }
+    set {
+      self.mShowPackageFrontPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mShowPackageFrontPads_property_selection : EBSelection <Bool> {
+    return self.mShowPackageFrontPads_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mShowPackageBackPads
+  //····················································································································
+
+  var mShowPackageBackPads_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mShowPackageBackPads : Bool {
+    get {
+      return self.mShowPackageBackPads_property.propval
+    }
+    set {
+      self.mShowPackageBackPads_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mShowPackageBackPads_property_selection : EBSelection <Bool> {
+    return self.mShowPackageBackPads_property.prop
+  }
+
+  //····················································································································
   //   To many property: mDocs
   //····················································································································
 
@@ -354,10 +474,21 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackageDisplayHorizontalFlip_property.undoManager = self.undoManager
   //--- Atomic property: mPackageDisplayVerticalFlip
     self.mPackageDisplayVerticalFlip_property.undoManager = self.undoManager
+  //--- Atomic property: mShowPackages
+    self.mShowPackages_property.undoManager = self.undoManager
+  //--- Atomic property: mShowPackagePadNumbers
+    self.mShowPackagePadNumbers_property.undoManager = self.undoManager
+  //--- Atomic property: mShowPackageFrontPads
+    self.mShowPackageFrontPads_property.undoManager = self.undoManager
+  //--- Atomic property: mShowPackageBackPads
+    self.mShowPackageBackPads_property.undoManager = self.undoManager
   //--- To many property: mDocs (no option)
     self.mDocs_property.undoManager = self.undoManager
-  //--- To many property: packages (no option)
+  //--- To many property: packages (has opposite relationship)
     self.packages_property.undoManager = self.undoManager
+    self.packages_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageInDevice?) in
+      inManagedObject?.mRoot_property.setProp (self)
+    }
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
   //--- Atomic property: issues
@@ -407,12 +538,19 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.representationImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Install undoers and opposite setter for relationships
+    self.packages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
+      inManagedObject?.mRoot_property.setProp (self)
+    }
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer:self)
     self.mDocs_property.setSignatureObserver (observer:self)
     self.mPackageDisplayHorizontalFlip_property.setSignatureObserver (observer:self)
     self.mPackageDisplayVerticalFlip_property.setSignatureObserver (observer:self)
     self.mPackageDisplayZoom_property.setSignatureObserver (observer:self)
+    self.mShowPackageBackPads_property.setSignatureObserver (observer:self)
+    self.mShowPackageFrontPads_property.setSignatureObserver (observer:self)
+    self.mShowPackagePadNumbers_property.setSignatureObserver (observer:self)
+    self.mShowPackages_property.setSignatureObserver (observer:self)
     self.packages_property.setSignatureObserver (observer:self)
     self.prefix_property.setSignatureObserver (observer:self)
     self.title_property.setSignatureObserver (observer:self)
@@ -496,6 +634,38 @@ class DeviceRoot : EBGraphicManagedObject,
       valueExplorer:&self.mPackageDisplayVerticalFlip_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "mShowPackages",
+      idx:self.mShowPackages_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mShowPackages_property.mObserverExplorer,
+      valueExplorer:&self.mShowPackages_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mShowPackagePadNumbers",
+      idx:self.mShowPackagePadNumbers_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mShowPackagePadNumbers_property.mObserverExplorer,
+      valueExplorer:&self.mShowPackagePadNumbers_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mShowPackageFrontPads",
+      idx:self.mShowPackageFrontPads_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mShowPackageFrontPads_property.mObserverExplorer,
+      valueExplorer:&self.mShowPackageFrontPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mShowPackageBackPads",
+      idx:self.mShowPackageBackPads_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mShowPackageBackPads_property.mObserverExplorer,
+      valueExplorer:&self.mShowPackageBackPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "representationImageData",
       idx:self.representationImageData_property.ebObjectIndex,
       y:&y,
@@ -565,6 +735,18 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: mPackageDisplayVerticalFlip
     self.mPackageDisplayVerticalFlip_property.mObserverExplorer = nil
     self.mPackageDisplayVerticalFlip_property.mValueExplorer = nil
+  //--- Atomic property: mShowPackages
+    self.mShowPackages_property.mObserverExplorer = nil
+    self.mShowPackages_property.mValueExplorer = nil
+  //--- Atomic property: mShowPackagePadNumbers
+    self.mShowPackagePadNumbers_property.mObserverExplorer = nil
+    self.mShowPackagePadNumbers_property.mValueExplorer = nil
+  //--- Atomic property: mShowPackageFrontPads
+    self.mShowPackageFrontPads_property.mObserverExplorer = nil
+    self.mShowPackageFrontPads_property.mValueExplorer = nil
+  //--- Atomic property: mShowPackageBackPads
+    self.mShowPackageBackPads_property.mObserverExplorer = nil
+    self.mShowPackageBackPads_property.mValueExplorer = nil
   //--- To many property: mDocs
     self.mDocs_property.mValueExplorer = nil
   //--- To many property: packages
@@ -616,6 +798,14 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackageDisplayHorizontalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mPackageDisplayHorizontalFlip")
   //--- Atomic property: mPackageDisplayVerticalFlip
     self.mPackageDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mPackageDisplayVerticalFlip")
+  //--- Atomic property: mShowPackages
+    self.mShowPackages_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackages")
+  //--- Atomic property: mShowPackagePadNumbers
+    self.mShowPackagePadNumbers_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackagePadNumbers")
+  //--- Atomic property: mShowPackageFrontPads
+    self.mShowPackageFrontPads_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackageFrontPads")
+  //--- Atomic property: mShowPackageBackPads
+    self.mShowPackageBackPads_property.storeIn (dictionary: ioDictionary, forKey:"mShowPackageBackPads")
   //--- To many property: mDocs
     self.store (
       managedObjectArray: mDocs_property.propval as NSArray,
@@ -673,6 +863,14 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackageDisplayHorizontalFlip_property.readFrom (dictionary: inDictionary, forKey:"mPackageDisplayHorizontalFlip")
   //--- Atomic property: mPackageDisplayVerticalFlip
     self.mPackageDisplayVerticalFlip_property.readFrom (dictionary: inDictionary, forKey:"mPackageDisplayVerticalFlip")
+  //--- Atomic property: mShowPackages
+    self.mShowPackages_property.readFrom (dictionary: inDictionary, forKey:"mShowPackages")
+  //--- Atomic property: mShowPackagePadNumbers
+    self.mShowPackagePadNumbers_property.readFrom (dictionary: inDictionary, forKey:"mShowPackagePadNumbers")
+  //--- Atomic property: mShowPackageFrontPads
+    self.mShowPackageFrontPads_property.readFrom (dictionary: inDictionary, forKey:"mShowPackageFrontPads")
+  //--- Atomic property: mShowPackageBackPads
+    self.mShowPackageBackPads_property.readFrom (dictionary: inDictionary, forKey:"mShowPackageBackPads")
   //--- Atomic property: representationImageData
     self.representationImageData_property.readFrom (dictionary: inDictionary, forKey:"representationImageData")
   }
@@ -704,6 +902,10 @@ class DeviceRoot : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mPackageDisplayHorizontalFlip_property.signature ())
     crc.accumulateUInt32 (self.mPackageDisplayVerticalFlip_property.signature ())
     crc.accumulateUInt32 (self.mPackageDisplayZoom_property.signature ())
+    crc.accumulateUInt32 (self.mShowPackageBackPads_property.signature ())
+    crc.accumulateUInt32 (self.mShowPackageFrontPads_property.signature ())
+    crc.accumulateUInt32 (self.mShowPackagePadNumbers_property.signature ())
+    crc.accumulateUInt32 (self.mShowPackages_property.signature ())
     crc.accumulateUInt32 (self.packages_property.signature ())
     crc.accumulateUInt32 (self.prefix_property.signature ())
     crc.accumulateUInt32 (self.title_property.signature ())
@@ -1120,6 +1322,234 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'mShowPackages' stored property
+  //····················································································································
+
+  private var mObserversOf_mShowPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShowPackages.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackages_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShowPackages.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackages_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShowPackages_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShowPackages.apply ( {(_ observer : EBEvent) in
+        managedObject.mShowPackages_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShowPackages_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mShowPackages.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShowPackages_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mShowPackagePadNumbers' stored property
+  //····················································································································
+
+  private var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShowPackagePadNumbers.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackagePadNumbers_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShowPackagePadNumbers.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackagePadNumbers_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShowPackagePadNumbers.apply ( {(_ observer : EBEvent) in
+        managedObject.mShowPackagePadNumbers_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mShowPackagePadNumbers.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShowPackagePadNumbers_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mShowPackageFrontPads' stored property
+  //····················································································································
+
+  private var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShowPackageFrontPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackageFrontPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShowPackageFrontPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackageFrontPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShowPackageFrontPads.apply ( {(_ observer : EBEvent) in
+        managedObject.mShowPackageFrontPads_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mShowPackageFrontPads.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShowPackageFrontPads_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mShowPackageBackPads' stored property
+  //····················································································································
+
+  private var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mShowPackageBackPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackageBackPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mShowPackageBackPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mShowPackageBackPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mShowPackageBackPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_mShowPackageBackPads.apply ( {(_ observer : EBEvent) in
+        managedObject.mShowPackageBackPads_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    self.mObserversOf_mShowPackageBackPads.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mShowPackageBackPads_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
   //   Observers of 'representationImageData' stored property
   //····················································································································
 
@@ -1368,6 +1798,10 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -1382,6 +1816,10 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mShowPackages_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedSet)
       self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1519,6 +1957,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           managedObject.mPackageDisplayZoom_property.mSetterDelegate = nil
           managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = nil
           managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = nil
+          managedObject.mShowPackages_property.mSetterDelegate = nil
+          managedObject.mShowPackagePadNumbers_property.mSetterDelegate = nil
+          managedObject.mShowPackageFrontPads_property.mSetterDelegate = nil
+          managedObject.mShowPackageBackPads_property.mSetterDelegate = nil
           managedObject.representationImageData_property.mSetterDelegate = nil
         }
         self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
@@ -1528,6 +1970,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
@@ -1543,6 +1989,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           managedObject.mPackageDisplayZoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mShowPackages_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mShowPackagePadNumbers_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mShowPackageFrontPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          managedObject.mShowPackageBackPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           managedObject.representationImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
         }
         self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
@@ -1552,6 +2002,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
