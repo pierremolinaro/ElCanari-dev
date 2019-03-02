@@ -69,6 +69,17 @@ document DeviceDocument root DeviceRoot {
   action addPackageFromLibraryAction ;
   outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;
 
+  arrayController mPackageDisplayController : root.packages ;
+
+  outlet EBView mComposedPackageView
+    $horizontalFlip root.mPackageDisplayHorizontalFlip
+    $verticalFlip root.mPackageDisplayVerticalFlip
+    $graphicController self.mPackageDisplayController
+    $zoom root.mPackageDisplayZoom
+#    $xPlacardUnit root.xPlacardUnit
+#    $yPlacardUnit root.yPlacardUnit
+  ;
+
 #-------------------------- Page : Library
 
 

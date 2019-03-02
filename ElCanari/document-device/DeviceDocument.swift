@@ -9,16 +9,22 @@ import Cocoa
 @objc(DeviceDocument) class DeviceDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mPackageController
+  //····················································································································
+
+  var mPackageController = ArrayController_DeviceDocument_mPackageController ()
+
+  //····················································································································
   //   Array controller: mDocumentationController
   //····················································································································
 
   var mDocumentationController = ArrayController_DeviceDocument_mDocumentationController ()
 
   //····················································································································
-  //   Array controller: mPackageController
+  //   Array controller: mPackageDisplayController
   //····················································································································
 
-  var mPackageController = ArrayController_DeviceDocument_mPackageController ()
+  var mPackageDisplayController = ArrayController_DeviceDocument_mPackageDisplayController ()
 
   //····················································································································
   //   Transient property: mStatusMessage
@@ -120,6 +126,7 @@ import Cocoa
   @IBOutlet var mAddPackageFromLibraryButton : EBButton?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mCommentTextView : EBTextView?
+  @IBOutlet var mComposedPackageView : EBView?
   @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
@@ -192,10 +199,12 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
   //--- Array controller property: mPackageController
     self.mPackageController.addExplorer (name: "mPackageController", y:&y, view:view)
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
+  //--- Array controller property: mPackageDisplayController
+    self.mPackageDisplayController.addExplorer (name: "mPackageDisplayController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -272,6 +281,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mCommentTextView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mComposedPackageView {
+      if !(outlet is EBView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mComposedPackageView' outlet is not an instance of 'EBView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mComposedPackageView' outlet is nil"
       )
     }
     if let outlet : Any = self.mCopyImageButton {
@@ -679,10 +703,12 @@ import Cocoa
         errorMessage: "the 'mVersionField' outlet is nil"
       )
     }
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
   //--- Array controller property: mPackageController
     self.mPackageController.bind_model (self.rootObject.packages_property)
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
+  //--- Array controller property: mPackageDisplayController
+    self.mPackageDisplayController.bind_model (self.rootObject.packages_property)
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -751,6 +777,7 @@ import Cocoa
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
     self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
+    self.mPackageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -761,6 +788,9 @@ import Cocoa
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
     self.mRepresentationImageView?.bind_imageData (self.rootObject.representationImageData_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -905,6 +935,9 @@ import Cocoa
     self.mIssueTextView?.unbind_valueObserver ()
     self.mTitleTextField?.unbind_value ()
     self.mRepresentationImageView?.unbind_imageData ()
+    self.mComposedPackageView?.unbind_horizontalFlip ()
+    self.mComposedPackageView?.unbind_verticalFlip ()
+    self.mComposedPackageView?.unbind_zoom ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -929,10 +962,13 @@ import Cocoa
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
     self.mPackageController.unbind_tableView (self.mPackageTableView)
-  //--- Array controller property: mDocumentationController
-    self.mDocumentationController.unbind_model ()
+    self.mPackageDisplayController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mPackageController
     self.mPackageController.unbind_model ()
+  //--- Array controller property: mDocumentationController
+    self.mDocumentationController.unbind_model ()
+  //--- Array controller property: mPackageDisplayController
+    self.mPackageDisplayController.unbind_model ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
@@ -953,6 +989,7 @@ import Cocoa
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
+    self.mComposedPackageView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mDocumentationTableView?.ebCleanUp ()

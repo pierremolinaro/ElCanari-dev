@@ -11,6 +11,7 @@
                 <outlet property="mAddPackageFromLibraryButton" destination="1084" id="10r-pn-HTc"/>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
+                <outlet property="mComposedPackageView" destination="1082" id="iBa-N9-nNg"/>
                 <outlet property="mCopyImageButton" destination="2176" id="Mb0-sr-Sxk"/>
                 <outlet property="mDescriptionPageView" destination="1037" id="xhe-k8-o4l"/>
                 <outlet property="mDocumentationTableView" destination="1049" id="XGw-7g-axe"/>
@@ -821,7 +822,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="1081">
+                <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" allowsMagnification="YES" maxMagnification="20" usesPredominantAxisScrolling="NO" id="1081" customClass="EBScrollView" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="258" y="-1" width="343" height="402"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IMs-PA-jTt">
@@ -880,6 +881,7 @@
             <connections>
                 <outlet property="mSavedKeyView" destination="1082" id="1212"/>
             </connections>
+            <point key="canvasLocation" x="-34" y="-79"/>
         </customView>
         <customView id="1090" userLabel="Page : Assignments" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="681" height="428"/>

@@ -25,6 +25,9 @@ graphic entity DeviceRoot {
   
 #--- Packages
   toMany @signature PackageInDevice packages ;
+  property @signature Int mPackageDisplayZoom default 100 ;
+  property @signature Bool mPackageDisplayHorizontalFlip default no ;
+  property @signature Bool mPackageDisplayVerticalFlip default no ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -49,15 +52,28 @@ graphic entity PackageInDevice {
   property @signature NSBezierPath mPadBackSideFilledBezierPath default empty ;
   property @signature NSBezierPath mStrokeBezierPath default empty ;
  
+  property Int mX default 0 ;
+  property Int mY default 0 ;
+  
   transient String versionString dependsFrom self.mVersion ;
 
   transient EBShape objectDisplay dependsFrom
      self.mStrokeBezierPath,
-     prefs.packageColor, prefs.packageDrawingWidthMultipliedByTen
+     prefs.packageColor,
+     prefs.packageDrawingWidthMultipliedByTen,
+     self.mPadTopSideFilledBezierPath,
+     prefs.topSidePadColor,
+     self.mPadBackSideFilledBezierPath,
+     prefs.bottomSidePadColor,
+     self.mName, self.mX, self.mY
   ;
 
   transient EBShape selectionDisplay dependsFrom
-     self.mStrokeBezierPath
+     self.mStrokeBezierPath,
+     prefs.packageDrawingWidthMultipliedByTen,
+     self.mPadTopSideFilledBezierPath,
+     self.mPadBackSideFilledBezierPath,
+     self.mName, self.mX, self.mY
   ;
 }
 

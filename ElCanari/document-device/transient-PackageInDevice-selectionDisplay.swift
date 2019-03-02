@@ -12,12 +12,43 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageInDevice_selectionDisplay (
-       _ self_mStrokeBezierPath : NSBezierPath
+       _ self_mStrokeBezierPath : NSBezierPath,  
+       _ prefs_packageDrawingWidthMultipliedByTen : Int,
+       _ self_mPadTopSideFilledBezierPath : NSBezierPath,
+       _ self_mPadBackSideFilledBezierPath : NSBezierPath,
+       _ self_mName : String,                    
+       _ self_mX : Int,                          
+       _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let shape = EBShape ()
-  shape.append (EBStrokeBezierPathShape ([self_mStrokeBezierPath], NSColor.cyan))
-  return shape
+     let nameTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
+      ]
+      let shape = EBShape ()
+    //--- Compute display rect
+      var r = NSRect.null
+      if !self_mStrokeBezierPath.isEmpty {
+        r = r.union (self_mStrokeBezierPath.bounds)
+      }
+      if !self_mPadTopSideFilledBezierPath.isEmpty {
+        r = r.union (self_mPadTopSideFilledBezierPath.bounds)
+      }
+      if !self_mPadBackSideFilledBezierPath.isEmpty {
+        r = r.union (self_mPadBackSideFilledBezierPath.bounds)
+      }
+    //--- Frame
+      let frameRadius : CGFloat = 3.0
+      let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
+      r = r.insetBy (dx: enlarge, dy: enlarge)
+      let s = self_mName.size (withAttributes: nameTextAttributes)
+      r.size.height += s.height
+      let bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+      bp.lineWidth = 0.5
+      shape.append (EBStrokeBezierPathShape ([bp], NSColor.cyan))
+    //---
+      let transform = NSAffineTransform ()
+      transform.translateX (by: canariUnitToCocoa (self_mX), yBy: canariUnitToCocoa (self_mY))
+      return shape.transformedBy (transform)
 //--- END OF USER ZONE 2
 }
 

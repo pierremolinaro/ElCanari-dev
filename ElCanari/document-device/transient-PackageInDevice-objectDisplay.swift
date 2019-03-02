@@ -14,14 +14,67 @@ import Cocoa
 func transient_PackageInDevice_objectDisplay (
        _ self_mStrokeBezierPath : NSBezierPath,
        _ prefs_packageColor : NSColor,        
-       _ prefs_packageDrawingWidthMultipliedByTen : Int
+       _ prefs_packageDrawingWidthMultipliedByTen : Int,
+       _ self_mPadTopSideFilledBezierPath : NSBezierPath,
+       _ prefs_topSidePadColor : NSColor,     
+       _ self_mPadBackSideFilledBezierPath : NSBezierPath,
+       _ prefs_bottomSidePadColor : NSColor,  
+       _ self_mName : String,                 
+       _ self_mX : Int,                       
+       _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-  let bp = NSBezierPath ()
-  bp.append (self_mStrokeBezierPath)
-  bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
-  bp.lineCapStyle = .round
-  return EBStrokeBezierPathShape ([bp], prefs_packageColor)
+      let nameTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
+      ]
+      let shape = EBShape ()
+    //--- Compute display rect
+      var r = NSRect.null
+      if !self_mStrokeBezierPath.isEmpty {
+        r = r.union (self_mStrokeBezierPath.bounds)
+      }
+      if !self_mPadTopSideFilledBezierPath.isEmpty {
+        r = r.union (self_mPadTopSideFilledBezierPath.bounds)
+      }
+      if !self_mPadBackSideFilledBezierPath.isEmpty {
+        r = r.union (self_mPadBackSideFilledBezierPath.bounds)
+      }
+    //--- Frame
+      let frameRadius : CGFloat = 3.0
+      let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
+      r = r.insetBy (dx: enlarge, dy: enlarge)
+      let nameOrigin = NSPoint (x: r.midX, y: r.maxY)
+      let s = self_mName.size (withAttributes: nameTextAttributes)
+      r.size.height += s.height
+      var bp = NSBezierPath (roundedRect: r, xRadius: frameRadius, yRadius: frameRadius)
+      shape.append (EBFilledBezierPathShape ([bp], NSColor.lightGray.blended (withFraction: 0.75, of: .white)!))
+      bp.move (to: NSPoint (x: r.minX, y: nameOrigin.y))
+      bp.line (to: NSPoint (x: r.maxX, y: nameOrigin.y))
+      bp.lineWidth = 0.5
+      shape.append (EBStrokeBezierPathShape ([bp], NSColor.lightGray))
+    //--- Name
+      let nameShape = EBTextShape (self_mName, nameOrigin, nameTextAttributes, .center, .above)
+      shape.append (nameShape)
+    //--- Back side pad
+      bp = NSBezierPath ()
+      bp.append (self_mPadBackSideFilledBezierPath)
+      bp.windingRule = .evenOdd
+      shape.append (EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor))
+    //--- Top side pad
+      bp = NSBezierPath ()
+      bp.append (self_mPadTopSideFilledBezierPath)
+      bp.windingRule = .evenOdd
+      shape.append (EBFilledBezierPathShape ([bp], prefs_topSidePadColor))
+    //--- Package shape
+      bp = NSBezierPath ()
+      bp.append (self_mStrokeBezierPath)
+      bp.lineWidth = CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 10.0
+      bp.lineCapStyle = .round
+      shape.append (EBStrokeBezierPathShape ([bp], prefs_packageColor))
+    //---
+      let transform = NSAffineTransform ()
+      transform.translateX (by: canariUnitToCocoa (self_mX), yBy: canariUnitToCocoa (self_mY))
+      return shape.transformedBy (transform)
 //--- END OF USER ZONE 2
 }
 

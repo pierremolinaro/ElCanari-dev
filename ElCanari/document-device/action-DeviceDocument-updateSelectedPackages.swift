@@ -32,8 +32,16 @@ extension DeviceDocument {
             package.mVersion = version
             package.mFileData = data
             let strokeBezierPathes = NSBezierPath ()
-            packageRoot.accumulate (strokeBezierPathes: strokeBezierPathes)
+            let topSidePadFilledBezierPathes = NSBezierPath ()
+            let backSidePadFilledBezierPathes = NSBezierPath ()
+            packageRoot.accumulate (
+              strokeBezierPathes: strokeBezierPathes,
+              topSidePadFilledBezierPathes: topSidePadFilledBezierPathes,
+              backSidePadFilledBezierPathes: backSidePadFilledBezierPathes
+            )
             package.mStrokeBezierPath = strokeBezierPathes
+            package.mPadTopSideFilledBezierPath = topSidePadFilledBezierPathes
+            package.mPadBackSideFilledBezierPath = backSidePadFilledBezierPathes
             messages.append ("Package \(package.mName) has been updated to version \(version)")
           }
         }else{
