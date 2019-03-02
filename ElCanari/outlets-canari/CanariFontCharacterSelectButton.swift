@@ -2,9 +2,9 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariFontCharacterSelectButton) class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
-  private var mCharacterSelectionPopover : NSPopover?
-  private var mSelectionView : CanariFontCharacterSelectView?
+class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
+  private var mCharacterSelectionPopover : NSPopover? = nil
+  private var mSelectionView : CanariFontCharacterSelectView? = nil
 
   //····················································································································
 

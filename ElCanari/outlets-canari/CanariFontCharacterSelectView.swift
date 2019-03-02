@@ -8,7 +8,7 @@ private let LEFT_MARGIN      : CGFloat = 40.0
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariFontCharacterSelectView) class CanariFontCharacterSelectView : NSView, EBUserClassNameProtocol {
+class CanariFontCharacterSelectView : NSView, EBUserClassNameProtocol {
   private var mSelectedCharacterCode : Int = 0
   private var mMouseDownCharacterCode : Int = 0
 

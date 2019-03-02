@@ -10,7 +10,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariQuadrantSegmentedControl) class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
 

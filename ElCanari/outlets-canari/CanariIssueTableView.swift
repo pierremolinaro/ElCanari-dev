@@ -13,7 +13,6 @@ import Cocoa
 //   CanariIssueTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariIssueTableView)
 class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································

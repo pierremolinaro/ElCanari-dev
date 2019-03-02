@@ -6,7 +6,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDateObserverField) class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
+class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································
 

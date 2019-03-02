@@ -2,7 +2,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariSegmentedControl) class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
+class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   //····················································································································
   //  init

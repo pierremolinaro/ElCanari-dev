@@ -2,8 +2,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariViewWithKeyView) class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
-  private weak var mSavedFirstResponder : NSResponder?
+class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
+  private weak var mSavedFirstResponder : NSResponder? = nil
 
   //····················································································································
 

@@ -4,7 +4,6 @@ import Cocoa
 //   CanariDimensionTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDimensionTextField) // Required for an outlet
 class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································

@@ -5,10 +5,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // https://www.raywenderlich.com/1016-drag-and-drop-tutorial-for-macos
 
-@objc(CanariDragSourceButton) class CanariDragSourceButton :
-          NSButton,
-          EBUserClassNameProtocol,
-          NSDraggingSource {
+class CanariDragSourceButton : NSButton, EBUserClassNameProtocol, NSDraggingSource {
 
   //····················································································································
 

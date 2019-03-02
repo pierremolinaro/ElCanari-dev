@@ -11,7 +11,6 @@ import Cocoa
 //   CanariDimensionObserverTextField
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDimensionObserverTextField) // Required for an outlet
 class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, NSTextFieldDelegate {
 
   //····················································································································

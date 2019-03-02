@@ -99,7 +99,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="38" height="17"/>
                         <size key="maxSize" width="83" height="19"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="qej-Pe-6zZ" customClass="CanariSignatureField">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="qej-Pe-6zZ" customClass="CanariSignatureField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="qXS-iz-bHm">
@@ -113,7 +113,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="28" height="17"/>
                         <size key="maxSize" width="42" height="19"/>
-                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="tkH-wA-fdW" customClass="CanariVersionField">
+                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="tkH-wA-fdW" customClass="CanariVersionField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="3" y="14" width="42" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="center" title="999" id="UQh-YE-UCB">
@@ -127,7 +127,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="208" height="20"/>
                         <size key="maxSize" width="265" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="557" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="557" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="265" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="558">
@@ -155,7 +155,7 @@
             </toolbar>
             <point key="canvasLocation" x="739" y="197"/>
         </window>
-        <customView id="215" userLabel="Page : Minima" customClass="CanariViewWithKeyView">
+        <customView id="215" userLabel="Page : Minima" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -190,7 +190,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="244" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="244" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="441" y="255" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="506">
@@ -220,7 +220,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="233" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="233" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="441" y="282" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="504">
@@ -259,7 +259,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="219" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="219" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="441" y="311" width="68" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="499">
@@ -326,7 +326,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6W5-zA-y5i" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="6W5-zA-y5i" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="441" y="21" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="-100,23" drawsBackground="YES" id="ahh-wn-rdA">
@@ -342,7 +342,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="-64" y="105.5"/>
         </customView>
-        <customView id="260" userLabel="Page : Drill" customClass="CanariViewWithKeyView">
+        <customView id="260" userLabel="Page : Drill" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="618" height="410"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
@@ -376,7 +376,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="2419" y="46"/>
         </customView>
-        <customView id="276" userLabel="Page : Datas" customClass="CanariViewWithKeyView">
+        <customView id="276" userLabel="Page : Datas" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="618" height="505"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -489,7 +489,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                     <rect key="frame" x="163" y="50" width="189" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="596" customClass="CanariDimensionTextField">
+                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="596" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                                             <rect key="frame" x="58" y="2" width="56" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="607">
@@ -752,11 +752,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
             </subviews>
             <point key="canvasLocation" x="-116" y="-159.5"/>
         </customView>
-        <customView id="323" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
+        <customView id="323" userLabel="Page : Infos" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="618" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="334" customClass="CanariSignatureField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="334" customClass="CanariSignatureField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="101" y="541" width="94" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="1234-5678" id="537">
@@ -788,7 +788,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="vTR-7f-X1o">
                         <rect key="frame" x="1" y="1" width="479" height="511"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="326" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="479" height="511"/>
@@ -829,7 +829,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="332" customClass="CanariVersionField">
+                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="332" customClass="CanariVersionField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="100" y="563" width="28" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="left" title="X.Y" id="535">

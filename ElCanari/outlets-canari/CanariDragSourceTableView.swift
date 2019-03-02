@@ -13,7 +13,6 @@ import Cocoa
 //   CanariDragSourceTableView
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariDragSourceTableView)
 class CanariDragSourceTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDataSource {
 
   //····················································································································

@@ -176,35 +176,35 @@
                                 <menu key="submenu" title="Reveal in Finder" id="1450">
                                     <items>
                                         <menuItem title="Symbols" id="1455">
-                                            <menu key="submenu" title="Symbols" id="1456" customClass="CanariMenu">
+                                            <menu key="submenu" title="Symbols" id="1456" customClass="CanariMenu" customModule="ElCanari" customModuleProvider="target">
                                                 <items>
                                                     <menuItem title="Item" id="1457"/>
                                                 </items>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Packages" id="1458">
-                                            <menu key="submenu" title="Packages" id="1459" customClass="CanariMenu">
+                                            <menu key="submenu" title="Packages" id="1459" customClass="CanariMenu" customModule="ElCanari" customModuleProvider="target">
                                                 <items>
                                                     <menuItem title="Item" id="1460"/>
                                                 </items>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Devices" id="1461">
-                                            <menu key="submenu" title="Devices" id="1462" customClass="CanariMenu">
+                                            <menu key="submenu" title="Devices" id="1462" customClass="CanariMenu" customModule="ElCanari" customModuleProvider="target">
                                                 <items>
                                                     <menuItem title="Item" id="1463"/>
                                                 </items>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Fonts" id="1464">
-                                            <menu key="submenu" title="Fonts" id="1465" customClass="CanariMenu">
+                                            <menu key="submenu" title="Fonts" id="1465" customClass="CanariMenu" customModule="ElCanari" customModuleProvider="target">
                                                 <items>
                                                     <menuItem title="Item" id="1466"/>
                                                 </items>
                                             </menu>
                                         </menuItem>
                                         <menuItem title="Artworks" id="1468">
-                                            <menu key="submenu" title="Artworks" id="1469" customClass="CanariMenu">
+                                            <menu key="submenu" title="Artworks" id="1469" customClass="CanariMenu" customModule="ElCanari" customModuleProvider="target">
                                                 <items>
                                                     <menuItem title="Item" id="1470"/>
                                                 </items>
@@ -1899,7 +1899,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="6078" customClass="CanariFontCharacterSelectButton">
+                <button id="6078" customClass="CanariFontCharacterSelectButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="170" y="118" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6079">
@@ -1966,7 +1966,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" id="PcB-tf-SfN">
                                     <rect key="frame" x="1" y="0.0" width="398" height="92"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="5743" viewBased="YES" id="5740" customClass="EBTableView">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="75"/>
@@ -2179,7 +2179,7 @@
                                     </connections>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="z0R-Xy-yGB" customClass="CanariDateObserverField">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="z0R-Xy-yGB" customClass="CanariDateObserverField" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="241" y="19" width="190" height="14"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="8b3-7M-44S">

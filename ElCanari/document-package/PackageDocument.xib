@@ -239,7 +239,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="202" height="20"/>
                         <size key="maxSize" width="339" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="2896" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="2896" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="202" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="2897">
@@ -258,7 +258,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="38" height="17"/>
                         <size key="maxSize" width="83" height="19"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="CcA-xS-Gpa" customClass="CanariSignatureField">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="CcA-xS-Gpa" customClass="CanariSignatureField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="M2E-EW-Wt0">
@@ -272,7 +272,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="28" height="17"/>
                         <size key="maxSize" width="42" height="19"/>
-                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="9x7-4Z-fQ9" customClass="CanariVersionField">
+                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="9x7-4Z-fQ9" customClass="CanariVersionField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="3" y="14" width="42" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="999" id="QHf-Te-Fyx">
@@ -293,7 +293,7 @@
             </toolbar>
             <point key="canvasLocation" x="102" y="296"/>
         </window>
-        <customView id="1364" userLabel="Inspector : Dimension" customClass="CanariViewWithKeyView">
+        <customView id="1364" userLabel="Inspector : Dimension" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -310,7 +310,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="OV7-rS-PYw" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="OV7-rS-PYw" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="339" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Vt7-r1-UOE">
@@ -345,7 +345,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="Pho-kc-Yaj" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="Pho-kc-Yaj" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="366" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="N1T-Cu-2mo">
@@ -380,7 +380,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="BzR-bW-b9p" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="BzR-bW-b9p" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="445" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="1M5-v0-mgl">
@@ -415,7 +415,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="L5s-Km-fFk" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="L5s-Km-fFk" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="418" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="K5K-qZ-Ga0">
@@ -468,7 +468,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="9jt-6V-uHT" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="9jt-6V-uHT" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="244" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="07G-s9-jcr">
@@ -503,7 +503,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="JnR-EW-wx6" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="JnR-EW-wx6" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="271" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2iZ-1O-9ck">
@@ -547,7 +547,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="Be6-S1-BaA" customClass="CanariDimensionObserverTextField">
+                <textField verticalHuggingPriority="750" id="Be6-S1-BaA" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="102" y="298" width="60" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="FvS-ft-0mP">
@@ -610,7 +610,7 @@
             </subviews>
             <point key="canvasLocation" x="-1160" y="157"/>
         </customView>
-        <customView id="1488" userLabel="Object Inspector : Arc" customClass="CanariViewWithKeyView">
+        <customView id="1488" userLabel="Object Inspector : Arc" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -650,7 +650,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1539" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="1539" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="394" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2734">
@@ -697,7 +697,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="3219" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3219" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="450" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3245">
@@ -735,7 +735,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3221" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3221" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="426" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3234">
@@ -829,7 +829,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField toolTip="Chord Distance from Centre; a negative value means arc angle &lt; 180°, a positive one arc angle &gt; 180°." verticalHuggingPriority="750" id="1739" customClass="CanariDimensionTextField">
+                <textField toolTip="Chord Distance from Centre; a negative value means arc angle &lt; 180°, a positive one arc angle &gt; 180°." verticalHuggingPriority="750" id="1739" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="279" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2752">
@@ -876,7 +876,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField toolTip="Chord Distance from Centre; a negative value means arc angle &lt; 180°, a positive one arc angle &gt; 180°." verticalHuggingPriority="750" id="1726" customClass="CanariDimensionTextField">
+                <textField toolTip="Chord Distance from Centre; a negative value means arc angle &lt; 180°, a positive one arc angle &gt; 180°." verticalHuggingPriority="750" id="1726" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="306" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2749">
@@ -925,7 +925,7 @@
             </subviews>
             <point key="canvasLocation" x="-800" y="82"/>
         </customView>
-        <customView id="1610" userLabel="Object Inspector: Oval" customClass="CanariViewWithKeyView">
+        <customView id="1610" userLabel="Object Inspector: Oval" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -938,7 +938,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1708" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="1708" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="94" y="365" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2763">
@@ -966,7 +966,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="1650" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="1650" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="94" y="392" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2757">
@@ -1004,7 +1004,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="1653" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="1653" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="94" y="446" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2758">
@@ -1042,7 +1042,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="1657" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="1657" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="94" y="419" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2759">
@@ -1120,7 +1120,7 @@
             </subviews>
             <point key="canvasLocation" x="371" y="139"/>
         </customView>
-        <customView id="2031" userLabel="Object Inspector : Zone" customClass="CanariViewWithKeyView">
+        <customView id="2031" userLabel="Object Inspector : Zone" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
@@ -1182,7 +1182,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="mpR-i0-OBO" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="mpR-i0-OBO" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="373" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="rBP-eq-Jj3">
@@ -1210,7 +1210,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="iFZ-uj-7f9" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="iFZ-uj-7f9" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="400" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="VB0-1H-i2c">
@@ -1248,7 +1248,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="jgu-Ra-yUh" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="jgu-Ra-yUh" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="454" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="BcB-Cv-b8S">
@@ -1286,7 +1286,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3If-eJ-r7w" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3If-eJ-r7w" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="95" y="427" width="66" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="nZy-fJ-5xF">
@@ -1361,7 +1361,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="Hqe-X9-ibr" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="Hqe-X9-ibr" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="319" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="CHb-Eh-QuU">
@@ -1396,7 +1396,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="xJp-2l-3mh" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="xJp-2l-3mh" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="98" y="346" width="62" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="smA-NZ-6c0">
@@ -1443,7 +1443,7 @@
             </subviews>
             <point key="canvasLocation" x="82" y="54"/>
         </customView>
-        <customView id="2143" userLabel="Object Inspector : Pad" customClass="CanariViewWithKeyView">
+        <customView id="2143" userLabel="Object Inspector : Pad" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -1542,7 +1542,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="2223" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="2223" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="367" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2785">
@@ -1580,7 +1580,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="2161" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="2161" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="392" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2771">
@@ -1618,7 +1618,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="2225" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="2225" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="446" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2786">
@@ -1656,7 +1656,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="2203" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="2203" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="419" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2783">
@@ -1731,7 +1731,7 @@
                     <rect key="frame" x="20" y="264" width="210" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" id="2841" customClass="CanariDimensionObserverTextField">
+                        <textField verticalHuggingPriority="750" id="2841" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="84" y="2" width="56" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="zzz" id="2844">
@@ -1748,7 +1748,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" id="2190" customClass="CanariDimensionTextField">
+                        <textField verticalHuggingPriority="750" id="2190" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="84" y="28" width="56" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="2790">
@@ -1878,7 +1878,7 @@
             </subviews>
             <point key="canvasLocation" x="-1151" y="161"/>
         </customView>
-        <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView">
+        <customView id="2289" userLabel="Inspector : AutoNumbering" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -1924,7 +1924,7 @@
                 </popUpButton>
             </subviews>
         </customView>
-        <customView id="2308" userLabel="Object Inspector : Slave Pad" customClass="CanariViewWithKeyView">
+        <customView id="2308" userLabel="Object Inspector : Slave Pad" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="507"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -1994,7 +1994,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="Fh8-O9-36i" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="Fh8-O9-36i" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="382" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="fcX-wh-iY9">
@@ -2032,7 +2032,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="5EG-n7-oHI" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="5EG-n7-oHI" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="407" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="0mi-oT-sst">
@@ -2070,7 +2070,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="eg9-r4-1aG" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="eg9-r4-1aG" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="461" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="7S2-87-sgD">
@@ -2108,7 +2108,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="y2s-dh-Clu" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="y2s-dh-Clu" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="91" y="434" width="69" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="GiW-HO-0bh">
@@ -2159,7 +2159,7 @@
                     <rect key="frame" x="20" y="279" width="210" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" id="Nu4-dp-zQW" customClass="CanariDimensionObserverTextField">
+                        <textField verticalHuggingPriority="750" id="Nu4-dp-zQW" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="84" y="2" width="56" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="zzz" id="rKQ-bX-73I">
@@ -2176,7 +2176,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" id="JaH-TP-fHh" customClass="CanariDimensionTextField">
+                        <textField verticalHuggingPriority="750" id="JaH-TP-fHh" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="84" y="28" width="56" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="POZ-Ar-gph">
@@ -2295,7 +2295,7 @@
             </subviews>
             <point key="canvasLocation" x="-332" y="584.5"/>
         </customView>
-        <customView id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView">
+        <customView id="2460" userLabel="Page : Package" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="688" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -2304,7 +2304,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="PuU-Cb-ahz">
                         <rect key="frame" x="1" y="1" width="412" height="484"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="2477" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="329" height="401"/>
@@ -2325,7 +2325,7 @@
                     <rect key="frame" x="4" y="0.0" width="250" height="441"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                 </customView>
-                <button toolTip="Add Segment" imageHugsTitle="YES" id="2983" customClass="CanariDragSourceButton">
+                <button toolTip="Add Segment" imageHugsTitle="YES" id="2983" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="4" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2994">
@@ -2333,7 +2333,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Bezier Curve" imageHugsTitle="YES" id="2984" customClass="CanariDragSourceButton">
+                <button toolTip="Add Bezier Curve" imageHugsTitle="YES" id="2984" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="31" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2993">
@@ -2341,7 +2341,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Oval" imageHugsTitle="YES" id="2985" customClass="CanariDragSourceButton">
+                <button toolTip="Add Oval" imageHugsTitle="YES" id="2985" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="59" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2992">
@@ -2349,7 +2349,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Arc" imageHugsTitle="YES" id="2986" customClass="CanariDragSourceButton">
+                <button toolTip="Add Arc" imageHugsTitle="YES" id="2986" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="87" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2991">
@@ -2357,7 +2357,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Master Pad" imageHugsTitle="YES" id="2987" customClass="CanariDragSourceButton">
+                <button toolTip="Add Master Pad" imageHugsTitle="YES" id="2987" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="115" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2990">
@@ -2365,7 +2365,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Slave Pad" imageHugsTitle="YES" id="2988" customClass="CanariDragSourceButton">
+                <button toolTip="Add Slave Pad" imageHugsTitle="YES" id="2988" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="143" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="2989">
@@ -2373,7 +2373,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Pad Zone" imageHugsTitle="YES" id="3001" customClass="CanariDragSourceButton">
+                <button toolTip="Add Pad Zone" imageHugsTitle="YES" id="3001" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="171" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3002">
@@ -2381,7 +2381,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Guide Line" imageHugsTitle="YES" id="3003" customClass="CanariDragSourceButton">
+                <button toolTip="Add Guide Line" imageHugsTitle="YES" id="3003" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="199" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3004">
@@ -2389,7 +2389,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <button toolTip="Add Dimension Helper" imageHugsTitle="YES" id="3005" customClass="CanariDragSourceButton">
+                <button toolTip="Add Dimension Helper" imageHugsTitle="YES" id="3005" customClass="CanariDragSourceButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="226" y="468" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyUpOrDown" inset="2" id="3006">
@@ -2397,7 +2397,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <segmentedControl verticalHuggingPriority="750" id="3010" customClass="CanariSegmentedControl">
+                <segmentedControl verticalHuggingPriority="750" id="3010" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="3" y="441" width="252" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="3011">
@@ -2414,7 +2414,7 @@
             </subviews>
             <point key="canvasLocation" x="31" y="253.5"/>
         </customView>
-        <customView id="2512" userLabel="Page : Program" customClass="CanariViewWithKeyView">
+        <customView id="2512" userLabel="Page : Program" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="686" height="501"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -2423,7 +2423,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="8av-jO-Zwb">
                         <rect key="frame" x="1" y="1" width="629" height="418"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="2514" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="629" height="418"/>
@@ -2499,7 +2499,7 @@
             </subviews>
             <point key="canvasLocation" x="3" y="887"/>
         </customView>
-        <customView id="2517" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
+        <customView id="2517" userLabel="Page : Infos" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="717" height="319"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -2551,15 +2551,15 @@
             </subviews>
             <point key="canvasLocation" x="-100.5" y="-225.5"/>
         </customView>
-        <customView id="2936" userLabel="Inspector : Selected Objects" customClass="CanariViewWithKeyView">
+        <customView id="2936" userLabel="Inspector : Selected Objects" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
         </customView>
-        <customView id="3015" userLabel="Object Inspector : Segment" customClass="CanariViewWithKeyView">
+        <customView id="3015" userLabel="Object Inspector : Segment" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="3018" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3018" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="338" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3072">
@@ -2590,7 +2590,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3024" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3024" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="365" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3039">
@@ -2621,7 +2621,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3023" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3023" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="446" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3041">
@@ -2652,7 +2652,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3022" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3022" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="419" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3043">
@@ -2738,7 +2738,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="kWJ-ig-bvl" customClass="CanariDimensionObserverTextField">
+                <textField verticalHuggingPriority="750" id="kWJ-ig-bvl" customClass="CanariDimensionObserverTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="97" y="296" width="65" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" id="7Uk-7c-6Dc">
@@ -2757,11 +2757,11 @@
             </subviews>
             <point key="canvasLocation" x="-35" y="-418"/>
         </customView>
-        <customView id="3087" userLabel="Object Inspector : Bezier Curve" customClass="CanariViewWithKeyView">
+        <customView id="3087" userLabel="Object Inspector : Bezier Curve" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="3092" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3092" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="341" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3123">
@@ -2792,7 +2792,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3090" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3090" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="366" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3134">
@@ -2823,7 +2823,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3094" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3094" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="446" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3120">
@@ -2854,7 +2854,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3095" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3095" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="422" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3118">
@@ -2912,7 +2912,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="3148" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3148" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="213" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3189">
@@ -2943,7 +2943,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3150" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3150" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="292" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3178">
@@ -2974,7 +2974,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3152" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3152" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="267" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3167">
@@ -3023,7 +3023,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="3146" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3146" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="188" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="3200">
@@ -3057,11 +3057,11 @@
             </subviews>
             <point key="canvasLocation" x="-266" y="1153"/>
         </customView>
-        <customView id="3254" userLabel="Object Inspector : Guide" customClass="CanariViewWithKeyView">
+        <customView id="3254" userLabel="Object Inspector : Guide" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="3259" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3259" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="340" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3290">
@@ -3077,7 +3077,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="3257" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3257" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="367" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3301">
@@ -3112,7 +3112,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3261" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3261" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="446" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3287">
@@ -3147,7 +3147,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="3262" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="3262" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="104" y="419" width="56" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3285">
@@ -3231,7 +3231,7 @@
             </subviews>
             <point key="canvasLocation" x="-62" y="-1"/>
         </customView>
-        <customView id="cRE-6w-ML1" userLabel="Inspector : Issues" customClass="CanariViewWithKeyView">
+        <customView id="cRE-6w-ML1" userLabel="Inspector : Issues" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -3249,9 +3249,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="sbM-Qg-nHw">
                         <rect key="frame" x="1" y="1" width="205" height="432"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="Zuh-hX-zHT" customClass="CanariIssueTableView">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="14" id="Zuh-hX-zHT" customClass="CanariIssueTableView" customModule="ElCanari" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="205" height="432"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -3304,7 +3304,7 @@
             </subviews>
             <point key="canvasLocation" x="-37" y="-113"/>
         </customView>
-        <customView id="Vyf-VZ-9r6" userLabel="Inspector : Grid and Flip" customClass="CanariViewWithKeyView">
+        <customView id="Vyf-VZ-9r6" userLabel="Inspector : Grid and Flip" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="193"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -3459,7 +3459,7 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" id="Tf2-wd-zhH" customClass="CanariDimensionTextField">
+                <textField verticalHuggingPriority="750" id="Tf2-wd-zhH" customClass="CanariDimensionTextField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="99" y="109" width="61" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="Vkr-wm-SUr">
@@ -3509,7 +3509,7 @@
             </subviews>
             <point key="canvasLocation" x="-686" y="-343.5"/>
         </customView>
-        <customView id="mI3-WB-pJe" userLabel="Selected object inspector root view" customClass="CanariViewWithKeyView">
+        <customView id="mI3-WB-pJe" userLabel="Selected object inspector root view" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <point key="canvasLocation" x="-362" y="432"/>
@@ -3531,7 +3531,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" findStyle="bar" spellingCorrection="YES" smartInsertDelete="YES" id="tb1-Me-Sfj">
-                                    <rect key="frame" x="0.0" y="0.6000000000037744" width="685" height="1918.5"/>
+                                    <rect key="frame" x="0.0" y="0.70000000000754881" width="685" height="1918.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6210,7 +6210,7 @@ DQ
             </view>
             <point key="canvasLocation" x="-1722" y="-213.5"/>
         </window>
-        <customView id="sHH-7k-fUn" userLabel="Inspector : Display" customClass="CanariViewWithKeyView">
+        <customView id="sHH-7k-fUn" userLabel="Inspector : Display" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="250" height="312"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>

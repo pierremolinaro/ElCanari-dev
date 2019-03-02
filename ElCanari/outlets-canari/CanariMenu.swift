@@ -4,7 +4,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(CanariMenu) class CanariMenu : NSMenu, EBUserClassNameProtocol {
+class CanariMenu : NSMenu, EBUserClassNameProtocol {
 
   //····················································································································
 

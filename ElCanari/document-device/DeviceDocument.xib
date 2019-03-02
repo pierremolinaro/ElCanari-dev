@@ -78,7 +78,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="462" height="20"/>
                         <size key="maxSize" width="554" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="462" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1908">
@@ -100,7 +100,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="28" height="17"/>
                         <size key="maxSize" width="42" height="19"/>
-                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="kn8-9U-hSR" customClass="CanariVersionField">
+                        <textField key="view" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="kn8-9U-hSR" customClass="CanariVersionField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="3" y="14" width="42" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="999" id="JfT-mm-KFX">
@@ -114,7 +114,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="38" height="17"/>
                         <size key="maxSize" width="83" height="19"/>
-                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="bnM-Hr-Cbk" customClass="CanariSignatureField">
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="bnM-Hr-Cbk" customClass="CanariSignatureField" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="83" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="EEEE:EEEE" id="mh5-Mw-O5a">
@@ -538,7 +538,7 @@
                 </button>
             </subviews>
         </customView>
-        <customView id="1037" userLabel="Page : Description" customClass="CanariViewWithKeyView">
+        <customView id="1037" userLabel="Page : Description" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="697" height="426"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -598,7 +598,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="0.0" width="370" height="272"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="249"/>
@@ -737,7 +737,7 @@
                 </textField>
             </subviews>
         </customView>
-        <customView id="1055" userLabel="Page : Symbols" customClass="CanariViewWithKeyView">
+        <customView id="1055" userLabel="Page : Symbols" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -778,7 +778,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1069" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -817,7 +817,7 @@
                 <outlet property="nextKeyView" destination="1069" id="1209"/>
             </connections>
         </customView>
-        <customView id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView">
+        <customView id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -881,7 +881,7 @@
                 <outlet property="mSavedKeyView" destination="1082" id="1212"/>
             </connections>
         </customView>
-        <customView id="1090" userLabel="Page : Assignments" customClass="CanariViewWithKeyView">
+        <customView id="1090" userLabel="Page : Assignments" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="681" height="428"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -898,7 +898,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1586" id="1111">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -944,7 +944,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
@@ -1050,7 +1050,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1580" id="1095">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -1133,7 +1133,7 @@
                 </splitView>
             </subviews>
         </customView>
-        <customView id="1124" userLabel="Page : Library" customClass="CanariViewWithKeyView">
+        <customView id="1124" userLabel="Page : Library" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="704" height="497"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -1279,7 +1279,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <clipView key="contentView" id="mSf-qk-Njd">
                                             <rect key="frame" x="1" y="0.0" width="611" height="332"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="1613" viewBased="YES" id="1616" customClass="EBTableView">
                                                     <rect key="frame" x="0.0" y="0.0" width="611" height="309"/>
@@ -1439,7 +1439,7 @@
             </subviews>
             <point key="canvasLocation" x="262" y="-834.5"/>
         </customView>
-        <customView id="1177" userLabel="Page : Infos" customClass="CanariViewWithKeyView">
+        <customView id="1177" userLabel="Page : Infos" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="688" height="408"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -1474,7 +1474,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IrZ-A4-tug">
                         <rect key="frame" x="1" y="1" width="548" height="233"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1180" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="233"/>
@@ -1502,7 +1502,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="cxS-7T-S4H">
                         <rect key="frame" x="1" y="1" width="548" height="93"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1168" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="548" height="93"/>
