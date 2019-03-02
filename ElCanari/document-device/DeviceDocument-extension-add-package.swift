@@ -23,16 +23,16 @@ extension DeviceDocument {
       package.mName = inName
       package.mFileData = inData
       let strokeBezierPathes = NSBezierPath ()
-      var topSidePadFilledBezierPathes = BezierPathArray ()
-      var backSidePadFilledBezierPathes = BezierPathArray ()
+      var pads = [PackagePad] ()
+      var slavePads = [PackageSlavePad] ()
       packageRoot.accumulate (
         strokeBezierPathes: strokeBezierPathes,
-        topSidePadFilledBezierPathes: &topSidePadFilledBezierPathes,
-        backSidePadFilledBezierPathes: &backSidePadFilledBezierPathes
+        pads: &pads,
+        slavePads: &slavePads
       )
       package.mStrokeBezierPath = strokeBezierPathes
-      package.mPadTopSideFilledBezierPathArray = topSidePadFilledBezierPathes
-      package.mPadBackSideFilledBezierPathArray = backSidePadFilledBezierPathes
+      package.mPads_property.setProp (pads)
+      package.mSlavePads_property.setProp (slavePads)
       self.rootObject.packages_property.add (package)
     }
   }

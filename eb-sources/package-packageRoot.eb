@@ -232,7 +232,7 @@ graphic entity PackagePad : PackageObject {
   toOne PackageZone zone ;
   toMany PackageSlavePad slaves inverse toOne master ;
 
-  transient NSBezierPath topSideFilledBezierPath dependsFrom
+  transient NSBezierPath frontSideFilledBezierPath dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle
   ;
@@ -245,8 +245,8 @@ graphic entity PackagePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.topSidePadColor, prefs.displayPackageTopSidePads,
-     prefs.bottomSidePadColor, prefs.displayPackageBottomSidePads
+     prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
+     prefs.backSidePadColor, prefs.displayPackageBackSidePads
   ;
 
   transient EBShape selectionDisplay dependsFrom
@@ -297,7 +297,7 @@ graphic entity PackageSlavePad : PackageObject {
   
   toOne PackagePad master inverse toMany slaves ;
 
-  transient NSBezierPath topSideFilledBezierPath dependsFrom
+  transient NSBezierPath frontSideFilledBezierPath dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle
   ;
@@ -310,8 +310,8 @@ graphic entity PackageSlavePad : PackageObject {
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
-     prefs.topSidePadColor, prefs.displayPackageTopSidePads,
-     prefs.bottomSidePadColor, prefs.displayPackageBottomSidePads
+     prefs.frontSidePadColor, prefs.displayPackageFrontSidePads,
+     prefs.backSidePadColor, prefs.displayPackageBackSidePads
   ;
   transient EBShape selectionDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.padShape

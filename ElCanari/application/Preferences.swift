@@ -22,9 +22,9 @@ let Preferences_crossColorOfPackageGrid = "Preferences:crossColorOfPackageGrid"
 let Preferences_lineColorOfPackageGrid = "Preferences:lineColorOfPackageGrid"
 let Preferences_packageBackgroundColor = "Preferences:packageBackgroundColor"
 let Preferences_packageColor = "Preferences:packageColor"
-let Preferences_topSidePadColor = "Preferences:topSidePadColor"
-let Preferences_bottomSidePadColor = "Preferences:bottomSidePadColor"
-let Preferences_displayPackageBottomSidePads = "Preferences:displayPackageBottomSidePads"
+let Preferences_frontSidePadColor = "Preferences:frontSidePadColor"
+let Preferences_backSidePadColor = "Preferences:backSidePadColor"
+let Preferences_displayPackageBackSidePads = "Preferences:displayPackageBackSidePads"
 let Preferences_padNumberColor = "Preferences:padNumberColor"
 let Preferences_padNumberFont = "Preferences:padNumberFont"
 let Preferences_showPadNumber = "Preferences:showPadNumber"
@@ -38,7 +38,7 @@ let Preferences_mSymbolAndPackageGridDotColorForDevice = "Preferences:mSymbolAnd
 let Preferences_mSymbolAndPackageGridLineColorForDevice = "Preferences:mSymbolAndPackageGridLineColorForDevice"
 let Preferences_mSymbolAndPackageBackgroundColorForDevice = "Preferences:mSymbolAndPackageBackgroundColorForDevice"
 let Preferences_mPackageColorForDevice = "Preferences:mPackageColorForDevice"
-let Preferences_mTopSidePadColorForDevice = "Preferences:mTopSidePadColorForDevice"
+let Preferences_mFrontSidePadColorForDevice = "Preferences:mFrontSidePadColorForDevice"
 let Preferences_mBottomSidePadColorForDevice = "Preferences:mBottomSidePadColorForDevice"
 let Preferences_mPadNumberColorForDevice = "Preferences:mPadNumberColorForDevice"
 let Preferences_mPackageNameFontForDevice = "Preferences:mPackageNameFontForDevice"
@@ -154,7 +154,7 @@ let Preferences_hiliteWidthMultipliedByTen = "Preferences:hiliteWidthMultipliedB
 let Preferences_usesUserLibrary = "Preferences:usesUserLibrary"
 let Preferences_additionnalLibraryArray = "Preferences:additionnalLibraryArray"
 let Preferences_pinNameFont = "Preferences:pinNameFont"
-let Preferences_displayPackageTopSidePads = "Preferences:displayPackageTopSidePads"
+let Preferences_displayPackageFrontSidePads = "Preferences:displayPackageFrontSidePads"
 let Preferences_sampleString = "Preferences:sampleString"
 let Preferences_sampleStringSize = "Preferences:sampleStringSize"
 let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryCheckTime"
@@ -440,72 +440,72 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: topSidePadColor
+  //   Atomic property: frontSidePadColor
   //····················································································································
 
-  var topSidePadColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_topSidePadColor)
+  var frontSidePadColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_frontSidePadColor)
 
   //····················································································································
 
-  var topSidePadColor : NSColor {
+  var frontSidePadColor : NSColor {
     get {
-      return self.topSidePadColor_property.propval
+      return self.frontSidePadColor_property.propval
     }
     set {
-      self.topSidePadColor_property.setProp (newValue)
+      self.frontSidePadColor_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var topSidePadColor_property_selection : EBSelection <NSColor> {
-    return self.topSidePadColor_property.prop
+  var frontSidePadColor_property_selection : EBSelection <NSColor> {
+    return self.frontSidePadColor_property.prop
   }
 
   //····················································································································
-  //   Atomic property: bottomSidePadColor
+  //   Atomic property: backSidePadColor
   //····················································································································
 
-  var bottomSidePadColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_bottomSidePadColor)
+  var backSidePadColor_property = EBStoredProperty_NSColor (defaultValue: NSColor.green, prefKey: Preferences_backSidePadColor)
 
   //····················································································································
 
-  var bottomSidePadColor : NSColor {
+  var backSidePadColor : NSColor {
     get {
-      return self.bottomSidePadColor_property.propval
+      return self.backSidePadColor_property.propval
     }
     set {
-      self.bottomSidePadColor_property.setProp (newValue)
+      self.backSidePadColor_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var bottomSidePadColor_property_selection : EBSelection <NSColor> {
-    return self.bottomSidePadColor_property.prop
+  var backSidePadColor_property_selection : EBSelection <NSColor> {
+    return self.backSidePadColor_property.prop
   }
 
   //····················································································································
-  //   Atomic property: displayPackageBottomSidePads
+  //   Atomic property: displayPackageBackSidePads
   //····················································································································
 
-  var displayPackageBottomSidePads_property = EBStoredProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageBottomSidePads)
+  var displayPackageBackSidePads_property = EBStoredProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageBackSidePads)
 
   //····················································································································
 
-  var displayPackageBottomSidePads : Bool {
+  var displayPackageBackSidePads : Bool {
     get {
-      return self.displayPackageBottomSidePads_property.propval
+      return self.displayPackageBackSidePads_property.propval
     }
     set {
-      self.displayPackageBottomSidePads_property.setProp (newValue)
+      self.displayPackageBackSidePads_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var displayPackageBottomSidePads_property_selection : EBSelection <Bool> {
-    return self.displayPackageBottomSidePads_property.prop
+  var displayPackageBackSidePads_property_selection : EBSelection <Bool> {
+    return self.displayPackageBackSidePads_property.prop
   }
 
   //····················································································································
@@ -808,26 +808,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: mTopSidePadColorForDevice
+  //   Atomic property: mFrontSidePadColorForDevice
   //····················································································································
 
-  var mTopSidePadColorForDevice_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mTopSidePadColorForDevice)
+  var mFrontSidePadColorForDevice_property = EBStoredProperty_NSColor (defaultValue: NSColor.blue, prefKey: Preferences_mFrontSidePadColorForDevice)
 
   //····················································································································
 
-  var mTopSidePadColorForDevice : NSColor {
+  var mFrontSidePadColorForDevice : NSColor {
     get {
-      return self.mTopSidePadColorForDevice_property.propval
+      return self.mFrontSidePadColorForDevice_property.propval
     }
     set {
-      self.mTopSidePadColorForDevice_property.setProp (newValue)
+      self.mFrontSidePadColorForDevice_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var mTopSidePadColorForDevice_property_selection : EBSelection <NSColor> {
-    return self.mTopSidePadColorForDevice_property.prop
+  var mFrontSidePadColorForDevice_property_selection : EBSelection <NSColor> {
+    return self.mFrontSidePadColorForDevice_property.prop
   }
 
   //····················································································································
@@ -3471,26 +3471,26 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   }
 
   //····················································································································
-  //   Atomic property: displayPackageTopSidePads
+  //   Atomic property: displayPackageFrontSidePads
   //····················································································································
 
-  var displayPackageTopSidePads_property = EBStoredProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageTopSidePads)
+  var displayPackageFrontSidePads_property = EBStoredProperty_Bool (defaultValue: true, prefKey: Preferences_displayPackageFrontSidePads)
 
   //····················································································································
 
-  var displayPackageTopSidePads : Bool {
+  var displayPackageFrontSidePads : Bool {
     get {
-      return self.displayPackageTopSidePads_property.propval
+      return self.displayPackageFrontSidePads_property.propval
     }
     set {
-      self.displayPackageTopSidePads_property.setProp (newValue)
+      self.displayPackageFrontSidePads_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var displayPackageTopSidePads_property_selection : EBSelection <Bool> {
-    return self.displayPackageTopSidePads_property.prop
+  var displayPackageFrontSidePads_property_selection : EBSelection <Bool> {
+    return self.displayPackageFrontSidePads_property.prop
   }
 
   //····················································································································
@@ -3864,12 +3864,12 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.packageBackgroundColor_property.undoManager = self.undoManager
   //--- Atomic property: packageColor
     self.packageColor_property.undoManager = self.undoManager
-  //--- Atomic property: topSidePadColor
-    self.topSidePadColor_property.undoManager = self.undoManager
-  //--- Atomic property: bottomSidePadColor
-    self.bottomSidePadColor_property.undoManager = self.undoManager
-  //--- Atomic property: displayPackageBottomSidePads
-    self.displayPackageBottomSidePads_property.undoManager = self.undoManager
+  //--- Atomic property: frontSidePadColor
+    self.frontSidePadColor_property.undoManager = self.undoManager
+  //--- Atomic property: backSidePadColor
+    self.backSidePadColor_property.undoManager = self.undoManager
+  //--- Atomic property: displayPackageBackSidePads
+    self.displayPackageBackSidePads_property.undoManager = self.undoManager
   //--- Atomic property: padNumberColor
     self.padNumberColor_property.undoManager = self.undoManager
   //--- Atomic property: padNumberFont
@@ -3896,8 +3896,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.mSymbolAndPackageBackgroundColorForDevice_property.undoManager = self.undoManager
   //--- Atomic property: mPackageColorForDevice
     self.mPackageColorForDevice_property.undoManager = self.undoManager
-  //--- Atomic property: mTopSidePadColorForDevice
-    self.mTopSidePadColorForDevice_property.undoManager = self.undoManager
+  //--- Atomic property: mFrontSidePadColorForDevice
+    self.mFrontSidePadColorForDevice_property.undoManager = self.undoManager
   //--- Atomic property: mBottomSidePadColorForDevice
     self.mBottomSidePadColorForDevice_property.undoManager = self.undoManager
   //--- Atomic property: mPadNumberColorForDevice
@@ -4129,8 +4129,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.undoManager = self.undoManager
   //--- Atomic property: pinNameFont
     self.pinNameFont_property.undoManager = self.undoManager
-  //--- Atomic property: displayPackageTopSidePads
-    self.displayPackageTopSidePads_property.undoManager = self.undoManager
+  //--- Atomic property: displayPackageFrontSidePads
+    self.displayPackageFrontSidePads_property.undoManager = self.undoManager
   //--- Atomic property: sampleString
     self.sampleString_property.undoManager = self.undoManager
   //--- Atomic property: sampleStringSize
@@ -5602,8 +5602,8 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mLineColorOfPackageGridColorWell?.bind_color (self.lineColorOfPackageGrid_property, file: #file, line: #line, sendContinously:false)
     mPackageBackgroundColorColorWell?.bind_color (self.packageBackgroundColor_property, file: #file, line: #line, sendContinously:false)
     mPackageColorColorWell?.bind_color (self.packageColor_property, file: #file, line: #line, sendContinously:false)
-    mTopSidePadColorWell?.bind_color (self.topSidePadColor_property, file: #file, line: #line, sendContinously:false)
-    mBottomSidePadColorWell?.bind_color (self.bottomSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    mTopSidePadColorWell?.bind_color (self.frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    mBottomSidePadColorWell?.bind_color (self.backSidePadColor_property, file: #file, line: #line, sendContinously:false)
     mPadNumberColorColorWell?.bind_color (self.padNumberColor_property, file: #file, line: #line, sendContinously:false)
     mPadFontButton?.bind_fontValue (self.padNumberFont_property, file: #file, line: #line)
     mPackageGuideColorWell?.bind_color (self.packageGuideColor_property, file: #file, line: #line, sendContinously:false)
@@ -5615,7 +5615,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mSymbolAndPackageLineDotColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageGridLineColorForDevice_property, file: #file, line: #line, sendContinously:false)
     mSymbolAndPackageBackgroundColorForDeviceColorWell?.bind_color (self.mSymbolAndPackageBackgroundColorForDevice_property, file: #file, line: #line, sendContinously:false)
     mPackageColorForDeviceColorWell?.bind_color (self.mPackageColorForDevice_property, file: #file, line: #line, sendContinously:false)
-    mTopSidePadColorForDeviceColorWell?.bind_color (self.mTopSidePadColorForDevice_property, file: #file, line: #line, sendContinously:false)
+    mTopSidePadColorForDeviceColorWell?.bind_color (self.mFrontSidePadColorForDevice_property, file: #file, line: #line, sendContinously:false)
     mBottomSidePadColorDorDeviveColorWell?.bind_color (self.mBottomSidePadColorForDevice_property, file: #file, line: #line, sendContinously:false)
     mPadNumberColorForDeviceColorWell?.bind_color (self.mPadNumberColorForDevice_property, file: #file, line: #line, sendContinously:false)
     mPackageNameFontForDeviceFontButton?.bind_fontValue (self.mPadNumberFontForDevice_property, file: #file, line: #line)

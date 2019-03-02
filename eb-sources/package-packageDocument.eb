@@ -441,13 +441,13 @@ document PackageDocument root PackageRoot {
   outlet EBColorWell mCrossColorOfPackageGridColorWell $color prefs.crossColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mLineColorOfPackageGridColorWell $color prefs.lineColorOfPackageGrid {sendContinously:no} ;
   outlet EBColorWell mPackageColorColorWell $color prefs.packageColor {sendContinously:no} ;
-  outlet EBColorWell mTopSidePadColorWell $color prefs.topSidePadColor {sendContinously:no} ;
-  outlet EBColorWell mBottomSidePadColorWell $color prefs.bottomSidePadColor {sendContinously:no} ;
+  outlet EBColorWell mTopSidePadColorWell $color prefs.frontSidePadColor {sendContinously:no} ;
+  outlet EBColorWell mBottomSidePadColorWell $color prefs.backSidePadColor {sendContinously:no} ;
   outlet EBColorWell mPackageBackgroundColorColorWell $color prefs.packageBackgroundColor {sendContinously:no} ;
   outlet EBPopUpButton mPackageDrawingWidthMultipliedByTenPopupButton $selectedTag prefs.packageDrawingWidthMultipliedByTen ;
   outlet EBColorWell mPadNumberColorWell $color prefs.padNumberColor {sendContinously:no} ;
-  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageTopSidePads ;
-  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBottomSidePads ;
+  outlet EBSwitch mDisplayTopSidePadSwitch $value prefs.displayPackageFrontSidePads ;
+  outlet EBSwitch mDisplayBottomSidePadSwitch $value prefs.displayPackageBackSidePads ;
   outlet EBFontButton mPadNumberFontButton $fontValue prefs.padNumberFont ;
 
 #--- Grid

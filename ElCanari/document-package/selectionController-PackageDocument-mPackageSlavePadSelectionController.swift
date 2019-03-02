@@ -47,6 +47,18 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
+  //   Selection observable property: frontSideFilledBezierPath
+  //····················································································································
+
+  var frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    get {
+      return self.frontSideFilledBezierPath_property.prop
+    }
+  }
+
+  //····················································································································
   //   Selection observable property: height
   //····················································································································
 
@@ -195,18 +207,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   }
 
   //····················································································································
-  //   Selection observable property: topSideFilledBezierPath
-  //····················································································································
-
-  var topSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  var topSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.topSideFilledBezierPath_property.prop
-    }
-  }
-
-  //····················································································································
   //   Selection observable property: width
   //····················································································································
 
@@ -313,6 +313,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.bind_property_annularRing (model: self.mActualModel)
     self.bind_property_annularRingUnit (model: self.mActualModel)
     self.bind_property_backSideFilledBezierPath (model: self.mActualModel)
+    self.bind_property_frontSideFilledBezierPath (model: self.mActualModel)
     self.bind_property_height (model: self.mActualModel)
     self.bind_property_heightUnit (model: self.mActualModel)
     self.bind_property_holeDiameter (model: self.mActualModel)
@@ -325,7 +326,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
     self.bind_property_padShape (model: self.mActualModel)
     self.bind_property_padStyle (model: self.mActualModel)
     self.bind_property_selectionDisplay (model: self.mActualModel)
-    self.bind_property_topSideFilledBezierPath (model: self.mActualModel)
     self.bind_property_width (model: self.mActualModel)
     self.bind_property_widthUnit (model: self.mActualModel)
     self.bind_property_xCenter (model: self.mActualModel)
@@ -352,6 +352,9 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- backSideFilledBezierPath
     self.backSideFilledBezierPath_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPath_property)
+  //--- frontSideFilledBezierPath
+    self.frontSideFilledBezierPath_property.readModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPath_property)
   //--- height
     self.height_property.readModelFunction = nil 
     self.height_property.writeModelFunction = nil 
@@ -400,9 +403,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
   //--- selectionDisplay
     self.selectionDisplay_property.readModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-  //--- topSideFilledBezierPath
-    self.topSideFilledBezierPath_property.readModelFunction = nil 
-    self.mActualModel.removeEBObserverOf_topSideFilledBezierPath (self.topSideFilledBezierPath_property)
   //--- width
     self.width_property.readModelFunction = nil 
     self.width_property.writeModelFunction = nil 
@@ -755,6 +755,46 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.backSideFilledBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_frontSideFilledBezierPath (model : ReadOnlyArrayOf_PackageSlavePad) {
+    model.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPath_property)
+    self.frontSideFilledBezierPath_property.readModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.frontSideFilledBezierPath_property_selection {
             case .empty :
               return .empty
             case .multiple :
@@ -1415,46 +1455,6 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
-            case .empty :
-              return .empty
-            case .multiple :
-              isMultipleSelection = true
-            case .single (let vProp) :
-              s.insert (vProp)
-            }
-          }
-          if isMultipleSelection {
-            return .multiple
-          }else if s.count == 0 {
-            return .empty
-          }else if s.count == 1 {
-            return .single (s.first!)
-          }else{
-            return .multiple
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-  }
-
-  //···················································································································*
-
-  private final func bind_property_topSideFilledBezierPath (model : ReadOnlyArrayOf_PackageSlavePad) {
-    model.addEBObserverOf_topSideFilledBezierPath (self.topSideFilledBezierPath_property)
-    self.topSideFilledBezierPath_property.readModelFunction = { [weak self] in
-      if let model = self?.mActualModel {
-        switch model.prop {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          var s = Set <NSBezierPath> ()
-          var isMultipleSelection = false
-          for object in v {
-            switch object.topSideFilledBezierPath_property_selection {
             case .empty :
               return .empty
             case .multiple :

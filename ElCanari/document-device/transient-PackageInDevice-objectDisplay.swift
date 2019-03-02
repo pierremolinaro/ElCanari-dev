@@ -12,16 +12,19 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageInDevice_objectDisplay (
+       _ self_mPads_padNumberDisplay : [PackagePad_padNumberDisplay],
+       _ self_mSlavePads_padNumberDisplay : [PackageSlavePad_padNumberDisplay],
+       _ self_mRoot_mShowPackagePadNumbers : Bool?,
        _ self_mStrokeBezierPath : NSBezierPath,
        _ self_mRoot_mShowPackages : Bool?,    
        _ prefs_packageColor : NSColor,        
        _ prefs_packageDrawingWidthMultipliedByTen : Int,
-       _ self_mPadTopSideFilledBezierPathArray : BezierPathArray,
+       _ self_frontSidePadFilledBezierPathArray : BezierPathArray,
        _ self_mRoot_mShowPackageFrontPads : Bool?,
-       _ prefs_topSidePadColor : NSColor,     
-       _ self_mPadBackSideFilledBezierPathArray : BezierPathArray,
+       _ prefs_frontSidePadColor : NSColor,   
+       _ self_backSidePadFilledBezierPathArray : BezierPathArray,
        _ self_mRoot_mShowPackageBackPads : Bool?,
-       _ prefs_bottomSidePadColor : NSColor,  
+       _ prefs_backSidePadColor : NSColor,    
        _ self_mName : String,                 
        _ self_mX : Int,                       
        _ self_mY : Int
@@ -36,8 +39,8 @@ func transient_PackageInDevice_objectDisplay (
       if !self_mStrokeBezierPath.isEmpty {
         r = r.union (self_mStrokeBezierPath.bounds)
       }
-      r = r.union (self_mPadTopSideFilledBezierPathArray.bounds)
-      r = r.union (self_mPadBackSideFilledBezierPathArray.bounds)
+      r = r.union (self_frontSidePadFilledBezierPathArray.bounds)
+      r = r.union (self_backSidePadFilledBezierPathArray.bounds)
     //--- Frame
       let frameRadius : CGFloat = 3.0
       let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
@@ -60,11 +63,24 @@ func transient_PackageInDevice_objectDisplay (
       shape.append (nameShape)
     //--- Back side pad
       if self_mRoot_mShowPackageBackPads ?? false {
-        shape.append (EBFilledBezierPathShape (self_mPadBackSideFilledBezierPathArray.array, prefs_bottomSidePadColor))
+        shape.append (EBFilledBezierPathShape (self_backSidePadFilledBezierPathArray.array, prefs_backSidePadColor))
       }
     //--- Top side pad
       if self_mRoot_mShowPackageFrontPads ?? false {
-        shape.append (EBFilledBezierPathShape (self_mPadTopSideFilledBezierPathArray.array, prefs_topSidePadColor))
+        shape.append (EBFilledBezierPathShape (self_frontSidePadFilledBezierPathArray.array, prefs_frontSidePadColor))
+      }
+    //--- Pad number
+      if self_mRoot_mShowPackagePadNumbers ?? false {
+        for pad in self_mPads_padNumberDisplay {
+          if let textShape = pad.padNumberDisplay {
+            shape.append (textShape)
+          }
+        }
+        for slavePad in self_mSlavePads_padNumberDisplay {
+          if let textShape = slavePad.padNumberDisplay {
+            shape.append (textShape)
+          }
+        }
       }
     //--- Package shape
       if self_mRoot_mShowPackages ?? false {

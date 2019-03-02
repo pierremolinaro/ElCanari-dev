@@ -136,10 +136,14 @@ import Cocoa
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mPackageBackPadsColorWell : EBColorWell?
   @IBOutlet var mPackageDisplayHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPackageDisplayVerticalFlipSwitch : EBSwitch?
+  @IBOutlet var mPackageFrontPadsColorWell : EBColorWell?
+  @IBOutlet var mPackageNumbersColorWell : EBColorWell?
   @IBOutlet var mPackagePageView : CanariViewWithKeyView?
   @IBOutlet var mPackageTableView : EBTableView?
+  @IBOutlet var mPackagesColorWell : EBColorWell?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mPasteImageButton : EBButton?
   @IBOutlet var mPrefixTextField : EBTextField?
@@ -439,6 +443,21 @@ import Cocoa
         errorMessage: "the 'mMasterView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPackageBackPadsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageBackPadsColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageBackPadsColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPackageDisplayHorizontalFlipSwitch {
       if !(outlet is EBSwitch) {
         presentErrorWindow (
@@ -469,6 +488,36 @@ import Cocoa
         errorMessage: "the 'mPackageDisplayVerticalFlipSwitch' outlet is nil"
       )
     }
+    if let outlet : Any = self.mPackageFrontPadsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageFrontPadsColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageFrontPadsColorWell' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPackageNumbersColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackageNumbersColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackageNumbersColorWell' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mPackagePageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -497,6 +546,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mPackageTableView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mPackagesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mPackagesColorWell' outlet is not an instance of 'EBColorWell'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mPackagesColorWell' outlet is nil"
       )
     }
     if let outlet : Any = self.mPageSegmentedControl {
@@ -890,9 +954,13 @@ import Cocoa
     self.mPackageDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mPackageDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mShowPackagesSwitch?.bind_value (self.rootObject.mShowPackages_property, file: #file, line: #line)
+    self.mPackagesColorWell?.bind_color (g_Preferences!.packageColor_property, file: #file, line: #line, sendContinously:false)
     self.mShowPackagePadNumbersSwitch?.bind_value (self.rootObject.mShowPackagePadNumbers_property, file: #file, line: #line)
+    self.mPackageNumbersColorWell?.bind_color (g_Preferences!.padNumberColor_property, file: #file, line: #line, sendContinously:false)
     self.mShowPackageFrontPadsSwitch?.bind_value (self.rootObject.mShowPackageFrontPads_property, file: #file, line: #line)
+    self.mPackageFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
+    self.mPackageBackPadsColorWell?.bind_color (g_Preferences!.backSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1043,9 +1111,13 @@ import Cocoa
     self.mPackageDisplayHorizontalFlipSwitch?.unbind_value ()
     self.mPackageDisplayVerticalFlipSwitch?.unbind_value ()
     self.mShowPackagesSwitch?.unbind_value ()
+    self.mPackagesColorWell?.unbind_color ()
     self.mShowPackagePadNumbersSwitch?.unbind_value ()
+    self.mPackageNumbersColorWell?.unbind_color ()
     self.mShowPackageFrontPadsSwitch?.unbind_value ()
+    self.mPackageFrontPadsColorWell?.unbind_color ()
     self.mShowPackageBackPadsSwitch?.unbind_value ()
+    self.mPackageBackPadsColorWell?.unbind_color ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -1107,10 +1179,14 @@ import Cocoa
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mPackageBackPadsColorWell?.ebCleanUp ()
     self.mPackageDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mPackageDisplayVerticalFlipSwitch?.ebCleanUp ()
+    self.mPackageFrontPadsColorWell?.ebCleanUp ()
+    self.mPackageNumbersColorWell?.ebCleanUp ()
     self.mPackagePageView?.ebCleanUp ()
     self.mPackageTableView?.ebCleanUp ()
+    self.mPackagesColorWell?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mPasteImageButton?.ebCleanUp ()
     self.mPrefixTextField?.ebCleanUp ()

@@ -110,14 +110,14 @@ prefs {
 #--- Package Color
   property NSColor packageColor default brown;
   outlet EBColorWell mPackageColorColorWell $color self.packageColor {sendContinously:no} ;
-#--- Top Side Pad Color
-  property NSColor topSidePadColor default blue;
-  outlet EBColorWell mTopSidePadColorWell $color self.topSidePadColor {sendContinously:no} ;
-  property Bool displayPackageTopSidePads default yes ;
-#--- Bottom Side Pad Color
-  property NSColor bottomSidePadColor default green;
-  outlet EBColorWell mBottomSidePadColorWell $color self.bottomSidePadColor {sendContinously:no} ;
-  property Bool displayPackageBottomSidePads default yes ;
+#--- Front Side Pad Color
+  property NSColor frontSidePadColor default blue;
+  outlet EBColorWell mTopSidePadColorWell $color self.frontSidePadColor {sendContinously:no} ;
+  property Bool displayPackageFrontSidePads default yes ;
+#--- Back Side Pad Color
+  property NSColor backSidePadColor default green;
+  outlet EBColorWell mBottomSidePadColorWell $color self.backSidePadColor {sendContinously:no} ;
+  property Bool displayPackageBackSidePads default yes ;
 #--- Pad Number Color
   property NSColor padNumberColor default red;
   outlet EBColorWell mPadNumberColorColorWell $color self.padNumberColor {sendContinously:no} ;
@@ -161,8 +161,8 @@ prefs {
   property NSColor mPackageColorForDevice default brown;
   outlet EBColorWell mPackageColorForDeviceColorWell $color self.mPackageColorForDevice {sendContinously:no} ;
 #--- Pad Colors
-  property NSColor mTopSidePadColorForDevice default blue;
-  outlet EBColorWell mTopSidePadColorForDeviceColorWell $color self.mTopSidePadColorForDevice {sendContinously:no} ;
+  property NSColor mFrontSidePadColorForDevice default blue;
+  outlet EBColorWell mTopSidePadColorForDeviceColorWell $color self.mFrontSidePadColorForDevice {sendContinously:no} ;
   property NSColor mBottomSidePadColorForDevice default green;
   outlet EBColorWell mBottomSidePadColorDorDeviveColorWell $color self.mBottomSidePadColorForDevice {sendContinously:no} ;
 #--- Pad Number Color

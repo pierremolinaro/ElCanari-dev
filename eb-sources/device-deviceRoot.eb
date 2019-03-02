@@ -49,12 +49,13 @@ entity DeviceDocumentation {
 graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany packages ;
   
+  toMany PackagePad mPads ;
+  toMany PackageSlavePad mSlavePads ;
+ 
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
   property @signature Int mVersion default 0 ;
   
-  property @signature BezierPathArray mPadTopSideFilledBezierPathArray default empty ;
-  property @signature BezierPathArray mPadBackSideFilledBezierPathArray default empty ;
   property @signature NSBezierPath mStrokeBezierPath default empty ;
  
   property Int mX default 0 ;
@@ -62,22 +63,35 @@ graphic entity PackageInDevice {
   
   transient String versionString dependsFrom self.mVersion ;
 
+  transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
+    self.mPads.all.frontSideFilledBezierPath,
+    self.mSlavePads.all.frontSideFilledBezierPath
+  ;
+
+  transient BezierPathArray backSidePadFilledBezierPathArray dependsFrom
+    self.mPads.all.backSideFilledBezierPath,
+    self.mSlavePads.all.backSideFilledBezierPath
+  ;
+
   transient EBShape objectDisplay dependsFrom
+     self.mPads.all.padNumberDisplay,
+     self.mSlavePads.all.padNumberDisplay,
+     self.mRoot.one.mShowPackagePadNumbers,
      self.mStrokeBezierPath, self.mRoot.one.mShowPackages,
      prefs.packageColor,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.mPadTopSideFilledBezierPathArray, self.mRoot.one.mShowPackageFrontPads,
-     prefs.topSidePadColor,
-     self.mPadBackSideFilledBezierPathArray, self.mRoot.one.mShowPackageBackPads,
-     prefs.bottomSidePadColor,
+     self.frontSidePadFilledBezierPathArray, self.mRoot.one.mShowPackageFrontPads,
+     prefs.frontSidePadColor,
+     self.backSidePadFilledBezierPathArray, self.mRoot.one.mShowPackageBackPads,
+     prefs.backSidePadColor,
      self.mName, self.mX, self.mY
   ;
 
   transient EBShape selectionDisplay dependsFrom
      self.mStrokeBezierPath,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.mPadTopSideFilledBezierPathArray,
-     self.mPadBackSideFilledBezierPathArray,
+     self.frontSidePadFilledBezierPathArray,
+     self.backSidePadFilledBezierPathArray,
      self.mName, self.mX, self.mY
   ;
 }

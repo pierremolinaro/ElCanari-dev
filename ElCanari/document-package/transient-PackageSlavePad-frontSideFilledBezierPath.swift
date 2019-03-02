@@ -11,19 +11,15 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_objectDisplay (
-       _ self_xCenter : Int,             
-       _ self_yCenter : Int,             
-       _ self_width : Int,               
-       _ self_height : Int,              
-       _ self_holeDiameter : Int,        
-       _ self_padShape : PadShape,       
-       _ self_padStyle : PadStyle,       
-       _ prefs_frontSidePadColor : NSColor,
-       _ prefs_displayPackageFrontSidePads : Bool,
-       _ prefs_backSidePadColor : NSColor,
-       _ prefs_displayPackageBackSidePads : Bool
-) -> EBShape {
+func transient_PackageSlavePad_frontSideFilledBezierPath (
+       _ self_xCenter : Int,                              
+       _ self_yCenter : Int,                              
+       _ self_width : Int,                                
+       _ self_height : Int,                               
+       _ self_holeDiameter : Int,                         
+       _ self_padShape : PadShape,                        
+       _ self_padStyle : SlavePadStyle
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_xCenter)
     let yCenter = canariUnitToCocoa (self_yCenter)
@@ -51,20 +47,12 @@ func transient_PackagePad_objectDisplay (
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)
       bp.windingRule = .evenOdd
-      if prefs_displayPackageFrontSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
-      }else if prefs_displayPackageBackSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_backSidePadColor)
-      }else{
-        return EBShape ()
-      }
-    case .surface :
-      if prefs_displayPackageFrontSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
-      }else{
-        return EBShape ()
-      }
+    case .topSide :
+      ()
+    case .bottomSide :
+      bp.removeAllPoints ()
     }
+    return bp
 //--- END OF USER ZONE 2
 }
 

@@ -21,10 +21,14 @@
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
                 <outlet property="mLibraryPageView" destination="1124" id="3bK-az-okh"/>
                 <outlet property="mMasterView" destination="1198" id="hbK-Bd-u96"/>
+                <outlet property="mPackageBackPadsColorWell" destination="c4g-Jr-krY" id="eeL-t1-RGc"/>
                 <outlet property="mPackageDisplayHorizontalFlipSwitch" destination="zYp-cL-5jj" id="T7b-fZ-dUb"/>
                 <outlet property="mPackageDisplayVerticalFlipSwitch" destination="Ev9-QZ-LcM" id="4Nr-vm-TFx"/>
+                <outlet property="mPackageFrontPadsColorWell" destination="1sD-hv-ODc" id="Iek-eY-uD3"/>
+                <outlet property="mPackageNumbersColorWell" destination="M70-7R-iem" id="Feb-r3-d1J"/>
                 <outlet property="mPackagePageView" destination="1080" id="Jmt-gr-8Nm"/>
                 <outlet property="mPackageTableView" destination="1616" id="QjC-ZE-6aU"/>
+                <outlet property="mPackagesColorWell" destination="YyN-tZ-4oZ" id="BvI-1K-qDR"/>
                 <outlet property="mPageSegmentedControl" destination="1907" id="2dS-r6-OP5"/>
                 <outlet property="mPasteImageButton" destination="2106" id="OgU-8Y-X0Y"/>
                 <outlet property="mPrefixTextField" destination="1171" id="AA5-NL-TvD"/>
@@ -681,7 +685,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="1sD-hv-ODc">
+                <colorWell id="1sD-hv-ODc" customClass="EBColorWell">
                     <rect key="frame" x="20" y="225" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -694,12 +698,12 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="c4g-Jr-krY">
+                <colorWell id="c4g-Jr-krY" customClass="EBColorWell">
                     <rect key="frame" x="20" y="198" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </colorWell>
-                <colorWell id="YyN-tZ-4oZ">
+                <colorWell id="YyN-tZ-4oZ" customClass="EBColorWell">
                     <rect key="frame" x="20" y="279" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -712,7 +716,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <colorWell id="M70-7R-iem">
+                <colorWell id="M70-7R-iem" customClass="EBColorWell">
                     <rect key="frame" x="20" y="252" width="40" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1292,7 +1296,7 @@
                     </buttonCell>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="262" y="-834.5"/>
+            <point key="canvasLocation" x="522" y="-1210"/>
         </customView>
         <customView id="1177" userLabel="Page : Infos" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="688" height="408"/>

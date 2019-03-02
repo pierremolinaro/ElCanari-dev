@@ -90,8 +90,8 @@ protocol PackagePad_annularRingUnit : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PackagePad_topSideFilledBezierPath : class {
-  var topSideFilledBezierPath : NSBezierPath? { get }
+protocol PackagePad_frontSideFilledBezierPath : class {
+  var frontSideFilledBezierPath : NSBezierPath? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -185,7 +185,7 @@ class PackagePad : PackageObject,
          PackagePad_heightUnit,
          PackagePad_holeDiameterUnit,
          PackagePad_annularRingUnit,
-         PackagePad_topSideFilledBezierPath,
+         PackagePad_frontSideFilledBezierPath,
          PackagePad_backSideFilledBezierPath,
          PackagePad_selectionDisplay,
          PackagePad_padName,
@@ -546,21 +546,21 @@ class PackagePad : PackageObject,
   }
 
   //····················································································································
-  //   Transient property: topSideFilledBezierPath
+  //   Transient property: frontSideFilledBezierPath
   //····················································································································
 
-  var topSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
+  var frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   //····················································································································
 
-  var topSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.topSideFilledBezierPath_property.prop
+  var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.frontSideFilledBezierPath_property.prop
   }
 
   //····················································································································
 
-  var topSideFilledBezierPath : NSBezierPath? {
-    switch self.topSideFilledBezierPath_property_selection {
+  var frontSideFilledBezierPath : NSBezierPath? {
+    switch self.frontSideFilledBezierPath_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -816,8 +816,8 @@ class PackagePad : PackageObject,
     }
   //--- To one property: zone
     self.zone_property.owner = self
-  //--- Atomic property: topSideFilledBezierPath
-    self.topSideFilledBezierPath_property.readModelFunction = { [weak self] in
+  //--- Atomic property: frontSideFilledBezierPath
+    self.frontSideFilledBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -834,7 +834,7 @@ class PackagePad : PackageObject,
         case .singleSelectionKind :
           switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
-            return .single (transient_PackagePad_topSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6))
+            return .single (transient_PackagePad_frontSideFilledBezierPath (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -843,13 +843,13 @@ class PackagePad : PackageObject,
         return .empty
       }
     }
-    self.xCenter_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.yCenter_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.width_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.height_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.holeDiameter_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.padShape_property.addEBObserver (self.topSideFilledBezierPath_property)
-    self.padStyle_property.addEBObserver (self.topSideFilledBezierPath_property)
+    self.xCenter_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.yCenter_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.width_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.height_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.holeDiameter_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.padShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
+    self.padStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
     self.backSideFilledBezierPath_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1114,17 +1114,17 @@ class PackagePad : PackageObject,
         kind &= unwSelf.holeDiameter_property_selection.kind ()
         kind &= unwSelf.padShape_property_selection.kind ()
         kind &= unwSelf.padStyle_property_selection.kind ()
-        kind &= g_Preferences!.topSidePadColor_property_selection.kind ()
-        kind &= g_Preferences!.displayPackageTopSidePads_property_selection.kind ()
-        kind &= g_Preferences!.bottomSidePadColor_property_selection.kind ()
-        kind &= g_Preferences!.displayPackageBottomSidePads_property_selection.kind ()
+        kind &= g_Preferences!.frontSidePadColor_property_selection.kind ()
+        kind &= g_Preferences!.displayPackageFrontSidePads_property_selection.kind ()
+        kind &= g_Preferences!.backSidePadColor_property_selection.kind ()
+        kind &= g_Preferences!.displayPackageBackSidePads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, g_Preferences!.topSidePadColor_property_selection, g_Preferences!.displayPackageTopSidePads_property_selection, g_Preferences!.bottomSidePadColor_property_selection, g_Preferences!.displayPackageBottomSidePads_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, unwSelf.holeDiameter_property_selection, unwSelf.padShape_property_selection, unwSelf.padStyle_property_selection, g_Preferences!.frontSidePadColor_property_selection, g_Preferences!.displayPackageFrontSidePads_property_selection, g_Preferences!.backSidePadColor_property_selection, g_Preferences!.displayPackageBackSidePads_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
             return .single (transient_PackagePad_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
@@ -1142,10 +1142,10 @@ class PackagePad : PackageObject,
     self.holeDiameter_property.addEBObserver (self.objectDisplay_property)
     self.padShape_property.addEBObserver (self.objectDisplay_property)
     self.padStyle_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.topSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageTopSidePads_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.bottomSidePadColor_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageBottomSidePads_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageFrontSidePads_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: padNumberDisplay
     self.padNumberDisplay_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1202,13 +1202,13 @@ class PackagePad : PackageObject,
 
   deinit {
   //--- Remove observers
-    self.xCenter_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.yCenter_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.width_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.height_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.holeDiameter_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.padShape_property.removeEBObserver (self.topSideFilledBezierPath_property)
-    self.padStyle_property.removeEBObserver (self.topSideFilledBezierPath_property)
+    self.xCenter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.yCenter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.width_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.height_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.holeDiameter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.padShape_property.removeEBObserver (self.frontSideFilledBezierPath_property)
+    self.padStyle_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.xCenter_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.yCenter_property.removeEBObserver (self.backSideFilledBezierPath_property)
     self.width_property.removeEBObserver (self.backSideFilledBezierPath_property)
@@ -1243,10 +1243,10 @@ class PackagePad : PackageObject,
     self.holeDiameter_property.removeEBObserver (self.objectDisplay_property)
     self.padShape_property.removeEBObserver (self.objectDisplay_property)
     self.padStyle_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.topSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageTopSidePads_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.bottomSidePadColor_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.displayPackageBottomSidePads_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageFrontSidePads_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.displayPackageBackSidePads_property.removeEBObserver (self.objectDisplay_property)
     self.xCenter_property.removeEBObserver (self.padNumberDisplay_property)
     self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
@@ -1379,12 +1379,12 @@ class PackagePad : PackageObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "topSideFilledBezierPath",
-      idx:self.topSideFilledBezierPath_property.ebObjectIndex,
+      "frontSideFilledBezierPath",
+      idx:self.frontSideFilledBezierPath_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.topSideFilledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.topSideFilledBezierPath_property.mValueExplorer
+      observerExplorer:&self.frontSideFilledBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.frontSideFilledBezierPath_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "backSideFilledBezierPath",
@@ -2533,57 +2533,57 @@ class ReadOnlyArrayOf_PackagePad : ReadOnlyAbstractArrayProperty <PackagePad> {
   }
 
   //····················································································································
-  //   Observers of 'topSideFilledBezierPath' transient property
+  //   Observers of 'frontSideFilledBezierPath' transient property
   //····················································································································
 
-  private var mObserversOf_topSideFilledBezierPath = EBWeakEventSet ()
+  private var mObserversOf_frontSideFilledBezierPath = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_topSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func addEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_topSideFilledBezierPath.insert (inObserver)
+    self.mObserversOf_frontSideFilledBezierPath.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.topSideFilledBezierPath_property.addEBObserver (inObserver)
+        managedObject.frontSideFilledBezierPath_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_topSideFilledBezierPath (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_frontSideFilledBezierPath (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_topSideFilledBezierPath.remove (inObserver)
+    self.mObserversOf_frontSideFilledBezierPath.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.topSideFilledBezierPath_property.removeEBObserver (inObserver)
+        managedObject.frontSideFilledBezierPath_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_topSideFilledBezierPath_toElementsOfSet (_ inSet : Set<PackagePad>) {
+  final func addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      self.mObserversOf_topSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.topSideFilledBezierPath_property.addEBObserver (observer)
+      self.mObserversOf_frontSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.frontSideFilledBezierPath_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_topSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<PackagePad>) {
+  final func removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (_ inSet : Set<PackagePad>) {
     for managedObject in inSet {
-      self.mObserversOf_topSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.topSideFilledBezierPath_property.removeEBObserver (observer)
+      self.mObserversOf_frontSideFilledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.frontSideFilledBezierPath_property.removeEBObserver (observer)
       })
     }
   }
@@ -3348,7 +3348,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_topSideFilledBezierPath_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padName_fromElementsOfSet (removedSet)
@@ -3379,7 +3379,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
       self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedSet)
       self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_topSideFilledBezierPath_toElementsOfSet (addedSet)
+      self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_padName_toElementsOfSet (addedSet)
@@ -3547,7 +3547,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.removeEBObserversOf_heightUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_holeDiameterUnit_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_annularRingUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_topSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_padName_fromElementsOfSet (removedObjectSet)
@@ -3594,7 +3594,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         self.addEBObserversOf_heightUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_holeDiameterUnit_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_annularRingUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_topSideFilledBezierPath_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet)

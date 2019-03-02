@@ -14,8 +14,8 @@ import Cocoa
 func transient_PackageInDevice_selectionDisplay (
        _ self_mStrokeBezierPath : NSBezierPath,  
        _ prefs_packageDrawingWidthMultipliedByTen : Int,
-       _ self_mPadTopSideFilledBezierPathArray : BezierPathArray,
-       _ self_mPadBackSideFilledBezierPathArray : BezierPathArray,
+       _ self_frontSidePadFilledBezierPathArray : BezierPathArray,
+       _ self_backSidePadFilledBezierPathArray : BezierPathArray,
        _ self_mName : String,                    
        _ self_mX : Int,                          
        _ self_mY : Int
@@ -30,8 +30,8 @@ func transient_PackageInDevice_selectionDisplay (
       if !self_mStrokeBezierPath.isEmpty {
         r = r.union (self_mStrokeBezierPath.bounds)
       }
-      r = r.union (self_mPadTopSideFilledBezierPathArray.bounds)
-      r = r.union (self_mPadBackSideFilledBezierPathArray.bounds)
+      r = r.union (self_frontSidePadFilledBezierPathArray.bounds)
+      r = r.union (self_backSidePadFilledBezierPathArray.bounds)
     //--- Frame
       let frameRadius : CGFloat = 3.0
       let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0

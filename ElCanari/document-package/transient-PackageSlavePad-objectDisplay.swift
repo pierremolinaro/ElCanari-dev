@@ -19,10 +19,10 @@ func transient_PackageSlavePad_objectDisplay (
        _ self_holeDiameter : Int,             
        _ self_padShape : PadShape,            
        _ self_padStyle : SlavePadStyle,       
-       _ prefs_topSidePadColor : NSColor,     
-       _ prefs_displayPackageTopSidePads : Bool,
-       _ prefs_bottomSidePadColor : NSColor,  
-       _ prefs_displayPackageBottomSidePads : Bool
+       _ prefs_frontSidePadColor : NSColor,   
+       _ prefs_displayPackageFrontSidePads : Bool,
+       _ prefs_backSidePadColor : NSColor,    
+       _ prefs_displayPackageBackSidePads : Bool
 ) -> EBShape {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_xCenter)
@@ -51,22 +51,22 @@ func transient_PackageSlavePad_objectDisplay (
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)
       bp.windingRule = .evenOdd
-      if prefs_displayPackageTopSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_topSidePadColor)
-      }else if prefs_displayPackageBottomSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor)
+      if prefs_displayPackageFrontSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
+      }else if prefs_displayPackageBackSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_backSidePadColor)
       }else{
         return EBShape ()
       }
     case .topSide :
-      if prefs_displayPackageTopSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_topSidePadColor)
+      if prefs_displayPackageFrontSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_frontSidePadColor)
       }else{
         return EBShape ()
       }
     case .bottomSide :
-      if prefs_displayPackageBottomSidePads {
-        return EBFilledBezierPathShape ([bp], prefs_bottomSidePadColor)
+      if prefs_displayPackageBackSidePads {
+        return EBFilledBezierPathShape ([bp], prefs_backSidePadColor)
       }else{
         return EBShape ()
       }
