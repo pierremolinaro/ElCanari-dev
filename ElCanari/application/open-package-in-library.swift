@@ -40,13 +40,14 @@ class OpenPackageInLibrary : OpenInLibrary {
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     super.buildOutlineViewDataSource (extension: "ElCanariPackage", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
-      if let root = inRootObject as? PackageRoot {
-        for object in root.packageObjects_property.propval {
+      if let packageRoot = inRootObject as? PackageRoot {
+        for object in packageRoot.packageObjects_property.propval {
           if !(object is PackageGuide), !(object is PackageDimension), let shape = object.objectDisplay {
             partShape.append (shape)
           }
         }
       }
+      inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.packageBackgroundColor)
     })

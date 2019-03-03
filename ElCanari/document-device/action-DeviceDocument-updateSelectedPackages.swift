@@ -32,16 +32,35 @@ extension DeviceDocument {
             package.mVersion = version
             package.mFileData = data
             let strokeBezierPathes = NSBezierPath ()
-            var pads = [PackagePad] ()
+            var masterPads = [PackagePad] ()
             var slavePads = [PackageSlavePad] ()
+            var zones = [PackageZone] ()
             packageRoot.accumulate (
               strokeBezierPathes: strokeBezierPathes,
-              pads: &pads,
+              masterPads: &masterPads,
+              zones : &zones,
               slavePads: &slavePads
             )
+          //-- Set property
             package.mStrokeBezierPath = strokeBezierPathes
-            package.mPads_property.setProp (pads)
+          //--- Remove relationship circularities
+            for zone in package.mZones_property.propval {
+              zone.cleanUpToOneRelationships ()
+              zone.cleanUpToManyRelationships ()
+            }
+            for masterPad in package.mPads_property.propval {
+              masterPad.cleanUpToOneRelationships ()
+              masterPad.cleanUpToManyRelationships ()
+            }
+            for slavePad in package.mSlavePads_property.propval {
+              slavePad.cleanUpToOneRelationships ()
+              slavePad.cleanUpToManyRelationships ()
+            }
+          //--- Set relationship
+            package.mPads_property.setProp (masterPads)
             package.mSlavePads_property.setProp (slavePads)
+            package.mZones_property.setProp (zones)
+          //---
             messages.append ("Package \(package.mName) has been updated to version \(version)")
           }
         }else{

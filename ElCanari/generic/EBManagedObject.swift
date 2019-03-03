@@ -70,6 +70,34 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
+  //  reachableObjects
+  //····················································································································
+
+  func removeRecursivelyAllRelationsShips () {
+  //--- Find all reachable entities
+    var reachableObjectSet = Set <EBManagedObject> ()
+    reachableObjectSet.insert (self)
+    var objectsToExploreArray = [EBManagedObject] ()
+    objectsToExploreArray.append (self)
+    while let objectToExplore = objectsToExploreArray.last {
+      objectsToExploreArray.removeLast ()
+      var accessible = [EBManagedObject] ()
+      objectToExplore.accessibleObjects (objects: &accessible)
+      for managedObject in accessible {
+        if !reachableObjectSet.contains (managedObject) {
+          reachableObjectSet.insert (managedObject)
+          objectsToExploreArray.append (managedObject)
+        }
+      }
+    }
+  //--- Remove relationships
+    for object in reachableObjectSet {
+      object.cleanUpToOneRelationships ()
+      object.cleanUpToManyRelationships ()
+    }
+  }
+
+  //····················································································································
   //   accessibleObjects
   //····················································································································
 

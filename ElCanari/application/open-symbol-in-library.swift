@@ -29,13 +29,14 @@ class OpenSymbolInLibrary : OpenInLibrary {
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
     self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
       let partShape = EBShape ()
-      if let root = inRootObject as? SymbolRoot {
-        for object in root.symbolObjects_property.propval {
+      if let symbolRoot = inRootObject as? SymbolRoot {
+        for object in symbolRoot.symbolObjects_property.propval {
           if let shape = object.objectDisplay {
             partShape.append (shape)
           }
         }
       }
+      inRootObject?.removeRecursivelyAllRelationsShips ()
       let box = partShape.boundingBox
       return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
     })

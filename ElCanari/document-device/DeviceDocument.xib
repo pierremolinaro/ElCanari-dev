@@ -89,7 +89,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="462" height="20"/>
                         <size key="maxSize" width="554" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl">
                             <rect key="frame" x="0.0" y="14" width="462" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1908">

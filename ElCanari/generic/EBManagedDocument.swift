@@ -131,7 +131,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func dataForSavingFromRootObject () throws -> Data {
-    let objectsToSaveArray : [EBManagedObject] = self.reachableObjectsFromRootObject (rootObject: self.mRootObject!)
+    let objectsToSaveArray = self.reachableObjectsFromRootObject ()
   //--- Set savingIndex for each object
     var idx = 0
     for object in objectsToSaveArray {
@@ -155,26 +155,25 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //  R E A C H A B L E   O B J E C T S    F R O M    O B J E C T
   //····················································································································
 
-  private func reachableObjectsFromRootObject (rootObject : EBManagedObject) -> [EBManagedObject] {
+  private func reachableObjectsFromRootObject () -> [EBManagedObject] {
+    let rootObject = self.mRootObject!
     var reachableObjectArray = [EBManagedObject] ()
     var reachableObjectSet = Set <EBManagedObject> ()
     reachableObjectSet.insert (rootObject)
     var objectsToExploreArray = [EBManagedObject] ()
     objectsToExploreArray.append (rootObject)
-    rootObject.savingIndex = reachableObjectArray.count
+  //  rootObject.savingIndex = reachableObjectArray.count
     reachableObjectArray.append (rootObject)
     // let start = Date()
     //   NSLog ("start")
-    while (objectsToExploreArray.count > 0) {
-      let objectToExplore : EBManagedObject = objectsToExploreArray.last!
+    while let objectToExplore = objectsToExploreArray.last {
       objectsToExploreArray.removeLast ()
       var accessible = [EBManagedObject] ()
       objectToExplore.accessibleObjects (objects: &accessible)
-      for object : Any in accessible {
-        let managedObject = object as! EBManagedObject
+      for managedObject in accessible {
         if !reachableObjectSet.contains (managedObject) {
           reachableObjectSet.insert (managedObject)
-          managedObject.savingIndex = reachableObjectArray.count
+       //   managedObject.savingIndex = reachableObjectArray.count
           reachableObjectArray.append (managedObject)
           objectsToExploreArray.append (managedObject)
         }
@@ -380,9 +379,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   override final func removeWindowController (_ inWindowController : NSWindowController) {
   //--- Remove user interface
     self.removeUserInterface ()
-//    DispatchQueue.main.asyncAfter (deadline: .now (), execute: { self.removeUserInterface () })
   //--- Remove all entities
-    let allEntities = self.reachableObjectsFromRootObject (rootObject: self.mRootObject!)
+    let allEntities = self.reachableObjectsFromRootObject ()
     for entity in allEntities {
       entity.clearObjectExplorer ()
       entity.cleanUpToManyRelationships ()

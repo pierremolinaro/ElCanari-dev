@@ -100,6 +100,18 @@ class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To many property: mZones
+  //····················································································································
+
+  var mZones_property = StoredArrayOf_PackageZone ()
+
+  //····················································································································
+
+  var mZones_property_selection : EBSelection < [PackageZone] > {
+      return self.mZones_property.prop
+  }
+
+  //····················································································································
   //   To many property: mSlavePads
   //····················································································································
 
@@ -338,6 +350,8 @@ class PackageInDevice : EBGraphicManagedObject,
     super.init (undoManager, file: file, line)
   //--- To many property: mPads (no option)
     self.mPads_property.undoManager = self.undoManager
+  //--- To many property: mZones (no option)
+    self.mZones_property.undoManager = self.undoManager
   //--- To many property: mSlavePads (no option)
     self.mSlavePads_property.undoManager = self.undoManager
   //--- Atomic property: mFileData
@@ -662,6 +676,13 @@ class PackageInDevice : EBGraphicManagedObject,
       valueExplorer:&mPads_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
+      "mZones",
+      idx:mZones_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mZones_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "mSlavePads",
       idx:mSlavePads_property.ebObjectIndex,
       y: &y,
@@ -686,6 +707,8 @@ class PackageInDevice : EBGraphicManagedObject,
   override func clearObjectExplorer () {
   //--- To many property: mPads
     self.mPads_property.mValueExplorer = nil
+  //--- To many property: mZones
+    self.mZones_property.mValueExplorer = nil
   //--- To many property: mSlavePads
     self.mSlavePads_property.mValueExplorer = nil
   //--- Atomic property: mFileData
@@ -719,6 +742,7 @@ class PackageInDevice : EBGraphicManagedObject,
 
   override func cleanUpToManyRelationships () {
     self.mPads_property.setProp ([])
+    self.mZones_property.setProp ([])
     self.mSlavePads_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -744,6 +768,12 @@ class PackageInDevice : EBGraphicManagedObject,
     self.store (
       managedObjectArray: mPads_property.propval as NSArray,
       relationshipName: "mPads",
+      intoDictionary: ioDictionary
+    )
+  //--- To many property: mZones
+    self.store (
+      managedObjectArray: mZones_property.propval as NSArray,
+      relationshipName: "mZones",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSlavePads
@@ -779,6 +809,12 @@ class PackageInDevice : EBGraphicManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [PackagePad])
+  //--- To many property: mZones
+    self.mZones_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mZones",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PackageZone])
   //--- To many property: mSlavePads
     self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mSlavePads",
@@ -826,6 +862,10 @@ class PackageInDevice : EBGraphicManagedObject,
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPads
     for managedObject : EBManagedObject in self.mPads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mZones
+    for managedObject : EBManagedObject in self.mZones_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: mSlavePads

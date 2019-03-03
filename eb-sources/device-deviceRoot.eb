@@ -50,6 +50,7 @@ graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany packages ;
   
   toMany PackagePad mPads ;
+  toMany PackageZone mZones ;
   toMany PackageSlavePad mSlavePads ;
  
   property @signature Data mFileData default empty ;
