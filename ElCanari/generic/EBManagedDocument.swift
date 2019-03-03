@@ -25,7 +25,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   var mRootObject : EBManagedObject?
 
   private var mReadMetadataStatus : UInt8 = 0
-  private var mMetadataDictionary : NSMutableDictionary = [:]
+  private var mMetadataDictionary = [String : Any] ()
   private var mUndoManager = EBUndoManager ()
 
   //····················································································································
@@ -75,8 +75,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-    metadataDictionary.setObject (NSNumber (value: version), forKey: EBVersion as NSCopying)
+  func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
+    metadataDictionary [EBVersion] = version
   }
 
   //····················································································································
@@ -95,13 +95,13 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       }
     }
   //--- Save metadata dictionary
-    saveMetadataDictionary (version: version, metadataDictionary : &self.mMetadataDictionary)
+    self.saveMetadataDictionary (version: version, metadataDictionary : &self.mMetadataDictionary)
   //--- Add the witdth and the height of main window to metadata dictionary
     if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
       if unwrappedWindowForSheet.styleMask.contains(.resizable) { // Only if window is resizable
         let windowSize = unwrappedWindowForSheet.frame.size ;
-        self.mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.width)), forKey: EBWindowWidth as NSCopying)
-        self.mMetadataDictionary.setObject (NSNumber (value: Double (windowSize.height)), forKey: EBWindowHeight as NSCopying)
+        self.mMetadataDictionary [EBWindowWidth] = windowSize.width
+        self.mMetadataDictionary [EBWindowHeight] = windowSize.height
       }
     }
   //---
@@ -162,7 +162,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     reachableObjectSet.insert (rootObject)
     var objectsToExploreArray = [EBManagedObject] ()
     objectsToExploreArray.append (rootObject)
-  //  rootObject.savingIndex = reachableObjectArray.count
     reachableObjectArray.append (rootObject)
     // let start = Date()
     //   NSLog ("start")
@@ -173,7 +172,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       for managedObject in accessible {
         if !reachableObjectSet.contains (managedObject) {
           reachableObjectSet.insert (managedObject)
-       //   managedObject.savingIndex = reachableObjectArray.count
           reachableObjectArray.append (managedObject)
           objectsToExploreArray.append (managedObject)
         }
@@ -195,9 +193,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Store Status
     self.mReadMetadataStatus = metadataStatus
   //--- Store metadata dictionary
-    self.mMetadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
+    self.mMetadataDictionary = metadataDictionary
   //--- Read version from file
-    self.mVersion.setProp (readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
+    self.mVersion.setProp (self.readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
   //--- Store root object
     self.mRootObject = possibleRootObject
   //---
@@ -218,10 +216,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func readVersionFromMetadataDictionary (metadataDictionary : NSDictionary) -> Int {
+  func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary.object (forKey: EBVersion as NSCopying) as? NSNumber {
-      result = versionNumber.intValue
+    if let versionNumber = metadataDictionary [EBVersion] as? Int {
+      result = versionNumber
     }
     return result
   }
@@ -234,9 +232,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     super.showWindows ()
     if let unwrappedWindowForSheet = windowForSheet, // Document has been opened in the user interface
           unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
-          let windowWidthNumber = self.mMetadataDictionary.object (forKey: EBWindowWidth) as? NSNumber,
-          let windowHeightNumber = self.mMetadataDictionary.object (forKey: EBWindowHeight) as? NSNumber {
-      let newSize = NSSize (width: CGFloat (windowWidthNumber.doubleValue), height: CGFloat (windowHeightNumber.doubleValue))
+          let windowWidth = self.mMetadataDictionary [EBWindowWidth] as? CGFloat,
+          let windowHeight = self.mMetadataDictionary [EBWindowWidth] as? CGFloat {
+      let newSize = NSSize (width: windowWidth, height: windowHeight)
       var windowFrame : NSRect = unwrappedWindowForSheet.frame
       windowFrame.size = newSize
       unwrappedWindowForSheet.setFrame (windowFrame, display: true)

@@ -23,18 +23,18 @@ let PMDeviceComment = "PMDeviceComment"
 
   //····················································································································
 
-  override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-    metadataDictionary.setObject (NSNumber (value:version), forKey: PMDeviceVersion as NSCopying)
-//    metadataDictionary.setObject (rootObject.comments, forKey: PMDeviceComment as NSCopying)
-//    metadataDictionary.setObject (NSNumber (value: self.mMetadataStatus!.rawValue), forKey: STATUS_METADATA_KEY as NSCopying)
+  override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
+    metadataDictionary [PMDeviceVersion] = version
+    metadataDictionary [PMDeviceComment] = rootObject.comments
+
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : NSDictionary) -> Int {
+  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary.object (forKey: PMDeviceVersion) as? NSNumber {
-      result = versionNumber.intValue
+    if let versionNumber = metadataDictionary [PMDeviceVersion] as? Int {
+      result = versionNumber
     }
     return result
   }

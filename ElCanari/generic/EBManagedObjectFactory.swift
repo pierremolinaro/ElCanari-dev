@@ -74,7 +74,7 @@ func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDict
 //     loadEasyBindingFile
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) throws -> (UInt8, NSDictionary, EBManagedObject?) {
+func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) throws -> (UInt8, [String : Any], EBManagedObject?) {
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data:data)
 //--- Check Signature
@@ -90,8 +90,7 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
   let metadataDictionary = try PropertyListSerialization.propertyList (from: dictionaryData as Data,
     options:[],
     format:nil
-  ) as! NSDictionary
-//  let metadataDictionary = metadataDictionary.mutableCopy () as! NSMutableDictionary
+  ) as! [String : Any]
 //--- Read data
   let dataFormat = dataScanner.parseByte ()
   let fileData = dataScanner.parseAutosizedData ()

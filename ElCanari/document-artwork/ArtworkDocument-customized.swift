@@ -20,17 +20,17 @@ let PMArtworkComment = "PMArtworkComment"
 
   //····················································································································
 
-  override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-     metadataDictionary.setObject (NSNumber (value:version), forKey:PMArtworkVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments, forKey:PMArtworkComment as NSCopying)
+  override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
+    metadataDictionary [PMArtworkVersion] = version
+    metadataDictionary [PMArtworkComment] = rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : NSDictionary) -> Int {
+  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary.object (forKey: PMArtworkVersion) as? NSNumber {
-      result = versionNumber.intValue
+    if let versionNumber = metadataDictionary [PMArtworkVersion] as? Int {
+      result = versionNumber
     }
     return result
   }

@@ -23,18 +23,17 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   //····················································································································
 
-  override func saveMetadataDictionary (version : Int, metadataDictionary : inout NSMutableDictionary) {
-     metadataDictionary.setObject (NSNumber (value:version), forKey: PMPackageVersion as NSCopying)
-     metadataDictionary.setObject (rootObject.comments, forKey: PMPackageComment as NSCopying)
-//     metadataDictionary.setObject (NSNumber (value: self.mMetadataStatus!.rawValue), forKey: STATUS_METADATA_KEY as NSCopying)
+  override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
+    metadataDictionary [PMPackageVersion] = version
+    metadataDictionary [PMPackageComment] = rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : NSDictionary) -> Int {
+  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary.object (forKey: PMPackageVersion) as? NSNumber {
-      result = versionNumber.intValue
+    if let versionNumber = metadataDictionary [PMPackageVersion] as? Int {
+      result = versionNumber
     }
     return result
   }
