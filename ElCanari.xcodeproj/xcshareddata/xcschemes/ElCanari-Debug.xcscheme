@@ -69,6 +69,11 @@
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "_NSNumberFormatter_Log_New_Methods_On_Old_Formatters"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "CA_ASSERT_MAIN_THREAD_TRANSACTIONS"
             value = "1"
             isEnabled = "YES">

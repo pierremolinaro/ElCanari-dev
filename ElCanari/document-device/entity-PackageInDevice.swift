@@ -530,6 +530,8 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.setSignatureObserver (observer:self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer:self)
     self.mVersion_property.setSignatureObserver (observer:self)
+    self.mX_property.setSignatureObserver (observer:self)
+    self.mY_property.setSignatureObserver (observer:self)
   //--- Extern delegates
   }
 
@@ -888,6 +890,8 @@ class PackageInDevice : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mName_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mVersion_property.signature ())
+    crc.accumulateUInt32 (self.mX_property.signature ())
+    crc.accumulateUInt32 (self.mY_property.signature ())
     return crc
   }
 

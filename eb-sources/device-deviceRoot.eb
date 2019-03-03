@@ -59,8 +59,8 @@ graphic entity PackageInDevice {
   
   property @signature NSBezierPath mStrokeBezierPath default empty ;
  
-  property Int mX default 0 ;
-  property Int mY default 0 ;
+  property @signature Int mX default 0 ;
+  property @signature Int mY default 0 ;
   
   transient String versionString dependsFrom self.mVersion ;
 
