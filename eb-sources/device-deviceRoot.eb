@@ -21,8 +21,12 @@ graphic entity DeviceRoot {
   property @signature String comments default "" ;
 
 #--- Issues
-  transient CanariIssueArray issues dependsFrom self.title, self.prefix ;
-  
+  transient CanariIssueArray issues dependsFrom self.title, self.prefix, self.inconsistentPackagePadNameSetsMessage ;
+
+  transient Bool packagePadNameSetsAreConsistent dependsFrom self.packages.all.padNameSet ;
+
+  transient String inconsistentPackagePadNameSetsMessage dependsFrom self.packages.all.padNameSet, self.packages.all.mName ;
+
 #--- Packages
   toMany @signature PackageInDevice packages inverse toOne mRoot ;
   property @signature Int mPackageDisplayZoom default 100 ;
@@ -95,6 +99,8 @@ graphic entity PackageInDevice {
      self.backSidePadFilledBezierPathArray,
      self.mName, self.mX, self.mY
   ;
+  
+  transient StringSet padNameSet dependsFrom self.mPads.all.padName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

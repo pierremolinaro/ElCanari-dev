@@ -127,7 +127,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="208" height="20"/>
                         <size key="maxSize" width="265" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="557" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="557" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="265" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="selectOne" id="558">
@@ -397,7 +397,7 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="HKz-u1-s5U">
                                         <rect key="frame" x="1" y="0.0" width="193" height="397"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView identifier="name" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="544" viewBased="YES" id="302" customClass="EBTableView">
                                                 <rect key="frame" x="0.0" y="0.0" width="193" height="380"/>
@@ -421,11 +421,11 @@ OAR: Outer layer Annular Ring; equal to: (pad diameter - PHD) / 2</string>
                                                         <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="name"/>
                                                         <prototypeCellViews>
                                                             <tableCellView id="NGB-2l-etK" customClass="EBTextField_TableViewCell">
-                                                                <rect key="frame" x="1" y="1" width="190" height="17"/>
+                                                                <rect key="frame" x="1" y="1" width="189.5" height="17"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
                                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="YES" id="bCT-Re-Cge" customClass="EBTextField">
-                                                                        <rect key="frame" x="0.0" y="3" width="190" height="14"/>
+                                                                        <rect key="frame" x="0.0" y="3" width="189.5" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="Sgz-AZ-LtX">
                                                                             <font key="font" metaFont="smallSystem"/>

@@ -4,51 +4,30 @@
 //
 //  Created by Pierre Molinaro on 30/06/2015.
 //
-//
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// let PMDeviceVersion  = "PMDeviceVersion"
-
-//--- Dictionary of for embedded symbols and packages in device metadatadictionary
-let PMDeviceSymbols = "PMDeviceSymbols"
-let PMDevicePackages = "PMDevicePackages"
-
-//let PMDeviceVersionInDialog           = "PMDeviceVersionInDialog"
-//let PMDeviceFullPathArrayInDialog     = "PMDevicePathesInDialog"
-//let PMDeviceRelativePathArrayInDialog = "PMRelativeDevicePathesInDialog"
-//let PMDeviceStatusInDialog            = "PMDeviceStatusInDialog"
-//let PMSymbolsInDialog                 = "PMSymbolsInDialog"
-//let PMPackagesInDialog                = "PMPackagesInDialog"
-//let PMDeviceDocListInDialog           = "PMDeviceDocListInDialog"
-//let PMDeviceTitleInDialog             = "PMDeviceTitleInDialog"
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-
-func canariError (_ message : String, informativeText: String) -> Error {
+private func canariError (_ message : String, informativeText: String) -> Error {
   let dictionary : [String : String] = [
     NSLocalizedDescriptionKey : message,
     NSLocalizedRecoverySuggestionErrorKey : informativeText,
   ]
   return NSError (
-    domain:Bundle.main.bundleIdentifier!,
-    code:1,
-    userInfo:dictionary
+    domain: Bundle.main.bundleIdentifier!,
+    code: 1,
+    userInfo: dictionary
   )
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-
 func badFormatErrorForFileAtPath (_ inFilePath : String, code : Int) -> Error {
   return canariError (
-    String (format:"Cannot read '%@' file", inFilePath),
-    informativeText:"File does not have the required format (code: " + String (code) + ")."
+    "Cannot read '\(inFilePath)' file",
+    informativeText: "File does not have the required format (code: \(code))."
   )
 }
 
@@ -57,7 +36,7 @@ func badFormatErrorForFileAtPath (_ inFilePath : String, code : Int) -> Error {
 
 private func readByte (_ inFileHandle : FileHandle) -> UInt8 {
   let statusData : Data = inFileHandle.readData (ofLength: 1)
-  return statusData [0] // UnsafePointer<UInt8> ((statusData as NSData).bytes).pointee
+  return statusData [0]
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -137,4 +116,3 @@ func metadataForFileAtPath (_ inFilePath : String) throws -> (MetadataStatus, NS
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

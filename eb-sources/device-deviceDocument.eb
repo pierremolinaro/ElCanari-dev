@@ -76,8 +76,6 @@ document DeviceDocument root DeviceRoot {
     $verticalFlip root.mPackageDisplayVerticalFlip
     $graphicController self.mPackageDisplayController
     $zoom root.mPackageDisplayZoom
-#    $xPlacardUnit root.xPlacardUnit
-#    $yPlacardUnit root.yPlacardUnit
   ;
 
   outlet EBSwitch mPackageDisplayHorizontalFlipSwitch $value root.mPackageDisplayHorizontalFlip ;
@@ -95,6 +93,14 @@ document DeviceDocument root DeviceRoot {
 
   outlet EBSwitch mShowPackageBackPadsSwitch $value root.mShowPackageBackPads ;
   outlet EBColorWell mPackageBackPadsColorWell $color prefs.backSidePadColor {sendContinously:no} ;
+
+  outlet EBTextObserverView mInconsistentPackagePadNameSetsMessageTextView
+    $valueObserver root.inconsistentPackagePadNameSetsMessage
+  ;
+
+  outlet NSScrollView mInconsistentPackagePadNameSetsMessageScrollView
+    $hidden root.packagePadNameSetsAreConsistent
+  ;
 
 #-------------------------- Page : Library
 
@@ -130,7 +136,12 @@ document DeviceDocument root DeviceRoot {
     $enabled mPackageController.selectedArray.count > 0
   ;
 
-#--------------- Infos Tab
+#--------------- Page : assignments
+
+  outlet EBTextField mInconsistentPadNameSetTextField $hidden root.packagePadNameSetsAreConsistent ;
+  outlet NSSplitView mAssignmentSplitView $hidden !root.packagePadNameSetsAreConsistent ;
+
+#--------------- Page : Infos
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;
 

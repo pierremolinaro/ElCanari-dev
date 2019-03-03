@@ -27,6 +27,29 @@ import Cocoa
   var mPackageDisplayController = ArrayController_DeviceDocument_mPackageDisplayController ()
 
   //····················································································································
+  //   Transient property: documentFilePath
+  //····················································································································
+
+  var documentFilePath_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var documentFilePath_property_selection : EBSelection <String> {
+    return self.documentFilePath_property.prop
+  }
+
+  //····················································································································
+
+  var documentFilePath : String? {
+    switch self.documentFilePath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: mStatusMessage
   //····················································································································
 
@@ -73,29 +96,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: documentFilePath
-  //····················································································································
-
-  var documentFilePath_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var documentFilePath_property_selection : EBSelection <String> {
-    return self.documentFilePath_property.prop
-  }
-
-  //····················································································································
-
-  var documentFilePath : String? {
-    switch self.documentFilePath_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -125,6 +125,7 @@ import Cocoa
 
   @IBOutlet var mAddPackageFromLibraryButton : EBButton?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
+  @IBOutlet var mAssignmentSplitView : NSSplitView?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageView : EBView?
   @IBOutlet var mCopyImageButton : EBButton?
@@ -132,6 +133,9 @@ import Cocoa
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
   @IBOutlet var mEditSelectedPackagesButton : EBButton?
   @IBOutlet var mExportSelectedPackagesButton : EBButton?
+  @IBOutlet var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView?
+  @IBOutlet var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView?
+  @IBOutlet var mInconsistentPadNameSetTextField : EBTextField?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
@@ -174,10 +178,13 @@ import Cocoa
   var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
+  var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -276,6 +283,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAssignmentPageView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAssignmentSplitView {
+      if !(outlet is NSSplitView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAssignmentSplitView' outlet is not an instance of 'NSSplitView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAssignmentSplitView' outlet is nil"
       )
     }
     if let outlet : Any = self.mCommentTextView {
@@ -381,6 +403,51 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mExportSelectedPackagesButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mInconsistentPackagePadNameSetsMessageScrollView {
+      if !(outlet is NSScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInconsistentPackagePadNameSetsMessageScrollView' outlet is not an instance of 'NSScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInconsistentPackagePadNameSetsMessageScrollView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mInconsistentPackagePadNameSetsMessageTextView {
+      if !(outlet is EBTextObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInconsistentPackagePadNameSetsMessageTextView' outlet is not an instance of 'EBTextObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInconsistentPackagePadNameSetsMessageTextView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mInconsistentPadNameSetTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInconsistentPadNameSetTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInconsistentPadNameSetTextField' outlet is nil"
       )
     }
     if let outlet : Any = self.mInfosPageView {
@@ -961,6 +1028,7 @@ import Cocoa
     self.mPackageFrontPadsColorWell?.bind_color (g_Preferences!.frontSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
     self.mPackageBackPadsColorWell?.bind_color (g_Preferences!.backSidePadColor_property, file: #file, line: #line, sendContinously:false)
+    self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1015,6 +1083,16 @@ import Cocoa
       self.mController_mSaveDocButton_enabled = controller
     }
     do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.packagePadNameSetsAreConsistent_property_selection
+        },
+        outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
+      )
+      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
+      self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = controller
+    }
+    do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
           return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
@@ -1053,6 +1131,26 @@ import Cocoa
       )
       self.mPackageController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mUpdateSelectedPackagesButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.packagePadNameSetsAreConsistent_property_selection
+        },
+        outlet: self.mInconsistentPadNameSetTextField
+      )
+      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
+      self.mController_mInconsistentPadNameSetTextField_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return !self.rootObject.packagePadNameSetsAreConsistent_property_selection
+        },
+        outlet: self.mAssignmentSplitView
+      )
+      self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
+      self.mController_mAssignmentSplitView_hidden = controller
     }
   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
@@ -1118,6 +1216,7 @@ import Cocoa
     self.mPackageFrontPadsColorWell?.unbind_color ()
     self.mShowPackageBackPadsSwitch?.unbind_value ()
     self.mPackageBackPadsColorWell?.unbind_color ()
+    self.mInconsistentPackagePadNameSetsMessageTextView?.unbind_valueObserver ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -1131,6 +1230,8 @@ import Cocoa
     self.mController_mShowDocButton_enabled = nil
     self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
+    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
+    self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
     self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
     self.mController_mResetSelectedPackageVersionButton_enabled = nil
     self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
@@ -1139,6 +1240,10 @@ import Cocoa
     self.mController_mExportSelectedPackagesButton_enabled = nil
     self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
     self.mController_mUpdateSelectedPackagesButton_enabled = nil
+    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
+    self.mController_mInconsistentPadNameSetTextField_hidden = nil
+    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
+    self.mController_mAssignmentSplitView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
     self.mPackageController.unbind_tableView (self.mPackageTableView)
@@ -1168,6 +1273,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
+    self.mAssignmentSplitView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
@@ -1175,6 +1281,9 @@ import Cocoa
     self.mDocumentationTableView?.ebCleanUp ()
     self.mEditSelectedPackagesButton?.ebCleanUp ()
     self.mExportSelectedPackagesButton?.ebCleanUp ()
+    self.mInconsistentPackagePadNameSetsMessageScrollView?.ebCleanUp ()
+    self.mInconsistentPackagePadNameSetsMessageTextView?.ebCleanUp ()
+    self.mInconsistentPadNameSetTextField?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()

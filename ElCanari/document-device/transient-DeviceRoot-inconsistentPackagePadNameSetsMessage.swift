@@ -11,37 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_issues (
-       _ self_title : String,     
-       _ self_prefix : String,    
-       _ self_inconsistentPackagePadNameSetsMessage : String
-) -> CanariIssueArray {
+func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
+       _ self_packages_padNameSet : [PackageInDevice_padNameSet],
+       _ self_packages_mName : [PackageInDevice_mName]
+) -> String {
 //--- START OF USER ZONE 2
-       var issues = [CanariIssue] ()
-       if self_title == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath ()))
-       }
-       if self_prefix == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath ()))
-       }else{
-         var ok = true
-         for unicodeChar in self_prefix.unicodeArray {
-           ok = (unicodeChar >= "a") && (unicodeChar <= "z")
-           if !ok {
-             ok = (unicodeChar >= "A") && (unicodeChar <= "Z")
-           }
-           if !ok {
-             break
-           }
-         }
-         if !ok {
-           issues.append (CanariIssue (kind: .error, message: "Prefix should contains only lowercase or uppercase ASCII letters", path: NSBezierPath ()))
-         }
-       }
-       if self_inconsistentPackagePadNameSetsMessage != "" {
-         issues.append (CanariIssue (kind: .error, message: "There are several packages, their pad names are inconsistent", path: NSBezierPath ()))
-       }
-       return issues
+   var message = [String] ()
+   var idx = 1
+   let p0 = self_packages_padNameSet [0].padNameSet!
+   while idx < self_packages_padNameSet.count {
+     let px = self_packages_padNameSet [idx].padNameSet!
+     for missing in p0.subtracting (px) {
+       message.append ("Package \(self_packages_mName [idx].mName) has no pad named \(missing)")
+     }
+     for excedent in px.subtracting (p0) {
+       message.append ("Package \(self_packages_mName [idx].mName) has a pad named \(excedent)")
+     }
+     idx += 1
+   }
+   return message.joined (separator: "\n")
 //--- END OF USER ZONE 2
 }
 

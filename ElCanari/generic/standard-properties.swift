@@ -1908,6 +1908,14 @@ typealias EBReadOnlyPropertyArray_EBShape  = EBReadOnlyClassProperty <[EBShape]>
 typealias EBTransientPropertyArray_EBShape = EBTransientClassProperty <[EBShape]>
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property StringSet
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_StringSet = EBReadOnlyValueController <StringSet>
+
+typealias EBReadOnlyProperty_StringSet  = EBReadOnlyValueProperty <StringSet>
+typealias EBTransientProperty_StringSet = EBTransientValueProperty <StringSet>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CanariRect
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

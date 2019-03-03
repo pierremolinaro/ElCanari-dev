@@ -95,7 +95,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="123" height="20"/>
                         <size key="maxSize" width="207" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="1090" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="1090" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="123" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1091">
@@ -230,7 +230,7 @@
                         <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                 </button>
-                <segmentedControl verticalHuggingPriority="750" id="1208" customClass="CanariSegmentedControl">
+                <segmentedControl verticalHuggingPriority="750" id="1208" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="19" y="322" width="217" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1209">

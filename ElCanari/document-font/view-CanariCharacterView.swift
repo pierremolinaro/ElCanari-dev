@@ -676,13 +676,13 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Get General Pasteboard
     let pb = NSPasteboard.general 
   //--- Find a matching type name
-    let possibleMatchingTypeName : String? = pb.availableType (from: [FONT_SEGMENTS_PASTEBOARD_TYPE]).map { $0.rawValue }
-    if let matchingTypeName = possibleMatchingTypeName {
+    if let matchingType : NSPasteboard.PasteboardType = pb.availableType (from: [FONT_SEGMENTS_PASTEBOARD_TYPE]) {
     //--- Get data from pasteboard
-      let possibleArchive : Data? = pb.data (forType:NSPasteboard.PasteboardType(rawValue: matchingTypeName))
+      let possibleArchive : Data? = pb.data (forType: matchingType)
       if let archive = possibleArchive {
       //--- Unarchive to get array of archived objects
-        let unarchivedObject = NSKeyedUnarchiver.unarchiveObject (with: archive)
+        // let unarchivedObject = NSKeyedUnarchiver.unarchiveObject (with: archive)
+        let unarchivedObject = NSUnarchiver.unarchiveObject (with: archive)
         if let segmentListObject = unarchivedObject as? [[NSNumber]] {
           var newSegmentArray = self.mSegmentList
           self.mSelection.removeAll ()
@@ -721,8 +721,8 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
         segmentArray.append (s)
       }
     }
-    let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray)
- //   let data = NSArchiver.archivedData (withRootObject: segmentArray)
+ //   let data = NSKeyedArchiver.archivedData (withRootObject: segmentArray)
+    let data = NSArchiver.archivedData (withRootObject: segmentArray)
     pb.setData (data, forType: FONT_SEGMENTS_PASTEBOARD_TYPE)
   }
 

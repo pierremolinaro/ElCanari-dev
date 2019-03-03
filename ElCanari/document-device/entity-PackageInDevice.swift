@@ -71,6 +71,12 @@ protocol PackageInDevice_selectionDisplay : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol PackageInDevice_padNameSet : class {
+  var padNameSet : StringSet? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: PackageInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -85,7 +91,8 @@ class PackageInDevice : EBGraphicManagedObject,
          PackageInDevice_frontSidePadFilledBezierPathArray,
          PackageInDevice_backSidePadFilledBezierPathArray,
          PackageInDevice_objectDisplay,
-         PackageInDevice_selectionDisplay {
+         PackageInDevice_selectionDisplay,
+         PackageInDevice_padNameSet {
 
   //····················································································································
   //   To many property: mPads
@@ -343,6 +350,29 @@ class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: padNameSet
+  //····················································································································
+
+  var padNameSet_property = EBTransientProperty_StringSet ()
+
+  //····················································································································
+
+  var padNameSet_property_selection : EBSelection <StringSet> {
+    return self.padNameSet_property.prop
+  }
+
+  //····················································································································
+
+  var padNameSet : StringSet? {
+    switch self.padNameSet_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -524,6 +554,28 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: padNameSet
+    self.padNameSet_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageInDevice_padNameSet (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPads_property.addEBObserverOf_padName (self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer:self)
@@ -567,6 +619,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mPads_property.removeEBObserverOf_padName (self.padNameSet_property)
   }
 
   //····················································································································
@@ -668,6 +721,14 @@ class PackageInDevice : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "padNameSet",
+      idx:self.padNameSet_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.padNameSet_property.mObserverExplorer,
+      valueExplorer:&self.padNameSet_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1528,6 +1589,62 @@ class ReadOnlyArrayOf_PackageInDevice : ReadOnlyAbstractArrayProperty <PackageIn
   }
 
   //····················································································································
+  //   Observers of 'padNameSet' transient property
+  //····················································································································
+
+  private var mObserversOf_padNameSet = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_padNameSet (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_padNameSet.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNameSet_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNameSet (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_padNameSet.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.padNameSet_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_padNameSet_toElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNameSet.apply ( {(_ observer : EBEvent) in
+        managedObject.padNameSet_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_padNameSet_fromElementsOfSet (_ inSet : Set<PackageInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_padNameSet.apply ( {(_ observer : EBEvent) in
+        managedObject.padNameSet_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1612,6 +1729,7 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
       self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_padNameSet_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1627,6 +1745,7 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
       self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_padNameSet_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1771,6 +1890,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
         self.removeEBObserversOf_backSidePadFilledBezierPathArray_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_padNameSet_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : PackageInDevice in addedObjectSet {
@@ -1794,6 +1914,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
         self.addEBObserversOf_backSidePadFilledBezierPathArray_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_padNameSet_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?
@@ -1970,6 +2091,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (self.mObserversOf_comments)
         oldValue?.imageIsValid_property.removeEBObserversFrom (self.mObserversOf_imageIsValid)
+        oldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (self.mObserversOf_inconsistentPackagePadNameSetsMessage)
         oldValue?.issues_property.removeEBObserversFrom (self.mObserversOf_issues)
         oldValue?.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (self.mObserversOf_mPackageDisplayHorizontalFlip)
         oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (self.mObserversOf_mPackageDisplayVerticalFlip)
@@ -1978,6 +2100,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mShowPackageFrontPads_property.removeEBObserversFrom (self.mObserversOf_mShowPackageFrontPads)
         oldValue?.mShowPackagePadNumbers_property.removeEBObserversFrom (self.mObserversOf_mShowPackagePadNumbers)
         oldValue?.mShowPackages_property.removeEBObserversFrom (self.mObserversOf_mShowPackages)
+        oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (self.mObserversOf_packagePadNameSetsAreConsistent)
         oldValue?.prefix_property.removeEBObserversFrom (self.mObserversOf_prefix)
         oldValue?.representationImageData_property.removeEBObserversFrom (self.mObserversOf_representationImageData)
         oldValue?.selectedPageIndex_property.removeEBObserversFrom (self.mObserversOf_selectedPageIndex)
@@ -1985,6 +2108,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (self.mObserversOf_comments)
         self.mValue?.imageIsValid_property.addEBObserversFrom (self.mObserversOf_imageIsValid)
+        self.mValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (self.mObserversOf_inconsistentPackagePadNameSetsMessage)
         self.mValue?.issues_property.addEBObserversFrom (self.mObserversOf_issues)
         self.mValue?.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (self.mObserversOf_mPackageDisplayHorizontalFlip)
         self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (self.mObserversOf_mPackageDisplayVerticalFlip)
@@ -1993,6 +2117,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mShowPackageFrontPads_property.addEBObserversFrom (self.mObserversOf_mShowPackageFrontPads)
         self.mValue?.mShowPackagePadNumbers_property.addEBObserversFrom (self.mObserversOf_mShowPackagePadNumbers)
         self.mValue?.mShowPackages_property.addEBObserversFrom (self.mObserversOf_mShowPackages)
+        self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (self.mObserversOf_packagePadNameSetsAreConsistent)
         self.mValue?.prefix_property.addEBObserversFrom (self.mObserversOf_prefix)
         self.mValue?.representationImageData_property.addEBObserversFrom (self.mObserversOf_representationImageData)
         self.mValue?.selectedPageIndex_property.addEBObserversFrom (self.mObserversOf_selectedPageIndex)
@@ -2114,6 +2239,49 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_imageIsValid.remove (inObserver)
     if let object = self.propval {
       object.imageIsValid_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: inconsistentPackagePadNameSetsMessage
+  //····················································································································
+
+  private var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String?> {
+    get {
+      if let model = self.propval {
+        switch (model.inconsistentPackagePadNameSetsMessage_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.insert (inObserver)
+    if let object = self.propval {
+      object.inconsistentPackagePadNameSetsMessage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.remove (inObserver)
+    if let object = self.propval {
+      object.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2458,6 +2626,49 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_mShowPackages.remove (inObserver)
     if let object = self.propval {
       object.mShowPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: packagePadNameSetsAreConsistent
+  //····················································································································
+
+  private var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
+
+  //····················································································································
+
+  var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool?> {
+    get {
+      if let model = self.propval {
+        switch (model.packagePadNameSetsAreConsistent_property_selection) {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          return .single (v)
+        }
+      }else{
+        return .single (nil)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_packagePadNameSetsAreConsistent.insert (inObserver)
+    if let object = self.propval {
+      object.packagePadNameSetsAreConsistent_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
+    if let object = self.propval {
+      object.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
     }
   }
 

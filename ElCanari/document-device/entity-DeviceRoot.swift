@@ -78,14 +78,26 @@ protocol DeviceRoot_representationImageData : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_issues : class {
-  var issues : CanariIssueArray? { get }
+protocol DeviceRoot_imageIsValid : class {
+  var imageIsValid : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_imageIsValid : class {
-  var imageIsValid : Bool? { get }
+protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : class {
+  var inconsistentPackagePadNameSetsMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_packagePadNameSetsAreConsistent : class {
+  var packagePadNameSetsAreConsistent : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_issues : class {
+  var issues : CanariIssueArray? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -105,8 +117,10 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mShowPackageFrontPads,
          DeviceRoot_mShowPackageBackPads,
          DeviceRoot_representationImageData,
-         DeviceRoot_issues,
-         DeviceRoot_imageIsValid {
+         DeviceRoot_imageIsValid,
+         DeviceRoot_inconsistentPackagePadNameSetsMessage,
+         DeviceRoot_packagePadNameSetsAreConsistent,
+         DeviceRoot_issues {
 
   //····················································································································
   //   Atomic property: selectedPageIndex
@@ -409,29 +423,6 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: issues
-  //····················································································································
-
-  var issues_property = EBTransientProperty_CanariIssueArray ()
-
-  //····················································································································
-
-  var issues_property_selection : EBSelection <CanariIssueArray> {
-    return self.issues_property.prop
-  }
-
-  //····················································································································
-
-  var issues : CanariIssueArray? {
-    switch self.issues_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: imageIsValid
   //····················································································································
 
@@ -447,6 +438,75 @@ class DeviceRoot : EBGraphicManagedObject,
 
   var imageIsValid : Bool? {
     switch self.imageIsValid_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: inconsistentPackagePadNameSetsMessage
+  //····················································································································
+
+  var inconsistentPackagePadNameSetsMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String> {
+    return self.inconsistentPackagePadNameSetsMessage_property.prop
+  }
+
+  //····················································································································
+
+  var inconsistentPackagePadNameSetsMessage : String? {
+    switch self.inconsistentPackagePadNameSetsMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: packagePadNameSetsAreConsistent
+  //····················································································································
+
+  var packagePadNameSetsAreConsistent_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool> {
+    return self.packagePadNameSetsAreConsistent_property.prop
+  }
+
+  //····················································································································
+
+  var packagePadNameSetsAreConsistent : Bool? {
+    switch self.packagePadNameSetsAreConsistent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -491,30 +551,6 @@ class DeviceRoot : EBGraphicManagedObject,
     }
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
-  //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.title_property_selection.kind ()
-        kind &= unwSelf.prefix_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_DeviceRoot_issues (v0, v1))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.title_property.addEBObserver (self.issues_property)
-    self.prefix_property.addEBObserver (self.issues_property)
   //--- Atomic property: imageIsValid
     self.imageIsValid_property.readModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -537,6 +573,78 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.representationImageData_property.addEBObserver (self.imageIsValid_property)
+  //--- Atomic property: inconsistentPackagePadNameSetsMessage
+    self.inconsistentPackagePadNameSetsMessage_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.packages_property_selection.kind ()
+        kind &= unwSelf.packages_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.packages_property_selection, unwSelf.packages_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.packages_property.addEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
+    self.packages_property.addEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
+  //--- Atomic property: packagePadNameSetsAreConsistent
+    self.packagePadNameSetsAreConsistent_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.packages_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.packages_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_packagePadNameSetsAreConsistent (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.packages_property.addEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+  //--- Atomic property: issues
+    self.issues_property.readModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.title_property_selection.kind ()
+        kind &= unwSelf.prefix_property_selection.kind ()
+        kind &= unwSelf.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_DeviceRoot_issues (v0, v1, v2))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.title_property.addEBObserver (self.issues_property)
+    self.prefix_property.addEBObserver (self.issues_property)
+    self.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.packages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
@@ -561,9 +669,13 @@ class DeviceRoot : EBGraphicManagedObject,
 
   deinit {
   //--- Remove observers
+    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
+    self.packages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
+    self.packages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
+    self.packages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
-    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
+    self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -675,20 +787,36 @@ class DeviceRoot : EBGraphicManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "imageIsValid",
       idx:self.imageIsValid_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.imageIsValid_property.mObserverExplorer,
       valueExplorer:&self.imageIsValid_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "inconsistentPackagePadNameSetsMessage",
+      idx:self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.inconsistentPackagePadNameSetsMessage_property.mObserverExplorer,
+      valueExplorer:&self.inconsistentPackagePadNameSetsMessage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "packagePadNameSetsAreConsistent",
+      idx:self.packagePadNameSetsAreConsistent_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
+      valueExplorer:&self.packagePadNameSetsAreConsistent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1607,62 +1735,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
   //   Observers of 'imageIsValid' transient property
   //····················································································································
 
@@ -1714,6 +1786,174 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
     for managedObject in inSet {
       self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
         managedObject.imageIsValid_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply ( {(_ observer : EBEvent) in
+        managedObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inconsistentPackagePadNameSetsMessage.apply ( {(_ observer : EBEvent) in
+        managedObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'packagePadNameSetsAreConsistent' transient property
+  //····················································································································
+
+  private var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_packagePadNameSetsAreConsistent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.packagePadNameSetsAreConsistent_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_packagePadNameSetsAreConsistent.apply ( {(_ observer : EBEvent) in
+        managedObject.packagePadNameSetsAreConsistent_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_packagePadNameSetsAreConsistent.apply ( {(_ observer : EBEvent) in
+        managedObject.packagePadNameSetsAreConsistent_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
       })
     }
   }
@@ -1804,8 +2044,10 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1822,8 +2064,10 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedSet)
       self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
       self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
+      self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1975,8 +2219,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
+        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         for managedObject : DeviceRoot in addedObjectSet {
@@ -2007,8 +2253,10 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
+        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
         self.clearSignatureCache ()
       //--- Write in preferences ?

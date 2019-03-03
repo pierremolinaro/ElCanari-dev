@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="mAddPackageFromLibraryButton" destination="1084" id="10r-pn-HTc"/>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
+                <outlet property="mAssignmentSplitView" destination="1092" id="4nO-3M-K1f"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
                 <outlet property="mComposedPackageView" destination="1082" id="iBa-N9-nNg"/>
                 <outlet property="mCopyImageButton" destination="2176" id="Mb0-sr-Sxk"/>
@@ -17,6 +18,9 @@
                 <outlet property="mDocumentationTableView" destination="1049" id="XGw-7g-axe"/>
                 <outlet property="mEditSelectedPackagesButton" destination="1608" id="XhX-Wp-crR"/>
                 <outlet property="mExportSelectedPackagesButton" destination="2195" id="d5K-bA-zcW"/>
+                <outlet property="mInconsistentPackagePadNameSetsMessageScrollView" destination="VWY-YO-VmV" id="TVt-EA-Ywh"/>
+                <outlet property="mInconsistentPackagePadNameSetsMessageTextView" destination="d26-at-nSF" id="2ik-vs-QWY"/>
+                <outlet property="mInconsistentPadNameSetTextField" destination="JKV-he-pIq" id="zaT-M6-WSf"/>
                 <outlet property="mInfosPageView" destination="1177" id="qRd-J2-IOx"/>
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
                 <outlet property="mLibraryPageView" destination="1124" id="3bK-az-okh"/>
@@ -89,7 +93,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="462" height="20"/>
                         <size key="maxSize" width="554" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl">
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="1907" customClass="CanariSegmentedControl" customModule="ElCanari" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="14" width="462" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="roundRect" trackingMode="selectOne" id="1908">
@@ -410,7 +414,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="1O2-0d-QnO">
                                         <rect key="frame" x="1" y="0.0" width="370" height="272"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="zWp-7R-su4" viewBased="YES" id="1049" customClass="DeviceDocumentationTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="370" height="249"/>
@@ -637,7 +641,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1082" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -731,6 +735,29 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="VWY-YO-VmV">
+                    <rect key="frame" x="20" y="20" width="230" height="162"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView">
+                                <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="minSize" width="215" height="162"/>
+                                <size key="maxSize" width="230" height="10000000"/>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="URW-Px-mQn">
+                        <rect key="frame" x="215" y="0.0" width="15" height="162"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <point key="canvasLocation" x="-34" y="-79"/>
         </customView>
@@ -751,7 +778,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1586" id="1111">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -797,7 +824,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
@@ -864,36 +891,36 @@
                                     <rect key="frame" x="0.0" y="0.0" width="132" height="428"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button imageHugsTitle="YES" id="1100">
-                                            <rect key="frame" x="6" y="375" width="120" height="33"/>
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1100">
+                                            <rect key="frame" x="6" y="375" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="bind" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1532">
+                                            <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="bind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1532">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button imageHugsTitle="YES" id="1102">
-                                            <rect key="frame" x="6" y="99" width="120" height="33"/>
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1102">
+                                            <rect key="frame" x="6" y="99" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" title="Delete All Bindings" bezelStyle="shadowlessSquare" image="unbind_all" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1534">
+                                            <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind_all" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1534">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button imageHugsTitle="YES" id="1101">
-                                            <rect key="frame" x="7" y="332" width="118" height="33"/>
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1101">
+                                            <rect key="frame" x="7" y="332" width="118" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" title="---- NC ---&gt;" bezelStyle="shadowlessSquare" image="nc" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1533">
+                                            <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="nc" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1533">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button imageHugsTitle="YES" id="1104">
-                                            <rect key="frame" x="4" y="197" width="122" height="33"/>
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1104">
+                                            <rect key="frame" x="4" y="197" width="122" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="square" title="&lt;--- Unbind ----" bezelStyle="shadowlessSquare" image="unbind" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1535">
+                                            <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1535">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
                                     </subviews>
@@ -903,7 +930,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1580" id="1095">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -984,7 +1011,17 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JKV-he-pIq" customClass="EBTextField">
+                    <rect key="frame" x="24" y="205" width="632" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="center" title="Cannot perform assignments: there are several packages, and their pad names are not the same." id="rG6-Uk-KFz">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
+            <point key="canvasLocation" x="53.5" y="-1"/>
         </customView>
         <customView id="1124" userLabel="Page : Library" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="704" height="497"/>
