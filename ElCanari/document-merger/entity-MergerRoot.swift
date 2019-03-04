@@ -1039,7 +1039,7 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
@@ -1383,7 +1383,7 @@ class MergerRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.boardModels_property.setProp ([])
     self.boardInstances_property.setProp ([])
   //---
@@ -1394,7 +1394,7 @@ class MergerRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
     self.artwork_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
@@ -3291,7 +3291,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   private var mSet = Set <MergerRoot> ()
   private var mValue = [MergerRoot] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -3303,109 +3303,114 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.selectedPageIndex_property.mSetterDelegate = nil
-          managedObject.zoom_property.mSetterDelegate = nil
-          managedObject.automaticBoardSize_property.mSetterDelegate = nil
-          managedObject.boardManualWidth_property.mSetterDelegate = nil
-          managedObject.boardManualHeight_property.mSetterDelegate = nil
-          managedObject.boardWidthUnit_property.mSetterDelegate = nil
-          managedObject.boardHeightUnit_property.mSetterDelegate = nil
-          managedObject.overlapingArrangment_property.mSetterDelegate = nil
-          managedObject.selectedBoardXUnit_property.mSetterDelegate = nil
-          managedObject.selectedBoardYUnit_property.mSetterDelegate = nil
-          managedObject.boardLimitWidth_property.mSetterDelegate = nil
-          managedObject.boardLimitWidthUnit_property.mSetterDelegate = nil
-          managedObject.arrowMagnitude_property.mSetterDelegate = nil
-          managedObject.arrowMagnitudeUnit_property.mSetterDelegate = nil
-          managedObject.shiftArrowMagnitude_property.mSetterDelegate = nil
-          managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = nil
-          managedObject.artworkName_property.mSetterDelegate = nil
-          managedObject.generateGerberProductFile_property.mSetterDelegate = nil
-          managedObject.generatePDFProductFile_property.mSetterDelegate = nil
-          managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.selectedPageIndex_property.mSetterDelegate = nil
+            managedObject.zoom_property.mSetterDelegate = nil
+            managedObject.automaticBoardSize_property.mSetterDelegate = nil
+            managedObject.boardManualWidth_property.mSetterDelegate = nil
+            managedObject.boardManualHeight_property.mSetterDelegate = nil
+            managedObject.boardWidthUnit_property.mSetterDelegate = nil
+            managedObject.boardHeightUnit_property.mSetterDelegate = nil
+            managedObject.overlapingArrangment_property.mSetterDelegate = nil
+            managedObject.selectedBoardXUnit_property.mSetterDelegate = nil
+            managedObject.selectedBoardYUnit_property.mSetterDelegate = nil
+            managedObject.boardLimitWidth_property.mSetterDelegate = nil
+            managedObject.boardLimitWidthUnit_property.mSetterDelegate = nil
+            managedObject.arrowMagnitude_property.mSetterDelegate = nil
+            managedObject.arrowMagnitudeUnit_property.mSetterDelegate = nil
+            managedObject.shiftArrowMagnitude_property.mSetterDelegate = nil
+            managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = nil
+            managedObject.artworkName_property.mSetterDelegate = nil
+            managedObject.generateGerberProductFile_property.mSetterDelegate = nil
+            managedObject.generatePDFProductFile_property.mSetterDelegate = nil
+            managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_automaticBoardSize_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardManualWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardManualHeight_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardWidthUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardHeightUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_overlapingArrangment_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedBoardXUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedBoardYUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardLimitWidthUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_arrowMagnitude_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_arrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_shiftArrowMagnitude_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_shiftArrowMagnitudeUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_artworkName_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_generateGerberProductFile_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_generatePDFProductFile_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_generatedBoardArchiveFormat_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_modelNames_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardRect_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardDisplayRect_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardHeight_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardOutlineRectDisplay_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : MergerRoot in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.automaticBoardSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardManualWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardManualHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.overlapingArrangment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.selectedBoardXUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.selectedBoardYUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.boardLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.arrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.arrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.shiftArrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.generateGerberProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.generatePDFProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : MergerRoot in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.automaticBoardSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardManualWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardManualHeight_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardHeightUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.overlapingArrangment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.selectedBoardXUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.selectedBoardYUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.boardLimitWidthUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.arrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.arrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.shiftArrowMagnitude_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.shiftArrowMagnitudeUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.artworkName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.generateGerberProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.generatePDFProductFile_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.generatedBoardArchiveFormat_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_automaticBoardSize_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardManualWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardManualHeight_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardWidthUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardHeightUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_overlapingArrangment_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedBoardXUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedBoardYUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardLimitWidthUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_arrowMagnitude_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_arrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_shiftArrowMagnitude_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_shiftArrowMagnitudeUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_artworkName_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_generateGerberProductFile_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_generatePDFProductFile_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_generatedBoardArchiveFormat_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_modelNames_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardRect_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardDisplayRect_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardHeight_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardOutlineRectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

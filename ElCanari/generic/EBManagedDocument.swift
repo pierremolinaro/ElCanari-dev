@@ -380,10 +380,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Remove all entities
     let allEntities = self.reachableObjectsFromRootObject ()
     for entity in allEntities {
-      entity.clearObjectExplorer ()
-      entity.removeAllObservers ()
-      entity.cleanUpToManyRelationships ()
-      entity.cleanUpToOneRelationships ()
+      entity.cleanUpRelationshipsAndRemoveAllObservers ()
     }
   //---
     super.removeWindowController (inWindowController)

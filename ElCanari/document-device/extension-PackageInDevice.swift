@@ -29,6 +29,19 @@ extension PackageInDevice {
 
   //····················································································································
 
+  override func operationAfterRemoving () {
+    super.operationAfterRemoving ()
+    for pad in self.mMasterPads_property.propval {
+      pad.cleanUpRelationshipsAndRemoveAllObservers ()
+    }
+    for pad in self.mSlavePads_property.propval {
+      pad.cleanUpRelationshipsAndRemoveAllObservers ()
+    }
+    self.cleanUpRelationshipsAndRemoveAllObservers ()
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

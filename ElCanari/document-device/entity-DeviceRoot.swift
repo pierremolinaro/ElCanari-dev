@@ -667,7 +667,7 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
     self.packages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
@@ -890,7 +890,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.mDocs_property.setProp ([])
     self.packages_property.setProp ([])
   //---
@@ -901,7 +901,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -2179,7 +2179,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   private var mSet = Set <DeviceRoot> ()
   private var mValue = [DeviceRoot] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2191,73 +2191,78 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.selectedPageIndex_property.mSetterDelegate = nil
-          managedObject.title_property.mSetterDelegate = nil
-          managedObject.prefix_property.mSetterDelegate = nil
-          managedObject.comments_property.mSetterDelegate = nil
-          managedObject.mPackageDisplayZoom_property.mSetterDelegate = nil
-          managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = nil
-          managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = nil
-          managedObject.mShowPackages_property.mSetterDelegate = nil
-          managedObject.mShowPackagePadNumbers_property.mSetterDelegate = nil
-          managedObject.mShowPackageFrontPads_property.mSetterDelegate = nil
-          managedObject.mShowPackageBackPads_property.mSetterDelegate = nil
-          managedObject.representationImageData_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.selectedPageIndex_property.mSetterDelegate = nil
+            managedObject.title_property.mSetterDelegate = nil
+            managedObject.prefix_property.mSetterDelegate = nil
+            managedObject.comments_property.mSetterDelegate = nil
+            managedObject.mPackageDisplayZoom_property.mSetterDelegate = nil
+            managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = nil
+            managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = nil
+            managedObject.mShowPackages_property.mSetterDelegate = nil
+            managedObject.mShowPackagePadNumbers_property.mSetterDelegate = nil
+            managedObject.mShowPackageFrontPads_property.mSetterDelegate = nil
+            managedObject.mShowPackageBackPads_property.mSetterDelegate = nil
+            managedObject.representationImageData_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_title_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_prefix_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mPackageDisplayZoom_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mPackageDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mPackageDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mShowPackages_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mShowPackagePadNumbers_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mShowPackageFrontPads_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mShowPackageBackPads_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : DeviceRoot in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.title_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.prefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mPackageDisplayZoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mShowPackages_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mShowPackagePadNumbers_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mShowPackageFrontPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mShowPackageBackPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.representationImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : DeviceRoot in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.title_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.prefix_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mPackageDisplayZoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mPackageDisplayHorizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mPackageDisplayVerticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mShowPackages_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mShowPackagePadNumbers_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mShowPackageFrontPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mShowPackageBackPads_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.representationImageData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_title_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_prefix_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mPackageDisplayZoom_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mPackageDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mPackageDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mShowPackages_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mShowPackagePadNumbers_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mShowPackageFrontPads_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mShowPackageBackPads_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

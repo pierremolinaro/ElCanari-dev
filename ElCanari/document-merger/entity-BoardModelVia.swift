@@ -119,7 +119,7 @@ class BoardModelVia : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   }
 
@@ -186,7 +186,7 @@ class BoardModelVia : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -195,7 +195,7 @@ class BoardModelVia : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -621,7 +621,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   private var mSet = Set <BoardModelVia> ()
   private var mValue = [BoardModelVia] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -633,29 +633,34 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.y_property.mSetterDelegate = nil
-          managedObject.padDiameter_property.mSetterDelegate = nil
-          managedObject.x_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.y_property.mSetterDelegate = nil
+            managedObject.padDiameter_property.mSetterDelegate = nil
+            managedObject.x_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_padDiameter_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : BoardModelVia in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.padDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : BoardModelVia in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.padDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_padDiameter_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

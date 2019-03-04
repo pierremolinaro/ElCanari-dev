@@ -379,7 +379,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.x_property.removeEBObserver (self.instanceRect_property)
     self.y_property.removeEBObserver (self.instanceRect_property)
@@ -520,7 +520,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -529,7 +529,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
     self.myModel_property.setProp (nil)
     self.myRoot_property.setProp (nil)
   //---
@@ -1277,7 +1277,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   private var mSet = Set <MergerBoardInstance> ()
   private var mValue = [MergerBoardInstance] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1289,39 +1289,44 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.x_property.mSetterDelegate = nil
-          managedObject.y_property.mSetterDelegate = nil
-          managedObject.instanceRotation_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.x_property.mSetterDelegate = nil
+            managedObject.y_property.mSetterDelegate = nil
+            managedObject.instanceRotation_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_instanceRotation_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_instanceRect_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_modelName_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_boardLimitWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : MergerBoardInstance in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.instanceRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : MergerBoardInstance in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.instanceRotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_instanceRotation_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_instanceRect_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_modelName_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_boardLimitWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

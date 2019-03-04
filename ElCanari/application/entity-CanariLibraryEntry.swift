@@ -204,7 +204,7 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mPath_property.removeEBObserver (self.mStatusImage_property)
   }
@@ -292,7 +292,7 @@ class CanariLibraryEntry : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -301,7 +301,7 @@ class CanariLibraryEntry : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -848,7 +848,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   private var mSet = Set <CanariLibraryEntry> ()
   private var mValue = [CanariLibraryEntry] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -860,35 +860,40 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.mPath_property.mSetterDelegate = nil
-          managedObject.mUses_property.mSetterDelegate = nil
-          managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
-          managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.mPath_property.mSetterDelegate = nil
+            managedObject.mUses_property.mSetterDelegate = nil
+            managedObject.mLibraryRepositoryURL_property.mSetterDelegate = nil
+            managedObject.mUserAndPasswordTag_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_mPath_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mUses_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mLibraryRepositoryURL_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mUserAndPasswordTag_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mStatusImage_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : CanariLibraryEntry in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : CanariLibraryEntry in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.mPath_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mUses_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mLibraryRepositoryURL_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mUserAndPasswordTag_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_mPath_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mUses_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mLibraryRepositoryURL_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mUserAndPasswordTag_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mStatusImage_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

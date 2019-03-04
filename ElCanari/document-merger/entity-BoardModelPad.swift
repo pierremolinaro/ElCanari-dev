@@ -215,7 +215,7 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   }
 
@@ -315,7 +315,7 @@ class BoardModelPad : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -324,7 +324,7 @@ class BoardModelPad : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -939,7 +939,7 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
   private var mSet = Set <BoardModelPad> ()
   private var mValue = [BoardModelPad] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -951,41 +951,46 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.y_property.mSetterDelegate = nil
-          managedObject.width_property.mSetterDelegate = nil
-          managedObject.height_property.mSetterDelegate = nil
-          managedObject.shape_property.mSetterDelegate = nil
-          managedObject.rotation_property.mSetterDelegate = nil
-          managedObject.x_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.y_property.mSetterDelegate = nil
+            managedObject.width_property.mSetterDelegate = nil
+            managedObject.height_property.mSetterDelegate = nil
+            managedObject.shape_property.mSetterDelegate = nil
+            managedObject.rotation_property.mSetterDelegate = nil
+            managedObject.x_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_rotation_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : BoardModelPad in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.shape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.rotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : BoardModelPad in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.shape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.rotation_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_rotation_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

@@ -67,7 +67,7 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   }
 
@@ -125,7 +125,7 @@ class PackageObject : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -134,7 +134,7 @@ class PackageObject : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -531,7 +531,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
   private var mSet = Set <PackageObject> ()
   private var mValue = [PackageObject] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -543,23 +543,28 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+          }
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : PackageObject in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
+        if addedObjectSet.count > 0 {
+          for managedObject : PackageObject in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+          }
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

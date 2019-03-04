@@ -439,7 +439,7 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.unbind_model ()
@@ -577,7 +577,7 @@ class FontRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.characters_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -587,7 +587,7 @@ class FontRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1393,7 +1393,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   private var mSet = Set <FontRoot> ()
   private var mValue = [FontRoot] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1405,43 +1405,48 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.comments_property.mSetterDelegate = nil
-          managedObject.nominalSize_property.mSetterDelegate = nil
-          managedObject.selectedTab_property.mSetterDelegate = nil
-          managedObject.selectedInspector_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.comments_property.mSetterDelegate = nil
+            managedObject.nominalSize_property.mSetterDelegate = nil
+            managedObject.selectedTab_property.mSetterDelegate = nil
+            managedObject.selectedInspector_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : FontRoot in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.nominalSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : FontRoot in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.nominalSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

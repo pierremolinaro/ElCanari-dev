@@ -12,12 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageInDevice_frontSidePadFilledBezierPathArray (
-       _ self_mPads_frontSideFilledBezierPath : [PackagePad_frontSideFilledBezierPath],
-       _ self_mSlavePads_frontSideFilledBezierPath : [PackageSlavePad_frontSideFilledBezierPath]
+       _ self_mMasterPads_frontSideFilledBezierPath : [MasterPadInDevice_frontSideFilledBezierPath],
+       _ self_mSlavePads_frontSideFilledBezierPath : [SlavePadInDevice_frontSideFilledBezierPath]
 ) -> BezierPathArray {
 //--- START OF USER ZONE 2
    var result = BezierPathArray ()
-   for filledBezierPath in self_mPads_frontSideFilledBezierPath {
+   for filledBezierPath in self_mMasterPads_frontSideFilledBezierPath {
      if let bp = filledBezierPath.frontSideFilledBezierPath {
        result.append (bp)
      }

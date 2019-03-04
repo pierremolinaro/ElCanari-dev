@@ -11,14 +11,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackagePad_backSideFilledBezierPath (
-       _ self_xCenter : Int,                        
-       _ self_yCenter : Int,                        
-       _ self_width : Int,                          
-       _ self_height : Int,                         
-       _ self_holeDiameter : Int,                   
-       _ self_padShape : PadShape,                  
-       _ self_padStyle : PadStyle
+func transient_SlavePadInDevice_frontSideFilledBezierPath (
+       _ self_xCenter : Int,                               
+       _ self_yCenter : Int,                               
+       _ self_width : Int,                                 
+       _ self_height : Int,                                
+       _ self_holeDiameter : Int,                          
+       _ self_padShape : PadShape,                         
+       _ self_padStyle : SlavePadStyle
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_xCenter)
@@ -47,10 +47,13 @@ func transient_PackagePad_backSideFilledBezierPath (
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)
       bp.windingRule = .evenOdd
-    case .surface :
+    case .topSide :
+      ()
+    case .bottomSide :
       bp.removeAllPoints ()
     }
     return bp
+
 //--- END OF USER ZONE 2
 }
 

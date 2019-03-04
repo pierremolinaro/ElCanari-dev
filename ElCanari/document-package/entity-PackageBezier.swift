@@ -736,7 +736,7 @@ class PackageBezier : PackageObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.x1_property.removeEBObserver (self.strokeBezierPath_property)
     self.y1_property.removeEBObserver (self.strokeBezierPath_property)
@@ -1005,7 +1005,7 @@ class PackageBezier : PackageObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1014,7 +1014,7 @@ class PackageBezier : PackageObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -2516,7 +2516,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
   private var mSet = Set <PackageBezier> ()
   private var mValue = [PackageBezier] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2528,89 +2528,94 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.y1_property.mSetterDelegate = nil
-          managedObject.x2_property.mSetterDelegate = nil
-          managedObject.y2_property.mSetterDelegate = nil
-          managedObject.cpx1_property.mSetterDelegate = nil
-          managedObject.cpy1_property.mSetterDelegate = nil
-          managedObject.cpx2_property.mSetterDelegate = nil
-          managedObject.cpy2_property.mSetterDelegate = nil
-          managedObject.x1Unit_property.mSetterDelegate = nil
-          managedObject.y1Unit_property.mSetterDelegate = nil
-          managedObject.x2Unit_property.mSetterDelegate = nil
-          managedObject.y2Unit_property.mSetterDelegate = nil
-          managedObject.cpx1Unit_property.mSetterDelegate = nil
-          managedObject.cpy1Unit_property.mSetterDelegate = nil
-          managedObject.cpx2Unit_property.mSetterDelegate = nil
-          managedObject.cpy2Unit_property.mSetterDelegate = nil
-          managedObject.x1_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.y1_property.mSetterDelegate = nil
+            managedObject.x2_property.mSetterDelegate = nil
+            managedObject.y2_property.mSetterDelegate = nil
+            managedObject.cpx1_property.mSetterDelegate = nil
+            managedObject.cpy1_property.mSetterDelegate = nil
+            managedObject.cpx2_property.mSetterDelegate = nil
+            managedObject.cpy2_property.mSetterDelegate = nil
+            managedObject.x1Unit_property.mSetterDelegate = nil
+            managedObject.y1Unit_property.mSetterDelegate = nil
+            managedObject.x2Unit_property.mSetterDelegate = nil
+            managedObject.y2Unit_property.mSetterDelegate = nil
+            managedObject.cpx1Unit_property.mSetterDelegate = nil
+            managedObject.cpy1Unit_property.mSetterDelegate = nil
+            managedObject.cpx2Unit_property.mSetterDelegate = nil
+            managedObject.cpy2Unit_property.mSetterDelegate = nil
+            managedObject.x1_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpx1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpy1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpx1Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpy1Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpx2Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpx1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpy1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpx2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpy2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x1Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y1Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x2Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y2Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpx1Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpy1Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpx2Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_cpy2Unit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : PackageBezier in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpx1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpy1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpx2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpy2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpx1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpy1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpx2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.cpy2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : PackageBezier in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpx1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpy1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpx2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpy2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpx1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpy1Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpx2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.cpy2Unit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpx1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpy1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpx1Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpy1Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpx2Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_cpy2Unit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpx1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpy1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpx2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpy2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x1Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y1Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x2Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y2Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpx1Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpy1Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpx2Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_cpy2Unit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

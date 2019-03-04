@@ -1134,10 +1134,11 @@ import Cocoa
   }
 
   //····················································································································
-  //   removeWindowController
+  //   removeUserInterface
   //····················································································································
 
   override func removeUserInterface () {
+    super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mSegmentedControl?.unbind_selectedPage ()
     self.mMinPPTPTTTWinEBUnitPopUp?.unbind_selectedTag ()

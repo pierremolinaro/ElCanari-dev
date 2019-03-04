@@ -106,24 +106,35 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   }
 
   //····················································································································
+  //   cleanUpRelationshipsAndRemoveAllObservers
+  //····················································································································
+
+  final func cleanUpRelationshipsAndRemoveAllObservers () {
+    self.clearObjectExplorer ()
+    self.removeAllObservers ()
+    self.cleanUpToManyRelationships ()
+    self.cleanUpToOneRelationships ()
+  }
+
+  //····················································································································
   //   cleanUpToManyRelationships
   //····················································································································
 
-  func cleanUpToManyRelationships () {
+  internal func cleanUpToManyRelationships () {
   }
 
   //····················································································································
   //   cleanUpToOneRelationships
   //····················································································································
 
-  func cleanUpToOneRelationships () {
+  internal func cleanUpToOneRelationships () {
   }
 
   //····················································································································
   //   removeAllObservers
   //····················································································································
 
-  func removeAllObservers () {
+  internal func removeAllObservers () {
   }
 
   //····················································································································

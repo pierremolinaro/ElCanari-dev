@@ -53,9 +53,8 @@ entity DeviceDocumentation {
 graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany packages ;
   
-  toMany PackagePad mPads ;
-  toMany PackageZone mZones ;
-  toMany PackageSlavePad mSlavePads ;
+  toMany MasterPadInDevice mMasterPads ;
+  toMany SlavePadInDevice mSlavePads ;
  
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
@@ -69,17 +68,17 @@ graphic entity PackageInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
-    self.mPads.all.frontSideFilledBezierPath,
+    self.mMasterPads.all.frontSideFilledBezierPath,
     self.mSlavePads.all.frontSideFilledBezierPath
   ;
 
   transient BezierPathArray backSidePadFilledBezierPathArray dependsFrom
-    self.mPads.all.backSideFilledBezierPath,
+    self.mMasterPads.all.backSideFilledBezierPath,
     self.mSlavePads.all.backSideFilledBezierPath
   ;
 
   transient EBShape objectDisplay dependsFrom
-     self.mPads.all.padNumberDisplay,
+     self.mMasterPads.all.padNumberDisplay,
      self.mSlavePads.all.padNumberDisplay,
      self.mRoot.one.mShowPackagePadNumbers,
      self.mStrokeBezierPath, self.mRoot.one.mShowPackages,
@@ -100,7 +99,62 @@ graphic entity PackageInDevice {
      self.mName, self.mX, self.mY
   ;
   
-  transient StringSet padNameSet dependsFrom self.mPads.all.padName ;
+  transient StringSet padNameSet dependsFrom self.mMasterPads.all.padName ;
 }
 
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity MasterPadInDevice {
+  property @signature Int xCenter default 0 ;
+  property @signature Int yCenter default 0 ;
+  property @signature Int width default 114_300 ;
+  property @signature Int height default 228_600 ;
+  property @signature Int holeDiameter default 57_150 ;
+  property @signature PadShape padShape default octo ;
+  property @signature PadStyle padStyle default traversing ;
+  property @signature String padName default "" ;
+  
+  transient NSBezierPath frontSideFilledBezierPath dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle
+  ;
+
+  transient NSBezierPath backSideFilledBezierPath dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle
+  ;
+
+   transient EBShape padNumberDisplay dependsFrom
+     self.xCenter, self.yCenter, prefs.padNumberColor, self.padName, prefs.padNumberFont ;
+  
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SlavePadInDevice {
+  property @signature Int xCenter default 0 ;
+  property @signature Int yCenter default 0 ;
+  property @signature Int width default 114_300 ;
+  property @signature Int height default 228_600 ;
+  property @signature Int holeDiameter default 57_150 ;
+  property @signature PadShape padShape default octo ;
+  property @signature SlavePadStyle padStyle default traversing ;
+  property @signature String padName default "" ;
+
+  transient NSBezierPath frontSideFilledBezierPath dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle
+  ;
+
+  transient NSBezierPath backSideFilledBezierPath dependsFrom
+     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
+     self.padShape, self.padStyle
+  ;
+
+   transient EBShape padNumberDisplay dependsFrom
+     self.xCenter, self.yCenter,
+     prefs.padNumberFont, prefs.padNumberColor, self.padName
+  ;
+ 
+}
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -548,7 +548,7 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.xPin_property.removeEBObserver (self.objectDisplay_property)
     self.yPin_property.removeEBObserver (self.objectDisplay_property)
@@ -756,7 +756,7 @@ class SymbolPin : SymbolObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -765,7 +765,7 @@ class SymbolPin : SymbolObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1883,7 +1883,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   private var mSet = Set <SymbolPin> ()
   private var mValue = [SymbolPin] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1895,65 +1895,70 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.yPin_property.mSetterDelegate = nil
-          managedObject.xName_property.mSetterDelegate = nil
-          managedObject.yName_property.mSetterDelegate = nil
-          managedObject.xNumber_property.mSetterDelegate = nil
-          managedObject.yNumber_property.mSetterDelegate = nil
-          managedObject.name_property.mSetterDelegate = nil
-          managedObject.nameHorizontalAlignment_property.mSetterDelegate = nil
-          managedObject.numberHorizontalAlignment_property.mSetterDelegate = nil
-          managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
-          managedObject.xPin_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.yPin_property.mSetterDelegate = nil
+            managedObject.xName_property.mSetterDelegate = nil
+            managedObject.yName_property.mSetterDelegate = nil
+            managedObject.xNumber_property.mSetterDelegate = nil
+            managedObject.yNumber_property.mSetterDelegate = nil
+            managedObject.name_property.mSetterDelegate = nil
+            managedObject.nameHorizontalAlignment_property.mSetterDelegate = nil
+            managedObject.numberHorizontalAlignment_property.mSetterDelegate = nil
+            managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
+            managedObject.xPin_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_yPin_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xName_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_yName_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xNumber_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_yNumber_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_name_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_nameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_nameRect_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : SymbolPin in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.yPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.xNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.yNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.nameHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.numberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.xPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : SymbolPin in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.yPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.xName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.yName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.xNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.yNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.name_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.nameHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.numberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.pinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.xPin_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_yPin_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xName_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_yName_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xNumber_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_yNumber_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_name_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_nameHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_nameRect_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

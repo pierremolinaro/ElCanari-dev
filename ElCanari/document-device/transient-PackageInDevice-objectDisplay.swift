@@ -12,8 +12,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageInDevice_objectDisplay (
-       _ self_mPads_padNumberDisplay : [PackagePad_padNumberDisplay],
-       _ self_mSlavePads_padNumberDisplay : [PackageSlavePad_padNumberDisplay],
+       _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
+       _ self_mSlavePads_padNumberDisplay : [SlavePadInDevice_padNumberDisplay],
        _ self_mRoot_mShowPackagePadNumbers : Bool?,
        _ self_mStrokeBezierPath : NSBezierPath,
        _ self_mRoot_mShowPackages : Bool?,    
@@ -71,7 +71,7 @@ func transient_PackageInDevice_objectDisplay (
       }
     //--- Pad number
       if self_mRoot_mShowPackagePadNumbers ?? false {
-        for pad in self_mPads_padNumberDisplay {
+        for pad in self_mMasterPads_padNumberDisplay {
           if let textShape = pad.padNumberDisplay {
             shape.append (textShape)
           }

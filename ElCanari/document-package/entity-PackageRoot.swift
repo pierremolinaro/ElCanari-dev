@@ -865,7 +865,7 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   //--- To many property: packagePads
     self.packageObjects_property.removeEBObserver (self.packagePads_property)
@@ -1121,7 +1121,7 @@ class PackageRoot : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.packageObjects_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -1131,7 +1131,7 @@ class PackageRoot : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -2582,7 +2582,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   private var mSet = Set <PackageRoot> ()
   private var mValue = [PackageRoot] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -2594,83 +2594,88 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.selectedPageIndex_property.mSetterDelegate = nil
-          managedObject.selectedInspector_property.mSetterDelegate = nil
-          managedObject.comments_property.mSetterDelegate = nil
-          managedObject.program_property.mSetterDelegate = nil
-          managedObject.horizontalFlip_property.mSetterDelegate = nil
-          managedObject.verticalFlip_property.mSetterDelegate = nil
-          managedObject.gridStyle_property.mSetterDelegate = nil
-          managedObject.gridStep_property.mSetterDelegate = nil
-          managedObject.gridStepUnit_property.mSetterDelegate = nil
-          managedObject.gridDisplayFactor_property.mSetterDelegate = nil
-          managedObject.zoom_property.mSetterDelegate = nil
-          managedObject.padNumbering_property.mSetterDelegate = nil
-          managedObject.xPlacardUnit_property.mSetterDelegate = nil
-          managedObject.yPlacardUnit_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.selectedPageIndex_property.mSetterDelegate = nil
+            managedObject.selectedInspector_property.mSetterDelegate = nil
+            managedObject.comments_property.mSetterDelegate = nil
+            managedObject.program_property.mSetterDelegate = nil
+            managedObject.horizontalFlip_property.mSetterDelegate = nil
+            managedObject.verticalFlip_property.mSetterDelegate = nil
+            managedObject.gridStyle_property.mSetterDelegate = nil
+            managedObject.gridStep_property.mSetterDelegate = nil
+            managedObject.gridStepUnit_property.mSetterDelegate = nil
+            managedObject.gridDisplayFactor_property.mSetterDelegate = nil
+            managedObject.zoom_property.mSetterDelegate = nil
+            managedObject.padNumbering_property.mSetterDelegate = nil
+            managedObject.xPlacardUnit_property.mSetterDelegate = nil
+            managedObject.yPlacardUnit_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_program_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_selectedPageIndex_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_program_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_horizontalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_verticalFlip_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStyle_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStep_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStepUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridDisplayFactor_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_zoom_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_padNumbering_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_xPlacardUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_yPlacardUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_freePadNumbering_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gridStepMultipliedByDisplayFactor_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_noIssue_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : PackageRoot in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.program_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.horizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.verticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.gridStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.gridStep_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.gridStepUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.gridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.padNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.xPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : PackageRoot in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.selectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.program_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.horizontalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.verticalFlip_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.gridStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.gridStep_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.gridStepUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.gridDisplayFactor_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.zoom_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.padNumbering_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.xPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.yPlacardUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_program_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_selectedPageIndex_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_program_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_horizontalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_verticalFlip_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStyle_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStep_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStepUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridDisplayFactor_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_zoom_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_padNumbering_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_xPlacardUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_yPlacardUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_freePadNumbering_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gridStepMultipliedByDisplayFactor_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_noIssue_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

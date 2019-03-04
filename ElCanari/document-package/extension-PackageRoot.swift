@@ -14,10 +14,10 @@ extension PackageRoot {
 
   //····················································································································
 
-  func accumulate (strokeBezierPathes : NSBezierPath,
-                   masterPads : inout [PackagePad],
-                   zones : inout [PackageZone],
-                   slavePads : inout [PackageSlavePad]) {
+  func accumulate (withUndoManager inUndoManager : EBUndoManager?,
+                   strokeBezierPathes : NSBezierPath,
+                   masterPads : inout [MasterPadInDevice],
+                   slavePads : inout [SlavePadInDevice]) {
     for object in self.packageObjects_property.propval {
       if let segment = object as? PackageSegment, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
@@ -27,12 +27,28 @@ extension PackageRoot {
         strokeBezierPathes.append (bp)
       }else if let segment = object as? PackageArc, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
-      }else if let pad = object as? PackagePad {
+      }else if let packagePad = object as? PackagePad {
+        let pad = MasterPadInDevice (inUndoManager, file: #file, #line)
+        pad.xCenter = packagePad.xCenter
+        pad.yCenter = packagePad.yCenter
+        pad.width = packagePad.width
+        pad.height = packagePad.height
+        pad.holeDiameter = packagePad.holeDiameter
+        pad.padShape = packagePad.padShape
+        pad.padStyle = packagePad.padStyle
+        pad.padName = packagePad.padName!
         masterPads.append (pad)
-      }else if let pad = object as? PackageSlavePad {
+      }else if let packagePad = object as? PackageSlavePad {
+        let pad = SlavePadInDevice (inUndoManager, file: #file, #line)
+        pad.xCenter = packagePad.xCenter
+        pad.yCenter = packagePad.yCenter
+        pad.width = packagePad.width
+        pad.height = packagePad.height
+        pad.holeDiameter = packagePad.holeDiameter
+        pad.padShape = packagePad.padShape
+        pad.padStyle = packagePad.padStyle
+        pad.padName = packagePad.padName!
         slavePads.append (pad)
-      }else if let zone = object as? PackageZone {
-        zones.append (zone)
       }
     }
   }

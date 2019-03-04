@@ -41,7 +41,9 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "PackageDimension" : PackageDimension.self,
   "DeviceRoot" : DeviceRoot.self,
   "DeviceDocumentation" : DeviceDocumentation.self,
-  "PackageInDevice" : PackageInDevice.self
+  "PackageInDevice" : PackageInDevice.self,
+  "MasterPadInDevice" : MasterPadInDevice.self,
+  "SlavePadInDevice" : SlavePadInDevice.self
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

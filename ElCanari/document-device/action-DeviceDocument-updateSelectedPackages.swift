@@ -27,46 +27,34 @@ extension DeviceDocument {
            let packageRoot = rootObject as? PackageRoot,
            let version = metadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {
-            messages.append ("Package \(package.mName) is up-to-date")
+            messages.append ("Package \(package.mName) is up-to-date.")
           }else{
-            package.mVersion = version
-            package.mFileData = data
             let strokeBezierPathes = NSBezierPath ()
-            var masterPads = [PackagePad] ()
-            var slavePads = [PackageSlavePad] ()
-            var zones = [PackageZone] ()
+            var masterPads = [MasterPadInDevice] ()
+            var slavePads = [SlavePadInDevice] ()
             packageRoot.accumulate (
+              withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,
               masterPads: &masterPads,
-              zones : &zones,
               slavePads: &slavePads
             )
-            packageRoot.packageObjects_property.setProp ([])
             packageRoot.removeRecursivelyAllRelationsShips ()
-          //-- Set property
+          //-- Set properties
+            package.mVersion = version
+            package.mFileData = data
             package.mStrokeBezierPath = strokeBezierPathes
           //--- Remove relationship circularities
-            for zone in package.mZones_property.propval {
-              zone.removeAllObservers ()
-              zone.cleanUpToOneRelationships ()
-              zone.cleanUpToManyRelationships ()
-            }
-            for masterPad in package.mPads_property.propval {
-              masterPad.removeAllObservers ()
-              masterPad.cleanUpToOneRelationships ()
-              masterPad.cleanUpToManyRelationships ()
-            }
-            for slavePad in package.mSlavePads_property.propval {
-              slavePad.removeAllObservers ()
-              slavePad.cleanUpToOneRelationships ()
-              slavePad.cleanUpToManyRelationships ()
-            }
+//            for masterPad in package.mMasterPads_property.propval {
+//              masterPad.cleanUpRelationshipsAndRemoveAllObservers ()
+//            }
+//            for slavePad in package.mSlavePads_property.propval {
+//              slavePad.cleanUpRelationshipsAndRemoveAllObservers ()
+//            }
           //--- Set relationship
-            package.mPads_property.setProp (masterPads)
+            package.mMasterPads_property.setProp (masterPads)
             package.mSlavePads_property.setProp (slavePads)
-            package.mZones_property.setProp (zones)
           //---
-            messages.append ("Package \(package.mName) has been updated to version \(version)")
+            messages.append ("Package \(package.mName) has been updated to version \(version).")
           }
         }else{
           messages.append ("Invalid file at path \(pathes [0])")
@@ -80,7 +68,8 @@ extension DeviceDocument {
     }
     if messages.count > 0 {
       let alert = NSAlert ()
-      alert.messageText = messages.joined (separator: "\n")
+      alert.messageText = "Done."
+      alert.informativeText = messages.joined (separator: "\n")
       alert.beginSheetModal (for: self.windowForSheet!)
     }
 //--- END OF USER ZONE 2

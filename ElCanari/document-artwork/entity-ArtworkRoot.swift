@@ -396,7 +396,7 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
   }
 
@@ -560,7 +560,7 @@ class ArtworkRoot : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.fileGenerationParameterArray_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -570,7 +570,7 @@ class ArtworkRoot : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -1532,7 +1532,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   private var mSet = Set <ArtworkRoot> ()
   private var mValue = [ArtworkRoot] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -1544,61 +1544,66 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.selectedTab_property.mSetterDelegate = nil
-          managedObject.comments_property.mSetterDelegate = nil
-          managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = nil
-          managedObject.minPPTPTTTW_property.mSetterDelegate = nil
-          managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = nil
-          managedObject.minValueForOARinEBUnit_property.mSetterDelegate = nil
-          managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = nil
-          managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = nil
-          managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = nil
-          managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = nil
-          managedObject.drillDataFileExtension_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.selectedTab_property.mSetterDelegate = nil
+            managedObject.comments_property.mSetterDelegate = nil
+            managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = nil
+            managedObject.minPPTPTTTW_property.mSetterDelegate = nil
+            managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = nil
+            managedObject.minValueForOARinEBUnit_property.mSetterDelegate = nil
+            managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = nil
+            managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = nil
+            managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = nil
+            managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = nil
+            managedObject.drillDataFileExtension_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minPPTPTTTWdisplayUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minPPTPTTTW_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForOARdisplayUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForOARinEBUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForPHDdisplayUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForPHDinEBUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForBoardLimitWidthDisplayUnit_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_minValueForBoardLimitWidth_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_drillDataFileExtension_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : ArtworkRoot in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minPPTPTTTW_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForOARinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.drillDataFileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : ArtworkRoot in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.comments_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minPPTPTTTWdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minPPTPTTTW_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForOARdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForOARinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForPHDdisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForPHDinEBUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForBoardLimitWidthDisplayUnit_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.minValueForBoardLimitWidth_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.drillDataFileExtension_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minPPTPTTTWdisplayUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minPPTPTTTW_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForOARdisplayUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForOARinEBUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForPHDdisplayUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForPHDinEBUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForBoardLimitWidthDisplayUnit_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_minValueForBoardLimitWidth_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_drillDataFileExtension_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

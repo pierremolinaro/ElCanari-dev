@@ -1100,10 +1100,11 @@ import Cocoa
   }
 
   //····················································································································
-  //   removeWindowController
+  //   removeUserInterface
   //····················································································································
 
   override func removeUserInterface () {
+    super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
     self.mSignatureTextField?.unbind_signature ()

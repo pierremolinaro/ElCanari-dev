@@ -225,7 +225,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.x1_property.removeEBObserver (self.selectionDisplay_property)
     self.y1_property.removeEBObserver (self.selectionDisplay_property)
@@ -327,7 +327,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -336,7 +336,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -954,7 +954,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   private var mSet = Set <SegmentForFontCharacter> ()
   private var mValue = [SegmentForFontCharacter] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -966,37 +966,42 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.x1_property.mSetterDelegate = nil
-          managedObject.y1_property.mSetterDelegate = nil
-          managedObject.x2_property.mSetterDelegate = nil
-          managedObject.y2_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.x1_property.mSetterDelegate = nil
+            managedObject.y1_property.mSetterDelegate = nil
+            managedObject.x2_property.mSetterDelegate = nil
+            managedObject.y2_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_x1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y1_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_x2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_y2_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : SegmentForFontCharacter in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : SegmentForFontCharacter in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.x1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y1_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.x2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.y2_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_x1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y1_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_x2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_y2_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

@@ -266,7 +266,7 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
     self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
@@ -361,7 +361,7 @@ class FontCharacter : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
     self.segments_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
@@ -371,7 +371,7 @@ class FontCharacter : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -936,7 +936,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   private var mSet = Set <FontCharacter> ()
   private var mValue = [FontCharacter] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -948,31 +948,36 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.codePoint_property.mSetterDelegate = nil
-          managedObject.advance_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.codePoint_property.mSetterDelegate = nil
+            managedObject.advance_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : FontCharacter in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : FontCharacter in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()

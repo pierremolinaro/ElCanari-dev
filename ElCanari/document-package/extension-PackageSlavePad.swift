@@ -73,6 +73,7 @@ extension PackageSlavePad {
   //····················································································································
 
   override func operationAfterRemoving () {
+    super.operationAfterRemoving ()
     self.master_property.setProp (nil)
   }
 

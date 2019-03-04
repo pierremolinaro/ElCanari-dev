@@ -232,16 +232,6 @@ graphic entity PackagePad : PackageObject {
   toOne PackageZone zone ;
   toMany PackageSlavePad slaves inverse toOne master ;
 
-  transient NSBezierPath frontSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
-  ;
-
-  transient NSBezierPath backSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
-  ;
-
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
      self.padShape, self.padStyle,
@@ -296,16 +286,6 @@ graphic entity PackageSlavePad : PackageObject {
   property @signature Int annularRingUnit default 2_286 ;
   
   toOne PackagePad master inverse toMany slaves ;
-
-  transient NSBezierPath frontSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
-  ;
-
-  transient NSBezierPath backSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
-  ;
 
   transient EBShape objectDisplay dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,

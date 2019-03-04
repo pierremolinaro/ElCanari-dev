@@ -11,15 +11,25 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_PackageInDevice_padNameSet (
-       _ self_mMasterPads_padName : [MasterPadInDevice_padName]
-) -> StringSet {
+func transient_SlavePadInDevice_padNumberDisplay (
+       _ self_xCenter : Int,                      
+       _ self_yCenter : Int,                      
+       _ prefs_padNumberFont : NSFont,            
+       _ prefs_padNumberColor : NSColor,          
+       _ self_padName : String
+) -> EBShape {
 //--- START OF USER ZONE 2
-   var result = StringSet ()
-   for p in self_mMasterPads_padName {
-     result.insert (p.padName)
-   }
-   return result
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : prefs_padNumberFont,
+        NSAttributedString.Key.foregroundColor : prefs_padNumberColor
+      ]
+      return EBTextShape (
+        self_padName,
+        CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint (),
+        textAttributes,
+        .center,
+        .center
+      )
 //--- END OF USER ZONE 2
 }
 

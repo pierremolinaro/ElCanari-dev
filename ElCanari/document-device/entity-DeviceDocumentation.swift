@@ -141,7 +141,7 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  override func removeAllObservers () {
+  override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mFileData_property.removeEBObserver (self.fileSize_property)
   }
@@ -206,7 +206,7 @@ class DeviceDocumentation : EBManagedObject,
   //    cleanUpToManyRelationships
   //····················································································································
 
-  override func cleanUpToManyRelationships () {
+  override internal func cleanUpToManyRelationships () {
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -215,7 +215,7 @@ class DeviceDocumentation : EBManagedObject,
   //    cleanUpToOneRelationships
   //····················································································································
 
-  override func cleanUpToOneRelationships () {
+  override internal func cleanUpToOneRelationships () {
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -647,7 +647,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
   private var mSet = Set <DeviceDocumentation> ()
   private var mValue = [DeviceDocumentation] () {
     didSet {
-      self.postEvent ()
+     // self.postEvent ()
       if oldValue != self.mValue {
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
@@ -659,27 +659,32 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
         }
       //--- Removed object set
         let removedObjectSet = oldSet.subtracting (self.mSet)
-        for managedObject in removedObjectSet {
-          managedObject.setSignatureObserver (observer: nil)
-          self.setOppositeRelationship? (nil)
-          managedObject.mFileName_property.mSetterDelegate = nil
-          managedObject.mFileData_property.mSetterDelegate = nil
+        if removedObjectSet.count > 0 {
+          for managedObject in removedObjectSet {
+            managedObject.setSignatureObserver (observer: nil)
+            self.setOppositeRelationship? (nil)
+            managedObject.mFileName_property.mSetterDelegate = nil
+            managedObject.mFileData_property.mSetterDelegate = nil
+          }
+          self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
         }
-        self.removeEBObserversOf_mFileName_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_mFileData_fromElementsOfSet (removedObjectSet)
-        self.removeEBObserversOf_fileSize_fromElementsOfSet (removedObjectSet)
-      //--- Added object set
+       //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
-        for managedObject : DeviceDocumentation in addedObjectSet {
-          managedObject.setSignatureObserver (observer: self)
-          self.setOppositeRelationship? (managedObject)
-          managedObject.mFileName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-          managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+        if addedObjectSet.count > 0 {
+          for managedObject : DeviceDocumentation in addedObjectSet {
+            managedObject.setSignatureObserver (observer: self)
+            self.setOppositeRelationship? (managedObject)
+            managedObject.mFileName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+          }
+          self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
         }
-        self.addEBObserversOf_mFileName_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_mFileData_toElementsOfSet (addedObjectSet)
-        self.addEBObserversOf_fileSize_toElementsOfSet (addedObjectSet)
       //--- Notify observers
+        self.postEvent ()
         self.clearSignatureCache ()
       //--- Write in preferences ?
         self.writeInPreferences ()
