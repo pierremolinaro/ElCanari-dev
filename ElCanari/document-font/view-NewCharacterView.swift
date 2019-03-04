@@ -51,7 +51,7 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

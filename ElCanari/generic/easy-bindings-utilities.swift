@@ -17,7 +17,7 @@ import Cocoa
 //   EBWeakObserverSetElement
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-fileprivate class EBWeakObserverSetElement : EBObject {
+fileprivate struct EBWeakObserverSetElement {
 
   //····················································································································
 
@@ -31,7 +31,7 @@ fileprivate class EBWeakObserverSetElement : EBObject {
 
   init (observer : EBEvent) {
     mObserver = observer
-    super.init ()
+  //  super.init ()
   }
 
   //····················································································································
@@ -42,26 +42,29 @@ fileprivate class EBWeakObserverSetElement : EBObject {
 //   EBWeakEventSet
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBWeakEventSet : EBObject {
+struct EBWeakEventSet {
+
+  //····················································································································
+
   fileprivate var mDictionary = [Int : EBWeakObserverSetElement] ()
 
   //····················································································································
 
-  func insert (_ inObserver : EBEvent) {
+  mutating func insert (_ inObserver : EBEvent) {
     let address : Int = inObserver.ebObjectIndex
     self.mDictionary [address] = EBWeakObserverSetElement (observer:inObserver)
   }
 
   //····················································································································
 
-  func remove (_ inObserver : EBEvent) {
+  mutating func remove (_ inObserver : EBEvent) {
     let address : Int = inObserver.ebObjectIndex
     self.mDictionary [address] = nil
   }
 
   //····················································································································
 
-  func apply (_ inFunction : (_ : EBEvent) -> Void) {
+  mutating func apply (_ inFunction : (_ : EBEvent) -> Void) {
     for (key, entry) in self.mDictionary {
       if let observer = entry.observer {
         inFunction (observer)
@@ -94,7 +97,7 @@ class EBWeakEventSet : EBObject {
 class EBAbstractProperty : EBEvent {
 
   private final var mObservers = EBWeakEventSet ()
-  
+
   //····················································································································
 
   final func addEBObserver (_ inObserver : EBEvent) {
@@ -102,10 +105,10 @@ class EBAbstractProperty : EBEvent {
     self.updateObserverExplorer ()
     inObserver.postEvent ()
   }
- 
+
   //····················································································································
 
-  final func addEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
+  final func addEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
     inObserverSet.apply ( {(_ observer : EBEvent) in
       self.mObservers.insert (observer)
       observer.postEvent ()
@@ -117,12 +120,13 @@ class EBAbstractProperty : EBEvent {
 
   final func removeEBObserver (_ inObserver : EBEvent) {
     self.mObservers.remove (inObserver)
+  //  inObserver.postEvent ()
     self.updateObserverExplorer ()
   }
 
   //····················································································································
 
-  final func removeEBObserversFrom (_ inObserverSet : EBWeakEventSet) {
+  final func removeEBObserversFrom (_ inObserverSet : inout EBWeakEventSet) {
     inObserverSet.apply ( {(_ observer : EBEvent) in
       self.mObservers.remove (observer)
       observer.postEvent ()
@@ -135,7 +139,7 @@ class EBAbstractProperty : EBEvent {
   override func postEvent () {
     self.mObservers.apply ( {(_ observer : EBEvent) in observer.postEvent () })
   }
-  
+
   //····················································································································
 
   final var mObserverExplorer : NSPopUpButton? {
@@ -143,7 +147,7 @@ class EBAbstractProperty : EBEvent {
       self.updateObserverExplorer ()
     }
   }
-  
+
   //····················································································································
 
   final func updateObserverExplorer () {
@@ -169,13 +173,13 @@ class EBAbstractProperty : EBEvent {
 
 class EBObserver : EBAbstractProperty {
   private var mPostEventFunction : Optional < () -> Void > = nil
-  
+
   //····················································································································
 
   func setPostEventFunction (_ function : Optional < () -> Void >) {
     self.mPostEventFunction = function
   }
-  
+
   //····················································································································
 
   override func postEvent() {
@@ -280,12 +284,11 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
     super.init (frame:frame)
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
-  
+
   deinit {
-    // mUnbindFunction? ()
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································
@@ -297,13 +300,13 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  
+
   override func removeFromSuperviewWithoutNeedingDisplay () {
    // NSLog ("\(#function)")
     self.mUnbindFunction? ()
     super.removeFromSuperviewWithoutNeedingDisplay ()
   }
-  
+
   //····················································································································
 
 }
@@ -329,9 +332,9 @@ class EBObject : NSObject, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  
+
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································
@@ -625,7 +628,7 @@ enum EBSelection <T> {
   case empty
   case multiple
   case single (T)
-  
+
   func kind () -> EBPropertyKind {
     switch self {
     case .empty : return .noSelectionKind

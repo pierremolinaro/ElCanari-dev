@@ -62,7 +62,7 @@ fileprivate final class EBOffscreenView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

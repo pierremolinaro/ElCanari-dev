@@ -31,7 +31,7 @@ class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

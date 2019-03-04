@@ -274,7 +274,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="bia-Mb-mD3">
                         <rect key="frame" x="1" y="1" width="531" height="400"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1097" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="400"/>
@@ -427,7 +427,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="hL4-lW-hym">
                         <rect key="frame" x="1" y="0.0" width="244" height="265"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="p8i-Zv-zRb" viewBased="YES" id="gZS-PE-KcP" customClass="CanariCharacterGerberCodeTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="244" height="242"/>

@@ -17,17 +17,19 @@ func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
 ) -> String {
 //--- START OF USER ZONE 2
    var message = [String] ()
-   var idx = 1
-   let p0 = self_packages_padNameSet [0].padNameSet!
-   while idx < self_packages_padNameSet.count {
-     let px = self_packages_padNameSet [idx].padNameSet!
-     for missing in p0.subtracting (px) {
-       message.append ("Package \(self_packages_mName [idx].mName) has no pad named \(missing)")
+   if self_packages_mName.count > 1 {
+     var idx = 1
+     let p0 = self_packages_padNameSet [0].padNameSet!
+     while idx < self_packages_padNameSet.count {
+       let px = self_packages_padNameSet [idx].padNameSet!
+       for missing in p0.subtracting (px) {
+         message.append ("Package \(self_packages_mName [idx].mName) has no pad named \(missing)")
+       }
+       for excedent in px.subtracting (p0) {
+         message.append ("Package \(self_packages_mName [idx].mName) has a pad named \(excedent)")
+       }
+       idx += 1
      }
-     for excedent in px.subtracting (p0) {
-       message.append ("Package \(self_packages_mName [idx].mName) has a pad named \(excedent)")
-     }
-     idx += 1
    }
    return message.joined (separator: "\n")
 //--- END OF USER ZONE 2

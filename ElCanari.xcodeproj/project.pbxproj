@@ -2419,16 +2419,6 @@
 		CF85624921E7CB110032F52D /* document — device */ = {
 			isa = PBXGroup;
 			children = (
-				CF78DE8E222D65CA00E89DCA /* entity-SlavePadInDevice.swift */,
-				CF78DE8D222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift */,
-				CF78DE8F222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift */,
-				CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */,
-				CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */,
-				CF78DE81222D5ACC00E89DCA /* entity-MasterPadInDevice.swift */,
-				CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */,
-				CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */,
-				CFD24155222C1270000D6B65 /* transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift */,
-				CFD24152222C0BB1000D6B65 /* transient-DeviceRoot-packagePadNameSetsAreConsistent.swift */,
 				CF577BBE2229363B00C60C0B /* action-DeviceDocument-addPackageFromLibraryAction.swift */,
 				CF0DC22A222586F100DD2076 /* action-DeviceDocument-copyImageAction.swift */,
 				CF0E9D092229ACE500124F04 /* action-DeviceDocument-editSelectedPackages.swift */,
@@ -2449,7 +2439,9 @@
 				CF85624D21E7CB570032F52D /* DeviceDocument.xib */,
 				CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */,
 				CF85624A21E7CB560032F52D /* entity-DeviceRoot.swift */,
+				CF78DE81222D5ACC00E89DCA /* entity-MasterPadInDevice.swift */,
 				CF0E9CFD2229A5FA00124F04 /* entity-PackageInDevice.swift */,
+				CF78DE8E222D65CA00E89DCA /* entity-SlavePadInDevice.swift */,
 				CF5124EF222AC1AE00FA4364 /* extension-PackageInDevice.swift */,
 				CF590BDD22270C21008E5364 /* table-view-DeviceDocumentationTableView.swift */,
 				CFC8547421E91817006ADB6C /* transient-DeviceDocument-mMetadataStatus.swift */,
@@ -2457,13 +2449,21 @@
 				CFC8547621E91817006ADB6C /* transient-DeviceDocument-mStatusMessage.swift */,
 				CFF5EF0522269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift */,
 				CF8E2A5722268CE5008A2A62 /* transient-DeviceRoot-imageIsValid.swift */,
+				CFD24155222C1270000D6B65 /* transient-DeviceRoot-inconsistentPackagePadNameSetsMessage.swift */,
 				CFC8547521E91817006ADB6C /* transient-DeviceRoot-issues.swift */,
+				CFD24152222C0BB1000D6B65 /* transient-DeviceRoot-packagePadNameSetsAreConsistent.swift */,
+				CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */,
+				CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */,
+				CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */,
 				CF900CAB222AFFC40078B4DD /* transient-PackageInDevice-backSidePadFilledBezierPathArray.swift */,
 				CF900CA8222AFE7E0078B4DD /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift */,
 				CF5123FC222A8FD700FA4364 /* transient-PackageInDevice-objectDisplay.swift */,
 				CFD2414F222C0A8A000D6B65 /* transient-PackageInDevice-padNameSet.swift */,
 				CF5123FD222A8FD700FA4364 /* transient-PackageInDevice-selectionDisplay.swift */,
 				CF0E9D062229AC0E00124F04 /* transient-PackageInDevice-versionString.swift */,
+				CF78DE8D222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift */,
+				CF78DE8F222D65CA00E89DCA /* transient-SlavePadInDevice-frontSideFilledBezierPath.swift */,
+				CF78DE90222D65CA00E89DCA /* transient-SlavePadInDevice-padNumberDisplay.swift */,
 				CF0DC14222253B9100DD2076 /* view-droppable-image-view.swift */,
 				CF8C31F0222846010001C649 /* window-pdf-doc.swift */,
 			);
@@ -4274,6 +4274,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;
@@ -4311,6 +4312,7 @@
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
+				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.canari;

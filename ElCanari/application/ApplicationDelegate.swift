@@ -91,7 +91,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   deinit {
-    UserDefaults.standard.removeObserver (self, forKeyPath:SU_LAST_CHECK_TIME, context: nil)
+    UserDefaults.standard.removeObserver (self, forKeyPath: SU_LAST_CHECK_TIME, context: nil)
   }
 
   //····················································································································

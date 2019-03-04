@@ -25,11 +25,18 @@ import Cocoa
     super.init (frame:frame)
     noteObjectAllocation (self)
   }
-  
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    super.ebCleanUp ()
+    self.mViewController = nil
+  }
+
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

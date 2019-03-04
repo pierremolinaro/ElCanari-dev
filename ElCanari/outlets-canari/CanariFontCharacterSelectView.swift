@@ -29,7 +29,7 @@ class CanariFontCharacterSelectView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

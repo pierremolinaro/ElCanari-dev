@@ -10,7 +10,7 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder : NSCoder) {
     super.init (coder:coder)
     self.delegate = self
     noteObjectAllocation (self)
@@ -18,8 +18,8 @@ import Cocoa
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
   }
@@ -27,7 +27,7 @@ import Cocoa
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

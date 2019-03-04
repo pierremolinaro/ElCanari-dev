@@ -69,20 +69,20 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
   
   //····················································································································
   //  First responder
   //····················································································································
 
-  override var acceptsFirstResponder : Bool { get { return true } }
+  override var acceptsFirstResponder : Bool { return true }
 
   //····················································································································
   //  Focus ring (https://developer.apple.com/library/content/qa/qa1785/_index.html)
   //····················································································································
 
-  override var focusRingMaskBounds: NSRect { get { return self.bounds } }
+  override var focusRingMaskBounds: NSRect { return self.bounds }
 
   //····················································································································
 

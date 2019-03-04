@@ -125,16 +125,16 @@ extension EBView {
 
   //····················································································································
 
-  internal func removePlacards () {
-    if let scrollView = self.enclosingScrollView as? EBScrollView {
-      scrollView.removePlacard (self.mZoomPopUpButton)
-      self.mZoomPopUpButton = nil
-      scrollView.removePlacard (self.mXPlacard)
-      self.mXPlacard = nil ;
-      scrollView.removePlacard (self.mYPlacard)
-      self.mYPlacard = nil
-    }
-  }
+//  internal func removePlacards () {
+//    if let scrollView = self.enclosingScrollView as? EBScrollView {
+//      scrollView.removePlacard (self.mZoomPopUpButton)
+//      self.mZoomPopUpButton = nil
+//      scrollView.removePlacard (self.mXPlacard)
+//      self.mXPlacard = nil ;
+//      scrollView.removePlacard (self.mYPlacard)
+//      self.mYPlacard = nil
+//    }
+//  }
 
   //····················································································································
   // Live scrolling notification is used for updating XY placards

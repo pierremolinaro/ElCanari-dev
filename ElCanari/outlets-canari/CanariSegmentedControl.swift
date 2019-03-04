@@ -19,19 +19,28 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
     super.init (frame: frame)
     noteObjectAllocation (self)
   }
-  
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    super.ebCleanUp ()
+    self.mMasterView = nil
+    self.mAttachedView = nil
+    self.mPageViews = []
+  }
+
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································
   //  properties
   //····················································································································
 
-  private weak var mMasterView : NSView? = nil
-  private weak var mAttachedView : CanariViewWithKeyView? = nil
+  private var mMasterView : NSView? = nil
+  private var mAttachedView : CanariViewWithKeyView? = nil
   private var mPageViews = [CanariViewWithKeyView?] ()
 
   //····················································································································
@@ -39,7 +48,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   func register (masterView : NSView?, _ inPageViews : [CanariViewWithKeyView?]) {
     self.mMasterView = masterView
     self.mPageViews = inPageViews
-    selectViewFromSelectedSegmentIndex ()
+    self.selectViewFromSelectedSegmentIndex ()
   }
 
   //····················································································································
@@ -48,8 +57,8 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   override var selectedSegment : Int {
     didSet {
-      if selectedSegment != oldValue {
-        selectViewFromSelectedSegmentIndex ()
+      if self.selectedSegment != oldValue {
+        self.selectViewFromSelectedSegmentIndex ()
       }
     }
   }
@@ -59,7 +68,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //····················································································································
 
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
-    selectViewFromSelectedSegmentIndex ()
+    self.selectViewFromSelectedSegmentIndex ()
     self.mController?.updateModel (self)
     return super.sendAction (inAction, to:target)
   }
@@ -79,15 +88,15 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
       if let viewToAttach = possibleViewToAttach {
         viewToAttach.frame = masterView.bounds
         viewToAttach.autoresizingMask = [.width, .height]
-        if let attachedView = mAttachedView {
-          attachedView.saveFirstResponder ()
+        if let attachedView = self.mAttachedView {
+        //  attachedView.saveFirstResponder ()
           masterView.replaceSubview (attachedView, with: viewToAttach)
         }else{
           masterView.addSubview (viewToAttach, positioned: .below, relativeTo: nil)
         }
         self.mAttachedView = viewToAttach
       //--- Make First Responder
-        viewToAttach.restoreFirstResponder ()
+        // viewToAttach.restoreFirstResponder ()
       }
     }
   }
@@ -98,16 +107,20 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
 
   private var mController : Controller_CanariSegmentedControl_selectedPage?
 
+  //····················································································································
+
   func bind_selectedPage (_ object:EBReadWriteProperty_Int, file:String, line:Int) {
-    self.mController = Controller_CanariSegmentedControl_selectedPage (object:object, outlet:self, file:file, line:line)
+    self.mController = Controller_CanariSegmentedControl_selectedPage (object:object, outlet:self)
   }
+
+  //····················································································································
 
   func unbind_selectedPage () {
     self.mController?.unregister ()
     self.mController = nil
-    for view in self.mPageViews {
-      view?.saveFirstResponder ()
-    }
+//    for view in self.mPageViews {
+//      view?.saveFirstResponder ()
+//    }
   }
 
   //····················································································································
@@ -125,7 +138,7 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl, file : String, line : Int) {
+  init (object : EBReadWriteProperty_Int, outlet : CanariSegmentedControl) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])

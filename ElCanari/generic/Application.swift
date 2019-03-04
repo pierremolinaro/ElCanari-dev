@@ -56,6 +56,7 @@ import Cocoa
   override func sendEvent (_ event: NSEvent) {
     super.sendEvent (event)
     flushModelEvents ()
+    flushOutletEvents ()
   }
 
   //····················································································································

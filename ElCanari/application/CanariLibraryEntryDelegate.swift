@@ -102,8 +102,8 @@ final class CanariLibraryEntryDelegate : EBEvent {
   //····················································································································
 
   deinit {
-    mObject?.mPath_property.removeEBObserver (self)
-    removeFileSystemMonitoring ()
+    self.mObject?.mPath_property.removeEBObserver (self)
+    self.removeFileSystemMonitoring ()
   }
   
   //····················································································································

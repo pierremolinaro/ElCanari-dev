@@ -39,10 +39,9 @@ func noteObjectAllocation (_ inObject : EBUserClassNameProtocol) {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func noteObjectDeallocation (_ inObject : EBUserClassNameProtocol) {
+func noteObjectDeallocation (_ inClassName : String) {
   if gEnableObjectAllocationDebug {
-    let className = String (describing: type(of: inObject))
-    gDebugObject?.pmNoteObjectDeallocation (className)
+    gDebugObject?.pmNoteObjectDeallocation (inClassName)
   }
 }
 

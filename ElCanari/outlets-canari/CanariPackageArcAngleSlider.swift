@@ -31,7 +31,7 @@ class CanariPackageArcAngleSlider : NSSlider, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································

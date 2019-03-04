@@ -14,20 +14,22 @@ extension EBView {
 
   override func viewDidMoveToSuperview () {
     super.viewDidMoveToSuperview ()
-    self.installPlacards ()
-    self.addEndLiveMagnificationObserver ()
-    self.updateViewFrameAndBounds ()
+    if self.superview != nil {
+      self.installPlacards ()
+      self.addEndLiveMagnificationObserver ()
+      self.updateViewFrameAndBounds ()
+    }
   }
 
   //····················································································································
 
-  override func viewWillMove (toSuperview inSuperview : NSView?) {
-     super.viewWillMove (toSuperview: inSuperview)
-  //--- Remove from superview ?
-    if nil == inSuperview {
-      self.removePlacards ()
-    }
-  }
+//  override func viewWillMove (toSuperview inSuperview : NSView?) {
+//     super.viewWillMove (toSuperview: inSuperview)
+//  //--- Remove from superview ?
+//    if nil == inSuperview {
+//      self.removePlacards ()
+//    }
+//  }
 
   //····················································································································
 }

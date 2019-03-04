@@ -11,15 +11,15 @@ import Cocoa
   
   //····················································································································
 
-  required init? (coder: NSCoder) {
+  required init? (coder : NSCoder) {
     super.init (coder:coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
   
@@ -36,7 +36,7 @@ import Cocoa
     if let font = mFont {
     //  self.window?.makeFirstResponder (self)
       let fontManager = NSFontManager.shared 
-   //   fontManager.delegate = self
+      fontManager.delegate = self
       fontManager.setSelectedFont (font, isMultiple:false)
       fontManager.orderFrontFontPanel (self)
       fontManager.target = self
@@ -64,7 +64,7 @@ import Cocoa
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (self)
+    noteObjectDeallocation (String (describing: type(of: self)))
   }
 
   //····················································································································
