@@ -63,7 +63,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   override init () {
     super.init ()
   //--- Selection observers
-    self.canBringForward_property.readModelFunction = { [weak self] in
+    self.canBringForward_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canBringForward)
       }else{
@@ -72,7 +72,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canBringToFront_property)
   //---
-    self.canBringToFront_property.readModelFunction = { [weak self] in
+    self.canBringToFront_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canBringToFront)
       }else{
@@ -81,7 +81,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canBringToFront_property)
   //---
-    self.canSendBackward_property.readModelFunction = { [weak self] in
+    self.canSendBackward_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canSendBackward)
       }else{
@@ -90,7 +90,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canSendBackward_property)
   //---
-    self.canSendToBack_property.readModelFunction = { [weak self] in
+    self.canSendToBack_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canSendToBack)
       }else{
@@ -99,7 +99,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canSendToBack_property)
   //---
-    self.canFlipHorizontally_property.readModelFunction = { [weak self] in
+    self.canFlipHorizontally_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canFlipHorizontally)
       }else{
@@ -108,7 +108,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canFlipHorizontally_property)
   //---
-    self.canFlipVertically_property.readModelFunction = { [weak self] in
+    self.canFlipVertically_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canFlipVertically)
       }else{
@@ -117,7 +117,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canFlipVertically_property)
   //---
-    self.canRotate90Clockwise_property.readModelFunction = { [weak self] in
+    self.canRotate90Clockwise_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canRotate90Clockwise)
       }else{
@@ -126,7 +126,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canRotate90Clockwise_property)
   //---
-    self.canRotate90CounterClockwise_property.readModelFunction = { [weak self] in
+    self.canRotate90CounterClockwise_property.mReadModelFunction = { [weak self] in
       if let me = self {
         return .single (me.canRotate90CounterClockwise)
       }else{
@@ -135,7 +135,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
     }
     self.selectedArray_property.addEBObserver (self.canRotate90CounterClockwise_property)
   //--- Install object array read function
-    self.objectArray_property.readModelFunction = { [weak self] in
+    self.objectArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -150,7 +150,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       }
     }
    //--- Install selected object array read function
-    self.selectedArray_property.readModelFunction = { [weak self] in
+    self.selectedArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -258,7 +258,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private func startObservingSelectionShape () {
     self.selectedArray_property.addEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
-    self.mObjectSelectionObserver.eventCallBack = { [weak self] in self?.computeSelectionShape () }
+    self.mObjectSelectionObserver.mEventCallBack = { [weak self] in self?.computeSelectionShape () }
   }
 
   //····················································································································
@@ -283,7 +283,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private func stopObservingSelectionShape () {
     self.selectedArray_property.removeEBObserverOf_selectionDisplay (self.mObjectSelectionObserver)
-    self.mObjectSelectionObserver.eventCallBack = nil
+    self.mObjectSelectionObserver.mEventCallBack = nil
   }
 
   //····················································································································
@@ -297,14 +297,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private func startObservingObjectShape () {
     self.mModel?.addEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
-    self.mObjectDisplayObserver.eventCallBack = { [weak self] in self?.updateObjectDisplay () }
+    self.mObjectDisplayObserver.mEventCallBack = { [weak self] in self?.updateObjectDisplay () }
   }
 
   //····················································································································
 
   private func stopObservingObjectShape () {
     self.mModel?.removeEBObserverOf_objectDisplay (self.mObjectDisplayObserver)
-    self.mObjectDisplayObserver.eventCallBack = nil
+    self.mObjectDisplayObserver.mEventCallBack = nil
   }
 
   //····················································································································
@@ -1005,14 +1005,14 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
 
   private func inspectorViewManagerStartsObservingSelection () {
     self.selectedArray_property.addEBObserver (self.mInspectorObserver)
-    self.mInspectorObserver.eventCallBack = { [weak self] in self?.updateInspectorViews () }
+    self.mInspectorObserver.mEventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
   //····················································································································
 
   private func inspectorViewManagerStopsObservingSelection () {
     self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
-    self.mInspectorObserver.eventCallBack = nil
+    self.mInspectorObserver.mEventCallBack = nil
   }
 
   //····················································································································

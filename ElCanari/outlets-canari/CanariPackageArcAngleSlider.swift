@@ -78,7 +78,7 @@ final class Controller_CanariPackageArcAngleSlider_angle : EBSimpleController {
     mOutlet.target = self
     mOutlet.action = #selector (Controller_CanariPackageArcAngleSlider_angle.action(_:))
   //--- Call back
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

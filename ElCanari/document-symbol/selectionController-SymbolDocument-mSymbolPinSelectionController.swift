@@ -161,7 +161,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolPin] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -204,68 +204,68 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- name
-    self.name_property.readModelFunction = nil 
-    self.name_property.writeModelFunction = nil 
-    self.name_property.validateAndWriteModelFunction = nil 
+    self.name_property.mReadModelFunction = nil 
+    self.name_property.mWriteModelFunction = nil 
+    self.name_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_name (self.name_property)
   //--- nameHorizontalAlignment
-    self.nameHorizontalAlignment_property.readModelFunction = nil 
-    self.nameHorizontalAlignment_property.writeModelFunction = nil 
-    self.nameHorizontalAlignment_property.validateAndWriteModelFunction = nil 
+    self.nameHorizontalAlignment_property.mReadModelFunction = nil 
+    self.nameHorizontalAlignment_property.mWriteModelFunction = nil 
+    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
   //--- nameRect
-    self.nameRect_property.readModelFunction = nil 
+    self.nameRect_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_nameRect (self.nameRect_property)
   //--- numberHorizontalAlignment
-    self.numberHorizontalAlignment_property.readModelFunction = nil 
-    self.numberHorizontalAlignment_property.writeModelFunction = nil 
-    self.numberHorizontalAlignment_property.validateAndWriteModelFunction = nil 
+    self.numberHorizontalAlignment_property.mReadModelFunction = nil 
+    self.numberHorizontalAlignment_property.mWriteModelFunction = nil 
+    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- pinNameIsDisplayedInSchematics
-    self.pinNameIsDisplayedInSchematics_property.readModelFunction = nil 
-    self.pinNameIsDisplayedInSchematics_property.writeModelFunction = nil 
-    self.pinNameIsDisplayedInSchematics_property.validateAndWriteModelFunction = nil 
+    self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = nil 
+    self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = nil 
+    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- xName
-    self.xName_property.readModelFunction = nil 
-    self.xName_property.writeModelFunction = nil 
-    self.xName_property.validateAndWriteModelFunction = nil 
+    self.xName_property.mReadModelFunction = nil 
+    self.xName_property.mWriteModelFunction = nil 
+    self.xName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xName (self.xName_property)
   //--- xNumber
-    self.xNumber_property.readModelFunction = nil 
-    self.xNumber_property.writeModelFunction = nil 
-    self.xNumber_property.validateAndWriteModelFunction = nil 
+    self.xNumber_property.mReadModelFunction = nil 
+    self.xNumber_property.mWriteModelFunction = nil 
+    self.xNumber_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xNumber (self.xNumber_property)
   //--- xPin
-    self.xPin_property.readModelFunction = nil 
-    self.xPin_property.writeModelFunction = nil 
-    self.xPin_property.validateAndWriteModelFunction = nil 
+    self.xPin_property.mReadModelFunction = nil 
+    self.xPin_property.mWriteModelFunction = nil 
+    self.xPin_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xPin (self.xPin_property)
   //--- yName
-    self.yName_property.readModelFunction = nil 
-    self.yName_property.writeModelFunction = nil 
-    self.yName_property.validateAndWriteModelFunction = nil 
+    self.yName_property.mReadModelFunction = nil 
+    self.yName_property.mWriteModelFunction = nil 
+    self.yName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yName (self.yName_property)
   //--- yNumber
-    self.yNumber_property.readModelFunction = nil 
-    self.yNumber_property.writeModelFunction = nil 
-    self.yNumber_property.validateAndWriteModelFunction = nil 
+    self.yNumber_property.mReadModelFunction = nil 
+    self.yNumber_property.mWriteModelFunction = nil 
+    self.yNumber_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yNumber (self.yNumber_property)
   //--- yPin
-    self.yPin_property.readModelFunction = nil 
-    self.yPin_property.writeModelFunction = nil 
-    self.yPin_property.validateAndWriteModelFunction = nil 
+    self.yPin_property.mReadModelFunction = nil 
+    self.yPin_property.mWriteModelFunction = nil 
+    self.yPin_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yPin (self.yPin_property)
   //---
     self.mModel = nil    
@@ -443,7 +443,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -483,7 +483,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_name (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_name (self.name_property)
-    self.name_property.readModelFunction = { [weak self] in
+    self.name_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -517,7 +517,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.name_property.writeModelFunction = { [weak self] (inValue : String) in
+    self.name_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -529,7 +529,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.name_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+    self.name_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -553,7 +553,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_nameHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_nameHorizontalAlignment (self.nameHorizontalAlignment_property)
-    self.nameHorizontalAlignment_property.readModelFunction = { [weak self] in
+    self.nameHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -587,7 +587,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.nameHorizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+    self.nameHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -599,7 +599,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.nameHorizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+    self.nameHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -623,7 +623,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_nameRect (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_nameRect (self.nameRect_property)
-    self.nameRect_property.readModelFunction = { [weak self] in
+    self.nameRect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -663,7 +663,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_numberHorizontalAlignment (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_numberHorizontalAlignment (self.numberHorizontalAlignment_property)
-    self.numberHorizontalAlignment_property.readModelFunction = { [weak self] in
+    self.numberHorizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -697,7 +697,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.numberHorizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+    self.numberHorizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -709,7 +709,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.numberHorizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+    self.numberHorizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -733,7 +733,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -773,7 +773,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_pinNameIsDisplayedInSchematics (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_pinNameIsDisplayedInSchematics (self.pinNameIsDisplayedInSchematics_property)
-    self.pinNameIsDisplayedInSchematics_property.readModelFunction = { [weak self] in
+    self.pinNameIsDisplayedInSchematics_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -807,7 +807,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.pinNameIsDisplayedInSchematics_property.writeModelFunction = { [weak self] (inValue : Bool) in
+    self.pinNameIsDisplayedInSchematics_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -819,7 +819,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.pinNameIsDisplayedInSchematics_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.pinNameIsDisplayedInSchematics_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -843,7 +843,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -883,7 +883,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_xName (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_xName (self.xName_property)
-    self.xName_property.readModelFunction = { [weak self] in
+    self.xName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -917,7 +917,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.xName_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -929,7 +929,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.xName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -953,7 +953,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_xNumber (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_xNumber (self.xNumber_property)
-    self.xNumber_property.readModelFunction = { [weak self] in
+    self.xNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -987,7 +987,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.xNumber_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -999,7 +999,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.xNumber_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1023,7 +1023,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_xPin (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_xPin (self.xPin_property)
-    self.xPin_property.readModelFunction = { [weak self] in
+    self.xPin_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1057,7 +1057,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.xPin_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1069,7 +1069,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.xPin_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1093,7 +1093,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_yName (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_yName (self.yName_property)
-    self.yName_property.readModelFunction = { [weak self] in
+    self.yName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1127,7 +1127,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.yName_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1139,7 +1139,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.yName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1163,7 +1163,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_yNumber (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_yNumber (self.yNumber_property)
-    self.yNumber_property.readModelFunction = { [weak self] in
+    self.yNumber_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1197,7 +1197,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.yNumber_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yNumber_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1209,7 +1209,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.yNumber_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yNumber_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1233,7 +1233,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
 
   private final func bind_property_yPin (model : ReadOnlyArrayOf_SymbolPin) {
     model.addEBObserverOf_yPin (self.yPin_property)
-    self.yPin_property.readModelFunction = { [weak self] in
+    self.yPin_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1267,7 +1267,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         return .empty
       }
     }
-    self.yPin_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yPin_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1279,7 +1279,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
         }
       }
     }
-    self.yPin_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yPin_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

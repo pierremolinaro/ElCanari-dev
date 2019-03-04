@@ -484,7 +484,7 @@ class PackageDimension : PackageObject,
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: distanceInCanariUnit
-    self.distanceInCanariUnit_property.readModelFunction = { [weak self] in
+    self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -512,7 +512,7 @@ class PackageDimension : PackageObject,
     self.x2_property.addEBObserver (self.distanceInCanariUnit_property)
     self.y2_property.addEBObserver (self.distanceInCanariUnit_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -552,7 +552,7 @@ class PackageDimension : PackageObject,
     g_Preferences?.dimensionFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -590,7 +590,7 @@ class PackageDimension : PackageObject,
     self.distanceUnit_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.dimensionFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -637,8 +637,8 @@ class PackageDimension : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x1_property.removeEBObserver (self.distanceInCanariUnit_property)
     self.y1_property.removeEBObserver (self.distanceInCanariUnit_property)
     self.x2_property.removeEBObserver (self.distanceInCanariUnit_property)
@@ -1981,7 +1981,7 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageDimension] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageDimension] > > = nil
 
   //····················································································································
 
@@ -2030,7 +2030,7 @@ class TransientArrayOf_PackageDimension : ReadOnlyArrayOf_PackageDimension {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageDimension>
       switch self.mCachedValue! {
@@ -2154,7 +2154,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

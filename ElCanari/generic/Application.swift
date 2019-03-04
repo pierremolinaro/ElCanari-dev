@@ -77,7 +77,7 @@ class EBModelEvent : EBEvent {
   //   Properties
   //····················································································································
 
-  var eventCallBack : Optional < () -> Void > = nil
+  var mEventCallBack : Optional < () -> Void > = nil
   var mEventIsPosted = false
 
   //····················································································································
@@ -87,7 +87,6 @@ class EBModelEvent : EBEvent {
   override func postEvent () {
     if gCurrentModelEvent !== self {
       if gPendingModelEvents.count == 0 {
-  //      DispatchQueue.main.asyncAfter (deadline: DispatchTime.now()) { flushEvents () }
         if logEvents () {
           appendMessageString ("Post model events\n")
         }
@@ -113,7 +112,7 @@ class EBModelEvent : EBEvent {
 
   final func sendUpdateEvent () {
     self.mEventIsPosted = false
-    self.eventCallBack? ()
+    self.mEventCallBack? ()
   }
 
   //····················································································································

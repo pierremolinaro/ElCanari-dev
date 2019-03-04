@@ -90,7 +90,7 @@ final class Controller_CanariPackageArcAngleTextField_angle : EBSimpleController
     self.mNumberFormatter.isLenient = true
     self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

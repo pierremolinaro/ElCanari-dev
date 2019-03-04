@@ -880,7 +880,7 @@ class MergerRoot : EBManagedObject,
   //--- Atomic property: generatedBoardArchiveFormat
     self.generatedBoardArchiveFormat_property.undoManager = self.undoManager
   //--- Atomic property: modelNames
-    self.modelNames_property.readModelFunction = { [weak self] in
+    self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardModels_property_selection.kind ()
         switch kind {
@@ -902,7 +902,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardModels_property.addEBObserverOf_name (self.modelNames_property)
   //--- Atomic property: boardRect
-    self.boardRect_property.readModelFunction = { [weak self] in
+    self.boardRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.automaticBoardSize_property_selection.kind ()
         kind &= unwSelf.boardManualWidth_property_selection.kind ()
@@ -930,7 +930,7 @@ class MergerRoot : EBManagedObject,
     self.boardManualHeight_property.addEBObserver (self.boardRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardRect_property)
   //--- Atomic property: boardDisplayRect
-    self.boardDisplayRect_property.readModelFunction = { [weak self] in
+    self.boardDisplayRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardManualWidth_property_selection.kind ()
         kind &= unwSelf.boardManualHeight_property_selection.kind ()
@@ -956,7 +956,7 @@ class MergerRoot : EBManagedObject,
     self.boardManualHeight_property.addEBObserver (self.boardDisplayRect_property)
     self.boardInstances_property.addEBObserverOf_instanceRect (self.boardDisplayRect_property)
   //--- Atomic property: boardWidth
-    self.boardWidth_property.readModelFunction = { [weak self] in
+    self.boardWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
         switch kind {
@@ -978,7 +978,7 @@ class MergerRoot : EBManagedObject,
     }
     self.boardRect_property.addEBObserver (self.boardWidth_property)
   //--- Atomic property: boardHeight
-    self.boardHeight_property.readModelFunction = { [weak self] in
+    self.boardHeight_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.boardRect_property_selection.kind ()
         switch kind {
@@ -1002,7 +1002,7 @@ class MergerRoot : EBManagedObject,
   //--- To one property: artwork
     self.artwork_property.owner = self
   //--- Atomic property: boardOutlineRectDisplay
-    self.boardOutlineRectDisplay_property.readModelFunction = { [weak self] in
+    self.boardOutlineRectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.boardRect_property_selection.kind ()
         kind &= unwSelf.boardLimitWidth_property_selection.kind ()
@@ -1039,8 +1039,8 @@ class MergerRoot : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.boardModels_property.removeEBObserverOf_name (self.modelNames_property)
     self.automaticBoardSize_property.removeEBObserver (self.boardRect_property)
     self.boardManualWidth_property.removeEBObserver (self.boardRect_property)
@@ -3062,7 +3062,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [MergerRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [MergerRoot] > > = nil
 
   //····················································································································
 
@@ -3111,7 +3111,7 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <MergerRoot>
       switch self.mCachedValue! {
@@ -3253,7 +3253,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

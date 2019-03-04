@@ -484,7 +484,7 @@ class PackageArc : PackageObject,
   //--- Atomic property: xCenter
     self.xCenter_property.undoManager = self.undoManager
   //--- Atomic property: strokeBezierPath
-    self.strokeBezierPath_property.readModelFunction = { [weak self] in
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -520,7 +520,7 @@ class PackageArc : PackageObject,
     self.startTangent_property.addEBObserver (self.strokeBezierPath_property)
     self.endTangent_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
@@ -546,7 +546,7 @@ class PackageArc : PackageObject,
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -582,7 +582,7 @@ class PackageArc : PackageObject,
     self.endTangent_property.addEBObserver (self.selectionDisplay_property)
     self.pathIsClosed_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -633,8 +633,8 @@ class PackageArc : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.xCenter_property.removeEBObserver (self.strokeBezierPath_property)
     self.yCenter_property.removeEBObserver (self.strokeBezierPath_property)
     self.radius_property.removeEBObserver (self.strokeBezierPath_property)
@@ -1975,7 +1975,7 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageArc] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageArc] > > = nil
 
   //····················································································································
 
@@ -2024,7 +2024,7 @@ class TransientArrayOf_PackageArc : ReadOnlyArrayOf_PackageArc {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageArc>
       switch self.mCachedValue! {
@@ -2148,7 +2148,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

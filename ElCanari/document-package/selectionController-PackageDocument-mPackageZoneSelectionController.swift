@@ -201,7 +201,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageZone] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageZone] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -248,88 +248,88 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- height
-    self.height_property.readModelFunction = nil 
-    self.height_property.writeModelFunction = nil 
-    self.height_property.validateAndWriteModelFunction = nil 
+    self.height_property.mReadModelFunction = nil 
+    self.height_property.mWriteModelFunction = nil 
+    self.height_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_height (self.height_property)
   //--- heightUnit
-    self.heightUnit_property.readModelFunction = nil 
-    self.heightUnit_property.writeModelFunction = nil 
-    self.heightUnit_property.validateAndWriteModelFunction = nil 
+    self.heightUnit_property.mReadModelFunction = nil 
+    self.heightUnit_property.mWriteModelFunction = nil 
+    self.heightUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_heightUnit (self.heightUnit_property)
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- rect
-    self.rect_property.readModelFunction = nil 
+    self.rect_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_rect (self.rect_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- width
-    self.width_property.readModelFunction = nil 
-    self.width_property.writeModelFunction = nil 
-    self.width_property.validateAndWriteModelFunction = nil 
+    self.width_property.mReadModelFunction = nil 
+    self.width_property.mWriteModelFunction = nil 
+    self.width_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_width (self.width_property)
   //--- widthUnit
-    self.widthUnit_property.readModelFunction = nil 
-    self.widthUnit_property.writeModelFunction = nil 
-    self.widthUnit_property.validateAndWriteModelFunction = nil 
+    self.widthUnit_property.mReadModelFunction = nil 
+    self.widthUnit_property.mWriteModelFunction = nil 
+    self.widthUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_widthUnit (self.widthUnit_property)
   //--- x
-    self.x_property.readModelFunction = nil 
-    self.x_property.writeModelFunction = nil 
-    self.x_property.validateAndWriteModelFunction = nil 
+    self.x_property.mReadModelFunction = nil 
+    self.x_property.mWriteModelFunction = nil 
+    self.x_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x (self.x_property)
   //--- xName
-    self.xName_property.readModelFunction = nil 
-    self.xName_property.writeModelFunction = nil 
-    self.xName_property.validateAndWriteModelFunction = nil 
+    self.xName_property.mReadModelFunction = nil 
+    self.xName_property.mWriteModelFunction = nil 
+    self.xName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xName (self.xName_property)
   //--- xNameUnit
-    self.xNameUnit_property.readModelFunction = nil 
-    self.xNameUnit_property.writeModelFunction = nil 
-    self.xNameUnit_property.validateAndWriteModelFunction = nil 
+    self.xNameUnit_property.mReadModelFunction = nil 
+    self.xNameUnit_property.mWriteModelFunction = nil 
+    self.xNameUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xNameUnit (self.xNameUnit_property)
   //--- xUnit
-    self.xUnit_property.readModelFunction = nil 
-    self.xUnit_property.writeModelFunction = nil 
-    self.xUnit_property.validateAndWriteModelFunction = nil 
+    self.xUnit_property.mReadModelFunction = nil 
+    self.xUnit_property.mWriteModelFunction = nil 
+    self.xUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xUnit (self.xUnit_property)
   //--- y
-    self.y_property.readModelFunction = nil 
-    self.y_property.writeModelFunction = nil 
-    self.y_property.validateAndWriteModelFunction = nil 
+    self.y_property.mReadModelFunction = nil 
+    self.y_property.mWriteModelFunction = nil 
+    self.y_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y (self.y_property)
   //--- yName
-    self.yName_property.readModelFunction = nil 
-    self.yName_property.writeModelFunction = nil 
-    self.yName_property.validateAndWriteModelFunction = nil 
+    self.yName_property.mReadModelFunction = nil 
+    self.yName_property.mWriteModelFunction = nil 
+    self.yName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yName (self.yName_property)
   //--- yNameUnit
-    self.yNameUnit_property.readModelFunction = nil 
-    self.yNameUnit_property.writeModelFunction = nil 
-    self.yNameUnit_property.validateAndWriteModelFunction = nil 
+    self.yNameUnit_property.mReadModelFunction = nil 
+    self.yNameUnit_property.mWriteModelFunction = nil 
+    self.yNameUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yNameUnit (self.yNameUnit_property)
   //--- yUnit
-    self.yUnit_property.readModelFunction = nil 
-    self.yUnit_property.writeModelFunction = nil 
-    self.yUnit_property.validateAndWriteModelFunction = nil 
+    self.yUnit_property.mReadModelFunction = nil 
+    self.yUnit_property.mWriteModelFunction = nil 
+    self.yUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yUnit (self.yUnit_property)
   //--- zoneName
-    self.zoneName_property.readModelFunction = nil 
-    self.zoneName_property.writeModelFunction = nil 
-    self.zoneName_property.validateAndWriteModelFunction = nil 
+    self.zoneName_property.mReadModelFunction = nil 
+    self.zoneName_property.mWriteModelFunction = nil 
+    self.zoneName_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_zoneName (self.zoneName_property)
   //--- zoneNumbering
-    self.zoneNumbering_property.readModelFunction = nil 
-    self.zoneNumbering_property.writeModelFunction = nil 
-    self.zoneNumbering_property.validateAndWriteModelFunction = nil 
+    self.zoneNumbering_property.mReadModelFunction = nil 
+    self.zoneNumbering_property.mWriteModelFunction = nil 
+    self.zoneNumbering_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_zoneNumbering (self.zoneNumbering_property)
   //---
     self.mModel = nil    
@@ -539,7 +539,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_height (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_height (self.height_property)
-    self.height_property.readModelFunction = { [weak self] in
+    self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -573,7 +573,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.height_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.height_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -585,7 +585,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.height_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -609,7 +609,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_heightUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_heightUnit (self.heightUnit_property)
-    self.heightUnit_property.readModelFunction = { [weak self] in
+    self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -643,7 +643,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.heightUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -655,7 +655,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.heightUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -679,7 +679,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -719,7 +719,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -759,7 +759,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_rect (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_rect (self.rect_property)
-    self.rect_property.readModelFunction = { [weak self] in
+    self.rect_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -799,7 +799,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -839,7 +839,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_width (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_width (self.width_property)
-    self.width_property.readModelFunction = { [weak self] in
+    self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -873,7 +873,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.width_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -885,7 +885,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.width_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -909,7 +909,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_widthUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_widthUnit (self.widthUnit_property)
-    self.widthUnit_property.readModelFunction = { [weak self] in
+    self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -943,7 +943,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.widthUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -955,7 +955,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.widthUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -979,7 +979,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_x (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_x (self.x_property)
-    self.x_property.readModelFunction = { [weak self] in
+    self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1013,7 +1013,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.x_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1025,7 +1025,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.x_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1049,7 +1049,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_xName (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_xName (self.xName_property)
-    self.xName_property.readModelFunction = { [weak self] in
+    self.xName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1083,7 +1083,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.xName_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1095,7 +1095,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.xName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1119,7 +1119,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_xNameUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_xNameUnit (self.xNameUnit_property)
-    self.xNameUnit_property.readModelFunction = { [weak self] in
+    self.xNameUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1153,7 +1153,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.xNameUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1165,7 +1165,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.xNameUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1189,7 +1189,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_xUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_xUnit (self.xUnit_property)
-    self.xUnit_property.readModelFunction = { [weak self] in
+    self.xUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1223,7 +1223,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.xUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1235,7 +1235,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.xUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1259,7 +1259,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_y (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_y (self.y_property)
-    self.y_property.readModelFunction = { [weak self] in
+    self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1293,7 +1293,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.y_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1305,7 +1305,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.y_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1329,7 +1329,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_yName (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_yName (self.yName_property)
-    self.yName_property.readModelFunction = { [weak self] in
+    self.yName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1363,7 +1363,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.yName_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yName_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1375,7 +1375,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.yName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1399,7 +1399,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_yNameUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_yNameUnit (self.yNameUnit_property)
-    self.yNameUnit_property.readModelFunction = { [weak self] in
+    self.yNameUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1433,7 +1433,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.yNameUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yNameUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1445,7 +1445,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.yNameUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yNameUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1469,7 +1469,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_yUnit (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_yUnit (self.yUnit_property)
-    self.yUnit_property.readModelFunction = { [weak self] in
+    self.yUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1503,7 +1503,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.yUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1515,7 +1515,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.yUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1539,7 +1539,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_zoneName (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_zoneName (self.zoneName_property)
-    self.zoneName_property.readModelFunction = { [weak self] in
+    self.zoneName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1573,7 +1573,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.zoneName_property.writeModelFunction = { [weak self] (inValue : String) in
+    self.zoneName_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1585,7 +1585,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.zoneName_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+    self.zoneName_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1609,7 +1609,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
 
   private final func bind_property_zoneNumbering (model : ReadOnlyArrayOf_PackageZone) {
     model.addEBObserverOf_zoneNumbering (self.zoneNumbering_property)
-    self.zoneNumbering_property.readModelFunction = { [weak self] in
+    self.zoneNumbering_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1643,7 +1643,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         return .empty
       }
     }
-    self.zoneNumbering_property.writeModelFunction = { [weak self] (inValue : PadNumbering) in
+    self.zoneNumbering_property.mWriteModelFunction = { [weak self] (inValue : PadNumbering) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1655,7 +1655,7 @@ final class SelectionController_PackageDocument_mPackageZoneSelectionController 
         }
       }
     }
-    self.zoneNumbering_property.validateAndWriteModelFunction = { [weak self] (candidateValue : PadNumbering, windowForSheet : NSWindow?) in
+    self.zoneNumbering_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : PadNumbering, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

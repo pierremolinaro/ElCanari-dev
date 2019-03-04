@@ -85,7 +85,7 @@ import Cocoa
     if mOutlet.formatter != nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the EBTextField outlet has a formatter")
     }
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

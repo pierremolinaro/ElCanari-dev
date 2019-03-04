@@ -4140,7 +4140,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //--- Array controller property: additionnalLibraryArrayController
     self.additionnalLibraryArrayController.bind_model (self.additionnalLibraryArray_property)
   //--- Atomic property: mValueRevealInFinder_packages
-    self.mValueRevealInFinder_packages_property.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_packages_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
@@ -4166,7 +4166,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_packages_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_packages_property)
   //--- Atomic property: mValueRevealInFinder_devices
-    self.mValueRevealInFinder_devices_property.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_devices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
@@ -4192,7 +4192,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_devices_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_devices_property)
   //--- Atomic property: mValueRevealInFinder_fonts
-    self.mValueRevealInFinder_fonts_property.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_fonts_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
@@ -4218,7 +4218,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_fonts_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_fonts_property)
   //--- Atomic property: mValueRevealInFinder_artworks
-    self.mValueRevealInFinder_artworks_property.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_artworks_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()
@@ -4244,7 +4244,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.additionnalLibraryArray_property.addEBObserverOf_mUses (self.mValueRevealInFinder_artworks_property)
     self.additionnalLibraryArray_property.addEBObserverOf_mPath (self.mValueRevealInFinder_artworks_property)
   //--- Atomic property: mValueRevealInFinder_symbols
-    self.mValueRevealInFinder_symbols_property.readModelFunction = { [weak self] in
+    self.mValueRevealInFinder_symbols_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.usesUserLibrary_property_selection.kind ()
         kind &= unwSelf.additionnalLibraryArray_property_selection.kind ()

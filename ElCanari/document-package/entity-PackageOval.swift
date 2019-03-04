@@ -324,7 +324,7 @@ class PackageOval : PackageObject,
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
   //--- Atomic property: strokeBezierPath
-    self.strokeBezierPath_property.readModelFunction = { [weak self] in
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -352,7 +352,7 @@ class PackageOval : PackageObject,
     self.width_property.addEBObserver (self.strokeBezierPath_property)
     self.height_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.strokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
@@ -378,7 +378,7 @@ class PackageOval : PackageObject,
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -406,7 +406,7 @@ class PackageOval : PackageObject,
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -448,8 +448,8 @@ class PackageOval : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x_property.removeEBObserver (self.strokeBezierPath_property)
     self.y_property.removeEBObserver (self.strokeBezierPath_property)
     self.width_property.removeEBObserver (self.strokeBezierPath_property)
@@ -1415,7 +1415,7 @@ class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageOval] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageOval] > > = nil
 
   //····················································································································
 
@@ -1464,7 +1464,7 @@ class TransientArrayOf_PackageOval : ReadOnlyArrayOf_PackageOval {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageOval>
       switch self.mCachedValue! {
@@ -1578,7 +1578,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

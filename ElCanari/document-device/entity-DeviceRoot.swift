@@ -552,7 +552,7 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
   //--- Atomic property: imageIsValid
-    self.imageIsValid_property.readModelFunction = { [weak self] in
+    self.imageIsValid_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.representationImageData_property_selection.kind ()
         switch kind {
@@ -574,7 +574,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.representationImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
-    self.inconsistentPackagePadNameSetsMessage_property.readModelFunction = { [weak self] in
+    self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packages_property_selection.kind ()
         kind &= unwSelf.packages_property_selection.kind ()
@@ -598,7 +598,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.packages_property.addEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.packages_property.addEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
-    self.packagePadNameSetsAreConsistent_property.readModelFunction = { [weak self] in
+    self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.packages_property_selection.kind ()
         switch kind {
@@ -620,7 +620,7 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.packages_property.addEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.title_property_selection.kind ()
         kind &= unwSelf.prefix_property_selection.kind ()
@@ -667,8 +667,8 @@ class DeviceRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
     self.packages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.packages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
@@ -1970,7 +1970,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [DeviceRoot] > > = nil
 
   //····················································································································
 
@@ -2019,7 +2019,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <DeviceRoot>
       switch self.mCachedValue! {
@@ -2141,7 +2141,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

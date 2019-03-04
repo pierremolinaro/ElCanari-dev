@@ -54,9 +54,9 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection <T> > = nil
-  var writeModelFunction : Optional < (T) -> Void > = nil
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (T) -> Void > = nil
+  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   private var mCachedValue : EBSelection <T>? = nil
   
   //····················································································································
@@ -107,7 +107,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   //····················································································································
 
   override var prop : EBSelection <T> {
-    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unReadModelFunction ()
       self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
@@ -120,7 +120,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   //····················································································································
   
   override func setProp (_ value : T) {
-    self.writeModelFunction? (value)
+    self.mWriteModelFunction? (value)
   }
 
   //····················································································································
@@ -128,7 +128,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
     var result = false
-    if let unwValidateAndWriteModelFunction = validateAndWriteModelFunction {
+    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
       result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
     }
     return result
@@ -326,7 +326,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
 class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> > = nil
+  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
   
   //····················································································································
 
@@ -350,7 +350,7 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
 
   override var prop : EBSelection <T> {
     if self.mValueCache == nil {
-      if let unwrappedComputeFunction = self.readModelFunction {
+      if let unwrappedComputeFunction = self.mReadModelFunction {
         self.mValueCache = unwrappedComputeFunction ()
       }
       if self.mValueCache == nil {
@@ -455,9 +455,9 @@ class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
-  var readModelFunction : Optional < () -> EBSelection <T> > = nil
-  var writeModelFunction : Optional < (T) -> Void > = nil
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (T) -> Void > = nil
+  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
 
   private var mCachedValue : EBSelection <T>? = nil
 
@@ -509,7 +509,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   //····················································································································
 
   override var prop : EBSelection <T> {
-    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unReadModelFunction ()
       self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
@@ -522,7 +522,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   //····················································································································
 
   override func setProp (_ value : T) {
-    if let unWriteModelFunction = self.writeModelFunction {
+    if let unWriteModelFunction = self.mWriteModelFunction {
       unWriteModelFunction (value)
     }
   }
@@ -532,7 +532,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
     var result = false
-    if let unwValidateAndWriteModelFunction = validateAndWriteModelFunction {
+    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
       result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
     }
     return result
@@ -727,7 +727,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
 class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> > = nil
+  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
 
   //····················································································································
 
@@ -751,7 +751,7 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   override var prop : EBSelection <T> {
     if self.mValueCache == nil {
-      if let unwrappedComputeFunction = self.readModelFunction {
+      if let unwrappedComputeFunction = self.mReadModelFunction {
         self.mValueCache = unwrappedComputeFunction ()
       }
       if self.mValueCache == nil {
@@ -791,7 +791,7 @@ class EBReadOnlyEnumController <T : EBEnumProtocol> : EBSimpleController {
 
   init (model : EBReadOnlyEnumProperty <T>, callBack: @escaping () -> Void) {
     super.init (observedObjects:[model])
-    self.eventCallBack = callBack
+    self.mEventCallBack = callBack
   }
 
   //····················································································································
@@ -1205,9 +1205,9 @@ class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  var readModelFunction : Optional < () -> EBSelection <T> > = nil
-  var writeModelFunction : Optional < (T) -> Void > = nil
-  var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (T) -> Void > = nil
+  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   
   private var mCachedValue : EBSelection <T>? = nil
   
@@ -1259,7 +1259,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   //····················································································································
 
   override var prop : EBSelection <T> {
-    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unReadModelFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unReadModelFunction ()
       self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
@@ -1272,7 +1272,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   //····················································································································
   
   override func setProp (_ value : T) {
-    if let unWriteModelFunction = self.writeModelFunction {
+    if let unWriteModelFunction = self.mWriteModelFunction {
       unWriteModelFunction (value)
     }
   }
@@ -1282,7 +1282,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
     var result = false
-    if let unwValidateAndWriteModelFunction = self.validateAndWriteModelFunction {
+    if let unwValidateAndWriteModelFunction = self.mValidateAndWriteModelFunction {
       result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
     }
     return result
@@ -1471,7 +1471,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
 class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
-  var readModelFunction : Optional<() -> EBSelection <T> > = nil
+  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
   
   //····················································································································
 
@@ -1495,7 +1495,7 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
 
   override var prop : EBSelection <T> {
     if self.mValueCache == nil {
-      if let unwrappedComputeFunction = self.readModelFunction {
+      if let unwrappedComputeFunction = self.mReadModelFunction {
         self.mValueCache = unwrappedComputeFunction ()
       }
       if self.mValueCache == nil {

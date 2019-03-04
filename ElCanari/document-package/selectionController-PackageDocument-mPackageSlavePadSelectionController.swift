@@ -245,7 +245,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageSlavePad] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageSlavePad] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -296,98 +296,98 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- annularRing
-    self.annularRing_property.readModelFunction = nil 
+    self.annularRing_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_annularRing (self.annularRing_property)
   //--- annularRingUnit
-    self.annularRingUnit_property.readModelFunction = nil 
-    self.annularRingUnit_property.writeModelFunction = nil 
-    self.annularRingUnit_property.validateAndWriteModelFunction = nil 
+    self.annularRingUnit_property.mReadModelFunction = nil 
+    self.annularRingUnit_property.mWriteModelFunction = nil 
+    self.annularRingUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_annularRingUnit (self.annularRingUnit_property)
   //--- backSideFilledBezierPath
-    self.backSideFilledBezierPath_property.readModelFunction = nil 
+    self.backSideFilledBezierPath_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPath_property)
   //--- frontSideFilledBezierPath
-    self.frontSideFilledBezierPath_property.readModelFunction = nil 
+    self.frontSideFilledBezierPath_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPath_property)
   //--- height
-    self.height_property.readModelFunction = nil 
-    self.height_property.writeModelFunction = nil 
-    self.height_property.validateAndWriteModelFunction = nil 
+    self.height_property.mReadModelFunction = nil 
+    self.height_property.mWriteModelFunction = nil 
+    self.height_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_height (self.height_property)
   //--- heightUnit
-    self.heightUnit_property.readModelFunction = nil 
-    self.heightUnit_property.writeModelFunction = nil 
-    self.heightUnit_property.validateAndWriteModelFunction = nil 
+    self.heightUnit_property.mReadModelFunction = nil 
+    self.heightUnit_property.mWriteModelFunction = nil 
+    self.heightUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_heightUnit (self.heightUnit_property)
   //--- holeDiameter
-    self.holeDiameter_property.readModelFunction = nil 
-    self.holeDiameter_property.writeModelFunction = nil 
-    self.holeDiameter_property.validateAndWriteModelFunction = nil 
+    self.holeDiameter_property.mReadModelFunction = nil 
+    self.holeDiameter_property.mWriteModelFunction = nil 
+    self.holeDiameter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_holeDiameter (self.holeDiameter_property)
   //--- holeDiameterUnit
-    self.holeDiameterUnit_property.readModelFunction = nil 
-    self.holeDiameterUnit_property.writeModelFunction = nil 
-    self.holeDiameterUnit_property.validateAndWriteModelFunction = nil 
+    self.holeDiameterUnit_property.mReadModelFunction = nil 
+    self.holeDiameterUnit_property.mWriteModelFunction = nil 
+    self.holeDiameterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- padIsTraversing
-    self.padIsTraversing_property.readModelFunction = nil 
+    self.padIsTraversing_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padIsTraversing (self.padIsTraversing_property)
   //--- padName
-    self.padName_property.readModelFunction = nil 
+    self.padName_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padName (self.padName_property)
   //--- padNumberDisplay
-    self.padNumberDisplay_property.readModelFunction = nil 
+    self.padNumberDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- padShape
-    self.padShape_property.readModelFunction = nil 
-    self.padShape_property.writeModelFunction = nil 
-    self.padShape_property.validateAndWriteModelFunction = nil 
+    self.padShape_property.mReadModelFunction = nil 
+    self.padShape_property.mWriteModelFunction = nil 
+    self.padShape_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padShape (self.padShape_property)
   //--- padStyle
-    self.padStyle_property.readModelFunction = nil 
-    self.padStyle_property.writeModelFunction = nil 
-    self.padStyle_property.validateAndWriteModelFunction = nil 
+    self.padStyle_property.mReadModelFunction = nil 
+    self.padStyle_property.mWriteModelFunction = nil 
+    self.padStyle_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_padStyle (self.padStyle_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- width
-    self.width_property.readModelFunction = nil 
-    self.width_property.writeModelFunction = nil 
-    self.width_property.validateAndWriteModelFunction = nil 
+    self.width_property.mReadModelFunction = nil 
+    self.width_property.mWriteModelFunction = nil 
+    self.width_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_width (self.width_property)
   //--- widthUnit
-    self.widthUnit_property.readModelFunction = nil 
-    self.widthUnit_property.writeModelFunction = nil 
-    self.widthUnit_property.validateAndWriteModelFunction = nil 
+    self.widthUnit_property.mReadModelFunction = nil 
+    self.widthUnit_property.mWriteModelFunction = nil 
+    self.widthUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_widthUnit (self.widthUnit_property)
   //--- xCenter
-    self.xCenter_property.readModelFunction = nil 
-    self.xCenter_property.writeModelFunction = nil 
-    self.xCenter_property.validateAndWriteModelFunction = nil 
+    self.xCenter_property.mReadModelFunction = nil 
+    self.xCenter_property.mWriteModelFunction = nil 
+    self.xCenter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xCenter (self.xCenter_property)
   //--- xCenterUnit
-    self.xCenterUnit_property.readModelFunction = nil 
-    self.xCenterUnit_property.writeModelFunction = nil 
-    self.xCenterUnit_property.validateAndWriteModelFunction = nil 
+    self.xCenterUnit_property.mReadModelFunction = nil 
+    self.xCenterUnit_property.mWriteModelFunction = nil 
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenter
-    self.yCenter_property.readModelFunction = nil 
-    self.yCenter_property.writeModelFunction = nil 
-    self.yCenter_property.validateAndWriteModelFunction = nil 
+    self.yCenter_property.mReadModelFunction = nil 
+    self.yCenter_property.mWriteModelFunction = nil 
+    self.yCenter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenter (self.yCenter_property)
   //--- yCenterUnit
-    self.yCenterUnit_property.readModelFunction = nil 
-    self.yCenterUnit_property.writeModelFunction = nil 
-    self.yCenterUnit_property.validateAndWriteModelFunction = nil 
+    self.yCenterUnit_property.mReadModelFunction = nil 
+    self.yCenterUnit_property.mWriteModelFunction = nil 
+    self.yCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
   //---
     self.mModel = nil    
@@ -589,7 +589,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_annularRing (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_annularRing (self.annularRing_property)
-    self.annularRing_property.readModelFunction = { [weak self] in
+    self.annularRing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -629,7 +629,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_annularRingUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_annularRingUnit (self.annularRingUnit_property)
-    self.annularRingUnit_property.readModelFunction = { [weak self] in
+    self.annularRingUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -663,7 +663,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.annularRingUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.annularRingUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -675,7 +675,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.annularRingUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.annularRingUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -699,7 +699,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_backSideFilledBezierPath (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPath_property)
-    self.backSideFilledBezierPath_property.readModelFunction = { [weak self] in
+    self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -739,7 +739,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_frontSideFilledBezierPath (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_frontSideFilledBezierPath (self.frontSideFilledBezierPath_property)
-    self.frontSideFilledBezierPath_property.readModelFunction = { [weak self] in
+    self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -779,7 +779,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_height (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_height (self.height_property)
-    self.height_property.readModelFunction = { [weak self] in
+    self.height_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -813,7 +813,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.height_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.height_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -825,7 +825,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.height_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.height_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -849,7 +849,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_heightUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_heightUnit (self.heightUnit_property)
-    self.heightUnit_property.readModelFunction = { [weak self] in
+    self.heightUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -883,7 +883,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.heightUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.heightUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -895,7 +895,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.heightUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.heightUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -919,7 +919,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_holeDiameter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_holeDiameter (self.holeDiameter_property)
-    self.holeDiameter_property.readModelFunction = { [weak self] in
+    self.holeDiameter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -953,7 +953,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.holeDiameter_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.holeDiameter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -965,7 +965,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.holeDiameter_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.holeDiameter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -989,7 +989,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_holeDiameterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_holeDiameterUnit (self.holeDiameterUnit_property)
-    self.holeDiameterUnit_property.readModelFunction = { [weak self] in
+    self.holeDiameterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1023,7 +1023,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.holeDiameterUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.holeDiameterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1035,7 +1035,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.holeDiameterUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.holeDiameterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1059,7 +1059,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1099,7 +1099,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1139,7 +1139,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_padIsTraversing (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padIsTraversing (self.padIsTraversing_property)
-    self.padIsTraversing_property.readModelFunction = { [weak self] in
+    self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1179,7 +1179,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_padName (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padName (self.padName_property)
-    self.padName_property.readModelFunction = { [weak self] in
+    self.padName_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1219,7 +1219,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_padNumberDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
-    self.padNumberDisplay_property.readModelFunction = { [weak self] in
+    self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1259,7 +1259,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_padShape (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padShape (self.padShape_property)
-    self.padShape_property.readModelFunction = { [weak self] in
+    self.padShape_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1293,7 +1293,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.padShape_property.writeModelFunction = { [weak self] (inValue : PadShape) in
+    self.padShape_property.mWriteModelFunction = { [weak self] (inValue : PadShape) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1305,7 +1305,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.padShape_property.validateAndWriteModelFunction = { [weak self] (candidateValue : PadShape, windowForSheet : NSWindow?) in
+    self.padShape_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : PadShape, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1329,7 +1329,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_padStyle (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_padStyle (self.padStyle_property)
-    self.padStyle_property.readModelFunction = { [weak self] in
+    self.padStyle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1363,7 +1363,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.padStyle_property.writeModelFunction = { [weak self] (inValue : SlavePadStyle) in
+    self.padStyle_property.mWriteModelFunction = { [weak self] (inValue : SlavePadStyle) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1375,7 +1375,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.padStyle_property.validateAndWriteModelFunction = { [weak self] (candidateValue : SlavePadStyle, windowForSheet : NSWindow?) in
+    self.padStyle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : SlavePadStyle, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1399,7 +1399,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1439,7 +1439,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_width (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_width (self.width_property)
-    self.width_property.readModelFunction = { [weak self] in
+    self.width_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1473,7 +1473,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.width_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.width_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1485,7 +1485,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.width_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.width_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1509,7 +1509,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_widthUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_widthUnit (self.widthUnit_property)
-    self.widthUnit_property.readModelFunction = { [weak self] in
+    self.widthUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1543,7 +1543,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.widthUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.widthUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1555,7 +1555,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.widthUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.widthUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1579,7 +1579,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_xCenter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_xCenter (self.xCenter_property)
-    self.xCenter_property.readModelFunction = { [weak self] in
+    self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1613,7 +1613,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.xCenter_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1625,7 +1625,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.xCenter_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1649,7 +1649,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_xCenterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
-    self.xCenterUnit_property.readModelFunction = { [weak self] in
+    self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1683,7 +1683,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.xCenterUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1695,7 +1695,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.xCenterUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1719,7 +1719,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_yCenter (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_yCenter (self.yCenter_property)
-    self.yCenter_property.readModelFunction = { [weak self] in
+    self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1753,7 +1753,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.yCenter_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1765,7 +1765,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.yCenter_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1789,7 +1789,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
 
   private final func bind_property_yCenterUnit (model : ReadOnlyArrayOf_PackageSlavePad) {
     model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
-    self.yCenterUnit_property.readModelFunction = { [weak self] in
+    self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1823,7 +1823,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         return .empty
       }
     }
-    self.yCenterUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1835,7 +1835,7 @@ final class SelectionController_PackageDocument_mPackageSlavePadSelectionControl
         }
       }
     }
-    self.yCenterUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

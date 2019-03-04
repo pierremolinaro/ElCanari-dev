@@ -423,7 +423,7 @@ class SymbolRoot : EBManagedObject,
   //--- Atomic property: selectedPageIndex
     self.selectedPageIndex_property.undoManager = self.undoManager
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.symbolObjects_property_selection.kind ()
         kind &= unwSelf.symbolPins_property_selection.kind ()
@@ -453,7 +453,7 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.addEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.addEBObserverOf_yPin (self.issues_property)
   //--- Atomic property: noIssue
-    self.noIssue_property.readModelFunction = { [weak self] in
+    self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
@@ -476,7 +476,7 @@ class SymbolRoot : EBManagedObject,
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
     self.symbolObjects_property.addEBObserver (self.symbolPins_property)
-    self.symbolPins_property.readModelFunction =  { [weak self] in
+    self.symbolPins_property.mReadModelFunction =  { [weak self] in
       if let model = self?.symbolObjects_property {
         switch model.prop {
         case .empty :
@@ -506,8 +506,8 @@ class SymbolRoot : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   //--- To many property: symbolPins
     self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
     self.symbolObjects_property.removeEBObserverOf_issues (self.issues_property)
@@ -1508,7 +1508,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolRoot] > > = nil
 
   //····················································································································
 
@@ -1557,7 +1557,7 @@ class TransientArrayOf_SymbolRoot : ReadOnlyArrayOf_SymbolRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolRoot>
       switch self.mCachedValue! {
@@ -1671,7 +1671,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

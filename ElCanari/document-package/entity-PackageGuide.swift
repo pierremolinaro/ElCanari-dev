@@ -294,7 +294,7 @@ class PackageGuide : PackageObject,
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -322,7 +322,7 @@ class PackageGuide : PackageObject,
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -350,7 +350,7 @@ class PackageGuide : PackageObject,
     self.x2_property.addEBObserver (self.selectionDisplay_property)
     self.y2_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -392,8 +392,8 @@ class PackageGuide : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x1_property.removeEBObserver (self.objectDisplay_property)
     self.y1_property.removeEBObserver (self.objectDisplay_property)
     self.x2_property.removeEBObserver (self.objectDisplay_property)
@@ -1292,7 +1292,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageGuide] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageGuide] > > = nil
 
   //····················································································································
 
@@ -1341,7 +1341,7 @@ class TransientArrayOf_PackageGuide : ReadOnlyArrayOf_PackageGuide {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageGuide>
       switch self.mCachedValue! {
@@ -1453,7 +1453,7 @@ final class StoredArrayOf_PackageGuide : ReadWriteArrayOf_PackageGuide, EBSignat
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

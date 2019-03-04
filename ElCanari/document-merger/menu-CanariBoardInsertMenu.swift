@@ -106,7 +106,7 @@ final class Controller_CanariBoardInsertMenu_names : EBSimpleController {
     mNames = names
     mOutlet = outlet
     super.init (observedObjects:[names])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

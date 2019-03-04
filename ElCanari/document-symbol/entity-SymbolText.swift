@@ -166,7 +166,7 @@ class SymbolText : SymbolObject,
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -198,7 +198,7 @@ class SymbolText : SymbolObject,
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -228,7 +228,7 @@ class SymbolText : SymbolObject,
     self.horizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -264,8 +264,8 @@ class SymbolText : SymbolObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.text_property.removeEBObserver (self.objectDisplay_property)
@@ -874,7 +874,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolText] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolText] > > = nil
 
   //····················································································································
 
@@ -923,7 +923,7 @@ class TransientArrayOf_SymbolText : ReadOnlyArrayOf_SymbolText {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolText>
       switch self.mCachedValue! {
@@ -1027,7 +1027,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

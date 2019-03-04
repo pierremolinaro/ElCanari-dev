@@ -35,7 +35,6 @@ extension PackageRoot {
         zones.append (zone)
       }
     }
-    self.packageObjects_property.setProp ([])
   }
 
   //····················································································································

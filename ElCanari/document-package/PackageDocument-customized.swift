@@ -57,10 +57,10 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
   //--- Register document for slave pad assignment
     self.mSlavePadAssignmentPopUpButton?.register (document: self)
   //--- Package color observer
-    self.mPackageColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
+    self.mPackageColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.packageColor_property.addEBObserver (self.mPackageColorObserver)
   //--- Pad color observer
-    self.mPadColorObserver.eventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
+    self.mPadColorObserver.mEventCallBack = { [weak self] in self?.updateDragPadSourceButtons () }
     g_Preferences?.frontSidePadColor_property.addEBObserver (self.mPadColorObserver)
   //--- Set pages segmented control
     let pages = [self.mPackagePageView, self.mProgramPageView, self.mInfosPageView]

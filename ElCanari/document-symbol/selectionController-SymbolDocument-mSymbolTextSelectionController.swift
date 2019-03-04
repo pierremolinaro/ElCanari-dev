@@ -91,7 +91,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   func bind_selection (model : ReadOnlyArrayOf_SymbolObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [SymbolText] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [SymbolText] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -127,35 +127,35 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- horizontalAlignment
-    self.horizontalAlignment_property.readModelFunction = nil 
-    self.horizontalAlignment_property.writeModelFunction = nil 
-    self.horizontalAlignment_property.validateAndWriteModelFunction = nil 
+    self.horizontalAlignment_property.mReadModelFunction = nil 
+    self.horizontalAlignment_property.mWriteModelFunction = nil 
+    self.horizontalAlignment_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- text
-    self.text_property.readModelFunction = nil 
-    self.text_property.writeModelFunction = nil 
-    self.text_property.validateAndWriteModelFunction = nil 
+    self.text_property.mReadModelFunction = nil 
+    self.text_property.mWriteModelFunction = nil 
+    self.text_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_text (self.text_property)
   //--- x
-    self.x_property.readModelFunction = nil 
-    self.x_property.writeModelFunction = nil 
-    self.x_property.validateAndWriteModelFunction = nil 
+    self.x_property.mReadModelFunction = nil 
+    self.x_property.mWriteModelFunction = nil 
+    self.x_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x (self.x_property)
   //--- y
-    self.y_property.readModelFunction = nil 
-    self.y_property.writeModelFunction = nil 
-    self.y_property.validateAndWriteModelFunction = nil 
+    self.y_property.mReadModelFunction = nil 
+    self.y_property.mWriteModelFunction = nil 
+    self.y_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y (self.y_property)
   //---
     self.mModel = nil    
@@ -285,7 +285,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_horizontalAlignment (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_horizontalAlignment (self.horizontalAlignment_property)
-    self.horizontalAlignment_property.readModelFunction = { [weak self] in
+    self.horizontalAlignment_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -319,7 +319,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.horizontalAlignment_property.writeModelFunction = { [weak self] (inValue : HorizontalAlignment) in
+    self.horizontalAlignment_property.mWriteModelFunction = { [weak self] (inValue : HorizontalAlignment) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -331,7 +331,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         }
       }
     }
-    self.horizontalAlignment_property.validateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
+    self.horizontalAlignment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : HorizontalAlignment, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -355,7 +355,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -395,7 +395,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -435,7 +435,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -475,7 +475,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_text (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_text (self.text_property)
-    self.text_property.readModelFunction = { [weak self] in
+    self.text_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -509,7 +509,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.text_property.writeModelFunction = { [weak self] (inValue : String) in
+    self.text_property.mWriteModelFunction = { [weak self] (inValue : String) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -521,7 +521,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         }
       }
     }
-    self.text_property.validateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
+    self.text_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : String, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -545,7 +545,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_x (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_x (self.x_property)
-    self.x_property.readModelFunction = { [weak self] in
+    self.x_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -579,7 +579,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.x_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -591,7 +591,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         }
       }
     }
-    self.x_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -615,7 +615,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
 
   private final func bind_property_y (model : ReadOnlyArrayOf_SymbolText) {
     model.addEBObserverOf_y (self.y_property)
-    self.y_property.readModelFunction = { [weak self] in
+    self.y_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -649,7 +649,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         return .empty
       }
     }
-    self.y_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -661,7 +661,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
         }
       }
     }
-    self.y_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

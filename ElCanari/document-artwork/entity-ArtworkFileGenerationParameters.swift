@@ -782,8 +782,8 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -2573,7 +2573,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ArtworkFileGenerationParameters] > > = nil
 
   //····················································································································
 
@@ -2622,7 +2622,7 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <ArtworkFileGenerationParameters>
       switch self.mCachedValue! {
@@ -2758,7 +2758,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

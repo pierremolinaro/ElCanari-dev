@@ -20,7 +20,7 @@ class MultipleBindingController_hidden : EBOutletEvent {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mOutlet = inOutlet
     super.init ()
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -55,7 +55,7 @@ class MultipleBindingController_enabled : EBOutletEvent {
     mGetPropertyValueCallBack = inGetPropertyValueCallBack
     mOutlet = inOutlet
     super.init ()
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

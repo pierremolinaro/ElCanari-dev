@@ -87,7 +87,7 @@ final class Controller_CanariDimensionTextField_dimensionAndUnit : EBSimpleContr
     self.mNumberFormatter.isLenient = true
     self.mOutlet.formatter = self.mNumberFormatter
   //--- Call back
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

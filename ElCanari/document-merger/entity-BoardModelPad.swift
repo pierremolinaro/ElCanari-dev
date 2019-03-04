@@ -215,8 +215,8 @@ class BoardModelPad : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -750,7 +750,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [BoardModelPad] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [BoardModelPad] > > = nil
 
   //····················································································································
 
@@ -799,7 +799,7 @@ class TransientArrayOf_BoardModelPad : ReadOnlyArrayOf_BoardModelPad {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <BoardModelPad>
       switch self.mCachedValue! {
@@ -901,7 +901,7 @@ final class StoredArrayOf_BoardModelPad : ReadWriteArrayOf_BoardModelPad, EBSign
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

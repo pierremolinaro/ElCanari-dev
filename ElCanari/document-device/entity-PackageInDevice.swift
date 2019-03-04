@@ -399,7 +399,7 @@ class PackageInDevice : EBGraphicManagedObject,
   //--- To one property: mRoot
     self.mRoot_property.owner = self
   //--- Atomic property: versionString
-    self.versionString_property.readModelFunction = { [weak self] in
+    self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mVersion_property_selection.kind ()
         switch kind {
@@ -421,7 +421,7 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mVersion_property.addEBObserver (self.versionString_property)
   //--- Atomic property: frontSidePadFilledBezierPathArray
-    self.frontSidePadFilledBezierPathArray_property.readModelFunction = { [weak self] in
+    self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPads_property_selection.kind ()
         kind &= unwSelf.mSlavePads_property_selection.kind ()
@@ -445,7 +445,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mPads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
   //--- Atomic property: backSidePadFilledBezierPathArray
-    self.backSidePadFilledBezierPathArray_property.readModelFunction = { [weak self] in
+    self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPads_property_selection.kind ()
         kind &= unwSelf.mSlavePads_property_selection.kind ()
@@ -469,7 +469,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mPads_property.addEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
     self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPads_property_selection.kind ()
         kind &= unwSelf.mSlavePads_property_selection.kind ()
@@ -521,7 +521,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mStrokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
@@ -555,7 +555,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: padNameSet
-    self.padNameSet_property.readModelFunction = { [weak self] in
+    self.padNameSet_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPads_property_selection.kind ()
         switch kind {
@@ -589,8 +589,8 @@ class PackageInDevice : EBGraphicManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mPads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
     self.mSlavePads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
@@ -1656,7 +1656,7 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageInDevice] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageInDevice] > > = nil
 
   //····················································································································
 
@@ -1705,7 +1705,7 @@ class TransientArrayOf_PackageInDevice : ReadOnlyArrayOf_PackageInDevice {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageInDevice>
       switch self.mCachedValue! {
@@ -1819,7 +1819,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

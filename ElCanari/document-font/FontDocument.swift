@@ -724,7 +724,7 @@ import Cocoa
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (FontDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.readModelFunction = { [weak self] in
+    self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
         return .single (r)
       }else{

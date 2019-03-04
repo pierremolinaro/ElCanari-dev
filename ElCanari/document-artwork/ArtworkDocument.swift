@@ -981,7 +981,7 @@ import Cocoa
   //--- Selection controller property: mDataSelection
     self.mDataSelection.bind_selection (model: self.mDataController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: mGeneratedFileCountString
-    self.mGeneratedFileCountString_property.readModelFunction = { [weak self] in
+    self.mGeneratedFileCountString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mDataController.sortedArray_property.count_property_selection.kind ()
         switch kind {
@@ -1003,7 +1003,7 @@ import Cocoa
     }
     self.mDataController.sortedArray_property.count_property.addEBObserver (self.mGeneratedFileCountString_property)
   //--- Atomic property: mStatusImage
-    self.mStatusImage_property.readModelFunction = { [weak self] in
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -1027,7 +1027,7 @@ import Cocoa
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_fileExtension (self.mStatusImage_property)
     self.rootObject.fileGenerationParameterArray_property.addEBObserverOf_name (self.mStatusImage_property)
   //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.readModelFunction = { [weak self] in
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
         kind &= unwSelf.rootObject.fileGenerationParameterArray_property_selection.kind ()
@@ -1123,7 +1123,7 @@ import Cocoa
     self.resetVersionAndSignatureButton?.target = self
     self.resetVersionAndSignatureButton?.action = #selector (ArtworkDocument.resetVersionAndSignatureAction (_:))
   //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.readModelFunction = { [weak self] in
+    self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
         return .single (r)
       }else{

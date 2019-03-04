@@ -141,7 +141,7 @@ final class Controller_EBIntField_value : EBSimpleController {
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file: file, line:line, errorMessage:"the formatter should be an NSNumberFormatter")
     }
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

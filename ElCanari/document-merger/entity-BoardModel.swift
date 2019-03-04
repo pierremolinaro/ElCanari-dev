@@ -1878,7 +1878,7 @@ class BoardModel : EBManagedObject,
       inManagedObject?.myModel_property.setProp (self)
     }
   //--- Atomic property: frontLegendLinesSegments
-    self.frontLegendLinesSegments_property.readModelFunction = { [weak self] in
+    self.frontLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendLines_property_selection.kind ()
         kind &= unwSelf.frontLegendLines_property_selection.kind ()
@@ -1908,7 +1908,7 @@ class BoardModel : EBManagedObject,
     self.frontLegendLines_property.addEBObserverOf_y2 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.addEBObserverOf_width (self.frontLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesSegments
-    self.backLegendLinesSegments_property.readModelFunction = { [weak self] in
+    self.backLegendLinesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendLines_property_selection.kind ()
         kind &= unwSelf.backLegendLines_property_selection.kind ()
@@ -1938,7 +1938,7 @@ class BoardModel : EBManagedObject,
     self.backLegendLines_property.addEBObserverOf_y2 (self.backLegendLinesSegments_property)
     self.backLegendLines_property.addEBObserverOf_width (self.backLegendLinesSegments_property)
   //--- Atomic property: backLegendLinesBezierPaths
-    self.backLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
+    self.backLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendLinesSegments_property_selection.kind ()
         switch kind {
@@ -1960,7 +1960,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendLinesSegments_property.addEBObserver (self.backLegendLinesBezierPaths_property)
   //--- Atomic property: frontLegendTextsSegments
-    self.frontLegendTextsSegments_property.readModelFunction = { [weak self] in
+    self.frontLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLegendTexts_property_selection.kind ()
         kind &= unwSelf.frontLegendTexts_property_selection.kind ()
@@ -1990,7 +1990,7 @@ class BoardModel : EBManagedObject,
     self.frontLegendTexts_property.addEBObserverOf_y2 (self.frontLegendTextsSegments_property)
     self.frontLegendTexts_property.addEBObserverOf_width (self.frontLegendTextsSegments_property)
   //--- Atomic property: frontLegendTextsBezierPaths
-    self.frontLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendTextsSegments_property_selection.kind ()
         switch kind {
@@ -2012,7 +2012,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLegendTextsSegments_property.addEBObserver (self.frontLegendTextsBezierPaths_property)
   //--- Atomic property: frontLayoutTextsSegments
-    self.frontLayoutTextsSegments_property.readModelFunction = { [weak self] in
+    self.frontLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontLayoutTexts_property_selection.kind ()
         kind &= unwSelf.frontLayoutTexts_property_selection.kind ()
@@ -2042,7 +2042,7 @@ class BoardModel : EBManagedObject,
     self.frontLayoutTexts_property.addEBObserverOf_y2 (self.frontLayoutTextsSegments_property)
     self.frontLayoutTexts_property.addEBObserverOf_width (self.frontLayoutTextsSegments_property)
   //--- Atomic property: frontLayoutTextsBezierPaths
-    self.frontLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLayoutTextsSegments_property_selection.kind ()
         switch kind {
@@ -2064,7 +2064,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLayoutTextsSegments_property.addEBObserver (self.frontLayoutTextsBezierPaths_property)
   //--- Atomic property: backLegendTextsSegments
-    self.backLegendTextsSegments_property.readModelFunction = { [weak self] in
+    self.backLegendTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLegendTexts_property_selection.kind ()
         kind &= unwSelf.backLegendTexts_property_selection.kind ()
@@ -2094,7 +2094,7 @@ class BoardModel : EBManagedObject,
     self.backLegendTexts_property.addEBObserverOf_y2 (self.backLegendTextsSegments_property)
     self.backLegendTexts_property.addEBObserverOf_width (self.backLegendTextsSegments_property)
   //--- Atomic property: backLegendTextsBezierPaths
-    self.backLegendTextsBezierPaths_property.readModelFunction = { [weak self] in
+    self.backLegendTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLegendTextsSegments_property_selection.kind ()
         switch kind {
@@ -2116,7 +2116,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLegendTextsSegments_property.addEBObserver (self.backLegendTextsBezierPaths_property)
   //--- Atomic property: backLayoutTextsSegments
-    self.backLayoutTextsSegments_property.readModelFunction = { [weak self] in
+    self.backLayoutTextsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backLayoutTexts_property_selection.kind ()
         kind &= unwSelf.backLayoutTexts_property_selection.kind ()
@@ -2146,7 +2146,7 @@ class BoardModel : EBManagedObject,
     self.backLayoutTexts_property.addEBObserverOf_y2 (self.backLayoutTextsSegments_property)
     self.backLayoutTexts_property.addEBObserverOf_width (self.backLayoutTextsSegments_property)
   //--- Atomic property: backLayoutTextsBezierPaths
-    self.backLayoutTextsBezierPaths_property.readModelFunction = { [weak self] in
+    self.backLayoutTextsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backLayoutTextsSegments_property_selection.kind ()
         switch kind {
@@ -2168,7 +2168,7 @@ class BoardModel : EBManagedObject,
     }
     self.backLayoutTextsSegments_property.addEBObserver (self.backLayoutTextsBezierPaths_property)
   //--- Atomic property: internalBoardsLimitsSegments
-    self.internalBoardsLimitsSegments_property.readModelFunction = { [weak self] in
+    self.internalBoardsLimitsSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.internalBoardsLimits_property_selection.kind ()
         kind &= unwSelf.internalBoardsLimits_property_selection.kind ()
@@ -2198,7 +2198,7 @@ class BoardModel : EBManagedObject,
     self.internalBoardsLimits_property.addEBObserverOf_y2 (self.internalBoardsLimitsSegments_property)
     self.internalBoardsLimits_property.addEBObserverOf_width (self.internalBoardsLimitsSegments_property)
   //--- Atomic property: internalBoardsLimitsBezierPaths
-    self.internalBoardsLimitsBezierPaths_property.readModelFunction = { [weak self] in
+    self.internalBoardsLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.internalBoardsLimitsSegments_property_selection.kind ()
         switch kind {
@@ -2220,7 +2220,7 @@ class BoardModel : EBManagedObject,
     }
     self.internalBoardsLimitsSegments_property.addEBObserver (self.internalBoardsLimitsBezierPaths_property)
   //--- Atomic property: drillSegments
-    self.drillSegments_property.readModelFunction = { [weak self] in
+    self.drillSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.drills_property_selection.kind ()
         kind &= unwSelf.drills_property_selection.kind ()
@@ -2250,7 +2250,7 @@ class BoardModel : EBManagedObject,
     self.drills_property.addEBObserverOf_y2 (self.drillSegments_property)
     self.drills_property.addEBObserverOf_width (self.drillSegments_property)
   //--- Atomic property: holesBezierPaths
-    self.holesBezierPaths_property.readModelFunction = { [weak self] in
+    self.holesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.drillSegments_property_selection.kind ()
         switch kind {
@@ -2272,7 +2272,7 @@ class BoardModel : EBManagedObject,
     }
     self.drillSegments_property.addEBObserver (self.holesBezierPaths_property)
   //--- Atomic property: viaShapes
-    self.viaShapes_property.readModelFunction = { [weak self] in
+    self.viaShapes_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.vias_property_selection.kind ()
         kind &= unwSelf.vias_property_selection.kind ()
@@ -2298,7 +2298,7 @@ class BoardModel : EBManagedObject,
     self.vias_property.addEBObserverOf_y (self.viaShapes_property)
     self.vias_property.addEBObserverOf_padDiameter (self.viaShapes_property)
   //--- Atomic property: viasBezierPaths
-    self.viasBezierPaths_property.readModelFunction = { [weak self] in
+    self.viasBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.viaShapes_property_selection.kind ()
         switch kind {
@@ -2320,7 +2320,7 @@ class BoardModel : EBManagedObject,
     }
     self.viaShapes_property.addEBObserver (self.viasBezierPaths_property)
   //--- Atomic property: frontPadArray
-    self.frontPadArray_property.readModelFunction = { [weak self] in
+    self.frontPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPads_property_selection.kind ()
         kind &= unwSelf.frontPads_property_selection.kind ()
@@ -2352,7 +2352,7 @@ class BoardModel : EBManagedObject,
     self.frontPads_property.addEBObserverOf_shape (self.frontPadArray_property)
     self.frontPads_property.addEBObserverOf_rotation (self.frontPadArray_property)
   //--- Atomic property: frontPadsBezierPaths
-    self.frontPadsBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPadArray_property_selection.kind ()
         switch kind {
@@ -2374,7 +2374,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPadArray_property.addEBObserver (self.frontPadsBezierPaths_property)
   //--- Atomic property: backPadArray
-    self.backPadArray_property.readModelFunction = { [weak self] in
+    self.backPadArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPads_property_selection.kind ()
         kind &= unwSelf.backPads_property_selection.kind ()
@@ -2406,7 +2406,7 @@ class BoardModel : EBManagedObject,
     self.backPads_property.addEBObserverOf_shape (self.backPadArray_property)
     self.backPads_property.addEBObserverOf_rotation (self.backPadArray_property)
   //--- Atomic property: backPadsBezierPaths
-    self.backPadsBezierPaths_property.readModelFunction = { [weak self] in
+    self.backPadsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPadArray_property_selection.kind ()
         switch kind {
@@ -2428,7 +2428,7 @@ class BoardModel : EBManagedObject,
     }
     self.backPadArray_property.addEBObserver (self.backPadsBezierPaths_property)
   //--- Atomic property: boardLimits
-    self.boardLimits_property.readModelFunction = { [weak self] in
+    self.boardLimits_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
         kind &= unwSelf.modelHeight_property_selection.kind ()
@@ -2456,7 +2456,7 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidth_property.addEBObserver (self.boardLimits_property)
     g_Preferences?.mergerModelViewDisplayBoardLimits_property.addEBObserver (self.boardLimits_property)
   //--- Atomic property: boardLimitsBezierPaths
-    self.boardLimitsBezierPaths_property.readModelFunction = { [weak self] in
+    self.boardLimitsBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.modelWidth_property_selection.kind ()
         kind &= unwSelf.modelHeight_property_selection.kind ()
@@ -2482,7 +2482,7 @@ class BoardModel : EBManagedObject,
     self.modelHeight_property.addEBObserver (self.boardLimitsBezierPaths_property)
     self.modelLimitWidth_property.addEBObserver (self.boardLimitsBezierPaths_property)
   //--- Atomic property: backComponentNameSegments
-    self.backComponentNameSegments_property.readModelFunction = { [weak self] in
+    self.backComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentNames_property_selection.kind ()
         kind &= unwSelf.backComponentNames_property_selection.kind ()
@@ -2512,7 +2512,7 @@ class BoardModel : EBManagedObject,
     self.backComponentNames_property.addEBObserverOf_y2 (self.backComponentNameSegments_property)
     self.backComponentNames_property.addEBObserverOf_width (self.backComponentNameSegments_property)
   //--- Atomic property: backComponentNamesBezierPaths
-    self.backComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
+    self.backComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentNameSegments_property_selection.kind ()
         switch kind {
@@ -2534,7 +2534,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentNameSegments_property.addEBObserver (self.backComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentNameSegments
-    self.frontComponentNameSegments_property.readModelFunction = { [weak self] in
+    self.frontComponentNameSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentNames_property_selection.kind ()
         kind &= unwSelf.frontComponentNames_property_selection.kind ()
@@ -2564,7 +2564,7 @@ class BoardModel : EBManagedObject,
     self.frontComponentNames_property.addEBObserverOf_y2 (self.frontComponentNameSegments_property)
     self.frontComponentNames_property.addEBObserverOf_width (self.frontComponentNameSegments_property)
   //--- Atomic property: frontComponentNamesBezierPaths
-    self.frontComponentNamesBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontComponentNamesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentNameSegments_property_selection.kind ()
         switch kind {
@@ -2586,7 +2586,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentNameSegments_property.addEBObserver (self.frontComponentNamesBezierPaths_property)
   //--- Atomic property: frontComponentValueSegments
-    self.frontComponentValueSegments_property.readModelFunction = { [weak self] in
+    self.frontComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontComponentValues_property_selection.kind ()
         kind &= unwSelf.frontComponentValues_property_selection.kind ()
@@ -2616,7 +2616,7 @@ class BoardModel : EBManagedObject,
     self.frontComponentValues_property.addEBObserverOf_y2 (self.frontComponentValueSegments_property)
     self.frontComponentValues_property.addEBObserverOf_width (self.frontComponentValueSegments_property)
   //--- Atomic property: frontComponentValuesBezierPaths
-    self.frontComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontComponentValueSegments_property_selection.kind ()
         switch kind {
@@ -2638,7 +2638,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontComponentValueSegments_property.addEBObserver (self.frontComponentValuesBezierPaths_property)
   //--- Atomic property: backComponentValueSegments
-    self.backComponentValueSegments_property.readModelFunction = { [weak self] in
+    self.backComponentValueSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backComponentValues_property_selection.kind ()
         kind &= unwSelf.backComponentValues_property_selection.kind ()
@@ -2668,7 +2668,7 @@ class BoardModel : EBManagedObject,
     self.backComponentValues_property.addEBObserverOf_y2 (self.backComponentValueSegments_property)
     self.backComponentValues_property.addEBObserverOf_width (self.backComponentValueSegments_property)
   //--- Atomic property: backComponentValuesBezierPaths
-    self.backComponentValuesBezierPaths_property.readModelFunction = { [weak self] in
+    self.backComponentValuesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backComponentValueSegments_property_selection.kind ()
         switch kind {
@@ -2690,7 +2690,7 @@ class BoardModel : EBManagedObject,
     }
     self.backComponentValueSegments_property.addEBObserver (self.backComponentValuesBezierPaths_property)
   //--- Atomic property: backTrackSegments
-    self.backTrackSegments_property.readModelFunction = { [weak self] in
+    self.backTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backTracks_property_selection.kind ()
         kind &= unwSelf.backTracks_property_selection.kind ()
@@ -2720,7 +2720,7 @@ class BoardModel : EBManagedObject,
     self.backTracks_property.addEBObserverOf_y2 (self.backTrackSegments_property)
     self.backTracks_property.addEBObserverOf_width (self.backTrackSegments_property)
   //--- Atomic property: backTracksBezierPaths
-    self.backTracksBezierPaths_property.readModelFunction = { [weak self] in
+    self.backTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backTrackSegments_property_selection.kind ()
         switch kind {
@@ -2742,7 +2742,7 @@ class BoardModel : EBManagedObject,
     }
     self.backTrackSegments_property.addEBObserver (self.backTracksBezierPaths_property)
   //--- Atomic property: frontTrackSegments
-    self.frontTrackSegments_property.readModelFunction = { [weak self] in
+    self.frontTrackSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontTracks_property_selection.kind ()
         kind &= unwSelf.frontTracks_property_selection.kind ()
@@ -2772,7 +2772,7 @@ class BoardModel : EBManagedObject,
     self.frontTracks_property.addEBObserverOf_y2 (self.frontTrackSegments_property)
     self.frontTracks_property.addEBObserverOf_width (self.frontTrackSegments_property)
   //--- Atomic property: frontTracksBezierPaths
-    self.frontTracksBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontTracksBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontTrackSegments_property_selection.kind ()
         switch kind {
@@ -2794,7 +2794,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontTrackSegments_property.addEBObserver (self.frontTracksBezierPaths_property)
   //--- Atomic property: frontPackagesSegments
-    self.frontPackagesSegments_property.readModelFunction = { [weak self] in
+    self.frontPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.frontPackages_property_selection.kind ()
         kind &= unwSelf.frontPackages_property_selection.kind ()
@@ -2824,7 +2824,7 @@ class BoardModel : EBManagedObject,
     self.frontPackages_property.addEBObserverOf_y2 (self.frontPackagesSegments_property)
     self.frontPackages_property.addEBObserverOf_width (self.frontPackagesSegments_property)
   //--- Atomic property: frontPackagesBezierPaths
-    self.frontPackagesBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontPackagesSegments_property_selection.kind ()
         switch kind {
@@ -2846,7 +2846,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontPackagesSegments_property.addEBObserver (self.frontPackagesBezierPaths_property)
   //--- Atomic property: backPackagesSegments
-    self.backPackagesSegments_property.readModelFunction = { [weak self] in
+    self.backPackagesSegments_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.backPackages_property_selection.kind ()
         kind &= unwSelf.backPackages_property_selection.kind ()
@@ -2876,7 +2876,7 @@ class BoardModel : EBManagedObject,
     self.backPackages_property.addEBObserverOf_y2 (self.backPackagesSegments_property)
     self.backPackages_property.addEBObserverOf_width (self.backPackagesSegments_property)
   //--- Atomic property: backPackagesBezierPaths
-    self.backPackagesBezierPaths_property.readModelFunction = { [weak self] in
+    self.backPackagesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.backPackagesSegments_property_selection.kind ()
         switch kind {
@@ -2898,7 +2898,7 @@ class BoardModel : EBManagedObject,
     }
     self.backPackagesSegments_property.addEBObserver (self.backPackagesBezierPaths_property)
   //--- Atomic property: instanceCount
-    self.instanceCount_property.readModelFunction = { [weak self] in
+    self.instanceCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.myInstances_property.count_property_selection.kind ()
         switch kind {
@@ -2920,7 +2920,7 @@ class BoardModel : EBManagedObject,
     }
     self.myInstances_property.addEBObserver (self.instanceCount_property)
   //--- Atomic property: frontLegendLinesBezierPaths
-    self.frontLegendLinesBezierPaths_property.readModelFunction = { [weak self] in
+    self.frontLegendLinesBezierPaths_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.frontLegendLinesSegments_property_selection.kind ()
         switch kind {
@@ -2942,7 +2942,7 @@ class BoardModel : EBManagedObject,
     }
     self.frontLegendLinesSegments_property.addEBObserver (self.frontLegendLinesBezierPaths_property)
   //--- Atomic property: imageForModel
-    self.imageForModel_property.readModelFunction = { [weak self] in
+    self.imageForModel_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
         kind &= unwSelf.modelWidth_property_selection.kind ()
@@ -3088,7 +3088,7 @@ class BoardModel : EBManagedObject,
     g_Preferences?.mergerModelViewDisplayBackPackages_property.addEBObserver (self.imageForModel_property)
     g_Preferences?.mergerColorBackPackages_property.addEBObserver (self.imageForModel_property)
   //--- Atomic property: imageForInstances
-    self.imageForInstances_property.readModelFunction = { [weak self] in
+    self.imageForInstances_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.mergerColorBackground_property_selection.kind ()
         kind &= unwSelf.modelWidth_property_selection.kind ()
@@ -3239,8 +3239,8 @@ class BoardModel : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.frontLegendLines_property.removeEBObserverOf_x1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_y1 (self.frontLegendLinesSegments_property)
     self.frontLegendLines_property.removeEBObserverOf_x2 (self.frontLegendLinesSegments_property)
@@ -7508,7 +7508,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [BoardModel] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [BoardModel] > > = nil
 
   //····················································································································
 
@@ -7557,7 +7557,7 @@ class TransientArrayOf_BoardModel : ReadOnlyArrayOf_BoardModel {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <BoardModel>
       switch self.mCachedValue! {
@@ -7751,7 +7751,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

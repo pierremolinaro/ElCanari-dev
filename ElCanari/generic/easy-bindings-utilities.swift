@@ -284,7 +284,7 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
   //····················································································································
   
   deinit {
-    mUnbindFunction? ()
+    // mUnbindFunction? ()
     noteObjectDeallocation (self)
   }
 
@@ -292,7 +292,7 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
 
   override func removeFromSuperview () {
    // NSLog ("\(#function)")
-    mUnbindFunction? ()
+    self.mUnbindFunction? ()
     super.removeFromSuperview ()
   }
 
@@ -300,7 +300,7 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
   
   override func removeFromSuperviewWithoutNeedingDisplay () {
    // NSLog ("\(#function)")
-    mUnbindFunction? ()
+    self.mUnbindFunction? ()
     super.removeFromSuperviewWithoutNeedingDisplay ()
   }
   
@@ -388,7 +388,7 @@ class EBSimpleController : EBOutletEvent {
   //····················································································································
 
   func unregister () {
-    for object in mPrivateObservedObjects {
+    for object in self.mPrivateObservedObjects {
       object.removeEBObserver (self)
     }
   }
@@ -407,7 +407,7 @@ class EBReadOnlyClassController <T> : EBSimpleController {
 
   init (model : EBReadOnlyClassProperty <T>, callBack: @escaping () -> Void) {
     super.init (observedObjects:[model])
-    self.eventCallBack = callBack
+    self.mEventCallBack = callBack
   }
 
   //····················································································································
@@ -422,9 +422,9 @@ class EBReadOnlyValueController <T> : EBSimpleController {
 
   //····················································································································
 
-  init (model : EBReadOnlyValueProperty <T>, callBack: @escaping () -> Void) {
-    super.init (observedObjects:[model])
-    self.eventCallBack = callBack
+  init (model : EBReadOnlyValueProperty <T>, callBack : @escaping () -> Void) {
+    super.init (observedObjects: [model])
+    self.mEventCallBack = callBack
   }
 
   //····················································································································
@@ -821,7 +821,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let me = self {
         switch me.prop {
         case .empty :

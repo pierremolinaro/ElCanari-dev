@@ -32,6 +32,9 @@ extension DeviceDocument {
         zones: &zones,
         slavePads: &slavePads
       )
+      packageRoot.packageObjects_property.setProp ([])
+      packageRoot.removeRecursivelyAllRelationsShips ()
+
       package.mStrokeBezierPath = strokeBezierPathes
       package.mPads_property.setProp (masterPads)
       package.mSlavePads_property.setProp (slavePads)

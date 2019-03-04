@@ -516,7 +516,7 @@ class PackageZone : PackageObject,
   //--- Atomic property: zoneNumbering
     self.zoneNumbering_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -554,7 +554,7 @@ class PackageZone : PackageObject,
     g_Preferences?.padZoneFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.padZoneColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -592,7 +592,7 @@ class PackageZone : PackageObject,
     g_Preferences?.padZoneFont_property.addEBObserver (self.selectionDisplay_property)
     g_Preferences?.padZoneColor_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -626,7 +626,7 @@ class PackageZone : PackageObject,
     self.yName_property.addEBObserver (self.issues_property)
     self.zoneName_property.addEBObserver (self.issues_property)
   //--- Atomic property: rect
-    self.rect_property.readModelFunction = { [weak self] in
+    self.rect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -673,8 +673,8 @@ class PackageZone : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -2091,7 +2091,7 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageZone] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageZone] > > = nil
 
   //····················································································································
 
@@ -2140,7 +2140,7 @@ class TransientArrayOf_PackageZone : ReadOnlyArrayOf_PackageZone {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageZone>
       switch self.mCachedValue! {
@@ -2266,7 +2266,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

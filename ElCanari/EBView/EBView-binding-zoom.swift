@@ -43,7 +43,7 @@ final class Controller_CanariViewWithZoomAndFlip_zoom : EBSimpleController {
     mZoomProperty = zoom
     mOutlet = outlet
     super.init (observedObjects:[zoom])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

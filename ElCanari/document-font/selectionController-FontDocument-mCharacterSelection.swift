@@ -87,23 +87,23 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   func unbind_selection () {
   //--- advance
-    self.advance_property.readModelFunction = nil 
-    self.advance_property.writeModelFunction = nil 
-    self.advance_property.validateAndWriteModelFunction = nil 
+    self.advance_property.mReadModelFunction = nil 
+    self.advance_property.mWriteModelFunction = nil 
+    self.advance_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_advance (self.advance_property)
   //--- codePoint
-    self.codePoint_property.readModelFunction = nil 
-    self.codePoint_property.writeModelFunction = nil 
-    self.codePoint_property.validateAndWriteModelFunction = nil 
+    self.codePoint_property.mReadModelFunction = nil 
+    self.codePoint_property.mWriteModelFunction = nil 
+    self.codePoint_property.mValidateAndWriteModelFunction = nil 
     self.mModel?.removeEBObserverOf_codePoint (self.codePoint_property)
   //--- gerberCode
-    self.gerberCode_property.readModelFunction = nil 
+    self.gerberCode_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_gerberCode (self.gerberCode_property)
   //--- gerberCodeInstructionCountMessage
-    self.gerberCodeInstructionCountMessage_property.readModelFunction = nil 
+    self.gerberCodeInstructionCountMessage_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
   //--- segmentArrayForDrawing
-    self.segmentArrayForDrawing_property.readModelFunction = nil 
+    self.segmentArrayForDrawing_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
   //---
     self.mModel = nil    
@@ -216,7 +216,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   private final func bind_property_advance (model : ReadOnlyArrayOf_FontCharacter) {
     model.addEBObserverOf_advance (self.advance_property)
-    self.advance_property.readModelFunction = { [weak self] in
+    self.advance_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -250,7 +250,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
         return .empty
       }
     }
-    self.advance_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.advance_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -262,7 +262,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
         }
       }
     }
-    self.advance_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.advance_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -286,7 +286,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   private final func bind_property_codePoint (model : ReadOnlyArrayOf_FontCharacter) {
     model.addEBObserverOf_codePoint (self.codePoint_property)
-    self.codePoint_property.readModelFunction = { [weak self] in
+    self.codePoint_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -320,7 +320,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
         return .empty
       }
     }
-    self.codePoint_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.codePoint_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -332,7 +332,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
         }
       }
     }
-    self.codePoint_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.codePoint_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mModel {
         switch model.prop {
         case .empty, .multiple :
@@ -356,7 +356,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   private final func bind_property_gerberCode (model : ReadOnlyArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCode (self.gerberCode_property)
-    self.gerberCode_property.readModelFunction = { [weak self] in
+    self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -396,7 +396,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   private final func bind_property_gerberCodeInstructionCountMessage (model : ReadOnlyArrayOf_FontCharacter) {
     model.addEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
-    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
+    self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -436,7 +436,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
 
   private final func bind_property_segmentArrayForDrawing (model : ReadOnlyArrayOf_FontCharacter) {
     model.addEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
-    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
+    self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :

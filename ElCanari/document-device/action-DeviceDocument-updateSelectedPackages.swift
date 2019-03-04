@@ -41,18 +41,23 @@ extension DeviceDocument {
               zones : &zones,
               slavePads: &slavePads
             )
+            packageRoot.packageObjects_property.setProp ([])
+            packageRoot.removeRecursivelyAllRelationsShips ()
           //-- Set property
             package.mStrokeBezierPath = strokeBezierPathes
           //--- Remove relationship circularities
             for zone in package.mZones_property.propval {
+              zone.removeAllObservers ()
               zone.cleanUpToOneRelationships ()
               zone.cleanUpToManyRelationships ()
             }
             for masterPad in package.mPads_property.propval {
+              masterPad.removeAllObservers ()
               masterPad.cleanUpToOneRelationships ()
               masterPad.cleanUpToManyRelationships ()
             }
             for slavePad in package.mSlavePads_property.propval {
+              slavePad.removeAllObservers ()
               slavePad.cleanUpToOneRelationships ()
               slavePad.cleanUpToManyRelationships ()
             }

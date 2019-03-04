@@ -111,7 +111,7 @@ class DeviceDocumentation : EBManagedObject,
   //--- Atomic property: mFileData
     self.mFileData_property.undoManager = self.undoManager
   //--- Atomic property: fileSize
-    self.fileSize_property.readModelFunction = { [weak self] in
+    self.fileSize_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mFileData_property_selection.kind ()
         switch kind {
@@ -141,8 +141,8 @@ class DeviceDocumentation : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.mFileData_property.removeEBObserver (self.fileSize_property)
   }
 
@@ -464,7 +464,7 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [DeviceDocumentation] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [DeviceDocumentation] > > = nil
 
   //····················································································································
 
@@ -513,7 +513,7 @@ class TransientArrayOf_DeviceDocumentation : ReadOnlyArrayOf_DeviceDocumentation
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <DeviceDocumentation>
       switch self.mCachedValue! {
@@ -609,7 +609,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

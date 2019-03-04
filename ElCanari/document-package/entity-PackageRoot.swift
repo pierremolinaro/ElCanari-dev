@@ -665,7 +665,7 @@ class PackageRoot : EBGraphicManagedObject,
   //--- To many property: packageObjects (no option)
     self.packageObjects_property.undoManager = self.undoManager
   //--- Atomic property: freePadNumbering
-    self.freePadNumbering_property.readModelFunction = { [weak self] in
+    self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padNumbering_property_selection.kind ()
         switch kind {
@@ -687,7 +687,7 @@ class PackageRoot : EBGraphicManagedObject,
     }
     self.padNumbering_property.addEBObserver (self.freePadNumbering_property)
   //--- Atomic property: gridStepMultipliedByDisplayFactor
-    self.gridStepMultipliedByDisplayFactor_property.readModelFunction = { [weak self] in
+    self.gridStepMultipliedByDisplayFactor_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.gridStep_property_selection.kind ()
         kind &= unwSelf.gridDisplayFactor_property_selection.kind ()
@@ -711,7 +711,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.gridStep_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
     self.gridDisplayFactor_property.addEBObserver (self.gridStepMultipliedByDisplayFactor_property)
   //--- Atomic property: padNumberDisplay
-    self.padNumberDisplay_property.readModelFunction = { [weak self] in
+    self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = g_Preferences!.showPadNumber_property_selection.kind ()
         kind &= unwSelf.packagePads_property_selection.kind ()
@@ -737,7 +737,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packagePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
     self.packageSlavePads_property.addEBObserverOf_padNumberDisplay (self.padNumberDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.packageObjects_property_selection.kind ()
         kind &= unwSelf.packageZones_property_selection.kind ()
@@ -769,7 +769,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.addEBObserverOf_yName (self.issues_property)
     g_Preferences?.padZoneFont_property.addEBObserver (self.issues_property)
   //--- Atomic property: noIssue
-    self.noIssue_property.readModelFunction = { [weak self] in
+    self.noIssue_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
@@ -792,7 +792,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.issues_property.addEBObserver (self.noIssue_property)
   //--- Install undoers and opposite setter for relationships
     self.packageObjects_property.addEBObserver (self.packagePads_property)
-    self.packagePads_property.readModelFunction =  { [weak self] in
+    self.packagePads_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
         case .empty :
@@ -813,7 +813,7 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.packageObjects_property.addEBObserver (self.packageSlavePads_property)
-    self.packageSlavePads_property.readModelFunction =  { [weak self] in
+    self.packageSlavePads_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
         case .empty :
@@ -834,7 +834,7 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
     self.packageObjects_property.addEBObserver (self.packageZones_property)
-    self.packageZones_property.readModelFunction =  { [weak self] in
+    self.packageZones_property.mReadModelFunction =  { [weak self] in
       if let model = self?.packageObjects_property {
         switch model.prop {
         case .empty :
@@ -865,8 +865,8 @@ class PackageRoot : EBGraphicManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   //--- To many property: packagePads
     self.packageObjects_property.removeEBObserver (self.packagePads_property)
   //--- To many property: packageSlavePads
@@ -2367,7 +2367,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageRoot] > > = nil
 
   //····················································································································
 
@@ -2416,7 +2416,7 @@ class TransientArrayOf_PackageRoot : ReadOnlyArrayOf_PackageRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageRoot>
       switch self.mCachedValue! {
@@ -2544,7 +2544,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

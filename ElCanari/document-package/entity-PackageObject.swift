@@ -67,8 +67,8 @@ class PackageObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -362,7 +362,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackageObject] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackageObject] > > = nil
 
   //····················································································································
 
@@ -411,7 +411,7 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageObject>
       switch self.mCachedValue! {
@@ -493,7 +493,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

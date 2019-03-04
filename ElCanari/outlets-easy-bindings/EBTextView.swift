@@ -60,7 +60,7 @@ import Cocoa
     mOutlet = outlet
     super.init (observedObjects:[object])
     outlet.delegate = self
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

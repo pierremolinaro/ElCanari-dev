@@ -92,6 +92,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
     }
   //--- Remove relationships
     for object in reachableObjectSet {
+      object.removeAllObservers ()
       object.cleanUpToOneRelationships ()
       object.cleanUpToManyRelationships ()
     }
@@ -116,6 +117,13 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //····················································································································
 
   func cleanUpToOneRelationships () {
+  }
+
+  //····················································································································
+  //   removeAllObservers
+  //····················································································································
+
+  func removeAllObservers () {
   }
 
   //····················································································································

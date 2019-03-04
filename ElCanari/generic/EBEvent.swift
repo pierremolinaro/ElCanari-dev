@@ -26,7 +26,7 @@ class EBOutletEvent : EBEvent {
   //   Properties
   //····················································································································
 
-  var eventCallBack : Optional < () -> Void > = nil
+  var mEventCallBack : Optional < () -> Void > = nil
   var mEventIsPosted = false
 
   //····················································································································
@@ -60,8 +60,8 @@ class EBOutletEvent : EBEvent {
   //····················································································································
 
   final func sendUpdateEvent () {
-    mEventIsPosted = false
-    self.eventCallBack? ()
+    self.mEventIsPosted = false
+    self.mEventCallBack? ()
   }
 
   //····················································································································

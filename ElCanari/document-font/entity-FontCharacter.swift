@@ -185,7 +185,7 @@ class FontCharacter : EBManagedObject,
   //--- To many property: segments (no option)
     self.segments_property.undoManager = self.undoManager
   //--- Atomic property: segmentArrayForDrawing
-    self.segmentArrayForDrawing_property.readModelFunction = { [weak self] in
+    self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.segments_property_selection.kind ()
         kind &= unwSelf.segments_property_selection.kind ()
@@ -213,7 +213,7 @@ class FontCharacter : EBManagedObject,
     self.segments_property.addEBObserverOf_x2 (self.segmentArrayForDrawing_property)
     self.segments_property.addEBObserverOf_y2 (self.segmentArrayForDrawing_property)
   //--- Atomic property: gerberCode
-    self.gerberCode_property.readModelFunction = { [weak self] in
+    self.gerberCode_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.segmentArrayForDrawing_property_selection.kind ()
         switch kind {
@@ -235,7 +235,7 @@ class FontCharacter : EBManagedObject,
     }
     self.segmentArrayForDrawing_property.addEBObserver (self.gerberCode_property)
   //--- Atomic property: gerberCodeInstructionCountMessage
-    self.gerberCodeInstructionCountMessage_property.readModelFunction = { [weak self] in
+    self.gerberCodeInstructionCountMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.gerberCode_property_selection.kind ()
         switch kind {
@@ -266,8 +266,8 @@ class FontCharacter : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.segments_property.removeEBObserverOf_x1 (self.segmentArrayForDrawing_property)
     self.segments_property.removeEBObserverOf_y1 (self.segmentArrayForDrawing_property)
     self.segments_property.removeEBObserverOf_x2 (self.segmentArrayForDrawing_property)
@@ -749,7 +749,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [FontCharacter] > > = nil
 
   //····················································································································
 
@@ -798,7 +798,7 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <FontCharacter>
       switch self.mCachedValue! {
@@ -898,7 +898,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

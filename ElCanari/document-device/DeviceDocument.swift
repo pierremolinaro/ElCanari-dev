@@ -937,7 +937,7 @@ import Cocoa
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.bind_model (self.rootObject.packages_property)
   //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.readModelFunction = { [weak self] in
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -959,7 +959,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
   //--- Atomic property: mMetadataStatus
-    self.mMetadataStatus_property.readModelFunction = { [weak self] in
+    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -981,7 +981,7 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
   //--- Atomic property: mStatusImage
-    self.mStatusImage_property.readModelFunction = { [weak self] in
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -1178,7 +1178,7 @@ import Cocoa
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.readModelFunction = { [weak self] in
+    self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
         return .single (r)
       }else{

@@ -294,7 +294,7 @@ class SymbolBezierCurve : SymbolObject,
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -334,7 +334,7 @@ class SymbolBezierCurve : SymbolObject,
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -370,7 +370,7 @@ class SymbolBezierCurve : SymbolObject,
     self.cpx2_property.addEBObserver (self.selectionDisplay_property)
     self.cpy2_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x1_property_selection.kind ()
         kind &= unwSelf.y1_property_selection.kind ()
@@ -420,8 +420,8 @@ class SymbolBezierCurve : SymbolObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x1_property.removeEBObserver (self.objectDisplay_property)
     self.y1_property.removeEBObserver (self.objectDisplay_property)
     self.x2_property.removeEBObserver (self.objectDisplay_property)
@@ -1334,7 +1334,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolBezierCurve] > > = nil
 
   //····················································································································
 
@@ -1383,7 +1383,7 @@ class TransientArrayOf_SymbolBezierCurve : ReadOnlyArrayOf_SymbolBezierCurve {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolBezierCurve>
       switch self.mCachedValue! {
@@ -1495,7 +1495,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

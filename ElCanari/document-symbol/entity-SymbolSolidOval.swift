@@ -166,7 +166,7 @@ class SymbolSolidOval : SymbolObject,
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -196,7 +196,7 @@ class SymbolSolidOval : SymbolObject,
     self.height_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -224,7 +224,7 @@ class SymbolSolidOval : SymbolObject,
     self.width_property.addEBObserver (self.selectionDisplay_property)
     self.height_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.x_property_selection.kind ()
         kind &= unwSelf.y_property_selection.kind ()
@@ -262,8 +262,8 @@ class SymbolSolidOval : SymbolObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -871,7 +871,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidOval] > > = nil
 
   //····················································································································
 
@@ -920,7 +920,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolSolidOval>
       switch self.mCachedValue! {
@@ -1024,7 +1024,7 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

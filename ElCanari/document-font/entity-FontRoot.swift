@@ -317,7 +317,7 @@ class FontRoot : EBManagedObject,
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
-    self.currentCharacterCodePointString_property.readModelFunction = {
+    self.currentCharacterCodePointString_property.mReadModelFunction = {
         let kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -335,7 +335,7 @@ class FontRoot : EBManagedObject,
     }
     g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
-    self.sampleStringBezierPath_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.nominalSize_property_selection.kind ()
         kind &= unwSelf.characters_property_selection.kind ()
@@ -365,7 +365,7 @@ class FontRoot : EBManagedObject,
     g_Preferences?.sampleString_property.addEBObserver (self.sampleStringBezierPath_property)
     g_Preferences?.sampleStringSize_property.addEBObserver (self.sampleStringBezierPath_property)
   //--- Atomic property: sampleStringBezierPathWidth
-    self.sampleStringBezierPathWidth_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathWidth_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -387,7 +387,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathWidth_property)
   //--- Atomic property: sampleStringBezierPathAscent
-    self.sampleStringBezierPathAscent_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathAscent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -409,7 +409,7 @@ class FontRoot : EBManagedObject,
     }
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathAscent_property)
   //--- Atomic property: sampleStringBezierPathDescent
-    self.sampleStringBezierPathDescent_property.readModelFunction = { [weak self] in
+    self.sampleStringBezierPathDescent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.sampleStringBezierPath_property_selection.kind ()
         switch kind {
@@ -439,8 +439,8 @@ class FontRoot : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.unbind_model ()
     g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
@@ -1198,7 +1198,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [FontRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [FontRoot] > > = nil
 
   //····················································································································
 
@@ -1247,7 +1247,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <FontRoot>
       switch self.mCachedValue! {
@@ -1355,7 +1355,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

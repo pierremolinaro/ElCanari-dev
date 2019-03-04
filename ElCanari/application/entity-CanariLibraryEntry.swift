@@ -175,7 +175,7 @@ class CanariLibraryEntry : EBManagedObject,
   //--- Atomic property: mUserAndPasswordTag
     self.mUserAndPasswordTag_property.undoManager = self.undoManager
   //--- Atomic property: mStatusImage
-    self.mStatusImage_property.readModelFunction = { [weak self] in
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.mPath_property_selection.kind ()
         switch kind {
@@ -204,8 +204,8 @@ class CanariLibraryEntry : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.mPath_property.removeEBObserver (self.mStatusImage_property)
   }
 
@@ -661,7 +661,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [CanariLibraryEntry] > > = nil
 
   //····················································································································
 
@@ -710,7 +710,7 @@ class TransientArrayOf_CanariLibraryEntry : ReadOnlyArrayOf_CanariLibraryEntry {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <CanariLibraryEntry>
       switch self.mCachedValue! {
@@ -810,7 +810,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

@@ -152,7 +152,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //····················································································································
 
   private final func setSelectedArrayComputeFunction () {
-    self.selectedArray_property.readModelFunction = { [weak self] in
+    self.selectedArray_property.mReadModelFunction = { [weak self] in
       if let me = self {
         switch me.sortedArray_property.prop {
         case .empty :
@@ -199,7 +199,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //····················································································································
 
   private final func setFilterAndSortFunction () {
-    self.sortedArray_property.readModelFunction = { [weak self] in
+    self.sortedArray_property.mReadModelFunction = { [weak self] in
       if let me = self, let model = me.mModel {
         switch model.prop {
         case .empty :

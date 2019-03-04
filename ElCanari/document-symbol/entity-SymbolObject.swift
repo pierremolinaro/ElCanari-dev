@@ -67,8 +67,8 @@ class SymbolObject : EBGraphicManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -362,7 +362,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolObject] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolObject] > > = nil
 
   //····················································································································
 
@@ -411,7 +411,7 @@ class TransientArrayOf_SymbolObject : ReadOnlyArrayOf_SymbolObject {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolObject>
       switch self.mCachedValue! {
@@ -493,7 +493,7 @@ final class StoredArrayOf_SymbolObject : ReadWriteArrayOf_SymbolObject, EBSignat
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

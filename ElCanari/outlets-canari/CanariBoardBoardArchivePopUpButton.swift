@@ -49,7 +49,7 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
     super.init (observedObjects:[object])
     self.mOutlet.target = self
     self.mOutlet.action = #selector (Controller_CanariBoardBoardArchivePopUpButton_format.updateModel (_:))
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

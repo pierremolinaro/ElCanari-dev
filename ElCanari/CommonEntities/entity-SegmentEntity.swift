@@ -183,8 +183,8 @@ class SegmentEntity : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -646,7 +646,7 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SegmentEntity] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SegmentEntity] > > = nil
 
   //····················································································································
 
@@ -695,7 +695,7 @@ class TransientArrayOf_SegmentEntity : ReadOnlyArrayOf_SegmentEntity {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SegmentEntity>
       switch self.mCachedValue! {
@@ -795,7 +795,7 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

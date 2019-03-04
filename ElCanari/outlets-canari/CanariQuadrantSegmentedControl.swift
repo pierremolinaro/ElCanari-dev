@@ -77,7 +77,7 @@ final class Controller_CanariQuadrantSegmentedControl_quadrant : EBSimpleControl
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

@@ -89,7 +89,7 @@ final class Controller_EBSlider_doubleValue : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································
@@ -134,7 +134,7 @@ final class Controller_EBSlider_intValue : EBSimpleController {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

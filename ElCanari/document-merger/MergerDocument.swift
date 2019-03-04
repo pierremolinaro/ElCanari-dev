@@ -2676,7 +2676,7 @@ import Cocoa
   //--- Selection controller property: mBoardInstanceSelection
     self.mBoardInstanceSelection.bind_selection (model: self.mBoardInstanceController.selectedArray_property, file: #file, line: #line)
   //--- Atomic property: incorrectDocumentFileErrorMessage
-    self.incorrectDocumentFileErrorMessage_property.readModelFunction = { [weak self] in
+    self.incorrectDocumentFileErrorMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
@@ -2698,7 +2698,7 @@ import Cocoa
     }
     self.documentFilePath_property.addEBObserver (self.incorrectDocumentFileErrorMessage_property)
   //--- Atomic property: documentIsUnnamed
-    self.documentIsUnnamed_property.readModelFunction = { [weak self] in
+    self.documentIsUnnamed_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
@@ -2720,7 +2720,7 @@ import Cocoa
     }
     self.documentFilePath_property.addEBObserver (self.documentIsUnnamed_property)
   //--- Atomic property: importArtworkButtonTitle
-    self.importArtworkButtonTitle_property.readModelFunction = { [weak self] in
+    self.importArtworkButtonTitle_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.artworkName_property_selection.kind ()
         switch kind {
@@ -2742,7 +2742,7 @@ import Cocoa
     }
     self.rootObject.artworkName_property.addEBObserver (self.importArtworkButtonTitle_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.rootObject.overlapingArrangment_property_selection.kind ()
         kind &= unwSelf.rootObject.boardRect_property_selection.kind ()
@@ -2772,7 +2772,7 @@ import Cocoa
     self.rootObject.boardInstances_property.addEBObserverOf_instanceRect (self.issues_property)
     self.rootObject.boardInstances_property.addEBObserverOf_boardLimitWidth (self.issues_property)
   //--- Atomic property: mStatusImage
-    self.mStatusImage_property.readModelFunction = { [weak self] in
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
@@ -2794,7 +2794,7 @@ import Cocoa
     }
     self.issues_property.addEBObserver (self.mStatusImage_property)
   //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.readModelFunction = { [weak self] in
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.issues_property_selection.kind ()
         switch kind {
@@ -2816,7 +2816,7 @@ import Cocoa
     }
     self.issues_property.addEBObserver (self.mStatusMessage_property)
   //--- Atomic property: documentFileNameOk
-    self.documentFileNameOk_property.readModelFunction = { [weak self] in
+    self.documentFileNameOk_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.documentFilePath_property_selection.kind ()
         switch kind {
@@ -3158,7 +3158,7 @@ import Cocoa
     self.mImportArtworkButton?.target = self
     self.mImportArtworkButton?.action = #selector (MergerDocument.importArtworkAction (_:))
   //--------------------------- Read documentFilePath model 
-    self.documentFilePath_property.readModelFunction = { [weak self] in
+    self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
         return .single (r)
       }else{

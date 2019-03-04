@@ -396,8 +396,8 @@ class ArtworkRoot : EBManagedObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
   }
 
   //····················································································································
@@ -1333,7 +1333,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ArtworkRoot] > > = nil
 
   //····················································································································
 
@@ -1382,7 +1382,7 @@ class TransientArrayOf_ArtworkRoot : ReadOnlyArrayOf_ArtworkRoot {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <ArtworkRoot>
       switch self.mCachedValue! {
@@ -1494,7 +1494,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

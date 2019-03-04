@@ -191,7 +191,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageDimension] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageDimension] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -237,83 +237,83 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- distanceInCanariUnit
-    self.distanceInCanariUnit_property.readModelFunction = nil 
+    self.distanceInCanariUnit_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_distanceInCanariUnit (self.distanceInCanariUnit_property)
   //--- distanceUnit
-    self.distanceUnit_property.readModelFunction = nil 
-    self.distanceUnit_property.writeModelFunction = nil 
-    self.distanceUnit_property.validateAndWriteModelFunction = nil 
+    self.distanceUnit_property.mReadModelFunction = nil 
+    self.distanceUnit_property.mWriteModelFunction = nil 
+    self.distanceUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_distanceUnit (self.distanceUnit_property)
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- x1
-    self.x1_property.readModelFunction = nil 
-    self.x1_property.writeModelFunction = nil 
-    self.x1_property.validateAndWriteModelFunction = nil 
+    self.x1_property.mReadModelFunction = nil 
+    self.x1_property.mWriteModelFunction = nil 
+    self.x1_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x1 (self.x1_property)
   //--- x1Unit
-    self.x1Unit_property.readModelFunction = nil 
-    self.x1Unit_property.writeModelFunction = nil 
-    self.x1Unit_property.validateAndWriteModelFunction = nil 
+    self.x1Unit_property.mReadModelFunction = nil 
+    self.x1Unit_property.mWriteModelFunction = nil 
+    self.x1Unit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x1Unit (self.x1Unit_property)
   //--- x2
-    self.x2_property.readModelFunction = nil 
-    self.x2_property.writeModelFunction = nil 
-    self.x2_property.validateAndWriteModelFunction = nil 
+    self.x2_property.mReadModelFunction = nil 
+    self.x2_property.mWriteModelFunction = nil 
+    self.x2_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x2 (self.x2_property)
   //--- x2Unit
-    self.x2Unit_property.readModelFunction = nil 
-    self.x2Unit_property.writeModelFunction = nil 
-    self.x2Unit_property.validateAndWriteModelFunction = nil 
+    self.x2Unit_property.mReadModelFunction = nil 
+    self.x2Unit_property.mWriteModelFunction = nil 
+    self.x2Unit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_x2Unit (self.x2Unit_property)
   //--- xDimension
-    self.xDimension_property.readModelFunction = nil 
-    self.xDimension_property.writeModelFunction = nil 
-    self.xDimension_property.validateAndWriteModelFunction = nil 
+    self.xDimension_property.mReadModelFunction = nil 
+    self.xDimension_property.mWriteModelFunction = nil 
+    self.xDimension_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xDimension (self.xDimension_property)
   //--- xDimensionUnit
-    self.xDimensionUnit_property.readModelFunction = nil 
-    self.xDimensionUnit_property.writeModelFunction = nil 
-    self.xDimensionUnit_property.validateAndWriteModelFunction = nil 
+    self.xDimensionUnit_property.mReadModelFunction = nil 
+    self.xDimensionUnit_property.mWriteModelFunction = nil 
+    self.xDimensionUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
   //--- y1
-    self.y1_property.readModelFunction = nil 
-    self.y1_property.writeModelFunction = nil 
-    self.y1_property.validateAndWriteModelFunction = nil 
+    self.y1_property.mReadModelFunction = nil 
+    self.y1_property.mWriteModelFunction = nil 
+    self.y1_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y1 (self.y1_property)
   //--- y1Unit
-    self.y1Unit_property.readModelFunction = nil 
-    self.y1Unit_property.writeModelFunction = nil 
-    self.y1Unit_property.validateAndWriteModelFunction = nil 
+    self.y1Unit_property.mReadModelFunction = nil 
+    self.y1Unit_property.mWriteModelFunction = nil 
+    self.y1Unit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y1Unit (self.y1Unit_property)
   //--- y2
-    self.y2_property.readModelFunction = nil 
-    self.y2_property.writeModelFunction = nil 
-    self.y2_property.validateAndWriteModelFunction = nil 
+    self.y2_property.mReadModelFunction = nil 
+    self.y2_property.mWriteModelFunction = nil 
+    self.y2_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y2 (self.y2_property)
   //--- y2Unit
-    self.y2Unit_property.readModelFunction = nil 
-    self.y2Unit_property.writeModelFunction = nil 
-    self.y2Unit_property.validateAndWriteModelFunction = nil 
+    self.y2Unit_property.mReadModelFunction = nil 
+    self.y2Unit_property.mWriteModelFunction = nil 
+    self.y2Unit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_y2Unit (self.y2Unit_property)
   //--- yDimension
-    self.yDimension_property.readModelFunction = nil 
-    self.yDimension_property.writeModelFunction = nil 
-    self.yDimension_property.validateAndWriteModelFunction = nil 
+    self.yDimension_property.mReadModelFunction = nil 
+    self.yDimension_property.mWriteModelFunction = nil 
+    self.yDimension_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yDimension (self.yDimension_property)
   //--- yDimensionUnit
-    self.yDimensionUnit_property.readModelFunction = nil 
-    self.yDimensionUnit_property.writeModelFunction = nil 
-    self.yDimensionUnit_property.validateAndWriteModelFunction = nil 
+    self.yDimensionUnit_property.mReadModelFunction = nil 
+    self.yDimensionUnit_property.mWriteModelFunction = nil 
+    self.yDimensionUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
   //---
     self.mModel = nil    
@@ -515,7 +515,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_distanceInCanariUnit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_distanceInCanariUnit (self.distanceInCanariUnit_property)
-    self.distanceInCanariUnit_property.readModelFunction = { [weak self] in
+    self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -555,7 +555,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_distanceUnit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_distanceUnit (self.distanceUnit_property)
-    self.distanceUnit_property.readModelFunction = { [weak self] in
+    self.distanceUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -589,7 +589,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.distanceUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.distanceUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -601,7 +601,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.distanceUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.distanceUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -625,7 +625,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -665,7 +665,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -705,7 +705,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -745,7 +745,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_x1 (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_x1 (self.x1_property)
-    self.x1_property.readModelFunction = { [weak self] in
+    self.x1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -779,7 +779,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.x1_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -791,7 +791,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.x1_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -815,7 +815,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_x1Unit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_x1Unit (self.x1Unit_property)
-    self.x1Unit_property.readModelFunction = { [weak self] in
+    self.x1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -849,7 +849,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.x1Unit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -861,7 +861,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.x1Unit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -885,7 +885,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_x2 (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_x2 (self.x2_property)
-    self.x2_property.readModelFunction = { [weak self] in
+    self.x2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -919,7 +919,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.x2_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -931,7 +931,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.x2_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -955,7 +955,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_x2Unit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_x2Unit (self.x2Unit_property)
-    self.x2Unit_property.readModelFunction = { [weak self] in
+    self.x2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -989,7 +989,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.x2Unit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.x2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1001,7 +1001,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.x2Unit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.x2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1025,7 +1025,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_xDimension (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_xDimension (self.xDimension_property)
-    self.xDimension_property.readModelFunction = { [weak self] in
+    self.xDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1059,7 +1059,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.xDimension_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xDimension_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1071,7 +1071,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.xDimension_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1095,7 +1095,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_xDimensionUnit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_xDimensionUnit (self.xDimensionUnit_property)
-    self.xDimensionUnit_property.readModelFunction = { [weak self] in
+    self.xDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1129,7 +1129,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.xDimensionUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xDimensionUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1141,7 +1141,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.xDimensionUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1165,7 +1165,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_y1 (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_y1 (self.y1_property)
-    self.y1_property.readModelFunction = { [weak self] in
+    self.y1_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1199,7 +1199,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.y1_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y1_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1211,7 +1211,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.y1_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y1_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1235,7 +1235,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_y1Unit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_y1Unit (self.y1Unit_property)
-    self.y1Unit_property.readModelFunction = { [weak self] in
+    self.y1Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1269,7 +1269,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.y1Unit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y1Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1281,7 +1281,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.y1Unit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y1Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1305,7 +1305,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_y2 (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_y2 (self.y2_property)
-    self.y2_property.readModelFunction = { [weak self] in
+    self.y2_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1339,7 +1339,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.y2_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y2_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1351,7 +1351,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.y2_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y2_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1375,7 +1375,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_y2Unit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_y2Unit (self.y2Unit_property)
-    self.y2Unit_property.readModelFunction = { [weak self] in
+    self.y2Unit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1409,7 +1409,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.y2Unit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.y2Unit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1421,7 +1421,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.y2Unit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.y2Unit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1445,7 +1445,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_yDimension (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_yDimension (self.yDimension_property)
-    self.yDimension_property.readModelFunction = { [weak self] in
+    self.yDimension_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1479,7 +1479,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.yDimension_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yDimension_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1491,7 +1491,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.yDimension_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yDimension_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1515,7 +1515,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
 
   private final func bind_property_yDimensionUnit (model : ReadOnlyArrayOf_PackageDimension) {
     model.addEBObserverOf_yDimensionUnit (self.yDimensionUnit_property)
-    self.yDimensionUnit_property.readModelFunction = { [weak self] in
+    self.yDimensionUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1549,7 +1549,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         return .empty
       }
     }
-    self.yDimensionUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yDimensionUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1561,7 +1561,7 @@ final class SelectionController_PackageDocument_mPackageDimensionSelectionContro
         }
       }
     }
-    self.yDimensionUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yDimensionUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

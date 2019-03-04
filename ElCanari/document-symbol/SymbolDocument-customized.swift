@@ -54,7 +54,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Symbol color observer
-    self.mSymbolColorObserver.eventCallBack = { [weak self] in self?.updateDragSourceButtons () }
+    self.mSymbolColorObserver.mEventCallBack = { [weak self] in self?.updateDragSourceButtons () }
     g_Preferences?.symbolColor_property.addEBObserver (self.mSymbolColorObserver)
   //--- Set pages segmented control
     let pages = [self.mSymbolPageView, self.mInfosPageView]

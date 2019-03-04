@@ -72,7 +72,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
     super.init (observedObjects:[object])
     tableView.delegate = self
     tableView.dataSource = self
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

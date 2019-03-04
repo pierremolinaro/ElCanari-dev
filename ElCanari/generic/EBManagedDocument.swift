@@ -369,7 +369,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func removeUserInterface () {
-    self.mSignatureObserver.removeEBObserver (mVersionShouldChangeObserver)
+    self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
   }
 
   //····················································································································
@@ -381,9 +381,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     let allEntities = self.reachableObjectsFromRootObject ()
     for entity in allEntities {
       entity.clearObjectExplorer ()
+      entity.removeAllObservers ()
       entity.cleanUpToManyRelationships ()
-    }
-    for entity in allEntities {
       entity.cleanUpToOneRelationships ()
     }
   //---
@@ -433,9 +432,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   var versionShouldChangeObserver_property : EBVersionShouldChangeObserver {
-    get {
-      return self.mVersionShouldChangeObserver
-    }
+    return self.mVersionShouldChangeObserver
   }
 
   //····················································································································
@@ -575,7 +572,7 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 
   override init () {
     super.init ()
-    self.readModelFunction = { [weak self] in
+    self.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         return .single (unwSelf.mSignatureAtStartUp != unwSelf.signature ())
       }else{
@@ -650,7 +647,7 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
 
   override init () {
     super.init ()
-    self.readModelFunction = { [weak self] in
+    self.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         return .single (Int (unwSelf.signature ()))
       }else{

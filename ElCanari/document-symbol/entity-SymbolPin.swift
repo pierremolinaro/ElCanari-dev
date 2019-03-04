@@ -388,7 +388,7 @@ class SymbolPin : SymbolObject,
   //--- Atomic property: xPin
     self.xPin_property.undoManager = self.undoManager
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
@@ -432,7 +432,7 @@ class SymbolPin : SymbolObject,
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
@@ -468,7 +468,7 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
     self.numberHorizontalAlignment_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xPin_property_selection.kind ()
         kind &= unwSelf.yPin_property_selection.kind ()
@@ -502,7 +502,7 @@ class SymbolPin : SymbolObject,
     self.yNumber_property.addEBObserver (self.issues_property)
     self.name_property.addEBObserver (self.issues_property)
   //--- Atomic property: nameRect
-    self.nameRect_property.readModelFunction = { [weak self] in
+    self.nameRect_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xName_property_selection.kind ()
         kind &= unwSelf.yName_property_selection.kind ()
@@ -548,8 +548,8 @@ class SymbolPin : SymbolObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.xPin_property.removeEBObserver (self.objectDisplay_property)
     self.yPin_property.removeEBObserver (self.objectDisplay_property)
     self.xName_property.removeEBObserver (self.objectDisplay_property)
@@ -1678,7 +1678,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [SymbolPin] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolPin] > > = nil
 
   //····················································································································
 
@@ -1727,7 +1727,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <SymbolPin>
       switch self.mCachedValue! {
@@ -1845,7 +1845,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

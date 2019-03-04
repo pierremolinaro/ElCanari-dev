@@ -817,7 +817,7 @@ class PackagePad : PackageObject,
   //--- To one property: zone
     self.zone_property.owner = self
   //--- Atomic property: frontSideFilledBezierPath
-    self.frontSideFilledBezierPath_property.readModelFunction = { [weak self] in
+    self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -851,7 +851,7 @@ class PackagePad : PackageObject,
     self.padShape_property.addEBObserver (self.frontSideFilledBezierPath_property)
     self.padStyle_property.addEBObserver (self.frontSideFilledBezierPath_property)
   //--- Atomic property: backSideFilledBezierPath
-    self.backSideFilledBezierPath_property.readModelFunction = { [weak self] in
+    self.backSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -885,7 +885,7 @@ class PackagePad : PackageObject,
     self.padShape_property.addEBObserver (self.backSideFilledBezierPath_property)
     self.padStyle_property.addEBObserver (self.backSideFilledBezierPath_property)
   //--- Atomic property: selectionDisplay
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -915,7 +915,7 @@ class PackagePad : PackageObject,
     self.height_property.addEBObserver (self.selectionDisplay_property)
     self.padShape_property.addEBObserver (self.selectionDisplay_property)
   //--- Atomic property: padName
-    self.padName_property.readModelFunction = { [weak self] in
+    self.padName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.padNumber_property_selection.kind ()
         kind &= unwSelf.zone_property.zoneName_property_selection.kind ()
@@ -939,7 +939,7 @@ class PackagePad : PackageObject,
     self.padNumber_property.addEBObserver (self.padName_property)
     self.zone_property.addEBObserverOf_zoneName (self.padName_property)
   //--- Atomic property: issues
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -969,7 +969,7 @@ class PackagePad : PackageObject,
     self.height_property.addEBObserver (self.issues_property)
     self.holeDiameter_property.addEBObserver (self.issues_property)
   //--- Atomic property: padIsTraversing
-    self.padIsTraversing_property.readModelFunction = { [weak self] in
+    self.padIsTraversing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.padStyle_property_selection.kind ()
         switch kind {
@@ -991,7 +991,7 @@ class PackagePad : PackageObject,
     }
     self.padStyle_property.addEBObserver (self.padIsTraversing_property)
   //--- Atomic property: annularRing
-    self.annularRing_property.readModelFunction = { [weak self] in
+    self.annularRing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.width_property_selection.kind ()
         kind &= unwSelf.height_property_selection.kind ()
@@ -1017,7 +1017,7 @@ class PackagePad : PackageObject,
     self.height_property.addEBObserver (self.annularRing_property)
     self.holeDiameter_property.addEBObserver (self.annularRing_property)
   //--- Atomic property: zoneName
-    self.zoneName_property.readModelFunction = { [weak self] in
+    self.zoneName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_property.zoneName_property_selection.kind ()
         switch kind {
@@ -1039,7 +1039,7 @@ class PackagePad : PackageObject,
     }
     self.zone_property.addEBObserverOf_zoneName (self.zoneName_property)
   //--- Atomic property: noZone
-    self.noZone_property.readModelFunction = { [weak self] in
+    self.noZone_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_property_selection.kind ()
         switch kind {
@@ -1061,7 +1061,7 @@ class PackagePad : PackageObject,
     }
     self.zone_property.addEBObserver (self.noZone_property)
   //--- Atomic property: zoneAllowsManualRenumbering
-    self.zoneAllowsManualRenumbering_property.readModelFunction = { [weak self] in
+    self.zoneAllowsManualRenumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.zone_property.zoneNumbering_property_selection.kind ()
         switch kind {
@@ -1083,7 +1083,7 @@ class PackagePad : PackageObject,
     }
     self.zone_property.addEBObserverOf_zoneNumbering (self.zoneAllowsManualRenumbering_property)
   //--- Atomic property: slavePadCount
-    self.slavePadCount_property.readModelFunction = { [weak self] in
+    self.slavePadCount_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.slaves_property.count_property_selection.kind ()
         switch kind {
@@ -1105,7 +1105,7 @@ class PackagePad : PackageObject,
     }
     self.slaves_property.addEBObserver (self.slavePadCount_property)
   //--- Atomic property: objectDisplay
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -1147,7 +1147,7 @@ class PackagePad : PackageObject,
     g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: padNumberDisplay
-    self.padNumberDisplay_property.readModelFunction = { [weak self] in
+    self.padNumberDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.xCenter_property_selection.kind ()
         kind &= unwSelf.yCenter_property_selection.kind ()
@@ -1200,8 +1200,8 @@ class PackagePad : PackageObject,
 
   //····················································································································
 
-  deinit {
-  //--- Remove observers
+  override func removeAllObservers () {
+    super.removeAllObservers ()
     self.xCenter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.yCenter_property.removeEBObserver (self.frontSideFilledBezierPath_property)
     self.width_property.removeEBObserver (self.frontSideFilledBezierPath_property)
@@ -3272,7 +3272,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
 
   //····················································································································
 
-  var readModelFunction : Optional < () -> EBSelection < [PackagePad] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [PackagePad] > > = nil
 
   //····················································································································
 
@@ -3321,7 +3321,7 @@ class TransientArrayOf_PackagePad : ReadOnlyArrayOf_PackagePad {
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+    if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackagePad>
       switch self.mCachedValue! {
@@ -3465,7 +3465,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
 
   override init () {
     super.init ()
-    self.count_property.readModelFunction = { [weak self] in
+    self.count_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         switch unwSelf.prop {
         case .empty :

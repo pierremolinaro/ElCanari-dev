@@ -67,7 +67,7 @@ import Cocoa
     mOutlet.target = self
     mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
     mOutlet.isContinuous = true
-    self.eventCallBack = { [weak self] in self?.updateOutlet () }
+    self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
   //····················································································································

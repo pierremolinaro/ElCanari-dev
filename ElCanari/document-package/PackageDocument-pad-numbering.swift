@@ -9,7 +9,7 @@ extension CustomizedPackageDocument {
   //····················································································································
 
   internal func addPadNumberingObservers () {
-    self.mPadNumberingObserver.eventCallBack = { [weak self] in self?.handlePadNumbering () }
+    self.mPadNumberingObserver.mEventCallBack = { [weak self] in self?.handlePadNumbering () }
     self.rootObject.packagePads_property.addEBObserverOf_xCenter (self.mPadNumberingObserver)
     self.rootObject.packagePads_property.addEBObserverOf_yCenter (self.mPadNumberingObserver)
     self.rootObject.padNumbering_property.addEBObserver (self.mPadNumberingObserver)

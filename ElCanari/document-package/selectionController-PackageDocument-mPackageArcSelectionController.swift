@@ -191,7 +191,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   func bind_selection (model : ReadOnlyArrayOf_PackageObject, file : String, line : Int) {
     self.mModel = model
-    self.mActualModel.readModelFunction = { [weak self] () -> EBSelection < [PackageArc] > in
+    self.mActualModel.mReadModelFunction = { [weak self] () -> EBSelection < [PackageArc] > in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -237,83 +237,83 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
-    self.mActualModel.readModelFunction = nil
+    self.mActualModel.mReadModelFunction = nil
   //--- arcAngle
-    self.arcAngle_property.readModelFunction = nil 
-    self.arcAngle_property.writeModelFunction = nil 
-    self.arcAngle_property.validateAndWriteModelFunction = nil 
+    self.arcAngle_property.mReadModelFunction = nil 
+    self.arcAngle_property.mWriteModelFunction = nil 
+    self.arcAngle_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_arcAngle (self.arcAngle_property)
   //--- endTangent
-    self.endTangent_property.readModelFunction = nil 
-    self.endTangent_property.writeModelFunction = nil 
-    self.endTangent_property.validateAndWriteModelFunction = nil 
+    self.endTangent_property.mReadModelFunction = nil 
+    self.endTangent_property.mWriteModelFunction = nil 
+    self.endTangent_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_endTangent (self.endTangent_property)
   //--- endTangentUnit
-    self.endTangentUnit_property.readModelFunction = nil 
-    self.endTangentUnit_property.writeModelFunction = nil 
-    self.endTangentUnit_property.validateAndWriteModelFunction = nil 
+    self.endTangentUnit_property.mReadModelFunction = nil 
+    self.endTangentUnit_property.mWriteModelFunction = nil 
+    self.endTangentUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_endTangentUnit (self.endTangentUnit_property)
   //--- issues
-    self.issues_property.readModelFunction = nil 
+    self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
   //--- objectDisplay
-    self.objectDisplay_property.readModelFunction = nil 
+    self.objectDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_objectDisplay (self.objectDisplay_property)
   //--- pathIsClosed
-    self.pathIsClosed_property.readModelFunction = nil 
-    self.pathIsClosed_property.writeModelFunction = nil 
-    self.pathIsClosed_property.validateAndWriteModelFunction = nil 
+    self.pathIsClosed_property.mReadModelFunction = nil 
+    self.pathIsClosed_property.mWriteModelFunction = nil 
+    self.pathIsClosed_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_pathIsClosed (self.pathIsClosed_property)
   //--- radius
-    self.radius_property.readModelFunction = nil 
-    self.radius_property.writeModelFunction = nil 
-    self.radius_property.validateAndWriteModelFunction = nil 
+    self.radius_property.mReadModelFunction = nil 
+    self.radius_property.mWriteModelFunction = nil 
+    self.radius_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_radius (self.radius_property)
   //--- radiusUnit
-    self.radiusUnit_property.readModelFunction = nil 
-    self.radiusUnit_property.writeModelFunction = nil 
-    self.radiusUnit_property.validateAndWriteModelFunction = nil 
+    self.radiusUnit_property.mReadModelFunction = nil 
+    self.radiusUnit_property.mWriteModelFunction = nil 
+    self.radiusUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_radiusUnit (self.radiusUnit_property)
   //--- selectionDisplay
-    self.selectionDisplay_property.readModelFunction = nil 
+    self.selectionDisplay_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
   //--- startAngle
-    self.startAngle_property.readModelFunction = nil 
-    self.startAngle_property.writeModelFunction = nil 
-    self.startAngle_property.validateAndWriteModelFunction = nil 
+    self.startAngle_property.mReadModelFunction = nil 
+    self.startAngle_property.mWriteModelFunction = nil 
+    self.startAngle_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_startAngle (self.startAngle_property)
   //--- startTangent
-    self.startTangent_property.readModelFunction = nil 
-    self.startTangent_property.writeModelFunction = nil 
-    self.startTangent_property.validateAndWriteModelFunction = nil 
+    self.startTangent_property.mReadModelFunction = nil 
+    self.startTangent_property.mWriteModelFunction = nil 
+    self.startTangent_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_startTangent (self.startTangent_property)
   //--- startTangentUnit
-    self.startTangentUnit_property.readModelFunction = nil 
-    self.startTangentUnit_property.writeModelFunction = nil 
-    self.startTangentUnit_property.validateAndWriteModelFunction = nil 
+    self.startTangentUnit_property.mReadModelFunction = nil 
+    self.startTangentUnit_property.mWriteModelFunction = nil 
+    self.startTangentUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_startTangentUnit (self.startTangentUnit_property)
   //--- strokeBezierPath
-    self.strokeBezierPath_property.readModelFunction = nil 
+    self.strokeBezierPath_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
   //--- xCenter
-    self.xCenter_property.readModelFunction = nil 
-    self.xCenter_property.writeModelFunction = nil 
-    self.xCenter_property.validateAndWriteModelFunction = nil 
+    self.xCenter_property.mReadModelFunction = nil 
+    self.xCenter_property.mWriteModelFunction = nil 
+    self.xCenter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xCenter (self.xCenter_property)
   //--- xCenterUnit
-    self.xCenterUnit_property.readModelFunction = nil 
-    self.xCenterUnit_property.writeModelFunction = nil 
-    self.xCenterUnit_property.validateAndWriteModelFunction = nil 
+    self.xCenterUnit_property.mReadModelFunction = nil 
+    self.xCenterUnit_property.mWriteModelFunction = nil 
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_xCenterUnit (self.xCenterUnit_property)
   //--- yCenter
-    self.yCenter_property.readModelFunction = nil 
-    self.yCenter_property.writeModelFunction = nil 
-    self.yCenter_property.validateAndWriteModelFunction = nil 
+    self.yCenter_property.mReadModelFunction = nil 
+    self.yCenter_property.mWriteModelFunction = nil 
+    self.yCenter_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenter (self.yCenter_property)
   //--- yCenterUnit
-    self.yCenterUnit_property.readModelFunction = nil 
-    self.yCenterUnit_property.writeModelFunction = nil 
-    self.yCenterUnit_property.validateAndWriteModelFunction = nil 
+    self.yCenterUnit_property.mReadModelFunction = nil 
+    self.yCenterUnit_property.mWriteModelFunction = nil 
+    self.yCenterUnit_property.mValidateAndWriteModelFunction = nil 
     self.mActualModel.removeEBObserverOf_yCenterUnit (self.yCenterUnit_property)
   //---
     self.mModel = nil    
@@ -515,7 +515,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_arcAngle (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_arcAngle (self.arcAngle_property)
-    self.arcAngle_property.readModelFunction = { [weak self] in
+    self.arcAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -549,7 +549,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.arcAngle_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.arcAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -561,7 +561,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.arcAngle_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.arcAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -585,7 +585,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_endTangent (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_endTangent (self.endTangent_property)
-    self.endTangent_property.readModelFunction = { [weak self] in
+    self.endTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -619,7 +619,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.endTangent_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.endTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -631,7 +631,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.endTangent_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.endTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -655,7 +655,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_endTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_endTangentUnit (self.endTangentUnit_property)
-    self.endTangentUnit_property.readModelFunction = { [weak self] in
+    self.endTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -689,7 +689,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.endTangentUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.endTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -701,7 +701,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.endTangentUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.endTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -725,7 +725,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_issues (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_issues (self.issues_property)
-    self.issues_property.readModelFunction = { [weak self] in
+    self.issues_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -765,7 +765,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_objectDisplay (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_objectDisplay (self.objectDisplay_property)
-    self.objectDisplay_property.readModelFunction = { [weak self] in
+    self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -805,7 +805,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_pathIsClosed (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_pathIsClosed (self.pathIsClosed_property)
-    self.pathIsClosed_property.readModelFunction = { [weak self] in
+    self.pathIsClosed_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -839,7 +839,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.pathIsClosed_property.writeModelFunction = { [weak self] (inValue : Bool) in
+    self.pathIsClosed_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -851,7 +851,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.pathIsClosed_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+    self.pathIsClosed_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -875,7 +875,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_radius (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_radius (self.radius_property)
-    self.radius_property.readModelFunction = { [weak self] in
+    self.radius_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -909,7 +909,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.radius_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.radius_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -921,7 +921,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.radius_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.radius_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -945,7 +945,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_radiusUnit (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_radiusUnit (self.radiusUnit_property)
-    self.radiusUnit_property.readModelFunction = { [weak self] in
+    self.radiusUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -979,7 +979,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.radiusUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.radiusUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -991,7 +991,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.radiusUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.radiusUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1015,7 +1015,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_selectionDisplay (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_selectionDisplay (self.selectionDisplay_property)
-    self.selectionDisplay_property.readModelFunction = { [weak self] in
+    self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1055,7 +1055,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_startAngle (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_startAngle (self.startAngle_property)
-    self.startAngle_property.readModelFunction = { [weak self] in
+    self.startAngle_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1089,7 +1089,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.startAngle_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.startAngle_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1101,7 +1101,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.startAngle_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.startAngle_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1125,7 +1125,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_startTangent (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_startTangent (self.startTangent_property)
-    self.startTangent_property.readModelFunction = { [weak self] in
+    self.startTangent_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1159,7 +1159,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.startTangent_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.startTangent_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1171,7 +1171,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.startTangent_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.startTangent_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1195,7 +1195,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_startTangentUnit (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_startTangentUnit (self.startTangentUnit_property)
-    self.startTangentUnit_property.readModelFunction = { [weak self] in
+    self.startTangentUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1229,7 +1229,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.startTangentUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.startTangentUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1241,7 +1241,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.startTangentUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.startTangentUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1265,7 +1265,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_strokeBezierPath (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_strokeBezierPath (self.strokeBezierPath_property)
-    self.strokeBezierPath_property.readModelFunction = { [weak self] in
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1305,7 +1305,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_xCenter (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_xCenter (self.xCenter_property)
-    self.xCenter_property.readModelFunction = { [weak self] in
+    self.xCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1339,7 +1339,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.xCenter_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1351,7 +1351,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.xCenter_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1375,7 +1375,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_xCenterUnit (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_xCenterUnit (self.xCenterUnit_property)
-    self.xCenterUnit_property.readModelFunction = { [weak self] in
+    self.xCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1409,7 +1409,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.xCenterUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.xCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1421,7 +1421,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.xCenterUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.xCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1445,7 +1445,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_yCenter (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_yCenter (self.yCenter_property)
-    self.yCenter_property.readModelFunction = { [weak self] in
+    self.yCenter_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1479,7 +1479,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.yCenter_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yCenter_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1491,7 +1491,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.yCenter_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yCenter_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1515,7 +1515,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
 
   private final func bind_property_yCenterUnit (model : ReadOnlyArrayOf_PackageArc) {
     model.addEBObserverOf_yCenterUnit (self.yCenterUnit_property)
-    self.yCenterUnit_property.readModelFunction = { [weak self] in
+    self.yCenterUnit_property.mReadModelFunction = { [weak self] in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty :
@@ -1549,7 +1549,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         return .empty
       }
     }
-    self.yCenterUnit_property.writeModelFunction = { [weak self] (inValue : Int) in
+    self.yCenterUnit_property.mWriteModelFunction = { [weak self] (inValue : Int) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :
@@ -1561,7 +1561,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
         }
       }
     }
-    self.yCenterUnit_property.validateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
+    self.yCenterUnit_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Int, windowForSheet : NSWindow?) in
       if let model = self?.mActualModel {
         switch model.prop {
         case .empty, .multiple :

@@ -54,7 +54,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   override init () {
     super.init ()
   //--- Install object array read function
-    self.objectArray_property.readModelFunction = { [weak self] in
+    self.objectArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -69,7 +69,7 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
       }
     }
    //--- Install selected object array read function
-    self.selectedArray_property.readModelFunction = { [weak self] in
+    self.selectedArray_property.mReadModelFunction = { [weak self] in
       if let model = self?.mModel {
         switch model.prop {
         case .empty :
@@ -316,14 +316,14 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
 
   private func inspectorViewManagerStartsObservingSelection () {
     self.selectedArray_property.addEBObserver (self.mInspectorObserver)
-    self.mInspectorObserver.eventCallBack = { [weak self] in self?.updateInspectorViews () }
+    self.mInspectorObserver.mEventCallBack = { [weak self] in self?.updateInspectorViews () }
   }
 
   //····················································································································
 
   private func inspectorViewManagerStopsObservingSelection () {
     self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
-    self.mInspectorObserver.eventCallBack = nil
+    self.mInspectorObserver.mEventCallBack = nil
   }
 
   //····················································································································
