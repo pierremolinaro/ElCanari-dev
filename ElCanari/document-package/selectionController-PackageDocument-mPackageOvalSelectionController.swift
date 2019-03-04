@@ -17,9 +17,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var height_property = EBPropertyProxy_Int ()
 
   var height_property_selection : EBSelection <Int> {
-    get {
-      return self.height_property.prop
-    }
+    return self.height_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var heightUnit_property = EBPropertyProxy_Int ()
 
   var heightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.heightUnit_property.prop
-    }
+    return self.heightUnit_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    get {
-      return self.issues_property.prop
-    }
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -77,9 +67,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.strokeBezierPath_property.prop
-    }
+    return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
@@ -89,9 +77,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var width_property = EBPropertyProxy_Int ()
 
   var width_property_selection : EBSelection <Int> {
-    get {
-      return self.width_property.prop
-    }
+    return self.width_property.prop
   }
 
   //····················································································································
@@ -101,9 +87,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var widthUnit_property = EBPropertyProxy_Int ()
 
   var widthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.widthUnit_property.prop
-    }
+    return self.widthUnit_property.prop
   }
 
   //····················································································································
@@ -113,9 +97,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var x_property = EBPropertyProxy_Int ()
 
   var x_property_selection : EBSelection <Int> {
-    get {
-      return self.x_property.prop
-    }
+    return self.x_property.prop
   }
 
   //····················································································································
@@ -125,9 +107,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var xUnit_property = EBPropertyProxy_Int ()
 
   var xUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.xUnit_property.prop
-    }
+    return self.xUnit_property.prop
   }
 
   //····················································································································
@@ -137,9 +117,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var y_property = EBPropertyProxy_Int ()
 
   var y_property_selection : EBSelection <Int> {
-    get {
-      return self.y_property.prop
-    }
+    return self.y_property.prop
   }
 
   //····················································································································
@@ -149,9 +127,7 @@ final class SelectionController_PackageDocument_mPackageOvalSelectionController 
   var yUnit_property = EBPropertyProxy_Int ()
 
   var yUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.yUnit_property.prop
-    }
+    return self.yUnit_property.prop
   }
 
   //····················································································································

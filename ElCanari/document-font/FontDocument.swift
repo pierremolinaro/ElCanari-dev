@@ -147,7 +147,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : FontRoot { get { return mRootObject as! FontRoot } }
+  var rootObject : FontRoot { return mRootObject as! FontRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

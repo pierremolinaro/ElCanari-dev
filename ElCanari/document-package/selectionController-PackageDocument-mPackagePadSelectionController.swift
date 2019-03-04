@@ -17,9 +17,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var annularRing_property = EBTransientProperty_Int ()
 
   var annularRing_property_selection : EBSelection <Int> {
-    get {
-      return self.annularRing_property.prop
-    }
+    return self.annularRing_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var annularRingUnit_property = EBPropertyProxy_Int ()
 
   var annularRingUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.annularRingUnit_property.prop
-    }
+    return self.annularRingUnit_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var backSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   var backSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.backSideFilledBezierPath_property.prop
-    }
+    return self.backSideFilledBezierPath_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var frontSideFilledBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.frontSideFilledBezierPath_property.prop
-    }
+    return self.frontSideFilledBezierPath_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var height_property = EBPropertyProxy_Int ()
 
   var height_property_selection : EBSelection <Int> {
-    get {
-      return self.height_property.prop
-    }
+    return self.height_property.prop
   }
 
   //····················································································································
@@ -77,9 +67,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var heightUnit_property = EBPropertyProxy_Int ()
 
   var heightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.heightUnit_property.prop
-    }
+    return self.heightUnit_property.prop
   }
 
   //····················································································································
@@ -89,9 +77,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var holeDiameter_property = EBPropertyProxy_Int ()
 
   var holeDiameter_property_selection : EBSelection <Int> {
-    get {
-      return self.holeDiameter_property.prop
-    }
+    return self.holeDiameter_property.prop
   }
 
   //····················································································································
@@ -101,9 +87,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var holeDiameterUnit_property = EBPropertyProxy_Int ()
 
   var holeDiameterUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.holeDiameterUnit_property.prop
-    }
+    return self.holeDiameterUnit_property.prop
   }
 
   //····················································································································
@@ -113,9 +97,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    get {
-      return self.issues_property.prop
-    }
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -125,9 +107,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var noZone_property = EBTransientProperty_Bool ()
 
   var noZone_property_selection : EBSelection <Bool> {
-    get {
-      return self.noZone_property.prop
-    }
+    return self.noZone_property.prop
   }
 
   //····················································································································
@@ -137,9 +117,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -149,9 +127,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padIsTraversing_property = EBTransientProperty_Bool ()
 
   var padIsTraversing_property_selection : EBSelection <Bool> {
-    get {
-      return self.padIsTraversing_property.prop
-    }
+    return self.padIsTraversing_property.prop
   }
 
   //····················································································································
@@ -161,9 +137,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padName_property = EBTransientProperty_String ()
 
   var padName_property_selection : EBSelection <String> {
-    get {
-      return self.padName_property.prop
-    }
+    return self.padName_property.prop
   }
 
   //····················································································································
@@ -173,9 +147,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padNumber_property = EBPropertyProxy_Int ()
 
   var padNumber_property_selection : EBSelection <Int> {
-    get {
-      return self.padNumber_property.prop
-    }
+    return self.padNumber_property.prop
   }
 
   //····················································································································
@@ -185,9 +157,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padNumberDisplay_property = EBTransientProperty_EBShape ()
 
   var padNumberDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.padNumberDisplay_property.prop
-    }
+    return self.padNumberDisplay_property.prop
   }
 
   //····················································································································
@@ -197,9 +167,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padShape_property = EBPropertyProxy_PadShape ()
 
   var padShape_property_selection : EBSelection <PadShape> {
-    get {
-      return self.padShape_property.prop
-    }
+    return self.padShape_property.prop
   }
 
   //····················································································································
@@ -209,9 +177,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var padStyle_property = EBPropertyProxy_PadStyle ()
 
   var padStyle_property_selection : EBSelection <PadStyle> {
-    get {
-      return self.padStyle_property.prop
-    }
+    return self.padStyle_property.prop
   }
 
   //····················································································································
@@ -221,9 +187,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -233,9 +197,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var slavePadCount_property = EBTransientProperty_Int ()
 
   var slavePadCount_property_selection : EBSelection <Int> {
-    get {
-      return self.slavePadCount_property.prop
-    }
+    return self.slavePadCount_property.prop
   }
 
   //····················································································································
@@ -249,9 +211,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var width_property = EBPropertyProxy_Int ()
 
   var width_property_selection : EBSelection <Int> {
-    get {
-      return self.width_property.prop
-    }
+    return self.width_property.prop
   }
 
   //····················································································································
@@ -261,9 +221,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var widthUnit_property = EBPropertyProxy_Int ()
 
   var widthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.widthUnit_property.prop
-    }
+    return self.widthUnit_property.prop
   }
 
   //····················································································································
@@ -273,9 +231,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var xCenter_property = EBPropertyProxy_Int ()
 
   var xCenter_property_selection : EBSelection <Int> {
-    get {
-      return self.xCenter_property.prop
-    }
+    return self.xCenter_property.prop
   }
 
   //····················································································································
@@ -285,9 +241,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var xCenterUnit_property = EBPropertyProxy_Int ()
 
   var xCenterUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.xCenterUnit_property.prop
-    }
+    return self.xCenterUnit_property.prop
   }
 
   //····················································································································
@@ -297,9 +251,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var yCenter_property = EBPropertyProxy_Int ()
 
   var yCenter_property_selection : EBSelection <Int> {
-    get {
-      return self.yCenter_property.prop
-    }
+    return self.yCenter_property.prop
   }
 
   //····················································································································
@@ -309,9 +261,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var yCenterUnit_property = EBPropertyProxy_Int ()
 
   var yCenterUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.yCenterUnit_property.prop
-    }
+    return self.yCenterUnit_property.prop
   }
 
   //····················································································································
@@ -325,9 +275,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var zoneAllowsManualRenumbering_property = EBTransientProperty_Bool ()
 
   var zoneAllowsManualRenumbering_property_selection : EBSelection <Bool> {
-    get {
-      return self.zoneAllowsManualRenumbering_property.prop
-    }
+    return self.zoneAllowsManualRenumbering_property.prop
   }
 
   //····················································································································
@@ -337,9 +285,7 @@ final class SelectionController_PackageDocument_mPackagePadSelectionController :
   var zoneName_property = EBTransientProperty_String ()
 
   var zoneName_property_selection : EBSelection <String> {
-    get {
-      return self.zoneName_property.prop
-    }
+    return self.zoneName_property.prop
   }
 
   //····················································································································

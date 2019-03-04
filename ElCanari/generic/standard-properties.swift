@@ -57,7 +57,7 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   var readModelFunction : Optional < () -> EBSelection <T> > = nil
   var writeModelFunction : Optional < (T) -> Void > = nil
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
-  private var prop_cache : EBSelection <T>? = nil
+  private var mCachedValue : EBSelection <T>? = nil
   
   //····················································································································
 
@@ -69,21 +69,21 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
 
   var mValueExplorer : NSTextField? {
     didSet {
-      updateValueExplorer (possibleValue:prop_cache)
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
   }
 
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
-      switch unwProp {
+    if let value = possibleValue {
+      switch value {
       case .empty :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .multiple :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .single (let value) :
-        valueExplorer.stringValue = "\(value)"
+        self.mValueExplorer?.stringValue = "\(value)"
       }
     }else{
       self.mValueExplorer?.stringValue = "nil"
@@ -93,8 +93,8 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   //····················································································································
 
   override func postEvent () {
-    if prop_cache != nil {
-      prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -107,24 +107,20 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if let unReadModelFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unReadModelFunction ()
-        updateValueExplorer (possibleValue:prop_cache)
-      }
-      if prop_cache == nil {
-        prop_cache = .empty
-      }
-      return prop_cache!
+    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unReadModelFunction ()
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
+    }
+    return self.mCachedValue!
   }
 
   //····················································································································
   
   override func setProp (_ value : T) {
-    if let unWriteModelFunction = writeModelFunction {
-      unWriteModelFunction (value)
-    }
+    self.writeModelFunction? (value)
   }
 
   //····················································································································
@@ -353,18 +349,16 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if self.mValueCache == nil {
-        if let unwrappedComputeFunction = readModelFunction {
-          self.mValueCache = unwrappedComputeFunction ()
-        }
-        if self.mValueCache == nil {
-          self.mValueCache = .empty
-        }
-        self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
+    if self.mValueCache == nil {
+      if let unwrappedComputeFunction = self.readModelFunction {
+        self.mValueCache = unwrappedComputeFunction ()
       }
-      return self.mValueCache!
+      if self.mValueCache == nil {
+        self.mValueCache = .empty
+      }
+      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
     }
+    return self.mValueCache!
   }
 
   //····················································································································
@@ -465,7 +459,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   var writeModelFunction : Optional < (T) -> Void > = nil
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
 
-  private var prop_cache : EBSelection <T>? = nil
+  private var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································
 
@@ -477,21 +471,21 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   var mValueExplorer : NSTextField? {
     didSet {
-      updateValueExplorer (possibleValue:prop_cache)
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
   }
 
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
-      switch unwProp {
+    if let value = possibleValue {
+      switch value {
       case .empty :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .multiple :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .single (let value) :
-        valueExplorer.stringValue = "\(value)"
+        self.mValueExplorer?.stringValue = "\(value)"
       }
     }else{
       self.mValueExplorer?.stringValue = "nil"
@@ -501,8 +495,8 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   //····················································································································
 
   override func postEvent () {
-    if prop_cache != nil {
-      prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -515,22 +509,20 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if let unReadModelFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unReadModelFunction ()
-        updateValueExplorer (possibleValue:prop_cache)
-      }
-      if prop_cache == nil {
-        prop_cache = .empty
-      }
-      return prop_cache!
+    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unReadModelFunction ()
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
+    }
+    return self.mCachedValue!
   }
 
   //····················································································································
 
   override func setProp (_ value : T) {
-    if let unWriteModelFunction = writeModelFunction {
+    if let unWriteModelFunction = self.writeModelFunction {
       unWriteModelFunction (value)
     }
   }
@@ -758,18 +750,16 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if self.mValueCache == nil {
-        if let unwrappedComputeFunction = readModelFunction {
-          self.mValueCache = unwrappedComputeFunction ()
-        }
-        if self.mValueCache == nil {
-          self.mValueCache = .empty
-        }
-        self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
+    if self.mValueCache == nil {
+      if let unwrappedComputeFunction = self.readModelFunction {
+        self.mValueCache = unwrappedComputeFunction ()
       }
-      return self.mValueCache!
+      if self.mValueCache == nil {
+        self.mValueCache = .empty
+      }
+      self.mValueExplorer?.stringValue = "\(self.mValueCache!)"
     }
+    return self.mValueCache!
   }
 
   //····················································································································
@@ -1086,7 +1076,7 @@ extension NSBezierPath : ClassPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSUnarchiver.unarchiveObject (with: data as Data) as? NSBezierPath
+    return NSUnarchiver.unarchiveObject (with: data) as? NSBezierPath
   }
 
   //····················································································································
@@ -1219,7 +1209,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   var writeModelFunction : Optional < (T) -> Void > = nil
   var validateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
   
-  private var prop_cache : EBSelection <T>? = nil
+  private var mCachedValue : EBSelection <T>? = nil
   
   //····················································································································
 
@@ -1231,21 +1221,21 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 
   var mValueExplorer : NSTextField? {
     didSet {
-      updateValueExplorer (possibleValue: prop_cache)
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
   }
 
   //····················································································································
 
   private func updateValueExplorer (possibleValue : EBSelection <T>?) {
-    if let valueExplorer = self.mValueExplorer, let unwProp = possibleValue {
-      switch unwProp {
+    if let value = possibleValue {
+      switch value {
       case .empty :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .multiple :
-        valueExplorer.stringValue = "—"
+        self.mValueExplorer?.stringValue = "—"
       case .single (let value) :
-        valueExplorer.stringValue = "\(value)"
+        self.mValueExplorer?.stringValue = "\(value)"
       }
     }else{
       self.mValueExplorer?.stringValue = "nil"
@@ -1255,8 +1245,8 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   //····················································································································
 
   override func postEvent () {
-    if prop_cache != nil {
-      prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("Proxy \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -1269,22 +1259,20 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if let unReadModelFunction = readModelFunction, prop_cache == nil {
-        prop_cache = unReadModelFunction ()
-        updateValueExplorer (possibleValue:prop_cache)
-      }
-      if prop_cache == nil {
-        prop_cache = .empty
-      }
-      return prop_cache!
+    if let unReadModelFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unReadModelFunction ()
+      self.updateValueExplorer (possibleValue: self.mCachedValue)
     }
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
+    }
+    return self.mCachedValue!
   }
 
   //····················································································································
   
   override func setProp (_ value : T) {
-    if let unWriteModelFunction = writeModelFunction {
+    if let unWriteModelFunction = self.writeModelFunction {
       unWriteModelFunction (value)
     }
   }
@@ -1294,7 +1282,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   override func validateAndSetProp (_ candidateValue : T,
                                     windowForSheet inWindow:NSWindow?) -> Bool {
     var result = false
-    if let unwValidateAndWriteModelFunction = validateAndWriteModelFunction {
+    if let unwValidateAndWriteModelFunction = self.validateAndWriteModelFunction {
       result = unwValidateAndWriteModelFunction (candidateValue, inWindow)
     }
     return result
@@ -1317,7 +1305,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   var mValueExplorer : NSTextField? {
     didSet {
-      mValueExplorer?.stringValue = "\(mValue)"
+      self.mValueExplorer?.stringValue = "\(mValue)"
     }
   }
 
@@ -1360,7 +1348,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
       if self.mValue != oldValue {
         self.mSetterDelegate? (self.mValue)
         if let prefKey = self.mPreferenceKey {
-          UserDefaults.standard.set (self.mValue.archiveToData (), forKey:prefKey)
+          UserDefaults.standard.set (self.mValue.archiveToData (), forKey: prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
         self.undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
@@ -1506,18 +1494,16 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   //····················································································································
 
   override var prop : EBSelection <T> {
-    get {
-      if self.mValueCache == nil {
-        if let unwrappedComputeFunction = readModelFunction {
-          self.mValueCache = unwrappedComputeFunction ()
-        }
-        if self.mValueCache == nil {
-          self.mValueCache = .empty
-        }
-        self.mValueExplorer?.stringValue = "\(mValueCache!)"
+    if self.mValueCache == nil {
+      if let unwrappedComputeFunction = self.readModelFunction {
+        self.mValueCache = unwrappedComputeFunction ()
       }
-      return self.mValueCache!
+      if self.mValueCache == nil {
+        self.mValueCache = .empty
+      }
+      self.mValueExplorer?.stringValue = "\(mValueCache!)"
     }
+    return self.mValueCache!
   }
 
   //····················································································································

@@ -3075,14 +3075,14 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   override var prop : EBSelection < [MergerRoot] > {
     self.computeArrayAndSet ()
-    return self.prop_cache!  
+    return self.mCachedValue!  
   }
  
   //····················································································································
 
   override var propval : [MergerRoot] {
     self.computeArrayAndSet ()
-    if let value = self.prop_cache {
+    if let value = self.mCachedValue {
       switch value {
       case .empty, .multiple :
         return []
@@ -3106,15 +3106,15 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [MergerRoot] >? = nil
+  private var mCachedValue : EBSelection < [MergerRoot] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-      self.prop_cache = unwrappedComputeFunction ()
+    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <MergerRoot>
-      switch self.prop_cache! {
+      switch self.mCachedValue! {
       case .multiple, .empty :
         newSet = Set <MergerRoot> ()
       case .single (let array) :
@@ -3183,16 +3183,16 @@ class TransientArrayOf_MergerRoot : ReadOnlyArrayOf_MergerRoot {
     //--- Update object set
       self.mSet = newSet
     }
-    if self.prop_cache == nil {
-      self.prop_cache = .empty
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if self.prop_cache != nil {
-      self.prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -3602,9 +3602,9 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
 
   //····················································································································
 
-  var propval : ArtworkRoot? { get { return self.mValue } }
+  var propval : ArtworkRoot? { return self.mValue }
 
-  var prop : EBSelection <ArtworkRoot?> { get { return .single (self.mValue) } }
+  var prop : EBSelection <ArtworkRoot?> { return .single (self.mValue) }
 
   func setProp (_ value : ArtworkRoot?) { self.mValue = value }
 
@@ -3637,19 +3637,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var comments_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.comments_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.comments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3680,19 +3678,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var drillDataFileExtension_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.drillDataFileExtension_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.drillDataFileExtension_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3723,19 +3719,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minPPTPTTTW_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minPPTPTTTW_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minPPTPTTTW_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3766,19 +3760,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minPPTPTTTWdisplayUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minPPTPTTTWdisplayUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minPPTPTTTWdisplayUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3809,19 +3801,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForBoardLimitWidth_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForBoardLimitWidth_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForBoardLimitWidth_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3852,19 +3842,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForBoardLimitWidthDisplayUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForBoardLimitWidthDisplayUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForBoardLimitWidthDisplayUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3895,19 +3883,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForOARdisplayUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForOARdisplayUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForOARdisplayUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3938,19 +3924,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForOARinEBUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForOARinEBUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForOARinEBUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3981,19 +3965,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForPHDdisplayUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForPHDdisplayUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForPHDdisplayUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4024,19 +4006,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var minValueForPHDinEBUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.minValueForPHDinEBUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.minValueForPHDinEBUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4067,19 +4047,17 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
   //····················································································································
 
   var selectedTab_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.selectedTab_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.selectedTab_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 

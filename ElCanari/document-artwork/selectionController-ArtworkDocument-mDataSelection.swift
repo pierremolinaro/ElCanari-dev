@@ -17,9 +17,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawBoardLimits_property = EBPropertyProxy_Bool ()
 
   var drawBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawBoardLimits_property.prop
-    }
+    return self.drawBoardLimits_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawComponentNamesBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawComponentNamesBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentNamesBottomSide_property.prop
-    }
+    return self.drawComponentNamesBottomSide_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawComponentNamesTopSide_property = EBPropertyProxy_Bool ()
 
   var drawComponentNamesTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentNamesTopSide_property.prop
-    }
+    return self.drawComponentNamesTopSide_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawComponentValuesBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawComponentValuesBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentValuesBottomSide_property.prop
-    }
+    return self.drawComponentValuesBottomSide_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawComponentValuesTopSide_property = EBPropertyProxy_Bool ()
 
   var drawComponentValuesTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawComponentValuesTopSide_property.prop
-    }
+    return self.drawComponentValuesTopSide_property.prop
   }
 
   //····················································································································
@@ -77,9 +67,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawInternalBoardLimits_property = EBPropertyProxy_Bool ()
 
   var drawInternalBoardLimits_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawInternalBoardLimits_property.prop
-    }
+    return self.drawInternalBoardLimits_property.prop
   }
 
   //····················································································································
@@ -89,9 +77,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawPackageLegendBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawPackageLegendBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPackageLegendBottomSide_property.prop
-    }
+    return self.drawPackageLegendBottomSide_property.prop
   }
 
   //····················································································································
@@ -101,9 +87,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawPackageLegendTopSide_property = EBPropertyProxy_Bool ()
 
   var drawPackageLegendTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPackageLegendTopSide_property.prop
-    }
+    return self.drawPackageLegendTopSide_property.prop
   }
 
   //····················································································································
@@ -113,9 +97,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawPadHolesInPDF_property = EBPropertyProxy_Bool ()
 
   var drawPadHolesInPDF_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadHolesInPDF_property.prop
-    }
+    return self.drawPadHolesInPDF_property.prop
   }
 
   //····················································································································
@@ -125,9 +107,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawPadsBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawPadsBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadsBottomSide_property.prop
-    }
+    return self.drawPadsBottomSide_property.prop
   }
 
   //····················································································································
@@ -137,9 +117,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawPadsTopSide_property = EBPropertyProxy_Bool ()
 
   var drawPadsTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawPadsTopSide_property.prop
-    }
+    return self.drawPadsTopSide_property.prop
   }
 
   //····················································································································
@@ -149,9 +127,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTextsLayoutBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawTextsLayoutBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLayoutBottomSide_property.prop
-    }
+    return self.drawTextsLayoutBottomSide_property.prop
   }
 
   //····················································································································
@@ -161,9 +137,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTextsLayoutTopSide_property = EBPropertyProxy_Bool ()
 
   var drawTextsLayoutTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLayoutTopSide_property.prop
-    }
+    return self.drawTextsLayoutTopSide_property.prop
   }
 
   //····················································································································
@@ -173,9 +147,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTextsLegendBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawTextsLegendBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLegendBottomSide_property.prop
-    }
+    return self.drawTextsLegendBottomSide_property.prop
   }
 
   //····················································································································
@@ -185,9 +157,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTextsLegendTopSide_property = EBPropertyProxy_Bool ()
 
   var drawTextsLegendTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTextsLegendTopSide_property.prop
-    }
+    return self.drawTextsLegendTopSide_property.prop
   }
 
   //····················································································································
@@ -197,9 +167,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTracksBottomSide_property = EBPropertyProxy_Bool ()
 
   var drawTracksBottomSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTracksBottomSide_property.prop
-    }
+    return self.drawTracksBottomSide_property.prop
   }
 
   //····················································································································
@@ -209,9 +177,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawTracksTopSide_property = EBPropertyProxy_Bool ()
 
   var drawTracksTopSide_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawTracksTopSide_property.prop
-    }
+    return self.drawTracksTopSide_property.prop
   }
 
   //····················································································································
@@ -221,9 +187,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var drawVias_property = EBPropertyProxy_Bool ()
 
   var drawVias_property_selection : EBSelection <Bool> {
-    get {
-      return self.drawVias_property.prop
-    }
+    return self.drawVias_property.prop
   }
 
   //····················································································································
@@ -233,9 +197,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var fileExtension_property = EBPropertyProxy_String ()
 
   var fileExtension_property_selection : EBSelection <String> {
-    get {
-      return self.fileExtension_property.prop
-    }
+    return self.fileExtension_property.prop
   }
 
   //····················································································································
@@ -245,9 +207,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var horizontalMirror_property = EBPropertyProxy_Bool ()
 
   var horizontalMirror_property_selection : EBSelection <Bool> {
-    get {
-      return self.horizontalMirror_property.prop
-    }
+    return self.horizontalMirror_property.prop
   }
 
   //····················································································································
@@ -257,9 +217,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var measurementUnitForPadHoleInPDF_property = EBPropertyProxy_Int ()
 
   var measurementUnitForPadHoleInPDF_property_selection : EBSelection <Int> {
-    get {
-      return self.measurementUnitForPadHoleInPDF_property.prop
-    }
+    return self.measurementUnitForPadHoleInPDF_property.prop
   }
 
   //····················································································································
@@ -269,9 +227,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
-    get {
-      return self.name_property.prop
-    }
+    return self.name_property.prop
   }
 
   //····················································································································
@@ -281,9 +237,7 @@ final class SelectionController_ArtworkDocument_mDataSelection : EBObject {
   var padHoleDiameterInPDF_property = EBPropertyProxy_Int ()
 
   var padHoleDiameterInPDF_property_selection : EBSelection <Int> {
-    get {
-      return self.padHoleDiameterInPDF_property.prop
-    }
+    return self.padHoleDiameterInPDF_property.prop
   }
 
   //····················································································································

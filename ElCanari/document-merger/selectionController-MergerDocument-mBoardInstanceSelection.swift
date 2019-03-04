@@ -17,9 +17,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var boardLimitWidth_property = EBTransientProperty_Int ()
 
   var boardLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.boardLimitWidth_property.prop
-    }
+    return self.boardLimitWidth_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var instanceRect_property = EBTransientProperty_CanariRect ()
 
   var instanceRect_property_selection : EBSelection <CanariRect> {
-    get {
-      return self.instanceRect_property.prop
-    }
+    return self.instanceRect_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var instanceRotation_property = EBPropertyProxy_QuadrantRotation ()
 
   var instanceRotation_property_selection : EBSelection <QuadrantRotation> {
-    get {
-      return self.instanceRotation_property.prop
-    }
+    return self.instanceRotation_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var modelName_property = EBTransientProperty_String ()
 
   var modelName_property_selection : EBSelection <String> {
-    get {
-      return self.modelName_property.prop
-    }
+    return self.modelName_property.prop
   }
 
   //····················································································································
@@ -73,9 +65,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -85,9 +75,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -97,9 +85,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var x_property = EBPropertyProxy_Int ()
 
   var x_property_selection : EBSelection <Int> {
-    get {
-      return self.x_property.prop
-    }
+    return self.x_property.prop
   }
 
   //····················································································································
@@ -109,9 +95,7 @@ final class SelectionController_MergerDocument_mBoardInstanceSelection : EBObjec
   var y_property = EBPropertyProxy_Int ()
 
   var y_property_selection : EBSelection <Int> {
-    get {
-      return self.y_property.prop
-    }
+    return self.y_property.prop
   }
 
   //····················································································································

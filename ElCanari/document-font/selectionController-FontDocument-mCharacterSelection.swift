@@ -17,9 +17,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var advance_property = EBPropertyProxy_Int ()
 
   var advance_property_selection : EBSelection <Int> {
-    get {
-      return self.advance_property.prop
-    }
+    return self.advance_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var codePoint_property = EBPropertyProxy_Int ()
 
   var codePoint_property_selection : EBSelection <Int> {
-    get {
-      return self.codePoint_property.prop
-    }
+    return self.codePoint_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var gerberCode_property = EBTransientProperty_CharacterGerberCodeClass ()
 
   var gerberCode_property_selection : EBSelection <CharacterGerberCodeClass> {
-    get {
-      return self.gerberCode_property.prop
-    }
+    return self.gerberCode_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var gerberCodeInstructionCountMessage_property = EBTransientProperty_String ()
 
   var gerberCodeInstructionCountMessage_property_selection : EBSelection <String> {
-    get {
-      return self.gerberCodeInstructionCountMessage_property.prop
-    }
+    return self.gerberCodeInstructionCountMessage_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   var segmentArrayForDrawing_property = EBTransientProperty_CharacterSegmentListClass ()
 
   var segmentArrayForDrawing_property_selection : EBSelection <CharacterSegmentListClass> {
-    get {
-      return self.segmentArrayForDrawing_property.prop
-    }
+    return self.segmentArrayForDrawing_property.prop
   }
 
   //····················································································································

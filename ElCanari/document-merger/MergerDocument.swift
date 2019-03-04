@@ -453,7 +453,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : MergerRoot { get { return mRootObject as! MergerRoot } }
+  var rootObject : MergerRoot { return mRootObject as! MergerRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

@@ -17,9 +17,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var horizontalAlignment_property = EBPropertyProxy_HorizontalAlignment ()
 
   var horizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
-    get {
-      return self.horizontalAlignment_property.prop
-    }
+    return self.horizontalAlignment_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    get {
-      return self.issues_property.prop
-    }
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var text_property = EBPropertyProxy_String ()
 
   var text_property_selection : EBSelection <String> {
-    get {
-      return self.text_property.prop
-    }
+    return self.text_property.prop
   }
 
   //····················································································································
@@ -77,9 +67,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var x_property = EBPropertyProxy_Int ()
 
   var x_property_selection : EBSelection <Int> {
-    get {
-      return self.x_property.prop
-    }
+    return self.x_property.prop
   }
 
   //····················································································································
@@ -89,9 +77,7 @@ final class SelectionController_SymbolDocument_mSymbolTextSelectionController : 
   var y_property = EBPropertyProxy_Int ()
 
   var y_property_selection : EBSelection <Int> {
-    get {
-      return self.y_property.prop
-    }
+    return self.y_property.prop
   }
 
   //····················································································································

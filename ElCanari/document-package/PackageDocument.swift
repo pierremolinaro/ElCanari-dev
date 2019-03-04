@@ -442,7 +442,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : PackageRoot { get { return mRootObject as! PackageRoot } }
+  var rootObject : PackageRoot { return mRootObject as! PackageRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

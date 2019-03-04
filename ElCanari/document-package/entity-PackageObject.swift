@@ -375,14 +375,14 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   override var prop : EBSelection < [PackageObject] > {
     self.computeArrayAndSet ()
-    return self.prop_cache!  
+    return self.mCachedValue!  
   }
  
   //····················································································································
 
   override var propval : [PackageObject] {
     self.computeArrayAndSet ()
-    if let value = self.prop_cache {
+    if let value = self.mCachedValue {
       switch value {
       case .empty, .multiple :
         return []
@@ -406,15 +406,15 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [PackageObject] >? = nil
+  private var mCachedValue : EBSelection < [PackageObject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-      self.prop_cache = unwrappedComputeFunction ()
+    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageObject>
-      switch self.prop_cache! {
+      switch self.mCachedValue! {
       case .multiple, .empty :
         newSet = Set <PackageObject> ()
       case .single (let array) :
@@ -423,16 +423,16 @@ class TransientArrayOf_PackageObject : ReadOnlyArrayOf_PackageObject {
     //--- Update object set
       self.mSet = newSet
     }
-    if self.prop_cache == nil {
-      self.prop_cache = .empty
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if self.prop_cache != nil {
-      self.prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }

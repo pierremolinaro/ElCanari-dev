@@ -238,7 +238,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : SymbolRoot { get { return mRootObject as! SymbolRoot } }
+  var rootObject : SymbolRoot { return mRootObject as! SymbolRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

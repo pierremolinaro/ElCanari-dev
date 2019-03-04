@@ -1983,14 +1983,14 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   override var prop : EBSelection < [DeviceRoot] > {
     self.computeArrayAndSet ()
-    return self.prop_cache!  
+    return self.mCachedValue!  
   }
  
   //····················································································································
 
   override var propval : [DeviceRoot] {
     self.computeArrayAndSet ()
-    if let value = self.prop_cache {
+    if let value = self.mCachedValue {
       switch value {
       case .empty, .multiple :
         return []
@@ -2014,15 +2014,15 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [DeviceRoot] >? = nil
+  private var mCachedValue : EBSelection < [DeviceRoot] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-      self.prop_cache = unwrappedComputeFunction ()
+    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <DeviceRoot>
-      switch self.prop_cache! {
+      switch self.mCachedValue! {
       case .multiple, .empty :
         newSet = Set <DeviceRoot> ()
       case .single (let array) :
@@ -2071,16 +2071,16 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
     //--- Update object set
       self.mSet = newSet
     }
-    if self.prop_cache == nil {
-      self.prop_cache = .empty
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if self.prop_cache != nil {
-      self.prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }

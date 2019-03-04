@@ -2658,14 +2658,14 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   override var prop : EBSelection < [PackageSlavePad] > {
     self.computeArrayAndSet ()
-    return self.prop_cache!  
+    return self.mCachedValue!  
   }
  
   //····················································································································
 
   override var propval : [PackageSlavePad] {
     self.computeArrayAndSet ()
-    if let value = self.prop_cache {
+    if let value = self.mCachedValue {
       switch value {
       case .empty, .multiple :
         return []
@@ -2689,15 +2689,15 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [PackageSlavePad] >? = nil
+  private var mCachedValue : EBSelection < [PackageSlavePad] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-      self.prop_cache = unwrappedComputeFunction ()
+    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <PackageSlavePad>
-      switch self.prop_cache! {
+      switch self.mCachedValue! {
       case .multiple, .empty :
         newSet = Set <PackageSlavePad> ()
       case .single (let array) :
@@ -2758,16 +2758,16 @@ class TransientArrayOf_PackageSlavePad : ReadOnlyArrayOf_PackageSlavePad {
     //--- Update object set
       self.mSet = newSet
     }
-    if self.prop_cache == nil {
-      self.prop_cache = .empty
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if self.prop_cache != nil {
-      self.prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
@@ -3195,9 +3195,9 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
 
   //····················································································································
 
-  var propval : PackagePad? { get { return self.mValue } }
+  var propval : PackagePad? { return self.mValue }
 
-  var prop : EBSelection <PackagePad?> { get { return .single (self.mValue) } }
+  var prop : EBSelection <PackagePad?> { return .single (self.mValue) }
 
   func setProp (_ value : PackagePad?) { self.mValue = value }
 
@@ -3230,19 +3230,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var annularRing_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.annularRing_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.annularRing_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3273,19 +3271,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var annularRingUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.annularRingUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.annularRingUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3316,19 +3312,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var backSideFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    get {
-      if let model = self.propval {
-        switch (model.backSideFilledBezierPath_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.backSideFilledBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3359,19 +3353,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var frontSideFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
-    get {
-      if let model = self.propval {
-        switch (model.frontSideFilledBezierPath_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.frontSideFilledBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3402,19 +3394,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var height_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.height_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.height_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3445,19 +3435,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var heightUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.heightUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.heightUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3488,19 +3476,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var holeDiameter_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.holeDiameter_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.holeDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3531,19 +3517,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var holeDiameterUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.holeDiameterUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.holeDiameterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3574,19 +3558,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var issues_property_selection : EBSelection <CanariIssueArray?> {
-    get {
-      if let model = self.propval {
-        switch (model.issues_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3617,19 +3599,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var noZone_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.noZone_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.noZone_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3660,19 +3640,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var objectDisplay_property_selection : EBSelection <EBShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.objectDisplay_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3703,19 +3681,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padIsTraversing_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.padIsTraversing_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padIsTraversing_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3746,19 +3722,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padName_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.padName_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3789,19 +3763,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padNumber_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.padNumber_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padNumber_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3832,19 +3804,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padNumberDisplay_property_selection : EBSelection <EBShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.padNumberDisplay_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padNumberDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3875,19 +3845,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padShape_property_selection : EBSelection <PadShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.padShape_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padShape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3918,19 +3886,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var padStyle_property_selection : EBSelection <PadStyle?> {
-    get {
-      if let model = self.propval {
-        switch (model.padStyle_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.padStyle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -3961,19 +3927,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var selectionDisplay_property_selection : EBSelection <EBShape?> {
-    get {
-      if let model = self.propval {
-        switch (model.selectionDisplay_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4004,19 +3968,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var slavePadCount_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.slavePadCount_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.slavePadCount_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4047,19 +4009,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var width_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.width_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4090,19 +4050,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var widthUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.widthUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.widthUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4133,19 +4091,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var xCenter_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.xCenter_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.xCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4176,19 +4132,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var xCenterUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.xCenterUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.xCenterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4219,19 +4173,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var yCenter_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.yCenter_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.yCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4262,19 +4214,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var yCenterUnit_property_selection : EBSelection <Int?> {
-    get {
-      if let model = self.propval {
-        switch (model.yCenterUnit_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.yCenterUnit_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4305,19 +4255,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var zoneAllowsManualRenumbering_property_selection : EBSelection <Bool?> {
-    get {
-      if let model = self.propval {
-        switch (model.zoneAllowsManualRenumbering_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.zoneAllowsManualRenumbering_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 
@@ -4348,19 +4296,17 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
   //····················································································································
 
   var zoneName_property_selection : EBSelection <String?> {
-    get {
-      if let model = self.propval {
-        switch (model.zoneName_property_selection) {
-        case .empty :
-          return .empty
-        case .multiple :
-          return .multiple
-        case .single (let v) :
-          return .single (v)
-        }
-      }else{
-        return .single (nil)
+    if let model = self.propval {
+      switch (model.zoneName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
       }
+    }else{
+      return .single (nil)
     }
   }
 

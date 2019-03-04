@@ -17,9 +17,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var artworkName_property = EBPropertyProxy_String ()
 
   var artworkName_property_selection : EBSelection <String> {
-    get {
-      return self.artworkName_property.prop
-    }
+    return self.artworkName_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backComponentNameSegments_property.prop
-    }
+    return self.backComponentNameSegments_property.prop
   }
 
   //····················································································································
@@ -45,9 +41,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backComponentNamesBezierPaths_property.prop
-    }
+    return self.backComponentNamesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -57,9 +51,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backComponentValueSegments_property.prop
-    }
+    return self.backComponentValueSegments_property.prop
   }
 
   //····················································································································
@@ -73,9 +65,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backComponentValuesBezierPaths_property.prop
-    }
+    return self.backComponentValuesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -89,9 +79,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLayoutTextsBezierPaths_property.prop
-    }
+    return self.backLayoutTextsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -101,9 +89,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLayoutTextsSegments_property.prop
-    }
+    return self.backLayoutTextsSegments_property.prop
   }
 
   //····················································································································
@@ -117,9 +103,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLegendLinesBezierPaths_property.prop
-    }
+    return self.backLegendLinesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -129,9 +113,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLegendLinesSegments_property.prop
-    }
+    return self.backLegendLinesSegments_property.prop
   }
 
   //····················································································································
@@ -145,9 +127,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backLegendTextsBezierPaths_property.prop
-    }
+    return self.backLegendTextsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -157,9 +137,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backLegendTextsSegments_property.prop
-    }
+    return self.backLegendTextsSegments_property.prop
   }
 
   //····················································································································
@@ -173,9 +151,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backPackagesBezierPaths_property.prop
-    }
+    return self.backPackagesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -185,9 +161,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backPackagesSegments_property.prop
-    }
+    return self.backPackagesSegments_property.prop
   }
 
   //····················································································································
@@ -197,9 +171,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backPadArray_property = EBTransientProperty_MergerPadArray ()
 
   var backPadArray_property_selection : EBSelection <MergerPadArray> {
-    get {
-      return self.backPadArray_property.prop
-    }
+    return self.backPadArray_property.prop
   }
 
   //····················································································································
@@ -213,9 +185,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backPadsBezierPaths_property.prop
-    }
+    return self.backPadsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -225,9 +195,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var backTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.backTrackSegments_property.prop
-    }
+    return self.backTrackSegments_property.prop
   }
 
   //····················································································································
@@ -241,9 +209,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var backTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var backTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.backTracksBezierPaths_property.prop
-    }
+    return self.backTracksBezierPaths_property.prop
   }
 
   //····················································································································
@@ -253,9 +219,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var boardLimits_property = EBTransientProperty_MergerBoardLimits ()
 
   var boardLimits_property_selection : EBSelection <MergerBoardLimits> {
-    get {
-      return self.boardLimits_property.prop
-    }
+    return self.boardLimits_property.prop
   }
 
   //····················································································································
@@ -265,9 +229,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var boardLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var boardLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.boardLimitsBezierPaths_property.prop
-    }
+    return self.boardLimitsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -277,9 +239,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var drillSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var drillSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.drillSegments_property.prop
-    }
+    return self.drillSegments_property.prop
   }
 
   //····················································································································
@@ -293,9 +253,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontComponentNameSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontComponentNameSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontComponentNameSegments_property.prop
-    }
+    return self.frontComponentNameSegments_property.prop
   }
 
   //····················································································································
@@ -309,9 +267,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontComponentNamesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontComponentNamesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontComponentNamesBezierPaths_property.prop
-    }
+    return self.frontComponentNamesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -321,9 +277,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontComponentValueSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontComponentValueSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontComponentValueSegments_property.prop
-    }
+    return self.frontComponentValueSegments_property.prop
   }
 
   //····················································································································
@@ -337,9 +291,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontComponentValuesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontComponentValuesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontComponentValuesBezierPaths_property.prop
-    }
+    return self.frontComponentValuesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -353,9 +305,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLayoutTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLayoutTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLayoutTextsBezierPaths_property.prop
-    }
+    return self.frontLayoutTextsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -365,9 +315,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLayoutTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLayoutTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLayoutTextsSegments_property.prop
-    }
+    return self.frontLayoutTextsSegments_property.prop
   }
 
   //····················································································································
@@ -381,9 +329,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLegendLinesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLegendLinesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLegendLinesBezierPaths_property.prop
-    }
+    return self.frontLegendLinesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -393,9 +339,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLegendLinesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLegendLinesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLegendLinesSegments_property.prop
-    }
+    return self.frontLegendLinesSegments_property.prop
   }
 
   //····················································································································
@@ -409,9 +353,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLegendTextsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontLegendTextsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontLegendTextsBezierPaths_property.prop
-    }
+    return self.frontLegendTextsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -421,9 +363,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontLegendTextsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontLegendTextsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontLegendTextsSegments_property.prop
-    }
+    return self.frontLegendTextsSegments_property.prop
   }
 
   //····················································································································
@@ -437,9 +377,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontPackagesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontPackagesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontPackagesBezierPaths_property.prop
-    }
+    return self.frontPackagesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -449,9 +387,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontPackagesSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontPackagesSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontPackagesSegments_property.prop
-    }
+    return self.frontPackagesSegments_property.prop
   }
 
   //····················································································································
@@ -461,9 +397,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontPadArray_property = EBTransientProperty_MergerPadArray ()
 
   var frontPadArray_property_selection : EBSelection <MergerPadArray> {
-    get {
-      return self.frontPadArray_property.prop
-    }
+    return self.frontPadArray_property.prop
   }
 
   //····················································································································
@@ -477,9 +411,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontPadsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontPadsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontPadsBezierPaths_property.prop
-    }
+    return self.frontPadsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -489,9 +421,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontTrackSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var frontTrackSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.frontTrackSegments_property.prop
-    }
+    return self.frontTrackSegments_property.prop
   }
 
   //····················································································································
@@ -505,9 +435,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var frontTracksBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var frontTracksBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.frontTracksBezierPaths_property.prop
-    }
+    return self.frontTracksBezierPaths_property.prop
   }
 
   //····················································································································
@@ -517,9 +445,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var holesBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var holesBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.holesBezierPaths_property.prop
-    }
+    return self.holesBezierPaths_property.prop
   }
 
   //····················································································································
@@ -529,9 +455,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var imageForInstances_property = EBTransientProperty_EBShape ()
 
   var imageForInstances_property_selection : EBSelection <EBShape> {
-    get {
-      return self.imageForInstances_property.prop
-    }
+    return self.imageForInstances_property.prop
   }
 
   //····················································································································
@@ -541,9 +465,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var imageForModel_property = EBTransientProperty_EBShape ()
 
   var imageForModel_property_selection : EBSelection <EBShape> {
-    get {
-      return self.imageForModel_property.prop
-    }
+    return self.imageForModel_property.prop
   }
 
   //····················································································································
@@ -553,9 +475,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var instanceCount_property = EBTransientProperty_Int ()
 
   var instanceCount_property_selection : EBSelection <Int> {
-    get {
-      return self.instanceCount_property.prop
-    }
+    return self.instanceCount_property.prop
   }
 
   //····················································································································
@@ -569,9 +489,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var internalBoardsLimitsBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var internalBoardsLimitsBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.internalBoardsLimitsBezierPaths_property.prop
-    }
+    return self.internalBoardsLimitsBezierPaths_property.prop
   }
 
   //····················································································································
@@ -581,9 +499,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var internalBoardsLimitsSegments_property = EBTransientProperty_MergerSegmentArray ()
 
   var internalBoardsLimitsSegments_property_selection : EBSelection <MergerSegmentArray> {
-    get {
-      return self.internalBoardsLimitsSegments_property.prop
-    }
+    return self.internalBoardsLimitsSegments_property.prop
   }
 
   //····················································································································
@@ -593,9 +509,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelHeight_property = EBPropertyProxy_Int ()
 
   var modelHeight_property_selection : EBSelection <Int> {
-    get {
-      return self.modelHeight_property.prop
-    }
+    return self.modelHeight_property.prop
   }
 
   //····················································································································
@@ -605,9 +519,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelHeightUnit_property = EBPropertyProxy_Int ()
 
   var modelHeightUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelHeightUnit_property.prop
-    }
+    return self.modelHeightUnit_property.prop
   }
 
   //····················································································································
@@ -617,9 +529,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelLimitWidth_property = EBPropertyProxy_Int ()
 
   var modelLimitWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.modelLimitWidth_property.prop
-    }
+    return self.modelLimitWidth_property.prop
   }
 
   //····················································································································
@@ -629,9 +539,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelLimitWidthUnit_property = EBPropertyProxy_Int ()
 
   var modelLimitWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelLimitWidthUnit_property.prop
-    }
+    return self.modelLimitWidthUnit_property.prop
   }
 
   //····················································································································
@@ -641,9 +549,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelWidth_property = EBPropertyProxy_Int ()
 
   var modelWidth_property_selection : EBSelection <Int> {
-    get {
-      return self.modelWidth_property.prop
-    }
+    return self.modelWidth_property.prop
   }
 
   //····················································································································
@@ -653,9 +559,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var modelWidthUnit_property = EBPropertyProxy_Int ()
 
   var modelWidthUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.modelWidthUnit_property.prop
-    }
+    return self.modelWidthUnit_property.prop
   }
 
   //····················································································································
@@ -669,9 +573,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var name_property = EBPropertyProxy_String ()
 
   var name_property_selection : EBSelection <String> {
-    get {
-      return self.name_property.prop
-    }
+    return self.name_property.prop
   }
 
   //····················································································································
@@ -681,9 +583,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var viaShapes_property = EBTransientProperty_MergerViaShapeArray ()
 
   var viaShapes_property_selection : EBSelection <MergerViaShapeArray> {
-    get {
-      return self.viaShapes_property.prop
-    }
+    return self.viaShapes_property.prop
   }
 
   //····················································································································
@@ -697,9 +597,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var viasBezierPaths_property = EBTransientProperty_BezierPathArray ()
 
   var viasBezierPaths_property_selection : EBSelection <BezierPathArray> {
-    get {
-      return self.viasBezierPaths_property.prop
-    }
+    return self.viasBezierPaths_property.prop
   }
 
   //····················································································································
@@ -709,9 +607,7 @@ final class SelectionController_MergerDocument_mBoardModelSelection : EBObject {
   var zoom_property = EBPropertyProxy_Int ()
 
   var zoom_property_selection : EBSelection <Int> {
-    get {
-      return self.zoom_property.prop
-    }
+    return self.zoom_property.prop
   }
 
   //····················································································································

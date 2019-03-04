@@ -246,7 +246,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : DeviceRoot { get { return mRootObject as! DeviceRoot } }
+  var rootObject : DeviceRoot { return mRootObject as! DeviceRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

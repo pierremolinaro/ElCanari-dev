@@ -17,9 +17,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var arcAngle_property = EBPropertyProxy_Int ()
 
   var arcAngle_property_selection : EBSelection <Int> {
-    get {
-      return self.arcAngle_property.prop
-    }
+    return self.arcAngle_property.prop
   }
 
   //····················································································································
@@ -29,9 +27,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var endTangent_property = EBPropertyProxy_Int ()
 
   var endTangent_property_selection : EBSelection <Int> {
-    get {
-      return self.endTangent_property.prop
-    }
+    return self.endTangent_property.prop
   }
 
   //····················································································································
@@ -41,9 +37,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var endTangentUnit_property = EBPropertyProxy_Int ()
 
   var endTangentUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.endTangentUnit_property.prop
-    }
+    return self.endTangentUnit_property.prop
   }
 
   //····················································································································
@@ -53,9 +47,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var issues_property = EBTransientProperty_CanariIssueArray ()
 
   var issues_property_selection : EBSelection <CanariIssueArray> {
-    get {
-      return self.issues_property.prop
-    }
+    return self.issues_property.prop
   }
 
   //····················································································································
@@ -65,9 +57,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var objectDisplay_property = EBTransientProperty_EBShape ()
 
   var objectDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.objectDisplay_property.prop
-    }
+    return self.objectDisplay_property.prop
   }
 
   //····················································································································
@@ -77,9 +67,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var pathIsClosed_property = EBPropertyProxy_Bool ()
 
   var pathIsClosed_property_selection : EBSelection <Bool> {
-    get {
-      return self.pathIsClosed_property.prop
-    }
+    return self.pathIsClosed_property.prop
   }
 
   //····················································································································
@@ -89,9 +77,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var radius_property = EBPropertyProxy_Int ()
 
   var radius_property_selection : EBSelection <Int> {
-    get {
-      return self.radius_property.prop
-    }
+    return self.radius_property.prop
   }
 
   //····················································································································
@@ -101,9 +87,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var radiusUnit_property = EBPropertyProxy_Int ()
 
   var radiusUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.radiusUnit_property.prop
-    }
+    return self.radiusUnit_property.prop
   }
 
   //····················································································································
@@ -113,9 +97,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var selectionDisplay_property = EBTransientProperty_EBShape ()
 
   var selectionDisplay_property_selection : EBSelection <EBShape> {
-    get {
-      return self.selectionDisplay_property.prop
-    }
+    return self.selectionDisplay_property.prop
   }
 
   //····················································································································
@@ -125,9 +107,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var startAngle_property = EBPropertyProxy_Int ()
 
   var startAngle_property_selection : EBSelection <Int> {
-    get {
-      return self.startAngle_property.prop
-    }
+    return self.startAngle_property.prop
   }
 
   //····················································································································
@@ -137,9 +117,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var startTangent_property = EBPropertyProxy_Int ()
 
   var startTangent_property_selection : EBSelection <Int> {
-    get {
-      return self.startTangent_property.prop
-    }
+    return self.startTangent_property.prop
   }
 
   //····················································································································
@@ -149,9 +127,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var startTangentUnit_property = EBPropertyProxy_Int ()
 
   var startTangentUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.startTangentUnit_property.prop
-    }
+    return self.startTangentUnit_property.prop
   }
 
   //····················································································································
@@ -161,9 +137,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
 
   var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
-    get {
-      return self.strokeBezierPath_property.prop
-    }
+    return self.strokeBezierPath_property.prop
   }
 
   //····················································································································
@@ -173,9 +147,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var xCenter_property = EBPropertyProxy_Int ()
 
   var xCenter_property_selection : EBSelection <Int> {
-    get {
-      return self.xCenter_property.prop
-    }
+    return self.xCenter_property.prop
   }
 
   //····················································································································
@@ -185,9 +157,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var xCenterUnit_property = EBPropertyProxy_Int ()
 
   var xCenterUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.xCenterUnit_property.prop
-    }
+    return self.xCenterUnit_property.prop
   }
 
   //····················································································································
@@ -197,9 +167,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var yCenter_property = EBPropertyProxy_Int ()
 
   var yCenter_property_selection : EBSelection <Int> {
-    get {
-      return self.yCenter_property.prop
-    }
+    return self.yCenter_property.prop
   }
 
   //····················································································································
@@ -209,9 +177,7 @@ final class SelectionController_PackageDocument_mPackageArcSelectionController :
   var yCenterUnit_property = EBPropertyProxy_Int ()
 
   var yCenterUnit_property_selection : EBSelection <Int> {
-    get {
-      return self.yCenterUnit_property.prop
-    }
+    return self.yCenterUnit_property.prop
   }
 
   //····················································································································

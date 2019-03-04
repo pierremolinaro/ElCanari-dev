@@ -232,7 +232,7 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : ArtworkRoot { get { return mRootObject as! ArtworkRoot } }
+  var rootObject : ArtworkRoot { return mRootObject as! ArtworkRoot }
 
   //····················································································································
   //    windowControllerDidLoadNib

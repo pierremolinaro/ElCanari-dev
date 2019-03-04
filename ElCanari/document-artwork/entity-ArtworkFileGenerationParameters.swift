@@ -2586,14 +2586,14 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   override var prop : EBSelection < [ArtworkFileGenerationParameters] > {
     self.computeArrayAndSet ()
-    return self.prop_cache!  
+    return self.mCachedValue!  
   }
  
   //····················································································································
 
   override var propval : [ArtworkFileGenerationParameters] {
     self.computeArrayAndSet ()
-    if let value = self.prop_cache {
+    if let value = self.mCachedValue {
       switch value {
       case .empty, .multiple :
         return []
@@ -2617,15 +2617,15 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
 
   //····················································································································
 
-  private var prop_cache : EBSelection < [ArtworkFileGenerationParameters] >? = nil
+  private var mCachedValue : EBSelection < [ArtworkFileGenerationParameters] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
-    if let unwrappedComputeFunction = self.readModelFunction, self.prop_cache == nil {
-      self.prop_cache = unwrappedComputeFunction ()
+    if let unwrappedComputeFunction = self.readModelFunction, self.mCachedValue == nil {
+      self.mCachedValue = unwrappedComputeFunction ()
       let newSet : Set <ArtworkFileGenerationParameters>
-      switch self.prop_cache! {
+      switch self.mCachedValue! {
       case .multiple, .empty :
         newSet = Set <ArtworkFileGenerationParameters> ()
       case .single (let array) :
@@ -2688,16 +2688,16 @@ class TransientArrayOf_ArtworkFileGenerationParameters : ReadOnlyArrayOf_Artwork
     //--- Update object set
       self.mSet = newSet
     }
-    if self.prop_cache == nil {
-      self.prop_cache = .empty
+    if self.mCachedValue == nil {
+      self.mCachedValue = .empty
     }
   }
 
   //····················································································································
 
   override func postEvent () {
-    if self.prop_cache != nil {
-      self.prop_cache = nil
+    if self.mCachedValue != nil {
+      self.mCachedValue = nil
       if logEvents () {
         appendMessageString ("  \(explorerIndexString (self.ebObjectIndex)) propagation\n")
       }
