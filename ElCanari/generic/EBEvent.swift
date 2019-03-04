@@ -35,7 +35,7 @@ class EBOutletEvent : EBEvent {
 
   override func postEvent () {
     if gPendingOutletEvents.count == 0 {
-//      DispatchQueue.main.async (execute: { flushOutletEvents () } )
+      // DispatchQueue.main.async (execute: { flushOutletEvents () } )
       if logEvents () {
         appendMessageString ("Post events\n")
       }

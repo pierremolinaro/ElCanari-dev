@@ -25,7 +25,7 @@ import Cocoa
     super.init (frame:frame)
     noteObjectAllocation (self)
   }
-
+  
   //····················································································································
 
   override func ebCleanUp () {

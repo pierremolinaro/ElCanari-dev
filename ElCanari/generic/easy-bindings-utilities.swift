@@ -31,7 +31,6 @@ fileprivate struct EBWeakObserverSetElement {
 
   init (observer : EBEvent) {
     mObserver = observer
-  //  super.init ()
   }
 
   //····················································································································
