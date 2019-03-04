@@ -216,10 +216,10 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y2_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.x1_property.setSignatureObserver (observer:self)
-    self.x2_property.setSignatureObserver (observer:self)
-    self.y1_property.setSignatureObserver (observer:self)
-    self.y2_property.setSignatureObserver (observer:self)
+    self.x1_property.setSignatureObserver (observer: self)
+    self.x2_property.setSignatureObserver (observer: self)
+    self.y1_property.setSignatureObserver (observer: self)
+    self.y2_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

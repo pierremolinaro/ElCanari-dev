@@ -407,14 +407,14 @@ class SymbolBezierCurve : SymbolObject,
     self.cpy2_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.cpx1_property.setSignatureObserver (observer:self)
-    self.cpx2_property.setSignatureObserver (observer:self)
-    self.cpy1_property.setSignatureObserver (observer:self)
-    self.cpy2_property.setSignatureObserver (observer:self)
-    self.x1_property.setSignatureObserver (observer:self)
-    self.x2_property.setSignatureObserver (observer:self)
-    self.y1_property.setSignatureObserver (observer:self)
-    self.y2_property.setSignatureObserver (observer:self)
+    self.cpx1_property.setSignatureObserver (observer: self)
+    self.cpx2_property.setSignatureObserver (observer: self)
+    self.cpy1_property.setSignatureObserver (observer: self)
+    self.cpy2_property.setSignatureObserver (observer: self)
+    self.x1_property.setSignatureObserver (observer: self)
+    self.x2_property.setSignatureObserver (observer: self)
+    self.y1_property.setSignatureObserver (observer: self)
+    self.y2_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

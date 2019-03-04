@@ -650,18 +650,18 @@ class DeviceRoot : EBGraphicManagedObject,
       inManagedObject?.mRoot_property.setProp (self)
     }
   //--- register properties for handling signature
-    self.comments_property.setSignatureObserver (observer:self)
-    self.mDocs_property.setSignatureObserver (observer:self)
-    self.mPackageDisplayHorizontalFlip_property.setSignatureObserver (observer:self)
-    self.mPackageDisplayVerticalFlip_property.setSignatureObserver (observer:self)
-    self.mPackageDisplayZoom_property.setSignatureObserver (observer:self)
-    self.mShowPackageBackPads_property.setSignatureObserver (observer:self)
-    self.mShowPackageFrontPads_property.setSignatureObserver (observer:self)
-    self.mShowPackagePadNumbers_property.setSignatureObserver (observer:self)
-    self.mShowPackages_property.setSignatureObserver (observer:self)
-    self.packages_property.setSignatureObserver (observer:self)
-    self.prefix_property.setSignatureObserver (observer:self)
-    self.title_property.setSignatureObserver (observer:self)
+    self.comments_property.setSignatureObserver (observer: self)
+    self.mDocs_property.setSignatureObserver (observer: self)
+    self.mPackageDisplayHorizontalFlip_property.setSignatureObserver (observer: self)
+    self.mPackageDisplayVerticalFlip_property.setSignatureObserver (observer: self)
+    self.mPackageDisplayZoom_property.setSignatureObserver (observer: self)
+    self.mShowPackageBackPads_property.setSignatureObserver (observer: self)
+    self.mShowPackageFrontPads_property.setSignatureObserver (observer: self)
+    self.mShowPackagePadNumbers_property.setSignatureObserver (observer: self)
+    self.mShowPackages_property.setSignatureObserver (observer: self)
+    self.packages_property.setSignatureObserver (observer: self)
+    self.prefix_property.setSignatureObserver (observer: self)
+    self.title_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

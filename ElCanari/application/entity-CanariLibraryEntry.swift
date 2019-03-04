@@ -199,7 +199,7 @@ class CanariLibraryEntry : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   //--- Extern delegates
-    self.mExternDelegate0 = CanariLibraryEntryDelegate (object:self)
+    self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
   }
 
   //····················································································································

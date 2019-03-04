@@ -919,19 +919,19 @@ class PackageSlavePad : PackageObject,
     g_Preferences?.displayPackageBackSidePads_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.annularRingUnit_property.setSignatureObserver (observer:self)
-    self.height_property.setSignatureObserver (observer:self)
-    self.heightUnit_property.setSignatureObserver (observer:self)
-    self.holeDiameter_property.setSignatureObserver (observer:self)
-    self.holeDiameterUnit_property.setSignatureObserver (observer:self)
-    self.padShape_property.setSignatureObserver (observer:self)
-    self.padStyle_property.setSignatureObserver (observer:self)
-    self.width_property.setSignatureObserver (observer:self)
-    self.widthUnit_property.setSignatureObserver (observer:self)
-    self.xCenter_property.setSignatureObserver (observer:self)
-    self.xCenterUnit_property.setSignatureObserver (observer:self)
-    self.yCenter_property.setSignatureObserver (observer:self)
-    self.yCenterUnit_property.setSignatureObserver (observer:self)
+    self.annularRingUnit_property.setSignatureObserver (observer: self)
+    self.height_property.setSignatureObserver (observer: self)
+    self.heightUnit_property.setSignatureObserver (observer: self)
+    self.holeDiameter_property.setSignatureObserver (observer: self)
+    self.holeDiameterUnit_property.setSignatureObserver (observer: self)
+    self.padShape_property.setSignatureObserver (observer: self)
+    self.padStyle_property.setSignatureObserver (observer: self)
+    self.width_property.setSignatureObserver (observer: self)
+    self.widthUnit_property.setSignatureObserver (observer: self)
+    self.xCenter_property.setSignatureObserver (observer: self)
+    self.xCenterUnit_property.setSignatureObserver (observer: self)
+    self.yCenter_property.setSignatureObserver (observer: self)
+    self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

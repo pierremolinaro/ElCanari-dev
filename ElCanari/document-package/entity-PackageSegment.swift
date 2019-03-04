@@ -525,15 +525,15 @@ class PackageSegment : PackageObject,
     self.y2_property.addEBObserver (self.lengthInCanariUnit_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.lengthUnit_property.setSignatureObserver (observer:self)
-    self.x1_property.setSignatureObserver (observer:self)
-    self.x1Unit_property.setSignatureObserver (observer:self)
-    self.x2_property.setSignatureObserver (observer:self)
-    self.x2Unit_property.setSignatureObserver (observer:self)
-    self.y1_property.setSignatureObserver (observer:self)
-    self.y1Unit_property.setSignatureObserver (observer:self)
-    self.y2_property.setSignatureObserver (observer:self)
-    self.y2Unit_property.setSignatureObserver (observer:self)
+    self.lengthUnit_property.setSignatureObserver (observer: self)
+    self.x1_property.setSignatureObserver (observer: self)
+    self.x1Unit_property.setSignatureObserver (observer: self)
+    self.x2_property.setSignatureObserver (observer: self)
+    self.x2Unit_property.setSignatureObserver (observer: self)
+    self.y1_property.setSignatureObserver (observer: self)
+    self.y1Unit_property.setSignatureObserver (observer: self)
+    self.y2_property.setSignatureObserver (observer: self)
+    self.y2Unit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

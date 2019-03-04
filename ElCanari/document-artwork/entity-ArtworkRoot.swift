@@ -384,13 +384,13 @@ class ArtworkRoot : EBManagedObject,
     self.fileGenerationParameterArray_property.undoManager = self.undoManager
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.comments_property.setSignatureObserver (observer:self)
-    self.drillDataFileExtension_property.setSignatureObserver (observer:self)
-    self.fileGenerationParameterArray_property.setSignatureObserver (observer:self)
-    self.minPPTPTTTW_property.setSignatureObserver (observer:self)
-    self.minValueForBoardLimitWidth_property.setSignatureObserver (observer:self)
-    self.minValueForOARinEBUnit_property.setSignatureObserver (observer:self)
-    self.minValueForPHDinEBUnit_property.setSignatureObserver (observer:self)
+    self.comments_property.setSignatureObserver (observer: self)
+    self.drillDataFileExtension_property.setSignatureObserver (observer: self)
+    self.fileGenerationParameterArray_property.setSignatureObserver (observer: self)
+    self.minPPTPTTTW_property.setSignatureObserver (observer: self)
+    self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: self)
+    self.minValueForOARinEBUnit_property.setSignatureObserver (observer: self)
+    self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

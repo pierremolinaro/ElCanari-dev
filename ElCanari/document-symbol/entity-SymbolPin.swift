@@ -533,16 +533,16 @@ class SymbolPin : SymbolObject,
     g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.name_property.setSignatureObserver (observer:self)
-    self.nameHorizontalAlignment_property.setSignatureObserver (observer:self)
-    self.numberHorizontalAlignment_property.setSignatureObserver (observer:self)
-    self.pinNameIsDisplayedInSchematics_property.setSignatureObserver (observer:self)
-    self.xName_property.setSignatureObserver (observer:self)
-    self.xNumber_property.setSignatureObserver (observer:self)
-    self.xPin_property.setSignatureObserver (observer:self)
-    self.yName_property.setSignatureObserver (observer:self)
-    self.yNumber_property.setSignatureObserver (observer:self)
-    self.yPin_property.setSignatureObserver (observer:self)
+    self.name_property.setSignatureObserver (observer: self)
+    self.nameHorizontalAlignment_property.setSignatureObserver (observer: self)
+    self.numberHorizontalAlignment_property.setSignatureObserver (observer: self)
+    self.pinNameIsDisplayedInSchematics_property.setSignatureObserver (observer: self)
+    self.xName_property.setSignatureObserver (observer: self)
+    self.xNumber_property.setSignatureObserver (observer: self)
+    self.xPin_property.setSignatureObserver (observer: self)
+    self.yName_property.setSignatureObserver (observer: self)
+    self.yNumber_property.setSignatureObserver (observer: self)
+    self.yPin_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

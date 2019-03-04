@@ -255,10 +255,10 @@ class SymbolSolidRect : SymbolObject,
     self.height_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.height_property.setSignatureObserver (observer:self)
-    self.width_property.setSignatureObserver (observer:self)
-    self.x_property.setSignatureObserver (observer:self)
-    self.y_property.setSignatureObserver (observer:self)
+    self.height_property.setSignatureObserver (observer: self)
+    self.width_property.setSignatureObserver (observer: self)
+    self.x_property.setSignatureObserver (observer: self)
+    self.y_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

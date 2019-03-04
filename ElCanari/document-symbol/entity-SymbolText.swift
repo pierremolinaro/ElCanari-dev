@@ -255,10 +255,10 @@ class SymbolText : SymbolObject,
     self.text_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.horizontalAlignment_property.setSignatureObserver (observer:self)
-    self.text_property.setSignatureObserver (observer:self)
-    self.x_property.setSignatureObserver (observer:self)
-    self.y_property.setSignatureObserver (observer:self)
+    self.horizontalAlignment_property.setSignatureObserver (observer: self)
+    self.text_property.setSignatureObserver (observer: self)
+    self.x_property.setSignatureObserver (observer: self)
+    self.y_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

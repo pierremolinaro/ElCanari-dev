@@ -578,12 +578,12 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mPads_property.addEBObserverOf_padName (self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.mFileData_property.setSignatureObserver (observer:self)
-    self.mName_property.setSignatureObserver (observer:self)
-    self.mStrokeBezierPath_property.setSignatureObserver (observer:self)
-    self.mVersion_property.setSignatureObserver (observer:self)
-    self.mX_property.setSignatureObserver (observer:self)
-    self.mY_property.setSignatureObserver (observer:self)
+    self.mFileData_property.setSignatureObserver (observer: self)
+    self.mName_property.setSignatureObserver (observer: self)
+    self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
+    self.mVersion_property.setSignatureObserver (observer: self)
+    self.mX_property.setSignatureObserver (observer: self)
+    self.mY_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

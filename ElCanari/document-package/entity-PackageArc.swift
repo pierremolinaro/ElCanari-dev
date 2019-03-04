@@ -615,19 +615,19 @@ class PackageArc : PackageObject,
     self.pathIsClosed_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.arcAngle_property.setSignatureObserver (observer:self)
-    self.endTangent_property.setSignatureObserver (observer:self)
-    self.endTangentUnit_property.setSignatureObserver (observer:self)
-    self.pathIsClosed_property.setSignatureObserver (observer:self)
-    self.radius_property.setSignatureObserver (observer:self)
-    self.radiusUnit_property.setSignatureObserver (observer:self)
-    self.startAngle_property.setSignatureObserver (observer:self)
-    self.startTangent_property.setSignatureObserver (observer:self)
-    self.startTangentUnit_property.setSignatureObserver (observer:self)
-    self.xCenter_property.setSignatureObserver (observer:self)
-    self.xCenterUnit_property.setSignatureObserver (observer:self)
-    self.yCenter_property.setSignatureObserver (observer:self)
-    self.yCenterUnit_property.setSignatureObserver (observer:self)
+    self.arcAngle_property.setSignatureObserver (observer: self)
+    self.endTangent_property.setSignatureObserver (observer: self)
+    self.endTangentUnit_property.setSignatureObserver (observer: self)
+    self.pathIsClosed_property.setSignatureObserver (observer: self)
+    self.radius_property.setSignatureObserver (observer: self)
+    self.radiusUnit_property.setSignatureObserver (observer: self)
+    self.startAngle_property.setSignatureObserver (observer: self)
+    self.startTangent_property.setSignatureObserver (observer: self)
+    self.startTangentUnit_property.setSignatureObserver (observer: self)
+    self.xCenter_property.setSignatureObserver (observer: self)
+    self.xCenterUnit_property.setSignatureObserver (observer: self)
+    self.yCenter_property.setSignatureObserver (observer: self)
+    self.yCenterUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

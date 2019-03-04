@@ -432,8 +432,8 @@ class FontRoot : EBManagedObject,
     self.sampleStringBezierPath_property.addEBObserver (self.sampleStringBezierPathDescent_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.characters_property.setSignatureObserver (observer:self)
-    self.comments_property.setSignatureObserver (observer:self)
+    self.characters_property.setSignatureObserver (observer: self)
+    self.comments_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

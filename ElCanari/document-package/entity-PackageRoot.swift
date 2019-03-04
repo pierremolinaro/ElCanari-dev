@@ -855,11 +855,11 @@ class PackageRoot : EBGraphicManagedObject,
       }
     }
   //--- register properties for handling signature
-    self.comments_property.setSignatureObserver (observer:self)
-    self.packageObjects_property.setSignatureObserver (observer:self)
-    self.program_property.setSignatureObserver (observer:self)
-    self.xPlacardUnit_property.setSignatureObserver (observer:self)
-    self.yPlacardUnit_property.setSignatureObserver (observer:self)
+    self.comments_property.setSignatureObserver (observer: self)
+    self.packageObjects_property.setSignatureObserver (observer: self)
+    self.program_property.setSignatureObserver (observer: self)
+    self.xPlacardUnit_property.setSignatureObserver (observer: self)
+    self.yPlacardUnit_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

@@ -655,19 +655,19 @@ class PackageZone : PackageObject,
     self.height_property.addEBObserver (self.rect_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.height_property.setSignatureObserver (observer:self)
-    self.heightUnit_property.setSignatureObserver (observer:self)
-    self.width_property.setSignatureObserver (observer:self)
-    self.widthUnit_property.setSignatureObserver (observer:self)
-    self.x_property.setSignatureObserver (observer:self)
-    self.xName_property.setSignatureObserver (observer:self)
-    self.xNameUnit_property.setSignatureObserver (observer:self)
-    self.xUnit_property.setSignatureObserver (observer:self)
-    self.y_property.setSignatureObserver (observer:self)
-    self.yName_property.setSignatureObserver (observer:self)
-    self.yNameUnit_property.setSignatureObserver (observer:self)
-    self.yUnit_property.setSignatureObserver (observer:self)
-    self.zoneName_property.setSignatureObserver (observer:self)
+    self.height_property.setSignatureObserver (observer: self)
+    self.heightUnit_property.setSignatureObserver (observer: self)
+    self.width_property.setSignatureObserver (observer: self)
+    self.widthUnit_property.setSignatureObserver (observer: self)
+    self.x_property.setSignatureObserver (observer: self)
+    self.xName_property.setSignatureObserver (observer: self)
+    self.xNameUnit_property.setSignatureObserver (observer: self)
+    self.xUnit_property.setSignatureObserver (observer: self)
+    self.y_property.setSignatureObserver (observer: self)
+    self.yName_property.setSignatureObserver (observer: self)
+    self.yNameUnit_property.setSignatureObserver (observer: self)
+    self.yUnit_property.setSignatureObserver (observer: self)
+    self.zoneName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 

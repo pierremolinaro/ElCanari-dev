@@ -258,9 +258,9 @@ class FontCharacter : EBManagedObject,
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.advance_property.setSignatureObserver (observer:self)
-    self.codePoint_property.setSignatureObserver (observer:self)
-    self.segments_property.setSignatureObserver (observer:self)
+    self.advance_property.setSignatureObserver (observer: self)
+    self.codePoint_property.setSignatureObserver (observer: self)
+    self.segments_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
