@@ -42,7 +42,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

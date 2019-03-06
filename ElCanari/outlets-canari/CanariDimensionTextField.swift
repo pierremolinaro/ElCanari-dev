@@ -25,7 +25,7 @@ class CanariDimensionTextField : NSTextField, EBUserClassNameProtocol, NSTextFie
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

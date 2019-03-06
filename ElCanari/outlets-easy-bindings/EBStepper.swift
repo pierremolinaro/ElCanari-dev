@@ -27,13 +27,13 @@ import Cocoa
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    mIntValueController?.updateModel ()
+    self.mIntValueController?.updateModel ()
     return super.sendAction (action, to:to)
   }
 
@@ -44,13 +44,13 @@ import Cocoa
   private var mIntValueController : Controller_EBStepper_value?
 
   func bind_value (_ object:EBReadWriteProperty_Int, file:String, line:Int, sendContinously:Bool) {
-    mIntValueController = Controller_EBStepper_value (object:object, outlet:self, file:file, line:line)
+    self.mIntValueController = Controller_EBStepper_value (object:object, outlet:self, file:file, line:line)
     self.isContinuous = sendContinously
   }
 
   func unbind_value () {
-    mIntValueController?.unregister ()
-    mIntValueController = nil
+    self.mIntValueController?.unregister ()
+    self.mIntValueController = nil
   }
 
   //····················································································································

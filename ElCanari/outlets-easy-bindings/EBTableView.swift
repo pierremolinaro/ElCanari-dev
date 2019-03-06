@@ -31,7 +31,7 @@ private let DEBUG_EVENT = false
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 }
 

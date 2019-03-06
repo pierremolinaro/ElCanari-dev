@@ -27,13 +27,13 @@ import Cocoa
   //···················································································································· 
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
   
   //···················································································································· 
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    mValueController?.updateModel ()
+    self.mValueController?.updateModel ()
     return super.sendAction (action, to:to)
   }
 

@@ -33,7 +33,7 @@ class CanariPackageArcAngleTextField : NSTextField, EBUserClassNameProtocol, NST
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

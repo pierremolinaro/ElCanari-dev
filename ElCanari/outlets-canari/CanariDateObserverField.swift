@@ -33,7 +33,7 @@ class CanariDateObserverField : NSTextField, EBUserClassNameProtocol, NSTextFiel
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

@@ -30,7 +30,7 @@ class CanariFontSampleStringView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
   
   //····················································································································

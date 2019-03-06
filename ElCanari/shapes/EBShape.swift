@@ -45,7 +45,7 @@ class EBShape : Hashable, Equatable, EBUserClassNameProtocol {
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

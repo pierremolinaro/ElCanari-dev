@@ -29,7 +29,7 @@ class CanariQuadrantSegmentedControl : NSSegmentedControl, EBUserClassNameProtoc
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································

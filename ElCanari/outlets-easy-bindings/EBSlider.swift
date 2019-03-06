@@ -27,14 +27,14 @@ import Cocoa
   //····················································································································
 
   deinit {
-    noteObjectDeallocation (String (describing: type(of: self)))
+    noteObjectDeallocation (self)
   }
 
   //····················································································································
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
-    mDoubleValueController?.updateModel ()
-    mIntValueController?.updateModel ()
+    self.mDoubleValueController?.updateModel ()
+    self.mIntValueController?.updateModel ()
     return super.sendAction (action, to:to)
   }
 
@@ -45,13 +45,13 @@ import Cocoa
   private var mDoubleValueController : Controller_EBSlider_doubleValue?
 
   func bind_doubleValue (_ object:EBReadWriteProperty_Double, file:String, line:Int, sendContinously:Bool) {
-    mDoubleValueController = Controller_EBSlider_doubleValue (object:object, outlet:self, file:file, line:line)
+    self.mDoubleValueController = Controller_EBSlider_doubleValue (object:object, outlet:self, file:file, line:line)
     self.isContinuous = sendContinously
   }
 
   func unbind_doubleValue () {
-    mDoubleValueController?.unregister ()
-    mDoubleValueController = nil
+    self.mDoubleValueController?.unregister ()
+    self.mDoubleValueController = nil
   }
 
   //····················································································································
@@ -61,13 +61,13 @@ import Cocoa
   private var mIntValueController : Controller_EBSlider_intValue?
 
   func bind_intValue (_ object:EBReadWriteProperty_Int, file:String, line:Int, sendContinously:Bool) {
-    mIntValueController = Controller_EBSlider_intValue (object:object, outlet:self, file:file, line:line)
+    self.mIntValueController = Controller_EBSlider_intValue (object:object, outlet:self, file:file, line:line)
     self.isContinuous = sendContinously
   }
 
   func unbind_intValue () {
-    mIntValueController?.unregister ()
-    mIntValueController = nil
+    self.mIntValueController?.unregister ()
+    self.mIntValueController = nil
   }
 
   //····················································································································
