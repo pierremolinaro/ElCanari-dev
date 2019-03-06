@@ -12,54 +12,31 @@ extension Data {
 
   //····················································································································
 
-  mutating func writeSignature (trace: inout String?) {
-    trace? += String (format:"%03lu %03lu ", count / 1000, count % 1000)
+  mutating func appendSignature () {
     for c in kFormatSignature.utf8 {
-      let byte : UInt8 = UInt8 (c)
-      self.append (byte)
-      trace? += String (format:"%02hhX ", byte)
+      self.append (c)
     }
-    trace? += "\n"
   }
 
   //····················································································································
 
-  mutating func writeAutosizedData (inData: Data,
-                                    trace: inout String?) {
-    writeAutosizedUnsigned (inValue: UInt64 (inData.count), trace:&trace)
-    trace? += String (format:"%03lu %03lu ", count / 1000, count % 1000)
-    append (inData)
-    trace? += "(data, count \(inData.count))\n"
+  mutating func appendAutosizedData (_ inData : Data) {
+    self.appendAutosizedUnsigned (UInt64 (inData.count))
+    self.append (inData)
   }
 
   //····················································································································
 
-  mutating func writeByte (inByte: UInt8,
-                           trace: inout String?) {
-    trace? += String (format:"%03lu %03lu ", count / 1000, count % 1000)
-    trace? += String (format:"%02hhX ", inByte)
-    var byte = inByte
-    append (&byte, count:1)
-    trace? += "\n"
-  }
-
-  //····················································································································
-
-  mutating func writeAutosizedUnsigned (inValue: UInt64,
-                                        trace: inout String?) {
-    trace? += String (format:"%03lu %03lu ", count / 1000, count % 1000)
-    trace? += "U "
+  mutating func appendAutosizedUnsigned (_ inValue : UInt64) {
     var value = inValue
     repeat{
-      var byte : UInt8 = UInt8 (value & 0x7F)
+      var byte = UInt8 (value & 0x7F)
       value >>= 7
-      if (value != 0) {
+      if value != 0 {
         byte |= 0x80
       }
-      trace? += String (format:"%02hhX ", byte)
-      append (byte)
+      self.append (byte)
     }while value != 0
-    trace? += "\n"
   }
 
   //····················································································································

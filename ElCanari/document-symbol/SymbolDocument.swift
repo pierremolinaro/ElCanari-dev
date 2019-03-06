@@ -1145,9 +1145,9 @@ import Cocoa
     self.mIssueTableView?.unbind_issues ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
+    self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
     self.mController_mDeselectIssueButton_hidden = nil
-    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
+    self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
     self.mController_mIssueScrollView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mSymbolObjectsController.unbind_ebView (self.mComposedSymbolView)

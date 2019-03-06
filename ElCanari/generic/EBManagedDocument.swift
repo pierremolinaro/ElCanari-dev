@@ -8,7 +8,6 @@ import Cocoa
 
 let kFormatSignature = "PM-BINARY-FORMAT"
 let kEntityKey = "--entity"
-private let EBVersion = "EBVersion"
 private let EBWindowHeight = "WindowHeight"
 private let EBWindowWidth  = "WindowWidth"
 
@@ -22,8 +21,10 @@ private let kLogReadFileDuration = false
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
-  var mRootObject : EBManagedObject?
 
+  //····················································································································
+
+  var mRootObject : EBManagedObject?
   private var mReadMetadataStatus : UInt8 = 0
   private var mMetadataDictionary = [String : Any] ()
   private var mUndoManager = EBUndoManager ()
@@ -76,7 +77,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
-    metadataDictionary [EBVersion] = version
   }
 
   //····················································································································
@@ -106,24 +106,23 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     }
   //---
     var fileData = Data ()
-    var trace : String? = nil
   //--- Append signature
-    fileData.writeSignature (trace: &trace)
+    fileData.appendSignature ()
   //--- Write status
-    fileData.writeByte (inByte: metadataStatusForSaving (), trace:&trace)
+    fileData.append (metadataStatusForSaving ())
   //--- Append metadata dictionary
     let metaData = try PropertyListSerialization.data (fromPropertyList: self.mMetadataDictionary,
       format:PropertyListSerialization.PropertyListFormat.binary,
       options:0
     )
-    fileData.writeByte (inByte: 1, trace:&trace)
-    fileData.writeAutosizedData (inData: metaData, trace:&trace)
+    fileData.append (1)
+    fileData.appendAutosizedData (metaData)
   //--- Append document data
     let documentData = try dataForSavingFromRootObject ()
-    fileData.writeByte (inByte: 6, trace:&trace)
-    fileData.writeAutosizedData (inData: documentData, trace:&trace)
+    fileData.append (6)
+    fileData.appendAutosizedData (documentData)
   //--- Append final byte
-    fileData.writeByte (inByte: 0, trace:&trace)
+    fileData.append (0)
   //---
     return fileData
   }
@@ -157,12 +156,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   private func reachableObjectsFromRootObject () -> [EBManagedObject] {
     let rootObject = self.mRootObject!
-    var reachableObjectArray = [EBManagedObject] ()
-    var reachableObjectSet = Set <EBManagedObject> ()
-    reachableObjectSet.insert (rootObject)
-    var objectsToExploreArray = [EBManagedObject] ()
-    objectsToExploreArray.append (rootObject)
-    reachableObjectArray.append (rootObject)
+    var reachableObjectArray = [rootObject]
+    var reachableObjectSet = Set ([rootObject])
+    var objectsToExploreArray = [rootObject]
+
     // let start = Date()
     //   NSLog ("start")
     while let objectToExplore = objectsToExploreArray.last {
@@ -195,7 +192,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //--- Store metadata dictionary
     self.mMetadataDictionary = metadataDictionary
   //--- Read version from file
-    self.mVersion.setProp (self.readVersionFromMetadataDictionary (metadataDictionary: metadataDictionary))
+    self.mVersion.setProp (self.readVersionFromMetadataDictionary (metadataDictionary))
   //--- Store root object
     self.mRootObject = possibleRootObject
   //---
@@ -216,12 +213,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
-    var result = 0
-    if let versionNumber = metadataDictionary [EBVersion] as? Int {
-      result = versionNumber
-    }
-    return result
+  func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
+    return 0
   }
 
   //····················································································································
@@ -230,7 +223,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   override final func showWindows () {
     super.showWindows ()
-    if let unwrappedWindowForSheet = windowForSheet, // Document has been opened in the user interface
+    if let unwrappedWindowForSheet = self.windowForSheet, // Document has been opened in the user interface
           unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
           let windowWidth = self.mMetadataDictionary [EBWindowWidth] as? CGFloat,
           let windowHeight = self.mMetadataDictionary [EBWindowWidth] as? CGFloat {
@@ -248,9 +241,9 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   @IBAction func showObjectExplorerWindow (_: AnyObject) {
     if mExplorerWindow == nil {
-      createAndPopulateObjectExplorerWindow ()
+      self.createAndPopulateObjectExplorerWindow ()
     }
-    mExplorerWindow?.makeKeyAndOrderFront (nil)
+    self.mExplorerWindow?.makeKeyAndOrderFront (nil)
   }
 
   //····················································································································
@@ -260,35 +253,35 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   func createAndPopulateObjectExplorerWindow () {
   //-------------------------------------------------- Create Window
     let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
-    mExplorerWindow = NSWindow (
-      contentRect:r,
-      styleMask:[.titled, .closable],
-      backing:.buffered,
-      defer:true,
-      screen:nil
+    self.mExplorerWindow = NSWindow (
+      contentRect: r,
+      styleMask: [.titled, .closable],
+      backing: .buffered,
+      defer: true,
+      screen: nil
     )
   //-------------------------------------------------- Adding properties
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
-    populateExplorerWindow (&y, view:view)
+    self.populateExplorerWindow (&y, view: view)
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-    let viewFrame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
+    let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
   //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (NSWindow.ButtonType.closeButton)
+    let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
     closeButton?.action = #selector(EBManagedDocument.deleteDocumentWindowAction(_:))
   //--- Set window title
-    mExplorerWindow!.title = "Document " + className
+    self.mExplorerWindow?.title = "Document " + className
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
-    mExplorerWindow!.contentView = sw
+    self.mExplorerWindow?.contentView = sw
   }
 
   //····················································································································
@@ -296,7 +289,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   @objc func deleteDocumentWindowAction (_ : Any) {
-    clearObjectExplorer ()
+    self.clearObjectExplorer ()
   }
 
   //····················································································································
@@ -304,10 +297,10 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //····················································································································
 
   func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (NSWindow.ButtonType.closeButton)
-    closeButton!.target = nil
-    mExplorerWindow?.orderOut (nil)
-    mExplorerWindow = nil
+    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
+    closeButton?.target = nil
+    self.mExplorerWindow?.orderOut (nil)
+    self.mExplorerWindow = nil
   }
 
   //····················································································································
@@ -320,8 +313,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   var mValueExplorer : NSButton? {
     didSet {
-      if let unwrappedExplorer = mValueExplorer {
-        updateManagedObjectToOneRelationshipDisplay (object: mRootObject, button:unwrappedExplorer)
+      if let valueExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: self.mRootObject, button: valueExplorer)
       }
     }
   }
@@ -339,7 +332,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       )
     }
   }
-  
+
   //····················································································································
   //    windowControllerDidLoadNib
   //····················································································································
@@ -394,11 +387,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  var signatureObserver_property : EBSignatureObserverEvent {
-    get {
-      return self.mSignatureObserver
-    }
-  }
+  var signatureObserver_property : EBSignatureObserverEvent { return self.mSignatureObserver }
 
   //····················································································································
   //    Version
@@ -408,17 +397,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  final func incrementVersionNumber () {
-    self.mVersion.setProp (self.mVersion.propval + 1)
-  }
-
-  //····················································································································
-
-  var versionObserver_property : EBStoredProperty_Int {
-    get {
-      return self.mVersion
-    }
-  }
+  var versionObserver_property : EBStoredProperty_Int { return self.mVersion }
 
   //····················································································································
   //    Version observer
@@ -445,7 +424,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     self.mVersion.setProp (0)
     self.mVersionShouldChangeObserver.clearStartUpSignature ()
   }
-  
+
   //····················································································································
 
   @objc func performUndoVersionNumber (_ oldValue : NSNumber) {
@@ -482,7 +461,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
       let printOperation = NSPrintOperation (view: view, printInfo: self.printInfo)
       let printPanel = printOperation.printPanel
       printPanel.options = [printPanel.options, .showsPaperSize, .showsOrientation, .showsScaling]
-      self.runModalPrintOperation (printOperation, delegate:nil, didRun:nil, contextInfo:nil)
+      self.runModalPrintOperation (printOperation, delegate: nil, didRun: nil, contextInfo: nil)
     }
   }
 
@@ -563,9 +542,13 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
 class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObserverProtocol {
 
+  //····················································································································
+
   private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
   private weak var mSignatureObserver : EBSignatureObserverEvent? // SOULD BE WEAK
   private var mSignatureAtStartUp : UInt32 = 0
+
+  //····················································································································
 
   override init () {
     super.init ()
@@ -608,13 +591,13 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
   //····················································································································
 
   func clearSignatureCache () {
-    postEvent ()
+    self.postEvent ()
   }
 
   //····················································································································
   // clearStartUpSignature
   //····················································································································
-  
+
   func clearStartUpSignature () {
     self.mUndoManager?.registerUndo (withTarget: self, selector:#selector (performUndo(_:)), object:NSNumber (value: mSignatureAtStartUp))
     self.mSignatureAtStartUp = 0
@@ -640,7 +623,11 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 
 class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverProtocol {
 
+  //····················································································································
+
   private weak var mRootObject : EBSignatureObserverProtocol? // SOULD BE WEAK
+
+  //····················································································································
 
   override init () {
     super.init ()
@@ -662,7 +649,7 @@ class EBSignatureObserverEvent : EBTransientProperty_Int, EBSignatureObserverPro
   //····················································································································
 
   func signature () -> UInt32 {
-    if let rootObject = mRootObject {
+    if let rootObject = self.mRootObject {
       return rootObject.signature ()
     }else{
       return 0

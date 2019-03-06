@@ -23,13 +23,12 @@ let PMDevicePackages = "PMDevicePackages"
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMDeviceVersion] = version
-    metadataDictionary [PMDeviceComment] = rootObject.comments
-
+    metadataDictionary [PMDeviceComment] = self.rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
     if let versionNumber = metadataDictionary [PMDeviceVersion] as? Int {
       result = versionNumber
@@ -58,8 +57,8 @@ let PMDevicePackages = "PMDevicePackages"
   //--- TEMPORARY
 //    self.rootObject.packages_property.setProp ([])
   //---
-    self.mInconsistentPackagePadNameSetsMessageTextView?.font = NSFont.systemFont (ofSize: 12.0)
-    self.mInconsistentPackagePadNameSetsMessageTextView?.textColor = NSColor.red
+    self.mInconsistentPackagePadNameSetsMessageTextView?.font = .systemFont (ofSize: 12.0)
+    self.mInconsistentPackagePadNameSetsMessageTextView?.textColor = .red
   }
 
   //····················································································································

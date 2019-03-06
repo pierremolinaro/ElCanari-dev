@@ -70,7 +70,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   override func sendAction (_ inAction : Selector?, to target : Any?) -> Bool {
     self.selectViewFromSelectedSegmentIndex ()
     self.mController?.updateModel (self)
-    return super.sendAction (inAction, to:target)
+    return super.sendAction (inAction, to: target)
   }
 
   //····················································································································

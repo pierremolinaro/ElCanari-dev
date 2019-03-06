@@ -293,15 +293,15 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //  INSPECTOR
   //····················································································································
 
-  private var mInspectorView : NSView? = nil
+  private var mInspectorReceivingView : NSView? = nil
   private var mCurrentAttachedView : NSView? = nil
   private var mInspectorDictionary = [String : NSView] ()
   private var mInspectorObserver = EBOutletEvent ()
 
   //····················································································································
 
-  func register (inspectorView : NSView?) {
-    self.mInspectorView = inspectorView
+  func register (inspectorReceivingView : NSView?) {
+    self.mInspectorReceivingView = inspectorReceivingView
     self.updateInspectorViews ()
   }
 
@@ -322,14 +322,14 @@ final class ArrayController_FontRoot_selectedCharacterController : EBObject {
   //····················································································································
 
   private func inspectorViewManagerStopsObservingSelection () {
-    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
     self.mInspectorObserver.mEventCallBack = nil
+    self.selectedArray_property.removeEBObserver (self.mInspectorObserver)
   }
 
   //····················································································································
 
   private func updateInspectorViews () {
-    if let inspectorView = self.mInspectorView {
+    if let inspectorView = self.mInspectorReceivingView {
     //--- Remove current attached view
       self.mCurrentAttachedView?.removeFromSuperview ()
     //--- Add the new attached view

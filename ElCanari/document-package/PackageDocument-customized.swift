@@ -25,12 +25,12 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMPackageVersion] = version
-    metadataDictionary [PMPackageComment] = rootObject.comments
+    metadataDictionary [PMPackageComment] = self.rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
     if let versionNumber = metadataDictionary [PMPackageVersion] as? Int {
       result = versionNumber
@@ -132,7 +132,7 @@ fileprivate let packagePasteboardType = NSPasteboard.PasteboardType (rawValue: "
       }
     })
   //--- Register inspector views
-    self.mPackageObjectsController.register (inspectorView: self.mSelectedObjectsInspectorView)
+    self.mPackageObjectsController.register (inspectorReceivingView: self.mSelectedObjectsInspectorView)
     self.mPackageObjectsController.register (inspectorView: self.mSegmentInspectorView, forClass: "PackageSegment")
     self.mPackageObjectsController.register (inspectorView: self.mBezierInspectorView, forClass: "PackageBezier")
     self.mPackageObjectsController.register (inspectorView: self.mOvalInspectorView, forClass: "PackageOval")

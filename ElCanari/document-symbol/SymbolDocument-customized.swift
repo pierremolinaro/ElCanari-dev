@@ -30,12 +30,12 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMSymbolVersion] = version
-    metadataDictionary [PMSymbolComment] = rootObject.comments
+    metadataDictionary [PMSymbolComment] = self.rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
     if let versionNumber = metadataDictionary [PMSymbolVersion] as? Int {
       result = versionNumber
@@ -113,14 +113,15 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedSymbolView?.set (minimumRectangle: r)
     self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
- //   DispatchQueue.main.async (execute: { _ = self.mComposedSymbolView?.scrollToVisible (NSRect ()) })
+
     DispatchQueue.main.async (execute: {
       if let view = self.mComposedSymbolView {
          _ = view.scrollToVisible (view.objectsAndIssueBoundingBox)
       }
     })
+
   //--- Register inspector views
-    self.mSymbolObjectsController.register (inspectorView: self.mSymbolBaseInspectorView)
+    self.mSymbolObjectsController.register (inspectorReceivingView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
     self.mSymbolObjectsController.register (inspectorView: self.mTextInspectorView, forClass: "SymbolText")
   //--- Set issue display view

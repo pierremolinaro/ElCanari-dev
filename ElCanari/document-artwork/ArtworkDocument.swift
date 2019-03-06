@@ -1183,9 +1183,9 @@ import Cocoa
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
   //--------------------------- Unbind multiple bindings
-    self.self.mDataController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveGenerationFileButton_enabled!)
+    self.mDataController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveGenerationFileButton_enabled!)
     self.mController_mRemoveGenerationFileButton_enabled = nil
-    self.self.mDataSelection.drawPadHolesInPDF_property.removeEBObserver (self.mController_mPadHoleDefinitionView_hidden!)
+    self.mDataSelection.drawPadHolesInPDF_property.removeEBObserver (self.mController_mPadHoleDefinitionView_hidden!)
     self.mController_mPadHoleDefinitionView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDataController.unbind_tableView (self.mDataTableView)

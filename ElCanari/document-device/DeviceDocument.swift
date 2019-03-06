@@ -1221,29 +1221,29 @@ import Cocoa
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mCopyImageButton_enabled!)
+    self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mCopyImageButton_enabled!)
     self.mController_mCopyImageButton_enabled = nil
-    self.self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
+    self.rootObject.imageIsValid_property.removeEBObserver (self.mController_mRemoveImageButton_enabled!)
     self.mController_mRemoveImageButton_enabled = nil
-    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
+    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedDocButton_enabled!)
     self.mController_mRemoveSelectedDocButton_enabled = nil
-    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
+    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mShowDocButton_enabled!)
     self.mController_mShowDocButton_enabled = nil
-    self.self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
+    self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
-    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
+    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
-    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
+    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
     self.mController_mResetSelectedPackageVersionButton_enabled = nil
-    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
+    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
     self.mController_mEditSelectedPackagesButton_enabled = nil
-    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
+    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedPackagesButton_enabled!)
     self.mController_mExportSelectedPackagesButton_enabled = nil
-    self.self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
+    self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
     self.mController_mUpdateSelectedPackagesButton_enabled = nil
-    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
+    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
     self.mController_mInconsistentPadNameSetTextField_hidden = nil
-    self.self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
+    self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
     self.mController_mAssignmentSplitView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)

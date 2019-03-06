@@ -3294,42 +3294,42 @@ import Cocoa
     self.mGeneratePDF?.unbind_value ()
     self.mBoardArchiveFormatPopUpButton?.unbind_format ()
   //--------------------------- Unbind multiple bindings
-    self.self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
+    self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_showPrefsForSettingMergerDisplayButton_enabled!)
     self.mController_showPrefsForSettingMergerDisplayButton_enabled = nil
-    self.self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_mDisplaySettingView_hidden!)
+    self.rootObject.selectedPageIndex_property.removeEBObserver (self.mController_mDisplaySettingView_hidden!)
     self.mController_mDisplaySettingView_hidden = nil
-    self.self.rootObject.boardModels_property.count_property.removeEBObserver (self.mController_mNoModelMessage_hidden!)
+    self.rootObject.boardModels_property.count_property.removeEBObserver (self.mController_mNoModelMessage_hidden!)
     self.mController_mNoModelMessage_hidden = nil
-    self.self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
-    self.self.mBoardModelSelection.instanceCount_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
+    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
+    self.mBoardModelSelection.instanceCount_property.removeEBObserver (self.mController_removeBoardModelButton_enabled!)
     self.mController_removeBoardModelButton_enabled = nil
-    self.self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_updateBoardModelButton_enabled!)
+    self.mBoardModelController.selectedArray_property.count_property.removeEBObserver (self.mController_updateBoardModelButton_enabled!)
     self.mController_updateBoardModelButton_enabled = nil
-    self.self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mAutomaticBoardSizeView_hidden!)
+    self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mAutomaticBoardSizeView_hidden!)
     self.mController_mAutomaticBoardSizeView_hidden = nil
-    self.self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mManualBoardSizeView_hidden!)
+    self.rootObject.automaticBoardSize_property.removeEBObserver (self.mController_mManualBoardSizeView_hidden!)
     self.mController_mManualBoardSizeView_hidden = nil
-    self.self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mEmptyBoardMessage_hidden!)
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mEmptyBoardMessage_hidden!)
     self.mController_mEmptyBoardMessage_hidden = nil
-    self.self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mOverlapSwitch_enabled!)
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mOverlapSwitch_enabled!)
     self.mController_mOverlapSwitch_enabled = nil
-    self.self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveRightButton_enabled!)
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveRightButton_enabled!)
     self.mController_mMoveRightButton_enabled = nil
-    self.self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveLeftButton_enabled!)
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveLeftButton_enabled!)
     self.mController_mMoveLeftButton_enabled = nil
-    self.self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveUpButton_enabled!)
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveUpButton_enabled!)
     self.mController_mMoveUpButton_enabled = nil
-    self.self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveDownButton_enabled!)
+    self.mBoardInstanceController.selectedArray_property.count_property.removeEBObserver (self.mController_mMoveDownButton_enabled!)
     self.mController_mMoveDownButton_enabled = nil
-    self.self.rootObject.artwork_property.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
+    self.rootObject.artwork_property.removeEBObserver (self.mController_mNoArtworkMessage_hidden!)
     self.mController_mNoArtworkMessage_hidden = nil
-    self.self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
+    self.documentFileNameOk_property.removeEBObserver (self.mController_mDangerView_hidden!)
     self.mController_mDangerView_hidden = nil
-    self.self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.self.rootObject.artwork_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
-    self.self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.documentIsUnnamed_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.rootObject.artwork_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
+    self.rootObject.boardInstances_property.count_property.removeEBObserver (self.mController_mGenerateProductFilesActionButton_enabled!)
     self.mController_mGenerateProductFilesActionButton_enabled = nil
-    self.self.rootObject.artwork_property.removeEBObserver (self.mController_mLogTextView_hidden!)
+    self.rootObject.artwork_property.removeEBObserver (self.mController_mLogTextView_hidden!)
     self.mController_mLogTextView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mBoardModelController.unbind_tableView (self.mBoardModelTableView)

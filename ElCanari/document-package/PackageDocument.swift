@@ -3831,19 +3831,19 @@ import Cocoa
     self.mProgramTextView?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
-    self.self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
+    self.mPackagePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mPadStyleView_hidden!)
     self.mController_mPadStyleView_hidden = nil
-    self.self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
-    self.self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
-    self.self.rootObject.freePadNumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+    self.mPackagePadSelectionController.noZone_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+    self.mPackagePadSelectionController.zoneAllowsManualRenumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
+    self.rootObject.freePadNumbering_property.removeEBObserver (self.mController_mPadRenumberingPullDownButton_enabled!)
     self.mController_mPadRenumberingPullDownButton_enabled = nil
-    self.self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
+    self.mPackageSlavePadSelectionController.padIsTraversing_property.removeEBObserver (self.mController_mSlavePadStyleView_hidden!)
     self.mController_mSlavePadStyleView_hidden = nil
-    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
+    self.rootObject.noIssue_property.removeEBObserver (self.mController_mDeselectIssueButton_hidden!)
     self.mController_mDeselectIssueButton_hidden = nil
-    self.self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
+    self.rootObject.noIssue_property.removeEBObserver (self.mController_mIssueScrollView_hidden!)
     self.mController_mIssueScrollView_hidden = nil
-    self.self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
+    self.rootObject.packagePads_property.count_property.removeEBObserver (self.mController_mAddSlavePadButton_enabled!)
     self.mController_mAddSlavePadButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mPackageObjectsController.unbind_ebView (self.mComposedPackageView)

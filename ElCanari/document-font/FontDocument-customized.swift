@@ -73,12 +73,12 @@ let PMFontComment = "PMFontComment"
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMFontVersion] = version
-    metadataDictionary [PMFontComment] = rootObject.comments
+    metadataDictionary [PMFontComment] = self.rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
     if let versionNumber = metadataDictionary [PMFontVersion] as? Int {
       result = versionNumber

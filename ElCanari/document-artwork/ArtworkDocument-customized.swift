@@ -22,12 +22,12 @@ let PMArtworkComment = "PMArtworkComment"
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
     metadataDictionary [PMArtworkVersion] = version
-    metadataDictionary [PMArtworkComment] = rootObject.comments
+    metadataDictionary [PMArtworkComment] = self.rootObject.comments
   }
 
   //····················································································································
 
-  override func readVersionFromMetadataDictionary (metadataDictionary : [String : Any]) -> Int {
+  override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
     if let versionNumber = metadataDictionary [PMArtworkVersion] as? Int {
       result = versionNumber
