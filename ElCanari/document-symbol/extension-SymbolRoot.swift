@@ -1,8 +1,8 @@
 //
-//  DeviceDocument-extension-add-package.swift
+//  extension-SymbolRoot.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 01/03/2019.
+//  Created by Pierre Molinaro on 07/03/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -10,33 +10,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
+extension SymbolRoot {
 
   //····················································································································
 
-  internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
-       let version = metadataDictionary [PMPackageVersion] as? Int,
-       let packageRoot = rootObject as? PackageRoot {
-      let strokeBezierPathes = NSBezierPath ()
-      var masterPads = [MasterPadInDevice] ()
-      var slavePads = [SlavePadInDevice] ()
-      packageRoot.accumulate (
-        withUndoManager: self.ebUndoManager,
-        strokeBezierPathes: strokeBezierPathes,
-        masterPads: &masterPads,
-        slavePads: &slavePads
-      )
-      packageRoot.removeRecursivelyAllRelationsShips ()
-
-      let package = PackageInDevice (self.ebUndoManager, file: #file, #line)
-      package.mVersion = version
-      package.mName = inName
-      package.mFileData = inData
-      package.mStrokeBezierPath = strokeBezierPathes
-      package.mMasterPads_property.setProp (masterPads)
-      package.mSlavePads_property.setProp (slavePads)
-      self.rootObject.mPackages_property.add (package)
+  func accumulate (withUndoManager inUndoManager : EBUndoManager?,
+                   strokeBezierPathes : NSBezierPath,
+                   filledBezierPathes : NSBezierPath) {
+    for symbolObject in self.symbolObjects_property.propval {
+      if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
+        filledBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolSolidRect, let bp = object.filledBezierPath {
+        filledBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolOval, let bp = object.strokeBezierPath {
+        strokeBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolSolidOval, let bp = object.filledBezierPath {
+        filledBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolBezierCurve, let bp = object.strokeBezierPath {
+        strokeBezierPathes.append (bp)
+      }else if let object = symbolObject as? SymbolSegment, let bp = object.strokeBezierPath {
+        strokeBezierPathes.append (bp)
+      }
     }
   }
 

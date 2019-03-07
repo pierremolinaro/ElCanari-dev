@@ -23,12 +23,12 @@ graphic entity DeviceRoot {
 #--- Issues
   transient CanariIssueArray issues dependsFrom self.title, self.prefix, self.inconsistentPackagePadNameSetsMessage ;
 
-  transient Bool packagePadNameSetsAreConsistent dependsFrom self.packages.all.padNameSet ;
+  transient Bool packagePadNameSetsAreConsistent dependsFrom self.mPackages.all.padNameSet ;
 
-  transient String inconsistentPackagePadNameSetsMessage dependsFrom self.packages.all.padNameSet, self.packages.all.mName ;
+  transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;
 
 #--- Packages
-  toMany @signature PackageInDevice packages inverse toOne mRoot ;
+  toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
   property @signature Int mPackageDisplayZoom default 100 ;
   property @signature Bool mPackageDisplayHorizontalFlip default no ;
   property @signature Bool mPackageDisplayVerticalFlip default no ;
@@ -36,6 +36,13 @@ graphic entity DeviceRoot {
   property @signature Bool mShowPackagePadNumbers default yes ;
   property @signature Bool mShowPackageFrontPads default yes ;
   property @signature Bool mShowPackageBackPads default yes ;
+  
+#--- Symbols
+  toMany @signature SymbolTypeInDevice mSymbolTypes ;
+  toMany @signature SymbolInstanceInDevice mSymbolInstances ;
+  property @signature Int mSymbolDisplayZoom default 100 ;
+  property @signature Bool mSymbolDisplayHorizontalFlip default no ;
+  property @signature Bool mSymbolDisplayVerticalFlip default no ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -51,7 +58,7 @@ entity DeviceDocumentation {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 graphic entity PackageInDevice {
-  toOne DeviceRoot mRoot inverse toMany packages ;
+  toOne DeviceRoot mRoot inverse toMany mPackages ;
   
   toMany MasterPadInDevice mMasterPads ;
   toMany SlavePadInDevice mSlavePads ;
@@ -157,4 +164,50 @@ entity SlavePadInDevice {
   ;
  
 }
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SymbolTypeInDevice {
+  toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
+
+  property @signature String mTypeName default "" ;
+  property @signature Int mVersion default 0 ;
+  property @signature Data mFileData default empty ;
+  
+  property @signature NSBezierPath mStrokeBezierPath default empty ;
+  property @signature NSBezierPath mFilledBezierPath default empty ;
+  
+  transient String versionString dependsFrom self.mVersion ;
+
+  transient Int instanceCount dependsFrom self.mInstances.count ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+graphic entity SymbolInstanceInDevice {
+  toOne SymbolTypeInDevice mType inverse toMany mInstances ;
+ 
+  property @signature String mInstanceName default "" ;
+  property @signature Int mX default 0 ;
+  property @signature Int mY default 0 ;
+
+  transient EBShape objectDisplay dependsFrom
+     self.mType.one.mStrokeBezierPath,
+     self.mType.one.mFilledBezierPath,
+     self.mType.one.mTypeName,
+     self.mInstanceName,
+     self.mX, self.mY,
+     prefs.symbolDrawingWidthMultipliedByTen,
+     prefs.symbolColor
+  ;
+
+  transient EBShape selectionDisplay dependsFrom
+     self.mType.one.mStrokeBezierPath,
+     self.mType.one.mFilledBezierPath,
+     self.mType.one.mTypeName,
+     self.mInstanceName,
+     self.mX, self.mY
+  ;
+}
+
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

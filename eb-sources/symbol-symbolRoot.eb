@@ -19,6 +19,8 @@ graphic entity SymbolPin : SymbolObject {
   
   property @signature Bool pinNameIsDisplayedInSchematics default yes ;
   
+  transient NSBezierPath filledBezierPath dependsFrom self.xPin, self.yPin ;
+  
   transient EBShape objectDisplay dependsFrom
      self.xPin, self.yPin, 
      self.xName, self.yName, 
@@ -47,7 +49,6 @@ graphic entity SymbolPin : SymbolObject {
      self.name, self.nameHorizontalAlignment, prefs.pinNameFont
   ;
 
-  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -78,10 +79,13 @@ graphic entity SymbolSolidRect : SymbolObject {
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
   
+  transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
+  
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;
+
   transient EBShape selectionDisplay dependsFrom
      self.x, self.y, self.width, self.height
   ;
@@ -96,7 +100,9 @@ graphic entity SymbolOval : SymbolObject {
   property @signature Int y default 0 ;
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
-  
+ 
+  transient NSBezierPath strokeBezierPath dependsFrom self.x, self.y, self.width, self.height ;
+ 
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
      prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
@@ -115,6 +121,8 @@ graphic entity SymbolSolidOval : SymbolObject {
   property @signature Int y default 0 ;
   property @signature Int width default 6_858_00 ;
   property @signature Int height default 6_858_00 ;
+
+  transient NSBezierPath filledBezierPath dependsFrom self.x, self.y, self.width, self.height ;
   
   transient EBShape objectDisplay dependsFrom
      self.x, self.y, self.width, self.height,
@@ -139,6 +147,11 @@ graphic entity SymbolBezierCurve : SymbolObject {
   property @signature Int cpx2 default 6_858_00 ;
   property @signature Int cpy2 default 0 ;
   
+  transient NSBezierPath strokeBezierPath dependsFrom
+     self.x1, self.y1, self.x2, self.y2,
+     self.cpx1, self.cpy1, self.cpx2, self.cpy2
+  ;
+ 
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2,
      self.cpx1, self.cpy1, self.cpx2, self.cpy2,
@@ -163,6 +176,8 @@ graphic entity SymbolSegment : SymbolObject {
   property @signature Int x2 default 6_858_00 ;
   property @signature Int y2 default 6_858_00 ;
   
+  transient NSBezierPath strokeBezierPath dependsFrom self.x1, self.y1, self.x2, self.y2 ;
+
   transient EBShape objectDisplay dependsFrom
      self.x1, self.y1, self.x2, self.y2, prefs.symbolColor, prefs.symbolDrawingWidthMultipliedByTen
   ;

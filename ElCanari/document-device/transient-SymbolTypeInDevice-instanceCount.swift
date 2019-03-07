@@ -11,20 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+func transient_SymbolTypeInDevice_instanceCount (
+       _ self_mInstances_count : Int
+) -> Int {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+        return self_mInstances_count
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

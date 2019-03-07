@@ -11,20 +11,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+func transient_SymbolPin_filledBezierPath (
+       _ self_xPin : Int,                  
+       _ self_yPin : Int
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+    let pinRect = NSRect (
+      x: canariUnitToCocoa (self_xPin) - SYMBOL_GRID_IN_COCOA_UNIT,
+      y: canariUnitToCocoa (self_yPin) - SYMBOL_GRID_IN_COCOA_UNIT,
+      width: SYMBOL_GRID_IN_COCOA_UNIT * 2.0,
+      height: SYMBOL_GRID_IN_COCOA_UNIT * 2.0
+    )
+    return NSBezierPath (ovalIn: pinRect)
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -12,17 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+  @objc func resetSelectedSymbolVersion (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+    let selectedSymbolTypes = self.mSymbolController.selectedArray_property.propval
+    for symbolType in selectedSymbolTypes {
+      symbolType.mVersion = 0
+    }
 //--- END OF USER ZONE 2
   }
 }

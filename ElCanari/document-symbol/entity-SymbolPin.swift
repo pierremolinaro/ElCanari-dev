@@ -66,6 +66,12 @@ protocol SymbolPin_xPin : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolPin_filledBezierPath : class {
+  var filledBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolPin_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -103,6 +109,7 @@ class SymbolPin : SymbolObject,
          SymbolPin_numberHorizontalAlignment,
          SymbolPin_pinNameIsDisplayedInSchematics,
          SymbolPin_xPin,
+         SymbolPin_filledBezierPath,
          SymbolPin_objectDisplay,
          SymbolPin_selectionDisplay,
          SymbolPin_issues,
@@ -339,6 +346,29 @@ class SymbolPin : SymbolObject,
   }
 
   //····················································································································
+  //   Transient property: filledBezierPath
+  //····················································································································
+
+  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.filledBezierPath_property.prop
+  }
+
+  //····················································································································
+
+  var filledBezierPath : NSBezierPath? {
+    switch self.filledBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: nameRect
   //····················································································································
 
@@ -387,6 +417,30 @@ class SymbolPin : SymbolObject,
     self.pinNameIsDisplayedInSchematics_property.undoManager = self.undoManager
   //--- Atomic property: xPin
     self.xPin_property.undoManager = self.undoManager
+  //--- Atomic property: filledBezierPath
+    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.xPin_property_selection.kind ()
+        kind &= unwSelf.yPin_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.xPin_property_selection, unwSelf.yPin_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_SymbolPin_filledBezierPath (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.xPin_property.addEBObserver (self.filledBezierPath_property)
+    self.yPin_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -550,6 +604,8 @@ class SymbolPin : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.xPin_property.removeEBObserver (self.filledBezierPath_property)
+    self.yPin_property.removeEBObserver (self.filledBezierPath_property)
     self.xPin_property.removeEBObserver (self.objectDisplay_property)
     self.yPin_property.removeEBObserver (self.objectDisplay_property)
     self.xName_property.removeEBObserver (self.objectDisplay_property)
@@ -676,6 +732,14 @@ class SymbolPin : SymbolObject,
       valueExplorer:&self.xPin_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "filledBezierPath",
+      idx:self.filledBezierPath_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.filledBezierPath_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.ebObjectIndex,
@@ -1443,6 +1507,62 @@ class ReadOnlyArrayOf_SymbolPin : ReadOnlyAbstractArrayProperty <SymbolPin> {
   }
 
   //····················································································································
+  //   Observers of 'filledBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_filledBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.filledBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_filledBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.filledBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.filledBezierPath_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolPin>) {
+    for managedObject in inSet {
+      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.filledBezierPath_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -1750,6 +1870,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
       self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_xPin_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -1768,6 +1889,7 @@ class TransientArrayOf_SymbolPin : ReadOnlyArrayOf_SymbolPin {
       self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedSet)
       self.addEBObserversOf_xPin_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1920,6 +2042,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           self.removeEBObserversOf_numberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_xPin_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -1952,6 +2075,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
           self.addEBObserversOf_numberHorizontalAlignment_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_xPin_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

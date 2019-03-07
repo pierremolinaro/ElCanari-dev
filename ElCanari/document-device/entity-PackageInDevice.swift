@@ -2047,11 +2047,11 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         }
       //--- Reset old opposite relation ship
         if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.packages_property.remove (unwrappedOwner)
+          unwrappedOldValue.mPackages_property.remove (unwrappedOwner)
         }
       //--- Set new opposite relation ship
         if let unwrappedValue = self.mValue {
-          unwrappedValue.packages_property.add (unwrappedOwner)
+          unwrappedValue.mPackages_property.add (unwrappedOwner)
         }
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
@@ -2065,6 +2065,9 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mShowPackageFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         oldValue?.mShowPackagePadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
         oldValue?.mShowPackages_property.removeEBObserversFrom (&self.mObserversOf_mShowPackages)
+        oldValue?.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
+        oldValue?.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
+        oldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
         oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
         oldValue?.prefix_property.removeEBObserversFrom (&self.mObserversOf_prefix)
         oldValue?.representationImageData_property.removeEBObserversFrom (&self.mObserversOf_representationImageData)
@@ -2082,6 +2085,9 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mShowPackageFrontPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         self.mValue?.mShowPackagePadNumbers_property.addEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
         self.mValue?.mShowPackages_property.addEBObserversFrom (&self.mObserversOf_mShowPackages)
+        self.mValue?.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
+        self.mValue?.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
+        self.mValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
         self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
         self.mValue?.prefix_property.addEBObserversFrom (&self.mObserversOf_prefix)
         self.mValue?.representationImageData_property.addEBObserversFrom (&self.mObserversOf_representationImageData)
@@ -2569,6 +2575,129 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_mShowPackages.remove (inObserver)
     if let object = self.propval {
       object.mShowPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayHorizontalFlip
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayHorizontalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayHorizontalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayHorizontalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayHorizontalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayHorizontalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayVerticalFlip
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayVerticalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayVerticalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayVerticalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayVerticalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayVerticalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayZoom
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayZoom_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayZoom_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayZoom.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayZoom_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayZoom.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayZoom_property.removeEBObserver (inObserver)
     }
   }
 

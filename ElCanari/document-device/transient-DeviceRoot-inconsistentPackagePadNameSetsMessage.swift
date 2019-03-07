@@ -12,21 +12,21 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceRoot_inconsistentPackagePadNameSetsMessage (
-       _ self_packages_padNameSet : [PackageInDevice_padNameSet],
-       _ self_packages_mName : [PackageInDevice_mName]
+       _ self_mPackages_padNameSet : [PackageInDevice_padNameSet],
+       _ self_mPackages_mName : [PackageInDevice_mName]
 ) -> String {
 //--- START OF USER ZONE 2
    var message = [String] ()
-   if self_packages_mName.count > 1 {
+   if self_mPackages_mName.count > 1 {
      var idx = 1
-     let p0 = self_packages_padNameSet [0].padNameSet!
-     while idx < self_packages_padNameSet.count {
-       let px = self_packages_padNameSet [idx].padNameSet!
+     let p0 = self_mPackages_padNameSet [0].padNameSet!
+     while idx < self_mPackages_padNameSet.count {
+       let px = self_mPackages_padNameSet [idx].padNameSet!
        for missing in p0.subtracting (px) {
-         message.append ("Package \(self_packages_mName [idx].mName) has no pad named \(missing)")
+         message.append ("Package \(self_mPackages_mName [idx].mName) has no pad named \(missing)")
        }
        for excedent in px.subtracting (p0) {
-         message.append ("Package \(self_packages_mName [idx].mName) has a pad named \(excedent)")
+         message.append ("Package \(self_mPackages_mName [idx].mName) has a pad named \(excedent)")
        }
        idx += 1
      }

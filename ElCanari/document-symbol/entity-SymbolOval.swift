@@ -30,6 +30,12 @@ protocol SymbolOval_x : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolOval_strokeBezierPath : class {
+  var strokeBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolOval_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -55,6 +61,7 @@ class SymbolOval : SymbolObject,
          SymbolOval_width,
          SymbolOval_height,
          SymbolOval_x,
+         SymbolOval_strokeBezierPath,
          SymbolOval_objectDisplay,
          SymbolOval_selectionDisplay,
          SymbolOval_issues {
@@ -152,6 +159,29 @@ class SymbolOval : SymbolObject,
   }
 
   //····················································································································
+  //   Transient property: strokeBezierPath
+  //····················································································································
+
+  var strokeBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var strokeBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.strokeBezierPath_property.prop
+  }
+
+  //····················································································································
+
+  var strokeBezierPath : NSBezierPath? {
+    switch self.strokeBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -165,6 +195,34 @@ class SymbolOval : SymbolObject,
     self.height_property.undoManager = self.undoManager
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
+  //--- Atomic property: strokeBezierPath
+    self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SymbolOval_strokeBezierPath (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.addEBObserver (self.strokeBezierPath_property)
+    self.y_property.addEBObserver (self.strokeBezierPath_property)
+    self.width_property.addEBObserver (self.strokeBezierPath_property)
+    self.height_property.addEBObserver (self.strokeBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -266,6 +324,10 @@ class SymbolOval : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.x_property.removeEBObserver (self.strokeBezierPath_property)
+    self.y_property.removeEBObserver (self.strokeBezierPath_property)
+    self.width_property.removeEBObserver (self.strokeBezierPath_property)
+    self.height_property.removeEBObserver (self.strokeBezierPath_property)
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -326,6 +388,14 @@ class SymbolOval : SymbolObject,
       valueExplorer:&self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "strokeBezierPath",
+      idx:self.strokeBezierPath_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.strokeBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.strokeBezierPath_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.ebObjectIndex,
@@ -695,6 +765,62 @@ class ReadOnlyArrayOf_SymbolOval : ReadOnlyAbstractArrayProperty <SymbolOval> {
   }
 
   //····················································································································
+  //   Observers of 'strokeBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_strokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_strokeBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_strokeBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.strokeBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_strokeBezierPath_toElementsOfSet (_ inSet : Set<SymbolOval>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_strokeBezierPath_fromElementsOfSet (_ inSet : Set<SymbolOval>) {
+    for managedObject in inSet {
+      self.mObserversOf_strokeBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.strokeBezierPath_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -940,6 +1066,7 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
       self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -951,6 +1078,7 @@ class TransientArrayOf_SymbolOval : ReadOnlyArrayOf_SymbolOval {
       self.addEBObserversOf_height_toElementsOfSet (addedSet)
       self.addEBObserversOf_x_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1090,6 +1218,7 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_strokeBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -1109,6 +1238,7 @@ final class StoredArrayOf_SymbolOval : ReadWriteArrayOf_SymbolOval, EBSignatureO
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_strokeBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

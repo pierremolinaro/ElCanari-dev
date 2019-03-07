@@ -11,20 +11,18 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+func transient_SymbolSegment_strokeBezierPath (
+       _ self_x1 : Int,                        
+       _ self_y1 : Int,                        
+       _ self_x2 : Int,                        
+       _ self_y2 : Int
+) -> NSBezierPath {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+    let bp = NSBezierPath ()
+    bp.move (to: CGPoint (x: canariUnitToCocoa (self_x1), y: canariUnitToCocoa (self_y1)))
+    bp.line (to: CGPoint (x: canariUnitToCocoa (self_x2), y: canariUnitToCocoa (self_y2)))
+    return bp
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

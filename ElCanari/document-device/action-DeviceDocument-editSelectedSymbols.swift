@@ -12,17 +12,31 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+  @objc func editSelectedSymbols (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+    let selectedSymbols = self.mSymbolController.selectedArray_property.propval
+    let dc = NSDocumentController.shared
+    var messages = [String] ()
+    for symbolType in selectedSymbols {
+      let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
+      if pathes.count == 0 {
+        messages.append ("No file for \(symbolType.mTypeName) symbol in Library")
+      }else if pathes.count == 1 {
+        let url = URL (fileURLWithPath: pathes [0])
+        dc.openDocument (withContentsOf: url, display: true, completionHandler: {(document : NSDocument?, alreadyOpen : Bool, error : Error?) in })
+      }else{ // pathes.count > 1
+        messages.append ("Several files for \(symbolType.mTypeName) symbol in Library:")
+        for path in pathes {
+          messages.append ("  - \(path)")
+        }
+      }
+    }
+    if messages.count > 0 {
+      let alert = NSAlert ()
+      alert.messageText = "Error opening Package"
+      alert.informativeText = messages.joined (separator: "\n")
+      _ = alert.runModal ()
+    }
 //--- END OF USER ZONE 2
   }
 }

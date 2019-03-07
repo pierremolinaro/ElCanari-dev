@@ -12,13 +12,13 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceRoot_packagePadNameSetsAreConsistent (
-       _ self_packages_padNameSet : [PackageInDevice_padNameSet]
+       _ self_mPackages_padNameSet : [PackageInDevice_padNameSet]
 ) -> Bool {
 //--- START OF USER ZONE 2
    var ok = true
    var idx = 1
-   while (idx < self_packages_padNameSet.count) && ok {
-     ok = self_packages_padNameSet [0].padNameSet == self_packages_padNameSet [idx].padNameSet
+   while (idx < self_mPackages_padNameSet.count) && ok {
+     ok = self_mPackages_padNameSet [0].padNameSet == self_mPackages_padNameSet [idx].padNameSet
      idx += 1
    }
    return ok

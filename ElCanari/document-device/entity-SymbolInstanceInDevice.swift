@@ -6,179 +6,124 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidRect_y : class {
-  var y : Int { get }
+protocol SymbolInstanceInDevice_mInstanceName : class {
+  var mInstanceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidRect_width : class {
-  var width : Int { get }
+protocol SymbolInstanceInDevice_mX : class {
+  var mX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidRect_height : class {
-  var height : Int { get }
+protocol SymbolInstanceInDevice_mY : class {
+  var mY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidRect_x : class {
-  var x : Int { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolSolidRect_filledBezierPath : class {
-  var filledBezierPath : NSBezierPath? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolSolidRect_objectDisplay : class {
+protocol SymbolInstanceInDevice_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolSolidRect_selectionDisplay : class {
+protocol SymbolInstanceInDevice_selectionDisplay : class {
   var selectionDisplay : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-protocol SymbolSolidRect_issues : class {
-  var issues : CanariIssueArray? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: SymbolSolidRect
+//    Entity: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class SymbolSolidRect : SymbolObject,
-         SymbolSolidRect_y,
-         SymbolSolidRect_width,
-         SymbolSolidRect_height,
-         SymbolSolidRect_x,
-         SymbolSolidRect_filledBezierPath,
-         SymbolSolidRect_objectDisplay,
-         SymbolSolidRect_selectionDisplay,
-         SymbolSolidRect_issues {
+class SymbolInstanceInDevice : EBGraphicManagedObject,
+         SymbolInstanceInDevice_mInstanceName,
+         SymbolInstanceInDevice_mX,
+         SymbolInstanceInDevice_mY,
+         SymbolInstanceInDevice_objectDisplay,
+         SymbolInstanceInDevice_selectionDisplay {
 
   //····················································································································
-  //   Atomic property: y
+  //   Atomic property: mInstanceName
   //····················································································································
 
-  var y_property = EBStoredProperty_Int (defaultValue: 0)
+  var mInstanceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var y : Int {
+  var mInstanceName : String {
     get {
-      return self.y_property.propval
+      return self.mInstanceName_property.propval
     }
     set {
-      self.y_property.setProp (newValue)
+      self.mInstanceName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var y_property_selection : EBSelection <Int> {
-    return self.y_property.prop
+  var mInstanceName_property_selection : EBSelection <String> {
+    return self.mInstanceName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: width
+  //   Atomic property: mX
   //····················································································································
 
-  var width_property = EBStoredProperty_Int (defaultValue: 685800)
+  var mX_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var width : Int {
+  var mX : Int {
     get {
-      return self.width_property.propval
+      return self.mX_property.propval
     }
     set {
-      self.width_property.setProp (newValue)
+      self.mX_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var width_property_selection : EBSelection <Int> {
-    return self.width_property.prop
+  var mX_property_selection : EBSelection <Int> {
+    return self.mX_property.prop
   }
 
   //····················································································································
-  //   Atomic property: height
+  //   Atomic property: mY
   //····················································································································
 
-  var height_property = EBStoredProperty_Int (defaultValue: 685800)
+  var mY_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var height : Int {
+  var mY : Int {
     get {
-      return self.height_property.propval
+      return self.mY_property.propval
     }
     set {
-      self.height_property.setProp (newValue)
+      self.mY_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var height_property_selection : EBSelection <Int> {
-    return self.height_property.prop
+  var mY_property_selection : EBSelection <Int> {
+    return self.mY_property.prop
   }
 
   //····················································································································
-  //   Atomic property: x
+  //   To one property: mType
   //····················································································································
 
-  var x_property = EBStoredProperty_Int (defaultValue: 0)
-
-  //····················································································································
-
-  var x : Int {
-    get {
-      return self.x_property.propval
-    }
-    set {
-      self.x_property.setProp (newValue)
-    }
-  }
+  var mType_property = ToOneRelationship_SymbolInstanceInDevice_mType ()
 
   //····················································································································
 
-  var x_property_selection : EBSelection <Int> {
-    return self.x_property.prop
-  }
-
-  //····················································································································
-  //   Transient property: filledBezierPath
-  //····················································································································
-
-  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
-
-  //····················································································································
-
-  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
-    return self.filledBezierPath_property.prop
-  }
-
-  //····················································································································
-
-  var filledBezierPath : NSBezierPath? {
-    switch self.filledBezierPath_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
+  var mType_property_selection : EBSelection <Bool> {
+    return .single (self.mType_property.propval == nil)
   }
 
   //····················································································································
@@ -187,60 +132,34 @@ class SymbolSolidRect : SymbolObject,
 
   required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
-  //--- Atomic property: y
-    self.y_property.undoManager = self.undoManager
-  //--- Atomic property: width
-    self.width_property.undoManager = self.undoManager
-  //--- Atomic property: height
-    self.height_property.undoManager = self.undoManager
-  //--- Atomic property: x
-    self.x_property.undoManager = self.undoManager
-  //--- Atomic property: filledBezierPath
-    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidRect_filledBezierPath (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.addEBObserver (self.filledBezierPath_property)
-    self.y_property.addEBObserver (self.filledBezierPath_property)
-    self.width_property.addEBObserver (self.filledBezierPath_property)
-    self.height_property.addEBObserver (self.filledBezierPath_property)
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.undoManager = self.undoManager
+  //--- Atomic property: mX
+    self.mX_property.undoManager = self.undoManager
+  //--- Atomic property: mY
+    self.mY_property.undoManager = self.undoManager
+  //--- To one property: mType
+    self.mType_property.owner = self
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        kind &= g_Preferences!.symbolColor_property_selection.kind ()
+        var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
+        kind &= unwSelf.mType_property.mTypeName_property_selection.kind ()
+        kind &= unwSelf.mInstanceName_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
         kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
+        kind &= g_Preferences!.symbolColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection, g_Preferences!.symbolColor_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolSolidRect_objectDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.mTypeName_property_selection, unwSelf.mInstanceName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
+            return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
           default :
             return .empty
           }
@@ -249,28 +168,32 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.objectDisplay_property)
-    self.y_property.addEBObserver (self.objectDisplay_property)
-    self.width_property.addEBObserver (self.objectDisplay_property)
-    self.height_property.addEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
+    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
+    self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
+    self.mType_property.addEBObserverOf_mTypeName (self.objectDisplay_property)
+    self.mInstanceName_property.addEBObserver (self.objectDisplay_property)
+    self.mX_property.addEBObserver (self.objectDisplay_property)
+    self.mY_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
+        var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
+        kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
+        kind &= unwSelf.mType_property.mTypeName_property_selection.kind ()
+        kind &= unwSelf.mInstanceName_property_selection.kind ()
+        kind &= unwSelf.mX_property_selection.kind ()
+        kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidRect_selectionDisplay (v0, v1, v2, v3))
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.mTypeName_property_selection, unwSelf.mInstanceName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
+            return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -279,44 +202,17 @@ class SymbolSolidRect : SymbolObject,
         return .empty
       }
     }
-    self.x_property.addEBObserver (self.selectionDisplay_property)
-    self.y_property.addEBObserver (self.selectionDisplay_property)
-    self.width_property.addEBObserver (self.selectionDisplay_property)
-    self.height_property.addEBObserver (self.selectionDisplay_property)
-  //--- Atomic property: issues
-    self.issues_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        var kind = unwSelf.x_property_selection.kind ()
-        kind &= unwSelf.y_property_selection.kind ()
-        kind &= unwSelf.width_property_selection.kind ()
-        kind &= unwSelf.height_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
-            return .single (transient_SymbolSolidRect_issues (v0, v1, v2, v3))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.x_property.addEBObserver (self.issues_property)
-    self.y_property.addEBObserver (self.issues_property)
-    self.width_property.addEBObserver (self.issues_property)
-    self.height_property.addEBObserver (self.issues_property)
+    self.mType_property.addEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
+    self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
+    self.mType_property.addEBObserverOf_mTypeName (self.selectionDisplay_property)
+    self.mInstanceName_property.addEBObserver (self.selectionDisplay_property)
+    self.mX_property.addEBObserver (self.selectionDisplay_property)
+    self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
-    self.height_property.setSignatureObserver (observer: self)
-    self.width_property.setSignatureObserver (observer: self)
-    self.x_property.setSignatureObserver (observer: self)
-    self.y_property.setSignatureObserver (observer: self)
+    self.mInstanceName_property.setSignatureObserver (observer: self)
+    self.mX_property.setSignatureObserver (observer: self)
+    self.mY_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -324,24 +220,20 @@ class SymbolSolidRect : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.x_property.removeEBObserver (self.filledBezierPath_property)
-    self.y_property.removeEBObserver (self.filledBezierPath_property)
-    self.width_property.removeEBObserver (self.filledBezierPath_property)
-    self.height_property.removeEBObserver (self.filledBezierPath_property)
-    self.x_property.removeEBObserver (self.objectDisplay_property)
-    self.y_property.removeEBObserver (self.objectDisplay_property)
-    self.width_property.removeEBObserver (self.objectDisplay_property)
-    self.height_property.removeEBObserver (self.objectDisplay_property)
-    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
+    self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
+    self.mType_property.removeEBObserverOf_mTypeName (self.objectDisplay_property)
+    self.mInstanceName_property.removeEBObserver (self.objectDisplay_property)
+    self.mX_property.removeEBObserver (self.objectDisplay_property)
+    self.mY_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
-    self.x_property.removeEBObserver (self.selectionDisplay_property)
-    self.y_property.removeEBObserver (self.selectionDisplay_property)
-    self.width_property.removeEBObserver (self.selectionDisplay_property)
-    self.height_property.removeEBObserver (self.selectionDisplay_property)
-    self.x_property.removeEBObserver (self.issues_property)
-    self.y_property.removeEBObserver (self.issues_property)
-    self.width_property.removeEBObserver (self.issues_property)
-    self.height_property.removeEBObserver (self.issues_property)
+    g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+    self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.selectionDisplay_property)
+    self.mType_property.removeEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
+    self.mType_property.removeEBObserverOf_mTypeName (self.selectionDisplay_property)
+    self.mInstanceName_property.removeEBObserver (self.selectionDisplay_property)
+    self.mX_property.removeEBObserver (self.selectionDisplay_property)
+    self.mY_property.removeEBObserver (self.selectionDisplay_property)
   }
 
   //····················································································································
@@ -356,46 +248,30 @@ class SymbolSolidRect : SymbolObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "y",
-      idx:self.y_property.ebObjectIndex,
+      "mInstanceName",
+      idx:self.mInstanceName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.y_property.mObserverExplorer,
-      valueExplorer:&self.y_property.mValueExplorer
+      observerExplorer:&self.mInstanceName_property.mObserverExplorer,
+      valueExplorer:&self.mInstanceName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "width",
-      idx:self.width_property.ebObjectIndex,
+      "mX",
+      idx:self.mX_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.width_property.mObserverExplorer,
-      valueExplorer:&self.width_property.mValueExplorer
+      observerExplorer:&self.mX_property.mObserverExplorer,
+      valueExplorer:&self.mX_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "height",
-      idx:self.height_property.ebObjectIndex,
+      "mY",
+      idx:self.mY_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.height_property.mObserverExplorer,
-      valueExplorer:&self.height_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
-      "x",
-      idx:self.x_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.x_property.mObserverExplorer,
-      valueExplorer:&self.x_property.mValueExplorer
+      observerExplorer:&self.mY_property.mObserverExplorer,
+      valueExplorer:&self.mY_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
-    createEntryForPropertyNamed (
-      "filledBezierPath",
-      idx:self.filledBezierPath_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
-      valueExplorer:&self.filledBezierPath_property.mValueExplorer
-    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.ebObjectIndex,
@@ -412,16 +288,15 @@ class SymbolSolidRect : SymbolObject,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "issues",
-      idx:self.issues_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.issues_property.mObserverExplorer,
-      valueExplorer:&self.issues_property.mValueExplorer
-    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mType",
+      idx:self.mType_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mType_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -430,18 +305,18 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: y
-    self.y_property.mObserverExplorer = nil
-    self.y_property.mValueExplorer = nil
-  //--- Atomic property: width
-    self.width_property.mObserverExplorer = nil
-    self.width_property.mValueExplorer = nil
-  //--- Atomic property: height
-    self.height_property.mObserverExplorer = nil
-    self.height_property.mValueExplorer = nil
-  //--- Atomic property: x
-    self.x_property.mObserverExplorer = nil
-    self.x_property.mValueExplorer = nil
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.mObserverExplorer = nil
+    self.mInstanceName_property.mValueExplorer = nil
+  //--- Atomic property: mX
+    self.mX_property.mObserverExplorer = nil
+    self.mX_property.mValueExplorer = nil
+  //--- Atomic property: mY
+    self.mY_property.mObserverExplorer = nil
+    self.mY_property.mValueExplorer = nil
+  //--- To one property: mType
+    self.mType_property.mObserverExplorer = nil
+    self.mType_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -460,6 +335,7 @@ class SymbolSolidRect : SymbolObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mType_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -470,14 +346,12 @@ class SymbolSolidRect : SymbolObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: y
-    self.y_property.storeIn (dictionary: ioDictionary, forKey:"y")
-  //--- Atomic property: width
-    self.width_property.storeIn (dictionary: ioDictionary, forKey:"width")
-  //--- Atomic property: height
-    self.height_property.storeIn (dictionary: ioDictionary, forKey:"height")
-  //--- Atomic property: x
-    self.x_property.storeIn (dictionary: ioDictionary, forKey:"x")
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mInstanceName")
+  //--- Atomic property: mX
+    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
   }
 
   //····················································································································
@@ -487,6 +361,17 @@ class SymbolSolidRect : SymbolObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mType
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mType",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? SymbolTypeInDevice {
+        self.mType_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -495,14 +380,12 @@ class SymbolSolidRect : SymbolObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: y
-    self.y_property.readFrom (dictionary: inDictionary, forKey:"y")
-  //--- Atomic property: width
-    self.width_property.readFrom (dictionary: inDictionary, forKey:"width")
-  //--- Atomic property: height
-    self.height_property.readFrom (dictionary: inDictionary, forKey:"height")
-  //--- Atomic property: x
-    self.x_property.readFrom (dictionary: inDictionary, forKey:"x")
+  //--- Atomic property: mInstanceName
+    self.mInstanceName_property.readFrom (dictionary: inDictionary, forKey:"mInstanceName")
+  //--- Atomic property: mX
+    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
+  //--- Atomic property: mY
+    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
   }
 
   //····················································································································
@@ -511,6 +394,10 @@ class SymbolSolidRect : SymbolObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mType
+    if let managedObject = self.mType_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -519,10 +406,9 @@ class SymbolSolidRect : SymbolObject,
 
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
-    crc.accumulateUInt32 (self.height_property.signature ())
-    crc.accumulateUInt32 (self.width_property.signature ())
-    crc.accumulateUInt32 (self.x_property.signature ())
-    crc.accumulateUInt32 (self.y_property.signature ())
+    crc.accumulateUInt32 (self.mInstanceName_property.signature ())
+    crc.accumulateUInt32 (self.mX_property.signature ())
+    crc.accumulateUInt32 (self.mY_property.signature ())
     return crc
   }
 
@@ -531,293 +417,180 @@ class SymbolSolidRect : SymbolObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_SymbolSolidRect
+//    ReadOnlyArrayOf_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSolidRect> {
+class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolInstanceInDevice> {
 
   //····················································································································
-  //   Observers of 'y' stored property
+  //   Observers of 'mInstanceName' stored property
   //····················································································································
 
-  private var mObserversOf_y = EBWeakEventSet ()
+  private var mObserversOf_mInstanceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_y (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_y.insert (inObserver)
+    self.mObserversOf_mInstanceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.addEBObserver (inObserver)
+        managedObject.mInstanceName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_y (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_y.remove (inObserver)
+    self.mObserversOf_mInstanceName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.y_property.removeEBObserver (inObserver)
+        managedObject.mInstanceName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_y_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func addEBObserversOf_mInstanceName_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
-        managedObject.y_property.addEBObserver (observer)
+      self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
+        managedObject.mInstanceName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_y_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    self.mObserversOf_y.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mInstanceName_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+    self.mObserversOf_mInstanceName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.y_property.removeEBObserver (observer)
+        managedObject.mInstanceName_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'width' stored property
+  //   Observers of 'mX' stored property
   //····················································································································
 
-  private var mObserversOf_width = EBWeakEventSet ()
+  private var mObserversOf_mX = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_width.insert (inObserver)
+    self.mObserversOf_mX.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.addEBObserver (inObserver)
+        managedObject.mX_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_width.remove (inObserver)
+    self.mObserversOf_mX.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.width_property.removeEBObserver (inObserver)
+        managedObject.mX_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_width_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
-        managedObject.width_property.addEBObserver (observer)
+      self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+        managedObject.mX_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_width_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    self.mObserversOf_width.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+    self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.width_property.removeEBObserver (observer)
+        managedObject.mX_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'height' stored property
+  //   Observers of 'mY' stored property
   //····················································································································
 
-  private var mObserversOf_height = EBWeakEventSet ()
+  private var mObserversOf_mY = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_height.insert (inObserver)
+    self.mObserversOf_mY.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.addEBObserver (inObserver)
+        managedObject.mY_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_height.remove (inObserver)
+    self.mObserversOf_mY.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.height_property.removeEBObserver (inObserver)
+        managedObject.mY_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_height_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
-        managedObject.height_property.addEBObserver (observer)
+      self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+        managedObject.mY_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_height_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    self.mObserversOf_height.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+    self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.height_property.removeEBObserver (observer)
+        managedObject.mY_property.removeEBObserver (observer)
       }
     })
-  }
-
-  //····················································································································
-  //   Observers of 'x' stored property
-  //····················································································································
-
-  private var mObserversOf_x = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_x (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_x.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_x (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_x.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.x_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_x_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for managedObject in inSet {
-      self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
-        managedObject.x_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_x_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    self.mObserversOf_x.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.x_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
-  //   Observers of 'filledBezierPath' transient property
-  //····················································································································
-
-  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_filledBezierPath.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.filledBezierPath_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_filledBezierPath.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.filledBezierPath_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for managedObject in inSet {
-      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
-        managedObject.filledBezierPath_property.removeEBObserver (observer)
-      })
-    }
   }
 
   //····················································································································
@@ -858,7 +631,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func addEBObserversOf_objectDisplay_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.addEBObserver (observer)
@@ -868,7 +641,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func removeEBObserversOf_objectDisplay_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_objectDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.objectDisplay_property.removeEBObserver (observer)
@@ -914,7 +687,7 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func addEBObserversOf_selectionDisplay_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.addEBObserver (observer)
@@ -924,66 +697,10 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 
   //····················································································································
 
-  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
+  final func removeEBObserversOf_selectionDisplay_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
     for managedObject in inSet {
       self.mObserversOf_selectionDisplay.apply ( {(_ observer : EBEvent) in
         managedObject.selectionDisplay_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-  //   Observers of 'issues' transient property
-  //····················································································································
-
-  private var mObserversOf_issues = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_issues.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_issues.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.issues_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<SymbolSolidRect>) {
-    for managedObject in inSet {
-      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
-        managedObject.issues_property.removeEBObserver (observer)
       })
     }
   }
@@ -993,32 +710,32 @@ class ReadOnlyArrayOf_SymbolSolidRect : ReadOnlyAbstractArrayProperty <SymbolSol
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_SymbolSolidRect
+//    TransientArrayOf_SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
+class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceInDevice {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [SymbolSolidRect] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [SymbolInstanceInDevice] > > = nil
 
   //····················································································································
 
-  override var propset : Set <SymbolSolidRect> {
+  override var propset : Set <SymbolInstanceInDevice> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolSolidRect] > {
+  override var prop : EBSelection < [SymbolInstanceInDevice] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [SymbolSolidRect] {
+  override var propval : [SymbolInstanceInDevice] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -1040,48 +757,42 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 
   //····················································································································
 
-  private var mSet = Set <SymbolSolidRect> ()
+  private var mSet = Set <SymbolInstanceInDevice> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [SymbolSolidRect] >? = nil
+  private var mCachedValue : EBSelection < [SymbolInstanceInDevice] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <SymbolSolidRect>
+      let newSet : Set <SymbolInstanceInDevice>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <SymbolSolidRect> ()
+        newSet = Set <SymbolInstanceInDevice> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_y_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_width_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mX_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_y_toElementsOfSet (addedSet)
-      self.addEBObserversOf_width_toElementsOfSet (addedSet)
-      self.addEBObserversOf_height_toElementsOfSet (addedSet)
-      self.addEBObserversOf_x_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mInstanceName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mX_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mY_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
-      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1109,28 +820,28 @@ class TransientArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: SymbolSolidRect
+//    To many relationship read write: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_SymbolSolidRect : ReadOnlyArrayOf_SymbolSolidRect {
+class ReadWriteArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceInDevice {
 
   //····················································································································
  
-  func setProp (_ value :  [SymbolSolidRect]) { } // Abstract method
+  func setProp (_ value :  [SymbolInstanceInDevice]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: SymbolSolidRect
+//    To many relationship: SymbolInstanceInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EBSignatureObserverProtocol {
+final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstanceInDevice, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolSolidRect?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : SymbolInstanceInDevice?) -> Void > = nil
 
   //····················································································································
 
@@ -1177,9 +888,9 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [SymbolSolidRect] ()
+      var objectArray = [SymbolInstanceInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolSolidRect") as? SymbolSolidRect {
+        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolInstanceInDevice") as? SymbolInstanceInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1190,8 +901,8 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
 
  //····················································································································
 
-  private var mSet = Set <SymbolSolidRect> ()
-  private var mValue = [SymbolSolidRect] () {
+  private var mSet = Set <SymbolInstanceInDevice> ()
+  private var mValue = [SymbolInstanceInDevice] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -1209,39 +920,31 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.y_property.mSetterDelegate = nil
-            managedObject.width_property.mSetterDelegate = nil
-            managedObject.height_property.mSetterDelegate = nil
-            managedObject.x_property.mSetterDelegate = nil
+            managedObject.mInstanceName_property.mSetterDelegate = nil
+            managedObject.mX_property.mSetterDelegate = nil
+            managedObject.mY_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_y_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mInstanceName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : SymbolSolidRect in addedObjectSet {
+          for managedObject : SymbolInstanceInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.y_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.width_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.height_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.x_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mInstanceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_y_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mInstanceName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -1269,29 +972,29 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
 
   //····················································································································
 
-  override var prop : EBSelection < [SymbolSolidRect] > { return .single (self.mValue) }
+  override var prop : EBSelection < [SymbolInstanceInDevice] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [SymbolSolidRect]) { self.mValue = inValue }
+  override func setProp (_ inValue : [SymbolInstanceInDevice]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [SymbolSolidRect] { return self.mValue }
+  override var propval : [SymbolInstanceInDevice] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <SymbolSolidRect> { return self.mSet }
+  override var propset : Set <SymbolInstanceInDevice> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [SymbolSolidRect]) {
+  @objc func performUndo (_ oldValue : [SymbolInstanceInDevice]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : SymbolSolidRect) {
+  func remove (_ object : SymbolInstanceInDevice) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1302,7 +1005,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
   
   //····················································································································
 
-  func add (_ object : SymbolSolidRect) {
+  func add (_ object : SymbolInstanceInDevice) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)
@@ -1363,6 +1066,399 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mType
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SymbolInstanceInDevice? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : SymbolTypeInDevice? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        if let unwrappedOldValue = oldValue {
+          unwrappedOldValue.mInstances_property.remove (unwrappedOwner)
+        }
+      //--- Set new opposite relation ship
+        if let unwrappedValue = self.mValue {
+          unwrappedValue.mInstances_property.add (unwrappedOwner)
+        }
+      //--- Remove property observers of old object
+        oldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount)
+        oldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData)
+        oldValue?.mFilledBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        oldValue?.mStrokeBezierPath_property.removeEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
+        oldValue?.mTypeName_property.removeEBObserversFrom (&self.mObserversOf_mTypeName)
+        oldValue?.mVersion_property.removeEBObserversFrom (&self.mObserversOf_mVersion)
+        oldValue?.versionString_property.removeEBObserversFrom (&self.mObserversOf_versionString)
+      //--- Add property observers to new object
+        self.mValue?.instanceCount_property.addEBObserversFrom (&self.mObserversOf_instanceCount)
+        self.mValue?.mFileData_property.addEBObserversFrom (&self.mObserversOf_mFileData)
+        self.mValue?.mFilledBezierPath_property.addEBObserversFrom (&self.mObserversOf_mFilledBezierPath)
+        self.mValue?.mStrokeBezierPath_property.addEBObserversFrom (&self.mObserversOf_mStrokeBezierPath)
+        self.mValue?.mTypeName_property.addEBObserversFrom (&self.mObserversOf_mTypeName)
+        self.mValue?.mVersion_property.addEBObserversFrom (&self.mObserversOf_mVersion)
+        self.mValue?.versionString_property.addEBObserversFrom (&self.mObserversOf_versionString)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : SymbolTypeInDevice? { return self.mValue }
+
+  var prop : EBSelection <SymbolTypeInDevice?> { return .single (self.mValue) }
+
+  func setProp (_ value : SymbolTypeInDevice?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : SymbolTypeInDevice?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolTypeInDevice) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+  
+  //····················································································································
+
+//  func add (_ object : SymbolTypeInDevice) {
+ //   self.mValue = object
+//  }
+
+  //····················································································································
+  //   Observable property: instanceCount
+  //····················································································································
+
+  private var mObserversOf_instanceCount = EBWeakEventSet ()
+
+  //····················································································································
+
+  var instanceCount_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.instanceCount_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.mObserversOf_instanceCount.insert (inObserver)
+    if let object = self.propval {
+      object.instanceCount_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_instanceCount (_ inObserver : EBEvent) {
+    self.mObserversOf_instanceCount.remove (inObserver)
+    if let object = self.propval {
+      object.instanceCount_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mFileData
+  //····················································································································
+
+  private var mObserversOf_mFileData = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mFileData_property_selection : EBSelection <Data?> {
+    if let model = self.propval {
+      switch (model.mFileData_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mFileData (_ inObserver : EBEvent) {
+    self.mObserversOf_mFileData.insert (inObserver)
+    if let object = self.propval {
+      object.mFileData_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFileData (_ inObserver : EBEvent) {
+    self.mObserversOf_mFileData.remove (inObserver)
+    if let object = self.propval {
+      object.mFileData_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mFilledBezierPath
+  //····················································································································
+
+  private var mObserversOf_mFilledBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mFilledBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.mFilledBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mFilledBezierPath.insert (inObserver)
+    if let object = self.propval {
+      object.mFilledBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFilledBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mFilledBezierPath.remove (inObserver)
+    if let object = self.propval {
+      object.mFilledBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mStrokeBezierPath
+  //····················································································································
+
+  private var mObserversOf_mStrokeBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mStrokeBezierPath_property_selection : EBSelection <NSBezierPath?> {
+    if let model = self.propval {
+      switch (model.mStrokeBezierPath_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mStrokeBezierPath.insert (inObserver)
+    if let object = self.propval {
+      object.mStrokeBezierPath_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mStrokeBezierPath (_ inObserver : EBEvent) {
+    self.mObserversOf_mStrokeBezierPath.remove (inObserver)
+    if let object = self.propval {
+      object.mStrokeBezierPath_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mTypeName
+  //····················································································································
+
+  private var mObserversOf_mTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mTypeName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mTypeName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mTypeName.insert (inObserver)
+    if let object = self.propval {
+      object.mTypeName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_mTypeName.remove (inObserver)
+    if let object = self.propval {
+      object.mTypeName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mVersion
+  //····················································································································
+
+  private var mObserversOf_mVersion = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mVersion_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mVersion_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mVersion (_ inObserver : EBEvent) {
+    self.mObserversOf_mVersion.insert (inObserver)
+    if let object = self.propval {
+      object.mVersion_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mVersion (_ inObserver : EBEvent) {
+    self.mObserversOf_mVersion.remove (inObserver)
+    if let object = self.propval {
+      object.mVersion_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: versionString
+  //····················································································································
+
+  private var mObserversOf_versionString = EBWeakEventSet ()
+
+  //····················································································································
+
+  var versionString_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.versionString_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.mObserversOf_versionString.insert (inObserver)
+    if let object = self.propval {
+      object.versionString_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.mObserversOf_versionString.remove (inObserver)
+    if let object = self.propval {
+      object.versionString_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

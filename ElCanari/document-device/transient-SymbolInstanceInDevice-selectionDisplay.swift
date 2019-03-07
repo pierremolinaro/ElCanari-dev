@@ -11,20 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+func transient_SymbolInstanceInDevice_selectionDisplay (
+       _ self_mType_mStrokeBezierPath : NSBezierPath?,  
+       _ self_mType_mFilledBezierPath : NSBezierPath?,  
+       _ self_mType_mTypeName : String?,                
+       _ self_mInstanceName : String,                   
+       _ self_mX : Int,                                 
+       _ self_mY : Int
+) -> EBShape {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+       return EBShape ()
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

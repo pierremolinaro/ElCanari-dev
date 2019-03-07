@@ -3,7 +3,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class CanariViewWithKeyView : NSView, EBUserClassNameProtocol {
-  private weak var mSavedFirstResponder : NSResponder? = nil
+//  private weak var mSavedFirstResponder : NSResponder? = nil
 
   //····················································································································
 

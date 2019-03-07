@@ -12,17 +12,20 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension DeviceDocument {
-  @objc func addPackageFromLibraryAction (_ sender : NSObject?) {
+  @objc func exportSelectedSymbols (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-   var currentPackageNames = Set <String> ()
-   for package in self.rootObject.mPackages_property.propval {
-     currentPackageNames.insert (package.mName)
-   }
-   gOpenPackageInLibrary?.loadDocumentFromLibrary (
-     windowForSheet: self.windowForSheet!,
-     alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
-  )
+    let selectedSymbolTypes = self.mSymbolController.selectedArray_property.propval
+    for symbolType in selectedSymbolTypes {
+      let savePanel = NSSavePanel ()
+      savePanel.allowedFileTypes = ["ElCanariSymbol"]
+      savePanel.allowsOtherFileTypes = false
+      savePanel.nameFieldStringValue = symbolType.mTypeName + ".ElCanariSymbol"
+      savePanel.beginSheetModal (for: self.windowForSheet!, completionHandler:  { (_ inResponse : NSApplication.ModalResponse) in
+        if inResponse == .OK, let url = savePanel.url {
+          try? symbolType.mFileData.write (to: url)
+        }
+      })
+    }
 //--- END OF USER ZONE 2
   }
 }

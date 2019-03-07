@@ -11,6 +11,16 @@ import Cocoa
 final class SelectionController_SymbolDocument_mSymbolPinSelectionController : EBObject {
 
   //····················································································································
+  //   Selection observable property: filledBezierPath
+  //····················································································································
+
+  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.filledBezierPath_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: issues
   //····················································································································
 
@@ -182,6 +192,7 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
       }
     }
     model.addEBObserver (self.mActualModel)
+    self.bind_property_filledBezierPath (model: self.mActualModel)
     self.bind_property_issues (model: self.mActualModel)
     self.bind_property_name (model: self.mActualModel)
     self.bind_property_nameHorizontalAlignment (model: self.mActualModel)
@@ -205,6 +216,9 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
   func unbind_selection () {
     self.mModel?.removeEBObserver (self.mActualModel)
     self.mActualModel.mReadModelFunction = nil
+  //--- filledBezierPath
+    self.filledBezierPath_property.mReadModelFunction = nil 
+    self.mActualModel.removeEBObserverOf_filledBezierPath (self.filledBezierPath_property)
   //--- issues
     self.issues_property.mReadModelFunction = nil 
     self.mActualModel.removeEBObserverOf_issues (self.issues_property)
@@ -437,6 +451,46 @@ final class SelectionController_SymbolDocument_mSymbolPinSelectionController : E
     }
     self.mExplorerWindow?.orderOut (nil)
     self.mExplorerWindow = nil
+  }
+
+  //···················································································································*
+
+  private final func bind_property_filledBezierPath (model : ReadOnlyArrayOf_SymbolPin) {
+    model.addEBObserverOf_filledBezierPath (self.filledBezierPath_property)
+    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mActualModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <NSBezierPath> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.filledBezierPath_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
   }
 
   //···················································································································*

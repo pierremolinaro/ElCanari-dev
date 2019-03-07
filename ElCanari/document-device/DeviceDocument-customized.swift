@@ -56,6 +56,7 @@ let PMDevicePackages = "PMDevicePackages"
     self.mDocumentationTableView?.registerDraggedTypesAnd (document: self)
   //--- TEMPORARY
 //    self.rootObject.packages_property.setProp ([])
+ //   self.rootObject.mSymbolTypes_property.setProp ([])
   //---
     self.mInconsistentPackagePadNameSetsMessageTextView?.font = .systemFont (ofSize: 12.0)
     self.mInconsistentPackagePadNameSetsMessageTextView?.textColor = .red

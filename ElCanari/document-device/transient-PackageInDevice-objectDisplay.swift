@@ -30,9 +30,6 @@ func transient_PackageInDevice_objectDisplay (
        _ self_mY : Int
 ) -> EBShape {
 //--- START OF USER ZONE 2
-      let nameTextAttributes : [NSAttributedString.Key : Any] = [
-        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
-      ]
       let shape = EBShape ()
     //--- Compute display rect
       var r = NSRect.null
@@ -42,6 +39,9 @@ func transient_PackageInDevice_objectDisplay (
       r = r.union (self_frontSidePadFilledBezierPathArray.bounds)
       r = r.union (self_backSidePadFilledBezierPathArray.bounds)
     //--- Frame
+      let nameTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : NSFont.systemFont (ofSize: 4.0)
+      ]
       let frameRadius : CGFloat = 3.0
       let enlarge = -frameRadius - CGFloat (prefs_packageDrawingWidthMultipliedByTen) / 20.0
       r = r.insetBy (dx: enlarge, dy: enlarge)

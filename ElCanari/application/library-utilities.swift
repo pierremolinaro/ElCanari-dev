@@ -154,6 +154,24 @@ func createLibraryAtPath (_ inPath : String) throws {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+func symbolFilePathInLibraries (_ inSymbolName : String) -> [String] {
+  var pathes = [String] ()
+  let fm = FileManager ()
+  for libraryDir in existingLibraryPathArray () {
+    let symbolLibraryDir = symbolLibraryPathForPath (libraryDir)
+    if let allSymbols = try? fm.subpathsOfDirectory(atPath: symbolLibraryDir) {
+      for candidateSymbolPath in allSymbols {
+        if candidateSymbolPath.lastPathComponent.deletingPathExtension == inSymbolName {
+          pathes.append (symbolLibraryDir + "/" + candidateSymbolPath)
+        }
+      }
+    }
+  }
+  return pathes
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 func packageFilePathInLibraries (_ inPackageName : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()

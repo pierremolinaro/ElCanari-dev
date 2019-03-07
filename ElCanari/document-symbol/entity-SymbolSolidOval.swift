@@ -30,6 +30,12 @@ protocol SymbolSolidOval_x : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolSolidOval_filledBezierPath : class {
+  var filledBezierPath : NSBezierPath? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolSolidOval_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -55,6 +61,7 @@ class SymbolSolidOval : SymbolObject,
          SymbolSolidOval_width,
          SymbolSolidOval_height,
          SymbolSolidOval_x,
+         SymbolSolidOval_filledBezierPath,
          SymbolSolidOval_objectDisplay,
          SymbolSolidOval_selectionDisplay,
          SymbolSolidOval_issues {
@@ -152,6 +159,29 @@ class SymbolSolidOval : SymbolObject,
   }
 
   //····················································································································
+  //   Transient property: filledBezierPath
+  //····················································································································
+
+  var filledBezierPath_property = EBTransientProperty_NSBezierPath ()
+
+  //····················································································································
+
+  var filledBezierPath_property_selection : EBSelection <NSBezierPath> {
+    return self.filledBezierPath_property.prop
+  }
+
+  //····················································································································
+
+  var filledBezierPath : NSBezierPath? {
+    switch self.filledBezierPath_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -165,6 +195,34 @@ class SymbolSolidOval : SymbolObject,
     self.height_property.undoManager = self.undoManager
   //--- Atomic property: x
     self.x_property.undoManager = self.undoManager
+  //--- Atomic property: filledBezierPath
+    self.filledBezierPath_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.x_property_selection.kind ()
+        kind &= unwSelf.y_property_selection.kind ()
+        kind &= unwSelf.width_property_selection.kind ()
+        kind &= unwSelf.height_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.x_property_selection, unwSelf.y_property_selection, unwSelf.width_property_selection, unwSelf.height_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_SymbolSolidOval_filledBezierPath (v0, v1, v2, v3))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.x_property.addEBObserver (self.filledBezierPath_property)
+    self.y_property.addEBObserver (self.filledBezierPath_property)
+    self.width_property.addEBObserver (self.filledBezierPath_property)
+    self.height_property.addEBObserver (self.filledBezierPath_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -264,6 +322,10 @@ class SymbolSolidOval : SymbolObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.x_property.removeEBObserver (self.filledBezierPath_property)
+    self.y_property.removeEBObserver (self.filledBezierPath_property)
+    self.width_property.removeEBObserver (self.filledBezierPath_property)
+    self.height_property.removeEBObserver (self.filledBezierPath_property)
     self.x_property.removeEBObserver (self.objectDisplay_property)
     self.y_property.removeEBObserver (self.objectDisplay_property)
     self.width_property.removeEBObserver (self.objectDisplay_property)
@@ -323,6 +385,14 @@ class SymbolSolidOval : SymbolObject,
       valueExplorer:&self.x_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "filledBezierPath",
+      idx:self.filledBezierPath_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.filledBezierPath_property.mObserverExplorer,
+      valueExplorer:&self.filledBezierPath_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "objectDisplay",
       idx:self.objectDisplay_property.ebObjectIndex,
@@ -692,6 +762,62 @@ class ReadOnlyArrayOf_SymbolSolidOval : ReadOnlyAbstractArrayProperty <SymbolSol
   }
 
   //····················································································································
+  //   Observers of 'filledBezierPath' transient property
+  //····················································································································
+
+  private var mObserversOf_filledBezierPath = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_filledBezierPath.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.filledBezierPath_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_filledBezierPath (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_filledBezierPath.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.filledBezierPath_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_filledBezierPath_toElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+    for managedObject in inSet {
+      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.filledBezierPath_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_filledBezierPath_fromElementsOfSet (_ inSet : Set<SymbolSolidOval>) {
+    for managedObject in inSet {
+      self.mObserversOf_filledBezierPath.apply ( {(_ observer : EBEvent) in
+        managedObject.filledBezierPath_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -937,6 +1063,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
       self.removeEBObserversOf_height_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_x_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
@@ -948,6 +1075,7 @@ class TransientArrayOf_SymbolSolidOval : ReadOnlyArrayOf_SymbolSolidOval {
       self.addEBObserversOf_height_toElementsOfSet (addedSet)
       self.addEBObserversOf_x_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
@@ -1087,6 +1215,7 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
           self.removeEBObserversOf_width_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_height_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_x_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_filledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
@@ -1106,6 +1235,7 @@ final class StoredArrayOf_SymbolSolidOval : ReadWriteArrayOf_SymbolSolidOval, EB
           self.addEBObserversOf_width_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_height_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_x_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_filledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)

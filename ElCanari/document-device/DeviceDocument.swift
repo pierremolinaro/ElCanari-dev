@@ -21,10 +21,22 @@ import Cocoa
   var mDocumentationController = ArrayController_DeviceDocument_mDocumentationController ()
 
   //····················································································································
+  //   Array controller: mSymbolDisplayController
+  //····················································································································
+
+  var mSymbolDisplayController = ArrayController_DeviceDocument_mSymbolDisplayController ()
+
+  //····················································································································
   //   Array controller: mPackageDisplayController
   //····················································································································
 
   var mPackageDisplayController = ArrayController_DeviceDocument_mPackageDisplayController ()
+
+  //····················································································································
+  //   Array controller: mSymbolController
+  //····················································································································
+
+  var mSymbolController = ArrayController_DeviceDocument_mSymbolController ()
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -124,15 +136,19 @@ import Cocoa
   //····················································································································
 
   @IBOutlet var mAddPackageFromLibraryButton : EBButton?
+  @IBOutlet var mAddSymbolFromLibraryButton : EBButton?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mAssignmentSplitView : NSSplitView?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageView : EBView?
+  @IBOutlet var mComposedSymbolView : EBView?
   @IBOutlet var mCopyImageButton : EBButton?
   @IBOutlet var mDescriptionPageView : CanariViewWithKeyView?
   @IBOutlet var mDocumentationTableView : DeviceDocumentationTableView?
   @IBOutlet var mEditSelectedPackagesButton : EBButton?
+  @IBOutlet var mEditSelectedSymbolsButton : EBButton?
   @IBOutlet var mExportSelectedPackagesButton : EBButton?
+  @IBOutlet var mExportSelectedSymbolsButton : EBButton?
   @IBOutlet var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView?
   @IBOutlet var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView?
   @IBOutlet var mInconsistentPadNameSetTextField : EBTextField?
@@ -155,6 +171,7 @@ import Cocoa
   @IBOutlet var mRemoveSelectedDocButton : EBButton?
   @IBOutlet var mRepresentationImageView : DeviceDroppableImageView?
   @IBOutlet var mResetSelectedPackageVersionButton : EBButton?
+  @IBOutlet var mResetSelectedSymbolVersionButton : EBButton?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSaveDocButton : EBButton?
   @IBOutlet var mShowDocButton : EBButton?
@@ -165,8 +182,10 @@ import Cocoa
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
+  @IBOutlet var mSymbolTableView : EBTableView?
   @IBOutlet var mTitleTextField : EBTextField?
   @IBOutlet var mUpdateSelectedPackagesButton : EBButton?
+  @IBOutlet var mUpdateSelectedSymbolsButton : EBButton?
   @IBOutlet var mVersionField : CanariVersionField?
 
   //····················································································································
@@ -179,6 +198,10 @@ import Cocoa
   var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUpdateSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mResetSelectedPackageVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
@@ -220,8 +243,12 @@ import Cocoa
     self.mPackageController.addExplorer (name: "mPackageController", y:&y, view:view)
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
+  //--- Array controller property: mSymbolDisplayController
+    self.mSymbolDisplayController.addExplorer (name: "mSymbolDisplayController", y:&y, view:view)
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.addExplorer (name: "mPackageDisplayController", y:&y, view:view)
+  //--- Array controller property: mSymbolController
+    self.mSymbolController.addExplorer (name: "mSymbolController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -268,6 +295,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddPackageFromLibraryButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddSymbolFromLibraryButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddSymbolFromLibraryButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddSymbolFromLibraryButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAssignmentPageView {
@@ -330,6 +372,21 @@ import Cocoa
         errorMessage: "the 'mComposedPackageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mComposedSymbolView {
+      if !(outlet is EBView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mComposedSymbolView' outlet is not an instance of 'EBView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mComposedSymbolView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mCopyImageButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -390,6 +447,21 @@ import Cocoa
         errorMessage: "the 'mEditSelectedPackagesButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mEditSelectedSymbolsButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mEditSelectedSymbolsButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mEditSelectedSymbolsButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mExportSelectedPackagesButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -403,6 +475,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mExportSelectedPackagesButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mExportSelectedSymbolsButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mExportSelectedSymbolsButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mExportSelectedSymbolsButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mInconsistentPackagePadNameSetsMessageScrollView {
@@ -735,6 +822,21 @@ import Cocoa
         errorMessage: "the 'mResetSelectedPackageVersionButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mResetSelectedSymbolVersionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mResetSelectedSymbolVersionButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mResetSelectedSymbolVersionButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mResetVersionButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -885,6 +987,21 @@ import Cocoa
         errorMessage: "the 'mSymbolPageView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolTableView {
+      if !(outlet is EBTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolTableView' outlet is not an instance of 'EBTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolTableView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mTitleTextField {
       if !(outlet is EBTextField) {
         presentErrorWindow (
@@ -915,6 +1032,21 @@ import Cocoa
         errorMessage: "the 'mUpdateSelectedPackagesButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mUpdateSelectedSymbolsButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUpdateSelectedSymbolsButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUpdateSelectedSymbolsButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
         presentErrorWindow (
@@ -931,11 +1063,15 @@ import Cocoa
       )
     }
   //--- Array controller property: mPackageController
-    self.mPackageController.bind_model (self.rootObject.packages_property)
+    self.mPackageController.bind_model (self.rootObject.mPackages_property)
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
+  //--- Array controller property: mSymbolDisplayController
+    self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property)
   //--- Array controller property: mPackageDisplayController
-    self.mPackageDisplayController.bind_model (self.rootObject.packages_property)
+    self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property)
+  //--- Array controller property: mSymbolController
+    self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property)
   //--- Atomic property: mStatusMessage
     self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1003,7 +1139,9 @@ import Cocoa
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
+    self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
     self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
+    self.mSymbolDisplayController.bind_ebView (self.mComposedSymbolView)
     self.mPackageDisplayController.bind_ebView (self.mComposedPackageView)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedPageIndex_property, file: #file, line: #line)
@@ -1015,6 +1153,9 @@ import Cocoa
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
     self.mRepresentationImageView?.bind_imageData (self.rootObject.representationImageData_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -1095,6 +1236,46 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
+          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mResetSelectedSymbolVersionButton
+      )
+      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mResetSelectedSymbolVersionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mEditSelectedSymbolsButton
+      )
+      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mEditSelectedSymbolsButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mExportSelectedSymbolsButton
+      )
+      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mExportSelectedSymbolsButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mSymbolController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mUpdateSelectedSymbolsButton
+      )
+      self.mSymbolController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mUpdateSelectedSymbolsButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
           return (self.mPackageController.selectedArray_property.count_property_selection > EBSelection.single (0))
         },
         outlet: self.mResetSelectedPackageVersionButton
@@ -1165,8 +1346,18 @@ import Cocoa
     self.mShowDocButton?.action = #selector (DeviceDocument.showDocAction (_:))
     self.mSaveDocButton?.target = self
     self.mSaveDocButton?.action = #selector (DeviceDocument.saveDocAction (_:))
+    self.mAddSymbolFromLibraryButton?.target = self
+    self.mAddSymbolFromLibraryButton?.action = #selector (DeviceDocument.addSymbolFromLibraryAction (_:))
     self.mAddPackageFromLibraryButton?.target = self
     self.mAddPackageFromLibraryButton?.action = #selector (DeviceDocument.addPackageFromLibraryAction (_:))
+    self.mResetSelectedSymbolVersionButton?.target = self
+    self.mResetSelectedSymbolVersionButton?.action = #selector (DeviceDocument.resetSelectedSymbolVersion (_:))
+    self.mEditSelectedSymbolsButton?.target = self
+    self.mEditSelectedSymbolsButton?.action = #selector (DeviceDocument.editSelectedSymbols (_:))
+    self.mExportSelectedSymbolsButton?.target = self
+    self.mExportSelectedSymbolsButton?.action = #selector (DeviceDocument.exportSelectedSymbols (_:))
+    self.mUpdateSelectedSymbolsButton?.target = self
+    self.mUpdateSelectedSymbolsButton?.action = #selector (DeviceDocument.updateSelectedSymbols (_:))
     self.mResetSelectedPackageVersionButton?.target = self
     self.mResetSelectedPackageVersionButton?.action = #selector (DeviceDocument.resetSelectedPackageVersion (_:))
     self.mEditSelectedPackagesButton?.target = self
@@ -1204,6 +1395,9 @@ import Cocoa
     self.mIssueTextView?.unbind_valueObserver ()
     self.mTitleTextField?.unbind_value ()
     self.mRepresentationImageView?.unbind_imageData ()
+    self.mComposedSymbolView?.unbind_horizontalFlip ()
+    self.mComposedSymbolView?.unbind_verticalFlip ()
+    self.mComposedSymbolView?.unbind_zoom ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -1233,6 +1427,14 @@ import Cocoa
     self.mController_mSaveDocButton_enabled = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
+    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
+    self.mController_mResetSelectedSymbolVersionButton_enabled = nil
+    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedSymbolsButton_enabled!)
+    self.mController_mEditSelectedSymbolsButton_enabled = nil
+    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mExportSelectedSymbolsButton_enabled!)
+    self.mController_mExportSelectedSymbolsButton_enabled = nil
+    self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedSymbolsButton_enabled!)
+    self.mController_mUpdateSelectedSymbolsButton_enabled = nil
     self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedPackageVersionButton_enabled!)
     self.mController_mResetSelectedPackageVersionButton_enabled = nil
     self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedPackagesButton_enabled!)
@@ -1247,14 +1449,20 @@ import Cocoa
     self.mController_mAssignmentSplitView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
+    self.mSymbolController.unbind_tableView (self.mSymbolTableView)
     self.mPackageController.unbind_tableView (self.mPackageTableView)
+    self.mSymbolDisplayController.unbind_ebView (self.mComposedSymbolView)
     self.mPackageDisplayController.unbind_ebView (self.mComposedPackageView)
   //--- Array controller property: mPackageController
     self.mPackageController.unbind_model ()
   //--- Array controller property: mDocumentationController
     self.mDocumentationController.unbind_model ()
+  //--- Array controller property: mSymbolDisplayController
+    self.mSymbolDisplayController.unbind_model ()
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.unbind_model ()
+  //--- Array controller property: mSymbolController
+    self.mSymbolController.unbind_model ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
@@ -1265,7 +1473,12 @@ import Cocoa
     self.mRemoveSelectedDocButton?.target = nil
     self.mShowDocButton?.target = nil
     self.mSaveDocButton?.target = nil
+    self.mAddSymbolFromLibraryButton?.target = nil
     self.mAddPackageFromLibraryButton?.target = nil
+    self.mResetSelectedSymbolVersionButton?.target = nil
+    self.mEditSelectedSymbolsButton?.target = nil
+    self.mExportSelectedSymbolsButton?.target = nil
+    self.mUpdateSelectedSymbolsButton?.target = nil
     self.mResetSelectedPackageVersionButton?.target = nil
     self.mEditSelectedPackagesButton?.target = nil
     self.mExportSelectedPackagesButton?.target = nil
@@ -1273,15 +1486,19 @@ import Cocoa
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
+    self.mAddSymbolFromLibraryButton?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
+    self.mComposedSymbolView?.ebCleanUp ()
     self.mCopyImageButton?.ebCleanUp ()
     self.mDescriptionPageView?.ebCleanUp ()
     self.mDocumentationTableView?.ebCleanUp ()
     self.mEditSelectedPackagesButton?.ebCleanUp ()
+    self.mEditSelectedSymbolsButton?.ebCleanUp ()
     self.mExportSelectedPackagesButton?.ebCleanUp ()
+    self.mExportSelectedSymbolsButton?.ebCleanUp ()
     self.mInconsistentPackagePadNameSetsMessageScrollView?.ebCleanUp ()
     self.mInconsistentPackagePadNameSetsMessageTextView?.ebCleanUp ()
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
@@ -1304,6 +1521,7 @@ import Cocoa
     self.mRemoveSelectedDocButton?.ebCleanUp ()
     self.mRepresentationImageView?.ebCleanUp ()
     self.mResetSelectedPackageVersionButton?.ebCleanUp ()
+    self.mResetSelectedSymbolVersionButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
@@ -1314,8 +1532,10 @@ import Cocoa
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
+    self.mSymbolTableView?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
     self.mUpdateSelectedPackagesButton?.ebCleanUp ()
+    self.mUpdateSelectedSymbolsButton?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
   }
 
