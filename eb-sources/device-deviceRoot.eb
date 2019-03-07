@@ -38,11 +38,14 @@ graphic entity DeviceRoot {
   property @signature Bool mShowPackageBackPads default yes ;
   
 #--- Symbols
-  toMany @signature SymbolTypeInDevice mSymbolTypes ;
+  toMany @signature SymbolTypeInDevice mSymbolTypes inverse toOne mRoot ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
+
   property @signature Int mSymbolDisplayZoom default 100 ;
   property @signature Bool mSymbolDisplayHorizontalFlip default no ;
   property @signature Bool mSymbolDisplayVerticalFlip default no ;
+  
+  transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -168,6 +171,7 @@ entity SlavePadInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
+  toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
 
   property @signature String mTypeName default "" ;
@@ -206,6 +210,7 @@ graphic entity SymbolInstanceInDevice {
      self.mType.one.mFilledBezierPath,
      self.mType.one.mTypeName,
      self.mInstanceName,
+     prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
 }

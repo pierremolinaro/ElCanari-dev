@@ -2851,13 +2851,9 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.slaves_property.remove (unwrappedOwner)
-        }
+        oldValue?.slaves_property.remove (unwrappedOwner)
       //--- Set new opposite relation ship
-        if let unwrappedValue = self.mValue {
-          unwrappedValue.slaves_property.add (unwrappedOwner)
-        }
+        self.mValue?.slaves_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.annularRing_property.removeEBObserversFrom (&self.mObserversOf_annularRing)
         oldValue?.annularRingUnit_property.removeEBObserversFrom (&self.mObserversOf_annularRingUnit)
@@ -2937,12 +2933,6 @@ final class ToOneRelationship_PackageSlavePad_master : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : PackagePad) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: annularRing

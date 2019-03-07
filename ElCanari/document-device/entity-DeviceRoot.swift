@@ -114,6 +114,12 @@ protocol DeviceRoot_packagePadNameSetsAreConsistent : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_symbolTypeNames : class {
+  var symbolTypeNames : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -141,6 +147,7 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_imageIsValid,
          DeviceRoot_inconsistentPackagePadNameSetsMessage,
          DeviceRoot_packagePadNameSetsAreConsistent,
+         DeviceRoot_symbolTypeNames,
          DeviceRoot_issues {
 
   //····················································································································
@@ -606,6 +613,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: symbolTypeNames
+  //····················································································································
+
+  var symbolTypeNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var symbolTypeNames_property_selection : EBSelection <StringArray> {
+    return self.symbolTypeNames_property.prop
+  }
+
+  //····················································································································
+
+  var symbolTypeNames : StringArray? {
+    switch self.symbolTypeNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -671,8 +701,11 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
-  //--- To many property: mSymbolTypes (no option)
+  //--- To many property: mSymbolTypes (has opposite relationship)
     self.mSymbolTypes_property.undoManager = self.undoManager
+    self.mSymbolTypes_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolTypeInDevice?) in
+      inManagedObject?.mRoot_property.setProp (self)
+    }
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
   //--- Atomic property: imageIsValid
@@ -743,6 +776,28 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+  //--- Atomic property: symbolTypeNames
+    self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbolTypes_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbolTypes_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_symbolTypeNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.symbolTypeNames_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -771,6 +826,9 @@ class DeviceRoot : EBGraphicManagedObject,
     self.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
+      inManagedObject?.mRoot_property.setProp (self)
+    }
+    self.mSymbolTypes_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolTypeInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
   //--- register properties for handling signature
@@ -802,6 +860,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+    self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
     self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.issues_property)
@@ -962,6 +1021,14 @@ class DeviceRoot : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
       valueExplorer:&self.packagePadNameSetsAreConsistent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolTypeNames",
+      idx:self.symbolTypeNames_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolTypeNames_property.mObserverExplorer,
+      valueExplorer:&self.symbolTypeNames_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
@@ -2305,6 +2372,62 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'symbolTypeNames' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolTypeNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolTypeNames.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolTypeNames_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolTypeNames.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolTypeNames_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolTypeNames_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolTypeNames.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolTypeNames_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolTypeNames_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolTypeNames.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolTypeNames_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -2452,6 +2575,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -2475,6 +2599,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
       self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedSet)
       self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -2637,6 +2762,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -2679,6 +2805,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

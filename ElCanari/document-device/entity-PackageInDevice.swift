@@ -2046,13 +2046,9 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.mPackages_property.remove (unwrappedOwner)
-        }
+        oldValue?.mPackages_property.remove (unwrappedOwner)
       //--- Set new opposite relation ship
-        if let unwrappedValue = self.mValue {
-          unwrappedValue.mPackages_property.add (unwrappedOwner)
-        }
+        self.mValue?.mPackages_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
         oldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid)
@@ -2072,6 +2068,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.prefix_property.removeEBObserversFrom (&self.mObserversOf_prefix)
         oldValue?.representationImageData_property.removeEBObserversFrom (&self.mObserversOf_representationImageData)
         oldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
@@ -2092,6 +2089,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.prefix_property.addEBObserversFrom (&self.mObserversOf_prefix)
         self.mValue?.representationImageData_property.addEBObserversFrom (&self.mObserversOf_representationImageData)
         self.mValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
        //--- Notify observers
         self.postEvent ()
@@ -2120,12 +2118,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : DeviceRoot) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: comments
@@ -2862,6 +2854,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_selectedPageIndex.remove (inObserver)
     if let object = self.propval {
       object.selectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolTypeNames
+  //····················································································································
+
+  private var mObserversOf_symbolTypeNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolTypeNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.symbolTypeNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeNames.insert (inObserver)
+    if let object = self.propval {
+      object.symbolTypeNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeNames.remove (inObserver)
+    if let object = self.propval {
+      object.symbolTypeNames_property.removeEBObserver (inObserver)
     }
   }
 

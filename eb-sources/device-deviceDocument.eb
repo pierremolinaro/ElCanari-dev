@@ -80,6 +80,11 @@ document DeviceDocument root DeviceRoot {
     $zoom root.mPackageDisplayZoom
   ;
 
+  outlet AddSymbolInstancePullDownButton mAddSymbolInstancePullDownButton
+    $enabled root.mSymbolTypes.count > 0
+    $symbolTypeNames root.symbolTypeNames
+  ;
+
 #-------------------------- Page : Packages
   action addPackageFromLibraryAction ;
   outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;

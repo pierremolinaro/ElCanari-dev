@@ -3626,12 +3626,6 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : ArtworkRoot) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: comments

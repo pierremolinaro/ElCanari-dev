@@ -34,7 +34,7 @@ import Cocoa
   //  $valueObserver binding
   //····················································································································
 
-  private var mValueController : Controller_EBDoubleObserverField_valueObserver?
+  private var mValueController : Controller_EBDoubleObserverField_valueObserver? = nil
   private var mSendContinously : Bool = false
 
   func bind_valueObserver (_ object:EBReadOnlyProperty_Double, file:String, line:Int, autoFormatter:Bool) {

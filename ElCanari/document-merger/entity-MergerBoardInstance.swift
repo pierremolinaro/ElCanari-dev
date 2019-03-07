@@ -1492,13 +1492,9 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.myInstances_property.remove (unwrappedOwner)
-        }
+        oldValue?.myInstances_property.remove (unwrappedOwner)
       //--- Set new opposite relation ship
-        if let unwrappedValue = self.mValue {
-          unwrappedValue.myInstances_property.add (unwrappedOwner)
-        }
+        self.mValue?.myInstances_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.artworkName_property.removeEBObserversFrom (&self.mObserversOf_artworkName)
         oldValue?.backComponentNameSegments_property.removeEBObserversFrom (&self.mObserversOf_backComponentNameSegments)
@@ -1632,12 +1628,6 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : BoardModel) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: artworkName
@@ -3820,13 +3810,9 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.boardInstances_property.remove (unwrappedOwner)
-        }
+        oldValue?.boardInstances_property.remove (unwrappedOwner)
       //--- Set new opposite relation ship
-        if let unwrappedValue = self.mValue {
-          unwrappedValue.boardInstances_property.add (unwrappedOwner)
-        }
+        self.mValue?.boardInstances_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.arrowMagnitude_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitude)
         oldValue?.arrowMagnitudeUnit_property.removeEBObserversFrom (&self.mObserversOf_arrowMagnitudeUnit)
@@ -3908,12 +3894,6 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : MergerRoot) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: arrowMagnitude

@@ -42,7 +42,9 @@ let PMDevicePackages = "PMDevicePackages"
 
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
-  //--- Set pages segmented control
+  //--- TEMPORARY
+//    self.rootObject.packages_property.setProp ([])
+ //   self.rootObject.mSymbolTypes_property.setProp ([])  //--- Set pages segmented control
     let pages = [
       self.mDescriptionPageView,
       self.mSymbolPageView,
@@ -54,69 +56,31 @@ let PMDevicePackages = "PMDevicePackages"
     self.mPageSegmentedControl?.register (masterView: self.mMasterView, pages)
   //---
     self.mDocumentationTableView?.registerDraggedTypesAnd (document: self)
-  //--- TEMPORARY
-//    self.rootObject.packages_property.setProp ([])
- //   self.rootObject.mSymbolTypes_property.setProp ([])
   //---
     self.mInconsistentPackagePadNameSetsMessageTextView?.font = .systemFont (ofSize: 12.0)
     self.mInconsistentPackagePadNameSetsMessageTextView?.textColor = .red
-  }
-
-  //····················································································································
-  //    Drag and drop destination
-  //····················································································································
-
-  override func draggingEntered (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> NSDragOperation {
-    return .copy
+  //---
+    self.mAddSymbolInstancePullDownButton?.register (document: self)
   }
 
   //····················································································································
 
-  override func prepareForDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
-    return true
+  func addSymbolInstance (named inSymbolTypeName : String ) {
+  //--- Find symbol type
+    var possibleSymbolType : SymbolTypeInDevice? = nil
+    for candidateSymbolType in self.rootObject.mSymbolTypes_property.propval {
+      if candidateSymbolType.mTypeName == inSymbolTypeName {
+        possibleSymbolType = candidateSymbolType
+        break
+      }
+    }
+  //--- Add instance
+    if let symbolType = possibleSymbolType {
+      let newSymbolInstance = SymbolInstanceInDevice (self.ebUndoManager, file: #file, #line)
+      newSymbolInstance.mType_property.setProp (symbolType)
+      self.rootObject.mSymbolInstances_property.add (newSymbolInstance)
+    }
   }
-
-  //····················································································································
-
-  override func performDragOperation (_ sender: NSDraggingInfo, _ destinationScrollView : NSScrollView) -> Bool {
-    let ok = false
-//    if let documentView = destinationScrollView.documentView {
-//      let pointInWindow = sender.draggingLocation
-//      let pointInDestinationView = documentView.convert (pointInWindow, from:nil).aligned (onGrid: SYMBOL_GRID_IN_COCOA_UNIT)
-//      let pasteboard = sender.draggingPasteboard
-//      if pasteboard.availableType (from: [symbolPasteboardType]) != nil {
-//        if let dataDictionary = pasteboard.propertyList (forType: symbolPasteboardType) as? NSDictionary,
-//           let dictionaryArray = dataDictionary ["OBJECTS"] as? [NSDictionary],
-//           let X = dataDictionary ["X"] as? Int,
-//           let Y = dataDictionary ["Y"] as? Int {
-//          for dictionary in dictionaryArray {
-//            if let newObject = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
-//              newObject.translate (
-//                xBy: cocoaToCanariUnit (pointInDestinationView.x) - X,
-//                yBy: cocoaToCanariUnit (pointInDestinationView.y) - Y
-//              )
-//              self.rootObject.symbolObjects_property.add (newObject)
-//              self.mSymbolObjectsController.select (object: newObject)
-//            }
-//          }
-//          ok = true
-//        }
-//      }
-//    }
-    return ok
-  }
-
-  //····················································································································
-  //   removeWindowController
-  //····················································································································
-
-  override func removeUserInterface () {
-    super.removeUserInterface ()
-//    g_Preferences?.symbolColor_property.removeEBObserver (self.mSymbolColorObserver)
-  }
-
-  //····················································································································
-
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="mAddPackageFromLibraryButton" destination="1084" id="10r-pn-HTc"/>
                 <outlet property="mAddSymbolFromLibraryButton" destination="1070" id="e3A-3Y-V9r"/>
+                <outlet property="mAddSymbolInstancePullDownButton" destination="1955" id="Jj3-r2-9nX"/>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
                 <outlet property="mAssignmentSplitView" destination="1092" id="4nO-3M-K1f"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
@@ -360,21 +361,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <popUpButton imageHugsTitle="YES" id="1955">
-                    <rect key="frame" x="111" y="331" width="132" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="square" title="Imported Library" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="1957">
-                            <items>
-                                <menuItem title="Imported Library" state="on" hidden="YES" id="1960"/>
-                                <menuItem title="Item 2" id="1959"/>
-                                <menuItem title="Item 3" id="1958"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" imageHugsTitle="YES" id="1070" customClass="EBButton">
                     <rect key="frame" x="111" y="358" width="132" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -430,6 +416,21 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="1955" customClass="AddSymbolInstancePullDownButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="111" y="334" width="132" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Imported Library" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="1957">
+                            <items>
+                                <menuItem title="Imported Library" state="on" hidden="YES" id="1960"/>
+                                <menuItem title="Item 2" id="1959"/>
+                                <menuItem title="Item 3" id="1958"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="1069" id="1209"/>

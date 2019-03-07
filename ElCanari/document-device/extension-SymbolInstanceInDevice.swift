@@ -29,16 +29,19 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-//  override func operationAfterRemoving () {
-//    super.operationAfterRemoving ()
-//    for pad in self.mMasterPads_property.propval {
-//      pad.cleanUpRelationshipsAndRemoveAllObservers ()
-//    }
-//    for pad in self.mSlavePads_property.propval {
-//      pad.cleanUpRelationshipsAndRemoveAllObservers ()
-//    }
-//    self.cleanUpRelationshipsAndRemoveAllObservers ()
-//  }
+  override func operationAfterRemoving () {
+    super.operationAfterRemoving ()
+    if let symbolType = self.mType_property.propval {
+    //--- Unlink to symbol type
+      self.mType_property.setProp (nil)
+    //--- If symbol instance it the last one, remove also symbol type
+      if symbolType.mInstances_property.propval.count == 0 {
+        symbolType.mRoot_property.setProp (nil)
+        symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
+      }
+    }
+    self.cleanUpRelationshipsAndRemoveAllObservers ()
+  }
 
   //····················································································································
 

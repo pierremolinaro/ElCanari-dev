@@ -3564,12 +3564,6 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : PackageZone) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: height

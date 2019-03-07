@@ -187,6 +187,18 @@ class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   To one property: mRoot
+  //····················································································································
+
+  var mRoot_property = ToOneRelationship_SymbolTypeInDevice_mRoot ()
+
+  //····················································································································
+
+  var mRoot_property_selection : EBSelection <Bool> {
+    return .single (self.mRoot_property.propval == nil)
+  }
+
+  //····················································································································
   //   Transient property: versionString
   //····················································································································
 
@@ -253,6 +265,8 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.undoManager = self.undoManager
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.undoManager = self.undoManager
+  //--- To one property: mRoot
+    self.mRoot_property.owner = self
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -395,6 +409,13 @@ class SymbolTypeInDevice : EBManagedObject,
       valueExplorer:&mInstances_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mRoot",
+      idx:self.mRoot_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mRoot_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -420,6 +441,9 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
+  //--- To one property: mRoot
+    self.mRoot_property.mObserverExplorer = nil
+    self.mRoot_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -439,6 +463,7 @@ class SymbolTypeInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mRoot_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -480,6 +505,17 @@ class SymbolTypeInDevice : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SymbolInstanceInDevice])
+  //--- To one property: mRoot
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mRoot",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? DeviceRoot {
+        self.mRoot_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -508,6 +544,10 @@ class SymbolTypeInDevice : EBManagedObject,
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
     for managedObject : EBManagedObject in self.mInstances_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mRoot
+    if let managedObject = self.mRoot_property.propval {
       objects.append (managedObject)
     }
   }
@@ -1306,6 +1346,948 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mRoot
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SymbolTypeInDevice? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : DeviceRoot? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mSymbolTypes_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mSymbolTypes_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
+        oldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid)
+        oldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
+        oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
+        oldValue?.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
+        oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
+        oldValue?.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        oldValue?.mShowPackageBackPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
+        oldValue?.mShowPackageFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
+        oldValue?.mShowPackagePadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
+        oldValue?.mShowPackages_property.removeEBObserversFrom (&self.mObserversOf_mShowPackages)
+        oldValue?.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
+        oldValue?.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
+        oldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
+        oldValue?.prefix_property.removeEBObserversFrom (&self.mObserversOf_prefix)
+        oldValue?.representationImageData_property.removeEBObserversFrom (&self.mObserversOf_representationImageData)
+        oldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
+        oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
+      //--- Add property observers to new object
+        self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
+        self.mValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid)
+        self.mValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
+        self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
+        self.mValue?.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
+        self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
+        self.mValue?.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        self.mValue?.mShowPackageBackPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
+        self.mValue?.mShowPackageFrontPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
+        self.mValue?.mShowPackagePadNumbers_property.addEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
+        self.mValue?.mShowPackages_property.addEBObserversFrom (&self.mObserversOf_mShowPackages)
+        self.mValue?.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
+        self.mValue?.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
+        self.mValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
+        self.mValue?.prefix_property.addEBObserversFrom (&self.mObserversOf_prefix)
+        self.mValue?.representationImageData_property.addEBObserversFrom (&self.mObserversOf_representationImageData)
+        self.mValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
+        self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : DeviceRoot? { return self.mValue }
+
+  var prop : EBSelection <DeviceRoot?> { return .single (self.mValue) }
+
+  func setProp (_ value : DeviceRoot?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : DeviceRoot?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : DeviceRoot) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: comments
+  //····················································································································
+
+  private var mObserversOf_comments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var comments_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.comments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.mObserversOf_comments.insert (inObserver)
+    if let object = self.propval {
+      object.comments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
+    self.mObserversOf_comments.remove (inObserver)
+    if let object = self.propval {
+      object.comments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: imageIsValid
+  //····················································································································
+
+  private var mObserversOf_imageIsValid = EBWeakEventSet ()
+
+  //····················································································································
+
+  var imageIsValid_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.imageIsValid_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.mObserversOf_imageIsValid.insert (inObserver)
+    if let object = self.propval {
+      object.imageIsValid_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.mObserversOf_imageIsValid.remove (inObserver)
+    if let object = self.propval {
+      object.imageIsValid_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: inconsistentPackagePadNameSetsMessage
+  //····················································································································
+
+  private var mObserversOf_inconsistentPackagePadNameSetsMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var inconsistentPackagePadNameSetsMessage_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.inconsistentPackagePadNameSetsMessage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.insert (inObserver)
+    if let object = self.propval {
+      object.inconsistentPackagePadNameSetsMessage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inconsistentPackagePadNameSetsMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentPackagePadNameSetsMessage.remove (inObserver)
+    if let object = self.propval {
+      object.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: issues
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray?> {
+    if let model = self.propval {
+      switch (model.issues_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.insert (inObserver)
+    if let object = self.propval {
+      object.issues_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.mObserversOf_issues.remove (inObserver)
+    if let object = self.propval {
+      object.issues_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPackageDisplayHorizontalFlip
+  //····················································································································
+
+  private var mObserversOf_mPackageDisplayHorizontalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPackageDisplayHorizontalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mPackageDisplayHorizontalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayHorizontalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayHorizontalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPackageDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayHorizontalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayHorizontalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPackageDisplayVerticalFlip
+  //····················································································································
+
+  private var mObserversOf_mPackageDisplayVerticalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPackageDisplayVerticalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mPackageDisplayVerticalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayVerticalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayVerticalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPackageDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayVerticalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayVerticalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPackageDisplayZoom
+  //····················································································································
+
+  private var mObserversOf_mPackageDisplayZoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPackageDisplayZoom_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mPackageDisplayZoom_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayZoom.insert (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayZoom_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPackageDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mPackageDisplayZoom.remove (inObserver)
+    if let object = self.propval {
+      object.mPackageDisplayZoom_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mShowPackageBackPads
+  //····················································································································
+
+  private var mObserversOf_mShowPackageBackPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mShowPackageBackPads_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mShowPackageBackPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackageBackPads.insert (inObserver)
+    if let object = self.propval {
+      object.mShowPackageBackPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackageBackPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackageBackPads.remove (inObserver)
+    if let object = self.propval {
+      object.mShowPackageBackPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mShowPackageFrontPads
+  //····················································································································
+
+  private var mObserversOf_mShowPackageFrontPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mShowPackageFrontPads_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mShowPackageFrontPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackageFrontPads.insert (inObserver)
+    if let object = self.propval {
+      object.mShowPackageFrontPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackageFrontPads (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackageFrontPads.remove (inObserver)
+    if let object = self.propval {
+      object.mShowPackageFrontPads_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mShowPackagePadNumbers
+  //····················································································································
+
+  private var mObserversOf_mShowPackagePadNumbers = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mShowPackagePadNumbers_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mShowPackagePadNumbers_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackagePadNumbers.insert (inObserver)
+    if let object = self.propval {
+      object.mShowPackagePadNumbers_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackagePadNumbers (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackagePadNumbers.remove (inObserver)
+    if let object = self.propval {
+      object.mShowPackagePadNumbers_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mShowPackages
+  //····················································································································
+
+  private var mObserversOf_mShowPackages = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mShowPackages_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mShowPackages_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackages.insert (inObserver)
+    if let object = self.propval {
+      object.mShowPackages_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mShowPackages (_ inObserver : EBEvent) {
+    self.mObserversOf_mShowPackages.remove (inObserver)
+    if let object = self.propval {
+      object.mShowPackages_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayHorizontalFlip
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayHorizontalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayHorizontalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayHorizontalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayHorizontalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayHorizontalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayHorizontalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayHorizontalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayHorizontalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayVerticalFlip
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayVerticalFlip = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayVerticalFlip_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayVerticalFlip_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayVerticalFlip.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayVerticalFlip_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayVerticalFlip (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayVerticalFlip.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayVerticalFlip_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mSymbolDisplayZoom
+  //····················································································································
+
+  private var mObserversOf_mSymbolDisplayZoom = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mSymbolDisplayZoom_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mSymbolDisplayZoom_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayZoom.insert (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayZoom_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mSymbolDisplayZoom (_ inObserver : EBEvent) {
+    self.mObserversOf_mSymbolDisplayZoom.remove (inObserver)
+    if let object = self.propval {
+      object.mSymbolDisplayZoom_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: packagePadNameSetsAreConsistent
+  //····················································································································
+
+  private var mObserversOf_packagePadNameSetsAreConsistent = EBWeakEventSet ()
+
+  //····················································································································
+
+  var packagePadNameSetsAreConsistent_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.packagePadNameSetsAreConsistent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_packagePadNameSetsAreConsistent.insert (inObserver)
+    if let object = self.propval {
+      object.packagePadNameSetsAreConsistent_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_packagePadNameSetsAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
+    if let object = self.propval {
+      object.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: prefix
+  //····················································································································
+
+  private var mObserversOf_prefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  var prefix_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.prefix_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_prefix (_ inObserver : EBEvent) {
+    self.mObserversOf_prefix.insert (inObserver)
+    if let object = self.propval {
+      object.prefix_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_prefix (_ inObserver : EBEvent) {
+    self.mObserversOf_prefix.remove (inObserver)
+    if let object = self.propval {
+      object.prefix_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: representationImageData
+  //····················································································································
+
+  private var mObserversOf_representationImageData = EBWeakEventSet ()
+
+  //····················································································································
+
+  var representationImageData_property_selection : EBSelection <Data?> {
+    if let model = self.propval {
+      switch (model.representationImageData_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_representationImageData (_ inObserver : EBEvent) {
+    self.mObserversOf_representationImageData.insert (inObserver)
+    if let object = self.propval {
+      object.representationImageData_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_representationImageData (_ inObserver : EBEvent) {
+    self.mObserversOf_representationImageData.remove (inObserver)
+    if let object = self.propval {
+      object.representationImageData_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectedPageIndex
+  //····················································································································
+
+  private var mObserversOf_selectedPageIndex = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectedPageIndex_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.selectedPageIndex_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_selectedPageIndex.insert (inObserver)
+    if let object = self.propval {
+      object.selectedPageIndex_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectedPageIndex (_ inObserver : EBEvent) {
+    self.mObserversOf_selectedPageIndex.remove (inObserver)
+    if let object = self.propval {
+      object.selectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolTypeNames
+  //····················································································································
+
+  private var mObserversOf_symbolTypeNames = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolTypeNames_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.symbolTypeNames_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeNames.insert (inObserver)
+    if let object = self.propval {
+      object.symbolTypeNames_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolTypeNames (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeNames.remove (inObserver)
+    if let object = self.propval {
+      object.symbolTypeNames_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: title
+  //····················································································································
+
+  private var mObserversOf_title = EBWeakEventSet ()
+
+  //····················································································································
+
+  var title_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.title_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_title (_ inObserver : EBEvent) {
+    self.mObserversOf_title.insert (inObserver)
+    if let object = self.propval {
+      object.title_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
+    self.mObserversOf_title.remove (inObserver)
+    if let object = self.propval {
+      object.title_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -183,6 +183,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
         kind &= unwSelf.mType_property.mTypeName_property_selection.kind ()
         kind &= unwSelf.mInstanceName_property_selection.kind ()
+        kind &= g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
         switch kind {
@@ -191,9 +192,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.mTypeName_property_selection, unwSelf.mInstanceName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.mTypeName_property_selection, unwSelf.mInstanceName_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6)) :
+            return .single (transient_SymbolInstanceInDevice_selectionDisplay (v0, v1, v2, v3, v4, v5, v6))
           default :
             return .empty
           }
@@ -206,6 +207,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.addEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
     self.mType_property.addEBObserverOf_mTypeName (self.selectionDisplay_property)
     self.mInstanceName_property.addEBObserver (self.selectionDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
   //--- Install undoers and opposite setter for relationships
@@ -232,6 +234,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.selectionDisplay_property)
     self.mType_property.removeEBObserverOf_mTypeName (self.selectionDisplay_property)
     self.mInstanceName_property.removeEBObserver (self.selectionDisplay_property)
+    g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
   }
@@ -1113,13 +1116,9 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
         }
       //--- Reset old opposite relation ship
-        if let unwrappedOldValue = oldValue {
-          unwrappedOldValue.mInstances_property.remove (unwrappedOwner)
-        }
+        oldValue?.mInstances_property.remove (unwrappedOwner)
       //--- Set new opposite relation ship
-        if let unwrappedValue = self.mValue {
-          unwrappedValue.mInstances_property.add (unwrappedOwner)
-        }
+        self.mValue?.mInstances_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.instanceCount_property.removeEBObserversFrom (&self.mObserversOf_instanceCount)
         oldValue?.mFileData_property.removeEBObserversFrom (&self.mObserversOf_mFileData)
@@ -1163,12 +1162,6 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
       self.mValue = nil
     }
   }
-  
-  //····················································································································
-
-//  func add (_ object : SymbolTypeInDevice) {
- //   self.mValue = object
-//  }
 
   //····················································································································
   //   Observable property: instanceCount

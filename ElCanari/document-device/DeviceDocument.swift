@@ -137,6 +137,7 @@ import Cocoa
 
   @IBOutlet var mAddPackageFromLibraryButton : EBButton?
   @IBOutlet var mAddSymbolFromLibraryButton : EBButton?
+  @IBOutlet var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mAssignmentSplitView : NSSplitView?
   @IBOutlet var mCommentTextView : EBTextView?
@@ -197,6 +198,7 @@ import Cocoa
   var mController_mRemoveSelectedDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
@@ -310,6 +312,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAddSymbolFromLibraryButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mAddSymbolInstancePullDownButton {
+      if !(outlet is AddSymbolInstancePullDownButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAddSymbolInstancePullDownButton' outlet is not an instance of 'AddSymbolInstancePullDownButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAddSymbolInstancePullDownButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mAssignmentPageView {
@@ -1156,6 +1173,7 @@ import Cocoa
     self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
+    self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -1222,6 +1240,16 @@ import Cocoa
       )
       self.mDocumentationController.selectedArray_property.count_property.addEBObserver (controller)
       self.mController_mSaveDocButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mAddSymbolInstancePullDownButton
+      )
+      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
+      self.mController_mAddSymbolInstancePullDownButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1398,6 +1426,7 @@ import Cocoa
     self.mComposedSymbolView?.unbind_horizontalFlip ()
     self.mComposedSymbolView?.unbind_verticalFlip ()
     self.mComposedSymbolView?.unbind_zoom ()
+    self.mAddSymbolInstancePullDownButton?.unbind_symbolTypeNames ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -1425,6 +1454,8 @@ import Cocoa
     self.mController_mShowDocButton_enabled = nil
     self.mDocumentationController.selectedArray_property.count_property.removeEBObserver (self.mController_mSaveDocButton_enabled!)
     self.mController_mSaveDocButton_enabled = nil
+    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mAddSymbolInstancePullDownButton_enabled!)
+    self.mController_mAddSymbolInstancePullDownButton_enabled = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
     self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
@@ -1487,6 +1518,7 @@ import Cocoa
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAddSymbolFromLibraryButton?.ebCleanUp ()
+    self.mAddSymbolInstancePullDownButton?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
