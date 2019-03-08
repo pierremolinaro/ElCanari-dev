@@ -206,8 +206,8 @@
 		CF3438BF21DE9A4500D7090B /* enum-SlavePadStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3438BD21DE9A4500D7090B /* enum-SlavePadStyle.swift */; };
 		CF34A0AF2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
 		CF34A0B02200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */; };
-		CF358EEC22296F5100EDE173 /* DeviceDocument-extension-add-package.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF358EEB22296F5100EDE173 /* DeviceDocument-extension-add-package.swift */; };
-		CF358EED22296F5100EDE173 /* DeviceDocument-extension-add-package.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF358EEB22296F5100EDE173 /* DeviceDocument-extension-add-package.swift */; };
+		CF358EEC22296F5100EDE173 /* DeviceDocument-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF358EEB22296F5100EDE173 /* DeviceDocument-extension.swift */; };
+		CF358EED22296F5100EDE173 /* DeviceDocument-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF358EEB22296F5100EDE173 /* DeviceDocument-extension.swift */; };
 		CF35A54621A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54721A825BC00A0E500 /* extension-NSBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */; };
 		CF35A54821A825BC00A0E500 /* extension-CGPoint-NSPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */; };
@@ -1196,8 +1196,6 @@
 		CFEAAD47223175CE00F69A12 /* entity-SymbolTypeInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD45223175CE00F69A12 /* entity-SymbolTypeInDevice.swift */; };
 		CFEAAD492231767100F69A12 /* action-DeviceDocument-addSymbolFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD482231767100F69A12 /* action-DeviceDocument-addSymbolFromLibraryAction.swift */; };
 		CFEAAD4A2231767100F69A12 /* action-DeviceDocument-addSymbolFromLibraryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD482231767100F69A12 /* action-DeviceDocument-addSymbolFromLibraryAction.swift */; };
-		CFEAAD4C2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD4B2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift */; };
-		CFEAAD4D2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD4B2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift */; };
 		CFEAAD4F2231788D00F69A12 /* extension-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD4E2231788D00F69A12 /* extension-SymbolRoot.swift */; };
 		CFEAAD502231788D00F69A12 /* extension-SymbolRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD4E2231788D00F69A12 /* extension-SymbolRoot.swift */; };
 		CFEAAD522231798600F69A12 /* transient-SymbolPin-filledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEAAD512231798600F69A12 /* transient-SymbolPin-filledBezierPath.swift */; };
@@ -1421,7 +1419,7 @@
 		CF3395591B4AC885009C561B /* CanariSignatureField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanariSignatureField.swift; sourceTree = "<group>"; };
 		CF3438BD21DE9A4500D7090B /* enum-SlavePadStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-SlavePadStyle.swift"; sourceTree = "<group>"; };
 		CF34A0AE2200D09100DEA8EF /* CanariLibraryEntry-show-upload-window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CanariLibraryEntry-show-upload-window.swift"; sourceTree = "<group>"; };
-		CF358EEB22296F5100EDE173 /* DeviceDocument-extension-add-package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceDocument-extension-add-package.swift"; sourceTree = "<group>"; };
+		CF358EEB22296F5100EDE173 /* DeviceDocument-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceDocument-extension.swift"; sourceTree = "<group>"; };
 		CF35A54221A825BC00A0E500 /* extension-NSBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-NSBezierPath.swift"; sourceTree = "<group>"; };
 		CF35A54321A825BC00A0E500 /* extension-CGPoint-NSPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGPoint-NSPoint.swift"; sourceTree = "<group>"; };
 		CF35A54421A825BC00A0E500 /* extension-CGRect-NSRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-CGRect-NSRect.swift"; sourceTree = "<group>"; };
@@ -1892,7 +1890,6 @@
 		CFE9B7E721A81533005990D1 /* transient-SymbolRoot-issues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolRoot-issues.swift"; sourceTree = "<group>"; };
 		CFEAAD45223175CE00F69A12 /* entity-SymbolTypeInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SymbolTypeInDevice.swift"; sourceTree = "<group>"; };
 		CFEAAD482231767100F69A12 /* action-DeviceDocument-addSymbolFromLibraryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-addSymbolFromLibraryAction.swift"; sourceTree = "<group>"; };
-		CFEAAD4B2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceDocument-extension-add-symbol.swift"; sourceTree = "<group>"; };
 		CFEAAD4E2231788D00F69A12 /* extension-SymbolRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SymbolRoot.swift"; sourceTree = "<group>"; };
 		CFEAAD512231798600F69A12 /* transient-SymbolPin-filledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolPin-filledBezierPath.swift"; sourceTree = "<group>"; };
 		CFEAAD5422317AB700F69A12 /* transient-SymbolSolidRect-filledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolSolidRect-filledBezierPath.swift"; sourceTree = "<group>"; };
@@ -2555,8 +2552,7 @@
 				CFEAAD642231807A00F69A12 /* arrayController-DeviceDocument-mSymbolController.swift */,
 				CF8A099F2231969300A17B92 /* arrayController-DeviceDocument-mSymbolDisplayController.swift */,
 				CF85624B21E7CB560032F52D /* DeviceDocument-customized.swift */,
-				CF358EEB22296F5100EDE173 /* DeviceDocument-extension-add-package.swift */,
-				CFEAAD4B2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift */,
+				CF358EEB22296F5100EDE173 /* DeviceDocument-extension.swift */,
 				CF85624C21E7CB570032F52D /* DeviceDocument.swift */,
 				CF85624D21E7CB570032F52D /* DeviceDocument.xib */,
 				CFF5EF02222695F9006BFE57 /* entity-DeviceDocumentation.swift */,
@@ -3315,12 +3311,11 @@
 				CF0AE89621E0F6CB00BE7EE2 /* transient-SymbolDocument-mMetadataStatus.swift in Sources */,
 				CF6E148121CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */,
 				CF001F7621F8B1940091518E /* func-getSystemProxy.swift in Sources */,
-				CF358EEC22296F5100EDE173 /* DeviceDocument-extension-add-package.swift in Sources */,
+				CF358EEC22296F5100EDE173 /* DeviceDocument-extension.swift in Sources */,
 				CF6172631B3C4BA900F3CA82 /* Application.swift in Sources */,
 				CFCD3ACA21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */,
 				CF00844D21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
 				CF51AD141DD61BCE00CEFB7D /* Controller_CanariCharacterView_displayDrawingIndexes.swift in Sources */,
-				CFEAAD4C2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift in Sources */,
 				CF8328AE213E820D00D5C8B8 /* transient-BoardModel-backPadArray.swift in Sources */,
 				CFB4801920DC1B8B00CF9639 /* action-MergerDocument-addBoardModelAction.swift in Sources */,
 				CF2A01F721DE7C4200F3A379 /* transient-PackageSlavePad-padNumberDisplay.swift in Sources */,
@@ -3868,11 +3863,10 @@
 				CF0AE89721E0F6CB00BE7EE2 /* transient-SymbolDocument-mMetadataStatus.swift in Sources */,
 				CF6E148221CD151C008E2180 /* selectionController-PackageDocument-mPackageZoneSelectionController.swift in Sources */,
 				CF001F7721F8B1940091518E /* func-getSystemProxy.swift in Sources */,
-				CF358EED22296F5100EDE173 /* DeviceDocument-extension-add-package.swift in Sources */,
+				CF358EED22296F5100EDE173 /* DeviceDocument-extension.swift in Sources */,
 				CF5C4D0B219F04D600EAC52A /* Controller_CanariCharacterView_displayDrawingIndexes.swift in Sources */,
 				CFCD3ACB21FC76F300DE503C /* phase2-download-file-list-for-commit.swift in Sources */,
 				CF00844E21C42A91003627E9 /* entity-PackageOval.swift in Sources */,
-				CFEAAD4D2231770F00F69A12 /* DeviceDocument-extension-add-symbol.swift in Sources */,
 				CF5C4D0C219F04D600EAC52A /* transient-BoardModel-backPadArray.swift in Sources */,
 				CF5C4D0D219F04D600EAC52A /* action-MergerDocument-addBoardModelAction.swift in Sources */,
 				CF5C4D0E219F04D600EAC52A /* EBTextField.swift in Sources */,

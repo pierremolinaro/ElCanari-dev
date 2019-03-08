@@ -14,7 +14,13 @@ import Cocoa
 extension DeviceDocument {
   @objc func updateSymbolsAndPackagesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+    var messages = [String] ()
+    self.performSymbolsUpdate (self.rootObject.mSymbolTypes_property.propval, &messages)
+    self.performPackagesUpdate (self.rootObject.mPackages_property.propval, &messages)
+    let alert = NSAlert ()
+    alert.messageText = "Done."
+    alert.informativeText = messages.joined (separator: "\n")
+    alert.beginSheetModal (for: self.windowForSheet!)
 //--- END OF USER ZONE 2
   }
 }
