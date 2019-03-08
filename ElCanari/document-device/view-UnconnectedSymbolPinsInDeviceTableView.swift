@@ -112,7 +112,7 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
     self.mController = EBReadOnlyController_UnconnectedSymbolPinsInDevice (
       model: model,
       callBack: { [weak self] in self?.updateUnconnectedSymbolPinsList (from: model) }
-     )
+    )
   }
 
   //····················································································································

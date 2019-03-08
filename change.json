@@ -1,8 +1,8 @@
 {
   "NOTE" : [],
-  "BUGFIX" : ["Library update bug fixed"
+  "BUGFIX" : [
   ],
   "CHANGE" : [""],
-  "NEW" : []
+  "NEW" : ["Added Device document"]
 }
 
