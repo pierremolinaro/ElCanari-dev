@@ -11,41 +11,11 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_DeviceRoot_issues (
-       _ self_title : String,     
-       _ self_prefix : String,    
-       _ self_inconsistentPackagePadNameSetsMessage : String,
+func transient_DeviceRoot_symbolNameAreConsistent (
        _ self_inconsistentSymbolNameSetMessage : String
-) -> CanariIssueArray {
+) -> Bool {
 //--- START OF USER ZONE 2
-       var issues = [CanariIssue] ()
-       if self_title == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath ()))
-       }
-       if self_prefix == "" {
-         issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath ()))
-       }else{
-         var ok = true
-         for unicodeChar in self_prefix.unicodeArray {
-           ok = (unicodeChar >= "a") && (unicodeChar <= "z")
-           if !ok {
-             ok = (unicodeChar >= "A") && (unicodeChar <= "Z")
-           }
-           if !ok {
-             break
-           }
-         }
-         if !ok {
-           issues.append (CanariIssue (kind: .error, message: "Prefix should contains only lowercase or uppercase ASCII letters", path: NSBezierPath ()))
-         }
-       }
-       if self_inconsistentPackagePadNameSetsMessage != "" {
-         issues.append (CanariIssue (kind: .error, message: "There are several packages, their pad names are inconsistent", path: NSBezierPath ()))
-       }
-       if self_inconsistentSymbolNameSetMessage != "" {
-         issues.append (CanariIssue (kind: .error, message: "There are several symbols with the same name", path: NSBezierPath ()))
-       }
-       return issues
+        return self_inconsistentSymbolNameSetMessage == ""
 //--- END OF USER ZONE 2
 }
 

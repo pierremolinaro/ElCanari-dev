@@ -1400,6 +1400,7 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
         oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
         oldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid)
         oldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
+        oldValue?.inconsistentSymbolNameSetMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
         oldValue?.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
@@ -1415,12 +1416,14 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
         oldValue?.prefix_property.removeEBObserversFrom (&self.mObserversOf_prefix)
         oldValue?.representationImageData_property.removeEBObserversFrom (&self.mObserversOf_representationImageData)
         oldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
         self.mValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid)
         self.mValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
+        self.mValue?.inconsistentSymbolNameSetMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
         self.mValue?.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
@@ -1436,6 +1439,7 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
         self.mValue?.prefix_property.addEBObserversFrom (&self.mObserversOf_prefix)
         self.mValue?.representationImageData_property.addEBObserversFrom (&self.mObserversOf_representationImageData)
         self.mValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex)
+        self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
        //--- Notify observers
@@ -1586,6 +1590,47 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_inconsistentPackagePadNameSetsMessage.remove (inObserver)
     if let object = self.propval {
       object.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: inconsistentSymbolNameSetMessage
+  //····················································································································
+
+  private var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  var inconsistentSymbolNameSetMessage_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.inconsistentSymbolNameSetMessage_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentSymbolNameSetMessage.insert (inObserver)
+    if let object = self.propval {
+      object.inconsistentSymbolNameSetMessage_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
+    self.mObserversOf_inconsistentSymbolNameSetMessage.remove (inObserver)
+    if let object = self.propval {
+      object.inconsistentSymbolNameSetMessage_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2201,6 +2246,47 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_selectedPageIndex.remove (inObserver)
     if let object = self.propval {
       object.selectedPageIndex_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolNameAreConsistent
+  //····················································································································
+
+  private var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolNameAreConsistent_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.symbolNameAreConsistent_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolNameAreConsistent.insert (inObserver)
+    if let object = self.propval {
+      object.symbolNameAreConsistent_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolNameAreConsistent.remove (inObserver)
+    if let object = self.propval {
+      object.symbolNameAreConsistent_property.removeEBObserver (inObserver)
     }
   }
 

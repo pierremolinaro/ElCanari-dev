@@ -108,6 +108,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: assignmentInhibitionMessage
+  //····················································································································
+
+  var assignmentInhibitionMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var assignmentInhibitionMessage_property_selection : EBSelection <String> {
+    return self.assignmentInhibitionMessage_property.prop
+  }
+
+  //····················································································································
+
+  var assignmentInhibitionMessage : String? {
+    switch self.assignmentInhibitionMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -152,7 +175,9 @@ import Cocoa
   @IBOutlet var mExportSelectedSymbolsButton : EBButton?
   @IBOutlet var mInconsistentPackagePadNameSetsMessageScrollView : NSScrollView?
   @IBOutlet var mInconsistentPackagePadNameSetsMessageTextView : EBTextObserverView?
-  @IBOutlet var mInconsistentPadNameSetTextField : EBTextField?
+  @IBOutlet var mInconsistentPadNameSetTextField : EBTextObserverField?
+  @IBOutlet var mInconsistentSymbolNameMessageScrollView : NSScrollView?
+  @IBOutlet var mInconsistentSymbolNameMessageTextView : EBTextObserverView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
@@ -182,6 +207,8 @@ import Cocoa
   @IBOutlet var mShowPackagesSwitch : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
+  @IBOutlet var mSymbolDisplayHorizontalFlipSwitch : EBSwitch?
+  @IBOutlet var mSymbolDisplayVerticalFlipSwitch : EBSwitch?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolTableView : EBTableView?
   @IBOutlet var mTitleTextField : EBTextField?
@@ -199,6 +226,7 @@ import Cocoa
   var mController_mShowDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
@@ -540,11 +568,11 @@ import Cocoa
       )
     }
     if let outlet : Any = self.mInconsistentPadNameSetTextField {
-      if !(outlet is EBTextField) {
+      if !(outlet is EBTextObserverField) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mInconsistentPadNameSetTextField' outlet is not an instance of 'EBTextField'"
+          errorMessage: "the 'mInconsistentPadNameSetTextField' outlet is not an instance of 'EBTextObserverField'"
         )
       }
     }else{
@@ -552,6 +580,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mInconsistentPadNameSetTextField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mInconsistentSymbolNameMessageScrollView {
+      if !(outlet is NSScrollView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInconsistentSymbolNameMessageScrollView' outlet is not an instance of 'NSScrollView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInconsistentSymbolNameMessageScrollView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mInconsistentSymbolNameMessageTextView {
+      if !(outlet is EBTextObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mInconsistentSymbolNameMessageTextView' outlet is not an instance of 'EBTextObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mInconsistentSymbolNameMessageTextView' outlet is nil"
       )
     }
     if let outlet : Any = self.mInfosPageView {
@@ -989,6 +1047,36 @@ import Cocoa
         errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolDisplayHorizontalFlipSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolDisplayHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolDisplayHorizontalFlipSwitch' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mSymbolDisplayVerticalFlipSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolDisplayVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolDisplayVerticalFlipSwitch' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -1133,6 +1221,30 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
+  //--- Atomic property: assignmentInhibitionMessage
+    self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
+        kind &= unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.rootObject.inconsistentSymbolNameSetMessage_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_DeviceDocument_assignmentInhibitionMessage (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1170,10 +1282,13 @@ import Cocoa
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
     self.mRepresentationImageView?.bind_imageData (self.rootObject.representationImageData_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
-    self.mComposedSymbolView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
+    self.mComposedSymbolView?.bind_zoom (self.rootObject.mSymbolDisplayZoom_property, file: #file, line: #line)
+    self.mSymbolDisplayHorizontalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
+    self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property, file: #file, line: #line)
+    self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -1188,6 +1303,7 @@ import Cocoa
     self.mShowPackageBackPadsSwitch?.bind_value (self.rootObject.mShowPackageBackPads_property, file: #file, line: #line)
     self.mPackageBackPadsColorWell?.bind_color (g_Preferences!.backSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property, file: #file, line: #line)
+    self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1250,6 +1366,16 @@ import Cocoa
       )
       self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
       self.mController_mAddSymbolInstancePullDownButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.rootObject.symbolNameAreConsistent_property_selection
+        },
+        outlet: self.mInconsistentSymbolNameMessageScrollView
+      )
+      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
+      self.mController_mInconsistentSymbolNameMessageScrollView_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
@@ -1344,21 +1470,23 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return self.rootObject.packagePadNameSetsAreConsistent_property_selection
+          return (self.rootObject.packagePadNameSetsAreConsistent_property_selection && self.rootObject.symbolNameAreConsistent_property_selection)
         },
         outlet: self.mInconsistentPadNameSetTextField
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
+      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mInconsistentPadNameSetTextField_hidden = controller
     }
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
-          return !self.rootObject.packagePadNameSetsAreConsistent_property_selection
+          return (!self.rootObject.packagePadNameSetsAreConsistent_property_selection || !self.rootObject.symbolNameAreConsistent_property_selection)
         },
         outlet: self.mAssignmentSplitView
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
+      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mAssignmentSplitView_hidden = controller
     }
   //--------------------------- Set targets / actions
@@ -1426,7 +1554,10 @@ import Cocoa
     self.mComposedSymbolView?.unbind_horizontalFlip ()
     self.mComposedSymbolView?.unbind_verticalFlip ()
     self.mComposedSymbolView?.unbind_zoom ()
+    self.mSymbolDisplayHorizontalFlipSwitch?.unbind_value ()
+    self.mSymbolDisplayVerticalFlipSwitch?.unbind_value ()
     self.mAddSymbolInstancePullDownButton?.unbind_symbolTypeNames ()
+    self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -1441,6 +1572,7 @@ import Cocoa
     self.mShowPackageBackPadsSwitch?.unbind_value ()
     self.mPackageBackPadsColorWell?.unbind_color ()
     self.mInconsistentPackagePadNameSetsMessageTextView?.unbind_valueObserver ()
+    self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -1456,6 +1588,8 @@ import Cocoa
     self.mController_mSaveDocButton_enabled = nil
     self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mAddSymbolInstancePullDownButton_enabled!)
     self.mController_mAddSymbolInstancePullDownButton_enabled = nil
+    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentSymbolNameMessageScrollView_hidden!)
+    self.mController_mInconsistentSymbolNameMessageScrollView_hidden = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
     self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
@@ -1475,8 +1609,10 @@ import Cocoa
     self.mPackageController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateSelectedPackagesButton_enabled!)
     self.mController_mUpdateSelectedPackagesButton_enabled = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
+    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentPadNameSetTextField_hidden!)
     self.mController_mInconsistentPadNameSetTextField_hidden = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
+    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
     self.mController_mAssignmentSplitView_hidden = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
@@ -1496,6 +1632,8 @@ import Cocoa
     self.mSymbolController.unbind_model ()
     self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
+    self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
     self.mPasteImageButton?.target = nil
@@ -1534,6 +1672,8 @@ import Cocoa
     self.mInconsistentPackagePadNameSetsMessageScrollView?.ebCleanUp ()
     self.mInconsistentPackagePadNameSetsMessageTextView?.ebCleanUp ()
     self.mInconsistentPadNameSetTextField?.ebCleanUp ()
+    self.mInconsistentSymbolNameMessageScrollView?.ebCleanUp ()
+    self.mInconsistentSymbolNameMessageTextView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
@@ -1563,6 +1703,8 @@ import Cocoa
     self.mShowPackagesSwitch?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
     self.mStatusImageViewInToolbar?.ebCleanUp ()
+    self.mSymbolDisplayHorizontalFlipSwitch?.ebCleanUp ()
+    self.mSymbolDisplayVerticalFlipSwitch?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolTableView?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()

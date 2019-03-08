@@ -74,15 +74,26 @@ document DeviceDocument root DeviceRoot {
   arrayController mSymbolDisplayController : root.mSymbolInstances ;
 
   outlet EBView mComposedSymbolView
-    $horizontalFlip root.mPackageDisplayHorizontalFlip
-    $verticalFlip root.mPackageDisplayVerticalFlip
+    $horizontalFlip root.mSymbolDisplayHorizontalFlip
+    $verticalFlip root.mSymbolDisplayVerticalFlip
     $graphicController self.mSymbolDisplayController
-    $zoom root.mPackageDisplayZoom
+    $zoom root.mSymbolDisplayZoom
   ;
+
+  outlet EBSwitch mSymbolDisplayHorizontalFlipSwitch $value root.mSymbolDisplayHorizontalFlip ;
+  outlet EBSwitch mSymbolDisplayVerticalFlipSwitch $value root.mSymbolDisplayVerticalFlip ;
 
   outlet AddSymbolInstancePullDownButton mAddSymbolInstancePullDownButton
     $enabled root.mSymbolTypes.count > 0
     $symbolTypeNames root.symbolTypeNames
+  ;
+
+  outlet EBTextObserverView mInconsistentSymbolNameMessageTextView
+    $valueObserver root.inconsistentSymbolNameSetMessage
+  ;
+
+  outlet NSScrollView mInconsistentSymbolNameMessageScrollView
+    $hidden root.symbolNameAreConsistent
   ;
 
 #-------------------------- Page : Packages
@@ -99,7 +110,6 @@ document DeviceDocument root DeviceRoot {
   ;
 
   outlet EBSwitch mPackageDisplayHorizontalFlipSwitch $value root.mPackageDisplayHorizontalFlip ;
-
   outlet EBSwitch mPackageDisplayVerticalFlipSwitch $value root.mPackageDisplayVerticalFlip ;
 
   outlet EBSwitch mShowPackagesSwitch $value root.mShowPackages ;
@@ -189,8 +199,18 @@ document DeviceDocument root DeviceRoot {
 
 #--------------- Page : assignments
 
-  outlet EBTextField mInconsistentPadNameSetTextField $hidden root.packagePadNameSetsAreConsistent ;
-  outlet NSSplitView mAssignmentSplitView $hidden !root.packagePadNameSetsAreConsistent ;
+  transient String assignmentInhibitionMessage
+    dependsFrom root.inconsistentPackagePadNameSetsMessage, root.inconsistentSymbolNameSetMessage
+  ;
+
+  outlet EBTextObserverField mInconsistentPadNameSetTextField
+    $valueObserver self.assignmentInhibitionMessage
+    $hidden root.packagePadNameSetsAreConsistent & root.symbolNameAreConsistent
+  ;
+
+  outlet NSSplitView mAssignmentSplitView
+    $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent
+  ;
 
 #--------------- Page : Infos
 #--- Prefix

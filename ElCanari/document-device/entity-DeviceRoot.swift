@@ -96,20 +96,32 @@ protocol DeviceRoot_representationImageData : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol DeviceRoot_imageIsValid : class {
-  var imageIsValid : Bool? { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol DeviceRoot_inconsistentPackagePadNameSetsMessage : class {
   var inconsistentPackagePadNameSetsMessage : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_inconsistentSymbolNameSetMessage : class {
+  var inconsistentSymbolNameSetMessage : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_imageIsValid : class {
+  var imageIsValid : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_packagePadNameSetsAreConsistent : class {
   var packagePadNameSetsAreConsistent : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceRoot_symbolNameAreConsistent : class {
+  var symbolNameAreConsistent : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,9 +156,11 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_mSymbolDisplayHorizontalFlip,
          DeviceRoot_mSymbolDisplayVerticalFlip,
          DeviceRoot_representationImageData,
-         DeviceRoot_imageIsValid,
          DeviceRoot_inconsistentPackagePadNameSetsMessage,
+         DeviceRoot_inconsistentSymbolNameSetMessage,
+         DeviceRoot_imageIsValid,
          DeviceRoot_packagePadNameSetsAreConsistent,
+         DeviceRoot_symbolNameAreConsistent,
          DeviceRoot_symbolTypeNames,
          DeviceRoot_issues {
 
@@ -544,29 +558,6 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   Transient property: imageIsValid
-  //····················································································································
-
-  var imageIsValid_property = EBTransientProperty_Bool ()
-
-  //····················································································································
-
-  var imageIsValid_property_selection : EBSelection <Bool> {
-    return self.imageIsValid_property.prop
-  }
-
-  //····················································································································
-
-  var imageIsValid : Bool? {
-    switch self.imageIsValid_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
@@ -590,6 +581,52 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: inconsistentSymbolNameSetMessage
+  //····················································································································
+
+  var inconsistentSymbolNameSetMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var inconsistentSymbolNameSetMessage_property_selection : EBSelection <String> {
+    return self.inconsistentSymbolNameSetMessage_property.prop
+  }
+
+  //····················································································································
+
+  var inconsistentSymbolNameSetMessage : String? {
+    switch self.inconsistentSymbolNameSetMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: imageIsValid
+  //····················································································································
+
+  var imageIsValid_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var imageIsValid_property_selection : EBSelection <Bool> {
+    return self.imageIsValid_property.prop
+  }
+
+  //····················································································································
+
+  var imageIsValid : Bool? {
+    switch self.imageIsValid_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: packagePadNameSetsAreConsistent
   //····················································································································
 
@@ -605,6 +642,29 @@ class DeviceRoot : EBGraphicManagedObject,
 
   var packagePadNameSetsAreConsistent : Bool? {
     switch self.packagePadNameSetsAreConsistent_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: symbolNameAreConsistent
+  //····················································································································
+
+  var symbolNameAreConsistent_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var symbolNameAreConsistent_property_selection : EBSelection <Bool> {
+    return self.symbolNameAreConsistent_property.prop
+  }
+
+  //····················································································································
+
+  var symbolNameAreConsistent : Bool? {
+    switch self.symbolNameAreConsistent_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -708,28 +768,6 @@ class DeviceRoot : EBGraphicManagedObject,
     }
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
-  //--- Atomic property: imageIsValid
-    self.imageIsValid_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.representationImageData_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.representationImageData_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceRoot_imageIsValid (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.representationImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -754,6 +792,50 @@ class DeviceRoot : EBGraphicManagedObject,
     }
     self.mPackages_property.addEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.addEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
+  //--- Atomic property: inconsistentSymbolNameSetMessage
+    self.inconsistentSymbolNameSetMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbolInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbolInstances_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_inconsistentSymbolNameSetMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstances_property.addEBObserverOf_qualifiedName (self.inconsistentSymbolNameSetMessage_property)
+  //--- Atomic property: imageIsValid
+    self.imageIsValid_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.representationImageData_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.representationImageData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_imageIsValid (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.representationImageData_property.addEBObserver (self.imageIsValid_property)
   //--- Atomic property: packagePadNameSetsAreConsistent
     self.packagePadNameSetsAreConsistent_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -776,6 +858,28 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mPackages_property.addEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+  //--- Atomic property: symbolNameAreConsistent
+    self.symbolNameAreConsistent_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_symbolNameAreConsistent (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.symbolNameAreConsistent_property)
   //--- Atomic property: symbolTypeNames
     self.symbolTypeNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -804,15 +908,16 @@ class DeviceRoot : EBGraphicManagedObject,
         var kind = unwSelf.title_property_selection.kind ()
         kind &= unwSelf.prefix_property_selection.kind ()
         kind &= unwSelf.inconsistentPackagePadNameSetsMessage_property_selection.kind ()
+        kind &= unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2)) :
-            return .single (transient_DeviceRoot_issues (v0, v1, v2))
+          switch (unwSelf.title_property_selection, unwSelf.prefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3)) :
+            return .single (transient_DeviceRoot_issues (v0, v1, v2, v3))
           default :
             return .empty
           }
@@ -824,6 +929,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.title_property.addEBObserver (self.issues_property)
     self.prefix_property.addEBObserver (self.issues_property)
     self.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.issues_property)
+    self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
@@ -856,14 +962,17 @@ class DeviceRoot : EBGraphicManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.inconsistentPackagePadNameSetsMessage_property)
     self.mPackages_property.removeEBObserverOf_mName (self.inconsistentPackagePadNameSetsMessage_property)
+    self.mSymbolInstances_property.removeEBObserverOf_qualifiedName (self.inconsistentSymbolNameSetMessage_property)
+    self.representationImageData_property.removeEBObserver (self.imageIsValid_property)
     self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
+    self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
     self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.issues_property)
+    self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -999,14 +1108,6 @@ class DeviceRoot : EBGraphicManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "imageIsValid",
-      idx:self.imageIsValid_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.imageIsValid_property.mObserverExplorer,
-      valueExplorer:&self.imageIsValid_property.mValueExplorer
-    )
-    createEntryForPropertyNamed (
       "inconsistentPackagePadNameSetsMessage",
       idx:self.inconsistentPackagePadNameSetsMessage_property.ebObjectIndex,
       y:&y,
@@ -1015,12 +1116,36 @@ class DeviceRoot : EBGraphicManagedObject,
       valueExplorer:&self.inconsistentPackagePadNameSetsMessage_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "inconsistentSymbolNameSetMessage",
+      idx:self.inconsistentSymbolNameSetMessage_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.inconsistentSymbolNameSetMessage_property.mObserverExplorer,
+      valueExplorer:&self.inconsistentSymbolNameSetMessage_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "imageIsValid",
+      idx:self.imageIsValid_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.imageIsValid_property.mObserverExplorer,
+      valueExplorer:&self.imageIsValid_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "packagePadNameSetsAreConsistent",
       idx:self.packagePadNameSetsAreConsistent_property.ebObjectIndex,
       y:&y,
       view:view,
       observerExplorer:&self.packagePadNameSetsAreConsistent_property.mObserverExplorer,
       valueExplorer:&self.packagePadNameSetsAreConsistent_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "symbolNameAreConsistent",
+      idx:self.symbolNameAreConsistent_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolNameAreConsistent_property.mObserverExplorer,
+      valueExplorer:&self.symbolNameAreConsistent_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "symbolTypeNames",
@@ -2204,62 +2329,6 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
-  //   Observers of 'imageIsValid' transient property
-  //····················································································································
-
-  private var mObserversOf_imageIsValid = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.imageIsValid_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_imageIsValid.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.imageIsValid_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
-        managedObject.imageIsValid_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
-    for managedObject in inSet {
-      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
-        managedObject.imageIsValid_property.removeEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
   //   Observers of 'inconsistentPackagePadNameSetsMessage' transient property
   //····················································································································
 
@@ -2316,6 +2385,118 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'inconsistentSymbolNameSetMessage' transient property
+  //····················································································································
+
+  private var mObserversOf_inconsistentSymbolNameSetMessage = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_inconsistentSymbolNameSetMessage.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inconsistentSymbolNameSetMessage_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_inconsistentSymbolNameSetMessage (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_inconsistentSymbolNameSetMessage.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inconsistentSymbolNameSetMessage.apply ( {(_ observer : EBEvent) in
+        managedObject.inconsistentSymbolNameSetMessage_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_inconsistentSymbolNameSetMessage.apply ( {(_ observer : EBEvent) in
+        managedObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'imageIsValid' transient property
+  //····················································································································
+
+  private var mObserversOf_imageIsValid = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_imageIsValid.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageIsValid_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_imageIsValid (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_imageIsValid.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.imageIsValid_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_imageIsValid_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+        managedObject.imageIsValid_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_imageIsValid_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_imageIsValid.apply ( {(_ observer : EBEvent) in
+        managedObject.imageIsValid_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'packagePadNameSetsAreConsistent' transient property
   //····················································································································
 
@@ -2367,6 +2548,62 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
     for managedObject in inSet {
       self.mObserversOf_packagePadNameSetsAreConsistent.apply ( {(_ observer : EBEvent) in
         managedObject.packagePadNameSetsAreConsistent_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'symbolNameAreConsistent' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolNameAreConsistent = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolNameAreConsistent.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNameAreConsistent_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolNameAreConsistent (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolNameAreConsistent.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolNameAreConsistent_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNameAreConsistent.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolNameAreConsistent_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolNameAreConsistent.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolNameAreConsistent_property.removeEBObserver (observer)
       })
     }
   }
@@ -2572,9 +2809,11 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
@@ -2596,9 +2835,11 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedSet)
       self.addEBObserversOf_representationImageData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
       self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_imageIsValid_toElementsOfSet (addedSet)
       self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedSet)
+      self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
@@ -2759,9 +3000,11 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_mSymbolDisplayHorizontalFlip_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mSymbolDisplayVerticalFlip_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_representationImageData_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_inconsistentPackagePadNameSetsMessage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_inconsistentSymbolNameSetMessage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_imageIsValid_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
@@ -2802,9 +3045,11 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_mSymbolDisplayHorizontalFlip_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mSymbolDisplayVerticalFlip_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_representationImageData_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_inconsistentPackagePadNameSetsMessage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_inconsistentSymbolNameSetMessage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_imageIsValid_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }

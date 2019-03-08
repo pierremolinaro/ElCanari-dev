@@ -26,6 +26,8 @@
                 <outlet property="mInconsistentPackagePadNameSetsMessageScrollView" destination="VWY-YO-VmV" id="TVt-EA-Ywh"/>
                 <outlet property="mInconsistentPackagePadNameSetsMessageTextView" destination="d26-at-nSF" id="2ik-vs-QWY"/>
                 <outlet property="mInconsistentPadNameSetTextField" destination="JKV-he-pIq" id="zaT-M6-WSf"/>
+                <outlet property="mInconsistentSymbolNameMessageScrollView" destination="Icd-Dy-9Bc" id="jsH-di-3ge"/>
+                <outlet property="mInconsistentSymbolNameMessageTextView" destination="PmD-YT-0cS" id="vKx-eq-oik"/>
                 <outlet property="mInfosPageView" destination="1177" id="qRd-J2-IOx"/>
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
                 <outlet property="mLibraryPageView" destination="1124" id="3bK-az-okh"/>
@@ -55,6 +57,8 @@
                 <outlet property="mShowPackagesSwitch" destination="8jk-KC-1pv" id="J1U-hh-plA"/>
                 <outlet property="mSignatureTextField" destination="bnM-Hr-Cbk" id="ayw-3i-Ruq"/>
                 <outlet property="mStatusImageViewInToolbar" destination="1903" id="oKC-FJ-Gh1"/>
+                <outlet property="mSymbolDisplayHorizontalFlipSwitch" destination="gtc-qu-hK2" id="VYC-5C-iCg"/>
+                <outlet property="mSymbolDisplayVerticalFlipSwitch" destination="gxS-GS-l7o" id="Re9-Nc-H91"/>
                 <outlet property="mSymbolPageView" destination="1055" id="iEF-FY-31C"/>
                 <outlet property="mSymbolTableView" destination="1132" id="e1N-Om-Pfc"/>
                 <outlet property="mTitleTextField" destination="1038" id="pDd-Se-xfr"/>
@@ -392,21 +396,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <customView id="1964">
-                    <rect key="frame" x="0.0" y="0.0" width="250" height="294"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
-                </customView>
-                <segmentedControl verticalHuggingPriority="750" id="2098">
-                    <rect key="frame" x="45" y="301" width="159" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="smallSquare" trackingMode="selectOne" id="2099">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment toolTip="Selected Object Inspector" image="selected-object" width="78"/>
-                            <segment toolTip="Zoom and Flip Inspector" image="loupe" width="78" selected="YES" tag="1"/>
-                        </segments>
-                    </segmentedCell>
-                </segmentedControl>
                 <textField verticalHuggingPriority="750" id="1952">
                     <rect key="frame" x="2" y="359" width="103" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -431,10 +420,49 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <button id="gxS-GS-l7o" customClass="EBSwitch">
+                    <rect key="frame" x="11" y="287" width="235" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Vertical Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="A2w-KV-74W">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <button id="gtc-qu-hK2" customClass="EBSwitch">
+                    <rect key="frame" x="11" y="312" width="235" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Horizontal Flip" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="pfg-Ij-hvB">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" id="Icd-Dy-9Bc">
+                    <rect key="frame" x="14" y="20" width="230" height="162"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
+                                <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="minSize" width="215" height="162"/>
+                                <size key="maxSize" width="230" height="10000000"/>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            </textView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="osS-oc-88I">
+                        <rect key="frame" x="215" y="0.0" width="15" height="162"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="1069" id="1209"/>
             </connections>
+            <point key="canvasLocation" x="-113" y="-222"/>
         </customView>
         <customView id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
@@ -445,7 +473,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="IMs-PA-jTt">
                         <rect key="frame" x="1" y="1" width="326" height="385"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1082" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -544,7 +572,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="qYJ-4j-LDi">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="d26-at-nSF" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="215" height="162"/>
@@ -582,7 +610,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="qBT-QX-e8k">
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1586" id="1111">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
@@ -628,7 +656,7 @@
                                     <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                     <clipView key="contentView" id="KcB-BC-NNU">
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
@@ -734,7 +762,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="6o1-5h-Fzw">
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1580" id="1095">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
@@ -815,7 +843,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JKV-he-pIq" customClass="EBTextField">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="JKV-he-pIq" customClass="EBTextObserverField">
                     <rect key="frame" x="24" y="205" width="632" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="center" title="Cannot perform assignments: there are several packages, and their pad names are not the same." id="rG6-Uk-KFz">
@@ -1309,9 +1337,7 @@
     <resources>
         <image name="NSStatusUnavailable" width="16" height="16"/>
         <image name="bind" width="80" height="27"/>
-        <image name="loupe" width="64" height="64"/>
         <image name="nc" width="80" height="27"/>
-        <image name="selected-object" width="64" height="64"/>
         <image name="unbind" width="80" height="27"/>
         <image name="unbind_all" width="81" height="27"/>
     </resources>

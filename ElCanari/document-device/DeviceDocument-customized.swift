@@ -43,8 +43,9 @@ let PMDevicePackages = "PMDevicePackages"
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- TEMPORARY
-//    self.rootObject.packages_property.setProp ([])
- //   self.rootObject.mSymbolTypes_property.setProp ([])  //--- Set pages segmented control
+     //    self.rootObject.packages_property.setProp ([])
+     //   self.rootObject.mSymbolTypes_property.setProp ([])
+ //--- Set pages segmented control
     let pages = [
       self.mDescriptionPageView,
       self.mSymbolPageView,
@@ -59,6 +60,9 @@ let PMDevicePackages = "PMDevicePackages"
   //---
     self.mInconsistentPackagePadNameSetsMessageTextView?.font = .systemFont (ofSize: 12.0)
     self.mInconsistentPackagePadNameSetsMessageTextView?.textColor = .red
+  //---
+    self.mInconsistentSymbolNameMessageTextView?.font = .systemFont (ofSize: 12.0)
+    self.mInconsistentSymbolNameMessageTextView?.textColor = .red
   //---
     self.mAddSymbolInstancePullDownButton?.register (document: self)
   }

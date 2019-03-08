@@ -21,11 +21,17 @@ graphic entity DeviceRoot {
   property @signature String comments default "" ;
 
 #--- Issues
-  transient CanariIssueArray issues dependsFrom self.title, self.prefix, self.inconsistentPackagePadNameSetsMessage ;
-
-  transient Bool packagePadNameSetsAreConsistent dependsFrom self.mPackages.all.padNameSet ;
+  transient CanariIssueArray issues dependsFrom
+    self.title, self.prefix,
+    self.inconsistentPackagePadNameSetsMessage,
+    self.inconsistentSymbolNameSetMessage
+  ;
 
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;
+  transient Bool packagePadNameSetsAreConsistent dependsFrom self.mPackages.all.padNameSet ;
+
+  transient String inconsistentSymbolNameSetMessage dependsFrom self.mSymbolInstances.all.qualifiedName ;
+  transient Bool symbolNameAreConsistent dependsFrom self.inconsistentSymbolNameSetMessage ;
 
 #--- Packages
   toMany @signature PackageInDevice mPackages inverse toOne mRoot ;
@@ -205,11 +211,12 @@ graphic entity SymbolInstanceInDevice {
      prefs.symbolColor
   ;
 
+  transient String qualifiedName dependsFrom self.mInstanceName, self.mType.one.mTypeName ;
+
   transient EBShape selectionDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
-     self.mType.one.mTypeName,
-     self.mInstanceName,
+     self.qualifiedName,
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
