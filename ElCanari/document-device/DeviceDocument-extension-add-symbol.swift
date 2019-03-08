@@ -20,10 +20,12 @@ extension DeviceDocument {
        let symbolRoot = rootObject as? SymbolRoot {
       let strokeBezierPathes = NSBezierPath ()
       let filledBezierPathes = NSBezierPath ()
+      var symbolPins = [SymbolPinInDevice] ()
       symbolRoot.accumulate (
         withUndoManager: self.ebUndoManager,
         strokeBezierPathes: strokeBezierPathes,
-        filledBezierPathes: filledBezierPathes
+        filledBezierPathes: filledBezierPathes,
+        symbolPins: &symbolPins
       )
       symbolRoot.removeRecursivelyAllRelationsShips ()
 
@@ -33,6 +35,7 @@ extension DeviceDocument {
       symbolType.mFileData = inData
       symbolType.mStrokeBezierPath = strokeBezierPathes
       symbolType.mFilledBezierPath = filledBezierPathes
+      symbolType.mPins_property.setProp (symbolPins)
       self.rootObject.mSymbolTypes_property.add (symbolType)
       let symbolInstance = SymbolInstanceInDevice (self.ebUndoManager, file: #file, #line)
       self.rootObject.mSymbolInstances_property.add (symbolInstance)

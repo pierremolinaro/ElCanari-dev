@@ -31,10 +31,12 @@ extension DeviceDocument {
           }else{
             let strokeBezierPathes = NSBezierPath ()
             let filledBezierPathes = NSBezierPath ()
+            var symbolPins = [SymbolPinInDevice] ()
             symbolRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,
-              filledBezierPathes: filledBezierPathes
+              filledBezierPathes: filledBezierPathes,
+              symbolPins: &symbolPins
             )
             symbolRoot.removeRecursivelyAllRelationsShips ()
           //-- Set properties

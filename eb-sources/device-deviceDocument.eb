@@ -97,6 +97,10 @@ document DeviceDocument root DeviceRoot {
     $hidden root.symbolNameAreConsistent
   ;
 
+  outlet NSTextField mSymbolErrorMessageTitleTextField
+    $hidden root.symbolNameAreConsistent
+  ;
+
   outlet EBTextField mSymbolNameTextField $value mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
  
 #-------------------------- Page : Packages

@@ -14,7 +14,7 @@ extension PackageRoot {
 
   //····················································································································
 
-  func accumulate (withUndoManager inUndoManager : EBUndoManager?,
+  func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : NSBezierPath,
                    masterPads : inout [MasterPadInDevice],
                    slavePads : inout [SlavePadInDevice]) {

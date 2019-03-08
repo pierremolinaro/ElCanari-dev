@@ -215,6 +215,7 @@ import Cocoa
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolDisplayHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mSymbolDisplayVerticalFlipSwitch : EBSwitch?
+  @IBOutlet var mSymbolErrorMessageTitleTextField : NSTextField?
   @IBOutlet var mSymbolNameTextField : EBTextField?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolTableView : EBTableView?
@@ -234,6 +235,7 @@ import Cocoa
   var mController_mSaveDocButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mAddSymbolInstancePullDownButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
@@ -1086,6 +1088,21 @@ import Cocoa
         errorMessage: "the 'mSymbolDisplayVerticalFlipSwitch' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolErrorMessageTitleTextField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolErrorMessageTitleTextField' outlet is not an instance of 'NSTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolErrorMessageTitleTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolNameTextField {
       if !(outlet is EBTextField) {
         presentErrorWindow (
@@ -1407,6 +1424,16 @@ import Cocoa
     do{
       let controller = MultipleBindingController_hidden (
         computeFunction: {
+          return self.rootObject.symbolNameAreConsistent_property_selection
+        },
+        outlet: self.mSymbolErrorMessageTitleTextField
+      )
+      self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
+      self.mController_mSymbolErrorMessageTitleTextField_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
           return self.rootObject.packagePadNameSetsAreConsistent_property_selection
         },
         outlet: self.mInconsistentPackagePadNameSetsMessageScrollView
@@ -1618,6 +1645,8 @@ import Cocoa
     self.mController_mAddSymbolInstancePullDownButton_enabled = nil
     self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mInconsistentSymbolNameMessageScrollView_hidden!)
     self.mController_mInconsistentSymbolNameMessageScrollView_hidden = nil
+    self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mSymbolErrorMessageTitleTextField_hidden!)
+    self.mController_mSymbolErrorMessageTitleTextField_hidden = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
     self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
@@ -1735,6 +1764,7 @@ import Cocoa
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mSymbolDisplayVerticalFlipSwitch?.ebCleanUp ()
+    self.mSymbolErrorMessageTitleTextField?.ebCleanUp ()
     self.mSymbolNameTextField?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolTableView?.ebCleanUp ()

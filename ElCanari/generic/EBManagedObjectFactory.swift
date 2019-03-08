@@ -45,7 +45,8 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "SymbolTypeInDevice" : SymbolTypeInDevice.self,
   "SymbolInstanceInDevice" : SymbolInstanceInDevice.self,
   "MasterPadInDevice" : MasterPadInDevice.self,
-  "SlavePadInDevice" : SlavePadInDevice.self
+  "SlavePadInDevice" : SlavePadInDevice.self,
+  "SymbolPinInDevice" : SymbolPinInDevice.self
 ]
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

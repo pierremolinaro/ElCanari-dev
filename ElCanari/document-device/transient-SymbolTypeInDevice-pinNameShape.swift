@@ -11,16 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_qualifiedName (
-       _ self_mInstanceName : String,                
-       _ self_mType_mTypeName : String?
-) -> String {
+func transient_SymbolTypeInDevice_pinNameShape (
+       _ self_mPins_shape : [SymbolPinInDevice_shape]
+) -> EBShape {
 //--- START OF USER ZONE 2
-        var qualifiedName = self_mType_mTypeName ?? "?"
-        if self_mInstanceName != "" {
-          qualifiedName += ":" + self_mInstanceName
+        let shape = EBShape ()
+        for ps in self_mPins_shape {
+          if let s = ps.shape {
+            shape.append (s)
+          }
         }
-        return qualifiedName
+        return shape
 //--- END OF USER ZONE 2
 }
 

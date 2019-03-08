@@ -179,6 +179,7 @@ entity SlavePadInDevice {
 entity SymbolTypeInDevice {
   toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
+  toMany SymbolPinInDevice mPins ;
 
   property @signature String mTypeName default "" ;
   property @signature Int mVersion default 0 ;
@@ -190,6 +191,25 @@ entity SymbolTypeInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient Int instanceCount dependsFrom self.mInstances.count ;
+  
+  transient EBShape pinNameShape dependsFrom self.mPins.all.shape ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SymbolPinInDevice {
+  property @signature Int mX default 0 ;
+  property @signature Int mY default 2_286_00 ;
+  property @signature String mName default "" ;
+  property @signature HorizontalAlignment mNameHorizontalAlignment default center ;
+  property @signature Bool mPinNameIsDisplayedInSchematics default yes ;
+
+  transient EBShape shape dependsFrom
+     self.mX, self.mY, 
+     self.mName, self.mNameHorizontalAlignment,
+     self.mPinNameIsDisplayedInSchematics,
+     prefs.pinNameFont
+   ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -204,8 +224,8 @@ graphic entity SymbolInstanceInDevice {
   transient EBShape objectDisplay dependsFrom
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
-     self.mType.one.mTypeName,
-     self.mInstanceName,
+     self.mType.one.pinNameShape,
+     self.qualifiedName,
      self.mX, self.mY,
      prefs.symbolDrawingWidthMultipliedByTen,
      prefs.symbolColor

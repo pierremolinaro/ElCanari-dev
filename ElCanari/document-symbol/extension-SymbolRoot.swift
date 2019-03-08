@@ -14,12 +14,20 @@ extension SymbolRoot {
 
   //····················································································································
 
-  func accumulate (withUndoManager inUndoManager : EBUndoManager?,
+  func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : NSBezierPath,
-                   filledBezierPathes : NSBezierPath) {
+                   filledBezierPathes : NSBezierPath,
+                   symbolPins : inout [SymbolPinInDevice]) {
     for symbolObject in self.symbolObjects_property.propval {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
+        let newPin = SymbolPinInDevice (inUndoManager, file: #file, #line)
+        newPin.mX = object.xName
+        newPin.mY = object.yName
+        newPin.mName = object.name
+        newPin.mNameHorizontalAlignment = object.nameHorizontalAlignment
+        newPin.mPinNameIsDisplayedInSchematics = object.pinNameIsDisplayedInSchematics
+        symbolPins.append (newPin)
       }else if let object = symbolObject as? SymbolSolidRect, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
       }else if let object = symbolObject as? SymbolOval, let bp = object.strokeBezierPath {

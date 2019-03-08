@@ -38,6 +38,10 @@ extension SymbolInstanceInDevice {
       if symbolType.mInstances_property.propval.count == 0 {
         symbolType.mRoot_property.setProp (nil)
         symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
+        for pin in symbolType.mPins_property.propval {
+          pin.cleanUpRelationshipsAndRemoveAllObservers ()
+        }
+        symbolType.mPins_property.setProp ([])
       }
     }
     self.cleanUpRelationshipsAndRemoveAllObservers ()

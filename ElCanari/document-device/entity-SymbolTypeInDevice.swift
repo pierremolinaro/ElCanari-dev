@@ -47,6 +47,12 @@ protocol SymbolTypeInDevice_instanceCount : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolTypeInDevice_pinNameShape : class {
+  var pinNameShape : EBShape? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: SymbolTypeInDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class SymbolTypeInDevice : EBManagedObject,
          SymbolTypeInDevice_mStrokeBezierPath,
          SymbolTypeInDevice_mFilledBezierPath,
          SymbolTypeInDevice_versionString,
-         SymbolTypeInDevice_instanceCount {
+         SymbolTypeInDevice_instanceCount,
+         SymbolTypeInDevice_pinNameShape {
 
   //····················································································································
   //   To many property: mInstances
@@ -187,6 +194,18 @@ class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: mPins
+  //····················································································································
+
+  var mPins_property = StoredArrayOf_SymbolPinInDevice ()
+
+  //····················································································································
+
+  var mPins_property_selection : EBSelection < [SymbolPinInDevice] > {
+      return self.mPins_property.prop
+  }
+
+  //····················································································································
   //   To one property: mRoot
   //····················································································································
 
@@ -245,6 +264,29 @@ class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: pinNameShape
+  //····················································································································
+
+  var pinNameShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var pinNameShape_property_selection : EBSelection <EBShape> {
+    return self.pinNameShape_property.prop
+  }
+
+  //····················································································································
+
+  var pinNameShape : EBShape? {
+    switch self.pinNameShape_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -265,6 +307,8 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.undoManager = self.undoManager
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.undoManager = self.undoManager
+  //--- To many property: mPins (no option)
+    self.mPins_property.undoManager = self.undoManager
   //--- To one property: mRoot
     self.mRoot_property.owner = self
   //--- Atomic property: versionString
@@ -311,6 +355,28 @@ class SymbolTypeInDevice : EBManagedObject,
       }
     }
     self.mInstances_property.addEBObserver (self.instanceCount_property)
+  //--- Atomic property: pinNameShape
+    self.pinNameShape_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPins_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPins_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolTypeInDevice_pinNameShape (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPins_property.addEBObserverOf_shape (self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
@@ -330,6 +396,7 @@ class SymbolTypeInDevice : EBManagedObject,
     super.removeAllObservers ()
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mInstances_property.removeEBObserver (self.instanceCount_property)
+    self.mPins_property.removeEBObserverOf_shape (self.pinNameShape_property)
   }
 
   //····················································································································
@@ -400,6 +467,14 @@ class SymbolTypeInDevice : EBManagedObject,
       observerExplorer:&self.instanceCount_property.mObserverExplorer,
       valueExplorer:&self.instanceCount_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "pinNameShape",
+      idx:self.pinNameShape_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.pinNameShape_property.mObserverExplorer,
+      valueExplorer:&self.pinNameShape_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "mInstances",
@@ -407,6 +482,13 @@ class SymbolTypeInDevice : EBManagedObject,
       y: &y,
       view: view,
       valueExplorer:&mInstances_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mPins",
+      idx:mPins_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPins_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
@@ -441,6 +523,8 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
+  //--- To many property: mPins
+    self.mPins_property.mValueExplorer = nil
   //--- To one property: mRoot
     self.mRoot_property.mObserverExplorer = nil
     self.mRoot_property.mValueExplorer = nil
@@ -454,6 +538,7 @@ class SymbolTypeInDevice : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mInstances_property.setProp ([])
+    self.mPins_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -490,6 +575,12 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
+  //--- To many property: mPins
+    self.store (
+      managedObjectArray: mPins_property.propval as NSArray,
+      relationshipName: "mPins",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -505,6 +596,12 @@ class SymbolTypeInDevice : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SymbolInstanceInDevice])
+  //--- To many property: mPins
+    self.mPins_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPins",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SymbolPinInDevice])
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -544,6 +641,10 @@ class SymbolTypeInDevice : EBManagedObject,
     super.accessibleObjects (objects: &objects)
   //--- To many property: mInstances
     for managedObject : EBManagedObject in self.mInstances_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPins
+    for managedObject : EBManagedObject in self.mPins_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: mRoot
@@ -974,6 +1075,62 @@ class ReadOnlyArrayOf_SymbolTypeInDevice : ReadOnlyAbstractArrayProperty <Symbol
   }
 
   //····················································································································
+  //   Observers of 'pinNameShape' transient property
+  //····················································································································
+
+  private var mObserversOf_pinNameShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinNameShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinNameShape_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinNameShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinNameShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinNameShape_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinNameShape_toElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNameShape.apply ( {(_ observer : EBEvent) in
+        managedObject.pinNameShape_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinNameShape_fromElementsOfSet (_ inSet : Set<SymbolTypeInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinNameShape.apply ( {(_ observer : EBEvent) in
+        managedObject.pinNameShape_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1054,6 +1211,7 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
     //--- Remove observers of transient properties
       self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1065,6 +1223,7 @@ class TransientArrayOf_SymbolTypeInDevice : ReadOnlyArrayOf_SymbolTypeInDevice {
      //--- Add observers of transient properties
       self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
       self.addEBObserversOf_instanceCount_toElementsOfSet (addedSet)
+      self.addEBObserversOf_pinNameShape_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1205,6 +1364,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
           self.removeEBObserversOf_mFilledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_instanceCount_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_pinNameShape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1225,6 +1385,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
           self.addEBObserversOf_mFilledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_instanceCount_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_pinNameShape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
