@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolPinInstanceInDevice_pinName : class {
+  var pinName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolPinInstanceInDevice_numberShape : class {
   var numberShape : EBShape? { get }
 }
@@ -15,6 +21,7 @@ protocol SymbolPinInstanceInDevice_numberShape : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SymbolPinInstanceInDevice : EBManagedObject,
+         SymbolPinInstanceInDevice_pinName,
          SymbolPinInstanceInDevice_numberShape {
 
   //····················································································································
@@ -27,6 +34,29 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   var mType_property_selection : EBSelection <Bool> {
     return .single (self.mType_property.propval == nil)
+  }
+
+  //····················································································································
+  //   Transient property: pinName
+  //····················································································································
+
+  var pinName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var pinName_property_selection : EBSelection <String> {
+    return self.pinName_property.prop
+  }
+
+  //····················································································································
+
+  var pinName : String? {
+    switch self.pinName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
   }
 
   //····················································································································
@@ -60,6 +90,28 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     super.init (undoManager)
   //--- To one property: mType
     self.mType_property.owner = self
+  //--- Atomic property: pinName
+    self.pinName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mType_property.mName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mType_property.mName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolPinInstanceInDevice_pinName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mType_property.addEBObserverOf_mName (self.pinName_property)
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -97,6 +149,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mType_property.removeEBObserverOf_mName (self.pinName_property)
     self.mType_property.removeEBObserverOf_mXNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mYNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
@@ -115,6 +168,14 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "pinName",
+      idx:self.pinName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.pinName_property.mObserverExplorer,
+      valueExplorer:&self.pinName_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "numberShape",
       idx:self.numberShape_property.ebObjectIndex,
@@ -223,6 +284,62 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty <SymbolPinInstanceInDevice> {
+
+  //····················································································································
+  //   Observers of 'pinName' transient property
+  //····················································································································
+
+  private var mObserversOf_pinName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_pinName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_pinName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_pinName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.pinName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_pinName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinName.apply ( {(_ observer : EBEvent) in
+        managedObject.pinName_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_pinName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_pinName.apply ( {(_ observer : EBEvent) in
+        managedObject.pinName_property.removeEBObserver (observer)
+      })
+    }
+  }
 
   //····················································································································
   //   Observers of 'numberShape' transient property
@@ -478,6 +595,7 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
           }
+          self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_numberShape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -487,6 +605,7 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
           }
+          self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

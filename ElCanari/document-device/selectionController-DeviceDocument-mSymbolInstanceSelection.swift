@@ -89,6 +89,16 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   }
 
   //····················································································································
+  //   Selection observable property: unconnectedPins
+  //····················································································································
+
+  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+
+  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
+    return self.unconnectedPins_property.prop
+  }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
@@ -105,6 +115,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
     self.bind_property_qualifiedName (model: model)
     self.bind_property_selectionDisplay (model: model)
     self.bind_property_symbolTypeName (model: model)
+    self.bind_property_unconnectedPins (model: model)
   }
 
   //····················································································································
@@ -139,6 +150,9 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //--- symbolTypeName
     self.symbolTypeName_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_symbolTypeName (self.symbolTypeName_property)
+  //--- unconnectedPins
+    self.unconnectedPins_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //---
     self.mModel = nil    
   }
@@ -600,6 +614,46 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
           var isMultipleSelection = false
           for object in v {
             switch object.symbolTypeName_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_unconnectedPins (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+    model.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
+    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <UnconnectedSymbolPinsInDevice> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.unconnectedPins_property_selection {
             case .empty :
               return .empty
             case .multiple :

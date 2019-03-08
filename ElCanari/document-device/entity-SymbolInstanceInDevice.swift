@@ -42,6 +42,12 @@ protocol SymbolInstanceInDevice_selectionDisplay : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolInstanceInDevice_unconnectedPins : class {
+  var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolInstanceInDevice_objectDisplay : class {
   var objectDisplay : EBShape? { get }
 }
@@ -57,6 +63,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
          SymbolInstanceInDevice_qualifiedName,
          SymbolInstanceInDevice_symbolTypeName,
          SymbolInstanceInDevice_selectionDisplay,
+         SymbolInstanceInDevice_unconnectedPins,
          SymbolInstanceInDevice_objectDisplay {
 
   //····················································································································
@@ -199,6 +206,29 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unconnectedPins
+  //····················································································································
+
+  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+
+  //····················································································································
+
+  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
+    return self.unconnectedPins_property.prop
+  }
+
+  //····················································································································
+
+  var unconnectedPins : UnconnectedSymbolPinsInDevice? {
+    switch self.unconnectedPins_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -292,6 +322,30 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.selectionDisplay_property)
     self.mX_property.addEBObserver (self.selectionDisplay_property)
     self.mY_property.addEBObserver (self.selectionDisplay_property)
+  //--- Atomic property: unconnectedPins
+    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.mPinInstances_property_selection.kind ()
+        kind &= unwSelf.mInstanceName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPinInstances_property_selection, unwSelf.mInstanceName_property_selection) {
+          case (.single (let v0), .single (let v1)) :
+            return .single (transient_SymbolInstanceInDevice_unconnectedPins (v0, v1))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPinInstances_property.addEBObserverOf_pinName (self.unconnectedPins_property)
+    self.mInstanceName_property.addEBObserver (self.unconnectedPins_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -351,6 +405,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
+    self.mPinInstances_property.removeEBObserverOf_pinName (self.unconnectedPins_property)
+    self.mInstanceName_property.removeEBObserver (self.unconnectedPins_property)
     self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_pinNameShape (self.objectDisplay_property)
@@ -421,6 +477,14 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.selectionDisplay_property.mObserverExplorer,
       valueExplorer:&self.selectionDisplay_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "unconnectedPins",
+      idx:self.unconnectedPins_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.unconnectedPins_property.mObserverExplorer,
+      valueExplorer:&self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "objectDisplay",
@@ -930,6 +994,62 @@ class ReadOnlyArrayOf_SymbolInstanceInDevice : ReadOnlyAbstractArrayProperty <Sy
   }
 
   //····················································································································
+  //   Observers of 'unconnectedPins' transient property
+  //····················································································································
+
+  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unconnectedPins.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPins_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unconnectedPins.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPins_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unconnectedPins_toElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPins_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unconnectedPins_fromElementsOfSet (_ inSet : Set<SymbolInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPins_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'objectDisplay' transient property
   //····················································································································
 
@@ -1065,6 +1185,7 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
       self.removeEBObserversOf_qualifiedName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -1076,6 +1197,7 @@ class TransientArrayOf_SymbolInstanceInDevice : ReadOnlyArrayOf_SymbolInstanceIn
       self.addEBObserversOf_qualifiedName_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedSet)
+      self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
       self.addEBObserversOf_objectDisplay_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -1214,6 +1336,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.removeEBObserversOf_qualifiedName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectionDisplay_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_objectDisplay_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -1232,6 +1355,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
           self.addEBObserversOf_qualifiedName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectionDisplay_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_objectDisplay_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

@@ -132,6 +132,12 @@ protocol DeviceRoot_symbolTypeNames : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_unconnectedPins : class {
+  var unconnectedPins : UnconnectedSymbolPinsInDevice? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -162,6 +168,7 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_packagePadNameSetsAreConsistent,
          DeviceRoot_symbolNameAreConsistent,
          DeviceRoot_symbolTypeNames,
+         DeviceRoot_unconnectedPins,
          DeviceRoot_issues {
 
   //····················································································································
@@ -696,6 +703,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unconnectedPins
+  //····················································································································
+
+  var unconnectedPins_property = EBTransientProperty_UnconnectedSymbolPinsInDevice ()
+
+  //····················································································································
+
+  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice> {
+    return self.unconnectedPins_property.prop
+  }
+
+  //····················································································································
+
+  var unconnectedPins : UnconnectedSymbolPinsInDevice? {
+    switch self.unconnectedPins_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -902,6 +932,28 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.symbolTypeNames_property)
+  //--- Atomic property: unconnectedPins
+    self.unconnectedPins_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbolInstances_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbolInstances_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_unconnectedPins (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -969,6 +1021,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.removeEBObserverOf_padNameSet (self.packagePadNameSetsAreConsistent_property)
     self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
+    self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
     self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.issues_property)
@@ -1154,6 +1207,14 @@ class DeviceRoot : EBGraphicManagedObject,
       view:view,
       observerExplorer:&self.symbolTypeNames_property.mObserverExplorer,
       valueExplorer:&self.symbolTypeNames_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "unconnectedPins",
+      idx:self.unconnectedPins_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.unconnectedPins_property.mObserverExplorer,
+      valueExplorer:&self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "issues",
@@ -2665,6 +2726,62 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'unconnectedPins' transient property
+  //····················································································································
+
+  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unconnectedPins.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPins_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unconnectedPins.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPins_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unconnectedPins_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPins_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unconnectedPins_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPins.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPins_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -2815,6 +2932,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -2841,6 +2959,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedSet)
+      self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -3006,6 +3125,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_packagePadNameSetsAreConsistent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -3051,6 +3171,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_packagePadNameSetsAreConsistent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers

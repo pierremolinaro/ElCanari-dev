@@ -2003,6 +2003,14 @@ typealias EBReadOnlyController_NSRect = EBReadOnlyValueController <NSRect>
 typealias EBReadOnlyProperty_NSRect  = EBReadOnlyValueProperty <NSRect>
 typealias EBTransientProperty_NSRect = EBTransientValueProperty <NSRect>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property UnconnectedSymbolPinsInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_UnconnectedSymbolPinsInDevice = EBReadOnlyValueController <UnconnectedSymbolPinsInDevice>
+
+typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice  = EBReadOnlyValueProperty <UnconnectedSymbolPinsInDevice>
+typealias EBTransientProperty_UnconnectedSymbolPinsInDevice = EBTransientValueProperty <UnconnectedSymbolPinsInDevice>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

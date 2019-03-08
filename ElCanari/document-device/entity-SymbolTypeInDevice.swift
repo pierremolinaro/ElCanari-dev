@@ -1580,6 +1580,7 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
         oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
+        oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
         self.mValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid)
@@ -1603,6 +1604,7 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
         self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
+        self.mValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins)
        //--- Notify observers
         self.postEvent ()
       }
@@ -2530,6 +2532,47 @@ final class ToOneRelationship_SymbolTypeInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_title.remove (inObserver)
     if let object = self.propval {
       object.title_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: unconnectedPins
+  //····················································································································
+
+  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+
+  //····················································································································
+
+  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice?> {
+    if let model = self.propval {
+      switch (model.unconnectedPins_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPins.insert (inObserver)
+    if let object = self.propval {
+      object.unconnectedPins_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPins.remove (inObserver)
+    if let object = self.propval {
+      object.unconnectedPins_property.removeEBObserver (inObserver)
     }
   }
 

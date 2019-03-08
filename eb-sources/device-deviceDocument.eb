@@ -236,6 +236,10 @@ document DeviceDocument root DeviceRoot {
     $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent
   ;
 
+  outlet UnconnectedSymbolPinsInDeviceTableView mUnconnectedSymbolPinsInDeviceTableView
+    $unconnectedPins root.unconnectedPins
+  ;
+
 #--------------- Page : Infos
 #--- Prefix
   outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;

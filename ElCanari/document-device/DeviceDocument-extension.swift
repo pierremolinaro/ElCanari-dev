@@ -51,6 +51,77 @@ extension DeviceDocument {
 
   //····················································································································
 
+  internal func performSymbolsUpdate (_ inSymbol : [SymbolTypeInDevice], _ ioMessages : inout [String]) {
+    let fm = FileManager ()
+    for symbolType in inSymbol {
+      let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
+      if pathes.count == 0 {
+        ioMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
+      }else if pathes.count == 1 {
+        if let data = fm.contents (atPath: pathes [0]),
+           let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
+           let symbolRoot = rootObject as? SymbolRoot,
+           let version = metadataDictionary [PMSymbolVersion] as? Int {
+          if version <= symbolType.mVersion {
+            ioMessages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
+          }else{
+            let strokeBezierPathes = NSBezierPath ()
+            let filledBezierPathes = NSBezierPath ()
+            var newSymbolPinTypes = [SymbolPinTypeInDevice] ()
+            symbolRoot.accumulate (
+              withUndoManager: self.ebUndoManager,
+              strokeBezierPathes: strokeBezierPathes,
+              filledBezierPathes: filledBezierPathes,
+              symbolPins: &newSymbolPinTypes
+            )
+            symbolRoot.removeRecursivelyAllRelationsShips ()
+          //--- Check if symbol pin name set is the same
+            var currentPinNameSet = Set <String> ()
+            for pinType in symbolType.mPinTypes_property.propval {
+              currentPinNameSet.insert (pinType.mName)
+            }
+            var newPinNameDictionary = [String : SymbolPinTypeInDevice] ()
+            for pinType in newSymbolPinTypes {
+              newPinNameDictionary [pinType.mName] = pinType
+            }
+            if currentPinNameSet != Set (newPinNameDictionary.keys) {
+              ioMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
+            }else{ // Ok, make update
+            //-- Set properties
+              symbolType.mVersion = version
+              symbolType.mFileData = data
+              symbolType.mStrokeBezierPath = strokeBezierPathes
+              symbolType.mFilledBezierPath = filledBezierPathes
+            //--- Update pin types
+              for pinType in symbolType.mPinTypes_property.propval {
+                let newPinType = newPinNameDictionary [pinType.mName]!
+                pinType.mXName = newPinType.mXName
+                pinType.mYName = newPinType.mYName
+                pinType.mName = newPinType.mName
+                pinType.mNameHorizontalAlignment = newPinType.mNameHorizontalAlignment
+                pinType.mPinNameIsDisplayedInSchematics = newPinType.mPinNameIsDisplayedInSchematics
+                pinType.mXNumber = newPinType.mXNumber
+                pinType.mYNumber = newPinType.mYNumber
+                pinType.mNumberHorizontalAlignment = newPinType.mNumberHorizontalAlignment
+             }
+            //---
+              ioMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
+            }
+          }
+        }else{
+          ioMessages.append ("Invalid file at path \(pathes [0])")
+        }
+      }else{ // pathes.count > 1
+        ioMessages.append ("Cannot update, several files in Library for \(symbolType.mTypeName) symbol:")
+        for path in pathes {
+          ioMessages.append ("  - \(path)")
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
   internal func packageFromLoadPackageDialog (_ inData : Data, _ inName : String) {
     if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
        let version = metadataDictionary [PMPackageVersion] as? Int,

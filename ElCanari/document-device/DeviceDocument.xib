@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
-        <development version="10000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,6 +66,7 @@
                 <outlet property="mSymbolTableView" destination="1132" id="e1N-Om-Pfc"/>
                 <outlet property="mSymbolTypeTextField" destination="wzz-dY-cEX" id="6WG-Ox-P8d"/>
                 <outlet property="mTitleTextField" destination="1038" id="pDd-Se-xfr"/>
+                <outlet property="mUnconnectedSymbolPinsInDeviceTableView" destination="1107" id="PoK-Dp-MtW"/>
                 <outlet property="mUpdateSelectedPackagesButton" destination="1607" id="78N-VX-Ivc"/>
                 <outlet property="mUpdateSelectedSymbolsButton" destination="1129" id="Vmp-ll-gQa"/>
                 <outlet property="mUpdateSymbolAndPackagesButton" destination="2117" id="pyK-gB-sId"/>
@@ -672,7 +672,7 @@
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1586" id="1111">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1586" id="1111">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -718,7 +718,7 @@
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1583" id="1107">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="unconnectedPinsTableView" headerView="1583" id="1107" customClass="UnconnectedSymbolPinsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -732,11 +732,12 @@
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                                         </tableHeaderCell>
-                                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1561">
+                                                        <textFieldCell key="dataCell" lineBreakMode="charWrapping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1561">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </textFieldCell>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="symbol"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                     <tableColumn identifier="pin" editable="NO" width="62" minWidth="4" maxWidth="1000" id="1109">
@@ -745,11 +746,12 @@
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                         </tableHeaderCell>
-                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1562">
+                                                        <textFieldCell key="dataCell" lineBreakMode="charWrapping" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="1562">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="pin"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                 </tableColumns>
@@ -824,7 +826,7 @@
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" headerView="1580" id="1095">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1580" id="1095">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -913,7 +915,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="250" y="-26"/>
+            <point key="canvasLocation" x="200" y="-85"/>
         </customView>
         <customView id="1124" userLabel="Page : Library" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="704" height="516"/>

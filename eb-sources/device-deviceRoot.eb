@@ -52,6 +52,8 @@ graphic entity DeviceRoot {
   property @signature Bool mSymbolDisplayVerticalFlip default no ;
   
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
+  
+  transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,6 +252,10 @@ graphic entity SymbolInstanceInDevice {
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
+  
+  transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom 
+    self.mPinInstances.all.pinName, self.mInstanceName
+  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -263,6 +269,7 @@ entity SymbolPinInstanceInDevice {
      prefs.pinNameFont
    ;
 
+  transient String pinName dependsFrom self.mType.one.mName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

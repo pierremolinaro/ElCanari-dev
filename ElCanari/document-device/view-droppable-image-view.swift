@@ -120,7 +120,7 @@ class DeviceDroppableImageView : NSImageView, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  imageData binding
+  //  $imageData binding
   //····················································································································
 
   private var mImageDataController : Controller_DeviceDroppableImageView_imageData? = nil

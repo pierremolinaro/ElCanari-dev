@@ -22,6 +22,9 @@ extern outlet class NSTextField : NSControl ;
 
 extern outlet class NSSegmentedControl ;
 
+extern outlet class UnconnectedSymbolPinsInDeviceTableView : EBTableView ;
+binding UnconnectedSymbolPinsInDeviceTableView $unconnectedPins : transient UnconnectedSymbolPinsInDevice ;
+
 extern outlet class CanariDragSourceButton : NSControl ;
 
 extern outlet class AddSymbolInstancePullDownButton : EBPopUpButton ;
