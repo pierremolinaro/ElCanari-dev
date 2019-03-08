@@ -72,6 +72,7 @@ document DeviceDocument root DeviceRoot {
   outlet EBButton mAddSymbolFromLibraryButton $run self.addSymbolFromLibraryAction ;
 
   arrayController mSymbolDisplayController : root.mSymbolInstances ;
+  selectionController SymbolInstanceInDevice mSymbolInstanceSelection : self.mSymbolDisplayController.selectedArray ;
 
   outlet EBView mComposedSymbolView
     $horizontalFlip root.mSymbolDisplayHorizontalFlip
@@ -96,6 +97,8 @@ document DeviceDocument root DeviceRoot {
     $hidden root.symbolNameAreConsistent
   ;
 
+  outlet EBTextField mSymbolNameTextField $value mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
+ 
 #-------------------------- Page : Packages
   action addPackageFromLibraryAction ;
   outlet EBButton mAddPackageFromLibraryButton $run self.addPackageFromLibraryAction ;

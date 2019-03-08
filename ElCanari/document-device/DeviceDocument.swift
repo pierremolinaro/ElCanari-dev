@@ -27,6 +27,12 @@ import Cocoa
   var mSymbolDisplayController = ArrayController_DeviceDocument_mSymbolDisplayController ()
 
   //····················································································································
+  //   Selection controller: mSymbolInstanceSelection
+  //····················································································································
+
+  var mSymbolInstanceSelection = SelectionController_DeviceDocument_mSymbolInstanceSelection ()
+
+  //····················································································································
   //   Array controller: mPackageDisplayController
   //····················································································································
 
@@ -209,6 +215,7 @@ import Cocoa
   @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mSymbolDisplayHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mSymbolDisplayVerticalFlipSwitch : EBSwitch?
+  @IBOutlet var mSymbolNameTextField : EBTextField?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolTableView : EBTableView?
   @IBOutlet var mTitleTextField : EBTextField?
@@ -275,6 +282,8 @@ import Cocoa
     self.mDocumentationController.addExplorer (name: "mDocumentationController", y:&y, view:view)
   //--- Array controller property: mSymbolDisplayController
     self.mSymbolDisplayController.addExplorer (name: "mSymbolDisplayController", y:&y, view:view)
+  //--- Selection controller property: mSymbolInstanceSelection
+    self.mSymbolInstanceSelection.addExplorer (name: "mSymbolInstanceSelection", y:&y, view:view)
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.addExplorer (name: "mPackageDisplayController", y:&y, view:view)
   //--- Array controller property: mSymbolController
@@ -1077,6 +1086,21 @@ import Cocoa
         errorMessage: "the 'mSymbolDisplayVerticalFlipSwitch' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolNameTextField {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolNameTextField' outlet is not an instance of 'EBTextField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolNameTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mSymbolPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -1173,6 +1197,8 @@ import Cocoa
     self.mDocumentationController.bind_model (self.rootObject.mDocs_property)
   //--- Array controller property: mSymbolDisplayController
     self.mSymbolDisplayController.bind_model (self.rootObject.mSymbolInstances_property)
+  //--- Selection controller property: mSymbolInstanceSelection
+    self.mSymbolInstanceSelection.bind_selection (model: self.mSymbolDisplayController.selectedArray_property, file: #file, line: #line)
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property)
   //--- Array controller property: mSymbolController
@@ -1289,6 +1315,7 @@ import Cocoa
     self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property, file: #file, line: #line)
     self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
+    self.mSymbolNameTextField?.bind_value (self.mSymbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_zoom (self.rootObject.mPackageDisplayZoom_property, file: #file, line: #line)
@@ -1558,6 +1585,7 @@ import Cocoa
     self.mSymbolDisplayVerticalFlipSwitch?.unbind_value ()
     self.mAddSymbolInstancePullDownButton?.unbind_symbolTypeNames ()
     self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
+    self.mSymbolNameTextField?.unbind_value ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
     self.mComposedPackageView?.unbind_zoom ()
@@ -1626,6 +1654,8 @@ import Cocoa
     self.mDocumentationController.unbind_model ()
   //--- Array controller property: mSymbolDisplayController
     self.mSymbolDisplayController.unbind_model ()
+  //--- Selection controller property: mSymbolInstanceSelection
+    self.mSymbolInstanceSelection.unbind_selection ()
   //--- Array controller property: mPackageDisplayController
     self.mPackageDisplayController.unbind_model ()
   //--- Array controller property: mSymbolController
@@ -1705,6 +1735,7 @@ import Cocoa
     self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mSymbolDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mSymbolDisplayVerticalFlipSwitch?.ebCleanUp ()
+    self.mSymbolNameTextField?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolTableView?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
