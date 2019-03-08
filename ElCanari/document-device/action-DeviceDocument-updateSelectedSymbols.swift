@@ -31,7 +31,7 @@ extension DeviceDocument {
           }else{
             let strokeBezierPathes = NSBezierPath ()
             let filledBezierPathes = NSBezierPath ()
-            var symbolPins = [SymbolPinInDevice] ()
+            var symbolPins = [SymbolPinTypeInDevice] ()
             symbolRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,

@@ -53,6 +53,18 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
          SymbolInstanceInDevice_objectDisplay {
 
   //····················································································································
+  //   To many property: mPinInstances
+  //····················································································································
+
+  var mPinInstances_property = StoredArrayOf_SymbolPinInstanceInDevice ()
+
+  //····················································································································
+
+  var mPinInstances_property_selection : EBSelection < [SymbolPinInstanceInDevice] > {
+      return self.mPinInstances_property.prop
+  }
+
+  //····················································································································
   //   Atomic property: mInstanceName
   //····················································································································
 
@@ -162,6 +174,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
+  //--- To many property: mPinInstances (no option)
+    self.mPinInstances_property.undoManager = self.undoManager
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.undoManager = self.undoManager
   //--- Atomic property: mX
@@ -232,6 +246,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         var kind = unwSelf.mType_property.mStrokeBezierPath_property_selection.kind ()
         kind &= unwSelf.mType_property.mFilledBezierPath_property_selection.kind ()
         kind &= unwSelf.mType_property.pinNameShape_property_selection.kind ()
+        kind &= unwSelf.mPinInstances_property_selection.kind ()
         kind &= unwSelf.qualifiedName_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
         kind &= unwSelf.mY_property_selection.kind ()
@@ -243,9 +258,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.qualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7)) :
-            return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7))
+          switch (unwSelf.mType_property.mStrokeBezierPath_property_selection, unwSelf.mType_property.mFilledBezierPath_property_selection, unwSelf.mType_property.pinNameShape_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.qualifiedName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection, g_Preferences!.symbolDrawingWidthMultipliedByTen_property_selection, g_Preferences!.symbolColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8)) :
+            return .single (transient_SymbolInstanceInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8))
           default :
             return .empty
           }
@@ -257,6 +272,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.addEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
     self.mType_property.addEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
     self.mType_property.addEBObserverOf_pinNameShape (self.objectDisplay_property)
+    self.mPinInstances_property.addEBObserverOf_numberShape (self.objectDisplay_property)
     self.qualifiedName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
     self.mY_property.addEBObserver (self.objectDisplay_property)
@@ -285,6 +301,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_pinNameShape (self.objectDisplay_property)
+    self.mPinInstances_property.removeEBObserverOf_numberShape (self.objectDisplay_property)
     self.qualifiedName_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
     self.mY_property.removeEBObserver (self.objectDisplay_property)
@@ -353,6 +370,13 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       valueExplorer:&self.objectDisplay_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mPinInstances",
+      idx:mPinInstances_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPinInstances_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "mType",
@@ -369,6 +393,8 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To many property: mPinInstances
+    self.mPinInstances_property.mValueExplorer = nil
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.mObserverExplorer = nil
     self.mInstanceName_property.mValueExplorer = nil
@@ -390,6 +416,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mPinInstances_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -410,6 +437,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- To many property: mPinInstances
+    self.store (
+      managedObjectArray: mPinInstances_property.propval as NSArray,
+      relationshipName: "mPinInstances",
+      intoDictionary: ioDictionary
+    )
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.storeIn (dictionary: ioDictionary, forKey:"mInstanceName")
   //--- Atomic property: mX
@@ -425,6 +458,12 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mPinInstances
+    self.mPinInstances_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPinInstances",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [SymbolPinInstanceInDevice])
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -458,6 +497,10 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mPinInstances
+    for managedObject : EBManagedObject in self.mPinInstances_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mType
     if let managedObject = self.mType_property.propval {
       objects.append (managedObject)

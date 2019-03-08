@@ -179,7 +179,7 @@ entity SlavePadInDevice {
 entity SymbolTypeInDevice {
   toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
-  toMany SymbolPinInDevice mPins ;
+  toMany SymbolPinTypeInDevice mPinTypes ;
 
   property @signature String mTypeName default "" ;
   property @signature Int mVersion default 0 ;
@@ -192,20 +192,26 @@ entity SymbolTypeInDevice {
 
   transient Int instanceCount dependsFrom self.mInstances.count ;
   
-  transient EBShape pinNameShape dependsFrom self.mPins.all.shape ;
+  transient EBShape pinNameShape dependsFrom self.mPinTypes.all.nameShape ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-entity SymbolPinInDevice {
-  property @signature Int mX default 0 ;
-  property @signature Int mY default 2_286_00 ;
+entity SymbolPinTypeInDevice { # (SymbolPinInDevice) {
+  toMany SymbolPinInstanceInDevice mInstances inverse toOne mType  ;
+
+  property @signature Int mXName default 0 ;
+  property @signature Int mYName default 0 ;
   property @signature String mName default "" ;
   property @signature HorizontalAlignment mNameHorizontalAlignment default center ;
   property @signature Bool mPinNameIsDisplayedInSchematics default yes ;
 
-  transient EBShape shape dependsFrom
-     self.mX, self.mY, 
+  property @signature Int mXNumber default 0 ;
+  property @signature Int mYNumber default 0 ;
+  property @signature HorizontalAlignment mNumberHorizontalAlignment default center ;
+
+  transient EBShape nameShape dependsFrom
+     self.mXName, self.mYName, 
      self.mName, self.mNameHorizontalAlignment,
      self.mPinNameIsDisplayedInSchematics,
      prefs.pinNameFont
@@ -216,6 +222,7 @@ entity SymbolPinInDevice {
 
 graphic entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
+  toMany SymbolPinInstanceInDevice mPinInstances ;
  
   property @signature String mInstanceName default "" ;
   property @signature Int mX default 0 ;
@@ -225,6 +232,7 @@ graphic entity SymbolInstanceInDevice {
      self.mType.one.mStrokeBezierPath,
      self.mType.one.mFilledBezierPath,
      self.mType.one.pinNameShape,
+     self.mPinInstances.all.numberShape,
      self.qualifiedName,
      self.mX, self.mY,
      prefs.symbolDrawingWidthMultipliedByTen,
@@ -240,6 +248,19 @@ graphic entity SymbolInstanceInDevice {
      prefs.symbolDrawingWidthMultipliedByTen,
      self.mX, self.mY
   ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity SymbolPinInstanceInDevice {
+  toOne SymbolPinTypeInDevice mType inverse toMany mInstances ;
+
+  transient EBShape numberShape dependsFrom
+     self.mType.one.mXNumber, self.mType.one.mYNumber, 
+     self.mType.one.mNumberHorizontalAlignment,
+     prefs.pinNameFont
+   ;
+
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

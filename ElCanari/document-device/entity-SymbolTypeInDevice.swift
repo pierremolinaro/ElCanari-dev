@@ -194,15 +194,15 @@ class SymbolTypeInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //   To many property: mPins
+  //   To many property: mPinTypes
   //····················································································································
 
-  var mPins_property = StoredArrayOf_SymbolPinInDevice ()
+  var mPinTypes_property = StoredArrayOf_SymbolPinTypeInDevice ()
 
   //····················································································································
 
-  var mPins_property_selection : EBSelection < [SymbolPinInDevice] > {
-      return self.mPins_property.prop
+  var mPinTypes_property_selection : EBSelection < [SymbolPinTypeInDevice] > {
+      return self.mPinTypes_property.prop
   }
 
   //····················································································································
@@ -307,8 +307,8 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.undoManager = self.undoManager
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.undoManager = self.undoManager
-  //--- To many property: mPins (no option)
-    self.mPins_property.undoManager = self.undoManager
+  //--- To many property: mPinTypes (no option)
+    self.mPinTypes_property.undoManager = self.undoManager
   //--- To one property: mRoot
     self.mRoot_property.owner = self
   //--- Atomic property: versionString
@@ -358,14 +358,14 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: pinNameShape
     self.pinNameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        let kind = unwSelf.mPins_property_selection.kind ()
+        let kind = unwSelf.mPinTypes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPins_property_selection) {
+          switch (unwSelf.mPinTypes_property_selection) {
           case (.single (let v0)) :
             return .single (transient_SymbolTypeInDevice_pinNameShape (v0))
           default :
@@ -376,7 +376,7 @@ class SymbolTypeInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mPins_property.addEBObserverOf_shape (self.pinNameShape_property)
+    self.mPinTypes_property.addEBObserverOf_nameShape (self.pinNameShape_property)
   //--- Install undoers and opposite setter for relationships
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
@@ -396,7 +396,7 @@ class SymbolTypeInDevice : EBManagedObject,
     super.removeAllObservers ()
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mInstances_property.removeEBObserver (self.instanceCount_property)
-    self.mPins_property.removeEBObserverOf_shape (self.pinNameShape_property)
+    self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
   }
 
   //····················································································································
@@ -484,11 +484,11 @@ class SymbolTypeInDevice : EBManagedObject,
       valueExplorer:&mInstances_property.mValueExplorer
     )
     createEntryForToManyRelationshipNamed (
-      "mPins",
-      idx:mPins_property.ebObjectIndex,
+      "mPinTypes",
+      idx:mPinTypes_property.ebObjectIndex,
       y: &y,
       view: view,
-      valueExplorer:&mPins_property.mValueExplorer
+      valueExplorer:&mPinTypes_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
@@ -523,8 +523,8 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.mObserverExplorer = nil
     self.mFilledBezierPath_property.mValueExplorer = nil
-  //--- To many property: mPins
-    self.mPins_property.mValueExplorer = nil
+  //--- To many property: mPinTypes
+    self.mPinTypes_property.mValueExplorer = nil
   //--- To one property: mRoot
     self.mRoot_property.mObserverExplorer = nil
     self.mRoot_property.mValueExplorer = nil
@@ -538,7 +538,7 @@ class SymbolTypeInDevice : EBManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mInstances_property.setProp ([])
-    self.mPins_property.setProp ([])
+    self.mPinTypes_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -575,10 +575,10 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mStrokeBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mStrokeBezierPath")
   //--- Atomic property: mFilledBezierPath
     self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
-  //--- To many property: mPins
+  //--- To many property: mPinTypes
     self.store (
-      managedObjectArray: mPins_property.propval as NSArray,
-      relationshipName: "mPins",
+      managedObjectArray: mPinTypes_property.propval as NSArray,
+      relationshipName: "mPinTypes",
       intoDictionary: ioDictionary
     )
   }
@@ -596,12 +596,12 @@ class SymbolTypeInDevice : EBManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SymbolInstanceInDevice])
-  //--- To many property: mPins
-    self.mPins_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mPins",
+  //--- To many property: mPinTypes
+    self.mPinTypes_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPinTypes",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [SymbolPinInDevice])
+    ) as! [SymbolPinTypeInDevice])
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -643,8 +643,8 @@ class SymbolTypeInDevice : EBManagedObject,
     for managedObject : EBManagedObject in self.mInstances_property.propval {
       objects.append (managedObject)
     }
-  //--- To many property: mPins
-    for managedObject : EBManagedObject in self.mPins_property.propval {
+  //--- To many property: mPinTypes
+    for managedObject : EBManagedObject in self.mPinTypes_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: mRoot

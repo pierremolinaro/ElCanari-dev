@@ -15,6 +15,7 @@ func transient_SymbolInstanceInDevice_objectDisplay (
        _ self_mType_mStrokeBezierPath : NSBezierPath?,
        _ self_mType_mFilledBezierPath : NSBezierPath?,
        _ self_mType_pinNameShape : EBShape?,         
+       _ self_mPinInstances_numberShape : [SymbolPinInstanceInDevice_numberShape],
        _ self_qualifiedName : String,                
        _ self_mX : Int,                              
        _ self_mY : Int,                              
@@ -65,6 +66,12 @@ func transient_SymbolInstanceInDevice_objectDisplay (
          shape.append (EBFilledBezierPathShape ([filledBezierPath], prefs_symbolColor))
       //--- Pin names
          shape.append (pinNameShape)
+      //--- Pin numbers
+         for p in self_mPinInstances_numberShape {
+           if let s = p.numberShape {
+             shape.append (s)
+           }
+         }
        }
      //---
        let at = NSAffineTransform ()

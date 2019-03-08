@@ -11,23 +11,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinInDevice_shape (
-       _ self_mX : Int,                 
-       _ self_mY : Int,                 
-       _ self_mName : String,           
-       _ self_mNameHorizontalAlignment : HorizontalAlignment,
-       _ self_mPinNameIsDisplayedInSchematics : Bool,
-       _ prefs_pinNameFont : NSFont
+func transient_SymbolPinInstanceInDevice_numberShape (
+       _ self_mType_mXNumber : Int?,                  
+       _ self_mType_mYNumber : Int?,                  
+       _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?
 ) -> EBShape {
 //--- START OF USER ZONE 2
-    let shape = EBShape ()
-    let nameTextAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : prefs_pinNameFont,
-      NSAttributedString.Key.foregroundColor : self_mPinNameIsDisplayedInSchematics ? NSColor.black : .lightGray
-    ]
-    let labelOrigin = NSPoint (x: canariUnitToCocoa (self_mX), y: canariUnitToCocoa (self_mY))
-    shape.append (EBTextShape (self_mName, labelOrigin, nameTextAttributes, self_mNameHorizontalAlignment.ebTextShapeHorizontalAlignment (), .center))
-    return shape
+
 //--- END OF USER ZONE 2
 }
 

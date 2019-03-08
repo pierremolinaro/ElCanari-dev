@@ -31,6 +31,11 @@ extension SymbolInstanceInDevice {
 
   override func operationAfterRemoving () {
     super.operationAfterRemoving ()
+  //--- Delete all pin instances
+    for pinInstance in self.mPinInstances_property.propval {
+      pinInstance.cleanUpRelationshipsAndRemoveAllObservers ()
+    }
+  //---
     if let symbolType = self.mType_property.propval {
     //--- Unlink to symbol type
       self.mType_property.setProp (nil)
@@ -38,10 +43,10 @@ extension SymbolInstanceInDevice {
       if symbolType.mInstances_property.propval.count == 0 {
         symbolType.mRoot_property.setProp (nil)
         symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
-        for pin in symbolType.mPins_property.propval {
-          pin.cleanUpRelationshipsAndRemoveAllObservers ()
+        for pinType in symbolType.mPinTypes_property.propval {
+          pinType.cleanUpRelationshipsAndRemoveAllObservers ()
         }
-        symbolType.mPins_property.setProp ([])
+        symbolType.mPinTypes_property.setProp ([])
       }
     }
     self.cleanUpRelationshipsAndRemoveAllObservers ()

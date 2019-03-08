@@ -83,6 +83,11 @@ let PMDevicePackages = "PMDevicePackages"
       let newSymbolInstance = SymbolInstanceInDevice (self.ebUndoManager, file: #file, #line)
       newSymbolInstance.mType_property.setProp (symbolType)
       self.rootObject.mSymbolInstances_property.add (newSymbolInstance)
+      for pinType in symbolType.mPinTypes_property.propval {
+        let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager, file: #file, #line)
+        pinInstance.mType_property.setProp (pinType)
+        newSymbolInstance.mPinInstances_property.add (pinInstance)
+      }
     }
   }
 }

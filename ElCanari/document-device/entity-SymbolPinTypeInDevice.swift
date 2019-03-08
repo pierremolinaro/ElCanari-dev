@@ -6,14 +6,14 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInDevice_mX : class {
-  var mX : Int { get }
+protocol SymbolPinInDevice_mXName : class {
+  var mXName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInDevice_mY : class {
-  var mY : Int { get }
+protocol SymbolPinInDevice_mYName : class {
+  var mYName : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -36,8 +36,26 @@ protocol SymbolPinInDevice_mPinNameIsDisplayedInSchematics : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SymbolPinInDevice_shape : class {
-  var shape : EBShape? { get }
+protocol SymbolPinInDevice_mXNumber : class {
+  var mXNumber : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPinInDevice_mYNumber : class {
+  var mYNumber : Int { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPinInDevice_mNumberHorizontalAlignment : class {
+  var mNumberHorizontalAlignment : HorizontalAlignment { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPinInDevice_nameShape : class {
+  var nameShape : EBShape? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,57 +63,60 @@ protocol SymbolPinInDevice_shape : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class SymbolPinInDevice : EBManagedObject,
-         SymbolPinInDevice_mX,
-         SymbolPinInDevice_mY,
+         SymbolPinInDevice_mXName,
+         SymbolPinInDevice_mYName,
          SymbolPinInDevice_mName,
          SymbolPinInDevice_mNameHorizontalAlignment,
          SymbolPinInDevice_mPinNameIsDisplayedInSchematics,
-         SymbolPinInDevice_shape {
+         SymbolPinInDevice_mXNumber,
+         SymbolPinInDevice_mYNumber,
+         SymbolPinInDevice_mNumberHorizontalAlignment,
+         SymbolPinInDevice_nameShape {
 
   //····················································································································
-  //   Atomic property: mX
+  //   Atomic property: mXName
   //····················································································································
 
-  var mX_property = EBStoredProperty_Int (defaultValue: 0)
+  var mXName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mX : Int {
+  var mXName : Int {
     get {
-      return self.mX_property.propval
+      return self.mXName_property.propval
     }
     set {
-      self.mX_property.setProp (newValue)
+      self.mXName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var mX_property_selection : EBSelection <Int> {
-    return self.mX_property.prop
+  var mXName_property_selection : EBSelection <Int> {
+    return self.mXName_property.prop
   }
 
   //····················································································································
-  //   Atomic property: mY
+  //   Atomic property: mYName
   //····················································································································
 
-  var mY_property = EBStoredProperty_Int (defaultValue: 228600)
+  var mYName_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mY : Int {
+  var mYName : Int {
     get {
-      return self.mY_property.propval
+      return self.mYName_property.propval
     }
     set {
-      self.mY_property.setProp (newValue)
+      self.mYName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var mY_property_selection : EBSelection <Int> {
-    return self.mY_property.prop
+  var mYName_property_selection : EBSelection <Int> {
+    return self.mYName_property.prop
   }
 
   //····················································································································
@@ -168,21 +189,90 @@ class SymbolPinInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //   Transient property: shape
+  //   Atomic property: mXNumber
   //····················································································································
 
-  var shape_property = EBTransientProperty_EBShape ()
+  var mXNumber_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var shape_property_selection : EBSelection <EBShape> {
-    return self.shape_property.prop
+  var mXNumber : Int {
+    get {
+      return self.mXNumber_property.propval
+    }
+    set {
+      self.mXNumber_property.setProp (newValue)
+    }
   }
 
   //····················································································································
 
-  var shape : EBShape? {
-    switch self.shape_property_selection {
+  var mXNumber_property_selection : EBSelection <Int> {
+    return self.mXNumber_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mYNumber
+  //····················································································································
+
+  var mYNumber_property = EBStoredProperty_Int (defaultValue: 0)
+
+  //····················································································································
+
+  var mYNumber : Int {
+    get {
+      return self.mYNumber_property.propval
+    }
+    set {
+      self.mYNumber_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mYNumber_property_selection : EBSelection <Int> {
+    return self.mYNumber_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mNumberHorizontalAlignment
+  //····················································································································
+
+  var mNumberHorizontalAlignment_property = EBStoredProperty_HorizontalAlignment (defaultValue: HorizontalAlignment.center)
+
+  //····················································································································
+
+  var mNumberHorizontalAlignment : HorizontalAlignment {
+    get {
+      return self.mNumberHorizontalAlignment_property.propval
+    }
+    set {
+      self.mNumberHorizontalAlignment_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mNumberHorizontalAlignment_property_selection : EBSelection <HorizontalAlignment> {
+    return self.mNumberHorizontalAlignment_property.prop
+  }
+
+  //····················································································································
+  //   Transient property: nameShape
+  //····················································································································
+
+  var nameShape_property = EBTransientProperty_EBShape ()
+
+  //····················································································································
+
+  var nameShape_property_selection : EBSelection <EBShape> {
+    return self.nameShape_property.prop
+  }
+
+  //····················································································································
+
+  var nameShape : EBShape? {
+    switch self.nameShape_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -196,21 +286,27 @@ class SymbolPinInDevice : EBManagedObject,
 
   required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
     super.init (undoManager, file: file, line)
-  //--- Atomic property: mX
-    self.mX_property.undoManager = self.undoManager
-  //--- Atomic property: mY
-    self.mY_property.undoManager = self.undoManager
+  //--- Atomic property: mXName
+    self.mXName_property.undoManager = self.undoManager
+  //--- Atomic property: mYName
+    self.mYName_property.undoManager = self.undoManager
   //--- Atomic property: mName
     self.mName_property.undoManager = self.undoManager
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.undoManager = self.undoManager
   //--- Atomic property: mPinNameIsDisplayedInSchematics
     self.mPinNameIsDisplayedInSchematics_property.undoManager = self.undoManager
-  //--- Atomic property: shape
-    self.shape_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: mXNumber
+    self.mXNumber_property.undoManager = self.undoManager
+  //--- Atomic property: mYNumber
+    self.mYNumber_property.undoManager = self.undoManager
+  //--- Atomic property: mNumberHorizontalAlignment
+    self.mNumberHorizontalAlignment_property.undoManager = self.undoManager
+  //--- Atomic property: nameShape
+    self.nameShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mX_property_selection.kind ()
-        kind &= unwSelf.mY_property_selection.kind ()
+        var kind = unwSelf.mXName_property_selection.kind ()
+        kind &= unwSelf.mYName_property_selection.kind ()
         kind &= unwSelf.mName_property_selection.kind ()
         kind &= unwSelf.mNameHorizontalAlignment_property_selection.kind ()
         kind &= unwSelf.mPinNameIsDisplayedInSchematics_property_selection.kind ()
@@ -221,9 +317,9 @@ class SymbolPinInDevice : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mX_property_selection, unwSelf.mY_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mXName_property_selection, unwSelf.mYName_property_selection, unwSelf.mName_property_selection, unwSelf.mNameHorizontalAlignment_property_selection, unwSelf.mPinNameIsDisplayedInSchematics_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_SymbolPinInDevice_shape (v0, v1, v2, v3, v4, v5))
+            return .single (transient_SymbolPinInDevice_nameShape (v0, v1, v2, v3, v4, v5))
           default :
             return .empty
           }
@@ -232,19 +328,22 @@ class SymbolPinInDevice : EBManagedObject,
         return .empty
       }
     }
-    self.mX_property.addEBObserver (self.shape_property)
-    self.mY_property.addEBObserver (self.shape_property)
-    self.mName_property.addEBObserver (self.shape_property)
-    self.mNameHorizontalAlignment_property.addEBObserver (self.shape_property)
-    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.shape_property)
-    g_Preferences?.pinNameFont_property.addEBObserver (self.shape_property)
+    self.mXName_property.addEBObserver (self.nameShape_property)
+    self.mYName_property.addEBObserver (self.nameShape_property)
+    self.mName_property.addEBObserver (self.nameShape_property)
+    self.mNameHorizontalAlignment_property.addEBObserver (self.nameShape_property)
+    self.mPinNameIsDisplayedInSchematics_property.addEBObserver (self.nameShape_property)
+    g_Preferences?.pinNameFont_property.addEBObserver (self.nameShape_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.mName_property.setSignatureObserver (observer: self)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: self)
+    self.mNumberHorizontalAlignment_property.setSignatureObserver (observer: self)
     self.mPinNameIsDisplayedInSchematics_property.setSignatureObserver (observer: self)
-    self.mX_property.setSignatureObserver (observer: self)
-    self.mY_property.setSignatureObserver (observer: self)
+    self.mXName_property.setSignatureObserver (observer: self)
+    self.mXNumber_property.setSignatureObserver (observer: self)
+    self.mYName_property.setSignatureObserver (observer: self)
+    self.mYNumber_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -252,12 +351,12 @@ class SymbolPinInDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    self.mX_property.removeEBObserver (self.shape_property)
-    self.mY_property.removeEBObserver (self.shape_property)
-    self.mName_property.removeEBObserver (self.shape_property)
-    self.mNameHorizontalAlignment_property.removeEBObserver (self.shape_property)
-    self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.shape_property)
-    g_Preferences?.pinNameFont_property.removeEBObserver (self.shape_property)
+    self.mXName_property.removeEBObserver (self.nameShape_property)
+    self.mYName_property.removeEBObserver (self.nameShape_property)
+    self.mName_property.removeEBObserver (self.nameShape_property)
+    self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
+    self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
+    g_Preferences?.pinNameFont_property.removeEBObserver (self.nameShape_property)
   }
 
   //····················································································································
@@ -272,20 +371,20 @@ class SymbolPinInDevice : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mX",
-      idx:self.mX_property.ebObjectIndex,
+      "mXName",
+      idx:self.mXName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mX_property.mObserverExplorer,
-      valueExplorer:&self.mX_property.mValueExplorer
+      observerExplorer:&self.mXName_property.mObserverExplorer,
+      valueExplorer:&self.mXName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "mY",
-      idx:self.mY_property.ebObjectIndex,
+      "mYName",
+      idx:self.mYName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mY_property.mObserverExplorer,
-      valueExplorer:&self.mY_property.mValueExplorer
+      observerExplorer:&self.mYName_property.mObserverExplorer,
+      valueExplorer:&self.mYName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mName",
@@ -311,14 +410,38 @@ class SymbolPinInDevice : EBManagedObject,
       observerExplorer:&self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer,
       valueExplorer:&self.mPinNameIsDisplayedInSchematics_property.mValueExplorer
     )
-    createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
-      "shape",
-      idx:self.shape_property.ebObjectIndex,
+      "mXNumber",
+      idx:self.mXNumber_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.shape_property.mObserverExplorer,
-      valueExplorer:&self.shape_property.mValueExplorer
+      observerExplorer:&self.mXNumber_property.mObserverExplorer,
+      valueExplorer:&self.mXNumber_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mYNumber",
+      idx:self.mYNumber_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mYNumber_property.mObserverExplorer,
+      valueExplorer:&self.mYNumber_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mNumberHorizontalAlignment",
+      idx:self.mNumberHorizontalAlignment_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mNumberHorizontalAlignment_property.mObserverExplorer,
+      valueExplorer:&self.mNumberHorizontalAlignment_property.mValueExplorer
+    )
+    createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "nameShape",
+      idx:self.nameShape_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.nameShape_property.mObserverExplorer,
+      valueExplorer:&self.nameShape_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
@@ -330,12 +453,12 @@ class SymbolPinInDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mX
-    self.mX_property.mObserverExplorer = nil
-    self.mX_property.mValueExplorer = nil
-  //--- Atomic property: mY
-    self.mY_property.mObserverExplorer = nil
-    self.mY_property.mValueExplorer = nil
+  //--- Atomic property: mXName
+    self.mXName_property.mObserverExplorer = nil
+    self.mXName_property.mValueExplorer = nil
+  //--- Atomic property: mYName
+    self.mYName_property.mObserverExplorer = nil
+    self.mYName_property.mValueExplorer = nil
   //--- Atomic property: mName
     self.mName_property.mObserverExplorer = nil
     self.mName_property.mValueExplorer = nil
@@ -345,6 +468,15 @@ class SymbolPinInDevice : EBManagedObject,
   //--- Atomic property: mPinNameIsDisplayedInSchematics
     self.mPinNameIsDisplayedInSchematics_property.mObserverExplorer = nil
     self.mPinNameIsDisplayedInSchematics_property.mValueExplorer = nil
+  //--- Atomic property: mXNumber
+    self.mXNumber_property.mObserverExplorer = nil
+    self.mXNumber_property.mValueExplorer = nil
+  //--- Atomic property: mYNumber
+    self.mYNumber_property.mObserverExplorer = nil
+    self.mYNumber_property.mValueExplorer = nil
+  //--- Atomic property: mNumberHorizontalAlignment
+    self.mNumberHorizontalAlignment_property.mObserverExplorer = nil
+    self.mNumberHorizontalAlignment_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -373,16 +505,22 @@ class SymbolPinInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mX
-    self.mX_property.storeIn (dictionary: ioDictionary, forKey:"mX")
-  //--- Atomic property: mY
-    self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
+  //--- Atomic property: mXName
+    self.mXName_property.storeIn (dictionary: ioDictionary, forKey:"mXName")
+  //--- Atomic property: mYName
+    self.mYName_property.storeIn (dictionary: ioDictionary, forKey:"mYName")
   //--- Atomic property: mName
     self.mName_property.storeIn (dictionary: ioDictionary, forKey:"mName")
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNameHorizontalAlignment")
   //--- Atomic property: mPinNameIsDisplayedInSchematics
     self.mPinNameIsDisplayedInSchematics_property.storeIn (dictionary: ioDictionary, forKey:"mPinNameIsDisplayedInSchematics")
+  //--- Atomic property: mXNumber
+    self.mXNumber_property.storeIn (dictionary: ioDictionary, forKey:"mXNumber")
+  //--- Atomic property: mYNumber
+    self.mYNumber_property.storeIn (dictionary: ioDictionary, forKey:"mYNumber")
+  //--- Atomic property: mNumberHorizontalAlignment
+    self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNumberHorizontalAlignment")
   }
 
   //····················································································································
@@ -400,16 +538,22 @@ class SymbolPinInDevice : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mX
-    self.mX_property.readFrom (dictionary: inDictionary, forKey:"mX")
-  //--- Atomic property: mY
-    self.mY_property.readFrom (dictionary: inDictionary, forKey:"mY")
+  //--- Atomic property: mXName
+    self.mXName_property.readFrom (dictionary: inDictionary, forKey:"mXName")
+  //--- Atomic property: mYName
+    self.mYName_property.readFrom (dictionary: inDictionary, forKey:"mYName")
   //--- Atomic property: mName
     self.mName_property.readFrom (dictionary: inDictionary, forKey:"mName")
   //--- Atomic property: mNameHorizontalAlignment
     self.mNameHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNameHorizontalAlignment")
   //--- Atomic property: mPinNameIsDisplayedInSchematics
     self.mPinNameIsDisplayedInSchematics_property.readFrom (dictionary: inDictionary, forKey:"mPinNameIsDisplayedInSchematics")
+  //--- Atomic property: mXNumber
+    self.mXNumber_property.readFrom (dictionary: inDictionary, forKey:"mXNumber")
+  //--- Atomic property: mYNumber
+    self.mYNumber_property.readFrom (dictionary: inDictionary, forKey:"mYNumber")
+  //--- Atomic property: mNumberHorizontalAlignment
+    self.mNumberHorizontalAlignment_property.readFrom (dictionary: inDictionary, forKey:"mNumberHorizontalAlignment")
   }
 
   //····················································································································
@@ -428,9 +572,12 @@ class SymbolPinInDevice : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mName_property.signature ())
     crc.accumulateUInt32 (self.mNameHorizontalAlignment_property.signature ())
+    crc.accumulateUInt32 (self.mNumberHorizontalAlignment_property.signature ())
     crc.accumulateUInt32 (self.mPinNameIsDisplayedInSchematics_property.signature ())
-    crc.accumulateUInt32 (self.mX_property.signature ())
-    crc.accumulateUInt32 (self.mY_property.signature ())
+    crc.accumulateUInt32 (self.mXName_property.signature ())
+    crc.accumulateUInt32 (self.mXNumber_property.signature ())
+    crc.accumulateUInt32 (self.mYName_property.signature ())
+    crc.accumulateUInt32 (self.mYNumber_property.signature ())
     return crc
   }
 
@@ -445,115 +592,115 @@ class SymbolPinInDevice : EBManagedObject,
 class ReadOnlyArrayOf_SymbolPinInDevice : ReadOnlyAbstractArrayProperty <SymbolPinInDevice> {
 
   //····················································································································
-  //   Observers of 'mX' stored property
+  //   Observers of 'mXName' stored property
   //····················································································································
 
-  private var mObserversOf_mX = EBWeakEventSet ()
+  private var mObserversOf_mXName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mX.insert (inObserver)
+    self.mObserversOf_mXName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.addEBObserver (inObserver)
+        managedObject.mXName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mXName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mX.remove (inObserver)
+    self.mObserversOf_mXName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mX_property.removeEBObserver (inObserver)
+        managedObject.mXName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mX_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+  final func addEBObserversOf_mXName_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
-        managedObject.mX_property.addEBObserver (observer)
+      self.mObserversOf_mXName.apply ( {(_ observer : EBEvent) in
+        managedObject.mXName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mX_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
-    self.mObserversOf_mX.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mXName_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    self.mObserversOf_mXName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mX_property.removeEBObserver (observer)
+        managedObject.mXName_property.removeEBObserver (observer)
       }
     })
   }
 
   //····················································································································
-  //   Observers of 'mY' stored property
+  //   Observers of 'mYName' stored property
   //····················································································································
 
-  private var mObserversOf_mY = EBWeakEventSet ()
+  private var mObserversOf_mYName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mY.insert (inObserver)
+    self.mObserversOf_mYName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.addEBObserver (inObserver)
+        managedObject.mYName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mYName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mY.remove (inObserver)
+    self.mObserversOf_mYName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mY_property.removeEBObserver (inObserver)
+        managedObject.mYName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mY_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+  final func addEBObserversOf_mYName_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
-        managedObject.mY_property.addEBObserver (observer)
+      self.mObserversOf_mYName.apply ( {(_ observer : EBEvent) in
+        managedObject.mYName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mY_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
-    self.mObserversOf_mY.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mYName_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    self.mObserversOf_mYName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mY_property.removeEBObserver (observer)
+        managedObject.mYName_property.removeEBObserver (observer)
       }
     })
   }
@@ -730,57 +877,228 @@ class ReadOnlyArrayOf_SymbolPinInDevice : ReadOnlyAbstractArrayProperty <SymbolP
   }
 
   //····················································································································
-  //   Observers of 'shape' transient property
+  //   Observers of 'mXNumber' stored property
   //····················································································································
 
-  private var mObserversOf_shape = EBWeakEventSet ()
+  private var mObserversOf_mXNumber = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_shape (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_shape.insert (inObserver)
+    self.mObserversOf_mXNumber.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.shape_property.addEBObserver (inObserver)
+        managedObject.mXNumber_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_shape (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mXNumber (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_shape.remove (inObserver)
+    self.mObserversOf_mXNumber.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.shape_property.removeEBObserver (inObserver)
+        managedObject.mXNumber_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_shape_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+  final func addEBObserversOf_mXNumber_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_shape.apply ( {(_ observer : EBEvent) in
-        managedObject.shape_property.addEBObserver (observer)
+      self.mObserversOf_mXNumber.apply ( {(_ observer : EBEvent) in
+        managedObject.mXNumber_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_shape_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+  final func removeEBObserversOf_mXNumber_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    self.mObserversOf_mXNumber.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mXNumber_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mYNumber' stored property
+  //····················································································································
+
+  private var mObserversOf_mYNumber = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mYNumber (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mYNumber.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mYNumber_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mYNumber (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mYNumber.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mYNumber_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mYNumber_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_shape.apply ( {(_ observer : EBEvent) in
-        managedObject.shape_property.removeEBObserver (observer)
+      self.mObserversOf_mYNumber.apply ( {(_ observer : EBEvent) in
+        managedObject.mYNumber_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mYNumber_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    self.mObserversOf_mYNumber.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mYNumber_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mNumberHorizontalAlignment' stored property
+  //····················································································································
+
+  private var mObserversOf_mNumberHorizontalAlignment = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mNumberHorizontalAlignment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNumberHorizontalAlignment_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mNumberHorizontalAlignment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mNumberHorizontalAlignment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mNumberHorizontalAlignment_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mNumberHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+        managedObject.mNumberHorizontalAlignment_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    self.mObserversOf_mNumberHorizontalAlignment.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mNumberHorizontalAlignment_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'nameShape' transient property
+  //····················································································································
+
+  private var mObserversOf_nameShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_nameShape (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_nameShape.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nameShape_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_nameShape (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_nameShape.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.nameShape_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_nameShape_toElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_nameShape.apply ( {(_ observer : EBEvent) in
+        managedObject.nameShape_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_nameShape_fromElementsOfSet (_ inSet : Set<SymbolPinInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_nameShape.apply ( {(_ observer : EBEvent) in
+        managedObject.nameShape_property.removeEBObserver (observer)
       })
     }
   }
@@ -858,23 +1176,29 @@ class TransientArrayOf_SymbolPinInDevice : ReadOnlyArrayOf_SymbolPinInDevice {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mX_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_mY_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mXName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mYName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
-      self.removeEBObserversOf_shape_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_nameShape_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mX_toElementsOfSet (addedSet)
-      self.addEBObserversOf_mY_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mXName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mYName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedSet)
       self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mXNumber_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mYNumber_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
-      self.addEBObserversOf_shape_toElementsOfSet (addedSet)
+      self.addEBObserversOf_nameShape_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1002,18 +1326,24 @@ final class StoredArrayOf_SymbolPinInDevice : ReadWriteArrayOf_SymbolPinInDevice
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mX_property.mSetterDelegate = nil
-            managedObject.mY_property.mSetterDelegate = nil
+            managedObject.mXName_property.mSetterDelegate = nil
+            managedObject.mYName_property.mSetterDelegate = nil
             managedObject.mName_property.mSetterDelegate = nil
             managedObject.mNameHorizontalAlignment_property.mSetterDelegate = nil
             managedObject.mPinNameIsDisplayedInSchematics_property.mSetterDelegate = nil
+            managedObject.mXNumber_property.mSetterDelegate = nil
+            managedObject.mYNumber_property.mSetterDelegate = nil
+            managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mX_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_mY_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mXName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mYName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mNameHorizontalAlignment_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mPinNameIsDisplayedInSchematics_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_shape_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mXNumber_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mYNumber_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mNumberHorizontalAlignment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_nameShape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1021,18 +1351,24 @@ final class StoredArrayOf_SymbolPinInDevice : ReadWriteArrayOf_SymbolPinInDevice
           for managedObject : SymbolPinInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.mY_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mXName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mYName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mNameHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mPinNameIsDisplayedInSchematics_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mXNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mYNumber_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mNumberHorizontalAlignment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mX_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_mY_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mXName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mYName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mNameHorizontalAlignment_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mPinNameIsDisplayedInSchematics_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_shape_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mXNumber_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mYNumber_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mNumberHorizontalAlignment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_nameShape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
