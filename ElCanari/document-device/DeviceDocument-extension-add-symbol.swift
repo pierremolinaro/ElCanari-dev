@@ -29,7 +29,7 @@ extension DeviceDocument {
       )
       symbolRoot.removeRecursivelyAllRelationsShips ()
 
-      let symbolType = SymbolTypeInDevice (self.ebUndoManager, file: #file, #line)
+      let symbolType = SymbolTypeInDevice (self.ebUndoManager)
       symbolType.mVersion = version
       symbolType.mTypeName = inName
       symbolType.mFileData = inData
@@ -37,12 +37,12 @@ extension DeviceDocument {
       symbolType.mFilledBezierPath = filledBezierPathes
       symbolType.mPinTypes_property.setProp (symbolPinTypes)
       self.rootObject.mSymbolTypes_property.add (symbolType)
-      let symbolInstance = SymbolInstanceInDevice (self.ebUndoManager, file: #file, #line)
+      let symbolInstance = SymbolInstanceInDevice (self.ebUndoManager)
       self.rootObject.mSymbolInstances_property.add (symbolInstance)
       symbolInstance.mType_property.setProp (symbolType)
     //--- Add pin instances
       for pinType in symbolPinTypes {
-        let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager, file: #file, #line)
+        let pinInstance = SymbolPinInstanceInDevice (self.ebUndoManager)
         pinInstance.mType_property.setProp (pinType)
         symbolInstance.mPinInstances_property.add (pinInstance)
       }

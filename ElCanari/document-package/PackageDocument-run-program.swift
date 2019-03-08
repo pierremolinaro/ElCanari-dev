@@ -268,7 +268,7 @@ extension PackageDocument {
     self.checkName ("unit", inString, &ioIndex, &ioOk)
     let distanceUnit = self.scanUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageDimension (self.ebUndoManager, file: #file, #line)
+    let object = PackageDimension (self.ebUndoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -303,7 +303,7 @@ extension PackageDocument {
     let numberingName = self.scanName (inString, &ioIndex, &ioOk)
     let possibleZoneNumbering = PadNumbering (string: numberingName)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageZone (self.ebUndoManager, file: #file, #line)
+    let object = PackageZone (self.ebUndoManager)
     object.x = x
     object.xUnit = xUnit
     object.y = y
@@ -363,7 +363,7 @@ extension PackageDocument {
     let slavePadErrorLocation = ioIndex
     let masterPadID = self.scanNumber (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageSlavePad (self.ebUndoManager, file: #file, #line)
+    let object = PackageSlavePad (self.ebUndoManager)
     object.xCenter = xCenter
     object.xCenterUnit = xCenterUnit
     object.yCenter = yCenter
@@ -412,7 +412,7 @@ extension PackageDocument {
     let (holeDiameter, holeDiameterUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkName ("number", inString, &ioIndex, &ioOk)
     let padNumber = self.scanNumber (inString, &ioIndex, &ioOk)
-    let object = PackagePad (self.ebUndoManager, file: #file, #line)
+    let object = PackagePad (self.ebUndoManager)
     if self.test ("id", inString, &ioIndex, &ioOk) {
       let padID = self.scanNumber (inString, &ioIndex, &ioOk)
       ioMasterPadDictionary [padID] = object
@@ -444,7 +444,7 @@ extension PackageDocument {
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((x2, x2Unit), (y2, y2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageGuide (self.ebUndoManager, file: #file, #line)
+    let object = PackageGuide (self.ebUndoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -470,7 +470,7 @@ extension PackageDocument {
     self.checkName ("cp", inString, &ioIndex, &ioOk)
     let ((cpx2, cpx2Unit), (cpy2, cpy2Unit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageBezier (self.ebUndoManager, file: #file, #line)
+    let object = PackageBezier (self.ebUndoManager)
     object.x1 = x1
     object.x1Unit = x1Unit
     object.y1 = y1
@@ -508,7 +508,7 @@ extension PackageDocument {
     self.checkName ("training", inString, &ioIndex, &ioOk)
     let (endTangentLength, endTangentLengthUnit) = self.scanNumberWithUnit (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageArc (self.ebUndoManager, file: #file, #line)
+    let object = PackageArc (self.ebUndoManager)
     object.xCenter = xCenter
     object.xCenterUnit = xCenterUnit
     object.yCenter = yCenter
@@ -534,7 +534,7 @@ extension PackageDocument {
     self.checkName ("size", inString, &ioIndex, &ioOk)
     let ((width, widthUnit), (height, heightUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageOval (self.ebUndoManager, file: #file, #line)
+    let object = PackageOval (self.ebUndoManager)
     object.x = originX
     object.xUnit = originXUnit
     object.y = originY
@@ -556,7 +556,7 @@ extension PackageDocument {
     self.checkName ("to", inString, &ioIndex, &ioOk)
     let ((p2X, p2XUnit), (p2Y, p2YUnit)) = self.scanPoint (inString, &ioIndex, &ioOk)
     self.checkChar (";", inString, &ioIndex, &ioOk)
-    let object = PackageSegment (self.ebUndoManager, file: #file, #line)
+    let object = PackageSegment (self.ebUndoManager)
     object.x1 = p1X
     object.x1Unit = p1XUnit
     object.y1 = p1Y

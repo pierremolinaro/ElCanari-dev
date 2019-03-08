@@ -104,8 +104,8 @@ class BoardModelVia : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
-    super.init (undoManager, file: file, line)
+  required init (_ undoManager : EBUndoManager?) {
+    super.init (undoManager)
   //--- Atomic property: y
     self.y_property.undoManager = self.undoManager
   //--- Atomic property: padDiameter

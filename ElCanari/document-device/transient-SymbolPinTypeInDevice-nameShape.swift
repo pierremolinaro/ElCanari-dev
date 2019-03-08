@@ -11,10 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolPinInDevice_nameShape (
-       _ self_mXName : Int,                 
-       _ self_mYName : Int,                 
-       _ self_mName : String,               
+func transient_SymbolPinTypeInDevice_nameShape (
+       _ self_mXName : Int,                     
+       _ self_mYName : Int,                     
+       _ self_mName : String,                   
        _ self_mNameHorizontalAlignment : HorizontalAlignment,
        _ self_mPinNameIsDisplayedInSchematics : Bool,
        _ prefs_pinNameFont : NSFont

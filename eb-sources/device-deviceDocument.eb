@@ -101,6 +101,11 @@ document DeviceDocument root DeviceRoot {
     $hidden root.symbolNameAreConsistent
   ;
 
+  outlet EBTextObserverField mSymbolTypeTextField
+#     $tooltip mSymbolInstanceSelection.symbolTypeName
+     $valueObserver mSymbolInstanceSelection.symbolTypeName
+   ;
+
   outlet EBTextField mSymbolNameTextField $value mSymbolInstanceSelection.mInstanceName  {sendContinously : yes} ;
  
 #-------------------------- Page : Packages
@@ -140,6 +145,18 @@ document DeviceDocument root DeviceRoot {
   ;
 
 #-------------------------- Page : Library
+
+  action resetSymbolsAndPackagesVersion ;
+  outlet EBButton mResetSymbolAndPackagesVersionButton
+    $run self.resetSymbolsAndPackagesVersion
+    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+  ;
+
+  action updateSymbolsAndPackagesAction ;
+  outlet EBButton mUpdateSymbolAndPackagesButton
+    $run self.updateSymbolsAndPackagesAction
+    $enabled (root.mPackages.count > 0) & (root.mSymbolTypes.count > 0)
+  ;
 
 #--- Symbols
   tableViewController mSymbolController {allowsEmptySelection:yes, allowsMultipleSelection:yes} root.mSymbolTypes {

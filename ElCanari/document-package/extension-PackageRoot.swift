@@ -28,7 +28,7 @@ extension PackageRoot {
       }else if let segment = object as? PackageArc, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
       }else if let packagePad = object as? PackagePad {
-        let pad = MasterPadInDevice (inUndoManager, file: #file, #line)
+        let pad = MasterPadInDevice (inUndoManager)
         pad.xCenter = packagePad.xCenter
         pad.yCenter = packagePad.yCenter
         pad.width = packagePad.width
@@ -39,7 +39,7 @@ extension PackageRoot {
         pad.padName = packagePad.padName!
         masterPads.append (pad)
       }else if let packagePad = object as? PackageSlavePad {
-        let pad = SlavePadInDevice (inUndoManager, file: #file, #line)
+        let pad = SlavePadInDevice (inUndoManager)
         pad.xCenter = packagePad.xCenter
         pad.yCenter = packagePad.yCenter
         pad.width = packagePad.width

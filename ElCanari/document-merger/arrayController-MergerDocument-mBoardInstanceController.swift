@@ -418,7 +418,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = MergerBoardInstance (self.undoManager, file: #file, #line)
+        let newObject = MergerBoardInstance (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

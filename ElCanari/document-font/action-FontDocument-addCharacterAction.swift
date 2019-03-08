@@ -25,7 +25,7 @@ extension FontDocument {
       window.beginSheet (panel, completionHandler: { (response : NSApplication.ModalResponse) in
         if response == NSApplication.ModalResponse.stop, let codePoint = self.mNewCharacterView?.selectedCharacter {
           var characterSet = self.rootObject.characters_property.propval
-          let newCharacter = FontCharacter (self.ebUndoManager, file: #file, #line)
+          let newCharacter = FontCharacter (self.ebUndoManager)
           newCharacter.codePoint = codePoint
           characterSet.append (newCharacter)
           characterSet = characterSet.sorted (by :{$0.codePoint < $1.codePoint})

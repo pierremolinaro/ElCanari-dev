@@ -105,7 +105,7 @@ let PMFontComment = "PMFontComment"
     if let currentCharacter = possibleCurrentCharacter {
       var newSegmentEntityArray = [SegmentForFontCharacter] ()
       for segment in inSegments {
-        let newSegment = SegmentForFontCharacter (self.ebUndoManager, file: #file, #line)
+        let newSegment = SegmentForFontCharacter (self.ebUndoManager)
         newSegment.x1 = segment.x1
         newSegment.y1 = segment.y1
         newSegment.x2 = segment.x2
@@ -147,7 +147,7 @@ let PMFontComment = "PMFontComment"
     //--- There is no character for this code point: create it
       if !found {
         var characterSet = self.rootObject.characters_property.propval
-        let newCharacter = FontCharacter (self.ebUndoManager, file: #file, #line)
+        let newCharacter = FontCharacter (self.ebUndoManager)
         newCharacter.codePoint = codePoint
         characterSet.append (newCharacter)
         characterSet = characterSet.sorted (by: {$0.codePoint < $1.codePoint})

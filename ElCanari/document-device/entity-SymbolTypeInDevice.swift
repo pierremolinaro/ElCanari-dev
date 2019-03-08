@@ -290,8 +290,8 @@ class SymbolTypeInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
-    super.init (undoManager, file: file, line)
+  required init (_ undoManager : EBUndoManager?) {
+    super.init (undoManager)
   //--- To many property: mInstances (has opposite relationship)
     self.mInstances_property.undoManager = self.undoManager
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolInstanceInDevice?) in

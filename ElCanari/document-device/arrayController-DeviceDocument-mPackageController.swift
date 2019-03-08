@@ -411,7 +411,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = PackageInDevice (self.undoManager, file: #file, #line)
+        let newObject = PackageInDevice (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

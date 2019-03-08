@@ -11,27 +11,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Preferences {
-  @objc func addLibraryEntryAction (_ sender : NSObject?) {
+extension DeviceDocument {
+  @objc func updateSymbolsAndPackagesAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let op = NSOpenPanel ()
-    op.allowsMultipleSelection = false
-    op.canChooseDirectories = true
-    op.canChooseFiles = false
-    op.beginSheetModal (
-      for: (sender as! NSButton).window!,
-      completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
-        if inReturnCode == NSApplication.ModalResponse.OK {
-          let URLToAdd : URL = op.urls [0]
-          let pathToAdd = URLToAdd.path
-          let newEntry = CanariLibraryEntry (self.undoManager)
-          newEntry.mPath = pathToAdd
-          var array = self.additionnalLibraryArray_property.propval
-          array.append (newEntry)
-          self.additionnalLibraryArray_property.setProp (array)
-        }
-      }
-    )
+    ENTER USER CODE HERE
 //--- END OF USER ZONE 2
   }
 }

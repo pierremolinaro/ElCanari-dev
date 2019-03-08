@@ -425,7 +425,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SymbolTypeInDevice (self.undoManager, file: #file, #line)
+        let newObject = SymbolTypeInDevice (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

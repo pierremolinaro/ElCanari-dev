@@ -441,7 +441,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = CanariLibraryEntry (self.undoManager, file: #file, #line)
+        let newObject = CanariLibraryEntry (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

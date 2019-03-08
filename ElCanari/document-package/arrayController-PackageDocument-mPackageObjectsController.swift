@@ -418,7 +418,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = PackageObject (self.undoManager, file: #file, #line)
+        let newObject = PackageObject (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

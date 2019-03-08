@@ -14,17 +14,12 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
 
   var mExplorerWindow : NSWindow?
 
-  let mFile : String
-  let mLine : Int
-
   //····················································································································
   //  init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file : String, _ inLine : Int) {
+  required init (_ undoManager : EBUndoManager?) {
     mUndoManager = undoManager
-    mFile = file
-    mLine = inLine
     super.init ()
   }
 

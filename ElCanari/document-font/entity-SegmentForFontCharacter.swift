@@ -148,8 +148,8 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
-    super.init (undoManager, file: file, line)
+  required init (_ undoManager : EBUndoManager?) {
+    super.init (undoManager)
   //--- Atomic property: x1
     self.x1_property.undoManager = self.undoManager
   //--- Atomic property: y1

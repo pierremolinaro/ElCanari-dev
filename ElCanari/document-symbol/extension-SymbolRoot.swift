@@ -21,7 +21,7 @@ extension SymbolRoot {
     for symbolObject in self.symbolObjects_property.propval {
       if let object = symbolObject as? SymbolPin, let bp = object.filledBezierPath {
         filledBezierPathes.append (bp)
-        let newPin = SymbolPinTypeInDevice (inUndoManager, file: #file, #line)
+        let newPin = SymbolPinTypeInDevice (inUndoManager)
         newPin.mXName = object.xName
         newPin.mYName = object.yName
         newPin.mName = object.name

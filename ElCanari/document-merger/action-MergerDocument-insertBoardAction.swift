@@ -32,7 +32,7 @@ extension MergerDocument {
             // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
             // NSLog ("self.mInsertedInstanceDefaultOrientation?.selectedTag () \(self.mInsertedInstanceDefaultOrientation?.selectedTag ())")
             let rotation = QuadrantRotation (rawValue: self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
-            let newBoard = MergerBoardInstance (self.ebUndoManager, file: #file, #line)
+            let newBoard = MergerBoardInstance (self.ebUndoManager)
             newBoard.myModel_property.setProp (boardModel)
             newBoard.x = x
             newBoard.y = y

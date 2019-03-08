@@ -82,7 +82,7 @@ fileprivate let kDragAndDropModelType = NSPasteboard.PasteboardType (rawValue: "
         if  let boardModel = possibleBoardModel {
          // NSLog ("x \(mouseLocation.x), y \(mouseLocation.y)")
           let rotation = QuadrantRotation (rawValue: self.mInsertedInstanceDefaultOrientation?.selectedTag () ?? 0)!
-          let newBoard = MergerBoardInstance (self.ebUndoManager, file: #file, #line)
+          let newBoard = MergerBoardInstance (self.ebUndoManager)
           newBoard.myModel_property.setProp (boardModel)
           newBoard.x = cocoaToCanariUnit (draggingLocationInDestinationView.x)
           newBoard.y = cocoaToCanariUnit (draggingLocationInDestinationView.y)

@@ -411,7 +411,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DeviceDocumentation (self.undoManager, file: #file, #line)
+        let newObject = DeviceDocumentation (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

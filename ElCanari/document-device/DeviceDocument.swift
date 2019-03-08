@@ -204,6 +204,7 @@ import Cocoa
   @IBOutlet var mRepresentationImageView : DeviceDroppableImageView?
   @IBOutlet var mResetSelectedPackageVersionButton : EBButton?
   @IBOutlet var mResetSelectedSymbolVersionButton : EBButton?
+  @IBOutlet var mResetSymbolAndPackagesVersionButton : EBButton?
   @IBOutlet var mResetVersionButton : EBButton?
   @IBOutlet var mSaveDocButton : EBButton?
   @IBOutlet var mShowDocButton : EBButton?
@@ -219,9 +220,11 @@ import Cocoa
   @IBOutlet var mSymbolNameTextField : EBTextField?
   @IBOutlet var mSymbolPageView : CanariViewWithKeyView?
   @IBOutlet var mSymbolTableView : EBTableView?
+  @IBOutlet var mSymbolTypeTextField : EBTextObserverField?
   @IBOutlet var mTitleTextField : EBTextField?
   @IBOutlet var mUpdateSelectedPackagesButton : EBButton?
   @IBOutlet var mUpdateSelectedSymbolsButton : EBButton?
+  @IBOutlet var mUpdateSymbolAndPackagesButton : EBButton?
   @IBOutlet var mVersionField : CanariVersionField?
 
   //····················································································································
@@ -237,6 +240,8 @@ import Cocoa
   var mController_mInconsistentSymbolNameMessageScrollView_hidden : MultipleBindingController_hidden? = nil
   var mController_mSymbolErrorMessageTitleTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mResetSymbolAndPackagesVersionButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUpdateSymbolAndPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mResetSelectedSymbolVersionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mExportSelectedSymbolsButton_enabled : MultipleBindingController_enabled? = nil
@@ -923,6 +928,21 @@ import Cocoa
         errorMessage: "the 'mResetSelectedSymbolVersionButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mResetSymbolAndPackagesVersionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mResetSymbolAndPackagesVersionButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mResetSymbolAndPackagesVersionButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mResetVersionButton {
       if !(outlet is EBButton) {
         presentErrorWindow (
@@ -1148,6 +1168,21 @@ import Cocoa
         errorMessage: "the 'mSymbolTableView' outlet is nil"
       )
     }
+    if let outlet : Any = self.mSymbolTypeTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mSymbolTypeTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mSymbolTypeTextField' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mTitleTextField {
       if !(outlet is EBTextField) {
         presentErrorWindow (
@@ -1191,6 +1226,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mUpdateSelectedSymbolsButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mUpdateSymbolAndPackagesButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUpdateSymbolAndPackagesButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUpdateSymbolAndPackagesButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mVersionField {
@@ -1332,6 +1382,7 @@ import Cocoa
     self.mSymbolDisplayVerticalFlipSwitch?.bind_value (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mAddSymbolInstancePullDownButton?.bind_symbolTypeNames (self.rootObject.symbolTypeNames_property, file: #file, line: #line)
     self.mInconsistentSymbolNameMessageTextView?.bind_valueObserver (self.rootObject.inconsistentSymbolNameSetMessage_property, file: #file, line: #line)
+    self.mSymbolTypeTextField?.bind_valueObserver (self.mSymbolInstanceSelection.symbolTypeName_property, file: #file, line: #line)
     self.mSymbolNameTextField?.bind_value (self.mSymbolInstanceSelection.mInstanceName_property, file: #file, line: #line, sendContinously:true)
     self.mComposedPackageView?.bind_horizontalFlip (self.rootObject.mPackageDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedPackageView?.bind_verticalFlip (self.rootObject.mPackageDisplayVerticalFlip_property, file: #file, line: #line)
@@ -1440,6 +1491,28 @@ import Cocoa
       )
       self.rootObject.packagePadNameSetsAreConsistent_property.addEBObserver (controller)
       self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.rootObject.mPackages_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0)))
+        },
+        outlet: self.mResetSymbolAndPackagesVersionButton
+      )
+      self.rootObject.mPackages_property.count_property.addEBObserver (controller)
+      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
+      self.mController_mResetSymbolAndPackagesVersionButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return ((self.rootObject.mPackages_property.count_property_selection > EBSelection.single (0)) && (self.rootObject.mSymbolTypes_property.count_property_selection > EBSelection.single (0)))
+        },
+        outlet: self.mUpdateSymbolAndPackagesButton
+      )
+      self.rootObject.mPackages_property.count_property.addEBObserver (controller)
+      self.rootObject.mSymbolTypes_property.count_property.addEBObserver (controller)
+      self.mController_mUpdateSymbolAndPackagesButton_enabled = controller
     }
     do{
       let controller = MultipleBindingController_enabled (
@@ -1560,6 +1633,10 @@ import Cocoa
     self.mAddSymbolFromLibraryButton?.action = #selector (DeviceDocument.addSymbolFromLibraryAction (_:))
     self.mAddPackageFromLibraryButton?.target = self
     self.mAddPackageFromLibraryButton?.action = #selector (DeviceDocument.addPackageFromLibraryAction (_:))
+    self.mResetSymbolAndPackagesVersionButton?.target = self
+    self.mResetSymbolAndPackagesVersionButton?.action = #selector (DeviceDocument.resetSymbolsAndPackagesVersion (_:))
+    self.mUpdateSymbolAndPackagesButton?.target = self
+    self.mUpdateSymbolAndPackagesButton?.action = #selector (DeviceDocument.updateSymbolsAndPackagesAction (_:))
     self.mResetSelectedSymbolVersionButton?.target = self
     self.mResetSelectedSymbolVersionButton?.action = #selector (DeviceDocument.resetSelectedSymbolVersion (_:))
     self.mEditSelectedSymbolsButton?.target = self
@@ -1612,6 +1689,7 @@ import Cocoa
     self.mSymbolDisplayVerticalFlipSwitch?.unbind_value ()
     self.mAddSymbolInstancePullDownButton?.unbind_symbolTypeNames ()
     self.mInconsistentSymbolNameMessageTextView?.unbind_valueObserver ()
+    self.mSymbolTypeTextField?.unbind_valueObserver ()
     self.mSymbolNameTextField?.unbind_value ()
     self.mComposedPackageView?.unbind_horizontalFlip ()
     self.mComposedPackageView?.unbind_verticalFlip ()
@@ -1649,6 +1727,12 @@ import Cocoa
     self.mController_mSymbolErrorMessageTitleTextField_hidden = nil
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden!)
     self.mController_mInconsistentPackagePadNameSetsMessageScrollView_hidden = nil
+    self.rootObject.mPackages_property.count_property.removeEBObserver (self.mController_mResetSymbolAndPackagesVersionButton_enabled!)
+    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mResetSymbolAndPackagesVersionButton_enabled!)
+    self.mController_mResetSymbolAndPackagesVersionButton_enabled = nil
+    self.rootObject.mPackages_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
+    self.rootObject.mSymbolTypes_property.count_property.removeEBObserver (self.mController_mUpdateSymbolAndPackagesButton_enabled!)
+    self.mController_mUpdateSymbolAndPackagesButton_enabled = nil
     self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetSelectedSymbolVersionButton_enabled!)
     self.mController_mResetSelectedSymbolVersionButton_enabled = nil
     self.mSymbolController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditSelectedSymbolsButton_enabled!)
@@ -1703,6 +1787,8 @@ import Cocoa
     self.mSaveDocButton?.target = nil
     self.mAddSymbolFromLibraryButton?.target = nil
     self.mAddPackageFromLibraryButton?.target = nil
+    self.mResetSymbolAndPackagesVersionButton?.target = nil
+    self.mUpdateSymbolAndPackagesButton?.target = nil
     self.mResetSelectedSymbolVersionButton?.target = nil
     self.mEditSelectedSymbolsButton?.target = nil
     self.mExportSelectedSymbolsButton?.target = nil
@@ -1753,6 +1839,7 @@ import Cocoa
     self.mRepresentationImageView?.ebCleanUp ()
     self.mResetSelectedPackageVersionButton?.ebCleanUp ()
     self.mResetSelectedSymbolVersionButton?.ebCleanUp ()
+    self.mResetSymbolAndPackagesVersionButton?.ebCleanUp ()
     self.mResetVersionButton?.ebCleanUp ()
     self.mSaveDocButton?.ebCleanUp ()
     self.mShowDocButton?.ebCleanUp ()
@@ -1768,9 +1855,11 @@ import Cocoa
     self.mSymbolNameTextField?.ebCleanUp ()
     self.mSymbolPageView?.ebCleanUp ()
     self.mSymbolTableView?.ebCleanUp ()
+    self.mSymbolTypeTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
     self.mUpdateSelectedPackagesButton?.ebCleanUp ()
     self.mUpdateSelectedSymbolsButton?.ebCleanUp ()
+    self.mUpdateSymbolAndPackagesButton?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
   }
 

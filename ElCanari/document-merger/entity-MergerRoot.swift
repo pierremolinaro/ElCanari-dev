@@ -830,8 +830,8 @@ class MergerRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
-    super.init (undoManager, file: file, line)
+  required init (_ undoManager : EBUndoManager?) {
+    super.init (undoManager)
   //--- To many property: boardModels (no option)
     self.boardModels_property.undoManager = self.undoManager
   //--- To many property: boardInstances (has opposite relationship)

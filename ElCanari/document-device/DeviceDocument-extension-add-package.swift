@@ -29,7 +29,7 @@ extension DeviceDocument {
       )
       packageRoot.removeRecursivelyAllRelationsShips ()
 
-      let package = PackageInDevice (self.ebUndoManager, file: #file, #line)
+      let package = PackageInDevice (self.ebUndoManager)
       package.mVersion = version
       package.mName = inName
       package.mFileData = inData

@@ -422,7 +422,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = ArtworkFileGenerationParameters (self.undoManager, file: #file, #line)
+        let newObject = ArtworkFileGenerationParameters (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

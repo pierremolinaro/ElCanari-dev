@@ -422,7 +422,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = BoardModel (self.undoManager, file: #file, #line)
+        let newObject = BoardModel (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

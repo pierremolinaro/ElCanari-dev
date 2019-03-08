@@ -14,10 +14,20 @@ import Cocoa
 func transient_SymbolPinInstanceInDevice_numberShape (
        _ self_mType_mXNumber : Int?,                  
        _ self_mType_mYNumber : Int?,                  
-       _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?
+       _ self_mType_mNumberHorizontalAlignment : HorizontalAlignment?,
+       _ prefs_pinNameFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
-
+    let shape = EBShape ()
+    if let x = self_mType_mXNumber, let y = self_mType_mYNumber, let alignment = self_mType_mNumberHorizontalAlignment {
+      let numberTextAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : prefs_pinNameFont,
+        NSAttributedString.Key.foregroundColor : NSColor.black
+      ]
+      let numberOrigin = NSPoint (x: canariUnitToCocoa (x), y: canariUnitToCocoa (y))
+      shape.append (EBTextShape ("##", numberOrigin, numberTextAttributes, alignment.ebTextShapeHorizontalAlignment (), .center))
+    }
+    return shape
 //--- END OF USER ZONE 2
 }
 

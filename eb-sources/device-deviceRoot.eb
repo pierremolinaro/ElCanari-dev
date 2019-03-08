@@ -239,6 +239,8 @@ graphic entity SymbolInstanceInDevice {
      prefs.symbolColor
   ;
 
+  transient String symbolTypeName dependsFrom self.mType.one.mTypeName ;
+
   transient String qualifiedName dependsFrom self.mInstanceName, self.mType.one.mTypeName ;
 
   transient EBShape selectionDisplay dependsFrom

@@ -370,7 +370,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = FontCharacter (self.undoManager, file: #file, #line)
+        let newObject = FontCharacter (self.undoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

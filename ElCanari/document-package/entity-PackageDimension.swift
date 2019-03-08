@@ -455,8 +455,8 @@ class PackageDimension : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?, file: String, _ line : Int) {
-    super.init (undoManager, file: file, line)
+  required init (_ undoManager : EBUndoManager?) {
+    super.init (undoManager)
   //--- Atomic property: y1
     self.y1_property.undoManager = self.undoManager
   //--- Atomic property: x2

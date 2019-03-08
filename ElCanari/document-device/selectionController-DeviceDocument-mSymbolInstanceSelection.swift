@@ -79,6 +79,16 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   }
 
   //····················································································································
+  //   Selection observable property: symbolTypeName
+  //····················································································································
+
+  var symbolTypeName_property = EBTransientProperty_String ()
+
+  var symbolTypeName_property_selection : EBSelection <String> {
+    return self.symbolTypeName_property.prop
+  }
+
+  //····················································································································
   //   BIND SELECTION
   //····················································································································
 
@@ -94,6 +104,7 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
     self.bind_property_objectDisplay (model: model)
     self.bind_property_qualifiedName (model: model)
     self.bind_property_selectionDisplay (model: model)
+    self.bind_property_symbolTypeName (model: model)
   }
 
   //····················································································································
@@ -125,6 +136,9 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
   //--- selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_selectionDisplay (self.selectionDisplay_property)
+  //--- symbolTypeName
+    self.symbolTypeName_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_symbolTypeName (self.symbolTypeName_property)
   //---
     self.mModel = nil    
   }
@@ -546,6 +560,46 @@ final class SelectionController_DeviceDocument_mSymbolInstanceSelection : EBObje
           var isMultipleSelection = false
           for object in v {
             switch object.selectionDisplay_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_symbolTypeName (model : ReadOnlyArrayOf_SymbolInstanceInDevice) {
+    model.addEBObserverOf_symbolTypeName (self.symbolTypeName_property)
+    self.symbolTypeName_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <String> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.symbolTypeName_property_selection {
             case .empty :
               return .empty
             case .multiple :

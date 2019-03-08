@@ -56,7 +56,7 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 
 func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
   if let T = kEntityDictionary [inEntityTypeName] {
-    return T.init (undoManager, file: #file, #line)
+    return T.init (undoManager)
   }else{
     return nil
   }
