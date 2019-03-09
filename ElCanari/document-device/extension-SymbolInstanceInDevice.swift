@@ -29,25 +29,25 @@ extension SymbolInstanceInDevice {
 
   //····················································································································
 
-  override func operationAfterRemoving () {
-    super.operationAfterRemoving ()
-  //--- Delete all pin instances
+  override func operationBeforeRemoving () {
+    super.operationBeforeRemoving ()
+  //--- clean all pin instances
     for pinInstance in self.mPinInstances_property.propval {
       pinInstance.cleanUpRelationshipsAndRemoveAllObservers ()
     }
   //---
-    if let symbolType = self.mType_property.propval {
-    //--- Unlink to symbol type
-      self.mType_property.setProp (nil)
-    //--- If symbol instance it the last one, remove also symbol type
-      if symbolType.mInstances_property.propval.count == 0 {
-        symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
-        for pinType in symbolType.mPinTypes_property.propval {
-          pinType.cleanUpRelationshipsAndRemoveAllObservers ()
-        }
-        symbolType.mPinTypes_property.setProp ([])
-      }
-    }
+//    if let symbolType = self.mType_property.propval {
+//    //--- Unlink to symbol type
+//      self.mType_property.setProp (nil)
+//    //--- If symbol instance it the last one, remove also symbol type
+//      if symbolType.mInstances_property.propval.count == 0 {
+//        symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
+//        for pinType in symbolType.mPinTypes_property.propval {
+//          pinType.cleanUpRelationshipsAndRemoveAllObservers ()
+//        }
+//        symbolType.mPinTypes_property.setProp ([])
+//      }
+//    }
     self.cleanUpRelationshipsAndRemoveAllObservers ()
   }
 

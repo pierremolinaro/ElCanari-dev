@@ -29,8 +29,8 @@ extension PackageInDevice {
 
   //····················································································································
 
-  override func operationAfterRemoving () {
-    super.operationAfterRemoving ()
+  override func operationBeforeRemoving () {
+    super.operationBeforeRemoving ()
     for pad in self.mMasterPads_property.propval {
       pad.cleanUpRelationshipsAndRemoveAllObservers ()
     }

@@ -204,7 +204,7 @@ class EBGraphicManagedObject : EBManagedObject {
 
   //····················································································································
 
-  @objc dynamic func operationAfterRemoving () {
+  @objc dynamic func operationBeforeRemoving () {
   }
 
   //····················································································································

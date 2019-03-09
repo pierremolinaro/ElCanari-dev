@@ -16,7 +16,7 @@ let PMDevicePackages = "PMDevicePackages"
   //····················································································································
 
   override func metadataStatusForSaving () -> UInt8 {
-    return 0
+    return UInt8 (self.mMetadataStatus!.rawValue)
   }
 
   //····················································································································
@@ -67,6 +67,7 @@ let PMDevicePackages = "PMDevicePackages"
     self.mAddSymbolInstancePullDownButton?.register (document: self)
   //---
     self.mPackageDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.updatePadProxies () }
+    self.mSymbolDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.removeUnusedSymbolTypes () }
   }
 
   //····················································································································
@@ -92,6 +93,23 @@ let PMDevicePackages = "PMDevicePackages"
       }
     }
   }
+
+  //····················································································································
+
+  func removeUnusedSymbolTypes () {
+    for symbolType in self.rootObject.mSymbolTypes_property.propval {
+      if symbolType.mInstances_property.propval.count == 0 {
+        for pinType in symbolType.mPinTypes_property.propval {
+          pinType.cleanUpRelationshipsAndRemoveAllObservers ()
+        }
+        symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
+        self.rootObject.mSymbolTypes_property.remove (symbolType)
+      }
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

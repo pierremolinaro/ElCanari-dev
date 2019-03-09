@@ -285,6 +285,7 @@ entity SymbolPinInstanceInDevice {
   transient EBShape numberShape dependsFrom
      self.mType.one.mXNumber, self.mType.one.mYNumber, 
      self.mType.one.mNumberHorizontalAlignment,
+     self.mPadProxy.one.mQualifiedPadName,
      prefs.pinNameFont
    ;
 

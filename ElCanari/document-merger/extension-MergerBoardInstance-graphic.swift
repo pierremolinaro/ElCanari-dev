@@ -48,8 +48,8 @@ extension MergerBoardInstance {
 
   //····················································································································
 
-  override func operationAfterRemoving () {
-    super.operationAfterRemoving ()
+  override func operationBeforeRemoving () {
+    super.operationBeforeRemoving ()
     self.myRoot_property.setProp (nil)
     self.myModel_property.setProp (nil)
   }

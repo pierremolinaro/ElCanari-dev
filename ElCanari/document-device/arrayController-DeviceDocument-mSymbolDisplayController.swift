@@ -655,18 +655,15 @@ final class ArrayController_DeviceDocument_mSymbolDisplayController : EBObject, 
     if self.canDelete () {
     //--- Remove selected objects
       var objects = self.mModel?.propval ?? []
-      let selectedObjects = self.selectedArray_property.propset
-      for object in selectedObjects {
+      for object in self.selectedArray_property.propset {
         if let idx = objects.firstIndex (of: object) {
-          objects.remove (at: idx)
+         object.operationBeforeRemoving ()
+         objects.remove (at: idx)
         }
       }
       self.mModel?.setProp (objects)
       self.selectedSet = Set ()
     //---
-      for object in selectedObjects {
-        object.operationAfterRemoving ()
-      }
       self.mAfterObjectRemovingCallback? ()
     }
   }
