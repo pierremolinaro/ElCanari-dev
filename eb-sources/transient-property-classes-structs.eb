@@ -11,5 +11,6 @@ transient property struct CanariIssueArray ;
 transient property struct SymbolPinNameAndErrorLocationArray ;
 transient property struct NSRect ;
 transient property struct UnconnectedSymbolPinsInDevice ;
+transient property struct AssignedPadProxiesInDevice ;
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

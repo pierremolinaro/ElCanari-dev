@@ -2011,6 +2011,14 @@ typealias EBReadOnlyController_UnconnectedSymbolPinsInDevice = EBReadOnlyValueCo
 typealias EBReadOnlyProperty_UnconnectedSymbolPinsInDevice  = EBReadOnlyValueProperty <UnconnectedSymbolPinsInDevice>
 typealias EBTransientProperty_UnconnectedSymbolPinsInDevice = EBTransientValueProperty <UnconnectedSymbolPinsInDevice>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property AssignedPadProxiesInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_AssignedPadProxiesInDevice = EBReadOnlyValueController <AssignedPadProxiesInDevice>
+
+typealias EBReadOnlyProperty_AssignedPadProxiesInDevice  = EBReadOnlyValueProperty <AssignedPadProxiesInDevice>
+typealias EBTransientProperty_AssignedPadProxiesInDevice = EBTransientValueProperty <AssignedPadProxiesInDevice>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

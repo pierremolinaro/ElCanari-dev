@@ -2050,6 +2050,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
       //--- Set new opposite relation ship
         self.mValue?.mPackages_property.add (unwrappedOwner)
       //--- Remove property observers of old object
+        oldValue?.assignedPadProxies_property.removeEBObserversFrom (&self.mObserversOf_assignedPadProxies)
         oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
         oldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid)
         oldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
@@ -2075,6 +2076,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.unconnectedPads_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPads)
         oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
       //--- Add property observers to new object
+        self.mValue?.assignedPadProxies_property.addEBObserversFrom (&self.mObserversOf_assignedPadProxies)
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
         self.mValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid)
         self.mValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
@@ -2124,6 +2126,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   func remove (_ object : DeviceRoot) {
     if self.mValue === object {
       self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: assignedPadProxies
+  //····················································································································
+
+  private var mObserversOf_assignedPadProxies = EBWeakEventSet ()
+
+  //····················································································································
+
+  var assignedPadProxies_property_selection : EBSelection <AssignedPadProxiesInDevice?> {
+    if let model = self.propval {
+      switch (model.assignedPadProxies_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
+    self.mObserversOf_assignedPadProxies.insert (inObserver)
+    if let object = self.propval {
+      object.assignedPadProxies_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_assignedPadProxies (_ inObserver : EBEvent) {
+    self.mObserversOf_assignedPadProxies.remove (inObserver)
+    if let object = self.propval {
+      object.assignedPadProxies_property.removeEBObserver (inObserver)
     }
   }
 

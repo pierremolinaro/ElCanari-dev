@@ -12,12 +12,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceRoot_unconnectedPads (
-       _ self_mPadProxies_mQualifiedPadName : [PadProxyInDevice_mQualifiedPadName]
+       _ self_mPadProxies_mQualifiedPadName : [PadProxyInDevice_mQualifiedPadName],
+       _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
 ) -> StringArray {
 //--- START OF USER ZONE 2
         var array = [String] ()
-        for padProxy in self_mPadProxies_mQualifiedPadName {
-          array.append (padProxy.mQualifiedPadName)
+        var idx = 0
+        while idx < self_mPadProxies_mQualifiedPadName.count {
+          if let connected = self_mPadProxies_isConnected [idx].isConnected, !connected {
+            array.append (self_mPadProxies_mQualifiedPadName [idx].mQualifiedPadName)
+          }
+          idx += 1
         }
         return array
 //--- END OF USER ZONE 2

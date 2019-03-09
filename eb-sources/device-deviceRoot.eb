@@ -44,7 +44,7 @@ graphic entity DeviceRoot {
   property @signature Bool mShowPackageBackPads default yes ;
   
 #--- Symbols
-  toMany @signature SymbolTypeInDevice mSymbolTypes ; #  inverse toOne mRoot ;
+  toMany @signature SymbolTypeInDevice mSymbolTypes ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
   property @signature Int mSymbolDisplayZoom default 100 ;
@@ -58,7 +58,14 @@ graphic entity DeviceRoot {
 #--- Pad proxys
   toMany PadProxyInDevice mPadProxies ;
   
-  transient StringArray unconnectedPads dependsFrom self.mPadProxies.all.mQualifiedPadName ;
+  transient StringArray unconnectedPads
+    dependsFrom self.mPadProxies.all.mQualifiedPadName, self.mPadProxies.all.isConnected ;
+
+  transient AssignedPadProxiesInDevice assignedPadProxies dependsFrom
+    self.mPadProxies.all.mQualifiedPadName,
+    self.mPadProxies.all.symbolName,
+    self.mPadProxies.all.pinInstanceName,
+    self.mPadProxies.all.isConnected ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -187,7 +194,6 @@ entity SlavePadInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
-#  toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany SymbolPinTypeInDevice mPinTypes ;
 
@@ -232,7 +238,7 @@ entity SymbolPinTypeInDevice { # (SymbolPinInDevice) {
 
 graphic entity SymbolInstanceInDevice {
   toOne SymbolTypeInDevice mType inverse toMany mInstances ;
-  toMany SymbolPinInstanceInDevice mPinInstances ;
+  toMany SymbolPinInstanceInDevice mPinInstances inverse toOne mSymbolInstance ;
  
   property @signature String mInstanceName default "" ;
   property @signature Int mX default 0 ;
@@ -262,14 +268,17 @@ graphic entity SymbolInstanceInDevice {
   ;
   
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom 
-    self.mPinInstances.all.pinName, self.mInstanceName
-  ;
+    self.mPinInstances.all.pinName,
+    self.mPinInstances.all.isConnected,
+    self.mInstanceName  ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolPinInstanceInDevice {
+  toOne SymbolInstanceInDevice mSymbolInstance inverse toMany mPinInstances ;
   toOne SymbolPinTypeInDevice mType inverse toMany mInstances ;
+  toOne PadProxyInDevice mPadProxy inverse toOne mPinInstance ;
 
   transient EBShape numberShape dependsFrom
      self.mType.one.mXNumber, self.mType.one.mYNumber, 
@@ -278,12 +287,26 @@ entity SymbolPinInstanceInDevice {
    ;
 
   transient String pinName dependsFrom self.mType.one.mName ;
+
+  transient String symbolName dependsFrom self.mSymbolInstance.one.mInstanceName ;
+
+  transient Bool isConnected dependsFrom self.mPadProxy.none ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity PadProxyInDevice {
+  toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
+  
   property @signature String mQualifiedPadName default "" ;
+  
+  property @signature Bool mIsNC default no ;
+  
+  transient Bool isConnected dependsFrom self.mIsNC, self.mPinInstance.none ;
+  
+  transient String pinInstanceName dependsFrom self.mPinInstance.one.pinName ;
+  
+  transient String symbolName dependsFrom self.mPinInstance.one.symbolName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

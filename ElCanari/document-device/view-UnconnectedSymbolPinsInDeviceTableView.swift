@@ -26,7 +26,7 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mUnconnectedPinArray.count
+    return self.mDataSource.count
   }
 
   //····················································································································
@@ -35,9 +35,9 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
     var result : Any? = nil
     if let columnIdentifier = inTableColumn?.identifier.rawValue {
       if columnIdentifier == "symbol" {
-        result = self.mUnconnectedPinArray [row].symbolInstanceName
+        result = self.mDataSource [row].symbolInstanceName
       }else if columnIdentifier == "pin" {
-        result = self.mUnconnectedPinArray [row].pinName
+        result = self.mDataSource [row].pinName
       }
     }
     return result
@@ -46,25 +46,39 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //····················································································································
 
   func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+    self.reloadDataSource (self.mDataSource)
+  }
+
+  //····················································································································
+  //  DATA SOURCE
+  //····················································································································
+
+  private var mDataSource = UnconnectedSymbolPinsInDevice ()
+
+  //····················································································································
+
+  func reloadDataSource (_ inDataSource : [UnconnectedSymbolPin]) {
   //--- Note selected rows
     var selectedRowContents = Set <UnconnectedSymbolPin> ()
-    for idx in self.selectedRowIndexes {
-      selectedRowContents.insert (self.mUnconnectedPinArray [idx])
+    let currentSelectedRowIndexes = self.selectedRowIndexes
+    for idx in currentSelectedRowIndexes {
+      selectedRowContents.insert (self.mDataSource [idx])
     }
   //--- Sort
+    self.mDataSource = inDataSource
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "symbol" {
           if s.ascending {
-            self.mUnconnectedPinArray.sort (by: { $0.symbolInstanceName < $1.symbolInstanceName })
+            self.mDataSource.sort (by: { $0.symbolInstanceName < $1.symbolInstanceName })
           }else{
-            self.mUnconnectedPinArray.sort (by: { $0.symbolInstanceName > $1.symbolInstanceName })
+            self.mDataSource.sort (by: { $0.symbolInstanceName > $1.symbolInstanceName })
           }
         }else if key == "pin" {
           if s.ascending {
-            self.mUnconnectedPinArray.sort (by: { $0.pinName < $1.pinName })
+            self.mDataSource.sort (by: { $0.pinName < $1.pinName })
           }else{
-            self.mUnconnectedPinArray.sort (by: { $0.pinName > $1.pinName })
+            self.mDataSource.sort (by: { $0.pinName > $1.pinName })
           }
         }
       }
@@ -73,31 +87,47 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //--- Restore selection
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
-    while idx < self.mUnconnectedPinArray.count {
-      if selectedRowContents.contains (self.mUnconnectedPinArray [idx]) {
+    while idx < self.mDataSource.count {
+      if selectedRowContents.contains (self.mDataSource [idx]) {
         newSelectedRowIndexes.insert (idx)
       }
       idx += 1
     }
+    if (newSelectedRowIndexes.count == 0) && (self.mDataSource.count > 0) {
+      if let firstIndex : Int = currentSelectedRowIndexes.first {
+        if firstIndex < self.mDataSource.count {
+          newSelectedRowIndexes.insert (firstIndex)
+        }else{
+          newSelectedRowIndexes.insert (self.mDataSource.count - 1)
+        }
+      }else{
+        newSelectedRowIndexes.insert (0)
+      }
+    }
     self.selectRowIndexes (newSelectedRowIndexes, byExtendingSelection: false)
   }
-
-  //····················································································································
-  //  DATA SOURCE
-  //····················································································································
-
-  private var mUnconnectedPinArray = UnconnectedSymbolPinsInDevice ()
 
   //····················································································································
 
   func updateUnconnectedSymbolPinsList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
     switch inModel.prop {
     case .empty, .multiple :
-      self.mUnconnectedPinArray.removeAll ()
+      self.reloadDataSource ([])
     case .single (let unconnectedSymbolPinArray) :
-      self.mUnconnectedPinArray = unconnectedSymbolPinArray
+      self.reloadDataSource (unconnectedSymbolPinArray)
     }
-    self.reloadData ()
+  }
+
+  //····················································································································
+  //  selectedSymbolPin
+  //····················································································································
+
+  var selectedSymbolPin : UnconnectedSymbolPin? {
+    if self.selectedRow >= 0 {
+      return self.mDataSource [self.selectedRow]
+    }else{
+      return nil
+    }
   }
 
   //····················································································································

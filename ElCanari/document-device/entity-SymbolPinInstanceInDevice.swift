@@ -12,6 +12,18 @@ protocol SymbolPinInstanceInDevice_pinName : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol SymbolPinInstanceInDevice_symbolName : class {
+  var symbolName : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol SymbolPinInstanceInDevice_isConnected : class {
+  var isConnected : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol SymbolPinInstanceInDevice_numberShape : class {
   var numberShape : EBShape? { get }
 }
@@ -22,7 +34,21 @@ protocol SymbolPinInstanceInDevice_numberShape : class {
 
 class SymbolPinInstanceInDevice : EBManagedObject,
          SymbolPinInstanceInDevice_pinName,
+         SymbolPinInstanceInDevice_symbolName,
+         SymbolPinInstanceInDevice_isConnected,
          SymbolPinInstanceInDevice_numberShape {
+
+  //····················································································································
+  //   To one property: mSymbolInstance
+  //····················································································································
+
+  var mSymbolInstance_property = ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance ()
+
+  //····················································································································
+
+  var mSymbolInstance_property_selection : EBSelection <Bool> {
+    return .single (self.mSymbolInstance_property.propval == nil)
+  }
 
   //····················································································································
   //   To one property: mType
@@ -34,6 +60,18 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   var mType_property_selection : EBSelection <Bool> {
     return .single (self.mType_property.propval == nil)
+  }
+
+  //····················································································································
+  //   To one property: mPadProxy
+  //····················································································································
+
+  var mPadProxy_property = ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy ()
+
+  //····················································································································
+
+  var mPadProxy_property_selection : EBSelection <Bool> {
+    return .single (self.mPadProxy_property.propval == nil)
   }
 
   //····················································································································
@@ -52,6 +90,52 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   var pinName : String? {
     switch self.pinName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: symbolName
+  //····················································································································
+
+  var symbolName_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var symbolName_property_selection : EBSelection <String> {
+    return self.symbolName_property.prop
+  }
+
+  //····················································································································
+
+  var symbolName : String? {
+    switch self.symbolName_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: isConnected
+  //····················································································································
+
+  var isConnected_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var isConnected_property_selection : EBSelection <Bool> {
+    return self.isConnected_property.prop
+  }
+
+  //····················································································································
+
+  var isConnected : Bool? {
+    switch self.isConnected_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -88,8 +172,12 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   required init (_ undoManager : EBUndoManager?) {
     super.init (undoManager)
+  //--- To one property: mSymbolInstance
+    self.mSymbolInstance_property.owner = self
   //--- To one property: mType
     self.mType_property.owner = self
+  //--- To one property: mPadProxy
+    self.mPadProxy_property.owner = self
   //--- Atomic property: pinName
     self.pinName_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -112,6 +200,50 @@ class SymbolPinInstanceInDevice : EBManagedObject,
       }
     }
     self.mType_property.addEBObserverOf_mName (self.pinName_property)
+  //--- Atomic property: symbolName
+    self.symbolName_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mSymbolInstance_property.mInstanceName_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mSymbolInstance_property.mInstanceName_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolPinInstanceInDevice_symbolName (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mSymbolInstance_property.addEBObserverOf_mInstanceName (self.symbolName_property)
+  //--- Atomic property: isConnected
+    self.isConnected_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPadProxy_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPadProxy_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_SymbolPinInstanceInDevice_isConnected (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPadProxy_property.addEBObserver (self.isConnected_property)
   //--- Atomic property: numberShape
     self.numberShape_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -150,6 +282,8 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mType_property.removeEBObserverOf_mName (self.pinName_property)
+    self.mSymbolInstance_property.removeEBObserverOf_mInstanceName (self.symbolName_property)
+    self.mPadProxy_property.removeEBObserver (self.isConnected_property)
     self.mType_property.removeEBObserverOf_mXNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mYNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
@@ -177,6 +311,22 @@ class SymbolPinInstanceInDevice : EBManagedObject,
       valueExplorer:&self.pinName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "symbolName",
+      idx:self.symbolName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.symbolName_property.mObserverExplorer,
+      valueExplorer:&self.symbolName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "isConnected",
+      idx:self.isConnected_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.isConnected_property.mObserverExplorer,
+      valueExplorer:&self.isConnected_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "numberShape",
       idx:self.numberShape_property.ebObjectIndex,
       y:&y,
@@ -187,11 +337,25 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
+      "mSymbolInstance",
+      idx:self.mSymbolInstance_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mSymbolInstance_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
       "mType",
       idx:self.mType_property.ebObjectIndex,
       y: &y,
       view: view,
       valueExplorer:&self.mType_property.mValueExplorer
+    )
+    createEntryForToOneRelationshipNamed (
+      "mPadProxy",
+      idx:self.mPadProxy_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mPadProxy_property.mValueExplorer
     )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -201,9 +365,15 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- To one property: mSymbolInstance
+    self.mSymbolInstance_property.mObserverExplorer = nil
+    self.mSymbolInstance_property.mValueExplorer = nil
   //--- To one property: mType
     self.mType_property.mObserverExplorer = nil
     self.mType_property.mValueExplorer = nil
+  //--- To one property: mPadProxy
+    self.mPadProxy_property.mObserverExplorer = nil
+    self.mPadProxy_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -222,7 +392,9 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mSymbolInstance_property.setProp (nil)
     self.mType_property.setProp (nil)
+    self.mPadProxy_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -233,6 +405,10 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- To one property: mPadProxy
+    self.store (managedObject:self.mPadProxy_property.propval,
+      relationshipName: "mPadProxy",
+      intoDictionary: ioDictionary)
   }
 
   //····················································································································
@@ -242,6 +418,17 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mSymbolInstance
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mSymbolInstance",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? SymbolInstanceInDevice {
+        self.mSymbolInstance_property.setProp (entity)
+      }
+    }
   //--- To one property: mType
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -251,6 +438,17 @@ class SymbolPinInstanceInDevice : EBManagedObject,
       )
       if let entity = possibleEntity as? SymbolPinTypeInDevice {
         self.mType_property.setProp (entity)
+      }
+    }
+  //--- To one property: mPadProxy
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mPadProxy",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? PadProxyInDevice {
+        self.mPadProxy_property.setProp (entity)
       }
     }
   }
@@ -269,8 +467,16 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mSymbolInstance
+    if let managedObject = self.mSymbolInstance_property.propval {
+      objects.append (managedObject)
+    }
   //--- To one property: mType
     if let managedObject = self.mType_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mPadProxy
+    if let managedObject = self.mPadProxy_property.propval {
       objects.append (managedObject)
     }
   }
@@ -337,6 +543,118 @@ class ReadOnlyArrayOf_SymbolPinInstanceInDevice : ReadOnlyAbstractArrayProperty 
     for managedObject in inSet {
       self.mObserversOf_pinName.apply ( {(_ observer : EBEvent) in
         managedObject.pinName_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'symbolName' transient property
+  //····················································································································
+
+  private var mObserversOf_symbolName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_symbolName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_symbolName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.symbolName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_symbolName_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolName_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_symbolName_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_symbolName.apply ( {(_ observer : EBEvent) in
+        managedObject.symbolName_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'isConnected' transient property
+  //····················································································································
+
+  private var mObserversOf_isConnected = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_isConnected.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isConnected_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_isConnected.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.isConnected_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_isConnected_toElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
+        managedObject.isConnected_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_isConnected_fromElementsOfSet (_ inSet : Set<SymbolPinInstanceInDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_isConnected.apply ( {(_ observer : EBEvent) in
+        managedObject.isConnected_property.removeEBObserver (observer)
       })
     }
   }
@@ -596,6 +914,8 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             self.setOppositeRelationship? (nil)
           }
           self.removeEBObserversOf_pinName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_symbolName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_numberShape_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -606,6 +926,8 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
             self.setOppositeRelationship? (managedObject)
           }
           self.addEBObserversOf_pinName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_symbolName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_numberShape_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
@@ -728,6 +1050,432 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mSymbolInstance
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SymbolPinInstanceInDevice_mSymbolInstance : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SymbolPinInstanceInDevice? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : SymbolInstanceInDevice? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mPinInstances_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mPinInstances_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.mInstanceName_property.removeEBObserversFrom (&self.mObserversOf_mInstanceName)
+        oldValue?.mX_property.removeEBObserversFrom (&self.mObserversOf_mX)
+        oldValue?.mY_property.removeEBObserversFrom (&self.mObserversOf_mY)
+        oldValue?.objectDisplay_property.removeEBObserversFrom (&self.mObserversOf_objectDisplay)
+        oldValue?.qualifiedName_property.removeEBObserversFrom (&self.mObserversOf_qualifiedName)
+        oldValue?.selectionDisplay_property.removeEBObserversFrom (&self.mObserversOf_selectionDisplay)
+        oldValue?.symbolTypeName_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeName)
+        oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
+      //--- Add property observers to new object
+        self.mValue?.mInstanceName_property.addEBObserversFrom (&self.mObserversOf_mInstanceName)
+        self.mValue?.mX_property.addEBObserversFrom (&self.mObserversOf_mX)
+        self.mValue?.mY_property.addEBObserversFrom (&self.mObserversOf_mY)
+        self.mValue?.objectDisplay_property.addEBObserversFrom (&self.mObserversOf_objectDisplay)
+        self.mValue?.qualifiedName_property.addEBObserversFrom (&self.mObserversOf_qualifiedName)
+        self.mValue?.selectionDisplay_property.addEBObserversFrom (&self.mObserversOf_selectionDisplay)
+        self.mValue?.symbolTypeName_property.addEBObserversFrom (&self.mObserversOf_symbolTypeName)
+        self.mValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : SymbolInstanceInDevice? { return self.mValue }
+
+  var prop : EBSelection <SymbolInstanceInDevice?> { return .single (self.mValue) }
+
+  func setProp (_ value : SymbolInstanceInDevice?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : SymbolInstanceInDevice?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : SymbolInstanceInDevice) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mInstanceName
+  //····················································································································
+
+  private var mObserversOf_mInstanceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mInstanceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mInstanceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstanceName.insert (inObserver)
+    if let object = self.propval {
+      object.mInstanceName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_mInstanceName.remove (inObserver)
+    if let object = self.propval {
+      object.mInstanceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mX
+  //····················································································································
+
+  private var mObserversOf_mX = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mX_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mX_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.mObserversOf_mX.insert (inObserver)
+    if let object = self.propval {
+      object.mX_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mX (_ inObserver : EBEvent) {
+    self.mObserversOf_mX.remove (inObserver)
+    if let object = self.propval {
+      object.mX_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mY
+  //····················································································································
+
+  private var mObserversOf_mY = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mY_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.mY_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.mObserversOf_mY.insert (inObserver)
+    if let object = self.propval {
+      object.mY_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mY (_ inObserver : EBEvent) {
+    self.mObserversOf_mY.remove (inObserver)
+    if let object = self.propval {
+      object.mY_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: objectDisplay
+  //····················································································································
+
+  private var mObserversOf_objectDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var objectDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.objectDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.objectDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_objectDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_objectDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.objectDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: qualifiedName
+  //····················································································································
+
+  private var mObserversOf_qualifiedName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var qualifiedName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.qualifiedName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+    self.mObserversOf_qualifiedName.insert (inObserver)
+    if let object = self.propval {
+      object.qualifiedName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_qualifiedName (_ inObserver : EBEvent) {
+    self.mObserversOf_qualifiedName.remove (inObserver)
+    if let object = self.propval {
+      object.qualifiedName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: selectionDisplay
+  //····················································································································
+
+  private var mObserversOf_selectionDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var selectionDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.selectionDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.selectionDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_selectionDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_selectionDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.selectionDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolTypeName
+  //····················································································································
+
+  private var mObserversOf_symbolTypeName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolTypeName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.symbolTypeName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeName.insert (inObserver)
+    if let object = self.propval {
+      object.symbolTypeName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolTypeName (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolTypeName.remove (inObserver)
+    if let object = self.propval {
+      object.symbolTypeName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: unconnectedPins
+  //····················································································································
+
+  private var mObserversOf_unconnectedPins = EBWeakEventSet ()
+
+  //····················································································································
+
+  var unconnectedPins_property_selection : EBSelection <UnconnectedSymbolPinsInDevice?> {
+    if let model = self.propval {
+      switch (model.unconnectedPins_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPins.insert (inObserver)
+    if let object = self.propval {
+      object.unconnectedPins_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPins (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPins.remove (inObserver)
+    if let object = self.propval {
+      object.unconnectedPins_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1192,6 +1940,303 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mType : EBAbstractProper
     self.mObserversOf_nameShape.remove (inObserver)
     if let object = self.propval {
       object.nameShape_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mPadProxy
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SymbolPinInstanceInDevice? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : PadProxyInDevice? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+     //--- Reset old opposite relation ship
+        oldValue?.mPinInstance_property.setProp (nil)
+      //--- Set new opposite relation ship
+        self.mValue?.mPinInstance_property.setProp (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
+        oldValue?.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC)
+        oldValue?.mQualifiedPadName_property.removeEBObserversFrom (&self.mObserversOf_mQualifiedPadName)
+        oldValue?.pinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_pinInstanceName)
+        oldValue?.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName)
+      //--- Add property observers to new object
+        self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
+        self.mValue?.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC)
+        self.mValue?.mQualifiedPadName_property.addEBObserversFrom (&self.mObserversOf_mQualifiedPadName)
+        self.mValue?.pinInstanceName_property.addEBObserversFrom (&self.mObserversOf_pinInstanceName)
+        self.mValue?.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : PadProxyInDevice? { return self.mValue }
+
+  var prop : EBSelection <PadProxyInDevice?> { return .single (self.mValue) }
+
+  func setProp (_ value : PadProxyInDevice?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : PadProxyInDevice?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : PadProxyInDevice) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: isConnected
+  //····················································································································
+
+  private var mObserversOf_isConnected = EBWeakEventSet ()
+
+  //····················································································································
+
+  var isConnected_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.isConnected_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.insert (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_isConnected (_ inObserver : EBEvent) {
+    self.mObserversOf_isConnected.remove (inObserver)
+    if let object = self.propval {
+      object.isConnected_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mIsNC
+  //····················································································································
+
+  private var mObserversOf_mIsNC = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mIsNC_property_selection : EBSelection <Bool?> {
+    if let model = self.propval {
+      switch (model.mIsNC_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mIsNC (_ inObserver : EBEvent) {
+    self.mObserversOf_mIsNC.insert (inObserver)
+    if let object = self.propval {
+      object.mIsNC_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mIsNC (_ inObserver : EBEvent) {
+    self.mObserversOf_mIsNC.remove (inObserver)
+    if let object = self.propval {
+      object.mIsNC_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mQualifiedPadName
+  //····················································································································
+
+  private var mObserversOf_mQualifiedPadName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mQualifiedPadName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mQualifiedPadName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
+    self.mObserversOf_mQualifiedPadName.insert (inObserver)
+    if let object = self.propval {
+      object.mQualifiedPadName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
+    self.mObserversOf_mQualifiedPadName.remove (inObserver)
+    if let object = self.propval {
+      object.mQualifiedPadName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: pinInstanceName
+  //····················································································································
+
+  private var mObserversOf_pinInstanceName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var pinInstanceName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.pinInstanceName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_pinInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_pinInstanceName.insert (inObserver)
+    if let object = self.propval {
+      object.pinInstanceName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_pinInstanceName (_ inObserver : EBEvent) {
+    self.mObserversOf_pinInstanceName.remove (inObserver)
+    if let object = self.propval {
+      object.pinInstanceName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: symbolName
+  //····················································································································
+
+  private var mObserversOf_symbolName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var symbolName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.symbolName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_symbolName (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolName.insert (inObserver)
+    if let object = self.propval {
+      object.symbolName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_symbolName (_ inObserver : EBEvent) {
+    self.mObserversOf_symbolName.remove (inObserver)
+    if let object = self.propval {
+      object.symbolName_property.removeEBObserver (inObserver)
     }
   }
 

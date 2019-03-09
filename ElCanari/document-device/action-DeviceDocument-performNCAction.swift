@@ -11,24 +11,19 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_unconnectedPins (
-       _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName],
-       _ self_mPinInstances_isConnected : [SymbolPinInstanceInDevice_isConnected],
-       _ self_mInstanceName : String
-) -> UnconnectedSymbolPinsInDevice {
+extension DeviceDocument {
+  @objc func performNCAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        var usp = UnconnectedSymbolPinsInDevice ()
-        var idx = 0
-        while idx < self_mPinInstances_pinName.count {
-          let pin = self_mPinInstances_pinName [idx]
-          let possibleConnection = self_mPinInstances_isConnected [idx].isConnected
-          if let pinName = pin.pinName, let connected = possibleConnection, !connected {
-            usp.append (UnconnectedSymbolPin (symbolInstanceName: self_mInstanceName, pinName: pinName))
+        if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
+          for padProxy in self.rootObject.mPadProxies_property.propval {
+            if padProxy.mQualifiedPadName == selectedName {
+             padProxy.mPinInstance_property.setProp (nil)
+             padProxy.mIsNC = true
+            }
           }
-          idx += 1
         }
-        return usp
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

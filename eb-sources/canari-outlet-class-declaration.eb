@@ -28,6 +28,9 @@ binding UnconnectedPadsInDeviceTableView $unconnectedPads : transient StringArra
 extern outlet class UnconnectedSymbolPinsInDeviceTableView : EBTableView ;
 binding UnconnectedSymbolPinsInDeviceTableView $unconnectedPins : transient UnconnectedSymbolPinsInDevice ;
 
+extern outlet class AssignedPadProxysInDeviceTableView : EBTableView ;
+binding AssignedPadProxysInDeviceTableView $assignedPadProxies : transient AssignedPadProxiesInDevice ;
+
 extern outlet class CanariDragSourceButton : NSControl ;
 
 extern outlet class AddSymbolInstancePullDownButton : EBPopUpButton ;

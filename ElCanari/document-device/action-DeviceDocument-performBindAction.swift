@@ -11,24 +11,33 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_unconnectedPins (
-       _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName],
-       _ self_mPinInstances_isConnected : [SymbolPinInstanceInDevice_isConnected],
-       _ self_mInstanceName : String
-) -> UnconnectedSymbolPinsInDevice {
+extension DeviceDocument {
+  @objc func performBindAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        var usp = UnconnectedSymbolPinsInDevice ()
-        var idx = 0
-        while idx < self_mPinInstances_pinName.count {
-          let pin = self_mPinInstances_pinName [idx]
-          let possibleConnection = self_mPinInstances_isConnected [idx].isConnected
-          if let pinName = pin.pinName, let connected = possibleConnection, !connected {
-            usp.append (UnconnectedSymbolPin (symbolInstanceName: self_mInstanceName, pinName: pinName))
+        var possiblePadProxy : PadProxyInDevice? = nil
+        if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
+          for padProxy in self.rootObject.mPadProxies_property.propval {
+            if padProxy.mQualifiedPadName == selectedName {
+              possiblePadProxy = padProxy
+            }
           }
-          idx += 1
         }
-        return usp
+        var possibleSymbolPin : SymbolPinInstanceInDevice? = nil
+        if let selectedSymbolPin = self.mUnconnectedSymbolPinsInDeviceTableView?.selectedSymbolPin {
+          for symbolInstance in self.rootObject.mSymbolInstances_property.propval {
+            for symbolPin in symbolInstance.mPinInstances_property.propval {
+              if (symbolPin.pinName! == selectedSymbolPin.pinName) && (symbolPin.symbolName! == selectedSymbolPin.symbolInstanceName) {
+                possibleSymbolPin = symbolPin
+              }
+            }
+          }
+        }
+        if let padProxy = possiblePadProxy, let symbolPin = possibleSymbolPin {
+          padProxy.mPinInstance_property.setProp (symbolPin)
+          padProxy.mIsNC = false
+        }
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

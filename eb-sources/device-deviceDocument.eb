@@ -222,7 +222,6 @@ document DeviceDocument root DeviceRoot {
   ;
 
 #--------------- Page : assignments
-
   transient String assignmentInhibitionMessage
     dependsFrom root.inconsistentPackagePadNameSetsMessage, root.inconsistentSymbolNameSetMessage
   ;
@@ -243,6 +242,27 @@ document DeviceDocument root DeviceRoot {
   outlet UnconnectedSymbolPinsInDeviceTableView mUnconnectedSymbolPinsInDeviceTableView
     $unconnectedPins root.unconnectedPins
   ;
+
+  outlet AssignedPadProxysInDeviceTableView mAssignedPadProxyTableView
+    $assignedPadProxies root.assignedPadProxies
+  ;
+
+  transient Bool hasUnconnectedPad dependsFrom root.unconnectedPads ;
+  transient Bool hasUnconnectedPin dependsFrom root.unconnectedPins ;
+
+  action performBindAction ;
+  outlet EBButton mBindButton $run self.performBindAction $enabled self.hasUnconnectedPad & self.hasUnconnectedPin ;
+
+  action performNCAction ;
+  outlet EBButton mNCButton $run self.performNCAction $enabled self.hasUnconnectedPad ;
+
+  transient Bool hasAssignedPadProxies dependsFrom root.assignedPadProxies ;
+ 
+  action performUnbindAction ;
+  outlet EBButton mUnbindButton $run self.performUnbindAction $enabled self.hasAssignedPadProxies ;
+ 
+  action performUnbindAllAction ;
+  outlet EBButton mUnbindAllButton $run self.performUnbindAllAction $enabled self.hasAssignedPadProxies ;
 
 #--------------- Page : Infos
 #--- Prefix

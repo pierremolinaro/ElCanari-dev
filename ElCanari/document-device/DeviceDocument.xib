@@ -11,8 +11,10 @@
                 <outlet property="mAddPackageFromLibraryButton" destination="1084" id="10r-pn-HTc"/>
                 <outlet property="mAddSymbolFromLibraryButton" destination="1070" id="e3A-3Y-V9r"/>
                 <outlet property="mAddSymbolInstancePullDownButton" destination="1955" id="Jj3-r2-9nX"/>
+                <outlet property="mAssignedPadProxyTableView" destination="1095" id="7gt-0U-lT6"/>
                 <outlet property="mAssignmentPageView" destination="1090" id="BEv-Pl-zNW"/>
                 <outlet property="mAssignmentSplitView" destination="1092" id="4nO-3M-K1f"/>
+                <outlet property="mBindButton" destination="1100" id="OAu-CR-JRy"/>
                 <outlet property="mCommentTextView" destination="1180" id="uzK-KL-RET"/>
                 <outlet property="mComposedPackageView" destination="1082" id="iBa-N9-nNg"/>
                 <outlet property="mComposedSymbolView" destination="1069" id="y2u-3X-oU2"/>
@@ -32,6 +34,7 @@
                 <outlet property="mIssueTextView" destination="1168" id="PII-Xo-psM"/>
                 <outlet property="mLibraryPageView" destination="1124" id="3bK-az-okh"/>
                 <outlet property="mMasterView" destination="1198" id="hbK-Bd-u96"/>
+                <outlet property="mNCButton" destination="1101" id="ELU-mZ-D4V"/>
                 <outlet property="mPackageBackPadsColorWell" destination="c4g-Jr-krY" id="eeL-t1-RGc"/>
                 <outlet property="mPackageDisplayHorizontalFlipSwitch" destination="zYp-cL-5jj" id="T7b-fZ-dUb"/>
                 <outlet property="mPackageDisplayVerticalFlipSwitch" destination="Ev9-QZ-LcM" id="4Nr-vm-TFx"/>
@@ -66,6 +69,8 @@
                 <outlet property="mSymbolTableView" destination="1132" id="e1N-Om-Pfc"/>
                 <outlet property="mSymbolTypeTextField" destination="wzz-dY-cEX" id="6WG-Ox-P8d"/>
                 <outlet property="mTitleTextField" destination="1038" id="pDd-Se-xfr"/>
+                <outlet property="mUnbindAllButton" destination="1102" id="JlF-Kr-PZe"/>
+                <outlet property="mUnbindButton" destination="1104" id="PfZ-Lx-K65"/>
                 <outlet property="mUnconnectedPadsInDeviceTableView" destination="1111" id="e0Y-go-Z3T"/>
                 <outlet property="mUnconnectedSymbolPinsInDeviceTableView" destination="1107" id="PoK-Dp-MtW"/>
                 <outlet property="mUpdateSelectedPackagesButton" destination="1607" id="78N-VX-Ivc"/>
@@ -373,7 +378,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button toolTip="Add a Symbol to Device" verticalHuggingPriority="750" imageHugsTitle="YES" id="1070" customClass="EBButton">
-                    <rect key="frame" x="14" y="341" width="110" height="17"/>
+                    <rect key="frame" x="14" y="341" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="File Library…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1530">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -385,7 +390,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView id="1069" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -412,21 +417,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton imageHugsTitle="YES" id="1955" customClass="AddSymbolInstancePullDownButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="134" y="341" width="110" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="roundRect" title="Imported Library" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <menu key="menu" title="OtherViews" id="1957">
-                            <items>
-                                <menuItem title="Imported Library" state="on" hidden="YES" id="1960"/>
-                                <menuItem title="Item 2" id="1959"/>
-                                <menuItem title="Item 3" id="1958"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <button id="gtc-qu-hK2" customClass="EBSwitch">
                     <rect key="frame" x="11" y="292" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -440,7 +430,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
@@ -519,11 +509,26 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <popUpButton imageHugsTitle="YES" id="1955" customClass="AddSymbolInstancePullDownButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="124" y="341" width="120" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="roundRect" title="Imported Library" bezelStyle="roundedRect" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" selectedItem="1960" id="1956">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <menu key="menu" title="OtherViews" id="1957">
+                            <items>
+                                <menuItem title="Imported Library" state="on" hidden="YES" id="1960"/>
+                                <menuItem title="Item 2" id="1959"/>
+                                <menuItem title="Item 3" id="1958"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <connections>
                 <outlet property="nextKeyView" destination="1069" id="1209"/>
             </connections>
-            <point key="canvasLocation" x="126" y="-232"/>
+            <point key="canvasLocation" x="17" y="-400"/>
         </customView>
         <customView id="1080" userLabel="Page : Packages" customClass="CanariViewWithKeyView" customModule="ElCanari" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
@@ -673,7 +678,7 @@
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1586" id="1111" customClass="UnconnectedPadsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="UnassignedPadsTableView" headerView="1586" id="1111" customClass="UnconnectedPadsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -719,7 +724,7 @@
                                         <rect key="frame" x="1" y="0.0" width="133" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="unconnectedPinsTableView" headerView="1583" id="1107" customClass="UnconnectedSymbolPinsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="unconnectedPinsTableView" headerView="1583" id="1107" customClass="UnconnectedSymbolPinsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="133" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -786,7 +791,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="132" height="428"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1100">
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1100" customClass="EBButton">
                                             <rect key="frame" x="6" y="375" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="bind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1532">
@@ -794,7 +799,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1102">
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1102" customClass="EBButton">
                                             <rect key="frame" x="6" y="99" width="120" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind_all" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1534">
@@ -802,7 +807,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1101">
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1101" customClass="EBButton">
                                             <rect key="frame" x="7" y="332" width="118" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="nc" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1533">
@@ -810,7 +815,7 @@
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
                                         </button>
-                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1104">
+                                        <button verticalHuggingPriority="750" imageHugsTitle="YES" id="1104" customClass="EBButton">
                                             <rect key="frame" x="4" y="197" width="122" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="unbind" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="1535">
@@ -827,7 +832,7 @@
                                         <rect key="frame" x="1" y="0.0" width="254" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1580" id="1095">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" typeSelect="NO" autosaveName="AssignedPadTableView" headerView="1580" id="1095" customClass="AssignedPadProxysInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="254.5" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -846,7 +851,7 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <sortDescriptor key="sortDescriptorPrototype" selector="pmNumericCompare:" sortKey="padFullName"/>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="pad"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                     <tableColumn identifier="symbol" editable="NO" width="59.5" minWidth="8" maxWidth="1000" id="1096">
@@ -860,7 +865,7 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </textFieldCell>
-                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="symbolInstanceName"/>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="symbol"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                     <tableColumn identifier="pin" editable="NO" width="68.586430000000007" minWidth="20.08643" maxWidth="1000" id="1098">
@@ -874,7 +879,7 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
-                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="pinInstanceName"/>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="pin"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                 </tableColumns>

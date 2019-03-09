@@ -1,5 +1,5 @@
 //
-//  view-UnconnectedPadsInDeviceTableView.swift
+//  view-AssignedPadProxysInDeviceTableView.swift
 //  ElCanari
 //
 //  Created by Pierre Molinaro on 09/03/2019.
@@ -9,10 +9,10 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: UnconnectedPadsInDeviceTableView is cell based
+// NOTE: AssignedPadProxysInDeviceTableView is cell based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
+class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
@@ -35,7 +35,11 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
     var result : Any? = nil
     if let columnIdentifier = inTableColumn?.identifier.rawValue {
       if columnIdentifier == "pad" {
-        result = self.mDataSource [row]
+        result = self.mDataSource [row].padName
+      }else if columnIdentifier == "symbol" {
+        result = self.mDataSource [row].symbolInstanceName
+      }else if columnIdentifier == "pin" {
+        result = self.mDataSource [row].pinName
       }
     }
     return result
@@ -48,28 +52,44 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
   }
 
   //····················································································································
+  //  utilities
+  //····················································································································
+
+  private func selectedItems () -> Set <AssignedPadProxy> {
+    var selectedRowContents = Set <AssignedPadProxy> ()
+    for idx in self.selectedRowIndexes {
+      selectedRowContents.insert (self.mDataSource [idx])
+    }
+    return selectedRowContents
+  }
+
+  //····················································································································
   //  DATA SOURCE
   //····················································································································
 
-  private var mDataSource = StringArray ()
+  private var mDataSource = [AssignedPadProxy] ()
 
   //····················································································································
 
-  func reloadDataSource (_ inDataSource : [String]) {
-  //--- Note selected rows
-    var selectedRowContents = Set <String> ()
+  private func reloadDataSource (_ inDataSource : [AssignedPadProxy]) {
+  //--- Note selected items
+    var selectedRowContents = Set <AssignedPadProxy> ()
     let currentSelectedRowIndexes = self.selectedRowIndexes
     for idx in currentSelectedRowIndexes {
       if idx < self.mDataSource.count {
         selectedRowContents.insert (self.mDataSource [idx])
       }
     }
-  //--- Sort
     self.mDataSource = inDataSource
+  //--- Sort
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
         if key == "pad" {
-          self.mDataSource.sort (by: { s.ascending ? numericCompare ($0, $1) :  numericCompare ($1, $0) })
+          self.mDataSource.sort (by: { s.ascending ? numericCompare ($0.padName, $1.padName) : numericCompare ($1.padName, $0.padName) })
+        }else if key == "symbol" {
+          self.mDataSource.sort (by: { s.ascending ? ($0.symbolInstanceName < $1.symbolInstanceName) : ($1.symbolInstanceName > $0.symbolInstanceName) })
+        }else if key == "pin" {
+          self.mDataSource.sort (by: { s.ascending ? ($0.pinName < $1.pinName) : ($1.pinName > $0.pinName) })
         }
       }
     }
@@ -99,7 +119,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
-  func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_StringArray) {
+  func updateUnconnectedPadList (from inModel : EBReadOnlyProperty_AssignedPadProxiesInDevice) {
     switch inModel.prop {
     case .empty, .multiple :
       self.reloadDataSource ([])
@@ -109,10 +129,10 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
   }
 
   //····················································································································
-  //  selectedPadName
+  //  selectedPadProxy
   //····················································································································
 
-  var selectedPadName : String? {
+  var selectedPadProxy : AssignedPadProxy? {
     if self.selectedRow >= 0 {
       return self.mDataSource [self.selectedRow]
     }else{
@@ -124,12 +144,12 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
   //  $imageData binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_StringArray? = nil
+  private var mController : EBReadOnlyController_AssignedPadProxiesInDevice? = nil
 
   //····················································································································
 
-  func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
-    self.mController = EBReadOnlyController_StringArray (
+  func bind_assignedPadProxies (_ model : EBReadOnlyProperty_AssignedPadProxiesInDevice, file : String, line : Int) {
+    self.mController = EBReadOnlyController_AssignedPadProxiesInDevice (
       model: model,
       callBack: { [weak self] in self?.updateUnconnectedPadList (from: model) }
     )
@@ -137,7 +157,7 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
-  func unbind_unconnectedPads () {
+  func unbind_assignedPadProxies () {
     self.mController?.unregister ()
     self.mController = nil
   }

@@ -11,23 +11,27 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_SymbolInstanceInDevice_unconnectedPins (
-       _ self_mPinInstances_pinName : [SymbolPinInstanceInDevice_pinName],
-       _ self_mPinInstances_isConnected : [SymbolPinInstanceInDevice_isConnected],
-       _ self_mInstanceName : String
-) -> UnconnectedSymbolPinsInDevice {
+func transient_DeviceRoot_assignedPadProxies (
+       _ self_mPadProxies_mQualifiedPadName : [PadProxyInDevice_mQualifiedPadName],
+       _ self_mPadProxies_symbolName : [PadProxyInDevice_symbolName],
+       _ self_mPadProxies_pinInstanceName : [PadProxyInDevice_pinInstanceName],
+       _ self_mPadProxies_isConnected : [PadProxyInDevice_isConnected]
+) -> AssignedPadProxiesInDevice {
 //--- START OF USER ZONE 2
-        var usp = UnconnectedSymbolPinsInDevice ()
+        var array = [AssignedPadProxy] ()
         var idx = 0
-        while idx < self_mPinInstances_pinName.count {
-          let pin = self_mPinInstances_pinName [idx]
-          let possibleConnection = self_mPinInstances_isConnected [idx].isConnected
-          if let pinName = pin.pinName, let connected = possibleConnection, !connected {
-            usp.append (UnconnectedSymbolPin (symbolInstanceName: self_mInstanceName, pinName: pinName))
+        while idx < self_mPadProxies_mQualifiedPadName.count {
+          if let connected = self_mPadProxies_isConnected [idx].isConnected, connected {
+            let padProxy = AssignedPadProxy (
+              padName: self_mPadProxies_mQualifiedPadName [idx].mQualifiedPadName,
+              symbolInstanceName: self_mPadProxies_symbolName [idx].symbolName ?? "nil(1)",
+              pinName: self_mPadProxies_pinInstanceName [idx].pinInstanceName ?? "nil(2)"
+            )
+            array.append (padProxy)
           }
           idx += 1
         }
-        return usp
+        return array
 //--- END OF USER ZONE 2
 }
 

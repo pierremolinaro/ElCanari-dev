@@ -137,6 +137,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: hasUnconnectedPin
+  //····················································································································
+
+  var hasUnconnectedPin_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasUnconnectedPin_property_selection : EBSelection <Bool> {
+    return self.hasUnconnectedPin_property.prop
+  }
+
+  //····················································································································
+
+  var hasUnconnectedPin : Bool? {
+    switch self.hasUnconnectedPin_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: mStatusImage
   //····················································································································
 
@@ -159,6 +182,52 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: hasUnconnectedPad
+  //····················································································································
+
+  var hasUnconnectedPad_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasUnconnectedPad_property_selection : EBSelection <Bool> {
+    return self.hasUnconnectedPad_property.prop
+  }
+
+  //····················································································································
+
+  var hasUnconnectedPad : Bool? {
+    switch self.hasUnconnectedPad_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: hasAssignedPadProxies
+  //····················································································································
+
+  var hasAssignedPadProxies_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var hasAssignedPadProxies_property_selection : EBSelection <Bool> {
+    return self.hasAssignedPadProxies_property.prop
+  }
+
+  //····················································································································
+
+  var hasAssignedPadProxies : Bool? {
+    switch self.hasAssignedPadProxies_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -167,8 +236,10 @@ import Cocoa
   @IBOutlet var mAddPackageFromLibraryButton : EBButton?
   @IBOutlet var mAddSymbolFromLibraryButton : EBButton?
   @IBOutlet var mAddSymbolInstancePullDownButton : AddSymbolInstancePullDownButton?
+  @IBOutlet var mAssignedPadProxyTableView : AssignedPadProxysInDeviceTableView?
   @IBOutlet var mAssignmentPageView : CanariViewWithKeyView?
   @IBOutlet var mAssignmentSplitView : NSSplitView?
+  @IBOutlet var mBindButton : EBButton?
   @IBOutlet var mCommentTextView : EBTextView?
   @IBOutlet var mComposedPackageView : EBView?
   @IBOutlet var mComposedSymbolView : EBView?
@@ -188,6 +259,7 @@ import Cocoa
   @IBOutlet var mIssueTextView : EBTextObserverView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
+  @IBOutlet var mNCButton : EBButton?
   @IBOutlet var mPackageBackPadsColorWell : EBColorWell?
   @IBOutlet var mPackageDisplayHorizontalFlipSwitch : EBSwitch?
   @IBOutlet var mPackageDisplayVerticalFlipSwitch : EBSwitch?
@@ -222,6 +294,8 @@ import Cocoa
   @IBOutlet var mSymbolTableView : EBTableView?
   @IBOutlet var mSymbolTypeTextField : EBTextObserverField?
   @IBOutlet var mTitleTextField : EBTextField?
+  @IBOutlet var mUnbindAllButton : EBButton?
+  @IBOutlet var mUnbindButton : EBButton?
   @IBOutlet var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView?
   @IBOutlet var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView?
   @IBOutlet var mUpdateSelectedPackagesButton : EBButton?
@@ -254,6 +328,10 @@ import Cocoa
   var mController_mUpdateSelectedPackagesButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mInconsistentPadNameSetTextField_hidden : MultipleBindingController_hidden? = nil
   var mController_mAssignmentSplitView_hidden : MultipleBindingController_hidden? = nil
+  var mController_mBindButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mNCButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUnbindButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mUnbindAllButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -375,6 +453,21 @@ import Cocoa
         errorMessage: "the 'mAddSymbolInstancePullDownButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mAssignedPadProxyTableView {
+      if !(outlet is AssignedPadProxysInDeviceTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mAssignedPadProxyTableView' outlet is not an instance of 'AssignedPadProxysInDeviceTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mAssignedPadProxyTableView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mAssignmentPageView {
       if !(outlet is CanariViewWithKeyView) {
         presentErrorWindow (
@@ -403,6 +496,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mAssignmentSplitView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mBindButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mBindButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mBindButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mCommentTextView {
@@ -688,6 +796,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mMasterView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mNCButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mNCButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mNCButton' outlet is nil"
       )
     }
     if let outlet : Any = self.mPackageBackPadsColorWell {
@@ -1200,6 +1323,36 @@ import Cocoa
         errorMessage: "the 'mTitleTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mUnbindAllButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUnbindAllButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUnbindAllButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mUnbindButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUnbindButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUnbindButton' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mUnconnectedPadsInDeviceTableView {
       if !(outlet is UnconnectedPadsInDeviceTableView) {
         presentErrorWindow (
@@ -1370,6 +1523,28 @@ import Cocoa
     }
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.addEBObserver (self.assignmentInhibitionMessage_property)
+  //--- Atomic property: hasUnconnectedPin
+    self.hasUnconnectedPin_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.unconnectedPins_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.unconnectedPins_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_hasUnconnectedPin (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1392,6 +1567,50 @@ import Cocoa
       }
     }
     self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+  //--- Atomic property: hasUnconnectedPad
+    self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.unconnectedPads_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.unconnectedPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_hasUnconnectedPad (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.unconnectedPads_property.addEBObserver (self.hasUnconnectedPad_property)
+  //--- Atomic property: hasAssignedPadProxies
+    self.hasAssignedPadProxies_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.assignedPadProxies_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.assignedPadProxies_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_hasAssignedPadProxies (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
     self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
     self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
@@ -1433,6 +1652,7 @@ import Cocoa
     self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
     self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
     self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
+    self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
@@ -1650,6 +1870,47 @@ import Cocoa
       self.rootObject.symbolNameAreConsistent_property.addEBObserver (controller)
       self.mController_mAssignmentSplitView_hidden = controller
     }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.hasUnconnectedPad_property_selection && self.hasUnconnectedPin_property_selection)
+        },
+        outlet: self.mBindButton
+      )
+      self.hasUnconnectedPad_property.addEBObserver (controller)
+      self.hasUnconnectedPin_property.addEBObserver (controller)
+      self.mController_mBindButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.hasUnconnectedPad_property_selection
+        },
+        outlet: self.mNCButton
+      )
+      self.hasUnconnectedPad_property.addEBObserver (controller)
+      self.mController_mNCButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.hasAssignedPadProxies_property_selection
+        },
+        outlet: self.mUnbindButton
+      )
+      self.hasAssignedPadProxies_property.addEBObserver (controller)
+      self.mController_mUnbindButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.hasAssignedPadProxies_property_selection
+        },
+        outlet: self.mUnbindAllButton
+      )
+      self.hasAssignedPadProxies_property.addEBObserver (controller)
+      self.mController_mUnbindAllButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mPasteImageButton?.target = self
     self.mPasteImageButton?.action = #selector (DeviceDocument.pasteImageAction (_:))
@@ -1687,6 +1948,14 @@ import Cocoa
     self.mExportSelectedPackagesButton?.action = #selector (DeviceDocument.exportSelectedPackages (_:))
     self.mUpdateSelectedPackagesButton?.target = self
     self.mUpdateSelectedPackagesButton?.action = #selector (DeviceDocument.updateSelectedPackages (_:))
+    self.mBindButton?.target = self
+    self.mBindButton?.action = #selector (DeviceDocument.performBindAction (_:))
+    self.mNCButton?.target = self
+    self.mNCButton?.action = #selector (DeviceDocument.performNCAction (_:))
+    self.mUnbindButton?.target = self
+    self.mUnbindButton?.action = #selector (DeviceDocument.performUnbindAction (_:))
+    self.mUnbindAllButton?.target = self
+    self.mUnbindAllButton?.action = #selector (DeviceDocument.performUnbindAllAction (_:))
     self.mResetVersionButton?.target = self
     self.mResetVersionButton?.action = #selector (DeviceDocument.resetVersionAction (_:))
   //--------------------------- Read documentFilePath model 
@@ -1742,6 +2011,7 @@ import Cocoa
     self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
     self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
+    self.mAssignedPadProxyTableView?.unbind_assignedPadProxies ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
@@ -1791,6 +2061,15 @@ import Cocoa
     self.rootObject.packagePadNameSetsAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
     self.rootObject.symbolNameAreConsistent_property.removeEBObserver (self.mController_mAssignmentSplitView_hidden!)
     self.mController_mAssignmentSplitView_hidden = nil
+    self.hasUnconnectedPad_property.removeEBObserver (self.mController_mBindButton_enabled!)
+    self.hasUnconnectedPin_property.removeEBObserver (self.mController_mBindButton_enabled!)
+    self.mController_mBindButton_enabled = nil
+    self.hasUnconnectedPad_property.removeEBObserver (self.mController_mNCButton_enabled!)
+    self.mController_mNCButton_enabled = nil
+    self.hasAssignedPadProxies_property.removeEBObserver (self.mController_mUnbindButton_enabled!)
+    self.mController_mUnbindButton_enabled = nil
+    self.hasAssignedPadProxies_property.removeEBObserver (self.mController_mUnbindAllButton_enabled!)
+    self.mController_mUnbindAllButton_enabled = nil
   //--------------------------- Unbind array controllers
     self.mDocumentationController.unbind_tableView (self.mDocumentationTableView)
     self.mSymbolController.unbind_tableView (self.mSymbolTableView)
@@ -1813,7 +2092,10 @@ import Cocoa
     self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
+    self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
     self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
+    self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
   //--------------------------- Remove targets / actions
     self.mPasteImageButton?.target = nil
     self.mCopyImageButton?.target = nil
@@ -1833,13 +2115,19 @@ import Cocoa
     self.mEditSelectedPackagesButton?.target = nil
     self.mExportSelectedPackagesButton?.target = nil
     self.mUpdateSelectedPackagesButton?.target = nil
+    self.mBindButton?.target = nil
+    self.mNCButton?.target = nil
+    self.mUnbindButton?.target = nil
+    self.mUnbindAllButton?.target = nil
     self.mResetVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddPackageFromLibraryButton?.ebCleanUp ()
     self.mAddSymbolFromLibraryButton?.ebCleanUp ()
     self.mAddSymbolInstancePullDownButton?.ebCleanUp ()
+    self.mAssignedPadProxyTableView?.ebCleanUp ()
     self.mAssignmentPageView?.ebCleanUp ()
     self.mAssignmentSplitView?.ebCleanUp ()
+    self.mBindButton?.ebCleanUp ()
     self.mCommentTextView?.ebCleanUp ()
     self.mComposedPackageView?.ebCleanUp ()
     self.mComposedSymbolView?.ebCleanUp ()
@@ -1859,6 +2147,7 @@ import Cocoa
     self.mIssueTextView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
+    self.mNCButton?.ebCleanUp ()
     self.mPackageBackPadsColorWell?.ebCleanUp ()
     self.mPackageDisplayHorizontalFlipSwitch?.ebCleanUp ()
     self.mPackageDisplayVerticalFlipSwitch?.ebCleanUp ()
@@ -1893,6 +2182,8 @@ import Cocoa
     self.mSymbolTableView?.ebCleanUp ()
     self.mSymbolTypeTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
+    self.mUnbindAllButton?.ebCleanUp ()
+    self.mUnbindButton?.ebCleanUp ()
     self.mUnconnectedPadsInDeviceTableView?.ebCleanUp ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.ebCleanUp ()
     self.mUpdateSelectedPackagesButton?.ebCleanUp ()

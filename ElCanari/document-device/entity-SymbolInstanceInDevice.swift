@@ -234,8 +234,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
 
   required init (_ undoManager : EBUndoManager?) {
     super.init (undoManager)
-  //--- To many property: mPinInstances (no option)
+  //--- To many property: mPinInstances (has opposite relationship)
     self.mPinInstances_property.undoManager = self.undoManager
+    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolPinInstanceInDevice?) in
+      inManagedObject?.mSymbolInstance_property.setProp (self)
+    }
   //--- Atomic property: mInstanceName
     self.mInstanceName_property.undoManager = self.undoManager
   //--- Atomic property: mX
@@ -326,6 +329,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.unconnectedPins_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mPinInstances_property_selection.kind ()
+        kind &= unwSelf.mPinInstances_property_selection.kind ()
         kind &= unwSelf.mInstanceName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -333,9 +337,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mPinInstances_property_selection, unwSelf.mInstanceName_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_SymbolInstanceInDevice_unconnectedPins (v0, v1))
+          switch (unwSelf.mPinInstances_property_selection, unwSelf.mPinInstances_property_selection, unwSelf.mInstanceName_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2)) :
+            return .single (transient_SymbolInstanceInDevice_unconnectedPins (v0, v1, v2))
           default :
             return .empty
           }
@@ -345,6 +349,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
       }
     }
     self.mPinInstances_property.addEBObserverOf_pinName (self.unconnectedPins_property)
+    self.mPinInstances_property.addEBObserverOf_isConnected (self.unconnectedPins_property)
     self.mInstanceName_property.addEBObserver (self.unconnectedPins_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
@@ -385,6 +390,9 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
+    self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice?) in
+      inManagedObject?.mSymbolInstance_property.setProp (self)
+    }
   //--- register properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mX_property.setSignatureObserver (observer: self)
@@ -406,6 +414,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.mPinInstances_property.removeEBObserverOf_pinName (self.unconnectedPins_property)
+    self.mPinInstances_property.removeEBObserverOf_isConnected (self.unconnectedPins_property)
     self.mInstanceName_property.removeEBObserver (self.unconnectedPins_property)
     self.mType_property.removeEBObserverOf_mStrokeBezierPath (self.objectDisplay_property)
     self.mType_property.removeEBObserverOf_mFilledBezierPath (self.objectDisplay_property)
