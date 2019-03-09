@@ -8,7 +8,7 @@ graphic entity DeviceRoot {
   property @signature String title default "" ;
 
 #--- Image
-  property Data representationImageData default empty ;
+  property @signature Data representationImageData default empty ;
   transient Bool imageIsValid dependsFrom self.representationImageData ;
 
 #--- Documentation
@@ -58,7 +58,7 @@ graphic entity DeviceRoot {
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
 
 #--- Pad proxys
-  toMany PadProxyInDevice mPadProxies ;
+  toMany @signature PadProxyInDevice mPadProxies ;
   
   transient StringArray unconnectedPads
     dependsFrom self.mPadProxies.all.mQualifiedPadName, self.mPadProxies.all.isConnected ;
@@ -85,8 +85,8 @@ entity DeviceDocumentation {
 graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany mPackages ;
   
-  toMany MasterPadInDevice mMasterPads ;
-  toMany SlavePadInDevice mSlavePads ;
+  toMany @signature MasterPadInDevice mMasterPads ;
+  toMany @signature SlavePadInDevice mSlavePads ;
  
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
@@ -161,7 +161,6 @@ entity MasterPadInDevice {
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter, prefs.padNumberColor, self.padName, prefs.padNumberFont ;
-  
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

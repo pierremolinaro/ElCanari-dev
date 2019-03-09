@@ -1120,6 +1120,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackageDisplayVerticalFlip_property.setSignatureObserver (observer: self)
     self.mPackageDisplayZoom_property.setSignatureObserver (observer: self)
     self.mPackages_property.setSignatureObserver (observer: self)
+    self.mPadProxies_property.setSignatureObserver (observer: self)
     self.mShowPackageBackPads_property.setSignatureObserver (observer: self)
     self.mShowPackageFrontPads_property.setSignatureObserver (observer: self)
     self.mShowPackagePadNumbers_property.setSignatureObserver (observer: self)
@@ -1130,6 +1131,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolInstances_property.setSignatureObserver (observer: self)
     self.mSymbolTypes_property.setSignatureObserver (observer: self)
     self.prefix_property.setSignatureObserver (observer: self)
+    self.representationImageData_property.setSignatureObserver (observer: self)
     self.title_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
@@ -1684,6 +1686,7 @@ class DeviceRoot : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mPackageDisplayVerticalFlip_property.signature ())
     crc.accumulateUInt32 (self.mPackageDisplayZoom_property.signature ())
     crc.accumulateUInt32 (self.mPackages_property.signature ())
+    crc.accumulateUInt32 (self.mPadProxies_property.signature ())
     crc.accumulateUInt32 (self.mShowPackageBackPads_property.signature ())
     crc.accumulateUInt32 (self.mShowPackageFrontPads_property.signature ())
     crc.accumulateUInt32 (self.mShowPackagePadNumbers_property.signature ())
@@ -1694,6 +1697,7 @@ class DeviceRoot : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mSymbolInstances_property.signature ())
     crc.accumulateUInt32 (self.mSymbolTypes_property.signature ())
     crc.accumulateUInt32 (self.prefix_property.signature ())
+    crc.accumulateUInt32 (self.representationImageData_property.signature ())
     crc.accumulateUInt32 (self.title_property.signature ())
     return crc
   }

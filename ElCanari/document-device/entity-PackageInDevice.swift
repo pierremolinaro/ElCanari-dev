@@ -565,7 +565,9 @@ class PackageInDevice : EBGraphicManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
+    self.mMasterPads_property.setSignatureObserver (observer: self)
     self.mName_property.setSignatureObserver (observer: self)
+    self.mSlavePads_property.setSignatureObserver (observer: self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
     self.mX_property.setSignatureObserver (observer: self)
@@ -908,7 +910,9 @@ class PackageInDevice : EBGraphicManagedObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mFileData_property.signature ())
+    crc.accumulateUInt32 (self.mMasterPads_property.signature ())
     crc.accumulateUInt32 (self.mName_property.signature ())
+    crc.accumulateUInt32 (self.mSlavePads_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mVersion_property.signature ())
     crc.accumulateUInt32 (self.mX_property.signature ())
