@@ -24,7 +24,9 @@ graphic entity DeviceRoot {
   transient CanariIssueArray issues dependsFrom
     self.title, self.prefix,
     self.inconsistentPackagePadNameSetsMessage,
-    self.inconsistentSymbolNameSetMessage
+    self.inconsistentSymbolNameSetMessage,
+    self.unconnectedPins,
+    self.unconnectedPads
   ;
 
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;

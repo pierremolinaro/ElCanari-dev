@@ -15,7 +15,9 @@ func transient_DeviceRoot_issues (
        _ self_title : String,     
        _ self_prefix : String,    
        _ self_inconsistentPackagePadNameSetsMessage : String,
-       _ self_inconsistentSymbolNameSetMessage : String
+       _ self_inconsistentSymbolNameSetMessage : String,
+       _ self_unconnectedPins : UnconnectedSymbolPinsInDevice,
+       _ self_unconnectedPads : StringArray
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
@@ -44,6 +46,16 @@ func transient_DeviceRoot_issues (
        }
        if self_inconsistentSymbolNameSetMessage != "" {
          issues.append (CanariIssue (kind: .error, message: "There are several symbols with the same name", path: NSBezierPath ()))
+       }
+       if self_unconnectedPins.count == 1 {
+         issues.append (CanariIssue (kind: .warning, message: "1 unconnected pin", path: NSBezierPath ()))
+       }else if self_unconnectedPins.count > 1 {
+         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPins.count) unconnected pins", path: NSBezierPath ()))
+       }
+       if self_unconnectedPads.count == 1 {
+         issues.append (CanariIssue (kind: .warning, message: "1 unassigned pad", path: NSBezierPath ()))
+       }else if self_unconnectedPads.count > 1 {
+         issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPads.count) unassigned pads", path: NSBezierPath ()))
        }
        return issues
 //--- END OF USER ZONE 2

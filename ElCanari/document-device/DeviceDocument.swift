@@ -68,52 +68,6 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusMessage
-  //····················································································································
-
-  var mStatusMessage_property = EBTransientProperty_String ()
-
-  //····················································································································
-
-  var mStatusMessage_property_selection : EBSelection <String> {
-    return self.mStatusMessage_property.prop
-  }
-
-  //····················································································································
-
-  var mStatusMessage : String? {
-    switch self.mStatusMessage_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
-  //   Transient property: mMetadataStatus
-  //····················································································································
-
-  var mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
-
-  //····················································································································
-
-  var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
-    return self.mMetadataStatus_property.prop
-  }
-
-  //····················································································································
-
-  var mMetadataStatus : MetadataStatus? {
-    switch self.mMetadataStatus_property_selection {
-    case .empty, .multiple :
-      return nil
-    case .single (let v) :
-      return v
-    }
-  }
-
-  //····················································································································
   //   Transient property: assignmentInhibitionMessage
   //····················································································································
 
@@ -160,21 +114,44 @@ import Cocoa
   }
 
   //····················································································································
-  //   Transient property: mStatusImage
+  //   Transient property: mStatusMessage
   //····················································································································
 
-  var mStatusImage_property = EBTransientProperty_NSImage ()
+  var mStatusMessage_property = EBTransientProperty_String ()
 
   //····················································································································
 
-  var mStatusImage_property_selection : EBSelection <NSImage> {
-    return self.mStatusImage_property.prop
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
   }
 
   //····················································································································
 
-  var mStatusImage : NSImage? {
-    switch self.mStatusImage_property_selection {
+  var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mMetadataStatus
+  //····················································································································
+
+  var mMetadataStatus_property = EBTransientProperty_MetadataStatus ()
+
+  //····················································································································
+
+  var mMetadataStatus_property_selection : EBSelection <MetadataStatus> {
+    return self.mMetadataStatus_property.prop
+  }
+
+  //····················································································································
+
+  var mMetadataStatus : MetadataStatus? {
+    switch self.mMetadataStatus_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -221,6 +198,29 @@ import Cocoa
 
   var hasAssignedPadProxies : Bool? {
     switch self.hasAssignedPadProxies_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
     case .empty, .multiple :
       return nil
     case .single (let v) :
@@ -1455,50 +1455,6 @@ import Cocoa
     self.mPackageDisplayController.bind_model (self.rootObject.mPackages_property)
   //--- Array controller property: mSymbolController
     self.mSymbolController.bind_model (self.rootObject.mSymbolTypes_property)
-  //--- Atomic property: mStatusMessage
-    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mStatusMessage (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
-  //--- Atomic property: mMetadataStatus
-    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
-      if let unwSelf = self {
-        let kind = unwSelf.rootObject.issues_property_selection.kind ()
-        switch kind {
-        case .noSelectionKind :
-          return .empty
-        case .multipleSelectionKind :
-          return .multiple
-        case .singleSelectionKind :
-          switch (unwSelf.rootObject.issues_property_selection) {
-          case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mMetadataStatus (v0))
-          default :
-            return .empty
-          }
-        }
-      }else{
-        return .empty
-      }
-    }
-    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
   //--- Atomic property: assignmentInhibitionMessage
     self.assignmentInhibitionMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1545,8 +1501,8 @@ import Cocoa
       }
     }
     self.rootObject.unconnectedPins_property.addEBObserver (self.hasUnconnectedPin_property)
-  //--- Atomic property: mStatusImage
-    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         let kind = unwSelf.rootObject.issues_property_selection.kind ()
         switch kind {
@@ -1557,7 +1513,7 @@ import Cocoa
         case .singleSelectionKind :
           switch (unwSelf.rootObject.issues_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_DeviceDocument_mStatusImage (v0))
+            return .single (transient_DeviceDocument_mStatusMessage (v0))
           default :
             return .empty
           }
@@ -1566,7 +1522,29 @@ import Cocoa
         return .empty
       }
     }
-    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
+  //--- Atomic property: mMetadataStatus
+    self.mMetadataStatus_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_mMetadataStatus (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mMetadataStatus_property)
   //--- Atomic property: hasUnconnectedPad
     self.hasUnconnectedPad_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1611,6 +1589,28 @@ import Cocoa
       }
     }
     self.rootObject.assignedPadProxies_property.addEBObserver (self.hasAssignedPadProxies_property)
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
     self.mDocumentationController.bind_tableView (self.mDocumentationTableView, file: #file, line: #line)
     self.mSymbolController.bind_tableView (self.mSymbolTableView, file: #file, line: #line)
     self.mPackageController.bind_tableView (self.mPackageTableView, file: #file, line: #line)
@@ -2088,14 +2088,14 @@ import Cocoa
     self.mPackageDisplayController.unbind_model ()
   //--- Array controller property: mSymbolController
     self.mSymbolController.unbind_model ()
-    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
-    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.assignmentInhibitionMessage_property)
     self.rootObject.unconnectedPins_property.removeEBObserver (self.hasUnconnectedPin_property)
-    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mMetadataStatus_property)
     self.rootObject.unconnectedPads_property.removeEBObserver (self.hasUnconnectedPad_property)
     self.rootObject.assignedPadProxies_property.removeEBObserver (self.hasAssignedPadProxies_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
   //--------------------------- Remove targets / actions
     self.mPasteImageButton?.target = nil
     self.mCopyImageButton?.target = nil
