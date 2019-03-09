@@ -22,6 +22,9 @@ extern outlet class NSTextField : NSControl ;
 
 extern outlet class NSSegmentedControl ;
 
+extern outlet class UnconnectedPadsInDeviceTableView : EBTableView ;
+binding UnconnectedPadsInDeviceTableView $unconnectedPads : transient StringArray ;
+
 extern outlet class UnconnectedSymbolPinsInDeviceTableView : EBTableView ;
 binding UnconnectedSymbolPinsInDeviceTableView $unconnectedPins : transient UnconnectedSymbolPinsInDevice ;
 

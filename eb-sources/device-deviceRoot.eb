@@ -44,7 +44,7 @@ graphic entity DeviceRoot {
   property @signature Bool mShowPackageBackPads default yes ;
   
 #--- Symbols
-  toMany @signature SymbolTypeInDevice mSymbolTypes inverse toOne mRoot ;
+  toMany @signature SymbolTypeInDevice mSymbolTypes ; #  inverse toOne mRoot ;
   toMany @signature SymbolInstanceInDevice mSymbolInstances ;
 
   property @signature Int mSymbolDisplayZoom default 100 ;
@@ -54,6 +54,11 @@ graphic entity DeviceRoot {
   transient StringArray symbolTypeNames dependsFrom self.mSymbolTypes.all.mTypeName ;
   
   transient UnconnectedSymbolPinsInDevice unconnectedPins dependsFrom self.mSymbolInstances.all.unconnectedPins ;
+
+#--- Pad proxys
+  toMany PadProxyInDevice mPadProxies ;
+  
+  transient StringArray unconnectedPads dependsFrom self.mPadProxies.all.mQualifiedPadName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -99,12 +104,15 @@ graphic entity PackageInDevice {
      self.mMasterPads.all.padNumberDisplay,
      self.mSlavePads.all.padNumberDisplay,
      self.mRoot.one.mShowPackagePadNumbers,
-     self.mStrokeBezierPath, self.mRoot.one.mShowPackages,
+     self.mRoot.one.mShowPackages,
+     self.mRoot.one.mShowPackageFrontPads,
+     self.mRoot.one.mShowPackageBackPads,
+     self.mStrokeBezierPath,
      prefs.packageColor,
      prefs.packageDrawingWidthMultipliedByTen,
-     self.frontSidePadFilledBezierPathArray, self.mRoot.one.mShowPackageFrontPads,
+     self.frontSidePadFilledBezierPathArray,
      prefs.frontSidePadColor,
-     self.backSidePadFilledBezierPathArray, self.mRoot.one.mShowPackageBackPads,
+     self.backSidePadFilledBezierPathArray,
      prefs.backSidePadColor,
      self.mName, self.mX, self.mY
   ;
@@ -179,7 +187,7 @@ entity SlavePadInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
-  toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
+#  toOne DeviceRoot mRoot inverse toMany mSymbolTypes ;
   toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
   toMany SymbolPinTypeInDevice mPinTypes ;
 
@@ -270,6 +278,12 @@ entity SymbolPinInstanceInDevice {
    ;
 
   transient String pinName dependsFrom self.mType.one.mName ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity PadProxyInDevice {
+  property @signature String mQualifiedPadName default "" ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

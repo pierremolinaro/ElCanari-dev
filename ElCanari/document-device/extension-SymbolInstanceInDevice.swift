@@ -41,7 +41,6 @@ extension SymbolInstanceInDevice {
       self.mType_property.setProp (nil)
     //--- If symbol instance it the last one, remove also symbol type
       if symbolType.mInstances_property.propval.count == 0 {
-        symbolType.mRoot_property.setProp (nil)
         symbolType.cleanUpRelationshipsAndRemoveAllObservers ()
         for pinType in symbolType.mPinTypes_property.propval {
           pinType.cleanUpRelationshipsAndRemoveAllObservers ()

@@ -66,6 +66,7 @@
                 <outlet property="mSymbolTableView" destination="1132" id="e1N-Om-Pfc"/>
                 <outlet property="mSymbolTypeTextField" destination="wzz-dY-cEX" id="6WG-Ox-P8d"/>
                 <outlet property="mTitleTextField" destination="1038" id="pDd-Se-xfr"/>
+                <outlet property="mUnconnectedPadsInDeviceTableView" destination="1111" id="e0Y-go-Z3T"/>
                 <outlet property="mUnconnectedSymbolPinsInDeviceTableView" destination="1107" id="PoK-Dp-MtW"/>
                 <outlet property="mUpdateSelectedPackagesButton" destination="1607" id="78N-VX-Ivc"/>
                 <outlet property="mUpdateSelectedSymbolsButton" destination="1129" id="Vmp-ll-gQa"/>
@@ -384,7 +385,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Ixa-Rs-kYV">
                         <rect key="frame" x="1" y="1" width="332" height="384"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView id="1069" customClass="EBView">
                                 <rect key="frame" x="0.0" y="0.0" width="209" height="134"/>
@@ -439,7 +440,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="5OJ-Hr-ua2">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" spellingCorrection="YES" id="PmD-YT-0cS" customClass="EBTextObserverView">
                                 <rect key="frame" x="0.0" y="0.0" width="215" height="134"/>
@@ -672,7 +673,7 @@
                                         <rect key="frame" x="1" y="0.0" width="81" height="412"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1586" id="1111">
+                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="1586" id="1111" customClass="UnconnectedPadsInDeviceTableView" customModule="ElCanari" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="81" height="389"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -691,7 +692,7 @@
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </textFieldCell>
-                                                        <sortDescriptor key="sortDescriptorPrototype" selector="pmNumericCompare:" sortKey="padFullName"/>
+                                                        <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="pad"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                 </tableColumns>
@@ -957,7 +958,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <clipView key="contentView" id="U38-Nl-hUZ">
                                                     <rect key="frame" x="1" y="0.0" width="496" height="153"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="importedSymbolsInDevice" rowSizeStyle="automatic" headerView="1589" viewBased="YES" id="1132" customClass="EBTableView">
                                                             <rect key="frame" x="0.0" y="0.0" width="496" height="130"/>
@@ -1131,7 +1132,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <clipView key="contentView" id="mSf-qk-Njd">
                                                     <rect key="frame" x="1" y="0.0" width="496" height="154"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="1613" viewBased="YES" id="1616" customClass="EBTableView">
                                                             <rect key="frame" x="0.0" y="0.0" width="496" height="131"/>

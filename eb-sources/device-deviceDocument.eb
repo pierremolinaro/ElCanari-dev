@@ -236,6 +236,10 @@ document DeviceDocument root DeviceRoot {
     $hidden !root.packagePadNameSetsAreConsistent | !root.symbolNameAreConsistent
   ;
 
+  outlet UnconnectedPadsInDeviceTableView mUnconnectedPadsInDeviceTableView
+    $unconnectedPads root.unconnectedPads
+  ;
+
   outlet UnconnectedSymbolPinsInDeviceTableView mUnconnectedSymbolPinsInDeviceTableView
     $unconnectedPins root.unconnectedPins
   ;

@@ -145,6 +145,7 @@ extension DeviceDocument {
       package.mMasterPads_property.setProp (masterPads)
       package.mSlavePads_property.setProp (slavePads)
       self.rootObject.mPackages_property.add (package)
+      self.updatePadProxies ()
     }
   }
 
@@ -194,6 +195,38 @@ extension DeviceDocument {
           ioMessages.append ("  - \(path)")
         }
       }
+    }
+    self.updatePadProxies ()
+  }
+
+  //····················································································································
+
+  func updatePadProxies () {
+  //--- Inventory of current pad names
+    var currentPackagePadNameSet = Set <String> ()
+    for package in self.rootObject.mPackages_property.propval {
+      for masterPad in package.mMasterPads_property.propval {
+        currentPackagePadNameSet.insert (masterPad.padName)
+      }
+    }
+  //--- Inventory of current pad proxies
+    var currentProxyPadNameSet = Set <String> ()
+    var padProxyDictionary = [String : PadProxyInDevice] ()
+    for padProxy in self.rootObject.mPadProxies_property.propval {
+      padProxyDictionary [padProxy.mQualifiedPadName] = padProxy
+      currentProxyPadNameSet.insert (padProxy.mQualifiedPadName)
+    }
+  //--- Remove pad proxies without corresponding pad
+    for padName in currentProxyPadNameSet.subtracting (currentPackagePadNameSet) {
+      let padProxy = padProxyDictionary [padName]!
+      padProxy.cleanUpRelationshipsAndRemoveAllObservers ()
+      self.rootObject.mPadProxies_property.remove (padProxy)
+    }
+  //--- Add missing pad proxies
+    for padName in currentPackagePadNameSet.subtracting (currentProxyPadNameSet) {
+      let newPadProxy = PadProxyInDevice (self.ebUndoManager)
+      newPadProxy.mQualifiedPadName = padName
+      self.rootObject.mPadProxies_property.add (newPadProxy)
     }
   }
 

@@ -65,6 +65,8 @@ let PMDevicePackages = "PMDevicePackages"
     self.mInconsistentSymbolNameMessageTextView?.textColor = .red
   //---
     self.mAddSymbolInstancePullDownButton?.register (document: self)
+  //---
+    self.mPackageDisplayController.mAfterObjectRemovingCallback = { [weak self] in self?.updatePadProxies () }
   }
 
   //····················································································································

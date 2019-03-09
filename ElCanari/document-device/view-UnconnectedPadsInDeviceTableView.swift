@@ -1,18 +1,18 @@
 //
-//  view-UnconnectedSymbolPinsInDeviceTableView.swift
+//  view-UnconnectedPadsInDeviceTableView.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 08/03/2019.
+//  Created by Pierre Molinaro on 09/03/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: UnconnectedSymbolPinsInDeviceTableView is cell based
+// NOTE: UnconnectedPadsInDeviceTableView is cell based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSource {
+class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
@@ -26,7 +26,7 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return self.mUnconnectedPinArray.count
+    return self.mUnconnectedPadArray.count
   }
 
   //····················································································································
@@ -34,10 +34,8 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
     var result : Any? = nil
     if let columnIdentifier = inTableColumn?.identifier.rawValue {
-      if columnIdentifier == "symbol" {
-        result = self.mUnconnectedPinArray [row].symbolInstanceName
-      }else if columnIdentifier == "pin" {
-        result = self.mUnconnectedPinArray [row].pinName
+      if columnIdentifier == "pad" {
+        result = self.mUnconnectedPadArray [row]
       }
     }
     return result
@@ -47,25 +45,15 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
 
   func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
   //--- Note selected rows
-    var selectedRowContents = Set <UnconnectedSymbolPin> ()
+    var selectedRowContents = Set <String> ()
     for idx in self.selectedRowIndexes {
-      selectedRowContents.insert (self.mUnconnectedPinArray [idx])
+      selectedRowContents.insert (self.mUnconnectedPadArray [idx])
     }
   //--- Sort
     for s in self.sortDescriptors.reversed () {
       if let key = s.key {
-        if key == "symbol" {
-          if s.ascending {
-            self.mUnconnectedPinArray.sort (by: { $0.symbolInstanceName < $1.symbolInstanceName })
-          }else{
-            self.mUnconnectedPinArray.sort (by: { $0.symbolInstanceName > $1.symbolInstanceName })
-          }
-        }else if key == "pin" {
-          if s.ascending {
-            self.mUnconnectedPinArray.sort (by: { $0.pinName < $1.pinName })
-          }else{
-            self.mUnconnectedPinArray.sort (by: { $0.pinName > $1.pinName })
-          }
+        if key == "pad" {
+          self.mUnconnectedPadArray.sort (by: { s.ascending ? numericCompare ($0, $1) :  numericCompare ($1, $0) })
         }
       }
     }
@@ -73,8 +61,8 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //--- Restore selection
     var newSelectedRowIndexes = IndexSet ()
     var idx = 0
-    while idx < self.mUnconnectedPinArray.count {
-      if selectedRowContents.contains (self.mUnconnectedPinArray [idx]) {
+    while idx < self.mUnconnectedPadArray.count {
+      if selectedRowContents.contains (self.mUnconnectedPadArray [idx]) {
         newSelectedRowIndexes.insert (idx)
       }
       idx += 1
@@ -86,16 +74,16 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //  DATA SOURCE
   //····················································································································
 
-  private var mUnconnectedPinArray = UnconnectedSymbolPinsInDevice ()
+  private var mUnconnectedPadArray = StringArray ()
 
   //····················································································································
 
-  func updateUnconnectedSymbolPinsList (from inModel : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice) {
+  func updateUnconnectedSymbolPinsList (from inModel : EBReadOnlyProperty_StringArray) {
     switch inModel.prop {
     case .empty, .multiple :
-      self.mUnconnectedPinArray.removeAll ()
-    case .single (let unconnectedSymbolPinArray) :
-      self.mUnconnectedPinArray = unconnectedSymbolPinArray
+      self.mUnconnectedPadArray.removeAll ()
+    case .single (let unconnectedPadArray) :
+      self.mUnconnectedPadArray = unconnectedPadArray
     }
     self.reloadData ()
   }
@@ -104,12 +92,12 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
   //  $imageData binding
   //····················································································································
 
-  private var mController : EBReadOnlyController_UnconnectedSymbolPinsInDevice? = nil
+  private var mController : EBReadOnlyController_StringArray? = nil
 
   //····················································································································
 
-  func bind_unconnectedPins (_ model : EBReadOnlyProperty_UnconnectedSymbolPinsInDevice, file : String, line : Int) {
-    self.mController = EBReadOnlyController_UnconnectedSymbolPinsInDevice (
+  func bind_unconnectedPads (_ model : EBReadOnlyProperty_StringArray, file : String, line : Int) {
+    self.mController = EBReadOnlyController_StringArray (
       model: model,
       callBack: { [weak self] in self?.updateUnconnectedSymbolPinsList (from: model) }
     )
@@ -117,13 +105,20 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
 
   //····················································································································
 
-  func unbind_unconnectedPins () {
+  func unbind_unconnectedPads () {
     self.mController?.unregister ()
     self.mController = nil
   }
 
   //····················································································································
 
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func numericCompare (_ inLeft : String, _ inRight : String) -> Bool {
+  let comparisonResult = inLeft.compare (inRight, options: [.numeric])
+  return comparisonResult == .orderedAscending
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

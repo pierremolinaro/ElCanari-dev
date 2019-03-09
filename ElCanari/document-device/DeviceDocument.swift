@@ -222,6 +222,7 @@ import Cocoa
   @IBOutlet var mSymbolTableView : EBTableView?
   @IBOutlet var mSymbolTypeTextField : EBTextObserverField?
   @IBOutlet var mTitleTextField : EBTextField?
+  @IBOutlet var mUnconnectedPadsInDeviceTableView : UnconnectedPadsInDeviceTableView?
   @IBOutlet var mUnconnectedSymbolPinsInDeviceTableView : UnconnectedSymbolPinsInDeviceTableView?
   @IBOutlet var mUpdateSelectedPackagesButton : EBButton?
   @IBOutlet var mUpdateSelectedSymbolsButton : EBButton?
@@ -1199,6 +1200,21 @@ import Cocoa
         errorMessage: "the 'mTitleTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mUnconnectedPadsInDeviceTableView {
+      if !(outlet is UnconnectedPadsInDeviceTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mUnconnectedPadsInDeviceTableView' outlet is not an instance of 'UnconnectedPadsInDeviceTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mUnconnectedPadsInDeviceTableView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mUnconnectedSymbolPinsInDeviceTableView {
       if !(outlet is UnconnectedSymbolPinsInDeviceTableView) {
         presentErrorWindow (
@@ -1415,6 +1431,7 @@ import Cocoa
     self.mPackageBackPadsColorWell?.bind_color (g_Preferences!.backSidePadColor_property, file: #file, line: #line, sendContinously:false)
     self.mInconsistentPackagePadNameSetsMessageTextView?.bind_valueObserver (self.rootObject.inconsistentPackagePadNameSetsMessage_property, file: #file, line: #line)
     self.mInconsistentPadNameSetTextField?.bind_valueObserver (self.assignmentInhibitionMessage_property, file: #file, line: #line)
+    self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
     self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
     self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
     self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
@@ -1723,6 +1740,7 @@ import Cocoa
     self.mPackageBackPadsColorWell?.unbind_color ()
     self.mInconsistentPackagePadNameSetsMessageTextView?.unbind_valueObserver ()
     self.mInconsistentPadNameSetTextField?.unbind_valueObserver ()
+    self.mUnconnectedPadsInDeviceTableView?.unbind_unconnectedPads ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.unbind_unconnectedPins ()
     self.mPrefixTextField?.unbind_value ()
     self.mCommentTextView?.unbind_value ()
@@ -1875,6 +1893,7 @@ import Cocoa
     self.mSymbolTableView?.ebCleanUp ()
     self.mSymbolTypeTextField?.ebCleanUp ()
     self.mTitleTextField?.ebCleanUp ()
+    self.mUnconnectedPadsInDeviceTableView?.ebCleanUp ()
     self.mUnconnectedSymbolPinsInDeviceTableView?.ebCleanUp ()
     self.mUpdateSelectedPackagesButton?.ebCleanUp ()
     self.mUpdateSelectedSymbolsButton?.ebCleanUp ()

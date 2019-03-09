@@ -460,15 +460,15 @@ class PackageInDevice : EBGraphicManagedObject,
         var kind = unwSelf.mMasterPads_property_selection.kind ()
         kind &= unwSelf.mSlavePads_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection.kind ()
-        kind &= unwSelf.mStrokeBezierPath_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mShowPackages_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mShowPackageFrontPads_property_selection.kind ()
+        kind &= unwSelf.mRoot_property.mShowPackageBackPads_property_selection.kind ()
+        kind &= unwSelf.mStrokeBezierPath_property_selection.kind ()
         kind &= g_Preferences!.packageColor_property_selection.kind ()
         kind &= g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection.kind ()
         kind &= unwSelf.frontSidePadFilledBezierPathArray_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mShowPackageFrontPads_property_selection.kind ()
         kind &= g_Preferences!.frontSidePadColor_property_selection.kind ()
         kind &= unwSelf.backSidePadFilledBezierPathArray_property_selection.kind ()
-        kind &= unwSelf.mRoot_property.mShowPackageBackPads_property_selection.kind ()
         kind &= g_Preferences!.backSidePadColor_property_selection.kind ()
         kind &= unwSelf.mName_property_selection.kind ()
         kind &= unwSelf.mX_property_selection.kind ()
@@ -479,7 +479,7 @@ class PackageInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mMasterPads_property_selection, unwSelf.mSlavePads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mStrokeBezierPath_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, g_Preferences!.frontSidePadColor_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, g_Preferences!.backSidePadColor_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          switch (unwSelf.mMasterPads_property_selection, unwSelf.mSlavePads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, unwSelf.mStrokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, g_Preferences!.frontSidePadColor_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, g_Preferences!.backSidePadColor_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
             return .single (transient_PackageInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
           default :
@@ -493,15 +493,15 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mSlavePads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
-    self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
+    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
+    self.mStrokeBezierPath_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.addEBObserver (self.objectDisplay_property)
     self.frontSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
     g_Preferences?.frontSidePadColor_property.addEBObserver (self.objectDisplay_property)
     self.backSidePadFilledBezierPathArray_property.addEBObserver (self.objectDisplay_property)
-    self.mRoot_property.addEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
     g_Preferences?.backSidePadColor_property.addEBObserver (self.objectDisplay_property)
     self.mName_property.addEBObserver (self.objectDisplay_property)
     self.mX_property.addEBObserver (self.objectDisplay_property)
@@ -585,15 +585,15 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mMasterPads_property.removeEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mSlavePads_property.removeEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
-    self.mStrokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mShowPackages (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
+    self.mRoot_property.removeEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
+    self.mStrokeBezierPath_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageColor_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     self.frontSidePadFilledBezierPathArray_property.removeEBObserver (self.objectDisplay_property)
-    self.mRoot_property.removeEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
     g_Preferences?.frontSidePadColor_property.removeEBObserver (self.objectDisplay_property)
     self.backSidePadFilledBezierPathArray_property.removeEBObserver (self.objectDisplay_property)
-    self.mRoot_property.removeEBObserverOf_mShowPackageBackPads (self.objectDisplay_property)
     g_Preferences?.backSidePadColor_property.removeEBObserver (self.objectDisplay_property)
     self.mName_property.removeEBObserver (self.objectDisplay_property)
     self.mX_property.removeEBObserver (self.objectDisplay_property)
@@ -2072,6 +2072,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
+        oldValue?.unconnectedPads_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPads)
         oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
       //--- Add property observers to new object
         self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
@@ -2096,6 +2097,7 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
         self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
+        self.mValue?.unconnectedPads_property.addEBObserversFrom (&self.mObserversOf_unconnectedPads)
         self.mValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins)
        //--- Notify observers
         self.postEvent ()
@@ -3024,6 +3026,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_title.remove (inObserver)
     if let object = self.propval {
       object.title_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: unconnectedPads
+  //····················································································································
+
+  private var mObserversOf_unconnectedPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  var unconnectedPads_property_selection : EBSelection <StringArray?> {
+    if let model = self.propval {
+      switch (model.unconnectedPads_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPads.insert (inObserver)
+    if let object = self.propval {
+      object.unconnectedPads_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
+    self.mObserversOf_unconnectedPads.remove (inObserver)
+    if let object = self.propval {
+      object.unconnectedPads_property.removeEBObserver (inObserver)
     }
   }
 

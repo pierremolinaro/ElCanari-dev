@@ -138,6 +138,12 @@ protocol DeviceRoot_unconnectedPins : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol DeviceRoot_unconnectedPads : class {
+  var unconnectedPads : StringArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol DeviceRoot_issues : class {
   var issues : CanariIssueArray? { get }
 }
@@ -169,6 +175,7 @@ class DeviceRoot : EBGraphicManagedObject,
          DeviceRoot_symbolNameAreConsistent,
          DeviceRoot_symbolTypeNames,
          DeviceRoot_unconnectedPins,
+         DeviceRoot_unconnectedPads,
          DeviceRoot_issues {
 
   //····················································································································
@@ -565,6 +572,18 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   To many property: mPadProxies
+  //····················································································································
+
+  var mPadProxies_property = StoredArrayOf_PadProxyInDevice ()
+
+  //····················································································································
+
+  var mPadProxies_property_selection : EBSelection < [PadProxyInDevice] > {
+      return self.mPadProxies_property.prop
+  }
+
+  //····················································································································
   //   Transient property: inconsistentPackagePadNameSetsMessage
   //····················································································································
 
@@ -726,6 +745,29 @@ class DeviceRoot : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   Transient property: unconnectedPads
+  //····················································································································
+
+  var unconnectedPads_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var unconnectedPads_property_selection : EBSelection <StringArray> {
+    return self.unconnectedPads_property.prop
+  }
+
+  //····················································································································
+
+  var unconnectedPads : StringArray? {
+    switch self.unconnectedPads_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: issues
   //····················································································································
 
@@ -791,13 +833,12 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
-  //--- To many property: mSymbolTypes (has opposite relationship)
+  //--- To many property: mSymbolTypes (no option)
     self.mSymbolTypes_property.undoManager = self.undoManager
-    self.mSymbolTypes_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolTypeInDevice?) in
-      inManagedObject?.mRoot_property.setProp (self)
-    }
   //--- Atomic property: representationImageData
     self.representationImageData_property.undoManager = self.undoManager
+  //--- To many property: mPadProxies (no option)
+    self.mPadProxies_property.undoManager = self.undoManager
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -954,6 +995,28 @@ class DeviceRoot : EBGraphicManagedObject,
       }
     }
     self.mSymbolInstances_property.addEBObserverOf_unconnectedPins (self.unconnectedPins_property)
+  //--- Atomic property: unconnectedPads
+    self.unconnectedPads_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mPadProxies_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mPadProxies_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceRoot_unconnectedPads (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mPadProxies_property.addEBObserverOf_mQualifiedPadName (self.unconnectedPads_property)
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -984,9 +1047,6 @@ class DeviceRoot : EBGraphicManagedObject,
     self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
-      inManagedObject?.mRoot_property.setProp (self)
-    }
-    self.mSymbolTypes_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolTypeInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
   //--- register properties for handling signature
@@ -1022,6 +1082,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.symbolNameAreConsistent_property)
     self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.symbolTypeNames_property)
     self.mSymbolInstances_property.removeEBObserverOf_unconnectedPins (self.unconnectedPins_property)
+    self.mPadProxies_property.removeEBObserverOf_mQualifiedPadName (self.unconnectedPads_property)
     self.title_property.removeEBObserver (self.issues_property)
     self.prefix_property.removeEBObserver (self.issues_property)
     self.inconsistentPackagePadNameSetsMessage_property.removeEBObserver (self.issues_property)
@@ -1217,6 +1278,14 @@ class DeviceRoot : EBGraphicManagedObject,
       valueExplorer:&self.unconnectedPins_property.mValueExplorer
     )
     createEntryForPropertyNamed (
+      "unconnectedPads",
+      idx:self.unconnectedPads_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.unconnectedPads_property.mObserverExplorer,
+      valueExplorer:&self.unconnectedPads_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
       "issues",
       idx:self.issues_property.ebObjectIndex,
       y:&y,
@@ -1252,6 +1321,13 @@ class DeviceRoot : EBGraphicManagedObject,
       y: &y,
       view: view,
       valueExplorer:&mSymbolTypes_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
+      "mPadProxies",
+      idx:mPadProxies_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mPadProxies_property.mValueExplorer
     )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -1315,6 +1391,8 @@ class DeviceRoot : EBGraphicManagedObject,
   //--- Atomic property: representationImageData
     self.representationImageData_property.mObserverExplorer = nil
     self.representationImageData_property.mValueExplorer = nil
+  //--- To many property: mPadProxies
+    self.mPadProxies_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -1328,6 +1406,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolInstances_property.setProp ([])
     self.mPackages_property.setProp ([])
     self.mSymbolTypes_property.setProp ([])
+    self.mPadProxies_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -1401,6 +1480,12 @@ class DeviceRoot : EBGraphicManagedObject,
     )
   //--- Atomic property: representationImageData
     self.representationImageData_property.storeIn (dictionary: ioDictionary, forKey:"representationImageData")
+  //--- To many property: mPadProxies
+    self.store (
+      managedObjectArray: mPadProxies_property.propval as NSArray,
+      relationshipName: "mPadProxies",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -1434,6 +1519,12 @@ class DeviceRoot : EBGraphicManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [SymbolTypeInDevice])
+  //--- To many property: mPadProxies
+    self.mPadProxies_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mPadProxies",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [PadProxyInDevice])
   }
 
   //····················································································································
@@ -1494,6 +1585,10 @@ class DeviceRoot : EBGraphicManagedObject,
     }
   //--- To many property: mSymbolTypes
     for managedObject : EBManagedObject in self.mSymbolTypes_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPadProxies
+    for managedObject : EBManagedObject in self.mPadProxies_property.propval {
       objects.append (managedObject)
     }
   }
@@ -2782,6 +2877,62 @@ class ReadOnlyArrayOf_DeviceRoot : ReadOnlyAbstractArrayProperty <DeviceRoot> {
   }
 
   //····················································································································
+  //   Observers of 'unconnectedPads' transient property
+  //····················································································································
+
+  private var mObserversOf_unconnectedPads = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_unconnectedPads.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPads_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_unconnectedPads (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_unconnectedPads.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.unconnectedPads_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_unconnectedPads_toElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPads.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPads_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_unconnectedPads_fromElementsOfSet (_ inSet : Set<DeviceRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_unconnectedPads.apply ( {(_ observer : EBEvent) in
+        managedObject.unconnectedPads_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
   //   Observers of 'issues' transient property
   //····················································································································
 
@@ -2933,6 +3084,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
@@ -2960,6 +3112,7 @@ class TransientArrayOf_DeviceRoot : ReadOnlyArrayOf_DeviceRoot {
       self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedSet)
       self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedSet)
       self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedSet)
+      self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedSet)
       self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
@@ -3126,6 +3279,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.removeEBObserversOf_symbolNameAreConsistent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_symbolTypeNames_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_unconnectedPins_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_unconnectedPads_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
@@ -3172,6 +3326,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
           self.addEBObserversOf_symbolNameAreConsistent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_symbolTypeNames_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_unconnectedPins_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_unconnectedPads_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
