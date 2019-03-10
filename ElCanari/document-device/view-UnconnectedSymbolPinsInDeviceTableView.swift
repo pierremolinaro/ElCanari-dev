@@ -9,16 +9,17 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: UnconnectedSymbolPinsInDeviceTableView is cell based
+// NOTE: UnconnectedSymbolPinsInDeviceTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSource {
+class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
   override func awakeFromNib () {
     super.awakeFromNib ()
     self.dataSource = self // NSTableViewDataSource protocol
+    self.delegate = self // NSTableViewDelegate protocol
   }
 
   //····················································································································
@@ -31,22 +32,31 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
 
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
-    var result : Any? = nil
-    if let columnIdentifier = inTableColumn?.identifier.rawValue {
-      if columnIdentifier == "symbol" {
-        result = self.mDataSource [row].symbolInstanceName
-      }else if columnIdentifier == "pin" {
-        result = self.mDataSource [row].pinName
-      }
-    }
-    return result
+  func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+    self.reloadDataSource (self.mDataSource)
   }
 
   //····················································································································
+  //   NSTableViewDelegate protocol
+  //····················································································································
 
-  func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
-    self.reloadDataSource (self.mDataSource)
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn : NSTableColumn?,
+                  row inRowIndex : Int) -> NSView? {
+    var result : NSTextField? = nil
+    if let columnIdentifier = inTableColumn?.identifier {
+      result = tableView.makeView (withIdentifier: columnIdentifier, owner: self) as? NSTextField
+      NSLog ("\(result)")
+      if !reuseTableViewCells () {
+        result?.identifier = nil // So result cannot be reused, will be freed
+      }
+      if columnIdentifier.rawValue == "symbol" {
+        result?.stringValue = self.mDataSource [inRowIndex].symbolInstanceName
+      }else if columnIdentifier.rawValue == "pin" {
+        result?.stringValue = self.mDataSource [inRowIndex].pinName
+      }
+    }
+    return result
   }
 
   //····················································································································
