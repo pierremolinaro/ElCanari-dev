@@ -1,0 +1,45 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica fillcolor=yellow] ;
+
+  DeviceRoot [label="DeviceRoot|<mPackages>mPackages|<mPadProxies>mPadProxies|<mSymbolInstances>mSymbolInstances|<mSymbolTypes>mSymbolTypes"] ;
+
+  PackageInDevice [label="<PackageInDevice>PackageInDevice|<mRoot>mRoot|<mMasterPads>mMasterPads"] ;
+
+  MasterPadInDevice [label="<MasterPadInDevice>MasterPadInDevice|<mSlavePads>mSlavePads"] ;
+
+  PadProxyInDevice [label="<PadProxyInDevice>PadProxyInDevice|<mPinInstance>mPinInstance"] ;
+
+  SlavePadInDevice [label="<SlavePadInDevice>SlavePadInDevice"] ;
+
+  SymbolInstanceInDevice [label="<SymbolInstanceInDevice>SymbolInstanceInDevice|<mPinInstances>mPinInstances"] ;
+
+  SymbolTypeInDevice [label="<SymbolTypeInDevice>SymbolTypeInDevice|<mPinTypes>mPinTypes"] ;
+
+  SymbolPinInstanceInDevice [label="<SymbolPinInstanceInDevice>SymbolPinInstanceInDevice|<mSymbolInstance>mSymbolInstance|<mType>mType|<mPadProxy>mPadProxy"] ;
+
+  SymbolPinTypeInDevice [label="<SymbolPinTypeInDevice>SymbolPinTypeInDevice|<mType>mType|<mInstances>mInstances"] ;
+
+
+
+
+  DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=vee];
+
+  PackageInDevice:mMasterPads -> MasterPadInDevice:MasterPadInDevice [dir=both arrowtail=none arrowhead=vee];
+
+  MasterPadInDevice:mSlavePads -> SlavePadInDevice:SlavePadInDevice [dir=both arrowtail=none arrowhead=vee];
+
+  DeviceRoot:mPadProxies -> PadProxyInDevice:PadProxyInDevice [dir=both arrowtail=none arrowhead=vee];
+
+  DeviceRoot:mSymbolInstances -> SymbolInstanceInDevice:SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=vee];
+
+  SymbolInstanceInDevice:mPinInstances -> SymbolPinInstanceInDevice:mSymbolInstance [dir=both arrowtail=onormal arrowhead=vee] ;
+
+  SymbolPinInstanceInDevice:mPadProxy -> PadProxyInDevice:mPinInstance [dir=both arrowtail=onormal arrowhead=onormal] ;
+
+  DeviceRoot:mSymbolTypes -> SymbolTypeInDevice:SymbolTypeInDevice [dir=both arrowtail=none arrowhead=vee] ;
+
+  SymbolTypeInDevice:mPinTypes -> SymbolPinTypeInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
+
+  SymbolPinTypeInDevice:mInstances -> SymbolPinInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
+}
