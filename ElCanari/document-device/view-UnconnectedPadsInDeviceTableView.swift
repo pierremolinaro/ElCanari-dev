@@ -9,16 +9,17 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: UnconnectedPadsInDeviceTableView is cell based
+// NOTE: UnconnectedPadsInDeviceTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
+class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
   override func awakeFromNib () {
     super.awakeFromNib ()
     self.dataSource = self // NSTableViewDataSource protocol
+    self.delegate = self // NSTableViewDelegate protocol
   }
 
   //····················································································································
@@ -31,20 +32,28 @@ class UnconnectedPadsInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
-    var result : Any? = nil
-    if let columnIdentifier = inTableColumn?.identifier.rawValue {
-      if columnIdentifier == "pad" {
-        result = self.mDataSource [row]
-      }
-    }
-    return result
+  func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+    self.reloadDataSource (self.mDataSource)
   }
 
   //····················································································································
+  //   NSTableViewDelegate protocol
+  //····················································································································
 
-  func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
-    self.reloadDataSource (self.mDataSource)
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn : NSTableColumn?,
+                  row inRowIndex : Int) -> NSView? {
+    var result : NSTextField? = nil
+    if let columnIdentifier = inTableColumn?.identifier {
+      result = tableView.makeView (withIdentifier: columnIdentifier, owner: self) as? NSTextField
+      if !reuseTableViewCells () {
+        result?.identifier = nil // So result cannot be reused, will be freed
+      }
+      if columnIdentifier.rawValue == "pad" {
+        result?.stringValue = self.mDataSource [inRowIndex]
+      }
+    }
+    return result
   }
 
   //····················································································································

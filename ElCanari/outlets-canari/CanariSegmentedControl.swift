@@ -118,9 +118,6 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   func unbind_selectedPage () {
     self.mController?.unregister ()
     self.mController = nil
-//    for view in self.mPageViews {
-//      view?.saveFirstResponder ()
-//    }
   }
 
   //····················································································································
@@ -162,7 +159,7 @@ final class Controller_CanariSegmentedControl_selectedPage : EBSimpleController 
   //····················································································································
 
   func updateModel (_ sender : CanariSegmentedControl) {
-    _ = self.mObject.validateAndSetProp (self.mOutlet.selectedSegment, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.selectedSegment, windowForSheet: sender.window)
   }
 
   //····················································································································
