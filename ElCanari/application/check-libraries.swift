@@ -11,10 +11,6 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-// let STATUS_METADATA_KEY = "Status"
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func checkLibrary (_ window : NSWindow,
                    logView : NSTextView?) {
 //--- Clear Log
@@ -139,7 +135,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
 //--- Get metadata dictionary
   let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (deviceFullPath)
 //--- Version number
-  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMDeviceVersion)
+  let possibleVersionNumber : Any? = metadataDictionary.object (forKey: DEVICE_VERSION_METADATA_DICTIONARY_KEY)
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
     version = n.intValue
@@ -147,7 +143,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
     throw badFormatErrorForFileAtPath (deviceFullPath, code:#line)
   }
 //--- Embedded symbol dictionary
-  let possibleSymbolDictionary : Any? = metadataDictionary.object (forKey: PMDeviceSymbols)
+  let possibleSymbolDictionary : Any? = metadataDictionary.object (forKey: DEVICE_SYMBOL_METADATA_DICTIONARY_KEY)
   var symbolDictionary : [String : Int] = [:]
   if let d = possibleSymbolDictionary as? [String : Int] {
     for (importedSymbolName, symbolDescription) in d {
@@ -157,7 +153,7 @@ private func checkDeviceLibraryCheckAtPath (_ deviceFullPath : String,
     throw badFormatErrorForFileAtPath (deviceFullPath, code:#line)
   }
 //--- Embedded package dictionary
-  let possiblePackageDictionary : Any? = metadataDictionary.object (forKey: PMDevicePackages)
+  let possiblePackageDictionary : Any? = metadataDictionary.object (forKey: DEVICE_PACKAGE_METADATA_DICTIONARY_KEY)
   var packageDictionary : [String : Int] = [:]
   if let d = possiblePackageDictionary as? [String : Int] {
     for (importedPackageName, packageDescription) in d {

@@ -370,6 +370,8 @@ class SymbolTypeInDevice : EBManagedObject,
   //--- register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFilledBezierPath_property.setSignatureObserver (observer: self)
+    self.mInstances_property.setSignatureObserver (observer: self)
+    self.mPinTypes_property.setSignatureObserver (observer: self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mTypeName_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
@@ -621,6 +623,8 @@ class SymbolTypeInDevice : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mFileData_property.signature ())
     crc.accumulateUInt32 (self.mFilledBezierPath_property.signature ())
+    crc.accumulateUInt32 (self.mInstances_property.signature ())
+    crc.accumulateUInt32 (self.mPinTypes_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mTypeName_property.signature ())
     crc.accumulateUInt32 (self.mVersion_property.signature ())

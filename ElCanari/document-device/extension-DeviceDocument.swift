@@ -128,12 +128,10 @@ extension DeviceDocument {
        let packageRoot = rootObject as? PackageRoot {
       let strokeBezierPathes = NSBezierPath ()
       var masterPads = [MasterPadInDevice] ()
-      var slavePads = [SlavePadInDevice] ()
       packageRoot.accumulate (
         withUndoManager: self.ebUndoManager,
         strokeBezierPathes: strokeBezierPathes,
-        masterPads: &masterPads,
-        slavePads: &slavePads
+        masterPads: &masterPads
       )
       packageRoot.removeRecursivelyAllRelationsShips ()
 
@@ -143,7 +141,6 @@ extension DeviceDocument {
       package.mFileData = inData
       package.mStrokeBezierPath = strokeBezierPathes
       package.mMasterPads_property.setProp (masterPads)
-      package.mSlavePads_property.setProp (slavePads)
       self.rootObject.mPackages_property.add (package)
       self.updatePadProxies ()
     }
@@ -168,12 +165,10 @@ extension DeviceDocument {
           }else{
             let strokeBezierPathes = NSBezierPath ()
             var masterPads = [MasterPadInDevice] ()
-            var slavePads = [SlavePadInDevice] ()
             packageRoot.accumulate (
               withUndoManager: self.ebUndoManager,
               strokeBezierPathes: strokeBezierPathes,
-              masterPads: &masterPads,
-              slavePads: &slavePads
+              masterPads: &masterPads
             )
             packageRoot.removeRecursivelyAllRelationsShips ()
           //-- Set properties
@@ -182,7 +177,6 @@ extension DeviceDocument {
             package.mStrokeBezierPath = strokeBezierPathes
           //--- Set relationship
             package.mMasterPads_property.setProp (masterPads)
-            package.mSlavePads_property.setProp (slavePads)
           //---
             ioMessages.append ("Package \(package.mName) has been updated to version \(version).")
           }

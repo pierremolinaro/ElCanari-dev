@@ -835,10 +835,10 @@
 		CF76EF312205ADA4005ECF32 /* how-to.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CF76EF2F2205ADA4005ECF32 /* how-to.rtf */; };
 		CF78DE84222D5ACD00E89DCA /* entity-MasterPadInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE81222D5ACC00E89DCA /* entity-MasterPadInDevice.swift */; };
 		CF78DE85222D5ACD00E89DCA /* entity-MasterPadInDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE81222D5ACC00E89DCA /* entity-MasterPadInDevice.swift */; };
-		CF78DE86222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */; };
-		CF78DE87222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */; };
-		CF78DE88222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */; };
-		CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */; };
+		CF78DE86222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift */; };
+		CF78DE87222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift */; };
+		CF78DE88222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift */; };
+		CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift */; };
 		CF78DE8B222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */; };
 		CF78DE8C222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */; };
 		CF78DE91222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF78DE8D222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift */; };
@@ -1703,8 +1703,8 @@
 		CF76EF2C2205AC7F005ECF32 /* library-repository-get-current-commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "library-repository-get-current-commit.swift"; sourceTree = "<group>"; };
 		CF76EF2F2205ADA4005ECF32 /* how-to.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "how-to.rtf"; sourceTree = "<group>"; };
 		CF78DE81222D5ACC00E89DCA /* entity-MasterPadInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-MasterPadInDevice.swift"; sourceTree = "<group>"; };
-		CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MasterPadInDevice-backSideFilledBezierPath.swift"; sourceTree = "<group>"; };
-		CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MasterPadInDevice-frontSideFilledBezierPath.swift"; sourceTree = "<group>"; };
+		CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MasterPadInDevice-backSideFilledBezierPathArray.swift"; sourceTree = "<group>"; };
+		CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift"; sourceTree = "<group>"; };
 		CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-MasterPadInDevice-padNumberDisplay.swift"; sourceTree = "<group>"; };
 		CF78DE8D222D65CA00E89DCA /* transient-SlavePadInDevice-backSideFilledBezierPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SlavePadInDevice-backSideFilledBezierPath.swift"; sourceTree = "<group>"; };
 		CF78DE8E222D65CA00E89DCA /* entity-SlavePadInDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SlavePadInDevice.swift"; sourceTree = "<group>"; };
@@ -2661,8 +2661,8 @@
 				CF8A0A922231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift */,
 				CFCEE4772233C75500C397CE /* transient-DeviceRoot-unconnectedPads.swift */,
 				CFC5BB5E2232D5AD00E03849 /* transient-DeviceRoot-unconnectedPins.swift */,
-				CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift */,
-				CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift */,
+				CF78DE82222D5ACC00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift */,
+				CF78DE83222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift */,
 				CF78DE8A222D609200E89DCA /* transient-MasterPadInDevice-padNumberDisplay.swift */,
 				CF900CAB222AFFC40078B4DD /* transient-PackageInDevice-backSidePadFilledBezierPathArray.swift */,
 				CF900CA8222AFE7E0078B4DD /* transient-PackageInDevice-frontSidePadFilledBezierPathArray.swift */,
@@ -3435,7 +3435,7 @@
 				CF4A6C1021C6C0C700997A19 /* EBView-binding-mouseGrid.swift in Sources */,
 				CFF2651E20E670E400525C0F /* Preferences+showMergerDisplaySettings.swift in Sources */,
 				CF5B06F9213EC3C9005D6B37 /* enum-QuadrantRotation.swift in Sources */,
-				CF78DE86222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift in Sources */,
+				CF78DE86222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */,
 				CF5A55C721C5747100C7014E /* extension-PackagePad.swift in Sources */,
 				CF2B9CE421C2A8D100EE5683 /* PackageDocument.swift in Sources */,
 				CFE85A7121A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */,
@@ -3720,7 +3720,7 @@
 				CFE85A9F21A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
 				CF85868721C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
 				CF2A01F121DE789000F3A379 /* transient-PackagePad-padNumberDisplay.swift in Sources */,
-				CF78DE88222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift in Sources */,
+				CF78DE88222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */,
 				CFCD1F6421A1CBFF00A8297B /* SymbolDocument.swift in Sources */,
 				CF00846621C4363E003627E9 /* transient-PackageDocument-mStatusImage.swift in Sources */,
 				CF61FA931B3EBF72000E0257 /* CanariFontCharacterSelectButton.swift in Sources */,
@@ -4009,7 +4009,7 @@
 				CF4B3AC421D50F0A001217C6 /* action-PackageDocument-loadFromDesignAction.swift in Sources */,
 				CF4A6C1121C6C0C700997A19 /* EBView-binding-mouseGrid.swift in Sources */,
 				CF5C4D14219F04D600EAC52A /* enum-QuadrantRotation.swift in Sources */,
-				CF78DE87222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPath.swift in Sources */,
+				CF78DE87222D5ACD00E89DCA /* transient-MasterPadInDevice-backSideFilledBezierPathArray.swift in Sources */,
 				CFE85A7221A5B37900991A66 /* entity-SymbolBezierCurve.swift in Sources */,
 				CF5A55C821C5747100C7014E /* extension-PackagePad.swift in Sources */,
 				CF2B9CE521C2A8D100EE5683 /* PackageDocument.swift in Sources */,
@@ -4294,7 +4294,7 @@
 				CFE85AA021A5C91300991A66 /* transient-SymbolSolidRect-selectionDisplay.swift in Sources */,
 				CF85868821C55D7B00082CE3 /* CanariPackageArcAngleSlider.swift in Sources */,
 				CF2A01F221DE789000F3A379 /* transient-PackagePad-padNumberDisplay.swift in Sources */,
-				CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPath.swift in Sources */,
+				CF78DE89222D5ACD00E89DCA /* transient-MasterPadInDevice-frontSideFilledBezierPathArray.swift in Sources */,
 				CFCD1F6521A1CBFF00A8297B /* SymbolDocument.swift in Sources */,
 				CF00846721C4363E003627E9 /* transient-PackageDocument-mStatusImage.swift in Sources */,
 				CF5C4D8E219F04D600EAC52A /* CanariFontCharacterSelectButton.swift in Sources */,

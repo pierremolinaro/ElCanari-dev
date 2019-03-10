@@ -4,10 +4,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let PMDeviceVersion = "PMDeviceVersion"
-let PMDeviceComment = "PMDeviceComment"
-let PMDeviceSymbols = "PMDeviceSymbols"
-let PMDevicePackages = "PMDevicePackages"
+let DEVICE_VERSION_METADATA_DICTIONARY_KEY = "DeviceVersion"
+let DEVICE_COMMENT_METADATA_DICTIONARY_KEY = "DeviceComment"
+let DEVICE_SYMBOL_METADATA_DICTIONARY_KEY  = "DeviceSymbols"
+let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -22,15 +22,42 @@ let PMDevicePackages = "PMDevicePackages"
   //····················································································································
 
   override func saveMetadataDictionary (version : Int, metadataDictionary : inout [String : Any]) {
-    metadataDictionary [PMDeviceVersion] = version
-    metadataDictionary [PMDeviceComment] = self.rootObject.comments
+  //--- Version
+    metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] = version
+  //--- Comments
+    metadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.comments
+  //--- Packages
+    var packageDictionary = [String : Int] ()
+    for package in self.rootObject.mPackages_property.propval.sorted (by: { $0.mName < $1.mName }) {
+      packageDictionary [package.mName] = package.mVersion
+    }
+    metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY] = packageDictionary
+//   NSMutableDictionary * packageDictionary = [NSMutableDictionary new] ;
+//    NSArray * packageLibrary = [mRootObject.packages.allObjects sortedArrayUsingSelector:@selector (compareByName:)] ;
+//    for (PMClassForPackageInDeviceEntity * package in packageLibrary) {
+//      [packageDictionary setObject:[NSNumber numberWithInteger:package.versionNumber] forKey:package.packageName HERE] ;
+//    }
+//    [dictionary setObject:packageDictionary forKey:PMDevicePackages HERE] ;
+
+  //--- Symbol Types
+    var symbolDictionary = [String : Int] ()
+    for symbolType in self.rootObject.mSymbolTypes_property.propval.sorted (by: { $0.mTypeName < $1.mTypeName }) {
+      symbolDictionary [symbolType.mTypeName] = symbolType.mVersion
+    }
+    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary
+//    NSMutableDictionary * symbolDictionary = [NSMutableDictionary new] ;
+//    NSArray * symbolTypesLibrary = [mRootObject.symbolTypes.allObjects sortedArrayUsingSelector:@selector (compareByName:)] ;
+//    for (PMClassForSymbolTypeForDeviceEntity * symbol in symbolTypesLibrary) {
+//      [symbolDictionary setObject:[NSNumber numberWithInteger:symbol.versionNumber] forKey:symbol.symbolTypeName HERE] ;
+//    }
+//    [dictionary setObject:symbolDictionary forKey:PMDeviceSymbols HERE] ;
   }
 
   //····················································································································
 
   override func readVersionFromMetadataDictionary (_ metadataDictionary : [String : Any]) -> Int {
     var result = 0
-    if let versionNumber = metadataDictionary [PMDeviceVersion] as? Int {
+    if let versionNumber = metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int {
       result = versionNumber
     }
     return result

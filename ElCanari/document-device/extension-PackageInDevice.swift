@@ -31,11 +31,11 @@ extension PackageInDevice {
 
   override func operationBeforeRemoving () {
     super.operationBeforeRemoving ()
-    for pad in self.mMasterPads_property.propval {
-      pad.cleanUpRelationshipsAndRemoveAllObservers ()
-    }
-    for pad in self.mSlavePads_property.propval {
-      pad.cleanUpRelationshipsAndRemoveAllObservers ()
+    for masterPad in self.mMasterPads_property.propval {
+      for slavePad in masterPad.mSlavePads_property.propval {
+        slavePad.cleanUpRelationshipsAndRemoveAllObservers ()
+      }
+      masterPad.cleanUpRelationshipsAndRemoveAllObservers ()
     }
     self.cleanUpRelationshipsAndRemoveAllObservers ()
   }

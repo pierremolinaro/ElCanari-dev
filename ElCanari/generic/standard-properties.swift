@@ -1107,6 +1107,22 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   //····················································································································
 
+  mutating func append (_ inBezierPathArray : [NSBezierPath]) {
+    for bp in inBezierPathArray {
+      if !bp.isEmpty {
+        self.mPathes.append (bp)
+      }
+    }
+  }
+
+   //····················································································································
+
+  mutating func append (_ inBezierPathArray : BezierPathArray) {
+    self.mPathes += inBezierPathArray.mPathes
+  }
+
+ //····················································································································
+
   var bounds : NSRect {
     var r = NSRect.null
     for path in self.mPathes {

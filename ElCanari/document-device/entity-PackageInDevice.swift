@@ -245,18 +245,6 @@ class PackageInDevice : EBGraphicManagedObject,
   }
 
   //····················································································································
-  //   To many property: mSlavePads
-  //····················································································································
-
-  var mSlavePads_property = StoredArrayOf_SlavePadInDevice ()
-
-  //····················································································································
-
-  var mSlavePads_property_selection : EBSelection < [SlavePadInDevice] > {
-      return self.mSlavePads_property.prop
-  }
-
-  //····················································································································
   //   To one property: mRoot
   //····················································································································
 
@@ -380,8 +368,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.undoManager = self.undoManager
   //--- To many property: mMasterPads (no option)
     self.mMasterPads_property.undoManager = self.undoManager
-  //--- To many property: mSlavePads (no option)
-    self.mSlavePads_property.undoManager = self.undoManager
   //--- To one property: mRoot
     self.mRoot_property.owner = self
   //--- Atomic property: versionString
@@ -409,17 +395,16 @@ class PackageInDevice : EBGraphicManagedObject,
   //--- Atomic property: frontSidePadFilledBezierPathArray
     self.frontSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mMasterPads_property_selection.kind ()
-        kind &= unwSelf.mSlavePads_property_selection.kind ()
+        let kind = unwSelf.mMasterPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mMasterPads_property_selection, unwSelf.mSlavePads_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageInDevice_frontSidePadFilledBezierPathArray (v0, v1))
+          switch (unwSelf.mMasterPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageInDevice_frontSidePadFilledBezierPathArray (v0))
           default :
             return .empty
           }
@@ -428,22 +413,20 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
-    self.mSlavePads_property.addEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.addEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property)
   //--- Atomic property: backSidePadFilledBezierPathArray
     self.backSidePadFilledBezierPathArray_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
-        var kind = unwSelf.mMasterPads_property_selection.kind ()
-        kind &= unwSelf.mSlavePads_property_selection.kind ()
+        let kind = unwSelf.mMasterPads_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mMasterPads_property_selection, unwSelf.mSlavePads_property_selection) {
-          case (.single (let v0), .single (let v1)) :
-            return .single (transient_PackageInDevice_backSidePadFilledBezierPathArray (v0, v1))
+          switch (unwSelf.mMasterPads_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_PackageInDevice_backSidePadFilledBezierPathArray (v0))
           default :
             return .empty
           }
@@ -452,13 +435,11 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
-    self.mSlavePads_property.addEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.addEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property)
   //--- Atomic property: objectDisplay
     self.objectDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
         var kind = unwSelf.mMasterPads_property_selection.kind ()
-        kind &= unwSelf.mSlavePads_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mShowPackages_property_selection.kind ()
         kind &= unwSelf.mRoot_property.mShowPackageFrontPads_property_selection.kind ()
@@ -479,9 +460,9 @@ class PackageInDevice : EBGraphicManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mMasterPads_property_selection, unwSelf.mSlavePads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, unwSelf.mStrokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, g_Preferences!.frontSidePadColor_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, g_Preferences!.backSidePadColor_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14), .single (let v15)) :
-            return .single (transient_PackageInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15))
+          switch (unwSelf.mMasterPads_property_selection, unwSelf.mRoot_property.mShowPackagePadNumbers_property_selection, unwSelf.mRoot_property.mShowPackages_property_selection, unwSelf.mRoot_property.mShowPackageFrontPads_property_selection, unwSelf.mRoot_property.mShowPackageBackPads_property_selection, unwSelf.mStrokeBezierPath_property_selection, g_Preferences!.packageColor_property_selection, g_Preferences!.packageDrawingWidthMultipliedByTen_property_selection, unwSelf.frontSidePadFilledBezierPathArray_property_selection, g_Preferences!.frontSidePadColor_property_selection, unwSelf.backSidePadFilledBezierPathArray_property_selection, g_Preferences!.backSidePadColor_property_selection, unwSelf.mName_property_selection, unwSelf.mX_property_selection, unwSelf.mY_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10), .single (let v11), .single (let v12), .single (let v13), .single (let v14)) :
+            return .single (transient_PackageInDevice_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14))
           default :
             return .empty
           }
@@ -491,7 +472,6 @@ class PackageInDevice : EBGraphicManagedObject,
       }
     }
     self.mMasterPads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
-    self.mSlavePads_property.addEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mShowPackages (self.objectDisplay_property)
     self.mRoot_property.addEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
@@ -567,7 +547,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mMasterPads_property.setSignatureObserver (observer: self)
     self.mName_property.setSignatureObserver (observer: self)
-    self.mSlavePads_property.setSignatureObserver (observer: self)
     self.mStrokeBezierPath_property.setSignatureObserver (observer: self)
     self.mVersion_property.setSignatureObserver (observer: self)
     self.mX_property.setSignatureObserver (observer: self)
@@ -580,12 +559,9 @@ class PackageInDevice : EBGraphicManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mVersion_property.removeEBObserver (self.versionString_property)
-    self.mMasterPads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
-    self.mSlavePads_property.removeEBObserverOf_frontSideFilledBezierPath (self.frontSidePadFilledBezierPathArray_property)
-    self.mMasterPads_property.removeEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
-    self.mSlavePads_property.removeEBObserverOf_backSideFilledBezierPath (self.backSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.removeEBObserverOf_frontSideFilledBezierPathArray (self.frontSidePadFilledBezierPathArray_property)
+    self.mMasterPads_property.removeEBObserverOf_backSideFilledBezierPathArray (self.backSidePadFilledBezierPathArray_property)
     self.mMasterPads_property.removeEBObserverOf_padNumberDisplay (self.objectDisplay_property)
-    self.mSlavePads_property.removeEBObserverOf_padNumberDisplay (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mShowPackagePadNumbers (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mShowPackages (self.objectDisplay_property)
     self.mRoot_property.removeEBObserverOf_mShowPackageFrontPads (self.objectDisplay_property)
@@ -726,13 +702,6 @@ class PackageInDevice : EBGraphicManagedObject,
       view: view,
       valueExplorer:&mMasterPads_property.mValueExplorer
     )
-    createEntryForToManyRelationshipNamed (
-      "mSlavePads",
-      idx:mSlavePads_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mSlavePads_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForToOneRelationshipNamed (
       "mRoot",
@@ -769,8 +738,6 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.mValueExplorer = nil
   //--- To many property: mMasterPads
     self.mMasterPads_property.mValueExplorer = nil
-  //--- To many property: mSlavePads
-    self.mSlavePads_property.mValueExplorer = nil
   //--- To one property: mRoot
     self.mRoot_property.mObserverExplorer = nil
     self.mRoot_property.mValueExplorer = nil
@@ -784,7 +751,6 @@ class PackageInDevice : EBGraphicManagedObject,
 
   override internal func cleanUpToManyRelationships () {
     self.mMasterPads_property.setProp ([])
-    self.mSlavePads_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -823,12 +789,6 @@ class PackageInDevice : EBGraphicManagedObject,
       relationshipName: "mMasterPads",
       intoDictionary: ioDictionary
     )
-  //--- To many property: mSlavePads
-    self.store (
-      managedObjectArray: mSlavePads_property.propval as NSArray,
-      relationshipName: "mSlavePads",
-      intoDictionary: ioDictionary
-    )
   }
 
   //····················································································································
@@ -844,12 +804,6 @@ class PackageInDevice : EBGraphicManagedObject,
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
     ) as! [MasterPadInDevice])
-  //--- To many property: mSlavePads
-    self.mSlavePads_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mSlavePads",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [SlavePadInDevice])
   //--- To one property: mRoot
     do{
       let possibleEntity = readEntityFromDictionary (
@@ -893,10 +847,6 @@ class PackageInDevice : EBGraphicManagedObject,
     for managedObject : EBManagedObject in self.mMasterPads_property.propval {
       objects.append (managedObject)
     }
-  //--- To many property: mSlavePads
-    for managedObject : EBManagedObject in self.mSlavePads_property.propval {
-      objects.append (managedObject)
-    }
   //--- To one property: mRoot
     if let managedObject = self.mRoot_property.propval {
       objects.append (managedObject)
@@ -912,7 +862,6 @@ class PackageInDevice : EBGraphicManagedObject,
     crc.accumulateUInt32 (self.mFileData_property.signature ())
     crc.accumulateUInt32 (self.mMasterPads_property.signature ())
     crc.accumulateUInt32 (self.mName_property.signature ())
-    crc.accumulateUInt32 (self.mSlavePads_property.signature ())
     crc.accumulateUInt32 (self.mStrokeBezierPath_property.signature ())
     crc.accumulateUInt32 (self.mVersion_property.signature ())
     crc.accumulateUInt32 (self.mX_property.signature ())

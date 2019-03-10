@@ -48,12 +48,6 @@ protocol SlavePadInDevice_padStyle : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol SlavePadInDevice_padName : class {
-  var padName : String { get }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 protocol SlavePadInDevice_frontSideFilledBezierPath : class {
   var frontSideFilledBezierPath : NSBezierPath? { get }
 }
@@ -82,7 +76,6 @@ class SlavePadInDevice : EBManagedObject,
          SlavePadInDevice_holeDiameter,
          SlavePadInDevice_padShape,
          SlavePadInDevice_padStyle,
-         SlavePadInDevice_padName,
          SlavePadInDevice_frontSideFilledBezierPath,
          SlavePadInDevice_backSideFilledBezierPath,
          SlavePadInDevice_padNumberDisplay {
@@ -249,26 +242,15 @@ class SlavePadInDevice : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: padName
+  //   To one property: mMasterPad
   //····················································································································
 
-  var padName_property = EBStoredProperty_String (defaultValue: "")
-
-  //····················································································································
-
-  var padName : String {
-    get {
-      return self.padName_property.propval
-    }
-    set {
-      self.padName_property.setProp (newValue)
-    }
-  }
+  var mMasterPad_property = ToOneRelationship_SlavePadInDevice_mMasterPad ()
 
   //····················································································································
 
-  var padName_property_selection : EBSelection <String> {
-    return self.padName_property.prop
+  var mMasterPad_property_selection : EBSelection <Bool> {
+    return .single (self.mMasterPad_property.propval == nil)
   }
 
   //····················································································································
@@ -360,8 +342,8 @@ class SlavePadInDevice : EBManagedObject,
     self.padShape_property.undoManager = self.undoManager
   //--- Atomic property: padStyle
     self.padStyle_property.undoManager = self.undoManager
-  //--- Atomic property: padName
-    self.padName_property.undoManager = self.undoManager
+  //--- To one property: mMasterPad
+    self.mMasterPad_property.owner = self
   //--- Atomic property: frontSideFilledBezierPath
     self.frontSideFilledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -437,14 +419,14 @@ class SlavePadInDevice : EBManagedObject,
         kind &= unwSelf.yCenter_property_selection.kind ()
         kind &= g_Preferences!.padNumberFont_property_selection.kind ()
         kind &= g_Preferences!.padNumberColor_property_selection.kind ()
-        kind &= unwSelf.padName_property_selection.kind ()
+        kind &= unwSelf.mMasterPad_property.padName_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.padName_property_selection) {
+          switch (unwSelf.xCenter_property_selection, unwSelf.yCenter_property_selection, g_Preferences!.padNumberFont_property_selection, g_Preferences!.padNumberColor_property_selection, unwSelf.mMasterPad_property.padName_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SlavePadInDevice_padNumberDisplay (v0, v1, v2, v3, v4))
           default :
@@ -459,12 +441,11 @@ class SlavePadInDevice : EBManagedObject,
     self.yCenter_property.addEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.addEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
-    self.padName_property.addEBObserver (self.padNumberDisplay_property)
+    self.mMasterPad_property.addEBObserverOf_padName (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
     self.holeDiameter_property.setSignatureObserver (observer: self)
-    self.padName_property.setSignatureObserver (observer: self)
     self.padShape_property.setSignatureObserver (observer: self)
     self.padStyle_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
@@ -495,7 +476,7 @@ class SlavePadInDevice : EBManagedObject,
     self.yCenter_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
-    self.padName_property.removeEBObserver (self.padNumberDisplay_property)
+    self.mMasterPad_property.removeEBObserverOf_padName (self.padNumberDisplay_property)
   }
 
   //····················································································································
@@ -565,14 +546,6 @@ class SlavePadInDevice : EBManagedObject,
       observerExplorer:&self.padStyle_property.mObserverExplorer,
       valueExplorer:&self.padStyle_property.mValueExplorer
     )
-    createEntryForPropertyNamed (
-      "padName",
-      idx:self.padName_property.ebObjectIndex,
-      y:&y,
-      view:view,
-      observerExplorer:&self.padName_property.mObserverExplorer,
-      valueExplorer:&self.padName_property.mValueExplorer
-    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "frontSideFilledBezierPath",
@@ -600,6 +573,13 @@ class SlavePadInDevice : EBManagedObject,
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
+    createEntryForToOneRelationshipNamed (
+      "mMasterPad",
+      idx:self.mMasterPad_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&self.mMasterPad_property.mValueExplorer
+    )
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
 
@@ -629,9 +609,9 @@ class SlavePadInDevice : EBManagedObject,
   //--- Atomic property: padStyle
     self.padStyle_property.mObserverExplorer = nil
     self.padStyle_property.mValueExplorer = nil
-  //--- Atomic property: padName
-    self.padName_property.mObserverExplorer = nil
-    self.padName_property.mValueExplorer = nil
+  //--- To one property: mMasterPad
+    self.mMasterPad_property.mObserverExplorer = nil
+    self.mMasterPad_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -650,6 +630,7 @@ class SlavePadInDevice : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToOneRelationships () {
+    self.mMasterPad_property.setProp (nil)
   //---
     super.cleanUpToOneRelationships ()
   }
@@ -674,8 +655,6 @@ class SlavePadInDevice : EBManagedObject,
     self.padShape_property.storeIn (dictionary: ioDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
     self.padStyle_property.storeIn (dictionary: ioDictionary, forKey:"padStyle")
-  //--- Atomic property: padName
-    self.padName_property.storeIn (dictionary: ioDictionary, forKey:"padName")
   }
 
   //····················································································································
@@ -685,6 +664,17 @@ class SlavePadInDevice : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To one property: mMasterPad
+    do{
+      let possibleEntity = readEntityFromDictionary (
+        inRelationshipName: "mMasterPad",
+        inDictionary: inDictionary,
+        managedObjectArray: &managedObjectArray
+      )
+      if let entity = possibleEntity as? MasterPadInDevice {
+        self.mMasterPad_property.setProp (entity)
+      }
+    }
   }
 
   //····················································································································
@@ -707,8 +697,6 @@ class SlavePadInDevice : EBManagedObject,
     self.padShape_property.readFrom (dictionary: inDictionary, forKey:"padShape")
   //--- Atomic property: padStyle
     self.padStyle_property.readFrom (dictionary: inDictionary, forKey:"padStyle")
-  //--- Atomic property: padName
-    self.padName_property.readFrom (dictionary: inDictionary, forKey:"padName")
   }
 
   //····················································································································
@@ -717,6 +705,10 @@ class SlavePadInDevice : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To one property: mMasterPad
+    if let managedObject = self.mMasterPad_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -727,7 +719,6 @@ class SlavePadInDevice : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.height_property.signature ())
     crc.accumulateUInt32 (self.holeDiameter_property.signature ())
-    crc.accumulateUInt32 (self.padName_property.signature ())
     crc.accumulateUInt32 (self.padShape_property.signature ())
     crc.accumulateUInt32 (self.padStyle_property.signature ())
     crc.accumulateUInt32 (self.width_property.signature ())
@@ -1146,63 +1137,6 @@ class ReadOnlyArrayOf_SlavePadInDevice : ReadOnlyAbstractArrayProperty <SlavePad
   }
 
   //····················································································································
-  //   Observers of 'padName' stored property
-  //····················································································································
-
-  private var mObserversOf_padName = EBWeakEventSet ()
-
-  //····················································································································
-
-  final func addEBObserverOf_padName (_ inObserver : EBEvent) {
-    self.addEBObserver (inObserver)
-    self.mObserversOf_padName.insert (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padName_property.addEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_padName (_ inObserver : EBEvent) {
-    self.removeEBObserver (inObserver)
-    self.mObserversOf_padName.remove (inObserver)
-    switch prop {
-    case .empty, .multiple :
-      break
-    case .single (let v) :
-      for managedObject in v {
-        managedObject.padName_property.removeEBObserver (inObserver)
-      }
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserversOf_padName_toElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    for managedObject in inSet {
-      self.mObserversOf_padName.apply ( {(_ observer : EBEvent) in
-        managedObject.padName_property.addEBObserver (observer)
-      })
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserversOf_padName_fromElementsOfSet (_ inSet : Set<SlavePadInDevice>) {
-    self.mObserversOf_padName.apply ( {(_ observer : EBEvent) in
-      observer.postEvent ()
-      for managedObject in inSet {
-        managedObject.padName_property.removeEBObserver (observer)
-      }
-    })
-  }
-
-  //····················································································································
   //   Observers of 'frontSideFilledBezierPath' transient property
   //····················································································································
 
@@ -1450,7 +1384,6 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
       self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padShape_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_padStyle_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_padName_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedSet)
@@ -1465,7 +1398,6 @@ class TransientArrayOf_SlavePadInDevice : ReadOnlyArrayOf_SlavePadInDevice {
       self.addEBObserversOf_holeDiameter_toElementsOfSet (addedSet)
       self.addEBObserversOf_padShape_toElementsOfSet (addedSet)
       self.addEBObserversOf_padStyle_toElementsOfSet (addedSet)
-      self.addEBObserversOf_padName_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedSet)
       self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedSet)
@@ -1604,7 +1536,6 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
             managedObject.holeDiameter_property.mSetterDelegate = nil
             managedObject.padShape_property.mSetterDelegate = nil
             managedObject.padStyle_property.mSetterDelegate = nil
-            managedObject.padName_property.mSetterDelegate = nil
           }
           self.removeEBObserversOf_xCenter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_yCenter_fromElementsOfSet (removedObjectSet)
@@ -1613,7 +1544,6 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
           self.removeEBObserversOf_holeDiameter_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padShape_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padStyle_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_padName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_frontSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_backSideFilledBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_padNumberDisplay_fromElementsOfSet (removedObjectSet)
@@ -1631,7 +1561,6 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
             managedObject.holeDiameter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.padShape_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.padStyle_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.padName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
           self.addEBObserversOf_xCenter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_yCenter_toElementsOfSet (addedObjectSet)
@@ -1640,7 +1569,6 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
           self.addEBObserversOf_holeDiameter_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padShape_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padStyle_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_padName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_frontSideFilledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_backSideFilledBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_padNumberDisplay_toElementsOfSet (addedObjectSet)
@@ -1765,6 +1693,561 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
 
   //····················································································································
  
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    To one relationship: mMasterPad
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
+
+  //····················································································································
+  //   Value explorer
+  //····················································································································
+
+  var mValueExplorer : NSButton? {
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        switch prop {
+        case .empty, .multiple :
+          break ;
+        case .single (let v) :
+          updateManagedObjectToOneRelationshipDisplay (object: v, button:unwrappedExplorer)
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
+  weak var owner : SlavePadInDevice? { // SOULD BE WEAK
+    didSet {
+      if let unwrappedExplorer = self.mValueExplorer {
+        updateManagedObjectToOneRelationshipDisplay (object: propval, button:unwrappedExplorer)
+      }
+    }
+  }
+ 
+  //····················································································································
+
+  private var mValue : MasterPadInDevice? {
+    didSet {
+      if let unwrappedOwner = self.owner, oldValue !== self.mValue {
+      //--- Register old value in undo manager
+        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+      //--- Update explorer
+        if let unwrappedExplorer = self.mValueExplorer {
+          updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
+        }
+      //--- Reset old opposite relation ship
+        oldValue?.mSlavePads_property.remove (unwrappedOwner)
+      //--- Set new opposite relation ship
+        self.mValue?.mSlavePads_property.add (unwrappedOwner)
+      //--- Remove property observers of old object
+        oldValue?.backSideFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_backSideFilledBezierPathArray)
+        oldValue?.frontSideFilledBezierPathArray_property.removeEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPathArray)
+        oldValue?.height_property.removeEBObserversFrom (&self.mObserversOf_height)
+        oldValue?.holeDiameter_property.removeEBObserversFrom (&self.mObserversOf_holeDiameter)
+        oldValue?.padName_property.removeEBObserversFrom (&self.mObserversOf_padName)
+        oldValue?.padNumberDisplay_property.removeEBObserversFrom (&self.mObserversOf_padNumberDisplay)
+        oldValue?.padShape_property.removeEBObserversFrom (&self.mObserversOf_padShape)
+        oldValue?.padStyle_property.removeEBObserversFrom (&self.mObserversOf_padStyle)
+        oldValue?.width_property.removeEBObserversFrom (&self.mObserversOf_width)
+        oldValue?.xCenter_property.removeEBObserversFrom (&self.mObserversOf_xCenter)
+        oldValue?.yCenter_property.removeEBObserversFrom (&self.mObserversOf_yCenter)
+      //--- Add property observers to new object
+        self.mValue?.backSideFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_backSideFilledBezierPathArray)
+        self.mValue?.frontSideFilledBezierPathArray_property.addEBObserversFrom (&self.mObserversOf_frontSideFilledBezierPathArray)
+        self.mValue?.height_property.addEBObserversFrom (&self.mObserversOf_height)
+        self.mValue?.holeDiameter_property.addEBObserversFrom (&self.mObserversOf_holeDiameter)
+        self.mValue?.padName_property.addEBObserversFrom (&self.mObserversOf_padName)
+        self.mValue?.padNumberDisplay_property.addEBObserversFrom (&self.mObserversOf_padNumberDisplay)
+        self.mValue?.padShape_property.addEBObserversFrom (&self.mObserversOf_padShape)
+        self.mValue?.padStyle_property.addEBObserversFrom (&self.mObserversOf_padStyle)
+        self.mValue?.width_property.addEBObserversFrom (&self.mObserversOf_width)
+        self.mValue?.xCenter_property.addEBObserversFrom (&self.mObserversOf_xCenter)
+        self.mValue?.yCenter_property.addEBObserversFrom (&self.mObserversOf_yCenter)
+       //--- Notify observers
+        self.postEvent ()
+      }
+    }
+  }
+
+  //····················································································································
+
+  var propval : MasterPadInDevice? { return self.mValue }
+
+  var prop : EBSelection <MasterPadInDevice?> { return .single (self.mValue) }
+
+  func setProp (_ value : MasterPadInDevice?) { self.mValue = value }
+
+  //····················································································································
+
+  @objc func performUndo (_ oldValue : MasterPadInDevice?) {
+    self.mValue = oldValue
+  }
+
+  //····················································································································
+
+  func remove (_ object : MasterPadInDevice) {
+    if self.mValue === object {
+      self.mValue = nil
+    }
+  }
+
+  //····················································································································
+  //   Observable property: backSideFilledBezierPathArray
+  //····················································································································
+
+  private var mObserversOf_backSideFilledBezierPathArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  var backSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray?> {
+    if let model = self.propval {
+      switch (model.backSideFilledBezierPathArray_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_backSideFilledBezierPathArray (_ inObserver : EBEvent) {
+    self.mObserversOf_backSideFilledBezierPathArray.insert (inObserver)
+    if let object = self.propval {
+      object.backSideFilledBezierPathArray_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_backSideFilledBezierPathArray (_ inObserver : EBEvent) {
+    self.mObserversOf_backSideFilledBezierPathArray.remove (inObserver)
+    if let object = self.propval {
+      object.backSideFilledBezierPathArray_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: frontSideFilledBezierPathArray
+  //····················································································································
+
+  private var mObserversOf_frontSideFilledBezierPathArray = EBWeakEventSet ()
+
+  //····················································································································
+
+  var frontSideFilledBezierPathArray_property_selection : EBSelection <BezierPathArray?> {
+    if let model = self.propval {
+      switch (model.frontSideFilledBezierPathArray_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_frontSideFilledBezierPathArray (_ inObserver : EBEvent) {
+    self.mObserversOf_frontSideFilledBezierPathArray.insert (inObserver)
+    if let object = self.propval {
+      object.frontSideFilledBezierPathArray_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_frontSideFilledBezierPathArray (_ inObserver : EBEvent) {
+    self.mObserversOf_frontSideFilledBezierPathArray.remove (inObserver)
+    if let object = self.propval {
+      object.frontSideFilledBezierPathArray_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: height
+  //····················································································································
+
+  private var mObserversOf_height = EBWeakEventSet ()
+
+  //····················································································································
+
+  var height_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.height_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_height (_ inObserver : EBEvent) {
+    self.mObserversOf_height.insert (inObserver)
+    if let object = self.propval {
+      object.height_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_height (_ inObserver : EBEvent) {
+    self.mObserversOf_height.remove (inObserver)
+    if let object = self.propval {
+      object.height_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: holeDiameter
+  //····················································································································
+
+  private var mObserversOf_holeDiameter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var holeDiameter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.holeDiameter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_holeDiameter.insert (inObserver)
+    if let object = self.propval {
+      object.holeDiameter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_holeDiameter (_ inObserver : EBEvent) {
+    self.mObserversOf_holeDiameter.remove (inObserver)
+    if let object = self.propval {
+      object.holeDiameter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: padName
+  //····················································································································
+
+  private var mObserversOf_padName = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padName_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.padName_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padName (_ inObserver : EBEvent) {
+    self.mObserversOf_padName.insert (inObserver)
+    if let object = self.propval {
+      object.padName_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padName (_ inObserver : EBEvent) {
+    self.mObserversOf_padName.remove (inObserver)
+    if let object = self.propval {
+      object.padName_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: padNumberDisplay
+  //····················································································································
+
+  private var mObserversOf_padNumberDisplay = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padNumberDisplay_property_selection : EBSelection <EBShape?> {
+    if let model = self.propval {
+      switch (model.padNumberDisplay_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_padNumberDisplay.insert (inObserver)
+    if let object = self.propval {
+      object.padNumberDisplay_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padNumberDisplay (_ inObserver : EBEvent) {
+    self.mObserversOf_padNumberDisplay.remove (inObserver)
+    if let object = self.propval {
+      object.padNumberDisplay_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: padShape
+  //····················································································································
+
+  private var mObserversOf_padShape = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padShape_property_selection : EBSelection <PadShape?> {
+    if let model = self.propval {
+      switch (model.padShape_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padShape (_ inObserver : EBEvent) {
+    self.mObserversOf_padShape.insert (inObserver)
+    if let object = self.propval {
+      object.padShape_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padShape (_ inObserver : EBEvent) {
+    self.mObserversOf_padShape.remove (inObserver)
+    if let object = self.propval {
+      object.padShape_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: padStyle
+  //····················································································································
+
+  private var mObserversOf_padStyle = EBWeakEventSet ()
+
+  //····················································································································
+
+  var padStyle_property_selection : EBSelection <PadStyle?> {
+    if let model = self.propval {
+      switch (model.padStyle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_padStyle (_ inObserver : EBEvent) {
+    self.mObserversOf_padStyle.insert (inObserver)
+    if let object = self.propval {
+      object.padStyle_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_padStyle (_ inObserver : EBEvent) {
+    self.mObserversOf_padStyle.remove (inObserver)
+    if let object = self.propval {
+      object.padStyle_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: width
+  //····················································································································
+
+  private var mObserversOf_width = EBWeakEventSet ()
+
+  //····················································································································
+
+  var width_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.width_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_width (_ inObserver : EBEvent) {
+    self.mObserversOf_width.insert (inObserver)
+    if let object = self.propval {
+      object.width_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_width (_ inObserver : EBEvent) {
+    self.mObserversOf_width.remove (inObserver)
+    if let object = self.propval {
+      object.width_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: xCenter
+  //····················································································································
+
+  private var mObserversOf_xCenter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var xCenter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.xCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.mObserversOf_xCenter.insert (inObserver)
+    if let object = self.propval {
+      object.xCenter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_xCenter (_ inObserver : EBEvent) {
+    self.mObserversOf_xCenter.remove (inObserver)
+    if let object = self.propval {
+      object.xCenter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: yCenter
+  //····················································································································
+
+  private var mObserversOf_yCenter = EBWeakEventSet ()
+
+  //····················································································································
+
+  var yCenter_property_selection : EBSelection <Int?> {
+    if let model = self.propval {
+      switch (model.yCenter_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_yCenter (_ inObserver : EBEvent) {
+    self.mObserversOf_yCenter.insert (inObserver)
+    if let object = self.propval {
+      object.yCenter_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_yCenter (_ inObserver : EBEvent) {
+    self.mObserversOf_yCenter.remove (inObserver)
+    if let object = self.propval {
+      object.yCenter_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

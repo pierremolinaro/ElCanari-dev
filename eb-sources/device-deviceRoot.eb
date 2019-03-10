@@ -86,7 +86,6 @@ graphic entity PackageInDevice {
   toOne DeviceRoot mRoot inverse toMany mPackages ;
   
   toMany @signature MasterPadInDevice mMasterPads ;
-  toMany @signature SlavePadInDevice mSlavePads ;
  
   property @signature Data mFileData default empty ;
   property @signature String mName default "" ;
@@ -100,18 +99,15 @@ graphic entity PackageInDevice {
   transient String versionString dependsFrom self.mVersion ;
 
   transient BezierPathArray frontSidePadFilledBezierPathArray dependsFrom
-    self.mMasterPads.all.frontSideFilledBezierPath,
-    self.mSlavePads.all.frontSideFilledBezierPath
+    self.mMasterPads.all.frontSideFilledBezierPathArray
   ;
 
   transient BezierPathArray backSidePadFilledBezierPathArray dependsFrom
-    self.mMasterPads.all.backSideFilledBezierPath,
-    self.mSlavePads.all.backSideFilledBezierPath
+    self.mMasterPads.all.backSideFilledBezierPathArray
   ;
 
   transient EBShape objectDisplay dependsFrom
      self.mMasterPads.all.padNumberDisplay,
-     self.mSlavePads.all.padNumberDisplay,
      self.mRoot.one.mShowPackagePadNumbers,
      self.mRoot.one.mShowPackages,
      self.mRoot.one.mShowPackageFrontPads,
@@ -140,6 +136,8 @@ graphic entity PackageInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity MasterPadInDevice {
+  toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
+
   property @signature Int xCenter default 0 ;
   property @signature Int yCenter default 0 ;
   property @signature Int width default 114_300 ;
@@ -149,14 +147,16 @@ entity MasterPadInDevice {
   property @signature PadStyle padStyle default traversing ;
   property @signature String padName default "" ;
   
-  transient NSBezierPath frontSideFilledBezierPath dependsFrom
+  transient BezierPathArray frontSideFilledBezierPathArray dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
+     self.padShape, self.padStyle,
+     self.mSlavePads.all.frontSideFilledBezierPath
   ;
 
-  transient NSBezierPath backSideFilledBezierPath dependsFrom
+  transient BezierPathArray backSideFilledBezierPathArray dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
+     self.padShape, self.padStyle,
+     self.mSlavePads.all.backSideFilledBezierPath
   ;
 
    transient EBShape padNumberDisplay dependsFrom
@@ -166,6 +166,8 @@ entity MasterPadInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SlavePadInDevice {
+  toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
+
   property @signature Int xCenter default 0 ;
   property @signature Int yCenter default 0 ;
   property @signature Int width default 114_300 ;
@@ -173,7 +175,6 @@ entity SlavePadInDevice {
   property @signature Int holeDiameter default 57_150 ;
   property @signature PadShape padShape default octo ;
   property @signature SlavePadStyle padStyle default traversing ;
-  property @signature String padName default "" ;
 
   transient NSBezierPath frontSideFilledBezierPath dependsFrom
      self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
@@ -187,7 +188,7 @@ entity SlavePadInDevice {
 
    transient EBShape padNumberDisplay dependsFrom
      self.xCenter, self.yCenter,
-     prefs.padNumberFont, prefs.padNumberColor, self.padName
+     prefs.padNumberFont, prefs.padNumberColor, self.mMasterPad.one.padName
   ;
  
 }
@@ -195,8 +196,8 @@ entity SlavePadInDevice {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity SymbolTypeInDevice {
-  toMany SymbolInstanceInDevice mInstances inverse toOne mType ;
-  toMany SymbolPinTypeInDevice mPinTypes ;
+  toMany @signature SymbolInstanceInDevice mInstances inverse toOne mType ;
+  toMany @signature SymbolPinTypeInDevice mPinTypes ;
 
   property @signature String mTypeName default "" ;
   property @signature Int mVersion default 0 ;

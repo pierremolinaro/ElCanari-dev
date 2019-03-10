@@ -16,8 +16,8 @@ extension PackageRoot {
 
   func accumulate (withUndoManager inUndoManager : EBUndoManager,
                    strokeBezierPathes : NSBezierPath,
-                   masterPads : inout [MasterPadInDevice],
-                   slavePads : inout [SlavePadInDevice]) {
+                   masterPads : inout [MasterPadInDevice]) {
+    var masterPadDictionary = [PackagePad : MasterPadInDevice] ()
     for object in self.packageObjects_property.propval {
       if let segment = object as? PackageSegment, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
@@ -27,28 +27,33 @@ extension PackageRoot {
         strokeBezierPathes.append (bp)
       }else if let segment = object as? PackageArc, let bp = segment.strokeBezierPath {
         strokeBezierPathes.append (bp)
-      }else if let packagePad = object as? PackagePad {
-        let pad = MasterPadInDevice (inUndoManager)
-        pad.xCenter = packagePad.xCenter
-        pad.yCenter = packagePad.yCenter
-        pad.width = packagePad.width
-        pad.height = packagePad.height
-        pad.holeDiameter = packagePad.holeDiameter
-        pad.padShape = packagePad.padShape
-        pad.padStyle = packagePad.padStyle
-        pad.padName = packagePad.padName!
-        masterPads.append (pad)
-      }else if let packagePad = object as? PackageSlavePad {
-        let pad = SlavePadInDevice (inUndoManager)
-        pad.xCenter = packagePad.xCenter
-        pad.yCenter = packagePad.yCenter
-        pad.width = packagePad.width
-        pad.height = packagePad.height
-        pad.holeDiameter = packagePad.holeDiameter
-        pad.padShape = packagePad.padShape
-        pad.padStyle = packagePad.padStyle
-        pad.padName = packagePad.padName!
-        slavePads.append (pad)
+      }else if let packageMasterPad = object as? PackagePad {
+        let masterPad = MasterPadInDevice (inUndoManager)
+        masterPad.xCenter = packageMasterPad.xCenter
+        masterPad.yCenter = packageMasterPad.yCenter
+        masterPad.width = packageMasterPad.width
+        masterPad.height = packageMasterPad.height
+        masterPad.holeDiameter = packageMasterPad.holeDiameter
+        masterPad.padShape = packageMasterPad.padShape
+        masterPad.padStyle = packageMasterPad.padStyle
+        masterPad.padName = packageMasterPad.padName!
+        masterPads.append (masterPad)
+        masterPadDictionary [packageMasterPad] = masterPad
+      }
+    }
+  //--- Handle slave pads
+    for object in self.packageObjects_property.propval {
+      if let packageSlavePad = object as? PackageSlavePad {
+        let slavePad = SlavePadInDevice (inUndoManager)
+        slavePad.xCenter = packageSlavePad.xCenter
+        slavePad.yCenter = packageSlavePad.yCenter
+        slavePad.width = packageSlavePad.width
+        slavePad.height = packageSlavePad.height
+        slavePad.holeDiameter = packageSlavePad.holeDiameter
+        slavePad.padShape = packageSlavePad.padShape
+        slavePad.padStyle = packageSlavePad.padStyle
+        let masterPad = masterPadDictionary [packageSlavePad.master_property.propval!]!
+        slavePad.mMasterPad_property.setProp (masterPad)
       }
     }
   }

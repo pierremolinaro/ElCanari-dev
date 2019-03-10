@@ -13,7 +13,6 @@ import Cocoa
 
 func transient_PackageInDevice_objectDisplay (
        _ self_mMasterPads_padNumberDisplay : [MasterPadInDevice_padNumberDisplay],
-       _ self_mSlavePads_padNumberDisplay : [SlavePadInDevice_padNumberDisplay],
        _ self_mRoot_mShowPackagePadNumbers : Bool?,
        _ self_mRoot_mShowPackages : Bool?,    
        _ self_mRoot_mShowPackageFrontPads : Bool?,
@@ -76,11 +75,11 @@ func transient_PackageInDevice_objectDisplay (
             shape.append (textShape)
           }
         }
-        for slavePad in self_mSlavePads_padNumberDisplay {
-          if let textShape = slavePad.padNumberDisplay {
-            shape.append (textShape)
-          }
-        }
+//        for slavePad in self_mSlavePads_padNumberDisplay {
+//          if let textShape = slavePad.padNumberDisplay {
+//            shape.append (textShape)
+//          }
+//        }
       }
     //--- Package shape
       if self_mRoot_mShowPackages ?? false {

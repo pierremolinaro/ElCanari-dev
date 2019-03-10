@@ -11,15 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_MasterPadInDevice_backSideFilledBezierPath (
-       _ self_xCenter : Int,                               
-       _ self_yCenter : Int,                               
-       _ self_width : Int,                                 
-       _ self_height : Int,                                
-       _ self_holeDiameter : Int,                          
-       _ self_padShape : PadShape,                         
-       _ self_padStyle : PadStyle
-) -> NSBezierPath {
+func transient_MasterPadInDevice_backSideFilledBezierPathArray (
+       _ self_xCenter : Int,                                    
+       _ self_yCenter : Int,                                    
+       _ self_width : Int,                                      
+       _ self_height : Int,                                     
+       _ self_holeDiameter : Int,                               
+       _ self_padShape : PadShape,                              
+       _ self_padStyle : PadStyle,                              
+       _ self_mSlavePads_backSideFilledBezierPath : [SlavePadInDevice_backSideFilledBezierPath]
+) -> BezierPathArray {
 //--- START OF USER ZONE 2
     let xCenter = canariUnitToCocoa (self_xCenter)
     let yCenter = canariUnitToCocoa (self_yCenter)
@@ -50,7 +51,14 @@ func transient_MasterPadInDevice_backSideFilledBezierPath (
     case .surface :
       bp.removeAllPoints ()
     }
-    return bp
+    var array = BezierPathArray ()
+    array.append (bp)
+    for slavePad in self_mSlavePads_backSideFilledBezierPath {
+      if let bp = slavePad.backSideFilledBezierPath {
+        array.append (bp)
+      }
+    }
+    return array
 //--- END OF USER ZONE 2
 }
 
