@@ -109,8 +109,8 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -370,7 +370,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = FontCharacter (self.undoManager)
+        let newObject = FontCharacter (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

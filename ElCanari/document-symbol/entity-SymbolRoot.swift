@@ -398,30 +398,30 @@ class SymbolRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.undoManager = self.undoManager
+    self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
+    self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.undoManager = self.undoManager
+    self.horizontalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.undoManager = self.undoManager
+    self.verticalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridStyle
-    self.gridStyle_property.undoManager = self.undoManager
+    self.gridStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridDisplay
-    self.gridDisplay_property.undoManager = self.undoManager
+    self.gridDisplay_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
-    self.zoom_property.undoManager = self.undoManager
+    self.zoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.undoManager = self.undoManager
+    self.xPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.undoManager = self.undoManager
+    self.yPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: symbolObjects (no option)
-    self.symbolObjects_property.undoManager = self.undoManager
+    self.symbolObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
+    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: issues
     self.issues_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1695,7 +1695,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SymbolRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolRoot") as? SymbolRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolRoot") as? SymbolRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1714,7 +1714,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1796,7 +1796,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

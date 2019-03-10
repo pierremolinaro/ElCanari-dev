@@ -176,12 +176,12 @@ class PadProxyInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: mQualifiedPadName
-    self.mQualifiedPadName_property.undoManager = self.undoManager
+    self.mQualifiedPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsNC
-    self.mIsNC_property.undoManager = self.undoManager
+    self.mIsNC_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPinInstance
     self.mPinInstance_property.owner = self
   //--- Atomic property: isConnected
@@ -918,7 +918,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PadProxyInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PadProxyInDevice") as? PadProxyInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PadProxyInDevice") as? PadProxyInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -937,7 +937,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -989,7 +989,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -1133,7 +1133,7 @@ final class ToOneRelationship_PadProxyInDevice_mPinInstance : EBAbstractProperty
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

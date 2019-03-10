@@ -18,8 +18,8 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //  init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    mUndoManager = undoManager
+  required init (_ ebUndoManager : EBUndoManager?) {
+    mUndoManager = ebUndoManager
     super.init ()
   }
 
@@ -42,14 +42,14 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //····················································································································
 
   func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
-    ioDictionary.setValue (self.className.pathExtension, forKey: kEntityKey)
+    ioDictionary.setValue (self.className.pathExtension, forKey: ENTITY_KEY)
   }
 
   //····················································································································
   //  Getters
   //····················································································································
 
-  final var undoManager : EBUndoManager? {
+  final var ebUndoManager : EBUndoManager? {
     return self.mUndoManager
   }
 
@@ -58,7 +58,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //····················································································································
 
   final func showExplorerWindow () {
-    if mExplorerWindow == nil {
+    if self.mExplorerWindow == nil {
       self.createAndPopulateObjectExplorerWindow ()
     }
     self.mExplorerWindow?.makeKeyAndOrderFront (nil)

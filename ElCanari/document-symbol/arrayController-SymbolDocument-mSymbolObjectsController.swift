@@ -206,8 +206,8 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -418,7 +418,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SymbolObject (self.undoManager)
+        let newObject = SymbolObject (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -615,7 +615,7 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
        let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [SymbolObject] ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? SymbolObject {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? SymbolObject {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)

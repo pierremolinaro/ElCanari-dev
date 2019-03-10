@@ -326,22 +326,22 @@ class SlavePadInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: xCenter
-    self.xCenter_property.undoManager = self.undoManager
+    self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter
-    self.yCenter_property.undoManager = self.undoManager
+    self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
-    self.width_property.undoManager = self.undoManager
+    self.width_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: height
-    self.height_property.undoManager = self.undoManager
+    self.height_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: holeDiameter
-    self.holeDiameter_property.undoManager = self.undoManager
+    self.holeDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padShape
-    self.padShape_property.undoManager = self.undoManager
+    self.padShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padStyle
-    self.padStyle_property.undoManager = self.undoManager
+    self.padStyle_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mMasterPad
     self.mMasterPad_property.owner = self
   //--- Atomic property: frontSideFilledBezierPath
@@ -1499,7 +1499,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SlavePadInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SlavePadInDevice") as? SlavePadInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SlavePadInDevice") as? SlavePadInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1518,7 +1518,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1590,7 +1590,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -1734,7 +1734,7 @@ final class ToOneRelationship_SlavePadInDevice_mMasterPad : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

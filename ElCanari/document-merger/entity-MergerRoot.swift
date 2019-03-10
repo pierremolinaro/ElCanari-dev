@@ -830,55 +830,55 @@ class MergerRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- To many property: boardModels (no option)
-    self.boardModels_property.undoManager = self.undoManager
+    self.boardModels_property.ebUndoManager = self.ebUndoManager
   //--- To many property: boardInstances (has opposite relationship)
-    self.boardInstances_property.undoManager = self.undoManager
+    self.boardInstances_property.ebUndoManager = self.ebUndoManager
     self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
       inManagedObject?.myRoot_property.setProp (self)
     }
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
+    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
-    self.zoom_property.undoManager = self.undoManager
+    self.zoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: automaticBoardSize
-    self.automaticBoardSize_property.undoManager = self.undoManager
+    self.automaticBoardSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardManualWidth
-    self.boardManualWidth_property.undoManager = self.undoManager
+    self.boardManualWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardManualHeight
-    self.boardManualHeight_property.undoManager = self.undoManager
+    self.boardManualHeight_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardWidthUnit
-    self.boardWidthUnit_property.undoManager = self.undoManager
+    self.boardWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardHeightUnit
-    self.boardHeightUnit_property.undoManager = self.undoManager
+    self.boardHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: overlapingArrangment
-    self.overlapingArrangment_property.undoManager = self.undoManager
+    self.overlapingArrangment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedBoardXUnit
-    self.selectedBoardXUnit_property.undoManager = self.undoManager
+    self.selectedBoardXUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedBoardYUnit
-    self.selectedBoardYUnit_property.undoManager = self.undoManager
+    self.selectedBoardYUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardLimitWidth
-    self.boardLimitWidth_property.undoManager = self.undoManager
+    self.boardLimitWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: boardLimitWidthUnit
-    self.boardLimitWidthUnit_property.undoManager = self.undoManager
+    self.boardLimitWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: arrowMagnitude
-    self.arrowMagnitude_property.undoManager = self.undoManager
+    self.arrowMagnitude_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: arrowMagnitudeUnit
-    self.arrowMagnitudeUnit_property.undoManager = self.undoManager
+    self.arrowMagnitudeUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: shiftArrowMagnitude
-    self.shiftArrowMagnitude_property.undoManager = self.undoManager
+    self.shiftArrowMagnitude_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: shiftArrowMagnitudeUnit
-    self.shiftArrowMagnitudeUnit_property.undoManager = self.undoManager
+    self.shiftArrowMagnitudeUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: artworkName
-    self.artworkName_property.undoManager = self.undoManager
+    self.artworkName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: generateGerberProductFile
-    self.generateGerberProductFile_property.undoManager = self.undoManager
+    self.generateGerberProductFile_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: generatePDFProductFile
-    self.generatePDFProductFile_property.undoManager = self.undoManager
+    self.generatePDFProductFile_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: generatedBoardArchiveFormat
-    self.generatedBoardArchiveFormat_property.undoManager = self.undoManager
+    self.generatedBoardArchiveFormat_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelNames
     self.modelNames_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3277,7 +3277,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [MergerRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "MergerRoot") as? MergerRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerRoot") as? MergerRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -3296,7 +3296,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -3426,7 +3426,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -3570,7 +3570,7 @@ final class ToOneRelationship_MergerRoot_artwork : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

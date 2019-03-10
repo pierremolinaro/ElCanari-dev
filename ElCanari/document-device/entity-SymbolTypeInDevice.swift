@@ -278,25 +278,25 @@ class SymbolTypeInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- To many property: mInstances (has opposite relationship)
-    self.mInstances_property.undoManager = self.undoManager
+    self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
     }
   //--- Atomic property: mTypeName
-    self.mTypeName_property.undoManager = self.undoManager
+    self.mTypeName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mVersion
-    self.mVersion_property.undoManager = self.undoManager
+    self.mVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFileData
-    self.mFileData_property.undoManager = self.undoManager
+    self.mFileData_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStrokeBezierPath
-    self.mStrokeBezierPath_property.undoManager = self.undoManager
+    self.mStrokeBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFilledBezierPath
-    self.mFilledBezierPath_property.undoManager = self.undoManager
+    self.mFilledBezierPath_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPinTypes (no option)
-    self.mPinTypes_property.undoManager = self.undoManager
+    self.mPinTypes_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: versionString
     self.versionString_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1285,7 +1285,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SymbolTypeInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolTypeInDevice") as? SymbolTypeInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1304,7 +1304,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1368,7 +1368,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

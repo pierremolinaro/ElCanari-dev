@@ -719,38 +719,38 @@ class PackagePad : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: xCenter
-    self.xCenter_property.undoManager = self.undoManager
+    self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter
-    self.yCenter_property.undoManager = self.undoManager
+    self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
-    self.width_property.undoManager = self.undoManager
+    self.width_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: height
-    self.height_property.undoManager = self.undoManager
+    self.height_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: holeDiameter
-    self.holeDiameter_property.undoManager = self.undoManager
+    self.holeDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padShape
-    self.padShape_property.undoManager = self.undoManager
+    self.padShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padStyle
-    self.padStyle_property.undoManager = self.undoManager
+    self.padStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumber
-    self.padNumber_property.undoManager = self.undoManager
+    self.padNumber_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xCenterUnit
-    self.xCenterUnit_property.undoManager = self.undoManager
+    self.xCenterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenterUnit
-    self.yCenterUnit_property.undoManager = self.undoManager
+    self.yCenterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: widthUnit
-    self.widthUnit_property.undoManager = self.undoManager
+    self.widthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: heightUnit
-    self.heightUnit_property.undoManager = self.undoManager
+    self.heightUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: holeDiameterUnit
-    self.holeDiameterUnit_property.undoManager = self.undoManager
+    self.holeDiameterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: annularRingUnit
-    self.annularRingUnit_property.undoManager = self.undoManager
+    self.annularRingUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: slaves (has opposite relationship)
-    self.slaves_property.undoManager = self.undoManager
+    self.slaves_property.ebUndoManager = self.ebUndoManager
     self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageSlavePad?) in
       inManagedObject?.master_property.setProp (self)
     }
@@ -3215,7 +3215,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackagePad] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackagePad") as? PackagePad {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackagePad") as? PackagePad {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -3234,7 +3234,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -3350,7 +3350,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -3494,7 +3494,7 @@ final class ToOneRelationship_PackagePad_zone : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

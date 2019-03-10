@@ -6,6 +6,10 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+let ENTITY_KEY = "--entity"
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
   "CanariLibraryEntry" : CanariLibraryEntry.self,
   "FontCharacter" : FontCharacter.self,
@@ -55,9 +59,9 @@ fileprivate let kEntityDictionary : [String : EBManagedObject.Type] = [
 //  newInstanceOfEntityNamed
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
+func newInstanceOfEntityNamed (_ ebUndoManager : EBUndoManager?, _ inEntityTypeName : String) -> EBManagedObject? {
   if let T = kEntityDictionary [inEntityTypeName] {
-    return T.init (undoManager)
+    return T.init (ebUndoManager)
   }else{
     return nil
   }
@@ -68,7 +72,7 @@ func newInstanceOfEntityNamed (_ undoManager : EBUndoManager?, _ inEntityTypeNam
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func makeManagedObjectFromDictionary (_ inUndoManager : EBUndoManager?, _ inDictionary : NSDictionary) -> EBManagedObject? {
-  let entityName = inDictionary.value (forKey: kEntityKey) as! String
+  let entityName = inDictionary.value (forKey: ENTITY_KEY) as! String
   if let object = newInstanceOfEntityNamed (inUndoManager, entityName) {
     object.setUpAtomicPropertiesWithDictionary (inDictionary) 
     return object
@@ -85,7 +89,7 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
 //---- Define input data scanner
   var dataScanner = EBDataScanner (data:data)
 //--- Check Signature
-  for c in kFormatSignature.utf8 {
+  for c in PM_BINARY_FORMAT_SIGNATURE.utf8 {
     dataScanner.acceptRequired (byte: c)
   }
 //--- Read Status
@@ -154,7 +158,7 @@ fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, i
     do{
       var objectArray = [EBManagedObject] ()
       for d in dictionaryArray {
-        let className = d.object (forKey: kEntityKey) as! String
+        let className = d.object (forKey: ENTITY_KEY) as! String
         if let object = newInstanceOfEntityNamed (inUndoManager, className) {
           objectArray.append (object)
         }else{

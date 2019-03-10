@@ -109,8 +109,8 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -425,7 +425,7 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = SymbolTypeInDevice (self.undoManager)
+        let newObject = SymbolTypeInDevice (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

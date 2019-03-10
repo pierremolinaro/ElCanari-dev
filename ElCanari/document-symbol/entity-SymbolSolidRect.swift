@@ -185,16 +185,16 @@ class SymbolSolidRect : SymbolObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: y
-    self.y_property.undoManager = self.undoManager
+    self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
-    self.width_property.undoManager = self.undoManager
+    self.width_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: height
-    self.height_property.undoManager = self.undoManager
+    self.height_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x
-    self.x_property.undoManager = self.undoManager
+    self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: filledBezierPath
     self.filledBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -1179,7 +1179,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SymbolSolidRect] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolSolidRect") as? SymbolSolidRect {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolSolidRect") as? SymbolSolidRect {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1198,7 +1198,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1260,7 +1260,7 @@ final class StoredArrayOf_SymbolSolidRect : ReadWriteArrayOf_SymbolSolidRect, EB
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

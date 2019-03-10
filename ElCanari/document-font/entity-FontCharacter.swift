@@ -176,14 +176,14 @@ class FontCharacter : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: codePoint
-    self.codePoint_property.undoManager = self.undoManager
+    self.codePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: advance
-    self.advance_property.undoManager = self.undoManager
+    self.advance_property.ebUndoManager = self.ebUndoManager
   //--- To many property: segments (no option)
-    self.segments_property.undoManager = self.undoManager
+    self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -922,7 +922,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [FontCharacter] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "FontCharacter") as? FontCharacter {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontCharacter") as? FontCharacter {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -941,7 +941,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -993,7 +993,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

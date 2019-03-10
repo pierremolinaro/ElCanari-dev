@@ -148,16 +148,16 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: x1
-    self.x1_property.undoManager = self.undoManager
+    self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1
-    self.y1_property.undoManager = self.undoManager
+    self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
-    self.x2_property.undoManager = self.undoManager
+    self.x2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y2
-    self.y2_property.undoManager = self.undoManager
+    self.y2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -940,7 +940,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SegmentForFontCharacter] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SegmentForFontCharacter") as? SegmentForFontCharacter {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SegmentForFontCharacter") as? SegmentForFontCharacter {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -959,7 +959,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1017,7 +1017,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

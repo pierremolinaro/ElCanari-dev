@@ -111,8 +111,8 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -422,7 +422,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = ArtworkFileGenerationParameters (self.undoManager)
+        let newObject = ArtworkFileGenerationParameters (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

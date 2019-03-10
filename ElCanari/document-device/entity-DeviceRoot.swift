@@ -824,51 +824,51 @@ class DeviceRoot : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
+    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: title
-    self.title_property.undoManager = self.undoManager
+    self.title_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: prefix
-    self.prefix_property.undoManager = self.undoManager
+    self.prefix_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
+    self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPackageDisplayZoom
-    self.mPackageDisplayZoom_property.undoManager = self.undoManager
+    self.mPackageDisplayZoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPackageDisplayHorizontalFlip
-    self.mPackageDisplayHorizontalFlip_property.undoManager = self.undoManager
+    self.mPackageDisplayHorizontalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPackageDisplayVerticalFlip
-    self.mPackageDisplayVerticalFlip_property.undoManager = self.undoManager
+    self.mPackageDisplayVerticalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShowPackages
-    self.mShowPackages_property.undoManager = self.undoManager
+    self.mShowPackages_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShowPackagePadNumbers
-    self.mShowPackagePadNumbers_property.undoManager = self.undoManager
+    self.mShowPackagePadNumbers_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShowPackageFrontPads
-    self.mShowPackageFrontPads_property.undoManager = self.undoManager
+    self.mShowPackageFrontPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mShowPackageBackPads
-    self.mShowPackageBackPads_property.undoManager = self.undoManager
+    self.mShowPackageBackPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolDisplayZoom
-    self.mSymbolDisplayZoom_property.undoManager = self.undoManager
+    self.mSymbolDisplayZoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolDisplayHorizontalFlip
-    self.mSymbolDisplayHorizontalFlip_property.undoManager = self.undoManager
+    self.mSymbolDisplayHorizontalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mSymbolDisplayVerticalFlip
-    self.mSymbolDisplayVerticalFlip_property.undoManager = self.undoManager
+    self.mSymbolDisplayVerticalFlip_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDocs (no option)
-    self.mDocs_property.undoManager = self.undoManager
+    self.mDocs_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbolInstances (no option)
-    self.mSymbolInstances_property.undoManager = self.undoManager
+    self.mSymbolInstances_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPackages (has opposite relationship)
-    self.mPackages_property.undoManager = self.undoManager
+    self.mPackages_property.ebUndoManager = self.ebUndoManager
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject :PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
   //--- To many property: mSymbolTypes (no option)
-    self.mSymbolTypes_property.undoManager = self.undoManager
+    self.mSymbolTypes_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: representationImageData
-    self.representationImageData_property.undoManager = self.undoManager
+    self.representationImageData_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mPadProxies (no option)
-    self.mPadProxies_property.undoManager = self.undoManager
+    self.mPadProxies_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: inconsistentPackagePadNameSetsMessage
     self.inconsistentPackagePadNameSetsMessage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -3352,7 +3352,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [DeviceRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "DeviceRoot") as? DeviceRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceRoot") as? DeviceRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -3371,7 +3371,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -3489,7 +3489,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

@@ -58,8 +58,8 @@ class PackageObject : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
   //--- Extern delegates
@@ -517,7 +517,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageObject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageObject") as? PackageObject {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageObject") as? PackageObject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -536,7 +536,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -580,7 +580,7 @@ final class StoredArrayOf_PackageObject : ReadWriteArrayOf_PackageObject, EBSign
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

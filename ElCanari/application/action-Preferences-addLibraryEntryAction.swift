@@ -24,7 +24,7 @@ extension Preferences {
         if inReturnCode == NSApplication.ModalResponse.OK {
           let URLToAdd : URL = op.urls [0]
           let pathToAdd = URLToAdd.path
-          let newEntry = CanariLibraryEntry (self.undoManager)
+          let newEntry = CanariLibraryEntry (self.ebUndoManager)
           newEntry.mPath = pathToAdd
           var array = self.additionnalLibraryArray_property.propval
           array.append (newEntry)

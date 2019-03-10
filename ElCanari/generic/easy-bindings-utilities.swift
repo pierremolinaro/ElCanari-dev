@@ -802,7 +802,7 @@ class ReadOnlyAbstractArrayProperty <T : Hashable> : EBAbstractProperty {
 
   //····················································································································
 
-  weak var undoManager : EBUndoManager? = nil // SOULD BE WEAK
+  weak var ebUndoManager : EBUndoManager? = nil // SOULD BE WEAK
 
   //····················································································································
 

@@ -302,18 +302,18 @@ class FontRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
+    self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: nominalSize
-    self.nominalSize_property.undoManager = self.undoManager
+    self.nominalSize_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedTab
-    self.selectedTab_property.undoManager = self.undoManager
+    self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.undoManager = self.undoManager
+    self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- To many property: characters (no option)
-    self.characters_property.undoManager = self.undoManager
+    self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Array controller property: selectedCharacterController
     self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
@@ -1379,7 +1379,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [FontRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "FontRoot") as? FontRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontRoot") as? FontRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1398,7 +1398,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1462,7 +1462,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

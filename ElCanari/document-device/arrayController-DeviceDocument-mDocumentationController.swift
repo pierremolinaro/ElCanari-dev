@@ -109,8 +109,8 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -411,7 +411,7 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = DeviceDocumentation (self.undoManager)
+        let newObject = DeviceDocumentation (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

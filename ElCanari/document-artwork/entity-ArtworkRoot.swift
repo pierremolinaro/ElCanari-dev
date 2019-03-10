@@ -356,32 +356,32 @@ class ArtworkRoot : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: selectedTab
-    self.selectedTab_property.undoManager = self.undoManager
+    self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
+    self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minPPTPTTTWdisplayUnit
-    self.minPPTPTTTWdisplayUnit_property.undoManager = self.undoManager
+    self.minPPTPTTTWdisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minPPTPTTTW
-    self.minPPTPTTTW_property.undoManager = self.undoManager
+    self.minPPTPTTTW_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForOARdisplayUnit
-    self.minValueForOARdisplayUnit_property.undoManager = self.undoManager
+    self.minValueForOARdisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForOARinEBUnit
-    self.minValueForOARinEBUnit_property.undoManager = self.undoManager
+    self.minValueForOARinEBUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForPHDdisplayUnit
-    self.minValueForPHDdisplayUnit_property.undoManager = self.undoManager
+    self.minValueForPHDdisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForPHDinEBUnit
-    self.minValueForPHDinEBUnit_property.undoManager = self.undoManager
+    self.minValueForPHDinEBUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForBoardLimitWidthDisplayUnit
-    self.minValueForBoardLimitWidthDisplayUnit_property.undoManager = self.undoManager
+    self.minValueForBoardLimitWidthDisplayUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: minValueForBoardLimitWidth
-    self.minValueForBoardLimitWidth_property.undoManager = self.undoManager
+    self.minValueForBoardLimitWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drillDataFileExtension
-    self.drillDataFileExtension_property.undoManager = self.undoManager
+    self.drillDataFileExtension_property.ebUndoManager = self.ebUndoManager
   //--- To many property: fileGenerationParameterArray (no option)
-    self.fileGenerationParameterArray_property.undoManager = self.undoManager
+    self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
@@ -1518,7 +1518,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [ArtworkRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "ArtworkRoot") as? ArtworkRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ArtworkRoot") as? ArtworkRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1537,7 +1537,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1619,7 +1619,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

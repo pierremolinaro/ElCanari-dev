@@ -232,14 +232,14 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: x
-    self.x_property.undoManager = self.undoManager
+    self.x_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y
-    self.y_property.undoManager = self.undoManager
+    self.y_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: instanceRotation
-    self.instanceRotation_property.undoManager = self.undoManager
+    self.instanceRotation_property.ebUndoManager = self.ebUndoManager
   //--- To one property: myModel
     self.myModel_property.owner = self
   //--- Atomic property: instanceRect
@@ -1263,7 +1263,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [MergerBoardInstance] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "MergerBoardInstance") as? MergerBoardInstance {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MergerBoardInstance") as? MergerBoardInstance {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1282,7 +1282,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1342,7 +1342,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -1486,7 +1486,7 @@ final class ToOneRelationship_MergerBoardInstance_myModel : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)
@@ -3804,7 +3804,7 @@ final class ToOneRelationship_MergerBoardInstance_myRoot : EBAbstractProperty {
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

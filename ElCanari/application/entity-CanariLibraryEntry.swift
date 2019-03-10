@@ -164,16 +164,16 @@ class CanariLibraryEntry : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: mPath
-    self.mPath_property.undoManager = self.undoManager
+    self.mPath_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUses
-    self.mUses_property.undoManager = self.undoManager
+    self.mUses_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mLibraryRepositoryURL
-    self.mLibraryRepositoryURL_property.undoManager = self.undoManager
+    self.mLibraryRepositoryURL_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mUserAndPasswordTag
-    self.mUserAndPasswordTag_property.undoManager = self.undoManager
+    self.mUserAndPasswordTag_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mStatusImage
     self.mStatusImage_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -834,7 +834,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [CanariLibraryEntry] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "CanariLibraryEntry") as? CanariLibraryEntry {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -853,7 +853,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -909,7 +909,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

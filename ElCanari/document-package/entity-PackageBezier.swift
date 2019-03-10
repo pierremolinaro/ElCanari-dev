@@ -545,40 +545,40 @@ class PackageBezier : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: y1
-    self.y1_property.undoManager = self.undoManager
+    self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
-    self.x2_property.undoManager = self.undoManager
+    self.x2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y2
-    self.y2_property.undoManager = self.undoManager
+    self.y2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpx1
-    self.cpx1_property.undoManager = self.undoManager
+    self.cpx1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpy1
-    self.cpy1_property.undoManager = self.undoManager
+    self.cpy1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpx2
-    self.cpx2_property.undoManager = self.undoManager
+    self.cpx2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpy2
-    self.cpy2_property.undoManager = self.undoManager
+    self.cpy2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x1Unit
-    self.x1Unit_property.undoManager = self.undoManager
+    self.x1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1Unit
-    self.y1Unit_property.undoManager = self.undoManager
+    self.y1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2Unit
-    self.x2Unit_property.undoManager = self.undoManager
+    self.x2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y2Unit
-    self.y2Unit_property.undoManager = self.undoManager
+    self.y2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpx1Unit
-    self.cpx1Unit_property.undoManager = self.undoManager
+    self.cpx1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpy1Unit
-    self.cpy1Unit_property.undoManager = self.undoManager
+    self.cpy1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpx2Unit
-    self.cpx2Unit_property.undoManager = self.undoManager
+    self.cpx2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: cpy2Unit
-    self.cpy2Unit_property.undoManager = self.undoManager
+    self.cpy2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x1
-    self.x1_property.undoManager = self.undoManager
+    self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2502,7 +2502,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageBezier] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageBezier") as? PackageBezier {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageBezier") as? PackageBezier {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2521,7 +2521,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -2631,7 +2631,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

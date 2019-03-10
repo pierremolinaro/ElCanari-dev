@@ -146,7 +146,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  weak var undoManager : UndoManager?  // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager?  // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
@@ -200,7 +200,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -547,7 +547,7 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
-  weak var undoManager : UndoManager? // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
@@ -601,7 +601,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
           UserDefaults.standard.set (mValue.convertToNSObject (), forKey:prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
+        self.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object: oldValue.convertToNSObject ())
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -1313,7 +1313,7 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
-  weak var undoManager : UndoManager? // SOULD BE WEAK
+  weak var ebUndoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
 
@@ -1367,7 +1367,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
           UserDefaults.standard.set (self.mValue.archiveToData (), forKey: prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.undoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }

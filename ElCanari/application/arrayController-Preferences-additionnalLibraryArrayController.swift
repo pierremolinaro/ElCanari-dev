@@ -109,8 +109,8 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -441,7 +441,7 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = CanariLibraryEntry (self.undoManager)
+        let newObject = CanariLibraryEntry (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

@@ -356,26 +356,26 @@ class MasterPadInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: xCenter
-    self.xCenter_property.undoManager = self.undoManager
+    self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenter
-    self.yCenter_property.undoManager = self.undoManager
+    self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: width
-    self.width_property.undoManager = self.undoManager
+    self.width_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: height
-    self.height_property.undoManager = self.undoManager
+    self.height_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: holeDiameter
-    self.holeDiameter_property.undoManager = self.undoManager
+    self.holeDiameter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padShape
-    self.padShape_property.undoManager = self.undoManager
+    self.padShape_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padStyle
-    self.padStyle_property.undoManager = self.undoManager
+    self.padStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padName
-    self.padName_property.undoManager = self.undoManager
+    self.padName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSlavePads (has opposite relationship)
-    self.mSlavePads_property.undoManager = self.undoManager
+    self.mSlavePads_property.ebUndoManager = self.ebUndoManager
     self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SlavePadInDevice?) in
       inManagedObject?.mMasterPad_property.setProp (self)
     }
@@ -1621,7 +1621,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [MasterPadInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "MasterPadInDevice") as? MasterPadInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "MasterPadInDevice") as? MasterPadInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1640,7 +1640,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1716,7 +1716,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

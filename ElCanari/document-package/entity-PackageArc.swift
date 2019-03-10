@@ -455,34 +455,34 @@ class PackageArc : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: yCenter
-    self.yCenter_property.undoManager = self.undoManager
+    self.yCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: radius
-    self.radius_property.undoManager = self.undoManager
+    self.radius_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: startAngle
-    self.startAngle_property.undoManager = self.undoManager
+    self.startAngle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: arcAngle
-    self.arcAngle_property.undoManager = self.undoManager
+    self.arcAngle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: startTangent
-    self.startTangent_property.undoManager = self.undoManager
+    self.startTangent_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: endTangent
-    self.endTangent_property.undoManager = self.undoManager
+    self.endTangent_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: pathIsClosed
-    self.pathIsClosed_property.undoManager = self.undoManager
+    self.pathIsClosed_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xCenterUnit
-    self.xCenterUnit_property.undoManager = self.undoManager
+    self.xCenterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yCenterUnit
-    self.yCenterUnit_property.undoManager = self.undoManager
+    self.yCenterUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: radiusUnit
-    self.radiusUnit_property.undoManager = self.undoManager
+    self.radiusUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: startTangentUnit
-    self.startTangentUnit_property.undoManager = self.undoManager
+    self.startTangentUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: endTangentUnit
-    self.endTangentUnit_property.undoManager = self.undoManager
+    self.endTangentUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xCenter
-    self.xCenter_property.undoManager = self.undoManager
+    self.xCenter_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: strokeBezierPath
     self.strokeBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2172,7 +2172,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageArc] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageArc") as? PackageArc {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageArc") as? PackageArc {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2191,7 +2191,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -2289,7 +2289,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

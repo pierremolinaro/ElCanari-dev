@@ -69,12 +69,12 @@ func metadataForFileAtPath (_ inFilePath : String) throws -> (MetadataStatus, NS
 //--- Open file
   let f = try FileHandle (forReadingFrom: (URL (fileURLWithPath: inFilePath)))
 //--- Read format string
-  let formatStringData : Data = f.readData (ofLength: kFormatSignature.utf8.count)
-  if formatStringData.count != kFormatSignature.utf8.count {
+  let formatStringData : Data = f.readData (ofLength: PM_BINARY_FORMAT_SIGNATURE.utf8.count)
+  if formatStringData.count != PM_BINARY_FORMAT_SIGNATURE.utf8.count {
     f.closeFile ()
     throw badFormatErrorForFileAtPath (inFilePath, code:#line)
   }else{
-    let signatureData = kFormatSignature.data (using: String.Encoding.utf8)
+    let signatureData = PM_BINARY_FORMAT_SIGNATURE.data (using: String.Encoding.utf8)
     if signatureData! != formatStringData {
       f.closeFile ()
       throw badFormatErrorForFileAtPath (inFilePath, code:#line)

@@ -13,7 +13,7 @@ protocol EBViewControllerProtocol : class {
   var objectCount : Int { get }
   var objectArray : [EBGraphicManagedObject] { get }
 
-  var undoManager : EBUndoManager? { get }
+  var ebUndoManager : EBUndoManager? { get }
 
 //--- Selection operations
 

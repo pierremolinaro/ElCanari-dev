@@ -632,38 +632,38 @@ class PackageRoot : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: selectedPageIndex
-    self.selectedPageIndex_property.undoManager = self.undoManager
+    self.selectedPageIndex_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedInspector
-    self.selectedInspector_property.undoManager = self.undoManager
+    self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: comments
-    self.comments_property.undoManager = self.undoManager
+    self.comments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: program
-    self.program_property.undoManager = self.undoManager
+    self.program_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: horizontalFlip
-    self.horizontalFlip_property.undoManager = self.undoManager
+    self.horizontalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: verticalFlip
-    self.verticalFlip_property.undoManager = self.undoManager
+    self.verticalFlip_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridStyle
-    self.gridStyle_property.undoManager = self.undoManager
+    self.gridStyle_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridStep
-    self.gridStep_property.undoManager = self.undoManager
+    self.gridStep_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridStepUnit
-    self.gridStepUnit_property.undoManager = self.undoManager
+    self.gridStepUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: gridDisplayFactor
-    self.gridDisplayFactor_property.undoManager = self.undoManager
+    self.gridDisplayFactor_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
-    self.zoom_property.undoManager = self.undoManager
+    self.zoom_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padNumbering
-    self.padNumbering_property.undoManager = self.undoManager
+    self.padNumbering_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xPlacardUnit
-    self.xPlacardUnit_property.undoManager = self.undoManager
+    self.xPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yPlacardUnit
-    self.yPlacardUnit_property.undoManager = self.undoManager
+    self.yPlacardUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: packageObjects (no option)
-    self.packageObjects_property.undoManager = self.undoManager
+    self.packageObjects_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: freePadNumbering
     self.freePadNumbering_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2568,7 +2568,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageRoot") as? PackageRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageRoot") as? PackageRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2587,7 +2587,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -2691,7 +2691,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

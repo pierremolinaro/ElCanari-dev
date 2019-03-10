@@ -6,10 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let kFormatSignature = "PM-BINARY-FORMAT"
-let kEntityKey = "--entity"
-private let EBWindowHeight = "WindowHeight"
-private let EBWindowWidth  = "WindowWidth"
+private let WINDOW_HEIGHT_METADATADICTIONARY_KEY = "WindowHeight"
+private let WINDOW_WIDTH_METADATADICTIONARY_KEY  = "WindowWidth"
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -81,7 +79,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  override func data (ofType typeName: String) throws -> Data {
+  override func data (ofType typeName : String) throws -> Data {
   //--- Update document version
     var version = self.mVersion.propval
     switch self.mVersionShouldChangeObserver.prop {
@@ -100,8 +98,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     if let unwrappedWindowForSheet = windowForSheet { // Document has been opened in the user interface
       if unwrappedWindowForSheet.styleMask.contains(.resizable) { // Only if window is resizable
         let windowSize = unwrappedWindowForSheet.frame.size ;
-        self.mMetadataDictionary [EBWindowWidth] = windowSize.width
-        self.mMetadataDictionary [EBWindowHeight] = windowSize.height
+        self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] = windowSize.width
+        self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] = windowSize.height
       }
     }
   //---
@@ -159,9 +157,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     var reachableObjectArray = [rootObject]
     var reachableObjectSet = Set ([rootObject])
     var objectsToExploreArray = [rootObject]
-
-    // let start = Date()
-    //   NSLog ("start")
     while let objectToExplore = objectsToExploreArray.last {
       objectsToExploreArray.removeLast ()
       var accessible = [EBManagedObject] ()
@@ -173,8 +168,6 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
           objectsToExploreArray.append (managedObject)
         }
       }
-    // let timeTaken = Date().timeIntervalSinceDate(start) * 1000
-    // NSLog ("\%f ms", timeTaken)
     }
     return reachableObjectArray
   }
@@ -183,7 +176,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //    READ DOCUMENT FROM FILE
   //····················································································································
 
-  override func read (from data: Data, ofType typeName: String) throws {
+  override func read (from data : Data, ofType typeName : String) throws {
     self.ebUndoManager.disableUndoRegistration ()
   //--- Load file
     let (metadataStatus, metadataDictionary, possibleRootObject) = try loadEasyBindingFile (self.ebUndoManager, from: data)
@@ -225,8 +218,8 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
     super.showWindows ()
     if let unwrappedWindowForSheet = self.windowForSheet, // Document has been opened in the user interface
           unwrappedWindowForSheet.styleMask.contains (.resizable), // Only if window is resizable
-          let windowWidth = self.mMetadataDictionary [EBWindowWidth] as? CGFloat,
-          let windowHeight = self.mMetadataDictionary [EBWindowWidth] as? CGFloat {
+          let windowWidth = self.mMetadataDictionary [WINDOW_WIDTH_METADATADICTIONARY_KEY] as? CGFloat,
+          let windowHeight = self.mMetadataDictionary [WINDOW_HEIGHT_METADATADICTIONARY_KEY] as? CGFloat {
       let newSize = NSSize (width: windowWidth, height: windowHeight)
       var windowFrame : NSRect = unwrappedWindowForSheet.frame
       windowFrame.size = newSize
@@ -239,7 +232,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //   showObjectExplorerWindow:
   //····················································································································
 
-  @IBAction func showObjectExplorerWindow (_: AnyObject) {
+  @IBAction func showObjectExplorerWindow (_ : AnyObject) {
     if mExplorerWindow == nil {
       self.createAndPopulateObjectExplorerWindow ()
     }
@@ -252,7 +245,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   func createAndPopulateObjectExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (
       contentRect: r,
       styleMask: [.titled, .closable],
@@ -337,7 +330,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //    windowControllerDidLoadNib
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Signature observer
     self.mRootObject?.setSignatureObserver (observer: self.mSignatureObserver)
@@ -563,8 +556,8 @@ class EBVersionShouldChangeObserver : EBTransientProperty_Bool, EBSignatureObser
 
   //····················································································································
 
-  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ undoManager : EBUndoManager?) {
-    self.mUndoManager = undoManager
+  final func setSignatureObserverAndUndoManager (_ signatureObserver : EBSignatureObserverEvent, _ ebUndoManager : EBUndoManager?) {
+    self.mUndoManager = ebUndoManager
     self.mSignatureObserver = signatureObserver
     self.mSignatureAtStartUp = signatureObserver.signature ()
   }

@@ -111,8 +111,8 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -422,7 +422,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = BoardModel (self.undoManager)
+        let newObject = BoardModel (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection

@@ -206,8 +206,8 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   //    Undo manager
   //····················································································································
 
-  var undoManager : EBUndoManager? {
-    return self.mModel?.undoManager
+  var ebUndoManager : EBUndoManager? {
+    return self.mModel?.ebUndoManager
   }
 
   //····················································································································
@@ -418,7 +418,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
       case .empty, .multiple :
         break
       case .single (let v) :
-        let newObject = MergerBoardInstance (self.undoManager)
+        let newObject = MergerBoardInstance (self.ebUndoManager)
         var array = v
         array.append (newObject)
       //--- New object is the selection
@@ -615,7 +615,7 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
        let Y = dataDictionary ["Y"] as? Int {
       var newObjects = [MergerBoardInstance] ()
       for dictionary in array {
-        if let object = makeManagedObjectFromDictionary (self.undoManager, dictionary) as? MergerBoardInstance {
+        if let object = makeManagedObjectFromDictionary (self.ebUndoManager, dictionary) as? MergerBoardInstance {
           object.operationAfterPasting ()
           object.translate (xBy: X, yBy: Y)
           newObjects.append (object)

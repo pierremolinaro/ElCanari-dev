@@ -232,19 +232,19 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- To many property: mPinInstances (has opposite relationship)
-    self.mPinInstances_property.undoManager = self.undoManager
+    self.mPinInstances_property.ebUndoManager = self.ebUndoManager
     self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolPinInstanceInDevice?) in
       inManagedObject?.mSymbolInstance_property.setProp (self)
     }
   //--- Atomic property: mInstanceName
-    self.mInstanceName_property.undoManager = self.undoManager
+    self.mInstanceName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mX
-    self.mX_property.undoManager = self.undoManager
+    self.mX_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mY
-    self.mY_property.undoManager = self.undoManager
+    self.mY_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mType
     self.mType_property.owner = self
   //--- Atomic property: qualifiedName
@@ -1305,7 +1305,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SymbolInstanceInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolInstanceInDevice") as? SymbolInstanceInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolInstanceInDevice") as? SymbolInstanceInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1324,7 +1324,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1384,7 +1384,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
@@ -1528,7 +1528,7 @@ final class ToOneRelationship_SymbolInstanceInDevice_mType : EBAbstractProperty 
     didSet {
       if let unwrappedOwner = self.owner, oldValue !== self.mValue {
       //--- Register old value in undo manager
-        unwrappedOwner.undoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
+        unwrappedOwner.ebUndoManager?.registerUndo (withTarget:self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let unwrappedExplorer = self.mValueExplorer {
           updateManagedObjectToOneRelationshipDisplay (object: self.mValue, button:unwrappedExplorer)

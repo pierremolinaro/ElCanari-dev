@@ -1814,66 +1814,66 @@ class BoardModel : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: name
-    self.name_property.undoManager = self.undoManager
+    self.name_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelWidth
-    self.modelWidth_property.undoManager = self.undoManager
+    self.modelWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelWidthUnit
-    self.modelWidthUnit_property.undoManager = self.undoManager
+    self.modelWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelHeight
-    self.modelHeight_property.undoManager = self.undoManager
+    self.modelHeight_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelHeightUnit
-    self.modelHeightUnit_property.undoManager = self.undoManager
+    self.modelHeightUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: zoom
-    self.zoom_property.undoManager = self.undoManager
+    self.zoom_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontLegendLines (no option)
-    self.frontLegendLines_property.undoManager = self.undoManager
+    self.frontLegendLines_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLegendLines (no option)
-    self.backLegendLines_property.undoManager = self.undoManager
+    self.backLegendLines_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontLegendTexts (no option)
-    self.frontLegendTexts_property.undoManager = self.undoManager
+    self.frontLegendTexts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontLayoutTexts (no option)
-    self.frontLayoutTexts_property.undoManager = self.undoManager
+    self.frontLayoutTexts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLegendTexts (no option)
-    self.backLegendTexts_property.undoManager = self.undoManager
+    self.backLegendTexts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backLayoutTexts (no option)
-    self.backLayoutTexts_property.undoManager = self.undoManager
+    self.backLayoutTexts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: internalBoardsLimits (no option)
-    self.internalBoardsLimits_property.undoManager = self.undoManager
+    self.internalBoardsLimits_property.ebUndoManager = self.ebUndoManager
   //--- To many property: drills (no option)
-    self.drills_property.undoManager = self.undoManager
+    self.drills_property.ebUndoManager = self.ebUndoManager
   //--- To many property: vias (no option)
-    self.vias_property.undoManager = self.undoManager
+    self.vias_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontPads (no option)
-    self.frontPads_property.undoManager = self.undoManager
+    self.frontPads_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backPads (no option)
-    self.backPads_property.undoManager = self.undoManager
+    self.backPads_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelLimitWidth
-    self.modelLimitWidth_property.undoManager = self.undoManager
+    self.modelLimitWidth_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: modelLimitWidthUnit
-    self.modelLimitWidthUnit_property.undoManager = self.undoManager
+    self.modelLimitWidthUnit_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backComponentNames (no option)
-    self.backComponentNames_property.undoManager = self.undoManager
+    self.backComponentNames_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontComponentNames (no option)
-    self.frontComponentNames_property.undoManager = self.undoManager
+    self.frontComponentNames_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontComponentValues (no option)
-    self.frontComponentValues_property.undoManager = self.undoManager
+    self.frontComponentValues_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backComponentValues (no option)
-    self.backComponentValues_property.undoManager = self.undoManager
+    self.backComponentValues_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backTracks (no option)
-    self.backTracks_property.undoManager = self.undoManager
+    self.backTracks_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontTracks (no option)
-    self.frontTracks_property.undoManager = self.undoManager
+    self.frontTracks_property.ebUndoManager = self.ebUndoManager
   //--- To many property: frontPackages (no option)
-    self.frontPackages_property.undoManager = self.undoManager
+    self.frontPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: backPackages (no option)
-    self.backPackages_property.undoManager = self.undoManager
+    self.backPackages_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: artworkName
-    self.artworkName_property.undoManager = self.undoManager
+    self.artworkName_property.ebUndoManager = self.ebUndoManager
   //--- To many property: myInstances (has opposite relationship)
-    self.myInstances_property.undoManager = self.undoManager
+    self.myInstances_property.ebUndoManager = self.ebUndoManager
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }
@@ -7775,7 +7775,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [BoardModel] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "BoardModel") as? BoardModel {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "BoardModel") as? BoardModel {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -7794,7 +7794,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -7954,7 +7954,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

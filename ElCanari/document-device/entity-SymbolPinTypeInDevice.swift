@@ -296,26 +296,26 @@ class SymbolPinTypeInDevice : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: mXName
-    self.mXName_property.undoManager = self.undoManager
+    self.mXName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mYName
-    self.mYName_property.undoManager = self.undoManager
+    self.mYName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mName
-    self.mName_property.undoManager = self.undoManager
+    self.mName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNameHorizontalAlignment
-    self.mNameHorizontalAlignment_property.undoManager = self.undoManager
+    self.mNameHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mPinNameIsDisplayedInSchematics
-    self.mPinNameIsDisplayedInSchematics_property.undoManager = self.undoManager
+    self.mPinNameIsDisplayedInSchematics_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mXNumber
-    self.mXNumber_property.undoManager = self.undoManager
+    self.mXNumber_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mYNumber
-    self.mYNumber_property.undoManager = self.undoManager
+    self.mYNumber_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mNumberHorizontalAlignment
-    self.mNumberHorizontalAlignment_property.undoManager = self.undoManager
+    self.mNumberHorizontalAlignment_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mInstances (has opposite relationship)
-    self.mInstances_property.undoManager = self.undoManager
+    self.mInstances_property.ebUndoManager = self.ebUndoManager
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject :SymbolPinInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
     }
@@ -1342,7 +1342,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [SymbolPinTypeInDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "SymbolPinTypeInDevice") as? SymbolPinTypeInDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "SymbolPinTypeInDevice") as? SymbolPinTypeInDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1361,7 +1361,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -1433,7 +1433,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

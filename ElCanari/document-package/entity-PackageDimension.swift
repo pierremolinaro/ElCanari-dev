@@ -455,34 +455,34 @@ class PackageDimension : PackageObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: y1
-    self.y1_property.undoManager = self.undoManager
+    self.y1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2
-    self.x2_property.undoManager = self.undoManager
+    self.x2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y2
-    self.y2_property.undoManager = self.undoManager
+    self.y2_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xDimension
-    self.xDimension_property.undoManager = self.undoManager
+    self.xDimension_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yDimension
-    self.yDimension_property.undoManager = self.undoManager
+    self.yDimension_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x1Unit
-    self.x1Unit_property.undoManager = self.undoManager
+    self.x1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y1Unit
-    self.y1Unit_property.undoManager = self.undoManager
+    self.y1Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x2Unit
-    self.x2Unit_property.undoManager = self.undoManager
+    self.x2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: y2Unit
-    self.y2Unit_property.undoManager = self.undoManager
+    self.y2Unit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: xDimensionUnit
-    self.xDimensionUnit_property.undoManager = self.undoManager
+    self.xDimensionUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: yDimensionUnit
-    self.yDimensionUnit_property.undoManager = self.undoManager
+    self.yDimensionUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: distanceUnit
-    self.distanceUnit_property.undoManager = self.undoManager
+    self.distanceUnit_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: x1
-    self.x1_property.undoManager = self.undoManager
+    self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: distanceInCanariUnit
     self.distanceInCanariUnit_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -2178,7 +2178,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [PackageDimension] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "PackageDimension") as? PackageDimension {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "PackageDimension") as? PackageDimension {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2197,7 +2197,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -2295,7 +2295,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)

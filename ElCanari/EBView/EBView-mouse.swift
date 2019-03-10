@@ -129,7 +129,7 @@ extension EBView {
     if (p.x != 0) || (p.y != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
         self.mPerformEndUndoGroupingOnMouseUp = true
-        self.viewController?.undoManager?.beginUndoGrouping ()
+        self.viewController?.ebUndoManager?.beginUndoGrouping ()
       }
       let mouseDraggedLocation = CanariPoint (
         x: p.x + inLastMouseDraggedLocation.x,
@@ -159,7 +159,7 @@ extension EBView {
     if (dx != 0) || (dy != 0) {
       if !self.mPerformEndUndoGroupingOnMouseUp {
         self.mPerformEndUndoGroupingOnMouseUp = true
-        self.viewController?.undoManager?.beginUndoGrouping ()
+        self.viewController?.ebUndoManager?.beginUndoGrouping ()
       }
       for object in self.viewController?.selectedGraphicObjectSet ?? [] {
         object.translate (xBy: dx, yBy: dy)
@@ -175,7 +175,7 @@ extension EBView {
     super.mouseUp (with: inEvent)
     if self.mPerformEndUndoGroupingOnMouseUp {
       self.mPerformEndUndoGroupingOnMouseUp = false
-      self.viewController?.undoManager?.endUndoGrouping ()
+      self.viewController?.ebUndoManager?.endUndoGrouping ()
     }
     self.mLastMouseDraggedLocation = nil
     self.mSelectionRectangleOrigin = nil

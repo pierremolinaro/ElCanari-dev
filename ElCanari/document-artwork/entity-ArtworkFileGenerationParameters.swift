@@ -704,54 +704,54 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //    init
   //····················································································································
 
-  required init (_ undoManager : EBUndoManager?) {
-    super.init (undoManager)
+  required init (_ ebUndoManager : EBUndoManager?) {
+    super.init (ebUndoManager)
   //--- Atomic property: drawBoardLimits
-    self.drawBoardLimits_property.undoManager = self.undoManager
+    self.drawBoardLimits_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawInternalBoardLimits
-    self.drawInternalBoardLimits_property.undoManager = self.undoManager
+    self.drawInternalBoardLimits_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawComponentNamesTopSide
-    self.drawComponentNamesTopSide_property.undoManager = self.undoManager
+    self.drawComponentNamesTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawComponentNamesBottomSide
-    self.drawComponentNamesBottomSide_property.undoManager = self.undoManager
+    self.drawComponentNamesBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawComponentValuesTopSide
-    self.drawComponentValuesTopSide_property.undoManager = self.undoManager
+    self.drawComponentValuesTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawComponentValuesBottomSide
-    self.drawComponentValuesBottomSide_property.undoManager = self.undoManager
+    self.drawComponentValuesBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawPackageLegendTopSide
-    self.drawPackageLegendTopSide_property.undoManager = self.undoManager
+    self.drawPackageLegendTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawPackageLegendBottomSide
-    self.drawPackageLegendBottomSide_property.undoManager = self.undoManager
+    self.drawPackageLegendBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawPadHolesInPDF
-    self.drawPadHolesInPDF_property.undoManager = self.undoManager
+    self.drawPadHolesInPDF_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawPadsTopSide
-    self.drawPadsTopSide_property.undoManager = self.undoManager
+    self.drawPadsTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawPadsBottomSide
-    self.drawPadsBottomSide_property.undoManager = self.undoManager
+    self.drawPadsBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTextsLayoutTopSide
-    self.drawTextsLayoutTopSide_property.undoManager = self.undoManager
+    self.drawTextsLayoutTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTextsLayoutBottomSide
-    self.drawTextsLayoutBottomSide_property.undoManager = self.undoManager
+    self.drawTextsLayoutBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTextsLegendTopSide
-    self.drawTextsLegendTopSide_property.undoManager = self.undoManager
+    self.drawTextsLegendTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTextsLegendBottomSide
-    self.drawTextsLegendBottomSide_property.undoManager = self.undoManager
+    self.drawTextsLegendBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTracksTopSide
-    self.drawTracksTopSide_property.undoManager = self.undoManager
+    self.drawTracksTopSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawTracksBottomSide
-    self.drawTracksBottomSide_property.undoManager = self.undoManager
+    self.drawTracksBottomSide_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: drawVias
-    self.drawVias_property.undoManager = self.undoManager
+    self.drawVias_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: fileExtension
-    self.fileExtension_property.undoManager = self.undoManager
+    self.fileExtension_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: horizontalMirror
-    self.horizontalMirror_property.undoManager = self.undoManager
+    self.horizontalMirror_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: name
-    self.name_property.undoManager = self.undoManager
+    self.name_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: measurementUnitForPadHoleInPDF
-    self.measurementUnitForPadHoleInPDF_property.undoManager = self.undoManager
+    self.measurementUnitForPadHoleInPDF_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: padHoleDiameterInPDF
-    self.padHoleDiameterInPDF_property.undoManager = self.undoManager
+    self.padHoleDiameterInPDF_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
@@ -2782,7 +2782,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
       var objectArray = [ArtworkFileGenerationParameters] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.undoManager, "ArtworkFileGenerationParameters") as? ArtworkFileGenerationParameters {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ArtworkFileGenerationParameters") as? ArtworkFileGenerationParameters {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -2801,7 +2801,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
         let oldSet = self.mSet
         self.mSet = Set (self.mValue)
       //--- Register old value in undo manager
-        self.undoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector:#selector(performUndo(_:)), object:oldValue)
       //--- Update explorer
         if let valueExplorer = self.mValueExplorer {
           updateManagedObjectToManyRelationshipDisplay (objectArray: self.mValue, popUpButton: valueExplorer)
@@ -2931,7 +2931,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
       for object in self.mValue {
         let d = NSMutableDictionary ()
         object.saveIntoDictionary (d)
-        d [kEntityKey] = nil // Remove entity key, not used in preferences
+        d [ENTITY_KEY] = nil // Remove entity key, not used in preferences
         dictionaryArray.append (d)
       }
       UserDefaults.standard.set (dictionaryArray, forKey: prefKey)
