@@ -9,16 +9,17 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-// NOTE: AssignedPadProxysInDeviceTableView is cell based
+// NOTE: AssignedPadProxysInDeviceTableView is view based
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource {
+class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource, NSTableViewDelegate {
 
   //····················································································································
 
   override func awakeFromNib () {
     super.awakeFromNib ()
     self.dataSource = self // NSTableViewDataSource protocol
+    self.delegate = self // NSTableViewDelegate protocol
   }
 
   //····················································································································
@@ -31,24 +32,48 @@ class AssignedPadProxysInDeviceTableView : EBTableView, NSTableViewDataSource {
 
   //····················································································································
 
-  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
-    var result : Any? = nil
-    if let columnIdentifier = inTableColumn?.identifier.rawValue {
-      if columnIdentifier == "pad" {
-        result = self.mDataSource [row].padName
-      }else if columnIdentifier == "symbol" {
-        result = self.mDataSource [row].symbolInstanceName
-      }else if columnIdentifier == "pin" {
-        result = self.mDataSource [row].pinName
-      }
-    }
-    return result
-  }
+//  func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
+//    var result : Any? = nil
+//    if let columnIdentifier = inTableColumn?.identifier.rawValue {
+//      if columnIdentifier == "pad" {
+//        result = self.mDataSource [row].padName
+//      }else if columnIdentifier == "symbol" {
+//        result = self.mDataSource [row].symbolInstanceName
+//      }else if columnIdentifier == "pin" {
+//        result = self.mDataSource [row].pinName
+//      }
+//    }
+//    return result
+//  }
 
   //····················································································································
 
   func tableView (_ tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
     self.reloadDataSource (self.mDataSource)
+  }
+
+  //····················································································································
+  //   NSTableViewDelegate protocol
+  //····················································································································
+
+  func tableView (_ tableView : NSTableView,
+                  viewFor inTableColumn : NSTableColumn?,
+                  row inRowIndex : Int) -> NSView? {
+    var result : NSTextField? = nil
+    if let columnIdentifier = inTableColumn?.identifier {
+      result = tableView.makeView (withIdentifier: columnIdentifier, owner: self) as? NSTextField
+      if !reuseTableViewCells () {
+        result?.identifier = nil // So result cannot be reused, will be freed
+      }
+      if columnIdentifier.rawValue == "pad" {
+        result?.stringValue = self.mDataSource [inRowIndex].padName
+      }else if columnIdentifier.rawValue == "symbol" {
+        result?.stringValue = self.mDataSource [inRowIndex].symbolInstanceName
+      }else if columnIdentifier.rawValue == "pin" {
+        result?.stringValue = self.mDataSource [inRowIndex].pinName
+      }
+   }
+    return result
   }
 
   //····················································································································

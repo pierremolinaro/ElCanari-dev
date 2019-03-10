@@ -46,7 +46,6 @@ class UnconnectedSymbolPinsInDeviceTableView : EBTableView, NSTableViewDataSourc
     var result : NSTextField? = nil
     if let columnIdentifier = inTableColumn?.identifier {
       result = tableView.makeView (withIdentifier: columnIdentifier, owner: self) as? NSTextField
-      NSLog ("\(result)")
       if !reuseTableViewCells () {
         result?.identifier = nil // So result cannot be reused, will be freed
       }
