@@ -370,23 +370,25 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("name") {
-        if let cell : EBTextField_TableViewCell = result as? EBTextField_TableViewCell {
+      if let tableColumnIdentifier = inTableColumn?.identifier,
+         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
+        }
+        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+        }else{
+          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
+        return result
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-      }
-      return result
+        return nil
+      } 
     } 
   }
  

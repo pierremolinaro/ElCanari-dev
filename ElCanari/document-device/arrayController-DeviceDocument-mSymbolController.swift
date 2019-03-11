@@ -357,39 +357,37 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("symbol") {
-        if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
+      if let tableColumnIdentifier = inTableColumn?.identifier,
+         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
+        }
+        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        if tableColumnIdentifier.rawValue == "symbol", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mTypeName_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("version") {
-        if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("count") {
-        if let cell : EBIntObserverField_TableViewCell = result as? EBIntObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "count", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.instanceCount_property, file: #file, line: #line, autoFormatter:true)
+        }else{
+          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
+        return result
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-      }
-      return result
+        return nil
+      } 
     } 
   }
  

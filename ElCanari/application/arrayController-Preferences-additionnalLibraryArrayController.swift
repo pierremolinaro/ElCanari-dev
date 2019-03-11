@@ -363,37 +363,31 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("path") {
-        if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
+      if let tableColumnIdentifier = inTableColumn?.identifier,
+         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
+        }
+        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        if tableColumnIdentifier.rawValue == "path", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("uses") {
-        if let cell : EBSwitch_TableViewCell = result as? EBSwitch_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "uses", let cell = result as? EBSwitch_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("status") {
-        if let cell : EBImageObserverView_TableViewCell = result as? EBImageObserverView_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "status", let cell = result as? EBImageObserverView_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_image ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("reveal") {
-        if let cell : EBButton_TableViewCell = result as? EBButton_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "reveal", let cell = result as? EBButton_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.target = nil
             cell?.mCellOutlet?.action = nil
@@ -401,11 +395,13 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.target = object
           cell.mCellOutlet?.action = #selector (CanariLibraryEntry.revealLibraryInFinderAction(_:))
+        }else{
+          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
+        return result
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-      }
-      return result
+        return nil
+      } 
     } 
   }
  

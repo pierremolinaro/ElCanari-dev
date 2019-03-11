@@ -351,31 +351,31 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
     case .empty, .multiple :
       return nil
     case .single (let v) :
-      let result : NSTableCellView = tableView.makeView (withIdentifier: (inTableColumn?.identifier)!, owner:self) as! NSTableCellView
-      if !reuseTableViewCells () {
-        result.identifier = nil // So result cannot be reused, will be freed
-      }
-      let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
-      if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("name") {
-        if let cell : EBTextObserverField_TableViewCell = result as? EBTextObserverField_TableViewCell {
+      if let tableColumnIdentifier = inTableColumn?.identifier,
+         let result = tableView.makeView (withIdentifier: tableColumnIdentifier, owner:self) as? NSTableCellView {
+        if !reuseTableViewCells () {
+          result.identifier = nil // So result cannot be reused, will be freed
+        }
+        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mFileName_property, file: #file, line: #line)
-        }
-      }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("size") {
-        if let cell : EBIntObserverField_TableViewCell = result as? EBIntObserverField_TableViewCell {
+        }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.fileSize_property, file: #file, line: #line, autoFormatter:true)
+        }else{
+          NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }
+        return result
       }else{
-        NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
-      }
-      return result
+        return nil
+      } 
     } 
   }
  

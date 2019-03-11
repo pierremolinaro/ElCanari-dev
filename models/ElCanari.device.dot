@@ -1,6 +1,6 @@
 digraph G {
   rankdir=LR ;
-  node [shape=record fontname=helvetica fillcolor=yellow] ;
+  node [shape=record fontname=helvetica style=rounded] ;
 
   DeviceRoot [label="DeviceRoot|<mPackages>mPackages|<mPadProxies>mPadProxies|<mSymbolInstances>mSymbolInstances|<mSymbolTypes>mSymbolTypes"] ;
 
