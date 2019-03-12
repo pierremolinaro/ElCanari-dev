@@ -250,7 +250,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         var kind = unwSelf.mType_property.mXNumber_property_selection.kind ()
         kind &= unwSelf.mType_property.mYNumber_property_selection.kind ()
         kind &= unwSelf.mType_property.mNumberHorizontalAlignment_property_selection.kind ()
-        kind &= unwSelf.mPadProxy_property.mQualifiedPadName_property_selection.kind ()
+        kind &= unwSelf.mPadProxy_property.mPadName_property_selection.kind ()
         kind &= g_Preferences!.pinNameFont_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
@@ -258,7 +258,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mQualifiedPadName_property_selection, g_Preferences!.pinNameFont_property_selection) {
+          switch (unwSelf.mType_property.mXNumber_property_selection, unwSelf.mType_property.mYNumber_property_selection, unwSelf.mType_property.mNumberHorizontalAlignment_property_selection, unwSelf.mPadProxy_property.mPadName_property_selection, g_Preferences!.pinNameFont_property_selection) {
           case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
             return .single (transient_SymbolPinInstanceInDevice_numberShape (v0, v1, v2, v3, v4))
           default :
@@ -272,7 +272,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.addEBObserverOf_mXNumber (self.numberShape_property)
     self.mType_property.addEBObserverOf_mYNumber (self.numberShape_property)
     self.mType_property.addEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
-    self.mPadProxy_property.addEBObserverOf_mQualifiedPadName (self.numberShape_property)
+    self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.numberShape_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
@@ -289,7 +289,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.removeEBObserverOf_mXNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mYNumber (self.numberShape_property)
     self.mType_property.removeEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
-    self.mPadProxy_property.removeEBObserverOf_mQualifiedPadName (self.numberShape_property)
+    self.mPadProxy_property.removeEBObserverOf_mPadName (self.numberShape_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.numberShape_property)
   }
 
@@ -2001,13 +2001,13 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
       //--- Remove property observers of old object
         oldValue?.isConnected_property.removeEBObserversFrom (&self.mObserversOf_isConnected)
         oldValue?.mIsNC_property.removeEBObserversFrom (&self.mObserversOf_mIsNC)
-        oldValue?.mQualifiedPadName_property.removeEBObserversFrom (&self.mObserversOf_mQualifiedPadName)
+        oldValue?.mPadName_property.removeEBObserversFrom (&self.mObserversOf_mPadName)
         oldValue?.pinInstanceName_property.removeEBObserversFrom (&self.mObserversOf_pinInstanceName)
         oldValue?.symbolName_property.removeEBObserversFrom (&self.mObserversOf_symbolName)
       //--- Add property observers to new object
         self.mValue?.isConnected_property.addEBObserversFrom (&self.mObserversOf_isConnected)
         self.mValue?.mIsNC_property.addEBObserversFrom (&self.mObserversOf_mIsNC)
-        self.mValue?.mQualifiedPadName_property.addEBObserversFrom (&self.mObserversOf_mQualifiedPadName)
+        self.mValue?.mPadName_property.addEBObserversFrom (&self.mObserversOf_mPadName)
         self.mValue?.pinInstanceName_property.addEBObserversFrom (&self.mObserversOf_pinInstanceName)
         self.mValue?.symbolName_property.addEBObserversFrom (&self.mObserversOf_symbolName)
        //--- Notify observers
@@ -2121,16 +2121,16 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
   }
 
   //····················································································································
-  //   Observable property: mQualifiedPadName
+  //   Observable property: mPadName
   //····················································································································
 
-  private var mObserversOf_mQualifiedPadName = EBWeakEventSet ()
+  private var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  var mQualifiedPadName_property_selection : EBSelection <String?> {
+  var mPadName_property_selection : EBSelection <String?> {
     if let model = self.propval {
-      switch (model.mQualifiedPadName_property_selection) {
+      switch (model.mPadName_property_selection) {
       case .empty :
         return .empty
       case .multiple :
@@ -2145,19 +2145,19 @@ final class ToOneRelationship_SymbolPinInstanceInDevice_mPadProxy : EBAbstractPr
 
   //····················································································································
 
-  final func addEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
-    self.mObserversOf_mQualifiedPadName.insert (inObserver)
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadName.insert (inObserver)
     if let object = self.propval {
-      object.mQualifiedPadName_property.addEBObserver (inObserver)
+      object.mPadName_property.addEBObserver (inObserver)
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
-    self.mObserversOf_mQualifiedPadName.remove (inObserver)
+  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
+    self.mObserversOf_mPadName.remove (inObserver)
     if let object = self.propval {
-      object.mQualifiedPadName_property.removeEBObserver (inObserver)
+      object.mPadName_property.removeEBObserver (inObserver)
     }
   }
 

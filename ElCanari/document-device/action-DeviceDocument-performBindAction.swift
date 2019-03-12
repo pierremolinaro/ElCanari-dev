@@ -17,7 +17,7 @@ extension DeviceDocument {
         var possiblePadProxy : PadProxyInDevice? = nil
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
           for padProxy in self.rootObject.mPadProxies_property.propval {
-            if padProxy.mQualifiedPadName == selectedName {
+            if padProxy.mPadName == selectedName {
               possiblePadProxy = padProxy
             }
           }

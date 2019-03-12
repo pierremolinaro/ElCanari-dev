@@ -541,7 +541,7 @@ class PackageInDevice : EBGraphicManagedObject,
         return .empty
       }
     }
-    self.mMasterPads_property.addEBObserverOf_padName (self.padNameSet_property)
+    self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
@@ -583,7 +583,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mName_property.removeEBObserver (self.selectionDisplay_property)
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
-    self.mMasterPads_property.removeEBObserverOf_padName (self.padNameSet_property)
+    self.mMasterPads_property.removeEBObserverOf_mName (self.padNameSet_property)
   }
 
   //····················································································································
@@ -2004,14 +2004,16 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mPackages_property.add (unwrappedOwner)
       //--- Remove property observers of old object
         oldValue?.assignedPadProxies_property.removeEBObserversFrom (&self.mObserversOf_assignedPadProxies)
-        oldValue?.comments_property.removeEBObserversFrom (&self.mObserversOf_comments)
         oldValue?.imageIsValid_property.removeEBObserversFrom (&self.mObserversOf_imageIsValid)
         oldValue?.inconsistentPackagePadNameSetsMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
         oldValue?.inconsistentSymbolNameSetMessage_property.removeEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         oldValue?.issues_property.removeEBObserversFrom (&self.mObserversOf_issues)
+        oldValue?.mComments_property.removeEBObserversFrom (&self.mObserversOf_mComments)
+        oldValue?.mImageData_property.removeEBObserversFrom (&self.mObserversOf_mImageData)
         oldValue?.mPackageDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         oldValue?.mPackageDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         oldValue?.mPackageDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        oldValue?.mPrefix_property.removeEBObserversFrom (&self.mObserversOf_mPrefix)
         oldValue?.mShowPackageBackPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
         oldValue?.mShowPackageFrontPads_property.removeEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         oldValue?.mShowPackagePadNumbers_property.removeEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
@@ -2019,25 +2021,25 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         oldValue?.mSymbolDisplayHorizontalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
         oldValue?.mSymbolDisplayVerticalFlip_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
         oldValue?.mSymbolDisplayZoom_property.removeEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        oldValue?.mTitle_property.removeEBObserversFrom (&self.mObserversOf_mTitle)
         oldValue?.packagePadNameSetsAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
-        oldValue?.prefix_property.removeEBObserversFrom (&self.mObserversOf_prefix)
-        oldValue?.representationImageData_property.removeEBObserversFrom (&self.mObserversOf_representationImageData)
         oldValue?.selectedPageIndex_property.removeEBObserversFrom (&self.mObserversOf_selectedPageIndex)
         oldValue?.symbolNameAreConsistent_property.removeEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         oldValue?.symbolTypeNames_property.removeEBObserversFrom (&self.mObserversOf_symbolTypeNames)
-        oldValue?.title_property.removeEBObserversFrom (&self.mObserversOf_title)
         oldValue?.unconnectedPads_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPads)
         oldValue?.unconnectedPins_property.removeEBObserversFrom (&self.mObserversOf_unconnectedPins)
       //--- Add property observers to new object
         self.mValue?.assignedPadProxies_property.addEBObserversFrom (&self.mObserversOf_assignedPadProxies)
-        self.mValue?.comments_property.addEBObserversFrom (&self.mObserversOf_comments)
         self.mValue?.imageIsValid_property.addEBObserversFrom (&self.mObserversOf_imageIsValid)
         self.mValue?.inconsistentPackagePadNameSetsMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentPackagePadNameSetsMessage)
         self.mValue?.inconsistentSymbolNameSetMessage_property.addEBObserversFrom (&self.mObserversOf_inconsistentSymbolNameSetMessage)
         self.mValue?.issues_property.addEBObserversFrom (&self.mObserversOf_issues)
+        self.mValue?.mComments_property.addEBObserversFrom (&self.mObserversOf_mComments)
+        self.mValue?.mImageData_property.addEBObserversFrom (&self.mObserversOf_mImageData)
         self.mValue?.mPackageDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayHorizontalFlip)
         self.mValue?.mPackageDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayVerticalFlip)
         self.mValue?.mPackageDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mPackageDisplayZoom)
+        self.mValue?.mPrefix_property.addEBObserversFrom (&self.mObserversOf_mPrefix)
         self.mValue?.mShowPackageBackPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageBackPads)
         self.mValue?.mShowPackageFrontPads_property.addEBObserversFrom (&self.mObserversOf_mShowPackageFrontPads)
         self.mValue?.mShowPackagePadNumbers_property.addEBObserversFrom (&self.mObserversOf_mShowPackagePadNumbers)
@@ -2045,13 +2047,11 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
         self.mValue?.mSymbolDisplayHorizontalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayHorizontalFlip)
         self.mValue?.mSymbolDisplayVerticalFlip_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayVerticalFlip)
         self.mValue?.mSymbolDisplayZoom_property.addEBObserversFrom (&self.mObserversOf_mSymbolDisplayZoom)
+        self.mValue?.mTitle_property.addEBObserversFrom (&self.mObserversOf_mTitle)
         self.mValue?.packagePadNameSetsAreConsistent_property.addEBObserversFrom (&self.mObserversOf_packagePadNameSetsAreConsistent)
-        self.mValue?.prefix_property.addEBObserversFrom (&self.mObserversOf_prefix)
-        self.mValue?.representationImageData_property.addEBObserversFrom (&self.mObserversOf_representationImageData)
         self.mValue?.selectedPageIndex_property.addEBObserversFrom (&self.mObserversOf_selectedPageIndex)
         self.mValue?.symbolNameAreConsistent_property.addEBObserversFrom (&self.mObserversOf_symbolNameAreConsistent)
         self.mValue?.symbolTypeNames_property.addEBObserversFrom (&self.mObserversOf_symbolTypeNames)
-        self.mValue?.title_property.addEBObserversFrom (&self.mObserversOf_title)
         self.mValue?.unconnectedPads_property.addEBObserversFrom (&self.mObserversOf_unconnectedPads)
         self.mValue?.unconnectedPins_property.addEBObserversFrom (&self.mObserversOf_unconnectedPins)
        //--- Notify observers
@@ -2120,47 +2120,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_assignedPadProxies.remove (inObserver)
     if let object = self.propval {
       object.assignedPadProxies_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: comments
-  //····················································································································
-
-  private var mObserversOf_comments = EBWeakEventSet ()
-
-  //····················································································································
-
-  var comments_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.comments_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.mObserversOf_comments.insert (inObserver)
-    if let object = self.propval {
-      object.comments_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_comments (_ inObserver : EBEvent) {
-    self.mObserversOf_comments.remove (inObserver)
-    if let object = self.propval {
-      object.comments_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2329,6 +2288,88 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: mComments
+  //····················································································································
+
+  private var mObserversOf_mComments = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mComments_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mComments_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mComments (_ inObserver : EBEvent) {
+    self.mObserversOf_mComments.insert (inObserver)
+    if let object = self.propval {
+      object.mComments_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mComments (_ inObserver : EBEvent) {
+    self.mObserversOf_mComments.remove (inObserver)
+    if let object = self.propval {
+      object.mComments_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mImageData
+  //····················································································································
+
+  private var mObserversOf_mImageData = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mImageData_property_selection : EBSelection <Data?> {
+    if let model = self.propval {
+      switch (model.mImageData_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mImageData (_ inObserver : EBEvent) {
+    self.mObserversOf_mImageData.insert (inObserver)
+    if let object = self.propval {
+      object.mImageData_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mImageData (_ inObserver : EBEvent) {
+    self.mObserversOf_mImageData.remove (inObserver)
+    if let object = self.propval {
+      object.mImageData_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: mPackageDisplayHorizontalFlip
   //····················································································································
 
@@ -2448,6 +2489,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_mPackageDisplayZoom.remove (inObserver)
     if let object = self.propval {
       object.mPackageDisplayZoom_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+  //   Observable property: mPrefix
+  //····················································································································
+
+  private var mObserversOf_mPrefix = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mPrefix_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mPrefix_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mPrefix (_ inObserver : EBEvent) {
+    self.mObserversOf_mPrefix.insert (inObserver)
+    if let object = self.propval {
+      object.mPrefix_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mPrefix (_ inObserver : EBEvent) {
+    self.mObserversOf_mPrefix.remove (inObserver)
+    if let object = self.propval {
+      object.mPrefix_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2739,6 +2821,47 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
   }
 
   //····················································································································
+  //   Observable property: mTitle
+  //····················································································································
+
+  private var mObserversOf_mTitle = EBWeakEventSet ()
+
+  //····················································································································
+
+  var mTitle_property_selection : EBSelection <String?> {
+    if let model = self.propval {
+      switch (model.mTitle_property_selection) {
+      case .empty :
+        return .empty
+      case .multiple :
+        return .multiple
+      case .single (let v) :
+        return .single (v)
+      }
+    }else{
+      return .single (nil)
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserverOf_mTitle (_ inObserver : EBEvent) {
+    self.mObserversOf_mTitle.insert (inObserver)
+    if let object = self.propval {
+      object.mTitle_property.addEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mTitle (_ inObserver : EBEvent) {
+    self.mObserversOf_mTitle.remove (inObserver)
+    if let object = self.propval {
+      object.mTitle_property.removeEBObserver (inObserver)
+    }
+  }
+
+  //····················································································································
   //   Observable property: packagePadNameSetsAreConsistent
   //····················································································································
 
@@ -2776,88 +2899,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_packagePadNameSetsAreConsistent.remove (inObserver)
     if let object = self.propval {
       object.packagePadNameSetsAreConsistent_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: prefix
-  //····················································································································
-
-  private var mObserversOf_prefix = EBWeakEventSet ()
-
-  //····················································································································
-
-  var prefix_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.prefix_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_prefix (_ inObserver : EBEvent) {
-    self.mObserversOf_prefix.insert (inObserver)
-    if let object = self.propval {
-      object.prefix_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_prefix (_ inObserver : EBEvent) {
-    self.mObserversOf_prefix.remove (inObserver)
-    if let object = self.propval {
-      object.prefix_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: representationImageData
-  //····················································································································
-
-  private var mObserversOf_representationImageData = EBWeakEventSet ()
-
-  //····················································································································
-
-  var representationImageData_property_selection : EBSelection <Data?> {
-    if let model = self.propval {
-      switch (model.representationImageData_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_representationImageData (_ inObserver : EBEvent) {
-    self.mObserversOf_representationImageData.insert (inObserver)
-    if let object = self.propval {
-      object.representationImageData_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_representationImageData (_ inObserver : EBEvent) {
-    self.mObserversOf_representationImageData.remove (inObserver)
-    if let object = self.propval {
-      object.representationImageData_property.removeEBObserver (inObserver)
     }
   }
 
@@ -2981,47 +3022,6 @@ final class ToOneRelationship_PackageInDevice_mRoot : EBAbstractProperty {
     self.mObserversOf_symbolTypeNames.remove (inObserver)
     if let object = self.propval {
       object.symbolTypeNames_property.removeEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-  //   Observable property: title
-  //····················································································································
-
-  private var mObserversOf_title = EBWeakEventSet ()
-
-  //····················································································································
-
-  var title_property_selection : EBSelection <String?> {
-    if let model = self.propval {
-      switch (model.title_property_selection) {
-      case .empty :
-        return .empty
-      case .multiple :
-        return .multiple
-      case .single (let v) :
-        return .single (v)
-      }
-    }else{
-      return .single (nil)
-    }
-  }
-
-  //····················································································································
-
-  final func addEBObserverOf_title (_ inObserver : EBEvent) {
-    self.mObserversOf_title.insert (inObserver)
-    if let object = self.propval {
-      object.title_property.addEBObserver (inObserver)
-    }
-  }
-
-  //····················································································································
-
-  final func removeEBObserverOf_title (_ inObserver : EBEvent) {
-    self.mObserversOf_title.remove (inObserver)
-    if let object = self.propval {
-      object.title_property.removeEBObserver (inObserver)
     }
   }
 

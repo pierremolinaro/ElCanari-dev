@@ -15,7 +15,7 @@ extension DeviceDocument {
   @objc func pasteImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     if let tiffData = NSImage (pasteboard: NSPasteboard.general)?.tiffRepresentation {
-      self.rootObject.representationImageData = tiffData
+      self.rootObject.mImageData = tiffData
     }
 //--- END OF USER ZONE 2
   }

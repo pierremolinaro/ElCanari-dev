@@ -28,9 +28,9 @@ document DeviceDocument root DeviceRoot {
   outlet EBTextObserverView mIssueTextView $valueObserver self.mStatusMessage ;
 
 #-------------------------- Page : Description
-  outlet EBTextField mTitleTextField $value root.title {sendContinously: yes} ;
+  outlet EBTextField mTitleTextField $value root.mTitle {sendContinously: yes} ;
 
-  outlet DeviceDroppableImageView mRepresentationImageView $imageData root.representationImageData ;
+  outlet DeviceDroppableImageView mRepresentationImageView $imageData root.mImageData ;
   
   action pasteImageAction ;
   outlet EBButton mPasteImageButton $run self.pasteImageAction ;
@@ -266,10 +266,10 @@ document DeviceDocument root DeviceRoot {
 
 #--------------- Page : Infos
 #--- Prefix
-  outlet EBTextField mPrefixTextField $value root.prefix {sendContinously : yes} ;
+  outlet EBTextField mPrefixTextField $value root.mPrefix {sendContinously : yes} ;
 
 #--- Prefix
-  outlet EBTextView mCommentTextView $value root.comments ;
+  outlet EBTextView mCommentTextView $value root.mComments ;
 
 #--- Reset
   action resetVersionAction ;

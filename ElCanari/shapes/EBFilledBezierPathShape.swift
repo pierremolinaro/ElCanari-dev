@@ -16,9 +16,14 @@ class EBFilledBezierPathShape : EBShape {
   //  Init
   //····················································································································
 
-  init (_ inPaths: [NSBezierPath], _ inColor: NSColor) {
-    mFilledPaths = inPaths
+  init (_ inPaths : [NSBezierPath], _ inColor : NSColor) {
     mColor = inColor
+    mFilledPaths = []
+    for path in inPaths {
+      if !path.isEmpty {
+        self.mFilledPaths.append (path)
+      }
+    }
     super.init ()
   }
 

@@ -29,14 +29,14 @@ extension PackageRoot {
         strokeBezierPathes.append (bp)
       }else if let packageMasterPad = object as? PackagePad {
         let masterPad = MasterPadInDevice (inUndoManager)
-        masterPad.xCenter = packageMasterPad.xCenter
-        masterPad.yCenter = packageMasterPad.yCenter
-        masterPad.width = packageMasterPad.width
-        masterPad.height = packageMasterPad.height
-        masterPad.holeDiameter = packageMasterPad.holeDiameter
-        masterPad.padShape = packageMasterPad.padShape
-        masterPad.padStyle = packageMasterPad.padStyle
-        masterPad.padName = packageMasterPad.padName!
+        masterPad.mCenterX = packageMasterPad.xCenter
+        masterPad.mCenterY = packageMasterPad.yCenter
+        masterPad.mWidth = packageMasterPad.width
+        masterPad.mHeight = packageMasterPad.height
+        masterPad.mHoleDiameter = packageMasterPad.holeDiameter
+        masterPad.mShape = packageMasterPad.padShape
+        masterPad.mStyle = packageMasterPad.padStyle
+        masterPad.mName = packageMasterPad.padName!
         masterPads.append (masterPad)
         masterPadDictionary [packageMasterPad] = masterPad
       }
@@ -45,13 +45,13 @@ extension PackageRoot {
     for object in self.packageObjects_property.propval {
       if let packageSlavePad = object as? PackageSlavePad {
         let slavePad = SlavePadInDevice (inUndoManager)
-        slavePad.xCenter = packageSlavePad.xCenter
-        slavePad.yCenter = packageSlavePad.yCenter
-        slavePad.width = packageSlavePad.width
-        slavePad.height = packageSlavePad.height
-        slavePad.holeDiameter = packageSlavePad.holeDiameter
-        slavePad.padShape = packageSlavePad.padShape
-        slavePad.padStyle = packageSlavePad.padStyle
+        slavePad.mCenterX = packageSlavePad.xCenter
+        slavePad.mCenterY = packageSlavePad.yCenter
+        slavePad.mWidth = packageSlavePad.width
+        slavePad.mHeight = packageSlavePad.height
+        slavePad.mHoleDiameter = packageSlavePad.holeDiameter
+        slavePad.mShape = packageSlavePad.padShape
+        slavePad.mStyle = packageSlavePad.padStyle
         let masterPad = masterPadDictionary [packageSlavePad.master_property.propval!]!
         slavePad.mMasterPad_property.setProp (masterPad)
       }

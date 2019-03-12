@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceRoot_imageIsValid (
-       _ self_representationImageData : Data
+       _ self_mImageData : Data
 ) -> Bool {
 //--- START OF USER ZONE 2
-  return NSImage (data: self_representationImageData) != nil
+  return NSImage (data: self_mImageData) != nil
 //--- END OF USER ZONE 2
 }
 

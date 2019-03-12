@@ -40,37 +40,41 @@ class EBTextShape : EBShape {
         _ inTextAttributes : [NSAttributedString.Key : Any],
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment) {
-    let size = inString.size (withAttributes: inTextAttributes)
-    var p = inOrigin
-    switch inHorizontalAlignment {
-    case .left :
-      ()
-    case .center :
-      p.x -= size.width / 2.0
-    case .right :
-      p.x -= size.width
-    }
-    switch inVerticalAlignment {
-    case .above :
-      ()
-    case .center :
-      p.y -= size.height / 2.0
-    case .below :
-      p.y -= size.height
-    }
-  //--- Bezier path
-    mFilledBezierPath = inString.bezierPath (at: p, withAttributes: inTextAttributes)
   //--- Forecolor
     if let c = inTextAttributes [NSAttributedString.Key.foregroundColor] as? NSColor {
       mForeColor = c
     }else{
-      mForeColor = NSColor.black
+      mForeColor = .black
     }
   //--- Back Color
     if let c = inTextAttributes [NSAttributedString.Key.backgroundColor] as? NSColor {
       mBackColor = c
     }else{
       mBackColor = nil
+    }
+  //--- Transform text into filled bezier path
+    if inString == "" {
+      mFilledBezierPath = NSBezierPath ()
+    }else{
+      let size = inString.size (withAttributes: inTextAttributes)
+      var p = inOrigin
+      switch inHorizontalAlignment {
+      case .left :
+        ()
+      case .center :
+        p.x -= size.width / 2.0
+      case .right :
+        p.x -= size.width
+      }
+      switch inVerticalAlignment {
+      case .above :
+        ()
+      case .center :
+        p.y -= size.height / 2.0
+      case .below :
+        p.y -= size.height
+      }
+      mFilledBezierPath = inString.bezierPath (at: p, withAttributes: inTextAttributes)
     }
     super.init ()
   }

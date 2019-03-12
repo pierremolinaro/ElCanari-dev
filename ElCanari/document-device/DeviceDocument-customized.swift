@@ -25,33 +25,19 @@ let DEVICE_PACKAGE_METADATA_DICTIONARY_KEY = "DevicePackages"
   //--- Version
     metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] = version
   //--- Comments
-    metadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.comments
+    metadataDictionary [DEVICE_COMMENT_METADATA_DICTIONARY_KEY] = self.rootObject.mComments
   //--- Packages
     var packageDictionary = [String : Int] ()
     for package in self.rootObject.mPackages_property.propval.sorted (by: { $0.mName < $1.mName }) {
       packageDictionary [package.mName] = package.mVersion
     }
     metadataDictionary [DEVICE_PACKAGE_METADATA_DICTIONARY_KEY] = packageDictionary
-//   NSMutableDictionary * packageDictionary = [NSMutableDictionary new] ;
-//    NSArray * packageLibrary = [mRootObject.packages.allObjects sortedArrayUsingSelector:@selector (compareByName:)] ;
-//    for (PMClassForPackageInDeviceEntity * package in packageLibrary) {
-//      [packageDictionary setObject:[NSNumber numberWithInteger:package.versionNumber] forKey:package.packageName HERE] ;
-//    }
-//    [dictionary setObject:packageDictionary forKey:PMDevicePackages HERE] ;
-
   //--- Symbol Types
     var symbolDictionary = [String : Int] ()
     for symbolType in self.rootObject.mSymbolTypes_property.propval.sorted (by: { $0.mTypeName < $1.mTypeName }) {
       symbolDictionary [symbolType.mTypeName] = symbolType.mVersion
     }
-    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary
-//    NSMutableDictionary * symbolDictionary = [NSMutableDictionary new] ;
-//    NSArray * symbolTypesLibrary = [mRootObject.symbolTypes.allObjects sortedArrayUsingSelector:@selector (compareByName:)] ;
-//    for (PMClassForSymbolTypeForDeviceEntity * symbol in symbolTypesLibrary) {
-//      [symbolDictionary setObject:[NSNumber numberWithInteger:symbol.versionNumber] forKey:symbol.symbolTypeName HERE] ;
-//    }
-//    [dictionary setObject:symbolDictionary forKey:PMDeviceSymbols HERE] ;
-  }
+    metadataDictionary [DEVICE_SYMBOL_METADATA_DICTIONARY_KEY] = symbolDictionary  }
 
   //····················································································································
 

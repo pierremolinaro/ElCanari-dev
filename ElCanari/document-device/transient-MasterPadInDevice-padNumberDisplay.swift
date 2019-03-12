@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_MasterPadInDevice_padNumberDisplay (
-       _ self_xCenter : Int,                       
-       _ self_yCenter : Int,                       
+       _ self_mCenterX : Int,                      
+       _ self_mCenterY : Int,                      
        _ prefs_padNumberColor : NSColor,           
-       _ self_padName : String,                    
+       _ self_mName : String,                      
        _ prefs_padNumberFont : NSFont
 ) -> EBShape {
 //--- START OF USER ZONE 2
@@ -24,8 +24,8 @@ func transient_MasterPadInDevice_padNumberDisplay (
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
       return EBTextShape (
-        self_padName, // padString,
-        CanariPoint (x: self_xCenter, y: self_yCenter).cocoaPoint (),
+        self_mName, // padString,
+        CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint (),
         textAttributes,
         .center,
         .center

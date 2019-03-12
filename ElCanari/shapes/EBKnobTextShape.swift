@@ -16,36 +16,39 @@ class EBTextKnobShape : EBShape {
   //  Init
   //····················································································································
 
-  init (_ inString: String,
+  init (_ inString : String,
         _ inOrigin : CGPoint,
         _ inFont : NSFont,
         _ inHorizontalAlignment : EBTextHorizontalAlignment,
         _ inVerticalAlignment : EBTextVerticalAlignment,
         _ inIndex : Int) {
-    let textAttributes : [NSAttributedString.Key : Any] = [
-      NSAttributedString.Key.font : inFont
-    ]
-    let size = inString.size (withAttributes: textAttributes)
-    var p = inOrigin
-    switch inHorizontalAlignment {
-    case .left :
-      ()
-    case .center :
-      p.x -= size.width / 2.0
-    case .right :
-      p.x -= size.width
-    }
-    switch inVerticalAlignment {
-    case .above :
-      ()
-    case .center :
-      p.y -= size.height / 2.0
-    case .below :
-      p.y -= size.height
-    }
-  //--- Bezier path
-    mFilledBezierPath = inString.bezierPath (at: p, withAttributes: textAttributes)
     mIndex = inIndex
+    if inString == "" {
+      mFilledBezierPath = NSBezierPath ()
+    }else{
+      let textAttributes : [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : inFont
+      ]
+      let size = inString.size (withAttributes: textAttributes)
+      var p = inOrigin
+      switch inHorizontalAlignment {
+      case .left :
+        ()
+      case .center :
+        p.x -= size.width / 2.0
+      case .right :
+        p.x -= size.width
+      }
+      switch inVerticalAlignment {
+      case .above :
+        ()
+      case .center :
+        p.y -= size.height / 2.0
+      case .below :
+        p.y -= size.height
+      }
+      mFilledBezierPath = inString.bezierPath (at: p, withAttributes: textAttributes)
+    }
   //---
     super.init ()
   }

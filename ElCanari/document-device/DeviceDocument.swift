@@ -1624,8 +1624,8 @@ import Cocoa
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.mIssueTextView?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
-    self.mTitleTextField?.bind_value (self.rootObject.title_property, file: #file, line: #line, sendContinously:true)
-    self.mRepresentationImageView?.bind_imageData (self.rootObject.representationImageData_property, file: #file, line: #line)
+    self.mTitleTextField?.bind_value (self.rootObject.mTitle_property, file: #file, line: #line, sendContinously:true)
+    self.mRepresentationImageView?.bind_imageData (self.rootObject.mImageData_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_horizontalFlip (self.rootObject.mSymbolDisplayHorizontalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_verticalFlip (self.rootObject.mSymbolDisplayVerticalFlip_property, file: #file, line: #line)
     self.mComposedSymbolView?.bind_zoom (self.rootObject.mSymbolDisplayZoom_property, file: #file, line: #line)
@@ -1653,8 +1653,8 @@ import Cocoa
     self.mUnconnectedPadsInDeviceTableView?.bind_unconnectedPads (self.rootObject.unconnectedPads_property, file: #file, line: #line)
     self.mUnconnectedSymbolPinsInDeviceTableView?.bind_unconnectedPins (self.rootObject.unconnectedPins_property, file: #file, line: #line)
     self.mAssignedPadProxyTableView?.bind_assignedPadProxies (self.rootObject.assignedPadProxies_property, file: #file, line: #line)
-    self.mPrefixTextField?.bind_value (self.rootObject.prefix_property, file: #file, line: #line, sendContinously:true)
-    self.mCommentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
+    self.mPrefixTextField?.bind_value (self.rootObject.mPrefix_property, file: #file, line: #line, sendContinously:true)
+    self.mCommentTextView?.bind_value (self.rootObject.mComments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (

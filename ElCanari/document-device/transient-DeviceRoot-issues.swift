@@ -12,8 +12,8 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_DeviceRoot_issues (
-       _ self_title : String,     
-       _ self_prefix : String,    
+       _ self_mTitle : String,    
+       _ self_mPrefix : String,   
        _ self_inconsistentPackagePadNameSetsMessage : String,
        _ self_inconsistentSymbolNameSetMessage : String,
        _ self_unconnectedPins : UnconnectedSymbolPinsInDevice,
@@ -21,14 +21,14 @@ func transient_DeviceRoot_issues (
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
-       if self_title == "" {
+       if self_mTitle == "" {
          issues.append (CanariIssue (kind: .warning, message: "Title is Empty", path: NSBezierPath ()))
        }
-       if self_prefix == "" {
+       if self_mPrefix == "" {
          issues.append (CanariIssue (kind: .warning, message: "Prefix is Empty", path: NSBezierPath ()))
        }else{
          var ok = true
-         for unicodeChar in self_prefix.unicodeArray {
+         for unicodeChar in self_mPrefix.unicodeArray {
            ok = (unicodeChar >= "a") && (unicodeChar <= "z")
            if !ok {
              ok = (unicodeChar >= "A") && (unicodeChar <= "Z")

@@ -16,7 +16,7 @@ extension DeviceDocument {
 //--- START OF USER ZONE 2
         if let selectedName = self.mUnconnectedPadsInDeviceTableView?.selectedPadName {
           for padProxy in self.rootObject.mPadProxies_property.propval {
-            if padProxy.mQualifiedPadName == selectedName {
+            if padProxy.mPadName == selectedName {
              padProxy.mPinInstance_property.setProp (nil)
              padProxy.mIsNC = true
             }

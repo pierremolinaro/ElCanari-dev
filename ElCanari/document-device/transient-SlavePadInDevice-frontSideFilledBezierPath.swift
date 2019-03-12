@@ -12,23 +12,23 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_SlavePadInDevice_frontSideFilledBezierPath (
-       _ self_xCenter : Int,                               
-       _ self_yCenter : Int,                               
-       _ self_width : Int,                                 
-       _ self_height : Int,                                
-       _ self_holeDiameter : Int,                          
-       _ self_padShape : PadShape,                         
-       _ self_padStyle : SlavePadStyle
+       _ self_mCenterX : Int,                              
+       _ self_mCenterY : Int,                              
+       _ self_mWidth : Int,                                
+       _ self_mHeight : Int,                               
+       _ self_mHoleDiameter : Int,                         
+       _ self_mShape : PadShape,                           
+       _ self_mStyle : SlavePadStyle
 ) -> NSBezierPath {
 //--- START OF USER ZONE 2
-    let xCenter = canariUnitToCocoa (self_xCenter)
-    let yCenter = canariUnitToCocoa (self_yCenter)
-    let width = canariUnitToCocoa (self_width)
-    let height = canariUnitToCocoa (self_height)
-    let holeDiameter = canariUnitToCocoa (self_holeDiameter)
+    let xCenter = canariUnitToCocoa (self_mCenterX)
+    let yCenter = canariUnitToCocoa (self_mCenterY)
+    let width = canariUnitToCocoa (self_mWidth)
+    let height = canariUnitToCocoa (self_mHeight)
+    let holeDiameter = canariUnitToCocoa (self_mHoleDiameter)
     let rPad = NSRect (x: xCenter - width / 2.0, y: yCenter - height / 2.0, width: width, height: height)
     let bp : NSBezierPath
-    switch self_padShape {
+    switch self_mShape {
     case .rect :
       bp = NSBezierPath (rect: rPad)
     case .round :
@@ -42,7 +42,7 @@ func transient_SlavePadInDevice_frontSideFilledBezierPath (
     case .octo :
       bp = NSBezierPath (octogonInRect: rPad)
     }
-    switch self_padStyle {
+    switch self_mStyle {
     case .traversing :
       let rHole = NSRect (x: xCenter - holeDiameter / 2.0, y: yCenter - holeDiameter / 2.0, width: holeDiameter, height: holeDiameter)
       bp.appendOval (in: rHole)

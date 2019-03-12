@@ -21,8 +21,10 @@ class EBStrokeBezierPathShape : EBShape {
     mColor = inColor
     super.init ()
     for path in inPaths {
-      let cgPath = path.pathByStroking
-      self.mFilledPaths.append (cgPath.bezierPath)
+      if !path.isEmpty {
+        let cgPath = path.pathByStroking
+        self.mFilledPaths.append (cgPath.bezierPath)
+      }
     }
   }
 

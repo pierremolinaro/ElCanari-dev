@@ -5,24 +5,24 @@ graphic entity DeviceRoot {
   property Int selectedPageIndex default 0 ;
 
 #--- Title
-  property @signature String title default "" ;
+  property @signature String mTitle default "" ;
 
 #--- Image
-  property @signature Data representationImageData default empty ;
-  transient Bool imageIsValid dependsFrom self.representationImageData ;
+  property @signature Data mImageData default empty ;
+  transient Bool imageIsValid dependsFrom self.mImageData ;
 
 #--- Documentation
   toMany @signature DeviceDocumentation mDocs ;
 
 #--- Prefix
-  property @signature String prefix default "" ;
+  property @signature String mPrefix default "" ;
 
 #--- Comment
-  property @signature String comments default "" ;
+  property @signature String mComments default "" ;
 
 #--- Issues
   transient CanariIssueArray issues dependsFrom
-    self.title, self.prefix,
+    self.mTitle, self.mPrefix,
     self.inconsistentPackagePadNameSetsMessage,
     self.inconsistentSymbolNameSetMessage,
     self.unconnectedPins,
@@ -61,10 +61,10 @@ graphic entity DeviceRoot {
   toMany @signature PadProxyInDevice mPadProxies ;
   
   transient StringArray unconnectedPads
-    dependsFrom self.mPadProxies.all.mQualifiedPadName, self.mPadProxies.all.isConnected ;
+    dependsFrom self.mPadProxies.all.mPadName, self.mPadProxies.all.isConnected ;
 
   transient AssignedPadProxiesInDevice assignedPadProxies dependsFrom
-    self.mPadProxies.all.mQualifiedPadName,
+    self.mPadProxies.all.mPadName,
     self.mPadProxies.all.symbolName,
     self.mPadProxies.all.pinInstanceName,
     self.mPadProxies.all.isConnected ;
@@ -130,7 +130,7 @@ graphic entity PackageInDevice {
      self.mName, self.mX, self.mY
   ;
   
-  transient StringSet padNameSet dependsFrom self.mMasterPads.all.padName ;
+  transient StringSet padNameSet dependsFrom self.mMasterPads.all.mName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -138,29 +138,29 @@ graphic entity PackageInDevice {
 entity MasterPadInDevice {
   toMany @signature SlavePadInDevice mSlavePads inverse toOne mMasterPad ;
 
-  property @signature Int xCenter default 0 ;
-  property @signature Int yCenter default 0 ;
-  property @signature Int width default 114_300 ;
-  property @signature Int height default 228_600 ;
-  property @signature Int holeDiameter default 57_150 ;
-  property @signature PadShape padShape default octo ;
-  property @signature PadStyle padStyle default traversing ;
-  property @signature String padName default "" ;
+  property @signature Int mCenterX default 0 ;
+  property @signature Int mCenterY default 0 ;
+  property @signature Int mWidth default 114_300 ;
+  property @signature Int mHeight default 228_600 ;
+  property @signature Int mHoleDiameter default 57_150 ;
+  property @signature PadShape mShape default octo ;
+  property @signature PadStyle mStyle default traversing ;
+  property @signature String mName default "" ;
   
   transient BezierPathArray frontSideFilledBezierPathArray dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mShape, self.mStyle,
      self.mSlavePads.all.frontSideFilledBezierPath
   ;
 
   transient BezierPathArray backSideFilledBezierPathArray dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle,
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mShape, self.mStyle,
      self.mSlavePads.all.backSideFilledBezierPath
   ;
 
    transient EBShape padNumberDisplay dependsFrom
-     self.xCenter, self.yCenter, prefs.padNumberColor, self.padName, prefs.padNumberFont ;
+     self.mCenterX, self.mCenterY, prefs.padNumberColor, self.mName, prefs.padNumberFont ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -168,27 +168,27 @@ entity MasterPadInDevice {
 entity SlavePadInDevice {
   toOne MasterPadInDevice mMasterPad inverse toMany mSlavePads  ;
 
-  property @signature Int xCenter default 0 ;
-  property @signature Int yCenter default 0 ;
-  property @signature Int width default 114_300 ;
-  property @signature Int height default 228_600 ;
-  property @signature Int holeDiameter default 57_150 ;
-  property @signature PadShape padShape default octo ;
-  property @signature SlavePadStyle padStyle default traversing ;
+  property @signature Int mCenterX default 0 ;
+  property @signature Int mCenterY default 0 ;
+  property @signature Int mWidth default 114_300 ;
+  property @signature Int mHeight default 228_600 ;
+  property @signature Int mHoleDiameter default 57_150 ;
+  property @signature PadShape mShape default octo ;
+  property @signature SlavePadStyle mStyle default traversing ;
 
   transient NSBezierPath frontSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mShape, self.mStyle
   ;
 
   transient NSBezierPath backSideFilledBezierPath dependsFrom
-     self.xCenter, self.yCenter, self.width, self.height, self.holeDiameter,
-     self.padShape, self.padStyle
+     self.mCenterX, self.mCenterY, self.mWidth, self.mHeight, self.mHoleDiameter,
+     self.mShape, self.mStyle
   ;
 
    transient EBShape padNumberDisplay dependsFrom
-     self.xCenter, self.yCenter,
-     prefs.padNumberFont, prefs.padNumberColor, self.mMasterPad.one.padName
+     self.mCenterX, self.mCenterY,
+     prefs.padNumberFont, prefs.padNumberColor, self.mMasterPad.one.mName
   ;
  
 }
@@ -285,7 +285,7 @@ entity SymbolPinInstanceInDevice {
   transient EBShape numberShape dependsFrom
      self.mType.one.mXNumber, self.mType.one.mYNumber, 
      self.mType.one.mNumberHorizontalAlignment,
-     self.mPadProxy.one.mQualifiedPadName,
+     self.mPadProxy.one.mPadName,
      prefs.pinNameFont
    ;
 
@@ -301,7 +301,7 @@ entity SymbolPinInstanceInDevice {
 entity PadProxyInDevice {
   toOne SymbolPinInstanceInDevice mPinInstance inverse toOne mPadProxy ;
   
-  property @signature String mQualifiedPadName default "" ;
+  property @signature String mPadName default "" ;
   
   property @signature Bool mIsNC default no ;
   

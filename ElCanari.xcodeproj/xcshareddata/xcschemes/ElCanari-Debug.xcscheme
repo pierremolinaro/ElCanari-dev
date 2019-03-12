@@ -72,6 +72,11 @@
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
+            key = "CG_NUMERICS_SHOW_BACKTRACE"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "CA_ASSERT_MAIN_THREAD_TRANSACTIONS"
             value = "1"
             isEnabled = "NO">

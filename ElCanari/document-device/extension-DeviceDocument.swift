@@ -176,7 +176,11 @@ extension DeviceDocument {
             package.mFileData = data
             package.mStrokeBezierPath = strokeBezierPathes
           //--- Set relationship
+            let oldMasterPads = package.mMasterPads_property.propval
             package.mMasterPads_property.setProp (masterPads)
+            for oldMasterPad in oldMasterPads {
+              oldMasterPad.removeRecursivelyAllRelationsShips ()
+            }
           //---
             ioMessages.append ("Package \(package.mName) has been updated to version \(version).")
           }
@@ -200,15 +204,15 @@ extension DeviceDocument {
     var currentPackagePadNameSet = Set <String> ()
     for package in self.rootObject.mPackages_property.propval {
       for masterPad in package.mMasterPads_property.propval {
-        currentPackagePadNameSet.insert (masterPad.padName)
+        currentPackagePadNameSet.insert (masterPad.mName)
       }
     }
   //--- Inventory of current pad proxies
     var currentProxyPadNameSet = Set <String> ()
     var padProxyDictionary = [String : PadProxyInDevice] ()
     for padProxy in self.rootObject.mPadProxies_property.propval {
-      padProxyDictionary [padProxy.mQualifiedPadName] = padProxy
-      currentProxyPadNameSet.insert (padProxy.mQualifiedPadName)
+      padProxyDictionary [padProxy.mPadName] = padProxy
+      currentProxyPadNameSet.insert (padProxy.mPadName)
     }
   //--- Remove pad proxies without corresponding pad
     for padName in currentProxyPadNameSet.subtracting (currentPackagePadNameSet) {
@@ -219,7 +223,7 @@ extension DeviceDocument {
   //--- Add missing pad proxies
     for padName in currentPackagePadNameSet.subtracting (currentProxyPadNameSet) {
       let newPadProxy = PadProxyInDevice (self.ebUndoManager)
-      newPadProxy.mQualifiedPadName = padName
+      newPadProxy.mPadName = padName
       self.rootObject.mPadProxies_property.add (newPadProxy)
     }
   }

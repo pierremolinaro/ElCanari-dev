@@ -6,8 +6,8 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol PadProxyInDevice_mQualifiedPadName : class {
-  var mQualifiedPadName : String { get }
+protocol PadProxyInDevice_mPadName : class {
+  var mPadName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,33 +39,33 @@ protocol PadProxyInDevice_symbolName : class {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class PadProxyInDevice : EBManagedObject,
-         PadProxyInDevice_mQualifiedPadName,
+         PadProxyInDevice_mPadName,
          PadProxyInDevice_mIsNC,
          PadProxyInDevice_isConnected,
          PadProxyInDevice_pinInstanceName,
          PadProxyInDevice_symbolName {
 
   //····················································································································
-  //   Atomic property: mQualifiedPadName
+  //   Atomic property: mPadName
   //····················································································································
 
-  var mQualifiedPadName_property = EBStoredProperty_String (defaultValue: "")
+  var mPadName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mQualifiedPadName : String {
+  var mPadName : String {
     get {
-      return self.mQualifiedPadName_property.propval
+      return self.mPadName_property.propval
     }
     set {
-      self.mQualifiedPadName_property.setProp (newValue)
+      self.mPadName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var mQualifiedPadName_property_selection : EBSelection <String> {
-    return self.mQualifiedPadName_property.prop
+  var mPadName_property_selection : EBSelection <String> {
+    return self.mPadName_property.prop
   }
 
   //····················································································································
@@ -178,8 +178,8 @@ class PadProxyInDevice : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mQualifiedPadName
-    self.mQualifiedPadName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mPadName
+    self.mPadName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mIsNC
     self.mIsNC_property.ebUndoManager = self.ebUndoManager
   //--- To one property: mPinInstance
@@ -255,7 +255,7 @@ class PadProxyInDevice : EBManagedObject,
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
-    self.mQualifiedPadName_property.setSignatureObserver (observer: self)
+    self.mPadName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
 
@@ -281,12 +281,12 @@ class PadProxyInDevice : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mQualifiedPadName",
-      idx:self.mQualifiedPadName_property.ebObjectIndex,
+      "mPadName",
+      idx:self.mPadName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mQualifiedPadName_property.mObserverExplorer,
-      valueExplorer:&self.mQualifiedPadName_property.mValueExplorer
+      observerExplorer:&self.mPadName_property.mObserverExplorer,
+      valueExplorer:&self.mPadName_property.mValueExplorer
     )
     createEntryForPropertyNamed (
       "mIsNC",
@@ -338,9 +338,9 @@ class PadProxyInDevice : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mQualifiedPadName
-    self.mQualifiedPadName_property.mObserverExplorer = nil
-    self.mQualifiedPadName_property.mValueExplorer = nil
+  //--- Atomic property: mPadName
+    self.mPadName_property.mObserverExplorer = nil
+    self.mPadName_property.mValueExplorer = nil
   //--- Atomic property: mIsNC
     self.mIsNC_property.mObserverExplorer = nil
     self.mIsNC_property.mValueExplorer = nil
@@ -376,8 +376,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mQualifiedPadName
-    self.mQualifiedPadName_property.storeIn (dictionary: ioDictionary, forKey:"mQualifiedPadName")
+  //--- Atomic property: mPadName
+    self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
   //--- Atomic property: mIsNC
     self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey:"mIsNC")
   //--- To one property: mPinInstance
@@ -412,8 +412,8 @@ class PadProxyInDevice : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mQualifiedPadName
-    self.mQualifiedPadName_property.readFrom (dictionary: inDictionary, forKey:"mQualifiedPadName")
+  //--- Atomic property: mPadName
+    self.mPadName_property.readFrom (dictionary: inDictionary, forKey:"mPadName")
   //--- Atomic property: mIsNC
     self.mIsNC_property.readFrom (dictionary: inDictionary, forKey:"mIsNC")
   }
@@ -437,7 +437,7 @@ class PadProxyInDevice : EBManagedObject,
   override func computeSignature () -> UInt32 {
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.mIsNC_property.signature ())
-    crc.accumulateUInt32 (self.mQualifiedPadName_property.signature ())
+    crc.accumulateUInt32 (self.mPadName_property.signature ())
     return crc
   }
 
@@ -452,58 +452,58 @@ class PadProxyInDevice : EBManagedObject,
 class ReadOnlyArrayOf_PadProxyInDevice : ReadOnlyAbstractArrayProperty <PadProxyInDevice> {
 
   //····················································································································
-  //   Observers of 'mQualifiedPadName' stored property
+  //   Observers of 'mPadName' stored property
   //····················································································································
 
-  private var mObserversOf_mQualifiedPadName = EBWeakEventSet ()
+  private var mObserversOf_mPadName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mQualifiedPadName.insert (inObserver)
+    self.mObserversOf_mPadName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mQualifiedPadName_property.addEBObserver (inObserver)
+        managedObject.mPadName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mQualifiedPadName (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mPadName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mQualifiedPadName.remove (inObserver)
+    self.mObserversOf_mPadName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mQualifiedPadName_property.removeEBObserver (inObserver)
+        managedObject.mPadName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mQualifiedPadName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+  final func addEBObserversOf_mPadName_toElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mQualifiedPadName.apply ( {(_ observer : EBEvent) in
-        managedObject.mQualifiedPadName_property.addEBObserver (observer)
+      self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
+        managedObject.mPadName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mQualifiedPadName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
-    self.mObserversOf_mQualifiedPadName.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mPadName_fromElementsOfSet (_ inSet : Set<PadProxyInDevice>) {
+    self.mObserversOf_mPadName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mQualifiedPadName_property.removeEBObserver (observer)
+        managedObject.mPadName_property.removeEBObserver (observer)
       }
     })
   }
@@ -806,7 +806,7 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mQualifiedPadName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mPadName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_isConnected_fromElementsOfSet (removedSet)
@@ -815,7 +815,7 @@ class TransientArrayOf_PadProxyInDevice : ReadOnlyArrayOf_PadProxyInDevice {
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mQualifiedPadName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mPadName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mIsNC_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_isConnected_toElementsOfSet (addedSet)
@@ -948,10 +948,10 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mQualifiedPadName_property.mSetterDelegate = nil
+            managedObject.mPadName_property.mSetterDelegate = nil
             managedObject.mIsNC_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mQualifiedPadName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mPadName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mIsNC_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_isConnected_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_pinInstanceName_fromElementsOfSet (removedObjectSet)
@@ -963,10 +963,10 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
           for managedObject : PadProxyInDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mQualifiedPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mPadName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mIsNC_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mQualifiedPadName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mPadName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mIsNC_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_isConnected_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_pinInstanceName_toElementsOfSet (addedObjectSet)

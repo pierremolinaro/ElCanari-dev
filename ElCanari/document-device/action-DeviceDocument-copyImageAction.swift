@@ -14,7 +14,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func copyImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    let data = self.rootObject.representationImageData
+    let data = self.rootObject.mImageData
     let pasteboard = NSPasteboard.general
     pasteboard.clearContents ()
     pasteboard.setData (data, forType: .tiff)

@@ -12,12 +12,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_PackageInDevice_padNameSet (
-       _ self_mMasterPads_padName : [MasterPadInDevice_padName]
+       _ self_mMasterPads_mName : [MasterPadInDevice_mName]
 ) -> StringSet {
 //--- START OF USER ZONE 2
    var result = StringSet ()
-   for p in self_mMasterPads_padName {
-     result.insert (p.padName)
+   for p in self_mMasterPads_mName {
+     result.insert (p.mName)
    }
    return result
 //--- END OF USER ZONE 2

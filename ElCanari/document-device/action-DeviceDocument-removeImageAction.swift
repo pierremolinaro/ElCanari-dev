@@ -14,7 +14,7 @@ import Cocoa
 extension DeviceDocument {
   @objc func removeImageAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-   self.rootObject.representationImageData = Data ()
+        self.rootObject.mImageData = Data ()
 //--- END OF USER ZONE 2
   }
 }
