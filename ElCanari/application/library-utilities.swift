@@ -154,14 +154,16 @@ func createLibraryAtPath (_ inPath : String) throws {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func symbolFilePathInLibraries (_ inSymbolName : String) -> [String] {
+func symbolFilePathInLibraries (_ inSymbolNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
     let symbolLibraryDir = symbolLibraryPathForPath (libraryDir)
     if let allSymbols = try? fm.subpathsOfDirectory(atPath: symbolLibraryDir) {
       for candidateSymbolPath in allSymbols {
-        if candidateSymbolPath.lastPathComponent.deletingPathExtension == inSymbolName {
+        let pathExtension = candidateSymbolPath.lastPathComponent.pathExtension
+        let baseName = candidateSymbolPath.lastPathComponent.deletingPathExtension
+        if (baseName == inSymbolNameWithoutExtension) && (pathExtension == "ElCanariSymbol") {
           pathes.append (symbolLibraryDir + "/" + candidateSymbolPath)
         }
       }
@@ -172,14 +174,16 @@ func symbolFilePathInLibraries (_ inSymbolName : String) -> [String] {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func packageFilePathInLibraries (_ inPackageName : String) -> [String] {
+func packageFilePathInLibraries (_ inPackageNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
     let packageLibraryDir = packageLibraryPathForPath (libraryDir)
     if let allPackages = try? fm.subpathsOfDirectory(atPath: packageLibraryDir) {
       for candidatePackagePath in allPackages {
-        if candidatePackagePath.lastPathComponent.deletingPathExtension == inPackageName {
+        let pathExtension = candidatePackagePath.lastPathComponent.pathExtension
+        let baseName = candidatePackagePath.lastPathComponent.deletingPathExtension
+        if (baseName == inPackageNameWithoutExtension) && (pathExtension == "ElCanariPackage") {
           pathes.append (packageLibraryDir + "/" + candidatePackagePath)
         }
       }
@@ -190,14 +194,16 @@ func packageFilePathInLibraries (_ inPackageName : String) -> [String] {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func deviceFilePathInLibraries (_ inDeviceName : String) -> [String] {
+func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [String] {
   var pathes = [String] ()
   let fm = FileManager ()
   for libraryDir in existingLibraryPathArray () {
     let deviceLibraryDir = deviceLibraryPathForPath (libraryDir)
     if let allDevices = try? fm.subpathsOfDirectory(atPath: deviceLibraryDir) {
       for candidateDevicePath in allDevices {
-        if candidateDevicePath.lastPathComponent.deletingPathExtension == inDeviceName {
+        let pathExtension = candidateDevicePath.lastPathComponent.pathExtension
+        let baseName = candidateDevicePath.lastPathComponent.deletingPathExtension
+        if (baseName == inDeviceNameWithoutExtension) && (pathExtension == "ElCanariDevice") {
           pathes.append (deviceLibraryDir + "/" + candidateDevicePath)
         }
       }
