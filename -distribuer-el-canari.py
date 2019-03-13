@@ -123,9 +123,12 @@ runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
              "-target", "ElCanari-Release",
              "-configuration", "Release"
             ])
+#-------------------- Construction package
+packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
+runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", packageFile])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
-                                   BZ2file,
+                                   packageFile,
                                    "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
@@ -136,13 +139,13 @@ f = open (TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
 #-------------------- Créer l'archive de Cocoa canari
-runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", "ElCanari-" + VERSION_CANARI + ".pkg"])
 nomArchive = "ElCanari-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])
-runCommand (["cp", "-r", "ElCanari-" + VERSION_CANARI + ".pkg", nomArchive])
+runCommand (["cp", packageFile, nomArchive])
 runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
+os.chdir (TEMP_DIR)
 while os.path.isdir (TEMP_DIR + "/ElCanari-dev-master"):
   shutil.rmtree (TEMP_DIR + "/ElCanari-dev-master")
 
