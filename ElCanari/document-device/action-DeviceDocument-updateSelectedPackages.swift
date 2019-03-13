@@ -15,14 +15,13 @@ extension DeviceDocument {
   @objc func updateSelectedPackages (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
     let selectedPackages = self.mPackageController.selectedArray_property.propval
-    var messages = [String] ()
-    self.performPackagesUpdate (selectedPackages, &messages)
-    if messages.count > 0 {
-      let alert = NSAlert ()
-      alert.messageText = "Done."
-      alert.informativeText = messages.joined (separator: "\n")
-      alert.beginSheetModal (for: self.windowForSheet!)
-    }
+    var okMessages = [String] ()
+    var errorMessages = [String] ()
+    self.performPackagesUpdate (selectedPackages, &okMessages, &errorMessages)
+    let alert = NSAlert ()
+    alert.messageText = (errorMessages.count == 0) ? "Success." : "Error"
+    alert.informativeText = (okMessages + errorMessages).joined (separator: "\n")
+    alert.beginSheetModal (for: self.windowForSheet!)
 //--- END OF USER ZONE 2
   }
 }

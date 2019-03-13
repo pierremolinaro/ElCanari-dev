@@ -22,6 +22,16 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   @IBOutlet internal var mOpenAllDialogAccessoryCheckBox : NSButton? = nil
 
   //····················································································································
+  //  Theses outlet are used in ApplicationDelegate-maintenance.swift
+  //····················································································································
+
+  @IBOutlet internal var mMaintenanceLogTextView : NSTextView? = nil
+
+  @IBOutlet internal var mMaintenanceLogTextField : NSTextField? = nil
+
+  internal var mCount = 0
+
+  //····················································································································
   //  DO NOT OPEN A NEW DOCUMENT ON LAUNCH
   //····················································································································
 
@@ -33,6 +43,7 @@ private let SU_LAST_CHECK_TIME = "SULastCheckTime"
   //····················································································································
 
   func applicationDidFinishLaunching (_ notification: Notification) {
+    self.mMaintenanceLogTextField?.stringValue = ""
     if g_Preferences?.checkForSystemLibraryAtStartUp ?? false {
       if let logTextView = g_Preferences?.mLibraryUpdateLogTextView {
         let lastCheckDate = g_Preferences?.mLastSystemLibraryCheckTime ?? Date ()

@@ -51,19 +51,21 @@ extension DeviceDocument {
 
   //····················································································································
 
-  internal func performSymbolsUpdate (_ inSymbol : [SymbolTypeInDevice], _ ioMessages : inout [String]) {
+  internal func performSymbolsUpdate (_ inSymbol : [SymbolTypeInDevice],
+                                      _ ioOkMessages : inout [String],
+                                      _ ioErrorMessages : inout [String]) {
     let fm = FileManager ()
     for symbolType in inSymbol {
       let pathes = symbolFilePathInLibraries (symbolType.mTypeName)
       if pathes.count == 0 {
-        ioMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
+        ioErrorMessages.append ("No file in Library for \(symbolType.mTypeName) symbol")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
            let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
            let symbolRoot = rootObject as? SymbolRoot,
            let version = metadataDictionary [PMSymbolVersion] as? Int {
           if version <= symbolType.mVersion {
-            ioMessages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
+            ioOkMessages.append ("Symbol \(symbolType.mTypeName) is up-to-date.")
           }else{
             let strokeBezierPathes = NSBezierPath ()
             let filledBezierPathes = NSBezierPath ()
@@ -85,7 +87,7 @@ extension DeviceDocument {
               newPinNameDictionary [pinType.mName] = pinType
             }
             if currentPinNameSet != Set (newPinNameDictionary.keys) {
-              ioMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
+              ioErrorMessages.append ("Cannot update \(symbolType.mTypeName) symbol: pin name set has changed.")
             }else{ // Ok, make update
             //-- Set properties
               symbolType.mVersion = version
@@ -105,16 +107,16 @@ extension DeviceDocument {
                 pinType.mNumberHorizontalAlignment = newPinType.mNumberHorizontalAlignment
              }
             //---
-              ioMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
+              ioOkMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
             }
           }
         }else{
-          ioMessages.append ("Invalid file at path \(pathes [0])")
+          ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }
       }else{ // pathes.count > 1
-        ioMessages.append ("Cannot update, several files in Library for \(symbolType.mTypeName) symbol:")
+        ioErrorMessages.append ("Cannot update, several files in Library for \(symbolType.mTypeName) symbol:")
         for path in pathes {
-          ioMessages.append ("  - \(path)")
+          ioErrorMessages.append ("  - \(path)")
         }
       }
     }
@@ -148,20 +150,22 @@ extension DeviceDocument {
 
   //····················································································································
 
-  internal func performPackagesUpdate (_ inPackages : [PackageInDevice], _ ioMessages : inout [String]) {
+  internal func performPackagesUpdate (_ inPackages : [PackageInDevice],
+                                       _ ioOkMessages : inout [String],
+                                       _ ioErrorMessages : inout [String]) {
 //--- START OF USER ZONE 2
     let fm = FileManager ()
     for package in inPackages {
       let pathes = packageFilePathInLibraries (package.mName)
       if pathes.count == 0 {
-        ioMessages.append ("No file in Library for package \(package.mName)")
+        ioErrorMessages.append ("No file in Library for package \(package.mName)")
       }else if pathes.count == 1 {
         if let data = fm.contents (atPath: pathes [0]),
            let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
            let packageRoot = rootObject as? PackageRoot,
            let version = metadataDictionary [PMPackageVersion] as? Int {
           if version <= package.mVersion {
-            ioMessages.append ("Package \(package.mName) is up-to-date.")
+            ioOkMessages.append ("Package \(package.mName) is up-to-date.")
           }else{
             let strokeBezierPathes = NSBezierPath ()
             var masterPads = [MasterPadInDevice] ()
@@ -182,15 +186,15 @@ extension DeviceDocument {
               oldMasterPad.removeRecursivelyAllRelationsShips ()
             }
           //---
-            ioMessages.append ("Package \(package.mName) has been updated to version \(version).")
+            ioOkMessages.append ("Package \(package.mName) has been updated to version \(version).")
           }
         }else{
-          ioMessages.append ("Invalid file at path \(pathes [0])")
+          ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }
       }else{ // pathes.count > 1
-        ioMessages.append ("Cannot update, several files in Library for package \(package.mName):")
+        ioErrorMessages.append ("Cannot update, several files in Library for package \(package.mName):")
         for path in pathes {
-          ioMessages.append ("  - \(path)")
+          ioErrorMessages.append ("  - \(path)")
         }
       }
     }

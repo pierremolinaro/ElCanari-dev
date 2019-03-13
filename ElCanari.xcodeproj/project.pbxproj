@@ -937,8 +937,8 @@
 		CF8A0A912231A94300A17B92 /* view-AddSymbolInstancePullDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0A8F2231A94300A17B92 /* view-AddSymbolInstancePullDownButton.swift */; };
 		CF8A0A932231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0A922231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift */; };
 		CF8A0A942231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A0A922231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift */; };
-		CF8A118221B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */; };
-		CF8A118321B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */; };
+		CF8A118221B1C72300A8030C /* ApplicationDelegate-maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-maintenance.swift */; };
+		CF8A118321B1C72300A8030C /* ApplicationDelegate-maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8A118121B1C72300A8030C /* ApplicationDelegate-maintenance.swift */; };
 		CF8B1B8121CC0F5800C124FC /* enum-PadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */; };
 		CF8B1B8221CC0F5800C124FC /* enum-PadNumbering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */; };
 		CF8BEB141BFF2D75003C769C /* EBStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8BEB131BFF2D75003C769C /* EBStepper.swift */; };
@@ -1766,7 +1766,7 @@
 		CF8A09A822319A2100A17B92 /* extension-SymbolInstanceInDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "extension-SymbolInstanceInDevice.swift"; sourceTree = "<group>"; };
 		CF8A0A8F2231A94300A17B92 /* view-AddSymbolInstancePullDownButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "view-AddSymbolInstancePullDownButton.swift"; sourceTree = "<group>"; };
 		CF8A0A922231B2C800A17B92 /* transient-DeviceRoot-symbolTypeNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-DeviceRoot-symbolTypeNames.swift"; sourceTree = "<group>"; };
-		CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-OpenAll.swift"; sourceTree = "<group>"; };
+		CF8A118121B1C72300A8030C /* ApplicationDelegate-maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ApplicationDelegate-maintenance.swift"; sourceTree = "<group>"; };
 		CF8B1B8021CC0F5800C124FC /* enum-PadNumbering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "enum-PadNumbering.swift"; sourceTree = "<group>"; };
 		CF8BEB131BFF2D75003C769C /* EBStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBStepper.swift; sourceTree = "<group>"; };
 		CF8BEBF71BFF2F4F003C769C /* validation-Preferences-currentCharacterCodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "validation-Preferences-currentCharacterCodePoint.swift"; sourceTree = "<group>"; };
@@ -2334,8 +2334,8 @@
 				CF861B171B3F2FF90006BE63 /* action-Preferences-createUserLibraryAction.swift */,
 				CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */,
 				CFE1F0021BDBC14600DC51E1 /* ApplicationDelegate-CanariWebSite.swift */,
+				CF8A118121B1C72300A8030C /* ApplicationDelegate-maintenance.swift */,
 				CF4634441BEE10890064C49B /* ApplicationDelegate-new-document.swift */,
-				CF8A118121B1C72300A8030C /* ApplicationDelegate-OpenAll.swift */,
 				CF5CF7391B46D53D0052AC7A /* ApplicationDelegate.swift */,
 				CF3086541B401259005D3BCE /* arrayController-Preferences-additionnalLibraryArrayController.swift */,
 				CF1623061BE25A2B001D351B /* canari-Bridging-Header.h */,
@@ -3777,7 +3777,7 @@
 				CFDB681120E2A2C6006D4E90 /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF6B32FA21C91FA100E3B985 /* entity-PackageDimension.swift in Sources */,
 				CF3C62F21DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
-				CF8A118221B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */,
+				CF8A118221B1C72300A8030C /* ApplicationDelegate-maintenance.swift in Sources */,
 				CF0A961521A70D85003BC3EA /* enum-GridStyle.swift in Sources */,
 				CFBAB0B420DE786C00476FB7 /* canari-conversions.swift in Sources */,
 				CF4B39CB21D40F8F001217C6 /* transient-PackagePad-padName.swift in Sources */,
@@ -4351,7 +4351,7 @@
 				CF5C4DA8219F04D600EAC52A /* transient-BoardModel-frontComponentNameSegments.swift in Sources */,
 				CF6B32FB21C91FA100E3B985 /* entity-PackageDimension.swift in Sources */,
 				CF5C4DA9219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPath.swift in Sources */,
-				CF8A118321B1C72300A8030C /* ApplicationDelegate-OpenAll.swift in Sources */,
+				CF8A118321B1C72300A8030C /* ApplicationDelegate-maintenance.swift in Sources */,
 				CF0A961621A70D85003BC3EA /* enum-GridStyle.swift in Sources */,
 				CF5C4DAA219F04D600EAC52A /* canari-conversions.swift in Sources */,
 				CF4B39CC21D40F8F001217C6 /* transient-PackagePad-padName.swift in Sources */,
