@@ -149,6 +149,7 @@
 		CF23B1B121A48A4300DE1AD8 /* entity-SymbolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */; };
 		CF23B1B221A48A4300DE1AD8 /* entity-SymbolObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23B1B021A48A4300DE1AD8 /* entity-SymbolObject.swift */; };
 		CF23C0EE2103500F0026E675 /* CanariQuadrantSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23C0ED2103500F0026E675 /* CanariQuadrantSegmentedControl.swift */; };
+		CF23C3E122397F780099603E /* extension-Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF30969822397B5E00507740 /* extension-Int.swift */; };
 		CF26B2F321B5947500C37444 /* EBManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */; };
 		CF26B2F421B5947500C37444 /* EBManagedObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF26B2F221B5947500C37444 /* EBManagedObjectFactory.swift */; };
 		CF29563522324C4C004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF29563322324C4B004100D6 /* transient-DeviceRoot-inconsistentSymbolNameSetMessage.swift */; };
@@ -4185,6 +4186,7 @@
 				CF5C4D5C219F04D600EAC52A /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */,
 				CF5123FB222A8AC500FA4364 /* extension-PackageRoot.swift in Sources */,
 				CF5C4D5D219F04D600EAC52A /* CanariLibraryEntryDelegate.swift in Sources */,
+				CF23C3E122397F780099603E /* extension-Int.swift in Sources */,
 				CF8A09A32231969400A17B92 /* arrayController-DeviceDocument-mSymbolDisplayController.swift in Sources */,
 				CF5123EF222A877500FA4364 /* transient-PackageSegment-strokeBezierPath.swift in Sources */,
 				CF7A9F2621BDB0A400AC0FC7 /* extension-Data.swift in Sources */,
