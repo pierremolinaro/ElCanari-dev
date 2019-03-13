@@ -3797,7 +3797,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mUnplacedComponentsColorForSchematicColorWell : EBColorWell? = nil
   @IBOutlet var mUpDateButtonInLibraryUpdateWindow : EBButton? = nil
   @IBOutlet var mUpDateLibraryMenuItemInCanariMenu : EBMenuItem? = nil
-  @IBOutlet var mUpdateSystemLibraryBox : NSBox? = nil
   @IBOutlet var mUseLibraryInUserApplicationSupportPathCheckBox : EBSwitch? = nil
   @IBOutlet var mUserAndPasswordTextField : NSTextField? = nil
   @IBOutlet var mWarningMessageColorColorWell : EBColorWell? = nil
@@ -5492,17 +5491,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mUpDateLibraryMenuItemInCanariMenu' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUpdateSystemLibraryBox {
-      if !(outlet is NSBox) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mUpdateSystemLibraryBox' outlet is not an instance of 'NSBox'") ;
-      }
-    }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mUpdateSystemLibraryBox' outlet is nil") ;
     }
     if let outlet : Any = self.mUseLibraryInUserApplicationSupportPathCheckBox {
       if !(outlet is EBSwitch) {

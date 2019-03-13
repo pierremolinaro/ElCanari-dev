@@ -93,7 +93,7 @@ class DeviceDocumentationTableView : EBTableView {
     if let array = inSender?.draggingPasteboard.readObjects (forClasses: [NSURL.self]) as? [URL] {
       for sourceFileURL in array {
         if sourceFileURL.pathExtension == "pdf", let data = try? Data (contentsOf: sourceFileURL) {
-          // NSLog ("sourceFileURL \(sourceFileURL), size \(data.count) bytes") ;
+          // NSLog ("sourceFileURL \(sourceFileURL), size \(data.count.stringWithSeparator) bytes") ;
           let doc = DeviceDocumentation (self.mDocument?.ebUndoManager)
           doc.mFileData = data
           doc.mFileName = sourceFileURL.path.lastPathComponent.deletingPathExtension

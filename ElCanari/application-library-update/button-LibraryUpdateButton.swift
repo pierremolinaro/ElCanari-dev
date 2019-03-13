@@ -31,7 +31,7 @@ class LibraryUpdateButton : NSButton {
     self.mRegularTitle = self.title
     self.mEventMonitor = NSEvent.addLocalMonitorForEvents (matching: .flagsChanged) { inEvent in
       let optionKey = inEvent.modifierFlags.contains (.option)
-      self.title = optionKey ? self.mRegularTitle : self.mOptionTitle
+      self.title = optionKey ? self.mOptionTitle : self.mRegularTitle
       return inEvent
     }
   }

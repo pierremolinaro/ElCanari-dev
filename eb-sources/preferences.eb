@@ -331,9 +331,6 @@ prefs {
   property Bool usesUserLibrary default yes ;
   outlet EBSwitch mUseLibraryInUserApplicationSupportPathCheckBox $value self.usesUserLibrary ;
 
-#---
-  outlet NSBox mUpdateSystemLibraryBox ;
-
 #--- Update System Library path at startup
   property Bool checkForSystemLibraryAtStartUp default yes ;
   outlet EBSwitch mCheckForSystemLibraryAtStartUpSwitch $value self.checkForSystemLibraryAtStartUp ;

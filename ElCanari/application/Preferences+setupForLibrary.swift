@@ -29,7 +29,7 @@ extension Preferences {
     gPreferences = self
     self.updateForLibrary ()
   //--- Set update box title
-    mUpdateSystemLibraryBox?.title = "Updating " + systemLibraryPath ()
+  //  mUpdateSystemLibraryBox?.title = "Updating " + systemLibraryPath ()
   //--- Use an FSEvent for tracking Canari System Library changes
     let pathsToWatch : [String] = [systemLibraryPath (), userLibraryPath ()]
   //--- Latency
