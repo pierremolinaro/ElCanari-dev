@@ -17,7 +17,11 @@ func transient_DeviceRoot_issues (
        _ self_inconsistentPackagePadNameSetsMessage : String,
        _ self_inconsistentSymbolNameSetMessage : String,
        _ self_unconnectedPins : UnconnectedSymbolPinsInDevice,
-       _ self_unconnectedPads : StringArray
+       _ self_unconnectedPads : StringArray,
+       _ self_mPackages_mVersion : [PackageInDevice_mVersion],
+       _ self_mPackages_mName : [PackageInDevice_mName],
+       _ self_mSymbolTypes_mVersion : [SymbolTypeInDevice_mVersion],
+       _ self_mSymbolTypes_mTypeName : [SymbolTypeInDevice_mTypeName]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
        var issues = [CanariIssue] ()
@@ -57,6 +61,25 @@ func transient_DeviceRoot_issues (
        }else if self_unconnectedPads.count > 1 {
          issues.append (CanariIssue (kind: .warning, message: "\(self_unconnectedPads.count) unassigned pads", path: NSBezierPath ()))
        }
+    //--- Check package version
+       var idx = 0
+       while idx < self_mPackages_mVersion.count {
+         if self_mPackages_mVersion [idx].mVersion == 0 {
+           let typeName = self_mPackages_mName [idx].mName
+           issues.append (CanariIssue (kind: .warning, message: "Package \(typeName) requires update.", path: NSBezierPath ()))
+         }
+         idx += 1
+       }
+   //--- Check symbol version
+       idx = 0
+       while idx < self_mSymbolTypes_mVersion.count {
+         if self_mSymbolTypes_mVersion [idx].mVersion == 0 {
+           let typeName = self_mSymbolTypes_mTypeName [idx].mTypeName
+           issues.append (CanariIssue (kind: .warning, message: "Symbol \(typeName) requires update.", path: NSBezierPath ()))
+         }
+         idx += 1
+       }
+    //---
        return issues
 //--- END OF USER ZONE 2
 }

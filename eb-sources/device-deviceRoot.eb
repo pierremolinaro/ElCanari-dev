@@ -26,7 +26,11 @@ graphic entity DeviceRoot {
     self.inconsistentPackagePadNameSetsMessage,
     self.inconsistentSymbolNameSetMessage,
     self.unconnectedPins,
-    self.unconnectedPads
+    self.unconnectedPads,
+    self.mPackages.all.mVersion,
+    self.mPackages.all.mName,
+    self.mSymbolTypes.all.mVersion,
+    self.mSymbolTypes.all.mTypeName
   ;
 
   transient String inconsistentPackagePadNameSetsMessage dependsFrom self.mPackages.all.padNameSet, self.mPackages.all.mName ;

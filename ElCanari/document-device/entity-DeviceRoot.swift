@@ -1086,15 +1086,19 @@ class DeviceRoot : EBGraphicManagedObject,
         kind &= unwSelf.inconsistentSymbolNameSetMessage_property_selection.kind ()
         kind &= unwSelf.unconnectedPins_property_selection.kind ()
         kind &= unwSelf.unconnectedPads_property_selection.kind ()
+        kind &= unwSelf.mPackages_property_selection.kind ()
+        kind &= unwSelf.mPackages_property_selection.kind ()
+        kind &= unwSelf.mSymbolTypes_property_selection.kind ()
+        kind &= unwSelf.mSymbolTypes_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5)) :
-            return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5))
+          switch (unwSelf.mTitle_property_selection, unwSelf.mPrefix_property_selection, unwSelf.inconsistentPackagePadNameSetsMessage_property_selection, unwSelf.inconsistentSymbolNameSetMessage_property_selection, unwSelf.unconnectedPins_property_selection, unwSelf.unconnectedPads_property_selection, unwSelf.mPackages_property_selection, unwSelf.mPackages_property_selection, unwSelf.mSymbolTypes_property_selection, unwSelf.mSymbolTypes_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
+            return .single (transient_DeviceRoot_issues (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
           default :
             return .empty
           }
@@ -1109,6 +1113,10 @@ class DeviceRoot : EBGraphicManagedObject,
     self.inconsistentSymbolNameSetMessage_property.addEBObserver (self.issues_property)
     self.unconnectedPins_property.addEBObserver (self.issues_property)
     self.unconnectedPads_property.addEBObserver (self.issues_property)
+    self.mPackages_property.addEBObserverOf_mVersion (self.issues_property)
+    self.mPackages_property.addEBObserverOf_mName (self.issues_property)
+    self.mSymbolTypes_property.addEBObserverOf_mVersion (self.issues_property)
+    self.mSymbolTypes_property.addEBObserverOf_mTypeName (self.issues_property)
   //--- Install undoers and opposite setter for relationships
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
@@ -1160,6 +1168,10 @@ class DeviceRoot : EBGraphicManagedObject,
     self.inconsistentSymbolNameSetMessage_property.removeEBObserver (self.issues_property)
     self.unconnectedPins_property.removeEBObserver (self.issues_property)
     self.unconnectedPads_property.removeEBObserver (self.issues_property)
+    self.mPackages_property.removeEBObserverOf_mVersion (self.issues_property)
+    self.mPackages_property.removeEBObserverOf_mName (self.issues_property)
+    self.mSymbolTypes_property.removeEBObserverOf_mVersion (self.issues_property)
+    self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.issues_property)
   }
 
   //····················································································································
