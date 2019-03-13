@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.5.0"
+VERSION_CANARI = "0.6.0"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -64,7 +64,6 @@ def runHiddenCommand (cmd) :
       print ""
       childProcess.wait ()
       if childProcess.returncode != 0 :
-        # print (BOLD_RED + "*** Error " + str (childProcess.returncode) + " ***" + ENDC)
         sys.exit (childProcess.returncode)
       return result
 
@@ -115,28 +114,19 @@ plistDictionary = plistlib.readPlist (plistFileFullPath)
 buildString = plistDictionary ['PMBuildString']
 # print "Build String '" + buildString + "'"
 #--- Mettre à jour les numéros de version dans la plist
-#plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", repository " + numeroRevisionSVN + ", build " + buildString
 plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", build " + buildString
 plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
 plistlib.writePlist (plistDictionary, plistFileFullPath)
-#-------------------- Copier le fichier change.html
-#runCommand (["cp", TEMP_DIR + "/canari/change.html", TEMP_DIR + "/change.html"])
 #-------------------- Compiler le projet Xcode
 runCommand (["rm", "-fr", "build"])
 runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
              "-target", "ElCanari-Release",
              "-configuration", "Release"
             ])
-#-------------------- Créer l'archive BZ2 de Canari
-runCommand (["cp", "-r", "build/Release/ElCanari.app", "."])
-runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
-runCommand (["bzip2", "-9", "ElCanari.app.tar"])
-BZ2file = TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
-                                  BZ2file,
-                                  "distribution-el-canari/dsa_priv.pem"])
+                                   BZ2file,
+                                   "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
 dict = dictionaryFromJsonFile (TEMP_DIR + "/ElCanari-dev-master/change.json")
@@ -145,20 +135,14 @@ dict ["build"] = buildString
 f = open (TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
-#-------------------- Vérifier si l'application est signée
-# runCommand (["codesign", "-s", "351CAC09BC3DB2515349D8081B30F1836D1A1969", "-f", "ElCanari.app"])
-# runCommand (["xattr", "-r", "-d", "com.apple.quarantine", "ElCanari.app"])
-# runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
+runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", "ElCanari-" + VERSION_CANARI + ".pkg"])
 nomArchive = "ElCanari-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])
-runCommand (["mv", "build/Release/ElCanari.app", nomArchive + "/ElCanari.app"])
-runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
+runCommand (["cp", "-r", "ElCanari-" + VERSION_CANARI + ".pkg", nomArchive])
 runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
-# while os.path.isdir (TEMP_DIR + "/COCOA-CANARI"):
-#   shutil.rmtree (TEMP_DIR + "/COCOA-CANARI")
 while os.path.isdir (TEMP_DIR + "/ElCanari-dev-master"):
   shutil.rmtree (TEMP_DIR + "/ElCanari-dev-master")
 

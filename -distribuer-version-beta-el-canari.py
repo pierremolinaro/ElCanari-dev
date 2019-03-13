@@ -127,33 +127,13 @@ runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
              "-target", "ElCanari-Debug",
              "-configuration", "Debug"
             ])
-#-------------------- Créer l'archive BZ2 de Canari
-# runCommand (["cp", "-r", "build/Debug/ElCanari-Debug.app", "."])
-# runCommand (["tar", "-cf", "ElCanari-Debug.app.tar", "ElCanari-Debug.app"])
-# runCommand (["bzip2", "-9", "ElCanari-Debug.app.tar"])
-# BZ2file = TEMP_DIR + "/ElCanari-Debug.app." + VERSION_CANARI + ".tar.bz2"
-# runCommand (["mv", "ElCanari-Debug.app.tar.bz2", BZ2file])
-# #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-# sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
-#                                   BZ2file,
-#                                   "distribution-el-canari/dsa_priv.pem"])
-# sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
-# #-------------------- Ajouter les meta infos
-# dict = dictionaryFromJsonFile (TEMP_DIR + "/ElCanari-dev-master/change.json")
-# dict ["archive-sum"] = sommeControle
-# dict ["build"] = buildString
-# f = open (TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
-# f.write (json.dumps (dict, indent=2))
-# f.close ()
-# #-------------------- Vérifier si l'application est signée
-# # runCommand (["codesign", "-s", "351CAC09BC3DB2515349D8081B30F1836D1A1969", "-f", "ElCanari.app"])
-# # runCommand (["xattr", "-r", "-d", "com.apple.quarantine", "ElCanari.app"])
-# runCommand (["spctl", "-a", "-vv", "ElCanari.app"])
 #-------------------- Créer l'archive de Cocoa canari
+runCommand (["productbuild", "--component", "build/Debug/ElCanari-Debug.app", "/Applications", "ElCanari-Beta.pkg"])
 nomArchive = "ElCanari-Beta-" + VERSION_CANARI
 runCommand (["mkdir", nomArchive])
-runCommand (["mv", "build/Debug/ElCanari-Debug.app", nomArchive + "/ElCanari-Beta.app"])
-runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
+runCommand (["cp", "-r", "ElCanari-Beta.pkg", nomArchive])
+#runCommand (["mv", "build/Debug/ElCanari-Debug.app", nomArchive + "/ElCanari-Beta.app"])
+#runCommand (["ln", "-s", "/Applications", nomArchive + "/Applications"])
 runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
