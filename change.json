@@ -1,8 +1,7 @@
 {
   "NOTE" : [],
-  "BUGFIX" : [
-  ],
-  "CHANGE" : [""],
-  "NEW" : ["Added Device document"]
+  "BUGFIX" : []],
+  "CHANGE" : ["New distribution via .pkg"],
+  "NEW" : []
 }
 
