@@ -2181,9 +2181,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ncz-Dr-96W">
-                    <rect key="frame" x="33" y="44" width="72" height="14"/>
+                    <rect key="frame" x="33" y="44" width="181" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="All Libraries" id="FG7-iB-4ya">
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="System Library + User Libraries" id="FG7-iB-4ya">
                         <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -3146,6 +3146,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="actionOpenAllDevicesInDirectory:" target="212" id="VIA-1u-8in"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="GvH-8r-T0z">
                         <rect key="frame" x="32" y="122" width="155" height="19"/>
