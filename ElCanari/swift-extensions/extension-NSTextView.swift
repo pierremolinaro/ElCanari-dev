@@ -42,9 +42,21 @@ extension NSTextView {
 
   //····················································································································
 
-  func appendMessageString (_ inString : String, color:NSColor) {
+  func appendMessageString (_ inString : String, color : NSColor) {
     let attributes : [NSAttributedString.Key : NSObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
+      NSAttributedString.Key.foregroundColor : color
+    ]
+    let str = NSAttributedString (string:inString, attributes: attributes)
+    self.appendAttributedString (str)
+  }
+
+  //····················································································································
+
+  func appendCodeString (_ inString : String, color : NSColor) {
+    let font = NSFont.userFixedPitchFont (ofSize: NSFont.smallSystemFontSize) ?? NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+    let attributes : [NSAttributedString.Key : NSObject] = [
+      NSAttributedString.Key.font : font,
       NSAttributedString.Key.foregroundColor : color
     ]
     let str = NSAttributedString (string:inString, attributes: attributes)

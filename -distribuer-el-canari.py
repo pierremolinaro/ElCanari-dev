@@ -91,25 +91,25 @@ def dictionaryFromJsonFile (file) :
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
 #-------------------- Supprimer une distribution existante
-TEMP_DIR = scriptDir + "/../DISTRIBUTION_EL_CANARI_" + VERSION_CANARI
+DISTRIBUTION_DIR = scriptDir + "/../DISTRIBUTION_EL_CANARI_" + VERSION_CANARI
 os.chdir (scriptDir + "/..")
-while os.path.isdir (TEMP_DIR):
-  shutil.rmtree (TEMP_DIR)
+while os.path.isdir (DISTRIBUTION_DIR):
+  shutil.rmtree (DISTRIBUTION_DIR)
 #-------------------- Creer le repertoire contenant la distribution
-os.mkdir (TEMP_DIR)
-os.chdir (TEMP_DIR)
+os.mkdir (DISTRIBUTION_DIR)
+os.chdir (DISTRIBUTION_DIR)
 #-------------------- Importer canari
 runCommand (["rm", "-f", "archive.zip"])
 runCommand (["rm", "-fr", "ElCanari-dev-master"])
 runCommand (["curl", "-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
 runCommand (["unzip", "archive.zip"])
 runCommand (["rm", "archive.zip"])
-os.chdir (TEMP_DIR + "/ElCanari-dev-master")
+os.chdir (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 #-------------------- Obtenir l'année
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
 #-------------------- Obtenir le numéro de build
-plistFileFullPath = TEMP_DIR + "/ElCanari-dev-master/ElCanari/application/Info-Release.plist"
+plistFileFullPath = DISTRIBUTION_DIR + "/ElCanari-dev-master/ElCanari/application/Info-Release.plist"
 plistDictionary = plistlib.readPlist (plistFileFullPath)
 buildString = plistDictionary ['PMBuildString']
 # print "Build String '" + buildString + "'"
@@ -126,16 +126,17 @@ runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
 #-------------------- Construction package
 packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
 runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", packageFile])
+runCommand (["cp", packageFile, DISTRIBUTION_DIR])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
 sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
                                    packageFile,
                                    "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
-dict = dictionaryFromJsonFile (TEMP_DIR + "/ElCanari-dev-master/change.json")
+dict = dictionaryFromJsonFile (DISTRIBUTION_DIR + "/ElCanari-dev-master/change.json")
 dict ["archive-sum"] = sommeControle
 dict ["build"] = buildString
-f = open (TEMP_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
+f = open (DISTRIBUTION_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
 #-------------------- Créer l'archive de Cocoa canari
@@ -145,8 +146,8 @@ runCommand (["cp", packageFile, nomArchive])
 runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
 runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
-os.chdir (TEMP_DIR)
-while os.path.isdir (TEMP_DIR + "/ElCanari-dev-master"):
-  shutil.rmtree (TEMP_DIR + "/ElCanari-dev-master")
+os.chdir (DISTRIBUTION_DIR)
+while os.path.isdir (DISTRIBUTION_DIR + "/ElCanari-dev-master"):
+  shutil.rmtree (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

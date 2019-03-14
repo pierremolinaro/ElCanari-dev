@@ -19,7 +19,7 @@ class LibraryUpdateButton : NSButton {
   //····················································································································
 
   private var mRegularTitle = "" // Set by awakeFromNib
-  private var mOptionTitle = "Update Library to Revision…"
+  private var mOptionTitle = "Update System Library to Revision…"
   private var mEventMonitor : Any? = nil // For tracking option key change
 
   //····················································································································

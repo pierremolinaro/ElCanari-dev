@@ -2109,17 +2109,6 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <button focusRingType="none" verticalHuggingPriority="750" id="5761" customClass="LibraryUpdateButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="54" y="278" width="185" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="roundRect" title="Check For Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" focusRingType="none" inset="2" id="5762">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
-                        <connections>
-                            <action selector="updateLibrary:" target="212" id="BiT-pS-hnb"/>
-                        </connections>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="z0R-Xy-yGB" customClass="CanariDateObserverField" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="279" y="254" width="190" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -2155,9 +2144,9 @@
                     </popUpButtonCell>
                 </popUpButton>
                 <button id="6165" customClass="EBSwitch">
-                    <rect key="frame" x="244" y="278" width="119" height="18"/>
+                    <rect key="frame" x="280" y="278" width="83" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Check At Start-Up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="6166">
+                    <buttonCell key="cell" type="check" title="At Start-Up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="6166">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
@@ -2177,7 +2166,7 @@
                     <rect key="frame" x="33" y="327" width="89" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="System Library" id="vv2-7K-aGq">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -2186,16 +2175,16 @@
                     <rect key="frame" x="32" y="218" width="83" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="User Libraries" id="GJ4-XX-Qgi">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ncz-Dr-96W">
-                    <rect key="frame" x="33" y="44" width="104" height="14"/>
+                    <rect key="frame" x="33" y="44" width="72" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Union of Libraries" id="FG7-iB-4ya">
-                        <font key="font" metaFont="systemBold" size="11"/>
+                    <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="All Libraries" id="FG7-iB-4ya">
+                        <font key="font" metaFont="smallSystemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -2210,6 +2199,17 @@
                     <connections>
                         <action selector="makeKeyAndOrderFront:" target="752" id="6003"/>
                     </connections>
+                </button>
+                <button focusRingType="none" verticalHuggingPriority="750" id="5761" customClass="LibraryUpdateButton" customModule="ElCanari" customModuleProvider="target">
+                    <rect key="frame" x="55" y="278" width="218" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Check for System Library Updates…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" focusRingType="none" inset="2" id="5762">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <connections>
+                            <action selector="updateLibrary:" target="212" id="BiT-pS-hnb"/>
+                        </connections>
+                    </buttonCell>
                 </button>
             </subviews>
             <point key="canvasLocation" x="-134.5" y="-267.5"/>

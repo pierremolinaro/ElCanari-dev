@@ -21,7 +21,8 @@ func transient_PackageDimension_objectDisplay (
        _ self_distanceInCanariUnit : Int,      
        _ self_distanceUnit : Int,              
        _ prefs_dimensionFont : NSFont,         
-       _ prefs_packageBackgroundColor : NSColor
+       _ prefs_packageBackgroundColor : NSColor,
+       _ prefs_packageDimensionColor : NSColor
 ) -> EBShape {
 //--- START OF USER ZONE 2
   let arrowSize : CGFloat = 1.5
@@ -76,13 +77,13 @@ func transient_PackageDimension_objectDisplay (
                controlPoint2: CGPoint (x: arrowSize, y: 0.0))
   path2.close ()
   path2.transform (using: tr)
-  shape.append (EBFilledBezierPathShape ([path1, path2], NSColor.orange))
+  shape.append (EBFilledBezierPathShape ([path1, path2], prefs_packageDimensionColor))
 //------- Add dimension text
   let dimensionText = stringFrom (valueInCanariUnit: self_distanceInCanariUnit, displayUnit: self_distanceUnit)
   let p = CanariPoint (x: self_xDimension + (self_x1 + self_x2) / 2, y: self_yDimension + (self_y1 + self_y2) / 2).cocoaPoint ()
   let textAttributes : [NSAttributedString.Key : Any] = [
     NSAttributedString.Key.font : prefs_dimensionFont,
-    NSAttributedString.Key.foregroundColor : NSColor.black,
+    NSAttributedString.Key.foregroundColor : prefs_packageDimensionColor,
     NSAttributedString.Key.backgroundColor : prefs_packageBackgroundColor
   ]
   shape.append (EBTextShape (dimensionText, p, textAttributes, .center, .center))

@@ -524,15 +524,16 @@ class PackageDimension : PackageObject,
         kind &= unwSelf.distanceUnit_property_selection.kind ()
         kind &= g_Preferences!.dimensionFont_property_selection.kind ()
         kind &= g_Preferences!.packageBackgroundColor_property_selection.kind ()
+        kind &= g_Preferences!.packageDimensionColor_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, g_Preferences!.dimensionFont_property_selection, g_Preferences!.packageBackgroundColor_property_selection) {
-          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9)) :
-            return .single (transient_PackageDimension_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9))
+          switch (unwSelf.x1_property_selection, unwSelf.y1_property_selection, unwSelf.x2_property_selection, unwSelf.y2_property_selection, unwSelf.xDimension_property_selection, unwSelf.yDimension_property_selection, unwSelf.distanceInCanariUnit_property_selection, unwSelf.distanceUnit_property_selection, g_Preferences!.dimensionFont_property_selection, g_Preferences!.packageBackgroundColor_property_selection, g_Preferences!.packageDimensionColor_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4), .single (let v5), .single (let v6), .single (let v7), .single (let v8), .single (let v9), .single (let v10)) :
+            return .single (transient_PackageDimension_objectDisplay (v0, v1, v2, v3, v4, v5, v6, v7, v8, v9, v10))
           default :
             return .empty
           }
@@ -551,6 +552,7 @@ class PackageDimension : PackageObject,
     self.distanceUnit_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.dimensionFont_property.addEBObserver (self.objectDisplay_property)
     g_Preferences?.packageBackgroundColor_property.addEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDimensionColor_property.addEBObserver (self.objectDisplay_property)
   //--- Atomic property: selectionDisplay
     self.selectionDisplay_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -653,6 +655,7 @@ class PackageDimension : PackageObject,
     self.distanceUnit_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.dimensionFont_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.packageBackgroundColor_property.removeEBObserver (self.objectDisplay_property)
+    g_Preferences?.packageDimensionColor_property.removeEBObserver (self.objectDisplay_property)
     self.x1_property.removeEBObserver (self.selectionDisplay_property)
     self.y1_property.removeEBObserver (self.selectionDisplay_property)
     self.x2_property.removeEBObserver (self.selectionDisplay_property)
