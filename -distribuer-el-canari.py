@@ -128,7 +128,7 @@ packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
 runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", packageFile])
 runCommand (["cp", packageFile, DISTRIBUTION_DIR])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-sommeControle = runHiddenCommand (["distribution-el-canari/sign_update.sh",
+sommeControle = runHiddenCommand (["distribution-el-canari/sign_update",
                                    packageFile,
                                    "distribution-el-canari/dsa_priv.pem"])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
