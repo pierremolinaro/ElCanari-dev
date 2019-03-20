@@ -9,6 +9,7 @@ from xml.dom import minidom
 
 #-------------------- Version ElCanari
 VERSION_CANARI = "0.6.0"
+BUILD_KIND = "Release"
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -109,7 +110,7 @@ os.chdir (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
 #-------------------- Obtenir le numéro de build
-plistFileFullPath = DISTRIBUTION_DIR + "/ElCanari-dev-master/ElCanari/application/Info-Release.plist"
+plistFileFullPath = DISTRIBUTION_DIR + "/ElCanari-dev-master/ElCanari/application/Info-" + BUILD_KIND + ".plist"
 plistDictionary = plistlib.readPlist (plistFileFullPath)
 buildString = plistDictionary ['PMBuildString']
 # print "Build String '" + buildString + "'"
@@ -118,19 +119,21 @@ plistDictionary ['CFBundleVersion'] = VERSION_CANARI + ", build " + buildString
 plistDictionary ['CFBundleShortVersionString'] = VERSION_CANARI
 plistlib.writePlist (plistDictionary, plistFileFullPath)
 #-------------------- Compiler le projet Xcode
+#let debutCompilation = Date ()
 runCommand (["rm", "-fr", "build"])
 runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-             "-target", "ElCanari-Release",
-             "-configuration", "Release"
+             "-target", "ElCanari-" + BUILD_KIND,
+             "-configuration", BUILD_KIND
             ])
+#let finCompilation = Date ()
+if BUILD_KIND == "Debug" :
+  runCommand (["cp", "-r", "build/" + BUILD_KIND + "/ElCanari-" + BUILD_KIND + ".app", "build/" + BUILD_KIND + "/ElCanari.app"])
 #-------------------- Construction package
 packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
-runCommand (["productbuild", "--component", "build/Release/ElCanari.app", "/Applications", packageFile])
+runCommand (["productbuild", "--component", "build/" + BUILD_KIND + "/ElCanari.app", "/Applications", packageFile])
 runCommand (["cp", packageFile, DISTRIBUTION_DIR])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-sommeControle = runHiddenCommand (["distribution-el-canari/sign_update",
-                                   packageFile,
-                                   "distribution-el-canari/dsa_priv.pem"])
+sommeControle = runHiddenCommand (["./distribution-el-canari/sign_update", packageFile])
 sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
 #-------------------- Ajouter les meta infos
 dict = dictionaryFromJsonFile (DISTRIBUTION_DIR + "/ElCanari-dev-master/change.json")
@@ -149,5 +152,7 @@ runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 os.chdir (DISTRIBUTION_DIR)
 while os.path.isdir (DISTRIBUTION_DIR + "/ElCanari-dev-master"):
   shutil.rmtree (DISTRIBUTION_DIR + "/ElCanari-dev-master")
+#---
+#print ("Durée de compilation : \(finCompilation - debutCompilation)")
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
