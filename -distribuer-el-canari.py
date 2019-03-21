@@ -133,10 +133,17 @@ packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
 runCommand (["productbuild", "--component", "build/" + BUILD_KIND + "/ElCanari.app", "/Applications", packageFile])
 runCommand (["cp", packageFile, DISTRIBUTION_DIR])
 #-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-sommeControle = runHiddenCommand (["./distribution-el-canari/sign_update", packageFile])
-sommeControle = sommeControle [0:- 1] # Remove training 'end-of-line'
+cleArchive = runHiddenCommand (["./distribution-el-canari/sign_update", packageFile])
+cleArchive = cleArchive [0:-2] # Remove training 'end-of-line', and training ""
 #-------------------- Ajouter les meta infos
 dict = dictionaryFromJsonFile (DISTRIBUTION_DIR + "/ElCanari-dev-master/change.json")
+x = cleArchive.rpartition('" length="')
+length = x [2]
+y = x[0].rpartition('sparkle:edSignature="')
+sommeControle = y [2]
+print ("cleArchive: " + cleArchive)
+print ("sommeControle: " + sommeControle)
+print ("length: " + length)
 dict ["archive-sum"] = sommeControle
 dict ["build"] = buildString
 f = open (DISTRIBUTION_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")

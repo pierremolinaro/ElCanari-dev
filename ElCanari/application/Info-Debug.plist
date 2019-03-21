@@ -129,7 +129,7 @@
 	<string>2L61</string>
 	<key>SUFeedURL</key>
 	<string>https://raw.githubusercontent.com/pierremolinaro/ElCanari-distribution/master/rss.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
+	<key>SUPublicEDKey</key>
+	<string>sPAH6SHKXy7urzL1MEmQrY+fgETb6YSh70iV7UuYr9A=</string>
 </dict>
 </plist>
