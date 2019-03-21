@@ -9,7 +9,7 @@ from xml.dom import minidom
 
 #-------------------- Version ElCanari
 VERSION_CANARI = "0.6.0"
-BUILD_KIND = "Release"
+BUILD_KIND =  "Debug" # "Release" #
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -128,12 +128,26 @@ runCommand (["/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
 #let finCompilation = Date ()
 if BUILD_KIND == "Debug" :
   runCommand (["cp", "-r", "build/" + BUILD_KIND + "/ElCanari-" + BUILD_KIND + ".app", "build/" + BUILD_KIND + "/ElCanari.app"])
+#-------------------- Créer l'archive BZ2 de Canari
+# runCommand (["cp", "-r", "build/" + BUILD_KIND + "/ElCanari.app", "."])
+# runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
+# runCommand (["bzip2", "-9", "ElCanari.app.tar"])
+# BZ2file = DISTRIBUTION_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
+# runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Construction package
 packageFile = "ElCanari-" + VERSION_CANARI + ".pkg"
 runCommand (["productbuild", "--component", "build/" + BUILD_KIND + "/ElCanari.app", "/Applications", packageFile])
 runCommand (["cp", packageFile, DISTRIBUTION_DIR])
-#-------------------- Calculer la clé de la somme de contrôle de l'archive pour Sparkle
-cleArchive = runHiddenCommand (["./distribution-el-canari/sign_update", packageFile])
+#-------------------- Créer l'archive de Cocoa canari
+nomArchive = "ElCanari-" + VERSION_CANARI
+runCommand (["mkdir", nomArchive])
+runCommand (["cp", packageFile, nomArchive])
+runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
+runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
+#-------------------- Supprimer le fichier .pkg
+runCommand (["rm", DISTRIBUTION_DIR + "/" + packageFile])
+#-------------------- Calculer la clé de la somme de contrôle de l'archive DMG pour Sparkle
+cleArchive = runHiddenCommand (["./distribution-el-canari/sign_update", "../" + nomArchive + ".dmg"])
 cleArchive = cleArchive [0:-2] # Remove training 'end-of-line', and training ""
 #-------------------- Ajouter les meta infos
 dict = dictionaryFromJsonFile (DISTRIBUTION_DIR + "/ElCanari-dev-master/change.json")
@@ -149,12 +163,6 @@ dict ["build"] = buildString
 f = open (DISTRIBUTION_DIR + "/ElCanari.app." + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
-#-------------------- Créer l'archive de Cocoa canari
-nomArchive = "ElCanari-" + VERSION_CANARI
-runCommand (["mkdir", nomArchive])
-runCommand (["cp", packageFile, nomArchive])
-runCommand (["hdiutil", "create", "-srcfolder", nomArchive, nomArchive + ".dmg", "-fs", "HFS+"])
-runCommand (["mv", nomArchive + ".dmg", "../" + nomArchive + ".dmg"])
 #--- Supprimer les répertoires intermédiaires
 os.chdir (DISTRIBUTION_DIR)
 while os.path.isdir (DISTRIBUTION_DIR + "/ElCanari-dev-master"):
