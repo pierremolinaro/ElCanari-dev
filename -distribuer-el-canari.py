@@ -8,8 +8,12 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.6.1"
-BUILD_KIND =  "Release" # "Debug" #
+VERSION_CANARI = "0.6.0"
+NOTES = []
+BUGFIXES = []
+CHANGES = ["New distribution via .pkg"]
+NEWS = []
+BUILD_KIND =  "Debug" # "Debug" #
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #   FOR PRINTING IN COLOR                                                                                              *
@@ -131,12 +135,6 @@ if BUILD_KIND == "Debug" :
 #   runCommand (["cp", "-r", "build/" + BUILD_KIND + "/ElCanari-" + BUILD_KIND + ".app", "build/" + BUILD_KIND + "/ElCanari.app"])
 else:
   PRODUCT_NAME = "ElCanari"
-#-------------------- Créer l'archive BZ2 de Canari
-# runCommand (["cp", "-r", "build/" + BUILD_KIND + "/ElCanari.app", "."])
-# runCommand (["tar", "-cf", "ElCanari.app.tar", "ElCanari.app"])
-# runCommand (["bzip2", "-9", "ElCanari.app.tar"])
-# BZ2file = DISTRIBUTION_DIR + "/ElCanari.app." + VERSION_CANARI + ".tar.bz2"
-# runCommand (["mv", "ElCanari.app.tar.bz2", BZ2file])
 #-------------------- Construction package
 packageFile = PRODUCT_NAME + "-" + VERSION_CANARI + ".pkg"
 runCommand (["productbuild", "--component", "build/" + BUILD_KIND + "/" + PRODUCT_NAME + ".app", "/Applications", packageFile])
@@ -153,7 +151,7 @@ runCommand (["rm", DISTRIBUTION_DIR + "/" + packageFile])
 cleArchive = runHiddenCommand (["./distribution-el-canari/sign_update", "../" + nomArchive + ".dmg"])
 cleArchive = cleArchive [0:-2] # Remove training 'end-of-line', and training '"'
 #-------------------- Ajouter les meta infos
-dict = dictionaryFromJsonFile (DISTRIBUTION_DIR + "/ElCanari-dev-master/change.json")
+dict = {}
 x = cleArchive.rpartition('" length="')
 length = x [2]
 y = x[0].rpartition('sparkle:edSignature="')
@@ -161,9 +159,14 @@ sommeControle = y [2]
 print ("cleArchive: " + cleArchive)
 print ("sommeControle: " + sommeControle)
 print ("length: " + length)
-dict ["archive-sum"] = sommeControle
-dict ["archive-length"] = str (length)
+dict ["edSignature"] = sommeControle
+dict ["length"] = str (length)
 dict ["build"] = buildString
+dict ["notes"] = NOTES
+dict ["bugfixes"] = BUGFIXES
+dict ["changes"] = CHANGES
+dict ["news"] = NEWS
+dict ["date"] = datetime.datetime.now ().isoformat ()
 f = open (DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_CANARI + ".json", "w")
 f.write (json.dumps (dict, indent=2))
 f.close ()
