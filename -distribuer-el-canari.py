@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
 #-------------------- Version ElCanari
-VERSION_CANARI = "0.6.0"
+VERSION_CANARI = "0.6.1"
 BUILD_KIND =  "Release" # "Debug" #
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
