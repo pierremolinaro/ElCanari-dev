@@ -67,8 +67,9 @@ document FontDocument root FontRoot {
   outlet EBIntField mFontNominalSizeTextField $value root.nominalSize {sendContinously:no, autoFormatter:no} ;
  
 #--- Current Character
-  outlet CanariFontCharacterSelectButton mFontCharacterSelectButton
+  outlet FontCharacterSelectButton mFontCharacterSelectButton
     $codePoint prefs.currentCharacterCodePoint
+    $characters root.definedCharacters
   ;
 
   outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
@@ -76,6 +77,14 @@ document FontDocument root FontRoot {
   outlet EBStepper currentCharacterStepper
     $value prefs.currentCharacterCodePoint {sendContinously:yes}
   ;
+  
+  transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;
+  
+  outlet EBButton mDeleteCurrentCharacterButton
+    $run self.deleteCurrentCharacterAction
+    $enabled self.canDeleteCurrentCharacter
+  ;
+  action deleteCurrentCharacterAction ;
     
   outlet EBButton mAddSegmentButton $run self.addSegmentAction ;
   action addSegmentAction ;

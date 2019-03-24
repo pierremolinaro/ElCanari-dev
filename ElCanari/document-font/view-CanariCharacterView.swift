@@ -253,9 +253,9 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //  advance binding
   //····················································································································
 
-  private var mAdvanceController : Controller_CanariCharacterView_advance?
+  private var mAdvanceController : Controller_CanariCharacterView_advance? = nil
 
-  final func bind_advance (_ object:EBReadOnlyProperty_Int, file:String, line:Int) {
+  final func bind_advance (_ object : EBReadOnlyProperty_Int, file : String, line : Int) {
     mAdvanceController = Controller_CanariCharacterView_advance (object:object, outlet:self)
   }
 

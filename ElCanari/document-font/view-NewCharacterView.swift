@@ -73,7 +73,6 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
   func setImplementedCharacterSet (_ inSet : Set <Int>) {
     mImplementedCharacterSet = inSet
     self.setNeedsDisplay (self.visibleRect)
- //   self.needsDisplay = true
     mSelectedCharacter = nil
   }
 
@@ -141,9 +140,9 @@ class NewCharacterView : NSView, EBUserClassNameProtocol {
         if let selectedCharacter = mSelectedCharacter, selectedCharacter == code {
           NSColor.lightGray.setFill ()
           NSBezierPath.fill (rChar)
-        }else if mImplementedCharacterSet.contains (code) {
-          NSColor.yellow.setFill ()
-          NSBezierPath.fill (rChar)
+ //       }else if mImplementedCharacterSet.contains (code) {
+//          NSColor.yellow.setFill ()
+//          NSBezierPath.fill (rChar)
         }
         let title = String (format: "%C", code)
         let dict = [NSAttributedString.Key.foregroundColor : mImplementedCharacterSet.contains (code) ? NSColor.lightGray : NSColor.blue]

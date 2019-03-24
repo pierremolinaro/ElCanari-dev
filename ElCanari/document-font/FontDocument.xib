@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="CanariFontDocument">
+        <customObject id="-2" userLabel="File's Owner" customClass="CustomizedFontDocument">
             <connections>
                 <outlet property="advancementSlider" destination="1266" id="hcI-20-MdK"/>
                 <outlet property="advancementTextField" destination="1264" id="oFM-mM-5wh"/>
@@ -17,6 +17,7 @@
                 <outlet property="mAddCharacterButton" destination="Taw-Kc-Imy" id="rqR-7b-HiQ"/>
                 <outlet property="mAddSegmentButton" destination="1336" id="al7-fO-3bC"/>
                 <outlet property="mCurrentCharacterTextField" destination="yqI-ko-0Pe" id="WBx-uw-nKW"/>
+                <outlet property="mDeleteCurrentCharacterButton" destination="VxR-Mn-YGO" id="vmy-SF-JJp"/>
                 <outlet property="mFontCharacterSelectButton" destination="1357" id="kA8-J5-m7U"/>
                 <outlet property="mFontNominalSizeTextField" destination="29v-1g-72j" id="bgs-0f-2uc"/>
                 <outlet property="mFontPageView" destination="1057" id="aPd-3E-b8l"/>
@@ -274,7 +275,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" id="bia-Mb-mD3">
                         <rect key="frame" x="1" y="1" width="531" height="400"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="1097" customClass="EBTextView">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="400"/>
@@ -389,7 +390,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="1288">
-                    <rect key="frame" x="-2" y="401" width="254" height="14"/>
+                    <rect key="frame" x="-2" y="401" width="154" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Current Character" id="1289">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -406,7 +407,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="1357" customClass="CanariFontCharacterSelectButton" customModule="ElCanari" customModuleProvider="target">
+                <button id="1357" customClass="FontCharacterSelectButton" customModule="ElCanari" customModuleProvider="target">
                     <rect key="frame" x="1" y="375" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1358">
@@ -597,6 +598,14 @@
                     <rect key="frame" x="144" y="468" width="101" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="New Character…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="2Ep-nC-MhV">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                </button>
+                <button toolTip="Add Segment" verticalHuggingPriority="750" id="VxR-Mn-YGO" customClass="EBButton">
+                    <rect key="frame" x="158" y="399" width="92" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Delete" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="gWw-1g-evu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>

@@ -12,9 +12,31 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension FontDocument {
-  @objc func addSegmentAction (_ sender : NSObject?) {
+  @objc func deleteCurrentCharacterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    self.currentCharacterView?.appendSegment ()
+      //--- Search character
+        var possibleCurrentCharacterIndex : Int? = nil
+        if let codePoint = g_Preferences?.currentCharacterCodePoint {
+          var idx = 0
+          for character in self.rootObject.characters_property.propval {
+            if character.codePoint == codePoint {
+              possibleCurrentCharacterIndex = idx
+              break
+            }
+            idx += 1
+          }
+        }
+      //--- If found, delete it
+        if var currentCharacterIndex = possibleCurrentCharacterIndex {
+          // Swift.print ("currentCharacterIndex \(currentCharacterIndex)")
+          var charArray = self.rootObject.characters_property.propval
+          if currentCharacterIndex >= (charArray.count - 1) {
+            currentCharacterIndex = charArray.count - 2
+          }
+          charArray.remove (at: currentCharacterIndex)
+          self.rootObject.characters_property.setProp (charArray)
+          g_Preferences?.currentCharacterCodePoint = charArray [currentCharacterIndex].codePoint
+        }
 //--- END OF USER ZONE 2
   }
 }

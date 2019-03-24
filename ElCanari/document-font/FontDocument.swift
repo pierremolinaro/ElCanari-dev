@@ -43,6 +43,29 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: canDeleteCurrentCharacter
+  //····················································································································
+
+  var canDeleteCurrentCharacter_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canDeleteCurrentCharacter_property_selection : EBSelection <Bool> {
+    return self.canDeleteCurrentCharacter_property.prop
+  }
+
+  //····················································································································
+
+  var canDeleteCurrentCharacter : Bool? {
+    switch self.canDeleteCurrentCharacter_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -57,7 +80,8 @@ import Cocoa
   @IBOutlet var mAddCharacterButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
   @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
-  @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton?
+  @IBOutlet var mDeleteCurrentCharacterButton : EBButton?
+  @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton?
   @IBOutlet var mFontNominalSizeTextField : EBIntField?
   @IBOutlet var mFontPageView : CanariViewWithKeyView?
   @IBOutlet var mFontSampleStringView : CanariFontSampleStringView?
@@ -88,6 +112,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mDeleteCurrentCharacterButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -291,12 +316,27 @@ import Cocoa
         errorMessage: "the 'mCurrentCharacterTextField' outlet is nil"
       )
     }
-    if let outlet : Any = self.mFontCharacterSelectButton {
-      if !(outlet is CanariFontCharacterSelectButton) {
+    if let outlet : Any = self.mDeleteCurrentCharacterButton {
+      if !(outlet is EBButton) {
         presentErrorWindow (
           file: #file,
           line: #line,
-          errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'CanariFontCharacterSelectButton'"
+          errorMessage: "the 'mDeleteCurrentCharacterButton' outlet is not an instance of 'EBButton'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mDeleteCurrentCharacterButton' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mFontCharacterSelectButton {
+      if !(outlet is FontCharacterSelectButton) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'FontCharacterSelectButton'"
         )
       }
     }else{
@@ -685,6 +725,28 @@ import Cocoa
     self.mSelectedCharacterController.bind_model (self.rootObject.characters_property)
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.bind_selection (model: self.mSelectedCharacterController.selectedArray_property, file: #file, line: #line)
+  //--- Atomic property: canDeleteCurrentCharacter
+    self.canDeleteCurrentCharacter_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.definedCharacters_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.definedCharacters_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontDocument_canDeleteCurrentCharacter (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -697,6 +759,7 @@ import Cocoa
     self.transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
     self.mFontNominalSizeTextField?.bind_value (self.rootObject.nominalSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
+    self.mFontCharacterSelectButton?.bind_characters (self.rootObject.definedCharacters_property, file: #file, line: #line)
     self.mCurrentCharacterTextField?.bind_valueObserver (self.rootObject.currentCharacterCodePointString_property, file: #file, line: #line)
     self.currentCharacterStepper?.bind_value (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line, sendContinously:true)
     self.mShowGerberDrawingFlowCheckbox?.bind_value (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
@@ -716,9 +779,21 @@ import Cocoa
     self.currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
     self.commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return self.canDeleteCurrentCharacter_property_selection
+        },
+        outlet: self.mDeleteCurrentCharacterButton
+      )
+      self.canDeleteCurrentCharacter_property.addEBObserver (controller)
+      self.mController_mDeleteCurrentCharacterButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddCharacterButton?.target = self
     self.mAddCharacterButton?.action = #selector (FontDocument.addCharacterAction (_:))
+    self.mDeleteCurrentCharacterButton?.target = self
+    self.mDeleteCurrentCharacterButton?.action = #selector (FontDocument.deleteCurrentCharacterAction (_:))
     self.mAddSegmentButton?.target = self
     self.mAddSegmentButton?.action = #selector (FontDocument.addSegmentAction (_:))
     self.resetVersionAndSignatureButton?.target = self
@@ -752,6 +827,7 @@ import Cocoa
     self.transparencySlider?.unbind_doubleValue ()
     self.mFontNominalSizeTextField?.unbind_value ()
     self.mFontCharacterSelectButton?.unbind_codePoint ()
+    self.mFontCharacterSelectButton?.unbind_characters ()
     self.mCurrentCharacterTextField?.unbind_valueObserver ()
     self.currentCharacterStepper?.unbind_value ()
     self.mShowGerberDrawingFlowCheckbox?.unbind_value ()
@@ -771,13 +847,17 @@ import Cocoa
     self.currentCharacterView?.unbind_displayDrawingIndexes ()
     self.commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
+    self.canDeleteCurrentCharacter_property.removeEBObserver (self.mController_mDeleteCurrentCharacterButton_enabled!)
+    self.mController_mDeleteCurrentCharacterButton_enabled = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.unbind_model ()
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.unbind_selection ()
+    self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
   //--------------------------- Remove targets / actions
     self.mAddCharacterButton?.target = nil
+    self.mDeleteCurrentCharacterButton?.target = nil
     self.mAddSegmentButton?.target = nil
     self.resetVersionAndSignatureButton?.target = nil
   //--------------------------- Clean up outlets
@@ -790,6 +870,7 @@ import Cocoa
     self.mAddCharacterButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
     self.mCurrentCharacterTextField?.ebCleanUp ()
+    self.mDeleteCurrentCharacterButton?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
     self.mFontNominalSizeTextField?.ebCleanUp ()
     self.mFontPageView?.ebCleanUp ()

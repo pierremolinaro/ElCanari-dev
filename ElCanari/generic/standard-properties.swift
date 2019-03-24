@@ -2035,6 +2035,14 @@ typealias EBReadOnlyController_AssignedPadProxiesInDevice = EBReadOnlyValueContr
 typealias EBReadOnlyProperty_AssignedPadProxiesInDevice  = EBReadOnlyValueProperty <AssignedPadProxiesInDevice>
 typealias EBTransientProperty_AssignedPadProxiesInDevice = EBTransientValueProperty <AssignedPadProxiesInDevice>
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//   Scalar property DefinedCharactersInDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+typealias EBReadOnlyController_DefinedCharactersInDevice = EBReadOnlyValueController <DefinedCharactersInDevice>
+
+typealias EBReadOnlyProperty_DefinedCharactersInDevice  = EBReadOnlyValueProperty <DefinedCharactersInDevice>
+typealias EBTransientProperty_DefinedCharactersInDevice = EBTransientValueProperty <DefinedCharactersInDevice>
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   Transient property class CharacterSegmentListClass
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

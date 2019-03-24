@@ -67,6 +67,7 @@ let PMFontComment = "PMFontComment"
       options: .new,
       context: nil
     )
+    self.updateCurrentCharacterSelection ()
   }
 
   //····················································································································
@@ -118,19 +119,6 @@ let PMFontComment = "PMFontComment"
 
   //····················································································································
   //    HANDLING CURRENT CHARACTER: windowControllerDidLoadNib
-  //····················································································································
-
-//  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
-//    super.windowControllerDidLoadNib (aController)
-//    UserDefaults.standard.addObserver (
-//      self,
-//      forKeyPath: Preferences_currentCharacterCodePoint,
-//      options: .new,
-//      context: nil
-//    )
-////    self.updateCurrentCharacterSelection ()
-//  }
-
   //····················································································································
 
   fileprivate func updateCurrentCharacterSelection () {

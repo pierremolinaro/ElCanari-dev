@@ -11,12 +11,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension FontDocument {
-  @objc func addSegmentAction (_ sender : NSObject?) {
+func transient_FontRoot_definedCharacters (
+       _ self_characters_codePoint : [FontCharacter_codePoint]
+) -> DefinedCharactersInDevice {
 //--- START OF USER ZONE 2
-    self.currentCharacterView?.appendSegment ()
+   var definedCharacterSet = Set <Int> ()
+   for char in self_characters_codePoint {
+     definedCharacterSet.insert (char.codePoint)
+   }
+   return DefinedCharactersInDevice (definedCharacterSet)
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

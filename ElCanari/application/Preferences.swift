@@ -3726,7 +3726,7 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mEditionTransparencySlider : EBSlider? = nil
   @IBOutlet var mEditionTransparencyTextField : EBDoubleField? = nil
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
-  @IBOutlet var mFontCharacterSelectButton : CanariFontCharacterSelectButton? = nil
+  @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -4712,10 +4712,10 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
                           errorMessage: "the 'mErrorMessageColorColorWell' outlet is nil") ;
     }
     if let outlet : Any = self.mFontCharacterSelectButton {
-      if !(outlet is CanariFontCharacterSelectButton) {
+      if !(outlet is FontCharacterSelectButton) {
         presentErrorWindow (file: #file,
                             line: #line,
-                            errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'CanariFontCharacterSelectButton'") ;
+                            errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'FontCharacterSelectButton'") ;
       }
     }else{
       presentErrorWindow (file: #file,

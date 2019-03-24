@@ -57,9 +57,9 @@ binding CanariPadRenumberingPullDownButton $currentZoneName : transient String ;
 extern outlet class CanariSlavePadAssignmentPopUpButton ;
 binding CanariSlavePadAssignmentPopUpButton $masterPadName : transient String ;
 
-extern outlet class CanariFontCharacterSelectButton $enabled ;
-binding CanariFontCharacterSelectButton $codePoint : property Int ;
-
+extern outlet class FontCharacterSelectButton $enabled ;
+binding FontCharacterSelectButton $codePoint : property Int ;
+binding FontCharacterSelectButton $characters : transient DefinedCharactersInDevice ;
 
 extern outlet class CanariSegmentedControl ;
 binding CanariSegmentedControl $selectedPage : property Int ;

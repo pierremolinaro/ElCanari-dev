@@ -23,12 +23,12 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "0.6.0"
-let NOTES : [String] = []
+let VERSION_CANARI = "0.6.1"
+let NOTES : [String] = ["Just for checking application update"]
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["New distribution via .pkg"]
+let CHANGES : [String] = [] // ["New distribution via .pkg"]
 let NEWS : [String] = []
-let BUILD_KIND = ProductKind.debug
+let BUILD_KIND = ProductKind.release
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //   FOR PRINTING IN COLOR

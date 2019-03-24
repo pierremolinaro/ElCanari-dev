@@ -2,15 +2,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
+class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   private var mCharacterSelectionPopover : NSPopover? = nil
-  private var mSelectionView : CanariFontCharacterSelectView? = nil
+  private var mSelectionView : FontCharacterSelectView? = nil
+  private var mDefinedCharacterSet = Set <Int> ()
 
   //····················································································································
 
   fileprivate var mSelectedCharacterCode : Int = 0x167 {
     didSet {
-      self.title = String (Unicode.Scalar (mSelectedCharacterCode)!)
+      self.title = String (Unicode.Scalar (self.mSelectedCharacterCode)!)
     }
   }
 
@@ -36,16 +37,24 @@ class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   //····················································································································
 
+  internal func setDefinedCharacterSet (_ inSet : Set <Int>) {
+    self.mDefinedCharacterSet = inSet
+    self.isEnabled = inSet.count > 0
+  }
+
+  //····················································································································
+
   override func mouseDown (with inEvent : NSEvent) {
     let eventLocationInWindowCoordinates = inEvent.locationInWindow
-    let s = CanariFontCharacterSelectView.requiredSize ()
+    let s = FontCharacterSelectView.requiredSizeForCharacterSet (self.mDefinedCharacterSet)
     let r = NSRect (x:eventLocationInWindowCoordinates.x + 30.0,
                     y:eventLocationInWindowCoordinates.y - s.height / 2.0,
                     width:s.width,
                     height:s.height)
     let viewController = NSViewController.init (nibName:nil, bundle:nil)
-    let selectionView = CanariFontCharacterSelectView (frame:r)
-    selectionView.setMouseDownSelectedCharacterCode (mSelectedCharacterCode)
+    let selectionView = FontCharacterSelectView (frame:r)
+    selectionView.setDefinedCharacterSet (self.mDefinedCharacterSet)
+    selectionView.setMouseDownSelectedCharacterCode (self.mSelectedCharacterCode)
     viewController.view = selectionView
     let popover = NSPopover ()
     popover.contentSize = s
@@ -77,7 +86,7 @@ class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
       let selectedCharacterCode = selectionView.selectedCharacterCode ()
       if selectedCharacterCode != 0 {
         mSelectedCharacterCode = selectionView.selectedCharacterCode ()
-        mController?.updateModel ()
+        mCodePointController?.updateModel ()
       }
     }
     mCharacterSelectionPopover?.close ()
@@ -86,18 +95,43 @@ class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  codePoint binding                                                                                                *
+  //  $codePoint binding                                                                                                *
   //····················································································································
 
-  private var mController : Controller_CanariFontCharacterSelectButton_codePoint?
+  private var mCodePointController : Controller_CanariFontCharacterSelectButton_codePoint?
 
   func bind_codePoint (_ object:EBReadWriteProperty_Int, file:String, line:Int) {
-    mController = Controller_CanariFontCharacterSelectButton_codePoint (object:object, outlet:self, file:file, line:line)
+    self.mCodePointController = Controller_CanariFontCharacterSelectButton_codePoint (object:object, outlet:self, file:file, line:line)
   }
 
   func unbind_codePoint () {
-    mController?.unregister ()
-    mController = nil
+    self.mCodePointController?.unregister ()
+    self.mCodePointController = nil
+  }
+
+  //····················································································································
+  //  $characters binding                                                                                                *
+  //····················································································································
+
+  private var mCharactersController : EBReadOnlyController_DefinedCharactersInDevice?
+
+  func bind_characters (_ model : EBTransientProperty_DefinedCharactersInDevice, file : String, line : Int) {
+    self.mCharactersController = EBReadOnlyController_DefinedCharactersInDevice (
+      model: model,
+      callBack: { [weak self] in
+        switch model.prop {
+        case .empty, .multiple :
+          self?.setDefinedCharacterSet ([])
+        case .single (let s) :
+          self?.setDefinedCharacterSet (s.values)
+        }
+      }
+    )
+  }
+
+  func unbind_characters () {
+    self.mCharactersController?.unregister ()
+    self.mCharactersController = nil
   }
 
   //····················································································································
@@ -111,11 +145,11 @@ class CanariFontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 final class Controller_CanariFontCharacterSelectButton_codePoint : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_Int
-  private let mOutlet : CanariFontCharacterSelectButton
+  private let mOutlet : FontCharacterSelectButton
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_Int, outlet : CanariFontCharacterSelectButton, file : String, line : Int) {
+  init (object : EBReadWriteProperty_Int, outlet : FontCharacterSelectButton, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])

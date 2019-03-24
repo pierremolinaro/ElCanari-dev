@@ -11,12 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension FontDocument {
-  @objc func addSegmentAction (_ sender : NSObject?) {
+func transient_FontDocument_canDeleteCurrentCharacter (
+       _ root_definedCharacters : DefinedCharactersInDevice
+) -> Bool {
 //--- START OF USER ZONE 2
-    self.currentCharacterView?.appendSegment ()
+        return root_definedCharacters.values.count > 1
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
