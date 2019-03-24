@@ -15,10 +15,11 @@ extension FontDocument {
   @objc func deleteCurrentCharacterAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
       //--- Search character
+        var charArray = self.rootObject.characters_property.propval
         var possibleCurrentCharacterIndex : Int? = nil
         if let codePoint = g_Preferences?.currentCharacterCodePoint {
           var idx = 0
-          for character in self.rootObject.characters_property.propval {
+          for character in charArray {
             if character.codePoint == codePoint {
               possibleCurrentCharacterIndex = idx
               break
@@ -27,15 +28,15 @@ extension FontDocument {
           }
         }
       //--- If found, delete it
-        if var currentCharacterIndex = possibleCurrentCharacterIndex {
+        if let currentCharacterIndex = possibleCurrentCharacterIndex {
           // Swift.print ("currentCharacterIndex \(currentCharacterIndex)")
-          var charArray = self.rootObject.characters_property.propval
-          if currentCharacterIndex >= (charArray.count - 1) {
-            currentCharacterIndex = charArray.count - 2
-          }
           charArray.remove (at: currentCharacterIndex)
           self.rootObject.characters_property.setProp (charArray)
-          g_Preferences?.currentCharacterCodePoint = charArray [currentCharacterIndex].codePoint
+          var nextSelectedCharacterIndex = currentCharacterIndex
+          if nextSelectedCharacterIndex >= charArray.count {
+            nextSelectedCharacterIndex = charArray.count - 1
+          }
+          g_Preferences?.currentCharacterCodePoint = charArray [nextSelectedCharacterIndex].codePoint
         }
 //--- END OF USER ZONE 2
   }
