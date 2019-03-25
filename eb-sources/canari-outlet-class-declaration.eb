@@ -38,7 +38,7 @@ binding AddSymbolInstancePullDownButton $symbolTypeNames : transient StringArray
 
 extern outlet class DeviceDocumentationTableView : EBTableView ;
 
-extern outlet class CanariIssueTableView ;
+extern outlet class CanariIssueTableView : NSView ;
 binding CanariIssueTableView $issues : transient CanariIssueArray ;
 
 extern outlet class EBScrollView ;

@@ -45,6 +45,7 @@ document FontDocument root FontRoot {
   outlet CanariSegmentedControl mInspectorSegmentedControl $selectedPage root.selectedInspector ;
   outlet NSView mMasterFontPageView ;
   outlet CanariViewWithKeyView mSelectedCharacterInspectorView ;
+  outlet CanariViewWithKeyView mCharacterIssuesInspectorView ;
 
   tableViewController mSelectedCharacterController {allowsEmptySelection:no, allowsMultipleSelection:no} root.characters ;
   selectionController FontCharacter mCharacterSelection : self.mSelectedCharacterController.selectedArray ;
@@ -56,6 +57,10 @@ document FontDocument root FontRoot {
 #--- Transparency
   outlet EBDoubleField transparencyTextField $value prefs.fontEditionTransparency {sendContinously:no, autoFormatter:no} ;
   outlet EBSlider transparencySlider $doubleValue prefs.fontEditionTransparency {sendContinously:yes} ;
+
+#--- Warning checkboxes
+  outlet EBSwitch mWarnsWhenNoSegmentCheckbox $value mCharacterSelection.mWarnsWhenNoSegment ;
+  outlet EBSwitch mWarnsWhenAdvanceIsZeroCheckbox $value mCharacterSelection.mWarnsWhenAdvanceIsZero ;
 
 #--- Font
   outlet EBButton mAddCharacterButton $run self.addCharacterAction ;
@@ -122,6 +127,14 @@ document FontDocument root FontRoot {
     $displayFlow prefs.showGerberDrawingFlow
     $displayDrawingIndexes prefs.showGerberDrawingIndexes
   ;
+
+#--- Issues
+  transient Bool noIssue dependsFrom root.issues ;
+  outlet CanariIssueTableView mIssueTableView $issues root.issues $hidden self.noIssue ;
+
+  outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
+  transient NSImage mStatusImage dependsFrom root.issues ;
+  transient String mStatusMessage dependsFrom root.issues ;
 
 #--------------- Infos Tab
   outlet CanariViewWithKeyView mInfosPageView ;

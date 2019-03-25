@@ -18,6 +18,18 @@ protocol FontCharacter_advance : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol FontCharacter_mWarnsWhenNoSegment : class {
+  var mWarnsWhenNoSegment : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_mWarnsWhenAdvanceIsZero : class {
+  var mWarnsWhenAdvanceIsZero : Bool { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol FontCharacter_segmentArrayForDrawing : class {
   var segmentArrayForDrawing : CharacterSegmentListClass? { get }
 }
@@ -35,15 +47,24 @@ protocol FontCharacter_gerberCodeInstructionCountMessage : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontCharacter_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontCharacter
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class FontCharacter : EBManagedObject,
          FontCharacter_codePoint,
          FontCharacter_advance,
+         FontCharacter_mWarnsWhenNoSegment,
+         FontCharacter_mWarnsWhenAdvanceIsZero,
          FontCharacter_segmentArrayForDrawing,
          FontCharacter_gerberCode,
-         FontCharacter_gerberCodeInstructionCountMessage {
+         FontCharacter_gerberCodeInstructionCountMessage,
+         FontCharacter_issues {
 
   //····················································································································
   //   Atomic property: codePoint
@@ -89,6 +110,52 @@ class FontCharacter : EBManagedObject,
 
   var advance_property_selection : EBSelection <Int> {
     return self.advance_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mWarnsWhenNoSegment
+  //····················································································································
+
+  var mWarnsWhenNoSegment_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mWarnsWhenNoSegment : Bool {
+    get {
+      return self.mWarnsWhenNoSegment_property.propval
+    }
+    set {
+      self.mWarnsWhenNoSegment_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
+    return self.mWarnsWhenNoSegment_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mWarnsWhenAdvanceIsZero
+  //····················································································································
+
+  var mWarnsWhenAdvanceIsZero_property = EBStoredProperty_Bool (defaultValue: true)
+
+  //····················································································································
+
+  var mWarnsWhenAdvanceIsZero : Bool {
+    get {
+      return self.mWarnsWhenAdvanceIsZero_property.propval
+    }
+    set {
+      self.mWarnsWhenAdvanceIsZero_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
+    return self.mWarnsWhenAdvanceIsZero_property.prop
   }
 
   //····················································································································
@@ -173,6 +240,29 @@ class FontCharacter : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -182,6 +272,10 @@ class FontCharacter : EBManagedObject,
     self.codePoint_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: advance
     self.advance_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mWarnsWhenNoSegment
+    self.mWarnsWhenNoSegment_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mWarnsWhenAdvanceIsZero
+    self.mWarnsWhenAdvanceIsZero_property.ebUndoManager = self.ebUndoManager
   //--- To many property: segments (no option)
     self.segments_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: segmentArrayForDrawing
@@ -256,10 +350,42 @@ class FontCharacter : EBManagedObject,
       }
     }
     self.gerberCode_property.addEBObserver (self.gerberCodeInstructionCountMessage_property)
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        var kind = unwSelf.codePoint_property_selection.kind ()
+        kind &= unwSelf.advance_property_selection.kind ()
+        kind &= unwSelf.mWarnsWhenNoSegment_property_selection.kind ()
+        kind &= unwSelf.mWarnsWhenAdvanceIsZero_property_selection.kind ()
+        kind &= unwSelf.segments_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.codePoint_property_selection, unwSelf.advance_property_selection, unwSelf.mWarnsWhenNoSegment_property_selection, unwSelf.mWarnsWhenAdvanceIsZero_property_selection, unwSelf.segments_property.count_property_selection) {
+          case (.single (let v0), .single (let v1), .single (let v2), .single (let v3), .single (let v4)) :
+            return .single (transient_FontCharacter_issues (v0, v1, v2, v3, v4))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.codePoint_property.addEBObserver (self.issues_property)
+    self.advance_property.addEBObserver (self.issues_property)
+    self.mWarnsWhenNoSegment_property.addEBObserver (self.issues_property)
+    self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
+    self.segments_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)
     self.codePoint_property.setSignatureObserver (observer: self)
+    self.mWarnsWhenAdvanceIsZero_property.setSignatureObserver (observer: self)
+    self.mWarnsWhenNoSegment_property.setSignatureObserver (observer: self)
     self.segments_property.setSignatureObserver (observer: self)
   //--- Extern delegates
   }
@@ -274,6 +400,11 @@ class FontCharacter : EBManagedObject,
     self.segments_property.removeEBObserverOf_y2 (self.segmentArrayForDrawing_property)
     self.segmentArrayForDrawing_property.removeEBObserver (self.gerberCode_property)
     self.gerberCode_property.removeEBObserver (self.gerberCodeInstructionCountMessage_property)
+    self.codePoint_property.removeEBObserver (self.issues_property)
+    self.advance_property.removeEBObserver (self.issues_property)
+    self.mWarnsWhenNoSegment_property.removeEBObserver (self.issues_property)
+    self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.issues_property)
+    self.segments_property.removeEBObserver (self.issues_property)
   }
 
   //····················································································································
@@ -303,6 +434,22 @@ class FontCharacter : EBManagedObject,
       observerExplorer:&self.advance_property.mObserverExplorer,
       valueExplorer:&self.advance_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "mWarnsWhenNoSegment",
+      idx:self.mWarnsWhenNoSegment_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mWarnsWhenNoSegment_property.mObserverExplorer,
+      valueExplorer:&self.mWarnsWhenNoSegment_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mWarnsWhenAdvanceIsZero",
+      idx:self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+      valueExplorer:&self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+    )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
       "segmentArrayForDrawing",
@@ -328,6 +475,14 @@ class FontCharacter : EBManagedObject,
       observerExplorer:&self.gerberCodeInstructionCountMessage_property.mObserverExplorer,
       valueExplorer:&self.gerberCodeInstructionCountMessage_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
       "segments",
@@ -351,6 +506,12 @@ class FontCharacter : EBManagedObject,
   //--- Atomic property: advance
     self.advance_property.mObserverExplorer = nil
     self.advance_property.mValueExplorer = nil
+  //--- Atomic property: mWarnsWhenNoSegment
+    self.mWarnsWhenNoSegment_property.mObserverExplorer = nil
+    self.mWarnsWhenNoSegment_property.mValueExplorer = nil
+  //--- Atomic property: mWarnsWhenAdvanceIsZero
+    self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer = nil
+    self.mWarnsWhenAdvanceIsZero_property.mValueExplorer = nil
   //--- To many property: segments
     self.segments_property.mValueExplorer = nil
   //---
@@ -386,6 +547,10 @@ class FontCharacter : EBManagedObject,
     self.codePoint_property.storeIn (dictionary: ioDictionary, forKey:"codePoint")
   //--- Atomic property: advance
     self.advance_property.storeIn (dictionary: ioDictionary, forKey:"advance")
+  //--- Atomic property: mWarnsWhenNoSegment
+    self.mWarnsWhenNoSegment_property.storeIn (dictionary: ioDictionary, forKey:"mWarnsWhenNoSegment")
+  //--- Atomic property: mWarnsWhenAdvanceIsZero
+    self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey:"mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
       managedObjectArray: segments_property.propval as NSArray,
@@ -419,6 +584,10 @@ class FontCharacter : EBManagedObject,
     self.codePoint_property.readFrom (dictionary: inDictionary, forKey:"codePoint")
   //--- Atomic property: advance
     self.advance_property.readFrom (dictionary: inDictionary, forKey:"advance")
+  //--- Atomic property: mWarnsWhenNoSegment
+    self.mWarnsWhenNoSegment_property.readFrom (dictionary: inDictionary, forKey:"mWarnsWhenNoSegment")
+  //--- Atomic property: mWarnsWhenAdvanceIsZero
+    self.mWarnsWhenAdvanceIsZero_property.readFrom (dictionary: inDictionary, forKey:"mWarnsWhenAdvanceIsZero")
   }
 
   //····················································································································
@@ -441,6 +610,8 @@ class FontCharacter : EBManagedObject,
     var crc = super.computeSignature ()
     crc.accumulateUInt32 (self.advance_property.signature ())
     crc.accumulateUInt32 (self.codePoint_property.signature ())
+    crc.accumulateUInt32 (self.mWarnsWhenAdvanceIsZero_property.signature ())
+    crc.accumulateUInt32 (self.mWarnsWhenNoSegment_property.signature ())
     crc.accumulateUInt32 (self.segments_property.signature ())
     return crc
   }
@@ -565,6 +736,120 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
       observer.postEvent ()
       for managedObject in inSet {
         managedObject.advance_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mWarnsWhenNoSegment' stored property
+  //····················································································································
+
+  private var mObserversOf_mWarnsWhenNoSegment = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWarnsWhenNoSegment.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsWhenNoSegment_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWarnsWhenNoSegment (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWarnsWhenNoSegment.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsWhenNoSegment_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_mWarnsWhenNoSegment.apply ( {(_ observer : EBEvent) in
+        managedObject.mWarnsWhenNoSegment_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
+    self.mObserversOf_mWarnsWhenNoSegment.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mWarnsWhenNoSegment_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mWarnsWhenAdvanceIsZero' stored property
+  //····················································································································
+
+  private var mObserversOf_mWarnsWhenAdvanceIsZero = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mWarnsWhenAdvanceIsZero.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mWarnsWhenAdvanceIsZero (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mWarnsWhenAdvanceIsZero.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mWarnsWhenAdvanceIsZero_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_mWarnsWhenAdvanceIsZero.apply ( {(_ observer : EBEvent) in
+        managedObject.mWarnsWhenAdvanceIsZero_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
+    self.mObserversOf_mWarnsWhenAdvanceIsZero.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mWarnsWhenAdvanceIsZero_property.removeEBObserver (observer)
       }
     })
   }
@@ -738,6 +1023,62 @@ class ReadOnlyArrayOf_FontCharacter : ReadOnlyAbstractArrayProperty <FontCharact
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontCharacter>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -812,19 +1153,25 @@ class TransientArrayOf_FontCharacter : ReadOnlyArrayOf_FontCharacter {
     //--- Remove observers of stored properties
       self.removeEBObserversOf_codePoint_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_advance_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
       self.addEBObserversOf_codePoint_toElementsOfSet (addedSet)
       self.addEBObserversOf_advance_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedSet)
       self.addEBObserversOf_gerberCode_toElementsOfSet (addedSet)
       self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -954,12 +1301,17 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
             self.setOppositeRelationship? (nil)
             managedObject.codePoint_property.mSetterDelegate = nil
             managedObject.advance_property.mSetterDelegate = nil
+            managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = nil
+            managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = nil
           }
           self.removeEBObserversOf_codePoint_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_advance_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mWarnsWhenNoSegment_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mWarnsWhenAdvanceIsZero_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_segmentArrayForDrawing_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_gerberCode_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_gerberCodeInstructionCountMessage_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -969,12 +1321,17 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
             self.setOppositeRelationship? (managedObject)
             managedObject.codePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.advance_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mWarnsWhenNoSegment_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mWarnsWhenAdvanceIsZero_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
           self.addEBObserversOf_codePoint_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_advance_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mWarnsWhenNoSegment_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mWarnsWhenAdvanceIsZero_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_segmentArrayForDrawing_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_gerberCode_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_gerberCodeInstructionCountMessage_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

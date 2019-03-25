@@ -105,7 +105,7 @@ class CanariSegmentedControl : NSSegmentedControl, EBUserClassNameProtocol {
   //    binding
   //····················································································································
 
-  private var mController : Controller_CanariSegmentedControl_selectedPage?
+  private var mController : Controller_CanariSegmentedControl_selectedPage? = nil
 
   //····················································································································
 

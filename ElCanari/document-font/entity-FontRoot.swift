@@ -65,6 +65,12 @@ protocol FontRoot_definedCharacters : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol FontRoot_issues : class {
+  var issues : CanariIssueArray? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: FontRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -78,7 +84,8 @@ class FontRoot : EBManagedObject,
          FontRoot_sampleStringBezierPathWidth,
          FontRoot_sampleStringBezierPathAscent,
          FontRoot_sampleStringBezierPathDescent,
-         FontRoot_definedCharacters {
+         FontRoot_definedCharacters,
+         FontRoot_issues {
 
   //····················································································································
   //   Atomic property: comments
@@ -329,6 +336,29 @@ class FontRoot : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  //····················································································································
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+
+  var issues : CanariIssueArray? {
+    switch self.issues_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -482,6 +512,28 @@ class FontRoot : EBManagedObject,
       }
     }
     self.characters_property.addEBObserverOf_codePoint (self.definedCharacters_property)
+  //--- Atomic property: issues
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.characters_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.characters_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontRoot_issues (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.characters_property.addEBObserverOf_issues (self.issues_property)
   //--- Install undoers and opposite setter for relationships
   //--- register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
@@ -505,6 +557,7 @@ class FontRoot : EBManagedObject,
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathAscent_property)
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
     self.characters_property.removeEBObserverOf_codePoint (self.definedCharacters_property)
+    self.characters_property.removeEBObserverOf_issues (self.issues_property)
   }
 
   //····················································································································
@@ -598,6 +651,14 @@ class FontRoot : EBManagedObject,
       view:view,
       observerExplorer:&self.definedCharacters_property.mObserverExplorer,
       valueExplorer:&self.definedCharacters_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "issues",
+      idx:self.issues_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.issues_property.mObserverExplorer,
+      valueExplorer:&self.issues_property.mValueExplorer
     )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
@@ -1304,6 +1365,62 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   }
 
   //····················································································································
+  //   Observers of 'issues' transient property
+  //····················································································································
+
+  private var mObserversOf_issues = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_issues.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_issues (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_issues.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.issues_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_issues_toElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_issues_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    for managedObject in inSet {
+      self.mObserversOf_issues.apply ( {(_ observer : EBEvent) in
+        managedObject.issues_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1387,6 +1504,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
       self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_definedCharacters_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_issues_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1401,6 +1519,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
       self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedSet)
       self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedSet)
       self.addEBObserversOf_definedCharacters_toElementsOfSet (addedSet)
+      self.addEBObserversOf_issues_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1543,6 +1662,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           self.removeEBObserversOf_sampleStringBezierPathAscent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_sampleStringBezierPathDescent_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_definedCharacters_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_issues_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1565,6 +1685,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
           self.addEBObserversOf_sampleStringBezierPathAscent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_sampleStringBezierPathDescent_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_definedCharacters_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_issues_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

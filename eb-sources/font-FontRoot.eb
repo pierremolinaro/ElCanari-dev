@@ -26,6 +26,8 @@ entity FontRoot {
   arrayController selectedCharacterController : self.characters ;
   
   transient DefinedCharactersInDevice definedCharacters dependsFrom self.characters.all.codePoint ;
+
+  transient CanariIssueArray issues dependsFrom self.characters.all.issues ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

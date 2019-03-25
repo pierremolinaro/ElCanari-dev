@@ -42,7 +42,7 @@ struct CanariIssue : Hashable {
 
   init (kind inKind : CanariIssueKind,
         message inMessage : String,
-        path inBezierPath : NSBezierPath) {
+        path inBezierPath : NSBezierPath = NSBezierPath ()) {
     mMessage = inMessage
     mPath = inBezierPath
     mKind = inKind
@@ -55,16 +55,6 @@ struct CanariIssue : Hashable {
   public static func == (lhs: CanariIssue, rhs: CanariIssue) -> Bool {
     return (lhs.mMessage == rhs.mMessage) && (lhs.mKind == rhs.mKind) && (lhs.mPath == rhs.mPath)
   }
-
-  //····················································································································
-  //   Protocol Hashable
-  //····················································································································
-
-//  func hash (into hasher: inout Hasher) {
-//    self.mMessage.hash (into: &hasher)
-//    self.mKind.hash (into: &hasher)
-//    self.mPath.hash (into: &hasher)
-//  }
 
   //····················································································································
   // Bezier path center point

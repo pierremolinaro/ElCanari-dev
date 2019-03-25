@@ -51,6 +51,36 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   }
 
   //····················································································································
+  //   Selection observable property: issues
+  //····················································································································
+
+  var issues_property = EBTransientProperty_CanariIssueArray ()
+
+  var issues_property_selection : EBSelection <CanariIssueArray> {
+    return self.issues_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mWarnsWhenAdvanceIsZero
+  //····················································································································
+
+  var mWarnsWhenAdvanceIsZero_property = EBPropertyProxy_Bool ()
+
+  var mWarnsWhenAdvanceIsZero_property_selection : EBSelection <Bool> {
+    return self.mWarnsWhenAdvanceIsZero_property.prop
+  }
+
+  //····················································································································
+  //   Selection observable property: mWarnsWhenNoSegment
+  //····················································································································
+
+  var mWarnsWhenNoSegment_property = EBPropertyProxy_Bool ()
+
+  var mWarnsWhenNoSegment_property_selection : EBSelection <Bool> {
+    return self.mWarnsWhenNoSegment_property.prop
+  }
+
+  //····················································································································
   //   Selection observable property: segmentArrayForDrawing
   //····················································································································
 
@@ -78,6 +108,9 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
     self.bind_property_codePoint (model: model)
     self.bind_property_gerberCode (model: model)
     self.bind_property_gerberCodeInstructionCountMessage (model: model)
+    self.bind_property_issues (model: model)
+    self.bind_property_mWarnsWhenAdvanceIsZero (model: model)
+    self.bind_property_mWarnsWhenNoSegment (model: model)
     self.bind_property_segmentArrayForDrawing (model: model)
   }
 
@@ -102,6 +135,19 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
   //--- gerberCodeInstructionCountMessage
     self.gerberCodeInstructionCountMessage_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_gerberCodeInstructionCountMessage (self.gerberCodeInstructionCountMessage_property)
+  //--- issues
+    self.issues_property.mReadModelFunction = nil 
+    self.mModel?.removeEBObserverOf_issues (self.issues_property)
+  //--- mWarnsWhenAdvanceIsZero
+    self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = nil 
+    self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = nil 
+    self.mWarnsWhenAdvanceIsZero_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
+  //--- mWarnsWhenNoSegment
+    self.mWarnsWhenNoSegment_property.mReadModelFunction = nil 
+    self.mWarnsWhenNoSegment_property.mWriteModelFunction = nil 
+    self.mWarnsWhenNoSegment_property.mValidateAndWriteModelFunction = nil 
+    self.mModel?.removeEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
   //--- segmentArrayForDrawing
     self.segmentArrayForDrawing_property.mReadModelFunction = nil 
     self.mModel?.removeEBObserverOf_segmentArrayForDrawing (self.segmentArrayForDrawing_property)
@@ -160,6 +206,22 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
       view:view,
       observerExplorer:&self.codePoint_property.mObserverExplorer,
       valueExplorer:&self.codePoint_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mWarnsWhenAdvanceIsZero",
+      idx:self.mWarnsWhenAdvanceIsZero_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mWarnsWhenAdvanceIsZero_property.mObserverExplorer,
+      valueExplorer:&self.mWarnsWhenAdvanceIsZero_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mWarnsWhenNoSegment",
+      idx:self.mWarnsWhenNoSegment_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mWarnsWhenNoSegment_property.mObserverExplorer,
+      valueExplorer:&self.mWarnsWhenNoSegment_property.mValueExplorer
     )
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
@@ -428,6 +490,186 @@ final class SelectionController_FontDocument_mCharacterSelection : EBObject {
         }
       }else{
         return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_issues (model : ReadOnlyArrayOf_FontCharacter) {
+    model.addEBObserverOf_issues (self.issues_property)
+    self.issues_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <CanariIssueArray> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.issues_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_mWarnsWhenAdvanceIsZero (model : ReadOnlyArrayOf_FontCharacter) {
+    model.addEBObserverOf_mWarnsWhenAdvanceIsZero (self.mWarnsWhenAdvanceIsZero_property)
+    self.mWarnsWhenAdvanceIsZero_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mWarnsWhenAdvanceIsZero_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mWarnsWhenAdvanceIsZero_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mWarnsWhenAdvanceIsZero_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mWarnsWhenAdvanceIsZero_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mWarnsWhenAdvanceIsZero_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
+      }
+    }
+  }
+
+  //···················································································································*
+
+  private final func bind_property_mWarnsWhenNoSegment (model : ReadOnlyArrayOf_FontCharacter) {
+    model.addEBObserverOf_mWarnsWhenNoSegment (self.mWarnsWhenNoSegment_property)
+    self.mWarnsWhenNoSegment_property.mReadModelFunction = { [weak self] in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty :
+          return .empty
+        case .multiple :
+          return .multiple
+        case .single (let v) :
+          var s = Set <Bool> ()
+          var isMultipleSelection = false
+          for object in v {
+            switch object.mWarnsWhenNoSegment_property_selection {
+            case .empty :
+              return .empty
+            case .multiple :
+              isMultipleSelection = true
+            case .single (let vProp) :
+              s.insert (vProp)
+            }
+          }
+          if isMultipleSelection {
+            return .multiple
+          }else if s.count == 0 {
+            return .empty
+          }else if s.count == 1 {
+            return .single (s.first!)
+          }else{
+            return .multiple
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mWarnsWhenNoSegment_property.mWriteModelFunction = { [weak self] (inValue : Bool) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          break
+        case .single (let v) :
+          for object in v {
+            object.mWarnsWhenNoSegment_property.setProp (inValue)
+          }
+        }
+      }
+    }
+    self.mWarnsWhenNoSegment_property.mValidateAndWriteModelFunction = { [weak self] (candidateValue : Bool, windowForSheet : NSWindow?) in
+      if let model = self?.mModel {
+        switch model.prop {
+        case .empty, .multiple :
+          return false
+        case .single (let v) :
+          for object in v {
+            let result = object.mWarnsWhenNoSegment_property.validateAndSetProp (candidateValue, windowForSheet:windowForSheet)
+            if !result {
+              return false
+            }
+          }
+          return true
+        }
+      }else{
+        return false
       }
     }
   }

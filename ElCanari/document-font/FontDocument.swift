@@ -66,6 +66,75 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: noIssue
+  //····················································································································
+
+  var noIssue_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var noIssue_property_selection : EBSelection <Bool> {
+    return self.noIssue_property.prop
+  }
+
+  //····················································································································
+
+  var noIssue : Bool? {
+    switch self.noIssue_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusImage
+  //····················································································································
+
+  var mStatusImage_property = EBTransientProperty_NSImage ()
+
+  //····················································································································
+
+  var mStatusImage_property_selection : EBSelection <NSImage> {
+    return self.mStatusImage_property.prop
+  }
+
+  //····················································································································
+
+  var mStatusImage : NSImage? {
+    switch self.mStatusImage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: mStatusMessage
+  //····················································································································
+
+  var mStatusMessage_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var mStatusMessage_property_selection : EBSelection <String> {
+    return self.mStatusMessage_property.prop
+  }
+
+  //····················································································································
+
+  var mStatusMessage : String? {
+    switch self.mStatusMessage_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -79,6 +148,7 @@ import Cocoa
   @IBOutlet var gerberCodeInstructionCountMessageTextField : EBTextObserverField?
   @IBOutlet var mAddCharacterButton : EBButton?
   @IBOutlet var mAddSegmentButton : EBButton?
+  @IBOutlet var mCharacterIssuesInspectorView : CanariViewWithKeyView?
   @IBOutlet var mCurrentCharacterTextField : EBTextObserverField?
   @IBOutlet var mDeleteCurrentCharacterButton : EBButton?
   @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton?
@@ -88,6 +158,7 @@ import Cocoa
   @IBOutlet var mGerberCodeTableView : CanariCharacterGerberCodeTableView?
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
+  @IBOutlet var mIssueTableView : CanariIssueTableView?
   @IBOutlet var mMasterFontPageView : NSView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNewCharacterPanel : NSPanel?
@@ -103,7 +174,10 @@ import Cocoa
   @IBOutlet var mShowGerberDrawingFlowCheckbox : EBSwitch?
   @IBOutlet var mShowGerberDrawingIndexesCheckbox : EBSwitch?
   @IBOutlet var mSignatureTextField : CanariSignatureField?
+  @IBOutlet var mStatusImageViewInToolbar : EBImageObserverView?
   @IBOutlet var mVersionField : CanariVersionField?
+  @IBOutlet var mWarnsWhenAdvanceIsZeroCheckbox : EBSwitch?
+  @IBOutlet var mWarnsWhenNoSegmentCheckbox : EBSwitch?
   @IBOutlet var resetVersionAndSignatureButton : EBButton?
   @IBOutlet var transparencySlider : EBSlider?
   @IBOutlet var transparencyTextField : EBDoubleField?
@@ -113,6 +187,7 @@ import Cocoa
   //····················································································································
 
   var mController_mDeleteCurrentCharacterButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mIssueTableView_hidden : MultipleBindingController_hidden? = nil
 
   //····················································································································
   //    Document file path
@@ -301,6 +376,21 @@ import Cocoa
         errorMessage: "the 'mAddSegmentButton' outlet is nil"
       )
     }
+    if let outlet : Any = self.mCharacterIssuesInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mCharacterIssuesInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mCharacterIssuesInspectorView' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mCurrentCharacterTextField {
       if !(outlet is EBTextObserverField) {
         presentErrorWindow (
@@ -434,6 +524,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mInspectorSegmentedControl' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueTableView {
+      if !(outlet is CanariIssueTableView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTableView' outlet is nil"
       )
     }
     if let outlet : Any = self.mMasterFontPageView {
@@ -661,6 +766,21 @@ import Cocoa
         errorMessage: "the 'mSignatureTextField' outlet is nil"
       )
     }
+    if let outlet : Any = self.mStatusImageViewInToolbar {
+      if !(outlet is EBImageObserverView) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
+      )
+    }
     if let outlet : Any = self.mVersionField {
       if !(outlet is CanariVersionField) {
         presentErrorWindow (
@@ -674,6 +794,36 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mVersionField' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mWarnsWhenAdvanceIsZeroCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mWarnsWhenAdvanceIsZeroCheckbox' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mWarnsWhenAdvanceIsZeroCheckbox' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mWarnsWhenNoSegmentCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mWarnsWhenNoSegmentCheckbox' outlet is not an instance of 'EBSwitch'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mWarnsWhenNoSegmentCheckbox' outlet is nil"
       )
     }
     if let outlet : Any = self.resetVersionAndSignatureButton {
@@ -747,6 +897,72 @@ import Cocoa
       }
     }
     self.rootObject.definedCharacters_property.addEBObserver (self.canDeleteCurrentCharacter_property)
+  //--- Atomic property: noIssue
+    self.noIssue_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontDocument_noIssue (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.noIssue_property)
+  //--- Atomic property: mStatusImage
+    self.mStatusImage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontDocument_mStatusImage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusImage_property)
+  //--- Atomic property: mStatusMessage
+    self.mStatusMessage_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.issues_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.issues_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_FontDocument_mStatusMessage (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.issues_property.addEBObserver (self.mStatusMessage_property)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.selectedTab_property, file: #file, line: #line)
     self.mSignatureTextField?.bind_signature (self.signatureObserver_property, file: #file, line: #line)
@@ -757,6 +973,8 @@ import Cocoa
     self.advancementSlider?.bind_intValue (self.mCharacterSelection.advance_property, file: #file, line: #line, sendContinously:true)
     self.transparencyTextField?.bind_value (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.transparencySlider?.bind_doubleValue (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
+    self.mWarnsWhenNoSegmentCheckbox?.bind_value (self.mCharacterSelection.mWarnsWhenNoSegment_property, file: #file, line: #line)
+    self.mWarnsWhenAdvanceIsZeroCheckbox?.bind_value (self.mCharacterSelection.mWarnsWhenAdvanceIsZero_property, file: #file, line: #line)
     self.mFontNominalSizeTextField?.bind_value (self.rootObject.nominalSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     self.mFontCharacterSelectButton?.bind_codePoint (g_Preferences!.currentCharacterCodePoint_property, file: #file, line: #line)
     self.mFontCharacterSelectButton?.bind_characters (self.rootObject.definedCharacters_property, file: #file, line: #line)
@@ -777,6 +995,9 @@ import Cocoa
     self.currentCharacterView?.bind_transparency (g_Preferences!.fontEditionTransparency_property, file: #file, line: #line)
     self.currentCharacterView?.bind_displayFlow (g_Preferences!.showGerberDrawingFlow_property, file: #file, line: #line)
     self.currentCharacterView?.bind_displayDrawingIndexes (g_Preferences!.showGerberDrawingIndexes_property, file: #file, line: #line)
+    self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
+    self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
     self.commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -788,6 +1009,16 @@ import Cocoa
       )
       self.canDeleteCurrentCharacter_property.addEBObserver (controller)
       self.mController_mDeleteCurrentCharacterButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_hidden (
+        computeFunction: {
+          return self.noIssue_property_selection
+        },
+        outlet: self.mIssueTableView
+      )
+      self.noIssue_property.addEBObserver (controller)
+      self.mController_mIssueTableView_hidden = controller
     }
   //--------------------------- Set targets / actions
     self.mAddCharacterButton?.target = self
@@ -825,6 +1056,8 @@ import Cocoa
     self.advancementSlider?.unbind_intValue ()
     self.transparencyTextField?.unbind_value ()
     self.transparencySlider?.unbind_doubleValue ()
+    self.mWarnsWhenNoSegmentCheckbox?.unbind_value ()
+    self.mWarnsWhenAdvanceIsZeroCheckbox?.unbind_value ()
     self.mFontNominalSizeTextField?.unbind_value ()
     self.mFontCharacterSelectButton?.unbind_codePoint ()
     self.mFontCharacterSelectButton?.unbind_characters ()
@@ -845,16 +1078,24 @@ import Cocoa
     self.currentCharacterView?.unbind_transparency ()
     self.currentCharacterView?.unbind_displayFlow ()
     self.currentCharacterView?.unbind_displayDrawingIndexes ()
+    self.mIssueTableView?.unbind_issues ()
+    self.mStatusImageViewInToolbar?.unbind_image ()
+    self.mStatusImageViewInToolbar?.unbind_tooltip ()
     self.commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.canDeleteCurrentCharacter_property.removeEBObserver (self.mController_mDeleteCurrentCharacterButton_enabled!)
     self.mController_mDeleteCurrentCharacterButton_enabled = nil
+    self.noIssue_property.removeEBObserver (self.mController_mIssueTableView_hidden!)
+    self.mController_mIssueTableView_hidden = nil
   //--------------------------- Unbind array controllers
   //--- Array controller property: mSelectedCharacterController
     self.mSelectedCharacterController.unbind_model ()
   //--- Selection controller property: mCharacterSelection
     self.mCharacterSelection.unbind_selection ()
     self.rootObject.definedCharacters_property.removeEBObserver (self.canDeleteCurrentCharacter_property)
+    self.rootObject.issues_property.removeEBObserver (self.noIssue_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusImage_property)
+    self.rootObject.issues_property.removeEBObserver (self.mStatusMessage_property)
   //--------------------------- Remove targets / actions
     self.mAddCharacterButton?.target = nil
     self.mDeleteCurrentCharacterButton?.target = nil
@@ -869,6 +1110,7 @@ import Cocoa
     self.gerberCodeInstructionCountMessageTextField?.ebCleanUp ()
     self.mAddCharacterButton?.ebCleanUp ()
     self.mAddSegmentButton?.ebCleanUp ()
+    self.mCharacterIssuesInspectorView?.ebCleanUp ()
     self.mCurrentCharacterTextField?.ebCleanUp ()
     self.mDeleteCurrentCharacterButton?.ebCleanUp ()
     self.mFontCharacterSelectButton?.ebCleanUp ()
@@ -878,6 +1120,7 @@ import Cocoa
     self.mGerberCodeTableView?.ebCleanUp ()
     self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
+    self.mIssueTableView?.ebCleanUp ()
     self.mMasterFontPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mNewCharacterPanel?.ebCleanUp ()
@@ -893,7 +1136,10 @@ import Cocoa
     self.mShowGerberDrawingFlowCheckbox?.ebCleanUp ()
     self.mShowGerberDrawingIndexesCheckbox?.ebCleanUp ()
     self.mSignatureTextField?.ebCleanUp ()
+    self.mStatusImageViewInToolbar?.ebCleanUp ()
     self.mVersionField?.ebCleanUp ()
+    self.mWarnsWhenAdvanceIsZeroCheckbox?.ebCleanUp ()
+    self.mWarnsWhenNoSegmentCheckbox?.ebCleanUp ()
     self.resetVersionAndSignatureButton?.ebCleanUp ()
     self.transparencySlider?.ebCleanUp ()
     self.transparencyTextField?.ebCleanUp ()
