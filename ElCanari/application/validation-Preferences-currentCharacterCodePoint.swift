@@ -17,12 +17,8 @@ extension Preferences {
     let validatedValue : Int
     if proposedValue < 0x20 {
       validatedValue = 0x20
-    }else if proposedValue > 0x17F {
-      validatedValue = 0x17F
-    }else if proposedValue == 0x80 {
-      validatedValue = 0xA0
-    }else if proposedValue == 0x9F {
-      validatedValue = 0x7F
+    }else if proposedValue > 0xFFFF {
+      validatedValue = 0x20
     }else{
       validatedValue = proposedValue
     }
