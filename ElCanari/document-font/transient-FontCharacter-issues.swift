@@ -19,7 +19,14 @@ func transient_FontCharacter_issues (
        _ self_segments_count : Int
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-
+  var issues = [CanariIssue] ()
+  if (self_advance == 0) && self_mWarnsWhenAdvanceIsZero {
+    issues.append (CanariIssue (kind: .warning, message: "+u\(String (format: "%04X", self_codePoint)): zero advancement"))
+  }
+  if (self_segments_count == 0) && self_mWarnsWhenNoSegment {
+    issues.append (CanariIssue (kind: .warning, message: "+u\(String (format: "%04X", self_codePoint)): no segment"))
+  }
+  return issues
 //--- END OF USER ZONE 2
 }
 

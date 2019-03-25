@@ -15,7 +15,13 @@ func transient_FontRoot_issues (
        _ self_characters_issues : [FontCharacter_issues]
 ) -> CanariIssueArray {
 //--- START OF USER ZONE 2
-
+        var issues = [CanariIssue] ()
+        for characterIssues in self_characters_issues {
+          if let s = characterIssues.issues {
+            issues += s
+          }
+        }
+        return issues
 //--- END OF USER ZONE 2
 }
 

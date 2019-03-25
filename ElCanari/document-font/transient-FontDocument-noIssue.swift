@@ -15,7 +15,7 @@ func transient_FontDocument_noIssue (
        _ root_issues : CanariIssueArray
 ) -> Bool {
 //--- START OF USER ZONE 2
-
+        return root_issues.count == 0
 //--- END OF USER ZONE 2
 }
 
