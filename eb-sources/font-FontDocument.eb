@@ -135,6 +135,7 @@ document FontDocument root FontRoot {
   outlet EBImageObserverView mStatusImageViewInToolbar $image self.mStatusImage $tooltip self.mStatusMessage ;
   transient NSImage mStatusImage dependsFrom root.issues ;
   transient String mStatusMessage dependsFrom root.issues ;
+  outlet EBTextObserverField mIssueTextField $valueObserver self.mStatusMessage ;
 
 #--------------- Infos Tab
   outlet CanariViewWithKeyView mInfosPageView ;

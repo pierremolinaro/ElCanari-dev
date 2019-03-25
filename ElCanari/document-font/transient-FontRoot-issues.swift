@@ -21,7 +21,7 @@ func transient_FontRoot_issues (
             issues += s
           }
         }
-        return issues
+        return issues.sorted (by: { $0.mRepresentativeValue < $1.mRepresentativeValue } )
 //--- END OF USER ZONE 2
 }
 

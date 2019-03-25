@@ -21,10 +21,20 @@ func transient_FontCharacter_issues (
 //--- START OF USER ZONE 2
   var issues = [CanariIssue] ()
   if (self_advance == 0) && self_mWarnsWhenAdvanceIsZero {
-    issues.append (CanariIssue (kind: .warning, message: "+u\(String (format: "%04X", self_codePoint)): zero advancement"))
+    let s = CanariIssue (
+      kind: .warning,
+      message: "+u\(String (format: "%04X", self_codePoint)): zero advancement",
+      representativeValue: self_codePoint
+    )
+    issues.append (s)
   }
   if (self_segments_count == 0) && self_mWarnsWhenNoSegment {
-    issues.append (CanariIssue (kind: .warning, message: "+u\(String (format: "%04X", self_codePoint)): no segment"))
+    let s = CanariIssue (
+      kind: .warning,
+      message: "+u\(String (format: "%04X", self_codePoint)): no segment",
+      representativeValue: self_codePoint
+    )
+    issues.append (s)
   }
   return issues
 //--- END OF USER ZONE 2

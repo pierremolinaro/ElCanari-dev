@@ -61,6 +61,9 @@ let PMFontComment = "PMFontComment"
     let inspectors = [self.mSelectedCharacterInspectorView, self.mSampleStringInspectorView, self.mCharacterIssuesInspectorView]
     self.mInspectorSegmentedControl?.register (masterView: self.mMasterFontPageView, inspectors)
   //---
+    self.mIssueTableView?.register (segmentedControl : self.mInspectorSegmentedControl, segment: 2)
+
+  //---
     UserDefaults.standard.addObserver (
       self,
       forKeyPath: Preferences_currentCharacterCodePoint,

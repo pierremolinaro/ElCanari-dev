@@ -43,10 +43,6 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
       definedLineSet.insert (codePoint / 16) ;
     }
     self.mDefinedLineArray = [Int] (definedLineSet).sorted ()
-//    Swift.print ("mDefinedLineArray \(mDefinedLineArray)")
-//    var f = self.frame
-//    f.size.height = 1.0 + CGFloat (self.mDefinedLineArray.count + 1) * CHARACTER_HEIGHT
-//    self.frame = f
   }
 
   //····················································································································
@@ -135,35 +131,37 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
     }
   //--- Draw characters
     for lineIndex in 0 ..< self.mDefinedLineArray.count {
-      self.drawCharacters (forLineIndex: lineIndex)
+      self.drawCharacters (forLineIndex: lineIndex, inDirtyRect)
     }
   }
 
   //····················································································································
 
-  func drawCharacters (forLineIndex inLineIndex : Int) {
+  func drawCharacters (forLineIndex inLineIndex : Int, _ inDirtyRect : NSRect) {
     var charRect = self.rectangleForCharacter (atLineIndex: inLineIndex, column: 0)
-    let lineCodePoint = self.mDefinedLineArray [inLineIndex] * 16
-    for codePoint in lineCodePoint ..< lineCodePoint + 16 {
-      if self.mSelectedCharacterCode == codePoint {
-        NSColor.lightGray.setFill ()
-        NSBezierPath.fill (charRect)
+    if max (charRect.minY, inDirtyRect.minY) <= min (charRect.maxY, inDirtyRect.maxY) {
+      let lineCodePoint = self.mDefinedLineArray [inLineIndex] * 16
+      for codePoint in lineCodePoint ..< lineCodePoint + 16 {
+        if self.mSelectedCharacterCode == codePoint {
+          NSColor.lightGray.setFill ()
+          NSBezierPath.fill (charRect)
+        }
+        if self.mMouseDownCharacterCode == codePoint {
+          NSColor.blue.setStroke ()
+          NSBezierPath.stroke (NSInsetRect (charRect, 0.5, 0.5))
+        }
+        if let uniscalar = Unicode.Scalar (codePoint) {
+          let attributes : [NSAttributedString.Key:AnyObject] = [
+            NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
+            NSAttributedString.Key.foregroundColor : self.mDefinedCharacterSet.contains (codePoint) ? NSColor.black : .lightGray
+          ]
+          let s = String (uniscalar)
+          let size = s.size (withAttributes: attributes)
+          let p = NSPoint (x: charRect.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y: charRect.origin.y)
+          s.draw (at: p, withAttributes: attributes)
+        }
+        charRect.origin.x += CHARACTER_WIDTH
       }
-      if self.mMouseDownCharacterCode == codePoint {
-        NSColor.blue.setStroke ()
-        NSBezierPath.stroke (NSInsetRect (charRect, 0.5, 0.5))
-      }
-      if let uniscalar = Unicode.Scalar (codePoint) {
-        let attributes : [NSAttributedString.Key:AnyObject] = [
-          NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
-          NSAttributedString.Key.foregroundColor : self.mDefinedCharacterSet.contains (codePoint) ? NSColor.black : .lightGray
-        ]
-        let s = String (uniscalar)
-        let size = s.size (withAttributes: attributes)
-        let p = NSPoint (x: charRect.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y: charRect.origin.y)
-        s.draw (at: p, withAttributes: attributes)
-      }
-      charRect.origin.x += CHARACTER_WIDTH
     }
   }
 

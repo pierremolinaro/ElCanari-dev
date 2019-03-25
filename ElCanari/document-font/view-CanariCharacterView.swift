@@ -16,9 +16,9 @@ import Cocoa
 private let PLACEMENT_GRID : CGFloat = 11.0
 private let GERBER_FLOW_ARROW_SIZE : CGFloat = 6.0
 private let SELECTION_KNOB_SIZE : CGFloat = 8.0
-private let MAX_X : Int = 24
+private let MAX_X : Int = 32
 private let MIN_Y : Int = -8
-private let MAX_Y : Int = 24
+private let MAX_Y : Int = 26
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -120,20 +120,20 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     bp.stroke ()
   //--- Draw grid
     bp = NSBezierPath ()
-    for y in -4 ... -1 {
+    for y in MIN_Y / 2 ... -1 {
       let yy = yForY (y * 2)
       bp.move (to: CGPoint (x: 20.0, y: yy))
       bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yy))
     }
-    for y in 1 ... 12 {
+    for y in 1 ... MAX_Y / 2 {
       let yy = yForY (y * 2)
       bp.move (to: CGPoint (x: 20.0, y: yy))
       bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yy))
     }
-    for x in 1 ... 16 {
+    for x in 1 ... MAX_X / 2 {
       let xx = xForX (x * 2)
       bp.move (to: CGPoint (x: xx, y: 0.0))
-      bp.line (to: CGPoint (x: xx, y: yForY (24) + 10.0))
+      bp.line (to: CGPoint (x: xx, y: yForY (MAX_Y) + 10.0))
     }
     bp.lineWidth = 1.0
     NSColor.lightGray.setStroke ()
@@ -141,7 +141,7 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
   //--- Main X and Y axis
     bp = NSBezierPath ()
     bp.move (to: CGPoint (x: xForX (0), y: 0.0))
-    bp.line (to: CGPoint (x: xForX (0), y: yForY (24) + 10.0))
+    bp.line (to: CGPoint (x: xForX (0), y: yForY (MAX_Y) + 10.0))
     bp.move (to: CGPoint (x: 20.0, y: yForY (0)))
     bp.line (to: CGPoint (x: NSMaxX (self.bounds), y: yForY (0)))
     bp.lineWidth = 1.0
@@ -151,14 +151,14 @@ class CanariCharacterView : NSView, EBUserClassNameProtocol {
     let textAttributes : [NSAttributedString.Key : Any] = [
       NSAttributedString.Key.font : NSFont.userFixedPitchFont (ofSize: 11.0)!
     ]
-    for x in 0 ... 16 {
+    for x in 0 ... MAX_X / 2 {
       let xx = xForX (x * 2)
       let s = "\(x*2)"
       let size = s.size (withAttributes: textAttributes)
-      s.draw (at: NSPoint (x: xx - size.width * 0.5, y: yForY (24) + 10.0), withAttributes: textAttributes)
+      s.draw (at: NSPoint (x: xx - size.width * 0.5, y: yForY (MAX_Y) + 10.0), withAttributes: textAttributes)
     }
   //--- Add Y axis values
-    for y in -4 ... 12 {
+    for y in MIN_Y / 2 ... MAX_Y / 2 {
       let yy = yForY (y * 2)
       let s = "\(y*2)"
       let size = s.size (withAttributes: textAttributes)

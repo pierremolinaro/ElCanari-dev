@@ -2825,11 +2825,6 @@
 		CFDA57991BFA521A00EEF3CB /* document — font */ = {
 			isa = PBXGroup;
 			children = (
-				CFDBA0E722491BC900C658B2 /* transient-FontDocument-mStatusImage.swift */,
-				CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */,
-				CFDBA0E422491B0D00C658B2 /* transient-FontDocument-noIssue.swift */,
-				CF853E522249136400FA57CD /* transient-FontRoot-issues.swift */,
-				CF853E4F224911C900FA57CD /* transient-FontCharacter-issues.swift */,
 				CF90B77521427D4100E725B0 /* action-FontDocument-addCharacterAction.swift */,
 				CF3DEFB81BFF92B5002ECBDE /* action-FontDocument-addSegmentAction.swift */,
 				CF6F6F152247BFDD00F89C77 /* action-FontDocument-deleteCurrentCharacterAction.swift */,
@@ -2857,10 +2852,15 @@
 				CFB8BADD214BBAB6006A1841 /* selectionController-FontRoot-mCharacterSelection.swift */,
 				CFE652CF1DD4B22600BAC27A /* transient-FontCharacter-gerberCode.swift */,
 				CFE652D01DD4B22600BAC27A /* transient-FontCharacter-gerberCodeInstructionCountMessage.swift */,
+				CF853E4F224911C900FA57CD /* transient-FontCharacter-issues.swift */,
 				CFE652D11DD4B22600BAC27A /* transient-FontCharacter-segmentArrayForDrawing.swift */,
 				CF6F6F142247BFDD00F89C77 /* transient-FontDocument-canDeleteCurrentCharacter.swift */,
+				CFDBA0E722491BC900C658B2 /* transient-FontDocument-mStatusImage.swift */,
+				CFDBA0E822491BC900C658B2 /* transient-FontDocument-mStatusMessage.swift */,
+				CFDBA0E422491B0D00C658B2 /* transient-FontDocument-noIssue.swift */,
 				CF90B77321427BA500E725B0 /* transient-FontRoot-currentCharacterCodePointString.swift */,
 				CF6F6F1122479DC600F89C77 /* transient-FontRoot-definedCharacters.swift */,
+				CF853E522249136400FA57CD /* transient-FontRoot-issues.swift */,
 				CF3C62F11DD897E000978A09 /* transient-FontRoot-sampleStringBezierPath.swift */,
 				CF2A491B1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift */,
 				CF2A491C1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathDescent.swift */,

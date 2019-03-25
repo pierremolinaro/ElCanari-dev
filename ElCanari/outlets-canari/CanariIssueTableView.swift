@@ -84,19 +84,28 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
       self.mIssueDisplayView?.setIssue (selectedIssue.mPath, selectedIssue.mKind)
       self.mHideIssueButton?.isEnabled = true
     }
-    var image = NSImage (named: okStatusImageName)
-    if self.mModelArray.count > 0 {
-      image = NSImage (named: warningStatusImageName)
-      var hasError = false
-      for issue in self.mModelArray {
-         hasError = issue.mKind == .error
-         if hasError {
-           image = NSImage (named: errorStatusImageName)
-           break
-         }
+    var errorCount = 0
+    var warningCount = 0
+    for issue in self.mModelArray {
+      switch issue.mKind {
+      case .error :
+        errorCount += 1
+      case .warning :
+        warningCount += 1
       }
     }
+    var image = NSImage (named: okStatusImageName)
+    var title = ""
+    if errorCount > 0 {
+      image = NSImage (named: errorStatusImageName)
+      title = "\(errorCount)"
+    }else if warningCount > 0 {
+      image = NSImage (named: warningStatusImageName)
+      title = "\(warningCount)"
+    }
+  //---
     self.mSegmentedControl?.setImage (image, forSegment: self.mSegmentedControlSegment)
+    self.mSegmentedControl?.setLabel (title, forSegment: self.mSegmentedControlSegment)
   }
 
   //····················································································································

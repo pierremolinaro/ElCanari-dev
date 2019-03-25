@@ -35,6 +35,7 @@ struct CanariIssue : Hashable {
   let mMessage : String
   let mKind : CanariIssueKind
   let mPath : NSBezierPath
+  let mRepresentativeValue : Int
 
   //····················································································································
   //   Init
@@ -42,10 +43,12 @@ struct CanariIssue : Hashable {
 
   init (kind inKind : CanariIssueKind,
         message inMessage : String,
-        path inBezierPath : NSBezierPath = NSBezierPath ()) {
+        path inBezierPath : NSBezierPath = NSBezierPath (),
+        representativeValue inValue : Int = 0) {
     mMessage = inMessage
     mPath = inBezierPath
     mKind = inKind
+    mRepresentativeValue = inValue
   }
 
   //····················································································································

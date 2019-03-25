@@ -159,6 +159,7 @@ import Cocoa
   @IBOutlet var mInfosPageView : CanariViewWithKeyView?
   @IBOutlet var mInspectorSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mIssueTableView : CanariIssueTableView?
+  @IBOutlet var mIssueTextField : EBTextObserverField?
   @IBOutlet var mMasterFontPageView : NSView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNewCharacterPanel : NSPanel?
@@ -539,6 +540,21 @@ import Cocoa
         file: #file,
         line: #line,
         errorMessage: "the 'mIssueTableView' outlet is nil"
+      )
+    }
+    if let outlet : Any = self.mIssueTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (
+          file: #file,
+          line: #line,
+          errorMessage: "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'"
+        )
+      }
+    }else{
+      presentErrorWindow (
+        file: #file,
+        line: #line,
+        errorMessage: "the 'mIssueTextField' outlet is nil"
       )
     }
     if let outlet : Any = self.mMasterFontPageView {
@@ -998,6 +1014,7 @@ import Cocoa
     self.mIssueTableView?.bind_issues (self.rootObject.issues_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_image (self.mStatusImage_property, file: #file, line: #line)
     self.mStatusImageViewInToolbar?.bind_tooltip (self.mStatusMessage_property, file: #file, line: #line)
+    self.mIssueTextField?.bind_valueObserver (self.mStatusMessage_property, file: #file, line: #line)
     self.commentTextView?.bind_value (self.rootObject.comments_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
@@ -1081,6 +1098,7 @@ import Cocoa
     self.mIssueTableView?.unbind_issues ()
     self.mStatusImageViewInToolbar?.unbind_image ()
     self.mStatusImageViewInToolbar?.unbind_tooltip ()
+    self.mIssueTextField?.unbind_valueObserver ()
     self.commentTextView?.unbind_value ()
   //--------------------------- Unbind multiple bindings
     self.canDeleteCurrentCharacter_property.removeEBObserver (self.mController_mDeleteCurrentCharacterButton_enabled!)
@@ -1121,6 +1139,7 @@ import Cocoa
     self.mInfosPageView?.ebCleanUp ()
     self.mInspectorSegmentedControl?.ebCleanUp ()
     self.mIssueTableView?.ebCleanUp ()
+    self.mIssueTextField?.ebCleanUp ()
     self.mMasterFontPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mNewCharacterPanel?.ebCleanUp ()
