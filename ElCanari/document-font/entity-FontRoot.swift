@@ -192,12 +192,6 @@ class FontRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Array controller: selectedCharacterController
-  //····················································································································
-
-  var selectedCharacterController = ArrayController_FontRoot_selectedCharacterController ()
-
-  //····················································································································
   //   Transient property: currentCharacterCodePointString
   //····················································································································
 
@@ -374,8 +368,6 @@ class FontRoot : EBManagedObject,
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
-  //--- Array controller property: selectedCharacterController
-    self.selectedCharacterController.bind_model (self.characters_property)
   //--- Atomic property: currentCharacterCodePointString
     self.currentCharacterCodePointString_property.mReadModelFunction = {
         let kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
@@ -545,8 +537,6 @@ class FontRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-  //--- Array controller property: selectedCharacterController
-    self.selectedCharacterController.unbind_model ()
     g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
     self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)

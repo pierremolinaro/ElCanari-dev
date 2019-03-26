@@ -22,8 +22,6 @@ entity FontRoot {
   transient String sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
 
   transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint ;
-
-  arrayController selectedCharacterController : self.characters ;
   
   transient DefinedCharactersInDevice definedCharacters dependsFrom self.characters.all.codePoint ;
 
