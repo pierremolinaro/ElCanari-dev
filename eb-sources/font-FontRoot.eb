@@ -3,9 +3,10 @@
 entity FontRoot {
   toMany @signature FontCharacter characters ;
   property @signature String comments default "" ;
-  property Int nominalSize default 14 ;
+  property @signature Int nominalSize default 14 ;
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;
+  property Int selectedCharacter default 32 ;
 
   transient NSBezierPath sampleStringBezierPath dependsFrom
     self.nominalSize,

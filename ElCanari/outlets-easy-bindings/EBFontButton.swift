@@ -7,7 +7,7 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBFontButton) class EBFontButton : NSButton, EBUserClassNameProtocol {
-  private var mFont : NSFont?
+  private var mFont : NSFont? = nil
   
   //····················································································································
 
@@ -36,8 +36,8 @@ import Cocoa
     if let font = mFont {
     //  self.window?.makeFirstResponder (self)
       let fontManager = NSFontManager.shared 
-      fontManager.delegate = self
-      fontManager.setSelectedFont (font, isMultiple:false)
+      // fontManager.delegate = self
+      fontManager.setSelectedFont (font, isMultiple: false)
       fontManager.orderFrontFontPanel (self)
       fontManager.target = self
       fontManager.action = #selector (EBFontButton.changeFont (_:))
@@ -47,8 +47,8 @@ import Cocoa
   //····················································································································
 
   @objc func changeFont (_ sender : Any?) {
-    if let valueController = mValueController, let fontManager = sender as! NSFontManager? {
-      let newFont = fontManager.convert (mFont!)
+    if let valueController = self.mValueController, let fontManager = sender as! NSFontManager? {
+      let newFont = fontManager.convert (self.mFont!)
       valueController.mObject.setProp (newFont)
     }
   }
@@ -56,7 +56,7 @@ import Cocoa
   //····················································································································
 
   func mySetFont (font : NSFont) {
-    mFont = font
+    self.mFont = font
     let newTitle = String (format:"%@ — %g pt.", font.displayName!, font.pointSize)
     self.title = newTitle
   }
@@ -73,13 +73,13 @@ import Cocoa
 
   private var mValueController : Controller_EBFontButton_fontValue?
 
-  func bind_fontValue (_ object:EBReadWriteProperty_NSFont, file:String, line:Int) {
-    mValueController = Controller_EBFontButton_fontValue (object:object, outlet:self, file:file, line:line)
+  func bind_fontValue (_ object : EBReadWriteProperty_NSFont, file : String, line : Int) {
+    self.mValueController = Controller_EBFontButton_fontValue (object: object, outlet: self)
   }
 
   func unbind_fontValue () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································
@@ -97,7 +97,7 @@ import Cocoa
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_NSFont, outlet : EBFontButton, file : String, line : Int) {
+  init (object : EBReadWriteProperty_NSFont, outlet : EBFontButton) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
@@ -108,30 +108,27 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
-    mOutlet.target = nil
-    mOutlet.action = nil
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
   }
 
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
-    case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.title = ""
+    switch self.mObject.prop {
+    case .empty, .multiple :
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.title = ""
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.mySetFont (font: v)
-    case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.title = ""
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.mySetFont (font: v)
     }
   }
 
   //····················································································································
 
   func updateModel (sender : EBFontButton) {
-    _ = mObject.validateAndSetProp (mOutlet.font!, windowForSheet: sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.font!, windowForSheet: sender.window)
   }
 
   //····················································································································

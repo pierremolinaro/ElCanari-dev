@@ -61,9 +61,9 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
   
   //····················································································································
 
@@ -330,9 +330,9 @@ class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
   
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
@@ -463,9 +463,9 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
@@ -731,9 +731,9 @@ class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
@@ -957,7 +957,7 @@ extension NSColor : ClassPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSKeyedUnarchiver.unarchiveObject (with: data as Data) as? NSColor
+    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSColor
   }
 
   //····················································································································
@@ -1015,7 +1015,7 @@ extension NSFont : ClassPropertyProtocol {
   //····················································································································
 
   static func unarchiveFromData (data : Data) -> NSObject? {
-    return NSKeyedUnarchiver.unarchiveObject (with: data as Data) as? NSFont
+    return NSKeyedUnarchiver.unarchiveObject (with: data) as? NSFont
   }
 
   //····················································································································
@@ -1095,7 +1095,7 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
 
   //····················································································································
 
-  var array : [NSBezierPath] { return mPathes }
+  var array : [NSBezierPath] { return self.mPathes }
 
   //····················································································································
 
@@ -1229,9 +1229,9 @@ final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassP
   
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
   
   //····················································································································
 
@@ -1491,9 +1491,9 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   
   //····················································································································
 
-  override init () {
-    super.init ()
-  }
+//  override init () {
+//    super.init ()
+//  }
 
   //····················································································································
 
