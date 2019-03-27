@@ -30,8 +30,8 @@ protocol FontRoot_selectedInspector : class {
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol FontRoot_selectedCharacter : class {
-  var selectedCharacter : Int { get }
+protocol FontRoot_currentCharacterCodePoint : class {
+  var currentCharacterCodePoint : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,7 +85,7 @@ class FontRoot : EBManagedObject,
          FontRoot_nominalSize,
          FontRoot_selectedTab,
          FontRoot_selectedInspector,
-         FontRoot_selectedCharacter,
+         FontRoot_currentCharacterCodePoint,
          FontRoot_currentCharacterCodePointString,
          FontRoot_sampleStringBezierPath,
          FontRoot_sampleStringBezierPathWidth,
@@ -187,26 +187,32 @@ class FontRoot : EBManagedObject,
   }
 
   //····················································································································
-  //   Atomic property: selectedCharacter
+  //   Atomic property: currentCharacterCodePoint
   //····················································································································
 
-  var selectedCharacter_property = EBStoredProperty_Int (defaultValue: 32)
+  var currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 32)
 
   //····················································································································
 
-  var selectedCharacter : Int {
+  var currentCharacterCodePoint : Int {
     get {
-      return self.selectedCharacter_property.propval
+      return self.currentCharacterCodePoint_property.propval
     }
     set {
-      self.selectedCharacter_property.setProp (newValue)
+      self.currentCharacterCodePoint_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var selectedCharacter_property_selection : EBSelection <Int> {
-    return self.selectedCharacter_property.prop
+  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
+    return self.currentCharacterCodePoint_property.prop
+  }
+
+  //····················································································································
+
+  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
+    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
   }
 
   //····················································································································
@@ -396,28 +402,36 @@ class FontRoot : EBManagedObject,
     self.selectedTab_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: selectedCharacter
-    self.selectedCharacter_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.ebUndoManager = self.ebUndoManager
+//    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.validationFunction = { [weak self] in
+      return self?.validate_currentCharacterCodePoint (currentValue: $0, proposedValue: $1) ?? .rejectWithBeep
+    }
   //--- To many property: characters (no option)
     self.characters_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: currentCharacterCodePointString
-    self.currentCharacterCodePointString_property.mReadModelFunction = {
-        let kind = g_Preferences!.currentCharacterCodePoint_property_selection.kind ()
+    self.currentCharacterCodePointString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.currentCharacterCodePoint_property_selection.kind ()
         switch kind {
         case .noSelectionKind :
           return .empty
         case .multipleSelectionKind :
           return .multiple
         case .singleSelectionKind :
-          switch (g_Preferences!.currentCharacterCodePoint_property_selection) {
+          switch (unwSelf.currentCharacterCodePoint_property_selection) {
           case (.single (let v0)) :
             return .single (transient_FontRoot_currentCharacterCodePointString (v0))
           default :
             return .empty
           }
         }
+      }else{
+        return .empty
+      }
     }
-    g_Preferences?.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
+    self.currentCharacterCodePoint_property.addEBObserver (self.currentCharacterCodePointString_property)
   //--- Atomic property: sampleStringBezierPath
     self.sampleStringBezierPath_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -559,7 +573,7 @@ class FontRoot : EBManagedObject,
     }
     self.characters_property.addEBObserverOf_issues (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.characters_property.setSignatureObserver (observer: self)
     self.comments_property.setSignatureObserver (observer: self)
     self.nominalSize_property.setSignatureObserver (observer: self)
@@ -570,7 +584,7 @@ class FontRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
-    g_Preferences?.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
+    self.currentCharacterCodePoint_property.removeEBObserver (self.currentCharacterCodePointString_property)
     self.nominalSize_property.removeEBObserver (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_segmentArrayForDrawing (self.sampleStringBezierPath_property)
     self.characters_property.removeEBObserverOf_advance (self.sampleStringBezierPath_property)
@@ -581,6 +595,10 @@ class FontRoot : EBManagedObject,
     self.sampleStringBezierPath_property.removeEBObserver (self.sampleStringBezierPathDescent_property)
     self.characters_property.removeEBObserverOf_codePoint (self.definedCharacters_property)
     self.characters_property.removeEBObserverOf_issues (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.characters_property.setSignatureObserver (observer: nil)
+    self.comments_property.setSignatureObserver (observer: nil)
+    self.nominalSize_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -627,12 +645,12 @@ class FontRoot : EBManagedObject,
       valueExplorer:&self.selectedInspector_property.mValueExplorer
     )
     createEntryForPropertyNamed (
-      "selectedCharacter",
-      idx:self.selectedCharacter_property.ebObjectIndex,
+      "currentCharacterCodePoint",
+      idx:self.currentCharacterCodePoint_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.selectedCharacter_property.mObserverExplorer,
-      valueExplorer:&self.selectedCharacter_property.mValueExplorer
+      observerExplorer:&self.currentCharacterCodePoint_property.mObserverExplorer,
+      valueExplorer:&self.currentCharacterCodePoint_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForPropertyNamed (
@@ -720,9 +738,9 @@ class FontRoot : EBManagedObject,
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.mObserverExplorer = nil
     self.selectedInspector_property.mValueExplorer = nil
-  //--- Atomic property: selectedCharacter
-    self.selectedCharacter_property.mObserverExplorer = nil
-    self.selectedCharacter_property.mValueExplorer = nil
+  //--- Atomic property: currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.mObserverExplorer = nil
+    self.currentCharacterCodePoint_property.mValueExplorer = nil
   //--- To many property: characters
     self.characters_property.mValueExplorer = nil
   //---
@@ -762,11 +780,11 @@ class FontRoot : EBManagedObject,
     self.selectedTab_property.storeIn (dictionary: ioDictionary, forKey:"selectedTab")
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
-  //--- Atomic property: selectedCharacter
-    self.selectedCharacter_property.storeIn (dictionary: ioDictionary, forKey:"selectedCharacter")
+  //--- Atomic property: currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey:"currentCharacterCodePoint")
   //--- To many property: characters
     self.store (
-      managedObjectArray: characters_property.propval as NSArray,
+      managedObjectArray: self.characters_property.propval,
       relationshipName: "characters",
       intoDictionary: ioDictionary
     )
@@ -801,8 +819,8 @@ class FontRoot : EBManagedObject,
     self.selectedTab_property.readFrom (dictionary: inDictionary, forKey:"selectedTab")
   //--- Atomic property: selectedInspector
     self.selectedInspector_property.readFrom (dictionary: inDictionary, forKey:"selectedInspector")
-  //--- Atomic property: selectedCharacter
-    self.selectedCharacter_property.readFrom (dictionary: inDictionary, forKey:"selectedCharacter")
+  //--- Atomic property: currentCharacterCodePoint
+    self.currentCharacterCodePoint_property.readFrom (dictionary: inDictionary, forKey:"currentCharacterCodePoint")
   }
 
   //····················································································································
@@ -1068,58 +1086,58 @@ class ReadOnlyArrayOf_FontRoot : ReadOnlyAbstractArrayProperty <FontRoot> {
   }
 
   //····················································································································
-  //   Observers of 'selectedCharacter' stored property
+  //   Observers of 'currentCharacterCodePoint' stored property
   //····················································································································
 
-  private var mObserversOf_selectedCharacter = EBWeakEventSet ()
+  private var mObserversOf_currentCharacterCodePoint = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_selectedCharacter (_ inObserver : EBEvent) {
+  final func addEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_selectedCharacter.insert (inObserver)
+    self.mObserversOf_currentCharacterCodePoint.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedCharacter_property.addEBObserver (inObserver)
+        managedObject.currentCharacterCodePoint_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_selectedCharacter (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_currentCharacterCodePoint (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_selectedCharacter.remove (inObserver)
+    self.mObserversOf_currentCharacterCodePoint.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.selectedCharacter_property.removeEBObserver (inObserver)
+        managedObject.currentCharacterCodePoint_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_selectedCharacter_toElementsOfSet (_ inSet : Set<FontRoot>) {
+  final func addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (_ inSet : Set<FontRoot>) {
     for managedObject in inSet {
-      self.mObserversOf_selectedCharacter.apply ( {(_ observer : EBEvent) in
-        managedObject.selectedCharacter_property.addEBObserver (observer)
+      self.mObserversOf_currentCharacterCodePoint.apply ( {(_ observer : EBEvent) in
+        managedObject.currentCharacterCodePoint_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_selectedCharacter_fromElementsOfSet (_ inSet : Set<FontRoot>) {
-    self.mObserversOf_selectedCharacter.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (_ inSet : Set<FontRoot>) {
+    self.mObserversOf_currentCharacterCodePoint.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.selectedCharacter_property.removeEBObserver (observer)
+        managedObject.currentCharacterCodePoint_property.removeEBObserver (observer)
       }
     })
   }
@@ -1593,7 +1611,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
       self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedSet)
-      self.removeEBObserversOf_selectedCharacter_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
       self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedSet)
@@ -1609,7 +1627,7 @@ class TransientArrayOf_FontRoot : ReadOnlyArrayOf_FontRoot {
       self.addEBObserversOf_nominalSize_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectedTab_toElementsOfSet (addedSet)
       self.addEBObserversOf_selectedInspector_toElementsOfSet (addedSet)
-      self.addEBObserversOf_selectedCharacter_toElementsOfSet (addedSet)
+      self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
       self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedSet)
       self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedSet)
@@ -1749,13 +1767,13 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
             managedObject.nominalSize_property.mSetterDelegate = nil
             managedObject.selectedTab_property.mSetterDelegate = nil
             managedObject.selectedInspector_property.mSetterDelegate = nil
-            managedObject.selectedCharacter_property.mSetterDelegate = nil
+            managedObject.currentCharacterCodePoint_property.mSetterDelegate = nil
           }
           self.removeEBObserversOf_comments_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_nominalSize_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedTab_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_selectedInspector_fromElementsOfSet (removedObjectSet)
-          self.removeEBObserversOf_selectedCharacter_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_currentCharacterCodePoint_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_currentCharacterCodePointString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_sampleStringBezierPath_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_sampleStringBezierPathWidth_fromElementsOfSet (removedObjectSet)
@@ -1774,13 +1792,13 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
             managedObject.nominalSize_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.selectedTab_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.selectedInspector_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
-            managedObject.selectedCharacter_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.currentCharacterCodePoint_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
           self.addEBObserversOf_comments_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_nominalSize_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedTab_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_selectedInspector_toElementsOfSet (addedObjectSet)
-          self.addEBObserversOf_selectedCharacter_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_currentCharacterCodePoint_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_currentCharacterCodePointString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_sampleStringBezierPath_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_sampleStringBezierPathWidth_toElementsOfSet (addedObjectSet)
@@ -1860,7 +1878,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1871,7 +1889,7 @@ final class StoredArrayOf_FontRoot : ReadWriteArrayOf_FontRoot, EBSignatureObser
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

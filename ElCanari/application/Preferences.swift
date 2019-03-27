@@ -80,7 +80,6 @@ let Preferences_padNumberColorForBoard = "Preferences:padNumberColorForBoard"
 let Preferences_packageDrawingWidthMultpliedByTenForBoard = "Preferences:packageDrawingWidthMultpliedByTenForBoard"
 let Preferences_showGerberDrawingFlow = "Preferences:showGerberDrawingFlow"
 let Preferences_showGerberDrawingIndexes = "Preferences:showGerberDrawingIndexes"
-let Preferences_currentCharacterCodePoint = "Preferences:currentCharacterCodePoint"
 let Preferences_fontEditionTransparency = "Preferences:fontEditionTransparency"
 let Preferences_checkForSystemLibraryAtStartUp = "Preferences:checkForSystemLibraryAtStartUp"
 let Preferences_systemLibraryCheckTimeInterval = "Preferences:systemLibraryCheckTimeInterval"
@@ -1771,35 +1770,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
 
   var showGerberDrawingIndexes_property_selection : EBSelection <Bool> {
     return self.showGerberDrawingIndexes_property.prop
-  }
-
-  //····················································································································
-  //   Atomic property: currentCharacterCodePoint
-  //····················································································································
-
-  var currentCharacterCodePoint_property = EBStoredProperty_Int (defaultValue: 65, prefKey: Preferences_currentCharacterCodePoint)
-
-  //····················································································································
-
-  var currentCharacterCodePoint : Int {
-    get {
-      return self.currentCharacterCodePoint_property.propval
-    }
-    set {
-      self.currentCharacterCodePoint_property.setProp (newValue)
-    }
-  }
-
-  //····················································································································
-
-  var currentCharacterCodePoint_property_selection : EBSelection <Int> {
-    return self.currentCharacterCodePoint_property.prop
-  }
-
-  //····················································································································
-
-  func currentCharacterCodePoint_validateAndSetProp (_ inCandidateValue : Int, windowForSheet inWindow:NSWindow?) -> Bool {
-    return self.currentCharacterCodePoint_property.validateAndSetProp (inCandidateValue, windowForSheet:inWindow)
   }
 
   //····················································································································
@@ -3726,7 +3696,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   @IBOutlet var mEditionTransparencySlider : EBSlider? = nil
   @IBOutlet var mEditionTransparencyTextField : EBDoubleField? = nil
   @IBOutlet var mErrorMessageColorColorWell : EBColorWell? = nil
-  @IBOutlet var mFontCharacterSelectButton : FontCharacterSelectButton? = nil
   @IBOutlet var mInformativeTextInLibraryUpdateWindow : EBTextField? = nil
   @IBOutlet var mLibraryRepositoryCommitButton : NSButton? = nil
   @IBOutlet var mLibraryRepositoryCurrentReleaseTextField : NSTextField? = nil
@@ -3979,9 +3948,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     self.showGerberDrawingFlow_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: showGerberDrawingIndexes
     self.showGerberDrawingIndexes_property.ebUndoManager = self.ebUndoManager
-  //--- Atomic property: currentCharacterCodePoint
-    self.currentCharacterCodePoint_property.ebUndoManager = self.ebUndoManager
-    self.currentCharacterCodePoint_property.validationFunction = self.validate_currentCharacterCodePoint
   //--- Atomic property: fontEditionTransparency
     self.fontEditionTransparency_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: checkForSystemLibraryAtStartUp
@@ -4710,17 +4676,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
       presentErrorWindow (file: #file,
                           line: #line,
                           errorMessage: "the 'mErrorMessageColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mFontCharacterSelectButton {
-      if !(outlet is FontCharacterSelectButton) {
-        presentErrorWindow (file: #file,
-                            line: #line,
-                            errorMessage: "the 'mFontCharacterSelectButton' outlet is not an instance of 'FontCharacterSelectButton'") ;
-      }
-    }else{
-      presentErrorWindow (file: #file,
-                          line: #line,
-                          errorMessage: "the 'mFontCharacterSelectButton' outlet is nil") ;
     }
     if let outlet : Any = self.mInformativeTextInLibraryUpdateWindow {
       if !(outlet is EBTextField) {
@@ -5647,7 +5602,6 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
     mSampleStringSizeField?.bind_value (self.sampleStringSize_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mShowGerberDrawingFlowCheckbox?.bind_value (self.showGerberDrawingFlow_property, file: #file, line: #line)
     mShowGerberDrawingIndexesCheckbox?.bind_value (self.showGerberDrawingIndexes_property, file: #file, line: #line)
-    mFontCharacterSelectButton?.bind_codePoint (self.currentCharacterCodePoint_property, file: #file, line: #line)
     mEditionTransparencySlider?.bind_doubleValue (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:true)
     mEditionTransparencyTextField?.bind_value (self.fontEditionTransparency_property, file: #file, line: #line, sendContinously:false, autoFormatter:false)
     mUseLibraryInUserApplicationSupportPathCheckBox?.bind_value (self.usesUserLibrary_property, file: #file, line: #line)

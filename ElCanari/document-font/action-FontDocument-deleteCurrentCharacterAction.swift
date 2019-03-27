@@ -17,15 +17,14 @@ extension FontDocument {
       //--- Search character
         var charArray = self.rootObject.characters_property.propval
         var possibleCurrentCharacterIndex : Int? = nil
-        if let codePoint = g_Preferences?.currentCharacterCodePoint {
-          var idx = 0
-          for character in charArray {
-            if character.codePoint == codePoint {
-              possibleCurrentCharacterIndex = idx
-              break
-            }
-            idx += 1
+        let codePoint = self.rootObject.currentCharacterCodePoint
+        var idx = 0
+        for character in charArray {
+          if character.codePoint == codePoint {
+            possibleCurrentCharacterIndex = idx
+            break
           }
+          idx += 1
         }
       //--- If found, delete it
         if let currentCharacterIndex = possibleCurrentCharacterIndex {
@@ -36,7 +35,7 @@ extension FontDocument {
           if nextSelectedCharacterIndex >= charArray.count {
             nextSelectedCharacterIndex = charArray.count - 1
           }
-          g_Preferences?.currentCharacterCodePoint = charArray [nextSelectedCharacterIndex].codePoint
+          self.rootObject.currentCharacterCodePoint = charArray [nextSelectedCharacterIndex].codePoint
         }
 //--- END OF USER ZONE 2
   }

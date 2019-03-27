@@ -381,7 +381,7 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenAdvanceIsZero_property.addEBObserver (self.issues_property)
     self.segments_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.advance_property.setSignatureObserver (observer: self)
     self.codePoint_property.setSignatureObserver (observer: self)
     self.mWarnsWhenAdvanceIsZero_property.setSignatureObserver (observer: self)
@@ -405,6 +405,12 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenNoSegment_property.removeEBObserver (self.issues_property)
     self.mWarnsWhenAdvanceIsZero_property.removeEBObserver (self.issues_property)
     self.segments_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.advance_property.setSignatureObserver (observer: nil)
+    self.codePoint_property.setSignatureObserver (observer: nil)
+    self.mWarnsWhenAdvanceIsZero_property.setSignatureObserver (observer: nil)
+    self.mWarnsWhenNoSegment_property.setSignatureObserver (observer: nil)
+    self.segments_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -553,7 +559,7 @@ class FontCharacter : EBManagedObject,
     self.mWarnsWhenAdvanceIsZero_property.storeIn (dictionary: ioDictionary, forKey:"mWarnsWhenAdvanceIsZero")
   //--- To many property: segments
     self.store (
-      managedObjectArray: segments_property.propval as NSArray,
+      managedObjectArray: self.segments_property.propval,
       relationshipName: "segments",
       intoDictionary: ioDictionary
     )
@@ -1404,7 +1410,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1415,7 +1421,7 @@ final class StoredArrayOf_FontCharacter : ReadWriteArrayOf_FontCharacter, EBSign
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

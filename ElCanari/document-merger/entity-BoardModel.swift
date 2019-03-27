@@ -3233,7 +3233,7 @@ class BoardModel : EBManagedObject,
     self.myInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myModel_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -3487,6 +3487,8 @@ class BoardModel : EBManagedObject,
     self.backPackagesBezierPaths_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerBoardViewDisplayBackPackages_property.removeEBObserver (self.imageForInstances_property)
     g_Preferences?.mergerColorBackPackages_property.removeEBObserver (self.imageForInstances_property)
+ //   self.myInstances_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -4196,67 +4198,67 @@ class BoardModel : EBManagedObject,
     self.zoom_property.storeIn (dictionary: ioDictionary, forKey:"zoom")
   //--- To many property: frontLegendLines
     self.store (
-      managedObjectArray: frontLegendLines_property.propval as NSArray,
+      managedObjectArray: self.frontLegendLines_property.propval,
       relationshipName: "frontLegendLines",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLegendLines
     self.store (
-      managedObjectArray: backLegendLines_property.propval as NSArray,
+      managedObjectArray: self.backLegendLines_property.propval,
       relationshipName: "backLegendLines",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontLegendTexts
     self.store (
-      managedObjectArray: frontLegendTexts_property.propval as NSArray,
+      managedObjectArray: self.frontLegendTexts_property.propval,
       relationshipName: "frontLegendTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontLayoutTexts
     self.store (
-      managedObjectArray: frontLayoutTexts_property.propval as NSArray,
+      managedObjectArray: self.frontLayoutTexts_property.propval,
       relationshipName: "frontLayoutTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLegendTexts
     self.store (
-      managedObjectArray: backLegendTexts_property.propval as NSArray,
+      managedObjectArray: self.backLegendTexts_property.propval,
       relationshipName: "backLegendTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: backLayoutTexts
     self.store (
-      managedObjectArray: backLayoutTexts_property.propval as NSArray,
+      managedObjectArray: self.backLayoutTexts_property.propval,
       relationshipName: "backLayoutTexts",
       intoDictionary: ioDictionary
     )
   //--- To many property: internalBoardsLimits
     self.store (
-      managedObjectArray: internalBoardsLimits_property.propval as NSArray,
+      managedObjectArray: self.internalBoardsLimits_property.propval,
       relationshipName: "internalBoardsLimits",
       intoDictionary: ioDictionary
     )
   //--- To many property: drills
     self.store (
-      managedObjectArray: drills_property.propval as NSArray,
+      managedObjectArray: self.drills_property.propval,
       relationshipName: "drills",
       intoDictionary: ioDictionary
     )
   //--- To many property: vias
     self.store (
-      managedObjectArray: vias_property.propval as NSArray,
+      managedObjectArray: self.vias_property.propval,
       relationshipName: "vias",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontPads
     self.store (
-      managedObjectArray: frontPads_property.propval as NSArray,
+      managedObjectArray: self.frontPads_property.propval,
       relationshipName: "frontPads",
       intoDictionary: ioDictionary
     )
   //--- To many property: backPads
     self.store (
-      managedObjectArray: backPads_property.propval as NSArray,
+      managedObjectArray: self.backPads_property.propval,
       relationshipName: "backPads",
       intoDictionary: ioDictionary
     )
@@ -4266,49 +4268,49 @@ class BoardModel : EBManagedObject,
     self.modelLimitWidthUnit_property.storeIn (dictionary: ioDictionary, forKey:"modelLimitWidthUnit")
   //--- To many property: backComponentNames
     self.store (
-      managedObjectArray: backComponentNames_property.propval as NSArray,
+      managedObjectArray: self.backComponentNames_property.propval,
       relationshipName: "backComponentNames",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontComponentNames
     self.store (
-      managedObjectArray: frontComponentNames_property.propval as NSArray,
+      managedObjectArray: self.frontComponentNames_property.propval,
       relationshipName: "frontComponentNames",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontComponentValues
     self.store (
-      managedObjectArray: frontComponentValues_property.propval as NSArray,
+      managedObjectArray: self.frontComponentValues_property.propval,
       relationshipName: "frontComponentValues",
       intoDictionary: ioDictionary
     )
   //--- To many property: backComponentValues
     self.store (
-      managedObjectArray: backComponentValues_property.propval as NSArray,
+      managedObjectArray: self.backComponentValues_property.propval,
       relationshipName: "backComponentValues",
       intoDictionary: ioDictionary
     )
   //--- To many property: backTracks
     self.store (
-      managedObjectArray: backTracks_property.propval as NSArray,
+      managedObjectArray: self.backTracks_property.propval,
       relationshipName: "backTracks",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontTracks
     self.store (
-      managedObjectArray: frontTracks_property.propval as NSArray,
+      managedObjectArray: self.frontTracks_property.propval,
       relationshipName: "frontTracks",
       intoDictionary: ioDictionary
     )
   //--- To many property: frontPackages
     self.store (
-      managedObjectArray: frontPackages_property.propval as NSArray,
+      managedObjectArray: self.frontPackages_property.propval,
       relationshipName: "frontPackages",
       intoDictionary: ioDictionary
     )
   //--- To many property: backPackages
     self.store (
-      managedObjectArray: backPackages_property.propval as NSArray,
+      managedObjectArray: self.backPackages_property.propval,
       relationshipName: "backPackages",
       intoDictionary: ioDictionary
     )
@@ -4316,7 +4318,7 @@ class BoardModel : EBManagedObject,
     self.artworkName_property.storeIn (dictionary: ioDictionary, forKey:"artworkName")
   //--- To many property: myInstances
     self.store (
-      managedObjectArray: myInstances_property.propval as NSArray,
+      managedObjectArray: self.myInstances_property.propval,
       relationshipName: "myInstances",
       intoDictionary: ioDictionary
     )
@@ -8008,7 +8010,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -8019,7 +8021,7 @@ final class StoredArrayOf_BoardModel : ReadWriteArrayOf_BoardModel, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

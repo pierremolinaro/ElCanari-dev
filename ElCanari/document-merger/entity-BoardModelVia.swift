@@ -113,7 +113,7 @@ class BoardModelVia : EBManagedObject,
   //--- Atomic property: x
     self.x_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -121,6 +121,7 @@ class BoardModelVia : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -730,7 +731,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -741,7 +742,7 @@ final class StoredArrayOf_BoardModelVia : ReadWriteArrayOf_BoardModelVia, EBSign
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

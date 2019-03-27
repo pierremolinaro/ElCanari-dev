@@ -133,7 +133,7 @@ class DeviceDocumentation : EBManagedObject,
     }
     self.mFileData_property.addEBObserver (self.fileSize_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFileName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
@@ -144,6 +144,9 @@ class DeviceDocumentation : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mFileData_property.removeEBObserver (self.fileSize_property)
+  //--- Unregister properties for handling signature
+    self.mFileData_property.setSignatureObserver (observer: nil)
+    self.mFileName_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -754,7 +757,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -765,7 +768,7 @@ final class StoredArrayOf_DeviceDocumentation : ReadWriteArrayOf_DeviceDocumenta
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

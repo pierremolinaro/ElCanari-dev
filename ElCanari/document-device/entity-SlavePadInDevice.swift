@@ -443,7 +443,7 @@ class SlavePadInDevice : EBManagedObject,
     g_Preferences?.padNumberColor_property.addEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.addEBObserverOf_mName (self.padNumberDisplay_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
     self.mCenterY_property.setSignatureObserver (observer: self)
     self.mHeight_property.setSignatureObserver (observer: self)
@@ -477,6 +477,14 @@ class SlavePadInDevice : EBManagedObject,
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     self.mMasterPad_property.removeEBObserverOf_mName (self.padNumberDisplay_property)
+  //--- Unregister properties for handling signature
+    self.mCenterX_property.setSignatureObserver (observer: nil)
+    self.mCenterY_property.setSignatureObserver (observer: nil)
+    self.mHeight_property.setSignatureObserver (observer: nil)
+    self.mHoleDiameter_property.setSignatureObserver (observer: nil)
+    self.mShape_property.setSignatureObserver (observer: nil)
+    self.mStyle_property.setSignatureObserver (observer: nil)
+    self.mWidth_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1644,7 +1652,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1655,7 +1663,7 @@ final class StoredArrayOf_SlavePadInDevice : ReadWriteArrayOf_SlavePadInDevice, 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

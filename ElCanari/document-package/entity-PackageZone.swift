@@ -654,7 +654,7 @@ class PackageZone : PackageObject,
     self.width_property.addEBObserver (self.rect_property)
     self.height_property.addEBObserver (self.rect_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
     self.heightUnit_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
@@ -704,6 +704,20 @@ class PackageZone : PackageObject,
     self.y_property.removeEBObserver (self.rect_property)
     self.width_property.removeEBObserver (self.rect_property)
     self.height_property.removeEBObserver (self.rect_property)
+  //--- Unregister properties for handling signature
+    self.height_property.setSignatureObserver (observer: nil)
+    self.heightUnit_property.setSignatureObserver (observer: nil)
+    self.width_property.setSignatureObserver (observer: nil)
+    self.widthUnit_property.setSignatureObserver (observer: nil)
+    self.x_property.setSignatureObserver (observer: nil)
+    self.xName_property.setSignatureObserver (observer: nil)
+    self.xNameUnit_property.setSignatureObserver (observer: nil)
+    self.xUnit_property.setSignatureObserver (observer: nil)
+    self.y_property.setSignatureObserver (observer: nil)
+    self.yName_property.setSignatureObserver (observer: nil)
+    self.yNameUnit_property.setSignatureObserver (observer: nil)
+    self.yUnit_property.setSignatureObserver (observer: nil)
+    self.zoneName_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2465,7 +2479,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2476,7 +2490,7 @@ final class StoredArrayOf_PackageZone : ReadWriteArrayOf_PackageZone, EBSignatur
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

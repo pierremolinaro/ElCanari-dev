@@ -434,7 +434,7 @@ class PackageOval : PackageObject,
     self.width_property.addEBObserver (self.issues_property)
     self.height_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.height_property.setSignatureObserver (observer: self)
     self.heightUnit_property.setSignatureObserver (observer: self)
     self.width_property.setSignatureObserver (observer: self)
@@ -465,6 +465,15 @@ class PackageOval : PackageObject,
     self.y_property.removeEBObserver (self.issues_property)
     self.width_property.removeEBObserver (self.issues_property)
     self.height_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.height_property.setSignatureObserver (observer: nil)
+    self.heightUnit_property.setSignatureObserver (observer: nil)
+    self.width_property.setSignatureObserver (observer: nil)
+    self.widthUnit_property.setSignatureObserver (observer: nil)
+    self.x_property.setSignatureObserver (observer: nil)
+    self.xUnit_property.setSignatureObserver (observer: nil)
+    self.y_property.setSignatureObserver (observer: nil)
+    self.yUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1753,7 +1762,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1764,7 +1773,7 @@ final class StoredArrayOf_PackageOval : ReadWriteArrayOf_PackageOval, EBSignatur
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

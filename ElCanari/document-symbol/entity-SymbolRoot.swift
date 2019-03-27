@@ -496,7 +496,7 @@ class SymbolRoot : EBManagedObject,
         return .empty
       }
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.symbolObjects_property.setSignatureObserver (observer: self)
     self.xPlacardUnit_property.setSignatureObserver (observer: self)
@@ -516,6 +516,13 @@ class SymbolRoot : EBManagedObject,
     self.symbolPins_property.removeEBObserverOf_xPin (self.issues_property)
     self.symbolPins_property.removeEBObserverOf_yPin (self.issues_property)
     self.issues_property.removeEBObserver (self.noIssue_property)
+    self.symbolObjects_property.removeEBObserver (self.symbolPins_property)
+    self.symbolPins_property.mReadModelFunction = nil
+  //--- Unregister properties for handling signature
+    self.comments_property.setSignatureObserver (observer: nil)
+    self.symbolObjects_property.setSignatureObserver (observer: nil)
+    self.xPlacardUnit_property.setSignatureObserver (observer: nil)
+    self.yPlacardUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -724,7 +731,7 @@ class SymbolRoot : EBManagedObject,
     self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
   //--- To many property: symbolObjects
     self.store (
-      managedObjectArray: symbolObjects_property.propval as NSArray,
+      managedObjectArray: self.symbolObjects_property.propval,
       relationshipName: "symbolObjects",
       intoDictionary: ioDictionary
     )
@@ -1850,7 +1857,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1861,7 +1868,7 @@ final class StoredArrayOf_SymbolRoot : ReadWriteArrayOf_SymbolRoot, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

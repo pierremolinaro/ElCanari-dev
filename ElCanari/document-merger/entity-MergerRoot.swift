@@ -1033,7 +1033,7 @@ class MergerRoot : EBManagedObject,
     self.boardInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : MergerBoardInstance?) in
       inManagedObject?.myRoot_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -1055,6 +1055,8 @@ class MergerRoot : EBManagedObject,
     self.boardLimitWidth_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerBoardViewDisplayBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
     g_Preferences?.mergerColorBoardLimits_property.removeEBObserver (self.boardOutlineRectDisplay_property)
+ //   self.boardInstances_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -1408,13 +1410,13 @@ class MergerRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: boardModels
     self.store (
-      managedObjectArray: boardModels_property.propval as NSArray,
+      managedObjectArray: self.boardModels_property.propval,
       relationshipName: "boardModels",
       intoDictionary: ioDictionary
     )
   //--- To many property: boardInstances
     self.store (
-      managedObjectArray: boardInstances_property.propval as NSArray,
+      managedObjectArray: self.boardInstances_property.propval,
       relationshipName: "boardInstances",
       intoDictionary: ioDictionary
     )
@@ -3480,7 +3482,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -3491,7 +3493,7 @@ final class StoredArrayOf_MergerRoot : ReadWriteArrayOf_MergerRoot, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

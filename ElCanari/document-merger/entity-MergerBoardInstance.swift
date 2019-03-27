@@ -373,7 +373,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
   //--- To one property: myRoot
     self.myRoot_property.owner = self
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -395,6 +395,7 @@ class MergerBoardInstance : EBGraphicManagedObject,
     self.myModel_property.removeEBObserverOf_modelHeight (self.objectDisplay_property)
     self.instanceRotation_property.removeEBObserver (self.objectDisplay_property)
     self.myModel_property.removeEBObserverOf_imageForInstances (self.objectDisplay_property)
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -1396,7 +1397,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1407,7 +1408,7 @@ final class StoredArrayOf_MergerBoardInstance : ReadWriteArrayOf_MergerBoardInst
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

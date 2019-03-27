@@ -215,7 +215,7 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.x2_property.addEBObserver (self.objectDisplay_property)
     self.y2_property.addEBObserver (self.objectDisplay_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.x1_property.setSignatureObserver (observer: self)
     self.x2_property.setSignatureObserver (observer: self)
     self.y1_property.setSignatureObserver (observer: self)
@@ -235,6 +235,11 @@ class SegmentForFontCharacter : EBGraphicManagedObject,
     self.y1_property.removeEBObserver (self.objectDisplay_property)
     self.x2_property.removeEBObserver (self.objectDisplay_property)
     self.y2_property.removeEBObserver (self.objectDisplay_property)
+  //--- Unregister properties for handling signature
+    self.x1_property.setSignatureObserver (observer: nil)
+    self.x2_property.setSignatureObserver (observer: nil)
+    self.y1_property.setSignatureObserver (observer: nil)
+    self.y2_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1071,7 +1076,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1082,7 +1087,7 @@ final class StoredArrayOf_SegmentForFontCharacter : ReadWriteArrayOf_SegmentForF
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

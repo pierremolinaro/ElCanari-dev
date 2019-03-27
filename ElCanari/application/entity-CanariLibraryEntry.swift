@@ -197,7 +197,7 @@ class CanariLibraryEntry : EBManagedObject,
     }
     self.mPath_property.addEBObserver (self.mStatusImage_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
     self.mExternDelegate0 = CanariLibraryEntryDelegate (object: self)
   }
@@ -207,6 +207,7 @@ class CanariLibraryEntry : EBManagedObject,
   override internal func removeAllObservers () {
     super.removeAllObservers ()
     self.mPath_property.removeEBObserver (self.mStatusImage_property)
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -963,7 +964,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -974,7 +975,7 @@ final class StoredArrayOf_CanariLibraryEntry : ReadWriteArrayOf_CanariLibraryEnt
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

@@ -472,7 +472,7 @@ class SymbolBezierCurve : SymbolObject,
     self.cpx2_property.addEBObserver (self.issues_property)
     self.cpy2_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)
     self.cpx2_property.setSignatureObserver (observer: self)
     self.cpy1_property.setSignatureObserver (observer: self)
@@ -522,6 +522,15 @@ class SymbolBezierCurve : SymbolObject,
     self.cpy1_property.removeEBObserver (self.issues_property)
     self.cpx2_property.removeEBObserver (self.issues_property)
     self.cpy2_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.cpx1_property.setSignatureObserver (observer: nil)
+    self.cpx2_property.setSignatureObserver (observer: nil)
+    self.cpy1_property.setSignatureObserver (observer: nil)
+    self.cpy2_property.setSignatureObserver (observer: nil)
+    self.x1_property.setSignatureObserver (observer: nil)
+    self.x2_property.setSignatureObserver (observer: nil)
+    self.y1_property.setSignatureObserver (observer: nil)
+    self.y2_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1810,7 +1819,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1821,7 +1830,7 @@ final class StoredArrayOf_SymbolBezierCurve : ReadWriteArrayOf_SymbolBezierCurve
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

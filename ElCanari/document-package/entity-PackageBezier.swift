@@ -714,7 +714,7 @@ class PackageBezier : PackageObject,
     self.cpx2_property.addEBObserver (self.issues_property)
     self.cpy2_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.cpx1_property.setSignatureObserver (observer: self)
     self.cpx1Unit_property.setSignatureObserver (observer: self)
     self.cpx2_property.setSignatureObserver (observer: self)
@@ -765,6 +765,23 @@ class PackageBezier : PackageObject,
     self.cpy1_property.removeEBObserver (self.issues_property)
     self.cpx2_property.removeEBObserver (self.issues_property)
     self.cpy2_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.cpx1_property.setSignatureObserver (observer: nil)
+    self.cpx1Unit_property.setSignatureObserver (observer: nil)
+    self.cpx2_property.setSignatureObserver (observer: nil)
+    self.cpx2Unit_property.setSignatureObserver (observer: nil)
+    self.cpy1_property.setSignatureObserver (observer: nil)
+    self.cpy1Unit_property.setSignatureObserver (observer: nil)
+    self.cpy2_property.setSignatureObserver (observer: nil)
+    self.cpy2Unit_property.setSignatureObserver (observer: nil)
+    self.x1_property.setSignatureObserver (observer: nil)
+    self.x1Unit_property.setSignatureObserver (observer: nil)
+    self.x2_property.setSignatureObserver (observer: nil)
+    self.x2Unit_property.setSignatureObserver (observer: nil)
+    self.y1_property.setSignatureObserver (observer: nil)
+    self.y1Unit_property.setSignatureObserver (observer: nil)
+    self.y2_property.setSignatureObserver (observer: nil)
+    self.y2Unit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2685,7 +2702,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2696,7 +2713,7 @@ final class StoredArrayOf_PackageBezier : ReadWriteArrayOf_PackageBezier, EBSign
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

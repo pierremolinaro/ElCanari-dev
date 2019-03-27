@@ -73,14 +73,14 @@ document FontDocument root FontRoot {
  
 #--- Current Character
   outlet FontCharacterSelectButton mFontCharacterSelectButton
-    $codePoint prefs.currentCharacterCodePoint
+    $codePoint root.currentCharacterCodePoint
     $characters root.definedCharacters
   ;
 
   outlet EBTextObserverField mCurrentCharacterTextField $valueObserver root.currentCharacterCodePointString ;
 
   outlet EBStepper currentCharacterStepper
-    $value prefs.currentCharacterCodePoint {sendContinously:yes}
+    $value root .currentCharacterCodePoint {sendContinously:yes}
   ;
   
   transient Bool canDeleteCurrentCharacter dependsFrom root.definedCharacters ;

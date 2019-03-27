@@ -1837,15 +1837,6 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                 </button>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5968">
-                    <rect key="frame" x="17" y="123" width="147" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Current Character:" id="5969">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5966">
                     <rect key="frame" x="17" y="256" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1885,14 +1876,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="6078" customClass="FontCharacterSelectButton" customModule="ElCanari" customModuleProvider="target">
-                    <rect key="frame" x="170" y="118" width="24" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6079">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystemBold"/>
-                    </buttonCell>
-                </button>
                 <slider verticalHuggingPriority="750" id="5706" customClass="EBSlider">
                     <rect key="frame" x="170" y="22" width="147" height="19"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -2414,7 +2397,6 @@ Gw
                 <outlet property="mEditionTransparencySlider" destination="5706" id="biF-Bc-GIJ"/>
                 <outlet property="mEditionTransparencyTextField" destination="5705" id="ihy-8t-wIs"/>
                 <outlet property="mErrorMessageColorColorWell" destination="5452" id="Jqq-A1-LGH"/>
-                <outlet property="mFontCharacterSelectButton" destination="6078" id="V4u-fD-9uY"/>
                 <outlet property="mInformativeTextInLibraryUpdateWindow" destination="6232" id="Dt2-8e-xuV"/>
                 <outlet property="mLibraryRepositoryCommitButton" destination="hFG-qJ-h7e" id="rN4-xG-g3c"/>
                 <outlet property="mLibraryRepositoryCurrentReleaseTextField" destination="xhb-Tg-0jH" id="WdO-ma-jUU"/>

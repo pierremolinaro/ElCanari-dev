@@ -38,7 +38,15 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
     self.dataSource = self
     self.delegate = self
   }
-  
+
+  //····················································································································
+
+  override func ebCleanUp () {
+    super.ebCleanUp ()
+    self.dataSource = nil
+    self.delegate = nil
+  }
+
   //····················································································································
 
   deinit {
@@ -138,7 +146,7 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   //····················································································································
 
   func numberOfRows (in tableView: NSTableView) -> Int {
-    return mModelArray.count
+    return self.mModelArray.count
   }
 
   //····················································································································
@@ -146,14 +154,14 @@ class CanariIssueTableView : NSTableView, EBUserClassNameProtocol, NSTableViewDa
   func tableView (_ tableView: NSTableView, objectValueFor inTableColumn: NSTableColumn?, row: Int) -> Any? {
     var result : Any? = nil
     if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("image") {
-      switch mModelArray [row].mKind {
+      switch self.mModelArray [row].mKind {
       case .warning :
         result = NSImage (named: warningStatusImageName)!
       case .error :
         result = NSImage (named: errorStatusImageName)!
       }
     }else if inTableColumn?.identifier == NSUserInterfaceItemIdentifier ("title") {
-      result = mModelArray [row].mMessage
+      result = self.mModelArray [row].mMessage
     }
     return result
   }

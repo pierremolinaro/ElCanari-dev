@@ -1121,7 +1121,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageInDevice?) in
       inManagedObject?.mRoot_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mComments_property.setSignatureObserver (observer: self)
     self.mDocs_property.setSignatureObserver (observer: self)
     self.mImageData_property.setSignatureObserver (observer: self)
@@ -1172,6 +1172,27 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mPackages_property.removeEBObserverOf_mName (self.issues_property)
     self.mSymbolTypes_property.removeEBObserverOf_mVersion (self.issues_property)
     self.mSymbolTypes_property.removeEBObserverOf_mTypeName (self.issues_property)
+ //   self.mPackages_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.mComments_property.setSignatureObserver (observer: nil)
+    self.mDocs_property.setSignatureObserver (observer: nil)
+    self.mImageData_property.setSignatureObserver (observer: nil)
+    self.mPackageDisplayHorizontalFlip_property.setSignatureObserver (observer: nil)
+    self.mPackageDisplayVerticalFlip_property.setSignatureObserver (observer: nil)
+    self.mPackageDisplayZoom_property.setSignatureObserver (observer: nil)
+    self.mPackages_property.setSignatureObserver (observer: nil)
+    self.mPadProxies_property.setSignatureObserver (observer: nil)
+    self.mPrefix_property.setSignatureObserver (observer: nil)
+    self.mShowPackageBackPads_property.setSignatureObserver (observer: nil)
+    self.mShowPackageFrontPads_property.setSignatureObserver (observer: nil)
+    self.mShowPackagePadNumbers_property.setSignatureObserver (observer: nil)
+    self.mShowPackages_property.setSignatureObserver (observer: nil)
+    self.mSymbolDisplayHorizontalFlip_property.setSignatureObserver (observer: nil)
+    self.mSymbolDisplayVerticalFlip_property.setSignatureObserver (observer: nil)
+    self.mSymbolDisplayZoom_property.setSignatureObserver (observer: nil)
+    self.mSymbolInstances_property.setSignatureObserver (observer: nil)
+    self.mSymbolTypes_property.setSignatureObserver (observer: nil)
+    self.mTitle_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1549,25 +1570,25 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mSymbolDisplayVerticalFlip_property.storeIn (dictionary: ioDictionary, forKey:"mSymbolDisplayVerticalFlip")
   //--- To many property: mDocs
     self.store (
-      managedObjectArray: mDocs_property.propval as NSArray,
+      managedObjectArray: self.mDocs_property.propval,
       relationshipName: "mDocs",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbolInstances
     self.store (
-      managedObjectArray: mSymbolInstances_property.propval as NSArray,
+      managedObjectArray: self.mSymbolInstances_property.propval,
       relationshipName: "mSymbolInstances",
       intoDictionary: ioDictionary
     )
   //--- To many property: mPackages
     self.store (
-      managedObjectArray: mPackages_property.propval as NSArray,
+      managedObjectArray: self.mPackages_property.propval,
       relationshipName: "mPackages",
       intoDictionary: ioDictionary
     )
   //--- To many property: mSymbolTypes
     self.store (
-      managedObjectArray: mSymbolTypes_property.propval as NSArray,
+      managedObjectArray: self.mSymbolTypes_property.propval,
       relationshipName: "mSymbolTypes",
       intoDictionary: ioDictionary
     )
@@ -1575,7 +1596,7 @@ class DeviceRoot : EBGraphicManagedObject,
     self.mImageData_property.storeIn (dictionary: ioDictionary, forKey:"mImageData")
   //--- To many property: mPadProxies
     self.store (
-      managedObjectArray: mPadProxies_property.propval as NSArray,
+      managedObjectArray: self.mPadProxies_property.propval,
       relationshipName: "mPadProxies",
       intoDictionary: ioDictionary
     )
@@ -3555,7 +3576,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -3566,7 +3587,7 @@ final class StoredArrayOf_DeviceRoot : ReadWriteArrayOf_DeviceRoot, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

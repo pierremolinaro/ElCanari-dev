@@ -367,7 +367,7 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mFilledBezierPath_property.setSignatureObserver (observer: self)
     self.mInstances_property.setSignatureObserver (observer: self)
@@ -385,6 +385,15 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mVersion_property.removeEBObserver (self.versionString_property)
     self.mInstances_property.removeEBObserver (self.instanceCount_property)
     self.mPinTypes_property.removeEBObserverOf_nameShape (self.pinNameShape_property)
+ //   self.mInstances_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.mFileData_property.setSignatureObserver (observer: nil)
+    self.mFilledBezierPath_property.setSignatureObserver (observer: nil)
+    self.mInstances_property.setSignatureObserver (observer: nil)
+    self.mPinTypes_property.setSignatureObserver (observer: nil)
+    self.mStrokeBezierPath_property.setSignatureObserver (observer: nil)
+    self.mTypeName_property.setSignatureObserver (observer: nil)
+    self.mVersion_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -538,7 +547,7 @@ class SymbolTypeInDevice : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mInstances
     self.store (
-      managedObjectArray: mInstances_property.propval as NSArray,
+      managedObjectArray: self.mInstances_property.propval,
       relationshipName: "mInstances",
       intoDictionary: ioDictionary
     )
@@ -554,7 +563,7 @@ class SymbolTypeInDevice : EBManagedObject,
     self.mFilledBezierPath_property.storeIn (dictionary: ioDictionary, forKey:"mFilledBezierPath")
   //--- To many property: mPinTypes
     self.store (
-      managedObjectArray: mPinTypes_property.propval as NSArray,
+      managedObjectArray: self.mPinTypes_property.propval,
       relationshipName: "mPinTypes",
       intoDictionary: ioDictionary
     )
@@ -1422,7 +1431,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1433,7 +1442,7 @@ final class StoredArrayOf_SymbolTypeInDevice : ReadWriteArrayOf_SymbolTypeInDevi
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

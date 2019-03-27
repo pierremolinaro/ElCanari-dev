@@ -253,7 +253,7 @@ class PadProxyInDevice : EBManagedObject,
     }
     self.mPinInstance_property.addEBObserverOf_symbolName (self.symbolName_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mIsNC_property.setSignatureObserver (observer: self)
     self.mPadName_property.setSignatureObserver (observer: self)
   //--- Extern delegates
@@ -267,6 +267,9 @@ class PadProxyInDevice : EBManagedObject,
     self.mPinInstance_property.removeEBObserver (self.isConnected_property)
     self.mPinInstance_property.removeEBObserverOf_pinName (self.pinInstanceName_property)
     self.mPinInstance_property.removeEBObserverOf_symbolName (self.symbolName_property)
+  //--- Unregister properties for handling signature
+    self.mIsNC_property.setSignatureObserver (observer: nil)
+    self.mPadName_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1043,7 +1046,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1054,7 +1057,7 @@ final class StoredArrayOf_PadProxyInDevice : ReadWriteArrayOf_PadProxyInDevice, 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

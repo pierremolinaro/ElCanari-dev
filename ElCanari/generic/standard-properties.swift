@@ -291,7 +291,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
   }
 
@@ -692,7 +692,7 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
   }
 
@@ -1452,7 +1452,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  final func setSignatureObserver (observer : EBSignatureObserverProtocol) {
+  final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
   }
 

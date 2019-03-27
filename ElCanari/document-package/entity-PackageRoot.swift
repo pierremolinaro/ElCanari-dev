@@ -854,7 +854,7 @@ class PackageRoot : EBGraphicManagedObject,
         return .empty
       }
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.packageObjects_property.setSignatureObserver (observer: self)
     self.program_property.setSignatureObserver (observer: self)
@@ -886,6 +886,18 @@ class PackageRoot : EBGraphicManagedObject,
     self.packageZones_property.removeEBObserverOf_yName (self.issues_property)
     g_Preferences?.padZoneFont_property.removeEBObserver (self.issues_property)
     self.issues_property.removeEBObserver (self.noIssue_property)
+    self.packageObjects_property.removeEBObserver (self.packagePads_property)
+    self.packagePads_property.mReadModelFunction = nil
+    self.packageObjects_property.removeEBObserver (self.packageSlavePads_property)
+    self.packageSlavePads_property.mReadModelFunction = nil
+    self.packageObjects_property.removeEBObserver (self.packageZones_property)
+    self.packageZones_property.mReadModelFunction = nil
+  //--- Unregister properties for handling signature
+    self.comments_property.setSignatureObserver (observer: nil)
+    self.packageObjects_property.setSignatureObserver (observer: nil)
+    self.program_property.setSignatureObserver (observer: nil)
+    self.xPlacardUnit_property.setSignatureObserver (observer: nil)
+    self.yPlacardUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1172,7 +1184,7 @@ class PackageRoot : EBGraphicManagedObject,
     self.yPlacardUnit_property.storeIn (dictionary: ioDictionary, forKey:"yPlacardUnit")
   //--- To many property: packageObjects
     self.store (
-      managedObjectArray: packageObjects_property.propval as NSArray,
+      managedObjectArray: self.packageObjects_property.propval,
       relationshipName: "packageObjects",
       intoDictionary: ioDictionary
     )
@@ -2745,7 +2757,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2756,7 +2768,7 @@ final class StoredArrayOf_PackageRoot : ReadWriteArrayOf_PackageRoot, EBSignatur
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

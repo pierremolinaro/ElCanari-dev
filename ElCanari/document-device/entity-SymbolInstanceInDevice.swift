@@ -393,7 +393,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mPinInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice?) in
       inManagedObject?.mSymbolInstance_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mInstanceName_property.setSignatureObserver (observer: self)
     self.mX_property.setSignatureObserver (observer: self)
     self.mY_property.setSignatureObserver (observer: self)
@@ -425,6 +425,11 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     self.mY_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolDrawingWidthMultipliedByTen_property.removeEBObserver (self.objectDisplay_property)
     g_Preferences?.symbolColor_property.removeEBObserver (self.objectDisplay_property)
+ //   self.mPinInstances_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.mInstanceName_property.setSignatureObserver (observer: nil)
+    self.mX_property.setSignatureObserver (observer: nil)
+    self.mY_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -573,7 +578,7 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- To many property: mPinInstances
     self.store (
-      managedObjectArray: mPinInstances_property.propval as NSArray,
+      managedObjectArray: self.mPinInstances_property.propval,
       relationshipName: "mPinInstances",
       intoDictionary: ioDictionary
     )
@@ -1438,7 +1443,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1449,7 +1454,7 @@ final class StoredArrayOf_SymbolInstanceInDevice : ReadWriteArrayOf_SymbolInstan
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

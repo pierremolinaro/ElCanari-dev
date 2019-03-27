@@ -52,7 +52,11 @@ let PMFontComment = "PMFontComment"
   //    buildUserInterface: customization of interface
   //····················································································································
 
-  override func windowControllerDidLoadNib (_ aController: NSWindowController) {
+  private var mCurrentCharacterCodePointObserver : EBModelEvent? = nil
+
+  //····················································································································
+
+  override func windowControllerDidLoadNib (_ aController : NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--- Set pages segmented control
     let pages = [self.mFontPageView, self.mInfosPageView]
@@ -62,15 +66,21 @@ let PMFontComment = "PMFontComment"
     self.mInspectorSegmentedControl?.register (masterView: self.mMasterFontPageView, inspectors)
   //---
     self.mIssueTableView?.register (segmentedControl : self.mInspectorSegmentedControl, segment: 2)
-
   //---
-    UserDefaults.standard.addObserver (
-      self,
-      forKeyPath: Preferences_currentCharacterCodePoint,
-      options: .new,
-      context: nil
-    )
-    self.updateCurrentCharacterSelection ()
+    let currentCharacterCodePointObserver = EBModelEvent ()
+    currentCharacterCodePointObserver.mEventCallBack = { [weak self] in self?.updateCurrentCharacterSelection () }
+    self.rootObject.currentCharacterCodePointString_property.addEBObserver (currentCharacterCodePointObserver)
+    self.mCurrentCharacterCodePointObserver = currentCharacterCodePointObserver
+  }
+
+  //····················································································································
+
+  override func removeUserInterface () {
+    if let currentCharacterCodePointObserver = self.mCurrentCharacterCodePointObserver {
+      self.rootObject.currentCharacterCodePointString_property.removeEBObserver (currentCharacterCodePointObserver)
+      self.mCurrentCharacterCodePointObserver = nil
+    }
+    super.removeUserInterface ()
   }
 
   //····················································································································
@@ -97,12 +107,11 @@ let PMFontComment = "PMFontComment"
   func defineSegmentsForCurrentCharacter (_ inSegments : [SegmentForFontCharacterClass]) {
   //--- Search character
     var possibleCurrentCharacter : FontCharacter? = nil
-    if let codePoint = g_Preferences?.currentCharacterCodePoint {
-      for character in self.rootObject.characters_property.propval {
-        if character.codePoint == codePoint {
-          possibleCurrentCharacter = character
-          break
-        }
+    let codePoint = self.rootObject.currentCharacterCodePoint
+    for character in self.rootObject.characters_property.propval {
+      if character.codePoint == codePoint {
+        possibleCurrentCharacter = character
+        break
       }
     }
   //--- Update segments
@@ -125,46 +134,26 @@ let PMFontComment = "PMFontComment"
   //····················································································································
 
   fileprivate func updateCurrentCharacterSelection () {
-    if let codePoint = g_Preferences?.currentCharacterCodePoint {
-    //--- Search for character
-      var found = false
-      for character in self.rootObject.characters_property.propval {
-        if character.codePoint == codePoint {
-          self.mSelectedCharacterController.select (object: character)
-          found = true
-          break
-        }
-      }
-    //--- There is no character for this code point: create it
-      if !found {
-        var characterSet = self.rootObject.characters_property.propval
-        let newCharacter = FontCharacter (self.ebUndoManager)
-        newCharacter.codePoint = codePoint
-        characterSet.append (newCharacter)
-        characterSet = characterSet.sorted (by: {$0.codePoint < $1.codePoint})
-        self.rootObject.characters_property.setProp (characterSet)
-        self.mSelectedCharacterController.select (object: newCharacter)
+    let codePoint = self.rootObject.currentCharacterCodePoint
+  //--- Search for character
+    var found = false
+    for character in self.rootObject.characters_property.propval {
+      if character.codePoint == codePoint {
+        self.mSelectedCharacterController.select (object: character)
+        found = true
+        break
       }
     }
-  }
-
-  //····················································································································
-
-  override func observeValue (forKeyPath keyPath: String?,
-                              of object: Any?,
-                              change: [NSKeyValueChangeKey : Any]?,
-                              context: UnsafeMutableRawPointer?) {
-    if keyPath == Preferences_currentCharacterCodePoint {
-      self.updateCurrentCharacterSelection ()
-    }else{
-      super.observeValue (forKeyPath: keyPath, of: object, change: change, context: context)
+  //--- There is no character for this code point: create it
+    if !found {
+      var characterSet = self.rootObject.characters_property.propval
+      let newCharacter = FontCharacter (self.ebUndoManager)
+      newCharacter.codePoint = codePoint
+      characterSet.append (newCharacter)
+      characterSet = characterSet.sorted (by: { $0.codePoint < $1.codePoint })
+      self.rootObject.characters_property.setProp (characterSet)
+      self.mSelectedCharacterController.select (object: newCharacter)
     }
-  }
-
-  //····················································································································
-
-  deinit {
-    UserDefaults.standard.removeObserver (self, forKeyPath:Preferences_currentCharacterCodePoint, context: nil)
   }
 
   //····················································································································
@@ -172,4 +161,3 @@ let PMFontComment = "PMFontComment"
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-

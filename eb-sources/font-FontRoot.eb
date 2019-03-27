@@ -6,7 +6,7 @@ entity FontRoot {
   property @signature Int nominalSize default 14 ;
   property Int selectedTab default 0 ;
   property Int selectedInspector default 0 ;
-  property Int selectedCharacter default 32 ;
+  property @validation Int currentCharacterCodePoint default 32 ;
 
   transient NSBezierPath sampleStringBezierPath dependsFrom
     self.nominalSize,
@@ -22,7 +22,7 @@ entity FontRoot {
   
   transient String sampleStringBezierPathDescent dependsFrom self.sampleStringBezierPath ;
 
-  transient String currentCharacterCodePointString dependsFrom prefs.currentCharacterCodePoint ;
+  transient String currentCharacterCodePointString dependsFrom self.currentCharacterCodePoint ;
   
   transient DefinedCharactersInDevice definedCharacters dependsFrom self.characters.all.codePoint ;
 

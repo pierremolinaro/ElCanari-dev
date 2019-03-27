@@ -586,7 +586,7 @@ class SymbolPin : SymbolObject,
     self.nameHorizontalAlignment_property.addEBObserver (self.nameRect_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.nameRect_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.name_property.setSignatureObserver (observer: self)
     self.nameHorizontalAlignment_property.setSignatureObserver (observer: self)
     self.numberHorizontalAlignment_property.setSignatureObserver (observer: self)
@@ -638,6 +638,17 @@ class SymbolPin : SymbolObject,
     self.name_property.removeEBObserver (self.nameRect_property)
     self.nameHorizontalAlignment_property.removeEBObserver (self.nameRect_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.nameRect_property)
+  //--- Unregister properties for handling signature
+    self.name_property.setSignatureObserver (observer: nil)
+    self.nameHorizontalAlignment_property.setSignatureObserver (observer: nil)
+    self.numberHorizontalAlignment_property.setSignatureObserver (observer: nil)
+    self.pinNameIsDisplayedInSchematics_property.setSignatureObserver (observer: nil)
+    self.xName_property.setSignatureObserver (observer: nil)
+    self.xNumber_property.setSignatureObserver (observer: nil)
+    self.xPin_property.setSignatureObserver (observer: nil)
+    self.yName_property.setSignatureObserver (observer: nil)
+    self.yNumber_property.setSignatureObserver (observer: nil)
+    self.yPin_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2152,7 +2163,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2163,7 +2174,7 @@ final class StoredArrayOf_SymbolPin : ReadWriteArrayOf_SymbolPin, EBSignatureObs
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

@@ -254,7 +254,7 @@ class SymbolText : SymbolObject,
     self.y_property.addEBObserver (self.issues_property)
     self.text_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.horizontalAlignment_property.setSignatureObserver (observer: self)
     self.text_property.setSignatureObserver (observer: self)
     self.x_property.setSignatureObserver (observer: self)
@@ -280,6 +280,11 @@ class SymbolText : SymbolObject,
     self.x_property.removeEBObserver (self.issues_property)
     self.y_property.removeEBObserver (self.issues_property)
     self.text_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.horizontalAlignment_property.setSignatureObserver (observer: nil)
+    self.text_property.setSignatureObserver (observer: nil)
+    self.x_property.setSignatureObserver (observer: nil)
+    self.y_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1184,7 +1189,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1195,7 +1200,7 @@ final class StoredArrayOf_SymbolText : ReadWriteArrayOf_SymbolText, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

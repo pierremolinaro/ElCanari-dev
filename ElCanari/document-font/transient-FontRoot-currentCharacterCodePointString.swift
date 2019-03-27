@@ -12,10 +12,10 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transient_FontRoot_currentCharacterCodePointString (
-       _ prefs_currentCharacterCodePoint : Int
+       _ self_currentCharacterCodePoint : Int
 ) -> String {
 //--- START OF USER ZONE 2
-    return "+u" + String (format: "%04X", prefs_currentCharacterCodePoint)
+    return "+u" + String (format: "%04X", self_currentCharacterCodePoint)
 //--- END OF USER ZONE 2
 }
 

@@ -383,7 +383,7 @@ class ArtworkRoot : EBManagedObject,
   //--- To many property: fileGenerationParameterArray (no option)
     self.fileGenerationParameterArray_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.comments_property.setSignatureObserver (observer: self)
     self.drillDataFileExtension_property.setSignatureObserver (observer: self)
     self.fileGenerationParameterArray_property.setSignatureObserver (observer: self)
@@ -398,6 +398,14 @@ class ArtworkRoot : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Unregister properties for handling signature
+    self.comments_property.setSignatureObserver (observer: nil)
+    self.drillDataFileExtension_property.setSignatureObserver (observer: nil)
+    self.fileGenerationParameterArray_property.setSignatureObserver (observer: nil)
+    self.minPPTPTTTW_property.setSignatureObserver (observer: nil)
+    self.minValueForBoardLimitWidth_property.setSignatureObserver (observer: nil)
+    self.minValueForOARinEBUnit_property.setSignatureObserver (observer: nil)
+    self.minValueForPHDinEBUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -605,7 +613,7 @@ class ArtworkRoot : EBManagedObject,
     self.drillDataFileExtension_property.storeIn (dictionary: ioDictionary, forKey:"drillDataFileExtension")
   //--- To many property: fileGenerationParameterArray
     self.store (
-      managedObjectArray: fileGenerationParameterArray_property.propval as NSArray,
+      managedObjectArray: self.fileGenerationParameterArray_property.propval,
       relationshipName: "fileGenerationParameterArray",
       intoDictionary: ioDictionary
     )
@@ -1673,7 +1681,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1684,7 +1692,7 @@ final class StoredArrayOf_ArtworkRoot : ReadWriteArrayOf_ArtworkRoot, EBSignatur
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

@@ -753,7 +753,7 @@ class ArtworkFileGenerationParameters : EBManagedObject,
   //--- Atomic property: padHoleDiameterInPDF
     self.padHoleDiameterInPDF_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.drawBoardLimits_property.setSignatureObserver (observer: self)
     self.drawComponentNamesBottomSide_property.setSignatureObserver (observer: self)
     self.drawComponentNamesTopSide_property.setSignatureObserver (observer: self)
@@ -784,6 +784,30 @@ class ArtworkFileGenerationParameters : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Unregister properties for handling signature
+    self.drawBoardLimits_property.setSignatureObserver (observer: nil)
+    self.drawComponentNamesBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawComponentNamesTopSide_property.setSignatureObserver (observer: nil)
+    self.drawComponentValuesBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawComponentValuesTopSide_property.setSignatureObserver (observer: nil)
+    self.drawInternalBoardLimits_property.setSignatureObserver (observer: nil)
+    self.drawPackageLegendBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawPackageLegendTopSide_property.setSignatureObserver (observer: nil)
+    self.drawPadHolesInPDF_property.setSignatureObserver (observer: nil)
+    self.drawPadsBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawPadsTopSide_property.setSignatureObserver (observer: nil)
+    self.drawTextsLayoutBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawTextsLayoutTopSide_property.setSignatureObserver (observer: nil)
+    self.drawTextsLegendBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawTextsLegendTopSide_property.setSignatureObserver (observer: nil)
+    self.drawTracksBottomSide_property.setSignatureObserver (observer: nil)
+    self.drawTracksTopSide_property.setSignatureObserver (observer: nil)
+    self.drawVias_property.setSignatureObserver (observer: nil)
+    self.fileExtension_property.setSignatureObserver (observer: nil)
+    self.horizontalMirror_property.setSignatureObserver (observer: nil)
+    self.measurementUnitForPadHoleInPDF_property.setSignatureObserver (observer: nil)
+    self.name_property.setSignatureObserver (observer: nil)
+    self.padHoleDiameterInPDF_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2985,7 +3009,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2996,7 +3020,7 @@ final class StoredArrayOf_ArtworkFileGenerationParameters : ReadWriteArrayOf_Art
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

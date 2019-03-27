@@ -543,7 +543,7 @@ class PackageInDevice : EBGraphicManagedObject,
     }
     self.mMasterPads_property.addEBObserverOf_mName (self.padNameSet_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mFileData_property.setSignatureObserver (observer: self)
     self.mMasterPads_property.setSignatureObserver (observer: self)
     self.mName_property.setSignatureObserver (observer: self)
@@ -584,6 +584,14 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mX_property.removeEBObserver (self.selectionDisplay_property)
     self.mY_property.removeEBObserver (self.selectionDisplay_property)
     self.mMasterPads_property.removeEBObserverOf_mName (self.padNameSet_property)
+  //--- Unregister properties for handling signature
+    self.mFileData_property.setSignatureObserver (observer: nil)
+    self.mMasterPads_property.setSignatureObserver (observer: nil)
+    self.mName_property.setSignatureObserver (observer: nil)
+    self.mStrokeBezierPath_property.setSignatureObserver (observer: nil)
+    self.mVersion_property.setSignatureObserver (observer: nil)
+    self.mX_property.setSignatureObserver (observer: nil)
+    self.mY_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -785,7 +793,7 @@ class PackageInDevice : EBGraphicManagedObject,
     self.mY_property.storeIn (dictionary: ioDictionary, forKey:"mY")
   //--- To many property: mMasterPads
     self.store (
-      managedObjectArray: mMasterPads_property.propval as NSArray,
+      managedObjectArray: self.mMasterPads_property.propval,
       relationshipName: "mMasterPads",
       intoDictionary: ioDictionary
     )
@@ -1903,7 +1911,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1914,7 +1922,7 @@ final class StoredArrayOf_PackageInDevice : ReadWriteArrayOf_PackageInDevice, EB
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

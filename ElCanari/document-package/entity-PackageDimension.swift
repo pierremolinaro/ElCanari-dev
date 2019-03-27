@@ -620,7 +620,7 @@ class PackageDimension : PackageObject,
     self.x2_property.addEBObserver (self.issues_property)
     self.y2_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.distanceUnit_property.setSignatureObserver (observer: self)
     self.x1_property.setSignatureObserver (observer: self)
     self.x1Unit_property.setSignatureObserver (observer: self)
@@ -669,6 +669,20 @@ class PackageDimension : PackageObject,
     self.y1_property.removeEBObserver (self.issues_property)
     self.x2_property.removeEBObserver (self.issues_property)
     self.y2_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.distanceUnit_property.setSignatureObserver (observer: nil)
+    self.x1_property.setSignatureObserver (observer: nil)
+    self.x1Unit_property.setSignatureObserver (observer: nil)
+    self.x2_property.setSignatureObserver (observer: nil)
+    self.x2Unit_property.setSignatureObserver (observer: nil)
+    self.xDimension_property.setSignatureObserver (observer: nil)
+    self.xDimensionUnit_property.setSignatureObserver (observer: nil)
+    self.y1_property.setSignatureObserver (observer: nil)
+    self.y1Unit_property.setSignatureObserver (observer: nil)
+    self.y2_property.setSignatureObserver (observer: nil)
+    self.y2Unit_property.setSignatureObserver (observer: nil)
+    self.yDimension_property.setSignatureObserver (observer: nil)
+    self.yDimensionUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2352,7 +2366,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2363,7 +2377,7 @@ final class StoredArrayOf_PackageDimension : ReadWriteArrayOf_PackageDimension, 
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

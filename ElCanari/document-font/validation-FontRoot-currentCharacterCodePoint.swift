@@ -10,19 +10,19 @@ import Cocoa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extension Preferences {
+extension FontRoot {
   func validate_currentCharacterCodePoint (currentValue : Int,
                                            proposedValue : Int) -> EBValidationResult <Int> {
 //--- START OF USER ZONE 2
-    let validatedValue : Int
-    if proposedValue < 0x20 {
-      validatedValue = 0x20
-    }else if proposedValue > 0xFFFF {
-      validatedValue = 0x20
-    }else{
-      validatedValue = proposedValue
-    }
-    return EBValidationResult.ok (validatedValue)
+        let validatedValue : Int
+        if proposedValue < 0x20 {
+          validatedValue = 0x20
+        }else if proposedValue > 0xFFFF {
+          validatedValue = 0x20
+        }else{
+          validatedValue = proposedValue
+        }
+        return EBValidationResult.ok (validatedValue)
 //--- END OF USER ZONE 2
   }
 }

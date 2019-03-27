@@ -63,8 +63,8 @@ private func installDebugMenu () {
     gDebugObject = debugObject
     let mainBundle = Bundle.main
     let ok = mainBundle.loadNibNamed ("EBAllocationDebug",
-                                      owner:debugObject,
-                                      topLevelObjects:&debugObject.mTopLevelObjects)
+                                      owner: debugObject,
+                                      topLevelObjects: &debugObject.mTopLevelObjects)
     if !ok {
       presentErrorWindow (file: #file, line: #line, errorMessage: "Cannot load 'EBAllocationDebug' nib file") ;
     }
@@ -114,19 +114,19 @@ private var gDebugObject : EBAllocationDebug? = nil
 
   private var mAllocationStatsWindowVisibleAtLaunch : Bool = true {
     didSet {
-      mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue(rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
+      mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue (rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
     }
   }
 
   private var mAllocatedObjectCount : Int = 0 {
     didSet {
-      mCurrentlyAllocatedObjectCountTextField?.stringValue = String (format:"%d", mAllocatedObjectCount)
+      mCurrentlyAllocatedObjectCountTextField?.stringValue = "\(mAllocatedObjectCount)"
     }
   }
 
   private var mTotalAllocatedObjectCount : Int = 0 {
     didSet {
-      mTotalAllocatedObjectCountTextField?.stringValue = String (format:"%d", mTotalAllocatedObjectCount)
+      mTotalAllocatedObjectCountTextField?.stringValue = "\(mTotalAllocatedObjectCount)"
     }
   }
 
@@ -157,9 +157,9 @@ private var gDebugObject : EBAllocationDebug? = nil
     assert (gDebugObject == nil, "EBAllocationDebug already exists", file:#file, line:#line)
     let nc = NotificationCenter.default
     nc.addObserver (self,
-      selector:#selector(EBAllocationDebug.applicationWillTerminateAction(_:)),
-      name:NSApplication.willTerminateNotification,
-      object:nil
+      selector: #selector(EBAllocationDebug.applicationWillTerminateAction(_:)),
+      name: NSApplication.willTerminateNotification,
+      object: nil
     )
     gDebugObject = self
   }
@@ -191,49 +191,48 @@ private var gDebugObject : EBAllocationDebug? = nil
   // NSLog (@"%s %p %p", __PRETTY_FUNCTION__, self, mDebugMenu) ;
   //--- Allocation Window visibility
     let df = UserDefaults.standard
-    mAllocationStatsWindowVisibleAtLaunch = df.bool (forKey: prefsEnableObjectAllocationStatsWindowVisible)
-    mDisplayFilter = df.integer (forKey: prefsEnableObjectAllocationStatsDisplayFilter)
+    self.mAllocationStatsWindowVisibleAtLaunch = df.bool (forKey: prefsEnableObjectAllocationStatsWindowVisible)
+    self.mDisplayFilter = df.integer (forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   //--- Enable / disable object allocation debug
-    mEnableObjectAllocationDebug?.bind (
+    self.mEnableObjectAllocationDebug?.bind (
       NSBindingName.value,
       to: NSUserDefaultsController.shared ,
       withKeyPath: "values." + prefsEnableObjectAllocationDebugString,
       options: nil
     )
     if gEnableObjectAllocationDebug {
-      mReuseTableViewCellsButton?.bind (
+      self.mReuseTableViewCellsButton?.bind (
         NSBindingName.value,
         to: NSUserDefaultsController.shared ,
         withKeyPath: "values." + prefsReuseTableViewCells,
         options: nil
       )
     }else{
-      mReuseTableViewCellsButton?.state = NSControl.StateValue.on
+      self.mReuseTableViewCellsButton?.state = NSControl.StateValue.on
     }
-    mDisplayFilterPopUpButton?.isEnabled = gEnableObjectAllocationDebug
-    mStatsTableView?.isEnabled = gEnableObjectAllocationDebug
-    mPerformSnapShotButton?.isEnabled = gEnableObjectAllocationDebug
-    mReuseTableViewCellsButton?.isEnabled = gEnableObjectAllocationDebug
-    mCurrentlyAllocatedObjectCountTextField?.isEnabled = gEnableObjectAllocationDebug
-    mTotalAllocatedObjectCountTextField?.isEnabled = gEnableObjectAllocationDebug
-
+    self.mDisplayFilterPopUpButton?.isEnabled = gEnableObjectAllocationDebug
+    self.mStatsTableView?.isEnabled = gEnableObjectAllocationDebug
+    self.mPerformSnapShotButton?.isEnabled = gEnableObjectAllocationDebug
+    self.mReuseTableViewCellsButton?.isEnabled = gEnableObjectAllocationDebug
+    self.mCurrentlyAllocatedObjectCountTextField?.isEnabled = gEnableObjectAllocationDebug
+    self.mTotalAllocatedObjectCountTextField?.isEnabled = gEnableObjectAllocationDebug
   //--- will call windowDidBecomeKey: and windowWillClose:
-    mAllocationStatsWindow?.delegate = self
+    self.mAllocationStatsWindow?.delegate = self
   //--- Allocation stats window visibility at Launch
-    mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue(rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
-    mAllocationStatsWindowVisibleAtLaunchCheckbox?.target = self
-    mAllocationStatsWindowVisibleAtLaunchCheckbox?.action = #selector(EBAllocationDebug.setAllocationStatsWindowVisibleAtLaunchAction(_:))
-    if mAllocationStatsWindowVisibleAtLaunch {
-      mAllocationStatsWindow?.makeKeyAndOrderFront (nil)
-      installTimer ()
+    self.mAllocationStatsWindowVisibleAtLaunchCheckbox?.state = NSControl.StateValue (rawValue: mAllocationStatsWindowVisibleAtLaunch ? 1 : 0)
+    self.mAllocationStatsWindowVisibleAtLaunchCheckbox?.target = self
+    self.mAllocationStatsWindowVisibleAtLaunchCheckbox?.action = #selector(EBAllocationDebug.setAllocationStatsWindowVisibleAtLaunchAction(_:))
+    if self.mAllocationStatsWindowVisibleAtLaunch {
+      self.mAllocationStatsWindow?.makeKeyAndOrderFront (nil)
+   //   self.installTimer ()
     }
-    mDisplayFilterPopUpButton?.selectItem (at: mDisplayFilter)
-    mDisplayFilterPopUpButton?.target = self
-    mDisplayFilterPopUpButton?.action = #selector(EBAllocationDebug.setDisplayFilerAction(_:))
-    let columns = mStatsTableView!.tableColumns as NSArray
+    self.mDisplayFilterPopUpButton?.selectItem (at: mDisplayFilter)
+    self.mDisplayFilterPopUpButton?.target = self
+    self.mDisplayFilterPopUpButton?.action = #selector(EBAllocationDebug.setDisplayFilerAction(_:))
+    let columns = self.mStatsTableView!.tableColumns as NSArray
     if columns.count > 0 {
       let firstColumn = columns [0] as! NSTableColumn
-      mStatsTableView!.sortDescriptors = NSArray (object:firstColumn.sortDescriptorPrototype!) as! [NSSortDescriptor]
+      self.mStatsTableView!.sortDescriptors = NSArray (object:firstColumn.sortDescriptorPrototype!) as! [NSSortDescriptor]
     }
     pmInstallDebugMenu ()
   }
@@ -242,28 +241,19 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    installTimer
   //····················································································································
 
-  func installTimer () {
-    if mRefreshTimer == nil {
-      displayAllocation ()
-      mRefreshTimer = Timer (
+  private func installTimer () {
+    if self.mRefreshTimer == nil {
+      self.mRefreshTimer = Timer (
         timeInterval: 1.0,
         target:self,
         selector:#selector(EBAllocationDebug.refreshDisplay(_:)),
         userInfo: nil,
         repeats: true
       )
-      RunLoop.current.add (mRefreshTimer!, forMode:RunLoop.Mode.default)
-      mRefreshDisplay = true
-      displayAllocation ()
+      RunLoop.current.add (self.mRefreshTimer!, forMode:RunLoop.Mode.default)
+      self.mRefreshDisplay = true
+      self.displayAllocation ()
     }
-  }
-
-  //····················································································································
-  //    windowDidBecomeKey: create and validate timer
-  //····················································································································
-
-  func windowDidBecomeKey (_: Notification) {
-    installTimer ()
   }
 
   //····················································································································
@@ -271,9 +261,9 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   func windowWillClose (_: Notification) {
-    if let timer = mRefreshTimer {
+    if let timer = self.mRefreshTimer {
       timer.invalidate ()
-      mRefreshTimer = nil
+      self.mRefreshTimer = nil
     }
   }
   
@@ -282,24 +272,24 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   @objc func refreshDisplay (_ timer : Timer) {
-    displayAllocation ()
+    self.displayAllocation ()
   }
   
   //····················································································································
   //    setAllocationStatsWindowVisibleAtLaunchAction:
   //····················································································································
   
-  @objc func setAllocationStatsWindowVisibleAtLaunchAction (_: Any!) {
-    mAllocationStatsWindowVisibleAtLaunch = mAllocationStatsWindowVisibleAtLaunchCheckbox?.state.rawValue != 0
+  @objc func setAllocationStatsWindowVisibleAtLaunchAction (_: Any?) {
+    self.mAllocationStatsWindowVisibleAtLaunch = self.mAllocationStatsWindowVisibleAtLaunchCheckbox?.state.rawValue != 0
   }
 
   //····················································································································
   //    setDisplayFilerAction:
   //····················································································································
   
-  @objc func setDisplayFilerAction (_: Any!) {
-    if let displayFilterPopUpButton = mDisplayFilterPopUpButton {
-      mDisplayFilter = displayFilterPopUpButton.indexOfSelectedItem
+  @objc func setDisplayFilerAction (_: Any?) {
+    if let displayFilterPopUpButton = self.mDisplayFilterPopUpButton {
+      self.mDisplayFilter = displayFilterPopUpButton.indexOfSelectedItem
     }
   }
 
@@ -307,14 +297,10 @@ private var gDebugObject : EBAllocationDebug? = nil
   //    applicationWillTerminateAction:
   //····················································································································
   
-  @objc func applicationWillTerminateAction (_: Notification) {
+  @objc func applicationWillTerminateAction (_ : Notification) {
     let ud = UserDefaults.standard
-    ud.set (mAllocationStatsWindowVisibleAtLaunch,
-      forKey:prefsEnableObjectAllocationStatsWindowVisible
-    )
-    ud.set (mDisplayFilter,
-      forKey:prefsEnableObjectAllocationStatsDisplayFilter
-    )
+    ud.set (self.mAllocationStatsWindowVisibleAtLaunch, forKey: prefsEnableObjectAllocationStatsWindowVisible)
+    ud.set (self.mDisplayFilter, forKey: prefsEnableObjectAllocationStatsDisplayFilter)
   }
 
   //····················································································································
@@ -322,11 +308,11 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
   
   @IBAction func performSnapShotAction (_: AnyObject) {
-    mSnapShotDictionary = [:]
-    for (className, liveByClass) in mLiveObjectCountByClass  {
-      mSnapShotDictionary [className] = liveByClass
+    self.mSnapShotDictionary = [:]
+    for (className, liveByClass) in self.mLiveObjectCountByClass  {
+      self.mSnapShotDictionary [className] = liveByClass
     }
-    mRefreshDisplay = true
+    self.mRefreshDisplay = true
   }
 
   //····················································································································
@@ -334,12 +320,12 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
   
   fileprivate func pmNoteObjectAllocation (_ inObjectClassName : String) {
-  //NSLog (@"objectClassName %@", inObjectClassName) ;
-    let currentLiveCount = mLiveObjectCountByClass [inObjectClassName] ?? 0
-    mLiveObjectCountByClass [inObjectClassName] = currentLiveCount + 1
-    let currentCount = mTotalAllocatedObjectCountByClass [inObjectClassName] ?? 0
-    mTotalAllocatedObjectCountByClass [inObjectClassName] = currentCount + 1
-    mRefreshDisplay = true
+    let currentLiveCount = self.mLiveObjectCountByClass [inObjectClassName] ?? 0
+    self.mLiveObjectCountByClass [inObjectClassName] = currentLiveCount + 1
+    let currentCount = self.mTotalAllocatedObjectCountByClass [inObjectClassName] ?? 0
+    self.mTotalAllocatedObjectCountByClass [inObjectClassName] = currentCount + 1
+    self.mRefreshDisplay = true
+    self.installTimer ()
     pmInstallDebugMenu ()
   }
 
@@ -348,14 +334,13 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
   
   fileprivate func pmNoteObjectDeallocation (_ inObjectClassName : String) {
-  // NSLog (@"DEALLOC objectClassName %@", inObjectClassName) ;
-    let currentCount = mLiveObjectCountByClass [inObjectClassName] ?? 0
+    let currentCount = self.mLiveObjectCountByClass [inObjectClassName] ?? 0
     if currentCount > 1 {
-      mLiveObjectCountByClass [inObjectClassName] = currentCount - 1
+      self.mLiveObjectCountByClass [inObjectClassName] = currentCount - 1
     }else{
-      mLiveObjectCountByClass [inObjectClassName] = nil
+      self.mLiveObjectCountByClass [inObjectClassName] = nil
     }
-    mRefreshDisplay = true
+    self.mRefreshDisplay = true
   }
 
   //····················································································································
@@ -363,26 +348,26 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   private func displayAllocation () {
-    if mRefreshDisplay {
-      mRefreshDisplay = false
+    if self.mRefreshDisplay {
+      self.mRefreshDisplay = false
     //---
-      var liveObjectCount : Int = 0
-      var totalObjectCount : Int = 0
+      var liveObjectCount = 0
+      var totalObjectCount = 0
     //---
-      mAllocationStatsDataSource = NSMutableArray ()
-      for (className, totalByClass) in mTotalAllocatedObjectCountByClass {
-        let liveByClass = mLiveObjectCountByClass [className] ?? 0
-        let snapShotByClass : Int = mSnapShotDictionary [className] ?? 0
+      self.mAllocationStatsDataSource = NSMutableArray ()
+      for (className, totalByClass) in self.mTotalAllocatedObjectCountByClass {
+        let liveByClass = self.mLiveObjectCountByClass [className] ?? 0
+        let snapShotByClass = mSnapShotDictionary [className] ?? 0
         liveObjectCount += liveByClass
         totalObjectCount += totalByClass
         var display = true
-        if 1 == mDisplayFilter {
+        if 1 == self.mDisplayFilter {
           display = liveByClass != 0 ;
-        }else if 2 == mDisplayFilter {
+        }else if 2 == self.mDisplayFilter {
           display = liveByClass != snapShotByClass ;
         }
         if display {
-          mAllocationStatsDataSource.add (EBAllocationItemDisplay (
+          self.mAllocationStatsDataSource.add (EBAllocationItemDisplay (
             classname : className,
             allCount : totalByClass,
             live : liveByClass,
@@ -390,13 +375,13 @@ private var gDebugObject : EBAllocationDebug? = nil
           ))
         }
       }
-      mAllocatedObjectCount = liveObjectCount
-      mTotalAllocatedObjectCount = totalObjectCount
+      self.mAllocatedObjectCount = liveObjectCount
+      self.mTotalAllocatedObjectCount = totalObjectCount
     //---
-      let sortDescriptors : [NSSortDescriptor]! = mStatsTableView?.sortDescriptors
-      mAllocationStatsDataSource.sort (using: sortDescriptors)
-      mStatsTableView?.dataSource = self
-      mStatsTableView?.reloadData ()
+      let sortDescriptors : [NSSortDescriptor]! = self.mStatsTableView?.sortDescriptors
+      self.mAllocationStatsDataSource.sort (using: sortDescriptors)
+      self.mStatsTableView?.dataSource = self
+      self.mStatsTableView?.reloadData ()
     }
   }
 
@@ -407,14 +392,14 @@ private var gDebugObject : EBAllocationDebug? = nil
   func tableView (_ aTableView : NSTableView,
                   objectValueFor objectValueForTableColumn: NSTableColumn?,
                   row:Int) -> Any? {
-    let theRecord : EBAllocationItemDisplay = mAllocationStatsDataSource [row] as! EBAllocationItemDisplay
+    let theRecord = mAllocationStatsDataSource [row] as! EBAllocationItemDisplay
     return theRecord.value (forKey: objectValueForTableColumn!.identifier.rawValue as String)
   }
   
   //····················································································································
   
   func numberOfRows (in _: NSTableView) -> Int {
-    return mAllocationStatsDataSource.count
+    return self.mAllocationStatsDataSource.count
   }
   
   //····················································································································
@@ -422,10 +407,10 @@ private var gDebugObject : EBAllocationDebug? = nil
   //····················································································································
 
   func tableView (_ tableView: NSTableView,
-                 sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
-    let sortDescriptors = mStatsTableView?.sortDescriptors
-    mAllocationStatsDataSource.sort (using: sortDescriptors!)
-    mStatsTableView?.reloadData ()
+                  sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
+    let sortDescriptors = self.mStatsTableView?.sortDescriptors
+    self.mAllocationStatsDataSource.sort (using: sortDescriptors!)
+    self.mStatsTableView?.reloadData ()
   }
 
   //····················································································································

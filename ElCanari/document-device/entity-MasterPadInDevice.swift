@@ -485,7 +485,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mSlavePads_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SlavePadInDevice?) in
       inManagedObject?.mMasterPad_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mCenterX_property.setSignatureObserver (observer: self)
     self.mCenterY_property.setSignatureObserver (observer: self)
     self.mHeight_property.setSignatureObserver (observer: self)
@@ -523,6 +523,17 @@ class MasterPadInDevice : EBManagedObject,
     self.mShape_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
     self.mStyle_property.removeEBObserver (self.backSideFilledBezierPathArray_property)
     self.mSlavePads_property.removeEBObserverOf_backSideFilledBezierPath (self.backSideFilledBezierPathArray_property)
+ //   self.mSlavePads_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.mCenterX_property.setSignatureObserver (observer: nil)
+    self.mCenterY_property.setSignatureObserver (observer: nil)
+    self.mHeight_property.setSignatureObserver (observer: nil)
+    self.mHoleDiameter_property.setSignatureObserver (observer: nil)
+    self.mName_property.setSignatureObserver (observer: nil)
+    self.mShape_property.setSignatureObserver (observer: nil)
+    self.mSlavePads_property.setSignatureObserver (observer: nil)
+    self.mStyle_property.setSignatureObserver (observer: nil)
+    self.mWidth_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -715,7 +726,7 @@ class MasterPadInDevice : EBManagedObject,
     self.mName_property.storeIn (dictionary: ioDictionary, forKey:"mName")
   //--- To many property: mSlavePads
     self.store (
-      managedObjectArray: mSlavePads_property.propval as NSArray,
+      managedObjectArray: self.mSlavePads_property.propval,
       relationshipName: "mSlavePads",
       intoDictionary: ioDictionary
     )
@@ -1770,7 +1781,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1781,7 +1792,7 @@ final class StoredArrayOf_MasterPadInDevice : ReadWriteArrayOf_MasterPadInDevice
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

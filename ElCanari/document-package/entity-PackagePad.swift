@@ -1052,7 +1052,7 @@ class PackagePad : PackageObject,
     self.slaves_property.setOppositeRelationship = { [weak self] (_ inManagedObject : PackageSlavePad?) in
       inManagedObject?.master_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.annularRingUnit_property.setSignatureObserver (observer: self)
     self.height_property.setSignatureObserver (observer: self)
     self.heightUnit_property.setSignatureObserver (observer: self)
@@ -1110,6 +1110,22 @@ class PackagePad : PackageObject,
     g_Preferences?.padNumberFont_property.removeEBObserver (self.padNumberDisplay_property)
     g_Preferences?.padNumberColor_property.removeEBObserver (self.padNumberDisplay_property)
     self.padName_property.removeEBObserver (self.padNumberDisplay_property)
+ //   self.slaves_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.annularRingUnit_property.setSignatureObserver (observer: nil)
+    self.height_property.setSignatureObserver (observer: nil)
+    self.heightUnit_property.setSignatureObserver (observer: nil)
+    self.holeDiameter_property.setSignatureObserver (observer: nil)
+    self.holeDiameterUnit_property.setSignatureObserver (observer: nil)
+    self.padNumber_property.setSignatureObserver (observer: nil)
+    self.padShape_property.setSignatureObserver (observer: nil)
+    self.padStyle_property.setSignatureObserver (observer: nil)
+    self.width_property.setSignatureObserver (observer: nil)
+    self.widthUnit_property.setSignatureObserver (observer: nil)
+    self.xCenter_property.setSignatureObserver (observer: nil)
+    self.xCenterUnit_property.setSignatureObserver (observer: nil)
+    self.yCenter_property.setSignatureObserver (observer: nil)
+    self.yCenterUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -1455,7 +1471,7 @@ class PackagePad : PackageObject,
     self.annularRingUnit_property.storeIn (dictionary: ioDictionary, forKey:"annularRingUnit")
   //--- To many property: slaves
     self.store (
-      managedObjectArray: slaves_property.propval as NSArray,
+      managedObjectArray: self.slaves_property.propval,
       relationshipName: "slaves",
       intoDictionary: ioDictionary
     )
@@ -3404,7 +3420,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -3415,7 +3431,7 @@ final class StoredArrayOf_PackagePad : ReadWriteArrayOf_PackagePad, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

@@ -355,7 +355,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mInstances_property.setOppositeRelationship = { [weak self] (_ inManagedObject : SymbolPinInstanceInDevice?) in
       inManagedObject?.mType_property.setProp (self)
     }
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.mName_property.setSignatureObserver (observer: self)
     self.mNameHorizontalAlignment_property.setSignatureObserver (observer: self)
     self.mNumberHorizontalAlignment_property.setSignatureObserver (observer: self)
@@ -377,6 +377,16 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mNameHorizontalAlignment_property.removeEBObserver (self.nameShape_property)
     self.mPinNameIsDisplayedInSchematics_property.removeEBObserver (self.nameShape_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.nameShape_property)
+ //   self.mInstances_property.setOppositeRelationship = nil
+  //--- Unregister properties for handling signature
+    self.mName_property.setSignatureObserver (observer: nil)
+    self.mNameHorizontalAlignment_property.setSignatureObserver (observer: nil)
+    self.mNumberHorizontalAlignment_property.setSignatureObserver (observer: nil)
+    self.mPinNameIsDisplayedInSchematics_property.setSignatureObserver (observer: nil)
+    self.mXName_property.setSignatureObserver (observer: nil)
+    self.mXNumber_property.setSignatureObserver (observer: nil)
+    self.mYName_property.setSignatureObserver (observer: nil)
+    self.mYNumber_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -553,7 +563,7 @@ class SymbolPinTypeInDevice : EBManagedObject,
     self.mNumberHorizontalAlignment_property.storeIn (dictionary: ioDictionary, forKey:"mNumberHorizontalAlignment")
   //--- To many property: mInstances
     self.store (
-      managedObjectArray: mInstances_property.propval as NSArray,
+      managedObjectArray: self.mInstances_property.propval,
       relationshipName: "mInstances",
       intoDictionary: ioDictionary
     )
@@ -1487,7 +1497,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1498,7 +1508,7 @@ final class StoredArrayOf_SymbolPinTypeInDevice : ReadWriteArrayOf_SymbolPinType
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

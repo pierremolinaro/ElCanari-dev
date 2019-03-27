@@ -275,7 +275,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.mPadProxy_property.addEBObserverOf_mPadName (self.numberShape_property)
     g_Preferences?.pinNameFont_property.addEBObserver (self.numberShape_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -291,6 +291,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
     self.mType_property.removeEBObserverOf_mNumberHorizontalAlignment (self.numberShape_property)
     self.mPadProxy_property.removeEBObserverOf_mPadName (self.numberShape_property)
     g_Preferences?.pinNameFont_property.removeEBObserver (self.numberShape_property)
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -1004,7 +1005,7 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -1015,7 +1016,7 @@ final class StoredArrayOf_SymbolPinInstanceInDevice : ReadWriteArrayOf_SymbolPin
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

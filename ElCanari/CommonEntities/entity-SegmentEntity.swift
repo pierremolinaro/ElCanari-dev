@@ -177,7 +177,7 @@ class SegmentEntity : EBManagedObject,
   //--- Atomic property: x1
     self.x1_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
   //--- Extern delegates
   }
 
@@ -185,6 +185,7 @@ class SegmentEntity : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+  //--- Unregister properties for handling signature
   }
 
   //····················································································································
@@ -950,7 +951,7 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -961,7 +962,7 @@ final class StoredArrayOf_SegmentEntity : ReadWriteArrayOf_SegmentEntity, EBSign
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 

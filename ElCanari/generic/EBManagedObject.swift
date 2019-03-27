@@ -9,17 +9,17 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBManagedObject : EBObject, EBSignatureObserverProtocol {
-  private weak var mUndoManager : EBUndoManager? // SOULD BE WEAK
+  private weak var mEBUndoManager : EBUndoManager? = nil // SOULD BE WEAK
   var savingIndex = 0
 
-  var mExplorerWindow : NSWindow?
+  var mExplorerWindow : NSWindow? = nil
 
   //····················································································································
   //  init
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
-    mUndoManager = ebUndoManager
+    mEBUndoManager = ebUndoManager
     super.init ()
   }
 
@@ -50,7 +50,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //····················································································································
 
   final var ebUndoManager : EBUndoManager? {
-    return self.mUndoManager
+    return self.mEBUndoManager
   }
 
   //····················································································································
@@ -145,38 +145,36 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
 
   func createAndPopulateObjectExplorerWindow () {
   //-------------------------------------------------- Create Window
-    let r = NSRect (x:20.0, y:20.0, width:10.0, height:10.0)
+    let r = NSRect (x: 20.0, y: 20.0, width: 10.0, height: 10.0)
     self.mExplorerWindow = NSWindow (
-      contentRect:r,
-      styleMask:[.titled, .closable],
-      backing:.buffered,
-      defer:true,
-      screen:nil
+      contentRect: r,
+      styleMask: [.titled, .closable],
+      backing: .buffered,
+      defer: true,
+      screen: nil
     )
   //-------------------------------------------------- Adding properties
   //  var nameRect = NSRect (x:0.0, y:0.0, width:300.0, height:22.0)
  //   let font = NSFont.boldSystemFontOfSize (NSFont.smallSystemFontSize ())
-    let view = NSView (frame:r)
+    let view = NSView (frame: r)
     var y : CGFloat = 0.0
-    populateExplorerWindow (&y, view:view)
+    populateExplorerWindow (&y, view: view)
   //-------------------------------------------------- Finish Window construction
   //--- Resize View
-   // let rr = secondColumn (nameRect)
     let viewFrame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
     view.frame = viewFrame
-   // NSRect (x:0.0, y:0.0, width:NSMaxX (rr), height:NSMaxY (rr))
   //--- Set content size
-    mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
+    self.mExplorerWindow?.setContentSize (NSSize (width: EXPLORER_ROW_WIDTH + 16.0, height: fmin (600.0, y)))
   //--- Set close button as 'remove window' button
-    let closeButton : NSButton? = mExplorerWindow?.standardWindowButton (.closeButton)
+    let closeButton : NSButton? = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = self
-    closeButton?.action = #selector(EBManagedObject.deleteWindowAction(_:))
+    closeButton?.action = #selector (EBManagedObject.deleteWindowAction(_:))
   //--- Set window title
     let windowTitle = explorerIndexString (self.ebObjectIndex) + className
-    mExplorerWindow!.title = windowTitle
+    self.mExplorerWindow!.title = windowTitle
   //--- Add Scroll view
-    let frame = NSRect (x:0.0, y:0.0, width:EXPLORER_ROW_WIDTH, height:y)
-    let sw = NSScrollView (frame:frame)
+    let frame = NSRect (x: 0.0, y: 0.0, width: EXPLORER_ROW_WIDTH, height: y)
+    let sw = NSScrollView (frame: frame)
     sw.hasVerticalScroller = true
     sw.documentView = view
     mExplorerWindow!.contentView = sw
@@ -203,7 +201,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //····················································································································
 
   func clearObjectExplorer () {
-    let closeButton = mExplorerWindow?.standardWindowButton (.closeButton)
+    let closeButton = self.mExplorerWindow?.standardWindowButton (.closeButton)
     closeButton?.target = nil
     self.mExplorerWindow?.orderOut (nil)
     self.mExplorerWindow = nil
@@ -213,14 +211,14 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //   store (managedObjectArray:relationshipName:intoDictionary)
   //····················································································································
 
-  final func store (managedObjectArray : NSArray,
+  final func store (managedObjectArray : [EBManagedObject], // NSArray,
                     relationshipName: String,
                     intoDictionary : NSMutableDictionary) {
 
     if managedObjectArray.count > 0 {
       let indexArray = NSMutableArray ()
-      for object : Any in managedObjectArray {
-        let managedObject = object as! EBManagedObject
+      for managedObject in managedObjectArray {
+       // let managedObject = object as! EBManagedObject
         indexArray.add (NSNumber (value:managedObject.savingIndex))
       }
       intoDictionary.setObject (indexArray, forKey:relationshipName as NSCopying)
@@ -235,7 +233,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
                     relationshipName: String,
                     intoDictionary : NSMutableDictionary) {
     if let unwObject = managedObject {
-      intoDictionary.setObject (NSNumber (value:unwObject.savingIndex), forKey:relationshipName as NSCopying)
+      intoDictionary.setObject (NSNumber (value: unwObject.savingIndex), forKey: relationshipName as NSCopying)
     }
   }
 
@@ -258,13 +256,13 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //   readEntityArrayFromDictionary
   //····················································································································
 
-  final func readEntityArrayFromDictionary (inRelationshipName: String,
+  final func readEntityArrayFromDictionary (inRelationshipName : String,
                                             inDictionary : NSDictionary,
-                                            managedObjectArray : inout [EBManagedObject]) -> Array<EBManagedObject> {
-    let opIndexArray : Array<Int>? = inDictionary.value (forKey: inRelationshipName) as? Array<Int>
+                                            managedObjectArray : inout [EBManagedObject]) -> [EBManagedObject] {
+    let opIndexArray : [Int]? = inDictionary.value (forKey: inRelationshipName) as? [Int]
     var result = [EBManagedObject] ()
     if let indexArray = opIndexArray {
-      for number : Int in indexArray {
+      for number in indexArray {
         let managedObject = managedObjectArray [number]
         result.append (managedObject)
       }
@@ -276,7 +274,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //   setSignatureObserver
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -299,7 +297,7 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //   signature
   //····················································································································
 
-  private final var mSignature : UInt32?
+  private final var mSignature : UInt32? = nil
   
   //····················································································································
 
@@ -345,12 +343,12 @@ func updateManagedObjectToManyRelationshipDisplay (objectArray : [EBManagedObjec
   if objectArray.count == 1 {
     title = "1 Object" ;
   }else if objectArray.count > 1 {
-    title = String (format:"%lu objects", objectArray.count)
+    title = "\(objectArray.count) objects"
   }
   popUpButton?.removeAllItems ()
   popUpButton?.addItem (withTitle: title)
   popUpButton?.isEnabled = objectArray.count > 0
-  for object : EBManagedObject in objectArray {
+  for object in objectArray {
     let stringValue = explorerIndexString (object.ebObjectIndex) + object.className
     popUpButton?.addItem (withTitle: stringValue)
     let item = popUpButton?.lastItem

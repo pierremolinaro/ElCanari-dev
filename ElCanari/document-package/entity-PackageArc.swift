@@ -614,7 +614,7 @@ class PackageArc : PackageObject,
     self.arcAngle_property.addEBObserver (self.issues_property)
     self.pathIsClosed_property.addEBObserver (self.issues_property)
   //--- Install undoers and opposite setter for relationships
-  //--- register properties for handling signature
+  //--- Register properties for handling signature
     self.arcAngle_property.setSignatureObserver (observer: self)
     self.endTangent_property.setSignatureObserver (observer: self)
     self.endTangentUnit_property.setSignatureObserver (observer: self)
@@ -660,6 +660,20 @@ class PackageArc : PackageObject,
     self.startAngle_property.removeEBObserver (self.issues_property)
     self.arcAngle_property.removeEBObserver (self.issues_property)
     self.pathIsClosed_property.removeEBObserver (self.issues_property)
+  //--- Unregister properties for handling signature
+    self.arcAngle_property.setSignatureObserver (observer: nil)
+    self.endTangent_property.setSignatureObserver (observer: nil)
+    self.endTangentUnit_property.setSignatureObserver (observer: nil)
+    self.pathIsClosed_property.setSignatureObserver (observer: nil)
+    self.radius_property.setSignatureObserver (observer: nil)
+    self.radiusUnit_property.setSignatureObserver (observer: nil)
+    self.startAngle_property.setSignatureObserver (observer: nil)
+    self.startTangent_property.setSignatureObserver (observer: nil)
+    self.startTangentUnit_property.setSignatureObserver (observer: nil)
+    self.xCenter_property.setSignatureObserver (observer: nil)
+    self.xCenterUnit_property.setSignatureObserver (observer: nil)
+    self.yCenter_property.setSignatureObserver (observer: nil)
+    self.yCenterUnit_property.setSignatureObserver (observer: nil)
   }
 
   //····················································································································
@@ -2343,7 +2357,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
   //   signature
   //····················································································································
 
-  private weak var mSignatureObserver : EBSignatureObserverProtocol? // SOULD BE WEAK
+  private weak var mSignatureObserver : EBSignatureObserverProtocol? = nil // SOULD BE WEAK
 
   //····················································································································
 
@@ -2354,7 +2368,7 @@ final class StoredArrayOf_PackageArc : ReadWriteArrayOf_PackageArc, EBSignatureO
   final func setSignatureObserver (observer : EBSignatureObserverProtocol?) {
     self.mSignatureObserver = observer
     for object in self.mValue {
-      object.setSignatureObserver (observer: self)
+      object.setSignatureObserver (observer: observer)
     }
   }
 
