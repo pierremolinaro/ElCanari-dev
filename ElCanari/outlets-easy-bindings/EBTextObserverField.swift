@@ -45,17 +45,19 @@ import Cocoa
   //····················································································································
 
   func bind_valueObserver (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    mValueController = Controller_EBTextObserverField_value (object:object, outlet:self, file:file, line:line)
+    self.mValueController = Controller_EBTextObserverField_value (object:object, outlet:self, file:file, line:line)
   }
 
   //····················································································································
 
   func unbind_valueObserver () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
+    self.ebCleanUp ()
   }
 
   //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

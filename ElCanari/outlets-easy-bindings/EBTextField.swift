@@ -92,6 +92,7 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
+    self.mOutlet.ebCleanUp ()
     mOutlet.target = nil
     mOutlet.action = nil
   }
@@ -143,6 +144,27 @@ import Cocoa
       )
     }
   }
+
+  //····················································································································
+
+//  override func removeFromSuperview () {
+//    // NSLog ("\(#function)")
+//    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
+//    // self.mUnbindFunction? ()
+//    // self.mUnbindFunction = nil
+//    super.removeFromSuperview ()
+//  }
+
+  //····················································································································
+
+//  override func removeFromSuperviewWithoutNeedingDisplay () {
+//   //  NSLog ("\(#function)")
+//    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
+//  //  self.mUnbindFunction? ()
+//  //  self.mUnbindFunction = nil
+//    super.removeFromSuperviewWithoutNeedingDisplay ()
+//  }
+
 
   //····················································································································
 

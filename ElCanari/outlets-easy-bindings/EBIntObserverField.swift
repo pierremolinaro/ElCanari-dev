@@ -59,6 +59,7 @@ import Cocoa
   func unbind_valueObserver () {
     mValueController?.unregister ()
     mValueController = nil
+    self.ebCleanUp ()
   }
 
   //····················································································································
