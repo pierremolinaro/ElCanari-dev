@@ -36,27 +36,27 @@ import Cocoa
   //  value binding
   //····················································································································
 
-  private var mValueController : Controller_EBTextField_value?
+  private var mValueController : Controller_EBTextField_value? = nil
   private var mSendContinously : Bool = false
 
   //····················································································································
 
   func bind_value (_ object:EBReadWriteProperty_String, file:String, line:Int, sendContinously:Bool) {
-    mSendContinously = sendContinously
-    mValueController = Controller_EBTextField_value (object:object, outlet:self, file:file, line:line, sendContinously:sendContinously)
+    self.mSendContinously = sendContinously
+    self.mValueController = Controller_EBTextField_value (object:object, outlet:self, file:file, line:line, sendContinously:sendContinously)
   }
 
   //····················································································································
 
   func unbind_value () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································
 
   func controlTextDidChange (_ inNotification : Notification) {
-    if mSendContinously {
+    if self.mSendContinously {
       NSApp.sendAction (self.action!, to: self.target, from: self)
     }
   }
@@ -71,7 +71,7 @@ import Cocoa
 
 @objc(Controller_EBTextField_value) final class Controller_EBTextField_value : EBSimpleController {
 
-  private let mOutlet: EBTextField
+  private let mOutlet : EBTextField
   private let mObject : EBReadWriteProperty_String
 
   //····················································································································
@@ -80,10 +80,10 @@ import Cocoa
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    mOutlet.target = self
-    mOutlet.action = #selector(Controller_EBTextField_value.action(_:))
-    if mOutlet.formatter != nil {
-      presentErrorWindow (file: file, line:line, errorMessage:"the EBTextField outlet has a formatter")
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector(Controller_EBTextField_value.action(_:))
+    if self.mOutlet.formatter != nil {
+      presentErrorWindow (file: file, line: line, errorMessage: "the EBTextField outlet has a formatter")
     }
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
@@ -92,9 +92,9 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
     self.mOutlet.ebCleanUp ()
-    mOutlet.target = nil
-    mOutlet.action = nil
   }
 
   //····················································································································
@@ -102,21 +102,21 @@ import Cocoa
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      mOutlet.stringValue = propertyValue
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.stringValue = propertyValue
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
   //····················································································································
 
   @objc func action (_ sender : EBTextField) {
-    _ = mObject.validateAndSetProp (mOutlet.stringValue, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.stringValue, windowForSheet: sender.window)
   }
 }
 
@@ -125,12 +125,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBTextField_TableViewCell) class EBTextField_TableViewCell : EBTableCellView {
-  @IBOutlet var mCellOutlet : EBTextField?
+  @IBOutlet var mCellOutlet : EBTextField? = nil
 
   //····················································································································
 
   func checkOutlet (_ columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
+    if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBTextField) {
         presentErrorWindow (file: file,
           line: line,
@@ -144,27 +144,6 @@ import Cocoa
       )
     }
   }
-
-  //····················································································································
-
-//  override func removeFromSuperview () {
-//    // NSLog ("\(#function)")
-//    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
-//    // self.mUnbindFunction? ()
-//    // self.mUnbindFunction = nil
-//    super.removeFromSuperview ()
-//  }
-
-  //····················································································································
-
-//  override func removeFromSuperviewWithoutNeedingDisplay () {
-//   //  NSLog ("\(#function)")
-//    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
-//  //  self.mUnbindFunction? ()
-//  //  self.mUnbindFunction = nil
-//    super.removeFromSuperviewWithoutNeedingDisplay ()
-//  }
-
 
   //····················································································································
 

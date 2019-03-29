@@ -293,20 +293,22 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
   //····················································································································
 
   override func removeFromSuperview () {
-    // NSLog ("\(#function)")
-    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
-    // self.mUnbindFunction? ()
-    // self.mUnbindFunction = nil
+   // NSLog ("\(#function)")
+    if !Thread.isMainThread {
+      NSLog ("removeFromSuperview not in main thread")
+    }
+    self.mUnbindFunction? ()
     super.removeFromSuperview ()
   }
 
   //····················································································································
 
   override func removeFromSuperviewWithoutNeedingDisplay () {
-   //  NSLog ("\(#function)")
-    DispatchQueue.main.async { self.mUnbindFunction? () ; self.mUnbindFunction = nil }
-  //  self.mUnbindFunction? ()
-  //  self.mUnbindFunction = nil
+   // NSLog ("\(#function)")
+    if !Thread.isMainThread {
+      NSLog ("removeFromSuperviewWithoutNeedingDisplay not in main thread")
+    }
+    self.mUnbindFunction? ()
     super.removeFromSuperviewWithoutNeedingDisplay ()
   }
 
