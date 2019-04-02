@@ -229,13 +229,13 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"name\" column view unknown")
+        presentErrorWindow (file, line, "\"name\" column view unknown")
       }
     //--- Check 'size' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "size")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"size\" column view unknown")
+        presentErrorWindow (file, line, "\"size\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()

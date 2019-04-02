@@ -71,11 +71,13 @@ func buildDebugObject () {
     let debugObject = EBAllocationDebug ()
     gDebugObject = debugObject
     let mainBundle = Bundle.main
-    let ok = mainBundle.loadNibNamed ("EBAllocationDebug",
-                                      owner: debugObject,
-                                      topLevelObjects: &debugObject.mTopLevelObjects)
+    let ok = mainBundle.loadNibNamed (
+      "EBAllocationDebug",
+      owner: debugObject,
+      topLevelObjects: &debugObject.mTopLevelObjects
+    )
     if !ok {
-      presentErrorWindow (file: #file, line: #line, errorMessage: "Cannot load 'EBAllocationDebug' nib file") ;
+      presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
     }
   }
 }

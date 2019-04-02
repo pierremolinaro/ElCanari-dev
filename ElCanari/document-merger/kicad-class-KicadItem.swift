@@ -285,7 +285,11 @@ func parseKicadString (_ inContentString : [UnicodeScalar], _ ioIndex : inout In
       var str = String (inContentString [ioIndex])
       ioIndex += 1
       var c = inContentString [ioIndex]
-      while (c > " ") && (c < "~") && (c != ")") && (c != "(") {
+      let space : Unicode.Scalar = " "
+      let closePar : Unicode.Scalar = ")"
+      let openPar : Unicode.Scalar = "("
+      let tilde : Unicode.Scalar = "~"
+      while (c > space) && (c < tilde) && (c != closePar) && (c != openPar) {
         str += String (c)
         ioIndex += 1
         c = inContentString [ioIndex]

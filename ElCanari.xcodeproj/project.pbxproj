@@ -4685,6 +4685,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
 				OTHER_LDFLAGS = "";
+				"OTHER_SWIFT_FLAGS[sdk=macosx10.14]" = "-Xfrontend -warn-long-function-bodies=250 -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
 				PROVISIONING_PROFILE_SPECIFIER = "";

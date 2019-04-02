@@ -24,7 +24,7 @@ func transient_SlavePadInDevice_padNumberDisplay (
         NSAttributedString.Key.foregroundColor : prefs_padNumberColor
       ]
       return EBTextShape (
-        "(" + (self_mMasterPad_mName ?? "") + ")",
+        "(\(self_mMasterPad_mName ?? ""))",
         CanariPoint (x: self_mCenterX, y: self_mCenterY).cocoaPoint (),
         textAttributes,
         .center,

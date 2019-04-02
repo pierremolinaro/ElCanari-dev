@@ -199,9 +199,9 @@ var origin = NSPoint (x:20.0, y:20.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func presentErrorWindow (file : String!,
-                         line : Int,
-                         errorMessage : String) {
+func presentErrorWindow (_ file : String!,
+                         _ line : Int,
+                         _ errorMessage : String) {
   var message = ""
   message += "File: " + file + "\n"
   message += "Line: \(line)\n"

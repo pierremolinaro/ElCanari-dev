@@ -229,25 +229,25 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "path")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"path\" column view unknown")
+        presentErrorWindow (file, line, "\"path\" column view unknown")
       }
     //--- Check 'uses' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "uses")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"uses\" column view unknown")
+        presentErrorWindow (file, line, "\"uses\" column view unknown")
       }
     //--- Check 'status' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "status")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"status\" column view unknown")
+        presentErrorWindow (file, line, "\"status\" column view unknown")
       }
     //--- Check 'reveal' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "reveal")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"reveal\" column view unknown")
+        presentErrorWindow (file, line, "\"reveal\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()

@@ -8,6 +8,8 @@
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include <iostream>
+#include <vector>
+
 using namespace std ;
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -31,8 +33,9 @@ typedef struct {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], const int inIndex) {
+  fprintf (f, "\n") ;
+  fprintf (f, "fileprivate func enterCharacter%04x (_ ioDict : inout [UInt32 : KicadChar]) {\n", inIndex + ' ') ;
   fprintf (f, "//--- Character \\u%04x\n", wchar_t (inIndex + ' ')) ;
-  fprintf (f, "  segments = [KicadCharSegment] ()\n") ;
 
   const wchar_t s = inIndex + ' ' ;
   printf ("Character #%d: %C\n", inIndex, s) ;
@@ -41,6 +44,7 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
   bool penDown = false ;
   VECTOR2D point = {0, 0} ;
   int i = 0 ;
+  bool hasSegment = false ;
 
   while (aNewStrokeFont [inIndex] [i]) {
     char coordinate[2] = { 0, } ;
@@ -73,6 +77,10 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
       newPoint.y = coordinate[1] - 'R' + FONT_OFFSET ;
       // cout << "  (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
       if (penDown) {
+        if (!hasSegment) {
+          hasSegment = true ;
+          fprintf (f, "  var segments = [KicadCharSegment] ()\n") ;
+        }
         cout << "  line (" << point.x << ", " << point.y << ") --> (" << newPoint.x << ", " << newPoint.y << ")" << endl ;
         fprintf (f, "  segments.append (KicadCharSegment (x1: %d, y1:%d, x2:%d, y2: %d))\n", point.x, point.y, newPoint.x, newPoint.y) ;
       }else{
@@ -83,12 +91,22 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
 
     i += 2 ;
   }
-  fprintf (f, "  dict [%u] = KicadChar (advancement: %d, segments: segments)\n", inIndex + ' ', glyphEndX - glyphStartX) ;
+  const int advancement = glyphEndX - glyphStartX ;
+  if (hasSegment || (advancement > 0)) {
+    fprintf (f,
+             "  ioDict [%u] = KicadChar (advancement: %d, segments: %s)\n",
+             inIndex + ' ',
+             advancement,
+             hasSegment ? "segments" : "[]"
+    ) ;
+  }
+  fprintf (f, "}\n\n") ;
+  fprintf (f, separator) ;
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-int main(int argc, const char * argv[]) {
+int main (int argc, const char * argv []) {
   const char * fileName = "kicad-font.swift" ;
   FILE * f = fopen (fileName, "wt") ;
   fprintf (f, separator) ;
@@ -124,33 +142,42 @@ int main(int argc, const char * argv[]) {
   fprintf (f, "\n") ;
   fprintf (f, "func kicadFont () -> [UInt32 : KicadChar] {\n") ;
   fprintf (f, "  var dict = [UInt32 : KicadChar] ()\n") ;
-  fprintf (f, "  var segments : [KicadCharSegment]\n") ;
 
-  for (int idx = (' ' - ' ') ; idx <= ('~' - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  std::vector <int> chars ;
+  for (int idx = ' ' ; idx <= '~' ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0xA0 - ' ') ; idx <= (0x2FF - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0xA0 ; idx <= 0x2FF ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0x370 - ' ') ; idx <= (0x523 - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0x370 ; idx <= 0x523 ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0x1D00 - ' ') ; idx <= (0x1D7F - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0x1D00 ; idx <= 0x1D7F ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0x1E00 - ' ') ; idx <= (0x20B5 - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0x1E00 ; idx <= 0x20B5 ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0x2190 - ' ') ; idx <= (0x23E7 - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0x2190 ; idx <= 0x23E7 ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  for (int idx = (0x25A0 - ' ') ; idx <= (0x25FE - ' ') ; idx++) {
-    loadNewStrokeFont (f, newstroke_font, idx) ;
+  for (int idx = 0x25A0 ; idx <= 0x25FE ; idx++) {
+    chars.push_back (idx) ;
+    fprintf (f, "  enterCharacter%04x (&dict)\n", idx) ;
   }
-  fprintf (f, "//--- Return\n") ;
   fprintf (f, "  return dict\n") ;
   fprintf (f, "}\n\n") ;
   fprintf (f, separator) ;
+  for (std::vector<int>::iterator it = chars.begin(); it != chars.end(); ++it) {
+    loadNewStrokeFont (f, newstroke_font, *it - ' ') ;
+  }
   fclose (f) ;
   return 0 ;
 }

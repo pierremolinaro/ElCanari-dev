@@ -83,7 +83,7 @@ final class Controller_EBTextField_value : EBSimpleController {
     self.mOutlet.target = self
     self.mOutlet.action = #selector(Controller_EBTextField_value.action(_:))
     if self.mOutlet.formatter != nil {
-      presentErrorWindow (file: file, line: line, errorMessage: "the EBTextField outlet has a formatter")
+      presentErrorWindow (file, line, "the EBTextField outlet has a formatter")
     }
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
@@ -132,16 +132,10 @@ final class Controller_EBTextField_value : EBSimpleController {
   func checkOutlet (_ columnName : String, file:String, line:Int) {
     if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBTextField) {
-        presentErrorWindow (file: file,
-          line: line,
-          errorMessage:"\"\(columnName)\" column view is not an instance of EBTextField"
-        )
+        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBTextField")
       }
     }else{
-      presentErrorWindow (file: file,
-        line: line,
-        errorMessage:"\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBTextField)"
-      )
+      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBTextField)")
     }
   }
 

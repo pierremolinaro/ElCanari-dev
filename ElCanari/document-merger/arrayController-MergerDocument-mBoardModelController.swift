@@ -254,7 +254,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "name")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"name\" column view unknown")
+        presentErrorWindow (file, line, "\"name\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()

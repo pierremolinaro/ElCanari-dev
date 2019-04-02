@@ -13,7 +13,7 @@ extension MergerDocument {
 
   //····················································································································
 
-  func generateProductFiles () {
+  final internal func generateProductFiles () {
     do{
     //--- Create product directory
       if let productDirectory = self.fileURL?.path.deletingPathExtension {

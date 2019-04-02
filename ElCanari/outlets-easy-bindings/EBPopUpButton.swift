@@ -108,7 +108,7 @@ final class Controller_EBPopUpButton_selectedTag : EBSimpleController {
       self.mOutlet.enableFromValueBinding (true)
       let result = self.mOutlet.selectItem (withTag: v)
       if !result {
-        presentErrorWindow (file: #file, line: #line, errorMessage: "no item with tag: " + String (v))
+        presentErrorWindow (#file, #line, "no item with tag: " + String (v))
       }
     case .multiple :
       self.mOutlet.enableFromValueBinding (false)

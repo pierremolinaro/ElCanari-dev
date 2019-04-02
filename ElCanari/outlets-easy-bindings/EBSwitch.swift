@@ -10,7 +10,7 @@ import Cocoa
 
   //···················································································································· 
 
-  required init? (coder: NSCoder) {
+  required init? (coder : NSCoder) {
     super.init (coder:coder)
     noteObjectAllocation (self)
     self.setButtonType (.switch)
@@ -18,7 +18,7 @@ import Cocoa
 
   //···················································································································· 
 
-  override init (frame:NSRect) {
+  override init (frame : NSRect) {
     super.init (frame:frame)
     noteObjectAllocation (self)
     self.setButtonType (.switch)
@@ -113,16 +113,10 @@ final class Controller_EBSwitch_value : EBSimpleController {
   func checkOutlet (columnName : String, file : String, line : Int) {
     if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBSwitch) {
-        presentErrorWindow (file: file,
-          line: line,
-          errorMessage:"\"\(columnName)\" column view is not an instance of EBSwitch"
-        )
+        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBSwitch")
       }
     }else{
-      presentErrorWindow (file: file,
-        line: line,
-        errorMessage:"\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBSwitch)"
-      )
+      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBSwitch)")
     }
   }
 

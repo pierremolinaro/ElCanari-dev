@@ -229,19 +229,19 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "symbol")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"symbol\" column view unknown")
+        presentErrorWindow (file, line, "\"symbol\" column view unknown")
       }
     //--- Check 'version' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "version")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"version\" column view unknown")
+        presentErrorWindow (file, line, "\"version\" column view unknown")
       }
     //--- Check 'count' column
       if let column : NSTableColumn = tableView.tableColumn (withIdentifier: NSUserInterfaceItemIdentifier (rawValue: "count")) {
         column.sortDescriptorPrototype = nil
       }else{
-        presentErrorWindow (file: file, line: line, errorMessage:"\"count\" column view unknown")
+        presentErrorWindow (file, line, "\"count\" column view unknown")
       }
     //--- Set descriptors from first column of table view
       var newSortDescriptorArray = [(String, Bool)] ()

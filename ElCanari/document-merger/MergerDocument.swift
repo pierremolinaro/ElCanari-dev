@@ -453,8 +453,1045 @@ import Cocoa
   //    rootObject
   //····················································································································
 
-  var rootObject : MergerRoot { return mRootObject as! MergerRoot }
+  var rootObject : MergerRoot { return self.mRootObject as! MergerRoot }
 
+  //····················································································································
+  //    check outlet connections
+  //····················································································································
+
+  private func checkOutletConnections () {
+    if let outlet : NSObject = self.addBoardModelButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'addBoardModelButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'addBoardModelButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.boardHelpPanel {
+      if !(outlet is NSPanel) {
+        presentErrorWindow (#file, #line, "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'boardHelpPanel' outlet is nil")
+    }
+    if let outlet : NSObject = self.dismissPrefsForSettingMergerDisplayButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'dismissPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'dismissPrefsForSettingMergerDisplayButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mArrowMagnitudeTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mArrowMagnitudeTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mArrowMagnitudeUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mArrowMagnitudeUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mArtworNameTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (#file, #line, "the 'mArtworNameTextField' outlet is not an instance of 'EBTextObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mArtworNameTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mArtworkNameTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (#file, #line, "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mArtworkNameTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mAutomaticBoardSizeSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mAutomaticBoardSizeSwitch' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mAutomaticBoardSizeSwitch' outlet is nil")
+    }
+    if let outlet : NSObject = self.mAutomaticBoardSizeView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mAutomaticBoardSizeView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mAutomaticBoardSizeView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardArchiveFormatPopUpButton {
+      if !(outlet is CanariBoardBoardArchivePopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mBoardArchiveFormatPopUpButton' outlet is not an instance of 'CanariBoardBoardArchivePopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardArchiveFormatPopUpButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardBoardLimitTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mBoardBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardBoardLimitTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardClipView {
+      if !(outlet is NSClipView) {
+        presentErrorWindow (#file, #line, "the 'mBoardClipView' outlet is not an instance of 'NSClipView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardClipView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardHeightTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (#file, #line, "the 'mBoardHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardHeightTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardHeightUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardInsertMenu {
+      if !(outlet is CanariBoardInsertMenu) {
+        presentErrorWindow (#file, #line, "the 'mBoardInsertMenu' outlet is not an instance of 'CanariBoardInsertMenu'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardInsertMenu' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardInspectorMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mBoardInspectorMasterView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardInspectorMasterView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardInspectorSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (#file, #line, "the 'mBoardInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardInspectorSegmentedControl' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardIssueInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (#file, #line, "the 'mBoardIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardIssueInspectorView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardLimitWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mBoardLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardLimitWidthUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardModelTableView {
+      if !(outlet is EBTableView) {
+        presentErrorWindow (#file, #line, "the 'mBoardModelTableView' outlet is not an instance of 'EBTableView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardModelTableView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardModelView {
+      if !(outlet is EBView) {
+        presentErrorWindow (#file, #line, "the 'mBoardModelView' outlet is not an instance of 'EBView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardModelView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardOperationInspectorView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (#file, #line, "the 'mBoardOperationInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardOperationInspectorView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (#file, #line, "the 'mBoardPageView' outlet is not an instance of 'CanariViewWithKeyView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardPageView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackComponenValuesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackComponenValuesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackComponentNamesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackComponentNamesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackLayoutTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLayoutTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackLegendLinesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackLegendTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackLegendTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackPackagesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackPackagesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackPackagesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackPadsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackPadsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackPadsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBackTracksCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackTracksCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBackTracksCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayBoardLimitsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayBoardLimitsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontComponenValuesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontComponenValuesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontComponentNamesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontComponentNamesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontLayoutTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLayoutTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontLegendLinesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontLegendTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontLegendTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontPackagesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontPackagesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontPackagesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontPadsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontPadsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontPadsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayFrontTracksCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontTracksCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayFrontTracksCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayHolesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayHolesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayInternalBoardsLimitsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewDisplayViasCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewDisplayViasCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewDisplayViasCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewHorizontalFlipCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewHorizontalFlipCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewHorizontalFlipCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardViewVerticalFlipCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mBoardViewVerticalFlipCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardViewVerticalFlipCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardWidthTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (#file, #line, "the 'mBoardWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardWidthTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mBoardWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mBoardWidthUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mComposedBoardScrollView {
+      if !(outlet is EBScrollView) {
+        presentErrorWindow (#file, #line, "the 'mComposedBoardScrollView' outlet is not an instance of 'EBScrollView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mComposedBoardScrollView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mComposedBoardView {
+      if !(outlet is EBView) {
+        presentErrorWindow (#file, #line, "the 'mComposedBoardView' outlet is not an instance of 'EBView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mComposedBoardView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mDangerView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mDangerView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mDangerView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mDeselectIssueButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mDeselectIssueButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mDisplaySettingView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mDisplaySettingView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mDisplaySettingView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mEmptyBoardMessage {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (#file, #line, "the 'mEmptyBoardMessage' outlet is not an instance of 'EBTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mEmptyBoardMessage' outlet is nil")
+    }
+    if let outlet : NSObject = self.mGenerateGerber {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mGenerateGerber' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mGenerateGerber' outlet is nil")
+    }
+    if let outlet : NSObject = self.mGeneratePDF {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mGeneratePDF' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mGeneratePDF' outlet is nil")
+    }
+    if let outlet : NSObject = self.mGenerateProductFilesActionButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mGenerateProductFilesActionButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mGenerateProductFilesActionButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mImportArtworkButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mImportArtworkButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mImportArtworkButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mIncorrectDocumentNameTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (#file, #line, "the 'mIncorrectDocumentNameTextField' outlet is not an instance of 'EBTextObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mIncorrectDocumentNameTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertArrayOfBoardsOrientation {
+      if !(outlet is NSSegmentedControl) {
+        presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsOrientation' outlet is not an instance of 'NSSegmentedControl'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsOrientation' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertArrayOfBoardsPanel {
+      if !(outlet is NSPanel) {
+        presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsPanel' outlet is not an instance of 'NSPanel'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsPanel' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertArrayOfBoardsPopUpButton {
+      if !(outlet is NSPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsPopUpButton' outlet is not an instance of 'NSPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsPopUpButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertArrayOfBoardsXCountField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsXCountField' outlet is not an instance of 'NSTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsXCountField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertArrayOfBoardsYCountField {
+      if !(outlet is NSTextField) {
+        presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsYCountField' outlet is not an instance of 'NSTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertArrayOfBoardsYCountField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInsertedInstanceDefaultOrientation {
+      if !(outlet is NSPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mInsertedInstanceDefaultOrientation' outlet is not an instance of 'NSPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInsertedInstanceDefaultOrientation' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInstanceCountTextField {
+      if !(outlet is EBIntObserverField) {
+        presentErrorWindow (#file, #line, "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInstanceCountTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInstanceModelNameTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (#file, #line, "the 'mInstanceModelNameTextField' outlet is not an instance of 'EBTextObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInstanceModelNameTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mInstanceRotation {
+      if !(outlet is CanariQuadrantSegmentedControl) {
+        presentErrorWindow (#file, #line, "the 'mInstanceRotation' outlet is not an instance of 'CanariQuadrantSegmentedControl'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mInstanceRotation' outlet is nil")
+    }
+    if let outlet : NSObject = self.mIssueTableView {
+      if !(outlet is CanariIssueTableView) {
+        presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mIssueTextField {
+      if !(outlet is EBTextObserverField) {
+        presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mLogTextView {
+      if !(outlet is NSTextView) {
+        presentErrorWindow (#file, #line, "the 'mLogTextView' outlet is not an instance of 'NSTextView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mLogTextView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mManualBoardHeightTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mManualBoardHeightTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mManualBoardHeightTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mManualBoardHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mManualBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mManualBoardHeightUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mManualBoardSizeView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mManualBoardSizeView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mManualBoardSizeView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mManualBoardWidthTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mManualBoardWidthTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mManualBoardWidthTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mManualBoardWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mManualBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mManualBoardWidthUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mMasterView {
+      if !(outlet is NSView) {
+        presentErrorWindow (#file, #line, "the 'mMasterView' outlet is not an instance of 'NSView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mMasterView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelBoardLimitTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (#file, #line, "the 'mModelBoardLimitTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelBoardLimitTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelDragSourceTableView {
+      if !(outlet is CanariDragSourceTableView) {
+        presentErrorWindow (#file, #line, "the 'mModelDragSourceTableView' outlet is not an instance of 'CanariDragSourceTableView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelDragSourceTableView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelHeightTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (#file, #line, "the 'mModelHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelHeightTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelHeightUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mModelHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelHeightUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelLimitWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mModelLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelLimitWidthUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (#file, #line, "the 'mModelPageView' outlet is not an instance of 'CanariViewWithKeyView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelPageView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackComponenValuesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackComponenValuesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackComponentNamesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackComponentNamesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackLayoutTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLayoutTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackLegendLinesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackLegendTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackLegendTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackPackagesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackPackagesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackPackagesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackPadsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackPadsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackPadsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBackTracksCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackTracksCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBackTracksCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayBoardLimitsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayBoardLimitsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontComponenValuesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontComponenValuesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontComponentNamesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontComponentNamesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontLayoutTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLayoutTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontLegendLinesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontLegendTextsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontLegendTextsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontPackagesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontPackagesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontPackagesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontPadsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontPadsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontPadsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayFrontTracksCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontTracksCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayFrontTracksCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayHolesCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayHolesCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayInternalBoardsLimitsCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewDisplayViasCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewDisplayViasCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewDisplayViasCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewHorizontalFlipCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewHorizontalFlipCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewHorizontalFlipCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelViewVerticalFlipCheckbox {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mModelViewVerticalFlipCheckbox' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelViewVerticalFlipCheckbox' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelWidthTextField {
+      if !(outlet is CanariDimensionObserverTextField) {
+        presentErrorWindow (#file, #line, "the 'mModelWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelWidthTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mModelWidthUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mModelWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mModelWidthUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mMoveDownButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mMoveDownButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mMoveDownButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mMoveLeftButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mMoveLeftButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mMoveLeftButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mMoveRightButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mMoveRightButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mMoveRightButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mMoveUpButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'mMoveUpButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mMoveUpButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.mNoArtworkMessage {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (#file, #line, "the 'mNoArtworkMessage' outlet is not an instance of 'EBTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mNoArtworkMessage' outlet is nil")
+    }
+    if let outlet : NSObject = self.mNoModelMessage {
+      if !(outlet is EBTextField) {
+        presentErrorWindow (#file, #line, "the 'mNoModelMessage' outlet is not an instance of 'EBTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mNoModelMessage' outlet is nil")
+    }
+    if let outlet : NSObject = self.mOverlapSwitch {
+      if !(outlet is EBSwitch) {
+        presentErrorWindow (#file, #line, "the 'mOverlapSwitch' outlet is not an instance of 'EBSwitch'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mOverlapSwitch' outlet is nil")
+    }
+    if let outlet : NSObject = self.mPageSegmentedControl {
+      if !(outlet is CanariSegmentedControl) {
+        presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is nil")
+    }
+    if let outlet : NSObject = self.mProductPageView {
+      if !(outlet is CanariViewWithKeyView) {
+        presentErrorWindow (#file, #line, "the 'mProductPageView' outlet is not an instance of 'CanariViewWithKeyView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mProductPageView' outlet is nil")
+    }
+    if let outlet : NSObject = self.mSelectedBoardXTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mSelectedBoardXTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mSelectedBoardXTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mSelectedBoardXUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mSelectedBoardXUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mSelectedBoardXUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mSelectedBoardYTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mSelectedBoardYTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mSelectedBoardYTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mSelectedBoardYUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mSelectedBoardYUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mSelectedBoardYUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mShiftArrowMagnitudeTextField {
+      if !(outlet is CanariDimensionTextField) {
+        presentErrorWindow (#file, #line, "the 'mShiftArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mShiftArrowMagnitudeTextField' outlet is nil")
+    }
+    if let outlet : NSObject = self.mShiftArrowMagnitudeUnitPopUp {
+      if !(outlet is EBPopUpButton) {
+        presentErrorWindow (#file, #line, "the 'mShiftArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mShiftArrowMagnitudeUnitPopUp' outlet is nil")
+    }
+    if let outlet : NSObject = self.mStatusImageViewInToolbar {
+      if !(outlet is EBImageObserverView) {
+        presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewBackLegendLinesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewBackLegendLinesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewBackLegendLinesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewBackgroundColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewBackgroundColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewBackgroundColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackComponentNamesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackComponentNamesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackComponentNamesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackComponentValuesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackComponentValuesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackComponentValuesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackLayoutTextsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackLayoutTextsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackLayoutTextsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackLegendTextsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackLegendTextsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackLegendTextsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackPackagesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackPackagesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackPackagesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackPadsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackPadsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackPadsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBackTracksColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackTracksColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBackTracksColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayBoardLimitsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayBoardLimitsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayBoardLimitsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontComponentNamesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontComponentNamesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontComponentNamesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontComponentValuesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontComponentValuesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontComponentValuesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontLayoutTextsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontLayoutTextsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontLayoutTextsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontLegendTextsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontLegendTextsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontLegendTextsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontPackagesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontPackagesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontPackagesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontPadsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontPadsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontPadsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayFrontTracksColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontTracksColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayFrontTracksColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayHolesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayHolesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayHolesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayInternalBoardsLimitsColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewDisplayViasColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewDisplayViasColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewDisplayViasColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.mergerViewFrontLegendLinesColorWell {
+      if !(outlet is EBColorWell) {
+        presentErrorWindow (#file, #line, "the 'mergerViewFrontLegendLinesColorWell' outlet is not an instance of 'EBColorWell'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'mergerViewFrontLegendLinesColorWell' outlet is nil")
+    }
+    if let outlet : NSObject = self.removeBoardModelButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'removeBoardModelButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'removeBoardModelButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.showBoardHelpButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'showBoardHelpButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'showBoardHelpButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.showPrefsForSettingMergerDisplayButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'showPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'showPrefsForSettingMergerDisplayButton' outlet is nil")
+    }
+    if let outlet : NSObject = self.updateBoardModelButton {
+      if !(outlet is EBButton) {
+        presentErrorWindow (#file, #line, "the 'updateBoardModelButton' outlet is not an instance of 'EBButton'")
+      }
+    }else{
+      presentErrorWindow (#file, #line, "the 'updateBoardModelButton' outlet is nil")
+    }
+ 
+  }
+  
   //····················································································································
   //    windowControllerDidLoadNib
   //····················································································································
@@ -462,2211 +1499,7 @@ import Cocoa
   override func windowControllerDidLoadNib (_ aController: NSWindowController) {
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
-    if let outlet : Any = self.addBoardModelButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'addBoardModelButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'addBoardModelButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.boardHelpPanel {
-      if !(outlet is NSPanel) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'boardHelpPanel' outlet is not an instance of 'NSPanel'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'boardHelpPanel' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.dismissPrefsForSettingMergerDisplayButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'dismissPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'dismissPrefsForSettingMergerDisplayButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mArrowMagnitudeTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mArrowMagnitudeTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mArrowMagnitudeUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mArrowMagnitudeUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mArtworNameTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mArtworNameTextField' outlet is not an instance of 'EBTextObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mArtworNameTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mArtworkNameTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mArtworkNameTextField' outlet is not an instance of 'EBTextObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mArtworkNameTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mAutomaticBoardSizeSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mAutomaticBoardSizeSwitch' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mAutomaticBoardSizeSwitch' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mAutomaticBoardSizeView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mAutomaticBoardSizeView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mAutomaticBoardSizeView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardArchiveFormatPopUpButton {
-      if !(outlet is CanariBoardBoardArchivePopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardArchiveFormatPopUpButton' outlet is not an instance of 'CanariBoardBoardArchivePopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardArchiveFormatPopUpButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardBoardLimitTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardBoardLimitTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardBoardLimitTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardClipView {
-      if !(outlet is NSClipView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardClipView' outlet is not an instance of 'NSClipView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardClipView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardHeightTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardHeightTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardHeightUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardInsertMenu {
-      if !(outlet is CanariBoardInsertMenu) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardInsertMenu' outlet is not an instance of 'CanariBoardInsertMenu'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardInsertMenu' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardInspectorMasterView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardInspectorMasterView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardInspectorMasterView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardInspectorSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardInspectorSegmentedControl' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardIssueInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardIssueInspectorView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardLimitWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardLimitWidthUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardModelTableView {
-      if !(outlet is EBTableView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardModelTableView' outlet is not an instance of 'EBTableView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardModelTableView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardModelView {
-      if !(outlet is EBView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardModelView' outlet is not an instance of 'EBView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardModelView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardOperationInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardOperationInspectorView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardOperationInspectorView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardPageView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardPageView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackComponenValuesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackComponenValuesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackComponentNamesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackComponentNamesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackLayoutTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackLayoutTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackLegendLinesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackLegendLinesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackLegendTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackLegendTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackPackagesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackPackagesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackPackagesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackPadsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackPadsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackPadsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBackTracksCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBackTracksCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBackTracksCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayBoardLimitsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayBoardLimitsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontComponenValuesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontComponenValuesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontComponentNamesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontComponentNamesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontLayoutTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontLayoutTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontLegendLinesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontLegendLinesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontLegendTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontLegendTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontPackagesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontPackagesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontPackagesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontPadsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontPadsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontPadsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayFrontTracksCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayFrontTracksCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayFrontTracksCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayHolesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayHolesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayInternalBoardsLimitsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayInternalBoardsLimitsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewDisplayViasCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewDisplayViasCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewDisplayViasCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewHorizontalFlipCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewHorizontalFlipCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewHorizontalFlipCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardViewVerticalFlipCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardViewVerticalFlipCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardViewVerticalFlipCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardWidthTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardWidthTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mBoardWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mBoardWidthUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mComposedBoardScrollView {
-      if !(outlet is EBScrollView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mComposedBoardScrollView' outlet is not an instance of 'EBScrollView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mComposedBoardScrollView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mComposedBoardView {
-      if !(outlet is EBView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mComposedBoardView' outlet is not an instance of 'EBView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mComposedBoardView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mDangerView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mDangerView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mDangerView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mDeselectIssueButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mDeselectIssueButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mDisplaySettingView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mDisplaySettingView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mDisplaySettingView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mEmptyBoardMessage {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mEmptyBoardMessage' outlet is not an instance of 'EBTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mEmptyBoardMessage' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mGenerateGerber {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mGenerateGerber' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mGenerateGerber' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mGeneratePDF {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mGeneratePDF' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mGeneratePDF' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mGenerateProductFilesActionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mGenerateProductFilesActionButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mGenerateProductFilesActionButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mImportArtworkButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mImportArtworkButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mImportArtworkButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mIncorrectDocumentNameTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is not an instance of 'EBTextObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mIncorrectDocumentNameTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertArrayOfBoardsOrientation {
-      if !(outlet is NSSegmentedControl) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertArrayOfBoardsOrientation' outlet is not an instance of 'NSSegmentedControl'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertArrayOfBoardsOrientation' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertArrayOfBoardsPanel {
-      if !(outlet is NSPanel) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertArrayOfBoardsPanel' outlet is not an instance of 'NSPanel'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertArrayOfBoardsPanel' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertArrayOfBoardsPopUpButton {
-      if !(outlet is NSPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertArrayOfBoardsPopUpButton' outlet is not an instance of 'NSPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertArrayOfBoardsPopUpButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertArrayOfBoardsXCountField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertArrayOfBoardsXCountField' outlet is not an instance of 'NSTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertArrayOfBoardsXCountField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertArrayOfBoardsYCountField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertArrayOfBoardsYCountField' outlet is not an instance of 'NSTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertArrayOfBoardsYCountField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInsertedInstanceDefaultOrientation {
-      if !(outlet is NSPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInsertedInstanceDefaultOrientation' outlet is not an instance of 'NSPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInsertedInstanceDefaultOrientation' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInstanceCountTextField {
-      if !(outlet is EBIntObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInstanceCountTextField' outlet is not an instance of 'EBIntObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInstanceCountTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInstanceModelNameTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInstanceModelNameTextField' outlet is not an instance of 'EBTextObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInstanceModelNameTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mInstanceRotation {
-      if !(outlet is CanariQuadrantSegmentedControl) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mInstanceRotation' outlet is not an instance of 'CanariQuadrantSegmentedControl'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mInstanceRotation' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mIssueTableView {
-      if !(outlet is CanariIssueTableView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mIssueTableView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mIssueTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mIssueTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mLogTextView {
-      if !(outlet is NSTextView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mLogTextView' outlet is not an instance of 'NSTextView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mLogTextView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mManualBoardHeightTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mManualBoardHeightTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mManualBoardHeightTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mManualBoardHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mManualBoardHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mManualBoardHeightUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mManualBoardSizeView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mManualBoardSizeView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mManualBoardSizeView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mManualBoardWidthTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mManualBoardWidthTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mManualBoardWidthTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mManualBoardWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mManualBoardWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mManualBoardWidthUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMasterView {
-      if !(outlet is NSView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMasterView' outlet is not an instance of 'NSView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMasterView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelBoardLimitTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelBoardLimitTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelBoardLimitTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelDragSourceTableView {
-      if !(outlet is CanariDragSourceTableView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelDragSourceTableView' outlet is not an instance of 'CanariDragSourceTableView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelDragSourceTableView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelHeightTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelHeightTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelHeightTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelHeightUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelLimitWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelLimitWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelLimitWidthUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelPageView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelPageView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackComponenValuesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackComponenValuesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackComponentNamesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackComponentNamesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackLayoutTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackLayoutTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackLegendLinesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackLegendLinesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackLegendTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackLegendTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackPackagesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackPackagesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackPackagesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackPadsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackPadsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackPadsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBackTracksCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBackTracksCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBackTracksCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayBoardLimitsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayBoardLimitsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayBoardLimitsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontComponenValuesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontComponenValuesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontComponenValuesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontComponentNamesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontComponentNamesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontComponentNamesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontLayoutTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontLayoutTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontLayoutTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontLegendLinesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontLegendLinesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontLegendTextsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontLegendTextsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontLegendTextsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontPackagesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontPackagesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontPackagesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontPadsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontPadsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontPadsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayFrontTracksCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayFrontTracksCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayFrontTracksCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayHolesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayHolesCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayHolesCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayInternalBoardsLimitsCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayInternalBoardsLimitsCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewDisplayViasCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewDisplayViasCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewDisplayViasCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewHorizontalFlipCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewHorizontalFlipCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewHorizontalFlipCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelViewVerticalFlipCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelViewVerticalFlipCheckbox' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelViewVerticalFlipCheckbox' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelWidthTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelWidthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelWidthTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mModelWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mModelWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mModelWidthUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMoveDownButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMoveDownButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMoveDownButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMoveLeftButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMoveLeftButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMoveLeftButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMoveRightButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMoveRightButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMoveRightButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mMoveUpButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mMoveUpButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mMoveUpButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mNoArtworkMessage {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mNoArtworkMessage' outlet is not an instance of 'EBTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mNoArtworkMessage' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mNoModelMessage {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mNoModelMessage' outlet is not an instance of 'EBTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mNoModelMessage' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mOverlapSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mOverlapSwitch' outlet is not an instance of 'EBSwitch'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mOverlapSwitch' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mPageSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mPageSegmentedControl' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mProductPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mProductPageView' outlet is not an instance of 'CanariViewWithKeyView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mProductPageView' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mSelectedBoardXTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mSelectedBoardXTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mSelectedBoardXTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mSelectedBoardXUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mSelectedBoardXUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mSelectedBoardXUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mSelectedBoardYTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mSelectedBoardYTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mSelectedBoardYTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mSelectedBoardYUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mSelectedBoardYUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mSelectedBoardYUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mShiftArrowMagnitudeTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mShiftArrowMagnitudeTextField' outlet is not an instance of 'CanariDimensionTextField'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mShiftArrowMagnitudeTextField' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mShiftArrowMagnitudeUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mShiftArrowMagnitudeUnitPopUp' outlet is not an instance of 'EBPopUpButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mShiftArrowMagnitudeUnitPopUp' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mStatusImageViewInToolbar {
-      if !(outlet is EBImageObserverView) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mStatusImageViewInToolbar' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewBackLegendLinesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewBackLegendLinesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewBackLegendLinesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewBackgroundColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewBackgroundColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewBackgroundColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackComponentNamesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackComponentNamesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackComponentNamesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackComponentValuesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackComponentValuesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackComponentValuesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackLayoutTextsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackLayoutTextsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackLayoutTextsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackLegendTextsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackLegendTextsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackLegendTextsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackPackagesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackPackagesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackPackagesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackPadsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackPadsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackPadsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBackTracksColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBackTracksColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBackTracksColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayBoardLimitsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayBoardLimitsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayBoardLimitsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontComponentNamesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontComponentNamesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontComponentNamesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontComponentValuesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontComponentValuesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontComponentValuesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontLayoutTextsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontLayoutTextsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontLayoutTextsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontLegendTextsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontLegendTextsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontLegendTextsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontPackagesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontPackagesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontPackagesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontPadsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontPadsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontPadsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayFrontTracksColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayFrontTracksColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayFrontTracksColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayHolesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayHolesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayHolesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayInternalBoardsLimitsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayInternalBoardsLimitsColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewDisplayViasColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewDisplayViasColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewDisplayViasColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.mergerViewFrontLegendLinesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'mergerViewFrontLegendLinesColorWell' outlet is not an instance of 'EBColorWell'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'mergerViewFrontLegendLinesColorWell' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.removeBoardModelButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'removeBoardModelButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'removeBoardModelButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.showBoardHelpButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'showBoardHelpButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'showBoardHelpButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.showPrefsForSettingMergerDisplayButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'showPrefsForSettingMergerDisplayButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'showPrefsForSettingMergerDisplayButton' outlet is nil"
-      )
-    }
-    if let outlet : Any = self.updateBoardModelButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (
-          file: #file,
-          line: #line,
-          errorMessage: "the 'updateBoardModelButton' outlet is not an instance of 'EBButton'"
-        )
-      }
-    }else{
-      presentErrorWindow (
-        file: #file,
-        line: #line,
-        errorMessage: "the 'updateBoardModelButton' outlet is nil"
-      )
-    }
+    self.checkOutletConnections ()
   //--- Array controller property: mBoardModelController
     self.mBoardModelController.bind_model (self.rootObject.boardModels_property)
   //--- Selection controller property: mBoardModelSelection

@@ -34,8 +34,8 @@ import Cocoa
 
   private var mTitleController : Controller_EBButton_title? = nil
 
-  func bind_title (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    self.mTitleController = Controller_EBButton_title (object:object, outlet:self)
+  func bind_title (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+    self.mTitleController = Controller_EBButton_title (object: object, outlet: self)
   }
 
   func unbind_title () {
@@ -53,7 +53,7 @@ import Cocoa
 
 final class Controller_EBButton_title : EBSimpleController {
 
-  private let mOutlet: EBButton
+  private let mOutlet : EBButton
   private let mObject : EBReadOnlyProperty_String
 
   //····················································································································
@@ -95,16 +95,10 @@ final class Controller_EBButton_title : EBSimpleController {
   func checkOutlet (columnName : String, file : String, line : Int) {
     if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBButton) {
-        presentErrorWindow (file: file,
-          line: line,
-          errorMessage:"\"\(columnName)\" column view is not an instance of EBButton"
-        )
+        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBButton")
       }
     }else{
-      presentErrorWindow (file: file,
-        line: line,
-        errorMessage:"\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBButton)"
-      )
+      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBButton)")
     }
   }
 

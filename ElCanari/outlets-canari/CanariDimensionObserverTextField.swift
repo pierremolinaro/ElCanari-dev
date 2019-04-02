@@ -77,7 +77,7 @@ final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSim
     mOutlet = outlet
     super.init (observedObjects:[dimension, unit])
     if self.mOutlet.formatter == nil {
-      presentErrorWindow (file: file, line: line, errorMessage: "the CanariDimensionObserverTextField outlet has no formatter")
+      presentErrorWindow (file, line, "the CanariDimensionObserverTextField outlet has no formatter")
     }
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }

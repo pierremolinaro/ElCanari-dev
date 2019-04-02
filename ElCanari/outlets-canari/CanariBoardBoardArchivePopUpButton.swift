@@ -62,7 +62,7 @@ final class Controller_CanariBoardBoardArchivePopUpButton_format : EBSimpleContr
       self.mOutlet.enableFromValueBinding (true)
       let result = self.mOutlet.selectItem (withTag: v.rawValue)
       if !result {
-        presentErrorWindow (file: #file, line:#line, errorMessage:"no item with tag: " + String (v.rawValue))
+        presentErrorWindow (#file, #line, "no item with tag: \(v.rawValue)")
       }
     case .multiple :
       self.mOutlet.enableFromValueBinding (false)

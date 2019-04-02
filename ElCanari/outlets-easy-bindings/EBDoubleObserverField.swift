@@ -79,9 +79,9 @@ import Cocoa
       let formatter = NumberFormatter ()
       mOutlet.formatter = formatter
     }else if mOutlet.formatter == nil {
-      presentErrorWindow (file: file, line: line, errorMessage: "the outlet has no formatter")
+      presentErrorWindow (file, line, "the outlet has no formatter")
     }else if !(mOutlet.formatter is NumberFormatter) {
-      presentErrorWindow (file: file, line: line, errorMessage: "the formatter should be an NSNumberFormatter")
+      presentErrorWindow (file, line, "the formatter should be an NSNumberFormatter")
     }
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
