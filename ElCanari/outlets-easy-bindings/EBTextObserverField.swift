@@ -63,7 +63,6 @@ import Cocoa
 //   Controller Controller_EBTextObserverField_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBTextObserverField_value)
 final class Controller_EBTextObserverField_value : EBSimpleController {
 
   private var mOutlet : EBTextObserverField

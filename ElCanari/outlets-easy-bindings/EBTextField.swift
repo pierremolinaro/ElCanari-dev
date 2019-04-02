@@ -69,7 +69,7 @@ import Cocoa
 //   Controller Controller_EBTextField_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBTextField_value) final class Controller_EBTextField_value : EBSimpleController {
+final class Controller_EBTextField_value : EBSimpleController {
 
   private let mOutlet : EBTextField
   private let mObject : EBReadWriteProperty_String

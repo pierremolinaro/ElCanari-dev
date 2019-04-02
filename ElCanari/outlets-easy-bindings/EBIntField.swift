@@ -35,7 +35,7 @@ import Cocoa
   //····················································································································
 
   func controlTextDidChange (_ inNotification : Notification) {
-    if mSendContinously {
+    if self.mSendContinously {
       if let inputString = currentEditor()?.string {
         // NSLog ("inputString %@", inputString)
         let numberFormatter = self.formatter as! NumberFormatter
@@ -113,7 +113,6 @@ import Cocoa
 //   Controller_EBIntField_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBIntField_value)
 final class Controller_EBIntField_value : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_Int
@@ -148,8 +147,8 @@ final class Controller_EBIntField_value : EBSimpleController {
   
   override func unregister () {
     super.unregister ()
-    mOutlet.target = nil
-    mOutlet.action = nil
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
   }
 
   //····················································································································
@@ -157,21 +156,21 @@ final class Controller_EBIntField_value : EBSimpleController {
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.integerValue = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.integerValue = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     }
   }
 
   //····················································································································
 
   @objc func action (_ sender : EBIntField) {
-    _ = mObject.validateAndSetProp (mOutlet.integerValue, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.integerValue, windowForSheet: sender.window)
   }
 
   //····················································································································
@@ -182,12 +181,12 @@ final class Controller_EBIntField_value : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBIntField_TableViewCell) class EBIntField_TableViewCell : EBTableCellView {
-  @IBOutlet var mCellOutlet : EBIntField?
+  @IBOutlet var mCellOutlet : EBIntField? = nil
 
   //····················································································································
 
   func checkOutlet (_ columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
+    if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBIntField) {
         presentErrorWindow (file: file,
           line: line,

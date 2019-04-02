@@ -60,7 +60,6 @@ import Cocoa
 //   Controller Controller_EBStepper_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBStepper_value)
 final class Controller_EBStepper_value : EBSimpleController {
 
   private let mOutlet: EBStepper
@@ -80,21 +79,21 @@ final class Controller_EBStepper_value : EBSimpleController {
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.stringValue = "—"
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      mOutlet.doubleValue = Double (propertyValue)
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.doubleValue = Double (propertyValue)
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
   //····················································································································
 
   func updateModel () {
-    _ = mObject.validateAndSetProp (Int (round (mOutlet.doubleValue)), windowForSheet:mOutlet.window)
+    _ = self.mObject.validateAndSetProp (Int (round (self.mOutlet.doubleValue)), windowForSheet: self.mOutlet.window)
   }
 
   //····················································································································

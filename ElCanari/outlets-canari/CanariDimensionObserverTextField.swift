@@ -60,7 +60,6 @@ class CanariDimensionObserverTextField : NSTextField, EBUserClassNameProtocol, N
 //   Controller Controller_CanariDimensionObserverTextField_dimensionAndUnit
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_CanariDimensionObserverTextField_dimensionAndUnit)
 final class Controller_CanariDimensionObserverTextField_dimensionAndUnit : EBSimpleController {
 
   private var mOutlet: CanariDimensionObserverTextField

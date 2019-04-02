@@ -27,16 +27,14 @@ import Cocoa
 
   override func sendAction (_ action : Selector?, to : Any?) -> Bool {
     showFontManager ()
-    return super.sendAction (action, to:to)
+    return super.sendAction (action, to: to)
   }
 
   //····················································································································
 
   func showFontManager () {
-    if let font = mFont {
-    //  self.window?.makeFirstResponder (self)
-      let fontManager = NSFontManager.shared 
-      // fontManager.delegate = self
+    if let font = self.mFont {
+      let fontManager = NSFontManager.shared
       fontManager.setSelectedFont (font, isMultiple: false)
       fontManager.orderFrontFontPanel (self)
       fontManager.target = self
@@ -47,9 +45,9 @@ import Cocoa
   //····················································································································
 
   @objc func changeFont (_ sender : Any?) {
-    if let valueController = self.mValueController, let fontManager = sender as! NSFontManager? {
-      let newFont = fontManager.convert (self.mFont!)
-      valueController.mObject.setProp (newFont)
+    if let font = self.mFont, let fontManager = sender as? NSFontManager {
+      let newFont = fontManager.convert (font)
+      self.mValueController?.mObject.setProp (newFont)
     }
   }
 
@@ -71,7 +69,7 @@ import Cocoa
   //  color binding
   //····················································································································
 
-  private var mValueController : Controller_EBFontButton_fontValue?
+  private var mValueController : Controller_EBFontButton_fontValue? = nil
 
   func bind_fontValue (_ object : EBReadWriteProperty_NSFont, file : String, line : Int) {
     self.mValueController = Controller_EBFontButton_fontValue (object: object, outlet: self)
@@ -90,7 +88,7 @@ import Cocoa
 //   Controller_EBFontButton_fontValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBFontButton_fontValue) class Controller_EBFontButton_fontValue : EBSimpleController {
+class Controller_EBFontButton_fontValue : EBSimpleController {
 
   fileprivate let mObject : EBReadWriteProperty_NSFont
   private let mOutlet : EBFontButton
@@ -100,7 +98,7 @@ import Cocoa
   init (object : EBReadWriteProperty_NSFont, outlet : EBFontButton) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object])
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 

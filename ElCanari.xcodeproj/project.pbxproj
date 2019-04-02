@@ -4486,7 +4486,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = macosx;
@@ -4510,7 +4510,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4536,7 +4535,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "ElCanari/application/Info-Release.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = ElCanari;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4624,7 +4622,7 @@
 				);
 				LLVM_LTO = YES;
 				MACH_O_TYPE = mh_execute;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
@@ -4656,7 +4654,6 @@
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";
@@ -4687,7 +4684,6 @@
 				INFOPLIST_FILE = "ElCanari/application/Info-Debug.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				LINKER_DISPLAYS_MANGLED_NAMES = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = name.pcmolinaro.elcanari;
 				PRODUCT_NAME = "ElCanari-Debug";

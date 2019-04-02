@@ -32,15 +32,15 @@ import Cocoa
   //  title binding
   //····················································································································
 
-  private var mTitleController : Controller_EBButton_title?
+  private var mTitleController : Controller_EBButton_title? = nil
 
   func bind_title (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    mTitleController = Controller_EBButton_title (object:object, outlet:self, file:file, line:line)
+    self.mTitleController = Controller_EBButton_title (object:object, outlet:self)
   }
 
   func unbind_title () {
-    mTitleController?.unregister ()
-    mTitleController = nil
+    self.mTitleController?.unregister ()
+    self.mTitleController = nil
   }
 
   //····················································································································
@@ -51,7 +51,6 @@ import Cocoa
 //   Controller Controller_EBButton_title
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBButton_title)
 final class Controller_EBButton_title : EBSimpleController {
 
   private let mOutlet: EBButton
@@ -59,7 +58,7 @@ final class Controller_EBButton_title : EBSimpleController {
 
   //····················································································································
 
-  init (object:EBReadOnlyProperty_String, outlet : EBButton, file : String, line : Int) {
+  init (object:EBReadOnlyProperty_String, outlet : EBButton) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
@@ -69,13 +68,13 @@ final class Controller_EBButton_title : EBSimpleController {
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.title = "—"
+      self.mOutlet.title = "—"
     case .multiple :
-      mOutlet.title = "—"
+      self.mOutlet.title = "—"
     case .single (let v) :
-      mOutlet.title = v
+      self.mOutlet.title = v
     }
   }
 
@@ -89,12 +88,12 @@ final class Controller_EBButton_title : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBButton_TableViewCell) class EBButton_TableViewCell : EBTableCellView {
-  @IBOutlet var mCellOutlet : EBButton?
+  @IBOutlet var mCellOutlet : EBButton? = nil
 
   //····················································································································
 
-  func checkOutlet (columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
+  func checkOutlet (columnName : String, file : String, line : Int) {
+    if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBButton) {
         presentErrorWindow (file: file,
           line: line,

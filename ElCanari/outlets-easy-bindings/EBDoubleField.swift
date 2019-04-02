@@ -108,7 +108,7 @@ import Cocoa
 //   Controller_EBDoubleField_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBDoubleField_value) final class Controller_EBDoubleField_value : EBSimpleController {
+final class Controller_EBDoubleField_value : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_Double
   private let mOutlet : EBDoubleField
@@ -124,12 +124,12 @@ import Cocoa
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
-    mOutlet.target = self
-    mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector(Controller_EBDoubleField_value.action(_:))
     if autoFormatter {
       let formatter = NumberFormatter ()
-      mOutlet.formatter = formatter
-    }else if mOutlet.formatter == nil {
+      self.mOutlet.formatter = formatter
+    }else if self.mOutlet.formatter == nil {
       presentErrorWindow (file: file, line:line, errorMessage:"the outlet has no formatter")
     }else if !(mOutlet.formatter is NumberFormatter) {
       presentErrorWindow (file: file, line:line, errorMessage:"the formatter should be an NSNumberFormatter")
@@ -141,30 +141,30 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
-    mOutlet.target = nil
-    mOutlet.action = nil
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
   }
 
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.doubleValue = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.doubleValue = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     }
   }
 
   //····················································································································
 
   @objc func action (_ sender : EBDoubleField) {
-    _ = mObject.validateAndSetProp (mOutlet.doubleValue, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.doubleValue, windowForSheet: sender.window)
   }
 
   //····················································································································

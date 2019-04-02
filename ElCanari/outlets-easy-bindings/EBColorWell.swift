@@ -32,17 +32,17 @@ import Cocoa
   //  color binding
   //····················································································································
 
-  private var mValueController : Controller_EBColorWell_color?
+  private var mValueController : Controller_EBColorWell_color? = nil
   var mSendContinously = false
 
-  func bind_color (_ object:EBReadWriteProperty_NSColor, file:String, line:Int, sendContinously:Bool) {
-    mSendContinously = sendContinously
-    mValueController = Controller_EBColorWell_color (object:object, outlet:self, file:file, line:line, sendContinously:sendContinously)
+  func bind_color (_ object : EBReadWriteProperty_NSColor, file : String, line : Int, sendContinously : Bool) {
+    self.mSendContinously = sendContinously
+    self.mValueController = Controller_EBColorWell_color (object:object, outlet:self, sendContinously:sendContinously)
   }
 
   func unbind_color () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
 }
@@ -51,7 +51,7 @@ import Cocoa
 //   Controller_EBColorWell_color
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBColorWell_color) final class Controller_EBColorWell_color : EBSimpleController {
+final class Controller_EBColorWell_color : EBSimpleController {
 
   private let mObject : EBReadWriteProperty_NSColor
   private let mOutlet : EBColorWell
@@ -59,14 +59,14 @@ import Cocoa
 
   //····················································································································
 
-  init (object : EBReadWriteProperty_NSColor, outlet : EBColorWell, file : String, line : Int, sendContinously : Bool) {
+  init (object : EBReadWriteProperty_NSColor, outlet : EBColorWell, sendContinously : Bool) {
     mObject = object
     mOutlet = outlet
     mSendContinously = sendContinously
     super.init (observedObjects:[object])
-    mOutlet.target = self
-    mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
-    mOutlet.isContinuous = true
+    self.mOutlet.target = self
+    self.mOutlet.action = #selector(Controller_EBColorWell_color.action(_:))
+    self.mOutlet.isContinuous = true
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -74,30 +74,30 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
-    mOutlet.target = nil
-    mOutlet.action = nil
+    self.mOutlet.target = nil
+    self.mOutlet.action = nil
   }
 
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     case .single (let v) :
-      mOutlet.enableFromValueBinding (true)
-      mOutlet.color = v
+      self.mOutlet.enableFromValueBinding (true)
+      self.mOutlet.color = v
     case .multiple :
-      mOutlet.enableFromValueBinding (false)
-      mOutlet.stringValue = "—"
+      self.mOutlet.enableFromValueBinding (false)
+      self.mOutlet.stringValue = "—"
     }
   }
 
   //····················································································································
 
   @objc func action (_ sender : EBColorWell) {
-    _ = mObject.validateAndSetProp (mOutlet.color, windowForSheet:sender.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.color, windowForSheet: sender.window)
   }
 
   //····················································································································

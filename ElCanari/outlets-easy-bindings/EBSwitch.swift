@@ -41,19 +41,19 @@ import Cocoa
   //  value binding
   //···················································································································· 
 
-  private var mValueController : Controller_EBSwitch_value?
+  private var mValueController : Controller_EBSwitch_value? = nil
 
   //···················································································································· 
 
-  func bind_value (_ object: EBReadWriteProperty_Bool, file: String, line: Int) {
-    mValueController = Controller_EBSwitch_value (object:object, outlet:self, file:file, line:line)
+  func bind_value (_ object : EBReadWriteProperty_Bool, file : String, line : Int) {
+    self.mValueController = Controller_EBSwitch_value (object:object, outlet: self, file: file, line: line)
   }
 
   //···················································································································· 
 
   func unbind_value () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //···················································································································· 
@@ -63,17 +63,17 @@ import Cocoa
 //   Controller Controller_EBSwitch_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBSwitch_value) final class Controller_EBSwitch_value : EBSimpleController {
+final class Controller_EBSwitch_value : EBSimpleController {
 
   private let mOutlet : EBSwitch
   private let mObject : EBReadWriteProperty_Bool
 
   //···················································································································· 
 
-  init (object:EBReadWriteProperty_Bool, outlet : EBSwitch, file : String, line:Int) {
+  init (object : EBReadWriteProperty_Bool, outlet : EBSwitch, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object])
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
 
@@ -82,21 +82,21 @@ import Cocoa
   private func updateOutlet () {
     switch mObject.prop {
     case .empty :
-      mOutlet.state = NSControl.StateValue.off
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.state = NSControl.StateValue.off
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.state = NSControl.StateValue.mixed
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.state = NSControl.StateValue.mixed
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let v) :
-      mOutlet.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.state = v ? NSControl.StateValue.on : NSControl.StateValue.off
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
   //···················································································································· 
 
   func updateModel () {
-    mObject.setProp (mOutlet.state == NSControl.StateValue.on)
+    self.mObject.setProp (self.mOutlet.state == NSControl.StateValue.on)
   }
 }
 
@@ -106,12 +106,12 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBSwitch_TableViewCell) class EBSwitch_TableViewCell : EBTableCellView {
-  @IBOutlet var mCellOutlet : EBSwitch?
+  @IBOutlet var mCellOutlet : EBSwitch? = nil
 
   //····················································································································
 
-  func checkOutlet (columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
+  func checkOutlet (columnName : String, file : String, line : Int) {
+    if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBSwitch) {
         presentErrorWindow (file: file,
           line: line,

@@ -49,7 +49,7 @@ import Cocoa
 //   Controller Controller_EBTextObserverView_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBTextObserverView_value) final class Controller_EBTextObserverView_value : EBSimpleController {
+final class Controller_EBTextObserverView_value : EBSimpleController {
 
   private let mOutlet: EBTextObserverView
   private let mObject : EBReadOnlyProperty_String

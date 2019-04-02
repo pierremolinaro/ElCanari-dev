@@ -951,7 +951,12 @@ extension NSColor : ClassPropertyProtocol {
   //····················································································································
 
   func archiveToData () -> Data {
-    return NSKeyedArchiver.archivedData (withRootObject: self)
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return data as Data
+    // return NSKeyedArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
@@ -973,14 +978,23 @@ extension Date : ValuePropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let data = NSKeyedArchiver.archivedData (withRootObject: self)
-    return data.ebHashValue ()
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    //let data = NSKeyedArchiver.archivedData (withRootObject: self)
+    return (data as Data).ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    return NSKeyedArchiver.archivedData (withRootObject: self) as NSObject
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return data as NSObject
+    // return NSKeyedArchiver.archivedData (withRootObject: self) as NSObject
   }
   
   //····················································································································
@@ -1009,7 +1023,12 @@ extension NSFont : ClassPropertyProtocol {
   //····················································································································
 
   func archiveToData () -> Data {
-    return NSKeyedArchiver.archivedData (withRootObject: self)
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return data as Data
+    // return NSKeyedArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
@@ -1070,7 +1089,12 @@ extension NSBezierPath : ClassPropertyProtocol {
   //····················································································································
 
   func archiveToData () -> Data {
-    return NSKeyedArchiver.archivedData (withRootObject: self)
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return data as Data
+    // return NSKeyedArchiver.archivedData (withRootObject: self)
   }
   
   //····················································································································
@@ -1153,9 +1177,17 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
   public static func < (lhs: BezierPathArray, rhs: BezierPathArray) -> Bool {
     var inferior = lhs.mPathes.count < rhs.mPathes.count
     if lhs.mPathes.count == rhs.mPathes.count {
-      let leftData  = NSKeyedArchiver.archivedData (withRootObject: lhs.mPathes)
-      let rightData = NSKeyedArchiver.archivedData (withRootObject: rhs.mPathes)
-      inferior = leftData < rightData
+      let leftData = NSMutableData ()
+      let leftArchiver = NSKeyedArchiver (forWritingWith: leftData)
+      leftArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+      leftArchiver.finishEncoding ()
+      // let leftData  = NSKeyedArchiver.archivedData (withRootObject: lhs.mPathes)
+      let rightData = NSMutableData ()
+      let rightArchiver = NSKeyedArchiver (forWritingWith: rightData)
+      rightArchiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+      rightArchiver.finishEncoding ()
+      // let rightData = NSKeyedArchiver.archivedData (withRootObject: rhs.mPathes)
+      inferior = (leftData as Data) < (rightData as Data)
     }
     return inferior
   }
@@ -1163,15 +1195,24 @@ struct BezierPathArray : Hashable, Comparable, ValuePropertyProtocol {
   //····················································································································
 
   func ebHashValue () -> UInt32 {
-    let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
-    return data.ebHashValue ()
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    return (data as Data).ebHashValue ()
+    // let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
+    // return data.ebHashValue ()
   }
 
   //····················································································································
 
   func convertToNSObject () -> NSObject {
-    let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
-    return data as NSData
+    let data = NSMutableData ()
+    let archiver = NSKeyedArchiver (forWritingWith: data)
+    archiver.encode (self, forKey: NSKeyedArchiveRootObjectKey)
+    archiver.finishEncoding ()
+    // let data = NSKeyedArchiver.archivedData (withRootObject: self.mPathes)
+    return data
   }
   
   //····················································································································

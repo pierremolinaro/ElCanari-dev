@@ -34,34 +34,34 @@ import Cocoa
   //  image binding
   //····················································································································
 
-  private var mImageController : Controller_EBImageView_image?
+  private var mImageController : Controller_EBImageView_image? = nil
 
-  func bind_image (_ object:EBReadOnlyProperty_NSImage, file:String, line:Int) {
-    mImageController = Controller_EBImageView_image (object:object, outlet:self, file:file, line:line)
+  func bind_image (_ object : EBReadOnlyProperty_NSImage, file : String, line : Int) {
+    self.mImageController = Controller_EBImageView_image (object: object, outlet: self)
   }
 
   //····················································································································
 
   func unbind_image () {
-    mImageController?.unregister ()
-    mImageController = nil
+    self.mImageController?.unregister ()
+    self.mImageController = nil
   }
 
   //····················································································································
   //  tooltip binding
   //····················································································································
 
-  private var mTooltipController : Controller_EBImageView_tooltip?
+  private var mTooltipController : Controller_EBImageView_tooltip? = nil
 
   func bind_tooltip (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    mTooltipController = Controller_EBImageView_tooltip (object:object, outlet:self, file:file, line:line)
+    self.mTooltipController = Controller_EBImageView_tooltip (object:object, outlet:self, file:file, line:line)
   }
 
   //····················································································································
 
   func unbind_tooltip () {
-    mTooltipController?.unregister ()
-    mTooltipController = nil
+    self.mTooltipController?.unregister ()
+    self.mTooltipController = nil
   }
 
   //····················································································································
@@ -72,14 +72,14 @@ import Cocoa
 //   Controller Controller_EBImageView_image
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBImageView_image) final class Controller_EBImageView_image : EBSimpleController {
+final class Controller_EBImageView_image : EBSimpleController {
 
   private let mOutlet : EBImageObserverView
   private let mObject : EBReadOnlyProperty_NSImage
 
   //····················································································································
 
-  init (object:EBReadOnlyProperty_NSImage, outlet : EBImageObserverView, file : String, line : Int) {
+  init (object:EBReadOnlyProperty_NSImage, outlet : EBImageObserverView) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
@@ -127,16 +127,16 @@ import Cocoa
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty :
-      mOutlet.toolTip = nil
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.toolTip = nil
+      self.mOutlet.enableFromValueBinding (false)
     case .multiple :
-      mOutlet.toolTip = nil
-      mOutlet.enableFromValueBinding (false)
+      self.mOutlet.toolTip = nil
+      self.mOutlet.enableFromValueBinding (false)
     case .single (let propertyValue) :
-      mOutlet.toolTip = propertyValue
-      mOutlet.enableFromValueBinding (true)
+      self.mOutlet.toolTip = propertyValue
+      self.mOutlet.enableFromValueBinding (true)
     }
   }
 
@@ -154,7 +154,7 @@ import Cocoa
   //····················································································································
 
   func checkOutlet (columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
+    if let cellOutlet : NSObject = self.mCellOutlet {
       if !(cellOutlet is EBImageObserverView) {
         presentErrorWindow (file: file,
           line: line,

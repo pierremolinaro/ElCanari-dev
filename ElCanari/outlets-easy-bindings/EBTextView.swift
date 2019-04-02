@@ -27,17 +27,19 @@ import Cocoa
   //  value binding
   //····················································································································
 
-  private var mValueController : Controller_EBTextView_value?
+  private var mValueController : Controller_EBTextView_value? = nil
 
-  func bind_value (_ object:EBReadWriteProperty_String, file:String, line:Int) {
-    mValueController = Controller_EBTextView_value (object:object, outlet:self, file:file, line:line)
+  //····················································································································
+
+  func bind_value (_ object : EBReadWriteProperty_String, file : String, line : Int) {
+    self.mValueController = Controller_EBTextView_value (object: object, outlet: self)
   }
 
   //····················································································································
 
   func unbind_value () {
-    mValueController?.unregister ()
-    mValueController = nil
+    self.mValueController?.unregister ()
+    self.mValueController = nil
   }
 
   //····················································································································
@@ -48,17 +50,17 @@ import Cocoa
 //   Controller Controller_EBTextView_value
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-@objc(Controller_EBTextView_value) final class Controller_EBTextView_value : EBSimpleController, NSTextViewDelegate {
+final class Controller_EBTextView_value : EBSimpleController, NSTextViewDelegate {
 
-  private let mOutlet: EBTextView
+  private let mOutlet : EBTextView
   private let mObject : EBReadWriteProperty_String
 
   //····················································································································
 
-  init (object:EBReadWriteProperty_String, outlet : EBTextView, file : String, line : Int) {
+  init (object : EBReadWriteProperty_String, outlet : EBTextView) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object])
     outlet.delegate = self
     self.mEventCallBack = { [weak self] in self?.updateOutlet () }
   }
@@ -67,25 +69,25 @@ import Cocoa
   
   override func unregister () {
     super.unregister ()
-    mOutlet.delegate = nil
+    self.mOutlet.delegate = nil
   }
 
   //····················································································································
 
   func textDidChange (_ notification: Notification) {
-    _ = mObject.validateAndSetProp (mOutlet.string, windowForSheet:mOutlet.window)
+    _ = self.mObject.validateAndSetProp (self.mOutlet.string, windowForSheet: self.mOutlet.window)
   }
 
   //····················································································································
 
   private func updateOutlet () {
-    switch mObject.prop {
+    switch self.mObject.prop {
     case .empty, .multiple :
-      mOutlet.string = ""
-      mOutlet.isEditable = false
+      self.mOutlet.string = ""
+      self.mOutlet.isEditable = false
     case .single (let propertyValue) :
-      mOutlet.string = propertyValue
-      mOutlet.isEditable = true
+      self.mOutlet.string = propertyValue
+      self.mOutlet.isEditable = true
     }
   }
 
