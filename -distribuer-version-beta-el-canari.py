@@ -31,13 +31,14 @@ BOLD_RED = BOLD + RED
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 def runCommand (cmd) :
-  str = "+"
+  cmdStr = "+"
   for s in cmd:
-    str += " " + s
-  print BOLD_MAGENTA + str + ENDC
+    cmdStr += " " + s
+  print BOLD_MAGENTA + cmdStr + ENDC
   childProcess = subprocess.Popen (cmd)
   childProcess.wait ()
   if childProcess.returncode != 0 :
+    print ("Tool error code:" + str (childProcess.returncode))
     sys.exit (childProcess.returncode)
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -45,10 +46,10 @@ def runCommand (cmd) :
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 def runHiddenCommand (cmd) :
-  str = "+"
+  cmdStr = "+"
   for s in cmd:
-    str += " " + s
-  print (BOLD_MAGENTA + str + ENDC)
+    cmdStr += " " + s
+  print (BOLD_MAGENTA + cmdStr + ENDC)
   result = ""
   compteur = 0
   childProcess = subprocess.Popen (cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -64,7 +65,7 @@ def runHiddenCommand (cmd) :
       print ""
       childProcess.wait ()
       if childProcess.returncode != 0 :
-        # print (BOLD_RED + "*** Error " + str (childProcess.returncode) + " ***" + ENDC)
+        print (BOLD_RED + "*** Error " + str (childProcess.returncode) + " ***" + ENDC)
         sys.exit (childProcess.returncode)
       return result
 

@@ -23,8 +23,8 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "0.6.1"
-let NOTES : [String] = ["Just for checking application update"]
+let VERSION_CANARI = "0.6.2"
+let NOTES : [String] = ["Several memory leaks fixed"]
 let BUGFIXES : [String] = []
 let CHANGES : [String] = [] // ["New distribution via .pkg"]
 let NEWS : [String] = []
@@ -62,7 +62,7 @@ func runCommand (_ cmd : String, _ args : [String]) {
   task.waitUntilExit ()
   let status = task.terminationStatus
   if status != 0 {
-    print (BOLD_RED + "Error \(status)" + ENDC)
+    print (BOLD_RED + "Command line tool '\(cmd)' returns error \(status)" + ENDC)
     exit (status)
   }
 }
@@ -136,7 +136,7 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "ElCanari-dev-master"])
 runCommand ("/usr/bin/curl", ["-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
-runCommand ("/usr/bin/unzip", ["archive.zip"])
+runCommand ("/usr/bin/unzip", ["-u", "archive.zip"])
 runCommand ("/bin/rm", ["archive.zip"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 //-------------------- Obtenir l'année
