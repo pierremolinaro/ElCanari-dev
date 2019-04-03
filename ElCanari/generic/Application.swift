@@ -5,50 +5,58 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    EBEvent class
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class EBEvent : EBObject {
+  func postEvent () {} // Abstract method
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    A P P L I C A T I O N    C L A S S
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBApplication) class EBApplication : NSApplication {
 
-  @IBOutlet var mTransientEventExplorerWindow : NSWindow?
-  @IBOutlet var mTransientEventExplorerTextView : NSTextView?
+  @IBOutlet var mTransientEventExplorerWindow : NSWindow? = nil
+  @IBOutlet var mTransientEventExplorerTextView : NSTextView? = nil
  
   //····················································································································
 
   override func awakeFromNib () {
     let menuItem = NSMenuItem (
-      title:"Show Transient Event Log Window",
-      action:#selector (showTransientEventLogWindow (sender:)),
-      keyEquivalent:""
+      title: "Show Transient Event Log Window",
+      action: #selector (showTransientEventLogWindow (sender:)),
+      keyEquivalent: ""
     )
     addItemToDebugMenu (menuItem)
   }
 
   //····················································································································
  
-  @objc func showTransientEventLogWindow (sender : Any) {
-    mTransientEventExplorerTextView?.string = ""
-    mTransientEventExplorerWindow?.makeKeyAndOrderFront (sender)
+  @objc func showTransientEventLogWindow (sender : Any?) {
+    self.mTransientEventExplorerTextView?.string = ""
+    self.mTransientEventExplorerWindow?.makeKeyAndOrderFront (sender)
   }
   
   //····················································································································
  
-  @IBAction func clearTransientEventLogWindow (_ sender : AnyObject) {
-    mTransientEventExplorerTextView?.string = ""
+  @IBAction func clearTransientEventLogWindow (_ sender : Any?) {
+    self.mTransientEventExplorerTextView?.string = ""
   }
   
   //····················································································································
 
   func appendToTransientEventLog (_ message : String) {
     if logEvents () {
-      mTransientEventExplorerTextView?.appendMessageString (message, color:NSColor.blue)
+      self.mTransientEventExplorerTextView?.appendMessageString (message, color: .blue)
     }
   }
   
   //····················································································································
 
   func logEvents () -> Bool {
-    return (mTransientEventExplorerWindow == nil) ? false : mTransientEventExplorerWindow!.isVisible
+    return self.mTransientEventExplorerWindow?.isVisible ?? false
   }
 
   //····················································································································
@@ -61,97 +69,6 @@ import Cocoa
 
   //····················································································································
 
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBModelEvent class
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate var gPendingModelEvents = [EBModelEvent] ()
-fileprivate var gCurrentModelEvent : EBModelEvent? = nil
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class EBModelEvent : EBEvent {
-
-  //····················································································································
-  //   Properties
-  //····················································································································
-
-  var mEventCallBack : Optional < () -> Void > = nil
-  var mEventIsPosted = false
-
-  //····················································································································
-  //   postEvent
-  //····················································································································
-
-  override func postEvent () {
-    if gCurrentModelEvent !== self {
-      if gPendingModelEvents.count == 0 {
-        if logEvents () {
-          appendMessageString ("Post model events\n")
-        }
-      }
-      if logEvents () {
-        let str = "  " +  explorerIndexString (self.ebObjectIndex) + self.className + "\n"
-        if !self.mEventIsPosted {
-          appendMessageString (str)
-        }else{ // Event already posted
-          appendMessageString (str, color: NSColor.brown)
-        }
-      }
-      if !self.mEventIsPosted {
-        self.mEventIsPosted = true
-        gPendingModelEvents.append (self)
-      }
-    }
-  }
-
-  //····················································································································
-  //   sendUpdateEvent
-  //····················································································································
-
-  final func sendUpdateEvent () {
-    self.mEventIsPosted = false
-    self.mEventCallBack? ()
-  }
-
-  //····················································································································
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    flushModelEvents
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate func flushModelEvents () {
-  if gPendingModelEvents.count > 0 {
-    if logEvents () {
-      appendMessageString ("Flush model events\n", color: NSColor.blue)
-    }
-    while gPendingModelEvents.count > 0 {
-      let pendingModelEvents = gPendingModelEvents
-      gPendingModelEvents.removeAll ()
-      for event in pendingModelEvents {
-        event.mEventIsPosted = false
-      }
-      for event in pendingModelEvents {
-        if logEvents () {
-          let message = "  " +  explorerIndexString (event.ebObjectIndex) + event.className + "\n"
-          appendMessageString (message, color: NSColor.blue)
-        }
-        gCurrentModelEvent = event // For prevent event to be retriggerred during event handling
-        event.sendUpdateEvent ()
-        gCurrentModelEvent = nil
-      }
-      if gPendingModelEvents.count > 0 && logEvents () {
-        let message = String (gPendingModelEvents.count) +  " model event(s) posted during flush\n"
-        appendMessageString (message, color: NSColor.red)
-      }
-    }
-    if logEvents () {
-      appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
-    }
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -195,20 +195,20 @@ class EBObserver : EBAbstractProperty {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 var gErrorWindows : [NSWindow] = []
-var origin = NSPoint (x:20.0, y:20.0)
+var gOrigin = NSPoint (x: 20.0, y: 20.0)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func presentErrorWindow (_ file : String!,
+func presentErrorWindow (_ file : String,
                          _ line : Int,
                          _ errorMessage : String) {
   var message = ""
-  message += "File: " + file + "\n"
+  message += "File: \(file)\n"
   message += "Line: \(line)\n"
-  message += "Message: " + errorMessage + "\n"
-  let r = NSRect (origin:origin, size:NSSize (width:300.0, height:200.0))
-  origin.x += 20.0 ;
-  origin.y += 20.0 ;
+  message += "Message: \(errorMessage)\n"
+  let r = NSRect (origin: gOrigin, size: NSSize (width: 300.0, height: 200.0))
+  gOrigin.x += 20.0
+  gOrigin.y += 20.0
   let window = NSWindow.init (
     contentRect:r,
     styleMask:[.titled, .closable],

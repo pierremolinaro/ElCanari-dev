@@ -21,7 +21,7 @@ extension Preferences {
     op.beginSheetModal (
       for: (sender as! NSButton).window!,
       completionHandler: { (inReturnCode : NSApplication.ModalResponse) in
-        if inReturnCode == NSApplication.ModalResponse.OK {
+        if inReturnCode == .OK {
           let URLToAdd : URL = op.urls [0]
           let pathToAdd = URLToAdd.path
           let newEntry = CanariLibraryEntry (self.ebUndoManager)

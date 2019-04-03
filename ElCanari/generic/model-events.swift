@@ -5,22 +5,15 @@
 import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBEvent class
+//    EBModelEvent class
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBEvent : EBObject {
-  func postEvent () {} // Abstract method
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    EBOutletEvent class
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-fileprivate var gPendingOutletEvents = [EBOutletEvent] ()
+fileprivate var gPendingModelEvents = [EBModelEvent] ()
+fileprivate var gCurrentModelEvent : EBModelEvent? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class EBOutletEvent : EBEvent {
+class EBModelEvent : EBEvent {
 
   //····················································································································
   //   Properties
@@ -34,24 +27,24 @@ class EBOutletEvent : EBEvent {
   //····················································································································
 
   override func postEvent () {
-    if gPendingOutletEvents.count == 0 {
-      // DispatchQueue.main.async (execute: { flushOutletEvents () } )
+    if gCurrentModelEvent !== self {
+      if gPendingModelEvents.count == 0 {
+        if logEvents () {
+          appendMessageString ("Post model events\n")
+        }
+      }
       if logEvents () {
-        appendMessageString ("Post events\n")
+        let str = "  " +  explorerIndexString (self.ebObjectIndex) + self.className + "\n"
+        if !self.mEventIsPosted {
+          appendMessageString (str)
+        }else{ // Event already posted
+          appendMessageString (str, color: NSColor.brown)
+        }
       }
-    }
-
-    if logEvents () {
-      let str = "  " +  explorerIndexString (self.ebObjectIndex) + self.className + "\n"
       if !self.mEventIsPosted {
-        appendMessageString (str)
-      }else{ // Event already posted
-        appendMessageString (str, color: NSColor.brown)
+        self.mEventIsPosted = true
+        gPendingModelEvents.append (self)
       }
-    }
-    if !self.mEventIsPosted {
-      self.mEventIsPosted = true
-      gPendingOutletEvents.append (self)
     }
   }
 
@@ -68,29 +61,31 @@ class EBOutletEvent : EBEvent {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    flushOutletEvents
+//    flushModelEvents
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func flushOutletEvents () {
-  if gPendingOutletEvents.count > 0 {
+func flushModelEvents () {
+  if gPendingModelEvents.count > 0 {
     if logEvents () {
-      appendMessageString ("Flush outlet events\n", color: NSColor.blue)
+      appendMessageString ("Flush model events\n", color: NSColor.blue)
     }
-    while gPendingOutletEvents.count > 0 {
-      let pendingOutletEvents = gPendingOutletEvents
-      gPendingOutletEvents.removeAll ()
-      for event in pendingOutletEvents {
+    while gPendingModelEvents.count > 0 {
+      let pendingModelEvents = gPendingModelEvents
+      gPendingModelEvents.removeAll ()
+      for event in pendingModelEvents {
         event.mEventIsPosted = false
       }
-      for event in pendingOutletEvents {
+      for event in pendingModelEvents {
         if logEvents () {
           let message = "  " +  explorerIndexString (event.ebObjectIndex) + event.className + "\n"
           appendMessageString (message, color: NSColor.blue)
         }
+        gCurrentModelEvent = event // For prevent event to be retriggerred during event handling
         event.sendUpdateEvent ()
+        gCurrentModelEvent = nil
       }
-      if gPendingOutletEvents.count > 0 && logEvents () {
-        let message = String (gPendingOutletEvents.count) +  " outlet event(s) posted during flush\n"
+      if gPendingModelEvents.count > 0 && logEvents () {
+        let message = String (gPendingModelEvents.count) +  " model event(s) posted during flush\n"
         appendMessageString (message, color: NSColor.red)
       }
     }
@@ -98,36 +93,6 @@ func flushOutletEvents () {
       appendMessageString ("——————————————————————————————————————\n", color: NSColor.blue)
     }
   }
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    A P P E N D    T O    T R A N S I E N T    E V E N T    L O G
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func logEvents () -> Bool {
-  let theApp = NSApp as! EBApplication
-  return theApp.logEvents ()
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendToTransientEventLog (_ message : String) {
-  let theApp = NSApp as! EBApplication
-  theApp.appendToTransientEventLog (message)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendMessageString (_ message : String) {
-  let theApp = NSApp as! EBApplication
-  theApp.mTransientEventExplorerTextView?.appendMessageString (message)
-}
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-func appendMessageString (_ message : String, color:NSColor) {
-  let theApp = NSApp as! EBApplication
-  theApp.mTransientEventExplorerTextView?.appendMessageString (message, color:color)
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
