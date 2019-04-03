@@ -136,7 +136,7 @@ fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 runCommand ("/bin/rm", ["-f", "archive.zip"])
 runCommand ("/bin/rm", ["-fr", "ElCanari-dev-master"])
 runCommand ("/usr/bin/curl", ["-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
-runCommand ("/usr/bin/unzip", ["-u", "archive.zip"])
+runCommand ("/usr/bin/unzip", ["archive.zip"])
 runCommand ("/bin/rm", ["archive.zip"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/ElCanari-dev-master")
 //-------------------- Obtenir l'année
@@ -239,7 +239,8 @@ do{
     runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/ElCanari-dev-master"])
   }
   //---
-  print ("Durée de compilation : \(Int (DureeCompilation)) s")
+  let durée = Int (DureeCompilation)
+  print ("Durée de compilation : \(durée / 60) min \(durée % 60) s")
 }catch (let error) {
   print ("Exception \(error)")
 }
