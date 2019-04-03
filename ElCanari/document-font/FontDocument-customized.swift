@@ -21,32 +21,32 @@ let PMFontComment = "PMFontComment"
   //    init
   //····················································································································
 
-  override init () {
-    super.init ()
-
-  //--- Add kicad font
+//  override init () {
+//    super.init ()
+//
+//  //--- Add kicad font
 //    let font = kicadFont ()
 //    let keys = font.keys.sorted ()
 //    var characterArray = [FontCharacter] ()
 //    for key in keys {
 //      let descriptor = font [key]!
-//      let newCharacter = FontCharacter (managedObjectContext: managedObjectContext)
+//      let newCharacter = FontCharacter (self.ebUndoManager)
 //      newCharacter.codePoint = Int (key)
 //      newCharacter.advance = descriptor.advancement
 //      for segment in descriptor.segments {
-//        let newSegment = SegmentForFontCharacter (managedObjectContext: managedObjectContext)
+//        let newSegment = SegmentForFontCharacter (self.ebUndoManager)
 //        newSegment.x1 = segment.x1
 //        newSegment.y1 = -segment.y1 - 1
 //        newSegment.x2 = segment.x2
 //        newSegment.y2 = -segment.y2 - 1
 //        newCharacter.segments_property.add (newSegment)
 //      }
+//      newCharacter.mWarnsWhenNoSegment = descriptor.segments.count != 0
 //      characterArray.append (newCharacter)
 //    }
 //    rootObject.characters_property.setProp (characterArray)
 //    rootObject.nominalSize = 21
-
-  }
+//  }
 
   //····················································································································
   //    buildUserInterface: customization of interface

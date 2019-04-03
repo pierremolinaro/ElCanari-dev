@@ -46,7 +46,7 @@ class FontCharacterSelectButton : NSButton, EBUserClassNameProtocol {
 
   override func mouseDown (with inEvent : NSEvent) {
     let eventLocationInWindowCoordinates = inEvent.locationInWindow
-    let s = FontCharacterSelectView.requiredSizeForCharacterSet (self.mDefinedCharacterSet)
+    let s = FontCharacterSelectView.requiredSizeForCharacterSet (self.mDefinedCharacterSet, self.window)
     let r = NSRect (x:eventLocationInWindowCoordinates.x + 30.0,
                     y:eventLocationInWindowCoordinates.y - s.height / 2.0,
                     width:s.width,
