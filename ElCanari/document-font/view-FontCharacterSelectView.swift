@@ -149,35 +149,38 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
   //····················································································································
 
   override func draw (_ inDirtyRect : NSRect) {
-  //--- "UTF" title
-    do{
-      let titleAttributes : [NSAttributedString.Key : AnyObject] = [
-        NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
-      ]
-      let p = NSPoint (x: 5.0, y: 1.0 + CGFloat (self.mDefinedLineArray.count) * CHARACTER_HEIGHT + self.mVerticalShift)
-      "UTF".draw (at: p, withAttributes: titleAttributes)
-    }
-  //---
     let titleAttributes : [NSAttributedString.Key : AnyObject] = [
       NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize),
       NSAttributedString.Key.foregroundColor : NSColor.blue
     ]
-  //--- Title
-    for c : UInt in 0 ... 15 {
-      let r = rectangleForColumnTitle (c)
-      let pointCode = (c < 10) ? (c + 0x30) : (c + 0x37)
-      let s = String (format:"%C", arguments: [pointCode])
-      let size = s.size (withAttributes: titleAttributes)
-      let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y: r.origin.y)
-      s.draw (at: p, withAttributes: titleAttributes)
+    do{
+    //--- "UTF" title
+      let p = NSPoint (x: 5.0, y: 1.0 + CGFloat (self.mDefinedLineArray.count) * CHARACTER_HEIGHT + self.mVerticalShift)
+      if p.y < inDirtyRect.maxY {
+        let UTFAttributes : [NSAttributedString.Key : AnyObject] = [
+          NSAttributedString.Key.font : NSFont.boldSystemFont (ofSize: NSFont.smallSystemFontSize)
+        ]
+        "UTF".draw (at: p, withAttributes: UTFAttributes)
+      }
+    //--- Title
+      for c : UInt in 0 ... 15 {
+        let r = rectangleForColumnTitle (c)
+        let pointCode = (c < 10) ? (c + 0x30) : (c + 0x37)
+        let s = String (format:"%C", arguments: [pointCode])
+        let size = s.size (withAttributes: titleAttributes)
+        let p = NSPoint (x:r.origin.x + (CHARACTER_WIDTH - size.width) / 2.0, y: r.origin.y)
+        s.draw (at: p, withAttributes: titleAttributes)
+      }
     }
   //--- Row title
     var lineIndex = 0
     for line in self.mDefinedLineArray {
       let p = originForRowTitle (lineIndex)
       lineIndex += 1
-      let s = String (format:"%04hX:", arguments: [line * 16])
-      s.draw (at: p, withAttributes: titleAttributes)
+      if (p.y >= inDirtyRect.minY) && (p.y <= inDirtyRect.maxY) {
+        let s = String (format:"%04hX:", arguments: [line * 16])
+        s.draw (at: p, withAttributes: titleAttributes)
+      }
     }
   //--- Draw characters
     for lineIndex in 0 ..< self.mDefinedLineArray.count {
@@ -189,7 +192,7 @@ class FontCharacterSelectView : NSView, EBUserClassNameProtocol {
 
   func drawCharacters (forLineIndex inLineIndex : Int, _ inDirtyRect : NSRect) {
     var charRect = self.rectangleForCharacter (atLineIndex: inLineIndex, column: 0)
-    if max (charRect.minY, inDirtyRect.minY) <= min (charRect.maxY, inDirtyRect.maxY) {
+    if (charRect.minY >= inDirtyRect.minY) && (max (charRect.minY, inDirtyRect.minY) <= min (charRect.maxY, inDirtyRect.maxY)) {
       let lineCodePoint = self.mDefinedLineArray [inLineIndex] * 16
       for codePoint in lineCodePoint ..< lineCodePoint + 16 {
         if self.mSelectedCharacterCode == codePoint {

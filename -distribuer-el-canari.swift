@@ -233,7 +233,9 @@ do{
   let jsonData = try encoder.encode (versionDescriptor)
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_CANARI + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
-  //--- Supprimer les répertoires intermédiaires
+//--- Vérifier la signature
+  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/ElCanari-dev-master/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"])
+//--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/ElCanari-dev-master") {
     runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/ElCanari-dev-master"])
