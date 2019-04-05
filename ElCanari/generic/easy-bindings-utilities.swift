@@ -202,32 +202,30 @@ var gOrigin = NSPoint (x: 20.0, y: 20.0)
 func presentErrorWindow (_ file : String,
                          _ line : Int,
                          _ errorMessage : String) {
-  var message = ""
-  message += "File: \(file)\n"
+  var message = "File: \(file)\n"
   message += "Line: \(line)\n"
   message += "Message: \(errorMessage)\n"
   let r = NSRect (origin: gOrigin, size: NSSize (width: 300.0, height: 200.0))
   gOrigin.x += 20.0
   gOrigin.y += 20.0
-  let window = NSWindow.init (
-    contentRect:r,
-    styleMask:[.titled, .closable],
-    backing:NSWindow.BackingStoreType.buffered,
-    defer:true
+  let window = NSWindow (
+    contentRect: r,
+    styleMask: [.titled, .closable],
+    backing: .buffered,
+    defer: true
   )
   window.title = "Outlet Error"
   let contentView : NSView = window.contentView!
-  let tfRect = NSInsetRect (contentView.bounds , 10.0, 10.0)
-  let tf = NSTextField.init (frame:tfRect)
+  let tfRect = NSInsetRect (contentView.bounds, 10.0, 10.0)
+  let tf = NSTextField (frame: tfRect)
   tf.isEditable = false
   tf.isSelectable = true
-  tf.font = NSFont.boldSystemFont (ofSize: 0.0)
-  tf.textColor = NSColor.red
+  tf.font = .boldSystemFont (ofSize: 0.0)
+  tf.textColor = .red
   tf.stringValue = message
   contentView.addSubview (tf)
   __NSBeep ()
   window.makeKeyAndOrderFront (nil)
-  //---
   gErrorWindows.append (window)
 }
 
@@ -275,15 +273,15 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     noteObjectAllocation (self)
   }
 
@@ -296,23 +294,23 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
   //····················································································································
 
   override func removeFromSuperview () {
-   // NSLog ("\(#function)")
-    if !Thread.isMainThread {
-      NSLog ("removeFromSuperview not in main thread")
-    }
-    self.mUnbindFunction? ()
     super.removeFromSuperview ()
+    if Thread.isMainThread {
+      self.mUnbindFunction? ()
+    }else{
+      presentErrorWindow (#file, #line, "removeFromSuperview not in main thread")
+    }
   }
 
   //····················································································································
 
   override func removeFromSuperviewWithoutNeedingDisplay () {
-   // NSLog ("\(#function)")
-    if !Thread.isMainThread {
-      NSLog ("removeFromSuperviewWithoutNeedingDisplay not in main thread")
-    }
-    self.mUnbindFunction? ()
     super.removeFromSuperviewWithoutNeedingDisplay ()
+    if Thread.isMainThread {
+      self.mUnbindFunction? ()
+    }else{
+      presentErrorWindow (#file, #line, "removeFromSuperviewWithoutNeedingDisplay not in main thread")
+    }
   }
 
   //····················································································································

@@ -146,50 +146,27 @@ func loadEasyBindingFile (_ inUndoManager : EBUndoManager?, from data: Data) thr
 
 fileprivate func readManagedObjectsFromData (_ inUndoManager : EBUndoManager?, inData : Data) throws -> EBManagedObject? {
   var resultRootObject : EBManagedObject? = nil
-  let v : Any = try PropertyListSerialization.propertyList (from: inData as Data,
-    options:[],
-    format:nil
-  )
-  let dictionaryArray : [NSDictionary] = v as! [NSDictionary]
-  let semaphore : DispatchSemaphore = DispatchSemaphore (value: 0)
-  let queue = DispatchQueue (label: "readObjectFromData")
-  var possibleError : NSError? = nil
-  queue.asyncAfter (deadline: .now (), execute: {
-    do{
-      var objectArray = [EBManagedObject] ()
-      for d in dictionaryArray {
-        let className = d.object (forKey: ENTITY_KEY) as! String
-        if let object = newInstanceOfEntityNamed (inUndoManager, className) {
-          objectArray.append (object)
-        }else{
-          let dictionary = [
-            "Cannot Open Document" :  NSLocalizedDescriptionKey,
-            "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
-          ]
-          throw NSError (
-            domain:Bundle.main.bundleIdentifier!,
-            code:1,
-            userInfo:dictionary
-          )     
-        }
+  if let dictionaryArray = try PropertyListSerialization.propertyList (from: inData as Data, options: [], format: nil) as? [NSDictionary] {
+    var objectArray = [EBManagedObject] ()
+    for d in dictionaryArray {
+      let className = d.object (forKey: ENTITY_KEY) as! String
+      if let object = newInstanceOfEntityNamed (inUndoManager, className) {
+        objectArray.append (object)
+      }else{
+        let dictionary = [
+          "Cannot Open Document" :  NSLocalizedDescriptionKey,
+          "Root object cannot be read" :  NSLocalizedRecoverySuggestionErrorKey
+        ]
+        throw NSError (domain: Bundle.main.bundleIdentifier!, code: 1, userInfo:dictionary)
       }
-      var idx = 0
-      for d in dictionaryArray {
-        let object : EBManagedObject = objectArray [idx]
-        object.setUpWithDictionary (d, managedObjectArray: &objectArray)
-        idx += 1
-      }
-    //--- Set root object
-      resultRootObject = objectArray [0]
-      semaphore.signal()
-    }catch let error as NSError {
-      possibleError = error
-      semaphore.signal()
-   }
-  })
-  semaphore.wait()
-  if let error = possibleError {
-    throw error
+    }
+    var idx = 0
+    for d in dictionaryArray {
+      let object = objectArray [idx]
+      object.setUpWithDictionary (d, managedObjectArray: &objectArray)
+      idx += 1
+    }
+    resultRootObject = objectArray [0] //--- Set root object
   }
   return resultRootObject
 }

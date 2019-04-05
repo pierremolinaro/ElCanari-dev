@@ -66,11 +66,8 @@ func addItemToDebugMenu (_ item : NSMenuItem) {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 fileprivate var gLiveObjectCountByClass = [String : Int] ()
-
 fileprivate var gTotalAllocatedObjectCountByClass = [String : Int] ()
-
 fileprivate var gSnapShotDictionary = [String : Int] ()
-
 fileprivate var gRefreshDisplay = false
 
 //······················································································································
@@ -99,7 +96,6 @@ fileprivate func pmNoteObjectDeallocation (_ inObjectClassName : String) {
   gRefreshDisplay = true
 }
 
-
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Private routine
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -109,11 +105,7 @@ fileprivate func buildDebugObject () {
     let debugObject = EBAllocationDebug ()
     gDebugObject = debugObject
     let mainBundle = Bundle.main
-    let ok = mainBundle.loadNibNamed (
-      "EBAllocationDebug",
-      owner: debugObject,
-      topLevelObjects: &debugObject.mTopLevelObjects
-    )
+    let ok = mainBundle.loadNibNamed ("EBAllocationDebug", owner: debugObject, topLevelObjects: &debugObject.mTopLevelObjects)
     if !ok {
       presentErrorWindow (#file, #line, "Cannot load 'EBAllocationDebug' nib file")
     }

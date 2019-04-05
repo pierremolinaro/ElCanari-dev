@@ -113,13 +113,6 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     let r = NSRect (x: 0.0, y: 0.0, width: milsToCocoaUnit (10_000.0), height: milsToCocoaUnit (10_000.0))
     self.mComposedSymbolView?.set (minimumRectangle: r)
     self.mComposedSymbolView?.set (mouseGridInCanariUnit: SYMBOL_GRID_IN_CANARI_UNIT)
-
-    DispatchQueue.main.async (execute: {
-      if let view = self.mComposedSymbolView {
-         _ = view.scrollToVisible (view.objectsAndIssueBoundingBox)
-      }
-    })
-
   //--- Register inspector views
     self.mSymbolObjectsController.register (inspectorReceivingView: self.mSymbolBaseInspectorView)
     self.mSymbolObjectsController.register (inspectorView: self.mPinInspectorView, forClass: "SymbolPin")
@@ -128,6 +121,10 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
     self.mIssueTableView?.register (issueDisplayView: self.mComposedSymbolView)
     self.mIssueTableView?.register (hideIssueButton: self.mDeselectIssueButton)
     self.mIssueTableView?.register (segmentedControl: self.mInspectorSegmentedControl, segment: 2)
+  //--- Update display
+    if let view = self.mComposedSymbolView {
+       DispatchQueue.main.async { _ = view.scrollToVisible (view.objectsAndIssueBoundingBox) }
+    }
   }
 
   //····················································································································

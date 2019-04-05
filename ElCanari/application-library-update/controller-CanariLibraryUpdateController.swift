@@ -102,7 +102,7 @@ class CanariLibraryUpdateController : EBObject {
 
   func elementActionDidEnd (_ inElement : LibraryOperationElement, _ inErrorCode : Int32) {
     if !Thread.isMainThread {
-      Swift.print ("Not in main thread!")
+      Swift.print ("\(#file),\(#line): Not in main thread!")
     }
     if (self.mErrorCode == 0) && (inErrorCode != 0) {
        mErrorCode = inErrorCode
@@ -140,7 +140,7 @@ class CanariLibraryUpdateController : EBObject {
 
   func updateProgressIndicator () {
     if !Thread.isMainThread {
-      Swift.print ("Not in main thread!")
+      Swift.print ("\(#file),\(#line): Not in main thread!")
     }
     var progressCurrentValue = 0.0
     for action in self.mActionArray {

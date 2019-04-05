@@ -23,7 +23,7 @@ func phase7_performLibraryOperations (_ inLibraryOperations : [LibraryOperationE
                                       _ inLogTextView : NSTextView) {
   inLogTextView.appendMessageString ("Phase 7: Display Update Dialog and perform operation\n", color: NSColor.purple)
 //--- Perform library update in main thread
-  DispatchQueue.main.async  {
+  DispatchQueue.main.async {
   //--- Configure informative text in library update window
     if inLibraryOperations.count == 1 {
       g_Preferences?.mInformativeTextInLibraryUpdateWindow?.stringValue = "1 element to update"

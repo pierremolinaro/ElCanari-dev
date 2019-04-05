@@ -76,7 +76,6 @@ extension DeviceDocument {
               filledBezierPathes: filledBezierPathes,
               symbolPins: &newSymbolPinTypes
             )
-            symbolRoot.removeRecursivelyAllRelationsShips ()
           //--- Check if symbol pin name set is the same
             var currentPinNameSet = Set <String> ()
             for pinType in symbolType.mPinTypes_property.propval {
@@ -110,7 +109,7 @@ extension DeviceDocument {
               ioOkMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
             }
           }
-  //        symbolRoot.removeRecursivelyAllRelationsShips ()
+          symbolRoot.removeRecursivelyAllRelationsShips ()
         }else{
           ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }
@@ -175,7 +174,7 @@ extension DeviceDocument {
               strokeBezierPathes: strokeBezierPathes,
               masterPads: &masterPads
             )
-            packageRoot.removeRecursivelyAllRelationsShips ()
+        //    packageRoot.removeRecursivelyAllRelationsShips ()
           //-- Set properties
             package.mVersion = version
             package.mFileData = data
@@ -189,6 +188,7 @@ extension DeviceDocument {
           //---
             ioOkMessages.append ("Package \(package.mName) has been updated to version \(version).")
           }
+          packageRoot.removeRecursivelyAllRelationsShips ()
         }else{
           ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }

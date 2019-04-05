@@ -354,7 +354,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   //   removeWindowController
   //····················································································································
 
-  internal func removeUserInterface () {
+  func removeUserInterface () {
     self.mSignatureObserver.removeEBObserver (self.mVersionShouldChangeObserver)
   }
 
