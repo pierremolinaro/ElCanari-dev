@@ -406,491 +406,76 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
-    if let outlet : NSObject = self.mAddPackageFromLibraryButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mAddPackageFromLibraryButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddPackageFromLibraryButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddSymbolFromLibraryButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mAddSymbolFromLibraryButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddSymbolFromLibraryButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddSymbolInstancePullDownButton {
-      if !(outlet is AddSymbolInstancePullDownButton) {
-        presentErrorWindow (#file, #line, "the 'mAddSymbolInstancePullDownButton' outlet is not an instance of 'AddSymbolInstancePullDownButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddSymbolInstancePullDownButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAssignedPadProxyTableView {
-      if !(outlet is AssignedPadProxysInDeviceTableView) {
-        presentErrorWindow (#file, #line, "the 'mAssignedPadProxyTableView' outlet is not an instance of 'AssignedPadProxysInDeviceTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAssignedPadProxyTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAssignmentPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mAssignmentPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAssignmentPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAssignmentSplitView {
-      if !(outlet is NSSplitView) {
-        presentErrorWindow (#file, #line, "the 'mAssignmentSplitView' outlet is not an instance of 'NSSplitView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAssignmentSplitView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBindButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mBindButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBindButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCommentTextView {
-      if !(outlet is EBTextView) {
-        presentErrorWindow (#file, #line, "the 'mCommentTextView' outlet is not an instance of 'EBTextView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCommentTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mComposedPackageView {
-      if !(outlet is EBView) {
-        presentErrorWindow (#file, #line, "the 'mComposedPackageView' outlet is not an instance of 'EBView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mComposedPackageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mComposedSymbolView {
-      if !(outlet is EBView) {
-        presentErrorWindow (#file, #line, "the 'mComposedSymbolView' outlet is not an instance of 'EBView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mComposedSymbolView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCopyImageButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mCopyImageButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCopyImageButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDescriptionPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mDescriptionPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDescriptionPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDocumentationTableView {
-      if !(outlet is DeviceDocumentationTableView) {
-        presentErrorWindow (#file, #line, "the 'mDocumentationTableView' outlet is not an instance of 'DeviceDocumentationTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDocumentationTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mEditSelectedPackagesButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mEditSelectedPackagesButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mEditSelectedPackagesButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mEditSelectedSymbolsButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mEditSelectedSymbolsButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mEditSelectedSymbolsButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mExportSelectedPackagesButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mExportSelectedPackagesButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mExportSelectedPackagesButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mExportSelectedSymbolsButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mExportSelectedSymbolsButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mExportSelectedSymbolsButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInconsistentPackagePadNameSetsMessageScrollView {
-      if !(outlet is NSScrollView) {
-        presentErrorWindow (#file, #line, "the 'mInconsistentPackagePadNameSetsMessageScrollView' outlet is not an instance of 'NSScrollView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInconsistentPackagePadNameSetsMessageScrollView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInconsistentPackagePadNameSetsMessageTextView {
-      if !(outlet is EBTextObserverView) {
-        presentErrorWindow (#file, #line, "the 'mInconsistentPackagePadNameSetsMessageTextView' outlet is not an instance of 'EBTextObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInconsistentPackagePadNameSetsMessageTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInconsistentPadNameSetTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mInconsistentPadNameSetTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInconsistentPadNameSetTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInconsistentSymbolNameMessageScrollView {
-      if !(outlet is NSScrollView) {
-        presentErrorWindow (#file, #line, "the 'mInconsistentSymbolNameMessageScrollView' outlet is not an instance of 'NSScrollView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInconsistentSymbolNameMessageScrollView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInconsistentSymbolNameMessageTextView {
-      if !(outlet is EBTextObserverView) {
-        presentErrorWindow (#file, #line, "the 'mInconsistentSymbolNameMessageTextView' outlet is not an instance of 'EBTextObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInconsistentSymbolNameMessageTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInfosPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueTextView {
-      if !(outlet is EBTextObserverView) {
-        presentErrorWindow (#file, #line, "the 'mIssueTextView' outlet is not an instance of 'EBTextObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mLibraryPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mLibraryPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mMasterView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mMasterView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMasterView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mNCButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mNCButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mNCButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageBackPadsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageBackPadsColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageBackPadsColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageDisplayHorizontalFlipSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mPackageDisplayHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDisplayHorizontalFlipSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageDisplayVerticalFlipSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mPackageDisplayVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDisplayVerticalFlipSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageFrontPadsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageFrontPadsColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageFrontPadsColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageNumbersColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageNumbersColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageNumbersColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackagePageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mPackagePageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackagePageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageTableView {
-      if !(outlet is EBTableView) {
-        presentErrorWindow (#file, #line, "the 'mPackageTableView' outlet is not an instance of 'EBTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackagesColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackagesColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackagesColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPageSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPasteImageButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mPasteImageButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPasteImageButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPrefixTextField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mPrefixTextField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPrefixTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mRemoveImageButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mRemoveImageButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRemoveImageButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mRemoveSelectedDocButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mRemoveSelectedDocButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRemoveSelectedDocButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mRepresentationImageView {
-      if !(outlet is DeviceDroppableImageView) {
-        presentErrorWindow (#file, #line, "the 'mRepresentationImageView' outlet is not an instance of 'DeviceDroppableImageView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRepresentationImageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mResetSelectedPackageVersionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mResetSelectedPackageVersionButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mResetSelectedPackageVersionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mResetSelectedSymbolVersionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mResetSelectedSymbolVersionButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mResetSelectedSymbolVersionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mResetSymbolAndPackagesVersionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mResetSymbolAndPackagesVersionButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mResetSymbolAndPackagesVersionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mResetVersionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mResetVersionButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mResetVersionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSaveDocButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mSaveDocButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSaveDocButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowDocButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mShowDocButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowDocButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowPackageBackPadsSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowPackageBackPadsSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowPackageBackPadsSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowPackageFrontPadsSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowPackageFrontPadsSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowPackageFrontPadsSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowPackagePadNumbersSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowPackagePadNumbersSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowPackagePadNumbersSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowPackagesSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowPackagesSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowPackagesSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSignatureTextField {
-      if !(outlet is CanariSignatureField) {
-        presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mStatusImageViewInToolbar {
-      if !(outlet is EBImageObserverView) {
-        presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolDisplayHorizontalFlipSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mSymbolDisplayHorizontalFlipSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolDisplayHorizontalFlipSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolDisplayVerticalFlipSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mSymbolDisplayVerticalFlipSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolDisplayVerticalFlipSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolErrorMessageTitleTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'mSymbolErrorMessageTitleTextField' outlet is not an instance of 'NSTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolErrorMessageTitleTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolNameTextField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mSymbolNameTextField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolNameTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSymbolPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolTableView {
-      if !(outlet is EBTableView) {
-        presentErrorWindow (#file, #line, "the 'mSymbolTableView' outlet is not an instance of 'EBTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSymbolTypeTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mSymbolTypeTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolTypeTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mTitleTextField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mTitleTextField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mTitleTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUnbindAllButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUnbindAllButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUnbindAllButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUnbindButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUnbindButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUnbindButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUnconnectedPadsInDeviceTableView {
-      if !(outlet is UnconnectedPadsInDeviceTableView) {
-        presentErrorWindow (#file, #line, "the 'mUnconnectedPadsInDeviceTableView' outlet is not an instance of 'UnconnectedPadsInDeviceTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUnconnectedPadsInDeviceTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUnconnectedSymbolPinsInDeviceTableView {
-      if !(outlet is UnconnectedSymbolPinsInDeviceTableView) {
-        presentErrorWindow (#file, #line, "the 'mUnconnectedSymbolPinsInDeviceTableView' outlet is not an instance of 'UnconnectedSymbolPinsInDeviceTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUnconnectedSymbolPinsInDeviceTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUpdateSelectedPackagesButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUpdateSelectedPackagesButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUpdateSelectedPackagesButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUpdateSelectedSymbolsButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUpdateSelectedSymbolsButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUpdateSelectedSymbolsButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mUpdateSymbolAndPackagesButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUpdateSymbolAndPackagesButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUpdateSymbolAndPackagesButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mVersionField {
-      if !(outlet is CanariVersionField) {
-        presentErrorWindow (#file, #line, "the 'mVersionField' outlet is not an instance of 'CanariVersionField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mVersionField' outlet is nil")
-    }
- 
-  }
+    checkOutletConnection (self.mAddPackageFromLibraryButton, "mAddPackageFromLibraryButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddSymbolFromLibraryButton, "mAddSymbolFromLibraryButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddSymbolInstancePullDownButton, "mAddSymbolInstancePullDownButton", AddSymbolInstancePullDownButton.self, #file, #line)
+    checkOutletConnection (self.mAssignedPadProxyTableView, "mAssignedPadProxyTableView", AssignedPadProxysInDeviceTableView.self, #file, #line)
+    checkOutletConnection (self.mAssignmentPageView, "mAssignmentPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mAssignmentSplitView, "mAssignmentSplitView", NSSplitView.self, #file, #line)
+    checkOutletConnection (self.mBindButton, "mBindButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBView.self, #file, #line)
+    checkOutletConnection (self.mComposedSymbolView, "mComposedSymbolView", EBView.self, #file, #line)
+    checkOutletConnection (self.mCopyImageButton, "mCopyImageButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mDescriptionPageView, "mDescriptionPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mDocumentationTableView, "mDocumentationTableView", DeviceDocumentationTableView.self, #file, #line)
+    checkOutletConnection (self.mEditSelectedPackagesButton, "mEditSelectedPackagesButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mEditSelectedSymbolsButton, "mEditSelectedSymbolsButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExportSelectedPackagesButton, "mExportSelectedPackagesButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mExportSelectedSymbolsButton, "mExportSelectedSymbolsButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageScrollView, "mInconsistentPackagePadNameSetsMessageScrollView", NSScrollView.self, #file, #line)
+    checkOutletConnection (self.mInconsistentPackagePadNameSetsMessageTextView, "mInconsistentPackagePadNameSetsMessageTextView", EBTextObserverView.self, #file, #line)
+    checkOutletConnection (self.mInconsistentPadNameSetTextField, "mInconsistentPadNameSetTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mInconsistentSymbolNameMessageScrollView, "mInconsistentSymbolNameMessageScrollView", NSScrollView.self, #file, #line)
+    checkOutletConnection (self.mInconsistentSymbolNameMessageTextView, "mInconsistentSymbolNameMessageTextView", EBTextObserverView.self, #file, #line)
+    checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mIssueTextView, "mIssueTextView", EBTextObserverView.self, #file, #line)
+    checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNCButton, "mNCButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mPackageBackPadsColorWell, "mPackageBackPadsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageDisplayHorizontalFlipSwitch, "mPackageDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mPackageDisplayVerticalFlipSwitch, "mPackageDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mPackageFrontPadsColorWell, "mPackageFrontPadsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageNumbersColorWell, "mPackageNumbersColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackagePageView, "mPackagePageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mPackageTableView, "mPackageTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mPackagesColorWell, "mPackagesColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mPasteImageButton, "mPasteImageButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mPrefixTextField, "mPrefixTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mRemoveImageButton, "mRemoveImageButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveSelectedDocButton, "mRemoveSelectedDocButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRepresentationImageView, "mRepresentationImageView", DeviceDroppableImageView.self, #file, #line)
+    checkOutletConnection (self.mResetSelectedPackageVersionButton, "mResetSelectedPackageVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetSelectedSymbolVersionButton, "mResetSelectedSymbolVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetSymbolAndPackagesVersionButton, "mResetSymbolAndPackagesVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSaveDocButton, "mSaveDocButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mShowDocButton, "mShowDocButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mShowPackageBackPadsSwitch, "mShowPackageBackPadsSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mShowPackageFrontPadsSwitch, "mShowPackageFrontPadsSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mShowPackagePadNumbersSwitch, "mShowPackagePadNumbersSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mShowPackagesSwitch, "mShowPackagesSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSignatureTextField, "mSignatureTextField", CanariSignatureField.self, #file, #line)
+    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
+    checkOutletConnection (self.mSymbolDisplayHorizontalFlipSwitch, "mSymbolDisplayHorizontalFlipSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSymbolDisplayVerticalFlipSwitch, "mSymbolDisplayVerticalFlipSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSymbolErrorMessageTitleTextField, "mSymbolErrorMessageTitleTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mSymbolNameTextField, "mSymbolNameTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSymbolPageView, "mSymbolPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSymbolTableView, "mSymbolTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mSymbolTypeTextField, "mSymbolTypeTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mTitleTextField, "mTitleTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mUnbindAllButton, "mUnbindAllButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUnbindButton, "mUnbindButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUnconnectedPadsInDeviceTableView, "mUnconnectedPadsInDeviceTableView", UnconnectedPadsInDeviceTableView.self, #file, #line)
+    checkOutletConnection (self.mUnconnectedSymbolPinsInDeviceTableView, "mUnconnectedSymbolPinsInDeviceTableView", UnconnectedSymbolPinsInDeviceTableView.self, #file, #line)
+    checkOutletConnection (self.mUpdateSelectedPackagesButton, "mUpdateSelectedPackagesButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUpdateSelectedSymbolsButton, "mUpdateSelectedSymbolsButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUpdateSymbolAndPackagesButton, "mUpdateSymbolAndPackagesButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
+   }
   
   //····················································································································
   //    windowControllerDidLoadNib

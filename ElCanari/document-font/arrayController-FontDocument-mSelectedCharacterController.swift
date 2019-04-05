@@ -303,7 +303,7 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
       let tableView = notification.object as! EBTableView
       var newSelectedObjectSet = Set <FontCharacter> ()
       for index in tableView.selectedRowIndexes {
-        newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
+        newSelectedObjectSet.insert (v [index])
       }
       self.mSelectedSet.mSet = newSelectedObjectSet
     }

@@ -4248,818 +4248,122 @@ let Preferences_mLastSystemLibraryCheckTime = "Preferences:mLastSystemLibraryChe
   //····················································································································
 
   override func awakeFromNib () {
-    if let outlet : Any = self.mAddLibraryEntryButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mAddLibraryEntryButton' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddLibraryEntryButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mAdditionnalLibraryArrayTableView {
-      if !(outlet is EBTableView) {
-        presentErrorWindow (#file, #line, "the 'mAdditionnalLibraryArrayTableView' outlet is not an instance of 'EBTableView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAdditionnalLibraryArrayTableView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardBackgroundColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardBackgroundColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardBackgroundColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardBottomSideLayoutColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardBottomSideLayoutColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardBottomSideLayoutColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardBottomSideLegendColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardBottomSideLegendColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardBottomSideLegendColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardBottomSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardBottomSidePadColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardBottomSidePadColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardBottomSideRestrictRectangleColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardBottomSideRestrictRectangleColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardBottomSideRestrictRectangleColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardClearanceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardClearanceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardClearanceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardDotColorGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardDotColorGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardDotColorGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardDrawErrorBackgroundCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mBoardDrawErrorBackgroundCheckbox' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardDrawErrorBackgroundCheckbox' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardDrawWarningBackgroundCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mBoardDrawWarningBackgroundCheckbox' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardDrawWarningBackgroundCheckbox' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardErrorBackgroundColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardErrorBackgroundColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardErrorBackgroundColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardLimitsColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardLimitsColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardLimitsColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardLineColorGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardLineColorGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardLineColorGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardPackageDrawingWidthMultipliedByTenPopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBoardPackageDrawingWidthMultipliedByTenPopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardPackageDrawingWidthMultipliedByTenPopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardPadFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mBoardPadFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardPadFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardPadNumberColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardPadNumberColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardPadNumberColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardTopSideLayoutColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardTopSideLayoutColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardTopSideLayoutColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardTopSideLegendColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardTopSideLegendColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardTopSideLegendColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardTopSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardTopSidePadColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardTopSidePadColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardTopSideRestrictRectangleColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardTopSideRestrictRectangleColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardTopSideRestrictRectangleColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBoardWarningBackgroundColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBoardWarningBackgroundColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBoardWarningBackgroundColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBottomSidePadColorDorDeviveColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBottomSidePadColorDorDeviveColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBottomSidePadColorDorDeviveColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mBottomSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBottomSidePadColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBottomSidePadColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCancelButtonInLibraryUpdateWindow {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mCancelButtonInLibraryUpdateWindow' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCancelButtonInLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckForLibraryUpdatesButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mCheckForLibraryUpdatesButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckForLibraryUpdatesButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckForSystemLibraryAtStartUpSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mCheckForSystemLibraryAtStartUpSwitch' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckForSystemLibraryAtStartUpSwitch' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckLibraryAction {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mCheckLibraryAction' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckLibraryAction' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckLibraryResultTextView {
-      if !(outlet is NSTextView) {
-        presentErrorWindow (#file, #line, "the 'mCheckLibraryResultTextView' outlet is not an instance of 'NSTextView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckLibraryResultTextView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckingForLibraryUpdateProgressIndicator {
-      if !(outlet is EBProgressIndicator) {
-        presentErrorWindow (#file, #line, "the 'mCheckingForLibraryUpdateProgressIndicator' outlet is not an instance of 'EBProgressIndicator'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckingForLibraryUpdateProgressIndicator' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCheckingForLibraryUpdateWindow {
-      if !(outlet is EBWindow) {
-        presentErrorWindow (#file, #line, "the 'mCheckingForLibraryUpdateWindow' outlet is not an instance of 'EBWindow'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCheckingForLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mConnectionColorForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mConnectionColorForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mConnectionColorForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mCrossColorOfSymbolGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mCrossColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCrossColorOfSymbolGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mDimensionFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mDotColorGridForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mDotColorGridForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDotColorGridForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mDotColorOfPackageGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mDotColorOfPackageGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDotColorOfPackageGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mEditionTransparencySlider {
-      if !(outlet is EBSlider) {
-        presentErrorWindow (#file, #line, "the 'mEditionTransparencySlider' outlet is not an instance of 'EBSlider'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mEditionTransparencySlider' outlet is nil") ;
-    }
-    if let outlet : Any = self.mEditionTransparencyTextField {
-      if !(outlet is EBDoubleField) {
-        presentErrorWindow (#file, #line, "the 'mEditionTransparencyTextField' outlet is not an instance of 'EBDoubleField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mEditionTransparencyTextField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mErrorMessageColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mErrorMessageColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mErrorMessageColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mInformativeTextInLibraryUpdateWindow {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mInformativeTextInLibraryUpdateWindow' outlet is not an instance of 'EBTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInformativeTextInLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryCommitButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryCommitButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryCommitButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryCurrentReleaseTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryCurrentReleaseTextField' outlet is not an instance of 'NSTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryCurrentReleaseTextField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryLoadCurrentReleaseButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryLoadCurrentReleaseButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryLoadCurrentReleaseButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryLogTextView {
-      if !(outlet is NSTextView) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryLogTextView' outlet is not an instance of 'NSTextView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryLogTextView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryStatusButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryStatusButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryStatusButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRepositoryTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRepositoryTextField' outlet is not an instance of 'NSTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRepositoryTextField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRevisionListScrollView {
-      if !(outlet is NSScrollView) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRevisionListScrollView' outlet is not an instance of 'NSScrollView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRevisionListScrollView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryRevisionListTableView {
-      if !(outlet is NSTableView) {
-        presentErrorWindow (#file, #line, "the 'mLibraryRevisionListTableView' outlet is not an instance of 'NSTableView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryRevisionListTableView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryUpdateLogTextView {
-      if !(outlet is NSTextView) {
-        presentErrorWindow (#file, #line, "the 'mLibraryUpdateLogTextView' outlet is not an instance of 'NSTextView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryUpdateLogTextView' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryUpdateWindow {
-      if !(outlet is EBWindow) {
-        presentErrorWindow (#file, #line, "the 'mLibraryUpdateWindow' outlet is not an instance of 'EBWindow'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLibraryUploadWindow {
-      if !(outlet is EBWindow) {
-        presentErrorWindow (#file, #line, "the 'mLibraryUploadWindow' outlet is not an instance of 'EBWindow'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLibraryUploadWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLineColorGridForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mLineColorGridForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLineColorGridForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLineColorOfPackageGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mLineColorOfPackageGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLineColorOfPackageGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mLineColorOfSymbolGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mLineColorOfSymbolGridColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLineColorOfSymbolGridColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mMenuRevealInFinder_artworks {
-      if !(outlet is CanariMenu) {
-        presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_artworks' outlet is not an instance of 'CanariMenu'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_artworks' outlet is nil") ;
-    }
-    if let outlet : Any = self.mMenuRevealInFinder_devices {
-      if !(outlet is CanariMenu) {
-        presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_devices' outlet is not an instance of 'CanariMenu'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_devices' outlet is nil") ;
-    }
-    if let outlet : Any = self.mMenuRevealInFinder_fonts {
-      if !(outlet is CanariMenu) {
-        presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_fonts' outlet is not an instance of 'CanariMenu'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_fonts' outlet is nil") ;
-    }
-    if let outlet : Any = self.mMenuRevealInFinder_packages {
-      if !(outlet is CanariMenu) {
-        presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_packages' outlet is not an instance of 'CanariMenu'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_packages' outlet is nil") ;
-    }
-    if let outlet : Any = self.mMenuRevealInFinder_symbols {
-      if !(outlet is CanariMenu) {
-        presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_symbols' outlet is not an instance of 'CanariMenu'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMenuRevealInFinder_symbols' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageBackgroundColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageBackgroundColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageBackgroundColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageDimensionColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageDimensionColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDimensionColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageDrawingWidthMultipliedByTenForDevicePopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenForDevicePopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenForDevicePopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageDrawingWidthMultipliedByTenPopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenPopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenPopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageGuideColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageGuideColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageGuideColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPackageNameFontForDeviceFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageNameFontForDeviceFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageNameFontForDeviceFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPadFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPadFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPadNumberColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPadNumberColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPadNumberFontForDeviceFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberFontForDeviceFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberFontForDeviceFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPadZoneColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPadZoneColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadZoneColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNameColorForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPinNameColorForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNameColorForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNameFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPinNameFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNameFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNameFontForDeviceFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPinNameFontForDeviceFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNameFontForDeviceFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNameFontForSchematicFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPinNameFontForSchematicFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNameFontForSchematicFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNumberColorForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPinNumberColorForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNumberColorForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPinNumberFontForSchematicFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPinNumberFontForSchematicFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPinNumberFontForSchematicFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mPrefsWindow {
-      if !(outlet is EBWindow) {
-        presentErrorWindow (#file, #line, "the 'mPrefsWindow' outlet is not an instance of 'EBWindow'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPrefsWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mProgressIndicatorInLibraryUpdateWindow {
-      if !(outlet is EBProgressIndicator) {
-        presentErrorWindow (#file, #line, "the 'mProgressIndicatorInLibraryUpdateWindow' outlet is not an instance of 'EBProgressIndicator'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgressIndicatorInLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mRemoveLibraryEntryButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mRemoveLibraryEntryButton' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRemoveLibraryEntryButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mRevealInFinderLibraryInUserApplicationSupportButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mRevealInFinderLibraryInUserApplicationSupportButton' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRevealInFinderLibraryInUserApplicationSupportButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSULastCheckTimeTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'mSULastCheckTimeTextField' outlet is not an instance of 'NSTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSULastCheckTimeTextField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSampleStringField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringField' outlet is not an instance of 'EBTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSampleStringSizeField {
-      if !(outlet is EBDoubleField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringSizeField' outlet is not an instance of 'EBDoubleField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringSizeField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSelectionHiliteColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSelectionHiliteColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSelectionHiliteColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSetLibraryRepositoryButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mSetLibraryRepositoryButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSetLibraryRepositoryButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSetUserAndPasswordButton {
-      if !(outlet is NSButton) {
-        presentErrorWindow (#file, #line, "the 'mSetUserAndPasswordButton' outlet is not an instance of 'NSButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSetUserAndPasswordButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mShowGerberDrawingFlowCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowGerberDrawingFlowCheckbox' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowGerberDrawingFlowCheckbox' outlet is nil") ;
-    }
-    if let outlet : Any = self.mShowGerberDrawingIndexesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowGerberDrawingIndexesCheckbox' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowGerberDrawingIndexesCheckbox' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSuccessMessageColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSuccessMessageColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSuccessMessageColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolAndPackageBackgroundColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolAndPackageBackgroundColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolAndPackageBackgroundColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolAndPackageGridDotColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolAndPackageGridDotColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolAndPackageGridDotColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolAndPackageLineDotColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolAndPackageLineDotColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolAndPackageLineDotColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolBackgroundColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolBackgroundColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolBackgroundColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolColorForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mSymbolColorForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolColorForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolDrawingWidthMultipliedByTenForDevicePopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenForDevicePopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenForDevicePopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolDrawingWidthMultipliedByTenPopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenPopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolDrawingWidthMultipliedByTenPopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mSymbolNameFontForDeviceFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mSymbolNameFontForDeviceFontButton' outlet is not an instance of 'EBFontButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSymbolNameFontForDeviceFontButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.mTableViewInLibraryUpdateWindow {
-      if !(outlet is EBTableView) {
-        presentErrorWindow (#file, #line, "the 'mTableViewInLibraryUpdateWindow' outlet is not an instance of 'EBTableView'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mTableViewInLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mToolbar {
-      if !(outlet is CanariToolbar) {
-        presentErrorWindow (#file, #line, "the 'mToolbar' outlet is not an instance of 'CanariToolbar'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mToolbar' outlet is nil") ;
-    }
-    if let outlet : Any = self.mTopSidePadColorForDeviceColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mTopSidePadColorForDeviceColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mTopSidePadColorForDeviceColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mTopSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mTopSidePadColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mTopSidePadColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUnplacedComponentsColorForSchematicColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mUnplacedComponentsColorForSchematicColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUnplacedComponentsColorForSchematicColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUpDateButtonInLibraryUpdateWindow {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mUpDateButtonInLibraryUpdateWindow' outlet is not an instance of 'EBButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUpDateButtonInLibraryUpdateWindow' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUpDateLibraryMenuItemInCanariMenu {
-      if !(outlet is EBMenuItem) {
-        presentErrorWindow (#file, #line, "the 'mUpDateLibraryMenuItemInCanariMenu' outlet is not an instance of 'EBMenuItem'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUpDateLibraryMenuItemInCanariMenu' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUseLibraryInUserApplicationSupportPathCheckBox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mUseLibraryInUserApplicationSupportPathCheckBox' outlet is not an instance of 'EBSwitch'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUseLibraryInUserApplicationSupportPathCheckBox' outlet is nil") ;
-    }
-    if let outlet : Any = self.mUserAndPasswordTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'mUserAndPasswordTextField' outlet is not an instance of 'NSTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mUserAndPasswordTextField' outlet is nil") ;
-    }
-    if let outlet : Any = self.mWarningMessageColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mWarningMessageColorColorWell' outlet is not an instance of 'EBColorWell'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mWarningMessageColorColorWell' outlet is nil") ;
-    }
-    if let outlet : Any = self.nextSystemLibraryCheckDate {
-      if !(outlet is CanariDateObserverField) {
-        presentErrorWindow (#file, #line, "the 'nextSystemLibraryCheckDate' outlet is not an instance of 'CanariDateObserverField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'nextSystemLibraryCheckDate' outlet is nil") ;
-    }
-    if let outlet : Any = self.selectionHilitePopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'selectionHilitePopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'selectionHilitePopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.systemLibraryCheckTimeIntervalPopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'systemLibraryCheckTimeIntervalPopupButton' outlet is not an instance of 'EBPopUpButton'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'systemLibraryCheckTimeIntervalPopupButton' outlet is nil") ;
-    }
-    if let outlet : Any = self.systemLibraryCheckTimeIntervalTitleTextField {
-      if !(outlet is NSTextField) {
-        presentErrorWindow (#file, #line, "the 'systemLibraryCheckTimeIntervalTitleTextField' outlet is not an instance of 'NSTextField'") ;
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'systemLibraryCheckTimeIntervalTitleTextField' outlet is nil") ;
-    }
+    checkOutletConnection (self.mAddLibraryEntryButton, "mAddLibraryEntryButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAdditionnalLibraryArrayTableView, "mAdditionnalLibraryArrayTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mBoardBackgroundColorWell, "mBoardBackgroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardBottomSideLayoutColorWell, "mBoardBottomSideLayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardBottomSideLegendColorWell, "mBoardBottomSideLegendColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardBottomSidePadColorWell, "mBoardBottomSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardBottomSideRestrictRectangleColorWell, "mBoardBottomSideRestrictRectangleColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardClearanceColorWell, "mBoardClearanceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardDotColorGridColorWell, "mBoardDotColorGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardDrawErrorBackgroundCheckbox, "mBoardDrawErrorBackgroundCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardDrawWarningBackgroundCheckbox, "mBoardDrawWarningBackgroundCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mBoardErrorBackgroundColorWell, "mBoardErrorBackgroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardLimitsColorWell, "mBoardLimitsColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardLineColorGridColorWell, "mBoardLineColorGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardPackageDrawingWidthMultipliedByTenPopupButton, "mBoardPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBoardPadFontButton, "mBoardPadFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mBoardPadNumberColorWell, "mBoardPadNumberColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardTopSideLayoutColorWell, "mBoardTopSideLayoutColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardTopSideLegendColorWell, "mBoardTopSideLegendColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardTopSidePadColorWell, "mBoardTopSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardTopSideRestrictRectangleColorWell, "mBoardTopSideRestrictRectangleColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBoardWarningBackgroundColorWell, "mBoardWarningBackgroundColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBottomSidePadColorDorDeviveColorWell, "mBottomSidePadColorDorDeviveColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mCancelButtonInLibraryUpdateWindow, "mCancelButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
+    checkOutletConnection (self.mCheckForLibraryUpdatesButton, "mCheckForLibraryUpdatesButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mCheckForSystemLibraryAtStartUpSwitch, "mCheckForSystemLibraryAtStartUpSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mCheckLibraryAction, "mCheckLibraryAction", EBButton.self, #file, #line)
+    checkOutletConnection (self.mCheckLibraryResultTextView, "mCheckLibraryResultTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mCheckingForLibraryUpdateProgressIndicator, "mCheckingForLibraryUpdateProgressIndicator", EBProgressIndicator.self, #file, #line)
+    checkOutletConnection (self.mCheckingForLibraryUpdateWindow, "mCheckingForLibraryUpdateWindow", EBWindow.self, #file, #line)
+    checkOutletConnection (self.mConnectionColorForSchematicColorWell, "mConnectionColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mCrossColorOfSymbolGridColorWell, "mCrossColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDimensionFontButton, "mDimensionFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mDotColorGridForSchematicColorWell, "mDotColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDotColorOfPackageGridColorWell, "mDotColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mEditionTransparencySlider, "mEditionTransparencySlider", EBSlider.self, #file, #line)
+    checkOutletConnection (self.mEditionTransparencyTextField, "mEditionTransparencyTextField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mErrorMessageColorColorWell, "mErrorMessageColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mInformativeTextInLibraryUpdateWindow, "mInformativeTextInLibraryUpdateWindow", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryCommitButton, "mLibraryRepositoryCommitButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryCurrentReleaseTextField, "mLibraryRepositoryCurrentReleaseTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryLoadCurrentReleaseButton, "mLibraryRepositoryLoadCurrentReleaseButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryLogTextView, "mLibraryRepositoryLogTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryStatusButton, "mLibraryRepositoryStatusButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mLibraryRepositoryTextField, "mLibraryRepositoryTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mLibraryRevisionListScrollView, "mLibraryRevisionListScrollView", NSScrollView.self, #file, #line)
+    checkOutletConnection (self.mLibraryRevisionListTableView, "mLibraryRevisionListTableView", NSTableView.self, #file, #line)
+    checkOutletConnection (self.mLibraryUpdateLogTextView, "mLibraryUpdateLogTextView", NSTextView.self, #file, #line)
+    checkOutletConnection (self.mLibraryUpdateWindow, "mLibraryUpdateWindow", EBWindow.self, #file, #line)
+    checkOutletConnection (self.mLibraryUploadWindow, "mLibraryUploadWindow", EBWindow.self, #file, #line)
+    checkOutletConnection (self.mLineColorGridForSchematicColorWell, "mLineColorGridForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mLineColorOfSymbolGridColorWell, "mLineColorOfSymbolGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mMenuRevealInFinder_artworks, "mMenuRevealInFinder_artworks", CanariMenu.self, #file, #line)
+    checkOutletConnection (self.mMenuRevealInFinder_devices, "mMenuRevealInFinder_devices", CanariMenu.self, #file, #line)
+    checkOutletConnection (self.mMenuRevealInFinder_fonts, "mMenuRevealInFinder_fonts", CanariMenu.self, #file, #line)
+    checkOutletConnection (self.mMenuRevealInFinder_packages, "mMenuRevealInFinder_packages", CanariMenu.self, #file, #line)
+    checkOutletConnection (self.mMenuRevealInFinder_symbols, "mMenuRevealInFinder_symbols", CanariMenu.self, #file, #line)
+    checkOutletConnection (self.mPackageBackgroundColorColorWell, "mPackageBackgroundColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageColorColorWell, "mPackageColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageColorForDeviceColorWell, "mPackageColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageDimensionColorWell, "mPackageDimensionColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenForDevicePopupButton, "mPackageDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenPopupButton, "mPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackageGuideColorWell, "mPackageGuideColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageNameFontForDeviceFontButton, "mPackageNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPadFontButton, "mPadFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPadNumberColorColorWell, "mPadNumberColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPadNumberColorForDeviceColorWell, "mPadNumberColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPadNumberFontForDeviceFontButton, "mPadNumberFontForDeviceFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPadZoneColorColorWell, "mPadZoneColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPinNameColorForSchematicColorWell, "mPinNameColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPinNameFontButton, "mPinNameFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPinNameFontForDeviceFontButton, "mPinNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPinNameFontForSchematicFontButton, "mPinNameFontForSchematicFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPinNumberColorForSchematicColorWell, "mPinNumberColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPinNumberFontForSchematicFontButton, "mPinNumberFontForSchematicFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPrefsWindow, "mPrefsWindow", EBWindow.self, #file, #line)
+    checkOutletConnection (self.mProgressIndicatorInLibraryUpdateWindow, "mProgressIndicatorInLibraryUpdateWindow", EBProgressIndicator.self, #file, #line)
+    checkOutletConnection (self.mRemoveLibraryEntryButton, "mRemoveLibraryEntryButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRevealInFinderLibraryInUserApplicationSupportButton, "mRevealInFinderLibraryInUserApplicationSupportButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSULastCheckTimeTextField, "mSULastCheckTimeTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringField, "mSampleStringField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringSizeField, "mSampleStringSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mSelectionHiliteColorColorWell, "mSelectionHiliteColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSetLibraryRepositoryButton, "mSetLibraryRepositoryButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mSetUserAndPasswordButton, "mSetUserAndPasswordButton", NSButton.self, #file, #line)
+    checkOutletConnection (self.mShowGerberDrawingFlowCheckbox, "mShowGerberDrawingFlowCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mShowGerberDrawingIndexesCheckbox, "mShowGerberDrawingIndexesCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSuccessMessageColorColorWell, "mSuccessMessageColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolAndPackageBackgroundColorForDeviceColorWell, "mSymbolAndPackageBackgroundColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolAndPackageGridDotColorForDeviceColorWell, "mSymbolAndPackageGridDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolAndPackageLineDotColorForDeviceColorWell, "mSymbolAndPackageLineDotColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolBackgroundColorColorWell, "mSymbolBackgroundColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolColorColorWell, "mSymbolColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolColorForDeviceColorWell, "mSymbolColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolColorForSchematicColorWell, "mSymbolColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForDevicePopupButton, "mSymbolDrawingWidthMultipliedByTenForDevicePopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton, "mSymbolDrawingWidthMultipliedByTenForSchematicPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolDrawingWidthMultipliedByTenPopupButton, "mSymbolDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSymbolNameFontForDeviceFontButton, "mSymbolNameFontForDeviceFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mTableViewInLibraryUpdateWindow, "mTableViewInLibraryUpdateWindow", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mToolbar, "mToolbar", CanariToolbar.self, #file, #line)
+    checkOutletConnection (self.mTopSidePadColorForDeviceColorWell, "mTopSidePadColorForDeviceColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mUnplacedComponentsColorForSchematicColorWell, "mUnplacedComponentsColorForSchematicColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mUpDateButtonInLibraryUpdateWindow, "mUpDateButtonInLibraryUpdateWindow", EBButton.self, #file, #line)
+    checkOutletConnection (self.mUpDateLibraryMenuItemInCanariMenu, "mUpDateLibraryMenuItemInCanariMenu", EBMenuItem.self, #file, #line)
+    checkOutletConnection (self.mUseLibraryInUserApplicationSupportPathCheckBox, "mUseLibraryInUserApplicationSupportPathCheckBox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mUserAndPasswordTextField, "mUserAndPasswordTextField", NSTextField.self, #file, #line)
+    checkOutletConnection (self.mWarningMessageColorColorWell, "mWarningMessageColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.nextSystemLibraryCheckDate, "nextSystemLibraryCheckDate", CanariDateObserverField.self, #file, #line)
+    checkOutletConnection (self.selectionHilitePopupButton, "selectionHilitePopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.systemLibraryCheckTimeIntervalPopupButton, "systemLibraryCheckTimeIntervalPopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.systemLibraryCheckTimeIntervalTitleTextField, "systemLibraryCheckTimeIntervalTitleTextField", NSTextField.self, #file, #line)
   //--------------------------- Install bindings
     mErrorMessageColorColorWell?.bind_color (self.errorMessageColor_property, file: #file, line: #line, sendContinously:false)
     mWarningMessageColorColorWell?.bind_color (self.warningMessageColor_property, file: #file, line: #line, sendContinously:false)

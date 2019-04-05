@@ -15,7 +15,7 @@ extension ApplicationDelegate {
   //····················································································································
 
   @IBAction func actionOpenAllDocumentsInDirectory (_ inSender : AnyObject) {
-    let fileExtensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariProject"])
+    let fileExtensions = Set (["ElCanariSymbol", "ElCanariPackage", "ElCanariDevice", "ElCanariFont", "ElCanariProject"])
     self.actionOpenAllDocumentsInDirectory (fileExtensions, "document", inSender)
   }
 
@@ -35,6 +35,12 @@ extension ApplicationDelegate {
 
   @IBAction func actionOpenAllDevicesInDirectory (_ inSender : Any?) {
     self.actionOpenAllDocumentsInDirectory (["ElCanariDevice"], "device", inSender)
+  }
+
+  //····················································································································
+
+  @IBAction func actionOpenAllFontInDirectory (_ inSender : Any?) {
+    self.actionOpenAllDocumentsInDirectory (["ElCanariFont"], "font", inSender)
   }
 
   //····················································································································
@@ -67,7 +73,7 @@ extension ApplicationDelegate {
             _ = alert.beginSheetModal (for: window)
           }else{
             let alert = NSAlert ()
-            alert.messageText = "Open \(fileCount) \(inTitle)\((fileCount > 1) ? "s" : "")?"
+            alert.messageText = "Open \(fileCount) \(inTitle)\((fileCount > 1) ? "s" : "")? This may take a while, and you cannot cancel this operation."
             alert.accessoryView = self.mOpenAllDialogAccessoryCheckBox
             alert.informativeText = "Animating is slower, but you have a visual effect during documents opening."
             alert.addButton (withTitle: "Ok")

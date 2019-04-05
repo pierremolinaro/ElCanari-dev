@@ -129,7 +129,7 @@ EBSimpleController, NSTableViewDataSource, NSTableViewDelegate {
         result.identifier = nil // So result cannot be reused, will be freed
       }
       if let textField = result.textField {
-        let object = v.code.objectAtIndex (inRowIndex, file:#file, line:#line)
+        let object = v.code [inRowIndex]
         if columnIdentifier == "code" {
           textField.stringValue = object.codeString ()
         }else if columnIdentifier == "comment" {

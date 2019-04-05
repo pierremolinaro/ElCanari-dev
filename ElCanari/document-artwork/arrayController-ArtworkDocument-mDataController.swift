@@ -334,7 +334,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
       let tableView = notification.object as! EBTableView
       var newSelectedObjectSet = Set <ArtworkFileGenerationParameters> ()
       for index in tableView.selectedRowIndexes {
-        newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
+        newSelectedObjectSet.insert (v [index])
       }
       self.mSelectedSet.mSet = newSelectedObjectSet
     }
@@ -375,7 +375,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
         if !reuseTableViewCells () {
           result.identifier = nil // So result cannot be reused, will be freed
         }
-        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        let object = v [inRowIndex]
         if tableColumnIdentifier.rawValue == "name", let cell = result as? EBTextField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()

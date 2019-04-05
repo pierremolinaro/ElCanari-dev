@@ -255,302 +255,49 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
-    if let outlet : NSObject = self.advancementSlider {
-      if !(outlet is EBSlider) {
-        presentErrorWindow (#file, #line, "the 'advancementSlider' outlet is not an instance of 'EBSlider'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'advancementSlider' outlet is nil")
-    }
-    if let outlet : NSObject = self.advancementTextField {
-      if !(outlet is EBIntField) {
-        presentErrorWindow (#file, #line, "the 'advancementTextField' outlet is not an instance of 'EBIntField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'advancementTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.commentTextView {
-      if !(outlet is EBTextView) {
-        presentErrorWindow (#file, #line, "the 'commentTextView' outlet is not an instance of 'EBTextView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'commentTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.currentCharacterStepper {
-      if !(outlet is EBStepper) {
-        presentErrorWindow (#file, #line, "the 'currentCharacterStepper' outlet is not an instance of 'EBStepper'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'currentCharacterStepper' outlet is nil")
-    }
-    if let outlet : NSObject = self.currentCharacterView {
-      if !(outlet is CanariCharacterView) {
-        presentErrorWindow (#file, #line, "the 'currentCharacterView' outlet is not an instance of 'CanariCharacterView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'currentCharacterView' outlet is nil")
-    }
-    if let outlet : NSObject = self.gerberCodeInstructionCountMessageTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'gerberCodeInstructionCountMessageTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'gerberCodeInstructionCountMessageTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddCharacterButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mAddCharacterButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddCharacterButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddSegmentButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mAddSegmentButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddSegmentButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCharacterIssuesInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mCharacterIssuesInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCharacterIssuesInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCurrentCharacterTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mCurrentCharacterTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCurrentCharacterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDeleteCurrentCharacterButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mDeleteCurrentCharacterButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDeleteCurrentCharacterButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mFontCharacterSelectButton {
-      if !(outlet is FontCharacterSelectButton) {
-        presentErrorWindow (#file, #line, "the 'mFontCharacterSelectButton' outlet is not an instance of 'FontCharacterSelectButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mFontCharacterSelectButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mFontNominalSizeTextField {
-      if !(outlet is EBIntField) {
-        presentErrorWindow (#file, #line, "the 'mFontNominalSizeTextField' outlet is not an instance of 'EBIntField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mFontNominalSizeTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mFontPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mFontPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mFontPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mFontSampleStringView {
-      if !(outlet is CanariFontSampleStringView) {
-        presentErrorWindow (#file, #line, "the 'mFontSampleStringView' outlet is not an instance of 'CanariFontSampleStringView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mFontSampleStringView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGerberCodeTableView {
-      if !(outlet is CanariCharacterGerberCodeTableView) {
-        presentErrorWindow (#file, #line, "the 'mGerberCodeTableView' outlet is not an instance of 'CanariCharacterGerberCodeTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGerberCodeTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInfosPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInspectorSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (#file, #line, "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInspectorSegmentedControl' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueTableView {
-      if !(outlet is CanariIssueTableView) {
-        presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mMasterFontPageView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mMasterFontPageView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMasterFontPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mMasterView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mMasterView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMasterView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mNewCharacterPanel {
-      if !(outlet is NSPanel) {
-        presentErrorWindow (#file, #line, "the 'mNewCharacterPanel' outlet is not an instance of 'NSPanel'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mNewCharacterPanel' outlet is nil")
-    }
-    if let outlet : NSObject = self.mNewCharacterView {
-      if !(outlet is NewCharacterView) {
-        presentErrorWindow (#file, #line, "the 'mNewCharacterView' outlet is not an instance of 'NewCharacterView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mNewCharacterView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPageSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringAscentTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringAscentTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringAscentTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringDescentTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringDescentTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringDescentTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringSizeField {
-      if !(outlet is EBDoubleField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringSizeField' outlet is not an instance of 'EBDoubleField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringSizeField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSampleStringWidthTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mSampleStringWidthTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSampleStringWidthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSelectedCharacterInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSelectedCharacterInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSelectedCharacterInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowGerberDrawingFlowCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowGerberDrawingFlowCheckbox' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowGerberDrawingFlowCheckbox' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowGerberDrawingIndexesCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowGerberDrawingIndexesCheckbox' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowGerberDrawingIndexesCheckbox' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSignatureTextField {
-      if !(outlet is CanariSignatureField) {
-        presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mStatusImageViewInToolbar {
-      if !(outlet is EBImageObserverView) {
-        presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is nil")
-    }
-    if let outlet : NSObject = self.mVersionField {
-      if !(outlet is CanariVersionField) {
-        presentErrorWindow (#file, #line, "the 'mVersionField' outlet is not an instance of 'CanariVersionField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mVersionField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mWarnsWhenAdvanceIsZeroCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mWarnsWhenAdvanceIsZeroCheckbox' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mWarnsWhenAdvanceIsZeroCheckbox' outlet is nil")
-    }
-    if let outlet : NSObject = self.mWarnsWhenNoSegmentCheckbox {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mWarnsWhenNoSegmentCheckbox' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mWarnsWhenNoSegmentCheckbox' outlet is nil")
-    }
-    if let outlet : NSObject = self.resetVersionAndSignatureButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'resetVersionAndSignatureButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'resetVersionAndSignatureButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.transparencySlider {
-      if !(outlet is EBSlider) {
-        presentErrorWindow (#file, #line, "the 'transparencySlider' outlet is not an instance of 'EBSlider'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'transparencySlider' outlet is nil")
-    }
-    if let outlet : NSObject = self.transparencyTextField {
-      if !(outlet is EBDoubleField) {
-        presentErrorWindow (#file, #line, "the 'transparencyTextField' outlet is not an instance of 'EBDoubleField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'transparencyTextField' outlet is nil")
-    }
- 
-  }
+    checkOutletConnection (self.advancementSlider, "advancementSlider", EBSlider.self, #file, #line)
+    checkOutletConnection (self.advancementTextField, "advancementTextField", EBIntField.self, #file, #line)
+    checkOutletConnection (self.commentTextView, "commentTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.currentCharacterStepper, "currentCharacterStepper", EBStepper.self, #file, #line)
+    checkOutletConnection (self.currentCharacterView, "currentCharacterView", CanariCharacterView.self, #file, #line)
+    checkOutletConnection (self.gerberCodeInstructionCountMessageTextField, "gerberCodeInstructionCountMessageTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mAddCharacterButton, "mAddCharacterButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mCharacterIssuesInspectorView, "mCharacterIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mCurrentCharacterTextField, "mCurrentCharacterTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mDeleteCurrentCharacterButton, "mDeleteCurrentCharacterButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mFontCharacterSelectButton, "mFontCharacterSelectButton", FontCharacterSelectButton.self, #file, #line)
+    checkOutletConnection (self.mFontNominalSizeTextField, "mFontNominalSizeTextField", EBIntField.self, #file, #line)
+    checkOutletConnection (self.mFontPageView, "mFontPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mFontSampleStringView, "mFontSampleStringView", CanariFontSampleStringView.self, #file, #line)
+    checkOutletConnection (self.mGerberCodeTableView, "mGerberCodeTableView", CanariCharacterGerberCodeTableView.self, #file, #line)
+    checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mMasterFontPageView, "mMasterFontPageView", NSView.self, #file, #line)
+    checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mNewCharacterPanel, "mNewCharacterPanel", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mNewCharacterView, "mNewCharacterView", NewCharacterView.self, #file, #line)
+    checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mSampleStringAscentTextField, "mSampleStringAscentTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringDescentTextField, "mSampleStringDescentTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringField, "mSampleStringField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringInspectorView, "mSampleStringInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSampleStringSizeField, "mSampleStringSizeField", EBDoubleField.self, #file, #line)
+    checkOutletConnection (self.mSampleStringWidthTextField, "mSampleStringWidthTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mSelectedCharacterInspectorView, "mSelectedCharacterInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mShowGerberDrawingFlowCheckbox, "mShowGerberDrawingFlowCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mShowGerberDrawingIndexesCheckbox, "mShowGerberDrawingIndexesCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSignatureTextField, "mSignatureTextField", CanariSignatureField.self, #file, #line)
+    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
+    checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
+    checkOutletConnection (self.mWarnsWhenAdvanceIsZeroCheckbox, "mWarnsWhenAdvanceIsZeroCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mWarnsWhenNoSegmentCheckbox, "mWarnsWhenNoSegmentCheckbox", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.resetVersionAndSignatureButton, "resetVersionAndSignatureButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.transparencySlider, "transparencySlider", EBSlider.self, #file, #line)
+    checkOutletConnection (self.transparencyTextField, "transparencyTextField", EBDoubleField.self, #file, #line)
+   }
   
   //····················································································································
   //    windowControllerDidLoadNib

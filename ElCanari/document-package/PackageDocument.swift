@@ -449,1345 +449,198 @@ import Cocoa
   //····················································································································
 
   private func checkOutletConnections () {
-    if let outlet : NSObject = self.mAddArcButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddArcButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddArcButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddBezierButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddBezierButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddBezierButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddDimensionButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddDimensionButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddDimensionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddGuideButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddGuideButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddGuideButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddOvalButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddOvalButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddOvalButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddPadButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddPadButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddPadButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddSegmentButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddSegmentButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddSegmentButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddSlavePadButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddSlavePadButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddSlavePadButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAddZoneButton {
-      if !(outlet is CanariDragSourceButton) {
-        presentErrorWindow (#file, #line, "the 'mAddZoneButton' outlet is not an instance of 'CanariDragSourceButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAddZoneButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcAngle {
-      if !(outlet is CanariPackageArcAngleTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcAngle' outlet is not an instance of 'CanariPackageArcAngleTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcAngle' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcEndTangentTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcEndTangentTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcEndTangentTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcEndTangentUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mArcEndTangentUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcEndTangentUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mArcInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcPathIsClosedSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mArcPathIsClosedSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcPathIsClosedSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcRadiusTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcRadiusTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcRadiusTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcRadiusUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mArcRadiusUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcRadiusUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcStartAngleSlider {
-      if !(outlet is CanariPackageArcAngleSlider) {
-        presentErrorWindow (#file, #line, "the 'mArcStartAngleSlider' outlet is not an instance of 'CanariPackageArcAngleSlider'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcStartAngleSlider' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcStartAngleTextField {
-      if !(outlet is CanariPackageArcAngleTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcStartAngleTextField' outlet is not an instance of 'CanariPackageArcAngleTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcStartAngleTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcStartTangentTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcStartTangentTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcStartTangentTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcStartTangentUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mArcStartTangentUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcStartTangentUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcXCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcXCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcXCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcXCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mArcXCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcXCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcYCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mArcYCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcYCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mArcYCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mArcYCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mArcYCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mAutoNumberingInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mAutoNumberingInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mAutoNumberingInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBaseInspectorView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mBaseInspectorView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBaseInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPX1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPX1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPX1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPX1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPX1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPX2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPX2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPX2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPX2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPX2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPY1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPY1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPY1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPY1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPY1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPY2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPY2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPY2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveCPY2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveCPY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveCPY2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveX1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveX1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveX1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveX1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveX1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveX2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveX2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveX2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveX2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveX2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveY1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveY1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveY1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveY1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveY1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveY2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveY2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveY2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierCurveY2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mBezierCurveY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierCurveY2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBezierInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mBezierInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBezierInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mBottomSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mBottomSidePadColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mBottomSidePadColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mClearProgramErrorButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mClearProgramErrorButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mClearProgramErrorButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCommentTextView {
-      if !(outlet is EBTextView) {
-        presentErrorWindow (#file, #line, "the 'mCommentTextView' outlet is not an instance of 'EBTextView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCommentTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mComposedPackageScrollView {
-      if !(outlet is EBScrollView) {
-        presentErrorWindow (#file, #line, "the 'mComposedPackageScrollView' outlet is not an instance of 'EBScrollView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mComposedPackageScrollView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mComposedPackageView {
-      if !(outlet is EBView) {
-        presentErrorWindow (#file, #line, "the 'mComposedPackageView' outlet is not an instance of 'EBView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mComposedPackageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mCrossColorOfPackageGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mCrossColorOfPackageGridColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mCrossColorOfPackageGridColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDeselectIssueButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mDeselectIssueButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDeselectIssueButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionDistanceTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionDistanceTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionDistanceTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionDistanceUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionDistanceUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionDistanceUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mDimensionInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionX1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionX1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionX1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionX1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionX1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionX2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionX2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionX2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionX2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionX2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionXLabelTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionXLabelTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionXLabelTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionXLabelUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionXLabelUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionXLabelUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionY1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionY1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionY1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionY1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionY1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionY2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionY2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionY2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionY2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionY2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionYLabelTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mDimensionYLabelTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionYLabelTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDimensionYLabelUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mDimensionYLabelUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDimensionYLabelUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDisplayBottomSidePadSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mDisplayBottomSidePadSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDisplayBottomSidePadSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDisplayInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mDisplayInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDisplayInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mDisplayTopSidePadSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mDisplayTopSidePadSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mDisplayTopSidePadSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGridDisplayPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGridDisplayPopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGridDisplayPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGridStyle {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGridStyle' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGridStyle' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGridTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mGridTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGridTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGridUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGridUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGridUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGridZoomInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mGridZoomInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGridZoomInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mGuideInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideX1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mGuideX1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideX1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideX1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGuideX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideX1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideX2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mGuideX2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideX2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideX2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGuideX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideX2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideY1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mGuideY1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideY1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideY1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGuideY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideY1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideY2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mGuideY2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideY2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mGuideY2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mGuideY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mGuideY2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mHorizontalFlip {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mHorizontalFlip' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mHorizontalFlip' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInfosPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInfosPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mInspectorSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (#file, #line, "the 'mInspectorSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mInspectorSegmentedControl' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mIssueInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueScrollView {
-      if !(outlet is NSScrollView) {
-        presentErrorWindow (#file, #line, "the 'mIssueScrollView' outlet is not an instance of 'NSScrollView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueScrollView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueTableView {
-      if !(outlet is CanariIssueTableView) {
-        presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is not an instance of 'CanariIssueTableView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueTableView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssueTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssueTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mIssuesInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mIssuesInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mIssuesInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mLineColorOfPackageGridColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mLineColorOfPackageGridColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLineColorOfPackageGridColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mLoadFromDesignButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mLoadFromDesignButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mLoadFromDesignButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mMasterView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mMasterView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mMasterView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalHeightTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mOvalHeightTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalHeightTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mOvalHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalHeightUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mOvalInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalWidthTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mOvalWidthTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalWidthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mOvalWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalWidthUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalXTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mOvalXTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalXTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalXUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mOvalXUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalXUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalYTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mOvalYTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalYTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mOvalYUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mOvalYUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mOvalYUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageBackgroundColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageBackgroundColorColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageBackgroundColorColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageColorColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPackageColorColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageColorColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageDrawingWidthMultipliedByTenPopupButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenPopupButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageDrawingWidthMultipliedByTenPopupButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackagePadShapePopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackagePadShapePopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackagePadShapePopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackagePadStylePopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackagePadStylePopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackagePadStylePopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackagePageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mPackagePageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackagePageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageSlavePadShapePopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageSlavePadShapePopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageSlavePadShapePopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPackageSlavePadStylePopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPackageSlavePadStylePopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPackageSlavePadStylePopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadAnnularRingTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadAnnularRingTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadAnnularRingTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadAnnularRingUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadAnnularRingUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadAnnularRingUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadHeightTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadHeightTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadHeightTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadHeightUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadHoleDiameterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadHoleDiameterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadHoleDiameterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadHoleDiameterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadHoleDiameterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadHoleDiameterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mPadInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadNumberColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadNumberFontButton {
-      if !(outlet is EBFontButton) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberFontButton' outlet is not an instance of 'EBFontButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberFontButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadNumberTextField {
-      if !(outlet is EBIntObserverField) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberTextField' outlet is not an instance of 'EBIntObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadNumberingPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadNumberingPopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadNumberingPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadRenumberingPullDownButton {
-      if !(outlet is CanariPadRenumberingPullDownButton) {
-        presentErrorWindow (#file, #line, "the 'mPadRenumberingPullDownButton' outlet is not an instance of 'CanariPadRenumberingPullDownButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadRenumberingPullDownButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadSlaveCountTextField {
-      if !(outlet is EBIntObserverField) {
-        presentErrorWindow (#file, #line, "the 'mPadSlaveCountTextField' outlet is not an instance of 'EBIntObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadSlaveCountTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadStyleView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mPadStyleView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadStyleView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadWidthTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadWidthTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadWidthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadWidthUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadXCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadXCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadXCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadXCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadXCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadXCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadYCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mPadYCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadYCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadYCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mPadYCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadYCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPadZoneNameTextField {
-      if !(outlet is EBTextObserverField) {
-        presentErrorWindow (#file, #line, "the 'mPadZoneNameTextField' outlet is not an instance of 'EBTextObserverField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPadZoneNameTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mPageSegmentedControl {
-      if !(outlet is CanariSegmentedControl) {
-        presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is not an instance of 'CanariSegmentedControl'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mPageSegmentedControl' outlet is nil")
-    }
-    if let outlet : NSObject = self.mProgramErrorTextField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mProgramErrorTextField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgramErrorTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mProgramHelpButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mProgramHelpButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgramHelpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mProgramHelpSheet {
-      if !(outlet is NSPanel) {
-        presentErrorWindow (#file, #line, "the 'mProgramHelpSheet' outlet is not an instance of 'NSPanel'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgramHelpSheet' outlet is nil")
-    }
-    if let outlet : NSObject = self.mProgramPageView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mProgramPageView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgramPageView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mProgramTextView {
-      if !(outlet is EBTextView) {
-        presentErrorWindow (#file, #line, "the 'mProgramTextView' outlet is not an instance of 'EBTextView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mProgramTextView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mResetVersionButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mResetVersionButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mResetVersionButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mRunProgramButton {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mRunProgramButton' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mRunProgramButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSegmentInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentLengthTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (#file, #line, "the 'mSegmentLengthTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentLengthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentLengthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSegmentLengthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentLengthUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentX1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSegmentX1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentX1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentX1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSegmentX1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentX1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentX2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSegmentX2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentX2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentX2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSegmentX2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentX2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentY1TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSegmentY1TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentY1TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentY1UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSegmentY1UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentY1UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentY2TextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSegmentY2TextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentY2TextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSegmentY2UnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSegmentY2UnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSegmentY2UnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSelectedObjectsInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSelectedObjectsInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSelectedObjectsInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSetDimensionTextOriginAtMidX {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mSetDimensionTextOriginAtMidX' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSetDimensionTextOriginAtMidX' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSetDimensionTextOriginAtMidY {
-      if !(outlet is EBButton) {
-        presentErrorWindow (#file, #line, "the 'mSetDimensionTextOriginAtMidY' outlet is not an instance of 'EBButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSetDimensionTextOriginAtMidY' outlet is nil")
-    }
-    if let outlet : NSObject = self.mShowPadNumberSwitch {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mShowPadNumberSwitch' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mShowPadNumberSwitch' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSignatureTextField {
-      if !(outlet is CanariSignatureField) {
-        presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is not an instance of 'CanariSignatureField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSignatureTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadAnnularRingTextField {
-      if !(outlet is CanariDimensionObserverTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadAnnularRingTextField' outlet is not an instance of 'CanariDimensionObserverTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadAnnularRingTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadAnnularRingUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadAnnularRingUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadAnnularRingUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadAssignmentPopUpButton {
-      if !(outlet is CanariSlavePadAssignmentPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadAssignmentPopUpButton' outlet is not an instance of 'CanariSlavePadAssignmentPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadAssignmentPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadHeightTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadHeightTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadHeightTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadHeightUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadHoleDiameterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadHoleDiameterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadHoleDiameterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadHoleDiameterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadHoleDiameterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadHoleDiameterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadStyleView {
-      if !(outlet is NSView) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadStyleView' outlet is not an instance of 'NSView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadStyleView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadWidthTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadWidthTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadWidthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadWidthUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadXCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadXCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadXCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadXCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadXCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadXCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadYCenterTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadYCenterTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadYCenterTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mSlavePadYCenterUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mSlavePadYCenterUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mSlavePadYCenterUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mStatusImageViewInToolbar {
-      if !(outlet is EBImageObserverView) {
-        presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is not an instance of 'EBImageObserverView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mStatusImageViewInToolbar' outlet is nil")
-    }
-    if let outlet : NSObject = self.mTopSidePadColorWell {
-      if !(outlet is EBColorWell) {
-        presentErrorWindow (#file, #line, "the 'mTopSidePadColorWell' outlet is not an instance of 'EBColorWell'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mTopSidePadColorWell' outlet is nil")
-    }
-    if let outlet : NSObject = self.mVersionField {
-      if !(outlet is CanariVersionField) {
-        presentErrorWindow (#file, #line, "the 'mVersionField' outlet is not an instance of 'CanariVersionField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mVersionField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mVerticalFlip {
-      if !(outlet is EBSwitch) {
-        presentErrorWindow (#file, #line, "the 'mVerticalFlip' outlet is not an instance of 'EBSwitch'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mVerticalFlip' outlet is nil")
-    }
-    if let outlet : NSObject = self.mXPlacardUnitPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mXPlacardUnitPopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mXPlacardUnitPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mYPlacardUnitPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mYPlacardUnitPopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mYPlacardUnitPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneHeightTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneHeightTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneHeightTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneHeightUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneHeightUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneHeightUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneInspectorView {
-      if !(outlet is CanariViewWithKeyView) {
-        presentErrorWindow (#file, #line, "the 'mZoneInspectorView' outlet is not an instance of 'CanariViewWithKeyView'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneInspectorView' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneNameTextField {
-      if !(outlet is EBTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneNameTextField' outlet is not an instance of 'EBTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneNameTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneNumberingPopUpButton {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneNumberingPopUpButton' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneNumberingPopUpButton' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneWidthTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneWidthTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneWidthTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneWidthUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneWidthUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneWidthUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneXLabelTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneXLabelTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneXLabelTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneXLabelUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneXLabelUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneXLabelUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneXTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneXTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneXTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneXUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneXUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneXUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneYLabelTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneYLabelTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneYLabelTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneYLabelUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneYLabelUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneYLabelUnitPopUp' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneYTextField {
-      if !(outlet is CanariDimensionTextField) {
-        presentErrorWindow (#file, #line, "the 'mZoneYTextField' outlet is not an instance of 'CanariDimensionTextField'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneYTextField' outlet is nil")
-    }
-    if let outlet : NSObject = self.mZoneYUnitPopUp {
-      if !(outlet is EBPopUpButton) {
-        presentErrorWindow (#file, #line, "the 'mZoneYUnitPopUp' outlet is not an instance of 'EBPopUpButton'")
-      }
-    }else{
-      presentErrorWindow (#file, #line, "the 'mZoneYUnitPopUp' outlet is nil")
-    }
- 
-  }
+    checkOutletConnection (self.mAddArcButton, "mAddArcButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddBezierButton, "mAddBezierButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddDimensionButton, "mAddDimensionButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddGuideButton, "mAddGuideButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddOvalButton, "mAddOvalButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddPadButton, "mAddPadButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddSegmentButton, "mAddSegmentButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddSlavePadButton, "mAddSlavePadButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mAddZoneButton, "mAddZoneButton", CanariDragSourceButton.self, #file, #line)
+    checkOutletConnection (self.mArcAngle, "mArcAngle", CanariPackageArcAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mArcEndTangentTextField, "mArcEndTangentTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mArcEndTangentUnitPopUp, "mArcEndTangentUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mArcInspectorView, "mArcInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mArcPathIsClosedSwitch, "mArcPathIsClosedSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mArcRadiusTextField, "mArcRadiusTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mArcRadiusUnitPopUp, "mArcRadiusUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mArcStartAngleSlider, "mArcStartAngleSlider", CanariPackageArcAngleSlider.self, #file, #line)
+    checkOutletConnection (self.mArcStartAngleTextField, "mArcStartAngleTextField", CanariPackageArcAngleTextField.self, #file, #line)
+    checkOutletConnection (self.mArcStartTangentTextField, "mArcStartTangentTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mArcStartTangentUnitPopUp, "mArcStartTangentUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mArcXCenterTextField, "mArcXCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mArcXCenterUnitPopUp, "mArcXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mArcYCenterTextField, "mArcYCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mArcYCenterUnitPopUp, "mArcYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mAutoNumberingInspectorView, "mAutoNumberingInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBaseInspectorView, "mBaseInspectorView", NSView.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPX1TextField, "mBezierCurveCPX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPX1UnitPopUp, "mBezierCurveCPX1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPX2TextField, "mBezierCurveCPX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPX2UnitPopUp, "mBezierCurveCPX2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPY1TextField, "mBezierCurveCPY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPY1UnitPopUp, "mBezierCurveCPY1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPY2TextField, "mBezierCurveCPY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveCPY2UnitPopUp, "mBezierCurveCPY2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveX1TextField, "mBezierCurveX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveX1UnitPopUp, "mBezierCurveX1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveX2TextField, "mBezierCurveX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveX2UnitPopUp, "mBezierCurveX2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveY1TextField, "mBezierCurveY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveY1UnitPopUp, "mBezierCurveY1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveY2TextField, "mBezierCurveY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mBezierCurveY2UnitPopUp, "mBezierCurveY2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mBezierInspectorView, "mBezierInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mBottomSidePadColorWell, "mBottomSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mClearProgramErrorButton, "mClearProgramErrorButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mCommentTextView, "mCommentTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageScrollView, "mComposedPackageScrollView", EBScrollView.self, #file, #line)
+    checkOutletConnection (self.mComposedPackageView, "mComposedPackageView", EBView.self, #file, #line)
+    checkOutletConnection (self.mCrossColorOfPackageGridColorWell, "mCrossColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mDeselectIssueButton, "mDeselectIssueButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionDistanceTextField, "mDimensionDistanceTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionDistanceUnitPopUp, "mDimensionDistanceUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionInspectorView, "mDimensionInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mDimensionX1TextField, "mDimensionX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionX1UnitPopUp, "mDimensionX1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionX2TextField, "mDimensionX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionX2UnitPopUp, "mDimensionX2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionXLabelTextField, "mDimensionXLabelTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionXLabelUnitPopUp, "mDimensionXLabelUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionY1TextField, "mDimensionY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionY1UnitPopUp, "mDimensionY1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionY2TextField, "mDimensionY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionY2UnitPopUp, "mDimensionY2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDimensionYLabelTextField, "mDimensionYLabelTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mDimensionYLabelUnitPopUp, "mDimensionYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mDisplayBottomSidePadSwitch, "mDisplayBottomSidePadSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mDisplayInspectorView, "mDisplayInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mDisplayTopSidePadSwitch, "mDisplayTopSidePadSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mGridDisplayPopUpButton, "mGridDisplayPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGridStyle, "mGridStyle", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGridTextField, "mGridTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mGridUnitPopUp, "mGridUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGridZoomInspectorView, "mGridZoomInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mGuideInspectorView, "mGuideInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mGuideX1TextField, "mGuideX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mGuideX1UnitPopUp, "mGuideX1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGuideX2TextField, "mGuideX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mGuideX2UnitPopUp, "mGuideX2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGuideY1TextField, "mGuideY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mGuideY1UnitPopUp, "mGuideY1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mGuideY2TextField, "mGuideY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mGuideY2UnitPopUp, "mGuideY2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mHorizontalFlip, "mHorizontalFlip", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mInfosPageView, "mInfosPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mInspectorSegmentedControl, "mInspectorSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mIssueInspectorView, "mIssueInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mIssueScrollView, "mIssueScrollView", NSScrollView.self, #file, #line)
+    checkOutletConnection (self.mIssueTableView, "mIssueTableView", CanariIssueTableView.self, #file, #line)
+    checkOutletConnection (self.mIssueTextField, "mIssueTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mIssuesInspectorView, "mIssuesInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mLineColorOfPackageGridColorWell, "mLineColorOfPackageGridColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mLoadFromDesignButton, "mLoadFromDesignButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
+    checkOutletConnection (self.mOvalHeightTextField, "mOvalHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mOvalHeightUnitPopUp, "mOvalHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mOvalInspectorView, "mOvalInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mOvalWidthTextField, "mOvalWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mOvalWidthUnitPopUp, "mOvalWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mOvalXTextField, "mOvalXTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mOvalXUnitPopUp, "mOvalXUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mOvalYTextField, "mOvalYTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mOvalYUnitPopUp, "mOvalYUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackageBackgroundColorColorWell, "mPackageBackgroundColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageColorColorWell, "mPackageColorColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPackageDrawingWidthMultipliedByTenPopupButton, "mPackageDrawingWidthMultipliedByTenPopupButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackagePadShapePopUpButton, "mPackagePadShapePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackagePadStylePopUpButton, "mPackagePadStylePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackagePageView, "mPackagePageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mPackageSlavePadShapePopUpButton, "mPackageSlavePadShapePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPackageSlavePadStylePopUpButton, "mPackageSlavePadStylePopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadAnnularRingTextField, "mPadAnnularRingTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mPadAnnularRingUnitPopUp, "mPadAnnularRingUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadHeightTextField, "mPadHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadHeightUnitPopUp, "mPadHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadHoleDiameterTextField, "mPadHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadHoleDiameterUnitPopUp, "mPadHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadInspectorView, "mPadInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mPadNumberColorWell, "mPadNumberColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mPadNumberFontButton, "mPadNumberFontButton", EBFontButton.self, #file, #line)
+    checkOutletConnection (self.mPadNumberTextField, "mPadNumberTextField", EBIntObserverField.self, #file, #line)
+    checkOutletConnection (self.mPadNumberingPopUpButton, "mPadNumberingPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadRenumberingPullDownButton, "mPadRenumberingPullDownButton", CanariPadRenumberingPullDownButton.self, #file, #line)
+    checkOutletConnection (self.mPadSlaveCountTextField, "mPadSlaveCountTextField", EBIntObserverField.self, #file, #line)
+    checkOutletConnection (self.mPadStyleView, "mPadStyleView", NSView.self, #file, #line)
+    checkOutletConnection (self.mPadWidthTextField, "mPadWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadWidthUnitPopUp, "mPadWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadXCenterTextField, "mPadXCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadXCenterUnitPopUp, "mPadXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadYCenterTextField, "mPadYCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mPadYCenterUnitPopUp, "mPadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mPadZoneNameTextField, "mPadZoneNameTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
+    checkOutletConnection (self.mProgramErrorTextField, "mProgramErrorTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mProgramHelpButton, "mProgramHelpButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mProgramHelpSheet, "mProgramHelpSheet", NSPanel.self, #file, #line)
+    checkOutletConnection (self.mProgramPageView, "mProgramPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mProgramTextView, "mProgramTextView", EBTextView.self, #file, #line)
+    checkOutletConnection (self.mResetVersionButton, "mResetVersionButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRunProgramButton, "mRunProgramButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSegmentInspectorView, "mSegmentInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSegmentLengthTextField, "mSegmentLengthTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mSegmentLengthUnitPopUp, "mSegmentLengthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSegmentX1TextField, "mSegmentX1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSegmentX1UnitPopUp, "mSegmentX1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSegmentX2TextField, "mSegmentX2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSegmentX2UnitPopUp, "mSegmentX2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSegmentY1TextField, "mSegmentY1TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSegmentY1UnitPopUp, "mSegmentY1UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSegmentY2TextField, "mSegmentY2TextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSegmentY2UnitPopUp, "mSegmentY2UnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSelectedObjectsInspectorView, "mSelectedObjectsInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSetDimensionTextOriginAtMidX, "mSetDimensionTextOriginAtMidX", EBButton.self, #file, #line)
+    checkOutletConnection (self.mSetDimensionTextOriginAtMidY, "mSetDimensionTextOriginAtMidY", EBButton.self, #file, #line)
+    checkOutletConnection (self.mShowPadNumberSwitch, "mShowPadNumberSwitch", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mSignatureTextField, "mSignatureTextField", CanariSignatureField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadAnnularRingTextField, "mSlavePadAnnularRingTextField", CanariDimensionObserverTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadAnnularRingUnitPopUp, "mSlavePadAnnularRingUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadAssignmentPopUpButton, "mSlavePadAssignmentPopUpButton", CanariSlavePadAssignmentPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHeightTextField, "mSlavePadHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHeightUnitPopUp, "mSlavePadHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleDiameterTextField, "mSlavePadHoleDiameterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadHoleDiameterUnitPopUp, "mSlavePadHoleDiameterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadInspectorView, "mSlavePadInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mSlavePadStyleView, "mSlavePadStyleView", NSView.self, #file, #line)
+    checkOutletConnection (self.mSlavePadWidthTextField, "mSlavePadWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadWidthUnitPopUp, "mSlavePadWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadXCenterTextField, "mSlavePadXCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadXCenterUnitPopUp, "mSlavePadXCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mSlavePadYCenterTextField, "mSlavePadYCenterTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mSlavePadYCenterUnitPopUp, "mSlavePadYCenterUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mStatusImageViewInToolbar, "mStatusImageViewInToolbar", EBImageObserverView.self, #file, #line)
+    checkOutletConnection (self.mTopSidePadColorWell, "mTopSidePadColorWell", EBColorWell.self, #file, #line)
+    checkOutletConnection (self.mVersionField, "mVersionField", CanariVersionField.self, #file, #line)
+    checkOutletConnection (self.mVerticalFlip, "mVerticalFlip", EBSwitch.self, #file, #line)
+    checkOutletConnection (self.mXPlacardUnitPopUpButton, "mXPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mYPlacardUnitPopUpButton, "mYPlacardUnitPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneHeightTextField, "mZoneHeightTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneHeightUnitPopUp, "mZoneHeightUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneInspectorView, "mZoneInspectorView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mZoneNameTextField, "mZoneNameTextField", EBTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneNumberingPopUpButton, "mZoneNumberingPopUpButton", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneWidthTextField, "mZoneWidthTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneWidthUnitPopUp, "mZoneWidthUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneXLabelTextField, "mZoneXLabelTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneXLabelUnitPopUp, "mZoneXLabelUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneXTextField, "mZoneXTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneXUnitPopUp, "mZoneXUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneYLabelTextField, "mZoneYLabelTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneYLabelUnitPopUp, "mZoneYLabelUnitPopUp", EBPopUpButton.self, #file, #line)
+    checkOutletConnection (self.mZoneYTextField, "mZoneYTextField", CanariDimensionTextField.self, #file, #line)
+    checkOutletConnection (self.mZoneYUnitPopUp, "mZoneYUnitPopUp", EBPopUpButton.self, #file, #line)
+   }
   
   //····················································································································
   //    windowControllerDidLoadNib

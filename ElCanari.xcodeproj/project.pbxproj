@@ -173,7 +173,6 @@
 		CF2A42C321BE981D0023992F /* editorInspector.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2A42C221BE981D0023992F /* editorInspector.png */; };
 		CF2A42C421BE981D0023992F /* editorInspector.png in Resources */ = {isa = PBXBuildFile; fileRef = CF2A42C221BE981D0023992F /* editorInspector.png */; };
 		CF2A474E1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A474D1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift */; };
-		CF2A48351DD8A9AB009EF897 /* EBDoubleObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */; };
 		CF2A491D1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A491B1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift */; };
 		CF2A491E1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathDescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A491C1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathDescent.swift */; };
 		CF2B9CE221C2A8D100EE5683 /* entity-PackageRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9CDF21C2A8D000EE5683 /* entity-PackageRoot.swift */; };
@@ -625,7 +624,6 @@
 		CF5C4D79219F04D600EAC52A /* selectionController-FontDocument-mCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC5A2143BA06006780C7 /* selectionController-FontDocument-mCharacterSelection.swift */; };
 		CF5C4D7A219F04D600EAC52A /* transient-MergerRoot-boardWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC4BE520EAB3E6006A9CC5 /* transient-MergerRoot-boardWidth.swift */; };
 		CF5C4D7B219F04D600EAC52A /* arrayController-FontDocument-mSelectedCharacterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDBFC592143BA06006780C7 /* arrayController-FontDocument-mSelectedCharacterController.swift */; };
-		CF5C4D7C219F04D600EAC52A /* EBDoubleObserverField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */; };
 		CF5C4D7D219F04D600EAC52A /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF861AA81B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift */; };
 		CF5C4D7E219F04D600EAC52A /* entity-SegmentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5B06F8213EC3C9005D6B37 /* entity-SegmentEntity.swift */; };
 		CF5C4D7F219F04D600EAC52A /* ApplicationDelegate-CanariWebSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE1F0021BDBC14600DC51E1 /* ApplicationDelegate-CanariWebSite.swift */; };
@@ -1459,7 +1457,6 @@
 		CF2A01F921DE827D00F3A379 /* action-PackageDocument-setDimensionTextOriginAtMidYAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-PackageDocument-setDimensionTextOriginAtMidYAction.swift"; sourceTree = "<group>"; };
 		CF2A42C221BE981D0023992F /* editorInspector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editorInspector.png; sourceTree = "<group>"; };
 		CF2A474D1DD8A5FD009EF897 /* transient-FontRoot-sampleStringBezierPathWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-sampleStringBezierPathWidth.swift"; sourceTree = "<group>"; };
-		CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBDoubleObserverField.swift; sourceTree = "<group>"; };
 		CF2A491B1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathAscent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-sampleStringBezierPathAscent.swift"; sourceTree = "<group>"; };
 		CF2A491C1DD8AF88009EF897 /* transient-FontRoot-sampleStringBezierPathDescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-FontRoot-sampleStringBezierPathDescent.swift"; sourceTree = "<group>"; };
 		CF2B9CDF21C2A8D000EE5683 /* entity-PackageRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-PackageRoot.swift"; sourceTree = "<group>"; };
@@ -2423,7 +2420,6 @@
 				CF861AA41B3F06230006BE63 /* EBButton.swift */,
 				CF71F91D1B3EA3DF00FB5049 /* EBColorWell.swift */,
 				CF71F91E1B3EA3DF00FB5049 /* EBDoubleField.swift */,
-				CF2A48341DD8A9AB009EF897 /* EBDoubleObserverField.swift */,
 				CF71F91F1B3EA3DF00FB5049 /* EBFontButton.swift */,
 				CF5199971BF26C2600A63CF0 /* EBImageObserverView.swift */,
 				CF45B2721BFE8274004AFFC2 /* EBIntField.swift */,
@@ -3719,7 +3715,6 @@
 				CFDBFC5B2143BA06006780C7 /* arrayController-FontDocument-mSelectedCharacterController.swift in Sources */,
 				CF00845321C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CFEAAD4F2231788D00F69A12 /* extension-SymbolRoot.swift in Sources */,
-				CF2A48351DD8A9AB009EF897 /* EBDoubleObserverField.swift in Sources */,
 				CF76EF2D2205AC7F005ECF32 /* library-repository-get-current-commit.swift in Sources */,
 				CF861AA91B3F07BC0006BE63 /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,
 				CF5B06FA213EC3C9005D6B37 /* entity-SegmentEntity.swift in Sources */,
@@ -4301,7 +4296,6 @@
 				CF4D54C12254B93600DBCB62 /* model-events.swift in Sources */,
 				CF58DF9B21AD7CA30088517F /* selectionController-SymbolDocument-mSymbolPinSelectionController.swift in Sources */,
 				CF5C4D7B219F04D600EAC52A /* arrayController-FontDocument-mSelectedCharacterController.swift in Sources */,
-				CF5C4D7C219F04D600EAC52A /* EBDoubleObserverField.swift in Sources */,
 				CFEAAD502231788D00F69A12 /* extension-SymbolRoot.swift in Sources */,
 				CF00845421C42A91003627E9 /* transient-PackageOval-selectionDisplay.swift in Sources */,
 				CF5C4D7D219F04D600EAC52A /* action-Preferences-revealUserLibraryInFinderAction.swift in Sources */,

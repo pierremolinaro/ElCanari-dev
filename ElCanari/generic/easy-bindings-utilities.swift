@@ -232,17 +232,20 @@ func presentErrorWindow (_ file : String,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//   Array<T> extension
+//   checkOutletConnection
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension Array {
-  func objectAtIndex (_ index: Int, file: String, line: Int) -> Element {
-    if index < 0 {
-      NSLog ("Negative index %d in '%@' line %d", index, file, line)
-    }else if index >= count {
-      NSLog ("index %d >= count %d in '%@' line %d", index, count, file, line)
+func checkOutletConnection (_ inOutlet : NSObject?,
+                            _ inOutletName : String,
+                            _ inOutletType : NSObject.Type,
+                            _ inFile : String,
+                            _ inLine : Int) {
+  if let outlet : NSObject = inOutlet {
+    if !(outlet.isKind (of: inOutletType.self)) {
+      presentErrorWindow (inFile, inLine, "the '\(inOutletName)' outlet is not an instance of '\(inOutletType.self)'")
     }
-    return self [index]
+  }else{
+    presentErrorWindow (inFile, inLine, "the '\(inOutletName)' outlet is nil")
   }
 }
 

@@ -315,7 +315,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
       let tableView = notification.object as! EBTableView
       var newSelectedObjectSet = Set <PackageInDevice> ()
       for index in tableView.selectedRowIndexes {
-        newSelectedObjectSet.insert (v.objectAtIndex (index, file: #file, line: #line))
+        newSelectedObjectSet.insert (v [index])
       }
       self.mSelectedSet.mSet = newSelectedObjectSet
     }
@@ -356,7 +356,7 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
         if !reuseTableViewCells () {
           result.identifier = nil // So result cannot be reused, will be freed
         }
-        let object = v.objectAtIndex (inRowIndex, file: #file, line: #line)
+        let object = v [inRowIndex]
         if tableColumnIdentifier.rawValue == "package", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
