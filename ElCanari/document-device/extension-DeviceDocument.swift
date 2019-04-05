@@ -110,6 +110,7 @@ extension DeviceDocument {
               ioOkMessages.append ("Symbol \(symbolType.mTypeName) has been updated to version \(version).")
             }
           }
+  //        symbolRoot.removeRecursivelyAllRelationsShips ()
         }else{
           ioErrorMessages.append ("Invalid file at path \(pathes [0])")
         }

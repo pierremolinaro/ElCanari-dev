@@ -222,7 +222,7 @@ fileprivate let symbolPasteboardType = NSPasteboard.PasteboardType (rawValue: "n
   }
 
   //····················································································································
-  //   removeWindowController
+  //   removeUserInterface
   //····················································································································
 
   override func removeUserInterface () {
