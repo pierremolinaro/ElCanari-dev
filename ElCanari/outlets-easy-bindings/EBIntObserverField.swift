@@ -12,8 +12,8 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
@@ -22,14 +22,14 @@ import Cocoa
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.isEditable = false
     self.drawsBackground = false
     self.isBordered = false
     noteObjectAllocation (self)
   }
-  
+
   //····················································································································
 
   deinit {
@@ -40,11 +40,11 @@ import Cocoa
   //  $valueObserver binding
   //····················································································································
 
-  private var mValueController : Controller_EBIntObserverField_readOnlyValue?
+  fileprivate var mValueController : Controller_EBIntObserverField_readOnlyValue? = nil
 
   //····················································································································
 
-  func bind_valueObserver (_ object:EBReadOnlyProperty_Int, file:String, line:Int, autoFormatter:Bool) {
+  func bind_valueObserver (_ object : EBReadOnlyProperty_Int, file : String, line : Int, autoFormatter : Bool) {
     self.mValueController = Controller_EBIntObserverField_readOnlyValue (
       object: object,
       outlet: self,
@@ -72,7 +72,7 @@ import Cocoa
 
 final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
 
-  private let mObject :EBReadOnlyProperty_Int
+  private let mObject : EBReadOnlyProperty_Int
   private let mOutlet : EBIntObserverField
 
   //····················································································································
@@ -80,10 +80,9 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
   init (object : EBReadOnlyProperty_Int, outlet : EBIntObserverField, file : String, line : Int, autoFormatter : Bool) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object])
     if autoFormatter {
-      let formatter = NumberFormatter ()
-      self.mOutlet.formatter = formatter
+      self.mOutlet.formatter = NumberFormatter ()
     }else if self.mOutlet.formatter == nil {
       presentErrorWindow (file, line, "the outlet has no formatter")
     }else if !(self.mOutlet.formatter is NumberFormatter) {
@@ -94,7 +93,7 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
 
   //····················································································································
 
-  private func updateOutlet () {
+  fileprivate func updateOutlet () {
     switch self.mObject.prop {
     case .empty :
       self.mOutlet.enableFromValueBinding (false)
@@ -116,18 +115,21 @@ final class Controller_EBIntObserverField_readOnlyValue : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBIntObserverField_TableViewCell) class EBIntObserverField_TableViewCell : EBTableCellView {
+
+  //····················································································································
+
   @IBOutlet var mCellOutlet : EBIntObserverField? = nil
 
   //····················································································································
 
   func checkOutlet (_ columnName : String, file : String, line : Int) {
-    if let cellOutlet : NSObject = self.mCellOutlet {
-      if !(cellOutlet is EBIntObserverField) {
-        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBIntObserverField")
-      }
-    }else{
-      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBIntObserverField)")
-    }
+    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBIntObserverField.self, file, line)
+  }
+
+  //····················································································································
+
+  func update () {
+    self.mCellOutlet?.mValueController?.updateOutlet ()
   }
 
   //····················································································································

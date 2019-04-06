@@ -382,6 +382,7 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

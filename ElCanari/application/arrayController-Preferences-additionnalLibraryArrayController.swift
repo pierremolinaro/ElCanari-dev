@@ -375,18 +375,21 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mPath_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "uses", let cell = result as? EBSwitch_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_value ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.mUses_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "status", let cell = result as? EBImageObserverView_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_image ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_image (object.mStatusImage_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "reveal", let cell = result as? EBButton_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.target = nil

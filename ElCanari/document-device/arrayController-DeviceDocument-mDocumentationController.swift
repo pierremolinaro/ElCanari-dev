@@ -363,12 +363,14 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mFileName_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.fileSize_property, file: #file, line: #line, autoFormatter:true)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

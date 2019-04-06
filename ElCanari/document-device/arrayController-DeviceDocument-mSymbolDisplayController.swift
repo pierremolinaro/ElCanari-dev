@@ -206,9 +206,7 @@ final class ArrayController_DeviceDocument_mSymbolDisplayController : EBObject, 
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? {
-    return self.mModel?.ebUndoManager
-  }
+  var ebUndoManager : EBUndoManager? { return self.mModel?.ebUndoManager }
 
   //····················································································································
   //   SELECTION

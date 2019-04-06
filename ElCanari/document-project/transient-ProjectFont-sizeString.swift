@@ -15,7 +15,7 @@ func transient_ProjectFont_sizeString (
        _ self_mDescriptiveString : String
 ) -> String {
 //--- START OF USER ZONE 2
-        return (self_mDescriptiveString.count > 0) ? "\(self_mDescriptiveString.count) bytes" : "—"
+        return (self_mDescriptiveString.count > 0) ? "\(self_mDescriptiveString.count.stringWithSeparator) bytes" : "—"
 //--- END OF USER ZONE 2
 }
 

@@ -10,8 +10,8 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.delegate = self
     self.isEditable = false
     self.drawsBackground = false
@@ -21,8 +21,8 @@ import Cocoa
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     self.isEditable = false
     self.drawsBackground = false
@@ -40,12 +40,12 @@ import Cocoa
   //  valueObserver binding
   //····················································································································
 
-  private var mValueController : Controller_EBTextObserverField_value?
+  fileprivate var mValueController : Controller_EBTextObserverField_value? = nil
 
   //····················································································································
 
-  func bind_valueObserver (_ object:EBReadOnlyProperty_String, file:String, line:Int) {
-    self.mValueController = Controller_EBTextObserverField_value (object:object, outlet:self, file:file, line:line)
+  func bind_valueObserver (_ object : EBReadOnlyProperty_String, file : String, line : Int) {
+    self.mValueController = Controller_EBTextObserverField_value (object: object, outlet: self, file: file, line: line)
   }
 
   //····················································································································
@@ -70,10 +70,10 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
 
   //····················································································································
 
-  init (object:EBReadOnlyProperty_String, outlet : EBTextObserverField, file : String, line : Int) {
+  init (object : EBReadOnlyProperty_String, outlet : EBTextObserverField, file : String, line : Int) {
     mObject = object
     mOutlet = outlet
-    super.init (observedObjects:[object])
+    super.init (observedObjects: [object])
     if mOutlet.formatter != nil {
       presentErrorWindow (file, line, "the EBTextObserverField outlet has a formatter")
     }
@@ -82,7 +82,7 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
 
   //····················································································································
 
-  private func updateOutlet () {
+  fileprivate func updateOutlet () {
     switch mObject.prop {
     case .empty :
       mOutlet.enableFromValueBinding (false)
@@ -104,18 +104,21 @@ final class Controller_EBTextObserverField_value : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBTextObserverField_TableViewCell) class EBTextObserverField_TableViewCell : EBTableCellView {
-  @IBOutlet var mCellOutlet : EBTextObserverField?
+
+  //····················································································································
+
+  @IBOutlet var mCellOutlet : EBTextObserverField? = nil
 
   //····················································································································
 
   func checkOutlet (_ columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = mCellOutlet {
-      if !(cellOutlet is EBTextObserverField) {
-        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBTextObserverField")
-      }
-    }else{
-      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBTextObserverField)")
-    }
+    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBTextObserverField.self, file, line)
+  }
+
+  //····················································································································
+
+  func update () {
+    self.mCellOutlet?.mValueController?.updateOutlet ()
   }
 
   //····················································································································

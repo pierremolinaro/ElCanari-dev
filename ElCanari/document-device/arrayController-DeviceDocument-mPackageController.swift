@@ -363,12 +363,14 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mName_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

@@ -382,6 +382,7 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_value (object.name_property, file: #file, line: #line, sendContinously:false)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

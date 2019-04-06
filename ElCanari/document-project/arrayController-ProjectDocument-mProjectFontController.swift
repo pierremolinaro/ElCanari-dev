@@ -369,18 +369,21 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mFontName_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "size", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.sizeString_property, file: #file, line: #line)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

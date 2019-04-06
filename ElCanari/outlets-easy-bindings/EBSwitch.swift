@@ -11,7 +11,7 @@ import Cocoa
   //···················································································································· 
 
   required init? (coder : NSCoder) {
-    super.init (coder:coder)
+    super.init (coder: coder)
     noteObjectAllocation (self)
     self.setButtonType (.switch)
   }
@@ -19,7 +19,7 @@ import Cocoa
   //···················································································································· 
 
   override init (frame : NSRect) {
-    super.init (frame:frame)
+    super.init (frame: frame)
     noteObjectAllocation (self)
     self.setButtonType (.switch)
   }
@@ -41,12 +41,12 @@ import Cocoa
   //  value binding
   //···················································································································· 
 
-  private var mValueController : Controller_EBSwitch_value? = nil
+  fileprivate var mValueController : Controller_EBSwitch_value? = nil
 
   //···················································································································· 
 
   func bind_value (_ object : EBReadWriteProperty_Bool, file : String, line : Int) {
-    self.mValueController = Controller_EBSwitch_value (object:object, outlet: self, file: file, line: line)
+    self.mValueController = Controller_EBSwitch_value (object: object, outlet: self)
   }
 
   //···················································································································· 
@@ -70,7 +70,7 @@ final class Controller_EBSwitch_value : EBSimpleController {
 
   //···················································································································· 
 
-  init (object : EBReadWriteProperty_Bool, outlet : EBSwitch, file : String, line : Int) {
+  init (object : EBReadWriteProperty_Bool, outlet : EBSwitch) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects: [object])
@@ -79,7 +79,7 @@ final class Controller_EBSwitch_value : EBSimpleController {
 
   //····················································································································
 
-  private func updateOutlet () {
+  fileprivate func updateOutlet () {
     switch mObject.prop {
     case .empty :
       self.mOutlet.state = NSControl.StateValue.off
@@ -106,18 +106,21 @@ final class Controller_EBSwitch_value : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBSwitch_TableViewCell) class EBSwitch_TableViewCell : EBTableCellView {
+
+  //····················································································································
+
   @IBOutlet var mCellOutlet : EBSwitch? = nil
 
   //····················································································································
 
   func checkOutlet (columnName : String, file : String, line : Int) {
-    if let cellOutlet : NSObject = self.mCellOutlet {
-      if !(cellOutlet is EBSwitch) {
-        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBSwitch")
-      }
-    }else{
-      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBSwitch)")
-    }
+    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBSwitch.self, file, line)
+  }
+
+  //····················································································································
+
+  func update () {
+    self.mCellOutlet?.mValueController?.updateOutlet ()
   }
 
   //····················································································································

@@ -369,18 +369,21 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.mTypeName_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "version", let cell = result as? EBTextObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.versionString_property, file: #file, line: #line)
+          cell.update ()
         }else if tableColumnIdentifier.rawValue == "count", let cell = result as? EBIntObserverField_TableViewCell {
           cell.mUnbindFunction = { [weak cell] in
             cell?.mCellOutlet?.unbind_valueObserver ()
           }
           cell.mUnbindFunction? ()
           cell.mCellOutlet?.bind_valueObserver (object.instanceCount_property, file: #file, line: #line, autoFormatter:true)
+          cell.update ()
         }else{
           NSLog ("Unknown column '\(String (describing: inTableColumn?.identifier))'")
         }

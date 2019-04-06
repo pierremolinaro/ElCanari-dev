@@ -206,9 +206,7 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
   //    Undo manager
   //····················································································································
 
-  var ebUndoManager : EBUndoManager? {
-    return self.mModel?.ebUndoManager
-  }
+  var ebUndoManager : EBUndoManager? { return self.mModel?.ebUndoManager }
 
   //····················································································································
   //   SELECTION

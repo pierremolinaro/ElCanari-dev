@@ -12,16 +12,16 @@ import Cocoa
 
   //····················································································································
 
-  required init? (coder: NSCoder) {
-    super.init (coder:coder)
+  required init? (coder : NSCoder) {
+    super.init (coder: coder)
     self.delegate = self
     noteObjectAllocation (self)
   }
 
   //····················································································································
 
-  override init (frame:NSRect) {
-    super.init (frame:frame)
+  override init (frame : NSRect) {
+    super.init (frame: frame)
     self.delegate = self
     noteObjectAllocation (self)
   }
@@ -36,12 +36,12 @@ import Cocoa
   //  value binding
   //····················································································································
 
-  private var mValueController : Controller_EBTextField_value? = nil
+  fileprivate var mValueController : Controller_EBTextField_value? = nil
   private var mSendContinously : Bool = false
 
   //····················································································································
 
-  func bind_value (_ object:EBReadWriteProperty_String, file:String, line:Int, sendContinously:Bool) {
+  func bind_value (_ object : EBReadWriteProperty_String, file : String, line : Int, sendContinously : Bool) {
     self.mSendContinously = sendContinously
     self.mValueController = Controller_EBTextField_value (object:object, outlet:self, file:file, line:line, sendContinously:sendContinously)
   }
@@ -76,7 +76,7 @@ final class Controller_EBTextField_value : EBSimpleController {
 
   //····················································································································
 
-  init (object:EBReadWriteProperty_String, outlet : EBTextField, file : String, line : Int, sendContinously : Bool) {
+  init (object : EBReadWriteProperty_String, outlet : EBTextField, file : String, line : Int, sendContinously : Bool) {
     mObject = object
     mOutlet = outlet
     super.init (observedObjects:[object])
@@ -99,7 +99,7 @@ final class Controller_EBTextField_value : EBSimpleController {
 
   //····················································································································
 
-  private func updateOutlet () {
+  fileprivate func updateOutlet () {
     switch mObject.prop {
     case .empty :
       self.mOutlet.stringValue = "—"
@@ -125,18 +125,21 @@ final class Controller_EBTextField_value : EBSimpleController {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 @objc(EBTextField_TableViewCell) class EBTextField_TableViewCell : EBTableCellView {
+
+  //····················································································································
+
   @IBOutlet var mCellOutlet : EBTextField? = nil
 
   //····················································································································
 
   func checkOutlet (_ columnName : String, file:String, line:Int) {
-    if let cellOutlet : NSObject = self.mCellOutlet {
-      if !(cellOutlet is EBTextField) {
-        presentErrorWindow (file, line, "\"\(columnName)\" column view is not an instance of EBTextField")
-      }
-    }else{
-      presentErrorWindow (file, line, "\"\(columnName)\" column view mCellOutlet is nil (should be an instance of EBTextField)")
-    }
+    checkOutletConnection (self.mCellOutlet, "\"\(columnName)\" column view", EBTextField.self, file, line)
+  }
+
+  //····················································································································
+
+  func update () {
+    self.mCellOutlet?.mValueController?.updateOutlet ()
   }
 
   //····················································································································
