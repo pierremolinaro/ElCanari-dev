@@ -194,14 +194,26 @@ class EBObserver : EBAbstractProperty {
 //   presentErrorWindow
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gErrorWindows : [NSWindow] = []
-var gOrigin = NSPoint (x: 20.0, y: 20.0)
-
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 func presentErrorWindow (_ file : String,
                          _ line : Int,
                          _ errorMessage : String) {
+  if Thread.isMainThread {
+    presentErrorWindowInMainThread (file, line, errorMessage)
+  }else{
+    DispatchQueue.main.async { presentErrorWindowInMainThread (file, line, errorMessage) }
+  }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate var gErrorWindows : [NSWindow] = []
+fileprivate var gOrigin = NSPoint (x: 20.0, y: 20.0)
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+fileprivate func presentErrorWindowInMainThread (_ file : String,
+                                                 _ line : Int,
+                                                 _ errorMessage : String) {
   var message = "File: \(file)\n"
   message += "Line: \(line)\n"
   message += "Message: \(errorMessage)\n"
@@ -224,7 +236,6 @@ func presentErrorWindow (_ file : String,
   tf.textColor = .red
   tf.stringValue = message
   contentView.addSubview (tf)
-  __NSBeep ()
   window.makeKeyAndOrderFront (nil)
   gErrorWindows.append (window)
 }
@@ -298,7 +309,8 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
     if Thread.isMainThread {
       self.mUnbindFunction? ()
     }else{
-      presentErrorWindow (#file, #line, "removeFromSuperview not in main thread")
+      DispatchQueue.main.async { self.mUnbindFunction? () }
+      // presentErrorWindow (#file, #line, "removeFromSuperview not in main thread")
     }
   }
 
@@ -309,7 +321,8 @@ class EBTableCellView : NSTableCellView, EBUserClassNameProtocol {
     if Thread.isMainThread {
       self.mUnbindFunction? ()
     }else{
-      presentErrorWindow (#file, #line, "removeFromSuperviewWithoutNeedingDisplay not in main thread")
+      DispatchQueue.main.async { self.mUnbindFunction? () }
+      // presentErrorWindow (#file, #line, "removeFromSuperviewWithoutNeedingDisplay not in main thread")
     }
   }
 

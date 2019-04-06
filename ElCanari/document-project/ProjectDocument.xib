@@ -11,6 +11,7 @@
                 <outlet property="mAddFontButton" destination="2963" id="lil-j8-vsW"/>
                 <outlet property="mBoardPageView" destination="3080" id="Gwf-Pt-3pr"/>
                 <outlet property="mComponentsPageView" destination="2917" id="rQp-bd-etj"/>
+                <outlet property="mEditFontButton" destination="2974" id="Jdy-FT-vIW"/>
                 <outlet property="mFontLibraryTableView" destination="2965" id="MIT-IO-zdp"/>
                 <outlet property="mLibraryPageView" destination="2935" id="v8E-FH-RL9"/>
                 <outlet property="mMasterView" destination="3296" id="l4E-2m-udS"/>
@@ -21,6 +22,7 @@
                 <outlet property="mRemoveFontButton" destination="2975" id="qwb-qI-3HY"/>
                 <outlet property="mResetFontVersionButton" destination="2977" id="Ef5-X5-MYW"/>
                 <outlet property="mSchematicsPageView" destination="3003" id="gdt-lN-O3d"/>
+                <outlet property="mUpdateFontButton" destination="2976" id="YXq-m9-y5B"/>
                 <outlet property="window" destination="5" id="14924"/>
             </connections>
         </customObject>
@@ -3678,41 +3680,41 @@ Diameter</string>
                                         </tableHeaderView>
                                     </scrollView>
                                     <button toolTip="Add Font for Texts on Board from File System Library" verticalHuggingPriority="750" id="2963" customClass="EBButton">
-                                        <rect key="frame" x="16" y="547" width="100" height="17"/>
+                                        <rect key="frame" x="16" y="547" width="85" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundRect" title="Add Font…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14712">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                     </button>
-                                    <button toolTip="Remove Selected Font From Embedded Library" verticalHuggingPriority="750" id="2975" customClass="EBButton">
-                                        <rect key="frame" x="608" y="547" width="150" height="17"/>
+                                    <button toolTip="Edit Corresponding File in System Font Library" verticalHuggingPriority="750" id="2974" customClass="EBButton">
+                                        <rect key="frame" x="109" y="547" width="120" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundRect" title="Remove Selected Font" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14714">
+                                        <buttonCell key="cell" type="roundRect" title="Edit Selected Font" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14713">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                     </button>
-                                    <button toolTip="Edit Corresponding File in System Font Library" id="2974">
-                                        <rect key="frame" x="124" y="547" width="130" height="25"/>
+                                    <button toolTip="Update Font from File System Library" verticalHuggingPriority="750" id="2976" customClass="EBButton">
+                                        <rect key="frame" x="415" y="547" width="150" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Edit Selected Font" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14713">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="smallSystem"/>
-                                        </buttonCell>
-                                    </button>
-                                    <button toolTip="Update Font from File System Library" id="2976">
-                                        <rect key="frame" x="262" y="547" width="150" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="square" title="Update Selected Font…" bezelStyle="shadowlessSquare" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14715">
+                                        <buttonCell key="cell" type="roundRect" title="Update Selected Font…" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14715">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>
                                     </button>
                                     <button toolTip="Update Font from File System Library" verticalHuggingPriority="750" id="2977" customClass="EBButton">
-                                        <rect key="frame" x="420" y="547" width="180" height="17"/>
+                                        <rect key="frame" x="237" y="547" width="170" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundRect" title="Reset Selected Font Version" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14716">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </button>
+                                    <button toolTip="Remove Selected Font From Embedded Library" verticalHuggingPriority="750" id="2975" customClass="EBButton">
+                                        <rect key="frame" x="573" y="547" width="140" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundRect" title="Remove Selected Font" bezelStyle="roundedRect" alignment="center" controlSize="small" borderStyle="border" inset="2" id="14714">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
                                         </buttonCell>

@@ -110,6 +110,12 @@ document ProjectDocument root ProjectRoot {
   action addFontAction ;
   outlet EBButton mAddFontButton $run self.addFontAction ;
 
+  action editFontAction ;
+  outlet EBButton mEditFontButton $run self.editFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+
+  action updateFontAction ;
+  outlet EBButton mUpdateFontButton $run self.updateFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+
   action removeFontAction ;
   outlet EBButton mRemoveFontButton $run self.removeFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
 

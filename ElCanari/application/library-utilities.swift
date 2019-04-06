@@ -213,3 +213,23 @@ func deviceFilePathInLibraries (_ inDeviceNameWithoutExtension : String) -> [Str
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+func fontFilePathInLibraries (_ inFontNameWithoutExtension : String) -> [String] {
+  var pathes = [String] ()
+  let fm = FileManager ()
+  for libraryDir in existingLibraryPathArray () {
+    let fontLibraryDir = fontLibraryPathForPath (libraryDir)
+    if let allFonts = try? fm.subpathsOfDirectory (atPath: fontLibraryDir) {
+      for candidateFontPath in allFonts {
+        let pathExtension = candidateFontPath.lastPathComponent.pathExtension
+        let baseName = candidateFontPath.lastPathComponent.deletingPathExtension
+        if (baseName == inFontNameWithoutExtension) && (pathExtension == "ElCanariFont") {
+          pathes.append (fontLibraryDir + "/" + candidateFontPath)
+        }
+      }
+    }
+  }
+  return pathes
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
