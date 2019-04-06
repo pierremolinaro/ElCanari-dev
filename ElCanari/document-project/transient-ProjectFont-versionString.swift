@@ -11,20 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension ProjectDocument {
-  @objc func addFontAction (_ sender : NSObject?) {
+func transient_ProjectFont_versionString (
+       _ self_mFontVersion : Int
+) -> String {
 //--- START OF USER ZONE 2
-         var currentFontNames = Set <String> ()
-         for font in self.rootObject.mFonts_property.propval {
-            currentFontNames.insert (font.mFontName)
-         }
-         gOpenFontInLibrary?.loadDocumentFromLibrary (
-           windowForSheet: self.windowForSheet!,
-           alreadyLoadedDocuments: currentFontNames,
-           callBack: self.addFontFromLoadFontDialog
-         )
+        return (self_mFontVersion > 0) ? "\(self_mFontVersion)" : "—"
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

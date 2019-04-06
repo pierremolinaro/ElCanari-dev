@@ -6,6 +6,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
+protocol ProjectFont_mFontName : class {
+  var mFontName : String { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
 protocol ProjectFont_mFontVersion : class {
   var mFontVersion : Int { get }
 }
@@ -17,12 +23,50 @@ protocol ProjectFont_mDescriptiveString : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectFont_versionString : class {
+  var versionString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectFont_sizeString : class {
+  var sizeString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectFont
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectFont : EBManagedObject,
+         ProjectFont_mFontName,
          ProjectFont_mFontVersion,
-         ProjectFont_mDescriptiveString {
+         ProjectFont_mDescriptiveString,
+         ProjectFont_versionString,
+         ProjectFont_sizeString {
+
+  //····················································································································
+  //   Atomic property: mFontName
+  //····················································································································
+
+  var mFontName_property = EBStoredProperty_String (defaultValue: "")
+
+  //····················································································································
+
+  var mFontName : String {
+    get {
+      return self.mFontName_property.propval
+    }
+    set {
+      self.mFontName_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mFontName_property_selection : EBSelection <String> {
+    return self.mFontName_property.prop
+  }
 
   //····················································································································
   //   Atomic property: mFontVersion
@@ -71,15 +115,107 @@ class ProjectFont : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: versionString
+  //····················································································································
+
+  var versionString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var versionString_property_selection : EBSelection <String> {
+    return self.versionString_property.prop
+  }
+
+  //····················································································································
+
+  var versionString : String? {
+    switch self.versionString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: sizeString
+  //····················································································································
+
+  var sizeString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var sizeString_property_selection : EBSelection <String> {
+    return self.sizeString_property.prop
+  }
+
+  //····················································································································
+
+  var sizeString : String? {
+    switch self.sizeString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
+  //--- Atomic property: mFontName
+    self.mFontName_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDescriptiveString
     self.mDescriptiveString_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: versionString
+    self.versionString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mFontVersion_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mFontVersion_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectFont_versionString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mFontVersion_property.addEBObserver (self.versionString_property)
+  //--- Atomic property: sizeString
+    self.sizeString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDescriptiveString_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDescriptiveString_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectFont_sizeString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDescriptiveString_property.addEBObserver (self.sizeString_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -89,6 +225,8 @@ class ProjectFont : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mFontVersion_property.removeEBObserver (self.versionString_property)
+    self.mDescriptiveString_property.removeEBObserver (self.sizeString_property)
   //--- Unregister properties for handling signature
   }
 
@@ -103,6 +241,14 @@ class ProjectFont : EBManagedObject,
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
+    createEntryForPropertyNamed (
+      "mFontName",
+      idx:self.mFontName_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mFontName_property.mObserverExplorer,
+      valueExplorer:&self.mFontName_property.mValueExplorer
+    )
     createEntryForPropertyNamed (
       "mFontVersion",
       idx:self.mFontVersion_property.ebObjectIndex,
@@ -120,6 +266,22 @@ class ProjectFont : EBManagedObject,
       valueExplorer:&self.mDescriptiveString_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "versionString",
+      idx:self.versionString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.versionString_property.mObserverExplorer,
+      valueExplorer:&self.versionString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sizeString",
+      idx:self.sizeString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sizeString_property.mObserverExplorer,
+      valueExplorer:&self.sizeString_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -130,6 +292,9 @@ class ProjectFont : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
+  //--- Atomic property: mFontName
+    self.mFontName_property.mObserverExplorer = nil
+    self.mFontName_property.mValueExplorer = nil
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.mObserverExplorer = nil
     self.mFontVersion_property.mValueExplorer = nil
@@ -164,6 +329,8 @@ class ProjectFont : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
+  //--- Atomic property: mFontName
+    self.mFontName_property.storeIn (dictionary: ioDictionary, forKey:"mFontName")
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.storeIn (dictionary: ioDictionary, forKey:"mFontVersion")
   //--- Atomic property: mDescriptiveString
@@ -185,6 +352,8 @@ class ProjectFont : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
+  //--- Atomic property: mFontName
+    self.mFontName_property.readFrom (dictionary: inDictionary, forKey:"mFontName")
   //--- Atomic property: mFontVersion
     self.mFontVersion_property.readFrom (dictionary: inDictionary, forKey:"mFontVersion")
   //--- Atomic property: mDescriptiveString
@@ -216,6 +385,63 @@ class ProjectFont : EBManagedObject,
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> {
+
+  //····················································································································
+  //   Observers of 'mFontName' stored property
+  //····················································································································
+
+  private var mObserversOf_mFontName = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mFontName (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mFontName.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mFontName_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mFontName (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mFontName.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mFontName_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
+        managedObject.mFontName_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mFontName_property.removeEBObserver (observer)
+      }
+    })
+  }
 
   //····················································································································
   //   Observers of 'mFontVersion' stored property
@@ -332,6 +558,118 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
   }
 
   //····················································································································
+  //   Observers of 'versionString' transient property
+  //····················································································································
+
+  private var mObserversOf_versionString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_versionString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.versionString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_versionString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.versionString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_sizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sizeString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sizeString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sizeString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+    for managedObject in inSet {
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -404,15 +742,21 @@ class TransientArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
+      self.removeEBObserversOf_mFontName_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_sizeString_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
+      self.addEBObserversOf_mFontName_toElementsOfSet (addedSet)
       self.addEBObserversOf_mFontVersion_toElementsOfSet (addedSet)
       self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_sizeString_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -540,11 +884,15 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
+            managedObject.mFontName_property.mSetterDelegate = nil
             managedObject.mFontVersion_property.mSetterDelegate = nil
             managedObject.mDescriptiveString_property.mSetterDelegate = nil
           }
+          self.removeEBObserversOf_mFontName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mFontVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDescriptiveString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -552,11 +900,15 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
           for managedObject : ProjectFont in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
+            managedObject.mFontName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mFontVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
             managedObject.mDescriptiveString_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
+          self.addEBObserversOf_mFontName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mFontVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDescriptiveString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

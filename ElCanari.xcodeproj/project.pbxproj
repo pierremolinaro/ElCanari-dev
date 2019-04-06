@@ -1005,6 +1005,18 @@
 		CF99E37B21AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF99E37921AE9D24002AB233 /* class-SymbolPinNameAndErrorLocationArray.swift */; };
 		CF9AE9F91BFA763C00B68F69 /* entity-FontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */; };
 		CF9AE9FA1BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */; };
+		CFA0D9D22258FD5B008F2448 /* extension-ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D12258FD5B008F2448 /* extension-ProjectDocument.swift */; };
+		CFA0D9D32258FD5B008F2448 /* extension-ProjectDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D12258FD5B008F2448 /* extension-ProjectDocument.swift */; };
+		CFA0D9D622590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D422590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift */; };
+		CFA0D9D722590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D422590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift */; };
+		CFA0D9D822590887008F2448 /* transient-ProjectFont-versionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D522590887008F2448 /* transient-ProjectFont-versionString.swift */; };
+		CFA0D9D922590887008F2448 /* transient-ProjectFont-versionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9D522590887008F2448 /* transient-ProjectFont-versionString.swift */; };
+		CFA0D9DB22590BEE008F2448 /* transient-ProjectFont-sizeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9DA22590BEE008F2448 /* transient-ProjectFont-sizeString.swift */; };
+		CFA0D9DC22590BEE008F2448 /* transient-ProjectFont-sizeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9DA22590BEE008F2448 /* transient-ProjectFont-sizeString.swift */; };
+		CFA0D9DE22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9DD22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift */; };
+		CFA0D9DF22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9DD22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift */; };
+		CFA0D9E122591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9E022591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift */; };
+		CFA0D9E222591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0D9E022591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift */; };
 		CFA0DF5221C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */; };
 		CFA0DF5321C040EA00F94710 /* transient-SymbolRoot-noIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */; };
 		CFA0E4EF21BBE87300E4D471 /* EBView-dragging-source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */; };
@@ -1837,6 +1849,12 @@
 		CF9AE9F71BFA763C00B68F69 /* entity-FontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-FontCharacter.swift"; sourceTree = "<group>"; };
 		CF9AE9F81BFA763C00B68F69 /* entity-SegmentForFontCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "entity-SegmentForFontCharacter.swift"; sourceTree = "<group>"; };
 		CFA085E921A17A6B00DFD00B /* Info-Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
+		CFA0D9D12258FD5B008F2448 /* extension-ProjectDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "extension-ProjectDocument.swift"; sourceTree = "<group>"; };
+		CFA0D9D422590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "arrayController-ProjectDocument-mProjectFontController.swift"; sourceTree = "<group>"; };
+		CFA0D9D522590887008F2448 /* transient-ProjectFont-versionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectFont-versionString.swift"; sourceTree = "<group>"; };
+		CFA0D9DA22590BEE008F2448 /* transient-ProjectFont-sizeString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-ProjectFont-sizeString.swift"; sourceTree = "<group>"; };
+		CFA0D9DD22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-removeFontAction.swift"; sourceTree = "<group>"; };
+		CFA0D9E022591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-ProjectDocument-resetFontVersionAction.swift"; sourceTree = "<group>"; };
 		CFA0DF5121C040EA00F94710 /* transient-SymbolRoot-noIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "transient-SymbolRoot-noIssue.swift"; sourceTree = "<group>"; };
 		CFA0E4EE21BBE87300E4D471 /* EBView-dragging-source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EBView-dragging-source.swift"; sourceTree = "<group>"; };
 		CFA16303222821C400C07267 /* action-DeviceDocument-showDocAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "action-DeviceDocument-showDocAction.swift"; sourceTree = "<group>"; };
@@ -2267,6 +2285,12 @@
 		CF4A66222257EFB0003A7A7A /* document — project */ = {
 			isa = PBXGroup;
 			children = (
+				CFA0D9E022591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift */,
+				CFA0D9DD22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift */,
+				CFA0D9DA22590BEE008F2448 /* transient-ProjectFont-sizeString.swift */,
+				CFA0D9D422590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift */,
+				CFA0D9D522590887008F2448 /* transient-ProjectFont-versionString.swift */,
+				CFA0D9D12258FD5B008F2448 /* extension-ProjectDocument.swift */,
 				CFD733862258B85F009B2614 /* action-ProjectDocument-addFontAction.swift */,
 				CFD733812258B784009B2614 /* entity-ProjectFont.swift */,
 				CFD733802258B784009B2614 /* entity-ProjectRoot.swift */,
@@ -3344,6 +3368,7 @@
 				CF186B031B402B6500B84990 /* action-Preferences-addLibraryEntryAction.swift in Sources */,
 				CFC5BB592232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift in Sources */,
 				CF4B39C721D3F7A5001217C6 /* selectionController-PackageDocument-mPackageSlavePadSelectionController.swift in Sources */,
+				CFA0D9DB22590BEE008F2448 /* transient-ProjectFont-sizeString.swift in Sources */,
 				CFD733872258B85F009B2614 /* action-ProjectDocument-addFontAction.swift in Sources */,
 				CFFDCEE221C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */,
 				CF6B32E821C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift in Sources */,
@@ -3480,6 +3505,7 @@
 				CF6B32EB21C8F7F700E3B985 /* extension-PackageGuide.swift in Sources */,
 				CF0E9D102229B85B00124F04 /* action-DeviceDocument-updateSelectedPackages.swift in Sources */,
 				CF5123F4222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
+				CFA0D9E122591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF001F6D21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
 				CFDD88472233F50A008D3781 /* transient-DeviceDocument-hasUnconnectedPad.swift in Sources */,
 				CF90B77621427D4100E725B0 /* action-FontDocument-addCharacterAction.swift in Sources */,
@@ -3578,6 +3604,7 @@
 				CF3E658A21BECB7A0041FA2A /* EBView-issue.swift in Sources */,
 				CFD3B2BC21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
 				CFDEC77720E0CD170065FBCE /* transient-BoardModel-viaShapes.swift in Sources */,
+				CFA0D9D22258FD5B008F2448 /* extension-ProjectDocument.swift in Sources */,
 				CF69ABC721A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */,
 				CF4B39D321D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
 				CFE85A8921A5BDFA00991A66 /* extension-SymbolOval.swift in Sources */,
@@ -3656,6 +3683,7 @@
 				CFDD88532234002F008D3781 /* transient-DeviceRoot-assignedPadProxies.swift in Sources */,
 				CF6BC0511DE1C53A002D935F /* CanariMenu.swift in Sources */,
 				CFF2A1F121B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */,
+				CFA0D9D822590887008F2448 /* transient-ProjectFont-versionString.swift in Sources */,
 				CF1A10FD2108A1EC00987BFD /* transient-MergerDocument-issues.swift in Sources */,
 				CF6BC04F1DE1C43F002D935F /* controller-CanariMenu-CanariMenuItemListClass.swift in Sources */,
 				CF71FA3F1B3EA87800FB5049 /* EBAllocationDebug.swift in Sources */,
@@ -3777,6 +3805,7 @@
 				CF69ABD621A6D91B00F5E49A /* extension-SymbolPin.swift in Sources */,
 				CF2B9CE921C2A9A200EE5683 /* PackageDocument-customized.swift in Sources */,
 				CFD24150222C0A8A000D6B65 /* transient-PackageInDevice-padNameSet.swift in Sources */,
+				CFA0D9DE22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift in Sources */,
 				CF324D7C20DE54B000ADD025 /* entity-BoardModelPad.swift in Sources */,
 				CFE652D61DD4B22600BAC27A /* transient-FontCharacter-gerberCode.swift in Sources */,
 				CF2A01FA21DE827D00F3A379 /* action-PackageDocument-setDimensionTextOriginAtMidYAction.swift in Sources */,
@@ -3851,6 +3880,7 @@
 				CF35A54C21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CFF5EF0622269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DA21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
+				CFA0D9D622590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */,
 				CFDA579D1BFA524A00EEF3CB /* entity-FontRoot.swift in Sources */,
 				CFE85A9921A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,
 				CF4B3AC621D50FD3001217C6 /* extension-PackageObject.swift in Sources */,
@@ -3935,6 +3965,7 @@
 				CF5C4CD6219F04D600EAC52A /* action-Preferences-addLibraryEntryAction.swift in Sources */,
 				CFC5BB5A2232D44D00E03849 /* transient-SymbolInstanceInDevice-unconnectedPins.swift in Sources */,
 				CF4B39C821D3F7A5001217C6 /* selectionController-PackageDocument-mPackageSlavePadSelectionController.swift in Sources */,
+				CFA0D9DC22590BEE008F2448 /* transient-ProjectFont-sizeString.swift in Sources */,
 				CFD733882258B85F009B2614 /* action-ProjectDocument-addFontAction.swift in Sources */,
 				CFFDCEE321C6954B0013B22C /* CanariPadRenumberingPullDownButton.swift in Sources */,
 				CF6B32E921C8F75000E3B985 /* transient-PackageGuide-selectionDisplay.swift in Sources */,
@@ -4071,6 +4102,7 @@
 				CFDDD4E621BB1529007D2F14 /* EBView.swift in Sources */,
 				CF6B32EC21C8F7F700E3B985 /* extension-PackageGuide.swift in Sources */,
 				CF0E9D112229B85B00124F04 /* action-DeviceDocument-updateSelectedPackages.swift in Sources */,
+				CFA0D9E222591047008F2448 /* action-ProjectDocument-resetFontVersionAction.swift in Sources */,
 				CF5123F5222A894300FA4364 /* transient-PackageOval-strokeBezierPath.swift in Sources */,
 				CFDD88482233F50A008D3781 /* transient-DeviceDocument-hasUnconnectedPad.swift in Sources */,
 				CF001F6E21F8AB610091518E /* class-LibraryOperationElement.swift in Sources */,
@@ -4169,6 +4201,7 @@
 				CF1D9C8B21BBFD7900FFF459 /* EBView-mouse.swift in Sources */,
 				CF3E658B21BECB7A0041FA2A /* EBView-issue.swift in Sources */,
 				CFD3B2BD21B04977007D3361 /* transient-SymbolPin-nameRect.swift in Sources */,
+				CFA0D9D32258FD5B008F2448 /* extension-ProjectDocument.swift in Sources */,
 				CF69ABC821A6BC1000F5E49A /* action-SymbolDocument-resetVersionAction.swift in Sources */,
 				CFE85A8A21A5BDFA00991A66 /* extension-SymbolOval.swift in Sources */,
 				CF4B39D421D4E5DD001217C6 /* transient-PackagePad-noZone.swift in Sources */,
@@ -4247,6 +4280,7 @@
 				CFDD88542234002F008D3781 /* transient-DeviceRoot-assignedPadProxies.swift in Sources */,
 				CF5C4D4C219F04D600EAC52A /* CanariMenu.swift in Sources */,
 				CF5C4D4D219F04D600EAC52A /* transient-MergerDocument-issues.swift in Sources */,
+				CFA0D9D922590887008F2448 /* transient-ProjectFont-versionString.swift in Sources */,
 				CFF2A1F221B2D18E00945D01 /* transient-SymbolSolidOval-issues.swift in Sources */,
 				CF5C4D4E219F04D600EAC52A /* controller-CanariMenu-CanariMenuItemListClass.swift in Sources */,
 				CF5C4D4F219F04D600EAC52A /* EBAllocationDebug.swift in Sources */,
@@ -4368,6 +4402,7 @@
 				CF69ABD721A6D91B00F5E49A /* extension-SymbolPin.swift in Sources */,
 				CF5C4D81219F04D600EAC52A /* entity-BoardModelPad.swift in Sources */,
 				CFD24151222C0A8A000D6B65 /* transient-PackageInDevice-padNameSet.swift in Sources */,
+				CFA0D9DF22590CF9008F2448 /* action-ProjectDocument-removeFontAction.swift in Sources */,
 				CF2B9CEA21C2A9A200EE5683 /* PackageDocument-customized.swift in Sources */,
 				CF5C4D82219F04D600EAC52A /* transient-FontCharacter-gerberCode.swift in Sources */,
 				CF5C4D83219F04D600EAC52A /* entity-BoardModelVia.swift in Sources */,
@@ -4442,6 +4477,7 @@
 				CF35A54D21A825BC00A0E500 /* extension-String.swift in Sources */,
 				CFF5EF0722269653006BFE57 /* transient-DeviceDocumentation-fileSize.swift in Sources */,
 				CF5182DB21B8486C0035533A /* entity-CanariLibraryEntry.swift in Sources */,
+				CFA0D9D722590887008F2448 /* arrayController-ProjectDocument-mProjectFontController.swift in Sources */,
 				CF5C4DA2219F04D600EAC52A /* entity-FontRoot.swift in Sources */,
 				CFE85A9A21A5C91300991A66 /* extension-SymbolSolidRect.swift in Sources */,
 				CF4B3AC721D50FD3001217C6 /* extension-PackageObject.swift in Sources */,

@@ -23,10 +23,10 @@ enum ProductKind {
 // Version ElCanari
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-let VERSION_CANARI = "0.6.2"
-let NOTES : [String] = ["Several memory leaks fixed"]
+let VERSION_CANARI = "0.6.3"
+let NOTES : [String] = []
 let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Better handling of Font documents"]
+let CHANGES : [String] = ["New format for Font documents"]
 let NEWS : [String] = []
 let BUILD_KIND = ProductKind.release
 

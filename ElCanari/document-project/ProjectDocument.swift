@@ -9,6 +9,12 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mProjectFontController
+  //····················································································································
+
+  var mProjectFontController = ArrayController_ProjectDocument_mProjectFontController ()
+
+  //····················································································································
   //   Transient property: documentFilePath
   //····················································································································
 
@@ -39,18 +45,23 @@ import Cocoa
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
+  @IBOutlet var mFontLibraryTableView : EBTableView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
   @IBOutlet var mMasterView : NSView?
   @IBOutlet var mNetClassesPageView : CanariViewWithKeyView?
   @IBOutlet var mNetListPageView : CanariViewWithKeyView?
   @IBOutlet var mPageSegmentedControl : CanariSegmentedControl?
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
+  @IBOutlet var mRemoveFontButton : EBButton?
+  @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
 
   //····················································································································
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
+  var mController_mResetFontVersionButton_enabled : MultipleBindingController_enabled? = nil
 
   //····················································································································
   //    Document file path
@@ -82,6 +93,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: mProjectFontController
+    self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //---
     super.populateExplorerWindow (&y, view:view)
   }
@@ -116,12 +129,15 @@ import Cocoa
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mFontLibraryTableView, "mFontLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mMasterView, "mMasterView", NSView.self, #file, #line)
     checkOutletConnection (self.mNetClassesPageView, "mNetClassesPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mNetListPageView, "mNetListPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mPageSegmentedControl, "mPageSegmentedControl", CanariSegmentedControl.self, #file, #line)
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
    }
   
@@ -133,12 +149,39 @@ import Cocoa
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
+  //--- Array controller property: mProjectFontController
+    self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
+    self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRemoveFontButton
+      )
+      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveFontButton_enabled = controller
+    }
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mProjectFontController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mResetFontVersionButton
+      )
+      self.mProjectFontController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mResetFontVersionButton_enabled = controller
+    }
   //--------------------------- Set targets / actions
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
+    self.mRemoveFontButton?.target = self
+    self.mRemoveFontButton?.action = #selector (ProjectDocument.removeFontAction (_:))
+    self.mResetFontVersionButton?.target = self
+    self.mResetFontVersionButton?.action = #selector (ProjectDocument.resetFontVersionAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -159,19 +202,31 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
   //--------------------------- Unbind multiple bindings
+    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveFontButton_enabled!)
+    self.mController_mRemoveFontButton_enabled = nil
+    self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetFontVersionButton_enabled!)
+    self.mController_mResetFontVersionButton_enabled = nil
   //--------------------------- Unbind array controllers
+    self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
+  //--- Array controller property: mProjectFontController
+    self.mProjectFontController.unbind_model ()
   //--------------------------- Remove targets / actions
     self.mAddFontButton?.target = nil
+    self.mRemoveFontButton?.target = nil
+    self.mResetFontVersionButton?.target = nil
   //--------------------------- Clean up outlets
     self.mAddFontButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
+    self.mFontLibraryTableView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
     self.mMasterView?.ebCleanUp ()
     self.mNetClassesPageView?.ebCleanUp ()
     self.mNetListPageView?.ebCleanUp ()
     self.mPageSegmentedControl?.ebCleanUp ()
     self.mProductPageView?.ebCleanUp ()
+    self.mRemoveFontButton?.ebCleanUp ()
+    self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()
   }
 

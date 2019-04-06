@@ -12,8 +12,14 @@ entity ProjectRoot {
 #----------------------------------------------------------------------------*
 
 entity ProjectFont {
+  property String mFontName default "" ;
   property Int mFontVersion default 0 ;
   property String mDescriptiveString default "" ;
+#  property Data mFontFileData default empty ;
+  
+  
+  transient String versionString dependsFrom self.mFontVersion ;
+  transient String sizeString dependsFrom self.mDescriptiveString ;
 }
 
 #  transient moreThanOneNetClass : boolean observe .netClasses ;

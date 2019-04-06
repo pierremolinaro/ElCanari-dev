@@ -12,17 +12,16 @@ import Cocoa
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extension ProjectDocument {
-  @objc func addFontAction (_ sender : NSObject?) {
+  @objc func removeFontAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-         var currentFontNames = Set <String> ()
-         for font in self.rootObject.mFonts_property.propval {
-            currentFontNames.insert (font.mFontName)
-         }
-         gOpenFontInLibrary?.loadDocumentFromLibrary (
-           windowForSheet: self.windowForSheet!,
-           alreadyLoadedDocuments: currentFontNames,
-           callBack: self.addFontFromLoadFontDialog
-         )
+        let selectedFonts = self.mProjectFontController.selectedArray_property.propval
+        var allFonts = self.rootObject.mFonts_property.propval
+        for font in selectedFonts {
+          if let idx = allFonts.firstIndex(of: font) {
+            allFonts.remove(at: idx)
+          }
+        }
+        self.rootObject.mFonts_property.setProp (allFonts)
 //--- END OF USER ZONE 2
   }
 }

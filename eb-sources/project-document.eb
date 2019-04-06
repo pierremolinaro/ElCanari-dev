@@ -110,6 +110,19 @@ document ProjectDocument root ProjectRoot {
   action addFontAction ;
   outlet EBButton mAddFontButton $run self.addFontAction ;
 
+  action removeFontAction ;
+  outlet EBButton mRemoveFontButton $run self.removeFontAction $enabled mProjectFontController.selectedArray.count > 0 ;
+
+  action resetFontVersionAction ;
+  outlet EBButton mResetFontVersionButton $run self.resetFontVersionAction $enabled mProjectFontController.selectedArray.count > 0 ;
+
+  tableViewController mProjectFontController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mFonts {
+     column "name" EBTextObserverField $valueObserver self.mFontName
+     column "version" EBTextObserverField $valueObserver self.versionString
+     column "size" EBTextObserverField $valueObserver self.sizeString
+  }
+  outlet EBTableView mFontLibraryTableView $tableValue mProjectFontController ;
+
 #  outlet checkForDeviceAndFontUpdateAtOpeningCheckBox : NSButton $value root.checkForDeviceAndFontUpdateAtOpening ;
 #
 #  action resetDeviceAndFontsVersionNumbersAction ;

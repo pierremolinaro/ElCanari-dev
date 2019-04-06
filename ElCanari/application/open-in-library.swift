@@ -78,7 +78,6 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
     }
   }
 
-
   //····················································································································
   //   Open document in library, displayed as dialog window
   //····················································································································

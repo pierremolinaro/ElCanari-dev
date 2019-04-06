@@ -1,8 +1,7 @@
 //
-//  DeviceDocument-extension-add-package.swift
 //  ElCanari
 //
-//  Created by Pierre Molinaro on 01/03/2019.
+//  Created by Pierre Molinaro on 06/04/2019.
 //
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
