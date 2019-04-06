@@ -10,13 +10,13 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-var gOpenSymbolInLibrary : OpenSymbolInLibrary? = nil
+var gOpenFontInLibrary : OpenFontInLibrary? = nil
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 // This class is instancied as object in MainMenu.xib
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class OpenSymbolInLibrary : OpenInLibrary {
+class OpenFontInLibrary : OpenInLibrary {
 
   //····················································································································
   //   INIT
@@ -24,7 +24,7 @@ class OpenSymbolInLibrary : OpenInLibrary {
 
   override init () {
     super.init ()
-    gOpenSymbolInLibrary = self
+    gOpenFontInLibrary = self
   }
 
 
@@ -32,32 +32,34 @@ class OpenSymbolInLibrary : OpenInLibrary {
   //   Dialog
   //····················································································································
 
-  @objc @IBAction func openSymbolInLibrary (_ inSender : Any?) {
-    super.openDocumentInLibrary (windowTitle: "Open Symbol in Library")
+  @objc @IBAction func openFontInLibrary (_ inSender : Any?) {
+    super.openDocumentInLibrary (windowTitle: "Open Font in Library")
   }
 
   //····················································································································
 
   override func buildDataSource (alreadyLoadedDocuments inNames : Set <String>) {
-    self.buildOutlineViewDataSource (extension: "ElCanariSymbol", alreadyLoadedDocuments: inNames, { (_ inRootObject : EBManagedObject?) -> NSImage? in
-      let partShape = EBShape ()
-      if let symbolRoot = inRootObject as? SymbolRoot {
-        for object in symbolRoot.symbolObjects_property.propval {
-          if let shape = object.objectDisplay {
-            partShape.append (shape)
-          }
-        }
-      }
-      inRootObject?.removeRecursivelyAllRelationsShips ()
-      let box = partShape.boundingBox
-      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
+    self.buildOutlineViewDataSource (extension: "ElCanariFont", alreadyLoadedDocuments: inNames, {
+      (_ inRootObject : EBManagedObject?) -> NSImage? in
+      return nil // NSImage (named: okStatusImageName)
+//      let partShape = EBShape ()
+//      if let fontRoot = inRootObject as? FontRoot {
+//        for object in fontRoot.symbolObjects_property.propval {
+//          if let shape = object.objectDisplay {
+//            partShape.append (shape)
+//          }
+//        }
+//      }
+//      inRootObject?.removeRecursivelyAllRelationsShips ()
+//      let box = partShape.boundingBox
+//      return box.isEmpty ? nil : buildPDFimage (frame: box, shape: partShape, backgroundColor: g_Preferences?.symbolBackgroundColor)
     })
   }
 
   //····················································································································
 
   override func partLibraryPathForPath (_ inPath : String) -> String {
-    return symbolLibraryPathForPath (inPath)
+    return fontLibraryPathForPath (inPath)
   }
 
   //····················································································································
