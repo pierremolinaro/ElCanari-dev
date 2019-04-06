@@ -671,7 +671,19 @@ class ArtworkRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: fileGenerationParameterArray
-    for managedObject : EBManagedObject in self.fileGenerationParameterArray_property.propval {
+    for managedObject in self.fileGenerationParameterArray_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: fileGenerationParameterArray
+    for managedObject in self.fileGenerationParameterArray_property.propval {
       objects.append (managedObject)
     }
   }

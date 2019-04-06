@@ -852,7 +852,23 @@ class PackageInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mMasterPads
-    for managedObject : EBManagedObject in self.mMasterPads_property.propval {
+    for managedObject in self.mMasterPads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mRoot
+    if let managedObject = self.mRoot_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mMasterPads
+    for managedObject in self.mMasterPads_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: mRoot

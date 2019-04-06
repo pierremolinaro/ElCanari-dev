@@ -187,7 +187,19 @@ class ProjectRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mFonts
-    for managedObject : EBManagedObject in self.mFonts_property.propval {
+    for managedObject in self.mFonts_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mFonts
+    for managedObject in self.mFonts_property.propval {
       objects.append (managedObject)
     }
   }

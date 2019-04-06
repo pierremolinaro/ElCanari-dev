@@ -247,6 +247,14 @@ class BoardModelVia : EBManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  }
+
+  //····················································································································
 
 }
 

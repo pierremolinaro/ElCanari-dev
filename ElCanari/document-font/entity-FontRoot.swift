@@ -782,12 +782,13 @@ class FontRoot : EBManagedObject,
     self.selectedInspector_property.storeIn (dictionary: ioDictionary, forKey:"selectedInspector")
   //--- Atomic property: currentCharacterCodePoint
     self.currentCharacterCodePoint_property.storeIn (dictionary: ioDictionary, forKey:"currentCharacterCodePoint")
-  //--- To many property: characters
-    self.store (
+  //--- To many property: characters (Custom store)
+    customStore_FontCharacter_characters (self.characters_property.propval, intoDictionary: ioDictionary)
+    /* self.store (
       managedObjectArray: self.characters_property.propval,
       relationshipName: "characters",
       intoDictionary: ioDictionary
-    )
+    ) */
   }
 
   //····················································································································
@@ -797,12 +798,13 @@ class FontRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: characters
-    self.characters_property.setProp (readEntityArrayFromDictionary (
+  //--- To many property: characters (Custom store)
+    self.characters_property.setProp (customRead_FontCharacter_characters (from: inDictionary, with: self.ebUndoManager))
+    /* self.characters_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "characters",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [FontCharacter])
+    ) as! [FontCharacter]) */
   }
 
   //····················································································································
@@ -830,9 +832,21 @@ class FontRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: characters
-    for managedObject : EBManagedObject in self.characters_property.propval {
+    for managedObject in self.characters_property.propval {
       objects.append (managedObject)
     }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: characters (custom store)
+    /* for managedObject in self.characters_property.propval {
+      objects.append (managedObject)
+    } */
   }
 
   //····················································································································

@@ -613,6 +613,22 @@ class MergerBoardInstance : EBGraphicManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: myModel
+    if let managedObject = self.myModel_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: myRoot
+    if let managedObject = self.myRoot_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
 
 }
 

@@ -97,7 +97,14 @@ class EBManagedObject : EBObject, EBSignatureObserverProtocol {
   //   accessibleObjects
   //····················································································································
 
-  func accessibleObjects (objects : inout [EBManagedObject]) {
+  internal func accessibleObjects (objects : inout [EBManagedObject]) {
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  internal func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
   }
 
   //····················································································································

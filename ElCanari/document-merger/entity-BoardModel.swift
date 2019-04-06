@@ -4486,83 +4486,171 @@ class BoardModel : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: frontLegendLines
-    for managedObject : EBManagedObject in self.frontLegendLines_property.propval {
+    for managedObject in self.frontLegendLines_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backLegendLines
-    for managedObject : EBManagedObject in self.backLegendLines_property.propval {
+    for managedObject in self.backLegendLines_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontLegendTexts
-    for managedObject : EBManagedObject in self.frontLegendTexts_property.propval {
+    for managedObject in self.frontLegendTexts_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontLayoutTexts
-    for managedObject : EBManagedObject in self.frontLayoutTexts_property.propval {
+    for managedObject in self.frontLayoutTexts_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backLegendTexts
-    for managedObject : EBManagedObject in self.backLegendTexts_property.propval {
+    for managedObject in self.backLegendTexts_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backLayoutTexts
-    for managedObject : EBManagedObject in self.backLayoutTexts_property.propval {
+    for managedObject in self.backLayoutTexts_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: internalBoardsLimits
-    for managedObject : EBManagedObject in self.internalBoardsLimits_property.propval {
+    for managedObject in self.internalBoardsLimits_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: drills
-    for managedObject : EBManagedObject in self.drills_property.propval {
+    for managedObject in self.drills_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: vias
-    for managedObject : EBManagedObject in self.vias_property.propval {
+    for managedObject in self.vias_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontPads
-    for managedObject : EBManagedObject in self.frontPads_property.propval {
+    for managedObject in self.frontPads_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backPads
-    for managedObject : EBManagedObject in self.backPads_property.propval {
+    for managedObject in self.backPads_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backComponentNames
-    for managedObject : EBManagedObject in self.backComponentNames_property.propval {
+    for managedObject in self.backComponentNames_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentNames
-    for managedObject : EBManagedObject in self.frontComponentNames_property.propval {
+    for managedObject in self.frontComponentNames_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontComponentValues
-    for managedObject : EBManagedObject in self.frontComponentValues_property.propval {
+    for managedObject in self.frontComponentValues_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backComponentValues
-    for managedObject : EBManagedObject in self.backComponentValues_property.propval {
+    for managedObject in self.backComponentValues_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backTracks
-    for managedObject : EBManagedObject in self.backTracks_property.propval {
+    for managedObject in self.backTracks_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontTracks
-    for managedObject : EBManagedObject in self.frontTracks_property.propval {
+    for managedObject in self.frontTracks_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: frontPackages
-    for managedObject : EBManagedObject in self.frontPackages_property.propval {
+    for managedObject in self.frontPackages_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: backPackages
-    for managedObject : EBManagedObject in self.backPackages_property.propval {
+    for managedObject in self.backPackages_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: myInstances
-    for managedObject : EBManagedObject in self.myInstances_property.propval {
+    for managedObject in self.myInstances_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: frontLegendLines
+    for managedObject in self.frontLegendLines_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backLegendLines
+    for managedObject in self.backLegendLines_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontLegendTexts
+    for managedObject in self.frontLegendTexts_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontLayoutTexts
+    for managedObject in self.frontLayoutTexts_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backLegendTexts
+    for managedObject in self.backLegendTexts_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backLayoutTexts
+    for managedObject in self.backLayoutTexts_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: internalBoardsLimits
+    for managedObject in self.internalBoardsLimits_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: drills
+    for managedObject in self.drills_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: vias
+    for managedObject in self.vias_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontPads
+    for managedObject in self.frontPads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backPads
+    for managedObject in self.backPads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backComponentNames
+    for managedObject in self.backComponentNames_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontComponentNames
+    for managedObject in self.frontComponentNames_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontComponentValues
+    for managedObject in self.frontComponentValues_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backComponentValues
+    for managedObject in self.backComponentValues_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backTracks
+    for managedObject in self.backTracks_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontTracks
+    for managedObject in self.frontTracks_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: frontPackages
+    for managedObject in self.frontPackages_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: backPackages
+    for managedObject in self.backPackages_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: myInstances
+    for managedObject in self.myInstances_property.propval {
       objects.append (managedObject)
     }
   }

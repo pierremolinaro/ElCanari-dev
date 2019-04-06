@@ -637,7 +637,23 @@ class SymbolInstanceInDevice : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mPinInstances
-    for managedObject : EBManagedObject in self.mPinInstances_property.propval {
+    for managedObject in self.mPinInstances_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mType
+    if let managedObject = self.mType_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mPinInstances
+    for managedObject in self.mPinInstances_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: mType

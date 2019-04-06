@@ -778,7 +778,19 @@ class MasterPadInDevice : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mSlavePads
-    for managedObject : EBManagedObject in self.mSlavePads_property.propval {
+    for managedObject in self.mSlavePads_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mSlavePads
+    for managedObject in self.mSlavePads_property.propval {
       objects.append (managedObject)
     }
   }

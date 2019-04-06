@@ -1686,23 +1686,51 @@ class DeviceRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: mDocs
-    for managedObject : EBManagedObject in self.mDocs_property.propval {
+    for managedObject in self.mDocs_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolInstances
-    for managedObject : EBManagedObject in self.mSymbolInstances_property.propval {
+    for managedObject in self.mSymbolInstances_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: mPackages
-    for managedObject : EBManagedObject in self.mPackages_property.propval {
+    for managedObject in self.mPackages_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: mSymbolTypes
-    for managedObject : EBManagedObject in self.mSymbolTypes_property.propval {
+    for managedObject in self.mSymbolTypes_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: mPadProxies
-    for managedObject : EBManagedObject in self.mPadProxies_property.propval {
+    for managedObject in self.mPadProxies_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mDocs
+    for managedObject in self.mDocs_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mSymbolInstances
+    for managedObject in self.mSymbolInstances_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPackages
+    for managedObject in self.mPackages_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mSymbolTypes
+    for managedObject in self.mSymbolTypes_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: mPadProxies
+    for managedObject in self.mPadProxies_property.propval {
       objects.append (managedObject)
     }
   }

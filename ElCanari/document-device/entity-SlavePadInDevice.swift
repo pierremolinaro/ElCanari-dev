@@ -720,6 +720,18 @@ class SlavePadInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mMasterPad
+    if let managedObject = self.mMasterPad_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
   //   computeSignature
   //····················································································································
 

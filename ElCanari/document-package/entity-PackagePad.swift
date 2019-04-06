@@ -1550,7 +1550,23 @@ class PackagePad : PackageObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: slaves
-    for managedObject : EBManagedObject in self.slaves_property.propval {
+    for managedObject in self.slaves_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: zone
+    if let managedObject = self.zone_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: slaves
+    for managedObject in self.slaves_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: zone

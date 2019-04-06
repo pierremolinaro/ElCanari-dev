@@ -388,6 +388,14 @@ class BoardModelPad : EBManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  }
+
+  //····················································································································
 
 }
 

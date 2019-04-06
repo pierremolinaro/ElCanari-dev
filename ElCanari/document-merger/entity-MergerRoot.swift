@@ -1553,11 +1553,31 @@ class MergerRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: boardModels
-    for managedObject : EBManagedObject in self.boardModels_property.propval {
+    for managedObject in self.boardModels_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: boardInstances
-    for managedObject : EBManagedObject in self.boardInstances_property.propval {
+    for managedObject in self.boardInstances_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: artwork
+    if let managedObject = self.artwork_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: boardModels
+    for managedObject in self.boardModels_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: boardInstances
+    for managedObject in self.boardInstances_property.propval {
       objects.append (managedObject)
     }
   //--- To one property: artwork

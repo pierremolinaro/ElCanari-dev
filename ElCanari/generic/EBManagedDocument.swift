@@ -127,17 +127,33 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
 
   //····················································································································
 
-  func dataForSavingFromRootObject () throws -> Data {
-    let objectsToSaveArray = self.reachableObjectsFromRootObject ()
+  private func dataForSavingFromRootObject () throws -> Data {
+  //--- Get objectsto save from root object
+    let rootObject = self.mRootObject!
+    var reachableObjectArray = [rootObject]
+    var reachableObjectSet = Set ([rootObject])
+    var objectsToExploreArray = [rootObject]
+    while let objectToExplore = objectsToExploreArray.last {
+      objectsToExploreArray.removeLast ()
+      var accessible = [EBManagedObject] ()
+      objectToExplore.accessibleObjectsForSaveOperation (objects: &accessible)
+      for managedObject in accessible {
+        if !reachableObjectSet.contains (managedObject) {
+          reachableObjectSet.insert (managedObject)
+          reachableObjectArray.append (managedObject)
+          objectsToExploreArray.append (managedObject)
+        }
+      }
+    }
   //--- Set savingIndex for each object
     var idx = 0
-    for object in objectsToSaveArray {
+    for object in reachableObjectArray {
       object.savingIndex = idx
       idx += 1
     }
   //---
     var saveDataArray : [NSDictionary] = []
-    for object in objectsToSaveArray {
+    for object in reachableObjectArray {
       let d = NSMutableDictionary ()
       object.saveIntoDictionary (d)
       saveDataArray.append (d)
@@ -149,7 +165,7 @@ class EBManagedDocument : NSDocument, EBUserClassNameProtocol {
   }
 
   //····················································································································
-  //  R E A C H A B L E   O B J E C T S    F R O M    O B J E C T
+  //  Reachable objects from root object
   //····················································································································
 
   private func reachableObjectsFromRootObject () -> [EBManagedObject] {

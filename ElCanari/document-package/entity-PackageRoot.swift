@@ -1248,19 +1248,43 @@ class PackageRoot : EBGraphicManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: packageObjects
-    for managedObject : EBManagedObject in self.packageObjects_property.propval {
+    for managedObject in self.packageObjects_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: packagePads
-    for managedObject : EBManagedObject in self.packagePads_property.propval {
+    for managedObject in self.packagePads_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: packageSlavePads
-    for managedObject : EBManagedObject in self.packageSlavePads_property.propval {
+    for managedObject in self.packageSlavePads_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: packageZones
-    for managedObject : EBManagedObject in self.packageZones_property.propval {
+    for managedObject in self.packageZones_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: packageObjects
+    for managedObject in self.packageObjects_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: packagePads
+    for managedObject in self.packagePads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: packageSlavePads
+    for managedObject in self.packageSlavePads_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: packageZones
+    for managedObject in self.packageZones_property.propval {
       objects.append (managedObject)
     }
   }

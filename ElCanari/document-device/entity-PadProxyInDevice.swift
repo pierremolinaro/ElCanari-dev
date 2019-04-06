@@ -434,6 +434,18 @@ class PadProxyInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mPinInstance
+    if let managedObject = self.mPinInstance_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
   //   computeSignature
   //····················································································································
 

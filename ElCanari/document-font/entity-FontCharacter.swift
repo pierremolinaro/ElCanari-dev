@@ -603,7 +603,19 @@ class FontCharacter : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: segments
-    for managedObject : EBManagedObject in self.segments_property.propval {
+    for managedObject in self.segments_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: segments
+    for managedObject in self.segments_property.propval {
       objects.append (managedObject)
     }
   }

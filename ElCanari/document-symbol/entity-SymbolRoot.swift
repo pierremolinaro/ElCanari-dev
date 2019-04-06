@@ -789,11 +789,27 @@ class SymbolRoot : EBManagedObject,
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
   //--- To many property: symbolObjects
-    for managedObject : EBManagedObject in self.symbolObjects_property.propval {
+    for managedObject in self.symbolObjects_property.propval {
       objects.append (managedObject)
     }
   //--- To many property: symbolPins
-    for managedObject : EBManagedObject in self.symbolPins_property.propval {
+    for managedObject in self.symbolPins_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: symbolObjects
+    for managedObject in self.symbolObjects_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To many property: symbolPins
+    for managedObject in self.symbolPins_property.propval {
       objects.append (managedObject)
     }
   }

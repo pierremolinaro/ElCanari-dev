@@ -486,6 +486,26 @@ class SymbolPinInstanceInDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   accessibleObjectsForSaveOperation
+  //····················································································································
+
+  override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
+    super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To one property: mSymbolInstance
+    if let managedObject = self.mSymbolInstance_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mType
+    if let managedObject = self.mType_property.propval {
+      objects.append (managedObject)
+    }
+  //--- To one property: mPadProxy
+    if let managedObject = self.mPadProxy_property.propval {
+      objects.append (managedObject)
+    }
+  }
+
+  //····················································································································
 
 }
 
