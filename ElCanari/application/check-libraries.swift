@@ -208,8 +208,8 @@ private func performDeviceLibraryEnumerationAtPath (_ inPackageLibraryPath : Str
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if (path as NSString).pathExtension == "ElCanariDevice" {
-        let fullsubpath = (inPackageLibraryPath as NSString).appendingPathComponent (path)
+      if path.pathExtension == "ElCanariDevice" {
+        let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkDeviceLibraryCheckAtPath (fullsubpath, logView:logView, deviceDict:&deviceDict)
       }
     }
@@ -379,7 +379,7 @@ private func checkSymbolLibraryCheckAtPath (_ symbolFullPath : String,
                                             pathArray:entry.mPathArray + [symbolFullPath])
     symbolDict [symbolName] = newEntry
   }else{
-    var partStatus : PartStatus
+    let partStatus : PartStatus
     switch metadataStatus {
     case .unknown :
       partStatus = .pmPartHasUnknownStatus
@@ -408,8 +408,8 @@ private func performSymbolLibraryEnumerationAtPath (_ inSymbolLibraryPath : Stri
   if let unwSubpaths = fm.subpaths (atPath: inSymbolLibraryPath) {
   //  print ("unwSubpaths \(unwSubpaths)")
     for path in unwSubpaths {
-      if (path as NSString).pathExtension == "ElCanariSymbol" {
-        let fullsubpath = (inSymbolLibraryPath as NSString).appendingPathComponent (path)
+      if path.pathExtension == "ElCanariSymbol" {
+        let fullsubpath = inSymbolLibraryPath.appendingPathComponent (path)
         try checkSymbolLibraryCheckAtPath (fullsubpath, logView:logView, symbolDict:&symbolDict)
       }
     }
@@ -553,8 +553,8 @@ private func performPackageLibraryEnumerationAtPath (_ inPackageLibraryPath : St
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if (path as NSString).pathExtension == "ElCanariPackage" {
-        let fullsubpath = (inPackageLibraryPath as NSString).appendingPathComponent (path)
+      if path.pathExtension == "ElCanariPackage" {
+        let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkPackageLibraryCheckAtPath (fullsubpath, logView:logView, packageDict:&packageDict)
       }
     }
@@ -623,8 +623,8 @@ private struct PMFontDictionaryEntry {
   
   init (status : PartStatus,
         version : Int,
-        versionStringForDialog:String,
-        pathArray: [String]) {
+        versionStringForDialog : String,
+        pathArray : [String]) {
     mPartStatus = status
     mVersion = version
     mVersionStringForDialog = versionStringForDialog
@@ -638,7 +638,7 @@ private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
                                           logView : NSTextView?,
                                           fontDict:inout [String : PMFontDictionaryEntry]) throws {
   let fontName = ((fontFullPath as NSString).lastPathComponent as NSString).deletingPathExtension
-  let (_, metadataDictionary) = try metadataForFileAtPath (fontFullPath)
+  let (metadataStatus, metadataDictionary) = try metadataForFileAtPath (fontFullPath)
   let possibleVersionNumber : Any? = metadataDictionary.object (forKey: PMFontVersion)
   let version : Int
   if let n = possibleVersionNumber as? NSNumber {
@@ -648,23 +648,36 @@ private func checkFontLibraryCheckAtPath (_ fontFullPath : String,
   }
   let possibleEntry : PMFontDictionaryEntry? = fontDict [fontName]
   if let entry = possibleEntry {
-    let newEntry = PMFontDictionaryEntry (status:.pmPartIsDuplicated,
-                                          version:0,
-                                          versionStringForDialog:"—",
-                                          pathArray:entry.mPathArray + [fontFullPath])
+    let newEntry = PMFontDictionaryEntry (
+      status: .pmPartIsDuplicated,
+      version: 0,
+      versionStringForDialog: "—",
+      pathArray: entry.mPathArray + [fontFullPath]
+    )
     fontDict [fontName] = newEntry
   }else{
-    let partStatus : PartStatus = partNameIsValid (fontName) ? .pmPartIsValid : .pmPartHasInvalidName
-    let newEntry = PMFontDictionaryEntry (status:partStatus,
-                                          version:version,
-                                          versionStringForDialog:String (version),
-                                          pathArray:[fontFullPath])
+    let partStatus : PartStatus
+    switch metadataStatus {
+    case .unknown :
+      partStatus = .pmPartHasUnknownStatus
+    case .ok :
+      partStatus = partNameIsValid (fontName) ? .pmPartIsValid : .pmPartHasInvalidName
+    case .warning :
+      partStatus = .pmPartHasWarning
+    case .error :
+      partStatus = .pmPartHasError
+    }
+    let newEntry = PMFontDictionaryEntry (
+      status: partStatus,
+      version: version,
+      versionStringForDialog: "\(version)",
+      pathArray: [fontFullPath]
+    )
     fontDict [fontName] = newEntry
   }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 
 private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
                                                   fontDict: inout [String : PMFontDictionaryEntry],
@@ -672,8 +685,8 @@ private func performFontLibraryEnumerationAtPath (_ inFontLibraryPath : String,
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inFontLibraryPath) {
     for path in unwSubpaths {
-      if (path as NSString).pathExtension == "ElCanariFont" {
-        let fullsubpath = (inFontLibraryPath as NSString).appendingPathComponent (path)
+      if path.pathExtension == "ElCanariFont" {
+        let fullsubpath = inFontLibraryPath.appendingPathComponent (path)
         try checkFontLibraryCheckAtPath (fullsubpath, logView:logView, fontDict:&fontDict)
       }
     }
@@ -700,7 +713,7 @@ private func checkFontLibrary (_ logView : NSTextView?,
   }else{
     logView?.appendSuccessString (String (format:"  Found %lu parts\n", foundFonts))
   }
-//--- Display duplicate entries for symbols, invalid entries
+//--- Display duplicate entries for font, invalid entries
   for (fontName, entry) in fontDict {
     switch entry.mPartStatus {
     case .pmPartIsDuplicated :
@@ -793,8 +806,8 @@ private func performArtworkLibraryEnumerationAtPath (_ inPackageLibraryPath : St
   let fm = FileManager ()
   if let unwSubpaths = fm.subpaths (atPath: inPackageLibraryPath) {
     for path in unwSubpaths {
-      if (path as NSString).pathExtension == "ElCanariArtwork" {
-        let fullsubpath = (inPackageLibraryPath as NSString).appendingPathComponent (path)
+      if path.pathExtension == "ElCanariArtwork" {
+        let fullsubpath = inPackageLibraryPath.appendingPathComponent (path)
         try checkArtworkLibraryCheckAtPath (fullsubpath, logView:logView, artworkDict:&artworkDict)
       }
     }

@@ -6,16 +6,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol RootEntity_mSelectedPageIndex : class {
+protocol ProjectRoot_mSelectedPageIndex : class {
   var mSelectedPageIndex : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: RootEntity
+//    Entity: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class RootEntity : EBManagedObject,
-         RootEntity_mSelectedPageIndex {
+class ProjectRoot : EBManagedObject,
+         ProjectRoot_mSelectedPageIndex {
 
   //····················································································································
   //   Atomic property: mSelectedPageIndex
@@ -41,6 +41,18 @@ class RootEntity : EBManagedObject,
   }
 
   //····················································································································
+  //   To many property: mFonts
+  //····················································································································
+
+  var mFonts_property = StoredArrayOf_ProjectFont ()
+
+  //····················································································································
+
+  var mFonts_property_selection : EBSelection < [ProjectFont] > {
+      return self.mFonts_property.prop
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -48,6 +60,8 @@ class RootEntity : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mFonts (no option)
+    self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -81,6 +95,13 @@ class RootEntity : EBManagedObject,
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mFonts",
+      idx:mFonts_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mFonts_property.mValueExplorer
+    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -93,6 +114,8 @@ class RootEntity : EBManagedObject,
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
+  //--- To many property: mFonts
+    self.mFonts_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -102,6 +125,7 @@ class RootEntity : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mFonts_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -123,6 +147,12 @@ class RootEntity : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
+  //--- To many property: mFonts
+    self.store (
+      managedObjectArray: self.mFonts_property.propval,
+      relationshipName: "mFonts",
+      intoDictionary: ioDictionary
+    )
   }
 
   //····················································································································
@@ -132,6 +162,12 @@ class RootEntity : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mFonts
+    self.mFonts_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mFonts",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ProjectFont])
   }
 
   //····················································································································
@@ -150,6 +186,10 @@ class RootEntity : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mFonts
+    for managedObject : EBManagedObject in self.mFonts_property.propval {
+      objects.append (managedObject)
+    }
   }
 
   //····················································································································
@@ -157,10 +197,10 @@ class RootEntity : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_RootEntity
+//    ReadOnlyArrayOf_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_RootEntity : ReadOnlyAbstractArrayProperty <RootEntity> {
+class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
 
   //····················································································································
   //   Observers of 'mSelectedPageIndex' stored property
@@ -200,7 +240,7 @@ class ReadOnlyArrayOf_RootEntity : ReadOnlyAbstractArrayProperty <RootEntity> {
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<RootEntity>) {
+  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
     for managedObject in inSet {
       self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
         managedObject.mSelectedPageIndex_property.addEBObserver (observer)
@@ -210,7 +250,7 @@ class ReadOnlyArrayOf_RootEntity : ReadOnlyAbstractArrayProperty <RootEntity> {
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<RootEntity>) {
+  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
     self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -224,32 +264,32 @@ class ReadOnlyArrayOf_RootEntity : ReadOnlyAbstractArrayProperty <RootEntity> {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_RootEntity
+//    TransientArrayOf_ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_RootEntity : ReadOnlyArrayOf_RootEntity {
+class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [RootEntity] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
 
   //····················································································································
 
-  override var propset : Set <RootEntity> {
+  override var propset : Set <ProjectRoot> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [RootEntity] > {
+  override var prop : EBSelection < [ProjectRoot] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [RootEntity] {
+  override var propval : [ProjectRoot] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -271,21 +311,21 @@ class TransientArrayOf_RootEntity : ReadOnlyArrayOf_RootEntity {
 
   //····················································································································
 
-  private var mSet = Set <RootEntity> ()
+  private var mSet = Set <ProjectRoot> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [RootEntity] >? = nil
+  private var mCachedValue : EBSelection < [ProjectRoot] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <RootEntity>
+      let newSet : Set <ProjectRoot>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <RootEntity> ()
+        newSet = Set <ProjectRoot> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -326,28 +366,28 @@ class TransientArrayOf_RootEntity : ReadOnlyArrayOf_RootEntity {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: RootEntity
+//    To many relationship read write: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_RootEntity : ReadOnlyArrayOf_RootEntity {
+class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
  
-  func setProp (_ value :  [RootEntity]) { } // Abstract method
+  func setProp (_ value :  [ProjectRoot]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: RootEntity
+//    To many relationship: ProjectRoot
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureObserverProtocol {
+final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : RootEntity?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot?) -> Void > = nil
 
   //····················································································································
 
@@ -394,9 +434,9 @@ final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureO
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [RootEntity] ()
+      var objectArray = [ProjectRoot] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "RootEntity") as? RootEntity {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -407,8 +447,8 @@ final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureO
 
  //····················································································································
 
-  private var mSet = Set <RootEntity> ()
-  private var mValue = [RootEntity] () {
+  private var mSet = Set <ProjectRoot> ()
+  private var mValue = [ProjectRoot] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -433,7 +473,7 @@ final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureO
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : RootEntity in addedObjectSet {
+          for managedObject : ProjectRoot in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -466,29 +506,29 @@ final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureO
 
   //····················································································································
 
-  override var prop : EBSelection < [RootEntity] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [RootEntity]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ProjectRoot]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [RootEntity] { return self.mValue }
+  override var propval : [ProjectRoot] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <RootEntity> { return self.mSet }
+  override var propset : Set <ProjectRoot> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [RootEntity]) {
+  @objc func performUndo (_ oldValue : [ProjectRoot]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : RootEntity) {
+  func remove (_ object : ProjectRoot) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -499,7 +539,7 @@ final class StoredArrayOf_RootEntity : ReadWriteArrayOf_RootEntity, EBSignatureO
   
   //····················································································································
 
-  func add (_ object : RootEntity) {
+  func add (_ object : ProjectRoot) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

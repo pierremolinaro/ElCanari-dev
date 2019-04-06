@@ -36,6 +36,7 @@ import Cocoa
   //    Outlets
   //····················································································································
 
+  @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mLibraryPageView : CanariViewWithKeyView?
@@ -98,20 +99,21 @@ import Cocoa
   //····················································································································
 
   override func rootEntityClassName () -> String {
-    return "RootEntity"
+    return "ProjectRoot"
   }
 
   //····················································································································
   //    rootObject
   //····················································································································
 
-  var rootObject : RootEntity { return self.mRootObject as! RootEntity }
+  var rootObject : ProjectRoot { return self.mRootObject as! ProjectRoot }
 
   //····················································································································
   //    check outlet connections
   //····················································································································
 
   private func checkOutletConnections () {
+    checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mLibraryPageView, "mLibraryPageView", CanariViewWithKeyView.self, #file, #line)
@@ -135,6 +137,8 @@ import Cocoa
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
   //--------------------------- Set targets / actions
+    self.mAddFontButton?.target = self
+    self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
   //--------------------------- Read documentFilePath model 
     self.documentFilePath_property.mReadModelFunction = { [weak self] in
       if let r = self?.computeTransient_documentFilePath () {
@@ -157,7 +161,9 @@ import Cocoa
   //--------------------------- Unbind multiple bindings
   //--------------------------- Unbind array controllers
   //--------------------------- Remove targets / actions
+    self.mAddFontButton?.target = nil
   //--------------------------- Clean up outlets
+    self.mAddFontButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mLibraryPageView?.ebCleanUp ()
