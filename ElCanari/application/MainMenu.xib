@@ -152,7 +152,7 @@
                             </menuItem>
                             <menuItem title="New Project" keyEquivalent="n" id="214">
                                 <connections>
-                                    <action selector="actionNewFontDocument:" target="212" id="vyM-YE-Rus"/>
+                                    <action selector="actionNewProjectDocument:" target="212" id="xL8-Cb-uvy"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="72">

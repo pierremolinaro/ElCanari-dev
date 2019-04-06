@@ -70,7 +70,7 @@
                                                 <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="left" title="Text Cell" id="38">
-                                                <font key="font" metaFont="system" size="12"/>
+                                                <font key="font" metaFont="cellTitle"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </textFieldCell>
@@ -84,7 +84,7 @@
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" allowsUndo="NO" alignment="right" title="Text Cell" id="211">
-                                                <font key="font" size="11" name="Menlo-Regular"/>
+                                                <font key="font" size="11" name="Courier"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -98,7 +98,7 @@
                                                 <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="right" title="Text Cell" id="37">
-                                                <font key="font" size="11" name="Menlo-Regular"/>
+                                                <font key="font" size="11" name="Courier"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </textFieldCell>
@@ -106,12 +106,12 @@
                                         </tableColumn>
                                         <tableColumn identifier="mAllCount" editable="NO" width="80" minWidth="80" maxWidth="80" id="35">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Total">
-                                                <font key="font" metaFont="systemMedium" size="11"/>
+                                                <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                             </tableHeaderCell>
                                             <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="right" title="Text Cell" id="36">
-                                                <font key="font" size="11" name="Menlo-Regular"/>
+                                                <font key="font" size="11" name="Courier"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -173,11 +173,11 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="171">
-                        <rect key="frame" x="455" y="334" width="111" height="22"/>
+                        <rect key="frame" x="455" y="331" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="…total count… " id="177">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" localizesFormat="NO" numberStyle="decimal" allowsFloats="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" groupingSeparator=" " id="178"/>
-                            <font key="font" size="12" name="Menlo-Bold"/>
+                            <font key="font" size="12" name="Courier-Bold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -254,18 +254,18 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="18">
-                        <rect key="frame" x="455" y="308" width="111" height="22"/>
+                        <rect key="frame" x="455" y="305" width="111" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="…live count… " id="23">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" localizesFormat="NO" allowsFloats="NO" minimumIntegerDigits="0" maximumIntegerDigits="42" groupingSeparator=" " id="107"/>
-                            <font key="font" size="12" name="Menlo-Bold"/>
+                            <font key="font" size="12" name="Courier-Bold"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="622" y="-22"/>
+            <point key="canvasLocation" x="621.5" y="-22.5"/>
         </window>
         <window title="Transient Event Log" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="TransientEventLog" animationBehavior="default" id="215" userLabel="Transient Event Log">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>

@@ -104,6 +104,22 @@ extension ApplicationDelegate {
 
   //····················································································································
 
+  @IBAction func actionNewProjectDocument (_ inSender : AnyObject) {
+    let dc = NSDocumentController.shared
+    do{
+      let possibleNewDocument : AnyObject = try dc.makeUntitledDocument (ofType: "El Canari Project")
+      if let newDocument = possibleNewDocument as? NSDocument {
+        dc.addDocument (newDocument)
+        newDocument.makeWindowControllers ()
+        newDocument.showWindows ()
+      }
+    }catch let error {
+      dc.presentError (error)
+    }
+  }
+
+  //····················································································································
+
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

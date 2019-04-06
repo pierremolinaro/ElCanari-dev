@@ -1,13 +1,7 @@
 include "eb-sources/canari-outlet-class-declaration.eb" ;
 include "eb-sources/transient-property-classes-structs.eb" ;
 include "eb-sources/common-entities.eb" ;
-#include "eb-sources/outlets.ebt" ;
-#include "eb-sources/controllers.ebt" ;
-#include "eb-sources/graphic_entity_and_controller.ebt" ;
 include "eb-sources/preferences.eb" ;
-#include "eb-sources/shapes.ebt" ;
-#include "eb-sources/library.ebt" ;
-#include "eb-sources/deviceDocument.ebt" ;
 #--- Font
 include "eb-sources/font-FontCharacter.eb" ;
 include "eb-sources/font-SegmentForFontCharacter.eb" ;
@@ -33,3 +27,6 @@ include "eb-sources/package-packageRoot.eb" ;
 #--- Device
 include "eb-sources/device-deviceDocument.eb" ;
 include "eb-sources/device-deviceRoot.eb" ;
+#--- Project
+include "eb-sources/project-document.eb" ;
+include "eb-sources/project-root.eb" ;
