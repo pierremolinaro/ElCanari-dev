@@ -1,9 +1,9 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  FontRoot[label="<FontRoot>FontRoot|<characters>characters"] ;
-  FontCharacter[label="<FontCharacter>FontCharacter|<segments>segments"] ;
-  SegmentForFontCharacter[label="<SegmentForFontCharacter>SegmentForFontCharacter"] ;
+  FontRoot[label="<FontRoot>FontRoot|<characters>characters|String comments|Int currentCharacterCodePoint|Int nominalSize|Int selectedInspector|Int selectedTab"] ;
+  FontCharacter[label="<FontCharacter>FontCharacter|Int advance|Int codePoint|Bool mWarnsWhenAdvanceIsZero|Bool mWarnsWhenNoSegment|<segments>segments"] ;
+  SegmentForFontCharacter[label="<SegmentForFontCharacter>SegmentForFontCharacter|Int x1|Int x2|Int y1|Int y2"] ;
   FontRoot:characters -> FontCharacter:FontCharacter [dir=both arrowtail=none arrowhead=vee] ;
   FontCharacter:segments -> SegmentForFontCharacter:SegmentForFontCharacter [dir=both arrowtail=none arrowhead=vee] ;
 }

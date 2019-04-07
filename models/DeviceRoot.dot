@@ -1,16 +1,16 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  DeviceRoot[label="<DeviceRoot>DeviceRoot|<mDocs>mDocs|<mPackages>mPackages|<mPadProxies>mPadProxies|<mSymbolInstances>mSymbolInstances|<mSymbolTypes>mSymbolTypes"] ;
-  SymbolTypeInDevice[label="<SymbolTypeInDevice>SymbolTypeInDevice|<mInstances>mInstances|<mPinTypes>mPinTypes"] ;
-  SymbolPinTypeInDevice[label="<SymbolPinTypeInDevice>SymbolPinTypeInDevice|<mInstances>mInstances"] ;
+  DeviceRoot[label="<DeviceRoot>DeviceRoot|String mComments|<mDocs>mDocs|Data mImageData|Bool mPackageDisplayHorizontalFlip|Bool mPackageDisplayVerticalFlip|Int mPackageDisplayZoom|<mPackages>mPackages|<mPadProxies>mPadProxies|String mPrefix|Bool mShowPackageBackPads|Bool mShowPackageFrontPads|Bool mShowPackagePadNumbers|Bool mShowPackages|Bool mSymbolDisplayHorizontalFlip|Bool mSymbolDisplayVerticalFlip|Int mSymbolDisplayZoom|<mSymbolInstances>mSymbolInstances|<mSymbolTypes>mSymbolTypes|String mTitle|Int selectedPageIndex"] ;
+  SymbolTypeInDevice[label="<SymbolTypeInDevice>SymbolTypeInDevice|Data mFileData|NSBezierPath mFilledBezierPath|<mInstances>mInstances|<mPinTypes>mPinTypes|NSBezierPath mStrokeBezierPath|String mTypeName|Int mVersion"] ;
+  SymbolPinTypeInDevice[label="<SymbolPinTypeInDevice>SymbolPinTypeInDevice|<mInstances>mInstances|String mName|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|Bool mPinNameIsDisplayedInSchematics|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
   SymbolPinInstanceInDevice[label="<SymbolPinInstanceInDevice>SymbolPinInstanceInDevice|<mPadProxy>mPadProxy|<mSymbolInstance>mSymbolInstance|<mType>mType"] ;
-  SymbolInstanceInDevice[label="<SymbolInstanceInDevice>SymbolInstanceInDevice|<mPinInstances>mPinInstances|<mType>mType"] ;
-  PadProxyInDevice[label="<PadProxyInDevice>PadProxyInDevice|<mPinInstance>mPinInstance"] ;
-  PackageInDevice[label="<PackageInDevice>PackageInDevice|<mMasterPads>mMasterPads|<mRoot>mRoot"] ;
-  MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|<mSlavePads>mSlavePads"] ;
-  SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|<mMasterPad>mMasterPad"] ;
-  DeviceDocumentation[label="<DeviceDocumentation>DeviceDocumentation"] ;
+  SymbolInstanceInDevice[label="<SymbolInstanceInDevice>SymbolInstanceInDevice|String mInstanceName|<mPinInstances>mPinInstances|<mType>mType|Int mX|Int mY"] ;
+  PadProxyInDevice[label="<PadProxyInDevice>PadProxyInDevice|Bool mIsNC|String mPadName|<mPinInstance>mPinInstance"] ;
+  PackageInDevice[label="<PackageInDevice>PackageInDevice|Data mFileData|<mMasterPads>mMasterPads|String mName|<mRoot>mRoot|NSBezierPath mStrokeBezierPath|Int mVersion|Int mX|Int mY"] ;
+  MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
+  SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|<mMasterPad>mMasterPad|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
+  DeviceDocumentation[label="<DeviceDocumentation>DeviceDocumentation|Data mFileData|String mFileName"] ;
   DeviceRoot:mDocs -> DeviceDocumentation:DeviceDocumentation [dir=both arrowtail=none arrowhead=vee] ;
   DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceRoot:mPadProxies -> PadProxyInDevice:PadProxyInDevice [dir=both arrowtail=none arrowhead=vee] ;

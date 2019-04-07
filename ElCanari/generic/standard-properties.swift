@@ -61,12 +61,6 @@ final class EBPropertyValueProxy <T : ValuePropertyProtocol> : EBReadWriteValueP
   
   //····················································································································
 
-//  override init () {
-//    super.init ()
-//  }
-  
-  //····················································································································
-
   var mValueExplorer : NSTextField? {
     didSet {
       self.updateValueExplorer (possibleValue: self.mCachedValue)
@@ -252,14 +246,11 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
       alert.addButton (withTitle: "Ok")
       alert.addButton (withTitle: "Discard Change")
       if let window = inWindow {
-        alert.beginSheetModal (
-          for:window,
-          completionHandler: { (response : NSApplication.ModalResponse) in
-            if response == .alertSecondButtonReturn { // Discard Change
-              self.postEvent ()
-            }
+        alert.beginSheetModal (for: window) { (response : NSApplication.ModalResponse) in
+          if response == .alertSecondButtonReturn { // Discard Change
+            self.postEvent ()
           }
-        )
+        }
       }else{
         alert.runModal ()
       }
@@ -270,7 +261,7 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
   //····················································································································
 
   func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
-    dictionary.setValue (mValue.convertToNSObject (), forKey: inKey)
+    dictionary.setValue (self.mValue.convertToNSObject (), forKey: inKey)
   }
 
   //····················································································································
@@ -325,15 +316,12 @@ final class EBStoredValueProperty <T : ValuePropertyProtocol> : EBReadWriteValue
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientValueProperty <T> : EBReadOnlyValueProperty <T> {
+
+  //····················································································································
+
   private var mValueCache : EBSelection <T>? = nil
   var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
   
-  //····················································································································
-
-//  override init () {
-//    super.init ()
-//  }
-
   //····················································································································
 
   var mValueExplorer : NSTextField? {
@@ -455,17 +443,13 @@ class EBReadWriteEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
-  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
-  var mWriteModelFunction : Optional < (T) -> Void > = nil
-  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
-
-  private var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································
 
-//  override init () {
-//    super.init ()
-//  }
+  var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
+  var mWriteModelFunction : Optional < (T) -> Void > = nil
+  var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
+  private var mCachedValue : EBSelection <T>? = nil
 
   //····················································································································
 
@@ -547,6 +531,9 @@ final class EBPropertyEnumProxy <T : EnumPropertyProtocol> : EBReadWriteEnumProp
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumProperty <T> {
+
+  //····················································································································
+
   weak var ebUndoManager : UndoManager? // SOULD BE WEAK
   fileprivate var mPreferenceKey : String?
   var mSetterDelegate : ((_ inValue : T) -> Void)?
@@ -640,27 +627,24 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
     var result = true
     let validationResult = validationFunction (propval, candidateValue)
     switch validationResult {
-    case EBValidationResult.ok (let validatedValue) :
+    case .ok (let validatedValue) :
       setProp (validatedValue)
-    case EBValidationResult.rejectWithBeep :
+    case .rejectWithBeep :
       result = false
       __NSBeep ()
-    case EBValidationResult.rejectWithAlert (let informativeText) :
+    case .rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
       alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."
       alert.informativeText = informativeText
-      alert.addButton (withTitle:"Ok")
-      alert.addButton (withTitle:"Discard Change")
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
       if let window = inWindow {
-        alert.beginSheetModal (
-          for:window,
-          completionHandler:{ (response : NSApplication.ModalResponse) in
-            if response == .alertSecondButtonReturn { // Discard Change
-              self.postEvent ()
-            }
+        alert.beginSheetModal (for:window) { (response : NSApplication.ModalResponse) in
+          if response == .alertSecondButtonReturn { // Discard Change
+            self.postEvent ()
           }
-        )
+        }
       }else{
         alert.runModal ()
       }
@@ -726,14 +710,11 @@ final class EBStoredEnumProperty <T : EnumPropertyProtocol> : EBReadWriteEnumPro
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class EBTransientEnumProperty <T : EBEnumProtocol> : EBReadOnlyEnumProperty <T> {
-  private var mValueCache : EBSelection <T>? = nil
-  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
 
   //····················································································································
 
-//  override init () {
-//    super.init ()
-//  }
+  private var mValueCache : EBSelection <T>? = nil
+  var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
 
   //····················································································································
 
@@ -1262,17 +1243,13 @@ class EBReadWriteClassProperty <T> : EBReadOnlyClassProperty <T> {
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 final class EBPropertyClassProxy <T : ClassPropertyProtocol> : EBReadWriteClassProperty <T> {
+
+  //····················································································································
+
   var mReadModelFunction : Optional < () -> EBSelection <T> > = nil
   var mWriteModelFunction : Optional < (T) -> Void > = nil
   var mValidateAndWriteModelFunction : Optional < (T, NSWindow?) -> Bool > = nil
-  
   private var mCachedValue : EBSelection <T>? = nil
-  
-  //····················································································································
-
-//  override init () {
-//    super.init ()
-//  }
   
   //····················································································································
 
@@ -1408,7 +1385,7 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
           UserDefaults.standard.set (self.mValue.archiveToData (), forKey: prefKey)
         }
         self.mValueExplorer?.stringValue = "\(mValue)"
-        self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector(performUndo(_:)), object: oldValue)
+        self.ebUndoManager?.registerUndo (withTarget: self, selector: #selector (performUndo(_:)), object: oldValue)
         if logEvents () {
           appendMessageString ("Property \(explorerIndexString (self.ebObjectIndex)) did change value to \(mValue)\n")
         }
@@ -1441,27 +1418,24 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
     var result = true
     let validationResult = validationFunction (propval, candidateValue)
     switch validationResult {
-    case EBValidationResult.ok (let validatedValue) :
+    case .ok (let validatedValue) :
       setProp (validatedValue)
-    case EBValidationResult.rejectWithBeep :
+    case .rejectWithBeep :
       result = false
       __NSBeep ()
-    case EBValidationResult.rejectWithAlert (let informativeText) :
+    case .rejectWithAlert (let informativeText) :
       result = false
       let alert = NSAlert ()
       alert.messageText = "The value " + String (describing: candidateValue) + " is invalid."
       alert.informativeText = informativeText
-      alert.addButton (withTitle:"Ok")
-      alert.addButton (withTitle:"Discard Change")
+      alert.addButton (withTitle: "Ok")
+      alert.addButton (withTitle: "Discard Change")
       if let window = inWindow {
-        alert.beginSheetModal (
-          for:window,
-          completionHandler:{ (response : NSApplication.ModalResponse) in
-            if response == .alertSecondButtonReturn { // Discard Change
-              self.postEvent ()
-            }
+        alert.beginSheetModal (for:window) { (response : NSApplication.ModalResponse) in
+          if response == .alertSecondButtonReturn { // Discard Change
+            self.postEvent ()
           }
-        )
+        }
       }else{
         alert.runModal ()
       }
@@ -1471,14 +1445,14 @@ final class EBStoredClassProperty <T : ClassPropertyProtocol> : EBReadWriteClass
 
   //····················································································································
 
-  func storeIn (dictionary:NSMutableDictionary, forKey inKey:String) {
-    dictionary.setValue (mValue.archiveToData (), forKey:inKey)
+  func storeIn (dictionary : NSMutableDictionary, forKey inKey : String) {
+    dictionary.setValue (self.mValue.archiveToData (), forKey: inKey)
   }
 
   //····················································································································
 
-  func readFrom (dictionary: NSDictionary, forKey inKey: String) {
-    let possibleValue = dictionary.object (forKey:inKey)
+  func readFrom (dictionary : NSDictionary, forKey inKey : String) {
+    let possibleValue = dictionary.object (forKey: inKey)
     if let value = possibleValue as? Data, let unarchivedValue = T.unarchiveFromData (data: value) as? T {
       self.setProp (unarchivedValue)
     }
@@ -1530,12 +1504,6 @@ class EBTransientClassProperty <T> : EBReadOnlyClassProperty <T> {
   private var mValueCache : EBSelection <T>? = nil
   var mReadModelFunction : Optional<() -> EBSelection <T> > = nil
   
-  //····················································································································
-
-//  override init () {
-//    super.init ()
-//  }
-
   //····················································································································
 
   var mValueExplorer : NSTextField? {

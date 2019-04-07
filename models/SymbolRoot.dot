@@ -1,8 +1,8 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  SymbolRoot[label="<SymbolRoot>SymbolRoot|<symbolObjects>symbolObjects|<symbolPins>symbolPins"] ;
-  SymbolPin[label="<SymbolPin>SymbolPin"] ;
+  SymbolRoot[label="<SymbolRoot>SymbolRoot|String comments|Int gridDisplay|GridStyle gridStyle|Bool horizontalFlip|Int selectedInspector|Int selectedPageIndex|<symbolObjects>symbolObjects|<symbolPins>symbolPins|Bool verticalFlip|Int xPlacardUnit|Int yPlacardUnit|Int zoom"] ;
+  SymbolPin[label="<SymbolPin>SymbolPin|String name|HorizontalAlignment nameHorizontalAlignment|HorizontalAlignment numberHorizontalAlignment|Bool pinNameIsDisplayedInSchematics|Int xName|Int xNumber|Int xPin|Int yName|Int yNumber|Int yPin"] ;
   SymbolObject[label="<SymbolObject>SymbolObject"] ;
   SymbolRoot:symbolObjects -> SymbolObject:SymbolObject [dir=both arrowtail=none arrowhead=vee] ;
 }
