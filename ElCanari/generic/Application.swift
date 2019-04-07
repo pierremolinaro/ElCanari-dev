@@ -61,6 +61,7 @@ class EBEvent : EBObject {
 
   //····················································································································
 
+
   override func sendEvent (_ event: NSEvent) {
     super.sendEvent (event)
     flushModelEvents ()

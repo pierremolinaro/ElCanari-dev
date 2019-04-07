@@ -11352,6 +11352,10 @@ const char* const newstroke_font[] =
 
 const int newstroke_font_bufsize = sizeof(newstroke_font)/sizeof(newstroke_font[0]);
 
+int newStrokeFontBufferSize (void) {
+  return sizeof(newstroke_font) ;
+}
+
 /* --- unused glyphs --- */
 /*  RECTANGLE_V_BLACK_SMALL  */
 /*  TRIANGLE_TALL_BLACK  */

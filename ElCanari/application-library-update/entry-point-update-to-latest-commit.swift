@@ -207,8 +207,8 @@ private func storeRepositoryETagAndLastCommitSHA (withResponse inResponse : Stri
     //--- Get commit sha
       let jsonArray = try JSONSerialization.jsonObject (with: jsonData) as! NSArray
       let jsonDictionary = jsonArray [0] as! NSDictionary
-      let commitDict = jsonDictionary ["commit"]  as! NSDictionary
-      let commitSHA = commitDict ["sha"]  as! String
+      let commitDict = jsonDictionary ["commit"] as! NSDictionary
+      let commitSHA = commitDict ["sha"] as! String
       inLogTextView.appendSuccessString ("  Commit SHA: \(commitSHA) has been stored in preferences\n")
       storeRepositoryCommitSHA (commitSHA)
     //--- Get ETag

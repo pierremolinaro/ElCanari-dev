@@ -107,6 +107,7 @@ static void loadNewStrokeFont (FILE * f, const char * const aNewStrokeFont [], c
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 int main (int argc, const char * argv []) {
+  printf ("Font Source Buffer size: %d bytes\n", newStrokeFontBufferSize ()) ;
   const char * fileName = "kicad-font.swift" ;
   FILE * f = fopen (fileName, "wt") ;
   fprintf (f, separator) ;
