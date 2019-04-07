@@ -35,7 +35,7 @@ extension DeviceDocument {
       let alert = NSAlert ()
       alert.messageText = "Error opening Package"
       alert.informativeText = messages.joined (separator: "\n")
-      _ = alert.runModal ()
+      alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
     }
 //--- END OF USER ZONE 2
   }

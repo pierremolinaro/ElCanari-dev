@@ -26,8 +26,10 @@ extension ProjectDocument {
                let version = metadataDictionary [PMFontVersion] as? Int,
                let rod = rootObjectDictionary,
                let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
-              font.mFontVersion = version
-              font.mDescriptiveString = descriptiveString
+              if font.mFontVersion < version {
+                font.mFontVersion = version
+                font.mDescriptiveString = descriptiveString
+              }
              }else{
               messages.append ("Cannot read \(pathes [0]) file.")
             }
