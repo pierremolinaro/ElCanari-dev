@@ -46,10 +46,10 @@ let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", 
 let fm = FileManager ()
 //-------------------- Get script absolute path
 let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
-print ("scriptDir \(scriptDir)")
+//print ("scriptDir \(scriptDir)")
 //--- Get file SHA plist
 let plistFileURL = URL (fileURLWithPath: scriptDir + "/files-sha.plist")
-print ("plistFileURL: '\(plistFileURL)'")
+//print ("plistFileURL: '\(plistFileURL)'")
 let currentFileDictionary : [String : Any]
 if let data = try? Data (contentsOf: plistFileURL) {
   let d = try! PropertyListSerialization.propertyList (from: data, options: [], format: nil)
@@ -85,17 +85,17 @@ for filePath in allFilePathes {
   }
 }
 //--- Checks keys are the same
-if !changed {
-  let oldKeys = Set (currentFileDictionary.keys)
-  var newKeys = Set (newFileDictionary.keys)
-  newKeys.insert ("-")
-  changed = oldKeys != newKeys
-  for newFilePath in newKeys.subtracting (oldKeys) {
-    print ("ADDED PATH '\(newFilePath)'")
-  }
-  for removedFilePath in oldKeys.subtracting (newKeys) {
-    print ("REMOVED PATH '\(removedFilePath)'")
-  }
+let oldKeys = Set (currentFileDictionary.keys)
+var newKeys = Set (newFileDictionary.keys)
+newKeys.insert ("-")
+if oldKeys != newKeys {
+  changed = true
+}
+for newFilePath in newKeys.subtracting (oldKeys) {
+  print ("ADDED PATH '\(newFilePath)'")
+}
+for removedFilePath in oldKeys.subtracting (newKeys) {
+  print ("REMOVED PATH '\(removedFilePath)'")
 }
 //--- If change, update plist file and write new build number into ElCanari plist files
 if changed {
@@ -120,42 +120,5 @@ if changed {
     let data = try! PropertyListSerialization.data (fromPropertyList: newFileDictionary, format: .binary, options: 0)
     try! data.write (to: plistFileURL)
 }
-
-//--- If any change
-//didChange = source_did_change.sourceDidChange ("Info.plist.json")
-//if didChange :
-//  #--- Get plist file path (from environment variables)
-//  INFOPLIST_FILE = os.environ['INFOPLIST_FILE']
-//  print ("INFOPLIST_FILE '" + INFOPLIST_FILE + "'")
-//  #--- Read Info.plist file
-//  dictionary = plistlib.readPlist (INFOPLIST_FILE)
-//  if 'PMBuildString' in dictionary:
-//    buildString = dictionary ['PMBuildString']
-//    #print "in dict '" + buildString + "'"
-//  else:
-//    buildString = "1A0"
-//  #--- Decompose build string
-//  major = 0
-//  while buildString [0].isdigit () :
-//    major *= 10 ;
-//    major += int (buildString [0])
-//    buildString = buildString [1:]
-//    #print "Major " + str (major) + " " + buildString
-//  letter = buildString [0]
-//  minor = int (buildString [1:])
-//  #print "Major " + str (major) + ", letter " + letter + ", minor " + str (minor)
-//  #--- increment build version
-//  minor = minor + 1
-//  if minor == 100 :
-//    minor = 0
-//    letter = chr (ord (letter) + 1)
-//    if letter == '[' : # '[" is the next char after 'Z'
-//      letter = 'A'
-//      major = major + 1
-//  newBuildString = str(major) + letter + str (minor)
-//  print "newBuildString '" + newBuildString + "'"
-//  #--- Update info.plist string
-//  dictionary ['PMBuildString'] = newBuildString
-//  plistlib.writePlist (dictionary, INFOPLIST_FILE)
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

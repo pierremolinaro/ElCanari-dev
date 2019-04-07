@@ -14,16 +14,8 @@ import Cocoa
 extension ProjectDocument {
   @objc func addFontAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-         var currentFontNames = Set <String> ()
-         for font in self.rootObject.mFonts_property.propval {
-            currentFontNames.insert (font.mFontName)
-         }
-         gOpenFontInLibrary?.loadDocumentFromLibrary (
-           windowForSheet: self.windowForSheet!,
-           alreadyLoadedDocuments: currentFontNames,
-           callBack: self.addFontFromLoadFontDialog
-         )
-//--- END OF USER ZONE 2
+         self.addFont (postAction: nil)
+ //--- END OF USER ZONE 2
   }
 }
 

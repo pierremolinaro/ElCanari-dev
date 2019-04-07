@@ -6,62 +6,98 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectRoot_mSelectedPageIndex : class {
-  var mSelectedPageIndex : Int { get }
+protocol ProjectDevice_mDeviceName : class {
+  var mDeviceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectRoot
+
+protocol ProjectDevice_mDeviceVersion : class {
+  var mDeviceVersion : Int { get }
+}
+
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectRoot : EBManagedObject,
-         ProjectRoot_mSelectedPageIndex {
+protocol ProjectDevice_mDeviceFileData : class {
+  var mDeviceFileData : Data { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//    Entity: ProjectDevice
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class ProjectDevice : EBManagedObject,
+         ProjectDevice_mDeviceName,
+         ProjectDevice_mDeviceVersion,
+         ProjectDevice_mDeviceFileData {
 
   //····················································································································
-  //   Atomic property: mSelectedPageIndex
+  //   Atomic property: mDeviceName
   //····················································································································
 
-  var mSelectedPageIndex_property = EBStoredProperty_Int (defaultValue: 0)
+  var mDeviceName_property = EBStoredProperty_String (defaultValue: "")
 
   //····················································································································
 
-  var mSelectedPageIndex : Int {
+  var mDeviceName : String {
     get {
-      return self.mSelectedPageIndex_property.propval
+      return self.mDeviceName_property.propval
     }
     set {
-      self.mSelectedPageIndex_property.setProp (newValue)
+      self.mDeviceName_property.setProp (newValue)
     }
   }
 
   //····················································································································
 
-  var mSelectedPageIndex_property_selection : EBSelection <Int> {
-    return self.mSelectedPageIndex_property.prop
+  var mDeviceName_property_selection : EBSelection <String> {
+    return self.mDeviceName_property.prop
   }
 
   //····················································································································
-  //   To many property: mFonts
+  //   Atomic property: mDeviceVersion
   //····················································································································
 
-  var mFonts_property = StoredArrayOf_ProjectFont ()
+  var mDeviceVersion_property = EBStoredProperty_Int (defaultValue: 0)
 
   //····················································································································
 
-  var mFonts_property_selection : EBSelection < [ProjectFont] > {
-      return self.mFonts_property.prop
+  var mDeviceVersion : Int {
+    get {
+      return self.mDeviceVersion_property.propval
+    }
+    set {
+      self.mDeviceVersion_property.setProp (newValue)
+    }
   }
 
   //····················································································································
-  //   To many property: mDevices
+
+  var mDeviceVersion_property_selection : EBSelection <Int> {
+    return self.mDeviceVersion_property.prop
+  }
+
+  //····················································································································
+  //   Atomic property: mDeviceFileData
   //····················································································································
 
-  var mDevices_property = StoredArrayOf_ProjectDevice ()
+  var mDeviceFileData_property = EBStoredProperty_Data (defaultValue: Data ())
 
   //····················································································································
 
-  var mDevices_property_selection : EBSelection < [ProjectDevice] > {
-      return self.mDevices_property.prop
+  var mDeviceFileData : Data {
+    get {
+      return self.mDeviceFileData_property.propval
+    }
+    set {
+      self.mDeviceFileData_property.setProp (newValue)
+    }
+  }
+
+  //····················································································································
+
+  var mDeviceFileData_property_selection : EBSelection <Data> {
+    return self.mDeviceFileData_property.prop
   }
 
   //····················································································································
@@ -70,12 +106,12 @@ class ProjectRoot : EBManagedObject,
 
   required init (_ ebUndoManager : EBUndoManager?) {
     super.init (ebUndoManager)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mFonts (no option)
-    self.mFonts_property.ebUndoManager = self.ebUndoManager
-  //--- To many property: mDevices (no option)
-    self.mDevices_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDeviceName
+    self.mDeviceName_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDeviceVersion
+    self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: mDeviceFileData
+    self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -100,29 +136,31 @@ class ProjectRoot : EBManagedObject,
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
     super.populateExplorerWindow (&y, view:view)
     createEntryForPropertyNamed (
-      "mSelectedPageIndex",
-      idx:self.mSelectedPageIndex_property.ebObjectIndex,
+      "mDeviceName",
+      idx:self.mDeviceName_property.ebObjectIndex,
       y:&y,
       view:view,
-      observerExplorer:&self.mSelectedPageIndex_property.mObserverExplorer,
-      valueExplorer:&self.mSelectedPageIndex_property.mValueExplorer
+      observerExplorer:&self.mDeviceName_property.mObserverExplorer,
+      valueExplorer:&self.mDeviceName_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDeviceVersion",
+      idx:self.mDeviceVersion_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDeviceVersion_property.mObserverExplorer,
+      valueExplorer:&self.mDeviceVersion_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "mDeviceFileData",
+      idx:self.mDeviceFileData_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.mDeviceFileData_property.mObserverExplorer,
+      valueExplorer:&self.mDeviceFileData_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
-    createEntryForToManyRelationshipNamed (
-      "mFonts",
-      idx:mFonts_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mFonts_property.mValueExplorer
-    )
-    createEntryForToManyRelationshipNamed (
-      "mDevices",
-      idx:mDevices_property.ebObjectIndex,
-      y: &y,
-      view: view,
-      valueExplorer:&mDevices_property.mValueExplorer
-    )
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
   }
@@ -132,13 +170,15 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override func clearObjectExplorer () {
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.mObserverExplorer = nil
-    self.mSelectedPageIndex_property.mValueExplorer = nil
-  //--- To many property: mFonts
-    self.mFonts_property.mValueExplorer = nil
-  //--- To many property: mDevices
-    self.mDevices_property.mValueExplorer = nil
+  //--- Atomic property: mDeviceName
+    self.mDeviceName_property.mObserverExplorer = nil
+    self.mDeviceName_property.mValueExplorer = nil
+  //--- Atomic property: mDeviceVersion
+    self.mDeviceVersion_property.mObserverExplorer = nil
+    self.mDeviceVersion_property.mValueExplorer = nil
+  //--- Atomic property: mDeviceFileData
+    self.mDeviceFileData_property.mObserverExplorer = nil
+    self.mDeviceFileData_property.mValueExplorer = nil
   //---
     super.clearObjectExplorer ()
   }
@@ -148,8 +188,6 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
-    self.mFonts_property.setProp ([])
-    self.mDevices_property.setProp ([])
   //---
     super.cleanUpToManyRelationships ()
   }
@@ -169,20 +207,12 @@ class ProjectRoot : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
-  //--- To many property: mFonts
-    self.store (
-      managedObjectArray: self.mFonts_property.propval,
-      relationshipName: "mFonts",
-      intoDictionary: ioDictionary
-    )
-  //--- To many property: mDevices
-    self.store (
-      managedObjectArray: self.mDevices_property.propval,
-      relationshipName: "mDevices",
-      intoDictionary: ioDictionary
-    )
+  //--- Atomic property: mDeviceName
+    self.mDeviceName_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceName")
+  //--- Atomic property: mDeviceVersion
+    self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceVersion")
+  //--- Atomic property: mDeviceFileData
+    self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceFileData")
   }
 
   //····················································································································
@@ -192,18 +222,6 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
-  //--- To many property: mFonts
-    self.mFonts_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mFonts",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ProjectFont])
-  //--- To many property: mDevices
-    self.mDevices_property.setProp (readEntityArrayFromDictionary (
-      inRelationshipName: "mDevices",
-      inDictionary: inDictionary,
-      managedObjectArray: &managedObjectArray
-    ) as! [ProjectDevice])
   }
 
   //····················································································································
@@ -212,8 +230,12 @@ class ProjectRoot : EBManagedObject,
 
   override func setUpAtomicPropertiesWithDictionary (_ inDictionary : NSDictionary) {
     super.setUpAtomicPropertiesWithDictionary (inDictionary)
-  //--- Atomic property: mSelectedPageIndex
-    self.mSelectedPageIndex_property.readFrom (dictionary: inDictionary, forKey:"mSelectedPageIndex")
+  //--- Atomic property: mDeviceName
+    self.mDeviceName_property.readFrom (dictionary: inDictionary, forKey:"mDeviceName")
+  //--- Atomic property: mDeviceVersion
+    self.mDeviceVersion_property.readFrom (dictionary: inDictionary, forKey:"mDeviceVersion")
+  //--- Atomic property: mDeviceFileData
+    self.mDeviceFileData_property.readFrom (dictionary: inDictionary, forKey:"mDeviceFileData")
   }
 
   //····················································································································
@@ -222,14 +244,6 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -238,14 +252,6 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
-  //--- To many property: mFonts
-    for managedObject in self.mFonts_property.propval {
-      objects.append (managedObject)
-    }
-  //--- To many property: mDevices
-    for managedObject in self.mDevices_property.propval {
-      objects.append (managedObject)
-    }
   }
 
   //····················································································································
@@ -253,64 +259,178 @@ class ProjectRoot : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectRoot
+//    ReadOnlyArrayOf_ProjectDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> {
+class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevice> {
 
   //····················································································································
-  //   Observers of 'mSelectedPageIndex' stored property
+  //   Observers of 'mDeviceName' stored property
   //····················································································································
 
-  private var mObserversOf_mSelectedPageIndex = EBWeakEventSet ()
+  private var mObserversOf_mDeviceName = EBWeakEventSet ()
 
   //····················································································································
 
-  final func addEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func addEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
     self.addEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.insert (inObserver)
+    self.mObserversOf_mDeviceName.insert (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.addEBObserver (inObserver)
+        managedObject.mDeviceName_property.addEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func removeEBObserverOf_mSelectedPageIndex (_ inObserver : EBEvent) {
+  final func removeEBObserverOf_mDeviceName (_ inObserver : EBEvent) {
     self.removeEBObserver (inObserver)
-    self.mObserversOf_mSelectedPageIndex.remove (inObserver)
+    self.mObserversOf_mDeviceName.remove (inObserver)
     switch prop {
     case .empty, .multiple :
       break
     case .single (let v) :
       for managedObject in v {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (inObserver)
+        managedObject.mDeviceName_property.removeEBObserver (inObserver)
       }
     }
   }
 
   //····················································································································
 
-  final func addEBObserversOf_mSelectedPageIndex_toElementsOfSet (_ inSet : Set<ProjectRoot>) {
+  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
     for managedObject in inSet {
-      self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
-        managedObject.mSelectedPageIndex_property.addEBObserver (observer)
+      self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
+        managedObject.mDeviceName_property.addEBObserver (observer)
       })
     }
   }
 
   //····················································································································
 
-  final func removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (_ inSet : Set<ProjectRoot>) {
-    self.mObserversOf_mSelectedPageIndex.apply ( {(_ observer : EBEvent) in
+  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
-        managedObject.mSelectedPageIndex_property.removeEBObserver (observer)
+        managedObject.mDeviceName_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mDeviceVersion' stored property
+  //····················································································································
+
+  private var mObserversOf_mDeviceVersion = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDeviceVersion.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDeviceVersion_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDeviceVersion (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDeviceVersion.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDeviceVersion_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
+        managedObject.mDeviceVersion_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDeviceVersion_property.removeEBObserver (observer)
+      }
+    })
+  }
+
+  //····················································································································
+  //   Observers of 'mDeviceFileData' stored property
+  //····················································································································
+
+  private var mObserversOf_mDeviceFileData = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_mDeviceFileData.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDeviceFileData_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_mDeviceFileData (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_mDeviceFileData.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.mDeviceFileData_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
+        managedObject.mDeviceFileData_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
+      observer.postEvent ()
+      for managedObject in inSet {
+        managedObject.mDeviceFileData_property.removeEBObserver (observer)
       }
     })
   }
@@ -320,32 +440,32 @@ class ReadOnlyArrayOf_ProjectRoot : ReadOnlyAbstractArrayProperty <ProjectRoot> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectRoot
+//    TransientArrayOf_ProjectDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectRoot] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDevice] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> {
+  override var propset : Set <ProjectDevice> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > {
+  override var prop : EBSelection < [ProjectDevice] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectRoot] {
+  override var propval : [ProjectDevice] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -367,33 +487,37 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 
   //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
+  private var mSet = Set <ProjectDevice> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectRoot] >? = nil
+  private var mCachedValue : EBSelection < [ProjectDevice] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectRoot>
+      let newSet : Set <ProjectDevice>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectRoot> ()
+        newSet = Set <ProjectDevice> ()
       case .single (let array) :
        newSet = Set (array)
       }
     //--- Removed object set
       let removedSet = self.mSet.subtracting (newSet)
     //--- Remove observers of stored properties
-      self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
-      self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDeviceName_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedSet)
+      self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
     //--- Update object set
       self.mSet = newSet
@@ -422,28 +546,28 @@ class TransientArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectRoot
+//    To many relationship read write: ProjectDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectRoot : ReadOnlyArrayOf_ProjectRoot {
+class ReadWriteArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectRoot]) { } // Abstract method
+  func setProp (_ value :  [ProjectDevice]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectRoot
+//    To many relationship: ProjectDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatureObserverProtocol {
+final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectRoot?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDevice?) -> Void > = nil
 
   //····················································································································
 
@@ -490,9 +614,9 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectRoot] ()
+      var objectArray = [ProjectDevice] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectRoot") as? ProjectRoot {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDevice") as? ProjectDevice {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -503,8 +627,8 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
  //····················································································································
 
-  private var mSet = Set <ProjectRoot> ()
-  private var mValue = [ProjectRoot] () {
+  private var mSet = Set <ProjectDevice> ()
+  private var mValue = [ProjectDevice] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -522,19 +646,27 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
           for managedObject in removedObjectSet {
             managedObject.setSignatureObserver (observer: nil)
             self.setOppositeRelationship? (nil)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = nil
+            managedObject.mDeviceName_property.mSetterDelegate = nil
+            managedObject.mDeviceVersion_property.mSetterDelegate = nil
+            managedObject.mDeviceFileData_property.mSetterDelegate = nil
           }
-          self.removeEBObserversOf_mSelectedPageIndex_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectRoot in addedObjectSet {
+          for managedObject : ProjectDevice in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
-            managedObject.mSelectedPageIndex_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDeviceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDeviceVersion_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
+            managedObject.mDeviceFileData_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
           }
-          self.addEBObserversOf_mSelectedPageIndex_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()
@@ -562,29 +694,29 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectRoot] > { return .single (self.mValue) }
+  override var prop : EBSelection < [ProjectDevice] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectRoot]) { self.mValue = inValue }
+  override func setProp (_ inValue : [ProjectDevice]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectRoot] { return self.mValue }
+  override var propval : [ProjectDevice] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectRoot> { return self.mSet }
+  override var propset : Set <ProjectDevice> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectRoot]) {
+  @objc func performUndo (_ oldValue : [ProjectDevice]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectRoot) {
+  func remove (_ object : ProjectDevice) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -595,7 +727,7 @@ final class StoredArrayOf_ProjectRoot : ReadWriteArrayOf_ProjectRoot, EBSignatur
   
   //····················································································································
 
-  func add (_ object : ProjectRoot) {
+  func add (_ object : ProjectDevice) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

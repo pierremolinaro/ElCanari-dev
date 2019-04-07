@@ -27,6 +27,9 @@ document ProjectDocument root ProjectRoot {
 #  outlet progressIndicator : NSProgressIndicator ;
   
 #---------------------- Components Tab
+  action addComponentAction ;
+  outlet EBButton mAddComponentButton $run self.addComponentAction ;
+
 #  controller componentController : NSArrayController ComponentInProjectEntity
 #    $contentSet root.components { NSDeletesObjectsOnRemove:yes} ;
 
@@ -107,6 +110,7 @@ document ProjectDocument root ProjectRoot {
 #  ;
 #
 #---------------------- Library Tab
+#--- Fonts
   action addFontAction ;
   outlet EBButton mAddFontButton $run self.addFontAction ;
 
@@ -128,6 +132,44 @@ document ProjectDocument root ProjectRoot {
      column "size" EBTextObserverField $valueObserver self.sizeString
   }
   outlet EBTableView mFontLibraryTableView $tableValue mProjectFontController ;
+
+#--- Devices
+  action resetDeviceVersionAction ;
+  outlet EBButton mResetDeviceVersionButton
+    $run self.resetDeviceVersionAction
+    $enabled mProjectDeviceController.selectedArray.count > 0
+  ;
+
+  action removeDeviceAction ;
+  outlet EBButton mRemoveDeviceButton
+    $run self.removeDeviceAction
+    $enabled mProjectDeviceController.selectedArray.count > 0
+  ;
+
+  action editDeviceAction ;
+  outlet EBButton mEditDeviceButton
+    $run self.editDeviceAction
+    $enabled mProjectDeviceController.selectedArray.count > 0
+  ;
+
+  action exportDeviceAction ;
+  outlet EBButton mExportDeviceButton
+    $run self.exportDeviceAction
+    $enabled mProjectDeviceController.selectedArray.count > 0
+  ;
+
+  action updateDeviceAction ;
+  outlet EBButton mUpdateDeviceButton
+    $run self.updateDeviceAction
+    $enabled mProjectDeviceController.selectedArray.count > 0
+  ;
+
+  tableViewController mProjectDeviceController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mDevices {
+     column "name" EBTextObserverField $valueObserver self.mDeviceName
+     column "version" EBTextObserverField $valueObserver self.versionString
+     column "size" EBTextObserverField $valueObserver self.sizeString
+  }
+  outlet EBTableView mDeviceLibraryTableView $tableValue mProjectDeviceController ;
 
 #  outlet checkForDeviceAndFontUpdateAtOpeningCheckBox : NSButton $value root.checkForDeviceAndFontUpdateAtOpening ;
 #

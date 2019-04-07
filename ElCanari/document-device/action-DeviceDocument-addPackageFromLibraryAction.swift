@@ -21,7 +21,8 @@ extension DeviceDocument {
    gOpenPackageInLibrary?.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
      alreadyLoadedDocuments: currentPackageNames,
-     callBack: self.packageFromLoadPackageDialog
+     callBack: self.packageFromLoadPackageDialog,
+     postAction: nil
   )
 //--- END OF USER ZONE 2
   }

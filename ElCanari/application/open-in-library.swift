@@ -29,7 +29,8 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
 
   internal func loadDocumentFromLibrary (windowForSheet inWindow : NSWindow,
                                          alreadyLoadedDocuments inNames : Set <String>,
-                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Void) {
+                                         callBack : @escaping (_ inData : Data, _ inName : String) -> Void,
+                                         postAction : Optional <() -> Void>) {
   //--- Configure
     self.mFullPathTextField?.stringValue = ""
     self.mStatusTextField?.stringValue = ""
@@ -54,6 +55,7 @@ class OpenInLibrary : NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
           let fm = FileManager ()
           if let data = fm.contents (atPath: selectedItem.mFullPath) {
             callBack (data, selectedItem.mFullPath.lastPathComponent.deletingPathExtension)
+            postAction? ()
           }
         }
         self.mOutlineViewDataSource = []

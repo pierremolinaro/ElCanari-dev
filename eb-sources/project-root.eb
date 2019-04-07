@@ -1,15 +1,17 @@
-#----------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #     P R O J E C T    R O O T
-#----------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectRoot {
   toMany ProjectFont mFonts ;
+  toMany ProjectDevice mDevices ;
+
   property Int mSelectedPageIndex default 0 ;
 }
   
-#----------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   Font
-#----------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 entity ProjectFont {
   property String mFontName default "" ;
@@ -19,6 +21,20 @@ entity ProjectFont {
   
   transient String versionString dependsFrom self.mFontVersion ;
   transient String sizeString dependsFrom self.mDescriptiveString ;
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#   Device
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+entity ProjectDevice {
+  property String mDeviceName default "" ;
+  property Int mDeviceVersion default 0 ;
+  property Data mDeviceFileData default empty ;
+
+  transient String versionString dependsFrom self.mDeviceVersion ;
+  transient String sizeString dependsFrom self.mDeviceFileData ;
+  transient Bool canExport dependsFrom self.mDeviceFileData ;
 }
 
 #  transient moreThanOneNetClass : boolean observe .netClasses ;

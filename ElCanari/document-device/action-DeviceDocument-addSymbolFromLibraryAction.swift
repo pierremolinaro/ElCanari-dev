@@ -21,7 +21,8 @@ extension DeviceDocument {
    gOpenSymbolInLibrary?.loadDocumentFromLibrary (
      windowForSheet: self.windowForSheet!,
      alreadyLoadedDocuments: currentSymbolNames,
-     callBack: self.symbolTypeFromLoadSymbolDialog
+     callBack: self.symbolTypeFromLoadSymbolDialog,
+     postAction: nil
   )
 //--- END OF USER ZONE 2
   }

@@ -11,41 +11,12 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-extension ProjectDocument {
-  @objc func updateFontAction (_ sender : NSObject?) {
+func transient_ProjectDevice_canExport (
+       _ self_mDeviceFileData : Data
+) -> Bool {
 //--- START OF USER ZONE 2
-        let selectedFonts = self.mProjectFontController.selectedArray_property.propval
-        var messages = [String] ()
-        for font in selectedFonts {
-          let pathes = fontFilePathInLibraries (font.mFontName)
-          if pathes.count == 0 {
-            messages.append ("No file for \(font.mFontName) font in Library")
-          }else if pathes.count == 1 {
-            if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
-               let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: data),
-               let version = metadataDictionary [PMFontVersion] as? Int,
-               let rod = rootObjectDictionary,
-               let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
-              font.mFontVersion = version
-              font.mDescriptiveString = descriptiveString
-             }else{
-              messages.append ("Cannot read \(pathes [0]) file.")
-            }
-          }else{ // pathes.count > 1
-            messages.append ("Several files for \(font.mFontName) font in Library:")
-            for path in pathes {
-              messages.append ("  - \(path)")
-            }
-          }
-        }
-        if messages.count > 0 {
-          let alert = NSAlert ()
-          alert.messageText = "Error opening Font"
-          alert.informativeText = messages.joined (separator: "\n")
-          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
-        }
+
 //--- END OF USER ZONE 2
-  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
