@@ -14,7 +14,29 @@ import Cocoa
 extension ProjectDocument {
   @objc func editDeviceAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+        let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
+        let dc = NSDocumentController.shared
+        var messages = [String] ()
+        for device in selectedDevices {
+          let pathes = deviceFilePathInLibraries (device.mDeviceName)
+          if pathes.count == 0 {
+            messages.append ("No file for \(device.mDeviceName) font in Library")
+          }else if pathes.count == 1 {
+            let url = URL (fileURLWithPath: pathes [0])
+            dc.openDocument (withContentsOf: url, display: true, completionHandler: {(document : NSDocument?, alreadyOpen : Bool, error : Error?) in })
+          }else{ // pathes.count > 1
+            messages.append ("Several files for \(device.mDeviceName) device in Library:")
+            for path in pathes {
+              messages.append ("  - \(path)")
+            }
+          }
+        }
+        if messages.count > 0 {
+          let alert = NSAlert ()
+          alert.messageText = "Error opening Device"
+          alert.informativeText = messages.joined (separator: "\n")
+          alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
+        }
 //--- END OF USER ZONE 2
   }
 }

@@ -15,7 +15,7 @@ func transient_ProjectDevice_versionString (
        _ self_mDeviceVersion : Int
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return (self_mDeviceVersion > 0) ? "\(self_mDeviceVersion)" : "—"
 //--- END OF USER ZONE 2
 }
 

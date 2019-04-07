@@ -23,13 +23,34 @@ protocol ProjectDevice_mDeviceFileData : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectDevice_versionString : class {
+  var versionString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectDevice_sizeString : class {
+  var sizeString : String? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol ProjectDevice_canExport : class {
+  var canExport : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: ProjectDevice
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class ProjectDevice : EBManagedObject,
          ProjectDevice_mDeviceName,
          ProjectDevice_mDeviceVersion,
-         ProjectDevice_mDeviceFileData {
+         ProjectDevice_mDeviceFileData,
+         ProjectDevice_versionString,
+         ProjectDevice_sizeString,
+         ProjectDevice_canExport {
 
   //····················································································································
   //   Atomic property: mDeviceName
@@ -101,6 +122,75 @@ class ProjectDevice : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: versionString
+  //····················································································································
+
+  var versionString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var versionString_property_selection : EBSelection <String> {
+    return self.versionString_property.prop
+  }
+
+  //····················································································································
+
+  var versionString : String? {
+    switch self.versionString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: sizeString
+  //····················································································································
+
+  var sizeString_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var sizeString_property_selection : EBSelection <String> {
+    return self.sizeString_property.prop
+  }
+
+  //····················································································································
+
+  var sizeString : String? {
+    switch self.sizeString_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
+  //   Transient property: canExport
+  //····················································································································
+
+  var canExport_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canExport_property_selection : EBSelection <Bool> {
+    return self.canExport_property.prop
+  }
+
+  //····················································································································
+
+  var canExport : Bool? {
+    switch self.canExport_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -112,6 +202,72 @@ class ProjectDevice : EBManagedObject,
     self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
+  //--- Atomic property: versionString
+    self.versionString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDeviceVersion_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDeviceVersion_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDevice_versionString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceVersion_property.addEBObserver (self.versionString_property)
+  //--- Atomic property: sizeString
+    self.sizeString_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDeviceFileData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDevice_sizeString (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceFileData_property.addEBObserver (self.sizeString_property)
+  //--- Atomic property: canExport
+    self.canExport_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mDeviceFileData_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mDeviceFileData_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDevice_canExport (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mDeviceFileData_property.addEBObserver (self.canExport_property)
   //--- Install undoers and opposite setter for relationships
   //--- Register properties for handling signature
   //--- Extern delegates
@@ -121,6 +277,9 @@ class ProjectDevice : EBManagedObject,
 
   override internal func removeAllObservers () {
     super.removeAllObservers ()
+    self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
+    self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
+    self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
   //--- Unregister properties for handling signature
   }
 
@@ -160,6 +319,30 @@ class ProjectDevice : EBManagedObject,
       valueExplorer:&self.mDeviceFileData_property.mValueExplorer
     )
     createEntryForTitle ("Properties", y:&y, view:view)
+    createEntryForPropertyNamed (
+      "versionString",
+      idx:self.versionString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.versionString_property.mObserverExplorer,
+      valueExplorer:&self.versionString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "sizeString",
+      idx:self.sizeString_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.sizeString_property.mObserverExplorer,
+      valueExplorer:&self.sizeString_property.mValueExplorer
+    )
+    createEntryForPropertyNamed (
+      "canExport",
+      idx:self.canExport_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.canExport_property.mObserverExplorer,
+      valueExplorer:&self.canExport_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForTitle ("ToMany Relationships", y:&y, view:view)
     createEntryForTitle ("ToOne Relationships", y:&y, view:view)
@@ -436,6 +619,174 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
   }
 
   //····················································································································
+  //   Observers of 'versionString' transient property
+  //····················································································································
+
+  private var mObserversOf_versionString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_versionString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.versionString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_versionString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_versionString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.versionString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
+        managedObject.versionString_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'sizeString' transient property
+  //····················································································································
+
+  private var mObserversOf_sizeString = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_sizeString (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_sizeString.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sizeString_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_sizeString (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_sizeString.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.sizeString_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
+        managedObject.sizeString_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+  //   Observers of 'canExport' transient property
+  //····················································································································
+
+  private var mObserversOf_canExport = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_canExport (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canExport.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canExport_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canExport (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canExport.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canExport_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
+        managedObject.canExport_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+    for managedObject in inSet {
+      self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
+        managedObject.canExport_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -512,6 +863,9 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
       self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedSet)
     //--- Remove observers of transient properties
+      self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_sizeString_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_canExport_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -519,6 +873,9 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
       self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedSet)
       self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedSet)
      //--- Add observers of transient properties
+      self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_sizeString_toElementsOfSet (addedSet)
+      self.addEBObserversOf_canExport_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -653,6 +1010,9 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
           self.removeEBObserversOf_mDeviceName_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDeviceVersion_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_mDeviceFileData_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -667,6 +1027,9 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
           self.addEBObserversOf_mDeviceName_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDeviceVersion_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_mDeviceFileData_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

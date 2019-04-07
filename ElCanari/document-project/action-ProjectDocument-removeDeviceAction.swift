@@ -14,7 +14,14 @@ import Cocoa
 extension ProjectDocument {
   @objc func removeDeviceAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-    ENTER USER CODE HERE
+        let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
+        var allDevices = self.rootObject.mDevices_property.propval
+        for device in selectedDevices {
+          if let idx = allDevices.firstIndex(of: device) {
+            allDevices.remove(at: idx)
+          }
+        }
+        self.rootObject.mDevices_property.setProp (allDevices)
 //--- END OF USER ZONE 2
   }
 }

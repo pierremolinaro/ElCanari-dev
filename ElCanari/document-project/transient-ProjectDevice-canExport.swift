@@ -15,7 +15,7 @@ func transient_ProjectDevice_canExport (
        _ self_mDeviceFileData : Data
 ) -> Bool {
 //--- START OF USER ZONE 2
-
+         return self_mDeviceFileData.count > 0
 //--- END OF USER ZONE 2
 }
 

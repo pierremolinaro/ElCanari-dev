@@ -15,7 +15,7 @@ func transient_ProjectDevice_sizeString (
        _ self_mDeviceFileData : Data
 ) -> String {
 //--- START OF USER ZONE 2
-
+        return (self_mDeviceFileData.count > 0) ? "\(self_mDeviceFileData.count.stringWithSeparator) bytes" : "—"
 //--- END OF USER ZONE 2
 }
 
