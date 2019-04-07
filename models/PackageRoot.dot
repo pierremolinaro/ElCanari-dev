@@ -1,0 +1,12 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  PackageRoot[label="<PackageRoot>PackageRoot|<packageObjects>packageObjects|<packagePads>packagePads|<packageSlavePads>packageSlavePads|<packageZones>packageZones"] ;
+  PackageZone[label="<PackageZone>PackageZone"] ;
+  PackageSlavePad[label="<PackageSlavePad>PackageSlavePad|<master>master"] ;
+  PackagePad[label="<PackagePad>PackagePad|<slaves>slaves|<zone>zone"] ;
+  PackageObject[label="<PackageObject>PackageObject"] ;
+  PackageRoot:packageObjects -> PackageObject:PackageObject [dir=both arrowtail=none arrowhead=vee] ;
+  PackagePad:slaves -> PackageSlavePad:master [dir=both arrowtail=onormal arrowhead=vee] ;
+  PackagePad:zone -> PackageZone:PackageZone [dir=both arrowtail=none arrowhead=onormal] ;
+}

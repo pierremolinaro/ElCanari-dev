@@ -30,3 +30,13 @@ include "eb-sources/device-deviceRoot.eb" ;
 #--- Project
 include "eb-sources/project-document.eb" ;
 include "eb-sources/project-root.eb" ;
+
+
+#---
+graphviz SymbolRoot ;
+graphviz PackageRoot ;
+graphviz DeviceRoot ;
+graphviz FontRoot ;
+graphviz MergerRoot ;
+graphviz ArtworkRoot ;
+graphviz ProjectRoot ;

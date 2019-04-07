@@ -409,7 +409,7 @@ class SymbolPinInstanceInDevice : EBManagedObject,
 
   override func saveIntoDictionary (_ ioDictionary : NSMutableDictionary) {
     super.saveIntoDictionary (ioDictionary)
-  //--- To one property: mPadProxy
+  //--- To one property: mPadProxy // Opposite is toOne mPinInstance
     self.store (managedObject:self.mPadProxy_property.propval,
       relationshipName: "mPadProxy",
       intoDictionary: ioDictionary)

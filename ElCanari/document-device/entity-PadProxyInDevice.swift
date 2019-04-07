@@ -383,7 +383,7 @@ class PadProxyInDevice : EBManagedObject,
     self.mPadName_property.storeIn (dictionary: ioDictionary, forKey:"mPadName")
   //--- Atomic property: mIsNC
     self.mIsNC_property.storeIn (dictionary: ioDictionary, forKey:"mIsNC")
-  //--- To one property: mPinInstance
+  //--- To one property: mPinInstance // Opposite is toOne mPadProxy
     self.store (managedObject:self.mPinInstance_property.propval,
       relationshipName: "mPinInstance",
       intoDictionary: ioDictionary)

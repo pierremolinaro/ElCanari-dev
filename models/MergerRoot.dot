@@ -1,0 +1,36 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  MergerRoot[label="<MergerRoot>MergerRoot|<artwork>artwork|<boardInstances>boardInstances|<boardModels>boardModels"] ;
+  BoardModel[label="<BoardModel>BoardModel|<backComponentNames>backComponentNames|<backComponentValues>backComponentValues|<backLayoutTexts>backLayoutTexts|<backLegendLines>backLegendLines|<backLegendTexts>backLegendTexts|<backPackages>backPackages|<backPads>backPads|<backTracks>backTracks|<drills>drills|<frontComponentNames>frontComponentNames|<frontComponentValues>frontComponentValues|<frontLayoutTexts>frontLayoutTexts|<frontLegendLines>frontLegendLines|<frontLegendTexts>frontLegendTexts|<frontPackages>frontPackages|<frontPads>frontPads|<frontTracks>frontTracks|<internalBoardsLimits>internalBoardsLimits|<myInstances>myInstances|<vias>vias"] ;
+  BoardModelVia[label="<BoardModelVia>BoardModelVia"] ;
+  BoardModelPad[label="<BoardModelPad>BoardModelPad"] ;
+  SegmentEntity[label="<SegmentEntity>SegmentEntity"] ;
+  MergerBoardInstance[label="<MergerBoardInstance>MergerBoardInstance|<myModel>myModel|<myRoot>myRoot"] ;
+  ArtworkRoot[label="<ArtworkRoot>ArtworkRoot|<fileGenerationParameterArray>fileGenerationParameterArray"] ;
+  ArtworkFileGenerationParameters[label="<ArtworkFileGenerationParameters>ArtworkFileGenerationParameters"] ;
+  MergerRoot:artwork -> ArtworkRoot:ArtworkRoot [dir=both arrowtail=none arrowhead=onormal] ;
+  MergerRoot:boardInstances -> MergerBoardInstance:myRoot [dir=both arrowtail=onormal arrowhead=vee] ;
+  MergerRoot:boardModels -> BoardModel:BoardModel [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backComponentNames -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backComponentValues -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backLayoutTexts -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backLegendLines -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backLegendTexts -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backPackages -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backPads -> BoardModelPad:BoardModelPad [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:backTracks -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:drills -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontComponentNames -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontComponentValues -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontLayoutTexts -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontLegendLines -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontLegendTexts -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontPackages -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontPads -> BoardModelPad:BoardModelPad [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:frontTracks -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:internalBoardsLimits -> SegmentEntity:SegmentEntity [dir=both arrowtail=none arrowhead=vee] ;
+  BoardModel:myInstances -> MergerBoardInstance:myModel [dir=both arrowtail=onormal arrowhead=vee] ;
+  BoardModel:vias -> BoardModelVia:BoardModelVia [dir=both arrowtail=none arrowhead=vee] ;
+  ArtworkRoot:fileGenerationParameterArray -> ArtworkFileGenerationParameters:ArtworkFileGenerationParameters [dir=both arrowtail=none arrowhead=vee] ;
+}

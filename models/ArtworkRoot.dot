@@ -1,0 +1,7 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  ArtworkRoot[label="<ArtworkRoot>ArtworkRoot|<fileGenerationParameterArray>fileGenerationParameterArray"] ;
+  ArtworkFileGenerationParameters[label="<ArtworkFileGenerationParameters>ArtworkFileGenerationParameters"] ;
+  ArtworkRoot:fileGenerationParameterArray -> ArtworkFileGenerationParameters:ArtworkFileGenerationParameters [dir=both arrowtail=none arrowhead=vee] ;
+}

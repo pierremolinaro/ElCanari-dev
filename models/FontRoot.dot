@@ -1,0 +1,9 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  FontRoot[label="<FontRoot>FontRoot|<characters>characters"] ;
+  FontCharacter[label="<FontCharacter>FontCharacter|<segments>segments"] ;
+  SegmentForFontCharacter[label="<SegmentForFontCharacter>SegmentForFontCharacter"] ;
+  FontRoot:characters -> FontCharacter:FontCharacter [dir=both arrowtail=none arrowhead=vee] ;
+  FontCharacter:segments -> SegmentForFontCharacter:SegmentForFontCharacter [dir=both arrowtail=none arrowhead=vee] ;
+}

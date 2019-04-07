@@ -1,0 +1,26 @@
+digraph G {
+  rankdir=LR ;
+  node [shape=record fontname=helvetica style=rounded] ;
+  DeviceRoot[label="<DeviceRoot>DeviceRoot|<mDocs>mDocs|<mPackages>mPackages|<mPadProxies>mPadProxies|<mSymbolInstances>mSymbolInstances|<mSymbolTypes>mSymbolTypes"] ;
+  SymbolTypeInDevice[label="<SymbolTypeInDevice>SymbolTypeInDevice|<mInstances>mInstances|<mPinTypes>mPinTypes"] ;
+  SymbolPinTypeInDevice[label="<SymbolPinTypeInDevice>SymbolPinTypeInDevice|<mInstances>mInstances"] ;
+  SymbolPinInstanceInDevice[label="<SymbolPinInstanceInDevice>SymbolPinInstanceInDevice|<mPadProxy>mPadProxy|<mSymbolInstance>mSymbolInstance|<mType>mType"] ;
+  SymbolInstanceInDevice[label="<SymbolInstanceInDevice>SymbolInstanceInDevice|<mPinInstances>mPinInstances|<mType>mType"] ;
+  PadProxyInDevice[label="<PadProxyInDevice>PadProxyInDevice|<mPinInstance>mPinInstance"] ;
+  PackageInDevice[label="<PackageInDevice>PackageInDevice|<mMasterPads>mMasterPads|<mRoot>mRoot"] ;
+  MasterPadInDevice[label="<MasterPadInDevice>MasterPadInDevice|<mSlavePads>mSlavePads"] ;
+  SlavePadInDevice[label="<SlavePadInDevice>SlavePadInDevice|<mMasterPad>mMasterPad"] ;
+  DeviceDocumentation[label="<DeviceDocumentation>DeviceDocumentation"] ;
+  DeviceRoot:mDocs -> DeviceDocumentation:DeviceDocumentation [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceRoot:mPackages -> PackageInDevice:mRoot [dir=both arrowtail=onormal arrowhead=vee] ;
+  DeviceRoot:mPadProxies -> PadProxyInDevice:PadProxyInDevice [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceRoot:mSymbolInstances -> SymbolInstanceInDevice:SymbolInstanceInDevice [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceRoot:mSymbolTypes -> SymbolTypeInDevice:SymbolTypeInDevice [dir=both arrowtail=none arrowhead=vee] ;
+  SymbolTypeInDevice:mInstances -> SymbolInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
+  SymbolTypeInDevice:mPinTypes -> SymbolPinTypeInDevice:SymbolPinTypeInDevice [dir=both arrowtail=none arrowhead=vee] ;
+  SymbolPinTypeInDevice:mInstances -> SymbolPinInstanceInDevice:mType [dir=both arrowtail=onormal arrowhead=vee] ;
+  SymbolInstanceInDevice:mPinInstances -> SymbolPinInstanceInDevice:mSymbolInstance [dir=both arrowtail=onormal arrowhead=vee] ;
+  PadProxyInDevice:mPinInstance -> SymbolPinInstanceInDevice:mPadProxy [dir=both arrowtail=onormal arrowhead=onormal] ;
+  PackageInDevice:mMasterPads -> MasterPadInDevice:MasterPadInDevice [dir=both arrowtail=none arrowhead=vee] ;
+  MasterPadInDevice:mSlavePads -> SlavePadInDevice:mMasterPad [dir=both arrowtail=onormal arrowhead=vee] ;
+}
