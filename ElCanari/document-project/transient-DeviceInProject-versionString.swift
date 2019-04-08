@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDevice_versionString (
+func transient_DeviceInProject_versionString (
        _ self_mDeviceVersion : Int
 ) -> String {
 //--- START OF USER ZONE 2

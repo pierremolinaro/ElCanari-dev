@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectFont_sizeString (
+func transient_FontInProject_sizeString (
        _ self_mDescriptiveString : String
 ) -> String {
 //--- START OF USER ZONE 2

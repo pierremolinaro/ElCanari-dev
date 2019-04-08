@@ -6,44 +6,44 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectFont_mFontName : class {
+protocol FontInProject_mFontName : class {
   var mFontName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectFont_mFontVersion : class {
+protocol FontInProject_mFontVersion : class {
   var mFontVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectFont_mDescriptiveString : class {
+protocol FontInProject_mDescriptiveString : class {
   var mDescriptiveString : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectFont_versionString : class {
+protocol FontInProject_versionString : class {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectFont_sizeString : class {
+protocol FontInProject_sizeString : class {
   var sizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectFont
+//    Entity: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectFont : EBManagedObject,
-         ProjectFont_mFontName,
-         ProjectFont_mFontVersion,
-         ProjectFont_mDescriptiveString,
-         ProjectFont_versionString,
-         ProjectFont_sizeString {
+class FontInProject : EBManagedObject,
+         FontInProject_mFontName,
+         FontInProject_mFontVersion,
+         FontInProject_mDescriptiveString,
+         FontInProject_versionString,
+         FontInProject_sizeString {
 
   //····················································································································
   //   Atomic property: mFontName
@@ -166,7 +166,7 @@ class ProjectFont : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mFontVersion_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ProjectFont_versionString (v0))
+            return .single (transient_FontInProject_versionString (v0))
           default :
             return .empty
           }
@@ -188,7 +188,7 @@ class ProjectFont : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mDescriptiveString_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ProjectFont_sizeString (v0))
+            return .single (transient_FontInProject_sizeString (v0))
           default :
             return .empty
           }
@@ -363,10 +363,10 @@ class ProjectFont : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectFont
+//    ReadOnlyArrayOf_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> {
+class ReadOnlyArrayOf_FontInProject : ReadOnlyAbstractArrayProperty <FontInProject> {
 
   //····················································································································
   //   Observers of 'mFontName' stored property
@@ -406,7 +406,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func addEBObserversOf_mFontName_toElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
         managedObject.mFontName_property.addEBObserver (observer)
@@ -416,7 +416,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func removeEBObserversOf_mFontName_fromElementsOfSet (_ inSet : Set<FontInProject>) {
     self.mObserversOf_mFontName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -463,7 +463,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func addEBObserversOf_mFontVersion_toElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mFontVersion.apply ( {(_ observer : EBEvent) in
         managedObject.mFontVersion_property.addEBObserver (observer)
@@ -473,7 +473,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func removeEBObserversOf_mFontVersion_fromElementsOfSet (_ inSet : Set<FontInProject>) {
     self.mObserversOf_mFontVersion.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -520,7 +520,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func addEBObserversOf_mDescriptiveString_toElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mDescriptiveString.apply ( {(_ observer : EBEvent) in
         managedObject.mDescriptiveString_property.addEBObserver (observer)
@@ -530,7 +530,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func removeEBObserversOf_mDescriptiveString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
     self.mObserversOf_mDescriptiveString.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -577,7 +577,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
@@ -587,7 +587,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
@@ -633,7 +633,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
         managedObject.sizeString_property.addEBObserver (observer)
@@ -643,7 +643,7 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectFont>) {
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<FontInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
         managedObject.sizeString_property.removeEBObserver (observer)
@@ -656,32 +656,32 @@ class ReadOnlyArrayOf_ProjectFont : ReadOnlyAbstractArrayProperty <ProjectFont> 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectFont
+//    TransientArrayOf_FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
+class TransientArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectFont] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [FontInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectFont> {
+  override var propset : Set <FontInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectFont] > {
+  override var prop : EBSelection < [FontInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectFont] {
+  override var propval : [FontInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -703,21 +703,21 @@ class TransientArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
 
   //····················································································································
 
-  private var mSet = Set <ProjectFont> ()
+  private var mSet = Set <FontInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectFont] >? = nil
+  private var mCachedValue : EBSelection < [FontInProject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectFont>
+      let newSet : Set <FontInProject>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectFont> ()
+        newSet = Set <FontInProject> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -766,28 +766,28 @@ class TransientArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectFont
+//    To many relationship read write: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectFont : ReadOnlyArrayOf_ProjectFont {
+class ReadWriteArrayOf_FontInProject : ReadOnlyArrayOf_FontInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectFont]) { } // Abstract method
+  func setProp (_ value :  [FontInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectFont
+//    To many relationship: FontInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatureObserverProtocol {
+final class StoredArrayOf_FontInProject : ReadWriteArrayOf_FontInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectFont?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : FontInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -834,9 +834,9 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectFont] ()
+      var objectArray = [FontInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectFont") as? ProjectFont {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "FontInProject") as? FontInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -847,8 +847,8 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
 
  //····················································································································
 
-  private var mSet = Set <ProjectFont> ()
-  private var mValue = [ProjectFont] () {
+  private var mSet = Set <FontInProject> ()
+  private var mValue = [FontInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -879,7 +879,7 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectFont in addedObjectSet {
+          for managedObject : FontInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mFontName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -918,29 +918,29 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectFont] > { return .single (self.mValue) }
+  override var prop : EBSelection < [FontInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectFont]) { self.mValue = inValue }
+  override func setProp (_ inValue : [FontInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectFont] { return self.mValue }
+  override var propval : [FontInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectFont> { return self.mSet }
+  override var propset : Set <FontInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectFont]) {
+  @objc func performUndo (_ oldValue : [FontInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectFont) {
+  func remove (_ object : FontInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -951,7 +951,7 @@ final class StoredArrayOf_ProjectFont : ReadWriteArrayOf_ProjectFont, EBSignatur
   
   //····················································································································
 
-  func add (_ object : ProjectFont) {
+  func add (_ object : FontInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

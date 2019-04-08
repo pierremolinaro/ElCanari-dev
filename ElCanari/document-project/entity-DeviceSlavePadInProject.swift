@@ -6,58 +6,58 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mCenterX : class {
+protocol DeviceSlavePadInProject_mCenterX : class {
   var mCenterX : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mCenterY : class {
+protocol DeviceSlavePadInProject_mCenterY : class {
   var mCenterY : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mWidth : class {
+protocol DeviceSlavePadInProject_mWidth : class {
   var mWidth : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mHeight : class {
+protocol DeviceSlavePadInProject_mHeight : class {
   var mHeight : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mHoleDiameter : class {
+protocol DeviceSlavePadInProject_mHoleDiameter : class {
   var mHoleDiameter : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mShape : class {
+protocol DeviceSlavePadInProject_mShape : class {
   var mShape : PadShape { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDeviceSlavePad_mStyle : class {
+protocol DeviceSlavePadInProject_mStyle : class {
   var mStyle : SlavePadStyle { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectDeviceSlavePad
+//    Entity: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectDeviceSlavePad : EBManagedObject,
-         ProjectDeviceSlavePad_mCenterX,
-         ProjectDeviceSlavePad_mCenterY,
-         ProjectDeviceSlavePad_mWidth,
-         ProjectDeviceSlavePad_mHeight,
-         ProjectDeviceSlavePad_mHoleDiameter,
-         ProjectDeviceSlavePad_mShape,
-         ProjectDeviceSlavePad_mStyle {
+class DeviceSlavePadInProject : EBManagedObject,
+         DeviceSlavePadInProject_mCenterX,
+         DeviceSlavePadInProject_mCenterY,
+         DeviceSlavePadInProject_mWidth,
+         DeviceSlavePadInProject_mHeight,
+         DeviceSlavePadInProject_mHoleDiameter,
+         DeviceSlavePadInProject_mShape,
+         DeviceSlavePadInProject_mStyle {
 
   //····················································································································
   //   Atomic property: mCenterX
@@ -405,10 +405,10 @@ class ProjectDeviceSlavePad : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectDeviceSlavePad
+//    ReadOnlyArrayOf_DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <ProjectDeviceSlavePad> {
+class ReadOnlyArrayOf_DeviceSlavePadInProject : ReadOnlyAbstractArrayProperty <DeviceSlavePadInProject> {
 
   //····················································································································
   //   Observers of 'mCenterX' stored property
@@ -448,7 +448,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mCenterX_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
         managedObject.mCenterX_property.addEBObserver (observer)
@@ -458,7 +458,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mCenterX_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mCenterX.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -505,7 +505,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mCenterY_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
         managedObject.mCenterY_property.addEBObserver (observer)
@@ -515,7 +515,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mCenterY_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mCenterY.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -562,7 +562,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mWidth_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
         managedObject.mWidth_property.addEBObserver (observer)
@@ -572,7 +572,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mWidth_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mWidth.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -619,7 +619,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mHeight_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
         managedObject.mHeight_property.addEBObserver (observer)
@@ -629,7 +629,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mHeight_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mHeight.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -676,7 +676,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mHoleDiameter_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
         managedObject.mHoleDiameter_property.addEBObserver (observer)
@@ -686,7 +686,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mHoleDiameter_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mHoleDiameter.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -733,7 +733,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mShape_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
         managedObject.mShape_property.addEBObserver (observer)
@@ -743,7 +743,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mShape_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mShape.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -790,7 +790,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func addEBObserversOf_mStyle_toElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
         managedObject.mStyle_property.addEBObserver (observer)
@@ -800,7 +800,7 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 
   //····················································································································
 
-  final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<ProjectDeviceSlavePad>) {
+  final func removeEBObserversOf_mStyle_fromElementsOfSet (_ inSet : Set<DeviceSlavePadInProject>) {
     self.mObserversOf_mStyle.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -814,32 +814,32 @@ class ReadOnlyArrayOf_ProjectDeviceSlavePad : ReadOnlyAbstractArrayProperty <Pro
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectDeviceSlavePad
+//    TransientArrayOf_DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectDeviceSlavePad : ReadOnlyArrayOf_ProjectDeviceSlavePad {
+class TransientArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDeviceSlavePad] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [DeviceSlavePadInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectDeviceSlavePad> {
+  override var propset : Set <DeviceSlavePadInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDeviceSlavePad] > {
+  override var prop : EBSelection < [DeviceSlavePadInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectDeviceSlavePad] {
+  override var propval : [DeviceSlavePadInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -861,21 +861,21 @@ class TransientArrayOf_ProjectDeviceSlavePad : ReadOnlyArrayOf_ProjectDeviceSlav
 
   //····················································································································
 
-  private var mSet = Set <ProjectDeviceSlavePad> ()
+  private var mSet = Set <DeviceSlavePadInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectDeviceSlavePad] >? = nil
+  private var mCachedValue : EBSelection < [DeviceSlavePadInProject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectDeviceSlavePad>
+      let newSet : Set <DeviceSlavePadInProject>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectDeviceSlavePad> ()
+        newSet = Set <DeviceSlavePadInProject> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -928,28 +928,28 @@ class TransientArrayOf_ProjectDeviceSlavePad : ReadOnlyArrayOf_ProjectDeviceSlav
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectDeviceSlavePad
+//    To many relationship read write: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectDeviceSlavePad : ReadOnlyArrayOf_ProjectDeviceSlavePad {
+class ReadWriteArrayOf_DeviceSlavePadInProject : ReadOnlyArrayOf_DeviceSlavePadInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectDeviceSlavePad]) { } // Abstract method
+  func setProp (_ value :  [DeviceSlavePadInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectDeviceSlavePad
+//    To many relationship: DeviceSlavePadInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDeviceSlavePad, EBSignatureObserverProtocol {
+final class StoredArrayOf_DeviceSlavePadInProject : ReadWriteArrayOf_DeviceSlavePadInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDeviceSlavePad?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceSlavePadInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -996,9 +996,9 @@ final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDevice
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectDeviceSlavePad] ()
+      var objectArray = [DeviceSlavePadInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDeviceSlavePad") as? ProjectDeviceSlavePad {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceSlavePadInProject") as? DeviceSlavePadInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1009,8 +1009,8 @@ final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDevice
 
  //····················································································································
 
-  private var mSet = Set <ProjectDeviceSlavePad> ()
-  private var mValue = [ProjectDeviceSlavePad] () {
+  private var mSet = Set <DeviceSlavePadInProject> ()
+  private var mValue = [DeviceSlavePadInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -1047,7 +1047,7 @@ final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDevice
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectDeviceSlavePad in addedObjectSet {
+          for managedObject : DeviceSlavePadInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mCenterX_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -1092,29 +1092,29 @@ final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDevice
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDeviceSlavePad] > { return .single (self.mValue) }
+  override var prop : EBSelection < [DeviceSlavePadInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectDeviceSlavePad]) { self.mValue = inValue }
+  override func setProp (_ inValue : [DeviceSlavePadInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectDeviceSlavePad] { return self.mValue }
+  override var propval : [DeviceSlavePadInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectDeviceSlavePad> { return self.mSet }
+  override var propset : Set <DeviceSlavePadInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectDeviceSlavePad]) {
+  @objc func performUndo (_ oldValue : [DeviceSlavePadInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectDeviceSlavePad) {
+  func remove (_ object : DeviceSlavePadInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1125,7 +1125,7 @@ final class StoredArrayOf_ProjectDeviceSlavePad : ReadWriteArrayOf_ProjectDevice
   
   //····················································································································
 
-  func add (_ object : ProjectDeviceSlavePad) {
+  func add (_ object : DeviceSlavePadInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

@@ -6,51 +6,51 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceName : class {
+protocol DeviceInProject_mDeviceName : class {
   var mDeviceName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceVersion : class {
+protocol DeviceInProject_mDeviceVersion : class {
   var mDeviceVersion : Int { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_mDeviceFileData : class {
+protocol DeviceInProject_mDeviceFileData : class {
   var mDeviceFileData : Data { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_versionString : class {
+protocol DeviceInProject_versionString : class {
   var versionString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_sizeString : class {
+protocol DeviceInProject_sizeString : class {
   var sizeString : String? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevice_canExport : class {
+protocol DeviceInProject_canExport : class {
   var canExport : Bool? { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectDevice
+//    Entity: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectDevice : EBManagedObject,
-         ProjectDevice_mDeviceName,
-         ProjectDevice_mDeviceVersion,
-         ProjectDevice_mDeviceFileData,
-         ProjectDevice_versionString,
-         ProjectDevice_sizeString,
-         ProjectDevice_canExport {
+class DeviceInProject : EBManagedObject,
+         DeviceInProject_mDeviceName,
+         DeviceInProject_mDeviceVersion,
+         DeviceInProject_mDeviceFileData,
+         DeviceInProject_versionString,
+         DeviceInProject_sizeString,
+         DeviceInProject_canExport {
 
   //····················································································································
   //   Atomic property: mDeviceName
@@ -107,17 +107,17 @@ class ProjectDevice : EBManagedObject,
   //   To many property: mPackages
   //····················································································································
 
-  var mPackages_property = StoredArrayOf_ProjectDevicePackage ()
+  var mPackages_property = StoredArrayOf_DevicePackageInProject ()
 
   //····················································································································
 
-  var mPackages_property_selection : EBSelection < [ProjectDevicePackage] > {
+  var mPackages_property_selection : EBSelection < [DevicePackageInProject] > {
     return self.mPackages_property.prop
   }
 
   //····················································································································
 
-  var mPackages : [ProjectDevicePackage] {
+  var mPackages : [DevicePackageInProject] {
     get { return self.mPackages_property.propval }
     set { self.mPackages_property.setProp (newValue) }
   }
@@ -217,7 +217,7 @@ class ProjectDevice : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mDeviceVersion_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ProjectDevice_versionString (v0))
+            return .single (transient_DeviceInProject_versionString (v0))
           default :
             return .empty
           }
@@ -239,7 +239,7 @@ class ProjectDevice : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mDeviceFileData_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ProjectDevice_sizeString (v0))
+            return .single (transient_DeviceInProject_sizeString (v0))
           default :
             return .empty
           }
@@ -261,7 +261,7 @@ class ProjectDevice : EBManagedObject,
         case .singleSelectionKind :
           switch (unwSelf.mDeviceFileData_property_selection) {
           case (.single (let v0)) :
-            return .single (transient_ProjectDevice_canExport (v0))
+            return .single (transient_DeviceInProject_canExport (v0))
           default :
             return .empty
           }
@@ -429,7 +429,7 @@ class ProjectDevice : EBManagedObject,
       inRelationshipName: "mPackages",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ProjectDevicePackage])
+    ) as! [DevicePackageInProject])
   }
 
   //····················································································································
@@ -475,10 +475,10 @@ class ProjectDevice : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectDevice
+//    ReadOnlyArrayOf_DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevice> {
+class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInProject> {
 
   //····················································································································
   //   Observers of 'mDeviceName' stored property
@@ -518,7 +518,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_mDeviceName_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
         managedObject.mDeviceName_property.addEBObserver (observer)
@@ -528,7 +528,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_mDeviceName_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     self.mObserversOf_mDeviceName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -575,7 +575,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_mDeviceVersion_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
         managedObject.mDeviceVersion_property.addEBObserver (observer)
@@ -585,7 +585,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_mDeviceVersion_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     self.mObserversOf_mDeviceVersion.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -632,7 +632,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_mDeviceFileData_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
         managedObject.mDeviceFileData_property.addEBObserver (observer)
@@ -642,7 +642,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_mDeviceFileData_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     self.mObserversOf_mDeviceFileData.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -689,7 +689,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_versionString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
         managedObject.versionString_property.addEBObserver (observer)
@@ -699,7 +699,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_versionString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_versionString.apply ( {(_ observer : EBEvent) in
         managedObject.versionString_property.removeEBObserver (observer)
@@ -745,7 +745,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_sizeString_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
         managedObject.sizeString_property.addEBObserver (observer)
@@ -755,7 +755,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_sizeString_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_sizeString.apply ( {(_ observer : EBEvent) in
         managedObject.sizeString_property.removeEBObserver (observer)
@@ -801,7 +801,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func addEBObserversOf_canExport_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
         managedObject.canExport_property.addEBObserver (observer)
@@ -811,7 +811,7 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 
   //····················································································································
 
-  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<ProjectDevice>) {
+  final func removeEBObserversOf_canExport_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
     for managedObject in inSet {
       self.mObserversOf_canExport.apply ( {(_ observer : EBEvent) in
         managedObject.canExport_property.removeEBObserver (observer)
@@ -824,32 +824,32 @@ class ReadOnlyArrayOf_ProjectDevice : ReadOnlyAbstractArrayProperty <ProjectDevi
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectDevice
+//    TransientArrayOf_DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
+class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDevice] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [DeviceInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectDevice> {
+  override var propset : Set <DeviceInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevice] > {
+  override var prop : EBSelection < [DeviceInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectDevice] {
+  override var propval : [DeviceInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -871,21 +871,21 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 
   //····················································································································
 
-  private var mSet = Set <ProjectDevice> ()
+  private var mSet = Set <DeviceInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectDevice] >? = nil
+  private var mCachedValue : EBSelection < [DeviceInProject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectDevice>
+      let newSet : Set <DeviceInProject>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectDevice> ()
+        newSet = Set <DeviceInProject> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -936,28 +936,28 @@ class TransientArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectDevice
+//    To many relationship read write: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectDevice : ReadOnlyArrayOf_ProjectDevice {
+class ReadWriteArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectDevice]) { } // Abstract method
+  func setProp (_ value :  [DeviceInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectDevice
+//    To many relationship: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSignatureObserverProtocol {
+final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDevice?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DeviceInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -1004,9 +1004,9 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectDevice] ()
+      var objectArray = [DeviceInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDevice") as? ProjectDevice {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DeviceInProject") as? DeviceInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -1017,8 +1017,8 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
 
  //····················································································································
 
-  private var mSet = Set <ProjectDevice> ()
-  private var mValue = [ProjectDevice] () {
+  private var mSet = Set <DeviceInProject> ()
+  private var mValue = [DeviceInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -1050,7 +1050,7 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectDevice in addedObjectSet {
+          for managedObject : DeviceInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mDeviceName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -1090,29 +1090,29 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevice] > { return .single (self.mValue) }
+  override var prop : EBSelection < [DeviceInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectDevice]) { self.mValue = inValue }
+  override func setProp (_ inValue : [DeviceInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectDevice] { return self.mValue }
+  override var propval : [DeviceInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectDevice> { return self.mSet }
+  override var propset : Set <DeviceInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectDevice]) {
+  @objc func performUndo (_ oldValue : [DeviceInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectDevice) {
+  func remove (_ object : DeviceInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -1123,7 +1123,7 @@ final class StoredArrayOf_ProjectDevice : ReadWriteArrayOf_ProjectDevice, EBSign
   
   //····················································································································
 
-  func add (_ object : ProjectDevice) {
+  func add (_ object : DeviceInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

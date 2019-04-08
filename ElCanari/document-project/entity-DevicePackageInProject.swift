@@ -6,16 +6,16 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-protocol ProjectDevicePackage_mPackageName : class {
+protocol DevicePackageInProject_mPackageName : class {
   var mPackageName : String { get }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    Entity: ProjectDevicePackage
+//    Entity: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ProjectDevicePackage : EBManagedObject,
-         ProjectDevicePackage_mPackageName {
+class DevicePackageInProject : EBManagedObject,
+         DevicePackageInProject_mPackageName {
 
   //····················································································································
   //   Atomic property: mPackageName
@@ -38,17 +38,17 @@ class ProjectDevicePackage : EBManagedObject,
   //   To many property: mMasterPads
   //····················································································································
 
-  var mMasterPads_property = StoredArrayOf_ProjectDeviceMasterPad ()
+  var mMasterPads_property = StoredArrayOf_DeviceMasterPadInProject ()
 
   //····················································································································
 
-  var mMasterPads_property_selection : EBSelection < [ProjectDeviceMasterPad] > {
+  var mMasterPads_property_selection : EBSelection < [DeviceMasterPadInProject] > {
     return self.mMasterPads_property.prop
   }
 
   //····················································································································
 
-  var mMasterPads : [ProjectDeviceMasterPad] {
+  var mMasterPads : [DeviceMasterPadInProject] {
     get { return self.mMasterPads_property.propval }
     set { self.mMasterPads_property.setProp (newValue) }
   }
@@ -168,7 +168,7 @@ class ProjectDevicePackage : EBManagedObject,
       inRelationshipName: "mMasterPads",
       inDictionary: inDictionary,
       managedObjectArray: &managedObjectArray
-    ) as! [ProjectDeviceMasterPad])
+    ) as! [DeviceMasterPadInProject])
   }
 
   //····················································································································
@@ -210,10 +210,10 @@ class ProjectDevicePackage : EBManagedObject,
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    ReadOnlyArrayOf_ProjectDevicePackage
+//    ReadOnlyArrayOf_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadOnlyArrayOf_ProjectDevicePackage : ReadOnlyAbstractArrayProperty <ProjectDevicePackage> {
+class ReadOnlyArrayOf_DevicePackageInProject : ReadOnlyAbstractArrayProperty <DevicePackageInProject> {
 
   //····················································································································
   //   Observers of 'mPackageName' stored property
@@ -253,7 +253,7 @@ class ReadOnlyArrayOf_ProjectDevicePackage : ReadOnlyAbstractArrayProperty <Proj
 
   //····················································································································
 
-  final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<ProjectDevicePackage>) {
+  final func addEBObserversOf_mPackageName_toElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
     for managedObject in inSet {
       self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
         managedObject.mPackageName_property.addEBObserver (observer)
@@ -263,7 +263,7 @@ class ReadOnlyArrayOf_ProjectDevicePackage : ReadOnlyAbstractArrayProperty <Proj
 
   //····················································································································
 
-  final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<ProjectDevicePackage>) {
+  final func removeEBObserversOf_mPackageName_fromElementsOfSet (_ inSet : Set<DevicePackageInProject>) {
     self.mObserversOf_mPackageName.apply ( {(_ observer : EBEvent) in
       observer.postEvent ()
       for managedObject in inSet {
@@ -277,32 +277,32 @@ class ReadOnlyArrayOf_ProjectDevicePackage : ReadOnlyAbstractArrayProperty <Proj
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    TransientArrayOf_ProjectDevicePackage
+//    TransientArrayOf_DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class TransientArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePackage {
+class TransientArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
 
   //····················································································································
 
-  var mReadModelFunction : Optional < () -> EBSelection < [ProjectDevicePackage] > > = nil
+  var mReadModelFunction : Optional < () -> EBSelection < [DevicePackageInProject] > > = nil
 
   //····················································································································
 
-  override var propset : Set <ProjectDevicePackage> {
+  override var propset : Set <DevicePackageInProject> {
     self.computeArrayAndSet ()
     return self.mSet
   }
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevicePackage] > {
+  override var prop : EBSelection < [DevicePackageInProject] > {
     self.computeArrayAndSet ()
     return self.mCachedValue!  
   }
  
   //····················································································································
 
-  override var propval : [ProjectDevicePackage] {
+  override var propval : [DevicePackageInProject] {
     self.computeArrayAndSet ()
     if let value = self.mCachedValue {
       switch value {
@@ -324,21 +324,21 @@ class TransientArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePacka
 
   //····················································································································
 
-  private var mSet = Set <ProjectDevicePackage> ()
+  private var mSet = Set <DevicePackageInProject> ()
 
   //····················································································································
 
-  private var mCachedValue : EBSelection < [ProjectDevicePackage] >? = nil
+  private var mCachedValue : EBSelection < [DevicePackageInProject] >? = nil
 
   //····················································································································
 
   private func computeArrayAndSet () {
     if let unwrappedComputeFunction = self.mReadModelFunction, self.mCachedValue == nil {
       self.mCachedValue = unwrappedComputeFunction ()
-      let newSet : Set <ProjectDevicePackage>
+      let newSet : Set <DevicePackageInProject>
       switch self.mCachedValue! {
       case .multiple, .empty :
-        newSet = Set <ProjectDevicePackage> ()
+        newSet = Set <DevicePackageInProject> ()
       case .single (let array) :
        newSet = Set (array)
       }
@@ -379,28 +379,28 @@ class TransientArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePacka
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship read write: ProjectDevicePackage
+//    To many relationship read write: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class ReadWriteArrayOf_ProjectDevicePackage : ReadOnlyArrayOf_ProjectDevicePackage {
+class ReadWriteArrayOf_DevicePackageInProject : ReadOnlyArrayOf_DevicePackageInProject {
 
   //····················································································································
  
-  func setProp (_ value :  [ProjectDevicePackage]) { } // Abstract method
+  func setProp (_ value :  [DevicePackageInProject]) { } // Abstract method
   
   //····················································································································
 
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-//    To many relationship: ProjectDevicePackage
+//    To many relationship: DevicePackageInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDevicePackage, EBSignatureObserverProtocol {
+final class StoredArrayOf_DevicePackageInProject : ReadWriteArrayOf_DevicePackageInProject, EBSignatureObserverProtocol {
 
   //····················································································································
 
-  var setOppositeRelationship : Optional < (_ inManagedObject : ProjectDevicePackage?) -> Void > = nil
+  var setOppositeRelationship : Optional < (_ inManagedObject : DevicePackageInProject?) -> Void > = nil
 
   //····················································································································
 
@@ -447,9 +447,9 @@ final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDeviceP
     self.init ()
     self.mPrefKey = prefKey
     if let array = UserDefaults.standard.array (forKey: prefKey) as? [NSDictionary] {
-      var objectArray = [ProjectDevicePackage] ()
+      var objectArray = [DevicePackageInProject] ()
       for dictionary in array {
-        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "ProjectDevicePackage") as? ProjectDevicePackage {
+        if let object = newInstanceOfEntityNamed (self.ebUndoManager, "DevicePackageInProject") as? DevicePackageInProject {
           object.setUpAtomicPropertiesWithDictionary (dictionary)
           objectArray.append (object)
         }
@@ -460,8 +460,8 @@ final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDeviceP
 
  //····················································································································
 
-  private var mSet = Set <ProjectDevicePackage> ()
-  private var mValue = [ProjectDevicePackage] () {
+  private var mSet = Set <DevicePackageInProject> ()
+  private var mValue = [DevicePackageInProject] () {
     didSet {
      // self.postEvent ()
       if oldValue != self.mValue {
@@ -486,7 +486,7 @@ final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDeviceP
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
         if addedObjectSet.count > 0 {
-          for managedObject : ProjectDevicePackage in addedObjectSet {
+          for managedObject : DevicePackageInProject in addedObjectSet {
             managedObject.setSignatureObserver (observer: self)
             self.setOppositeRelationship? (managedObject)
             managedObject.mPackageName_property.mSetterDelegate = { [weak self] inValue in self?.writeInPreferences () }
@@ -519,29 +519,29 @@ final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDeviceP
 
   //····················································································································
 
-  override var prop : EBSelection < [ProjectDevicePackage] > { return .single (self.mValue) }
+  override var prop : EBSelection < [DevicePackageInProject] > { return .single (self.mValue) }
 
   //····················································································································
 
-  override func setProp (_ inValue : [ProjectDevicePackage]) { self.mValue = inValue }
+  override func setProp (_ inValue : [DevicePackageInProject]) { self.mValue = inValue }
 
   //····················································································································
 
-  override var propval : [ProjectDevicePackage] { return self.mValue }
+  override var propval : [DevicePackageInProject] { return self.mValue }
 
   //····················································································································
 
-  override var propset : Set <ProjectDevicePackage> { return self.mSet }
+  override var propset : Set <DevicePackageInProject> { return self.mSet }
 
  //····················································································································
 
-  @objc func performUndo (_ oldValue : [ProjectDevicePackage]) {
+  @objc func performUndo (_ oldValue : [DevicePackageInProject]) {
     self.mValue = oldValue
   }
 
   //····················································································································
 
-  func remove (_ object : ProjectDevicePackage) {
+  func remove (_ object : DevicePackageInProject) {
     if self.mSet.contains (object) {
       var array = self.mValue
       let idx = array.firstIndex (of: object)
@@ -552,7 +552,7 @@ final class StoredArrayOf_ProjectDevicePackage : ReadWriteArrayOf_ProjectDeviceP
   
   //····················································································································
 
-  func add (_ object : ProjectDevicePackage) {
+  func add (_ object : DevicePackageInProject) {
     if !self.mSet.contains (object) {
       var array = self.mValue
       array.append (object)

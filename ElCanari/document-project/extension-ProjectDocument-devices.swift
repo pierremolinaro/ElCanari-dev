@@ -11,62 +11,6 @@ extension ProjectDocument {
 
   //····················································································································
 
-  internal func addFont (postAction: Optional <() -> Void>) {
-     var currentFontNames = Set <String> ()
-     for font in self.rootObject.mFonts_property.propval {
-        currentFontNames.insert (font.mFontName)
-     }
-     gOpenFontInLibrary?.loadDocumentFromLibrary (
-       windowForSheet: self.windowForSheet!,
-       alreadyLoadedDocuments: currentFontNames,
-       callBack: self.addFontFromLoadFontDialog,
-       postAction: postAction
-     )
-  }
-
-  //····················································································································
-
-  internal func addFontFromLoadFontDialog (_ inData : Data, _ inName : String) {
-    if let (_, metadataDictionary, rootObjectDictionary) = try? loadEasyRootObjectDictionary (from: inData),
-       let version = metadataDictionary [PMFontVersion] as? Int,
-       let rod = rootObjectDictionary,
-       let descriptiveString = rod [FONT_DOCUMENT_DESCRIPTIVE_STRING_KEY] as? String {
-      let addedFont = FontInProject (self.ebUndoManager)
-      addedFont.mFontName = inName
-      addedFont.mFontVersion = version
-      addedFont.mDescriptiveString = descriptiveString
-      var fonts = self.rootObject.mFonts_property.propval
-      fonts.append (addedFont)
-      self.rootObject.mFonts_property.setProp (fonts)
-    }
-  }
-
-  //····················································································································
-
-  internal func addComponentDialog () {
-    var currentDeviceNames = Set <String> ()
-    for device in self.rootObject.mDevices_property.propval {
-      currentDeviceNames.insert (device.mDeviceName)
-    }
-     gOpenDeviceInLibrary?.loadDocumentFromLibrary (
-       windowForSheet: self.windowForSheet!,
-       alreadyLoadedDocuments: currentDeviceNames,
-       callBack: self.addComponent,
-       postAction: nil
-     )
-  }
-
-  //····················································································································
-
-  internal func addComponent (_ inData : Data, _ inName : String) {
-    // Swift.print ("inName \(inName), inData \(inData.count)")
-  //--- Append device
-    _ = self.appendDevice (inData, inName)
-  //--- Append component
-  }
-
-  //····················································································································
-
   internal func appendDevice (_ inData : Data, _ inName : String) -> DeviceInProject? {
     var device : DeviceInProject? = nil
     if let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: inData),
@@ -76,37 +20,7 @@ extension ProjectDocument {
       let newDevice = DeviceInProject (self.ebUndoManager)
       device = newDevice
       newDevice.mDeviceName = inName
-      newDevice.mDeviceVersion = version
-      newDevice.mDeviceFileData = inData
-    //--- Append packages
-      for packageInDevice in deviceRoot.mPackages {
-        let packageInProject = DevicePackageInProject (self.ebUndoManager)
-        newDevice.mPackages.append (packageInProject)
-        packageInProject.mPackageName = packageInDevice.mName
-        for masterPadInDevice in packageInDevice.mMasterPads {
-          let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)
-          packageInProject.mMasterPads.append (masterPadInProject)
-          masterPadInProject.mCenterX = masterPadInDevice.mCenterX
-          masterPadInProject.mCenterY = masterPadInDevice.mCenterY
-          masterPadInProject.mHeight = masterPadInDevice.mHeight
-          masterPadInProject.mHoleDiameter = masterPadInDevice.mHoleDiameter
-          masterPadInProject.mName = masterPadInDevice.mName
-          masterPadInProject.mShape = masterPadInDevice.mShape
-          masterPadInProject.mStyle = masterPadInDevice.mStyle
-          masterPadInProject.mWidth = masterPadInDevice.mWidth
-          for slavePadInDevice in masterPadInDevice.mSlavePads {
-            let slavePadInProject = DeviceSlavePadInProject (self.ebUndoManager)
-            masterPadInProject.mSlavePads.append (slavePadInProject)
-            slavePadInProject.mCenterX = slavePadInDevice.mCenterX
-            slavePadInProject.mCenterY = slavePadInDevice.mCenterY
-            slavePadInProject.mHeight = slavePadInDevice.mHeight
-            slavePadInProject.mHoleDiameter = slavePadInDevice.mHoleDiameter
-            slavePadInProject.mShape = slavePadInDevice.mShape
-            slavePadInProject.mStyle = slavePadInDevice.mStyle
-            slavePadInProject.mWidth = slavePadInDevice.mWidth
-          }
-        }
-      }
+      self.performUpdateDevice (newDevice, from: deviceRoot, version, inData)
     //--- Add to device list
       self.rootObject.mDevices.append (newDevice)
     //--- Free imported root object
@@ -114,6 +28,117 @@ extension ProjectDocument {
     }
     return device
   }
+
+  //····················································································································
+
+  internal func updateDeviceAction () {
+    let selectedDevices = self.mProjectDeviceController.selectedArray_property.propval
+    var messages = [String] ()
+    for deviceInProject in selectedDevices {
+      let pathes = deviceFilePathInLibraries (deviceInProject.mDeviceName)
+      if pathes.count == 0 {
+        messages.append ("No file for \(deviceInProject.mDeviceName) device in Library")
+      }else if pathes.count == 1 {
+        if let data = try? Data (contentsOf: URL (fileURLWithPath: pathes [0])),
+           let (_, metadataDictionary, rootObject) = try? loadEasyBindingFile (nil, from: data),
+           let version = metadataDictionary [DEVICE_VERSION_METADATA_DICTIONARY_KEY] as? Int,
+           let deviceRoot = rootObject as? DeviceRoot {
+          if deviceInProject.mDeviceVersion < version {
+            let ok = self.testAndUpdateDevice (deviceInProject, from: deviceRoot, version, data)
+            if !ok {
+              messages.append ("Cannot update '\(deviceInProject.mDeviceName)': new device is incompatible.")
+            }
+          }
+          deviceRoot.removeRecursivelyAllRelationsShips ()
+         }else{
+          messages.append ("Cannot read \(pathes [0]) file.")
+        }
+      }else{ // pathes.count > 1
+        messages.append ("Several files for \(deviceInProject.mDeviceName) font in Library:")
+        for path in pathes {
+          messages.append ("  - \(path)")
+        }
+      }
+    }
+    if messages.count > 0 {
+      let alert = NSAlert ()
+      alert.messageText = "Error updating device"
+      alert.informativeText = messages.joined (separator: "\n")
+      alert.beginSheetModal (for: self.windowForSheet!, completionHandler: nil)
+    }
+  }
+
+  //····················································································································
+
+  internal func testAndUpdateDevice (_ inDeviceInProject : DeviceInProject,
+                                     from inDeviceRoot : DeviceRoot,
+                                     _ inVersion : Int,
+                                     _ inData : Data) -> Bool { // Return true if new device is compatible
+  //--- Compute current master pad set
+    var currentMasterPadSet = Set <String> ()
+    for masterPad in inDeviceInProject.mPackages [0].mMasterPads {
+      currentMasterPadSet.insert (masterPad.mName)
+    }
+  //--- Compute new master pad set
+    var newMasterPadSet = Set <String> ()
+    for masterPad in inDeviceRoot.mPackages [0].mMasterPads {
+      newMasterPadSet.insert (masterPad.mName)
+    }
+  //--- Perform update ?
+    let ok = currentMasterPadSet == newMasterPadSet
+    if ok {
+      self.performUpdateDevice (inDeviceInProject, from: inDeviceRoot, inVersion, inData)
+    }
+    return ok
+  }
+
+  //····················································································································
+
+  internal func performUpdateDevice (_ inDeviceInProject : DeviceInProject,
+                                     from inDeviceRoot : DeviceRoot,
+                                     _ inVersion : Int,
+                                     _ inData : Data) {
+    inDeviceInProject.mDeviceVersion = inVersion
+    inDeviceInProject.mDeviceFileData = inData
+  //--- Remove current packages
+    let currentPackages = inDeviceInProject.mPackages
+    inDeviceInProject.mPackages = []
+    for p in currentPackages {
+      p.removeRecursivelyAllRelationsShips ()
+    }
+  //--- Append packages
+    for packageInDevice in inDeviceRoot.mPackages {
+      let packageInProject = DevicePackageInProject (self.ebUndoManager)
+      inDeviceInProject.mPackages.append (packageInProject)
+      packageInProject.mPackageName = packageInDevice.mName
+      for masterPadInDevice in packageInDevice.mMasterPads {
+        let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)
+        packageInProject.mMasterPads.append (masterPadInProject)
+        masterPadInProject.mCenterX = masterPadInDevice.mCenterX
+        masterPadInProject.mCenterY = masterPadInDevice.mCenterY
+        masterPadInProject.mHeight = masterPadInDevice.mHeight
+        masterPadInProject.mHoleDiameter = masterPadInDevice.mHoleDiameter
+        masterPadInProject.mName = masterPadInDevice.mName
+        masterPadInProject.mShape = masterPadInDevice.mShape
+        masterPadInProject.mStyle = masterPadInDevice.mStyle
+        masterPadInProject.mWidth = masterPadInDevice.mWidth
+        for slavePadInDevice in masterPadInDevice.mSlavePads {
+          let slavePadInProject = DeviceSlavePadInProject (self.ebUndoManager)
+          masterPadInProject.mSlavePads.append (slavePadInProject)
+          slavePadInProject.mCenterX = slavePadInDevice.mCenterX
+          slavePadInProject.mCenterY = slavePadInDevice.mCenterY
+          slavePadInProject.mHeight = slavePadInDevice.mHeight
+          slavePadInProject.mHoleDiameter = slavePadInDevice.mHoleDiameter
+          slavePadInProject.mShape = slavePadInDevice.mShape
+          slavePadInProject.mStyle = slavePadInDevice.mStyle
+          slavePadInProject.mWidth = slavePadInDevice.mWidth
+        }
+      }
+    }
+  }
+
+  //····················································································································
+
 
   //····················································································································
 

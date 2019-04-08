@@ -11,7 +11,7 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDevice_sizeString (
+func transient_DeviceInProject_sizeString (
        _ self_mDeviceFileData : Data
 ) -> String {
 //--- START OF USER ZONE 2
