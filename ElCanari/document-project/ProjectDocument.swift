@@ -73,6 +73,29 @@ import Cocoa
   }
 
   //····················································································································
+  //   Transient property: selectedDevicePackageNames
+  //····················································································································
+
+  var selectedDevicePackageNames_property = EBTransientProperty_StringArray ()
+
+  //····················································································································
+
+  var selectedDevicePackageNames_property_selection : EBSelection <StringArray> {
+    return self.selectedDevicePackageNames_property.prop
+  }
+
+  //····················································································································
+
+  var selectedDevicePackageNames : StringArray? {
+    switch self.selectedDevicePackageNames_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //   Transient property: canRemoveSelectedDevices
   //····················································································································
 
@@ -107,6 +130,7 @@ import Cocoa
   @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
+  @IBOutlet var mDevicePackageTableView : StringArrayTableView?
   @IBOutlet var mEditDeviceButton : EBButton?
   @IBOutlet var mEditFontButton : EBButton?
   @IBOutlet var mExportDeviceButton : EBButton?
@@ -119,6 +143,7 @@ import Cocoa
   @IBOutlet var mProductPageView : CanariViewWithKeyView?
   @IBOutlet var mRemoveDeviceButton : EBButton?
   @IBOutlet var mRemoveFontButton : EBButton?
+  @IBOutlet var mRemoveSelectedComponentsActionButton : EBButton?
   @IBOutlet var mResetDeviceVersionButton : EBButton?
   @IBOutlet var mResetFontVersionButton : EBButton?
   @IBOutlet var mSchematicsPageView : CanariViewWithKeyView?
@@ -129,6 +154,7 @@ import Cocoa
   //    Multiple bindings controllers
   //····················································································································
 
+  var mController_mRemoveSelectedComponentsActionButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mEditFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mUpdateFontButton_enabled : MultipleBindingController_enabled? = nil
   var mController_mRemoveFontButton_enabled : MultipleBindingController_enabled? = nil
@@ -213,6 +239,7 @@ import Cocoa
     checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
+    checkOutletConnection (self.mDevicePackageTableView, "mDevicePackageTableView", StringArrayTableView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mEditFontButton, "mEditFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mExportDeviceButton, "mExportDeviceButton", EBButton.self, #file, #line)
@@ -225,6 +252,7 @@ import Cocoa
     checkOutletConnection (self.mProductPageView, "mProductPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mRemoveDeviceButton, "mRemoveDeviceButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mRemoveFontButton, "mRemoveFontButton", EBButton.self, #file, #line)
+    checkOutletConnection (self.mRemoveSelectedComponentsActionButton, "mRemoveSelectedComponentsActionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetDeviceVersionButton, "mResetDeviceVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mResetFontVersionButton, "mResetFontVersionButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mSchematicsPageView, "mSchematicsPageView", CanariViewWithKeyView.self, #file, #line)
@@ -268,6 +296,28 @@ import Cocoa
       }
     }
     self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+  //--- Atomic property: selectedDevicePackageNames
+    self.selectedDevicePackageNames_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_selectedDevicePackageNames (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
   //--- Atomic property: canRemoveSelectedDevices
     self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
       if let unwSelf = self {
@@ -296,7 +346,18 @@ import Cocoa
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
     self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
+    self.mDevicePackageTableView?.bind_stringArray (self.selectedDevicePackageNames_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
+    do{
+      let controller = MultipleBindingController_enabled (
+        computeFunction: {
+          return (self.mComponentController.selectedArray_property.count_property_selection > EBSelection.single (0))
+        },
+        outlet: self.mRemoveSelectedComponentsActionButton
+      )
+      self.mComponentController.selectedArray_property.count_property.addEBObserver (controller)
+      self.mController_mRemoveSelectedComponentsActionButton_enabled = controller
+    }
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
@@ -390,6 +451,8 @@ import Cocoa
   //--------------------------- Set targets / actions
     self.mAddComponentButton?.target = self
     self.mAddComponentButton?.action = #selector (ProjectDocument.addComponentAction (_:))
+    self.mRemoveSelectedComponentsActionButton?.target = self
+    self.mRemoveSelectedComponentsActionButton?.action = #selector (ProjectDocument.removeSelectedComponentsAction (_:))
     self.mAddFontButton?.target = self
     self.mAddFontButton?.action = #selector (ProjectDocument.addFontAction (_:))
     self.mEditFontButton?.target = self
@@ -430,7 +493,10 @@ import Cocoa
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
     self.mComponentCountTextField?.unbind_valueObserver ()
+    self.mDevicePackageTableView?.unbind_stringArray ()
   //--------------------------- Unbind multiple bindings
+    self.mComponentController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveSelectedComponentsActionButton_enabled!)
+    self.mController_mRemoveSelectedComponentsActionButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateFontButton_enabled!)
@@ -460,9 +526,11 @@ import Cocoa
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_packageNames (self.selectedDevicePackageNames_property)
     self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
+    self.mRemoveSelectedComponentsActionButton?.target = nil
     self.mAddFontButton?.target = nil
     self.mEditFontButton?.target = nil
     self.mUpdateFontButton?.target = nil
@@ -481,6 +549,7 @@ import Cocoa
     self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
+    self.mDevicePackageTableView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()
     self.mEditFontButton?.ebCleanUp ()
     self.mExportDeviceButton?.ebCleanUp ()
@@ -493,6 +562,7 @@ import Cocoa
     self.mProductPageView?.ebCleanUp ()
     self.mRemoveDeviceButton?.ebCleanUp ()
     self.mRemoveFontButton?.ebCleanUp ()
+    self.mRemoveSelectedComponentsActionButton?.ebCleanUp ()
     self.mResetDeviceVersionButton?.ebCleanUp ()
     self.mResetFontVersionButton?.ebCleanUp ()
     self.mSchematicsPageView?.ebCleanUp ()

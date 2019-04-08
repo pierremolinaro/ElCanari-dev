@@ -61,8 +61,8 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
   //    Attributes
   //····················································································································
 
-  private let allowsEmptySelection = false
-  private let allowsMultipleSelection = false
+  private let allowsEmptySelection = true
+  private let allowsMultipleSelection = true
   
   //····················································································································
   //    Model

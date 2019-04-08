@@ -42,6 +42,7 @@ entity DeviceInProject {
   transient String sizeString dependsFrom self.mDeviceFileData ;
   transient Bool canExport dependsFrom self.mDeviceFileData ;
   transient Bool canRemove dependsFrom self.mComponents.count ;
+  transient StringArray packageNames dependsFrom self.mPackages.all.mPackageName ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

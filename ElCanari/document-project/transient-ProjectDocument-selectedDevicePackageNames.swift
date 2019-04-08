@@ -11,18 +11,17 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDocument_canRemoveSelectedDevices (
-       _ self_mProjectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
-) -> Bool {
+func transient_ProjectDocument_selectedDevicePackageNames (
+       _ self_mProjectDeviceController_selectedArray_all_packageNames : [DeviceInProject_packageNames]
+) -> StringArray {
 //--- START OF USER ZONE 2
-        var canRemove = false
-        if self_mProjectDeviceController_selectedArray_all_canRemove.count > 0 {
-          canRemove = true
-          for device in self_mProjectDeviceController_selectedArray_all_canRemove {
-            canRemove = canRemove && (device.canRemove ?? false)
+        var result = [String] ()
+        if self_mProjectDeviceController_selectedArray_all_packageNames.count == 1 {
+          if let a = self_mProjectDeviceController_selectedArray_all_packageNames [0].packageNames {
+            result = a
           }
         }
-        return canRemove
+        return result
 //--- END OF USER ZONE 2
 }
 

@@ -2,6 +2,9 @@
 #   Canari Outlets
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+extern outlet class StringArrayTableView : EBTableView ;
+binding StringArrayTableView $stringArray : transient StringArray ;
+
 extern outlet class CanariToolbar ;
 
 extern outlet class NSTabView : NSControl ;

@@ -11,19 +11,26 @@ import Cocoa
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-func transient_ProjectDocument_canRemoveSelectedDevices (
-       _ self_mProjectDeviceController_selectedArray_all_canRemove : [DeviceInProject_canRemove]
-) -> Bool {
+extension ProjectDocument {
+  @objc func removeSelectedComponentsAction (_ sender : NSObject?) {
 //--- START OF USER ZONE 2
-        var canRemove = false
-        if self_mProjectDeviceController_selectedArray_all_canRemove.count > 0 {
-          canRemove = true
-          for device in self_mProjectDeviceController_selectedArray_all_canRemove {
-            canRemove = canRemove && (device.canRemove ?? false)
+        for component in self.mComponentController.selectedArray_property.propval {
+          if let idx = self.rootObject.mComponents.firstIndex (of: component) {
+            self.rootObject.mComponents.remove (at: idx)
+            let prefix = component.mDevice!.mPrefix
+            let index = component.mNameIndex
+            component.mDevice = nil
+            component.mSelectedPackage = nil
+            for remainingComponent in self.rootObject.mComponents {
+              if (prefix == remainingComponent.mDevice!.mPrefix) && (remainingComponent.mNameIndex > index) {
+                remainingComponent.mNameIndex -= 1
+              }
+            }
+            component.removeRecursivelyAllRelationsShips ()
           }
         }
-        return canRemove
 //--- END OF USER ZONE 2
+  }
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
