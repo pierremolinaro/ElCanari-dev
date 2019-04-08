@@ -57,6 +57,10 @@ final class ArrayController_SymbolDocument_mSymbolObjectsController : EBObject, 
   let selectedArray_property = TransientArrayOf_SymbolObject ()
 
   //····················································································································
+
+  var selectedArray_property_selection : EBSelection <[SymbolObject]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
   // MARK: -
   //····················································································································
 

@@ -121,6 +121,10 @@ final class ArrayController_ProjectDocument_mComponentController : EBObject, EBT
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[ComponentInProject]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_ProjectDocument_mComponentController
 
   //····················································································································

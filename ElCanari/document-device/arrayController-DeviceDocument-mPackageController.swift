@@ -121,6 +121,10 @@ final class ArrayController_DeviceDocument_mPackageController : EBObject, EBTabl
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_DeviceDocument_mPackageController
 
   //····················································································································

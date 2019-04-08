@@ -121,6 +121,10 @@ final class ArrayController_ProjectDocument_mProjectDeviceController : EBObject,
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[DeviceInProject]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_ProjectDocument_mProjectDeviceController
 
   //····················································································································

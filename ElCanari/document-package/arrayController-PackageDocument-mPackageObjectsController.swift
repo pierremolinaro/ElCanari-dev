@@ -57,6 +57,10 @@ final class ArrayController_PackageDocument_mPackageObjectsController : EBObject
   let selectedArray_property = TransientArrayOf_PackageObject ()
 
   //····················································································································
+
+  var selectedArray_property_selection : EBSelection <[PackageObject]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
   // MARK: -
   //····················································································································
 

@@ -121,6 +121,10 @@ final class ArrayController_Preferences_additionnalLibraryArrayController : EBOb
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[CanariLibraryEntry]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_Preferences_additionnalLibraryArrayController
 
   //····················································································································

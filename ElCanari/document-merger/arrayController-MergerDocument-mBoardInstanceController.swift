@@ -57,6 +57,10 @@ final class ArrayController_MergerDocument_mBoardInstanceController : EBObject, 
   let selectedArray_property = TransientArrayOf_MergerBoardInstance ()
 
   //····················································································································
+
+  var selectedArray_property_selection : EBSelection <[MergerBoardInstance]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
   // MARK: -
   //····················································································································
 

@@ -57,6 +57,10 @@ final class ArrayController_DeviceDocument_mPackageDisplayController : EBObject,
   let selectedArray_property = TransientArrayOf_PackageInDevice ()
 
   //····················································································································
+
+  var selectedArray_property_selection : EBSelection <[PackageInDevice]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
   // MARK: -
   //····················································································································
 

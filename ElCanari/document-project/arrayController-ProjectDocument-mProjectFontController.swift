@@ -121,6 +121,10 @@ final class ArrayController_ProjectDocument_mProjectFontController : EBObject, E
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[FontInProject]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_ProjectDocument_mProjectFontController
 
   //····················································································································

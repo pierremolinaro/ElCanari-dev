@@ -123,6 +123,10 @@ final class ArrayController_ArtworkDocument_mDataController : EBObject, EBTableV
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[ArtworkFileGenerationParameters]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_ArtworkDocument_mDataController
 
   //····················································································································

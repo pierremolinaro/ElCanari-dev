@@ -151,10 +151,11 @@ document ProjectDocument root ProjectRoot {
     $enabled mProjectDeviceController.selectedArray.count > 0
   ;
 
+  transient Bool canRemoveSelectedDevices dependsFrom mProjectDeviceController.selectedArray.all.canRemove ;
   action removeDeviceAction ;
   outlet EBButton mRemoveDeviceButton
     $run self.removeDeviceAction
-    $enabled mProjectDeviceController.selectedArray.count > 0
+    $enabled self.canRemoveSelectedDevices
   ;
 
   action editDeviceAction ;

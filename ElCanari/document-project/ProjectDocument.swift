@@ -72,6 +72,29 @@ import Cocoa
     }
   }
 
+  //····················································································································
+  //   Transient property: canRemoveSelectedDevices
+  //····················································································································
+
+  var canRemoveSelectedDevices_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemoveSelectedDevices_property_selection : EBSelection <Bool> {
+    return self.canRemoveSelectedDevices_property.prop
+  }
+
+  //····················································································································
+
+  var canRemoveSelectedDevices : Bool? {
+    switch self.canRemoveSelectedDevices_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
 
   //····················································································································
   //    Outlets
@@ -245,6 +268,28 @@ import Cocoa
       }
     }
     self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+  //--- Atomic property: canRemoveSelectedDevices
+    self.canRemoveSelectedDevices_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mProjectDeviceController.selectedArray_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mProjectDeviceController.selectedArray_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_canRemoveSelectedDevices (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mProjectDeviceController.selectedArray_property.addEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
     self.mComponentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
@@ -305,11 +350,11 @@ import Cocoa
     do{
       let controller = MultipleBindingController_enabled (
         computeFunction: {
-          return (self.mProjectDeviceController.selectedArray_property.count_property_selection > EBSelection.single (0))
+          return self.canRemoveSelectedDevices_property_selection
         },
         outlet: self.mRemoveDeviceButton
       )
-      self.mProjectDeviceController.selectedArray_property.count_property.addEBObserver (controller)
+      self.canRemoveSelectedDevices_property.addEBObserver (controller)
       self.mController_mRemoveDeviceButton_enabled = controller
     }
     do{
@@ -396,7 +441,7 @@ import Cocoa
     self.mController_mResetFontVersionButton_enabled = nil
     self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mResetDeviceVersionButton_enabled!)
     self.mController_mResetDeviceVersionButton_enabled = nil
-    self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mRemoveDeviceButton_enabled!)
+    self.canRemoveSelectedDevices_property.removeEBObserver (self.mController_mRemoveDeviceButton_enabled!)
     self.mController_mRemoveDeviceButton_enabled = nil
     self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditDeviceButton_enabled!)
     self.mController_mEditDeviceButton_enabled = nil
@@ -415,6 +460,7 @@ import Cocoa
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
     self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
+    self.mProjectDeviceController.selectedArray_property.removeEBObserverOf_canRemove (self.canRemoveSelectedDevices_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mAddFontButton?.target = nil

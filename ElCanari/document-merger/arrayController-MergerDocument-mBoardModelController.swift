@@ -123,6 +123,10 @@ final class ArrayController_MergerDocument_mBoardModelController : EBObject, EBT
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[BoardModel]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_MergerDocument_mBoardModelController
 
   //····················································································································

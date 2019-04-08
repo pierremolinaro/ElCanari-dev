@@ -121,6 +121,10 @@ final class ArrayController_FontDocument_mSelectedCharacterController : EBObject
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[FontCharacter]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_FontDocument_mSelectedCharacterController
 
   //····················································································································

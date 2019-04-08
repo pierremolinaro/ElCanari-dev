@@ -121,6 +121,10 @@ final class ArrayController_DeviceDocument_mDocumentationController : EBObject, 
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[DeviceDocumentation]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_DeviceDocument_mDocumentationController
 
   //····················································································································

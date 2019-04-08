@@ -121,6 +121,10 @@ final class ArrayController_DeviceDocument_mSymbolController : EBObject, EBTable
 
   //····················································································································
 
+  var selectedArray_property_selection : EBSelection <[SymbolTypeInDevice]> { return self.selectedArray_property.prop }
+ 
+  //····················································································································
+
   private let mSelectedSet : SelectedSet_DeviceDocument_mSymbolController
 
   //····················································································································
