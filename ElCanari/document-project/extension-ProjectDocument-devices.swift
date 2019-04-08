@@ -107,11 +107,14 @@ extension ProjectDocument {
     for p in currentPackages {
       p.removeRecursivelyAllRelationsShips ()
     }
+  //--- Build package dictionary
+    var packageDictionary = [String : DevicePackageInProject] ()
   //--- Append packages
     for packageInDevice in inDeviceRoot.mPackages {
       let packageInProject = DevicePackageInProject (self.ebUndoManager)
       inDeviceInProject.mPackages.append (packageInProject)
       packageInProject.mPackageName = packageInDevice.mName
+      packageDictionary [packageInProject.mPackageName] = packageInProject
       for masterPadInDevice in packageInDevice.mMasterPads {
         let masterPadInProject = DeviceMasterPadInProject (self.ebUndoManager)
         packageInProject.mMasterPads.append (masterPadInProject)
@@ -134,6 +137,14 @@ extension ProjectDocument {
           slavePadInProject.mStyle = slavePadInDevice.mStyle
           slavePadInProject.mWidth = slavePadInDevice.mWidth
         }
+      }
+    }
+  //--- For all components, update selected package
+    for component in inDeviceInProject.mComponents {
+      if let newPackage = packageDictionary [component.mSelectedPackage!.mPackageName] {
+        component.mSelectedPackage = newPackage
+      }else{
+        component.mSelectedPackage = inDeviceInProject.mPackages [0]
       }
     }
   //--- Remove current symbols

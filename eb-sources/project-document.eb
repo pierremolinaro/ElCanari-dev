@@ -30,6 +30,17 @@ document ProjectDocument root ProjectRoot {
   action addComponentAction ;
   outlet EBButton mAddComponentButton $run self.addComponentAction ;
 
+  tableViewController mComponentController {allowsEmptySelection:no, allowsMultipleSelection:no} root.mComponents {
+     column "name" EBTextObserverField $valueObserver self.componentName
+     column "device" EBTextObserverField $valueObserver self.deviceName
+     column "package" EBTextObserverField $valueObserver self.selectedPackageName
+     column "value" EBTextField $value self.mValue { sendContinously : no }
+  }
+  outlet EBTableView mComponentTableView $tableValue mComponentController ;
+
+  transient String componentCount dependsFrom root.mComponents.count ;
+  outlet EBTextObserverField mComponentCountTextField $valueObserver self.componentCount ;
+  
 #  controller componentController : NSArrayController ComponentInProjectEntity
 #    $contentSet root.components { NSDeletesObjectsOnRemove:yes} ;
 
@@ -168,6 +179,7 @@ document ProjectDocument root ProjectRoot {
      column "name" EBTextObserverField $valueObserver self.mDeviceName
      column "version" EBTextObserverField $valueObserver self.versionString
      column "size" EBTextObserverField $valueObserver self.sizeString
+     column "componentCount" EBIntObserverField $valueObserver self.mComponents.count {autoFormatter:yes}
   }
   outlet EBTableView mDeviceLibraryTableView $tableValue mProjectDeviceController ;
 

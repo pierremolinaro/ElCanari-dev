@@ -1,21 +1,25 @@
 digraph G {
   rankdir=LR ;
   node [shape=record fontname=helvetica style=rounded] ;
-  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mDevices>mDevices|<mFonts>mFonts|Int mSelectedPageIndex"] ;
+  ProjectRoot[label="<ProjectRoot>ProjectRoot|<mComponents>mComponents|<mDevices>mDevices|<mFonts>mFonts|Int mSelectedPageIndex"] ;
   FontInProject[label="<FontInProject>FontInProject|String mDescriptiveString|String mFontName|Int mFontVersion"] ;
-  DeviceInProject[label="<DeviceInProject>DeviceInProject|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages|String mPrefix|<mSymbols>mSymbols"] ;
+  DeviceInProject[label="<DeviceInProject>DeviceInProject|<mComponents>mComponents|Data mDeviceFileData|String mDeviceName|Int mDeviceVersion|<mPackages>mPackages|String mPrefix|<mSymbols>mSymbols"] ;
   DeviceSymbolInstanceInProject[label="<DeviceSymbolInstanceInProject>DeviceSymbolInstanceInProject|String mInstanceName|<mSymbolType>mSymbolType"] ;
   DeviceSymbolTypeInProject[label="<DeviceSymbolTypeInProject>DeviceSymbolTypeInProject|NSBezierPath mFilledBezierPath|<mPins>mPins|NSBezierPath mStrokeBezierPath|String mTypeName"] ;
   DevicePinInProject[label="<DevicePinInProject>DevicePinInProject|HorizontalAlignment mNameHorizontalAlignment|HorizontalAlignment mNumberHorizontalAlignment|String mPinName|Bool mPinNameIsDisplayedInSchematics|Int mPinX|Int mPinY|Int mXName|Int mXNumber|Int mYName|Int mYNumber"] ;
   DevicePackageInProject[label="<DevicePackageInProject>DevicePackageInProject|<mMasterPads>mMasterPads|String mPackageName"] ;
   DeviceMasterPadInProject[label="<DeviceMasterPadInProject>DeviceMasterPadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|String mName|PadShape mShape|<mSlavePads>mSlavePads|PadStyle mStyle|Int mWidth"] ;
   DeviceSlavePadInProject[label="<DeviceSlavePadInProject>DeviceSlavePadInProject|Int mCenterX|Int mCenterY|Int mHeight|Int mHoleDiameter|PadShape mShape|SlavePadStyle mStyle|Int mWidth"] ;
+  ComponentInProject[label="<ComponentInProject>ComponentInProject|<mDevice>mDevice|Int mNameIndex|<mSelectedPackage>mSelectedPackage|String mValue"] ;
+  ProjectRoot:mComponents -> ComponentInProject:ComponentInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mDevices -> DeviceInProject:DeviceInProject [dir=both arrowtail=none arrowhead=vee] ;
   ProjectRoot:mFonts -> FontInProject:FontInProject [dir=both arrowtail=none arrowhead=vee] ;
+  DeviceInProject:mComponents -> ComponentInProject:mDevice [dir=both arrowtail=onormal arrowhead=vee] ;
   DeviceInProject:mPackages -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceInProject:mSymbols -> DeviceSymbolInstanceInProject:DeviceSymbolInstanceInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceSymbolInstanceInProject:mSymbolType -> DeviceSymbolTypeInProject:DeviceSymbolTypeInProject [dir=both arrowtail=none arrowhead=onormal] ;
   DeviceSymbolTypeInProject:mPins -> DevicePinInProject:DevicePinInProject [dir=both arrowtail=none arrowhead=vee] ;
   DevicePackageInProject:mMasterPads -> DeviceMasterPadInProject:DeviceMasterPadInProject [dir=both arrowtail=none arrowhead=vee] ;
   DeviceMasterPadInProject:mSlavePads -> DeviceSlavePadInProject:DeviceSlavePadInProject [dir=both arrowtail=none arrowhead=vee] ;
+  ComponentInProject:mSelectedPackage -> DevicePackageInProject:DevicePackageInProject [dir=both arrowtail=none arrowhead=onormal] ;
 }

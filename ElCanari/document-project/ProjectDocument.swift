@@ -9,6 +9,12 @@ import Cocoa
 @objc(ProjectDocument) class ProjectDocument : EBManagedDocument {
 
   //····················································································································
+  //   Array controller: mComponentController
+  //····················································································································
+
+  var mComponentController = ArrayController_ProjectDocument_mComponentController ()
+
+  //····················································································································
   //   Array controller: mProjectFontController
   //····················································································································
 
@@ -19,6 +25,29 @@ import Cocoa
   //····················································································································
 
   var mProjectDeviceController = ArrayController_ProjectDocument_mProjectDeviceController ()
+
+  //····················································································································
+  //   Transient property: componentCount
+  //····················································································································
+
+  var componentCount_property = EBTransientProperty_String ()
+
+  //····················································································································
+
+  var componentCount_property_selection : EBSelection <String> {
+    return self.componentCount_property.prop
+  }
+
+  //····················································································································
+
+  var componentCount : String? {
+    switch self.componentCount_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
 
   //····················································································································
   //   Transient property: documentFilePath
@@ -51,6 +80,8 @@ import Cocoa
   @IBOutlet var mAddComponentButton : EBButton?
   @IBOutlet var mAddFontButton : EBButton?
   @IBOutlet var mBoardPageView : CanariViewWithKeyView?
+  @IBOutlet var mComponentCountTextField : EBTextObserverField?
+  @IBOutlet var mComponentTableView : EBTableView?
   @IBOutlet var mComponentsPageView : CanariViewWithKeyView?
   @IBOutlet var mDeviceLibraryTableView : EBTableView?
   @IBOutlet var mEditDeviceButton : EBButton?
@@ -115,6 +146,8 @@ import Cocoa
   //····················································································································
 
   override func populateExplorerWindow (_ y : inout CGFloat, view : NSView) {
+  //--- Array controller property: mComponentController
+    self.mComponentController.addExplorer (name: "mComponentController", y:&y, view:view)
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.addExplorer (name: "mProjectFontController", y:&y, view:view)
   //--- Array controller property: mProjectDeviceController
@@ -153,6 +186,8 @@ import Cocoa
     checkOutletConnection (self.mAddComponentButton, "mAddComponentButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mAddFontButton, "mAddFontButton", EBButton.self, #file, #line)
     checkOutletConnection (self.mBoardPageView, "mBoardPageView", CanariViewWithKeyView.self, #file, #line)
+    checkOutletConnection (self.mComponentCountTextField, "mComponentCountTextField", EBTextObserverField.self, #file, #line)
+    checkOutletConnection (self.mComponentTableView, "mComponentTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mComponentsPageView, "mComponentsPageView", CanariViewWithKeyView.self, #file, #line)
     checkOutletConnection (self.mDeviceLibraryTableView, "mDeviceLibraryTableView", EBTableView.self, #file, #line)
     checkOutletConnection (self.mEditDeviceButton, "mEditDeviceButton", EBButton.self, #file, #line)
@@ -182,14 +217,40 @@ import Cocoa
     super.windowControllerDidLoadNib (aController)
   //--------------------------- Outlet checking
     self.checkOutletConnections ()
+  //--- Array controller property: mComponentController
+    self.mComponentController.bind_model (self.rootObject.mComponents_property)
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.bind_model (self.rootObject.mFonts_property)
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.bind_model (self.rootObject.mDevices_property)
+  //--- Atomic property: componentCount
+    self.componentCount_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.rootObject.mComponents_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.rootObject.mComponents_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_ProjectDocument_componentCount (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.rootObject.mComponents_property.count_property.addEBObserver (self.componentCount_property)
+    self.mComponentController.bind_tableView (self.mComponentTableView, file: #file, line: #line)
     self.mProjectFontController.bind_tableView (self.mFontLibraryTableView, file: #file, line: #line)
     self.mProjectDeviceController.bind_tableView (self.mDeviceLibraryTableView, file: #file, line: #line)
   //--------------------------- Install regular bindings
     self.mPageSegmentedControl?.bind_selectedPage (self.rootObject.mSelectedPageIndex_property, file: #file, line: #line)
+    self.mComponentCountTextField?.bind_valueObserver (self.componentCount_property, file: #file, line: #line)
   //--------------------------- Install multiple bindings
     do{
       let controller = MultipleBindingController_enabled (
@@ -323,6 +384,7 @@ import Cocoa
     super.removeUserInterface ()
   //--------------------------- Unbind regular bindings
     self.mPageSegmentedControl?.unbind_selectedPage ()
+    self.mComponentCountTextField?.unbind_valueObserver ()
   //--------------------------- Unbind multiple bindings
     self.mProjectFontController.selectedArray_property.count_property.removeEBObserver (self.mController_mEditFontButton_enabled!)
     self.mController_mEditFontButton_enabled = nil
@@ -343,12 +405,16 @@ import Cocoa
     self.mProjectDeviceController.selectedArray_property.count_property.removeEBObserver (self.mController_mUpdateDeviceButton_enabled!)
     self.mController_mUpdateDeviceButton_enabled = nil
   //--------------------------- Unbind array controllers
+    self.mComponentController.unbind_tableView (self.mComponentTableView)
     self.mProjectFontController.unbind_tableView (self.mFontLibraryTableView)
     self.mProjectDeviceController.unbind_tableView (self.mDeviceLibraryTableView)
+  //--- Array controller property: mComponentController
+    self.mComponentController.unbind_model ()
   //--- Array controller property: mProjectFontController
     self.mProjectFontController.unbind_model ()
   //--- Array controller property: mProjectDeviceController
     self.mProjectDeviceController.unbind_model ()
+    self.rootObject.mComponents_property.count_property.removeEBObserver (self.componentCount_property)
   //--------------------------- Remove targets / actions
     self.mAddComponentButton?.target = nil
     self.mAddFontButton?.target = nil
@@ -365,6 +431,8 @@ import Cocoa
     self.mAddComponentButton?.ebCleanUp ()
     self.mAddFontButton?.ebCleanUp ()
     self.mBoardPageView?.ebCleanUp ()
+    self.mComponentCountTextField?.ebCleanUp ()
+    self.mComponentTableView?.ebCleanUp ()
     self.mComponentsPageView?.ebCleanUp ()
     self.mDeviceLibraryTableView?.ebCleanUp ()
     self.mEditDeviceButton?.ebCleanUp ()

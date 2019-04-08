@@ -72,7 +72,7 @@ extension CanariLibraryEntry {
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
             switch r {
             case .error (let status) :
-              inLogTextView.appendErrorString ("error  \(status)\n")
+              inLogTextView.appendErrorString ("error \(status)\n")
               ok = false
             case .ok (_) :
               inLogTextView.appendSuccessString ("ok\n")
@@ -84,7 +84,7 @@ extension CanariLibraryEntry {
             let r = writeRemoteFile (remoteRelativePath, url: self.mLibraryRepositoryURL, userPwd: self.mUserAndPasswordTag, localFullPath)
             switch r {
             case .error (let status) :
-              inLogTextView.appendErrorString ("error  \(status)\n")
+              inLogTextView.appendErrorString ("error \(status)\n")
               ok = false
             case .ok (_) :
               inLogTextView.appendSuccessString ("ok\n")

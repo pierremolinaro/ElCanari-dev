@@ -47,6 +47,12 @@ protocol DeviceInProject_canExport : class {
 }
 
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+protocol DeviceInProject_canRemove : class {
+  var canRemove : Bool? { get }
+}
+
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //    Entity: DeviceInProject
 //——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -57,7 +63,8 @@ class DeviceInProject : EBManagedObject,
          DeviceInProject_mDeviceFileData,
          DeviceInProject_versionString,
          DeviceInProject_sizeString,
-         DeviceInProject_canExport {
+         DeviceInProject_canExport,
+         DeviceInProject_canRemove {
 
   //····················································································································
   //   Atomic property: mDeviceName
@@ -126,6 +133,25 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   var mDeviceFileData_property_selection : EBSelection <Data> { return self.mDeviceFileData_property.prop }
+
+  //····················································································································
+  //   To many property: mComponents
+  //····················································································································
+
+  var mComponents_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponents_property.prop
+  }
+
+  //····················································································································
+
+  var mComponents : [ComponentInProject] {
+    get { return self.mComponents_property.propval }
+    set { self.mComponents_property.setProp (newValue) }
+  }
 
   //····················································································································
   //   To many property: mPackages
@@ -235,6 +261,29 @@ class DeviceInProject : EBManagedObject,
   }
 
   //····················································································································
+  //   Transient property: canRemove
+  //····················································································································
+
+  var canRemove_property = EBTransientProperty_Bool ()
+
+  //····················································································································
+
+  var canRemove_property_selection : EBSelection <Bool> {
+    return self.canRemove_property.prop
+  }
+
+  //····················································································································
+
+  var canRemove : Bool? {
+    switch self.canRemove_property_selection {
+    case .empty, .multiple :
+      return nil
+    case .single (let v) :
+      return v
+    }
+  }
+
+  //····················································································································
   //    init
   //····················································································································
 
@@ -248,6 +297,11 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.ebUndoManager = self.ebUndoManager
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mComponents (has opposite relationship)
+    self.mComponents_property.ebUndoManager = self.ebUndoManager
+    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject :ComponentInProject?) in
+      inManagedObject?.mDevice_property.setProp (self)
+    }
   //--- To many property: mPackages (no option)
     self.mPackages_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mSymbols (no option)
@@ -318,7 +372,32 @@ class DeviceInProject : EBManagedObject,
       }
     }
     self.mDeviceFileData_property.addEBObserver (self.canExport_property)
+  //--- Atomic property: canRemove
+    self.canRemove_property.mReadModelFunction = { [weak self] in
+      if let unwSelf = self {
+        let kind = unwSelf.mComponents_property.count_property_selection.kind ()
+        switch kind {
+        case .noSelectionKind :
+          return .empty
+        case .multipleSelectionKind :
+          return .multiple
+        case .singleSelectionKind :
+          switch (unwSelf.mComponents_property.count_property_selection) {
+          case (.single (let v0)) :
+            return .single (transient_DeviceInProject_canRemove (v0))
+          default :
+            return .empty
+          }
+        }
+      }else{
+        return .empty
+      }
+    }
+    self.mComponents_property.addEBObserver (self.canRemove_property)
   //--- Install undoers and opposite setter for relationships
+    self.mComponents_property.setOppositeRelationship = { [weak self] (_ inManagedObject : ComponentInProject?) in
+      inManagedObject?.mDevice_property.setProp (self)
+    }
   //--- Register properties for handling signature
   //--- Extern delegates
   }
@@ -330,6 +409,8 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.removeEBObserver (self.versionString_property)
     self.mDeviceFileData_property.removeEBObserver (self.sizeString_property)
     self.mDeviceFileData_property.removeEBObserver (self.canExport_property)
+    self.mComponents_property.removeEBObserver (self.canRemove_property)
+ //   self.mComponents_property.setOppositeRelationship = nil
   //--- Unregister properties for handling signature
   }
 
@@ -401,7 +482,22 @@ class DeviceInProject : EBManagedObject,
       observerExplorer:&self.canExport_property.mObserverExplorer,
       valueExplorer:&self.canExport_property.mValueExplorer
     )
+    createEntryForPropertyNamed (
+      "canRemove",
+      idx:self.canRemove_property.ebObjectIndex,
+      y:&y,
+      view:view,
+      observerExplorer:&self.canRemove_property.mObserverExplorer,
+      valueExplorer:&self.canRemove_property.mValueExplorer
+    )
     createEntryForTitle ("Transients", y:&y, view:view)
+    createEntryForToManyRelationshipNamed (
+      "mComponents",
+      idx:mComponents_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponents_property.mValueExplorer
+    )
     createEntryForToManyRelationshipNamed (
       "mPackages",
       idx:mPackages_property.ebObjectIndex,
@@ -437,6 +533,8 @@ class DeviceInProject : EBManagedObject,
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.mObserverExplorer = nil
     self.mDeviceFileData_property.mValueExplorer = nil
+  //--- To many property: mComponents
+    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mPackages
     self.mPackages_property.mValueExplorer = nil
   //--- To many property: mSymbols
@@ -450,6 +548,7 @@ class DeviceInProject : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mComponents_property.setProp ([])
     self.mPackages_property.setProp ([])
     self.mSymbols_property.setProp ([])
   //---
@@ -479,6 +578,12 @@ class DeviceInProject : EBManagedObject,
     self.mDeviceVersion_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceVersion")
   //--- Atomic property: mDeviceFileData
     self.mDeviceFileData_property.storeIn (dictionary: ioDictionary, forKey:"mDeviceFileData")
+  //--- To many property: mComponents
+    self.store (
+      managedObjectArray: self.mComponents_property.propval,
+      relationshipName: "mComponents",
+      intoDictionary: ioDictionary
+    )
   //--- To many property: mPackages
     self.store (
       managedObjectArray: self.mPackages_property.propval,
@@ -500,6 +605,12 @@ class DeviceInProject : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mComponents
+    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponents",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   //--- To many property: mPackages
     self.mPackages_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mPackages",
@@ -536,6 +647,10 @@ class DeviceInProject : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mComponents
+    for managedObject in self.mComponents_property.propval {
+      objects.append (managedObject)
+    }
   //--- To many property: mPackages
     for managedObject in self.mPackages_property.propval {
       objects.append (managedObject)
@@ -552,6 +667,10 @@ class DeviceInProject : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mComponents
+    for managedObject in self.mComponents_property.propval {
+      objects.append (managedObject)
+    }
   //--- To many property: mPackages
     for managedObject in self.mPackages_property.propval {
       objects.append (managedObject)
@@ -969,6 +1088,62 @@ class ReadOnlyArrayOf_DeviceInProject : ReadOnlyAbstractArrayProperty <DeviceInP
   }
 
   //····················································································································
+  //   Observers of 'canRemove' transient property
+  //····················································································································
+
+  private var mObserversOf_canRemove = EBWeakEventSet ()
+
+  //····················································································································
+
+  final func addEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.addEBObserver (inObserver)
+    self.mObserversOf_canRemove.insert (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemove_property.addEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserverOf_canRemove (_ inObserver : EBEvent) {
+    self.removeEBObserver (inObserver)
+    self.mObserversOf_canRemove.remove (inObserver)
+    switch prop {
+    case .empty, .multiple :
+      break
+    case .single (let v) :
+      for managedObject in v {
+        managedObject.canRemove_property.removeEBObserver (inObserver)
+      }
+    }
+  }
+
+  //····················································································································
+
+  final func addEBObserversOf_canRemove_toElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply ( {(_ observer : EBEvent) in
+        managedObject.canRemove_property.addEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
+
+  final func removeEBObserversOf_canRemove_fromElementsOfSet (_ inSet : Set<DeviceInProject>) {
+    for managedObject in inSet {
+      self.mObserversOf_canRemove.apply ( {(_ observer : EBEvent) in
+        managedObject.canRemove_property.removeEBObserver (observer)
+      })
+    }
+  }
+
+  //····················································································································
 
 }
 
@@ -1049,6 +1224,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.removeEBObserversOf_versionString_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_sizeString_fromElementsOfSet (removedSet)
       self.removeEBObserversOf_canExport_fromElementsOfSet (removedSet)
+      self.removeEBObserversOf_canRemove_fromElementsOfSet (removedSet)
     //--- Added object set
       let addedSet = newSet.subtracting (self.mSet)
      //--- Add observers of stored properties
@@ -1060,6 +1236,7 @@ class TransientArrayOf_DeviceInProject : ReadOnlyArrayOf_DeviceInProject {
       self.addEBObserversOf_versionString_toElementsOfSet (addedSet)
       self.addEBObserversOf_sizeString_toElementsOfSet (addedSet)
       self.addEBObserversOf_canExport_toElementsOfSet (addedSet)
+      self.addEBObserversOf_canRemove_toElementsOfSet (addedSet)
     //--- Update object set
       self.mSet = newSet
     }
@@ -1199,6 +1376,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.removeEBObserversOf_versionString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_sizeString_fromElementsOfSet (removedObjectSet)
           self.removeEBObserversOf_canExport_fromElementsOfSet (removedObjectSet)
+          self.removeEBObserversOf_canRemove_fromElementsOfSet (removedObjectSet)
         }
        //--- Added object set
         let addedObjectSet = self.mSet.subtracting (oldSet)
@@ -1218,6 +1396,7 @@ final class StoredArrayOf_DeviceInProject : ReadWriteArrayOf_DeviceInProject, EB
           self.addEBObserversOf_versionString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_sizeString_toElementsOfSet (addedObjectSet)
           self.addEBObserversOf_canExport_toElementsOfSet (addedObjectSet)
+          self.addEBObserversOf_canRemove_toElementsOfSet (addedObjectSet)
         }
       //--- Notify observers
         self.postEvent ()

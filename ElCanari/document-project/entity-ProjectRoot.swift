@@ -35,6 +35,25 @@ class ProjectRoot : EBManagedObject,
   var mSelectedPageIndex_property_selection : EBSelection <Int> { return self.mSelectedPageIndex_property.prop }
 
   //····················································································································
+  //   To many property: mComponents
+  //····················································································································
+
+  var mComponents_property = StoredArrayOf_ComponentInProject ()
+
+  //····················································································································
+
+  var mComponents_property_selection : EBSelection < [ComponentInProject] > {
+    return self.mComponents_property.prop
+  }
+
+  //····················································································································
+
+  var mComponents : [ComponentInProject] {
+    get { return self.mComponents_property.propval }
+    set { self.mComponents_property.setProp (newValue) }
+  }
+
+  //····················································································································
   //   To many property: mFonts
   //····················································································································
 
@@ -80,6 +99,8 @@ class ProjectRoot : EBManagedObject,
     super.init (ebUndoManager)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.ebUndoManager = self.ebUndoManager
+  //--- To many property: mComponents (no option)
+    self.mComponents_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mFonts (no option)
     self.mFonts_property.ebUndoManager = self.ebUndoManager
   //--- To many property: mDevices (no option)
@@ -118,6 +139,13 @@ class ProjectRoot : EBManagedObject,
     createEntryForTitle ("Properties", y:&y, view:view)
     createEntryForTitle ("Transients", y:&y, view:view)
     createEntryForToManyRelationshipNamed (
+      "mComponents",
+      idx:mComponents_property.ebObjectIndex,
+      y: &y,
+      view: view,
+      valueExplorer:&mComponents_property.mValueExplorer
+    )
+    createEntryForToManyRelationshipNamed (
       "mFonts",
       idx:mFonts_property.ebObjectIndex,
       y: &y,
@@ -143,6 +171,8 @@ class ProjectRoot : EBManagedObject,
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.mObserverExplorer = nil
     self.mSelectedPageIndex_property.mValueExplorer = nil
+  //--- To many property: mComponents
+    self.mComponents_property.mValueExplorer = nil
   //--- To many property: mFonts
     self.mFonts_property.mValueExplorer = nil
   //--- To many property: mDevices
@@ -156,6 +186,7 @@ class ProjectRoot : EBManagedObject,
   //····················································································································
 
   override internal func cleanUpToManyRelationships () {
+    self.mComponents_property.setProp ([])
     self.mFonts_property.setProp ([])
     self.mDevices_property.setProp ([])
   //---
@@ -179,6 +210,12 @@ class ProjectRoot : EBManagedObject,
     super.saveIntoDictionary (ioDictionary)
   //--- Atomic property: mSelectedPageIndex
     self.mSelectedPageIndex_property.storeIn (dictionary: ioDictionary, forKey:"mSelectedPageIndex")
+  //--- To many property: mComponents
+    self.store (
+      managedObjectArray: self.mComponents_property.propval,
+      relationshipName: "mComponents",
+      intoDictionary: ioDictionary
+    )
   //--- To many property: mFonts
     self.store (
       managedObjectArray: self.mFonts_property.propval,
@@ -200,6 +237,12 @@ class ProjectRoot : EBManagedObject,
   override func setUpWithDictionary (_ inDictionary : NSDictionary,
                                      managedObjectArray : inout [EBManagedObject]) {
     super.setUpWithDictionary (inDictionary, managedObjectArray:&managedObjectArray)
+  //--- To many property: mComponents
+    self.mComponents_property.setProp (readEntityArrayFromDictionary (
+      inRelationshipName: "mComponents",
+      inDictionary: inDictionary,
+      managedObjectArray: &managedObjectArray
+    ) as! [ComponentInProject])
   //--- To many property: mFonts
     self.mFonts_property.setProp (readEntityArrayFromDictionary (
       inRelationshipName: "mFonts",
@@ -230,6 +273,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjects (objects : inout [EBManagedObject]) {
     super.accessibleObjects (objects: &objects)
+  //--- To many property: mComponents
+    for managedObject in self.mComponents_property.propval {
+      objects.append (managedObject)
+    }
   //--- To many property: mFonts
     for managedObject in self.mFonts_property.propval {
       objects.append (managedObject)
@@ -246,6 +293,10 @@ class ProjectRoot : EBManagedObject,
 
   override func accessibleObjectsForSaveOperation (objects : inout [EBManagedObject]) {
     super.accessibleObjectsForSaveOperation (objects: &objects)
+  //--- To many property: mComponents
+    for managedObject in self.mComponents_property.propval {
+      objects.append (managedObject)
+    }
   //--- To many property: mFonts
     for managedObject in self.mFonts_property.propval {
       objects.append (managedObject)
